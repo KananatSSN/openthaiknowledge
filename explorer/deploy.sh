@@ -21,7 +21,8 @@ if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
   exit 1
 fi
 
-git fetch --quiet --tags origin
+# --force: a tag the maintainer re-made must replace the old one here too.
+git fetch --quiet --tags --force origin
 tag="${1:-$(git tag --list 'v*' --sort=-v:refname | head -n 1)}"
 [ -n "$tag" ] || { echo "No release tag found." >&2; exit 1; }
 git -c advice.detachedHead=false checkout --quiet "$tag"

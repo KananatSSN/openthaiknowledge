@@ -11,6 +11,7 @@ from pathlib import Path
 
 import pytest
 
+from otk.tests._bank import needs_bank
 from otk.tools.sheetpipe import answerkey as ak
 from otk.tools.sheetpipe import bank as bk
 
@@ -125,6 +126,7 @@ def test_running_header_is_stripped_but_a_heading_under_it_is_kept():
 RATH = Path("rathcenter/8 ตรีโกณมิติ")
 
 
+@needs_bank
 def test_a_section_source_resolves_to_every_item_of_that_section():
     from otk.tools.sheetpipe import knowledge as kn
     sheet = "rathcenter/8 ตรีโกณมิติ/(rath) 6 แปลงผลคูณกับผลบวกลบ.pdf"

@@ -12,6 +12,7 @@ from pathlib import Path
 
 import pytest
 
+from otk.tests._bank import needs_bank
 from otk.tools.sheetpipe import knowledge as kn
 
 REAL_TAG = "O-NET (มี.ค. 2561/25)"      # a question in the committed digests
@@ -27,12 +28,14 @@ def unit(uid: str, **kw) -> kn.Unit:
     return kn.Unit(**{**base, **kw})
 
 
+@needs_bank
 def test_committed_knowledge_is_valid():
     files = kn.load_all()
     assert files, "no knowledge files under otk/knowledge"
     assert kn.validate(files) == []
 
 
+@needs_bank
 def test_reference_topic_accounts_for_every_question():
     # Probability is the worked reference: every converted question in its
     # folder is claimed by some unit.
@@ -45,6 +48,7 @@ def test_reference_topic_accounts_for_every_question():
         assert not missing, f"{s}: {missing}"
 
 
+@needs_bank
 def test_a_tag_resolves_across_compilations():
     # The same exam question is repeated in several files; a tag names them all.
     positions = kn.resolve({"tag": "กสพท คณิต1 (เม.ย. 2564/18)"})
@@ -67,6 +71,7 @@ def test_validate_catches(bad, message):
     assert any(message in p for p in problems), problems
 
 
+@needs_bank
 def test_validate_catches_duplicates_cycles_and_unknown_topics():
     assert any("duplicate id" in p for p in kn.validate([topic([unit("a"), unit("a")])]))
     a = unit("a", prerequisites=["b"])

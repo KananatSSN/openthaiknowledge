@@ -16,16 +16,16 @@ it is no longer downloadable from here.
 
 | Source | Rights holder | What this repository holds | How it is cited |
 |---|---|---|---|
-| Past entrance and national exams in the rathcenter compilations — O-NET, A-Level/PAT, กสพท and others (files `(1)`, `(2)`, `(onet)`) | The body that set each exam, as named in each item's tag; the compilations' worked solutions belong to their authors | Text of the questions and solutions (`sheet_database/_digest/`); problem sets adapted from them (each cites its source in `PROVENANCE`) | Each digested question carries its exam tag, e.g. `กสพท คณิต1 (เม.ย. 2564/8)`; each digest names its source file; adapted sets cite the chapter in `PROVENANCE` |
-| Rathcenter chapter notes (files `(rath)`) | Their authors | Text digests (`sheet_database/_digest/`) | Source file named in each digest |
-| IPST (สสวท.) mathematics textbooks and teacher's manuals | สถาบันส่งเสริมการสอนวิทยาศาสตร์และเทคโนโลยี (IPST) | Transcripts of textbook exercises and their manual answers (`sheet_database/_transcribed/`) | Each transcript names its book, exercise and pages |
+| Past entrance and national exams in the rathcenter compilations — O-NET, A-Level/PAT, กสพท and others (files `(1)`, `(2)`, `(onet)`) | The body that set each exam, as named in each item's tag; the compilations' worked solutions belong to their authors | Problem sets adapted from them (each cites its source in `PROVENANCE`) | Each digested question carries its exam tag, e.g. `กสพท คณิต1 (เม.ย. 2564/8)`; each digest names its source file; adapted sets cite the chapter in `PROVENANCE` |
+| Rathcenter chapter notes (files `(rath)`) | Their authors | Nothing published; used to plan which sets to write | — |
+| IPST (สสวท.) mathematics textbooks and teacher's manuals | สถาบันส่งเสริมการสอนวิทยาศาสตร์และเทคโนโลยี (IPST) | Problem sets written after the textbooks' exercises; the transcripts themselves are not published | Each transcript names its book, exercise and pages |
 | POSN (สอวน.) mathematics camp-selection papers 2561, 2562, 2565–2568 | มูลนิธิส่งเสริมโอลิมปิกวิชาการและพัฒนามาตรฐานวิทยาศาสตร์ศึกษา (POSN) | Each question's text, page text and figures (`otk/sheets/posn25xx_math/`); one problem set per question, with new numbers | `sheet.json` names the paper and item; each set's `PROVENANCE` cites paper and item |
 | A physics (force) exam paper (`Faii/ข้อสอบแรง.pdf`) | Its author (not recorded) | Problem sets adapted from it (`science_wave_f1`, `f2`, `e7`) | `PROVENANCE` cites the paper |
-| Science topic notes in `sheet_database/notes/topics/` (rocks, separating mixtures, pure substances, electricity) | Their original authors; `กระบวนการเปลี่ยนแปลงของหิน.md` is from TruePlookpanya (trueplookpanya.com), the others do not record where their text came from | The notes' text, used to plan which science sets to write | The source named at the top of a note, where there is one |
+| Science topic notes (rocks, separating mixtures, pure substances, electricity) | Their original authors; `กระบวนการเปลี่ยนแปลงของหิน.md` is from TruePlookpanya (trueplookpanya.com), the others do not record where their text came from | Nothing published; the notes were used to plan which science sets to write | The source named at the top of a note, where there is one |
 | The Basic Education Core Curriculum B.E. 2551 (rev. 2560) and its indicator documents | กระทรวงศึกษาธิการ (Ministry of Education) | The documents converted to Markdown, and an indicator index (`docs/curriculum_sources/`) | Each converted file names its source document |
 
-The source PDFs themselves are not distributed here (their Git LFS objects
-are kept privately); the citations identify them.
+The sources themselves, and their digests and transcripts, are not published:
+they are kept in a separate private repository. The citations identify them.
 
 Every problem set states its provenance (`otk.api.provenance(key)`): `original`
 for sets written for this project, `adapted` with the sources it adapts. The

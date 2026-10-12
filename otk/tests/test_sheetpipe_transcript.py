@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import pytest
 
+from otk.tests._bank import needs_bank
 from otk.tools.sheetpipe import transcript as tr
 
 TEXT = """<!-- a note -->
@@ -62,6 +63,7 @@ def test_text_before_an_item_is_an_error():
         tr.parse("# หัวข้อ\n   ข้อความลอย\n")
 
 
+@needs_bank
 def test_a_numbered_section_source_names_one_exercise_with_its_subs():
     from otk.tools.sheetpipe import knowledge as kn
     sheet = "rathcenter/3 จำนวนจริง/(สสวท) ท้ายบท จำนวนจริง🍒.pdf"
@@ -72,6 +74,7 @@ def test_a_numbered_section_source_names_one_exercise_with_its_subs():
 
 def test_todo_lists_picture_layouts_without_a_transcript():
     from dataclasses import replace
+
     from otk.tools.sheetpipe import bank as bk
     bank = bk.load_bank()
     for e in tr.todo(bank):
@@ -85,6 +88,7 @@ def test_todo_lists_picture_layouts_without_a_transcript():
     assert [e.path for e in todo] == [fresh.path]
 
 
+@needs_bank
 def test_check_counts_a_committed_transcript():
     n, answered = tr.check("rathcenter/9 เมทริกซ์/(สสวท) 1 ดีเทอร์มิแนนต์🥑.pdf")
     assert (n, answered) == (11, 11)
@@ -100,6 +104,7 @@ def test_page_kinds_and_render(tmp_path):
     assert [p.name for p in out] == ["p01.png"] and out[0].stat().st_size > 0
 
 
+@needs_bank
 def test_committed_transcripts_parse_and_are_answered():
     files = sorted(tr.ROOT.rglob("*.md"))
     assert files, "no transcripts committed"

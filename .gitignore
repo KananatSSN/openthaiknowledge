@@ -15,12 +15,13 @@ data/
 .env.*
 .DS_Store
 
-# Generated documents are not committed...
+# Generated documents are not committed.
 *.pdf
 *.zip
-# ...except the source bank's PDFs, which are the pipeline's input. They are
-# Git LFS objects (.gitattributes, .lfsconfig).
-!sheet_database/**/*.pdf
+
+# The source bank is a separate, private repository (third-party material, not
+# published). Maintainers clone it here: see README → The source bank.
+/sheet_database/
 
 # Sheet-pipeline page renders; regenerate with `sheetpipe extract`.
 # The extracted text alongside them is small and IS tracked.

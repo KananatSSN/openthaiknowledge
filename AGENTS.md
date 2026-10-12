@@ -42,7 +42,7 @@ For a quick loop on one new set, run `test_golden_draws.py`, `test_provenance.py
 Step-by-step procedures live in `.agents/skills/` (Claude Code also finds them
 through `.claude/skills/`):
 
-- `sheet-bank` — digest sources in `sheet_database/` end to end.
+- `sheet-bank` — digest sources in `sheet_database/` end to end (maintainers only: the bank is a private repository cloned there).
 - `sheet-to-generator` — turn one exam paper into per-question generators.
 - `sheet-transcriber` — transcribe one picture-maths PDF and verify its answers.
 

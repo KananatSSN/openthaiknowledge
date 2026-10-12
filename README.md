@@ -35,8 +35,7 @@ one fails, stop and tell me what went wrong instead of working around it.
      gh repo fork KananatSSN/openthaiknowledge --clone --default-branch-only
      cd openthaiknowledge
    Then check `git remote -v`: `origin` must be my fork and `upstream` must be
-   KananatSSN/openthaiknowledge. The source PDFs under sheet_database/ stay as
-   small Git LFS pointer files; that is expected, nothing needs them.
+   KananatSSN/openthaiknowledge.
 
 3. Create the Python environment, in this folder only. Name the environment
    explicitly so an already active virtualenv is not changed:
@@ -90,7 +89,6 @@ what review checks. [AGENTS.md](AGENTS.md) holds the rules your agent follows.
 | `otk/tests/` | The suite, including `golden_draws.json` |
 | `scripts/` | Content audits and exports, and `task_queue.py` (open work as GitHub issues) |
 | `explorer/` | The website for exploring every set and trying its example questions |
-| `sheet_database/` | The source bank: digests, transcripts and notes. Its PDFs are not redistributed (below) |
 | `.agents/skills/` | Agent skills: `sheet-bank`, `sheet-to-generator`, `sheet-transcriber` (Claude Code reaches them through `.claude/`) |
 | `docs/` | Content plans, audits and the official curriculum sources |
 
@@ -125,7 +123,7 @@ python -m otk.tools.sets_index                              # refresh otk/sets/I
 ## Use
 
 ```bash
-pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.2"
+pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.3"
 ```
 
 ```python
@@ -151,15 +149,23 @@ every set's draws for five fixed seeds. Each set also states its provenance
 
 ## The source bank
 
-`sheet_database/` is where sources are digested from: exam compilations,
-textbook exercise pages, notes. Most of them are third-party material. Their
-PDFs are Git LFS objects that stay in the maintainer's private store
-(`.lfsconfig`). A clone keeps them as pointer files, and everything else here
-works without them. The digests, transcripts and sets adapted from sources
-are published with citations ([SOURCES.md](SOURCES.md)); a rights holder can
-ask for any of it to be removed, and it will be.
+The sources sets are digested from (exam compilations, textbook exercise
+pages, notes) are mostly third-party material, so they are not published. They
+live in a separate private repository, together with their digests and
+transcripts. Everything in this repository works without it; the problem sets
+that were adapted from a source cite it ([SOURCES.md](SOURCES.md)), and a
+rights holder can ask for any of it to be removed.
 
-To digest sources, use the `sheet-bank` skill (`.agents/skills/sheet-bank`).
+Maintainers with access clone the bank into `sheet_database/` (ignored by git):
+
+```bash
+git lfs install   # once per machine; the bank's PDFs are Git LFS objects
+git clone https://github.com/KananatSSN/openthaiknowledge-bank.git sheet_database
+```
+
+Then the `sheet-bank` skill (`.agents/skills/sheet-bank`) digests sources end to
+end, and `python -m otk.tools.sheetpipe bank fetch "<pattern>"` downloads the
+PDFs a stage needs.
 
 ## Explorer
 
@@ -173,7 +179,7 @@ set's example questions and answers, and this page. See its
 |---|---|
 | Code: everything not listed below, including the problem sets and the question text inside them | [Apache-2.0](LICENSE) |
 | Content: knowledge units (`otk/knowledge/`) and the project's own documentation | [CC BY 4.0](LICENSE-CONTENT) |
-| Third-party material: the source bank (`sheet_database/`: digests, transcripts), the digested papers' text and figures, and whatever an adapted set cites | Not licensed by this project; it belongs to its owners, is cited in [SOURCES.md](SOURCES.md), and is removed on request |
+| Third-party material: the digested papers' text and figures, and whatever an adapted set cites | Not licensed by this project; it belongs to its owners, is cited in [SOURCES.md](SOURCES.md), and is removed on request |
 
 Contributions are accepted under the same terms, certified per commit with a
 DCO sign-off (`git commit -s`; see [CONTRIBUTING.md](CONTRIBUTING.md)).

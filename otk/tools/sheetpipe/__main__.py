@@ -416,15 +416,18 @@ def cmd_bank_set(args) -> int:
 def cmd_bank_fetch(args) -> int:
     """Download the LFS content of the bank PDFs matching a pattern.
 
-    `.lfsconfig` excludes the bank from automatic fetches, to stay inside the
-    GitHub LFS download quota. This pulls just the files a stage needs.
+    The bank is its own (private) repository, cloned at ``sheet_database/``.
+    Its `.lfsconfig` excludes the PDFs from automatic fetches, to stay inside
+    the GitHub LFS download quota; this pulls just the files a stage needs.
     """
     import subprocess
 
-    include = f"{bk.DEFAULT_ROOT.name}/{args.pattern}"
-    cmd = ["git", "lfs", "pull", "--include", include, "--exclude", ""]
+    if not (bk.DEFAULT_ROOT / ".git").exists():
+        print(f"no bank repository at {bk.DEFAULT_ROOT}; see README → The source bank")
+        return 1
+    cmd = ["git", "lfs", "pull", "--include", args.pattern, "--exclude", ""]
     print("running:", " ".join(f'"{c}"' if " " in c or not c else c for c in cmd))
-    done = subprocess.run(cmd, cwd=bk.REPO_ROOT)
+    done = subprocess.run(cmd, cwd=bk.DEFAULT_ROOT)
     if done.returncode:
         return done.returncode
     bank = bk.load_bank()

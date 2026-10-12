@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import pytest
 
+from otk.tests._bank import needs_bank
 from otk.tools.sheetpipe import bank as bk
 from otk.tools.sheetpipe.spec import sheet_ids
 
@@ -194,6 +195,7 @@ def test_committed_bank_is_consistent():
     assert set(sheet_ids()) <= linked, "a digested sheet is missing from bank.json"
 
 
+@needs_bank
 def test_committed_digests_match_the_bank():
     from otk.tools.sheetpipe.convert import digest_paths, load_digest
     converted = [e for e in bk.load_bank().values() if e.items]

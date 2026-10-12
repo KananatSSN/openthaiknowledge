@@ -36,8 +36,7 @@
      gh repo fork KananatSSN/openthaiknowledge --clone --default-branch-only
      cd openthaiknowledge
    จากนั้นตรวจ `git remote -v`: `origin` ต้องเป็น fork ของฉัน และ `upstream`
-   ต้องเป็น KananatSSN/openthaiknowledge ไฟล์ PDF ต้นฉบับใน sheet_database/
-   จะเป็นไฟล์ pointer ขนาดเล็กของ Git LFS ซึ่งเป็นเรื่องปกติ ไม่มีขั้นตอนไหนต้องใช้
+   ต้องเป็น KananatSSN/openthaiknowledge
 
 3. สร้าง Python environment ในโฟลเดอร์นี้เท่านั้น ระบุ environment ให้ชัดเจน
    เพื่อไม่ให้ไปแก้ virtualenv ที่เปิดใช้อยู่แล้ว:
@@ -92,7 +91,6 @@
 | `otk/tests/` | ชุด test รวมถึง `golden_draws.json` |
 | `scripts/` | สคริปต์ตรวจและส่งออกเนื้อหา และ `task_queue.py` (สร้างงานที่เปิดรับเป็น GitHub issue) |
 | `explorer/` | เว็บไซต์สำรวจชุดโจทย์ทุกชุดและลองทำตัวอย่างโจทย์ |
-| `sheet_database/` | คลังต้นฉบับ: เนื้อหาที่ย่อยแล้ว ข้อความที่ถอดแล้ว และบันทึก ไม่เผยแพร่ไฟล์ PDF ต่อ (ดูด้านล่าง) |
 | `.agents/skills/` | skill สำหรับ agent: `sheet-bank`, `sheet-to-generator`, `sheet-transcriber` (Claude Code เข้าถึงผ่าน `.claude/`) |
 | `docs/` | แผนงานเนื้อหา ผลการตรวจ และเอกสารหลักสูตรฉบับทางการ |
 
@@ -127,7 +125,7 @@ python -m otk.tools.sets_index                              # อัปเดต
 ## การใช้งาน
 
 ```bash
-pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.2"
+pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.3"
 ```
 
 ```python
@@ -153,15 +151,21 @@ question = REGISTRY["math.count_objects_p1"].generate(Random(42))
 
 ## คลังต้นฉบับ
 
-`sheet_database/` คือที่เก็บแหล่งข้อมูลสำหรับย่อย ได้แก่ ชุดรวมข้อสอบ
-แบบฝึกหัดจากหนังสือเรียน และบันทึก ส่วนใหญ่เป็นเนื้อหาของบุคคลอื่น
-ไฟล์ PDF เป็น Git LFS object ที่เก็บอยู่ในที่เก็บส่วนตัวของผู้ดูแล (`.lfsconfig`)
-เมื่อ clone จะได้เพียงไฟล์ pointer และส่วนอื่นทั้งหมดใช้งานได้โดยไม่ต้องมีไฟล์เหล่านี้
-เนื้อหาที่ย่อยแล้ว ข้อความที่ถอดแล้ว และชุดโจทย์ที่ดัดแปลงจากแหล่งข้อมูล
-เผยแพร่พร้อมการอ้างอิง ([SOURCES.md](SOURCES.md)) เจ้าของสิทธิ์ขอให้นำส่วนใดออกได้
-และเราจะนำออกให้
+แหล่งข้อมูลที่ใช้ย่อยเป็นชุดโจทย์ (ชุดรวมข้อสอบ แบบฝึกหัดจากหนังสือเรียน และบันทึก)
+ส่วนใหญ่เป็นเนื้อหาของบุคคลอื่น จึงไม่เผยแพร่ เก็บไว้ใน repository ส่วนตัวแยกต่างหาก
+พร้อมเนื้อหาที่ย่อยแล้วและข้อความที่ถอดแล้ว ทุกอย่างใน repository นี้ใช้งานได้โดยไม่ต้องมีคลังนั้น
+ชุดโจทย์ที่ดัดแปลงจากแหล่งข้อมูลระบุที่มาไว้ ([SOURCES.md](SOURCES.md))
+และเจ้าของสิทธิ์ขอให้นำส่วนใดออกได้
 
-การย่อยแหล่งข้อมูลใช้ skill `sheet-bank` (`.agents/skills/sheet-bank`)
+ผู้ดูแลที่มีสิทธิ์เข้าถึง clone คลังไว้ที่ `sheet_database/` (git ไม่ติดตามโฟลเดอร์นี้):
+
+```bash
+git lfs install   # ทำครั้งเดียวต่อเครื่อง: PDF ในคลังเป็น Git LFS object
+git clone https://github.com/KananatSSN/openthaiknowledge-bank.git sheet_database
+```
+
+จากนั้นใช้ skill `sheet-bank` (`.agents/skills/sheet-bank`) ย่อยแหล่งข้อมูลตั้งแต่ต้นจนจบ
+และ `python -m otk.tools.sheetpipe bank fetch "<pattern>"` ดาวน์โหลด PDF ที่ต้องใช้
 
 ## Explorer
 
@@ -174,7 +178,7 @@ question = REGISTRY["math.count_objects_p1"].generate(Random(42))
 |---|---|
 | โค้ด: ทุกอย่างที่ไม่ได้ระบุไว้ข้างล่าง รวมถึงชุดโจทย์และข้อความโจทย์ในชุดเหล่านั้น | [Apache-2.0](LICENSE) |
 | เนื้อหา: หน่วยความรู้ (`otk/knowledge/`) และเอกสารของโครงการ | [CC BY 4.0](LICENSE-CONTENT) |
-| เนื้อหาของบุคคลอื่น: คลังต้นฉบับ (`sheet_database/`: เนื้อหาที่ย่อยแล้ว ข้อความที่ถอดแล้ว) ข้อความและรูปของข้อสอบที่ย่อยแล้ว และสิ่งที่ชุดโจทย์แบบดัดแปลงอ้างอิง | โครงการนี้ไม่ได้ให้สิทธิ์ เนื้อหาเป็นของเจ้าของ มีการอ้างอิงไว้ใน [SOURCES.md](SOURCES.md) และนำออกได้เมื่อมีการร้องขอ |
+| เนื้อหาของบุคคลอื่น: ข้อความและรูปของข้อสอบที่ย่อยแล้ว และสิ่งที่ชุดโจทย์แบบดัดแปลงอ้างอิง | โครงการนี้ไม่ได้ให้สิทธิ์ เนื้อหาเป็นของเจ้าของ มีการอ้างอิงไว้ใน [SOURCES.md](SOURCES.md) และนำออกได้เมื่อมีการร้องขอ |
 
 ผลงานที่ร่วมพัฒนาจะอยู่ภายใต้เงื่อนไขเดียวกัน โดยรับรองทุก commit ด้วย
 DCO sign-off (`git commit -s`; ดู [CONTRIBUTING.md](CONTRIBUTING.md))
