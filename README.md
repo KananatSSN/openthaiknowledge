@@ -8,15 +8,14 @@ answer from a seed. Alongside them are the knowledge units they were built
 from, and the tooling that turns exam sheets and textbooks into both.
 
 Anyone can contribute by having an AI agent do the work under this
-repository's rules, then reviewing what it made. The repository is private for
-now, so contributing needs an invitation; see [License](#license) for the terms
-it will be published under.
+repository's rules, then reviewing what it made. See [License](#license) for
+the terms the project and your contributions are published under.
 
 ## Contribute with your AI agent
 
 You need:
 
-- a GitHub account with access to this repository;
+- a GitHub account;
 - [git](https://git-scm.com/), the [GitHub CLI](https://cli.github.com/)
   (`gh`, signed in with `gh auth login`) and [uv](https://docs.astral.sh/uv/);
 - a coding agent that can run commands, such as Claude Code or Codex.
@@ -156,9 +155,9 @@ every set's draws for five fixed seeds. Each set also states its provenance
 textbook exercise pages, notes. Most of them are third-party material. Their
 PDFs are Git LFS objects that stay in the maintainer's private store
 (`.lfsconfig`). A clone keeps them as pointer files, and everything else here
-works without them. Before this repository goes public, its digests,
-transcripts and the sets derived from sources will be reviewed for what can be
-published.
+works without them. The digests, transcripts and sets adapted from sources
+are published with citations ([SOURCES.md](SOURCES.md)); a rights holder can
+ask for any of it to be removed, and it will be.
 
 To digest sources, use the `sheet-bank` skill (`.agents/skills/sheet-bank`).
 

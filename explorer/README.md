@@ -39,7 +39,7 @@ serves it with nginx. It listens on this machine only, at
 On the machine that serves it (the Mac mini), once:
 
 ```bash
-git clone https://github.com/KananatSSN/openthaiknowledge.git   # private for now: sign in with gh, or use a token
+git clone https://github.com/KananatSSN/openthaiknowledge.git
 ```
 
 Then, for each release:
@@ -72,5 +72,6 @@ match.
 ## GitHub Pages
 
 The `Explorer site` workflow can publish the same build to GitHub Pages
-(`BASE_PATH=/openthaiknowledge npm run build`). It is disabled while the
-repository is private.
+(`BASE_PATH=/openthaiknowledge npm run build`; Settings → Pages → Source:
+GitHub Actions). It is disabled: the explorer is hosted through the tunnel
+instead.

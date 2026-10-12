@@ -5,9 +5,8 @@ let your agent do the work under this repository's rules, review what it
 produced, and open a pull request. CI checks the mechanical rules; a
 maintainer reviews the rest.
 
-> The repository is private while the publishable source material is being
-> reviewed. Until then, contributions are by invitation. Code is licensed
-> Apache-2.0 and content CC BY 4.0 (README → License); your contribution is too.
+> Code is licensed Apache-2.0 and content CC BY 4.0 (README → License); your
+> contribution is too.
 
 ## 1. Pick a task
 
