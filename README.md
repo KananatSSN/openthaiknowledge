@@ -123,7 +123,7 @@ python -m otk.tools.sets_index                              # refresh otk/sets/I
 ## Use
 
 ```bash
-pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.3"
+pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.4"
 ```
 
 ```python
@@ -166,6 +166,10 @@ git clone https://github.com/KananatSSN/openthaiknowledge-bank.git sheet_databas
 Then the `sheet-bank` skill (`.agents/skills/sheet-bank`) digests sources end to
 end, and `python -m otk.tools.sheetpipe bank fetch "<pattern>"` downloads the
 PDFs a stage needs.
+
+Contributors without the bank can still digest an exam paper of their own: put
+it in `sheet_database/contrib/<your GitHub name>/` and use the
+`sheet-to-generator` skill (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## Explorer
 

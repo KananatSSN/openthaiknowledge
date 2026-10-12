@@ -10,6 +10,8 @@ import pytest
 
 from otk.tools.sheetpipe import bank as bk
 
+# A contributor's own sheet_database/ (their papers under contrib/) has digests
+# too, but not the bank's; only a clone of the private bank counts.
 needs_bank = pytest.mark.skipif(
-    not (bk.DEFAULT_ROOT / "_digest").is_dir(),
-    reason="source bank not cloned at sheet_database/ (maintainers only)")
+    not bk.has_private_bank(),
+    reason="private source bank not cloned at sheet_database/ (maintainers only)")

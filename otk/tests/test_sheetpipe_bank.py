@@ -207,3 +207,22 @@ def test_committed_digests_match_the_bank():
         assert d["sha256"] == e.sha256, f"{e.path}: digest is of another version"
         assert len(d["items"]) == e.items > 0, e.path
         assert all(it["stem"].strip() for it in d["items"]), e.path
+
+
+def test_only_a_clone_of_the_private_bank_counts_as_the_bank(tmp_path):
+    own = tmp_path / "own"
+    (own / "contrib" / "me").mkdir(parents=True)
+    assert not bk.has_private_bank(own)
+    clone = tmp_path / "clone"
+    (clone / ".git").mkdir(parents=True)
+    (clone / ".git" / "config").write_text(
+        '[remote "origin"]\n\turl = https://github.com/KananatSSN/openthaiknowledge-bank.git\n', "utf-8")
+    assert bk.has_private_bank(clone)
+
+
+def test_prune_refuses_without_the_private_bank(tmp_path, monkeypatch):
+    from otk.tools.sheetpipe.__main__ import main
+    saved = []
+    monkeypatch.setattr(bk, "save_bank", lambda bank, path=bk.BANK_FILE: saved.append(bank))
+    assert main(["bank", "prune", "--root", str(tmp_path)]) == 1
+    assert not saved

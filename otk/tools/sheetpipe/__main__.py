@@ -438,6 +438,12 @@ def cmd_bank_fetch(args) -> int:
 
 def cmd_bank_prune(args) -> int:
     root = Path(args.root) if args.root else bk.default_root()
+    if not args.force and not bk.has_private_bank(root):
+        # Without the full bank, nearly every record looks "missing": pruning
+        # here would erase the maintainers' records from bank.json.
+        print(f"{root} is not a clone of the private source bank; refusing to prune "
+              "(records for files you do not have would be lost). --force overrides.")
+        return 1
     bank = bk.load_bank()
     gone = [k for k in bank if not (root / k).is_file()]
     for k in gone:
@@ -564,6 +570,8 @@ def main(argv: list[str] | None = None) -> int:
     p.set_defaults(fn=cmd_bank_fetch)
     p = bank.add_parser("prune")
     p.add_argument("--root", default="")
+    p.add_argument("--force", action="store_true",
+                   help="prune even when the root is not the private source bank")
     p.set_defaults(fn=cmd_bank_prune)
 
     args = ap.parse_args(argv)

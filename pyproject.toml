@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "openthaiknowledge"
-version = "0.5.3"
+version = "0.5.4"
 description = "Open Thai curriculum knowledge: seeded problem-set generators, knowledge units, and sheet-digestion tooling"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}

@@ -6,8 +6,10 @@ description: Digest sheets added to sheet_database/ end to end — index them, t
 # Sheet bank → knowledge → problem sets
 
 The bank is `sheet_database/`: a separate, private repository
-(KananatSSN/openthaiknowledge-bank) cloned there and ignored by this one. If it
-is missing, stop: only maintainers have it. Commit bank files (digests,
+(KananatSSN/openthaiknowledge-bank) cloned there and ignored by this one; only
+maintainers have it (`sheetpipe` checks with `bank.has_private_bank()`). If it
+is missing, stop: to digest a paper of your own, use the `sheet-to-generator`
+skill and its "Your own paper" section instead. Commit bank files (digests,
 transcripts, notes) in the bank repository; commit everything else here.
 Layout: `sheet_database/README.md`. Its index
 is `otk/sheets/bank.json`; every file moves through the stages

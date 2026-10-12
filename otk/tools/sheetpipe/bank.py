@@ -37,6 +37,9 @@ from .spec import SHEETS_ROOT, load_sheet, sheet_ids
 BANK_FILE = SHEETS_ROOT / "bank.json"
 REPO_ROOT = SHEETS_ROOT.parents[1]
 DEFAULT_ROOT = REPO_ROOT / "sheet_database"
+#: The maintainers' private source bank. A contributor's own ``sheet_database/``
+#: folder (their papers under ``contrib/<name>/``) is not a clone of it.
+PRIVATE_BANK = "openthaiknowledge-bank"
 
 #: Pipeline stages in order. ``ignored`` is off the ladder: a file the bank
 #: holds but that nothing should be built from (a schedule, an archive).
@@ -175,6 +178,19 @@ def bank_files(root: Path) -> list[Path]:
 
 
 # ── The index ────────────────────────────────────────────────────────────────
+
+def has_private_bank(root: Path = DEFAULT_ROOT) -> bool:
+    """True when ``root`` is a clone of the private source bank.
+
+    Only then do the bank's digests and transcripts exist, and only then may
+    ``bank prune`` drop records whose files are missing.
+    """
+    config = root / ".git" / "config"
+    try:
+        return PRIVATE_BANK in config.read_text("utf-8")
+    except OSError:
+        return False
+
 
 def default_root() -> Path:
     return Path(os.environ.get("SHEET_BANK") or DEFAULT_ROOT)

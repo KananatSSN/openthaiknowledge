@@ -1,6 +1,6 @@
 ---
 name: sheet-to-generator
-description: Turn an exam-sheet PDF (สอวน., O-NET, PAT, a school midterm) into working problem generators — extract the questions and figures, write one cross-checked solver per question, then wire each to a question type. Use when the user points at a PDF in sheet_database/ and wants it digested, or asks to add questions from a paper exam.
+description: Turn an exam-sheet PDF (สอวน., O-NET, PAT, a school midterm) into working problem generators — extract the questions and figures, write one cross-checked solver per question, then wire each to a question type. Use when the user points at a PDF (in the maintainers' bank, or their own paper under sheet_database/contrib/) and wants it digested, or asks to add questions from a paper exam.
 ---
 
 # Exam sheet → problem generator
@@ -26,6 +26,38 @@ python -m otk.tools.sheetpipe list                        #    how green each sh
 ```
 
 `sheet_id` is a package name under `otk/sheets/` (e.g. `posn2568_math`).
+
+## Your own paper (contributors)
+
+Maintainers work from the private source bank cloned at `sheet_database/`.
+Contributors do not have it and do not need it: digest a paper of your own.
+
+1. **Rights first.** The paper's question text, page text and figures are
+   committed under `otk/sheets/<sheet_id>/` and published. Use only a paper you
+   wrote or have permission to publish, and say which in the pull request. If
+   unsure, stop and ask the user.
+2. **Put the PDF in your own bank folder**, which git ignores, so the PDF is never
+   committed: `sheet_database/contrib/<your GitHub name>/<file>.pdf`. Create the
+   folders if they do not exist.
+3. **Index it, then run the four stages** on that path:
+   ```bash
+   python -m otk.tools.sheetpipe bank scan        # adds a record for your file to otk/sheets/bank.json
+   python -m otk.tools.sheetpipe extract  sheet_database/contrib/<you>/<file>.pdf <sheet_id>
+   python -m otk.tools.sheetpipe scaffold sheet_database/contrib/<you>/<file>.pdf <sheet_id>
+   python -m otk.tools.sheetpipe bank scan        # again: links the new sheet to its record
+   ```
+   The scans keep every record for files you do not have (the maintainers'
+   bank); that is expected. Never run `sheetpipe bank prune`: it refuses outside
+   the private bank, because it would erase those records.
+4. **Fill in `sheet.json`**: a real `title` (paper, year, author or school) and
+   `level`. Every set built from the paper derives its provenance from it, so
+   the title is the citation.
+5. Solve, verify and wire the generators as below. Commit `otk/sheets/<sheet_id>/`,
+   the generator file, `otk/sheets/bank.json` and the golden draws; never the
+   PDF. One paper per pull request.
+
+The bank-wide pipeline (the `sheet-bank` skill: digests, knowledge units,
+coverage plans) needs the private bank and is for maintainers.
 
 ---
 

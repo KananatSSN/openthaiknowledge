@@ -125,7 +125,7 @@ python -m otk.tools.sets_index                              # อัปเดต
 ## การใช้งาน
 
 ```bash
-pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.3"
+pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.4"
 ```
 
 ```python
@@ -166,6 +166,10 @@ git clone https://github.com/KananatSSN/openthaiknowledge-bank.git sheet_databas
 
 จากนั้นใช้ skill `sheet-bank` (`.agents/skills/sheet-bank`) ย่อยแหล่งข้อมูลตั้งแต่ต้นจนจบ
 และ `python -m otk.tools.sheetpipe bank fetch "<pattern>"` ดาวน์โหลด PDF ที่ต้องใช้
+
+ผู้ร่วมพัฒนาที่ไม่มีคลังนี้ก็ย่อยข้อสอบของตัวเองได้: วางไฟล์ไว้ที่
+`sheet_database/contrib/<ชื่อ GitHub ของคุณ>/` แล้วใช้ skill `sheet-to-generator`
+(ดู [CONTRIBUTING.md](CONTRIBUTING.md)) ต้องเป็นข้อสอบที่คุณแต่งเองหรือมีสิทธิ์เผยแพร่
 
 ## Explorer
 
