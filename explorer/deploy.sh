@@ -25,7 +25,7 @@ git fetch --quiet --tags origin
 tag="${1:-$(git tag --list 'v*' --sort=-v:refname | head -n 1)}"
 [ -n "$tag" ] || { echo "No release tag found." >&2; exit 1; }
 git -c advice.detachedHead=false checkout --quiet "$tag"
-echo "Building the explorer from $tag…"
+echo "Building the explorer from ${tag}..."
 compose up -d --build --remove-orphans
 
 port="${EXPLORER_PORT:-8090}"
