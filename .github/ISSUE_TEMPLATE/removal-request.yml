@@ -1,0 +1,32 @@
+name: Removal request
+description: Ask us to remove material you hold the rights to.
+title: "Removal request: "
+labels: ["removal request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for telling us. We remove material at its rights holder's request,
+        from the current version promptly and from the next release; we can also
+        rewrite the repository history on request. See SOURCES.md.
+        Prefer not to post publicly? Contact the maintainer through their GitHub profile.
+  - type: textarea
+    id: material
+    attributes:
+      label: What should be removed
+      description: Paths, problem-set keys, or the source (exam, book, paper) concerned.
+    validations:
+      required: true
+  - type: input
+    id: holder
+    attributes:
+      label: Rights holder
+      description: The organisation or person who holds the rights, and your relation to it.
+    validations:
+      required: true
+  - type: checkboxes
+    id: history
+    attributes:
+      label: History
+      options:
+        - label: Please also remove it from the repository history.

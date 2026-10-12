@@ -1,0 +1,154 @@
+"""การเลือกใช้เครื่องใช้ไฟฟ้าอย่างประหยัดและปลอดภัย
+
+ฟิสิกส์ · ม.3 · สสวท. พื้นฐาน
+Indicators: ว 2.3 ม.3/9
+
+Sets moved here from: science_wave_d33.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from random import Random
+from typing import NamedTuple
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import numeric, show
+from otk.sets._support.science_wave_b9 import scenario_question
+from otk.sets._support.science_wave_b14 import _labelled
+from otk.sets._support.science_wave_b15 import _retopic
+from otk.sets._support.science_wave_d14 import SUBJECT
+from otk.sets._support.science_wave_d22 import _facts
+from otk.sets._support.science_wave_d32 import THIRD_SECONDARY
+
+PROVENANCE = Provenance("original")
+
+
+APPLIANCE_CHOICE_TOPIC = "การเลือกใช้เครื่องใช้ไฟฟ้าอย่างประหยัดและปลอดภัย"
+
+
+APPLIANCE_FACTS = (
+    ("การเลือกเครื่องใช้ไฟฟ้าที่มีสัญลักษณ์ประหยัดไฟเบอร์ 5 มีประโยชน์อย่างไร",
+     "ช่วยประหยัดค่าไฟฟ้าระยะยาว เพราะใช้พลังงานอย่างมีประสิทธิภาพกว่ารุ่นทั่วไป",
+     ("ทำให้เครื่องใช้ไฟฟ้ามีราคาถูกกว่ารุ่นทั่วไปเสมอ เพราะได้รับเงินอุดหนุน", "ทำให้เครื่องใช้ไฟฟ้าทำงานได้เร็วกว่ารุ่นทั่วไปและทนทานกว่า", "ไม่มีผลต่อค่าไฟฟ้าหรือการใช้พลังงานเลย",
+      "ทำให้เครื่องใช้ไฟฟ้าไม่ต้องต่อสายดิน", "ทำให้ใช้กับไฟฟ้าทุกแรงดันได้")),
+    ("เครื่องหมาย มอก. บนเครื่องใช้ไฟฟ้าบอกอะไร", "ผ่านการรับรองมาตรฐานผลิตภัณฑ์อุตสาหกรรม มีความปลอดภัยในการใช้งาน",
+     ("ประหยัดไฟฟ้ามากที่สุดในบรรดาเครื่องใช้ไฟฟ้าทุกยี่ห้อ", "ผลิตในต่างประเทศ", "มีราคาถูกที่สุดในท้องตลาด และผลิตจากโรงงานในประเทศทุกชิ้น", "ใช้พลังงานแสงอาทิตย์ได้ จึงไม่ต้องเสียค่าไฟฟ้าเลย", "รับประกันตลอดชีพ")),
+    ("ตัวเลข 1,000 W ที่ระบุบนเตารีดหมายความว่าอย่างไร", "เตารีดใช้พลังงานไฟฟ้า 1,000 จูลในทุก 1 วินาที",
+     ("เตารีดมีน้ำหนัก 1,000 กรัม", "เตารีดใช้ได้ 1,000 ครั้ง", "เตารีดร้อนได้สูงสุด 1,000 องศาเซลเซียส", "เตารีดใช้ไฟฟ้า 1,000 หน่วยต่อวันเมื่อเปิดใช้งาน", "เตารีดมีแรงดันไฟฟ้า 1,000 โวลต์")),
+    ("พลังงานไฟฟ้า 1 หน่วยที่การไฟฟ้าคิดค่าบริการเท่ากับเท่าใด", "1 กิโลวัตต์-ชั่วโมง",
+     ("1 กิโลวัตต์", "1 กิโลจูล (kJ)", "1 โวลต์-แอมแปร์", "1 แอมแปร์-ชั่วโมง (Ah)", "1 วัตต์-วินาที (W·s)")),
+    ("เหตุใดเครื่องใช้ไฟฟ้าที่มีโครงเป็นโลหะจึงควรต่อสายดิน", "ถ้าเกิดไฟรั่ว กระแสไฟฟ้าจะไหลลงดินแทนที่จะไหลผ่านร่างกายผู้ใช้",
+     ("เพื่อให้เครื่องประหยัดไฟ เพราะไฟฟ้าส่วนที่เหลือใช้ไหลลงดินไปเก็บไว้", "เพื่อให้เครื่องทำงานเร็วขึ้นและเสียงเงียบลง", "เพื่อให้เครื่องมีน้ำหนักมากขึ้น", "เพื่อเพิ่มแรงดันไฟฟ้า", "ไม่มีประโยชน์ใด ๆ")),
+)
+
+
+APPLIANCE_HINT = "ประหยัดพลังงานดูที่ฉลากเบอร์ 5 กำลังไฟฟ้า และการปิดเมื่อไม่ใช้ ความปลอดภัยดูที่ มอก. สายดิน และการใช้งานตามคู่มือ"
+
+
+class ApplianceProblem(NamedTuple):
+    case: str
+    method: str
+
+
+APPLIANCE_PROBLEMS = (
+    ApplianceProblem("ต้องเลือกซื้อตู้เย็นใหม่ระหว่างรุ่นที่ไม่มีสัญลักษณ์ประหยัดไฟกับรุ่นเบอร์ 5",
+                     "เลือกรุ่นที่มีสัญลักษณ์ประหยัดไฟเบอร์ 5 เพราะใช้พลังงานน้อยกว่าในการทำงานแบบเดียวกัน"),
+    ApplianceProblem("เครื่องใช้ไฟฟ้าหลายชิ้นเสียบปลั๊กทิ้งไว้ในโหมดสแตนด์บายตลอดเวลา",
+                     "ถอดปลั๊กหรือปิดสวิตช์หลักเมื่อไม่ใช้งาน เพื่อลดการสิ้นเปลืองพลังงานจากโหมดสแตนด์บาย"),
+    ApplianceProblem("ซื้อเครื่องใช้ไฟฟ้ามือสองที่ไม่มีเครื่องหมายมาตรฐานความปลอดภัย (มอก.)",
+                     "ตรวจสอบและเลือกเครื่องใช้ไฟฟ้าที่มีเครื่องหมายมาตรฐานความปลอดภัยก่อนใช้งานเสมอ"),
+    ApplianceProblem("ใช้เครื่องใช้ไฟฟ้ากำลังไฟฟ้าสูงเกินความจำเป็นสำหรับงานเล็ก ๆ",
+                     "เลือกเครื่องใช้ไฟฟ้าที่มีกำลังไฟฟ้าเหมาะสมกับขนาดงานที่ต้องใช้จริง"),
+    ApplianceProblem("เสียบปลั๊กเครื่องใช้ไฟฟ้ากำลังสูงหลายเครื่องบนปลั๊กพ่วงอันเดียวจนสายร้อน",
+                     "แยกเสียบเครื่องใช้ไฟฟ้ากำลังสูงคนละเต้ารับ และใช้ปลั๊กพ่วงที่รับกำลังไฟฟ้าได้เพียงพอ"),
+    ApplianceProblem("ตู้เย็นเปิดประตูบ่อยและวางชิดผนังจนระบายความร้อนไม่ได้",
+                     "เปิดประตูตู้เย็นเท่าที่จำเป็น และวางให้ห่างผนังเพื่อระบายความร้อนได้ดี"),
+    ApplianceProblem("เครื่องซักผ้าโครงโลหะที่ไม่ได้ต่อสายดิน ผู้ใช้รู้สึกเหมือนไฟดูดเบา ๆ",
+                     "หยุดใช้งานแล้วให้ช่างต่อสายดินและตรวจหาจุดไฟรั่วก่อนใช้งานต่อ"),
+    ApplianceProblem("ตั้งเครื่องปรับอากาศไว้ที่ 18 °C ตลอดทั้งวัน",
+                     "ตั้งอุณหภูมิไว้ประมาณ 25-26 °C และล้างแผ่นกรองอากาศสม่ำเสมอ"),
+)
+
+
+APPLIANCE_CHOICE_SCENARIOS = (
+    ("บ้านหลังหนึ่งเปลี่ยนเครื่องปรับอากาศเก่าที่ไม่มีสัญลักษณ์ประหยัดไฟเป็นรุ่นใหม่เบอร์ 5 แล้วพบว่าค่าไฟฟ้าลดลงอย่างชัดเจน เหตุใดจึงเป็นเช่นนี้",
+     "เครื่องปรับอากาศเบอร์ 5 ใช้พลังงานไฟฟ้าน้อยกว่าในการทำความเย็นปริมาณเท่ากัน จึงลดค่าไฟฟ้าได้",
+     ("เครื่องปรับอากาศเบอร์ 5 ทำความเย็นได้น้อยกว่าจึงใช้ไฟน้อยกว่า", "สัญลักษณ์ประหยัดไฟไม่มีผลต่อปริมาณพลังงานที่ใช้จริง", "ค่าไฟฟ้าที่ลดลงเกิดจากการเปลี่ยนผู้ให้บริการไฟฟ้าเท่านั้น")),
+    ("นักเรียนพบว่าเครื่องชาร์จโทรศัพท์ที่เสียบปลั๊กทิ้งไว้ยังอุ่นเล็กน้อยแม้ไม่ได้ชาร์จโทรศัพท์อยู่ ข้อใดอธิบายและแนะนำได้เหมาะสมที่สุด",
+     "เครื่องชาร์จยังใช้พลังงานเล็กน้อยในโหมดสแตนด์บาย ควรถอดปลั๊กเมื่อไม่ใช้งานเพื่อประหยัดพลังงาน",
+     ("เครื่องชาร์จที่เสียบทิ้งไว้ไม่ใช้พลังงานเลยจึงไม่ต้องถอด", "ความอุ่นที่เกิดขึ้นไม่เกี่ยวข้องกับการใช้พลังงานไฟฟ้า", "ควรเสียบทิ้งไว้ตลอดเวลาเพื่อให้พร้อมใช้งานเสมอ")),
+    ("ร้านขายเครื่องใช้ไฟฟ้ามือสองแห่งหนึ่งขายพัดลมที่ไม่มีเครื่องหมาย มอก. ในราคาถูกมาก ควรพิจารณาอย่างไรก่อนซื้อ",
+     "ควรหลีกเลี่ยงหรือตรวจสอบความปลอดภัยอย่างละเอียดก่อนซื้อ เพราะไม่มีการรับรองมาตรฐานความปลอดภัย",
+     ("ควรซื้อทันทีเพราะราคาถูกเป็นปัจจัยสำคัญที่สุด", "เครื่องหมาย มอก. ไม่มีความเกี่ยวข้องกับความปลอดภัยในการใช้งาน", "พัดลมทุกเครื่องมีความปลอดภัยเท่ากันไม่ว่าจะมีเครื่องหมายรับรองหรือไม่")),
+)
+
+
+APPLIANCES = (("หลอด LED", (9, 10, 12, 18)), ("พัดลม", (40, 50, 60)), ("โทรทัศน์", (80, 100, 120, 150)), ("ตู้เย็น", (100, 120, 150)),
+              ("เครื่องปรับอากาศ", (800, 1000, 1200, 1500)), ("หม้อหุงข้าว", (500, 600, 800)), ("เตารีด", (1000, 1200)), ("คอมพิวเตอร์", (200, 250, 300)))
+
+
+@question_type(
+    "elec.appliance_choice_foundation",
+    display_name={"th": "บอกประโยชน์ของสัญลักษณ์ประหยัดไฟเบอร์ 5"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=APPLIANCE_CHOICE_TOPIC,
+)
+class ApplianceChoiceFoundation(QuestionType):
+    """Labels, ratings, the billing unit, and earthing."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _facts(rng, APPLIANCE_FACTS, hint=APPLIANCE_HINT, topic=APPLIANCE_CHOICE_TOPIC)
+
+
+@question_type(
+    "elec.appliance_choice_fluency",
+    display_name={"th": "นำเสนอวิธีการใช้เครื่องใช้ไฟฟ้าอย่างประหยัดและปลอดภัย"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=APPLIANCE_CHOICE_TOPIC,
+)
+class ApplianceChoiceFluency(QuestionType):
+    """A real appliance-use problem; the method from the same table that fixes it."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        index = rng.randrange(len(APPLIANCE_PROBLEMS))
+        problem = APPLIANCE_PROBLEMS[index]
+        others = [p.method for i, p in enumerate(APPLIANCE_PROBLEMS) if i != index]
+        return _labelled(
+            stem=f"{problem.case} ควรทำอย่างไรเพื่อประหยัดและปลอดภัย",
+            correct=problem.method,
+            wrongs=tuple(others),
+            hint="แยกพิจารณาว่าปัญหาเป็นเรื่องความสิ้นเปลืองพลังงานหรือความปลอดภัย แล้วเลือกวิธีที่ตรงจุด",
+            topic=APPLIANCE_CHOICE_TOPIC,
+        )
+
+
+@question_type(
+    "elec.appliance_choice_application",
+    display_name={"th": "ประเมินการเลือกใช้เครื่องใช้ไฟฟ้าในสถานการณ์จริง"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=APPLIANCE_CHOICE_TOPIC,
+)
+class ApplianceChoiceApplication(QuestionType):
+    """Authored cases, units and cost from watts and hours, and the saving from a better model."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        roll = rng.random()
+        if roll < 0.25:
+            return _retopic(scenario_question(rng, APPLIANCE_CHOICE_SCENARIOS, hint=APPLIANCE_HINT), APPLIANCE_CHOICE_TOPIC)
+        while True:
+            name, watts = rng.choice(APPLIANCES)
+            power = rng.choice(watts)
+            hours = rng.choice((1, 2, 3, 4, 5, 6, 8, 10, 12, 24))
+            days = rng.choice((1, 10, 20, 30))
+            units = Fraction(power * hours * days, 1000)
+            if (units * 100).denominator == 1:
+                break
+        price = rng.choice((4, 5))
+        if roll < 0.6:
+            return numeric(stem=f"{name} กำลังไฟฟ้า {show(power)} W เปิดใช้วันละ {hours} ชั่วโมง เป็นเวลา {days} วัน ใช้พลังงานไฟฟ้ากี่หน่วย (1 หน่วย = 1 kWh)",
+                           answer=units, wrongs=[power * hours * days, units * 10, Fraction(power * hours, 1000)], unit="หน่วย",
+                           topic=APPLIANCE_CHOICE_TOPIC, hint="หน่วย = กำลังไฟฟ้า (W) × ชั่วโมง × วัน ÷ 1,000")
+        return numeric(stem=f"{name} กำลังไฟฟ้า {show(power)} W เปิดใช้วันละ {hours} ชั่วโมง เป็นเวลา {days} วัน ค่าไฟฟ้าหน่วยละ {price} บาท "
+                            f"ต้องจ่ายค่าไฟฟ้าสำหรับเครื่องนี้กี่บาท",
+                       answer=units * price, wrongs=[units, units * price * 10, units + price], unit="บาท", topic=APPLIANCE_CHOICE_TOPIC,
+                       hint="หาจำนวนหน่วย (kWh) ก่อน แล้วคูณด้วยค่าไฟฟ้าต่อหน่วย")

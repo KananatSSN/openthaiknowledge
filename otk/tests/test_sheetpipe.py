@@ -1,0 +1,473 @@
+"""Tests for the exam-sheet pipeline and the generators built from it.
+
+The load-bearing test here is :func:`test_solver_contract`, parametrized over
+every question of every digested sheet. It is what stands behind the claim a
+sheet generator makes — that the answer is right for constants nobody has
+checked by hand — because it runs each question's closed-form ``solve`` and its
+independently written ``check`` against each other over the original constants
+*and* a grid of variants. Everything else in this file guards the wiring around
+that: the recorded answers, the generator keys, the text/figure extraction.
+"""
+
+from __future__ import annotations
+
+import math
+import random
+import re
+from pathlib import Path
+
+import pytest
+
+from otk import sheets
+from otk.core import REGISTRY, generate
+from otk.tools.sheetpipe import extract as ex, load_sheet, solver_modules
+from otk.tools.sheetpipe.extract import CellGrid, declared_item_count, split_items
+from otk.tools.sheetpipe.bank import present
+from otk.tools.sheetpipe.spec import SHEETS_ROOT, sheet_ids
+from otk.tools.sheetpipe.verify import normalize, same, verify_item
+
+SHEETS = sheet_ids()
+ITEMS = [(sid, item, mod)
+         for sid in SHEETS
+         for item, mod in solver_modules(load_sheet(sid))]
+
+#: Registry-key prefix each sheet's generators use. A sheet without an entry is
+#: skipped by the orphan test rather than silently passing it. posn2566_math is
+#: listed with nothing registered under it yet — the entry is what will catch a
+#: half-wired sheet the moment its first generator lands.
+KEY_PREFIX = {"posn2568_math": "math.posn2568_",
+              "posn2567_math": "math.posn2567_",
+              "posn2566_math": "math.posn2566_",
+              "posn2565_math": "math.posn2565_",
+              "posn2564_math": "math.posn2564_",
+              "posn2562_math": "math.posn2562_",
+              "posn2561_math": "math.posn2561_"}
+
+
+def test_at_least_one_sheet_is_digested():
+    assert SHEETS, "no sheets under otk/sheets — the pipeline has no output"
+
+
+# ── The solver contract ──────────────────────────────────────────────────────
+
+@pytest.mark.parametrize("sheet_id,item,mod", ITEMS,
+                         ids=[f"{s}-q{i.number:02d}" for s, i, _ in ITEMS])
+def test_solver_contract(sheet_id, item, mod):
+    """solve reproduces the sheet, and a second method agrees — at every variant."""
+    result = verify_item(item, mod)
+    assert result.reference_ok, f"{sheet_id} q{item.number}: {result.problems}"
+    assert not result.problems, f"{sheet_id} q{item.number}: {result.problems}"
+
+
+@pytest.mark.parametrize("sheet_id,item,mod", ITEMS,
+                         ids=[f"{s}-q{i.number:02d}" for s, i, _ in ITEMS])
+def test_every_solver_has_an_independent_check(sheet_id, item, mod):
+    """A solver with no second derivation is a solver nobody has audited."""
+    assert callable(getattr(mod, "check", None)), (
+        f"{sheet_id} q{item.number} has no check(); a closed form that only ever "
+        "sees the sheet's own constants proves nothing about other ones")
+
+
+@pytest.mark.parametrize("sheet_id,item,mod", ITEMS,
+                         ids=[f"{s}-q{i.number:02d}" for s, i, _ in ITEMS])
+def test_variants_actually_move_the_constants(sheet_id, item, mod):
+    """VARIANTS must change something, or the cross-check is only re-testing
+    the one parameter set the answer was recorded from."""
+    variants = getattr(mod, "VARIANTS", [])
+    assert len(variants) >= 3, f"{sheet_id} q{item.number}: only {len(variants)}"
+    for override in variants:
+        assert override, "an empty variant re-runs the reference case"
+        assert any(mod.PARAMS[k] != v for k, v in override.items()), \
+            f"{sheet_id} q{item.number}: variant {override} changes nothing"
+
+
+# ── sheet.json stays in step with the modules ────────────────────────────────
+
+@pytest.mark.parametrize("sheet_id,item,mod", ITEMS,
+                         ids=[f"{s}-q{i.number:02d}" for s, i, _ in ITEMS])
+def test_recorded_answer_matches_the_module(sheet_id, item, mod):
+    assert item.answer == str(mod.ANSWER), (
+        f"{sheet_id} q{item.number}: sheet.json records {item.answer!r} but the "
+        f"solver now answers {mod.ANSWER!r}")
+
+
+@pytest.mark.parametrize("sheet_id,item,mod", ITEMS,
+                         ids=[f"{s}-q{i.number:02d}" for s, i, _ in ITEMS])
+def test_item_carries_its_source_and_generator(sheet_id, item, mod):
+    """An item names its source text, and its generator if it has one yet.
+
+    ``generator = ""`` is the spec's "solver done, nothing built on it" — the
+    state posn2566_math is in, where all thirty solvers are green but no
+    question type has been written. A *named* generator must be registered;
+    that is what stops a sheet from pointing at a type someone deleted.
+    """
+    assert item.source.strip(), f"{sheet_id} q{item.number}: no source text kept"
+    if item.generator:
+        assert item.generator in REGISTRY, (
+            f"{sheet_id} q{item.number}: generator {item.generator!r} not registered")
+
+
+@pytest.mark.parametrize("sheet_id", SHEETS)
+def test_every_registered_generator_traces_back_to_an_item(sheet_id):
+    sheet = load_sheet(sheet_id)
+    claimed = {item.generator for item in sheet.items if item.generator}
+    prefix = KEY_PREFIX.get(sheet_id)
+    if prefix is None:                                    # pragma: no cover
+        pytest.skip("no key convention recorded for this sheet")
+    registered = {k for k in REGISTRY if k.startswith(prefix)}
+    assert registered == claimed, f"orphans: {registered ^ claimed}"
+
+
+# ── The generators ───────────────────────────────────────────────────────────
+
+#: every digested sheet's generators, not just the first sheet's — a new sheet
+#: is exactly where a colliding distractor is most likely to be hiding.
+SHEET_KEYS = sorted(k for k in REGISTRY
+                    if any(k.startswith(p) for p in KEY_PREFIX.values()))
+
+
+@pytest.mark.parametrize("key", SHEET_KEYS)
+def test_sheet_generator_offers_four_choices(key):
+    """A thin choice set means the hand-picked distractors are colliding."""
+    rng = random.Random(20260805)
+    for _ in range(60):
+        q = generate(key, rng)
+        assert len(q.choices) == 4, f"{key} produced {len(q.choices)} choices"
+
+
+@pytest.mark.parametrize("key", SHEET_KEYS)
+def test_sheet_generator_is_reproducible(key):
+    a = generate(key, random.Random(99)).model_dump()
+    b = generate(key, random.Random(99)).model_dump()
+    assert a == b, f"{key} is not reproducible from a seed"
+
+
+def _answer_tex(q) -> str:
+    return q.choices[q.answer].content[0].tex
+
+
+def test_tetrahedron_answer_is_correct():
+    """Spot-check that a generator's answer really follows from its own stem."""
+    rng = random.Random(11)
+    for _ in range(80):
+        q = generate("math.posn2568_q29", rng)
+        m = re.search(r"AD = (\d+), \\qquad BD = (\d+), \\qquad CD = (\d+)",
+                      q.stem[1].tex)
+        assert m, f"unexpected stem {q.stem[1].tex!r}"
+        a, b, c = (int(g) for g in m.groups())
+        assert _answer_tex(q) == rf"{a * a + b * b + c * c}\pi"
+
+
+def test_negative_product_count_answer_is_correct():
+    rng = random.Random(12)
+    for _ in range(80):
+        q = generate("math.posn2568_q08", rng)
+        m = re.search(r"\(x-(\d+)\^2\)$", q.stem[1].tex)
+        assert m, f"unexpected stem {q.stem[1].tex!r}"
+        top = int(m.group(1))
+        expected = sum(2 * j for j in range(1, top) if (top - j) % 2 == 1)
+        assert _answer_tex(q) == str(expected)
+
+
+def test_reciprocal_root_product_answer_is_correct():
+    rng = random.Random(13)
+    for _ in range(80):
+        q = generate("math.posn2568_q11", rng)
+        m = re.fullmatch(r"x\^6 - (\d+)x\^4 \+ \1x\^2 - 1 = 0", q.stem[1].tex)
+        assert m, f"unexpected stem {q.stem[1].tex!r}"
+        assert _answer_tex(q) == str(-4 * (int(m.group(1)) + 1) ** 2)
+
+
+def test_inserted_circles_surd_equals_the_solver():
+    """2567 §18 is the one item whose printed answer is a surd the solver never
+    builds — it returns a float. The generator's exact form must evaluate to it."""
+    from otk.sheets.posn2567_math import q18
+    rng = random.Random(15)
+    for _ in range(60):
+        q = generate("math.posn2567_q18", rng)
+        ra, rb = (int(g) for g in
+                  re.search(r"รัศมีเป็น (\d+) หน่วย และ (\d+) หน่วย",
+                            q.stem[0].text).groups())
+        assert abs(q18._exact_value(r_a=ra, r_b=rb)
+                   - q18.solve(r_a=ra, r_b=rb)) < 1e-9
+
+
+def test_ordered_quadruple_count_is_correct():
+    """2567 §20: re-derive C(m+2,4) from the range the stem actually printed."""
+    rng = random.Random(16)
+    for _ in range(60):
+        q = generate("math.posn2567_q20", rng)
+        text = q.stem[0].text
+        m = 9 if "เลขโดด" in text else int(re.search(r"ถึง (\d+)", text).group(1))
+        assert _answer_tex(q) == str(math.comb(m + 2, 4))
+
+
+def test_apex_altitude_is_half_the_edge():
+    """2565 §13's solver returns a float; the generator prints the exact half-edge.
+    They must agree, and the answer must really be edge/2."""
+    from otk.sheets.posn2565_math import q13
+    rng = random.Random(17)
+    for _ in range(60):
+        q = generate("math.posn2565_q13", rng)
+        text = q.stem[0].text
+        edge = int(re.search(r"AD = (\d+) หน่วย", text).group(1))
+        angles = [int(g) for g in re.findall(r"= (\d+)°", text)][:3]
+        assert sorted(angles) == [60, 90, 120], angles
+        assert abs(q13.solve(bac=angles[0], bad=angles[1], cad=angles[2],
+                             edge=edge) - edge / 2) < 1e-9
+
+
+def _surd_value(tex: str) -> float:
+    """Evaluate ``a``, ``a/b``, ``c\\sqrt d`` or ``a + c\\sqrt d`` numerically.
+
+    Enough of a reader to hold the *generator's* exact form against the solver's
+    float — the one place a sheet type can drift, since the two are written
+    independently on purpose.
+    """
+    m = re.fullmatch(r"\\frac\{(-?\d+)\}\{(\d+)\}", tex)
+    if m:
+        return int(m.group(1)) / int(m.group(2))
+    m = re.fullmatch(r"\\frac\{(-?)(\d*)\\sqrt\{(\d+)\}\}\{(\d+)\}", tex)
+    if m:
+        sign = -1 if m.group(1) else 1
+        return sign * int(m.group(2) or 1) * math.sqrt(int(m.group(3))) / int(m.group(4))
+    m = re.fullmatch(r"(?:(-?\d+) \+ )?(-?)(\d*)\\sqrt\{(\d+)\}", tex)
+    if m:
+        sign = -1 if m.group(2) else 1
+        return (int(m.group(1) or 0)
+                + sign * int(m.group(3) or 1) * math.sqrt(int(m.group(4))))
+    return float(tex)
+
+
+@pytest.mark.parametrize("key,pattern,module,names", [
+    ("math.posn2561_q19", r"BC = (\d+), \\qquad h = (\d+)", "q19",
+     ("base", "height")),
+    ("math.posn2561_q22", r"PR = (\d+), \\qquad PQ = (\d+)", "q22",
+     ("pr", "pq")),
+    ("math.posn2561_q23",
+     r"\\angle BAO = (\d+)\^\\circ, \\qquad \\angle ACO = (\d+)\^\\circ",
+     "q23", ("bao", "aco")),
+])
+def test_2561_exact_forms_match_their_solver(key, pattern, module, names):
+    """2561 §19, §22 and §23 answer in surds the solver only ever returns as a
+    float. The printed form has to evaluate back to what the solver says."""
+    import importlib
+    mod = importlib.import_module(f"otk.sheets.posn2561_math.{module}")
+    rng = random.Random(2561)
+    for _ in range(60):
+        q = generate(key, rng)
+        m = re.search(pattern, q.stem[1].tex)
+        assert m, f"unexpected stem {q.stem[1].tex!r}"
+        params = dict(zip(names, (int(g) for g in m.groups())))
+        assert abs(_surd_value(_answer_tex(q)) - float(mod.solve(**params))) < 1e-9
+
+
+def test_rosette_surd_equals_the_solver():
+    """2566 §25's answer is (3π − 3√3)r², which the solver only ever returns as
+    a float. The exact form the generator prints has to evaluate back to it."""
+    from otk.sheets.posn2566_math import q25
+    rng = random.Random(2566)
+    for _ in range(60):
+        q = generate("math.posn2566_q25", rng)
+        r = int(re.search(r"รัศมียาว (\d+) หน่วย", q.stem[0].text).group(1))
+        m = re.fullmatch(r"(\d*)\\pi - (\d+)\\sqrt\{3\}", _answer_tex(q))
+        assert m, f"unexpected answer {_answer_tex(q)!r}"
+        printed = int(m.group(1) or 1) * math.pi - int(m.group(2)) * math.sqrt(3)
+        assert abs(printed - q25.solve(r=r)) < 1e-9
+
+
+def test_degenerate_branch_is_offered_as_a_distractor():
+    """§25 has a second, degenerate solution (P the hypotenuse midpoint). The
+    item exists to catch it, so it must appear as a wrong choice."""
+    rng = random.Random(14)
+    for _ in range(40):
+        q = generate("math.posn2568_q25", rng)
+        alpha = int(re.search(r"∠ACP = (\d+)°", q.stem[0].text).group(1))
+        texts = {c.content[0].tex for c in q.choices}
+        assert _answer_tex(q) == rf"{3 * alpha - 90}^\circ"
+        assert rf"{90 - alpha}^\circ" in texts, "degenerate branch not offered"
+
+
+# ── Extraction ───────────────────────────────────────────────────────────────
+
+def test_split_items_follows_the_running_number():
+    pages = ["1.\nfirst question\n"
+             "ข้อ 3 บาท\n"      # a decoy "3" mid-text
+             "2. second question\n",
+             "3.\nthird question\n"]
+    items = split_items(pages)
+    assert sorted(items) == [1, 2, 3]
+    assert "second question" in items[2]
+    assert "third question" in items[3]
+
+
+def test_split_items_skips_a_numbered_instruction_list():
+    """An exam's คำชี้แจง is itself a numbered list, so reading greedily from the
+    first "1." digests the instructions and resumes partway into the questions.
+    On the POSN 2568 sheet the instructions ran 1–8 and the questions 1–30, and
+    both readings came to 30 items — so the count check passed while items 1–8
+    held exam rules. The later run has to win."""
+    pages = ["คำชี้แจง\n"
+             "1. ข้อสอบมีทั้งหมด 13 หน้า\n"
+             "2. ใช้ปากกาเขียนชื่อ\n"
+             "3. ห้ามนำข้อสอบออกจากห้อง\n"
+             "ข้อสอบวิชาคณิตศาสตร์\n"
+             "1. จงหาค่าของ x\n"
+             "2. จงหาพื้นที่\n"
+             "3. จงหาความน่าจะเป็น\n"]
+    items = split_items(pages, expect=3)
+    assert "จงหาค่าของ x" in items[1], "picked the instructions, not the questions"
+    assert "จงหาพื้นที่" in items[2]
+    assert "จงหาความน่าจะเป็น" in items[3]
+
+
+def test_split_items_reports_a_short_count():
+    with pytest.raises(ValueError, match="missing"):
+        split_items(["1. only one here"], expect=5)
+
+
+def test_declared_item_count_reads_the_instructions():
+    assert declared_item_count(
+        ["ข้อสอบมี 13 "
+         "หน้า จำนวน 30 "
+         "ข้อ"]) == 30
+    assert declared_item_count(["nothing here"]) == 0
+
+
+# ── Figures ──────────────────────────────────────────────────────────────────
+
+def _pdf_or_skip(sheet_id: str = "posn2568_math") -> Path:
+    pdf = Path(load_sheet(sheet_id).source_pdf)
+    if not present(pdf):
+        pytest.skip(f"{pdf} not present (or an unfetched LFS pointer)")
+    pytest.importorskip("fitz")
+    return pdf
+
+
+def test_cluster_joins_the_pieces_of_one_drawing():
+    """A figure arrives as many boxes — an arrowhead, a label, each rule of a
+    grid — and must come back as one."""
+    boxes = [(0, 0, 10, 10), (12, 0, 20, 10),      # 2 points apart: one figure
+             (200, 0, 210, 10)]                    # far away: another
+    assert sorted(ex._cluster(boxes, gap=5.0)) == [(0.0, 0.0, 20.0, 10.0),
+                                                   (200.0, 0.0, 210.0, 10.0)]
+
+
+def test_a_figure_is_numeric_only_when_a_word_opens_with_a_digit():
+    """``l₁`` names a line; ``12`` measures one. Only the second makes a crop
+    unsafe to reuse under redrawn constants."""
+    named = ex.Figure(item=1, page=1, box=(0, 0, 1, 1), words=["l1", "A2", "P"])
+    measured = ex.Figure(item=1, page=1, box=(0, 0, 1, 1), words=["12", "3.5cm"])
+    assert not named.numeric
+    assert measured.numeric
+
+
+def test_item_anchors_agree_with_the_pages_recorded_in_sheet_json():
+    sheet = load_sheet("posn2568_math")
+    anchors = ex.item_anchors(_pdf_or_skip(), expect=30)
+    assert sorted(anchors) == list(range(1, 31))
+    assert {n: page for n, (page, _) in anchors.items()} == \
+        {it.number: it.page for it in sheet.items}
+
+
+def test_figures_land_on_the_questions_that_have_one():
+    """Every item whose crop is shipped must be an item the extractor finds a
+    figure for — otherwise the picture on screen came from another question."""
+    found = {f.item for f in ex.figures(_pdf_or_skip(), expect=30)}
+    shipped = {it.number for it in load_sheet("posn2568_math").items
+               if it.figure_asset}
+    assert shipped and shipped <= found, f"no figure extracted for {shipped - found}"
+
+
+def test_crop_never_carries_a_neighbouring_line_of_text():
+    """A crop that reaches into the paragraph around it puts the sheet's own
+    numbers back on screen — the exact thing the redraw exists to avoid."""
+    pdf = _pdf_or_skip()
+    for fig in ex.figures(pdf, expect=30):
+        x0, y0, x1, y1 = ex.crop_box(pdf, fig)
+        outside = [w for wx0, wy0, wx1, wy1, w in ex.word_rects(pdf, fig.page)
+                   if wx1 > x0 and wx0 < x1 and wy1 > y0 and wy0 < y1
+                   and not (fig.box[0] <= (wx0 + wx1) / 2 <= fig.box[2]
+                            and fig.box[1] <= (wy0 + wy1) / 2 <= fig.box[3])]
+        assert not outside, f"q{fig.item} crop pulls in {outside}"
+
+
+@pytest.mark.parametrize("sheet_id", SHEETS)
+def test_every_attached_figure_ships_its_png(sheet_id):
+    for item in load_sheet(sheet_id).items:
+        if not item.figure_asset:
+            continue
+        assert item.figure_asset == sheets.figure_asset_id(sheet_id, item.number)
+        assert sheets.figure_path(item.figure_asset) is not None, (
+            f"{sheet_id} q{item.number} claims {item.figure_asset} but no PNG "
+            "ships for it")
+
+
+def test_a_figure_id_cannot_escape_the_sheets_directory():
+    for hostile in ("sheet-../../secret-q01", "sheet-posn2568_math-q1",
+                    "../pictures/skeleton", "skeleton"):
+        assert sheets.figure_path(hostile) is None
+
+
+@pytest.mark.parametrize("sheet_id", SHEETS)
+def test_attached_figures_reach_the_generated_question(sheet_id):
+    """The whole point: a question the sheet illustrated stays illustrated.
+
+    Some draws opt out — q20 only shows the parallelogram when it is not naming
+    the angle, q28 only when the draw asks for the three wheels that are drawn —
+    so the assertion is that the figure appears, not that it always appears.
+    """
+    sheet = load_sheet(sheet_id)
+    for item in sheet.items:
+        if not item.figure_asset:
+            continue
+        rng = random.Random(4242)
+        shown = {b.asset_id for _ in range(40)
+                 for b in generate(item.generator, rng).stem if b.kind == "image"}
+        assert shown == {item.figure_asset}, (
+            f"{item.generator} showed {shown or 'no figure'}, "
+            f"expected {item.figure_asset}")
+
+
+def test_a_question_whose_picture_is_its_data_gets_no_picture():
+    """§27's black cells *are* the constants; the next draw blacks in different
+    ones, so the sheet's grid must not be attached to it."""
+    assert not load_sheet("posn2568_math").item(27).figure_asset
+    rng = random.Random(7)
+    for _ in range(30):
+        q = generate("math.posn2568_q27", rng)
+        assert not [b for b in q.stem if b.kind == "image"]
+
+
+def test_cell_grid_renders_for_eyeballing():
+    grid = CellGrid(rows=3, cols=3, filled=[(1, 1)])
+    assert grid.render() == "...\n.#.\n..."
+
+
+def test_verify_helpers_compare_across_representations():
+    from fractions import Fraction
+    assert same(Fraction(4, 2), 2)
+    assert same((1.0, 2.0), (1, 2))
+    assert not same(1.0, 1.1)
+    assert normalize(Fraction(6, 3)) == 2
+
+
+def test_source_pdf_still_splits_into_the_declared_items():
+    """Guards the extraction end to end — skipped when the PDF is not checked in."""
+    sheet = load_sheet("posn2568_math")
+    pdf = Path(sheet.source_pdf)
+    if not present(pdf):
+        pytest.skip(f"{pdf} not present (or an unfetched LFS pointer)")
+    fitz = pytest.importorskip("fitz")
+    with fitz.open(str(pdf)) as doc:
+        pages = [p.get_text() for p in doc]
+    assert len(split_items(pages, expect=declared_item_count(pages))) == 30
+
+
+def test_extracted_item_text_matches_what_the_sheet_records():
+    """sheet.json's source text must still be the text the PDF actually holds."""
+    sheet = load_sheet("posn2568_math")
+    stored = SHEETS_ROOT / sheet.sheet_id / "extract" / "item01.txt"
+    if not stored.is_file():
+        pytest.skip("extract/ artifacts not present")
+    assert stored.read_text("utf-8").strip() == sheet.item(1).source.strip()

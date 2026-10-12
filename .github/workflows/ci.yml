@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1]
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      # The layout tests measure Thai text, and a runner with no Thai font
+      # measures placeholder boxes instead.
+      - name: Install Thai fonts
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends fonts-thai-tlwg fontconfig
+
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[test]" ruff
+
+      - name: Lint (ruff)
+        run: python -m ruff check otk
+
+      # Includes the golden draws: a set whose questions change for the same
+      # seed, or a key that disappears without being retired, fails here.
+      - name: Test (pytest, shard ${{ matrix.shard }} of 2)
+        env:
+          PYTEST_NUM_SHARDS: "2"
+          PYTEST_SHARD_ID: ${{ matrix.shard }}
+        run: python -m pytest otk/tests -q -n auto
+
+  # Consumers install a tagged release, not a checkout: prove the built package
+  # carries its data files and draws every set from outside the source tree.
+  installed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install the package (not editable)
+        run: |
+          python -m venv /tmp/otk-venv
+          /tmp/otk-venv/bin/pip install .
+
+      - name: Draw every set from the installed package
+        working-directory: /tmp
+        run: /tmp/otk-venv/bin/python "$GITHUB_WORKSPACE/scripts/check_installed.py"
+
+  # The explorer site builds from the current sets: data, type-check, build.
+  explorer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: explorer/package-lock.json
+
+      - name: Install
+        run: |
+          pip install -e .
+          npm ci --prefix explorer
+
+      - name: Build the explorer's data
+        run: python -m otk.tools.explorer_data
+
+      - name: Type-check and build the site
+        working-directory: explorer
+        run: |
+          npm run check
+          npm run build

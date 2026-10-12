@@ -1,0 +1,65 @@
+outcome_code,interaction,mc_scope,mc_covers,capability_needed
+ว 4.1 ม.1/1,explain and analyse,full,core ideas of technology (input-process-output-feedback) and the causes of technological change,none
+ว 4.1 ม.1/2,identify a problem and gather data,partial,picking the real problem or need from a scenario and the information relevant to it,none; gathering data is fieldwork
+ว 4.1 ม.1/3,design and carry out a solution,partial,comparing candidate solutions and choosing one against stated needs,none; building and presenting stay hands-on
+ว 4.1 ม.1/4,test and improve a build,partial,reading test results to name the flaw and the fix,none; testing a real build stays hands-on
+ว 4.1 ม.1/5,use materials and tools,partial,properties of materials; choosing tools and mechanisms; electrical safety,none; using the tools stays hands-on
+ว 4.1 ม.2/1,forecast and choose technology,full,forecasting trends from causes; choosing a technology by its effects on life and society and on the environment,none
+ว 4.1 ม.2/2,frame a community problem,partial,framing a problem and its constraints from a community scenario,none; gathering data is fieldwork
+ว 4.1 ม.2/3,design under constraints,partial,choosing a solution under stated conditions and resources; ordering the work plan,none; building and presenting stay hands-on
+ว 4.1 ม.2/4,test and improve under constraints,partial,explaining a flaw against the stated conditions and choosing the fix,none; testing a real build stays hands-on
+ว 4.1 ม.2/5,use materials and tools including electronics,partial,mechanisms; simple electronic components and their jobs; safe use,none; using the tools stays hands-on
+ว 4.1 ม.3/1,analyse technology and other sciences,full,causes of technological change and how science and mathematics feed a technology,none
+ว 4.1 ม.3/2,frame a problem for local livelihood,partial,framing the problem; intellectual-property rules for borrowed ideas,none; gathering data is fieldwork
+ว 4.1 ม.3/3,design and present with varied techniques,partial,choosing a solution under constraints; choosing how to present it (sketch or model or flowchart),none; building and presenting stay hands-on
+ว 4.1 ม.3/4,test and justify flaws,partial,reasoning from test data to the cause of a flaw and its fix,none; testing a real build stays hands-on
+ว 4.1 ม.3/5,use tools to fit the job,partial,matching materials and tools and circuits to the job; safety,none; using the tools stays hands-on
+ว 4.1 ม.4/1,analyse technology and assess impact,full,technology as applied science and mathematics; impacts on people and society and the economy and the environment,none
+ว 4.1 ม.4/2,synthesise methods for a complex social problem,partial,decomposing a complex problem; intellectual-property rules,none; research stays open-ended
+ว 4.1 ม.4/3,design with CAD software,partial,choosing a solution under constraints; what CAD and simulation are for,none; using CAD software is live tool use
+ว 4.1 ม.4/4,test and propose further development,partial,reasoning from test data to a flaw and a further improvement,none; testing a real build stays hands-on
+ว 4.1 ม.4/5,use complex technology safely,partial,choosing sensors and actuators and controllers for a job; safety,none; using the tools stays hands-on
+ว 4.1 ม.5/1,carry out a project,none,,project work; stays uncovered
+ว 4.2 ป.1/1,solve simple problems by trial and comparison,full,picture puzzles solved by trying and comparing,drawn puzzles (existing image assets)
+ว 4.2 ป.1/2,show the steps of a task,full,ordering the steps of an everyday task shown as pictures or symbols or text,step pictures (image assets)
+ว 4.2 ป.1/3,write a simple program,partial,predicting where a short block program moves a character,block-program pictures; writing needs a block editor and runner
+ว 4.2 ป.1/4,create and store and retrieve data,partial,which device or app or folder does a job,none; operating the software is live tool use
+ว 4.2 ป.1/5,use ICT safely,full,class computer rules; caring for equipment; safe behaviour,none
+ว 4.2 ป.2/1,show the steps of a task,full,ordering and completing steps shown as pictures or symbols or text,step pictures (image assets)
+ว 4.2 ป.2/2,write and debug a simple program,partial,predicting a block program's result; spotting the wrong block,block-program pictures; writing needs a block editor and runner
+ว 4.2 ป.2/3,create and categorise and search data,partial,grouping files into sensible folders; naming files for later retrieval,none; operating the software is live tool use
+ว 4.2 ป.2/4,use ICT safely,full,class computer rules; caring for equipment; safe behaviour,none
+ว 4.2 ป.3/1,show an algorithm,full,ordering and choosing and completing an algorithm shown as pictures or symbols or text,step pictures (image assets)
+ว 4.2 ป.3/2,write and debug a simple program,partial,predicting a block program's result; spotting the bug,block-program pictures; writing needs a block editor and runner
+ว 4.2 ป.3/3,search the internet,partial,choosing search keywords for a question,none; searching is live tool use
+ว 4.2 ป.3/4,collect and process and present data with software,partial,choosing the software or chart for a purpose; reading a processed table,none; operating the software is live tool use
+ว 4.2 ป.3/5,follow internet rules,full,internet rules; personal information; what to do when something is wrong,none
+ว 4.2 ป.4/1,reason logically,full,predicting outcomes and explaining how a simple procedure works,none
+ว 4.2 ป.4/2,design and write and debug a program,partial,tracing a block program with a loop; finding and fixing the bug,block-program pictures; writing needs a block editor and runner
+ว 4.2 ป.4/3,search and judge credibility,partial,judging the credibility of a source,none; searching is live tool use
+ว 4.2 ป.4/4,collect and evaluate and present information,partial,choosing a presentation for a purpose; evaluating information,none; operating the software is live tool use
+ว 4.2 ป.4/5,use ICT safely and respect rights,full,rights and duties online; reporting inappropriate content or people,none
+ว 4.2 ป.5/1,reason logically,full,predicting outcomes of conditions and loops in everyday procedures,none
+ว 4.2 ป.5/2,design and write programs with logic,partial,tracing conditions in a block program; finding and fixing the bug,block-program pictures; writing needs a block editor and runner
+ว 4.2 ป.5/3,search and communicate and collaborate online,partial,credibility; online etiquette; choosing a collaboration tool,none; collaborating is live tool use
+ว 4.2 ป.5/4,collect and present with online services,partial,choosing a service for a purpose; evaluating information,none; operating the services is live tool use
+ว 4.2 ป.5/5,use ICT safely with good manners,full,netiquette; rights and duties; reporting,none
+ว 4.2 ป.6/1,reason to design solutions,full,explaining and choosing a logical procedure for an everyday problem,none
+ว 4.2 ป.6/2,design and write and debug a program,partial,tracing and debugging a block program for an everyday problem,block-program pictures; writing needs a block editor and runner
+ว 4.2 ป.6/3,search efficiently,partial,choosing keywords and search operators; picking the efficient search,none; searching is live tool use
+ว 4.2 ป.6/4,collaborate safely and respect rights,full,safe collaboration; rights and duties; reporting,none
+ว 4.2 ม.1/1,design algorithms with abstraction,partial,picking the essential details (abstraction); tracing and completing a flowchart,flowchart pictures
+ว 4.2 ม.1/2,write programs for mathematics or science,partial,tracing a short program's output; finding the bug,code blocks (monospace text that keeps indentation); writing needs an editor and runner
+ว 4.2 ม.1/3,collect and process primary data,partial,primary versus secondary data; choosing processing and a presentation,none; operating the software is live tool use
+ว 4.2 ม.1/4,use media and sources by agreement,full,safe use; terms and licences of media and sources,none
+ว 4.2 ม.2/1,design algorithms with computational thinking,partial,decomposition and pattern recognition and abstraction; tracing an algorithm,flowchart pictures
+ว 4.2 ม.2/2,write programs with logic and functions,partial,tracing conditions and functions; finding the bug,code blocks; writing needs an editor and runner
+ว 4.2 ม.2/3,discuss computer systems and communication,full,hardware and software and their jobs; how data travels over a network,none
+ว 4.2 ม.2/4,use ICT responsibly and license own work,full,responsible use; Creative Commons licences for publishing one's work,none
+ว 4.2 ม.3/1,develop an application,none,,project work; stays uncovered
+ว 4.2 ม.3/2,collect and process and present information,partial,choosing processing and a presentation; evaluating results,none; operating the software is live tool use
+ว 4.2 ม.3/3,judge credibility and misinformation,full,credibility checks; analysing media; harms of false news,none
+ว 4.2 ม.3/4,follow computer law and fair use,full,Thai computer-crime law; copyright and fair use,none
+ว 4.2 ม.4/1,apply computational thinking in a project,none,,project work; stays uncovered
+ว 4.2 ม.5/1,use computing to add value,partial,analysing data to choose an improvement to a product or service,none; the project stays hands-on
+ว 4.2 ม.6/1,present and share safely and analyse IT change,partial,safe and ethical sharing; how IT changes life and careers and society,none; presenting is live tool use

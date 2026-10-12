@@ -1,0 +1,113 @@
+"""ความผิดปกติของไต
+
+ชีวะ · ม.5 · สสวท. เพิ่มเติม
+Indicators: ชีววิทยาเพิ่มเติม 4 ม.5/21
+
+Sets moved here from: science_wave_f65.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from random import Random
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import _labelled, numeric, show
+from otk.sets._support.science_wave_f65 import SUBJECT
+
+PROVENANCE = Provenance("original")
+
+
+UPPER_FIVE = {"th": "ม.5"}
+
+
+TOPIC_KIDNEY = "ความผิดปกติของไต"
+
+
+KIDNEY_DISEASES = (
+    ("นิ่วในไต", "ผลึกของแคลเซียมออกซาเลตหรือสารอื่นตกตะกอนในไต มักพบในคนที่ดื่มน้ำน้อย"),
+    ("ไตวาย", "หน่วยไตเสียหายมากจนกำจัดของเสียและควบคุมสมดุลน้ำและแร่ธาตุไม่ได้"),
+    ("ไตอักเสบ", "โกลเมอรูลัสอักเสบ ทำให้พบโปรตีนหรือเลือดในปัสสาวะ"),
+    ("เบาจืด", "ขาดฮอร์โมน ADH จึงดูดน้ำกลับที่ท่อรวมได้น้อย ปัสสาวะมากและเจือจาง"),
+    ("ไตเสื่อมจากเบาหวาน", "ระดับน้ำตาลในเลือดสูงเป็นเวลานานทำลายหลอดเลือดในโกลเมอรูลัส"),
+)
+
+
+KIDNEY_FACTS = (
+    ("การฟอกเลือดด้วยเครื่องไตเทียมอาศัยหลักการใด", "ของเสียแพร่จากเลือดผ่านเยื่อเลือกผ่านไปยังน้ำยาที่ไม่มีของเสีย",
+     ("เลือดถูกกรองด้วยกระดาษกรองธรรมดาจนของเสียติดอยู่บนกระดาษ", "ใช้เอนไซม์ย่อยยูเรียในเลือดทั้งหมดจนไม่เหลือของเสีย", "ดูดเลือดออกแล้วทิ้งทั้งหมด", "ใช้แม่เหล็กดึงของเสียออก")),
+    ("น้ำยาล้างไตควรมีกลูโคสและเกลือแร่ความเข้มข้นใกล้เคียงกับเลือดเพราะเหตุใด", "เพื่อไม่ให้กลูโคสและเกลือแร่ที่จำเป็นแพร่ออกจากเลือด",
+     ("เพื่อเพิ่มยูเรียและกลูโคสให้เลือดมากขึ้น", "เพื่อให้เลือดแข็งตัว", "เพื่อให้ของเสียแพร่จากน้ำยาเข้าสู่เลือดได้มากขึ้น", "เพื่อทำลายเซลล์เม็ดเลือดแดงที่หมดอายุ")),
+    ("พฤติกรรมใดช่วยลดความเสี่ยงของนิ่วในไต", "ดื่มน้ำให้เพียงพอในแต่ละวัน",
+     ("กลั้นปัสสาวะบ่อย ๆ", "ดื่มน้ำน้อย", "รับประทานอาหารที่มีออกซาเลตสูงเป็นประจำ", "รับประทานอาหารเค็มจัด")),
+    ("เหตุใดผู้ป่วยโรคไตมักถูกแนะนำให้ลดอาหารเค็ม", "ไตที่เสื่อมขับโซเดียมได้น้อย โซเดียมสะสมทำให้บวมและความดันเลือดสูง",
+     ("เกลือทำให้ไตสร้างนิ่วทันที", "เกลือทำให้ปัสสาวะเป็นกรดจัด", "เกลือเป็นพิษต่อหัวใจโดยตรง", "เกลือทำให้เลือดแข็งตัว")),
+    ("โรคใดเป็นสาเหตุสำคัญของไตวายเรื้อรัง", "เบาหวานและความดันเลือดสูงที่ควบคุมไม่ได้",
+     ("ไข้หวัดและอาการเจ็บคอที่หายเองได้ภายในไม่กี่วัน", "สายตาสั้นจากการใช้สายตามาก", "ฟันผุจากการกินหวานมาก", "ผมร่วง")),
+    ("ผู้ป่วยไตวายระยะสุดท้ายมีทางรักษาใดบ้าง", "ฟอกเลือดหรือล้างไตอย่างสม่ำเสมอ หรือปลูกถ่ายไต",
+     ("ดื่มน้ำมาก ๆ อย่างเดียวโดยไม่ต้องฟอกเลือด", "รับประทานยาปฏิชีวนะ", "ผ่าตัดเอาไตออกทั้งสองข้างโดยไม่ทดแทน", "ฉีดวัคซีนป้องกันไตวายทุกปี", "ออกกำลังกายหนักทุกวัน")),
+)
+
+
+KIDNEY_HINT = ("นิ่วเกิดจากผลึกตกตะกอน ไตวายคือหน่วยไตทำงานไม่ได้ ไตอักเสบพบโปรตีนหรือเลือดในปัสสาวะ เบาจืดขาด ADH "
+               "เครื่องไตเทียมให้ของเสียแพร่ผ่านเยื่อเลือกผ่านออกไปสู่น้ำยา")
+
+
+@question_type(
+    "biology.kidney_disease_foundation",
+    display_name={"th": "โรคและความผิดปกติของไต"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_KIDNEY,
+)
+class KidneyDiseaseFoundation(QuestionType):
+    """Each disorder and what causes it."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        name, cause = rng.choice(KIDNEY_DISEASES)
+        others = rng.sample([k for k in KIDNEY_DISEASES if k[0] != name], 3)
+        if rng.random() < 0.5:
+            return _labelled(stem=f"{name}มีสาเหตุหรือลักษณะอย่างไร", correct=cause, wrongs=tuple(k[1] for k in others), topic=TOPIC_KIDNEY,
+                             hint=KIDNEY_HINT)
+        return _labelled(stem=f"\"{cause}\" เป็นลักษณะของโรคใด", correct=name, wrongs=tuple(k[0] for k in others), topic=TOPIC_KIDNEY,
+                         hint=KIDNEY_HINT)
+
+
+@question_type(
+    "biology.kidney_disease_fluency",
+    display_name={"th": "การรักษาและการป้องกันโรคไต"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_KIDNEY,
+)
+class KidneyDiseaseFluency(QuestionType):
+    """Dialysis, transplant and prevention."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        stem, right, wrongs = rng.choice(KIDNEY_FACTS)
+        return _labelled(stem=stem, correct=right, wrongs=tuple(wrongs), topic=TOPIC_KIDNEY, hint=KIDNEY_HINT)
+
+
+@question_type(
+    "biology.kidney_disease_application",
+    display_name={"th": "วิเคราะห์ผลตรวจการทำงานของไต"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_KIDNEY,
+)
+class KidneyDiseaseApplication(QuestionType):
+    """Filtration rate against normal, and what a urine result points to."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        if rng.random() < 0.5:
+            normal = rng.choice((100, 120, 125))
+            share = rng.choice((10, 15, 20, 25, 30, 40, 50, 60, 75, 80))
+            measured = Fraction(normal * share, 100)
+            return numeric(stem=f"อัตราการกรองของไตปกติประมาณ {normal} mL ต่อนาที ผู้ป่วยรายหนึ่งกรองได้ {show(measured)} mL ต่อนาที "
+                                f"ไตของผู้ป่วยทำงานได้ร้อยละเท่าใดของค่าปกติ", answer=share,
+                           wrongs=[100 - share, normal - measured, Fraction(normal, measured) if (Fraction(normal, measured) * 100).denominator == 1
+                                   else share * 2], unit="%", topic=TOPIC_KIDNEY,
+                           hint="ร้อยละ = ค่าที่วัดได้ × 100 ÷ ค่าปกติ")
+        cases = (("ปัสสาวะมีปริมาณมากผิดปกติและเจือจางมาก แต่ไม่พบน้ำตาล", "เบาจืด เพราะขาดฮอร์โมน ADH"),
+                 ("พบกลูโคสในปัสสาวะและระดับน้ำตาลในเลือดสูง", "เบาหวาน เพราะกลูโคสเกินกว่าที่ท่อหน่วยไตดูดกลับได้"),
+                 ("พบโปรตีนและเซลล์เม็ดเลือดแดงในปัสสาวะ ร่วมกับบวม", "ไตอักเสบ เพราะโกลเมอรูลัสเสียหาย"),
+                 ("ปวดหลังร้าวลงขาหนีบ ปัสสาวะมีเลือดปน และพบผลึกในปัสสาวะ", "นิ่วในทางเดินปัสสาวะ"))
+        result, right = rng.choice(cases)
+        return _labelled(stem=f"ผลตรวจพบว่า \"{result}\" น่าจะเป็นความผิดปกติใด", correct=right,
+                         wrongs=tuple(r for _, r in cases if r != right), topic=TOPIC_KIDNEY, hint=KIDNEY_HINT)

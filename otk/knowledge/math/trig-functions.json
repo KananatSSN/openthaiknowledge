@@ -1,0 +1,322 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "ฟังก์ชันตรีโกณมิติ",
+ "level": "ม.5",
+ "units": [
+  {
+   "id": "math.trig.radian-arc",
+   "kind": "formula",
+   "title": "มุมเรเดียนและความยาวส่วนโค้ง",
+   "statement": "s = rθ เมื่อ θ เป็นเรเดียน; จุดบนวงกลมรัศมี r ที่ทำมุม θ กับแกน X คือ (r cos θ, r sin θ)",
+   "variables": [
+    {
+     "name": "s",
+     "meaning": "ความยาวส่วนโค้ง"
+    },
+    {
+     "name": "r",
+     "meaning": "รัศมี"
+    },
+    {
+     "name": "θ",
+     "meaning": "มุมที่จุดศูนย์กลาง (เรเดียน)"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2565/9)"
+    },
+    {
+     "tag": "กสพท คณิต1 (เม.ย. 2564/23)"
+    }
+   ],
+   "note": "math.arc_length เป็นความยาวส่วนโค้งของกราฟในแคลคูลัส ไม่ใช่ของวงกลม",
+   "covered_by": [
+    "math.trig_radian_arc_m5"
+   ]
+  },
+  {
+   "id": "math.trig.graph-properties",
+   "kind": "fact-list",
+   "title": "แอมพลิจูดและคาบของ y = a sin(bx)",
+   "statement": "y = a sin(bx) และ y = a cos(bx) มีแอมพลิจูด |a| และคาบ 2π/|b|",
+   "facts": {
+    "แอมพลิจูด": [
+     "|a|"
+    ],
+    "คาบ": [
+     "2π/|b| สำหรับ sin, cos",
+     "π/|b| สำหรับ tan"
+    ]
+   },
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (เม.ย. 2564/7)"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 3 กราฟฟังก์ชันตรีโกณมิติ.pdf",
+     "section": "กราฟฟังก์ชันตรีโกณมิติ"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 12
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 13
+    }
+   ],
+   "covered_by": [
+    "math.trig_graph_m5"
+   ]
+  },
+  {
+   "id": "math.trig.identity-reduce",
+   "kind": "procedure",
+   "title": "ลดรูปนิพจน์ด้วยเอกลักษณ์และสูตรมุมสองเท่า สามเท่า",
+   "statement": "เขียนทุกพจน์ด้วย sin และ cos แล้วใช้ sin² + cos² = 1, cos⁴θ − sin⁴θ = cos 2θ, sin 3θ/sin θ = 2cos 2θ + 1, cos 3θ/cos θ = 2cos 2θ − 1",
+   "steps": [
+    "เปลี่ยน tan, cot, sec, cosec เป็น sin และ cos",
+    "แยกตัวประกอบผลต่างกำลังสอง หรือใช้สูตรมุมสองเท่า สามเท่า",
+    "ตัดทอนจนเหลือฟังก์ชันเดียว หรือแก้หาค่าที่ถาม"
+   ],
+   "sources": [
+    {
+     "tag": "A-level 1 (มี.ค. 2567/14)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2562/3)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2563/14)"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 1 ปูพื้นฐานตรีโกณ.pdf",
+     "section": "ทบทวนสูตรเก่า"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 24
+    }
+   ],
+   "note": "math.trig_sum_formula_m5 ใช้สูตรมุมสองเท่าหาค่าโดยตรง ไม่ได้ให้ลดรูปนิพจน์",
+   "covered_by": [
+    "math.trig_identity_reduce_m5"
+   ]
+  },
+  {
+   "id": "math.trig.unit-circle-values",
+   "kind": "fact-list",
+   "title": "ค่าฟังก์ชันตรีโกณมิติของมุมบนวงกลมหนึ่งหน่วย",
+   "statement": "จุดปลายส่วนโค้ง θ บนวงกลมหนึ่งหน่วยคือ P(θ) = (cos θ, sin θ); มุมพื้นฐาน 16 จุด (ทุก π/6 และ π/4) อ่านค่าได้จากมุมอ้างอิงและเครื่องหมายตามจตุภาค; แปลงหน่วย π เรเดียน = 180°",
+   "facts": {
+    "พิกัด": [
+     "P(θ) = (cos θ, sin θ)",
+     "tan θ = sin θ / cos θ"
+    ],
+    "เครื่องหมาย": [
+     "จตุภาค 1: บวกทุกตัว",
+     "จตุภาค 2: sin บวก",
+     "จตุภาค 3: tan บวก",
+     "จตุภาค 4: cos บวก"
+    ],
+    "หน่วย": [
+     "π เรเดียน = 180°"
+    ]
+   },
+   "sources": [
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 1 ปูพื้นฐานตรีโกณ.pdf",
+     "section": "การวัดมุมในหน่วยเรเดียน"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 1 ปูพื้นฐานตรีโกณ.pdf",
+     "section": "ฟังก์ชันตรีโกณมิติ"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 1 ปูพื้นฐานตรีโกณ.pdf",
+     "section": "การวัดมุมในหน่วยองศา"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 1
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 2
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 3
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 4
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 5
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 6
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 7
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 8
+    }
+   ],
+   "covered_by": [
+    "math.trig_unit_circle",
+    "math.reference_angle",
+    "math.unit_circle_quadrant_sign",
+    "math.trig_ratio"
+   ]
+  },
+  {
+   "id": "math.trig.reduction",
+   "kind": "procedure",
+   "title": "แปลงมุมให้อยู่ในรูปอย่างง่าย",
+   "statement": "f(kπ/2 ± θ): ถ้า k คู่ ฟังก์ชันเดิม ถ้า k คี่ เปลี่ยนเป็นโคฟังก์ชัน (sin↔cos, tan↔cot, sec↔cosec); เครื่องหมายตามจตุภาคของมุม kπ/2 ± θ เมื่อ θ เป็นมุมแหลม",
+   "steps": [
+    "ดูว่ามุมบวกลบจาก π/2 ตัวคี่หรือจาก π ตัวคู่",
+    "เปลี่ยนเป็นโคฟังก์ชันถ้าเป็นจำนวนคี่ของ π/2",
+    "ใส่เครื่องหมายของฟังก์ชันเดิมในจตุภาคของมุมนั้น"
+   ],
+   "sources": [
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 2 การแปลงมุมในรูปอย่างง่าย.pdf",
+     "section": "การแปลงมุมเป็นรูปอย่างง่าย"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 14
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 19
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 25
+    }
+   ],
+   "note": "math.reference_angle หามุมอ้างอิงเป็นตัวเลข ไม่ได้ให้เขียนฟังก์ชันของ θ",
+   "covered_by": [
+    "math.trig_reduction_m5"
+   ]
+  },
+  {
+   "id": "math.trig.sum-double-formulas",
+   "kind": "fact-list",
+   "title": "สูตรผลบวกผลต่างมุม มุมสองเท่า สามเท่า ครึ่งเท่า",
+   "statement": "sin(A ± B) = sin A cos B ± cos A sin B; cos(A ± B) = cos A cos B ∓ sin A sin B; tan(A ± B) = (tan A ± tan B)/(1 ∓ tan A tan B); sin 2A = 2 sin A cos A; cos 2A = cos²A − sin²A; sin 3A = 3 sin A − 4 sin³A; cos 3A = 4 cos³A − 3 cos A",
+   "facts": {
+    "ผลบวกผลต่าง": [
+     "sin(A ± B)",
+     "cos(A ± B)",
+     "tan(A ± B)"
+    ],
+    "มุมสองเท่า": [
+     "sin 2A = 2 sin A cos A",
+     "cos 2A = 2cos²A − 1 = 1 − 2sin²A"
+    ],
+    "มุมสามเท่าและครึ่งเท่า": [
+     "sin 3A = 3 sin A − 4 sin³A",
+     "cos²(A/2) = (1 + cos A)/2"
+    ]
+   },
+   "sources": [
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 4 ผลบวกผลต่างมุม.pdf",
+     "section": "สูตรผลบวกผลต่างมุม"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 5 มุมสองเท่า สามเท่า ครึ่งเท่า.pdf",
+     "section": "สูตรมุมสองเท่า สามเท่า ครึ่งเท่า"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 15
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 16
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 17
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 18
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 21
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 22
+    }
+   ],
+   "covered_by": [
+    "math.trig_sum_formula_m5",
+    "math.trig_identity_reduce_m5",
+    "math.inverse_trig_sum_m5"
+   ]
+  },
+  {
+   "id": "math.trig.product-sum",
+   "kind": "fact-list",
+   "title": "สูตรแปลงผลคูณกับผลบวกผลต่าง",
+   "statement": "2 cos A cos B = cos(A − B) + cos(A + B); 2 sin A sin B = cos(A − B) − cos(A + B); 2 sin A cos B = sin(A + B) + sin(A − B); sin A + sin B = 2 sin((A + B)/2) cos((A − B)/2); cos A − cos B = −2 sin((A + B)/2) sin((A − B)/2)",
+   "facts": {
+    "ผลคูณเป็นผลบวก": [
+     "2 cos A cos B = cos(A − B) + cos(A + B)",
+     "2 sin A sin B = cos(A − B) − cos(A + B)",
+     "2 sin A cos B = sin(A + B) + sin(A − B)"
+    ],
+    "ผลบวกเป็นผลคูณ": [
+     "sin A + sin B = 2 sin((A+B)/2) cos((A−B)/2)",
+     "cos A + cos B = 2 cos((A+B)/2) cos((A−B)/2)",
+     "cos A − cos B = −2 sin((A+B)/2) sin((A−B)/2)"
+    ]
+   },
+   "sources": [
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 6 แปลงผลคูณกับผลบวกลบ.pdf",
+     "section": "สูตรแปลงผลคูณกับผลบวกลบ"
+    }
+   ],
+   "note": "ก่อนหน้านี้ไม่มีชุดโจทย์ใดฝึกสูตรแปลงผลคูณกับผลบวกผลต่าง",
+   "covered_by": [
+    "math.trig_product_sum_m5"
+   ]
+  }
+ ]
+}

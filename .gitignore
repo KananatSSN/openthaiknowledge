@@ -1,0 +1,36 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.pytest-tmp/
+.ruff_cache/
+tmp/
+*.egg-info/
+build/
+dist/
+output/
+data/
+.env
+.env.*
+.DS_Store
+
+# Generated documents are not committed...
+*.pdf
+*.zip
+# ...except the source bank's PDFs, which are the pipeline's input. They are
+# Git LFS objects (.gitattributes, .lfsconfig).
+!sheet_database/**/*.pdf
+
+# Sheet-pipeline page renders; regenerate with `sheetpipe extract`.
+# The extracted text alongside them is small and IS tracked.
+otk/sheets/*/extract/pages/
+
+# Reports the tools and audit scripts write; regenerate them, do not commit.
+/curriculum_graph.html
+docs/for_admin/math_content_audit.csv
+docs/for_admin/mcq_cue_audit.csv
+docs/for_admin/science_content_audit.csv
+docs/for_admin/math_thai_review_sheet.csv
+docs/for_admin/SCIENCE_WAVE_A_REVIEW.md
+docs/for_admin/SCIENCE_CONTENT_DUMP.md

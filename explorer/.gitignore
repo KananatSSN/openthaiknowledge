@@ -1,0 +1,5 @@
+node_modules/
+.svelte-kit/
+build/
+# Written by `npm run data` (python -m otk.tools.explorer_data)
+static/data/

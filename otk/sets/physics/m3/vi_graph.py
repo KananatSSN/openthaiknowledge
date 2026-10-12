@@ -1,0 +1,129 @@
+"""กราฟความสัมพันธ์ระหว่างกระแสไฟฟ้าและความต่างศักย์ไฟฟ้า
+
+ฟิสิกส์ · ม.3 · สสวท. พื้นฐาน
+Indicators: ว 2.3 ม.3/2
+
+Sets moved here from: science_wave_d32.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from random import Random
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import numeric, show
+from otk.sets._support.science_wave_b9 import scenario_question
+from otk.sets._support.science_wave_b14 import _labelled
+from otk.sets._support.science_wave_b15 import _retopic
+from otk.sets._support.science_wave_d14 import SUBJECT
+from otk.sets._support.science_wave_d22 import _facts
+from otk.sets._support.science_wave_d32 import RESISTANCES, THIRD_SECONDARY, _vi_data
+
+PROVENANCE = Provenance("original")
+
+
+VI_GRAPH_TOPIC = "กราฟความสัมพันธ์ระหว่างกระแสไฟฟ้าและความต่างศักย์ไฟฟ้า"
+
+
+OHM_HINT = "ตามกฎของโอห์ม V = IR เมื่อ R คงตัว กระแสไฟฟ้าแปรผันตรงกับความต่างศักย์ไฟฟ้า"
+
+
+VI_FACTS = (
+    ("กราฟความสัมพันธ์ระหว่างกระแสไฟฟ้ากับความต่างศักย์ไฟฟ้าของตัวต้านทานค่าคงตัวมีลักษณะอย่างไร",
+     "เป็นเส้นตรงผ่านจุดกำเนิด แสดงว่ากระแสไฟฟ้าแปรผันตรงกับความต่างศักย์ไฟฟ้า",
+     ("เป็นเส้นตรงที่ไม่ผ่านจุดกำเนิด", "เป็นเส้นโค้งแบบพาราโบลา แสดงว่ากระแสไฟฟ้าแปรผันตรงกับกำลังสองของความต่างศักย์", "เป็นเส้นตรงแนวนอนคงที่ไม่ว่าความต่างศักย์จะเปลี่ยนไปเท่าใด",
+      "เป็นเส้นตรงที่ลาดลงจากซ้ายไปขวา", "เป็นเส้นตรงที่ไม่ผ่านจุดกำเนิด แสดงว่ากระแสไฟฟ้าไม่ขึ้นกับความต่างศักย์ไฟฟ้า")),
+    ("ในกราฟที่มีความต่างศักย์ไฟฟ้า (V) อยู่บนแกนตั้งและกระแสไฟฟ้า (I) อยู่บนแกนนอน ความชันของกราฟบอกปริมาณใด", "ความต้านทาน",
+     ("กำลังไฟฟ้า", "พลังงานไฟฟ้า", "ประจุไฟฟ้า", "เวลา", "อุณหภูมิ")),
+    ("ในกราฟที่มีกระแสไฟฟ้า (I) อยู่บนแกนตั้งและความต่างศักย์ไฟฟ้า (V) อยู่บนแกนนอน กราฟของตัวต้านทานที่มีความต้านทานมากกว่าจะเป็นอย่างไร",
+     "ชันน้อยกว่า เพราะกระแสไฟฟ้าเพิ่มขึ้นช้ากว่าเมื่อความต่างศักย์เพิ่มเท่ากัน",
+     ("ชันมากกว่า เพราะกระแสไฟฟ้าเพิ่มขึ้นเร็วกว่าเมื่อความต่างศักย์เพิ่มเท่ากัน", "ชันเท่ากันทุกตัวต้านทาน", "ชันเท่ากัน เพราะกระแสไฟฟ้าเพิ่มขึ้นเท่ากันทุกตัวเมื่อความต่างศักย์เพิ่มเท่ากัน", "ไม่ผ่านจุดกำเนิด", "เป็นเส้นแนวตั้ง")),
+    ("ถ้าความต่างศักย์คร่อมตัวต้านทานค่าคงตัวเพิ่มเป็นสองเท่า กระแสไฟฟ้าจะเป็นอย่างไร", "เพิ่มเป็นสองเท่า",
+     ("ลดลงครึ่งหนึ่ง", "เท่าเดิม", "เพิ่มเป็นสี่เท่า", "เป็นศูนย์", "ลดลงสี่เท่า")),
+)
+
+
+VI_GRAPH_SCENARIOS = (
+    ("กราฟ V-I ของตัวต้านทาน A มีความชันมากกว่ากราฟของตัวต้านทาน B ข้อใดสรุปได้ถูกต้อง",
+     "ตัวต้านทาน A มีความต้านทานมากกว่าตัวต้านทาน B เพราะความชันของกราฟ V-I เท่ากับความต้านทาน",
+     ("ตัวต้านทาน A มีความต้านทานน้อยกว่าตัวต้านทาน B เพราะกราฟ V-I ที่ชันกว่ามีความต้านทานน้อยกว่า", "ความชันของกราฟไม่เกี่ยวข้องกับความต้านทานเลย", "ตัวต้านทาน A และ B มีความต้านทานเท่ากัน เพราะกราฟ V-I ของทั้งสองตัวเป็นเส้นตรงผ่านจุดกำเนิด")),
+    ("ไดโอด (diode) ให้กราฟ V-I ที่เป็นเส้นโค้งไม่ผ่านจุดกำเนิด ต่างจากตัวต้านทานทั่วไปที่ให้เส้นตรง เหตุใดจึงต่างกัน",
+     "ไดโอดมีความต้านทานที่เปลี่ยนแปลงไม่คงที่ตามความต่างศักย์ไฟฟ้า จึงไม่เป็นไปตามกฎของโอห์ม",
+     ("ไดโอดมีความต้านทานคงที่เช่นเดียวกับตัวต้านทานทั่วไป จึงเป็นไปตามกฎของโอห์ม", "กราฟเส้นโค้งหมายความว่าไดโอดไม่นำไฟฟ้าเลย ไม่ว่าความต่างศักย์จะเป็นเท่าใด", "รูปร่างของกราฟไม่เกี่ยวข้องกับสมบัติของอุปกรณ์ไฟฟ้า")),
+    ("นักเรียนวัดข้อมูล V-I ของตัวต้านทานตัวหนึ่งได้กราฟเป็นเส้นตรงผ่านจุดกำเนิด แต่คำนวณความต้านทานจากแต่ละคู่ข้อมูลได้ค่าต่างกันมาก ข้อใดเป็นไปได้มากที่สุด",
+     "อาจมีความผิดพลาดในการวัดหรืออ่านค่าเครื่องมือ เพราะตัวต้านทานค่าคงตัวควรให้ความต้านทานเท่ากันทุกคู่ข้อมูล",
+     ("ตัวต้านทานตัวนี้ไม่เป็นไปตามกฎของโอห์ม เพราะความต้านทานของแต่ละคู่ข้อมูลไม่เท่ากันเลย", "ความต้านทานของตัวต้านทานค่าคงตัวเปลี่ยนแปลงแบบสุ่มได้ตามปกติทุกครั้งที่วัด", "กราฟเส้นตรงผ่านจุดกำเนิดไม่สามารถใช้หาความต้านทานได้")),
+)
+
+
+@question_type(
+    "elec.vi_graph_foundation",
+    display_name={"th": "บอกลักษณะกราฟความสัมพันธ์ระหว่างกระแสไฟฟ้าและความต่างศักย์ไฟฟ้า"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=VI_GRAPH_TOPIC,
+)
+class ViGraphFoundation(QuestionType):
+    """Straight line through the origin; what the slope means on each pair of axes."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _facts(rng, VI_FACTS, hint=OHM_HINT, topic=VI_GRAPH_TOPIC)
+
+
+@question_type(
+    "elec.vi_graph_fluency",
+    display_name={"th": "อธิบายกราฟและความชันจากข้อมูลกระแสไฟฟ้าและความต่างศักย์ไฟฟ้า"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=VI_GRAPH_TOPIC,
+)
+class ViGraphFluency(QuestionType):
+    """Proportional V-I data; the graph's shape and the resistance from its slope."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        resistance, volts, amps = _vi_data(rng)
+        record = " / ".join(f"{v} โวลต์: {float(a):g} แอมแปร์" for v, a in zip(volts, amps))
+        return _labelled(
+            stem=f"วัดกระแสไฟฟ้าที่ความต่างศักย์ไฟฟ้าต่าง ๆ ของตัวต้านทานตัวหนึ่งได้ดังนี้ — {record} ข้อใดอธิบายกราฟที่ได้ถูกต้อง",
+            correct=f"กราฟเป็นเส้นตรงผ่านจุดกำเนิด มีความต้านทาน {resistance:g} โอห์ม",
+            wrongs=(f"กราฟเป็นเส้นตรงผ่านจุดกำเนิด มีความต้านทาน {resistance * 2:g} โอห์ม",
+                    "กราฟเป็นเส้นโค้งเพราะกระแสไฟฟ้าไม่แปรผันตรงกับความต่างศักย์ไฟฟ้า",
+                    "กราฟเป็นเส้นตรงที่ไม่ผ่านจุดกำเนิด เพราะมีความต้านทานภายในเซลล์ไฟฟ้า"),
+            hint="ความต้านทานหาได้จากความชัน R = V/I ของข้อมูลแต่ละคู่ ซึ่งควรได้ค่าเดียวกันทุกคู่",
+            topic=VI_GRAPH_TOPIC,
+        )
+
+
+@question_type(
+    "elec.vi_graph_application",
+    display_name={"th": "ใช้กราฟ V-I เปรียบเทียบและวินิจฉัยอุปกรณ์ไฟฟ้า"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=VI_GRAPH_TOPIC,
+)
+class ViGraphApplication(QuestionType):
+    """Authored cases, two resistors compared from one reading each, and a predicted current."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        roll = rng.random()
+        if roll < 0.25:
+            return _retopic(scenario_question(
+                rng, VI_GRAPH_SCENARIOS,
+                hint="ความชันของกราฟ V-I คือความต้านทาน เส้นตรงผ่านจุดกำเนิดหมายถึงเป็นไปตามกฎของโอห์ม",
+            ), VI_GRAPH_TOPIC)
+        if roll < 0.6:
+            ra, rb = rng.sample(RESISTANCES, 2)
+            va, vb = rng.choice((2, 4, 5, 6, 10, 12, 20)), rng.choice((2, 4, 5, 6, 10, 12, 20))
+            ia, ib = Fraction(va, ra), Fraction(vb, rb)
+            while (ia * 100).denominator != 1 or (ib * 100).denominator != 1:
+                ra, rb = rng.sample((2, 4, 5, 10, 20, 25, 50), 2)
+                va, vb = 10, 20
+                ia, ib = Fraction(va, ra), Fraction(vb, rb)
+            bigger = "ตัวต้านทาน A" if ra > rb else "ตัวต้านทาน B"
+            return _labelled(stem=f"ตัวต้านทาน A: ความต่างศักย์ {va} V กระแส {show(ia)} A ตัวต้านทาน B: ความต่างศักย์ {vb} V กระแส {show(ib)} A "
+                                  f"ถ้าเขียนกราฟโดยให้ V อยู่บนแกนตั้งและ I อยู่บนแกนนอน เส้นกราฟของตัวต้านทานใดชันกว่า",
+                             correct=bigger, wrongs=("ตัวต้านทาน B" if bigger == "ตัวต้านทาน A" else "ตัวต้านทาน A", "ชันเท่ากัน", "บอกไม่ได้จากข้อมูลนี้"),
+                             hint="ความชันของกราฟ V-I เท่ากับความต้านทาน R = V/I ของแต่ละตัว", topic=VI_GRAPH_TOPIC)
+        resistance, volts, amps = _vi_data(rng)
+        new_v = volts[2] + volts[0] * rng.randint(1, 4)
+        return numeric(stem=f"กราฟ V-I ของตัวต้านทานตัวหนึ่งเป็นเส้นตรงผ่านจุดกำเนิด ผ่านจุด ({volts[0]} V, {show(amps[0])} A) "
+                            f"ถ้าคร่อมตัวต้านทานนี้ด้วยความต่างศักย์ {new_v} V จะมีกระแสไฟฟ้ากี่แอมแปร์",
+                       answer=Fraction(new_v, resistance), wrongs=[Fraction(new_v * resistance, 1), amps[0] * new_v, Fraction(new_v, resistance) * 2],
+                       unit="A", topic=VI_GRAPH_TOPIC, hint="หาความต้านทานจากจุดที่ให้ R = V/I แล้วคำนวณ I = V/R")

@@ -1,0 +1,26 @@
+{
+	"name": "otk-explorer",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"data": "python -m otk.tools.explorer_data",
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-static": "3.0.10",
+		"@sveltejs/kit": "2.70.3",
+		"@sveltejs/vite-plugin-svelte": "7.3.0",
+		"svelte": "5.56.10",
+		"svelte-check": "4.7.6",
+		"typescript": "6.0.3",
+		"vite": "8.2.2"
+	},
+	"dependencies": {
+		"katex": "0.18.1",
+		"marked": "15.0.12"
+	}
+}

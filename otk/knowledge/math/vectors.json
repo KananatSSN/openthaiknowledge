@@ -1,0 +1,475 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "เวกเตอร์",
+ "level": "ม.5",
+ "units": [
+  {
+   "id": "math.vector.dot-angle",
+   "kind": "formula",
+   "title": "ผลคูณเชิงสเกลาร์ มุมระหว่างเวกเตอร์ และการตั้งฉาก",
+   "statement": "u · v = |u||v| cos θ; u ⊥ v ก็ต่อเมื่อ u · v = 0",
+   "variables": [
+    {
+     "name": "u · v",
+     "meaning": "ผลคูณเชิงสเกลาร์ u₁v₁ + u₂v₂ + u₃v₃"
+    },
+    {
+     "name": "θ",
+     "meaning": "มุมระหว่าง u และ v"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2565/28)"
+    },
+    {
+     "tag": "A-level 1 (มี.ค. 2567/23)"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/🍰 เวกเตอร์ 📝.pdf",
+     "section": "ผลคูณเชิงสเกลาร์"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 1 ผลคูณเชิงสเกลาร์ 🍒.pdf",
+     "section": "แบบฝึกหัด 3.4"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 24
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 25
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 26
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 27
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 28
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 29
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 30
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 31
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 32
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 33
+    }
+   ],
+   "covered_by": [
+    "math.vectors",
+    "math.vector_dot_product_m5"
+   ]
+  },
+  {
+   "id": "math.vector.cross-product",
+   "kind": "formula",
+   "title": "ผลคูณเชิงเวกเตอร์และพื้นที่",
+   "statement": "u × v ตั้งฉากกับทั้ง u และ v, |u × v| = |u||v| sin θ คือพื้นที่สี่เหลี่ยมด้านขนาน (ครึ่งหนึ่งเป็นพื้นที่สามเหลี่ยม); u × v = 0 ก็ต่อเมื่อ u ขนานกับ v",
+   "variables": [
+    {
+     "name": "u × v",
+     "meaning": "(u₂v₃ − u₃v₂, u₃v₁ − u₁v₃, u₁v₂ − u₂v₁)"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "A-level 1 (มี.ค. 2567/22)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2561/3)"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/🍰 เวกเตอร์ 📝.pdf",
+     "section": "ผลคูณเชิงเวกเตอร์"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 1
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 2
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 3
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 6
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 7
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 8
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 9
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 34
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 35
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 36
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 37
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 38
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 39
+    }
+   ],
+   "covered_by": [
+    "math.vector_cross_product_m5"
+   ]
+  },
+  {
+   "id": "math.vector.triple-product",
+   "kind": "procedure",
+   "title": "ผลคูณสามชั้นเชิงสเกลาร์",
+   "statement": "(u × v) · w = u · (v × w) และเลื่อนแบบวนได้ สลับสองตัวเครื่องหมายเปลี่ยน; (u × v) · u = (u × v) · v = 0; ดังนั้น (a × c) · (a + b + c) = (a × c) · b = −a · (b × c)",
+   "steps": [
+    "กระจายผลคูณเชิงสเกลาร์ แล้วตัดพจน์ที่มีเวกเตอร์ซ้ำ (เป็นศูนย์)",
+    "จัดพจน์ที่เหลือให้อยู่ในรูป a · (b × c) โดยเลื่อนแบบวนหรือสลับแล้วเปลี่ยนเครื่องหมาย",
+    "แทนค่าที่โจทย์ให้"
+   ],
+   "prerequisites": [
+    "math.vector.cross-product",
+    "math.vector.dot-angle"
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2563/4)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2559/4)"
+    },
+    {
+     "tag": "A-level 1 (มี.ค. 2566/15)"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/🍰 เวกเตอร์ 📝.pdf",
+     "section": "พื้นที่และปริมาตร"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 4
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 10
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 40
+    }
+   ],
+   "covered_by": [
+    "math.vector_triple_product_m5"
+   ]
+  },
+  {
+   "id": "math.vector.identities",
+   "kind": "fact-list",
+   "title": "เอกลักษณ์ของผลคูณเวกเตอร์",
+   "statement": "|u · v|² + |u × v|² = |u|²|v|²; (u − v) · (u + v) = |u|² − |v|²; (u − v) × (u + v) = 2(u × v); ผลคูณเชิงเวกเตอร์ไม่มีสมบัติการเปลี่ยนกลุ่ม",
+   "facts": {
+    "ขนาด": [
+     "|u · v|² + |u × v|² = |u|²|v|²",
+     "|u + v|² = |u|² + 2u · v + |v|²"
+    ],
+    "พีชคณิต": [
+     "(u − v) · (u + v) = |u|² − |v|²",
+     "(u − v) × (u + v) = 2(u × v)",
+     "u × v = −(v × u)",
+     "(u × v) × w ≠ u × (v × w) โดยทั่วไป"
+    ],
+    "มุม": [
+     "มุมระหว่าง ku และ kv (k > 0) เท่ากับมุมระหว่าง u และ v",
+     "u − v และ v − u มีทิศตรงข้ามกัน (มุม 180°)"
+    ]
+   },
+   "prerequisites": [
+    "math.vector.cross-product",
+    "math.vector.dot-angle"
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2558/3)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2558/15)"
+    },
+    {
+     "tag": "กสพท คณิต1 (เม.ย. 2564/5)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2561/15)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2562/16)"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 2 ผลคูณเชิงเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.5",
+     "number": 5
+    }
+   ],
+   "covered_by": [
+    "math.vector_identity_m5"
+   ]
+  },
+  {
+   "id": "math.vector.points",
+   "kind": "procedure",
+   "title": "เวกเตอร์จากจุดในสามมิติ: พื้นที่ มุม และการตั้งฉาก",
+   "statement": "AB = B − A; พื้นที่สามเหลี่ยม ABC = ½|AB × AC|; cos ∠ABC = BA · BC / (|BA||BC|); AB ⊥ CD ก็ต่อเมื่อ AB · CD = 0",
+   "steps": [
+    "เขียนเวกเตอร์ระหว่างจุดด้วยการลบพิกัด (ปลาย − ต้น)",
+    "ใช้ผลคูณเชิงเวกเตอร์หาพื้นที่ หรือผลคูณเชิงสเกลาร์หามุมและเงื่อนไขตั้งฉาก",
+    "หาค่าที่ไม่รู้แล้วคำนวณสิ่งที่ถาม"
+   ],
+   "prerequisites": [
+    "math.vector.cross-product",
+    "math.vector.dot-angle"
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (เม.ย. 2564/15)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2565/17)"
+    },
+    {
+     "tag": "A-level 1 (มี.ค. 2566/16)"
+    }
+   ],
+   "note": "math.vector_cross_product_m5 / math.vector_dot_product_m5 ให้เวกเตอร์มาโดยตรง ไม่ได้เริ่มจากพิกัดของจุด",
+   "covered_by": [
+    "math.vector_points_m5"
+   ]
+  },
+  {
+   "id": "math.vector.basics",
+   "kind": "fact-list",
+   "title": "เวกเตอร์ในระบบพิกัดฉาก ขนาด และเวกเตอร์หนึ่งหน่วย",
+   "statement": "เวกเตอร์มีขนาดและทิศทาง; ในพิกัดฉาก u = (a, b, c) มีขนาด √(a² + b² + c²); เวกเตอร์หนึ่งหน่วยในทิศ u คือ u/|u|; บวกลบและคูณสเกลาร์ทีละองค์ประกอบ",
+   "facts": {
+    "ขนาด": [
+     "|u| = √(a² + b² + c²)"
+    ],
+    "หนึ่งหน่วย": [
+     "u/|u|"
+    ],
+    "การดำเนินการ": [
+     "u + v ทีละองค์ประกอบ",
+     "ku คูณทุกองค์ประกอบ"
+    ]
+   },
+   "sources": [
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/🍰 เวกเตอร์ 📝.pdf",
+     "section": "ปริมาณเวกเตอร์"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/🍰 เวกเตอร์ 📝.pdf",
+     "section": "เวกเตอร์ในระบบพิกัดฉาก"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/🍰 เวกเตอร์ 📝.pdf",
+     "section": "เวกเตอร์หนึ่งหน่วย"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 0 พื้นฐานเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.3ก"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) 0 พื้นฐานเวกเตอร์.pdf",
+     "section": "แบบฝึกหัด 3.3ข"
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 1
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 2
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 3
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 4
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 5
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 6
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 7
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 8
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 9
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 10
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 11
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 12
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 13
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 14
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 15
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 16
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 17
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 18
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 19
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 20
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 21
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 22
+    },
+    {
+     "sheet": "rathcenter/10 เวกเตอร์/(สสวท) ท้ายบท.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 23
+    }
+   ],
+   "covered_by": [
+    "math.vector_add",
+    "math.vector_magnitude",
+    "math.vectors",
+    "math.vector_grid_picture_m5"
+   ]
+  }
+ ]
+}

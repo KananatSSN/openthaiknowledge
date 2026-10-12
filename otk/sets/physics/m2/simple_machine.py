@@ -1,0 +1,179 @@
+"""หลักการทำงานของเครื่องกลอย่างง่าย
+
+ฟิสิกส์ · ม.2 · สสวท. พื้นฐาน
+Indicators: ว 2.3 ม.2/2
+
+Sets moved here from: science_wave_d30.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from random import Random
+from typing import NamedTuple
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import numeric, show
+from otk.sets._support.science_wave_b9 import scenario_question
+from otk.sets._support.science_wave_b14 import _labelled
+from otk.sets._support.science_wave_b15 import _retopic
+from otk.sets._support.science_wave_d14 import SUBJECT
+from otk.sets._support.science_wave_d30 import SECOND_SECONDARY, _facts
+
+PROVENANCE = Provenance("original")
+
+
+SIMPLE_MACHINE_TOPIC = "หลักการทำงานของเครื่องกลอย่างง่าย"
+
+
+MACHINE_FACTS = (
+    ("เครื่องกลอย่างง่ายช่วยในการทำงานได้อย่างไร",
+     "ช่วยเปลี่ยนขนาดหรือทิศทางของแรง ทำให้ทำงานสะดวกขึ้น แม้งานโดยหลักการยังเท่าเดิม",
+     ("ช่วยลดงานที่ต้องทำลงจริง โดยใช้พลังงานน้อยกว่าเสมอ และทำงานได้เร็วขึ้น", "สร้างพลังงานเพิ่มขึ้นมาจากไม่มีอะไรเลย",
+      "ไม่มีผลใด ๆ ต่อขนาดหรือทิศทางของแรงที่ใช้", "ทำให้วัตถุมีน้ำหนักลดลงจริง", "ทำให้ไม่ต้องออกแรงเลย")),
+    ("ถ้าเครื่องกลช่วยให้ออกแรงน้อยลง สิ่งที่ต้องแลกคืออะไร", "ต้องออกแรงเป็นระยะทางไกลขึ้น",
+     ("ต้องใช้วัตถุที่มีน้ำหนักเบาลง", "ต้องทำงานมากขึ้นหลายเท่า", "ไม่ต้องแลกกับสิ่งใดเลย", "ต้องใช้เวลาทำงานเป็นศูนย์", "ต้องเพิ่มมวลของวัตถุ")),
+    ("ส่วนประกอบสามส่วนของคานคืออะไร", "จุดหมุน แรงพยายาม และแรงความต้านทาน",
+     ("ล้อ เพลา และเชือก", "รอก เชือก และตะขอ", "พื้นเอียง ลิ่ม และสกรู", "มวล ความเร็ว และเวลา", "ด้ามจับ ใบมีด และสปริง")),
+    ("หลักของโมเมนต์ที่ใช้อธิบายคานในสภาพสมดุลกล่าวว่าอย่างไร",
+     "แรงพยายาม × ระยะจากจุดหมุน เท่ากับ แรงความต้านทาน × ระยะจากจุดหมุน",
+     ("แรงพยายามเท่ากับแรงความต้านทานเสมอ", "แรงพยายาม + ระยะจากจุดหมุน เท่ากับ แรงความต้านทาน + ระยะจากจุดหมุน", "ระยะทั้งสองข้างต้องเท่ากันเสมอ",
+      "คานสมดุลได้เฉพาะเมื่อไม่มีแรงกระทำ", "แรงพยายามต้องมากกว่าแรงความต้านทานสองเท่าเสมอ คานจึงสมดุล")),
+    ("รอกเดี่ยวตายตัวต่างจากรอกเดี่ยวเคลื่อนที่อย่างไร", "รอกตายตัวเปลี่ยนเฉพาะทิศทางแรง รอกเคลื่อนที่ช่วยลดแรงลงประมาณครึ่งหนึ่ง",
+     ("รอกตายตัวลดแรงลงครึ่งหนึ่ง รอกเคลื่อนที่เปลี่ยนเฉพาะทิศทางของแรง", "ทั้งสองแบบลดแรงลงเท่ากัน คือประมาณครึ่งหนึ่งของน้ำหนัก", "ทั้งสองแบบไม่เปลี่ยนแรงและทิศทาง",
+      "รอกเคลื่อนที่เพิ่มแรงที่ต้องใช้เป็นสองเท่า", "รอกตายตัวทำให้วัตถุเบาลง")),
+    ("ข้อใดจัดเป็นเครื่องกลอย่างง่ายทั้งหมด", "คาน พื้นเอียง รอก ล้อและเพลา ลิ่ม และสกรู",
+     ("มอเตอร์ไฟฟ้า เครื่องยนต์ และแบตเตอรี่", "หลอดไฟ พัดลม และตู้เย็น", "โทรศัพท์ คอมพิวเตอร์ และโทรทัศน์",
+      "เทอร์โมมิเตอร์ บารอมิเตอร์ และไฮโกรมิเตอร์", "กล้องจุลทรรศน์ กล้องโทรทรรศน์ และแว่นขยาย")),
+)
+
+
+MACHINE_HINT = "เครื่องกลอย่างง่ายไม่สร้างพลังงานเพิ่ม เพียงเปลี่ยนแรงหรือทิศทางเพื่อความสะดวก ถ้าลดแรงต้องออกแรงเป็นระยะทางไกลขึ้น"
+
+
+class Machine(NamedTuple):
+    name: str
+    evidence: str
+    principle: str
+
+
+MACHINES = (
+    Machine("คาน (lever)",
+            "ยกวัตถุหนัก 300 นิวตัน โดยออกแรงกด 100 นิวตันที่ปลายอีกด้านซึ่งอยู่ไกลจากจุดหมุนกว่าฝั่งวัตถุ 3 เท่า",
+            "คานช่วยลดแรงที่ต้องออก โดยเพิ่มระยะห่างจากจุดหมุนฝั่งที่ออกแรง"),
+    Machine("พื้นเอียง (inclined plane)",
+            "เข็นกล่องหนักขึ้นพื้นเอียงยาวด้วยแรงน้อยกว่ายกขึ้นตรง ๆ แต่ต้องเข็นเป็นระยะทางไกลกว่า",
+            "พื้นเอียงช่วยลดแรงที่ต้องออก โดยเพิ่มระยะทางที่ต้องเคลื่อนที่"),
+    Machine("รอกเดี่ยวตายตัว (fixed pulley)",
+            "ดึงเชือกลงเพื่อยกวัตถุขึ้น แรงที่ใช้เท่ากับน้ำหนักวัตถุ แต่เปลี่ยนทิศทางแรงให้ดึงลงง่ายกว่าดึงขึ้นตรง ๆ",
+            "รอกเดี่ยวตายตัวช่วยเปลี่ยนทิศทางของแรง โดยขนาดของแรงไม่เปลี่ยน"),
+    Machine("ล้อและเพลา (wheel and axle)",
+            "หมุนพวงมาลัยรถยนต์ที่มีล้อรัศมีใหญ่ เพื่อหมุนเพลาบังคับเลี้ยวรัศมีเล็กด้วยแรงน้อยกว่าหมุนเพลาตรง ๆ",
+            "ล้อและเพลาช่วยลดแรงที่ต้องออก โดยใช้ล้อรัศมีใหญ่หมุนเพลารัศมีเล็ก"),
+    Machine("รอกเดี่ยวเคลื่อนที่ (movable pulley)",
+            "ยกวัตถุหนัก 200 นิวตัน โดยออกแรงดึงเชือกประมาณ 100 นิวตัน แต่ต้องดึงเชือกยาวเป็นสองเท่าของระยะที่วัตถุขึ้น",
+            "รอกเดี่ยวเคลื่อนที่ช่วยลดแรงที่ต้องออกลงประมาณครึ่งหนึ่ง โดยต้องดึงเชือกเป็นระยะทางมากขึ้น"),
+    Machine("สกรู (screw)",
+            "หมุนสกรูหลายรอบเพื่อให้สกรูจมลงในเนื้อไม้เพียงเล็กน้อย โดยใช้แรงหมุนไม่มาก",
+            "สกรูเป็นพื้นเอียงที่พันรอบแกน ช่วยลดแรงโดยเพิ่มระยะทางที่หมุน"),
+    Machine("ลิ่ม (wedge)",
+            "ตอกลิ่มเหล็กเข้าไปในท่อนไม้ แรงตอกลงถูกเปลี่ยนเป็นแรงดันด้านข้างที่แยกเนื้อไม้ออกจากกัน",
+            "ลิ่มเปลี่ยนแรงที่กระทำตามแนวยาวเป็นแรงดันด้านข้างเพื่อผ่าหรือแยกวัตถุ"),
+    Machine("รอกพวง (block and tackle)",
+            "ใช้รอกหลายตัวร่วมกันยกเครื่องยนต์หนัก 1,200 นิวตัน ด้วยแรงดึงเชือกประมาณ 300 นิวตัน",
+            "รอกพวงช่วยลดแรงได้มาก โดยแบ่งน้ำหนักให้เส้นเชือกหลายเส้นช่วยกันรับ"),
+)
+
+
+SIMPLE_MACHINE_SCENARIOS = (
+    ("นักเรียนต้องงัดหินหนักขึ้นจากพื้น ควรเลือกใช้ไม้คานที่มีจุดหมุนอยู่ใกล้หินหรือใกล้ปลายที่ออกแรง เพื่อให้ใช้แรงน้อยที่สุด",
+     "ควรเลือกจุดหมุนที่อยู่ใกล้หิน เพราะระยะจากจุดหมุนถึงปลายที่ออกแรงจะยาวกว่า ช่วยลดแรงที่ต้องใช้",
+     ("ควรเลือกจุดหมุนที่อยู่ใกล้ปลายที่ออกแรง เพราะใช้แรงน้อยกว่า", "ตำแหน่งจุดหมุนไม่มีผลต่อแรงที่ต้องใช้เลย", "ควรเลือกจุดหมุนตรงกึ่งกลางระหว่างหินกับปลายที่ออกแรงเสมอ")),
+    ("คนงานต้องเข็นถังของหนักขึ้นรถบรรทุก ระหว่างพื้นเอียงสั้นชันมากกับพื้นเอียงยาวลาดเอียงน้อย ควรเลือกแบบใดหากต้องการใช้แรงน้อยที่สุด",
+     "ควรเลือกพื้นเอียงยาวลาดเอียงน้อย เพราะระยะทางที่ไกลกว่าช่วยลดแรงที่ต้องใช้",
+     ("ควรเลือกพื้นเอียงสั้นชันมาก เพราะใช้เวลาน้อยกว่าจึงใช้แรงน้อยกว่า", "ความยาวและความชันของพื้นเอียงไม่มีผลต่อแรงที่ต้องใช้", "ควรเลือกพื้นเอียงที่ชันที่สุดเสมอเพื่อประหยัดแรง")),
+    ("ประแจแบบด้ามยาวช่วยคลายน็อตที่แน่นได้ง่ายกว่าประแจด้ามสั้น เกี่ยวข้องกับหลักการของเครื่องกลอย่างง่ายชนิดใด",
+     "หลักการของคาน เพราะด้ามที่ยาวขึ้นเพิ่มระยะจากจุดหมุน ทำให้ใช้แรงน้อยลงในการคลายน็อต",
+     ("หลักการของพื้นเอียง เพราะประแจมีความชันเพิ่มขึ้น", "หลักการของรอก เพราะประแจเปลี่ยนทิศทางของแรง", "ความยาวของด้ามประแจไม่เกี่ยวข้องกับหลักการเครื่องกลใด ๆ")),
+)
+
+
+@question_type(
+    "phys.simple_machine_foundation",
+    display_name={"th": "บอกหลักการทั่วไปของเครื่องกลอย่างง่าย"},
+    level=SECOND_SECONDARY, subject=SUBJECT, topic=SIMPLE_MACHINE_TOPIC,
+)
+class SimpleMachineFoundation(QuestionType):
+    """Simple machines trade force for distance/direction; they don't create energy."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _facts(rng, MACHINE_FACTS, hint=MACHINE_HINT, topic=SIMPLE_MACHINE_TOPIC)
+
+
+@question_type(
+    "phys.simple_machine_fluency",
+    display_name={"th": "วิเคราะห์หลักการทำงานของเครื่องกลอย่างง่ายจากข้อมูลที่รวบรวมได้"},
+    level=SECOND_SECONDARY, subject=SUBJECT, topic=SIMPLE_MACHINE_TOPIC,
+)
+class SimpleMachineFluency(QuestionType):
+    """A simple machine's observed use; the principle it demonstrates."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        index = rng.randrange(len(MACHINES))
+        machine = MACHINES[index]
+        others = [m.principle for i, m in enumerate(MACHINES) if i != index]
+        return _labelled(
+            stem=f"{machine.name}: {machine.evidence} จากข้อมูลนี้ {machine.name}ทำงานตามหลักการใด",
+            correct=machine.principle,
+            wrongs=tuple(others),
+            hint="พิจารณาว่าเครื่องกลนั้นเปลี่ยนขนาดของแรง ทิศทางของแรง หรือทั้งสองอย่าง",
+            topic=SIMPLE_MACHINE_TOPIC,
+        )
+
+
+@question_type(
+    "phys.simple_machine_application",
+    display_name={"th": "เลือกใช้เครื่องกลอย่างง่ายให้เหมาะกับสถานการณ์"},
+    level=SECOND_SECONDARY, subject=SUBJECT, topic=SIMPLE_MACHINE_TOPIC,
+)
+class SimpleMachineApplication(QuestionType):
+    """Authored choices, and lever and ramp forces from the rules in the stem."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        roll = rng.random()
+        if roll < 0.2:
+            return _retopic(scenario_question(
+                rng, SIMPLE_MACHINE_SCENARIOS,
+                hint="เพิ่มระยะทางหรือระยะจากจุดหมุนฝั่งที่ออกแรงเสมอช่วยลดแรงที่ต้องใช้",
+            ), SIMPLE_MACHINE_TOPIC)
+        if roll < 0.6:
+            while True:
+                load = rng.choice((100, 150, 200, 300, 400, 500, 600, 800, 1000, 1200))
+                d_load = Fraction(rng.choice((5, 10, 15, 20, 25, 30, 40, 50)), 100)
+                d_effort = Fraction(rng.choice((50, 75, 100, 120, 150, 200, 250)), 100)
+                effort = load * d_load / d_effort
+                if (effort * 100).denominator == 1 and effort < load:
+                    break
+            if rng.random() < 0.6:
+                return numeric(stem=f"ใช้คานงัดวัตถุหนัก {show(load)} นิวตัน ซึ่งอยู่ห่างจุดหมุน {show(d_load)} เมตร ออกแรงที่ปลายคานห่างจุดหมุน "
+                                    f"{show(d_effort)} เมตร ต้องออกแรงอย่างน้อยกี่นิวตัน (แรงพยายาม × ระยะ = แรงความต้านทาน × ระยะ)",
+                               answer=effort, wrongs=[load * d_effort / d_load if (load * d_effort / d_load * 100).denominator == 1 else load, load - effort, effort * 2],
+                               unit="นิวตัน", topic=SIMPLE_MACHINE_TOPIC, hint="แรงพยายาม = แรงความต้านทาน × ระยะฝั่งวัตถุ ÷ ระยะฝั่งที่ออกแรง")
+            return numeric(stem=f"ใช้คานงัดวัตถุหนัก {show(load)} นิวตัน ซึ่งอยู่ห่างจุดหมุน {show(d_load)} เมตร ถ้าออกแรงได้ {show(effort)} นิวตัน "
+                                f"ต้องออกแรงห่างจุดหมุนอย่างน้อยกี่เมตร (แรงพยายาม × ระยะ = แรงความต้านทาน × ระยะ)",
+                           answer=d_effort, wrongs=[d_load, d_effort * 2, d_effort + 1], unit="เมตร", topic=SIMPLE_MACHINE_TOPIC,
+                           hint="ระยะฝั่งที่ออกแรง = แรงความต้านทาน × ระยะฝั่งวัตถุ ÷ แรงพยายาม")
+        while True:
+            weight = rng.choice((200, 300, 400, 500, 600, 800, 1000, 1200))
+            height = rng.choice((Fraction(1, 2), 1, Fraction(3, 2), 2, 3))
+            length = rng.choice((2, 3, 4, 5, 6, 8, 10))
+            force = weight * Fraction(height) / length
+            if Fraction(height) < length and (force * 100).denominator == 1:
+                break
+        return numeric(stem=f"เข็นกล่องหนัก {show(weight)} นิวตัน ขึ้นพื้นเอียงยาว {length} เมตร ไปสูง {show(height)} เมตร ถ้าไม่มีแรงเสียดทาน "
+                            f"(แรง × ความยาวพื้นเอียง = น้ำหนัก × ความสูง) ต้องออกแรงกี่นิวตัน",
+                       answer=force, wrongs=[weight, weight * length / Fraction(height) if (weight * length / Fraction(height) * 100).denominator == 1 else force * 2,
+                                             weight - force], unit="นิวตัน", topic=SIMPLE_MACHINE_TOPIC,
+                       hint="แรงที่ใช้ = น้ำหนัก × ความสูง ÷ ความยาวพื้นเอียง")

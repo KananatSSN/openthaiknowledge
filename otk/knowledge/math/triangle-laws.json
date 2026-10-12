@@ -1,0 +1,97 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "กฎของโคไซน์",
+ "level": "ม.5",
+ "units": [
+  {
+   "id": "math.trig.cosine-rule",
+   "kind": "formula",
+   "title": "กฎของโคไซน์",
+   "statement": "c² = a² + b² − 2ab cos C ใช้หาด้านเมื่อรู้สองด้านกับมุมระหว่าง หรือหามุมเมื่อรู้สามด้าน",
+   "variables": [
+    {
+     "name": "a, b, c",
+     "meaning": "ความยาวด้าน"
+    },
+    {
+     "name": "C",
+     "meaning": "มุมตรงข้ามด้าน c"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "A-level 1 (มี.ค. 2566/6)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2562/14)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2559/15)"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 9 นำไปใช้กับสามเหลี่ยม.pdf",
+     "section": "การนำไปใช้กับสามเหลี่ยม"
+    }
+   ],
+   "covered_by": [
+    "math.cosine_rule_side",
+    "math.cosine_rule",
+    "math.cosine_rule_angle"
+   ]
+  },
+  {
+   "id": "math.trig.obtuse-test",
+   "kind": "fact-list",
+   "title": "ชนิดของรูปสามเหลี่ยมจากความยาวด้าน",
+   "statement": "ถ้า c เป็นด้านยาวที่สุดและ a + b > c: c² > a² + b² เป็นมุมป้าน, c² = a² + b² เป็นมุมฉาก, c² < a² + b² เป็นมุมแหลมทุกมุม (มาจาก cos C = (a² + b² − c²)/2ab)",
+   "facts": {
+    "เป็นรูปสามเหลี่ยม": [
+     "ผลบวกสองด้านใด ๆ มากกว่าด้านที่สาม"
+    ],
+    "ชนิดของมุมใหญ่สุด": [
+     "c² > a² + b²: มุมป้าน",
+     "c² = a² + b²: มุมฉาก",
+     "c² < a² + b²: มุมแหลม"
+    ]
+   },
+   "prerequisites": [
+    "math.trig.cosine-rule"
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2561/16)"
+    }
+   ],
+   "covered_by": [
+    "math.triangle_side_type_m5"
+   ]
+  },
+  {
+   "id": "math.trig.area-sine",
+   "kind": "formula",
+   "title": "พื้นที่รูปสามเหลี่ยม ½ab sin C",
+   "statement": "พื้นที่ = ½ab sin C เมื่อ C เป็นมุมระหว่างด้าน a และ b",
+   "variables": [
+    {
+     "name": "a, b",
+     "meaning": "ด้านสองด้าน"
+    },
+    {
+     "name": "C",
+     "meaning": "มุมระหว่างสองด้านนั้น"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2558/14)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2559/15)"
+    }
+   ],
+   "covered_by": [
+    "math.triangle_area_sine_m5"
+   ]
+  }
+ ]
+}

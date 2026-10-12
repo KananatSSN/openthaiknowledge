@@ -1,0 +1,120 @@
+"""แผนภาพรังสีของแสงแสดงการเกิดเงามืดเงามัว
+
+ฟิสิกส์ · ป.6 · สสวท. พื้นฐาน
+Indicators: ว 2.3 ป.6/8
+
+Sets moved here from: science_wave_d27.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from random import Random
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import numeric, show
+from otk.sets._support.science_wave_b9 import scenario_question
+from otk.sets._support.science_wave_b14 import _labelled
+from otk.sets._support.science_wave_b15 import _retopic
+from otk.sets._support.science_wave_d14 import SUBJECT
+from otk.sets._support.science_wave_d22 import _facts
+from otk.sets._support.science_wave_d26 import SIXTH
+
+PROVENANCE = Provenance("original")
+
+
+SHADOW_DIAGRAM_TOPIC = "แผนภาพรังสีของแสงแสดงการเกิดเงามืดเงามัว"
+
+
+DIAGRAM_FACTS = (
+    ("แผนภาพรังสีของแสงที่แสดงการเกิดเงามืดเงามัวควรลากเส้นอย่างไร", "ลากเส้นตรงจากขอบของแหล่งกำเนิดแสง ผ่านขอบของวัตถุทึบแสง ไปจนถึงฉาก",
+     ("ลากเส้นโค้งจากจุดศูนย์กลางแหล่งกำเนิดแสงไปยังฉากเท่านั้น", "ลากเส้นจากฉากย้อนกลับไปยังวัตถุทึบแสงเพียงเส้นเดียว",
+      "ลากเส้นตรงจากขอบวัตถุทึบแสงไปยังแหล่งกำเนิดแสงโดยไม่ต้องลากต่อไปถึงฉาก", "ลากเส้นหยักไปมาระหว่างวัตถุกับฉาก", "ไม่ต้องลากเส้นใด ๆ เพียงระบายสีเงา")),
+    ("แผนภาพรังสีของแสงจากแหล่งกำเนิดแสงขนาดใหญ่ต่างจากแหล่งกำเนิดแสงที่เป็นจุดอย่างไร",
+     "ต้องลากรังสีจากขอบทั้งสองด้านของแหล่งกำเนิดแสงแยกกัน ทำให้เห็นทั้งบริเวณเงามืดและเงามัวในแผนภาพ",
+     ("ลากรังสีจากจุดศูนย์กลางเพียงเส้นเดียวเหมือนแหล่งกำเนิดแบบจุดทุกประการ", "ไม่ต้องลากรังสีจากขอบวัตถุทึบแสงเลย เพราะแหล่งกำเนิดมีขนาดใหญ่อยู่แล้ว",
+      "ลากรังสีขนานกันทั้งหมดโดยไม่ผ่านขอบของแหล่งกำเนิดแสง", "ลากรังสีโค้งอ้อมวัตถุ", "ลากเฉพาะรังสีที่ไม่ผ่านวัตถุ")),
+    ("ในแผนภาพรังสีของแสง เหตุใดจึงลากรังสีเป็นเส้นตรง", "เพราะแสงเคลื่อนที่เป็นเส้นตรง",
+     ("เพราะเส้นตรงวาดง่ายที่สุดเท่านั้น", "เพราะแสงเคลื่อนที่เป็นเส้นโค้งแต่ประมาณเป็นเส้นตรง", "เพราะวัตถุทึบแสงดัดแสงให้ตรง", "เพราะฉากสะท้อนแสงเป็นเส้นตรง", "เพราะแสงเคลื่อนที่ช้า")),
+)
+
+
+DIAGRAM_HINT = ("ลากรังสีเป็นเส้นตรงจากขอบแหล่งกำเนิดแสง ผ่านขอบวัตถุ ไปถึงฉาก บริเวณที่ไม่ได้รับแสงจากขอบใดเลยเป็นเงามืด "
+                "บริเวณที่ได้รับแสงจากบางขอบเป็นเงามัว บริเวณที่ได้รับแสงจากทุกขอบสว่างปกติ")
+
+
+REGIONS = {0: "เงามืด", 1: "เงามัว", 2: "บริเวณที่สว่างปกติ"}
+
+
+SHADOW_DIAGRAM_SCENARIOS = (
+    ("เพื่อนวาดแผนภาพรังสีแสงจากไฟฉายขนาดเล็กผ่านวัตถุทึบแสง โดยลากรังสีเพียงเส้นเดียวจากจุดศูนย์กลางไฟฉายไปยังขอบวัตถุ ไม่ได้ลากต่อไปถึงฉาก ข้อใดแก้ไขได้ถูกต้อง",
+     "ต้องลากรังสีต่อจากขอบวัตถุไปจนถึงฉากด้วย เพื่อแสดงขอบเขตของเงามืดบนฉาก",
+     ("ถูกต้องแล้ว ไม่จำเป็นต้องลากถึงฉาก", "ควรลากรังสีจากขอบวัตถุย้อนกลับไปยังไฟฉายแทน", "ควรลบรังสีที่ผ่านขอบวัตถุออกทั้งหมด")),
+    ("นักเรียนต้องวาดแผนภาพรังสีแสดงเงามัวจากหลอดไฟขนาดใหญ่ แต่ลากรังสีจากจุดศูนย์กลางหลอดไฟเพียงจุดเดียว ข้อใดแก้ไขได้ถูกต้อง",
+     "ต้องลากรังสีจากขอบทั้งสองด้านของหลอดไฟแยกกัน จึงจะเห็นบริเวณเงามัวในแผนภาพ",
+     ("ถูกต้องแล้ว การลากจากจุดศูนย์กลางเพียงพอสำหรับแสดงเงามัว", "ควรลากรังสีจากฉากย้อนกลับไปยังหลอดไฟแทน", "ไม่จำเป็นต้องแสดงเงามัวในแผนภาพเลย")),
+    ("แผนภาพหนึ่งแสดงเงามืดกว้างกว่าเงามัวมาก ทั้งที่ใช้แหล่งกำเนิดแสงขนาดใหญ่และวัตถุอยู่ใกล้แหล่งกำเนิดแสงมาก ข้อใดอธิบายได้สอดคล้องกับหลักการวาดรังสี",
+     "วัตถุที่อยู่ใกล้แหล่งกำเนิดแสงมากจะให้เงามืดที่กว้าง ส่วนเงามัวจะแคบกว่าตามมุมของรังสีที่ลากจากขอบแหล่งกำเนิด",
+     ("แหล่งกำเนิดแสงขนาดใหญ่ต้องให้เงามัวกว้างกว่าเงามืดเสมอไม่ว่าวัตถุจะอยู่ตำแหน่งใด", "ระยะห่างระหว่างวัตถุกับแหล่งกำเนิดแสงไม่มีผลต่อขนาดของเงามืดและเงามัว", "แผนภาพนี้วาดผิดหลักการเสมอไม่ว่าตำแหน่งวัตถุจะเป็นอย่างไร")),
+)
+
+
+@question_type(
+    "phys.shadow_diagram_foundation",
+    display_name={"th": "บอกวิธีลากรังสีของแสงในแผนภาพเงามืดเงามัว"},
+    level=SIXTH, subject=SUBJECT, topic=SHADOW_DIAGRAM_TOPIC,
+)
+class ShadowDiagramFoundation(QuestionType):
+    """Rays are drawn straight from the source's edges past the object's edges."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _facts(rng, DIAGRAM_FACTS, hint=DIAGRAM_HINT, topic=SHADOW_DIAGRAM_TOPIC)
+
+
+@question_type(
+    "phys.shadow_diagram_fluency",
+    display_name={"th": "บอกผลต่างของแผนภาพรังสีแสงจากแหล่งกำเนิดจุดและแหล่งกำเนิดขนาดใหญ่"},
+    level=SIXTH, subject=SUBJECT, topic=SHADOW_DIAGRAM_TOPIC,
+)
+class ShadowDiagramFluency(QuestionType):
+    """Read a point on the screen by which edges of the lamp reach it."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        lamp = rng.choice(("หลอดไฟขนาดใหญ่", "โคมไฟทรงกลม", "หลอดไฟยาว"))
+        point = rng.choice(("จุด ก", "จุด ข", "จุด ค", "จุด ง"))
+        reached = rng.randrange(3)
+        edges = {0: "ไม่มีรังสีจากขอบใดของ" + lamp + "ไปถึง", 1: "มีรังสีจากขอบบนของ" + lamp + "ไปถึง แต่รังสีจากขอบล่างถูกวัตถุบัง",
+                 2: "มีรังสีจากทั้งขอบบนและขอบล่างของ" + lamp + "ไปถึง"}
+        if reached == 1 and rng.random() < 0.5:
+            edges[1] = "มีรังสีจากขอบล่างของ" + lamp + "ไปถึง แต่รังสีจากขอบบนถูกวัตถุบัง"
+        return _labelled(stem=f"ในแผนภาพรังสีของแสงจาก{lamp}ผ่านวัตถุทึบแสงไปยังฉาก {point}บนฉาก{edges[reached]} {point}อยู่ในบริเวณใด",
+                         correct=REGIONS[reached], wrongs=(*(v for k, v in REGIONS.items() if k != reached), "บริเวณที่แสงสะท้อนกลับ"),
+                         hint=DIAGRAM_HINT, topic=SHADOW_DIAGRAM_TOPIC)
+
+
+@question_type(
+    "phys.shadow_diagram_application",
+    display_name={"th": "ตรวจสอบและแก้ไขแผนภาพรังสีของแสงแสดงเงามืดเงามัว"},
+    level=SIXTH, subject=SUBJECT, topic=SHADOW_DIAGRAM_TOPIC,
+)
+class ShadowDiagramApplication(QuestionType):
+    """Authored corrections, and shadow height from straight rays of a point source."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        if rng.random() < 0.3:
+            return _retopic(scenario_question(
+                rng, SHADOW_DIAGRAM_SCENARIOS,
+                hint="รังสีต้องลากจากขอบแหล่งกำเนิดแสง ผ่านขอบวัตถุ ไปจนถึงฉากเสมอ และแหล่งกำเนิดขนาดใหญ่ต้องลากจากขอบทั้งสองด้าน",
+            ), SHADOW_DIAGRAM_TOPIC)
+        height = rng.choice((2, 3, 4, 5, 6, 8, 10))
+        near = rng.choice((10, 20, 25, 30, 40, 50))
+        factor = rng.choice((Fraction(3, 2), 2, Fraction(5, 2), 3, 4, 5))
+        far = near * factor
+        shadow = height * factor
+        return numeric(stem=f"ไฟฉายขนาดเล็ก (แหล่งกำเนิดแสงเป็นจุด) ส่องวัตถุสูง {height} cm ซึ่งอยู่ห่างไฟฉาย {near} cm ฉากอยู่ห่างไฟฉาย {show(far)} cm "
+                            f"ถ้าลากรังสีเป็นเส้นตรงจากไฟฉายผ่านขอบวัตถุไปถึงฉาก (ความสูงเงา = ความสูงวัตถุ × ระยะไฟฉายถึงฉาก ÷ ระยะไฟฉายถึงวัตถุ) "
+                            f"เงาบนฉากสูงกี่ cm",
+                       answer=shadow, wrongs=[height, far - near, Fraction(height * near, far) if (Fraction(height * near, far) * 100).denominator == 1 else shadow * 2],
+                       unit="cm", topic=SHADOW_DIAGRAM_TOPIC, hint="เงาบนฉากใหญ่กว่าวัตถุตามอัตราส่วนระยะไฟฉายถึงฉากต่อระยะไฟฉายถึงวัตถุ")

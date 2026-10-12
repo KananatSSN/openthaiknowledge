@@ -1,0 +1,53 @@
+name: Release
+
+# A version tag publishes a GitHub release whose notes say what changes for
+# consumers (scripts/release_notes.py: new, changed and retired sets, otk.api
+# additions and removals), then asks TutorRank to open a pull request that
+# bumps its pin (its bump-otk workflow), if TUTORRANK_DISPATCH_TOKEN is set:
+# a fine-grained token on KananatSSN/tutorrank with Contents: read and write.
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      # A step's `if` cannot read secrets; this can.
+      CAN_DISPATCH: ${{ secrets.TUTORRANK_DISPATCH_TOKEN != '' }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Write the release notes
+        run: |
+          previous="$(git describe --tags --abbrev=0 "${GITHUB_REF_NAME}^" 2>/dev/null || true)"
+          if [ -n "$previous" ]; then
+            python scripts/release_notes.py "$previous" "$GITHUB_REF_NAME" > notes.md
+          else
+            echo "First release." > notes.md
+          fi
+          cat notes.md
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag
+
+      - name: Ask TutorRank to bump its pin
+        env:
+          GH_TOKEN: ${{ secrets.TUTORRANK_DISPATCH_TOKEN }}
+        if: env.CAN_DISPATCH == 'true'
+        run: |
+          gh api repos/KananatSSN/tutorrank/dispatches \
+            -f event_type=otk-release -f "client_payload[version]=$GITHUB_REF_NAME"

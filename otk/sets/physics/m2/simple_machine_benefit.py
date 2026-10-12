@@ -1,0 +1,145 @@
+"""ประโยชน์ของเครื่องกลอย่างง่าย
+
+ฟิสิกส์ · ม.2 · สสวท. พื้นฐาน
+Indicators: ว 2.3 ม.2/3
+
+Sets moved here from: science_wave_d30.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from random import Random
+from typing import NamedTuple
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import numeric, show
+from otk.sets._support.science_wave_b9 import scenario_question
+from otk.sets._support.science_wave_b14 import _labelled
+from otk.sets._support.science_wave_b15 import _retopic
+from otk.sets._support.science_wave_d14 import SUBJECT
+from otk.sets._support.science_wave_d30 import SECOND_SECONDARY, _facts
+
+PROVENANCE = Provenance("original")
+
+
+SIMPLE_MACHINE_BENEFIT_TOPIC = "ประโยชน์ของเครื่องกลอย่างง่าย"
+
+
+BENEFIT_FACTS = (
+    ("เครื่องกลอย่างง่ายมีประโยชน์อย่างไรในชีวิตประจำวัน",
+     "ช่วยให้ทำงานที่ใช้แรงมากได้สะดวกขึ้น โดยใช้แรงน้อยลงหรือเปลี่ยนทิศทางแรง",
+     ("ช่วยให้ไม่ต้องออกแรงใด ๆ เลยในการทำงานทุกชนิด", "ช่วยเพิ่มพลังงานให้กับระบบโดยไม่ต้องใช้พลังงานเพิ่ม ทำให้ทำงานได้มากขึ้น",
+      "มีประโยชน์เฉพาะในโรงงานอุตสาหกรรมเท่านั้น ไม่เกี่ยวกับชีวิตประจำวัน", "ทำให้วัตถุทุกชนิดเบาลงจริง", "ทำให้งานเสร็จโดยไม่ต้องใช้เวลา")),
+    ("การได้เปรียบเชิงกล (แรงความต้านทาน ÷ แรงพยายาม) มากกว่า 1 หมายความว่าอย่างไร", "เครื่องกลช่วยให้ออกแรงน้อยกว่าน้ำหนักของวัตถุ",
+     ("ต้องออกแรงมากกว่าน้ำหนักของวัตถุเสมอ", "เครื่องกลสร้างพลังงานเพิ่มขึ้น", "เครื่องกลเปลี่ยนเฉพาะทิศทางแรงโดยไม่ผ่อนแรง", "เครื่องกลไม่ทำงาน", "งานที่ได้มากกว่างานที่ใส่เข้าไป")),
+    ("ทำไมจึงควรหยอดน้ำมันที่เพลาและรอกเป็นประจำ", "ลดแรงเสียดทาน เครื่องกลจึงใช้แรงน้อยลงและมีประสิทธิภาพมากขึ้น",
+     ("เพิ่มน้ำหนักของรอกให้มั่นคง", "ทำให้รอกเปลี่ยนเป็นคานที่ผ่อนแรงได้มากขึ้น", "ทำให้แรงเสียดทานมากขึ้นเพื่อความปลอดภัย เครื่องกลจึงหยุดได้ง่าย", "ทำให้เชือกยาวขึ้น", "ไม่มีประโยชน์ใด ๆ")),
+    ("ในการเลือกเครื่องกลอย่างง่ายมาใช้งาน ควรพิจารณาอะไร", "ลักษณะงาน ขนาดของแรงที่มี ทิศทางที่ต้องการออกแรง และความปลอดภัย",
+     ("สีและรูปร่างของเครื่องกลที่ดูสวยงามเท่านั้น", "ราคาที่แพงที่สุด", "ใช้เครื่องกลชนิดเดียวกับทุกงาน", "เลือกเครื่องกลที่หนักที่สุด เพราะเครื่องกลหนักช่วยผ่อนแรงได้มาก", "ไม่ต้องพิจารณาอะไร")),
+)
+
+
+BENEFIT_HINT = "เครื่องกลอย่างง่ายช่วยให้งานที่ต้องใช้แรงมากทำได้สะดวกและปลอดภัยขึ้น โดยลดแรงหรือเปลี่ยนทิศทางแรง"
+
+
+class MachineUse(NamedTuple):
+    device: str
+    benefit: str
+
+
+MACHINE_USES = (
+    MachineUse("กรรไกรตัดกิ่งไม้ด้ามยาว", "ใช้หลักการคานช่วยเพิ่มแรงตัดกิ่งไม้ที่แข็ง โดยออกแรงบีบมือน้อยกว่าการตัดด้วยมือเปล่า"),
+    MachineUse("ทางลาดสำหรับรถเข็นวีลแชร์ที่ทางเข้าอาคาร", "ใช้หลักการพื้นเอียงช่วยให้เข็นรถเข็นขึ้นได้ด้วยแรงน้อยกว่าการยกขึ้นตรง ๆ"),
+    MachineUse("รอกที่ใช้ยกธงขึ้นเสาธง", "ใช้หลักการรอกช่วยเปลี่ยนทิศทางแรงให้ดึงเชือกลงเพื่อยกธงขึ้น สะดวกกว่าการปีนขึ้นไปติดธง"),
+    MachineUse("ไขควงที่มีด้ามจับขนาดใหญ่", "ใช้หลักการล้อและเพลาช่วยเพิ่มแรงบิดสกรู โดยออกแรงที่ด้ามซึ่งมีรัศมีใหญ่กว่าก้านไขควง"),
+    MachineUse("ที่เปิดขวด", "ใช้หลักการคานงัดฝาขวดออกด้วยแรงน้อย โดยขอบฝาเป็นจุดที่ออกแรงความต้านทาน"),
+    MachineUse("ลูกบิดประตู", "ใช้หลักการล้อและเพลา หมุนลูกบิดรัศมีใหญ่เพื่อหมุนแกนสลักประตูได้ง่ายกว่าหมุนแกนโดยตรง"),
+    MachineUse("ถนนที่คดเคี้ยวขึ้นภูเขา", "ใช้หลักการพื้นเอียง ให้รถขึ้นเขาได้ด้วยแรงน้อยกว่าขึ้นทางตรงที่ชัน แม้ต้องเดินทางไกลขึ้น"),
+    MachineUse("ขวานผ่าฟืน", "ใช้หลักการลิ่ม เปลี่ยนแรงฟันลงเป็นแรงดันด้านข้างที่แยกเนื้อไม้ออก"),
+    MachineUse("ปั้นจั่นที่ใช้รอกพวงในท่าเรือ", "ใช้หลักการรอกพวง แบ่งน้ำหนักตู้สินค้าให้เชือกหลายเส้น จึงยกของหนักมากได้ด้วยแรงน้อยลง"),
+    MachineUse("ชะแลงงัดตะปู", "ใช้หลักการคาน ด้ามยาวช่วยให้ถอนตะปูที่ตอกแน่นได้ด้วยแรงน้อย"),
+    MachineUse("แม่แรงยกรถแบบเกลียว", "ใช้หลักการสกรู หมุนด้ามหลายรอบเพื่อยกรถขึ้นทีละน้อยด้วยแรงหมุนไม่มาก"),
+)
+
+
+MACHINE_BENEFIT_SCENARIOS = (
+    ("ทำไมคนงานยกของหนักบนไซต์ก่อสร้างจึงมักใช้รอกและคานงัดร่วมกันแทนการยกด้วยมือเปล่าโดยตรง",
+     "รอกและคานช่วยลดแรงที่ต้องออกและเปลี่ยนทิศทางแรงให้เหมาะสม ทำให้ยกของหนักได้ปลอดภัยและสะดวกขึ้น",
+     ("รอกและคานทำให้ของหนักมีน้ำหนักลดลงจริง", "การใช้รอกและคานไม่มีผลต่อแรงที่ต้องใช้เลย", "รอกและคานใช้เพื่อความสวยงามของไซต์ก่อสร้างเท่านั้น")),
+    ("เหตุใดผู้พิการที่ใช้รถเข็นจึงต้องการทางลาดมากกว่าบันไดในการเข้าอาคาร",
+     "ทางลาดใช้หลักการพื้นเอียงช่วยให้เข็นรถเข็นขึ้นได้ด้วยแรงน้อยกว่า ต่างจากบันไดที่ต้องยกข้ามขั้นตรง ๆ",
+     ("ทางลาดทำให้รถเข็นเบาลงจริง", "บันไดและทางลาดใช้แรงในการเคลื่อนที่เท่ากันเสมอ", "ทางลาดไม่เกี่ยวข้องกับหลักการเครื่องกลอย่างง่ายใด ๆ")),
+    ("เหตุใดไขควงที่มีด้ามจับขนาดใหญ่จึงคลายสกรูที่แน่นได้ง่ายกว่าไขควงด้ามเล็ก",
+     "ด้ามจับขนาดใหญ่ใช้หลักการล้อและเพลาเพิ่มแรงบิด โดยออกแรงที่รัศมีใหญ่กว่าก้านไขควง",
+     ("ด้ามจับขนาดใหญ่ทำให้ไขควงมีน้ำหนักเบาลง", "ขนาดของด้ามจับไม่มีผลต่อแรงบิดที่ได้", "ไขควงด้ามเล็กให้แรงบิดมากกว่าด้ามใหญ่เสมอ")),
+)
+
+
+@question_type(
+    "phys.simple_machine_benefit_foundation",
+    display_name={"th": "บอกประโยชน์ทั่วไปของเครื่องกลอย่างง่าย"},
+    level=SECOND_SECONDARY, subject=SUBJECT, topic=SIMPLE_MACHINE_BENEFIT_TOPIC,
+)
+class SimpleMachineBenefitFoundation(QuestionType):
+    """Simple machines make everyday tasks more convenient by trading force for distance."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _facts(rng, BENEFIT_FACTS, hint=BENEFIT_HINT, topic=SIMPLE_MACHINE_BENEFIT_TOPIC)
+
+
+@question_type(
+    "phys.simple_machine_benefit_fluency",
+    display_name={"th": "บอกประโยชน์และการประยุกต์ใช้เครื่องกลอย่างง่ายในชีวิตประจำวัน"},
+    level=SECOND_SECONDARY, subject=SUBJECT, topic=SIMPLE_MACHINE_BENEFIT_TOPIC,
+)
+class SimpleMachineBenefitFluency(QuestionType):
+    """A real tool; the benefit its simple-machine principle provides."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        index = rng.randrange(len(MACHINE_USES))
+        use = MACHINE_USES[index]
+        others = [u.benefit for i, u in enumerate(MACHINE_USES) if i != index]
+        return _labelled(
+            stem=f"{use.device} มีประโยชน์อย่างไร",
+            correct=use.benefit,
+            wrongs=tuple(others),
+            hint="ระบุก่อนว่าเครื่องมือนั้นอาศัยหลักการเครื่องกลชนิดใด แล้วพิจารณาว่าช่วยลดแรงหรือเปลี่ยนทิศทางแรงอย่างไร",
+            topic=SIMPLE_MACHINE_BENEFIT_TOPIC,
+        )
+
+
+@question_type(
+    "phys.simple_machine_benefit_application",
+    display_name={"th": "ประเมินประโยชน์ของเครื่องกลอย่างง่ายในอุปกรณ์จริง"},
+    level=SECOND_SECONDARY, subject=SUBJECT, topic=SIMPLE_MACHINE_BENEFIT_TOPIC,
+)
+class SimpleMachineBenefitApplication(QuestionType):
+    """Authored cases, how many times a machine cuts the force, and which ramp is easier."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        roll = rng.random()
+        if roll < 0.2:
+            return _retopic(scenario_question(
+                rng, MACHINE_BENEFIT_SCENARIOS,
+                hint="เครื่องกลอย่างง่ายลดแรงที่ต้องใช้หรือเปลี่ยนทิศทางแรง แต่ไม่ทำให้วัตถุเบาลงจริง",
+            ), SIMPLE_MACHINE_BENEFIT_TOPIC)
+        if roll < 0.6:
+            tool = rng.choice(("ชะแลง", "รอกพวง", "คานงัด", "แม่แรงยกรถ", "รถเข็นล้อเดียว"))
+            advantage = rng.choice((Fraction(3, 2), 2, Fraction(5, 2), 3, 4, 5, 6, 8, 10))
+            effort = rng.choice((20, 40, 50, 60, 80, 100, 120, 150, 200))
+            load = effort * advantage
+            return numeric(stem=f"ใช้{tool}ยกวัตถุหนัก {show(load)} นิวตัน โดยออกแรงเพียง {effort} นิวตัน {tool}ช่วยลดแรงลงกี่เท่า "
+                                f"(การได้เปรียบเชิงกล = แรงความต้านทาน ÷ แรงพยายาม)",
+                           answer=advantage, wrongs=[load - effort, Fraction(effort, load) * 10 if (Fraction(effort, load) * 1000).denominator == 1 else advantage * 2, advantage + 1],
+                           unit="เท่า", topic=SIMPLE_MACHINE_BENEFIT_TOPIC, hint="การได้เปรียบเชิงกล = แรงความต้านทาน ÷ แรงพยายาม")
+        height = rng.choice((1, 2, 3))
+        lengths = rng.sample((4, 5, 6, 8, 10, 12, 15), 3)
+        names = ("ทางลาด ก", "ทางลาด ข", "ทางลาด ค")
+        easiest = names[lengths.index(max(lengths))]
+        table = " ".join(f"{n} ยาว {ell} เมตร" for n, ell in zip(names, lengths))
+        return _labelled(stem=f"ทางลาดสามแบบพาขึ้นไปสูง {height} เมตรเท่ากัน {table} ถ้าต้องการเข็นรถเข็นของหนักด้วยแรงน้อยที่สุด ควรเลือกทางลาดใด",
+                         correct=easiest, wrongs=(*(n for n in names if n != easiest), "ใช้แรงเท่ากันทุกทางลาด"),
+                         hint="ความสูงเท่ากัน ทางลาดที่ยาวกว่าลาดชันน้อยกว่า จึงใช้แรงน้อยกว่า", topic=SIMPLE_MACHINE_BENEFIT_TOPIC)

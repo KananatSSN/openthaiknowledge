@@ -1,0 +1,8 @@
+# Everything is reviewed by the maintainer. The lines below are the files whose
+# changes affect every consumer or the safety of the code they run.
+*                               @KananatSSN
+/otk/api.py                     @KananatSSN
+/otk/tests/test_set_safety.py   @KananatSSN
+/otk/tests/golden_draws.json    @KananatSSN
+/otk/core/provenance.py         @KananatSSN
+/.github/                       @KananatSSN

@@ -1,0 +1,15 @@
+# The repository stores LF, and Prettier checks for LF. Without this, core.autocrlf
+# checks the tree out as CRLF and `npm run lint` fails on 91 files whose only fault
+# is their line endings — which is how that script stopped being a useful signal.
+* text=auto eol=lf
+
+*.png binary
+*.pdf binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+
+# Sheet-bank source PDFs (~400 MB) live in Git LFS so that a clone does not
+# carry them in history. CI checks out without LFS, and code that reads them
+# treats an LFS pointer file as "not present" (otk/tools/sheetpipe/bank.py).
+sheet_database/**/*.pdf filter=lfs diff=lfs merge=lfs -text

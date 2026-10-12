@@ -1,0 +1,62 @@
+name: Explorer site
+
+# Publishes explorer/ to GitHub Pages for each release (and on demand), so the
+# site always shows a released version of the sets. Needs Settings → Pages →
+# Source: GitHub Actions (Pages on a private repository needs a paid plan).
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: explorer/package-lock.json
+
+      - name: Install
+        run: |
+          pip install .
+          npm ci --prefix explorer
+
+      - name: Build the data and the site
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}
+        run: |
+          python -m otk.tools.explorer_data
+          npm run build --prefix explorer
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: explorer/build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

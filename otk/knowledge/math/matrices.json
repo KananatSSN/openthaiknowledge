@@ -1,0 +1,296 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "เมทริกซ์",
+ "level": "ม.5",
+ "units": [
+  {
+   "id": "math.matrix.det-properties",
+   "kind": "fact-list",
+   "title": "สมบัติของดีเทอร์มิแนนต์",
+   "statement": "สำหรับเมทริกซ์ n × n: det(kA) = kⁿ det A, det(AB) = det A · det B, det(A⁻¹) = 1/det A, det(Aᵗ) = det A; สลับสองแถวแล้ว det เปลี่ยนเครื่องหมาย คูณแถวหนึ่งด้วย k แล้ว det คูณด้วย k; แต่ det(A + B) ≠ det A + det B โดยทั่วไป",
+   "facts": {
+    "การคูณ": [
+     "det(kA) = kⁿ det A",
+     "det(AB) = det A · det B",
+     "det(A⁻¹) = 1/det A",
+     "det(Aᵗ) = det A"
+    ],
+    "การดำเนินการตามแถว": [
+     "สลับสองแถว: det เปลี่ยนเครื่องหมาย",
+     "คูณแถวหนึ่งด้วย k: det คูณด้วย k",
+     "บวกพหุคูณของแถวหนึ่งเข้ากับอีกแถว: det ไม่เปลี่ยน"
+    ]
+   },
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2563/6)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2561/5)"
+    },
+    {
+     "tag": "กสพท คณิต1 (เม.ย. 2564/16)"
+    },
+    {
+     "tag": "A-level 1 (มี.ค. 2566/9)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2562/5)"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/🍰 เมทริกซ์ 📝.pdf",
+     "section": "ดีเทอร์มิแนนต์"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) 1 ดีเทอร์มิแนนต์🥑.pdf",
+     "section": "แบบฝึกหัด 2.2"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 7
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 8
+    }
+   ],
+   "note": "math.determinant_2x2 / math.determinant_3x3_m5 คำนวณ det ของเมทริกซ์ที่ให้มาโดยตรง ไม่ได้ใช้สมบัติ",
+   "covered_by": [
+    "math.determinant_properties_m5",
+    "math.determinant_2x2",
+    "math.determinant_3x3_m5"
+   ]
+  },
+  {
+   "id": "math.matrix.unique-solution",
+   "kind": "concept",
+   "title": "ระบบสมการมีคำตอบเดียวเมื่อ det ≠ 0",
+   "statement": "ระบบสมการเชิงเส้น n สมการ n ตัวแปร AX = B มีคำตอบเพียงคำตอบเดียวก็ต่อเมื่อ det A ≠ 0; ถ้ามีพารามิเตอร์ในสัมประสิทธิ์ ให้หาค่าที่ทำให้ det A = 0 แล้วตัดทิ้ง",
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2558/5)"
+    }
+   ],
+   "covered_by": [
+    "math.matrix_unique_solution_m5"
+   ]
+  },
+  {
+   "id": "math.matrix.matrix-equation",
+   "kind": "procedure",
+   "title": "แก้สมการเมทริกซ์ด้วยอินเวอร์ส",
+   "statement": "AX = B ⇒ X = A⁻¹B (คูณจากทางซ้าย); ถ้า AB = kI แล้ว A⁻¹ = B/k; ถ้า [A : I] ~ [I : P] แล้ว P = A⁻¹; (AB)⁻¹ = B⁻¹A⁻¹ และ (Aᵗ)⁻¹ = (A⁻¹)ᵗ",
+   "steps": [
+    "หา A⁻¹ (จากสูตร 2 × 2, จาก AB = kI หรือจากการดำเนินการตามแถว)",
+    "คูณ A⁻¹ ทางซ้ายของทั้งสองข้าง",
+    "อ่านค่าตัวแปรจากเมทริกซ์ผลลัพธ์"
+   ],
+   "sources": [
+    {
+     "tag": "A-level 1 (มี.ค. 2567/21)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2558/17)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2562/17)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2561/17)"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/🍰 เมทริกซ์ 📝.pdf",
+     "section": "อินเวอร์สการคูณ"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/🍰 เมทริกซ์ 📝.pdf",
+     "section": "สมการเมทริกซ์"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) 2 อินเวอร์สการคูณ🥑.pdf",
+     "section": "แบบฝึกหัด 2.3"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) 3 ระบบสมการเชิงเส้น🍒.pdf",
+     "section": "แบบฝึกหัด 2.4",
+     "number": 1
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 6
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 9
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 10
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 11
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 12
+    }
+   ],
+   "note": "math.matrix_inverse_m5 หาอินเวอร์สของ 2 × 2 แต่ไม่ได้ใช้แก้สมการเมทริกซ์",
+   "covered_by": [
+    "math.matrix_equation_m5",
+    "math.matrix_inverse_m5"
+   ]
+  },
+  {
+   "id": "math.matrix.row-operations",
+   "kind": "procedure",
+   "title": "เมทริกซ์แต่งเติมและการดำเนินการตามแถว",
+   "statement": "เขียนระบบสมการเป็นเมทริกซ์แต่งเติม [A : B] แล้วดำเนินการตามแถวจนอ่านคำตอบได้; เทียบเมทริกซ์ก่อนและหลังเพื่อหาสัมประสิทธิ์ที่ไม่รู้ค่า",
+   "steps": [
+    "เขียนเมทริกซ์แต่งเติม",
+    "ดำเนินการตามแถวให้เป็นรูปขั้นบันได",
+    "แทนค่าย้อนกลับเพื่อหาตัวแปร"
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2565/12)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2559/18)"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/🍰 เมทริกซ์ 📝.pdf",
+     "section": "เมทริกซ์แต่งเติม"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) 3 ระบบสมการเชิงเส้น🍒.pdf",
+     "section": "แบบฝึกหัด 2.4",
+     "number": 2
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 13
+    }
+   ],
+   "covered_by": [
+    "math.matrix_row_operations_m5"
+   ]
+  },
+  {
+   "id": "math.matrix.cramer",
+   "kind": "formula",
+   "title": "กฎของคราเมอร์",
+   "statement": "x = det(A_x)/det(A) เมื่อ A_x ได้จากการแทนหลักของ x ใน A ด้วย B (ทำนองเดียวกันกับ y, z)",
+   "variables": [
+    {
+     "name": "A",
+     "meaning": "เมทริกซ์สัมประสิทธิ์"
+    },
+    {
+     "name": "A_x",
+     "meaning": "A ที่แทนหลักของ x ด้วยค่าคงตัว"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2563/19)"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/🍰 เมทริกซ์ 📝.pdf",
+     "section": "ระบบสมการเชิงเส้น"
+    }
+   ],
+   "covered_by": [
+    "math.cramer_rule_m5"
+   ]
+  },
+  {
+   "id": "math.matrix.arithmetic",
+   "kind": "procedure",
+   "title": "การบวก คูณ และทรานสโพสของเมทริกซ์",
+   "statement": "บวกลบทีละตัว; AB มีสมาชิกแถว i หลัก j เป็นผลคูณเชิงสเกลาร์ของแถว i ของ A กับหลัก j ของ B; (AB)ᵗ = BᵗAᵗ",
+   "steps": [
+    "ตรวจมิติ",
+    "คูณแถวกับหลัก",
+    "จัดผลเป็นเมทริกซ์"
+   ],
+   "sources": [
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/🍰 เมทริกซ์ 📝.pdf",
+     "section": "เมทริกซ์"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/🍰 เมทริกซ์ 📝.pdf",
+     "section": "เมทริกซ์คูณเมทริกซ์"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) 0 พื้นฐานเมทริกซ์.pdf",
+     "section": "แบบฝึกหัด 2.1"
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 1
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 2
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 3
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 4
+    },
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(สสวท) ท้ายบท เมทริกซ์.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 5
+    }
+   ],
+   "covered_by": [
+    "math.matrix_add_scalar",
+    "math.matrix_multiply_2x2",
+    "math.matrix_transpose_m5",
+    "math.determinant_2x2",
+    "math.determinant_3x3_m5",
+    "math.matrix_inverse_m5"
+   ]
+  },
+  {
+   "id": "math.matrix.power-cycle",
+   "kind": "formula",
+   "title": "เมทริกซ์ยกกำลังที่วนกลับเป็น I",
+   "statement": "ถ้า k เป็นจำนวนเต็มบวกที่น้อยที่สุดซึ่ง Aᵏ = I แล้ว Aⁿ = A^(n mod k) และ Aⁿ = I ก็ต่อเมื่อ k หาร n ลงตัว; เมทริกซ์หมุนมุม θ ยกกำลัง n คือการหมุนมุม nθ",
+   "variables": [
+    {
+     "name": "k",
+     "meaning": "ความยาวรอบของกำลังของ A"
+    }
+   ],
+   "sources": [
+    {
+     "sheet": "rathcenter/9 เมทริกซ์/(1) เพิ่มเติม เมทริกซ์ยกกำลัง(ผสมตรีโกณ).pdf",
+     "section": "เพิ่มเติม เมทริกซ์ยกกำลัง(ผสมตรีโกณ)"
+    }
+   ],
+   "covered_by": [
+    "math.matrix_power_cycle_m5"
+   ]
+  }
+ ]
+}

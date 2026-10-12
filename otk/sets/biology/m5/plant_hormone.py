@@ -1,0 +1,108 @@
+"""ฮอร์โมนพืช
+
+ชีวะ · ม.5 · สสวท. เพิ่มเติม
+Indicators: ชีววิทยาเพิ่มเติม 3 ม.5/17
+
+Sets moved here from: science_wave_f58.
+"""
+
+from __future__ import annotations
+
+from random import Random
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import _labelled
+from otk.sets._support.science_wave_f58 import SUBJECT, UPPER_FIVE
+
+PROVENANCE = Provenance("original")
+
+
+TOPIC_HORMONE = "ฮอร์โมนพืช"
+
+
+HORMONES = {
+    "ออกซิน": ("กระตุ้นการยืดตัวของเซลล์ และทำให้เกิดการข่มของตายอด", "ใช้เร่งการเกิดรากของกิ่งปักชำ",
+               "ใช้ชักนำให้เกิดผลแบบไม่มีเมล็ด เช่น แตงโม"),
+    "ไซโทไคนิน": ("กระตุ้นการแบ่งเซลล์ และชะลอการเสื่อมสภาพของใบ", "ใช้ชักนำให้เกิดยอดในการเพาะเลี้ยงเนื้อเยื่อ",
+                  "ใช้ยืดอายุผักและไม้ตัดดอกให้สดนานขึ้น"),
+    "จิบเบอเรลลิน": ("กระตุ้นการยืดยาวของลำต้นและการงอกของเมล็ด", "ใช้ทำให้ผลองุ่นไร้เมล็ดมีขนาดใหญ่ขึ้น",
+                    "ใช้กระตุ้นการสร้างอะไมเลสในการผลิตมอลต์จากข้าวบาร์เลย์"),
+    "เอทิลีน": ("กระตุ้นการสุกของผล และการหลุดร่วงของใบ", "ใช้เร่งให้ผลไม้ดิบสุกพร้อมกัน",
+                "ใช้กระตุ้นการออกดอกของสับปะรด"),
+    "กรดแอบไซซิก": ("กระตุ้นการปิดปากใบเมื่อขาดน้ำ และทำให้เมล็ดพักตัว", "ช่วยให้พืชทนแล้งโดยลดการคายน้ำ",
+                    "ทำให้ตาของไม้ยืนต้นพักตัวในฤดูหนาว"),
+}
+
+
+HORMONE_HINT = ("ออกซินยืดเซลล์ เกิดราก ข่มตาข้าง ไซโทไคนินแบ่งเซลล์ ชะลอการแก่ จิบเบอเรลลินยืดลำต้น แก้การพักตัว "
+                "เอทิลีนเร่งผลสุก กรดแอบไซซิกปิดปากใบและทำให้พักตัว")
+
+
+HORMONE_EXPERIMENTS = (
+    ("ตัดยอดของต้นชบาออก ตาข้างที่อยู่ใต้รอยตัดจะเป็นอย่างไร", "เจริญเป็นกิ่ง เพราะไม่มีออกซินจากยอดมาข่มตาข้าง",
+     ("หยุดเจริญ เพราะได้รับออกซินมากขึ้น", "ตาข้างตายทั้งหมด เพราะขาดออกซินจากยอด", "ไม่มีการเปลี่ยนแปลงใด ๆ เพราะตาข้างไม่ต้องใช้ออกซิน")),
+    ("ตัดยอดแล้วทาออกซินที่รอยตัด ตาข้างจะเป็นอย่างไร", "ยังไม่เจริญ เพราะออกซินที่ทายังข่มตาข้างอยู่",
+     ("เจริญเป็นกิ่งอย่างรวดเร็ว เพราะยอดถูกตัดออกไปแล้ว", "เปลี่ยนเป็นดอก เพราะออกซินกระตุ้นการออกดอก", "เปลี่ยนเป็นราก")),
+    ("ในการเพาะเลี้ยงเนื้อเยื่อ ถ้าอาหารมีสัดส่วนออกซินสูงกว่าไซโทไคนินมาก แคลลัสมักเจริญเป็นอะไร", "ราก",
+     ("ยอด", "ดอก", "ผล")),
+    ("ในการเพาะเลี้ยงเนื้อเยื่อ ถ้าอาหารมีสัดส่วนไซโทไคนินสูงกว่าออกซินมาก แคลลัสมักเจริญเป็นอะไร", "ยอด",
+     ("ราก", "เมล็ด", "ผล")),
+    ("บ่มกล้วยดิบไว้กับกล้วยสุกในถุงปิด กล้วยดิบสุกเร็วขึ้นเพราะเหตุใด", "กล้วยสุกปล่อยแก๊สเอทิลีนกระตุ้นการสุก",
+     ("กล้วยสุกปล่อยออกซิเจน", "กล้วยสุกดูดความชื้นออกจากกล้วยดิบ", "กล้วยสุกปล่อยกรดแอบไซซิก")),
+    ("ต้นพืชที่วางไว้ริมหน้าต่างโค้งเข้าหาแสงเพราะเหตุใด", "ออกซินเคลื่อนไปด้านที่ไม่ได้รับแสง เซลล์ด้านนั้นจึงยืดยาวกว่า",
+     ("ออกซินสะสมด้านที่ได้รับแสงมากกว่า ลำต้นจึงโค้งหนีแสงแทน", "เอทิลีนยับยั้งการยืดตัวของเซลล์ด้านที่ไม่ได้รับแสง", "จิบเบอเรลลินด้านที่ได้รับแสงถูกทำลายจนเซลล์หยุดแบ่ง")),
+)
+
+
+@question_type(
+    "biology.plant_hormone_foundation",
+    display_name={"th": "บทบาทหน้าที่ของฮอร์โมนพืช"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_HORMONE,
+)
+class PlantHormoneFoundation(QuestionType):
+    """What each of the five hormones does."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        name = rng.choice(sorted(HORMONES))
+        role = HORMONES[name][0]
+        others = [h for h in HORMONES if h != name]
+        picked = rng.sample(others, 3)
+        if rng.random() < 0.5:
+            return _labelled(stem=f"ฮอร์โมนใด{role}", correct=name, wrongs=tuple(picked), topic=TOPIC_HORMONE, hint=HORMONE_HINT)
+        return _labelled(stem=f"{name}มีบทบาทหลักอย่างไร", correct=role, wrongs=tuple(HORMONES[h][0] for h in picked), topic=TOPIC_HORMONE,
+                         hint=HORMONE_HINT)
+
+
+@question_type(
+    "biology.plant_hormone_fluency",
+    display_name={"th": "การใช้ฮอร์โมนพืชทางการเกษตร"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_HORMONE,
+)
+class PlantHormoneFluency(QuestionType):
+    """Name the hormone behind a farm practice, and back."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        name = rng.choice(sorted(HORMONES))
+        use = rng.choice(HORMONES[name][1:])
+        others = [h for h in HORMONES if h != name]
+        picked = rng.sample(others, 3)
+        if rng.random() < 0.55:
+            return _labelled(stem=f"การ{use.removeprefix('ใช้')}ใช้ฮอร์โมนพืชชนิดใด" if use.startswith("ใช้") else f"\"{use}\" เป็นผลของฮอร์โมนใด",
+                             correct=name, wrongs=tuple(picked), topic=TOPIC_HORMONE, hint=HORMONE_HINT)
+        return _labelled(stem=f"ข้อใดเป็นการใช้ประโยชน์หรือผลของ{name}", correct=use,
+                         wrongs=tuple(rng.choice(HORMONES[h][1:]) for h in picked), topic=TOPIC_HORMONE, hint=HORMONE_HINT)
+
+
+@question_type(
+    "biology.plant_hormone_application",
+    display_name={"th": "อธิบายผลการทดลองเกี่ยวกับฮอร์โมนพืช"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_HORMONE,
+)
+class PlantHormoneApplication(QuestionType):
+    """Predict what cutting, painting or bagging does."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        stem, right, wrongs = rng.choice(HORMONE_EXPERIMENTS)
+        return _labelled(stem=stem, correct=right, wrongs=tuple(wrongs), topic=TOPIC_HORMONE, hint=HORMONE_HINT)

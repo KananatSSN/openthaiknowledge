@@ -1,0 +1,161 @@
+"""การเปลี่ยนแปลงทางเคมี
+
+เคมี · ป.5 · สสวท. พื้นฐาน
+Indicators: ว 2.1 ป.5/3
+
+Sets moved here from: science_wave_d6.
+"""
+
+from __future__ import annotations
+
+from random import Random
+from typing import NamedTuple
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.sets._support.science_wave_b9 import scenario_question
+from otk.sets._support.science_wave_b14 import _labelled
+from otk.sets._support.science_wave_b15 import _retopic
+from otk.sets._support.science_wave_d1 import SUBJECT
+from otk.sets._support.science_wave_d6 import FIFTH
+
+PROVENANCE = Provenance("original")
+
+
+CHEMICAL_TOPIC = "การเปลี่ยนแปลงทางเคมี"
+
+
+class Activity(NamedTuple):
+    doing: str
+    seen: str
+    chemical: bool
+
+
+ACTIVITIES = (
+    Activity("เทน้ำส้มสายชูลงบนผงฟูในแก้ว", "มีฟองแก๊สเกิดขึ้นมาก และแก้วเย็นลง", True),
+    Activity("เผากระดาษในถาดโลหะ", "กระดาษกลายเป็นเถ้าสีดำ มีควันและกลิ่นไหม้", True),
+    Activity("วางตะปูเหล็กไว้บนสำลีชื้นหลายวัน", "ผิวตะปูมีสนิมสีน้ำตาลแดงเกิดขึ้น", True),
+    Activity("เป่าลมหายใจผ่านหลอดลงในน้ำปูนใส", "น้ำปูนใสเปลี่ยนเป็นสีขาวขุ่น", True),
+    Activity("ทิ้งแอปเปิลที่หั่นแล้วไว้ในอากาศ", "เนื้อแอปเปิลเปลี่ยนเป็นสีน้ำตาล", True),
+    Activity("วางน้ำแข็งก้อนไว้ในจาน", "น้ำแข็งกลายเป็นน้ำ แต่เมื่อนำไปแช่แข็งก็กลับเป็นน้ำแข็งได้", False),
+    Activity("ใส่เกลือลงในน้ำแล้วคน", "มองไม่เห็นเกล็ดเกลือ แต่เมื่อระเหยน้ำออกก็ได้เกล็ดเกลือกลับคืน", False),
+    Activity("ฉีกกระดาษเป็นชิ้นเล็ก ๆ", "กระดาษมีขนาดเล็กลง แต่ยังเป็นกระดาษเหมือนเดิม", False),
+)
+
+
+def analysis(activity: Activity, chemical: bool, seen: str) -> str:
+    if chemical:
+        return f"เกิดการเปลี่ยนแปลงทางเคมี เพราะเกิดสารใหม่ สังเกตได้จาก{seen}"
+    return f"ไม่เกิดการเปลี่ยนแปลงทางเคมี เพราะไม่เกิดสารใหม่ สังเกตได้จาก{seen}"
+
+
+CHEMICAL_SCENARIOS = (
+    ("ขนมปังที่อบในเตาอบมีผิวสีน้ำตาลและมีกลิ่นหอม ต่างจากแป้งก่อนอบ ข้อใดวิเคราะห์ได้ถูกต้อง",
+     "เกิดการเปลี่ยนแปลงทางเคมี เพราะได้สารใหม่ที่มีสี กลิ่น และเนื้อสัมผัสต่างจากเดิม และทำให้กลับเป็นแป้งไม่ได้",
+     ("เป็นเพียงการเปลี่ยนสถานะ เพราะแป้งละลายเมื่อร้อน",
+      "ไม่เกิดสารใหม่ เพราะขนมปังยังกินได้",
+      "เกิดการละลาย เพราะแป้งผสมกับน้ำ",
+      "ขนมปังเปลี่ยนสถานะจากของแข็งเป็นแก๊ส",
+      "เป็นการเปลี่ยนแปลงที่ผันกลับได้ เพราะขนมปังเย็นลงได้")),
+    ("เมื่อนำเหล็กไปเคลือบสีหรือทาน้ำมัน เหล็กเกิดสนิมช้าลง เพราะเหตุใด",
+     "สีหรือน้ำมันกันไม่ให้เหล็กสัมผัสกับน้ำและอากาศ ซึ่งทำให้เหล็กเปลี่ยนเป็นสนิม",
+     ("สีทำให้เหล็กแข็งจนเกิดสนิมไม่ได้",
+      "น้ำมันเปลี่ยนสนิมกลับเป็นเหล็ก",
+      "เหล็กเกิดสนิมได้เฉพาะในที่แห้ง",
+      "สีทำให้เหล็กร้อนจนสนิมระเหยไป",
+      "น้ำมันทำให้เหล็กกลายเป็นทองแดง")),
+    ("นักเรียนผสมสาร ก กับสาร ข ซึ่งเป็นของเหลวใสทั้งคู่ ได้ของผสมที่มีตะกอนสีเหลืองเกิดขึ้น ข้อสรุปใดเหมาะสมที่สุด",
+     "น่าจะเกิดการเปลี่ยนแปลงทางเคมี เพราะเกิดตะกอนซึ่งเป็นสารใหม่ที่ไม่มีในของเหลวเดิม",
+     ("เป็นการละลาย เพราะของเหลวทั้งสองผสมกัน",
+      "ไม่เกิดสารใหม่ เพราะของเหลวเดิมใสทั้งคู่",
+      "เป็นการเปลี่ยนสถานะ เพราะของเหลวกลายเป็นแก๊ส",
+      "เป็นการระเหย เพราะของเหลวหายไปหมด",
+      "ตะกอนเป็นฝุ่นในอากาศที่ตกลงมาในแก้ว")),
+    ("เมื่อนำผลไม้ไปหมักกับน้ำตาลไว้หลายวัน มีฟองแก๊สและกลิ่นเปรี้ยวเกิดขึ้น ข้อใดวิเคราะห์ได้ถูกต้อง",
+     "เกิดการเปลี่ยนแปลงทางเคมี เพราะเกิดสารใหม่ สังเกตได้จากฟองแก๊สและกลิ่นที่เปลี่ยนไป",
+     ("เป็นเพียงการละลายของน้ำตาล",
+      "เป็นการเปลี่ยนสถานะของผลไม้เป็นแก๊ส",
+      "ไม่เกิดสารใหม่ เพราะยังเห็นผลไม้อยู่",
+      "เป็นการเปลี่ยนแปลงที่ผันกลับได้ เพราะแยกน้ำตาลกลับออกมาได้",
+      "ฟองแก๊สเกิดจากน้ำเดือด")),
+    ("จุดเทียนไขทิ้งไว้ เนื้อเทียนส่วนหนึ่งหลอมเหลว และไส้เทียนลุกไหม้เกิดควันและเขม่า ส่วนใดแสดงการเปลี่ยนแปลงทางเคมี",
+     "การลุกไหม้ของไส้เทียนและไขเทียน เพราะเกิดสารใหม่คือควันและเขม่า",
+     ("การหลอมเหลวของเนื้อเทียน เพราะเทียนเปลี่ยนสถานะ",
+      "ไม่มีส่วนใดเลย เพราะเทียนยังเป็นเทียน",
+      "การที่เทียนเย็นลงแล้วแข็งตัว",
+      "แสงจากเทียนเท่านั้น ไม่เกี่ยวกับสาร",
+      "การที่ไขเทียนไหลลงมาตามแท่งเทียน")),
+)
+
+
+@question_type(
+    "chem.chemical_change_foundation",
+    display_name={"th": "บอกหลักฐานที่แสดงว่าเกิดการเปลี่ยนแปลงทางเคมี"},
+    level=FIFTH, subject=SUBJECT, topic=CHEMICAL_TOPIC,
+)
+class ChemicalChangeFoundation(QuestionType):
+    """Which observation is a sign that a new substance formed."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _labelled(
+            stem="ข้อใดเป็นหลักฐานที่แสดงว่าอาจเกิดการเปลี่ยนแปลงทางเคมี",
+            correct=rng.choice(("มีฟองแก๊สเกิดขึ้นเมื่อสารสองชนิดผสมกัน",
+                                "สีของสารเปลี่ยนไปเป็นสีใหม่เมื่อผสมสาร",
+                                "มีตะกอนชนิดใหม่เกิดขึ้นเมื่อผสมของเหลวสองชนิด",
+                                "เกิดกลิ่นใหม่และมีเถ้าเกิดขึ้นเมื่อเผา",
+                                "ภาชนะร้อนขึ้นหรือเย็นลงเองเมื่อผสมสารสองชนิด",
+                                "เกิดแสงและความร้อนเมื่อจุดไฟเผาไม้")),
+            wrongs=tuple(("น้ำแข็งละลายเป็นน้ำเมื่อวางไว้นอกตู้เย็น",
+                                     "กระดาษถูกตัดเป็นชิ้นเล็กด้วยกรรไกร",
+                                     "น้ำตาลละลายในน้ำจนมองไม่เห็นเมื่อคน",
+                                     "ดินน้ำมันถูกปั้นเป็นรูปใหม่ด้วยมือ",
+                                     "น้ำเดือดกลายเป็นไอน้ำเมื่อได้รับความร้อน",
+                                     "แก้วน้ำตกแตกเป็นชิ้นเมื่อหล่นลงพื้น")),
+            hint="การเปลี่ยนแปลงทางเคมีทำให้เกิดสารใหม่ สังเกตได้จากแก๊ส สี ตะกอน กลิ่น หรืออุณหภูมิที่เปลี่ยน",
+            topic=CHEMICAL_TOPIC,
+        )
+
+
+@question_type(
+    "chem.chemical_change_fluency",
+    display_name={"th": "วิเคราะห์การเปลี่ยนแปลงทางเคมีจากผลการสังเกต"},
+    level=FIFTH, subject=SUBJECT, topic=CHEMICAL_TOPIC,
+)
+class ChemicalChangeFluency(QuestionType):
+    """An activity and what was seen; whether a new substance formed, and the evidence."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        index = rng.randrange(len(ACTIVITIES))
+        activity = ACTIVITIES[index]
+        other = ACTIVITIES[rng.choice([i for i in range(len(ACTIVITIES)) if i != index])]
+        return _labelled(
+            stem=(f"นักเรียน{activity.doing} แล้วบันทึกว่า {activity.seen} "
+                  "จากหลักฐานนี้ ข้อใดวิเคราะห์การเปลี่ยนแปลงได้ถูกต้อง"),
+            correct=analysis(activity, activity.chemical, activity.seen),
+            wrongs=(analysis(activity, not activity.chemical, activity.seen),
+                    analysis(activity, activity.chemical, other.seen),
+                    "เกิดการเปลี่ยนแปลงทางเคมีทุกครั้งที่สารมีรูปร่างหรือขนาดเปลี่ยนไป"
+                    if activity.chemical else
+                    "เกิดการเปลี่ยนแปลงทางเคมีทุกครั้งที่มองไม่เห็นสารเดิมหรือสารมีรูปร่างเปลี่ยนไป",
+                    # The wrong conclusion on another activity's evidence: wrong
+                    # in both parts, so the answer is not the choice all agree on.
+                    analysis(activity, not activity.chemical, other.seen)),
+            hint="ถามว่าได้สารใหม่ที่มีสมบัติต่างจากเดิมหรือไม่ แล้วใช้สิ่งที่บันทึกไว้ในเรื่องเป็นหลักฐาน",
+            topic=CHEMICAL_TOPIC,
+        )
+
+
+@question_type(
+    "chem.chemical_change_application",
+    display_name={"th": "วิเคราะห์การเปลี่ยนแปลงทางเคมีในชีวิตประจำวัน"},
+    level=FIFTH, subject=SUBJECT, topic=CHEMICAL_TOPIC,
+)
+class ChemicalChangeApplication(QuestionType):
+    """Baking bread, slowing rust, and a precipitate from two clear liquids."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _retopic(scenario_question(
+            rng, CHEMICAL_SCENARIOS,
+            hint="หาหลักฐานของสารใหม่: สี กลิ่น แก๊ส ตะกอน หรือการที่ทำให้กลับคืนไม่ได้",
+        ), CHEMICAL_TOPIC)

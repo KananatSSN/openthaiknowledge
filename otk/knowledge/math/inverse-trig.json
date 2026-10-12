@@ -1,0 +1,92 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "ตัวผกผันของฟังก์ชันตรีโกณมิติ",
+ "level": "ม.5",
+ "units": [
+  {
+   "id": "math.trig.inverse-compose",
+   "kind": "procedure",
+   "title": "ค่าตรีโกณมิติของผลบวกมุมที่ได้จากฟังก์ชันผกผัน",
+   "statement": "ให้ α = arccos(p/r), β = arcsin(q/s) แล้วอ่าน sin, cos, tan ของ α, β จากสามเหลี่ยมมุมฉาก จากนั้นใช้สูตรผลบวกมุม เช่น tan(α + β) = (tan α + tan β)/(1 − tan α tan β); ถ้ารู้ tan A, tan B ก็หา A + B จากค่า tan(A + B) และช่วงของมุม",
+   "steps": [
+    "ตั้งชื่อมุม α, β และวาดสามเหลี่ยมมุมฉากของแต่ละมุม",
+    "อ่าน sin, cos, tan ของแต่ละมุม",
+    "แทนในสูตรผลบวกมุม",
+    "ถ้าถามมุม ให้ดูช่วงของ A + B เพื่อเลือกมุมที่ถูก"
+   ],
+   "sources": [
+    {
+     "tag": "A-level 1 (มี.ค. 2566/7)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2559/3)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2558/6)"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 23
+    }
+   ],
+   "covered_by": [
+    "math.inverse_trig_sum_m5"
+   ]
+  },
+  {
+   "id": "math.trig.arcsin-arccos-complement",
+   "kind": "formula",
+   "title": "arcsin x + arccos x = π/2",
+   "statement": "สำหรับ x ∈ [−1, 1]: arcsin x + arccos x = π/2 ดังนั้น arccos u + arcsin v = π/2 ก็ต่อเมื่อ u = v",
+   "variables": [
+    {
+     "name": "x",
+     "meaning": "จำนวนจริงในช่วง [−1, 1]"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2561/4)"
+    }
+   ],
+   "covered_by": [
+    "math.inverse_trig_sum_m5"
+   ]
+  },
+  {
+   "id": "math.trig.inverse-values",
+   "kind": "fact-list",
+   "title": "ค่าและเรนจ์ของฟังก์ชันตรีโกณมิติผกผัน",
+   "statement": "arcsin มีเรนจ์ [−π/2, π/2], arccos มีเรนจ์ [0, π], arctan มีเรนจ์ (−π/2, π/2); sin(arcsin x) = x สำหรับ x ∈ [−1, 1]",
+   "facts": {
+    "เรนจ์": [
+     "arcsin: [−π/2, π/2]",
+     "arccos: [0, π]",
+     "arctan: (−π/2, π/2)"
+    ],
+    "ค่าผกผัน": [
+     "arcsin(−x) = −arcsin x",
+     "arccos(−x) = π − arccos x"
+    ]
+   },
+   "sources": [
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(rath) 8 ฟังก์ชันอาร์ค.pdf",
+     "section": "ฟังก์ชันอาร์ค"
+    },
+    {
+     "sheet": "rathcenter/8 ตรีโกณมิติ/(สสวท) ท้ายบท ตรีโกณมิติ.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 20
+    }
+   ],
+   "covered_by": [
+    "math.inverse_trig",
+    "math.inverse_trig_range",
+    "math.inverse_trig_negative",
+    "math.inverse_trig_sum_m5"
+   ]
+  }
+ ]
+}

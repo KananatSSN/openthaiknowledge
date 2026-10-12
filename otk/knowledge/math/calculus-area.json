@@ -1,0 +1,82 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "พื้นที่",
+ "level": "ม.6",
+ "units": [
+  {
+   "id": "math.calculus.parabola-area",
+   "kind": "formula",
+   "title": "พื้นที่ระหว่างพาราโบลากับแกน X",
+   "statement": "พื้นที่ที่ปิดล้อมด้วย y = c − ax² (a, c > 0) กับแกน X คือ (4/3)·c·r เมื่อ r = √(c/a) เป็นระยะจากจุดยอดถึงจุดตัดแกน X (สองในสามของสี่เหลี่ยมที่ล้อมรอบ)",
+   "variables": [
+    {
+     "name": "c",
+     "meaning": "ระยะจากจุดยอดถึงแกน X"
+    },
+    {
+     "name": "r",
+     "meaning": "ครึ่งหนึ่งของระยะระหว่างจุดตัดแกน X"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2565/29)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2563/22)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2561/22)"
+    }
+   ],
+   "note": "math.area_under_curve / math.area_power_curve_m5 ให้ฟังก์ชันมาแล้วหาพื้นที่ ไม่ได้ย้อนจากพื้นที่ไปหาพาราโบลา",
+   "covered_by": [
+    "math.parabola_area_m6"
+   ]
+  },
+  {
+   "id": "math.calculus.area-between",
+   "kind": "procedure",
+   "title": "พื้นที่ระหว่างเส้นโค้งสองเส้น",
+   "statement": "พื้นที่ = ∫ (เส้นบน − เส้นล่าง) dx จากจุดตัดหนึ่งถึงอีกจุดตัดหนึ่ง",
+   "steps": [
+    "หาจุดตัดของสองเส้นโค้ง",
+    "ระบุว่าเส้นใดอยู่บน",
+    "อินทิเกรตผลต่าง"
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2562/22)"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "พื้นที่ที่ปิดล้อมด้วยเส้นโค้ง"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "พื้นที่ระหว่างเส้นโค้ง"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) 9 พื้นที่ปิดล้อมด้วยเส้นโค้ง🍒.pdf",
+     "section": "แบบฝึกหัด 2.11"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 56
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 57
+    }
+   ],
+   "covered_by": [
+    "math.area_between_curves",
+    "math.area_two_curves_m6",
+    "math.area_under_curve",
+    "math.area_between_curve_and_line"
+   ]
+  }
+ ]
+}

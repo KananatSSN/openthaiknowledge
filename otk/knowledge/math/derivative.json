@@ -1,0 +1,231 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "อนุพันธ์",
+ "level": "ม.5",
+ "units": [
+  {
+   "id": "math.derivative.composite",
+   "kind": "formula",
+   "title": "อนุพันธ์ของฟังก์ชันประกอบ (กฎลูกโซ่)",
+   "statement": "ถ้า h(x) = f(g(x)) แล้ว h′(x) = f′(g(x))·g′(x); ถ้ารู้ f(u(x)) = v(x) ให้หา f ในรูปของตัวแปรใหม่ก่อน แล้วหาอนุพันธ์",
+   "variables": [
+    {
+     "symbol": "f′(g(x))",
+     "meaning": "อนุพันธ์ของฟังก์ชันด้านนอก ประเมินที่ g(x)"
+    },
+    {
+     "symbol": "g′(x)",
+     "meaning": "อนุพันธ์ของฟังก์ชันด้านใน"
+    }
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2563/7)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2565/24)"
+    },
+    {
+     "tag": "A-level 1 (มี.ค. 2566/25)"
+    },
+    {
+     "tag": "A-level 1 (มี.ค. 2567/9)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2558/10)"
+    },
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2561/21)"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "กฎลูกโซ่"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "อนุพันธ์ของฟังก์ชันแฝง"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) 4 อนุพันธ์ของฟังก์ชันประกอบ🍒.pdf",
+     "section": "แบบฝึกหัด 2.5"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 21
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 23
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 24
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 25
+    }
+   ],
+   "note": "Found in the ฟังก์ชัน folder; its set was built with that chapter (math_bank_functions.py)",
+   "covered_by": [
+    "math.derivative_chain_m5"
+   ]
+  },
+  {
+   "id": "math.derivative.inverse-product",
+   "kind": "procedure",
+   "title": "อนุพันธ์ของฟังก์ชันผกผัน และกฎผลคูณย้อนกลับในปริพันธ์",
+   "statement": "ถ้า g = f⁻¹ และ f(a) = b แล้ว g′(b) = 1/f′(a); ปริพันธ์ของ u′v + uv′ คือ uv ดังนั้น ∫ₐᵇ (2x f(x) + (x² − 1) f′(x)) dx = [(x² − 1) f(x)]ₐᵇ",
+   "steps": [
+    "หา a ที่ f(a) = b (แก้สมการ หรือเดาจำนวนเต็ม)",
+    "คำนวณ f′(a) แล้วกลับเศษส่วน",
+    "สำหรับปริพันธ์ ให้มองหาอนุพันธ์ของผลคูณ แล้วแทนขอบเขต"
+   ],
+   "prerequisites": [
+    "math.derivative.composite"
+   ],
+   "sources": [
+    {
+     "tag": "กสพท คณิต1 (มี.ค. 2562/21)"
+    },
+    {
+     "tag": "กสพท คณิต1 (ธ.ค. 2559/24)"
+    }
+   ],
+   "covered_by": [
+    "math.derivative_inverse_product_m6"
+   ]
+  },
+  {
+   "id": "math.derivative.rules",
+   "kind": "fact-list",
+   "title": "อัตราการเปลี่ยนแปลงและสูตรอนุพันธ์",
+   "statement": "อัตราการเปลี่ยนแปลงเฉลี่ย (f(b) − f(a))/(b − a); อนุพันธ์ f′(x) = lim (f(x + h) − f(x))/h; d/dx xⁿ = nxⁿ⁻¹, กฎผลคูณ ผลหาร และอนุพันธ์อันดับสูง; ความเร็ว = s′, ความเร่ง = s″",
+   "facts": {
+    "นิยาม": [
+     "เฉลี่ย (f(b) − f(a))/(b − a)",
+     "ขณะใด ๆ lim_{h→0}"
+    ],
+    "สูตร": [
+     "xⁿ → nxⁿ⁻¹",
+     "(uv)′ = u′v + uv′",
+     "(u/v)′ = (u′v − uv′)/v²"
+    ],
+    "การเคลื่อนที่": [
+     "v = s′",
+     "a = v′ = s″"
+    ]
+   },
+   "sources": [
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "อัตราการเปลี่ยนแปลงเฉลี่ย"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "อัตราการเปลี่ยนแปลงขณะใดๆ"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "อนุพันธ์ของฟังก์ชัน"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "อนุพันธ์อันดับสูง"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/🍰 แคลคูลัส 📝.pdf",
+     "section": "ระยะทาง ความเร็ว ความเร่ง"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) 3 อนุพันธ์ของฟังก์ชัน🍒.pdf",
+     "section": "แบบฝึกหัด 2.3"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) 3 อนุพันธ์ของฟังก์ชัน🍒.pdf",
+     "section": "แบบฝึกหัด 2.4"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) 6 อนุพันธ์อันดับสูง.pdf",
+     "section": "แบบฝึกหัด 2.7"
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 13
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 14
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 15
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 16
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 18
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 22
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 26
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 27
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 28
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 29
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 30
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 31
+    },
+    {
+     "sheet": "rathcenter/15 แคลคูลัส/(สสวท) ท้ายบท แคลคูลัส🍒.pdf",
+     "section": "แบบฝึกหัดท้ายบท",
+     "number": 32
+    }
+   ],
+   "covered_by": [
+    "math.derivative_poly",
+    "math.derivative_evaluate_point",
+    "math.derivative_negative_power",
+    "math.motion_derivative_m6",
+    "math.higher_order_derivative"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,107 @@
+"""สมดุลพลังงานของโลก
+
+ธรณีวิทยา · ม.5 · สสวท. เพิ่มเติม
+Indicators: โลก ดาราศาสตร์ และอวกาศเพิ่มเติม 2 ม.5/2
+
+Sets moved here from: science_wave_f78.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from random import Random
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import _labelled, numeric
+from otk.sets._support.science_wave_f78 import SUBJECT, UPPER_FIVE
+
+PROVENANCE = Provenance("original")
+
+
+TOPIC_BUDGET = "สมดุลพลังงานของโลก"
+
+
+BUDGET = (("สะท้อนกลับโดยเมฆและบรรยากาศ", 26), ("สะท้อนกลับโดยพื้นผิวโลก", 4), ("ดูดกลืนโดยบรรยากาศและเมฆ", 19),
+          ("ดูดกลืนโดยพื้นผิวโลก", 51))
+
+
+BUDGET_FACTS = (
+    ("สมดุลพลังงานของโลกหมายถึงข้อใด", "พลังงานที่โลกได้รับจากดวงอาทิตย์เท่ากับพลังงานที่โลกปล่อยออกสู่อวกาศโดยเฉลี่ย",
+     ("พลังงานที่โลกได้รับจากดวงอาทิตย์ถูกเก็บสะสมไว้ทั้งหมดโดยไม่ปล่อยออกเลย", "โลกปล่อยพลังงานออกมากกว่าที่ได้รับเสมอ", "พลังงานทั้งหมดถูกเก็บไว้ที่ขั้วโลก", "โลกปล่อยพลังงานออกสู่อวกาศมากกว่าที่ได้รับจากดวงอาทิตย์โดยเฉลี่ย")),
+    ("พื้นผิวโลกคายพลังงานออกในรูปใดเป็นหลัก", "รังสีอินฟราเรด", ("รังสีอัลตราไวโอเลต", "แสงที่ตามองเห็น", "รังสีเอกซ์", "รังสีแกมมา")),
+    ("ปรากฏการณ์เรือนกระจกเกิดจากอะไร", "แก๊สเรือนกระจกดูดกลืนรังสีอินฟราเรดจากพื้นผิวโลกแล้วแผ่กลับบางส่วน",
+     ("ชั้นโอโซนสะท้อนความร้อนกลับ", "แก๊สเรือนกระจกสะท้อนแสงอาทิตย์ออกไป ทำให้พื้นผิวโลกอุ่นขึ้น", "แสงอาทิตย์ถูกดูดกลืนทั้งหมดที่ชั้นบนสุด", "ชั้นโอโซนสะท้อนรังสีอินฟราเรดจากพื้นผิวโลกกลับลงมาทั้งหมด")),
+    ("นอกจากการแผ่รังสี พื้นผิวโลกถ่ายโอนความร้อนสู่บรรยากาศด้วยวิธีใดอีก", "การนำความร้อน การพาความร้อน และการระเหยของน้ำ (ความร้อนแฝง)",
+     ("การสะท้อนแสงเท่านั้น", "การหมุนรอบตัวเองของโลกที่เหวี่ยงความร้อนขึ้นไป", "การสะท้อนแสงอาทิตย์ออกจากพื้นผิวกลับไปสู่อวกาศเท่านั้น", "แรงโน้มถ่วงของดวงจันทร์")),
+)
+
+
+BUDGET_HINT = ("จากพลังงานแสงอาทิตย์ 100 หน่วย ถูกสะท้อนกลับประมาณ 30 หน่วย บรรยากาศและเมฆดูดกลืนประมาณ 19 หน่วย "
+               "พื้นผิวดูดกลืนประมาณ 51 หน่วย แล้วโลกคายพลังงานออกเป็นอินฟราเรดจนสมดุล")
+
+
+@question_type(
+    "geo.energy_balance_foundation",
+    display_name={"th": "สมดุลพลังงานและปรากฏการณ์เรือนกระจก"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_BUDGET,
+)
+class EnergyBalanceFoundation(QuestionType):
+    """What balance means, infrared, greenhouse gases."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        stem, right, wrongs = rng.choice(BUDGET_FACTS)
+        return _labelled(stem=stem, correct=right, wrongs=tuple(wrongs), topic=TOPIC_BUDGET, hint=BUDGET_HINT)
+
+
+@question_type(
+    "geo.energy_balance_fluency",
+    display_name={"th": "ผลของการเปลี่ยนแปลงต่อสมดุลพลังงาน"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_BUDGET,
+)
+class EnergyBalanceFluency(QuestionType):
+    """What each change does to the balance."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        cases = (("แก๊สเรือนกระจกในบรรยากาศเพิ่มขึ้น", "อุณหภูมิเฉลี่ยของโลกสูงขึ้น"), ("น้ำแข็งขั้วโลกละลายจนพื้นผิวสีเข้มเพิ่มขึ้น", "อุณหภูมิเฉลี่ยของโลกสูงขึ้น"),
+                 ("ภูเขาไฟปะทุพ่นละอองซัลเฟตสู่บรรยากาศชั้นสูงจำนวนมาก", "อุณหภูมิเฉลี่ยของโลกลดลง"),
+                 ("พื้นที่หิมะปกคลุมเพิ่มขึ้นมาก", "อุณหภูมิเฉลี่ยของโลกลดลง"),
+                 ("ตัดป่าแล้วเผาเพื่อทำการเกษตรในพื้นที่กว้าง", "อุณหภูมิเฉลี่ยของโลกสูงขึ้น"),
+                 ("ปริมาณแก๊สมีเทนจากนาข้าวและปศุสัตว์เพิ่มขึ้น", "อุณหภูมิเฉลี่ยของโลกสูงขึ้น"),
+                 ("หลังคาอาคารจำนวนมากทาสีขาวสะท้อนแสง", "อุณหภูมิเฉลี่ยของโลกลดลง"),
+                 ("ทะเลทรายขยายตัวแทนที่ป่าดิบชื้นที่มีสีเข้ม", "อุณหภูมิเฉลี่ยของโลกลดลง"))
+        change, effect = rng.choice(cases)
+        options = ("อุณหภูมิเฉลี่ยของโลกสูงขึ้น", "อุณหภูมิเฉลี่ยของโลกลดลง", "ไม่มีผลต่ออุณหภูมิเลย", "โลกหยุดรับพลังงานจากดวงอาทิตย์")
+        if rng.random() < 0.4:
+            up = rng.random() < 0.5
+            want = "อุณหภูมิเฉลี่ยของโลกสูงขึ้น" if up else "อุณหภูมิเฉลี่ยของโลกลดลง"
+            right = rng.choice([c for c, e in cases if e == want])
+            wrong = [c for c, e in cases if e != want]
+            return _labelled(stem=f"เหตุการณ์ใดทำให้{'อุณหภูมิเฉลี่ยของโลกสูงขึ้น' if up else 'อุณหภูมิเฉลี่ยของโลกลดลง'}", correct=right,
+                             wrongs=tuple(wrong), topic=TOPIC_BUDGET, hint=BUDGET_HINT)
+        return _labelled(stem=f"ถ้า{change} จะส่งผลต่อสมดุลพลังงานและอุณหภูมิของโลกอย่างไร", correct=effect,
+                         wrongs=tuple(o for o in options if o != effect)[:3], topic=TOPIC_BUDGET, hint=BUDGET_HINT)
+
+
+@question_type(
+    "geo.energy_balance_application",
+    display_name={"th": "คำนวณพลังงานในสมดุลพลังงานของโลก"},
+    level=UPPER_FIVE, subject=SUBJECT, topic=TOPIC_BUDGET,
+)
+class EnergyBalanceApplication(QuestionType):
+    """Out of 100 units: find the missing share, or scale to a real flux."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        if rng.random() < 0.5:
+            hidden = rng.randrange(len(BUDGET))
+            shown = " ".join(f"{n} {v} หน่วย" for i, (n, v) in enumerate(BUDGET) if i != hidden)
+            name, value = BUDGET[hidden]
+            return numeric(stem=f"จากพลังงานแสงอาทิตย์ 100 หน่วยที่มาถึงโลก: {shown} พลังงานที่{name}เป็นกี่หน่วย", answer=value,
+                           wrongs=[100 - value, value + 10, 30 if value != 30 else 20], unit="หน่วย", topic=TOPIC_BUDGET,
+                           hint="ผลรวมทุกส่วนต้องเท่ากับ 100 หน่วย")
+        flux = rng.choice((340, 342, 350, 400, 1000))
+        name, share = rng.choice(BUDGET + (("สะท้อนกลับทั้งหมด", 30),))
+        return numeric(stem=f"ถ้าพลังงานแสงอาทิตย์ที่มาถึงโลกเฉลี่ย {flux} W/m² และส่วนที่{name}คิดเป็นร้อยละ {share} ส่วนนี้เป็นกี่ W/m²",
+                       answer=Fraction(flux * share, 100), wrongs=[Fraction(flux * (100 - share), 100), share, flux - share], unit="W/m²",
+                       topic=TOPIC_BUDGET, hint="ค่า = พลังงานทั้งหมด × ร้อยละ ÷ 100")

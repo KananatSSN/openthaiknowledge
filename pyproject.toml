@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openthaiknowledge"
+version = "0.5.0"
+description = "Open Thai curriculum knowledge: seeded problem-set generators, knowledge units, and sheet-digestion tooling"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+dependencies = [
+    "pydantic>=2",          # the core domain (content blocks, question types)
+    "matplotlib>=3.7",      # pictures and worksheet PDFs
+    "pillow>=10",           # pictures are saved as quantised PNGs
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8",
+    "sympy>=1.12",          # the math_bank_* tests re-solve every answer independently
+    "pymupdf>=1.24",        # the sheet-pipeline tests read PDF text and render pages
+    "pytest-xdist>=3",      # CI runs the suite across the runner's cores (-n auto)
+]
+# scripts/curriculum_sources_to_md.py and scripts/curriculum_index.py: turn the
+# official curriculum PDFs into Markdown and an indicator index.
+curriculum-sources = [
+    "pymupdf>=1.24",
+    "fonttools>=4.40",
+    "pythainlp>=5",
+    "python-docx>=1",
+]
+
+[project.scripts]
+otk = "otk.cli:main"                                 # offline worksheet PDF
+otk-graph = "otk.tools.curriculum_graph:main"        # catalog graph -> HTML
+
+[tool.setuptools.packages.find]
+include = ["otk*"]
+
+[tool.setuptools.package-data]
+"otk.pictures" = ["*.png"]
+"otk.sheets" = ["*.json", "*/*.json", "*/*.md", "*/figures/*.png"]
+"otk.knowledge" = ["**/*.json"]
+"otk.tests" = ["*.json"]
+"otk.core" = ["*.txt"]
+
+[tool.pytest.ini_options]
+testpaths = ["otk/tests"]
+# `slow` marks the thousand-seed quality gates. They run nightly
+# (.github/workflows/nightly.yml); `pytest -m slow` runs them on demand.
+addopts = "--import-mode=importlib -m 'not slow'"
+markers = ["slow: thousand-seed sweeps, run nightly rather than on every push"]
+consider_namespace_packages = true
+norecursedirs = [".*", "build", "dist", "*.egg-info", "output", "data", "sheet_database"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+# pyflakes (unused imports/undefined names/…) + serious pycodestyle, not style nits.
+select = ["E4", "E7", "E9", "F"]
+ignore = [
+    "E731",   # assigning small lambdas is used intentionally
+    "E402",   # matplotlib.use("Agg") must run before importing pyplot
+]

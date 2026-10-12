@@ -1,0 +1,195 @@
+"""การเกิดสุริยุปราคาและจันทรุปราคา
+
+ดาราศาสตร์ · ป.6 · สสวท. พื้นฐาน
+Indicators: ว 3.1 ป.6/1
+
+Sets moved here from: science_wave_c4.
+"""
+
+from __future__ import annotations
+
+from random import Random
+from typing import NamedTuple
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.sets._support.science_wave_b9 import scenario_question
+from otk.sets._support.science_wave_b14 import _labelled
+from otk.sets._support.science_wave_b15 import _retopic
+from otk.sets._support.science_wave_b17 import PRIMARY_SIX
+from otk.sets._support.science_wave_c1 import SKY_TOPIC, SUBJECT
+from otk.sets._support.science_wave_c4 import ECLIPSE_SCENARIOS
+
+PROVENANCE = Provenance("original")
+
+
+SOLAR = "สุริยุปราคา"
+
+
+LUNAR = "จันทรุปราคา"
+
+
+ECLIPSE_MODEL = (
+    "ครูวางโคมไฟแทนดวงอาทิตย์ ลูกบอลใหญ่แทนโลก และลูกบอลเล็กแทนดวงจันทร์ "
+    "แล้วเลื่อนลูกบอลเล็กไปตามวงโคจรรอบลูกบอลใหญ่ จนกระทั่งทั้งสามเรียงอยู่ในแนวเดียวกัน "
+)
+
+
+class Eclipse(NamedTuple):
+    """One respect in which the two eclipses differ, with both sides named."""
+    aspect: str
+    solar: str
+    lunar: str
+    wrongs: tuple[str, str]
+
+
+ECLIPSES = (
+    Eclipse("ลำดับการเรียงตัว",
+            "ดวงจันทร์อยู่ระหว่างดวงอาทิตย์กับโลก",
+            "โลกอยู่ระหว่างดวงอาทิตย์กับดวงจันทร์",
+            ("ดวงอาทิตย์อยู่ระหว่างโลกกับดวงจันทร์ทั้งสองปรากฏการณ์",
+             "ทั้งสองปรากฏการณ์ไม่ต้องเรียงอยู่ในแนวเดียวกันก็เกิดได้")),
+    Eclipse("เงาที่ทาบลงบนอะไร",
+            "เงาของดวงจันทร์ทาบลงบนผิวโลก",
+            "เงาของโลกทาบลงบนดวงจันทร์",
+            ("เงาของดวงอาทิตย์ทาบลงบนโลกทั้งสองปรากฏการณ์",
+             "ไม่มีเงาเกี่ยวข้องเลยทั้งสองปรากฏการณ์")),
+    Eclipse("ช่วงเวลาที่มองเห็น",
+            "เห็นได้ในเวลากลางวัน",
+            "เห็นได้ในเวลากลางคืน",
+            ("เห็นได้ในเวลากลางวันทั้งสองปรากฏการณ์",
+             "เห็นได้ในเวลากลางคืนทั้งสองปรากฏการณ์")),
+    Eclipse("รูปร่างปรากฏของดวงจันทร์ในวันนั้น",
+            "ตรงกับวันจันทร์ดับ คือแรม 15 ค่ำ",
+            "ตรงกับวันจันทร์เต็มดวง คือขึ้น 15 ค่ำ",
+            ("ตรงกับวันขึ้น 8 ค่ำทั้งสองปรากฏการณ์",
+             "ไม่เกี่ยวกับรูปร่างปรากฏของดวงจันทร์เลย")),
+    Eclipse("บริเวณบนโลกที่มองเห็นได้",
+            "เห็นได้เฉพาะบริเวณแคบ ๆ ที่เงาของดวงจันทร์ทาบถึง",
+            "เห็นได้ทั่วทั้งซีกโลกที่เป็นกลางคืนในขณะนั้น",
+            ("เห็นได้ทั่วทั้งโลกพร้อมกันทั้งสองปรากฏการณ์",
+             "เห็นได้เฉพาะบริเวณแคบ ๆ ทั้งสองปรากฏการณ์")),
+)
+
+
+def _eclipse_pair(item: Eclipse) -> str:
+    return f"{SOLAR}: {item.solar} ส่วน{LUNAR}: {item.lunar}"
+
+
+def _eclipse_swapped(item: Eclipse) -> str:
+    return f"{SOLAR}: {item.lunar} ส่วน{LUNAR}: {item.solar}"
+
+
+# More statements that treat the two eclipses alike, one pair per aspect.
+MORE_ECLIPSE_WRONGS = {
+    "ลำดับการเรียงตัว": ("โลกอยู่ระหว่างดวงอาทิตย์กับดวงจันทร์ทั้งสองปรากฏการณ์",
+                        "ดวงจันทร์อยู่ระหว่างดวงอาทิตย์กับโลกทั้งสองปรากฏการณ์"),
+    "เงาที่ทาบลงบนอะไร": ("เงาของดวงจันทร์ทาบลงบนดวงอาทิตย์ทั้งสองปรากฏการณ์",
+                         "เงาของโลกทาบลงบนดวงอาทิตย์ทั้งสองปรากฏการณ์"),
+    "ช่วงเวลาที่มองเห็น": ("เห็นได้เฉพาะตอนรุ่งเช้าทั้งสองปรากฏการณ์",
+                          "เห็นได้ทั้งกลางวันและกลางคืนพร้อมกันทั้งสองปรากฏการณ์"),
+    "รูปร่างปรากฏของดวงจันทร์ในวันนั้น": ("ตรงกับวันจันทร์เต็มดวงทั้งสองปรากฏการณ์",
+                                         "ตรงกับวันจันทร์ดับทั้งสองปรากฏการณ์"),
+    "บริเวณบนโลกที่มองเห็นได้": ("เห็นได้เฉพาะที่ขั้วโลกทั้งสองปรากฏการณ์",
+                                "เห็นได้เฉพาะในซีกโลกที่เป็นกลางวันทั้งสองปรากฏการณ์"),
+}
+
+
+@question_type(
+    "astro.eclipse_foundation",
+    display_name={"th": "อธิบายการเกิดสุริยุปราคาและจันทรุปราคา"},
+    level=PRIMARY_SIX, subject=SUBJECT, topic=SKY_TOPIC,
+)
+class EclipseFoundation(QuestionType):
+    """Explain how each eclipse happens, inside the model the indicator names."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        if rng.random() < 0.5:
+            return _labelled(
+                stem=f"{ECLIPSE_MODEL}เมื่อลูกบอลเล็กมาอยู่ระหว่างโคมไฟกับลูกบอลใหญ่ "
+                     "และเงาของลูกบอลเล็กทาบลงบนลูกบอลใหญ่ "
+                     "แบบจำลองนี้อธิบายการเกิดปรากฏการณ์ใด และเกิดขึ้นได้อย่างไร",
+                correct=f"{SOLAR} เกิดเมื่อดวงจันทร์มาอยู่ระหว่างดวงอาทิตย์กับโลก "
+                        "แล้วเงาของดวงจันทร์ทาบลงบนผิวโลก",
+                wrongs=tuple((
+                    f"{LUNAR} เกิดเมื่อดวงจันทร์มาอยู่ระหว่างดวงอาทิตย์กับโลก "
+                    "แล้วเงาของดวงจันทร์ทาบลงบนผิวโลก",
+                    f"{SOLAR} เกิดเมื่อโลกมาอยู่ระหว่างดวงอาทิตย์กับดวงจันทร์ "
+                    "แล้วเงาของโลกทาบลงบนดวงจันทร์",
+                    f"{SOLAR} เกิดเมื่อดวงจันทร์เคลื่อนเข้าไปอยู่หลังดวงอาทิตย์จนมองไม่เห็น",
+                    f"{SOLAR} เกิดเมื่อเมฆหนาบังดวงอาทิตย์ทั้งท้องฟ้า",
+                    f"{SOLAR} เกิดเมื่อโลกหมุนหนีดวงอาทิตย์ในตอนกลางคืน",
+                    f"{SOLAR} เกิดเมื่อดวงจันทร์มาอยู่ระหว่างดวงอาทิตย์กับโลก "
+                    "แล้วเงาของโลกทาบลงบนดวงจันทร์",
+                    f"{SOLAR} เกิดเมื่อดวงอาทิตย์มาอยู่ระหว่างโลกกับดวงจันทร์ "
+                    "แล้วเงาของดวงจันทร์ทาบลงบนผิวโลก",
+                    f"{LUNAR} เกิดเมื่อโลกมาอยู่ระหว่างดวงอาทิตย์กับดวงจันทร์ "
+                    "แล้วเงาของโลกทาบลงบนดวงจันทร์",
+                )),
+                hint="ดูว่าในแบบจำลอง เงาของสิ่งใดทาบลงบนสิ่งใด",
+                topic=SKY_TOPIC,
+            )
+        return _labelled(
+            stem=f"{ECLIPSE_MODEL}เมื่อลูกบอลใหญ่มาอยู่ระหว่างโคมไฟกับลูกบอลเล็ก "
+                 "และเงาของลูกบอลใหญ่ทาบลงบนลูกบอลเล็ก "
+                 "แบบจำลองนี้อธิบายการเกิดปรากฏการณ์ใด และเกิดขึ้นได้อย่างไร",
+            correct=f"{LUNAR} เกิดเมื่อโลกมาอยู่ระหว่างดวงอาทิตย์กับดวงจันทร์ "
+                    "แล้วเงาของโลกทาบลงบนดวงจันทร์",
+            wrongs=tuple((
+                f"{SOLAR} เกิดเมื่อโลกมาอยู่ระหว่างดวงอาทิตย์กับดวงจันทร์ "
+                "แล้วเงาของโลกทาบลงบนดวงจันทร์",
+                f"{LUNAR} เกิดเมื่อดวงจันทร์มาอยู่ระหว่างดวงอาทิตย์กับโลก "
+                "แล้วเงาของดวงจันทร์ทาบลงบนผิวโลก",
+                f"{LUNAR} เกิดเมื่อดวงจันทร์หรี่แสงของตัวเองลงชั่วคราว",
+                f"{LUNAR} เกิดเมื่อดวงจันทร์เคลื่อนไปอยู่หลังดวงอาทิตย์",
+                f"{LUNAR} เกิดเมื่อเงาของดวงจันทร์ทาบลงบนโลก",
+                f"{LUNAR} เกิดเมื่อโลกมาอยู่ระหว่างดวงอาทิตย์กับดวงจันทร์ "
+                "แล้วเงาของดวงจันทร์ทาบลงบนผิวโลก",
+                f"{LUNAR} เกิดเมื่อดวงอาทิตย์มาอยู่ระหว่างโลกกับดวงจันทร์ "
+                "แล้วเงาของโลกทาบลงบนดวงจันทร์",
+                f"{SOLAR} เกิดเมื่อดวงจันทร์มาอยู่ระหว่างดวงอาทิตย์กับโลก "
+                "แล้วเงาของดวงจันทร์ทาบลงบนผิวโลก",
+            )),
+            hint="ดูว่าในแบบจำลอง เงาของสิ่งใดทาบลงบนสิ่งใด",
+            topic=SKY_TOPIC,
+        )
+
+
+@question_type(
+    "astro.eclipse_fluency",
+    display_name={"th": "เปรียบเทียบสุริยุปราคากับจันทรุปราคา"},
+    level=PRIMARY_SIX, subject=SUBJECT, topic=SKY_TOPIC,
+)
+class EclipseFluency(QuestionType):
+    """Set the two eclipses against each other — the indicator's second free verb.
+
+    ``เปรียบเทียบ`` puts this set at Fluency, and the indicator names two objects,
+    so every answer it accepts states both sides.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        item = rng.choice(ECLIPSES)
+        return _labelled(
+            stem=f"เมื่อเปรียบเทียบเรื่อง{item.aspect} {SOLAR}และ{LUNAR}ต่างกันอย่างไร",
+            correct=_eclipse_pair(item),
+            wrongs=(_eclipse_swapped(item),) + tuple(rng.sample(
+                item.wrongs + MORE_ECLIPSE_WRONGS[item.aspect], 2)),
+            hint="ตอบให้ครบทั้งสองปรากฏการณ์ แล้วตรวจว่าข้อความใดเป็นของปรากฏการณ์ใด",
+            topic=SKY_TOPIC,
+        )
+
+
+@question_type(
+    "astro.eclipse_application",
+    display_name={"th": "วิเคราะห์ปรากฏการณ์อุปราคา"},
+    level=PRIMARY_SIX, subject=SUBJECT, topic=SKY_TOPIC,
+)
+class EclipseApplication(QuestionType):
+    """Judge a viewing plan, a cloud explanation, and a model out of line."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _retopic(scenario_question(
+            rng, ECLIPSE_SCENARIOS,
+            hint="ถามว่าเงาของสิ่งใดทาบลงบนสิ่งใด และมองเห็นได้กว้างแค่ไหน",
+        ), SKY_TOPIC)

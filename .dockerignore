@@ -1,0 +1,9 @@
+.git
+.venv
+**/__pycache__
+**/node_modules
+explorer/build
+explorer/static/data
+explorer/.svelte-kit
+sheet_database
+docs

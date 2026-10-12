@@ -1,0 +1,139 @@
+"""แผนภาพวงจรไฟฟ้าแสดงการต่อตัวต้านทานแบบอนุกรมและขนาน
+
+ฟิสิกส์ · ม.3 · สสวท. พื้นฐาน
+Indicators: ว 2.3 ม.3/5
+
+Sets moved here from: science_wave_d32.
+"""
+
+from __future__ import annotations
+
+from fractions import Fraction
+from random import Random
+
+from otk.core.provenance import Provenance
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
+from otk.kit.answer_choices import numeric, show
+from otk.sets._support.science_wave_b9 import scenario_question
+from otk.sets._support.science_wave_b14 import _labelled
+from otk.sets._support.science_wave_b15 import _retopic
+from otk.sets._support.science_wave_d14 import SUBJECT
+from otk.sets._support.science_wave_d22 import _facts
+from otk.sets._support.science_wave_d32 import THIRD_SECONDARY
+
+PROVENANCE = Provenance("original")
+
+
+RESISTOR_DIAGRAM_TOPIC = "แผนภาพวงจรไฟฟ้าแสดงการต่อตัวต้านทานแบบอนุกรมและขนาน"
+
+
+RESISTOR_FACTS = (
+    ("แผนภาพวงจรไฟฟ้าที่มีตัวต้านทานต่อแบบอนุกรมมีลักษณะอย่างไร", "ตัวต้านทานต่อเรียงกันเป็นเส้นทางเดียว กระแสไฟฟ้าไหลผ่านตัวต้านทานทุกตัวเท่ากัน",
+     ("ตัวต้านทานต่อแยกกันหลายเส้นทาง กระแสไฟฟ้าแบ่งกันไหลในแต่ละเส้นทาง", "ตัวต้านทานทุกตัวต่อตรงกับขั้วเซลล์ไฟฟ้าโดยตรง ไม่ผ่านตัวต้านทานตัวอื่น",
+      "ตัวต้านทานแต่ละตัวมีความต่างศักย์คร่อมเท่ากับแหล่งจ่ายไฟ และกระแสไฟฟ้าแยกไหลหลายทาง", "ความต่างศักย์คร่อมทุกตัวเท่ากับแหล่งจ่ายไฟเสมอ", "ถอดตัวหนึ่งออกแล้วตัวอื่นยังมีกระแส")),
+    ("แผนภาพวงจรไฟฟ้าที่มีตัวต้านทานต่อแบบขนานมีลักษณะอย่างไร", "ตัวต้านทานแต่ละตัวอยู่คนละเส้นทาง ความต่างศักย์คร่อมทุกตัวเท่ากัน",
+     ("ตัวต้านทานเรียงกันเป็นเส้นทางเดียว", "ตัวต้านทานต่อกันเป็นวงรอบ ไม่มีจุดแยกของกระแสไฟฟ้าในวงจร", "ความต่างศักย์แบ่งกันตามค่าความต้านทาน",
+      "ความต้านทานรวมเท่ากับผลบวกของทุกตัว", "ตัวต้านทานแต่ละตัวอยู่คนละเส้นทาง กระแสไฟฟ้าผ่านทุกตัวเท่ากัน")),
+    ("เมื่อต่อตัวต้านทานเพิ่มแบบอนุกรม ความต้านทานรวมของวงจรเป็นอย่างไร", "มากขึ้น เท่ากับผลบวกของความต้านทานทุกตัว",
+     ("น้อยลง เท่ากับผลต่างของความต้านทานทุกตัว", "เท่าเดิม ไม่ขึ้นกับจำนวนตัวต้านทาน", "เท่ากับค่าของตัวต้านทานตัวที่มากที่สุด", "เท่ากับค่าของตัวต้านทานตัวที่น้อยที่สุด", "เป็นศูนย์")),
+    ("เมื่อต่อตัวต้านทานเพิ่มแบบขนาน ความต้านทานรวมของวงจรเป็นอย่างไร", "น้อยลง น้อยกว่าตัวที่น้อยที่สุด",
+     ("มากขึ้นเท่ากับผลบวก", "เท่าเดิม ไม่ขึ้นกับจำนวนตัวต้านทาน", "เท่ากับค่าของตัวต้านทานตัวที่มากที่สุด", "เพิ่มเป็นสองเท่า", "น้อยลง เท่ากับผลบวกหารด้วยจำนวนตัว")),
+)
+
+
+SERIES_CUES = ("ตัวต้านทานทุกตัวต่อกันเป็นเส้นทางเดียวไม่มีจุดแยก", "กระแสไฟฟ้าที่ไหลผ่านตัวต้านทานทุกตัวมีค่าเท่ากัน",
+               "ถอดตัวต้านทานตัวใดตัวหนึ่งออก กระแสไฟฟ้าหยุดไหลทั้งวงจร", "ความต่างศักย์คร่อมแต่ละตัวรวมกันเท่ากับความต่างศักย์ของแหล่งจ่ายไฟ")
+
+
+PARALLEL_CUES = ("ตัวต้านทานต่อกันโดยมีจุดแยกหลายเส้นทาง", "กระแสไฟฟ้ารวมแบ่งไหลผ่านตัวต้านทานแต่ละตัว",
+                 "ถอดตัวต้านทานตัวหนึ่งออก ตัวที่เหลือยังมีกระแสไฟฟ้าไหล", "ความต่างศักย์คร่อมตัวต้านทานทุกตัวเท่ากับความต่างศักย์ของแหล่งจ่ายไฟ")
+
+
+RESISTOR_DIAGRAM_SCENARIOS = (
+    ("เพื่อนวาดแผนภาพวงจรตัวต้านทาน 2 ตัวต่อแบบอนุกรม แต่ลากเส้นแยกเป็นสองเส้นทางจากขั้วเซลล์ไฟฟ้า ข้อใดแก้ไขได้ถูกต้อง",
+     "ต้องลากเส้นทางเดียวให้ตัวต้านทานทั้งสองต่อเรียงกัน ไม่แยกเป็นสองเส้นทาง",
+     ("ถูกต้องแล้ว เพราะอนุกรมหมายถึงแยกเส้นทาง", "ควรเพิ่มตัวต้านทานอีกตัวในแต่ละเส้นทาง เพื่อให้กลายเป็นวงจรอนุกรม", "ควรลบเส้นทางหนึ่งออก แล้วต่อตัวต้านทานทั้งสองขนานกันในเส้นทางที่เหลือ")),
+    ("วงจรไฟฟ้าหนึ่งต้องการให้ตัวต้านทานแต่ละตัวได้รับความต่างศักย์ไฟฟ้าเท่ากับแหล่งกำเนิดไฟฟ้าทั้งหมด ควรต่อแบบใด",
+     "ควรต่อแบบขนาน เพราะตัวต้านทานที่ต่อขนานแต่ละตัวได้รับความต่างศักย์ไฟฟ้าเท่ากับแหล่งกำเนิด",
+     ("ควรต่อแบบอนุกรม เพราะความต่างศักย์ไฟฟ้าแบ่งเท่า ๆ กันในแต่ละตัว", "ต่อแบบใดก็ได้เพราะความต่างศักย์ไฟฟ้าไม่เกี่ยวกับรูปแบบการต่อ", "ควรต่อแบบผสม เพราะความต่างศักย์ไฟฟ้าของแต่ละตัวจะเท่ากับแหล่งกำเนิดพอดี")),
+    ("แผนภาพวงจรหนึ่งแสดงตัวต้านทาน 3 ตัว โดย 2 ตัวต่อขนานกันแล้วต่ออนุกรมกับตัวที่ 3 กระแสไฟฟ้าที่ไหลผ่านตัวต้านทานตัวที่ 3 เป็นอย่างไรเมื่อเทียบกับกระแสรวม",
+     "เท่ากับกระแสไฟฟ้ารวมทั้งหมด เพราะตัวที่ 3 อยู่ในเส้นทางอนุกรมที่กระแสทั้งหมดต้องไหลผ่าน",
+     ("น้อยกว่ากระแสไฟฟ้ารวม เพราะมีการแบ่งกระแสก่อนถึงตัวที่ 3", "เป็นศูนย์ เพราะกระแสทั้งหมดแยกไปตัวที่ 1 และ 2 ก่อนถึงตัวที่ 3 ในวงจรนี้", "ไม่สามารถระบุได้ ต้องทราบค่าความต้านทานของทุกตัวในวงจรนี้ก่อน")),
+)
+
+
+PARALLEL_PAIRS = ((2, 2), (3, 6), (4, 4), (4, 12), (6, 6), (6, 12), (10, 10), (10, 15), (12, 24), (20, 20), (20, 30), (30, 60), (8, 8), (5, 20))
+
+
+@question_type(
+    "elec.resistor_diagram_foundation",
+    display_name={"th": "บอกลักษณะแผนภาพวงจรตัวต้านทานแบบอนุกรม"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=RESISTOR_DIAGRAM_TOPIC,
+)
+class ResistorDiagramFoundation(QuestionType):
+    """Series resistors sit in a single path; parallel resistors sit in separate branches."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        return _facts(rng, RESISTOR_FACTS, hint="อนุกรมคือเส้นทางเดียวต่อกันเป็นแถว ขนานคือแยกหลายเส้นทาง เช่นเดียวกับหลอดไฟฟ้า",
+                      topic=RESISTOR_DIAGRAM_TOPIC)
+
+
+@question_type(
+    "elec.resistor_diagram_fluency",
+    display_name={"th": "จำแนกการต่อตัวต้านทานแบบอนุกรมหรือขนานจากลักษณะกระแสไฟฟ้า"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=RESISTOR_DIAGRAM_TOPIC,
+)
+class ResistorDiagramFluency(QuestionType):
+    """Two clues about a circuit; series or parallel."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        series = rng.random() < 0.5
+        count = rng.randint(2, 5)
+        clues = rng.sample(SERIES_CUES if series else PARALLEL_CUES, 2)
+        correct = ("แบบอนุกรม เพราะมีเส้นทางเดียวและกระแสไฟฟ้าไหลผ่านทุกตัวเท่ากัน" if series
+                   else "แบบขนาน เพราะมีหลายเส้นทางและกระแสไฟฟ้าแบ่งกันไหลในแต่ละเส้นทาง")
+        return _labelled(
+            stem=f"วงจรไฟฟ้าหนึ่งมีตัวต้านทาน {count} ตัว {clues[0]} และ{clues[1]} จากข้อมูลนี้ วงจรนี้ต่อตัวต้านทานแบบใด",
+            correct=correct,
+            wrongs=("แบบผสม เพราะมีทั้งส่วนที่เป็นเส้นทางเดียวและส่วนที่แยกหลายเส้นทาง", "ไม่สามารถระบุได้ ต้องทราบค่าความต้านทานของทุกตัวก่อน",
+                    "แบบขนาน เพราะมีเส้นทางเดียวและกระแสไฟฟ้าไหลผ่านทุกตัวเท่ากัน" if series
+                    else "แบบอนุกรม เพราะมีหลายเส้นทางและกระแสไฟฟ้าแบ่งกันไหลในแต่ละเส้นทาง"),
+            hint="เส้นทางเดียวกับกระแสเท่ากันคืออนุกรม หลายเส้นทางกับความต่างศักย์เท่ากันคือขนาน",
+            topic=RESISTOR_DIAGRAM_TOPIC,
+        )
+
+
+@question_type(
+    "elec.resistor_diagram_application",
+    display_name={"th": "ตรวจสอบและแก้ไขแผนภาพวงจรตัวต้านทานแบบอนุกรมและขนาน"},
+    level=THIRD_SECONDARY, subject=SUBJECT, topic=RESISTOR_DIAGRAM_TOPIC,
+)
+class ResistorDiagramApplication(QuestionType):
+    """Authored corrections, and total resistance and current from a described diagram."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        roll = rng.random()
+        if roll < 0.25:
+            return _retopic(scenario_question(
+                rng, RESISTOR_DIAGRAM_SCENARIOS,
+                hint="อนุกรม: เส้นทางเดียว กระแสเท่ากันทุกตัว ขนาน: หลายเส้นทาง ความต่างศักย์เท่ากันทุกตัว",
+            ), RESISTOR_DIAGRAM_TOPIC)
+        if roll < 0.6:
+            values = [rng.choice((2, 3, 4, 5, 6, 8, 10, 12, 15, 20)) for _ in range(rng.randint(2, 4))]
+            total = sum(values)
+            volts = total * rng.choice((Fraction(1, 2), 1, 2))
+            listing = " ".join(f"{v} Ω" for v in values)
+            if rng.random() < 0.5:
+                return numeric(stem=f"แผนภาพวงจรแสดงตัวต้านทาน {listing} ต่อแบบอนุกรมกับแหล่งจ่ายไฟ ความต้านทานรวมเป็นกี่โอห์ม (R รวม = R₁ + R₂ + …)",
+                               answer=total, wrongs=[max(values), total * 2, total - min(values)], unit="โอห์ม", topic=RESISTOR_DIAGRAM_TOPIC,
+                               hint="ต่ออนุกรม ความต้านทานรวมเท่ากับผลบวกของทุกตัว")
+            return numeric(stem=f"แผนภาพวงจรแสดงตัวต้านทาน {listing} ต่อแบบอนุกรมกับแหล่งจ่ายไฟ {show(volts)} V กระแสไฟฟ้าในวงจรเป็นกี่แอมแปร์",
+                           answer=volts / total, wrongs=[volts / max(values), volts * total if (volts * total * 100).denominator == 1 else volts, volts / total * 2],
+                           unit="A", topic=RESISTOR_DIAGRAM_TOPIC, hint="หาความต้านทานรวมก่อน แล้ว I = V ÷ R รวม")
+        r1, r2 = rng.choice(PARALLEL_PAIRS)
+        total = Fraction(r1 * r2, r1 + r2)
+        return numeric(stem=f"แผนภาพวงจรแสดงตัวต้านทาน {r1} Ω และ {r2} Ω ต่อแบบขนานกัน ความต้านทานรวมเป็นกี่โอห์ม "
+                            f"(R รวม = R₁ × R₂ ÷ (R₁ + R₂) สำหรับสองตัว)",
+                       answer=total, wrongs=[r1 + r2, Fraction(r1 + r2, 2), min(r1, r2)], unit="โอห์ม", topic=RESISTOR_DIAGRAM_TOPIC,
+                       hint="ต่อขนาน ความต้านทานรวมน้อยกว่าตัวที่น้อยที่สุด")

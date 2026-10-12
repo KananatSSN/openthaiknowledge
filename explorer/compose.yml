@@ -1,0 +1,24 @@
+# The explorer on its own, separate from TutorRank. It listens on this machine
+# only (port 8090); a Cloudflare Tunnel publishes it. See explorer/README.md.
+name: otk-explorer
+
+services:
+  explorer:
+    build:
+      context: ..
+      dockerfile: explorer/Dockerfile
+    image: otk-explorer
+    ports:
+      - "127.0.0.1:${EXPLORER_PORT:-8090}:80"
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/"]
+      interval: 1m
+      timeout: 3s
+      retries: 3
