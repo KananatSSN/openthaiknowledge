@@ -1707,11 +1707,29 @@ def test_magnitude_runs_backwards_and_five_steps_is_a_hundred():
 
 
 def test_the_brightest_star_answer_is_the_smallest_magnitude():
-    looks = min(STARS, key=lambda star: star.apparent).name
-    truly = min(STARS, key=lambda star: star.absolute).name
+    import re
     for seed in range(SEEDS):
         question = generate("astro.star_luminosity_fluency", Random(seed))
         stem, answer = _stem(question), _texts(question)[question.answer]
+        if m := re.search(r"โชติมาตรต่างกัน (\d) ดวง", stem):
+            ratio = 2.512 ** int(m.group(1))
+            got = float(answer.split()[1])
+            assert abs(got - ratio) / ratio < 0.05, (stem, answer)
+            continue
+        rows = re.findall(r"(ดาว \S) : ?โชติมาตรปรากฏ (-?[\d.]+) โชติมาตรสัมบูรณ์ (-?[\d.]+)",
+                          stem.replace(": ", " : "))
+        if not rows:
+            continue
+        assert len(rows) == 4, stem
+        looks = min(rows, key=lambda r: float(r[1]))[0]
+        truly = min(rows, key=lambda r: float(r[2]))[0]
+        assert looks != truly
+        if "ปรากฏสว่างที่สุดเมื่อมองจากโลก" in stem:
+            assert answer == looks, (seed, answer)
+        elif "ความส่องสว่างที่แท้จริงมากที่สุด" in stem:
+            assert answer == truly, (seed, answer)
+        else:
+            assert f"“{looks}”" in stem, stem
         if "ปรากฏสว่างที่สุดเมื่อมองจากโลก" in stem:
             assert answer == looks, (seed, answer)
         elif "ความส่องสว่างที่แท้จริงมากที่สุด" in stem:

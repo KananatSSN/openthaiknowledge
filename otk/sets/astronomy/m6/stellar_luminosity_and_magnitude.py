@@ -49,6 +49,24 @@ STARS = (
 
 FIVE_STEPS = 100
 
+# Brightness ratio for a magnitude difference of 1 to 5: 2.512 to that power,
+# rounded as textbooks give it.
+RATIOS = {1: "2.5", 2: "6.3", 3: "16", 4: "40", 5: "100"}
+
+
+def star_table(rng: Random) -> tuple[Star, ...]:
+    """Four stars with distinct magnitudes, where the star that looks brightest
+    is not the most luminous, so the two readings never share an answer."""
+    names = ("ดาว ก", "ดาว ข", "ดาว ค", "ดาว ง")
+    while True:
+        apparent = rng.sample(range(-20, 60), 4)
+        absolute = rng.sample(range(-60, 60), 4)
+        stars = tuple(Star(n, a / 10, b / 10) for n, a, b in zip(names, apparent, absolute))
+        looks = min(stars, key=lambda star: star.apparent)
+        truly = min(stars, key=lambda star: star.absolute)
+        if looks is not truly:
+            return stars
+
 
 EQUAL_BRIGHTNESS = "ทุกดวงสว่างเท่ากัน"
 
@@ -122,6 +140,7 @@ class StarLuminosityFluency(QuestionType):
     """
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
+        STARS = star_table(rng)  # noqa: N806  (a fresh table each draw)
         table = " / ".join(
             f"{star.name}: โชติมาตรปรากฏ {star.apparent} "
             f"โชติมาตรสัมบูรณ์ {star.absolute}" for star in STARS)
@@ -149,13 +168,19 @@ class StarLuminosityFluency(QuestionType):
                 topic=LUMINOSITY_TOPIC,
             )
         if draw < 0.75:
+            step = rng.randint(1, 5)
             return _labelled_science_wave_c7(
-                stem="ดาวฤกษ์สองดวงมีโชติมาตรต่างกัน 5 "
-                     "ดวงที่โชติมาตรน้อยกว่าสว่างกว่าอีกดวงกี่เท่า",
-                correct=f"ประมาณ {FIVE_STEPS} เท่า",
-                wrongs=tuple(("ประมาณ 5 เท่า", "ประมาณ 10 เท่า", "ประมาณ 25 เท่า",
-                                         "ประมาณ 2.5 เท่า", "ประมาณ 500 เท่า", "ประมาณ 1,000 เท่า")),
-                hint="โชติมาตรต่างกัน 5 หมายถึงความสว่างต่างกันหนึ่งร้อยเท่าตามนิยาม",
+                stem=f"ดาวฤกษ์สองดวงมีโชติมาตรต่างกัน {step} "
+                     "ดวงที่โชติมาตรน้อยกว่าสว่างกว่าอีกดวงกี่เท่า (โชติมาตรต่างกัน 1 สว่างต่างกันประมาณ 2.5 เท่า)",
+                correct=f"ประมาณ {RATIOS[step]} เท่า",
+                # 2.5 added once per step instead of multiplied, the step itself,
+                # and the ratios of the other steps.
+                wrongs=tuple(dict.fromkeys(
+                    w for w in (f"ประมาณ {2.5 * step:g} เท่า", f"ประมาณ {step} เท่า",
+                                *(f"ประมาณ {RATIOS[k]} เท่า" for k in RATIOS if k != step))
+                    if w != f"ประมาณ {RATIOS[step]} เท่า")),
+                hint="ความสว่างคูณกันทีละขั้น: ต่างกัน 1 ประมาณ 2.5 เท่า ต่างกัน 2 ประมาณ 2.5 × 2.5 เท่า "
+                     "และต่างกัน 5 คือ 100 เท่าพอดีตามนิยาม",
                 topic=LUMINOSITY_TOPIC,
             )
         star = min(STARS, key=lambda one: one.apparent)
