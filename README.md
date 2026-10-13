@@ -142,7 +142,7 @@ python -m otk.tools.sets_index                              # refresh otk/sets/I
 ## Use
 
 ```bash
-pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.8.0"
+pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.9.0"
 ```
 
 ```python

@@ -138,3 +138,13 @@ class MoleculePolarityApplication(QuestionType):
             topic=TOPIC_POLARITY,
             hint="ดูก่อนว่าโมเลกุลประกอบด้วยอะตอมชนิดเดียวกันหรือต่างชนิดกัน",
         )
+
+
+# More rows: the set drew from four or five, so a learner met them all in a
+# few tries. Every added row asks something the others do not.
+POLARITY_RULES += (
+    ('โมเลกุลไนโตรเจน (N≡N) มีสภาพขั้วเป็นอย่างไร', NONPOLAR),
+    ('โมเลกุลไฮโดรเจนฟลูออไรด์ (H-F) มีสภาพขั้วเป็นอย่างไร', POLAR),
+    ('โมเลกุลคลอรีน (Cl-Cl) มีสภาพขั้วเป็นอย่างไร', NONPOLAR),
+    ('โมเลกุลคาร์บอนมอนอกไซด์ (C≡O) มีสภาพขั้วเป็นอย่างไร', POLAR),
+)
