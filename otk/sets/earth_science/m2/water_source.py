@@ -94,6 +94,19 @@ class WaterSourceFluency(QuestionType):
     """Explain both sources from the model together; each wrong choice gets one wrong."""
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
+        if rng.random() < 0.5:
+            # One source on its own, against its misreadings and the other source's account.
+            surface = rng.random() < 0.5
+            name, true, falses, other = ((SURFACE, SURFACE_TRUE, SURFACE_FALSES, GROUND_TRUE) if surface
+                                         else (GROUND, GROUND_TRUE, GROUND_FALSES, SURFACE_TRUE))
+            seen = "มีน้ำขังในแอ่งด้านบน" if surface else "มีน้ำสะสมอยู่เหนือชั้นดินเหนียว"
+            return _labelled(
+                stem=f"{WATER_MODEL} พบว่า{seen} ข้อใดอธิบายการเกิด{name}จากแบบจำลองนี้ได้ถูกต้อง",
+                correct=true,
+                wrongs=(*falses, other),
+                hint="ดูว่าน้ำฝนส่วนนี้ไหลไปบนผิวดินหรือซึมลงไปในดิน และสุดท้ายไปถูกกักไว้ที่ใด",
+                topic=WATER_SOURCE_TOPIC,
+            )
         return _labelled(
             stem=f"{WATER_MODEL} พบว่ามีน้ำขังในแอ่งด้านบน และมีน้ำสะสมอยู่เหนือชั้นดินเหนียว "
                  "ข้อใดอธิบายปัจจัยและกระบวนการเกิดแหล่งน้ำผิวดินและแหล่งน้ำใต้ดินจากแบบจำลองนี้ได้ถูกต้อง",

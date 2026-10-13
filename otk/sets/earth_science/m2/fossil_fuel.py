@@ -123,6 +123,25 @@ class FossilFuelFluency(QuestionType):
     """Compare all three fuels on all three aspects; each wrong choice swaps one aspect."""
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
+        if rng.random() < 0.5:
+            # One fuel: each wrong borrows one aspect from another fuel.
+            fuel = rng.choice(FUELS)
+            others = [f for f in FUELS if f is not fuel]
+
+            def one(row: dict[str, str]) -> str:
+                return f"การเกิด: {row['forms']}; สมบัติ: {row['property']}; การใช้ประโยชน์: {row['use']}"
+
+            own = {aspect: getattr(fuel, aspect) for aspect in ASPECTS}
+            wrongs = [one({**own, aspect: getattr(other, aspect)})
+                      for aspect in ASPECTS for other in others
+                      if getattr(other, aspect) != own[aspect]]
+            return _labelled(
+                stem=f"ข้อใดบอกการเกิด สมบัติ และการใช้ประโยชน์ของ{fuel.name}ได้ถูกต้องทั้งหมด",
+                correct=one(own),
+                wrongs=tuple(rng.sample(wrongs, min(5, len(wrongs)))),
+                hint="ตรวจทีละส่วน: เกิดจากซากพืชหรือสิ่งมีชีวิตในทะเล อยู่ในสถานะใด และนำไปใช้ทำอะไร",
+                topic=FUEL_TOPIC,
+            )
         names = [fuel.name for fuel in FUELS]
         table = {aspect: [getattr(fuel, aspect) for fuel in FUELS] for aspect in ASPECTS}
         # Any aspect with any pair of fuels swapped: nine wrong tables, three drawn.

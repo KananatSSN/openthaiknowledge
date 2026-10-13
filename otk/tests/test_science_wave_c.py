@@ -77,6 +77,9 @@ from otk.sets.earth_science.m6.pressure_circulation import PRESSURE_CHAIN, press
 from otk.sets._support.science_wave_c24 import SOLAR_FACTORS
 from otk.sets._support.science_wave_c23 import CASES as HAZARD_CASES
 from otk.sets._support.science_wave_c23 import EXPLANATIONS as HAZARD_EXPLANATIONS
+from otk.sets._support.science_wave_c23 import MORE_FALSES as HAZARD_MORE_FALSES
+from otk.sets._support.science_wave_c23 import MORE_PLAN_LINES as HAZARD_MORE_PLAN_LINES
+from otk.sets._support.science_wave_c23 import MORE_TRUES as HAZARD_MORE_TRUES
 from otk.sets._support.science_wave_c23 import PLANS as HAZARD_PLANS
 from otk.sets.earth_science.m6.plate_boundary import BOUNDARIES, MORE_MOTIONS
 from otk.sets.earth_science.m6.earth_layers import PHYSICAL_LAYERS
@@ -1084,6 +1087,15 @@ def test_the_fuel_comparison_states_all_nine_and_wrongs_swap_one_aspect():
     for seed in range(SEEDS):
         question = generate("geo.fossil_fuel_fluency", Random(seed))
         answer = _texts(question)[question.answer]
+        if "ทั้งหมด" in _stem(question) and "ของ" in _stem(question) and " — " not in answer:
+            # One fuel: its own three aspects; every wrong borrows one from another fuel.
+            fuel = next(f for f in FUELS if f"ของ{f.name}ได้" in _stem(question))
+            assert answer == f"การเกิด: {fuel.forms}; สมบัติ: {fuel.property}; การใช้ประโยชน์: {fuel.use}"
+            for wrong in _texts(question):
+                if wrong != answer:
+                    own = sum(aspect in wrong for aspect in (fuel.forms, fuel.property, fuel.use))
+                    assert own == 2, wrong
+            continue
         for fuel in FUELS:
             assert (f"{fuel.name} — การเกิด: {fuel.forms}; สมบัติ: {fuel.property}; "
                     f"การใช้ประโยชน์: {fuel.use}") in answer
@@ -1189,6 +1201,11 @@ def test_every_water_source_answer_explains_both_sources_correctly():
     for seed in range(SEEDS):
         question = generate("geo.water_source_fluency", Random(seed))
         answer = _texts(question)[question.answer]
+        if "ได้ถูกต้อง" in _stem(question) and "ปัจจัยและกระบวนการ" not in _stem(question):
+            # One source: its true account, never the other's.
+            surface = "แหล่งน้ำผิวดินจาก" in _stem(question)
+            assert answer == (SURFACE_TRUE if surface else GROUND_TRUE)
+            continue
         assert SURFACE_TRUE in answer and GROUND_TRUE in answer
         for wrong in _texts(question):
             if wrong != answer:
@@ -1280,12 +1297,22 @@ def test_every_hazard_explanation_states_each_part_and_wrongs_falsify_one():
         for seed in range(SEEDS):
             question = generate(prefix + "_fluency", Random(seed))
             answer = _texts(question)[question.answer]
-            assert answer == " / ".join(f"{p.label}: {p.true}" for p in parts)
+            trues = {p.label: (p.true, *HAZARD_MORE_TRUES[hazard, p.label]) for p in parts}
+            falses = {p.label: (p.false, *HAZARD_MORE_FALSES[hazard, p.label]) for p in parts}
+            if "ทั้งหมด" not in _stem(question):
+                # One part: one of its true readings against its false ones.
+                part = next(p for p in parts if f"อธิบาย{p.label}ของ" in _stem(question))
+                assert answer in trues[part.label]
+                assert {t for t in _texts(question) if t != answer} <= set(falses[part.label])
+                continue
+            chunks = dict(chunk.split(": ", 1) for chunk in answer.split(" / "))
+            assert all(chunks[p.label] in trues[p.label] for p in parts), answer
             for wrong in _texts(question):
                 if wrong != answer:
                     # One authored slip, or two when the convergence breaker
                     # combines them (so the answer is not the choice all agree on).
-                    falsified = [p for p in parts if f"{p.label}: {p.true}" not in wrong]
+                    got = dict(chunk.split(": ", 1) for chunk in wrong.split(" / "))
+                    falsified = [p for p in parts if got[p.label] in falses[p.label]]
                     assert 1 <= len(falsified) <= 2, (hazard, seed, wrong)
 
 
@@ -1299,10 +1326,29 @@ def test_every_hazard_plan_fits_its_own_hazard_in_both_halves():
             question = generate(prefix + "_foundation", Random(seed))
             stem, answer = _stem(question), _texts(question)[question.answer]
             assert any(case in stem for case in HAZARD_CASES[hazard])
-            assert plan.monitor in answer and plan.conduct in answer
+            monitors = (plan.monitor, HAZARD_MORE_PLAN_LINES[hazard][0])
+            conducts = (plan.conduct, HAZARD_MORE_PLAN_LINES[hazard][1])
+            assert any(m in answer for m in monitors) and any(c in answer for c in conducts)
             for wrong in _texts(question):
                 if wrong != answer:
-                    assert not (plan.monitor in wrong and plan.conduct in wrong)
+                    assert not (any(m in wrong for m in monitors) and any(c in wrong for c in conducts))
+
+
+def _one_part_ok(question, parts) -> bool:
+    """parts_item's one-part mode: the stem names one part, the answer is its
+    true reading and every wrong one of its own false readings."""
+    from otk.sets._support.science_wave_c24 import MORE_PART_FALSES
+    stem = _stem(question)
+    if "เฉพาะเรื่อง “" not in stem:
+        return False
+    label = stem.split("เฉพาะเรื่อง “")[1].split("”")[0]
+    part = next(p for p in parts if p.label == label)
+    texts = _texts(question)
+    falses = {part.false, *MORE_PART_FALSES.get(part.false, ())}
+    assert len(falses) >= 3, label
+    assert texts[question.answer] == part.true, (label, texts)
+    assert {t for t in texts if t != part.true} <= falses, (label, texts)
+    return True
 
 
 def _parts_line(parts, false_index=None):
@@ -1340,6 +1386,8 @@ def test_the_solar_factor_explanation_states_all_four_and_wrongs_falsify_one():
     assert all(part.true != part.false for part in SOLAR_FACTORS)
     for seed in range(SEEDS):
         question = generate("geo.solar_energy_fluency", Random(seed))
+        if _one_part_ok(question, SOLAR_FACTORS):
+            continue
         texts = _texts(question)
         assert texts[question.answer] == _parts_line(SOLAR_FACTORS)
         wrongs = _slip_lines(SOLAR_FACTORS)
@@ -1426,6 +1474,8 @@ def test_parts_answers_span_every_part_and_wrongs_falsify_exactly_one():
         for seed in range(SEEDS):
             question = generate(key, Random(seed))
             parts = parts_for(_stem(question))
+            if _one_part_ok(question, parts):
+                continue
             texts = _texts(question)
             assert texts[question.answer] == _parts_line(parts)
             for wrong in texts:
@@ -1456,6 +1506,8 @@ def test_climate_factor_answers_are_true_throughout_and_wrongs_falsify_one():
     by_label = {part.label: part for part in CLIMATE_FACTORS}
     for seed in range(SEEDS):
         question = generate("geo.climate_factors_fluency", Random(seed))
+        if _one_part_ok(question, CLIMATE_FACTORS):
+            continue
         answer = _texts(question)[question.answer]
         labels = [chunk.split(": ", 1)[0] for chunk in answer.split(" / ")]
         assert len(labels) == 4
