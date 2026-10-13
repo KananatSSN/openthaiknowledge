@@ -48,6 +48,16 @@ MIXES = (
 )
 
 
+MIXES += (
+    Mix(first='เส้นใยมะพร้าว', first_alone='เป็นเส้นแข็ง ไม่เกาะกัน',
+        second='ยางพารา', second_alone='เหนียว ยืดได้',
+        after='เป็นแผ่นนุ่ม ยืดหยุ่น คืนรูปได้เมื่อถูกกด'),
+    Mix(first='ผงสีโปสเตอร์', first_alone='เป็นผงแห้ง ทาติดกระดาษไม่ได้',
+        second='น้ำ', second_alone='เป็นของเหลวใส ไม่มีสี',
+        after='เป็นของเหลวข้นมีสี ทาติดกระดาษได้'),
+)
+
+
 def _mixed(mix: Mix, after: str) -> str:
     return f"วัสดุที่ได้{after} ซึ่งต่างจาก{mix.first}ที่{mix.first_alone}"
 

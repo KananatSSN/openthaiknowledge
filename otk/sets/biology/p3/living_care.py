@@ -104,3 +104,15 @@ class LivingCareApplication(QuestionType):
             rng, LIVING_CARE_SCENARIOS,
             hint="ตรวจว่าคำแนะนำนั้นทำให้ได้รับอาหาร น้ำ และอากาศพอเหมาะจริงหรือไม่",
         ), ANIMAL_TOPIC)
+
+
+# More practices, each with its own reason and the one situation it answers,
+# so every practice still answers exactly one situation.
+LIVING_CARE += (
+    Care('จัดที่ร่มให้สัตว์เลี้ยงที่อยู่นอกบ้าน',
+         'แดดจัดทำให้สัตว์ร้อนเกินไปและขาดน้ำได้ง่าย ที่ร่มช่วยให้สัตว์หลบความร้อนได้'),
+)
+LIVING_CARE_NEEDS += (
+    Need('สุนัขที่ผูกไว้หน้าบ้านต้องตากแดดทั้งวันเพราะไม่มีที่ให้หลบ ควรทำอย่างไร',
+         'จัดที่ร่มให้สัตว์เลี้ยงที่อยู่นอกบ้าน'),
+)

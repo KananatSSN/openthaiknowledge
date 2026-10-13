@@ -123,3 +123,19 @@ class BodyCareApplication(QuestionType):
             stem=question.stem, correct=question.correct,
             distractors=question.distractors, topic=LIFE_TOPIC, hint=question.hint,
         )
+
+
+# More practices, each with its own reason and the one situation it answers,
+# so every practice still answers exactly one situation.
+BODY_CARE += (
+    Care('อาบน้ำทำความสะอาดร่างกายทุกวัน',
+         'เหงื่อและฝุ่นที่ติดผิวหนังทำให้เกิดกลิ่นและผื่นคัน การอาบน้ำช่วยให้ผิวสะอาด'),
+    Care('สวมหมวกหรือกางร่มเมื่อออกไปกลางแดดจัด',
+         'แสงแดดที่แรงจัดทำให้ผิวหนังแดงแสบ และทำให้ตาพร่ามัว'),
+)
+BODY_CARE_NEEDS += (
+    Need('นักเรียนเล่นฟุตบอลจนเหงื่อออกทั้งตัวและเปื้อนฝุ่น แล้วจะเข้านอนทันที ควรทำอย่างไร',
+         'อาบน้ำทำความสะอาดร่างกายทุกวัน'),
+    Need('นักเรียนต้องเดินกลับบ้านตอนเที่ยงวันที่แดดร้อนจัด ควรทำอย่างไร',
+         'สวมหมวกหรือกางร่มเมื่อออกไปกลางแดดจัด'),
+)

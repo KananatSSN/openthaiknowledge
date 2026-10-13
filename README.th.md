@@ -125,7 +125,7 @@ python -m otk.tools.sets_index                              # อัปเดต
 ## การใช้งาน
 
 ```bash
-pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.10.0"
+pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.11.0"
 ```
 
 ```python

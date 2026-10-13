@@ -114,3 +114,15 @@ class DigestiveCareApplication(QuestionType):
             hint="อธิบายด้วยกลไกจริง เช่น น้ำย่อย พื้นที่ให้น้ำย่อยทำงาน "
                  "หรือการดูดน้ำกลับที่ลำไส้ใหญ่",
         ), BODY_TOPIC)
+
+
+# More practices, each with its own reason and the one situation it answers,
+# so every practice still answers exactly one situation.
+DIGESTIVE_CARE += (
+    Care('ไม่ออกกำลังกายหนักทันทีหลังกินอาหารอิ่ม',
+         'หลังกินอาหาร ระบบย่อยอาหารกำลังทำงาน การออกแรงหนักทันทีทำให้ย่อยได้ไม่ดีและจุกเสียด'),
+)
+DIGESTIVE_NEEDS += (
+    Need('นักเรียนกินข้าวกลางวันจนอิ่มแล้ววิ่งเล่นฟุตบอลทันที จึงจุกเสียดท้องบ่อย ควรปฏิบัติตามแนวทางใด',
+         'ไม่ออกกำลังกายหนักทันทีหลังกินอาหารอิ่ม'),
+)

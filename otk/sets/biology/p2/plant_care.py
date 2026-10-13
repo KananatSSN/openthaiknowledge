@@ -106,3 +106,15 @@ class PlantCareApplication(QuestionType):
             hint="ถามว่าต้นไม้ต้นนั้นได้รับน้ำและแสงพอเหมาะหรือไม่ "
                  "และมีอะไรมาแย่งไปหรือเปล่า",
         ), PLANT_TOPIC)
+
+
+# More practices, each with its own reason and the one situation it answers,
+# so every practice still answers exactly one situation.
+PLANT_CARE += (
+    Care('เช็ดฝุ่นที่เกาะบนใบออกเป็นครั้งคราว',
+         'ฝุ่นที่เกาะหนาบังแสงไม่ให้ถึงใบ ใบจึงสร้างอาหารได้น้อยลง'),
+)
+PLANT_CARE_NEEDS += (
+    Need('ต้นไม้ที่วางไว้ในห้องมีฝุ่นเกาะหนาจนใบเป็นสีเทา ควรทำอย่างไร',
+         'เช็ดฝุ่นที่เกาะบนใบออกเป็นครั้งคราว'),
+)
