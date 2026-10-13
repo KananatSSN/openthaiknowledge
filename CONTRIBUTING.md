@@ -36,6 +36,9 @@ cd openthaiknowledge
 uv venv --python 3.12 && uv pip install --python .venv -e ".[test]" ruff
 ```
 
+On Windows, set `PYTHONUTF8=1` (for example `setx PYTHONUTF8 1`, then open a
+new terminal) so Python can print Thai.
+
 Run your agent (Claude Code, Codex, or any agent that reads `AGENTS.md`)
 from the repository root. It finds the rules in `AGENTS.md` and the
 procedures in `.agents/skills/`.

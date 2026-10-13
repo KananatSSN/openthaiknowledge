@@ -28,14 +28,27 @@ problem sets. Do the steps in order. After each one, check that it worked; if
 one fails, stop and tell me what went wrong instead of working around it.
 
 1. Check the tools. Run `git --version`, `gh auth status` and `uv --version`.
-   If one is missing, or gh is not signed in, tell me how to install it or sign
-   in on this operating system, and wait for me.
+   If git or gh is missing, or gh is not signed in, tell me how to install it
+   or sign in on this operating system, and wait for me. If only uv is
+   missing, offer to install it with the official installer
+   (https://docs.astral.sh/uv/getting-started/installation/) and do so if I
+   agree; it installs to ~/.local/bin, so add that to PATH for the rest of
+   this session.
+   On Windows, also set PYTHONUTF8=1 for every Python command you run here
+   (the sets print Thai, which the default console code page cannot encode),
+   and offer to set it permanently for my user account.
 
-2. Fork the repository and clone the fork:
-     gh repo fork KananatSSN/openthaiknowledge --clone --default-branch-only
-     cd openthaiknowledge
-   Then check `git remote -v`: `origin` must be my fork and `upstream` must be
-   KananatSSN/openthaiknowledge.
+2. Get the repository. If ./openthaiknowledge already exists and is a clone of
+   it, use that and skip to the remote check. If the current folder is itself
+   inside another git repository, ask me where to clone instead.
+   - If `gh auth status` shows I am signed in as KananatSSN (the owner), do
+     not fork: run `gh repo clone KananatSSN/openthaiknowledge`; `origin` must
+     be KananatSSN/openthaiknowledge and there is no `upstream`.
+   - Otherwise fork and clone the fork:
+       gh repo fork KananatSSN/openthaiknowledge --clone --default-branch-only
+     `origin` must be my fork and `upstream` KananatSSN/openthaiknowledge.
+   Then `cd openthaiknowledge`, check `git remote -v`, and tell me the full
+   path of the clone.
 
 3. Create the Python environment, in this folder only. Name the environment
    explicitly so an already active virtualenv is not changed:
@@ -63,7 +76,9 @@ one fails, stop and tell me what went wrong instead of working around it.
      gh issue list -R KananatSSN/openthaiknowledge --label "task: digest"
    There may be none yet.
 
-Then report: what you installed, the test results, a two-line summary of the
+Then report: where the clone is, what you installed or changed on this
+machine (including anything that needs a new terminal to take effect), the
+test results, a two-line summary of the
 rules in AGENTS.md, and the open tasks. Ask me what to work on. Do not change
 any file, create a branch or commit until I tell you what to do.
 ```
@@ -101,6 +116,10 @@ gh repo fork KananatSSN/openthaiknowledge --clone --default-branch-only
 cd openthaiknowledge
 uv venv --python 3.12 && uv pip install --python .venv -e ".[test]" ruff
 ```
+
+Maintainers with push access clone instead of forking
+(`gh repo clone KananatSSN/openthaiknowledge`). On Windows, set
+`PYTHONUTF8=1` so Python can print Thai to the console.
 
 Before opening a pull request:
 
