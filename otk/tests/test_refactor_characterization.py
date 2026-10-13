@@ -173,4 +173,8 @@ def test_sheet_publication_manifest_is_frozen():
     # practised (the 20 math_bank_* modules; see SHEET_DIGESTION_PLAN.md).
     # Wave I added 12 for the four indicators the task queue found with no set,
     # and the 2564 สอวน. sheet 30 more (one per question).
-    assert len(REGISTRY) == 3468
+    # Geography (ส 5) then arrived as a subject of its own with 33 sets, and a
+    # second wave added 16 (weather, seasons, Thailand's regions, continents),
+    # and a third 11 (waste, livelihoods, economic location, landforms, population).
+    # A fourth wave brought each geography unit to a full three stages: 20 more.
+    assert len(REGISTRY) == 3548

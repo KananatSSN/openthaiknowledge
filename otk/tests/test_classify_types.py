@@ -23,6 +23,8 @@ from otk.kit.classify import ClassifyType
 
 CLASSIFY_KEYS = sorted(k for k, t in REGISTRY.items()
                        if isinstance(t, ClassifyType))
+# Tables with too few groups for a four-choice classify question ask only "pick".
+CLASSIFYING_KEYS = [k for k in CLASSIFY_KEYS if "classify" in REGISTRY[k].ASKS]
 _QUOTED = re.compile(r"“([^”]+)”")            # every classify stem quotes its member
 
 
@@ -55,7 +57,7 @@ def test_every_category_has_at_least_one_example(key):
 
 # ── Answers are the correct classification ───────────────────────────────────
 
-@pytest.mark.parametrize("key", CLASSIFY_KEYS)
+@pytest.mark.parametrize("key", CLASSIFYING_KEYS)
 def test_classify_answers_with_the_examples_category(key):
     by_member = _by_member(key)
     rng = random.Random(1)
@@ -84,7 +86,7 @@ def test_pick_has_exactly_one_choice_from_the_asked_category(key):
         assert in_cat == [answer], f"{key}: more than one choice fits the ask"
 
 
-@pytest.mark.parametrize("key", CLASSIFY_KEYS)
+@pytest.mark.parametrize("key", CLASSIFYING_KEYS)
 def test_ask_param_pins_the_style(key):
     # ask=1 always quotes an example; ask=2 never does (it names a category).
     rng = random.Random(3)

@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-3,468 sets in 953 unit files. Each subject's `README.md` lists its units with their indicators.
+3,548 sets in 976 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -1399,3 +1399,68 @@
 |---|---|---|
 | [`process_skill.py`](general_science/m1/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ | `sci.process_skill_foundation`, `sci.process_skill_fluency`, `sci.process_skill_variables`, `sci.process_skill_application` |
 | [`scientific_method.py`](general_science/m1/scientific_method.py) | วิทยาศาสตร์และวิธีการทางวิทยาศาสตร์ | `sci.scientific_method_foundation`, `sci.scientific_method_fluency`, `sci.scientific_method_application` |
+
+## geography — ภูมิศาสตร์
+
+### p1 — ป.1
+
+| File | Unit | Sets |
+|---|---|---|
+| [`position_and_direction.py`](geography/p1/position_and_direction.py) | ตำแหน่งและทิศของสิ่งต่าง ๆ | `geog.lineup_position_p1`, `geog.near_far_p1`, `geog.classroom_plan_p1` |
+| [`surroundings.py`](geography/p1/surroundings.py) | สิ่งแวดล้อมรอบตัว | `geog.natural_or_made_p1`, `geog.nature_benefit_p1`, `geog.nature_and_living_p1` |
+| [`weather_in_a_day.py`](geography/p1/weather_in_a_day.py) | สภาพอากาศในรอบวัน | `geog.weather_in_a_day_p1`, `geog.shadow_length_p1`, `geog.weather_prepare_p1` |
+
+### p2 — ป.2
+
+| File | Unit | Sets |
+|---|---|---|
+| [`earth_sun_moon.py`](geography/p2/earth_sun_moon.py) | โลก ดวงอาทิตย์ และดวงจันทร์ | `geog.earth_sun_moon_p2`, `geog.sun_direction_p2`, `geog.earth_sun_moon_reasoning_p2` |
+| [`maps_and_globes.py`](geography/p2/maps_and_globes.py) | แผนผัง แผนที่ และลูกโลก | `geog.globe_and_map_p2`, `geog.map_colour_p2`, `geog.map_nearest_p2` |
+| [`natural_resources.py`](geography/p2/natural_resources.py) | ทรัพยากรธรรมชาติ | `geog.resource_kind_p2`, `geog.resource_wise_use_p2`, `geog.resource_consequence_p2` |
+| [`seasons.py`](geography/p2/seasons.py) | ฤดูกาลกับการดำเนินชีวิต | `geog.season_month_p2`, `geog.season_life_p2`, `geog.season_plan_p2` |
+| [`waste.py`](geography/p2/waste.py) | การจัดการขยะ | `geog.waste_bin_p2`, `geog.three_r_p2`, `geog.waste_count_p2` |
+
+### p3 — ป.3
+
+| File | Unit | Sets |
+|---|---|---|
+| [`community_environment.py`](geography/p3/community_environment.py) | สิ่งแวดล้อมในชุมชน | `geog.city_or_country_p3`, `geog.pollution_cause_p3`, `geog.pollution_fix_p3` |
+| [`compass_directions.py`](geography/p3/compass_directions.py) | ทิศและแผนที่ชุมชน | `geog.facing_direction_p3`, `geog.turning_direction_p3`, `geog.map_direction_p3`, `geog.walk_route_p3` |
+| [`resources_and_living.py`](geography/p3/resources_and_living.py) | ทรัพยากรกับการดำเนินชีวิต | `geog.basic_needs_p3`, `geog.land_occupation_p3`, `geog.local_product_p3` |
+
+### p6 — ป.6
+
+| File | Unit | Sets |
+|---|---|---|
+| [`thailand_disasters.py`](geography/p6/thailand_disasters.py) | ภัยพิบัติในประเทศไทย | `geog.thai_disaster_p6`, `geog.disaster_kind_p6`, `geog.disaster_response_p6` |
+| [`thailand_physical.py`](geography/p6/thailand_physical.py) | ลักษณะทางกายภาพของประเทศไทย | `geog.province_region_p6`, `geog.region_landform_p6`, `geog.region_livelihood_p6` |
+
+### m1 — ม.1
+
+| File | Unit | Sets |
+|---|---|---|
+| [`asia_oceania.py`](geography/m1/asia_oceania.py) | ทวีปเอเชีย ออสเตรเลีย และโอเชียเนีย | `geog.continent_landform_m1`, `geog.disaster_asia_m1`, `geog.continent_reasoning_m1` |
+| [`coordinates_and_time.py`](geography/m1/coordinates_and_time.py) | พิกัดภูมิศาสตร์และเวลาของโลก | `geog.hemisphere_m1`, `geog.local_time_hours_m1`, `geog.local_time_minutes_m1`, `geog.time_zone_m1`, `geog.date_line_m1`, `geog.latitude_distance_m1` |
+| [`economic_location.py`](geography/m1/economic_location.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจ | `geog.economic_sector_m1`, `geog.location_factor_m1`, `geog.choose_location_m1` |
+
+### m2 — ม.2
+
+| File | Unit | Sets |
+|---|---|---|
+| [`europe_africa.py`](geography/m2/europe_africa.py) | ทวีปยุโรปและแอฟริกา | `geog.continent_landform_m2`, `geog.disaster_europe_africa_m2`, `geog.continent_reasoning_m2` |
+| [`scale_and_bearing.py`](geography/m2/scale_and_bearing.py) | มาตราส่วน ทิศ และสัญลักษณ์ | `geog.map_to_ground_m2`, `geog.ground_to_map_m2`, `geog.find_scale_m2`, `geog.scale_detail_m2`, `geog.azimuth_m2`, `geog.back_azimuth_m2`, `geog.map_symbol_m2` |
+
+### m3 — ม.3
+
+| File | Unit | Sets |
+|---|---|---|
+| [`americas.py`](geography/m3/americas.py) | ทวีปอเมริกาเหนือและอเมริกาใต้ | `geog.continent_landform_m3`, `geog.disaster_americas_m3`, `geog.continent_reasoning_m3` |
+| [`environmental_cooperation.py`](geography/m3/environmental_cooperation.py) | ความร่วมมือระหว่างประเทศด้านสิ่งแวดล้อม | `geog.environmental_agreement_m3`, `geog.environmental_organisation_m3`, `geog.agreement_case_m3` |
+
+### m4 — ม.4
+
+| File | Unit | Sets |
+|---|---|---|
+| [`geographic_tools.py`](geography/m4/geographic_tools.py) | เครื่องมือทางภูมิศาสตร์ | `geog.contour_reading_m4`, `geog.contour_interval_m4`, `geog.contour_height_m4`, `geog.slope_gradient_m4`, `geog.geoinformatics_m4` |
+| [`physical_change.py`](geography/m4/physical_change.py) | การเปลี่ยนแปลงทางกายภาพ | `geog.landform_agent_m4`, `geog.surface_process_m4`, `geog.landscape_change_m4` |
+| [`population.py`](geography/m4/population.py) | ประชากรและการตั้งถิ่นฐาน | `geog.population_density_m4`, `geog.natural_increase_m4`, `geog.doubling_time_m4`, `geog.settlement_pattern_m4` |

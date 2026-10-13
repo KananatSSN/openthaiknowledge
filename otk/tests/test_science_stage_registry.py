@@ -66,7 +66,7 @@ REVIEWED_BY_SUBJECT = {
 
 #: Subjects outside the science expansion, which have no reviewed-stage map.
 #: Listed rather than inferred so that adding one is a deliberate edit here.
-NON_SCIENCE_SUBJECTS = frozenset({"คณิตศาสตร์"})
+NON_SCIENCE_SUBJECTS = frozenset({"คณิตศาสตร์", "ภูมิศาสตร์"})
 
 SUBJECTS = sorted(REVIEWED_BY_SUBJECT)
 

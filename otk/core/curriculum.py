@@ -1,8 +1,8 @@
 """Compatibility facade for subject-specific curriculum placement.
 
-The registry imports this module as its stable public boundary. Mathematics and
-science keep independent explicit mappings behind it so either curriculum can be
-reviewed without coupling their filing rules.
+The registry imports this module as its stable public boundary. Mathematics,
+science and geography keep independent explicit mappings behind it so each
+curriculum can be reviewed without coupling their filing rules.
 """
 
 from __future__ import annotations
@@ -21,6 +21,11 @@ from .curriculum_math import (
     curriculum_sort_fields as math_curriculum_sort_fields,
     placement_for as math_placement_for,
 )
+from .curriculum_geography import (
+    GEOGRAPHY_STRAND_ORDER,
+    GEOGRAPHY_SUBJECT,
+    geography_placement_for,
+)
 from .curriculum_science import (
     SCIENCE_KEYS,
     SCIENCE_SUBJECTS,
@@ -28,7 +33,7 @@ from .curriculum_science import (
     science_placement_for,
 )
 
-_ALL_STRAND_ORDER = (*STRAND_ORDER, *SCIENCE_STRAND_ORDER)
+_ALL_STRAND_ORDER = (*STRAND_ORDER, *SCIENCE_STRAND_ORDER, *GEOGRAPHY_STRAND_ORDER)
 
 
 def curriculum_sort_fields(course: str, strand_code: str) -> tuple[int, int]:
@@ -48,6 +53,8 @@ def placement_for(*, key: str, subject: str, level: str,
         return math_placement_for(key=key, subject=subject, level=level, topic=topic)
     if subject in SCIENCE_SUBJECTS and key in SCIENCE_KEYS:
         return science_placement_for(key=key, level=level, topic=topic)
+    if subject == GEOGRAPHY_SUBJECT:
+        return geography_placement_for(level=level, topic=topic)
     return CurriculumPlacement(
         "", "ทั่วไป", level, "", "", "", (), topic or "ทั่วไป", "",
         "not_applicable", level,

@@ -1240,3 +1240,44 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+PLACE_FILL = "#2f6fb5"
+BOARD_FILL = "#3d6b4f"
+
+
+def make_grid_map(spec) -> Path:
+    """Lettered places on a grid: a community map with a north arrow, or a
+    classroom plan whose top edge is the board.
+
+    Labels are A-H and N only, so the picture needs no Thai font. The stems
+    name what each letter stands for.
+    """
+    size = spec.size
+    fig, ax = plt.subplots(figsize=(3.6, 3.4))
+    for i in range(size + 1):
+        ax.plot([0, size], [i, i], color=AXIS, lw=0.8)
+        ax.plot([i, i], [0, size], color=AXIS, lw=0.8)
+    for letter, (x, y) in zip("ABCDEFGH", spec.places):
+        ax.add_patch(Circle((x + 0.5, y + 0.5), 0.34, color=PLACE_FILL))
+        ax.text(x + 0.5, y + 0.5, letter, ha="center", va="center", fontsize=12,
+                color="white", fontweight="bold")
+    if spec.board:
+        ax.add_patch(FancyBboxPatch((size * 0.2, size + 0.18), size * 0.6, 0.32,
+                                    boxstyle="round,pad=0.02", fc=BOARD_FILL, ec=EDGE, lw=1.0))
+        right = size + 0.1
+    else:
+        # North arrow beside the grid, pointing up.
+        cx = size + 0.55
+        ax.add_patch(Polygon([(cx, size - 0.2), (cx - 0.22, size - 0.85), (cx + 0.22, size - 0.85)],
+                             closed=True, fc=EDGE, ec=EDGE))
+        ax.plot([cx, cx], [size - 0.85, size - 1.5], color=EDGE, lw=2)
+        ax.text(cx, size + 0.12, "N", ha="center", va="center", fontsize=13,
+                color=EDGE, fontweight="bold")
+        right = size + 1.0
+    ax.set_xlim(-0.1, right)
+    ax.set_ylim(-0.1, size + 0.6)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    fig.tight_layout()
+    return _save(fig, spec.asset_id, dpi=92)

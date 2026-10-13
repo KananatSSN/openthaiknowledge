@@ -140,6 +140,27 @@ MISTAKES: dict[str, dict[str, str]] = {
         "th": "หาค่าต่อหนึ่งหน่วยแล้วตอบเลย โดยไม่คูณต่อ",
         "en": "Found the amount for one and stopped there",
     },
+    "direction.left_right_swapped": {
+        "th": "สลับด้านซ้ายกับด้านขวา",
+        "en": "Swapped left and right",
+    },
+    "direction.opposite": {
+        "th": "ตอบทิศตรงข้ามกับทิศที่ถูก",
+        "en": "Gave the opposite direction",
+    },
+    "time.east_west_reversed": {
+        "th": "สลับว่าทางตะวันออกหรือทางตะวันตกมีเวลาเร็วกว่า จึงบวกแทนลบหรือลบแทนบวก",
+        "en": "Mixed up which side is ahead in time, so added instead of "
+              "subtracting or the other way round",
+    },
+    "count.lines_not_gaps": {
+        "th": "นับจำนวนเส้นแทนจำนวนช่วงระหว่างเส้น",
+        "en": "Counted the lines instead of the gaps between them",
+    },
+    "time.date_not_changed": {
+        "th": "ไม่ได้เปลี่ยนวันที่ เมื่อเวลาเลยเที่ยงคืนหรือข้ามเส้นวันที่สากล",
+        "en": "Kept the same date when the time passed midnight or crossed the date line",
+    },
 }
 
 

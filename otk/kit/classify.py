@@ -17,7 +17,9 @@ category, or an example from a different one — never an invented fact, the sam
 discipline as the เคมี element types.
 
 ``ask`` pins one style (``1`` = classify, ``2`` = pick); ``0`` draws one per item,
-so a worksheet can drill exactly one direction.
+so a worksheet can drill exactly one direction. A table with only two or three
+groups sets ``ASKS = ("pick",)``: its classify question would offer too few
+choices.
 """
 
 from __future__ import annotations
@@ -48,8 +50,11 @@ class ClassifyType(QuestionType):
 
     def build(self, rng: Random, ask: int = 0) -> GeneratedQuestion:
         cats = self.CATEGORIES
-        asked = (self.ASKS[ask - 1] if 1 <= ask <= len(self.ASKS)
-                 else rng.choice(self.ASKS))
+        # ``ask`` names a style by number whatever ``ASKS`` lists, so a table
+        # that offers only "pick" (two or three groups, where a classify
+        # question would have too few choices) still reads ask=2 as pick.
+        style = ("classify", "pick")[ask - 1] if ask in (1, 2) else None
+        asked = style if style in self.ASKS else rng.choice(self.ASKS)
         cat = rng.choice(cats)
         if asked == "classify":
             member = rng.choice(cat.members)

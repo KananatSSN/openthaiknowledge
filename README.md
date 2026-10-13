@@ -2,7 +2,7 @@
 
 **English** · [ภาษาไทย](README.th.md)
 
-Thai curriculum knowledge as code: 3,468 problem sets, from ป.1 to ม.6 and
+Thai curriculum knowledge as code: 3,548 problem sets, from ป.1 to ม.6 and
 olympiad level, each drawing a fresh multiple-choice question with a verified
 answer from a seed. Alongside them are the knowledge units they were built
 from, and the tooling that turns exam sheets and textbooks into both.
@@ -142,7 +142,7 @@ python -m otk.tools.sets_index                              # refresh otk/sets/I
 ## Use
 
 ```bash
-pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.4"
+pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.6.0"
 ```
 
 ```python

@@ -2,7 +2,7 @@
 
 [English](README.md) · **ภาษาไทย**
 
-คลังความรู้ตามหลักสูตรไทยในรูปแบบโค้ด: ชุดโจทย์ 3,468 ชุด ตั้งแต่ ป.1 ถึง ม.6
+คลังความรู้ตามหลักสูตรไทยในรูปแบบโค้ด: ชุดโจทย์ 3,548 ชุด ตั้งแต่ ป.1 ถึง ม.6
 และระดับโอลิมปิก แต่ละชุดสร้างโจทย์ปรนัยข้อใหม่จาก seed ได้ไม่จำกัด
 พร้อมเฉลยที่ตรวจสอบแล้ว นอกจากนี้ยังมีหน่วยความรู้ที่ใช้สร้างชุดโจทย์เหล่านั้น
 และเครื่องมือที่แปลงข้อสอบและหนังสือเรียนให้เป็นทั้งสองอย่าง
@@ -125,7 +125,7 @@ python -m otk.tools.sets_index                              # อัปเดต
 ## การใช้งาน
 
 ```bash
-pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.5.4"
+pip install "openthaiknowledge @ git+https://github.com/KananatSSN/openthaiknowledge@v0.6.0"
 ```
 
 ```python

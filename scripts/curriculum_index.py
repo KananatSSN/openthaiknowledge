@@ -256,11 +256,17 @@ def main() -> int:
         print(f"{subject}: {len(got)} indicators from {rel}")
         rows += got
     dest = OUT / "indicators.jsonl"
+    # Rows other readers wrote (scripts/geography_indicators.py) stay as they are.
+    built = {subject for subject, _ in BOOKS}
+    others = [ln for ln in dest.read_text("utf-8").splitlines()
+              if ln.strip() and json.loads(ln)["subject"] not in built] if dest.exists() else []
     with dest.open("w", encoding="utf-8", newline="\n") as fh:
         for r in rows:
             d = asdict(r)
             d.pop("lines")
             fh.write(json.dumps(d, ensure_ascii=False) + "\n")
+        for ln in others:
+            fh.write(ln + "\n")
     dupes = {r.code for r in rows if sum(x.code == r.code for x in rows) > 1}
     if dupes:
         print("duplicate codes:", sorted(dupes)[:20])

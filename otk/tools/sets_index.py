@@ -24,7 +24,7 @@ SUBJECTS = {
     "math": "คณิตศาสตร์", "physics": "ฟิสิกส์", "chemistry": "เคมี", "biology": "ชีวะ",
     "earth_science": "ธรณีวิทยา", "astronomy": "ดาราศาสตร์",
     "computing": "วิทยาการคำนวณ", "design_technology": "การออกแบบและเทคโนโลยี",
-    "general_science": "วิทยาศาสตร์ทั่วไป",
+    "general_science": "วิทยาศาสตร์ทั่วไป", "geography": "ภูมิศาสตร์",
 }
 LEVELS = (*(f"p{n}" for n in range(1, 7)), *(f"m{n}" for n in range(1, 7)),
           "calculus1", "calculus2", "quick_math", "olympiad")

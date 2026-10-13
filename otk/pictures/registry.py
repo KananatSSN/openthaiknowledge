@@ -40,6 +40,7 @@ from otk.sets.physics.m3.waves import WAVE_SPECS
 from otk.sets._support.science_skills import EXPERIMENT_CHARTS
 from otk.sets._support.block_programs import BLOCK_PROGRAM_SPECS
 from otk.sets._support.flowcharts import FLOWCHART_SPECS
+from otk.sets._support.geography import GRID_MAP_SPECS
 from otk.sets.chemistry.m2.separating_solutions import APPARATUS_SPECS, CHROMA_SPECS
 
 from ._output import output_dir
@@ -143,6 +144,8 @@ FAMILIES: tuple[tuple[tuple, str], ...] = (
     # Technology: วิทยาการคำนวณ block programs (Phase 7 wave T3)
     (BLOCK_PROGRAM_SPECS, "generate:make_block_program"),
     (FLOWCHART_SPECS, "generate:make_flowchart"),
+    # Geography: community maps and classroom plans
+    (GRID_MAP_SPECS, "generate:make_grid_map"),
 )
 
 # pyplot keeps global state; one drawing at a time. Drawing is rare — each

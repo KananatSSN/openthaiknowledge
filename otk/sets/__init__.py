@@ -10,6 +10,7 @@ from . import computing  # noqa: F401
 from . import design_technology  # noqa: F401
 from . import earth_science  # noqa: F401
 from . import general_science  # noqa: F401
+from . import geography  # noqa: F401
 from . import math  # noqa: F401
 from . import physics  # noqa: F401
 
