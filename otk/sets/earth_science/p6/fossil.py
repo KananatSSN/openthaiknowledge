@@ -20,6 +20,8 @@ from otk.sets._support.science_wave_b15 import _retopic
 from otk.sets._support.science_wave_b17 import PRIMARY_SIX
 from otk.sets._support.science_wave_c10 import SUBJECT
 from otk.sets._support.science_wave_c14 import FOSSIL_SCENARIOS
+from otk.sets._support.life_earth_diagrams import ROCK_LAYERS, ROCK_LAYERS_ALT
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -162,3 +164,57 @@ class FossilApplication(QuestionType):
             rng, FOSSIL_SCENARIOS,
             hint="ชั้นล่างเกิดก่อนชั้นบน และซากบอกว่าที่นั้นเคยมีสภาพแวดล้อมแบบใด",
         ), FOSSIL_TOPIC)
+
+
+@question_type(
+    "geo.rock_layers_diagram",
+    display_name={"th": "อ่านลำดับชั้นหินและซากดึกดำบรรพ์"},
+    level=PRIMARY_SIX, subject=SUBJECT, topic=FOSSIL_TOPIC,
+)
+class RockLayersDiagram(QuestionType):
+    """Four lettered layers with a find in each: which is oldest or youngest, and what the place was like.
+
+    The finds are drawn afresh each time, so the past environments and the way
+    they change from the bottom layer to the top one differ between questions.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(ROCK_LAYERS)
+        finds = rng.sample(FINDS, 4)  # bottom to top
+        listing = " ".join(f"ชั้น {letter} พบ{find.fossils}" for letter, find in
+                           sorted(zip(spec.letters, finds)))
+        stem = f"ภาพแสดงชั้นหินที่ไม่ถูกพลิกกลับ โดย {listing} "
+        hint = "ชั้นหินที่ไม่ถูกพลิกกลับ ชั้นล่างเกิดก่อนและมีอายุมากกว่าชั้นที่อยู่ด้านบน"
+        kind = rng.randrange(3)
+        if kind == 0:
+            oldest = rng.random() < 0.5
+            letter = spec.letters[0] if oldest else spec.letters[-1]
+            return diagram_question(
+                spec.asset_id, ROCK_LAYERS_ALT,
+                stem=stem + f"ชั้นหินใดมีอายุ{'มาก' if oldest else 'น้อย'}ที่สุด",
+                correct=f"ชั้น {letter}",
+                wrongs=tuple(f"ชั้น {x}" for x in spec.letters if x != letter),
+                hint=hint, topic=FOSSIL_TOPIC,
+            )
+        if kind == 1:
+            index = rng.randrange(4)
+            find = finds[index]
+            return diagram_question(
+                spec.asset_id, ROCK_LAYERS_ALT,
+                stem=stem + f"ขณะที่ชั้น {spec.letters[index]} กำลังเกิด บริเวณนี้น่าจะมีสภาพแวดล้อมแบบใด",
+                correct=find.environment,
+                wrongs=tuple(f.environment for f in FINDS if f is not find)[:4],
+                hint="ซากดึกดำบรรพ์ในชั้นหินบอกสภาพแวดล้อมในช่วงที่ชั้นนั้นเกิด",
+                topic=FOSSIL_TOPIC,
+            )
+        first, last = finds[0].environment, finds[-1].environment
+        return diagram_question(
+            spec.asset_id, ROCK_LAYERS_ALT,
+            stem=stem + "เมื่อเวลาผ่านไป สภาพแวดล้อมของบริเวณนี้เปลี่ยนไปอย่างไร",
+            correct=f"จาก{first} เปลี่ยนเป็น{last}",
+            wrongs=(f"จาก{last} เปลี่ยนเป็น{first}",
+                    f"จาก{finds[1].environment} เปลี่ยนเป็น{finds[2].environment}",
+                    f"จาก{finds[2].environment} เปลี่ยนเป็น{finds[0].environment}"),
+            hint=hint + " จึงอ่านการเปลี่ยนแปลงจากชั้นล่างสุดขึ้นไปหาชั้นบนสุด",
+            topic=FOSSIL_TOPIC,
+        )

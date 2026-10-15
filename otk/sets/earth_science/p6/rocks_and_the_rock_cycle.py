@@ -21,6 +21,8 @@ from otk.kit.classify import Category, ClassifyType
 from otk.kit.concept_bank import Concept, ConceptBankType, widen
 from otk.sets._support.geology import SUBJECT, TOPIC
 from otk.sets._support.science_pilots import ROCK_FIELD_EVIDENCE, ROCK_JOURNEYS, ROCK_MODEL_CLAIMS
+from otk.sets._support.life_earth_diagrams import ROCK_CYCLE_ALT, ROCK_CYCLES, ROCK_STAGES
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -708,3 +710,58 @@ RockCycle.ITEMS = [*RockCycle.ITEMS,
             'การผุพังอยู่กับที่และการกร่อน',
             ('การหลอมเหลวและการเย็นตัว', 'การอัดแน่นและการเชื่อมประสาน', 'การได้รับความร้อนและแรงดันสูง', 'การตกผลึกจากแมกมาใต้ผิวโลก', 'การระเหยของน้ำออกจากแมกมา')),
 ]
+
+
+def _rock_key(spec) -> str:
+    return " ".join(f"{letter} คือ{stage}" for letter, stage in sorted(zip(spec.letters, ROCK_STAGES)))
+
+
+@question_type("geo.rock_cycle_diagram",
+               display_name={"th": "อ่านแผนภาพวัฏจักรหิน"},
+               level={"th": "ป.6"}, subject=SUBJECT, topic=TOPIC)
+class RockCycleDiagram(QuestionType):
+    """A rock cycle with lettered stages and numbered arrows; letters and numbers change between pictures.
+
+    With the key given, name an arrow's process or find an arrow by its process.
+    Without it, the learner is told only which letter is magma and works out
+    another stage by following the arrows.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(ROCK_CYCLES)
+        kind = rng.randrange(3)
+        hint = "ลูกศรชี้จากสิ่งเดิมไปยังสิ่งที่เกิดใหม่ แมกมาเย็นตัวเป็นหินอัคนี และหินแปรหลอมเหลวกลับเป็นแมกมา"
+        if kind == 0:
+            index = rng.randrange(len(ROCK_CYCLE_ARROWS))
+            process = ROCK_CYCLE_ARROWS[index][2]
+            return diagram_question(
+                spec.asset_id, ROCK_CYCLE_ALT,
+                stem=f"แผนภาพวัฏจักรหิน โดย {_rock_key(spec)} ลูกศรหมายเลข {spec.numbers[index]} แสดงกระบวนการใด",
+                correct=process,
+                wrongs=tuple(p for p in ROCK_PROCESS_LABELS if p != process),
+                hint=hint, topic=ROCKS,
+            )
+        if kind == 1:
+            # Only processes drawn on exactly one arrow, so "which arrow" has one answer.
+            unique = [i for i, (_, _, p) in enumerate(ROCK_CYCLE_ARROWS)
+                      if sum(q == p for _, _, q in ROCK_CYCLE_ARROWS) == 1]
+            index = rng.choice(unique)
+            number = spec.numbers[index]
+            return diagram_question(
+                spec.asset_id, ROCK_CYCLE_ALT,
+                stem=f"แผนภาพวัฏจักรหิน โดย {_rock_key(spec)} ลูกศรหมายเลขใดแสดง{ROCK_CYCLE_ARROWS[index][2]}",
+                correct=f"หมายเลข {number}",
+                wrongs=tuple(f"หมายเลข {n}" for n in spec.numbers if n != number),
+                hint=hint, topic=ROCKS,
+            )
+        magma = spec.letters[0]
+        stage = rng.randrange(1, len(ROCK_STAGES))
+        return diagram_question(
+            spec.asset_id, ROCK_CYCLE_ALT,
+            stem=(f"แผนภาพวัฏจักรหิน ถ้า {magma} คือแมกมา ตัวอักษร {spec.letters[stage]} คือข้อใด "
+                  "(ไล่ตามลูกศรจากแมกมา)"),
+            correct=ROCK_STAGES[stage],
+            wrongs=tuple(s for s in ROCK_STAGES if s != ROCK_STAGES[stage]),
+            hint="แมกมาเย็นตัวเป็นหินอัคนี หินอัคนีผุพังเป็นตะกอนหรือแปรสภาพเป็นหินแปร ตะกอนอัดแน่นเป็นหินตะกอน",
+            topic=ROCKS,
+        )

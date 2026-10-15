@@ -23,6 +23,8 @@ from otk.sets._support.science_wave_b5 import (
     _labelled,
     _statement_question,
 )
+from otk.sets._support.life_earth_diagrams import FLOWER_ALT, FLOWERS
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -154,5 +156,49 @@ class SeedApplication(QuestionType):
             rng, SEED_SCENARIOS,
             hint="ถามว่าลักษณะที่เห็นช่วยเรื่องใด: การเรียกตัวพา การเดินทางของเมล็ด "
                  "หรือการงอกเมื่อถึงที่หมาย",
+            topic=TOPIC,
+        )
+
+
+@question_type(
+    "plant.flower_diagram",
+    display_name={"th": "ระบุส่วนประกอบของดอกจากภาพตัดตามยาว"},
+    level=LEVEL, subject=SUBJECT, topic=TOPIC,
+)
+class FlowerDiagram(QuestionType):
+    """A numbered flower cut lengthways: name a part, give its job, or find what becomes fruit or seed."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(FLOWERS)
+        part = rng.choice(FLOWER_PARTS)
+        number = spec.number_of(part.name)
+        hint = "ไล่จากนอกเข้าใน: กลีบเลี้ยง กลีบดอก เกสรเพศผู้ (อับเรณูบนก้านชู) แล้วเกสรเพศเมียตรงกลาง"
+        kind = rng.randrange(3)
+        if kind == 0:
+            others = [p.name for p in FLOWER_PARTS if p is not part]
+            rng.shuffle(others)
+            return diagram_question(
+                spec.asset_id, FLOWER_ALT,
+                stem=f"จากภาพดอกไม้ ส่วนหมายเลข {number} คือส่วนใด",
+                correct=part.name, wrongs=tuple(others[:4]),
+                hint=hint, topic=TOPIC,
+            )
+        if kind == 1:
+            return diagram_question(
+                spec.asset_id, FLOWER_ALT,
+                stem=f"จากภาพดอกไม้ ส่วนหมายเลข {number} ทำหน้าที่ใด",
+                correct=part.function,
+                wrongs=tuple(p.function for p in FLOWER_PARTS if p is not part),
+                hint="ระบุชื่อส่วนจากตำแหน่งในภาพก่อน แล้วนึกถึงหน้าที่ของส่วนนั้น",
+                topic=TOPIC,
+            )
+        becomes, grows_into = rng.choice((("รังไข่", "ผล"), ("ออวุล", "เมล็ด")))
+        target = spec.number_of(becomes)
+        return diagram_question(
+            spec.asset_id, FLOWER_ALT,
+            stem=f"จากภาพดอกไม้ หลังการปฏิสนธิ ส่วนหมายเลขใดจะเจริญไปเป็น{grows_into}",
+            correct=f"หมายเลข {target}",
+            wrongs=tuple(f"หมายเลข {n}" for n in range(1, len(spec.labelled) + 1) if n != target),
+            hint="รังไข่เจริญไปเป็นผล ส่วนออวุลที่อยู่ภายในรังไข่เจริญไปเป็นเมล็ด",
             topic=TOPIC,
         )

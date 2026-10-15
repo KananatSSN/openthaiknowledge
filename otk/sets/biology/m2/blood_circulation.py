@@ -16,6 +16,8 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.sets._support.science_wave_b9 import LEVEL, SUBJECT, TOPIC, labelled, scenario_question
 from otk.sets._support.science_wave_b10 import CIRCULATION_MODEL_SCENARIOS
+from otk.sets._support.life_earth_diagrams import CHAMBERS, HEART_ALT, HEARTS
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -142,4 +144,69 @@ class CirculationModelApplication(QuestionType):
             rng, CIRCULATION_MODEL_SCENARIOS,
             hint="ไล่ตามวงปิดทีละช่วง และถามทุกครั้งว่าเลือดช่วงนั้นเพิ่งผ่านปอด"
                  "หรือเพิ่งผ่านร่างกายมา",
+        )
+
+
+#: For each chamber: where its blood goes next, where it came from, and whether
+#: that blood is rich in oxygen. Read off ``BLOOD_LOOP``.
+CHAMBER_ROLES = {
+    "หัวใจห้องบนขวา": ("หัวใจห้องล่างขวา", "ส่วนต่าง ๆ ของร่างกาย", False),
+    "หัวใจห้องล่างขวา": ("ปอด", "หัวใจห้องบนขวา", False),
+    "หัวใจห้องบนซ้าย": ("หัวใจห้องล่างซ้าย", "ปอด", True),
+    "หัวใจห้องล่างซ้าย": ("ส่วนต่าง ๆ ของร่างกาย", "หัวใจห้องบนซ้าย", True),
+}
+
+
+@question_type(
+    "body.heart_diagram",
+    display_name={"th": "อ่านแผนภาพหัวใจและการไหลของเลือด"},
+    level=LEVEL, subject=SUBJECT, topic=TOPIC,
+)
+class HeartDiagram(QuestionType):
+    """Four numbered chambers with the loop drawn as arrows; the numbering changes between pictures.
+
+    Name a chamber, find the chamber that sends blood to the lungs or the body,
+    or say whether a chamber's blood is rich or poor in oxygen.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(HEARTS)
+        chamber = rng.choice(CHAMBERS)
+        number = spec.numbers[CHAMBERS.index(chamber)]
+        hint = ("ภาพมองหัวใจจากด้านหน้า ด้านซ้ายของภาพจึงเป็นซีกขวาของร่างกาย "
+                "ซีกขวารับเลือดจากร่างกายแล้วส่งไปปอด ซีกซ้ายรับเลือดจากปอดแล้วส่งไปทั่วร่างกาย")
+        kind = rng.randrange(3)
+        if kind == 0:
+            return diagram_question(
+                spec.asset_id, HEART_ALT,
+                stem="จากแผนภาพหัวใจ (ด้านบนคือปอด ด้านล่างคือส่วนต่าง ๆ ของร่างกาย) "
+                     f"ห้องหมายเลข {number} คือห้องใด",
+                correct=chamber,
+                wrongs=tuple(c for c in CHAMBERS if c != chamber),
+                hint=hint, topic=TOPIC,
+            )
+        if kind == 1:
+            pumps_to = rng.choice(("ปอด", "ส่วนต่าง ๆ ของร่างกาย"))
+            sender = next(c for c, (to, _, _) in CHAMBER_ROLES.items() if to == pumps_to)
+            target = spec.numbers[CHAMBERS.index(sender)]
+            return diagram_question(
+                spec.asset_id, HEART_ALT,
+                stem="จากแผนภาพหัวใจ (ด้านบนคือปอด ด้านล่างคือส่วนต่าง ๆ ของร่างกาย) "
+                     f"ห้องหมายเลขใดสูบฉีดเลือดออกไปยัง{pumps_to}",
+                correct=f"ห้องหมายเลข {target}",
+                wrongs=tuple(f"ห้องหมายเลข {n}" for n in spec.numbers if n != target),
+                hint=hint, topic=TOPIC,
+            )
+        rich = CHAMBER_ROLES[chamber][2]
+        rich_text = "เลือดที่มีออกซิเจนสูง เพราะเพิ่งรับมาจากปอดหรือกำลังส่งไปเลี้ยงร่างกาย"
+        poor_text = "เลือดที่มีออกซิเจนต่ำ เพราะเพิ่งกลับมาจากร่างกายหรือกำลังส่งไปฟอกที่ปอด"
+        return diagram_question(
+            spec.asset_id, HEART_ALT,
+            stem="จากแผนภาพหัวใจ (ด้านบนคือปอด ด้านล่างคือส่วนต่าง ๆ ของร่างกาย) "
+                 f"เลือดในห้องหมายเลข {number} เป็นเลือดแบบใด",
+            correct=rich_text if rich else poor_text,
+            wrongs=(poor_text if rich else rich_text,
+                    "เลือดที่ไม่มีทั้งออกซิเจนและคาร์บอนไดออกไซด์เลย",
+                    "เลือดที่มีออกซิเจนเท่ากันทุกห้อง เพราะหัวใจผสมเลือดทุกห้องเข้าด้วยกัน"),
+            hint=hint, topic=TOPIC,
         )

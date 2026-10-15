@@ -2,7 +2,7 @@
 
 # ชีวะ (`biology`)
 
-623 sets in 208 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+631 sets in 208 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -36,7 +36,7 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`flowering_group`](p4/flowering_group.py) | พืชดอกและพืชไม่มีดอก | ว 1.3 ป.4/2 | 3 |
-| [`organ_function`](p4/organ_function.py) | หน้าที่ของราก ลำต้น ใบ และดอก | ว 1.2 ป.4/1 | 3 |
+| [`organ_function`](p4/organ_function.py) | หน้าที่ของราก ลำต้น ใบ และดอก | ว 1.2 ป.4/1 | 4 |
 | [`organism_group`](p4/organism_group.py) | กลุ่มพืช กลุ่มสัตว์ และกลุ่มที่ไม่ใช่พืชและสัตว์ | ว 1.3 ป.4/1 | 3 |
 | [`vertebrate_class`](p4/vertebrate_class.py) | กลุ่มของสัตว์มีกระดูกสันหลัง | ว 1.3 ป.4/4 | 3 |
 | [`vertebrate_group`](p4/vertebrate_group.py) | สัตว์มีกระดูกสันหลังและสัตว์ไม่มีกระดูกสันหลัง | ว 1.3 ป.4/3 | 3 |
@@ -48,7 +48,7 @@
 | [`adaptation`](p5/adaptation.py) | โครงสร้างและลักษณะของสิ่งมีชีวิตที่เกิดจากการปรับตัว | ว 1.1 ป.5/1 | 3 |
 | [`environment_care`](p5/environment_care.py) | การมีส่วนร่วมดูแลรักษาสิ่งแวดล้อม | ว 1.1 ป.5/4 | 3 |
 | [`family_question`](p5/family_question.py) | การตั้งคำถามเกี่ยวกับลักษณะที่คล้ายพ่อแม่ | ว 1.3 ป.5/2 | 3 |
-| [`food_chains`](p5/food_chains.py) | โซ่อาหารและบทบาทของสิ่งมีชีวิต | ว 1.1 ป.5/3 | 4 |
+| [`food_chains`](p5/food_chains.py) | โซ่อาหารและบทบาทของสิ่งมีชีวิต | ว 1.1 ป.5/3 | 5 |
 | [`inherited_trait`](p5/inherited_trait.py) | ลักษณะทางพันธุกรรม | ว 1.3 ป.5/1 | 3 |
 | [`living_relations`](p5/living_relations.py) | ความสัมพันธ์ระหว่างสิ่งมีชีวิตกับสิ่งมีชีวิตและสิ่งไม่มีชีวิต | ว 1.1 ป.5/2 | 3 |
 
@@ -57,7 +57,7 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`digestive_care`](p6/digestive_care.py) | การดูแลรักษาระบบย่อยอาหาร | ว 1.2 ป.6/5 | 3 |
-| [`digestive_system`](p6/digestive_system.py) | ระบบย่อยอาหาร | ว 1.2 ป.6/4 | 3 |
+| [`digestive_system`](p6/digestive_system.py) | ระบบย่อยอาหาร | ว 1.2 ป.6/4 | 4 |
 | [`food_choice`](p6/food_choice.py) | แนวทางการเลือกรับประทานอาหาร | ว 1.2 ป.6/2 | 3 |
 | [`nutrient_group`](p6/nutrient_group.py) | สารอาหารและประโยชน์ของสารอาหาร | ว 1.2 ป.6/1 | 3 |
 | [`own_diet`](p6/own_diet.py) | การเลือกรับประทานอาหารของตนเอง | ว 1.2 ป.6/3 | 3 |
@@ -68,13 +68,13 @@
 |---|---|---|---:|
 | [`diffusion`](m1/diffusion.py) | การแพร่และออสโมซิส | ว 1.2 ม.1/5 | 3 |
 | [`fertiliser`](m1/fertiliser.py) | การเลือกใช้ปุ๋ยให้เหมาะกับพืช | ว 1.2 ม.1/15 | 3 |
-| [`flowers_fruits_and_seeds`](m1/flowers_fruits_and_seeds.py) | โครงสร้างดอกและการเกิดผลและเมล็ด | ว 1.2 ม.1/12 | 3 |
+| [`flowers_fruits_and_seeds`](m1/flowers_fruits_and_seeds.py) | โครงสร้างดอกและการเกิดผลและเมล็ด | ว 1.2 ม.1/12 | 4 |
 | [`microscope_use`](m1/microscope_use.py) | การใช้กล้องจุลทรรศน์ใช้แสง | ว 1.2 ม.1/2 | 3 |
 | [`nutrient`](m1/nutrient.py) | ธาตุอาหารของพืช | ว 1.2 ม.1/14 | 3 |
 | [`organisation`](m1/organisation.py) | การจัดระบบของสิ่งมีชีวิต | ว 1.2 ม.1/4 | 3 |
 | [`photosynthesis`](m1/photosynthesis.py) | ปัจจัยและผลผลิตของการสังเคราะห์ด้วยแสง | ว 1.2 ม.1/6 | 3 |
 | [`photosynthesis_importance`](m1/photosynthesis_importance.py) | ความสำคัญของการสังเคราะห์ด้วยแสง | ว 1.2 ม.1/7 | 3 |
-| [`plant_and_animal_cells`](m1/plant_and_animal_cells.py) | เซลล์พืชและเซลล์สัตว์ | ว 1.2 ม.1/1 | 3 |
+| [`plant_and_animal_cells`](m1/plant_and_animal_cells.py) | เซลล์พืชและเซลล์สัตว์ | ว 1.2 ม.1/1 | 4 |
 | [`propagation`](m1/propagation.py) | การเลือกวิธีขยายพันธุ์พืช | ว 1.2 ม.1/16 | 3 |
 | [`reproduction`](m1/reproduction.py) | การสืบพันธุ์ของพืชดอก | ว 1.2 ม.1/11 | 3 |
 | [`shape_function`](m1/shape_function.py) | รูปร่างของเซลล์กับการทำหน้าที่ | ว 1.2 ม.1/3 | 3 |
@@ -86,7 +86,7 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`blood_circulation`](m2/blood_circulation.py) | การทำงานของระบบหมุนเวียนเลือด | ว 1.2 ม.2/7 | 3 |
+| [`blood_circulation`](m2/blood_circulation.py) | การทำงานของระบบหมุนเวียนเลือด | ว 1.2 ม.2/7 | 4 |
 | [`breathing_and_gas_exchange`](m2/breathing_and_gas_exchange.py) | กลไกการหายใจและการแลกเปลี่ยนแก๊ส | ว 1.2 ม.2/2 | 3 |
 | [`central_nervous_system_organs`](m2/central_nervous_system_organs.py) | อวัยวะในระบบประสาทส่วนกลาง | ว 1.2 ม.2/10 | 3 |
 | [`circulatory_care`](m2/circulatory_care.py) | การดูแลรักษาระบบหมุนเวียนเลือด | ว 1.2 ม.2/9 | 3 |
@@ -99,7 +99,7 @@
 | [`nervous_care`](m2/nervous_care.py) | การดูแลรักษาและป้องกันอันตรายต่อระบบประสาท | ว 1.2 ม.2/11 | 3 |
 | [`puberty_care`](m2/puberty_care.py) | การดูแลร่างกายและจิตใจในวัยหนุ่มสาว | ว 1.2 ม.2/14 | 3 |
 | [`reproductive`](m2/reproductive.py) | อวัยวะในระบบสืบพันธุ์ | ว 1.2 ม.2/12 | 3 |
-| [`respiratory`](m2/respiratory.py) | อวัยวะในระบบหายใจ | ว 1.2 ม.2/1 | 3 |
+| [`respiratory`](m2/respiratory.py) | อวัยวะในระบบหายใจ | ว 1.2 ม.2/1 | 4 |
 | [`respiratory_care`](m2/respiratory_care.py) | การดูแลรักษาระบบหายใจ | ว 1.2 ม.2/3 | 3 |
 | [`sex_hormones_and_puberty`](m2/sex_hormones_and_puberty.py) | ฮอร์โมนเพศและการเปลี่ยนแปลงเมื่อเข้าสู่วัยหนุ่มสาว | ว 1.2 ม.2/13 | 3 |
 | [`teen_pregnancy`](m2/teen_pregnancy.py) | ผลกระทบของการตั้งครรภ์ก่อนวัยอันควร | ว 1.2 ม.2/17 | 3 |
@@ -115,7 +115,7 @@
 | [`division_compare`](m3/division_compare.py) | ไมโทซิสและไมโอซิส | ว 1.3 ม.3/4 | 3 |
 | [`ecosystem_balance_and_conservation`](m3/ecosystem_balance_and_conservation.py) | สมดุลของระบบนิเวศและการอนุรักษ์ | ว 1.1 ม.3/6 | 3 |
 | [`ecosystem_components_and_levels`](m3/ecosystem_components_and_levels.py) | องค์ประกอบและระดับของระบบนิเวศ | ว 1.1 ม.3/1, ว 1.1 ม.3/2 | 3 |
-| [`food_webs_and_energy_transfer`](m3/food_webs_and_energy_transfer.py) | สายใยอาหารและการถ่ายทอดพลังงาน | ว 1.1 ม.3/3 | 3 |
+| [`food_webs_and_energy_transfer`](m3/food_webs_and_energy_transfer.py) | สายใยอาหารและการถ่ายทอดพลังงาน | ว 1.1 ม.3/3 | 4 |
 | [`gene_dna`](m3/gene_dna.py) | ยีน ดีเอ็นเอ และโครโมโซม | ว 1.3 ม.3/1 | 3 |
 | [`genetic_counsel`](m3/genetic_counsel.py) | การปรึกษาแพทย์ก่อนแต่งงาน | ว 1.3 ม.3/6 | 3 |
 | [`genetic_disease`](m3/genetic_disease.py) | โรคทางพันธุกรรมจากยีนและโครโมโซม | ว 1.3 ม.3/5 | 3 |

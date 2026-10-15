@@ -38,6 +38,7 @@ from otk.sets.physics.m3.series_and_parallel_circuits import CIRCUIT_SPECS
 from otk.sets._support.force_diagrams import ALL_FORCE_DIAGRAM_SPECS
 from otk.sets.physics.m3.waves import WAVE_SPECS
 from otk.sets._support.science_skills import EXPERIMENT_CHARTS
+from otk.sets._support import life_earth_diagrams as led
 from otk.sets._support.block_programs import BLOCK_PROGRAM_SPECS
 from otk.sets._support.flowcharts import FLOWCHART_SPECS
 from otk.sets._support.geography import GRID_MAP_SPECS
@@ -146,6 +147,21 @@ FAMILIES: tuple[tuple[tuple, str], ...] = (
     (FLOWCHART_SPECS, "generate:make_flowchart"),
     # Geography: community maps and classroom plans
     (GRID_MAP_SPECS, "generate:make_grid_map"),
+    # Biology and Earth science: otk/pictures/life_earth_pictures.py
+    (led.EARTH_SECTIONS, "life_earth_pictures:make_earth_section"),
+    (led.FOOD_WEBS, "life_earth_pictures:make_food_web"),
+    (led.CELL_DIAGRAMS, "life_earth_pictures:make_cell"),
+    (led.SOIL_PROFILES, "life_earth_pictures:make_soil_profile"),
+    (led.WATER_CYCLES, "life_earth_pictures:make_water_cycle"),
+    (led.FLOWERS, "life_earth_pictures:make_flower"),
+    (led.FOOD_CHAIN_PICTURES, "life_earth_pictures:make_food_chain"),
+    (led.ROCK_CYCLES, "life_earth_pictures:make_rock_cycle"),
+    (led.PLATE_PICTURES, "life_earth_pictures:make_plate"),
+    (led.HEARTS, "life_earth_pictures:make_heart"),
+    (led.DIGESTIVE_PICTURES, "life_earth_pictures:make_digestive"),
+    (led.BREATHING_PICTURES, "life_earth_pictures:make_breathing"),
+    (led.PLANT_PICTURES, "life_earth_pictures:make_plant_organs"),
+    (led.ROCK_LAYERS, "life_earth_pictures:make_rock_layers"),
 )
 
 # pyplot keeps global state; one drawing at a time. Drawing is rare — each

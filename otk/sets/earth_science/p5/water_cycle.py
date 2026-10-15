@@ -20,6 +20,8 @@ from otk.sets._support.science_wave_b15 import _retopic
 from otk.sets._support.science_wave_b24 import PRIMARY_FIVE
 from otk.sets._support.science_wave_c10 import SUBJECT
 from otk.sets._support.science_wave_c12 import CYCLE_SCENARIOS
+from otk.sets._support.life_earth_diagrams import WATER_CYCLE_ALT, WATER_CYCLES, WATER_STEPS
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -190,3 +192,48 @@ class WaterCycleApplication(QuestionType):
             rng, CYCLE_SCENARIOS,
             hint="นึกว่าความร้อนและความเย็นทำให้น้ำเปลี่ยนสถานะอย่างไร",
         ), CYCLE_TOPIC)
+
+
+@question_type(
+    "geo.water_cycle_diagram",
+    display_name={"th": "ระบุกระบวนการในวัฏจักรน้ำจากภาพ"},
+    level=PRIMARY_FIVE, subject=SUBJECT, topic=CYCLE_TOPIC,
+)
+class WaterCycleDiagram(QuestionType):
+    """Read the numbered arrows of a drawn water cycle.
+
+    Name the process an arrow shows, find the arrow for a process, or match an
+    everyday example to its arrow. The numbering differs between pictures.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(WATER_CYCLES)
+        step = rng.choice(STEPS)
+        number = spec.numbers[WATER_STEPS.index(step.name)]
+        hint = "ดูว่าลูกศรพาน้ำจากที่ใดไปที่ใด: จากทะเลขึ้นฟ้า เข้าไปในเมฆ จากเมฆลงดิน หรือจากดินกลับลงทะเล"
+        kind = rng.randrange(3)
+        if kind == 0:
+            return diagram_question(
+                spec.asset_id, WATER_CYCLE_ALT,
+                stem=f"จากภาพวัฏจักรน้ำ ลูกศรหมายเลข {number} แสดงกระบวนการใด",
+                correct=step.name,
+                wrongs=tuple(s.name for s in STEPS if s is not step),
+                hint=hint, topic=CYCLE_TOPIC,
+            )
+        if kind == 1:
+            return diagram_question(
+                spec.asset_id, WATER_CYCLE_ALT,
+                stem=f"จากภาพวัฏจักรน้ำ ลูกศรหมายเลขใดแสดง{step.name}",
+                correct=f"หมายเลข {number}",
+                wrongs=tuple(f"หมายเลข {n}" for n in spec.numbers if n != number),
+                hint=hint, topic=CYCLE_TOPIC,
+            )
+        example = rng.choice(STEP_EXAMPLES[step.name])
+        return diagram_question(
+            spec.asset_id, WATER_CYCLE_ALT,
+            stem=f"จากภาพวัฏจักรน้ำ เหตุการณ์ “{example}” เป็นกระบวนการเดียวกับลูกศรหมายเลขใด",
+            correct=f"หมายเลข {number}",
+            wrongs=tuple(f"หมายเลข {n}" for n in spec.numbers if n != number),
+            hint="บอกให้ได้ก่อนว่าเหตุการณ์นั้นเป็นกระบวนการใด แล้วหาลูกศรของกระบวนการนั้นในภาพ",
+            topic=CYCLE_TOPIC,
+        )

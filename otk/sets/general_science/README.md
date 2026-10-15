@@ -2,7 +2,25 @@
 
 # วิทยาศาสตร์ทั่วไป (`general_science`)
 
-7 sets in 2 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+22 sets in 7 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+
+## p4 — ป.4
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`process_skill`](p4/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ป.4 | — | 3 |
+
+## p5 — ป.5
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`process_skill`](p5/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ป.5 | — | 3 |
+
+## p6 — ป.6
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`process_skill`](p6/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ป.6 | — | 3 |
 
 ## m1 — ม.1
 
@@ -10,3 +28,15 @@
 |---|---|---|---:|
 | [`process_skill`](m1/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ | — | 4 |
 | [`scientific_method`](m1/scientific_method.py) | วิทยาศาสตร์และวิธีการทางวิทยาศาสตร์ | — | 3 |
+
+## m2 — ม.2
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`process_skill`](m2/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ม.2 | — | 3 |
+
+## m3 — ม.3
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`process_skill`](m3/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ม.3 | — | 3 |

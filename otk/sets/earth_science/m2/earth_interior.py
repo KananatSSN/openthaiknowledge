@@ -20,6 +20,8 @@ from otk.sets._support.science_wave_b14 import _labelled
 from otk.sets._support.science_wave_b15 import _retopic
 from otk.sets._support.science_wave_c10 import LETTERS, SUBJECT
 from otk.sets._support.science_wave_c20 import INTERIOR_FACTS, INTERIOR_SCENARIOS
+from otk.sets._support.life_earth_diagrams import EARTH_LAYERS, EARTH_SECTION_ALT, EARTH_SECTIONS
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -106,3 +108,49 @@ class EarthInteriorApplication(QuestionType):
             rng, INTERIOR_SCENARIOS,
             hint="นึกถึงความหนาแน่นของธาตุ และหลักฐานที่วัดได้จากผิวโลก",
         ), INTERIOR_TOPIC)
+
+
+@question_type(
+    "geo.earth_interior_diagram",
+    display_name={"th": "ระบุชั้นของโลกจากภาพตัด"},
+    level=MIDDLE_TWO, subject=SUBJECT, topic=INTERIOR_TOPIC,
+)
+class EarthInteriorDiagram(QuestionType):
+    """Read a numbered cut-away Earth: name a layer, or find one by what it is made of.
+
+    The numbering changes from picture to picture, so the answer is read from
+    the drawing rather than remembered as "1 is the outside".
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(EARTH_SECTIONS)
+        shell = rng.choice(SHELLS)
+        number = spec.numbers[EARTH_LAYERS.index(shell.name)]
+        kind = rng.randrange(3)
+        if kind == 0:
+            return diagram_question(
+                spec.asset_id, EARTH_SECTION_ALT,
+                stem=f"จากภาพตัดของโลก ชั้นหมายเลข {number} คือชั้นใด",
+                correct=shell.name,
+                wrongs=tuple(s.name for s in SHELLS if s is not shell) + ("ชั้นบรรยากาศ",),
+                hint="ชั้นนอกสุดบางที่สุดคือเปลือกโลก ชั้นกลางหนาที่สุดคือเนื้อโลก ส่วนใจกลางคือแก่นโลก",
+                topic=INTERIOR_TOPIC,
+            )
+        if kind == 1:
+            return diagram_question(
+                spec.asset_id, EARTH_SECTION_ALT,
+                stem=f"จากภาพตัดของโลก ชั้นที่มี{shell.elements}เป็นองค์ประกอบหลักคือหมายเลขใด",
+                correct=f"หมายเลข {number}",
+                wrongs=tuple(f"หมายเลข {n}" for n in (1, 2, 3) if n != number)
+                       + ("ทุกชั้นมีองค์ประกอบหลักเหมือนกัน",),
+                hint="นึกก่อนว่าธาตุเหล่านี้เป็นองค์ประกอบหลักของชั้นใด แล้วหาหมายเลขของชั้นนั้นในภาพ",
+                topic=INTERIOR_TOPIC,
+            )
+        return diagram_question(
+            spec.asset_id, EARTH_SECTION_ALT,
+            stem=f"จากภาพตัดของโลก ชั้นหมายเลข {number} มีธาตุใดเป็นองค์ประกอบหลัก",
+            correct=shell.elements,
+            wrongs=tuple(s.elements for s in SHELLS if s is not shell) + ("ไฮโดรเจนและฮีเลียม",),
+            hint="ระบุชื่อชั้นจากตำแหน่งในภาพก่อน แล้วนึกว่าชั้นนั้นประกอบด้วยธาตุใดเป็นหลัก",
+            topic=INTERIOR_TOPIC,
+        )

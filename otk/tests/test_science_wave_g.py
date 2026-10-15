@@ -58,6 +58,7 @@ from otk.core.curriculum_science import (
     REVIEW_PENDING,
     SCIENCE_BIOLOGY_CLOSURE_KEYS,
     SCIENCE_PLACEMENTS,
+    SCIENCE_PROCESS_SKILL_KEYS,
     SCIENCE_WAVE_B_KEYS,
     SCIENCE_WAVE_C_KEYS,
     SCIENCE_WAVE_D_KEYS,
@@ -236,7 +237,8 @@ def test_no_other_set_in_the_registry_uses_the_sixth_subject():
     """The subject means these skills and nothing else."""
     general = {key for key, spec in REGISTRY.items()
                if spec.subject == "วิทยาศาสตร์ทั่วไป"}
-    assert general == set(UNINDICATED_KEYS)
+    # The process-skill units added at other levels share the subject.
+    assert general == set(UNINDICATED_KEYS) | SCIENCE_PROCESS_SKILL_KEYS
 
 
 @pytest.mark.parametrize("key", UNINDICATED_KEYS)

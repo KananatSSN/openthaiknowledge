@@ -2,7 +2,7 @@
 
 # ธรณีวิทยา (`earth_science`)
 
-247 sets in 79 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+253 sets in 79 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -33,21 +33,21 @@
 | [`condensation_forms`](p5/condensation_forms.py) | เมฆ หมอก น้ำค้าง และน้ำค้างแข็ง | ว 3.2 ป.5/4 | 3 |
 | [`precipitation_forms`](p5/precipitation_forms.py) | ฝน หิมะ และลูกเห็บ | ว 3.2 ป.5/5 | 3 |
 | [`water_amount`](p5/water_amount.py) | ปริมาณน้ำในแหล่งต่าง ๆ | ว 3.2 ป.5/1 | 3 |
-| [`water_cycle`](p5/water_cycle.py) | วัฏจักรน้ำ | ว 3.2 ป.5/3 | 3 |
+| [`water_cycle`](p5/water_cycle.py) | วัฏจักรน้ำ | ว 3.2 ป.5/3 | 4 |
 | [`water_saving`](p5/water_saving.py) | การใช้น้ำอย่างประหยัดและการอนุรักษ์น้ำ | ว 3.2 ป.5/2 | 3 |
 
 ## p6 — ป.6
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`fossil`](p6/fossil.py) | ซากดึกดำบรรพ์ | ว 3.2 ป.6/3 | 3 |
+| [`fossil`](p6/fossil.py) | ซากดึกดำบรรพ์ | ว 3.2 ป.6/3 | 4 |
 | [`greenhouse_action`](p6/greenhouse_action.py) | การลดแก๊สเรือนกระจก | ว 3.2 ป.6/9 | 3 |
 | [`greenhouse_effect`](p6/greenhouse_effect.py) | ปรากฏการณ์เรือนกระจก | ว 3.2 ป.6/8 | 3 |
 | [`hazard_safety`](p6/hazard_safety.py) | การเฝ้าระวังและปฏิบัติตนจากภัยธรรมชาติ | ว 3.2 ป.6/7 | 3 |
 | [`local_wind`](p6/local_wind.py) | ลมบก ลมทะเล และมรสุม | ว 3.2 ป.6/4 | 3 |
 | [`monsoon_season`](p6/monsoon_season.py) | มรสุมและฤดูของประเทศไทย | ว 3.2 ป.6/5 | 3 |
 | [`natural_hazard`](p6/natural_hazard.py) | ภัยธรรมชาติและธรณีพิบัติภัย | ว 3.2 ป.6/6 | 3 |
-| [`rocks_and_the_rock_cycle`](p6/rocks_and_the_rock_cycle.py) | หินและวัฏจักรหิน | ว 3.2 ป.6/1, ว 3.2 ป.6/2 | 12 |
+| [`rocks_and_the_rock_cycle`](p6/rocks_and_the_rock_cycle.py) | หินและวัฏจักรหิน | ว 3.2 ป.6/1, ว 3.2 ป.6/2 | 13 |
 | [`uses_of_rocks_and_minerals`](p6/uses_of_rocks_and_minerals.py) | ประโยชน์ของหินและแร่ | ว 3.2 ป.6/2 | 4 |
 
 ## m1 — ม.1
@@ -68,11 +68,11 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`earth_interior`](m2/earth_interior.py) | โครงสร้างภายในโลก | ว 3.2 ม.2/4 | 3 |
+| [`earth_interior`](m2/earth_interior.py) | โครงสร้างภายในโลก | ว 3.2 ม.2/4 | 4 |
 | [`fossil_fuel`](m2/fossil_fuel.py) | เชื้อเพลิงซากดึกดำบรรพ์ | ว 3.2 ม.2/1 | 3 |
 | [`fuel_saving`](m2/fuel_saving.py) | การใช้เชื้อเพลิงซากดึกดำบรรพ์อย่างรู้คุณค่า | ว 3.2 ม.2/2 | 3 |
 | [`renewable_energy`](m2/renewable_energy.py) | พลังงานทดแทน | ว 3.2 ม.2/3 | 3 |
-| [`soil_profile`](m2/soil_profile.py) | ชั้นหน้าตัดดินและการเกิดดิน | ว 3.2 ม.2/6 | 3 |
+| [`soil_profile`](m2/soil_profile.py) | ชั้นหน้าตัดดินและการเกิดดิน | ว 3.2 ม.2/6 | 4 |
 | [`soil_property`](m2/soil_property.py) | สมบัติของดินและการใช้ประโยชน์ | ว 3.2 ม.2/7 | 3 |
 | [`surface_hazard`](m2/surface_hazard.py) | ธรณีพิบัติภัยบนผิวโลก | ว 3.2 ม.2/10 | 3 |
 | [`surface_processes`](m2/surface_processes.py) | การผุพัง การกร่อน และการสะสมตัว | ว 3.2 ม.2/5 | 3 |
@@ -125,7 +125,7 @@
 | [`earthquake`](m6/earthquake.py) | แผ่นดินไหว | ว 3.2 ม.6/5 | 3 |
 | [`latitude_circulation`](m6/latitude_circulation.py) | การหมุนเวียนของอากาศตามเขตละติจูด | ว 3.2 ม.6/10 | 3 |
 | [`ocean_currents`](m6/ocean_currents.py) | การหมุนเวียนของน้ำผิวหน้าในมหาสมุทร | ว 3.2 ม.6/11 | 3 |
-| [`plate_boundary`](m6/plate_boundary.py) | แนวรอยต่อของแผ่นธรณี | ว 3.2 ม.6/3 | 3 |
+| [`plate_boundary`](m6/plate_boundary.py) | แนวรอยต่อของแผ่นธรณี | ว 3.2 ม.6/3 | 4 |
 | [`plate_evidence`](m6/plate_evidence.py) | หลักฐานการเคลื่อนที่ของแผ่นธรณี | ว 3.2 ม.6/2 | 3 |
 | [`pressure_circulation`](m6/pressure_circulation.py) | การหมุนเวียนของอากาศจากความกดอากาศ | ว 3.2 ม.6/8 | 3 |
 | [`solar_energy`](m6/solar_energy.py) | การได้รับพลังงานจากดวงอาทิตย์ | ว 3.2 ม.6/7 | 3 |

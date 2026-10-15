@@ -76,15 +76,18 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "ecology.feeding": SciencePlacementSpec(BASIC, "ป.5", "ว 1", "ว 1.1", ("ว 1.1 ป.5/3",), "โซ่อาหารและบทบาทของสิ่งมีชีวิต", "standard_scope"),
     "ecology.food_chain_foundation": SciencePlacementSpec(BASIC, "ป.5", "ว 1", "ว 1.1", ("ว 1.1 ป.5/3",), "โซ่อาหารและบทบาทของสิ่งมีชีวิต", "standard_scope"),
     "ecology.food_chain_fluency": SciencePlacementSpec(BASIC, "ป.5", "ว 1", "ว 1.1", ("ว 1.1 ป.5/3",), "โซ่อาหารและบทบาทของสิ่งมีชีวิต", "exact"),
+    "ecology.food_chain_diagram": SciencePlacementSpec(BASIC, "ป.5", "ว 1", "ว 1.1", ("ว 1.1 ป.5/3",), "โซ่อาหารและบทบาทของสิ่งมีชีวิต", "exact"),
     "ecology.food_chain_application": SciencePlacementSpec(BASIC, "ป.5", "ว 1", "ว 1.1", ("ว 1.1 ป.5/3",), "โซ่อาหารและบทบาทของสิ่งมีชีวิต", "standard_scope"),
     "ecology.food_web_foundation": SciencePlacementSpec(BASIC, "ม.3", "ว 1", "ว 1.1", ("ว 1.1 ม.3/3",), "สายใยอาหารและการถ่ายทอดพลังงาน", "standard_scope"),
     "ecology.energy_transfer_fluency": SciencePlacementSpec(BASIC, "ม.3", "ว 1", "ว 1.1", ("ว 1.1 ม.3/3",), "สายใยอาหารและการถ่ายทอดพลังงาน", "standard_scope"),
+    "ecology.food_web_diagram": SciencePlacementSpec(BASIC, "ม.3", "ว 1", "ว 1.1", ("ว 1.1 ม.3/3",), "สายใยอาหารและการถ่ายทอดพลังงาน", "standard_scope"),
     "ecology.food_web_application": SciencePlacementSpec(BASIC, "ม.3", "ว 1", "ว 1.1", ("ว 1.1 ม.3/3",), "สายใยอาหารและการถ่ายทอดพลังงาน", "standard_scope"),
     "ecology.decomposer_role_foundation": SciencePlacementSpec(BASIC, "ม.3", "ว 1", "ว 1.1", ("ว 1.1 ม.3/4",), "บทบาทของผู้ผลิต ผู้บริโภค และผู้ย่อยสลาย", "standard_scope"),
     "ecology.matter_cycle_fluency": SciencePlacementSpec(BASIC, "ม.3", "ว 1", "ว 1.1", ("ว 1.1 ม.3/4",), "บทบาทของผู้ผลิต ผู้บริโภค และผู้ย่อยสลาย", "exact"),
     "ecology.decomposer_application": SciencePlacementSpec(BASIC, "ม.3", "ว 1", "ว 1.1", ("ว 1.1 ม.3/4",), "บทบาทของผู้ผลิต ผู้บริโภค และผู้ย่อยสลาย", "exact"),
     "body.respiratory_organs_foundation": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/1",), "อวัยวะในระบบหายใจ", "standard_scope"),
     "body.respiratory_path_fluency": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/1",), "อวัยวะในระบบหายใจ", "exact"),
+    "body.breathing_diagram": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/1",), "อวัยวะในระบบหายใจ", "exact"),
     "body.respiratory_application": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/1",), "อวัยวะในระบบหายใจ", "exact"),
     "body.breathing_mechanism_foundation": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/2",), "กลไกการหายใจและการแลกเปลี่ยนแก๊ส", "standard_scope"),
     "body.gas_exchange_fluency": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/2",), "กลไกการหายใจและการแลกเปลี่ยนแก๊ส", "exact"),
@@ -103,6 +106,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "body.circulatory_application": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/6",), "หัวใจ หลอดเลือด และเลือด", "exact"),
     "body.blood_circuit_foundation": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/7",), "การทำงานของระบบหมุนเวียนเลือด", "standard_scope"),
     "body.blood_circuit_fluency": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/7",), "การทำงานของระบบหมุนเวียนเลือด", "standard_scope"),
+    "body.heart_diagram": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/7",), "การทำงานของระบบหมุนเวียนเลือด", "standard_scope"),
     "body.circulation_model_application": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/7",), "การทำงานของระบบหมุนเวียนเลือด", "standard_scope"),
     "body.heart_rate_foundation": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/8",), "การทดลองเปรียบเทียบอัตราการเต้นของหัวใจ", "standard_scope"),
     "body.heart_rate_experiment_fluency": SciencePlacementSpec(BASIC, "ม.2", "ว 1", "ว 1.2", ("ว 1.2 ม.2/8",), "การทดลองเปรียบเทียบอัตราการเต้นของหัวใจ", "standard_scope"),
@@ -163,6 +167,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "animal.respect_life_application": SciencePlacementSpec(BASIC, "ป.3", "ว 1", "ว 1.2", ("ว 1.2 ป.3/4",), "การไม่รบกวนวัฏจักรชีวิตของสัตว์", "standard_scope"),
     "plant.organ_function_foundation": SciencePlacementSpec(BASIC, "ป.4", "ว 1", "ว 1.2", ("ว 1.2 ป.4/1",), "หน้าที่ของราก ลำต้น ใบ และดอก", "exact"),
     "plant.organ_function_fluency": SciencePlacementSpec(BASIC, "ป.4", "ว 1", "ว 1.2", ("ว 1.2 ป.4/1",), "หน้าที่ของราก ลำต้น ใบ และดอก", "standard_scope"),
+    "plant.organ_diagram": SciencePlacementSpec(BASIC, "ป.4", "ว 1", "ว 1.2", ("ว 1.2 ป.4/1",), "หน้าที่ของราก ลำต้น ใบ และดอก", "standard_scope"),
     "plant.organ_function_application": SciencePlacementSpec(BASIC, "ป.4", "ว 1", "ว 1.2", ("ว 1.2 ป.4/1",), "หน้าที่ของราก ลำต้น ใบ และดอก", "standard_scope"),
     "body.nutrient_group_foundation": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/1",), "สารอาหารและประโยชน์ของสารอาหาร", "standard_scope"),
     "body.nutrient_group_fluency": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/1",), "สารอาหารและประโยชน์ของสารอาหาร", "exact"),
@@ -175,6 +180,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "body.own_diet_application": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/3",), "การเลือกรับประทานอาหารของตนเอง", "standard_scope"),
     "body.digestive_organs_foundation": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/4",), "ระบบย่อยอาหาร", "exact"),
     "body.digestion_fluency": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/4",), "ระบบย่อยอาหาร", "exact"),
+    "body.digestive_diagram": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/4",), "ระบบย่อยอาหาร", "exact"),
     "body.digestion_application": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/4",), "ระบบย่อยอาหาร", "standard_scope"),
     "body.digestive_care_foundation": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/5",), "การดูแลรักษาระบบย่อยอาหาร", "standard_scope"),
     "body.digestive_care_fluency": SciencePlacementSpec(BASIC, "ป.6", "ว 1", "ว 1.2", ("ว 1.2 ป.6/5",), "การดูแลรักษาระบบย่อยอาหาร", "exact"),
@@ -418,6 +424,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "geo.water_saving_application": SciencePlacementSpec(BASIC, "ป.5", "ว 3", "ว 3.2", ("ว 3.2 ป.5/2",), "การใช้น้ำอย่างประหยัดและการอนุรักษ์น้ำ", "standard_scope"),
     "geo.water_cycle_foundation": SciencePlacementSpec(BASIC, "ป.5", "ว 3", "ว 3.2", ("ว 3.2 ป.5/3",), "วัฏจักรน้ำ", "standard_scope"),
     "geo.water_cycle_fluency": SciencePlacementSpec(BASIC, "ป.5", "ว 3", "ว 3.2", ("ว 3.2 ป.5/3",), "วัฏจักรน้ำ", "exact"),
+    "geo.water_cycle_diagram": SciencePlacementSpec(BASIC, "ป.5", "ว 3", "ว 3.2", ("ว 3.2 ป.5/3",), "วัฏจักรน้ำ", "exact"),
     "geo.water_cycle_application": SciencePlacementSpec(BASIC, "ป.5", "ว 3", "ว 3.2", ("ว 3.2 ป.5/3",), "วัฏจักรน้ำ", "standard_scope"),
     "geo.condensation_forms_foundation": SciencePlacementSpec(BASIC, "ป.5", "ว 3", "ว 3.2", ("ว 3.2 ป.5/4",), "เมฆ หมอก น้ำค้าง และน้ำค้างแข็ง", "standard_scope"),
     "geo.condensation_forms_fluency": SciencePlacementSpec(BASIC, "ป.5", "ว 3", "ว 3.2", ("ว 3.2 ป.5/4",), "เมฆ หมอก น้ำค้าง และน้ำค้างแข็ง", "exact"),
@@ -430,6 +437,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "geo.rock_mineral_use_application": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/2",), "ประโยชน์ของหินและแร่", "standard_scope"),
     "geo.fossil_foundation": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/3",), "ซากดึกดำบรรพ์", "exact"),
     "geo.fossil_fluency": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/3",), "ซากดึกดำบรรพ์", "exact"),
+    "geo.rock_layers_diagram": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/3",), "ซากดึกดำบรรพ์", "exact"),
     "geo.fossil_application": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/3",), "ซากดึกดำบรรพ์", "standard_scope"),
     "geo.local_wind_foundation": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/4",), "ลมบก ลมทะเล และมรสุม", "exact"),
     "geo.local_wind_fluency": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/4",), "ลมบก ลมทะเล และมรสุม", "exact"),
@@ -491,12 +499,14 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "geo.renewable_energy_application": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/3",), "พลังงานทดแทน", "standard_scope"),
     "geo.earth_interior_foundation": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/4",), "โครงสร้างภายในโลก", "standard_scope"),
     "geo.earth_interior_fluency": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/4",), "โครงสร้างภายในโลก", "exact"),
+    "geo.earth_interior_diagram": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/4",), "โครงสร้างภายในโลก", "exact"),
     "geo.earth_interior_application": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/4",), "โครงสร้างภายในโลก", "standard_scope"),
     "geo.surface_processes_foundation": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/5",), "การผุพัง การกร่อน และการสะสมตัว", "exact"),
     "geo.surface_processes_fluency": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/5",), "การผุพัง การกร่อน และการสะสมตัว", "exact"),
     "geo.surface_processes_application": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/5",), "การผุพัง การกร่อน และการสะสมตัว", "standard_scope"),
     "geo.soil_profile_foundation": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/6",), "ชั้นหน้าตัดดินและการเกิดดิน", "exact"),
     "geo.soil_profile_fluency": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/6",), "ชั้นหน้าตัดดินและการเกิดดิน", "exact"),
+    "geo.soil_profile_diagram": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/6",), "ชั้นหน้าตัดดินและการเกิดดิน", "exact"),
     "geo.soil_profile_application": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/6",), "ชั้นหน้าตัดดินและการเกิดดิน", "standard_scope"),
     "geo.soil_property_foundation": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/7",), "สมบัติของดินและการใช้ประโยชน์", "standard_scope"),
     "geo.soil_property_fluency": SciencePlacementSpec(BASIC, "ม.2", "ว 3", "ว 3.2", ("ว 3.2 ม.2/7",), "สมบัติของดินและการใช้ประโยชน์", "exact"),
@@ -518,6 +528,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "geo.plate_evidence_application": SciencePlacementSpec(BASIC, "ม.6", "ว 3", "ว 3.2", ("ว 3.2 ม.6/2",), "หลักฐานการเคลื่อนที่ของแผ่นธรณี", "standard_scope"),
     "geo.plate_boundary_foundation": SciencePlacementSpec(BASIC, "ม.6", "ว 3", "ว 3.2", ("ว 3.2 ม.6/3",), "แนวรอยต่อของแผ่นธรณี", "exact"),
     "geo.plate_boundary_fluency": SciencePlacementSpec(BASIC, "ม.6", "ว 3", "ว 3.2", ("ว 3.2 ม.6/3",), "แนวรอยต่อของแผ่นธรณี", "exact"),
+    "geo.plate_boundary_diagram": SciencePlacementSpec(BASIC, "ม.6", "ว 3", "ว 3.2", ("ว 3.2 ม.6/3",), "แนวรอยต่อของแผ่นธรณี", "exact"),
     "geo.plate_boundary_application": SciencePlacementSpec(BASIC, "ม.6", "ว 3", "ว 3.2", ("ว 3.2 ม.6/3",), "แนวรอยต่อของแผ่นธรณี", "standard_scope"),
     "geo.volcano_foundation": SciencePlacementSpec(BASIC, "ม.6", "ว 3", "ว 3.2", ("ว 3.2 ม.6/4",), "ภูเขาไฟระเบิด", "exact"),
     "geo.volcano_fluency": SciencePlacementSpec(BASIC, "ม.6", "ว 3", "ว 3.2", ("ว 3.2 ม.6/4",), "ภูเขาไฟระเบิด", "exact"),
@@ -999,6 +1010,21 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "sci.process_skill_fluency": SciencePlacementSpec(SUPPLEMENTAL, "ม.1", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
     "sci.process_skill_variables": SciencePlacementSpec(SUPPLEMENTAL, "ม.1", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
     "sci.process_skill_application": SciencePlacementSpec(SUPPLEMENTAL, "ม.1", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p4_foundation": SciencePlacementSpec(SUPPLEMENTAL, "ป.4", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p4_fluency": SciencePlacementSpec(SUPPLEMENTAL, "ป.4", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p4_application": SciencePlacementSpec(SUPPLEMENTAL, "ป.4", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_m3_foundation": SciencePlacementSpec(SUPPLEMENTAL, "ม.3", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_m3_fluency": SciencePlacementSpec(SUPPLEMENTAL, "ม.3", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_m3_application": SciencePlacementSpec(SUPPLEMENTAL, "ม.3", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_m2_foundation": SciencePlacementSpec(SUPPLEMENTAL, "ม.2", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_m2_fluency": SciencePlacementSpec(SUPPLEMENTAL, "ม.2", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_m2_application": SciencePlacementSpec(SUPPLEMENTAL, "ม.2", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p6_foundation": SciencePlacementSpec(SUPPLEMENTAL, "ป.6", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p6_fluency": SciencePlacementSpec(SUPPLEMENTAL, "ป.6", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p6_application": SciencePlacementSpec(SUPPLEMENTAL, "ป.6", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p5_foundation": SciencePlacementSpec(SUPPLEMENTAL, "ป.5", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p5_fluency": SciencePlacementSpec(SUPPLEMENTAL, "ป.5", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
+    "sci.process_skill_p5_application": SciencePlacementSpec(SUPPLEMENTAL, "ป.5", "", "", (), "ทักษะกระบวนการทางวิทยาศาสตร์", "outside_scope"),
     "phys.latent_heat_foundation": SciencePlacementSpec(BASIC, "ม.1", "ว 2", "ว 2.3", ("ว 2.3 ม.1/1",), "การคำนวณปริมาณความร้อนแฝงในการเปลี่ยนสถานะ", "standard_scope"),
     "phys.latent_heat_fluency": SciencePlacementSpec(BASIC, "ม.1", "ว 2", "ว 2.3", ("ว 2.3 ม.1/1",), "การคำนวณปริมาณความร้อนแฝงในการเปลี่ยนสถานะ", "exact"),
     "phys.latent_heat_application": SciencePlacementSpec(BASIC, "ม.1", "ว 2", "ว 2.3", ("ว 2.3 ม.1/1",), "การคำนวณปริมาณความร้อนแฝงในการเปลี่ยนสถานะ", "standard_scope"),
@@ -2134,6 +2160,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "plant.reproduction_application": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/11",), "การสืบพันธุ์ของพืชดอก", "exact"),
     "plant.flower_parts_foundation": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/12",), "โครงสร้างดอกและการเกิดผลและเมล็ด", "standard_scope"),
     "plant.pollination_fluency": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/12",), "โครงสร้างดอกและการเกิดผลและเมล็ด", "exact"),
+    "plant.flower_diagram": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/12",), "โครงสร้างดอกและการเกิดผลและเมล็ด", "exact"),
     "plant.seed_application": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/12",), "โครงสร้างดอกและการเกิดผลและเมล็ด", "exact"),
     "plant.transport_tissue_foundation": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/9",), "ไซเล็มและโฟลเอ็ม", "standard_scope"),
     "plant.transport_tissue_fluency": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/9",), "ไซเล็มและโฟลเอ็ม", "exact"),
@@ -2155,6 +2182,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "cell.diffusion_application": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/5",), "การแพร่และออสโมซิส", "exact"),
     "cell.organelle_function_foundation": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/1",), "เซลล์พืชและเซลล์สัตว์", "standard_scope"),
     "cell.plant_animal_fluency": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/1",), "เซลล์พืชและเซลล์สัตว์", "exact"),
+    "cell.cell_diagram": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/1",), "เซลล์พืชและเซลล์สัตว์", "exact"),
     "cell.structure_application": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/1",), "เซลล์พืชและเซลล์สัตว์", "exact"),
     "cell.shape_function_foundation": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/3",), "รูปร่างของเซลล์กับการทำหน้าที่", "standard_scope"),
     "cell.shape_function_fluency": SciencePlacementSpec(BASIC, "ม.1", "ว 1", "ว 1.2", ("ว 1.2 ม.1/3",), "รูปร่างของเซลล์กับการทำหน้าที่", "exact"),
@@ -2181,6 +2209,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "geo.rock_cycle": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/1",), "หินและวัฏจักรหิน", "standard_scope"),
     "geo.rock_cycle_foundation": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/1",), "หินและวัฏจักรหิน", "standard_scope"),
     "geo.rock_cycle_fluency": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/1",), "หินและวัฏจักรหิน", "exact"),
+    "geo.rock_cycle_diagram": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/1",), "หินและวัฏจักรหิน", "exact"),
     "geo.rock_cycle_application": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/1",), "หินและวัฏจักรหิน", "exact"),
     "geo.rock_photo_id": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/1",), "หินและวัฏจักรหิน", "standard_scope"),
     "geo.rock_photo_group": SciencePlacementSpec(BASIC, "ป.6", "ว 3", "ว 3.2", ("ว 3.2 ป.6/1",), "หินและวัฏจักรหิน", "standard_scope"),
@@ -6266,6 +6295,33 @@ SCIENCE_WAVE_I_KEYS = frozenset({
     "chem.plastic_test_application",
 })
 SCIENCE_WAVE_I_APPROVED_KEYS: frozenset[str] = frozenset()
+# ทักษะกระบวนการทางวิทยาศาสตร์ beyond ม.1: one three-stage unit per level, filed
+# like the ม.1 sets (supplemental, outside_scope, no indicator code).
+SCIENCE_PROCESS_SKILL_KEYS = frozenset({
+    f"sci.process_skill_{level}_{stage}"
+    for level in ("p4", "p5", "p6", "m2", "m3")
+    for stage in ("foundation", "fluency", "application")
+})
+SCIENCE_PROCESS_SKILL_APPROVED_KEYS: frozenset[str] = frozenset()
+# Diagram sets for biology and Earth science, each filed in the unit of the
+# fluency set beside it: a drawn picture the learner reads the answer from.
+SCIENCE_DIAGRAM_KEYS = frozenset({
+    "geo.earth_interior_diagram",
+    "ecology.food_web_diagram",
+    "cell.cell_diagram",
+    "geo.soil_profile_diagram",
+    "geo.water_cycle_diagram",
+    "plant.flower_diagram",
+    "ecology.food_chain_diagram",
+    "geo.rock_cycle_diagram",
+    "geo.plate_boundary_diagram",
+    "body.heart_diagram",
+    "body.digestive_diagram",
+    "body.breathing_diagram",
+    "plant.organ_diagram",
+    "geo.rock_layers_diagram",
+})
+SCIENCE_DIAGRAM_APPROVED_KEYS: frozenset[str] = frozenset()
 _BUILT_PENDING: dict[str, frozenset[str]] = {
     "Phase 5 Wave C": SCIENCE_WAVE_C_KEYS - SCIENCE_WAVE_C_APPROVED_KEYS,
     "Phase 5 Wave D": SCIENCE_WAVE_D_KEYS - SCIENCE_WAVE_D_APPROVED_KEYS,
@@ -6273,6 +6329,8 @@ _BUILT_PENDING: dict[str, frozenset[str]] = {
     "Phase 5 Wave F": SCIENCE_WAVE_F_KEYS - SCIENCE_WAVE_F_APPROVED_KEYS,
     "Phase 5 Wave G": SCIENCE_WAVE_G_KEYS - SCIENCE_WAVE_G_APPROVED_KEYS,
     "Phase 5 Wave I": SCIENCE_WAVE_I_KEYS - SCIENCE_WAVE_I_APPROVED_KEYS,
+    "Process skills": SCIENCE_PROCESS_SKILL_KEYS - SCIENCE_PROCESS_SKILL_APPROVED_KEYS,
+    "Diagrams": SCIENCE_DIAGRAM_KEYS - SCIENCE_DIAGRAM_APPROVED_KEYS,
     "Phase 7 Technology": SCIENCE_TECHNOLOGY_KEYS - SCIENCE_TECHNOLOGY_APPROVED_KEYS,
 }
 REVIEW_PENDING: dict[str, frozenset[str]] = {
@@ -6287,7 +6345,7 @@ SCIENCE_BASELINE_KEYS = (
     - SCIENCE_WAVE_B_KEYS - SCIENCE_BIOLOGY_CLOSURE_KEYS
     - SCIENCE_WAVE_C_KEYS - SCIENCE_WAVE_D_KEYS - SCIENCE_WAVE_E_KEYS
     - SCIENCE_WAVE_F_KEYS - SCIENCE_WAVE_G_KEYS - SCIENCE_TECHNOLOGY_KEYS
-    - SCIENCE_WAVE_I_KEYS
+    - SCIENCE_WAVE_I_KEYS - SCIENCE_PROCESS_SKILL_KEYS - SCIENCE_DIAGRAM_KEYS
 )
 
 

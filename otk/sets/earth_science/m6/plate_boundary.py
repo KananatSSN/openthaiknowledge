@@ -21,6 +21,8 @@ from otk.sets._support.science_wave_c6 import UPPER_SIX
 from otk.sets._support.science_wave_c10 import SUBJECT
 from otk.sets._support.science_wave_c13 import _swapped, _swaps
 from otk.sets._support.science_wave_c22 import BOUNDARY_SCENARIOS
+from otk.sets._support.life_earth_diagrams import PLATE_ALT, PLATE_PICTURES
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -160,3 +162,43 @@ class PlateBoundaryApplication(QuestionType):
             rng, BOUNDARY_SCENARIOS,
             hint="หาว่าพื้นที่นั้นอยู่ใกล้แนวรอยต่อแบบใด แล้วเชื่อมกับการเคลื่อนที่ของแผ่นธรณี",
         ), BOUNDARY_TOPIC)
+
+
+@question_type(
+    "geo.plate_boundary_diagram",
+    display_name={"th": "ระบุแนวรอยต่อของแผ่นธรณีจากภาพ"},
+    level=UPPER_SIX, subject=SUBJECT, topic=BOUNDARY_TOPIC,
+)
+class PlateBoundaryDiagram(QuestionType):
+    """Read the arrows of a drawn boundary: name it, give a real place like it, or say how the plates move."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(PLATE_PICTURES)
+        boundary = next(b for b in BOUNDARIES if b.name == spec.boundary)
+        others = [b for b in BOUNDARIES if b is not boundary]
+        hint = "ดูลูกศร: ออกจากกันคือแยกตัว เข้าหากันคือเคลื่อนที่เข้าหากัน และสวนกันในแนวราบคือเคลื่อนที่ผ่านกัน"
+        kind = rng.randrange(3)
+        if kind == 0:
+            return diagram_question(
+                spec.asset_id, PLATE_ALT,
+                stem="ภาพนี้แสดงแนวรอยต่อของแผ่นธรณีแบบใด",
+                correct=boundary.name,
+                wrongs=tuple(b.name for b in others) + ("แนวที่แผ่นธรณีไม่เคลื่อนที่",),
+                hint=hint, topic=BOUNDARY_TOPIC,
+            )
+        if kind == 1:
+            return diagram_question(
+                spec.asset_id, PLATE_ALT,
+                stem="สถานที่ใดเป็นตัวอย่างของแนวรอยต่อแบบที่แสดงในภาพนี้",
+                correct=boundary.example,
+                wrongs=tuple(b.example for b in others) + (NOT_A_BOUNDARY[0],),
+                hint=hint, topic=BOUNDARY_TOPIC,
+            )
+        return diagram_question(
+            spec.asset_id, PLATE_ALT,
+            stem="ข้อใดอธิบายการเคลื่อนที่ของแผ่นธรณีในภาพนี้ได้ถูกต้อง",
+            correct=boundary.motion,
+            wrongs=tuple(b.motion for b in others)
+                   + ("แผ่นธรณีทั้งสองอยู่นิ่ง ไม่เคลื่อนที่ จึงไม่มีการเปลี่ยนแปลงที่รอยต่อ",),
+            hint=hint, topic=BOUNDARY_TOPIC,
+        )

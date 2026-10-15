@@ -23,6 +23,8 @@ from otk.sets._support.science_wave_b2 import (
     TOPIC,
     _labelled,
 )
+from otk.sets._support.life_earth_diagrams import CELL_ALT, CELL_DIAGRAMS, PLANT_PARTS
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -153,4 +155,59 @@ class CellStructureApplication(QuestionType):
             stem=stem, correct=correct, wrongs=wrongs,
             hint="ระบุก่อนว่าสิ่งที่สังเกตได้เกี่ยวข้องกับโครงสร้างใด "
                  "แล้วจึงตรวจว่าโครงสร้างนั้นทำหน้าที่ตามที่ตัวเลือกอ้างจริงหรือไม่",
+        )
+
+
+PLANT_REASON = "เซลล์พืช เพราะมีผนังเซลล์และคลอโรพลาสต์"
+ANIMAL_REASON = "เซลล์สัตว์ เพราะไม่มีผนังเซลล์และคลอโรพลาสต์"
+
+
+@question_type(
+    "cell.cell_diagram",
+    display_name={"th": "ระบุส่วนประกอบของเซลล์จากภาพ"},
+    level=LEVEL, subject=SUBJECT, topic=TOPIC,
+)
+class CellDiagram(QuestionType):
+    """A numbered plant or animal cell: name a part, give its job, or say which cell it is.
+
+    The numbering differs between pictures of the same cell, and the jobs come
+    from ``ORGANELLES``, the same table the other sets in this unit teach from.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(CELL_DIAGRAMS)
+        part = rng.choice(spec.labelled)
+        number = spec.number_of(part)
+        kind = rng.randrange(3)
+        if kind == 0:
+            others = [p for p in PLANT_PARTS if p != part]
+            rng.shuffle(others)
+            return diagram_question(
+                spec.asset_id, CELL_ALT,
+                stem=f"จากภาพเซลล์ ส่วนหมายเลข {number} คือส่วนใด",
+                correct=part, wrongs=tuple(others[:4]),
+                hint="ไล่จากด้านนอกเข้าด้านใน: ผนังเซลล์ (มีเฉพาะพืช) เยื่อหุ้มเซลล์ ไซโทพลาซึม แล้วจึงเป็นนิวเคลียสและออร์แกเนลล์",
+                topic=TOPIC,
+            )
+        if kind == 1:
+            job = {o.name: o.function for o in ORGANELLES}
+            return diagram_question(
+                spec.asset_id, CELL_ALT,
+                stem=f"จากภาพเซลล์ ส่วนหมายเลข {number} ทำหน้าที่ใด",
+                correct=job[part],
+                wrongs=tuple(j for name, j in job.items() if name != part),
+                hint="ระบุชื่อส่วนจากตำแหน่งในภาพก่อน แล้วนึกถึงหน้าที่ของส่วนนั้น",
+                topic=TOPIC,
+            )
+        plant = spec.kind == "plant"
+        return diagram_question(
+            spec.asset_id, CELL_ALT,
+            stem="ภาพนี้เป็นเซลล์พืชหรือเซลล์สัตว์ และใช้สิ่งใดตัดสิน",
+            correct=PLANT_REASON if plant else ANIMAL_REASON,
+            wrongs=(ANIMAL_REASON if plant else PLANT_REASON,
+                    "เซลล์พืช เพราะมีนิวเคลียสและเยื่อหุ้มเซลล์" if not plant
+                    else "เซลล์สัตว์ เพราะมีนิวเคลียสและเยื่อหุ้มเซลล์",
+                    "บอกไม่ได้ เพราะเซลล์พืชและเซลล์สัตว์มีส่วนประกอบเหมือนกันทุกส่วน"),
+            hint="ส่วนที่พบเฉพาะในเซลล์พืชคือผนังเซลล์และคลอโรพลาสต์ ส่วนนิวเคลียสพบได้ทั้งสองแบบ",
+            topic=TOPIC,
         )

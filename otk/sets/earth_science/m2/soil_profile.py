@@ -22,6 +22,8 @@ from otk.sets._support.science_wave_c10 import SUBJECT
 from otk.sets._support.science_wave_c13 import _swapped, _swaps
 from otk.sets._support.science_wave_c15 import FIVE_LETTERS
 from otk.sets._support.science_wave_c20 import SOIL_PROFILE_SCENARIOS
+from otk.sets._support.life_earth_diagrams import SOIL_PROFILE_ALT, SOIL_PROFILES
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -155,3 +157,47 @@ class SoilProfileApplication(QuestionType):
             rng, SOIL_PROFILE_SCENARIOS,
             hint="นึกว่าแต่ละชั้นของดินมีองค์ประกอบอะไร และเกิดขึ้นอย่างไร",
         ), SOIL_PROFILE_TOPIC)
+
+
+@question_type(
+    "geo.soil_profile_diagram",
+    display_name={"th": "ระบุชั้นหน้าตัดดินจากภาพ"},
+    level=MIDDLE_TWO, subject=SUBJECT, topic=SOIL_PROFILE_TOPIC,
+)
+class SoilProfileDiagram(QuestionType):
+    """Read a numbered soil profile: name a horizon, find one from its description, or describe one.
+
+    The numbers are not always top to bottom, so the horizon is placed by its
+    position in the picture, not by its number.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(SOIL_PROFILES)
+        index = rng.randrange(len(HORIZONS))
+        horizon = HORIZONS[index]
+        number = spec.numbers[index]
+        hint = "ไล่จากผิวดินลงไป: ชั้นโอ (ซากพืชซากสัตว์) ชั้นเอ ชั้นบี ชั้นซี (หินผุ) และชั้นอาร์ (หินพื้น)"
+        kind = rng.randrange(3)
+        if kind == 0:
+            return diagram_question(
+                spec.asset_id, SOIL_PROFILE_ALT,
+                stem=f"จากภาพหน้าตัดดิน ชั้นหมายเลข {number} คือชั้นใด",
+                correct=horizon.name,
+                wrongs=tuple(h.name for h in HORIZONS if h is not horizon),
+                hint=hint, topic=SOIL_PROFILE_TOPIC,
+            )
+        if kind == 1:
+            return diagram_question(
+                spec.asset_id, SOIL_PROFILE_ALT,
+                stem=f"จากภาพหน้าตัดดิน ชั้นที่มีลักษณะ “{horizon.description}” คือหมายเลขใด",
+                correct=f"หมายเลข {number}",
+                wrongs=tuple(f"หมายเลข {n}" for n in spec.numbers if n != number),
+                hint=hint, topic=SOIL_PROFILE_TOPIC,
+            )
+        return diagram_question(
+            spec.asset_id, SOIL_PROFILE_ALT,
+            stem=f"จากภาพหน้าตัดดิน ชั้นหมายเลข {number} มีลักษณะอย่างไร",
+            correct=horizon.description,
+            wrongs=tuple(h.description for h in HORIZONS if h is not horizon),
+            hint=hint, topic=SOIL_PROFILE_TOPIC,
+        )

@@ -22,6 +22,8 @@ from otk.sets._support.science_wave_b8 import (
     TOPIC,
     _labelled,
 )
+from otk.sets._support.life_earth_diagrams import BREATHING_ALT, BREATHING_PARTS, BREATHING_PICTURES
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -132,4 +134,53 @@ class RespiratoryApplication(QuestionType):
             hint="ระบุก่อนว่าเรื่องนี้เกี่ยวกับทางผ่านของอากาศ พื้นที่แลกเปลี่ยนแก๊ส "
                  "หรือกล้ามเนื้อที่ใช้หายใจ",
             topic=TOPIC,
+        )
+
+
+@question_type(
+    "body.breathing_diagram",
+    display_name={"th": "ระบุอวัยวะในระบบหายใจจากภาพ"},
+    level=LEVEL, subject=SUBJECT, topic=TOPIC,
+)
+class BreathingDiagram(QuestionType):
+    """Five numbered parts of the airway and lungs: name one, give its job, or order two along the air's path."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(BREATHING_PICTURES)
+        job = {organ.name: organ.function for organ in ORGANS}
+        part = rng.choice(BREATHING_PARTS)
+        number = spec.numbers[BREATHING_PARTS.index(part)]
+        hint = "อากาศเข้าทางจมูก ผ่านหลอดลมลงไปแตกแขนงเป็นหลอดลมฝอยในปอด ส่วนกะบังลมอยู่ใต้ปอด"
+        kind = rng.randrange(3)
+        if kind == 0:
+            return diagram_question(
+                spec.asset_id, BREATHING_ALT,
+                stem=f"จากภาพระบบหายใจ ส่วนหมายเลข {number} คือส่วนใด",
+                correct=part,
+                wrongs=tuple(p for p in BREATHING_PARTS if p != part),
+                hint=hint, topic=TOPIC,
+            )
+        if kind == 1:
+            return diagram_question(
+                spec.asset_id, BREATHING_ALT,
+                stem=f"จากภาพระบบหายใจ ส่วนหมายเลข {number} ทำหน้าที่ใด",
+                correct=job[part],
+                wrongs=tuple(j for name, j in job.items() if name != part),
+                hint="ระบุชื่อส่วนจากตำแหน่งในภาพก่อน แล้วนึกถึงหน้าที่ของส่วนนั้น",
+                topic=TOPIC,
+            )
+        # Two of the three parts on the air's path; which one does air reach first?
+        on_path = [p for p in BREATHING_PARTS if p in AIR_PATH]
+        first, second = sorted(rng.sample(on_path, 2), key=AIR_PATH.index)
+        a, b = spec.numbers[BREATHING_PARTS.index(first)], spec.numbers[BREATHING_PARTS.index(second)]
+        shown = (a, b) if rng.random() < 0.5 else (b, a)
+        return diagram_question(
+            spec.asset_id, BREATHING_ALT,
+            stem=(f"จากภาพระบบหายใจ เมื่อหายใจเข้า อากาศผ่านส่วนหมายเลข {shown[0]} "
+                  f"หรือส่วนหมายเลข {shown[1]} ก่อน"),
+            correct=f"ส่วนหมายเลข {a} ก่อน แล้วจึงไปส่วนหมายเลข {b}",
+            wrongs=(f"ส่วนหมายเลข {b} ก่อน แล้วจึงไปส่วนหมายเลข {a}",
+                    "อากาศผ่านทั้งสองส่วนพร้อมกันในเวลาเดียวกัน",
+                    "อากาศไม่ผ่านทั้งสองส่วนนี้เลยระหว่างการหายใจเข้า"),
+            hint=hint, topic=TOPIC,
         )
