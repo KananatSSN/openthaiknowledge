@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,217 sets in 217 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,335 sets in 297 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -117,10 +117,10 @@
 | [`exponents`](m1/exponents.py) | เลขยกกำลัง | ค 1.1 ม.1/* | 10 |
 | [`geometric_constructions`](m1/geometric_constructions.py) | การสร้างทางเรขาคณิต | ค 2.2 ม.1/* | 4 |
 | [`integers`](m1/integers.py) | จำนวนเต็ม | ค 1.1 ม.1/* | 6 |
-| [`linear_equations`](m1/linear_equations.py) | สมการเชิงเส้น | ค 1.3 ม.1/* | 6 |
+| [`linear_equations`](m1/linear_equations.py) | สมการเชิงเส้น | ค 1.3 ม.1/* | 9 |
 | [`linear_graphs`](m1/linear_graphs.py) | กราฟความสัมพันธ์เชิงเส้น | ค 1.3 ม.1/2, ค 1.3 ม.1/3 | 4 |
 | [`prime_factorisation`](m1/prime_factorisation.py) | แยกตัวประกอบเฉพาะ | — | 5 |
-| [`ratio_and_proportion`](m1/ratio_and_proportion.py) | อัตราส่วนและสัดส่วน | ค 1.1 ม.1/3 | 5 |
+| [`ratio_and_proportion`](m1/ratio_and_proportion.py) | อัตราส่วนและสัดส่วน | ค 1.1 ม.1/3 | 8 |
 | [`rational_numbers`](m1/rational_numbers.py) | จำนวนตรรกยะ | ค 1.1 ม.1/* | 5 |
 | [`spatial_relationships`](m1/spatial_relationships.py) | มิติสัมพันธ์ของรูปเรขาคณิต | ค 2.2 ม.1/* | 4 |
 | [`statistics`](m1/statistics.py) | สถิติ | ค 3.1 ม.1/1 | 5 |
@@ -133,21 +133,21 @@
 | [`exponents`](m2/exponents.py) | เลขยกกำลัง | ค 1.1 ม.2/* | 13 |
 | [`factorising_quadratics`](m2/factorising_quadratics.py) | การแยกตัวประกอบของพหุนามดีกรีสอง | ค 1.2 ม.2/2 | 3 |
 | [`geometric_reasoning`](m2/geometric_reasoning.py) | การให้เหตุผลทางเรขาคณิต | ค 2.2 ม.2/* | 4 |
-| [`geometric_transformations`](m2/geometric_transformations.py) | การแปลงทางเรขาคณิต | ค 2.2 ม.2/* | 4 |
+| [`geometric_transformations`](m2/geometric_transformations.py) | การแปลงทางเรขาคณิต | ค 2.2 ม.2/* | 7 |
 | [`linear_functions`](m2/linear_functions.py) | ฟังก์ชันเชิงเส้น | — | 4 |
 | [`literal_equations`](m2/literal_equations.py) | แก้สมการหลายตัวแปร | — | 4 |
 | [`monomials_and_polynomials`](m2/monomials_and_polynomials.py) | เอกนามและพหุนาม | ค 1.2 ม.2/1 | 15 |
 | [`parallel_lines`](m2/parallel_lines.py) | เส้นขนาน | ค 2.2 ม.2/* | 4 |
 | [`pythagoras`](m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | ค 2.2 ม.2/5 | 6 |
 | [`real_numbers`](m2/real_numbers.py) | จำนวนจริง | ค 1.1 ม.2/* | 9 |
-| [`statistics`](m2/statistics.py) | สถิติ | ค 3.1 ม.2/* | 7 |
+| [`statistics`](m2/statistics.py) | สถิติ | ค 3.1 ม.2/* | 10 |
 | [`surface_area_and_volume`](m2/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.2/* | 4 |
 
 ## m3 — ม.3
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`basic_probability`](m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | ค 3.2 ม.3/1 | 4 |
+| [`basic_probability`](m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | ค 3.2 ม.3/1 | 7 |
 | [`binomial_expansion`](m3/binomial_expansion.py) | กระจายทวินาม | ค 1.2 ม.3/* | 3 |
 | [`box_plots`](m3/box_plots.py) | สถิติ (แผนภาพกล่อง) | ค 3.1 ม.3/1 | 4 |
 | [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 6 |
@@ -156,7 +156,7 @@
 | [`inequality`](m3/inequality.py) | อสมการเชิงเส้น | ค 1.3 ม.3/1 | 6 |
 | [`parabola`](m3/parabola.py) | กราฟของฟังก์ชันกำลังสอง | ค 1.2 ม.3/2 | 3 |
 | [`quadratic`](m3/quadratic.py) | สมการกำลังสอง | ค 1.3 ม.3/2 | 5 |
-| [`similarity`](m3/similarity.py) | ความคล้าย | ค 2.2 ม.3/1 | 5 |
+| [`similarity`](m3/similarity.py) | ความคล้าย | ค 2.2 ม.3/1 | 8 |
 | [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 5 |
 | [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 4 |
 | [`trigonometric_ratios`](m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค 2.2 ม.3/2 | 5 |
@@ -169,7 +169,7 @@
 | [`analytic_geometry`](m4/analytic_geometry.py) | เรขาคณิตวิเคราะห์ | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 4 |
 | [`basic_counting_principles`](m4/basic_counting_principles.py) | หลักการนับเบื้องต้น | ค 3.2 ม.4/1 | 3 |
 | [`circle_equations`](m4/circle_equations.py) | สมการวงกลม | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 5 |
-| [`composite`](m4/composite.py) | ฟังก์ชันประกอบ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/1 | 4 |
+| [`composite`](m4/composite.py) | ฟังก์ชันประกอบ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/1 | 7 |
 | [`conic_sections`](m4/conic_sections.py) | ภาคตัดกรวย | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 6 |
 | [`discriminant`](m4/discriminant.py) | ดิสคริมิแนนต์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 3 |
 | [`distance`](m4/distance.py) | ระยะทาง | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 3 |
@@ -182,7 +182,7 @@
 | [`logic`](m4/logic.py) | ตรรกศาสตร์ | ค 1.1 ม.4/1, ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.4/2 | 12 |
 | [`polynomial_division`](m4/polynomial_division.py) | การหารพหุนาม | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 8 |
 | [`probability_of_events`](m4/probability_of_events.py) | ความน่าจะเป็นของเหตุการณ์ | ค 3.2 ม.4/2 | 3 |
-| [`quadratic`](m4/quadratic.py) | เรนจ์ของฟังก์ชันกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 3 |
+| [`quadratic`](m4/quadratic.py) | เรนจ์ของฟังก์ชันกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 6 |
 | [`quadratic_inequalities`](m4/quadratic_inequalities.py) | อสมการกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 7 |
 | [`rational_equations_and_inequalities`](m4/rational_equations_and_inequalities.py) | สมการและอสมการเศษส่วน | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/2 | 4 |
 | [`relations_and_functions`](m4/relations_and_functions.py) | ความสัมพันธ์และฟังก์ชัน | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 9 |
@@ -200,10 +200,10 @@
 | [`counting_principles`](m5/counting_principles.py) | หลักการนับ | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 6 |
 | [`expected_value`](m5/expected_value.py) | ค่าคาดหมาย | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/2 | 4 |
 | [`function`](m5/function.py) | ฟังก์ชันในชีวิตจริง | ค 1.2 ม.5/1 | 3 |
-| [`interest_and_value_of_money`](m5/interest_and_value_of_money.py) | ดอกเบี้ยและมูลค่าของเงิน | ค 1.3 ม.5/1 | 4 |
+| [`interest_and_value_of_money`](m5/interest_and_value_of_money.py) | ดอกเบี้ยและมูลค่าของเงิน | ค 1.3 ม.5/1 | 7 |
 | [`inverse_trig`](m5/inverse_trig.py) | ตัวผกผันของฟังก์ชันตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 4 |
 | [`law_of_cosines`](m5/law_of_cosines.py) | กฎของโคไซน์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/2 | 6 |
-| [`law_of_sines`](m5/law_of_sines.py) | กฎของไซน์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/2 | 3 |
+| [`law_of_sines`](m5/law_of_sines.py) | กฎของไซน์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/2 | 6 |
 | [`matrices`](m5/matrices.py) | เมทริกซ์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/3, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/5, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/4 | 13 |
 | [`permutations`](m5/permutations.py) | การเรียงสับเปลี่ยน | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 7 |
 | [`probability`](m5/probability.py) | ความน่าจะเป็น | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/2 | 13 |
@@ -219,7 +219,7 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`applied_statistics`](m6/applied_statistics.py) | สถิติประยุกต์ | ค 3.1 ม.6/1 | 3 |
-| [`area_between_curves`](m6/area_between_curves.py) | พื้นที่ระหว่างเส้นโค้ง | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 4 |
+| [`area_between_curves`](m6/area_between_curves.py) | พื้นที่ระหว่างเส้นโค้ง | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 7 |
 | [`area_under_curves`](m6/area_under_curves.py) | พื้นที่ | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 4 |
 | [`arithmetic_sequences`](m6/arithmetic_sequences.py) | ลำดับเลขคณิต | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/2, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/4 | 7 |
 | [`definite_integrals`](m6/definite_integrals.py) | อินทิกรัลจำกัดเขต | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 4 |
@@ -235,7 +235,7 @@
 | [`quantitative_data_presentation`](m6/quantitative_data_presentation.py) | การนำเสนอข้อมูลเชิงปริมาณ | ค 3.1 ม.6/1 | 3 |
 | [`regression`](m6/regression.py) | การวิเคราะห์การถดถอย | ค 3.1 ม.6/1 | 5 |
 | [`relative_extrema`](m6/relative_extrema.py) | ค่าสูงสุด-ต่ำสุดสัมพัทธ์ | ค เพิ่มเติม แคลคูลัส 1 ม.6/2 | 6 |
-| [`series`](m6/series.py) | อนุกรม | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/1, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/3 | 6 |
+| [`series`](m6/series.py) | อนุกรม | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/1, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/3 | 9 |
 | [`tangent_lines`](m6/tangent_lines.py) | เส้นสัมผัส | ค เพิ่มเติม แคลคูลัส 1 ม.6/2 | 4 |
 | [`z_scores`](m6/z_scores.py) | ค่ามาตรฐาน | ค 3.1 ม.6/1 | 4 |
 
@@ -293,6 +293,62 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
+| [`algebraic_invariants`](olympiad/algebraic_invariants.py) | Algebraic invariants from aggregate data, roots, and signed pairs. | — | 3 |
+| [`altitude_midpoint_circle`](olympiad/altitude_midpoint_circle.py) | Circle through an altitude foot and a side midpoint meets another side. | — | 1 |
+| [`altitude_tangent_midpoint`](olympiad/altitude_tangent_midpoint.py) | Find the midpoint cut by two circumcircle tangents. | — | 1 |
+| [`balanced_signed_partition`](olympiad/balanced_signed_partition.py) | Count sizes admitting a zero-sum half of a signed symmetric set. | — | 1 |
+| [`barycentric_functional`](olympiad/barycentric_functional.py) | A multiplicative functional equation at noncollinear barycentres. | — | 1 |
+| [`base_power_sums`](olympiad/base_power_sums.py) | Distinct sums of a few powers when their exponents may repeat. | — | 1 |
+| [`bounded_path_colorings`](olympiad/bounded_path_colorings.py) | Proper colorings of a row with bounded color use. | — | 1 |
+| [`cevian_angle_bisector_ratio`](olympiad/cevian_angle_bisector_ratio.py) | A variable segment ratio from an angle bisector and two cevians. | — | 1 |
+| [`circular_gate_crossings`](olympiad/circular_gate_crossings.py) | Find same-material lighted paths among near-diameter chords. | — | 1 |
+| [`composed_polynomial_roots`](olympiad/composed_polynomial_roots.py) | Products of real roots after composing a cubic with a quadratic. | — | 1 |
+| [`conditional_switch_passes`](olympiad/conditional_switch_passes.py) | Count switches after conditional passes over numbered positions. | — | 1 |
+| [`consecutive_nonpowers_crt`](olympiad/consecutive_nonpowers_crt.py) | Construct consecutive non-perfect-powers using exact prime valuations. | — | 1 |
+| [`constrained_race_ranks`](olympiad/constrained_race_ranks.py) | Count distinct first/third-rank pairs under order and spacing rules. | — | 1 |
+| [`contiguous_group_fraction`](olympiad/contiguous_group_fraction.py) | Recover a contiguous group size from front/back row fractions. | — | 1 |
+| [`convex_boundary_triangles`](olympiad/convex_boundary_triangles.py) | Count triangles formed by marked points on a convex polygon boundary. | — | 1 |
+| [`cyclic_cube_product_maximum`](olympiad/cyclic_cube_product_maximum.py) | Optimize a cyclic product under a sum of cube roots. | — | 1 |
+| [`cyclic_sixth_power_inequality`](olympiad/cyclic_sixth_power_inequality.py) | Minimize a cyclic sixth-power expression under a fixed sum. | — | 1 |
+| [`descending_password_suffix`](olympiad/descending_password_suffix.py) | Find feasible password endings under parity and descending-order rules. | — | 1 |
+| [`diagonal_strip_lamps`](olympiad/diagonal_strip_lamps.py) | Dominate a one-cell-wide lattice strip with unit-radius lamps. | — | 1 |
+| [`diagonal_strip_placements`](olympiad/diagonal_strip_placements.py) | Count independent strip placements on opposite sides of a diagonal. | — | 1 |
+| [`diameter_circles_median`](olympiad/diameter_circles_median.py) | Use two diameter circles to locate a cevian intersection on a median. | — | 1 |
+| [`digit_sum_multiples`](olympiad/digit_sum_multiples.py) | Digit sums of multiples and a modular obstruction. | — | 1 |
+| [`elf_delivery_minimax`](olympiad/elf_delivery_minimax.py) | Assign progressively slower elves to progressively nearer houses. | — | 1 |
+| [`equal_arm_diagonal_intersection`](olympiad/equal_arm_diagonal_intersection.py) | Directed diagonal intersection from equal arm lengths in a triangle. | — | 1 |
+| [`equal_links_circle_angle`](olympiad/equal_links_circle_angle.py) | Central angle from four equal links on a circle chord. | — | 1 |
+| [`equal_share_redistribution`](olympiad/equal_share_redistribution.py) | Recover an original equally shared population from two redistributions. | — | 1 |
+| [`equiangular_hexagon_diagonals`](olympiad/equiangular_hexagon_diagonals.py) | Recover a symmetric side expression from three equiangular-hexagon diagonals. | — | 1 |
+| [`factorial_offset_polynomial_divisors`](olympiad/factorial_offset_polynomial_divisors.py) | Classify polynomial divisors of factorials with a fixed offset. | — | 1 |
+| [`fifth_power_pair_remainders`](olympiad/fifth_power_pair_remainders.py) | Reduce paired fifth-power numerators modulo a sum of squares. | — | 1 |
+| [`functional_equation_value_set`](olympiad/functional_equation_value_set.py) | Classify a cubic functional equation after scaling its coefficient. | — | 1 |
+| [`gcd_lcm_square`](olympiad/gcd_lcm_square.py) | Square least common multiples under a fixed gcd. | — | 1 |
+| [`grid_pigeonhole`](olympiad/grid_pigeonhole.py) | Pigeonhole bounds obtained by partitioning a grid into small blocks. | — | 1 |
+| [`hensel_divisor_lift`](olympiad/hensel_divisor_lift.py) | Lift a simple polynomial root to guarantee many divisors. | — | 1 |
+| [`incenter_excenter_height`](olympiad/incenter_excenter_height.py) | Compare incenter and opposite-A excenter heights in a reflected triangle. | — | 1 |
+| [`incenter_parallel_perimeters`](olympiad/incenter_parallel_perimeters.py) | Sum perimeters of three triangles cut off by parallels through an incenter. | — | 1 |
+| [`incircle_bisector_equal_segments`](olympiad/incircle_bisector_equal_segments.py) | Compare two bisector intersections in an incircle triangle. | — | 1 |
+| [`integer_recurrence_rigidity`](olympiad/integer_recurrence_rigidity.py) | A divisibility recurrence with a unique positive-integer sequence. | — | 1 |
+| [`integer_valued_product_inequality`](olympiad/integer_valued_product_inequality.py) | Classify integer-valued functions obeying a product inequality. | — | 1 |
+| [`isosceles_tangent_midpoint`](olympiad/isosceles_tangent_midpoint.py) | Locate a cross-pair tangent chord in an isosceles triangle. | — | 1 |
+| [`lcm_difference_set`](olympiad/lcm_difference_set.py) | Locate the maximum of a set closed under an LCM quotient. | — | 1 |
+| [`leading_digit_passwords`](olympiad/leading_digit_passwords.py) | Count codes with an initial digit, nonadjacent digits, and unique letters. | — | 1 |
+| [`minimum_tail_squares`](olympiad/minimum_tail_squares.py) | Maximize the earlier square sum by minimizing a fixed-sum tail. | — | 1 |
+| [`mirrored_rotation_similarity`](olympiad/mirrored_rotation_similarity.py) | A similarity from opposite rays and equal outward rotations. | — | 1 |
+| [`monochrome_rainbow_tournament`](olympiad/monochrome_rainbow_tournament.py) | Bound a colored complete graph with no two-equal-edge triangles. | — | 1 |
+| [`monotone_grid_fleet`](olympiad/monotone_grid_fleet.py) | Cover a square grid with several monotone corner-to-corner routes. | — | 1 |
+| [`multiplicative_additive_function`](olympiad/multiplicative_additive_function.py) | Classify a positive-real functional equation with a scale factor. | — | 1 |
+| [`nested_radical_two_roots`](olympiad/nested_radical_two_roots.py) | Find the first parameter giving two roots in a nested-radical equation. | — | 1 |
+| [`notched_hexagon_perimeter`](olympiad/notched_hexagon_perimeter.py) | Close a notched equiangular-edge hexagon to recover its perimeter. | — | 1 |
+| [`obtuse_angle_dominance`](olympiad/obtuse_angle_dominance.py) | Optimize an angle under a line-of-sight dominance condition. | — | 1 |
+| [`obtuse_progressions`](olympiad/obtuse_progressions.py) | Probability that a fixed-gap triple is an obtuse triangle. | — | 1 |
+| [`odd_row_column_grids`](olympiad/odd_row_column_grids.py) | Count binary grids with odd parity in every row and column. | — | 1 |
+| [`opposite_midpoint_chords`](olympiad/opposite_midpoint_chords.py) | A vector identity among opposite-side midpoint chords of a hexagon. | — | 1 |
+| [`orthocenter_circumcircle_collinearity`](olympiad/orthocenter_circumcircle_collinearity.py) | Slope of a collinear triple in an acute orthocenter construction. | — | 1 |
+| [`overlapping_boxes_probability`](olympiad/overlapping_boxes_probability.py) | Probability of distinct labels from three overlapping boxes. | — | 1 |
+| [`perpendicular_chords`](olympiad/perpendicular_chords.py) | Area of a circle from two intersecting perpendicular chords. | — | 1 |
+| [`polynomial_product_avoidance`](olympiad/polynomial_product_avoidance.py) | Degrees of integer polynomials whose value sets avoid products. | — | 1 |
 | [`posn2561`](olympiad/posn2561.py) | ปริศนาเชิงตรรกะ | — | 30 |
 | [`posn2562`](olympiad/posn2562.py) | สมการเลขชี้กำลัง | — | 30 |
 | [`posn2564`](olympiad/posn2564.py) | อัตราส่วนจากสมการกำลังสอง | — | 30 |
@@ -300,3 +356,27 @@
 | [`posn2566`](olympiad/posn2566.py) | ฟังก์ชันเวียนเกิด | — | 30 |
 | [`posn2567`](olympiad/posn2567.py) | พหุนามสมมาตร | — | 30 |
 | [`posn2568`](olympiad/posn2568.py) | สมการเชิงเส้นบนเลขโดด | — | 30 |
+| [`prefix_pigeonhole`](olympiad/prefix_pigeonhole.py) | Pigeonhole and discrete intermediate values for signed prefix sums. | — | 1 |
+| [`purple_grid_threshold`](olympiad/purple_grid_threshold.py) | Minimum marked cells under a missing-cell degree-product condition. | — | 1 |
+| [`quadratic_irrational_reduction`](olympiad/quadratic_irrational_reduction.py) | Reduce a high-degree quotient at a quadratic irrational. | — | 1 |
+| [`rational_recurrence`](olympiad/rational_recurrence.py) | Starting values of an infinite rational quadratic recurrence. | — | 1 |
+| [`reciprocal_function_equation`](olympiad/reciprocal_function_equation.py) | Evaluate the unique positive solution of a nested functional equation. | — | 1 |
+| [`reciprocal_roots_sectors`](olympiad/reciprocal_roots_sectors.py) | Count close root pairs forced by reciprocity and six disk sectors. | — | 1 |
+| [`reciprocal_sum_power_minimum`](olympiad/reciprocal_sum_power_minimum.py) | Minimize a power sum under a reciprocal-sum constraint. | — | 1 |
+| [`regular_polygon_flag_classes`](olympiad/regular_polygon_flag_classes.py) | Count repeated minimal color classes in an odd regular polygon. | — | 1 |
+| [`roots_cubic_quotient`](olympiad/roots_cubic_quotient.py) | Simplify a symmetric cubic quotient using quadratic-root identities. | — | 1 |
+| [`sequence_divisibility`](olympiad/sequence_divisibility.py) | Divisibility in a nonlinear recurrence. | — | 1 |
+| [`shifted_square_sums`](olympiad/shifted_square_sums.py) | Recover a shifted sum of squares from two power sums. | — | 1 |
+| [`sixth_root_tuples`](olympiad/sixth_root_tuples.py) | Count ordered tuples of three roots subject to a sum constraint. | — | 1 |
+| [`sophie_germain_prime_power`](olympiad/sophie_germain_prime_power.py) | Expose the smaller Sophie Germain factor in a divisibility proof. | — | 1 |
+| [`square_corner_tangent_circle`](olympiad/square_corner_tangent_circle.py) | Square area from a circle tangent to two sides and passing its center. | — | 1 |
+| [`swapped_quadratic_coefficients`](olympiad/swapped_quadratic_coefficients.py) | Find constants preserving rational roots under quadratic coefficient swaps. | — | 1 |
+| [`tangent_circles_inner_chord`](olympiad/tangent_circles_inner_chord.py) | Find the inner segment cut by two circles from a tangent construction. | — | 1 |
+| [`tangent_secant_horizontal_chord`](olympiad/tangent_secant_horizontal_chord.py) | Circle area from a horizontal chord through a tangent point. | — | 1 |
+| [`tangential_quadrilateral_additivity`](olympiad/tangential_quadrilateral_additivity.py) | Infer rational values from a tangential-quadrilateral identity. | — | 1 |
+| [`three_edge_grid_erasure`](olympiad/three_edge_grid_erasure.py) | Classify square grids erasable three sides at a time. | — | 1 |
+| [`three_orientation_volume`](olympiad/three_orientation_volume.py) | Recover a rectangular box's capacity from three water depths. | — | 1 |
+| [`three_semicircles_triangle`](olympiad/three_semicircles_triangle.py) | Area of an equilateral triangle from three tangent semicircles. | — | 1 |
+| [`totient_factorial_divisibility`](olympiad/totient_factorial_divisibility.py) | Use cycle generators to explain a totient divisibility. | — | 1 |
+| [`weighted_cyclic_inequality`](olympiad/weighted_cyclic_inequality.py) | A sharp Cauchy and AM–GM bound for cyclic denominators. | — | 1 |
+| [`wilson_consecutive_product`](olympiad/wilson_consecutive_product.py) | Use Wilson's theorem to reduce a near-complete residue product. | — | 1 |

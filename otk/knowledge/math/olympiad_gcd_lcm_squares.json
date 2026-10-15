@@ -1,0 +1,22 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+ "level": "โอลิมปิก (สอวน.)",
+ "units": [
+  {
+   "id": "math.olympiad.fixed-gcd-square-lcm",
+   "kind": "procedure",
+   "title": "ค.ร.น. เป็นกำลังสองเมื่อกำหนด ห.ร.ม.",
+   "statement": "เมื่อ gcd(n,M)=G ให้เขียน n=Gt และ M=Gm จึงมี gcd(t,m)=1 และ lcm(n,M)=Mt ถ้า s เป็นแกนปลอดกำลังสองของ M ค่าที่เป็นไปได้คือ t=su² โดย gcd(s,m)=gcd(u,m)=1; หาก gcd(s,m)>1 จะไม่มีคำตอบ",
+   "steps": [
+    "แยกเงื่อนไข ห.ร.ม. ด้วย n=Gt และ M=Gm เพื่อให้ได้ gcd(t,m)=1",
+    "ใช้ lcm(n,M)=Mt และเลขชี้กำลังของตัวประกอบเฉพาะเพื่อบังคับ t=su²",
+    "ตรวจ gcd(s,m) แล้วจำกัด u ด้วย Gsu²≤ขอบเขตที่กำหนด ก่อนรวมค่า n"
+   ],
+   "sources": [
+    {"sheet": "สอวน_math/posn1-69-math.pdf", "item": 3}
+   ],
+   "covered_by": ["math.gcd_lcm_square_olympiad"]
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.tangential-quadrilateral-additivity",
+      "kind": "procedure",
+      "title": "Tangential quadrilaterals force additivity",
+      "statement": "If f on positive reals satisfies f(a+b+c+d)=f(a)+f(b)+f(c)+f(d) for every tangential quadrilateral, then squares give f(4t)=4f(t), while tangential kites with sides x,y,y,x give midpoint Jensen. Together these imply f(2t)=2f(t), hence f(x+y)=f(x)+f(y). Consequently f(p/q)=p f(1)/q for positive integers p,q.",
+      "steps": [
+        "Apply the identity to squares and tangential kites",
+        "Derive midpoint Jensen and f(2t)=2f(t)",
+        "Use additivity to evaluate positive rational arguments"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 3}],
+      "covered_by": ["math.tangential_quadrilateral_additivity_olympiad"]
+    }
+  ]
+}

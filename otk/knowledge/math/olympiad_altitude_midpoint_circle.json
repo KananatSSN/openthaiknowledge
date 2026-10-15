@@ -1,0 +1,20 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "วงกลม",
+ "level": "โอลิมปิก (สอวน.)",
+ "units": [
+  {
+   "id": "math.olympiad.altitude-midpoint-second-circle-intersection",
+   "kind": "procedure",
+   "title": "หาจุดตัดที่สองของวงกลมผ่านเท้าสูงและจุดกึ่งกลาง",
+   "statement": "เมื่อ B,D,M อยู่บนด้าน BC และวงกลมผ่าน A,D,M ตัด BA อีกครั้งที่ E ใช้กำลังของจุด B ได้ BA·BE=BD·BM โดย BD หาได้จากการฉายด้าน AB ลงบน BC แล้ว AE=AB−BE",
+   "steps": [
+    "คำนวณ BD=(AB²+BC²−CA²)/(2BC)",
+    "ใช้ BM=BC/2 และกำลังของจุด B เพื่อหา BE=BD·BM/AB",
+    "ลบจาก AB เพื่อหา AE"
+   ],
+   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 19}],
+   "covered_by": ["math.altitude_midpoint_circle_intersection_olympiad"]
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนาม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.factorial-offset-polynomial-divisors",
+      "kind": "procedure",
+      "title": "Polynomial divisors of factorials plus a fixed offset",
+      "statement": "For positive N,c, the integer-coefficient polynomials P with P(n) dividing n!+c for all integers n≥N are exactly the nonzero constant polynomials whose absolute values divide gcd(N!,c). Fix m≥N and choose arbitrarily large n congruent to m modulo |P(m)|. Then |P(m)| divides P(n), n!+c, and n!, so |P(m)| divides c. Thus P is bounded on all large positive integers and must be constant. The common divisors of n!+c over n≥N are precisely divisors of gcd(N!,c).",
+      "steps": [
+        "Use polynomial congruence and a large factorial to show every P(m) divides c",
+        "Conclude that P is constant from bounded values",
+        "Count positive and negative divisors of gcd(N!,c)"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 10}],
+      "covered_by": ["math.factorial_offset_polynomial_divisors_olympiad"]
+    }
+  ]
+}

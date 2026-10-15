@@ -8,9 +8,11 @@ Sets moved here from: math_apply_stage, math_gaps_secondary.
 
 from __future__ import annotations
 
+from fractions import Fraction
 from random import Random
 
 from otk.core.content import text
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
@@ -19,6 +21,7 @@ from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sets._support.math_apply_stage import _n, _nums
 from otk.sets._support.math_gaps_secondary import _choices, _num
 from otk.sets._support.math_m4 import maths
+from otk.sets._support.math_p2 import _maths
 
 PROVENANCE = Provenance("original")
 
@@ -132,3 +135,75 @@ class CompareOffersM5(QuestionType):
                          f"{best} ได้มากกว่าประมาณ {abs(a - b) * n:,.2f} บาท",
                          # The wrong bank and the wrong amount.
                          f"{other} ได้มากกว่าประมาณ {abs(a - b) * n:,.2f} บาท"], self.topic)
+
+
+def _nearest_baht(amount: Fraction) -> int:
+    """Round a nonnegative exact amount to the nearest baht, with halves upward."""
+    return (2 * amount.numerator + amount.denominator) // (2 * amount.denominator)
+
+
+@question_type("math.compound_quarterly_m5",
+               display_name={"th": "ดอกเบี้ยทบต้นรายไตรมาส"},
+               level={"th": "ม.5"}, topic=_MONEY_TOPIC)
+class CompoundQuarterlyM5(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        principal = rng.randrange(10_000, 100_001, 5_000)
+        annual_rate = rng.choice((4, 8, 12))
+        years = rng.randint(2, 5)
+        quarterly_rate = Fraction(annual_rate, 400)
+        answer = _nearest_baht(Fraction(principal) * (1 + quarterly_rate) ** (4 * years))
+        wrongs = [
+            named("interest.used_simple_interest", str(principal * (100 + annual_rate * years) // 100)),
+            named("interest.compounded_annually", str(_nearest_baht(
+                Fraction(principal) * (1 + Fraction(annual_rate, 100)) ** years))),
+            named("interest.counted_one_year_only", str(_nearest_baht(
+                Fraction(principal) * (1 + quarterly_rate) ** 4))),
+        ]
+        return _maths([text(f"ฝากเงิน {principal:,} บาท อัตราดอกเบี้ยร้อยละ {annual_rate} ต่อปี "
+                            f"ทบต้นทุก 3 เดือน เมื่อครบ {years} ปี จะมีเงินประมาณกี่บาท "
+                            "(ปัดเป็นบาทที่ใกล้ที่สุด)")], str(answer), wrongs, self.topic)
+
+
+@question_type("math.regular_deposit_future_value_m5",
+               display_name={"th": "มูลค่าอนาคตของเงินฝากปลายปีเท่ากันทุกปี"},
+               level={"th": "ม.5"}, topic=_MONEY_TOPIC)
+class RegularDepositFutureValueM5(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        deposit = rng.randint(2, 30) * 1000
+        rate = rng.choice((5, 10))
+        years = rng.randint(3, 6)
+        growth = 1 + Fraction(rate, 100)
+        answer = _nearest_baht(sum((Fraction(deposit) * growth ** j for j in range(years)), Fraction()))
+        wrongs = [
+            named("interest.treated_deposits_as_one_lump", str(deposit * years)),
+            named("interest.deposited_at_period_start", str(_nearest_baht(
+                sum((Fraction(deposit) * growth ** (j + 1) for j in range(years)), Fraction())))),
+            named("interest.grew_only_first_deposit", str(_nearest_baht(
+                Fraction(deposit) * growth ** (years - 1) + deposit * (years - 1)))),
+        ]
+        return _maths([text(f"ฝากเงิน {deposit:,} บาท ทุกสิ้นปี เป็นเวลา {years} ปี "
+                            f"ได้ดอกเบี้ยทบต้นร้อยละ {rate} ต่อปี "
+                            "หลังฝากงวดสุดท้ายทันที มีเงินรวมประมาณกี่บาท "
+                            "(ปัดเป็นบาทที่ใกล้ที่สุด)")], str(answer), wrongs, self.topic)
+
+
+@question_type("math.regular_payment_present_value_m5",
+               display_name={"th": "มูลค่าปัจจุบันของเงินรับปลายปีเท่ากันทุกปี"},
+               level={"th": "ม.5"}, topic=_MONEY_TOPIC)
+class RegularPaymentPresentValueM5(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        payment = rng.randint(2, 30) * 1000
+        rate = rng.choice((5, 10))
+        years = rng.randint(3, 6)
+        growth = 1 + Fraction(rate, 100)
+        value = sum((Fraction(payment) / growth ** j for j in range(1, years + 1)), Fraction())
+        answer = _nearest_baht(value)
+        wrongs = [
+            named("interest.ignored_discounting", str(payment * years)),
+            named("interest.discounted_extra_period", str(_nearest_baht(value / growth))),
+            named("interest.treated_first_payment_as_immediate", str(_nearest_baht(value * growth))),
+        ]
+        return _maths([text(f"จะได้รับเงิน {payment:,} บาท ทุกสิ้นปี เป็นเวลา {years} ปี "
+                            f"ถ้าใช้อัตราคิดลดร้อยละ {rate} ต่อปี "
+                            "เงินรับทั้งหมดมีมูลค่าปัจจุบันประมาณกี่บาท "
+                            "(ปัดเป็นบาทที่ใกล้ที่สุด)")], str(answer), wrongs, self.topic)

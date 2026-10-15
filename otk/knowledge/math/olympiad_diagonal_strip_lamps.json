@@ -1,0 +1,22 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.diagonal-strip-domination",
+      "kind": "procedure",
+      "title": "Minimum unit-radius lamps on a three-point diagonal strip",
+      "statement": "Let A be the lattice points (x,y) with 0≤x,y≤n and |x−y|≤1. A radius strictly between 1 and sqrt(2) covers precisely the selected point and its horizontal or vertical neighbors. The minimum number of lamps placed at A to cover A is n+1. All n+1 diagonal points suffice. Any solution can be transformed without adding lamps to one supported only on the diagonal: a pair of off-diagonal lamps between consecutive diagonal points can be replaced by both endpoints; any remaining single off-diagonal lamp can be replaced by its uncovered diagonal endpoint or removed. Then every diagonal point needs its own lamp.",
+      "steps": [
+        "View the strip as consecutive diagonal vertices with two off-diagonal points between each pair",
+        "Replace both off-diagonal lamps on an edge by its two diagonal endpoints",
+        "Replace any remaining off-diagonal lamp by the still-unlit endpoint, then count all diagonal points"
+      ],
+      "sources": [
+        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 7}
+      ],
+      "covered_by": ["math.diagonal_strip_lamps_olympiad"]
+    }
+  ]
+}

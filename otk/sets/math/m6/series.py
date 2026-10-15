@@ -13,6 +13,7 @@ from random import Random
 
 from otk.core.content import math as content_math
 from otk.core.content import text
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
@@ -29,6 +30,7 @@ from otk.sets._support.math_bank_notes import M6, _q
 from otk.sets._support.math_bank_sequences import M6 as M6_math_bank_sequences
 from otk.sets._support.math_bank_sequences import _num_q, _tex_q, num
 from otk.sets._support.math_m4 import maths
+from otk.sets._support.math_p2 import _maths
 
 
 def s1(n: int) -> int:
@@ -265,3 +267,69 @@ class RepeatingDecimalToFraction(MathType):
             shown, frac_tex(value), prompt="จงเขียนทศนิยมซ้ำนี้ในรูปเศษส่วน",
             distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != value])
 RepeatingDecimalToFraction.PROVENANCE = Provenance("original")
+
+
+@question_type("math.alternating_geometric_sum_m6",
+               display_name={"th": "ผลบวกอนุกรมเรขาคณิตสลับเครื่องหมาย"},
+               level=M6, topic=SERIES)
+class AlternatingGeometricSumM6(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        p = rng.randint(1, 8)
+        q = rng.randint(p + 1, p + 8)
+        a = rng.randint(2, 18)
+        r = Fraction(p, q)
+        answer = Fraction(a, 1 + r)
+        wrongs = [
+            named("series.ignored_alternation", frac_tex(Fraction(a, 1 - r))),
+            named("series.used_first_term_only", str(a)),
+            named("series.reversed_first_term_sign", frac_tex(-answer)),
+        ]
+        return _maths([text("จงหาผลบวกของอนุกรมอนันต์"),
+                       content_math(rf"\sum_{{n=0}}^{{\infty}} {a}\left(-\frac{{{p}}}{{{q}}}\right)^n")],
+                      frac_tex(answer), wrongs, self.topic)
+AlternatingGeometricSumM6.PROVENANCE = Provenance("original")
+
+
+@question_type("math.finite_telescoping_fraction_m6",
+               display_name={"th": "ผลบวกอนุกรมตัดกันเป็นทอด ๆ แบบจำกัด"},
+               level=M6, topic=SERIES)
+class FiniteTelescopingFractionM6(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        c, n = rng.randint(2, 18), rng.randint(5, 40)
+        answer = Fraction(c * n, n + 1)
+        wrongs = [
+            named("series.used_infinite_sum", str(c)),
+            named("series.used_tail_only", frac_tex(Fraction(c, n + 1))),
+            named("series.reversed_telescoping_fraction", frac_tex(Fraction(c * (n + 1), n))),
+        ]
+        return _maths([text("จงหาผลบวก"),
+                       content_math(rf"\sum_{{k=1}}^{{{n}}}\frac{{{c}}}{{k(k+1)}}")],
+                      frac_tex(answer), wrongs, self.topic)
+FiniteTelescopingFractionM6.PROVENANCE = Provenance("original")
+
+
+@question_type("math.weighted_geometric_infinite_m6",
+               display_name={"th": "ผลบวกอนุกรมเรขาคณิตถ่วงน้ำหนักด้วยลำดับพจน์"},
+               level=M6, topic=SERIES)
+class WeightedGeometricInfiniteM6(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            p = rng.randint(1, 8)
+            q = rng.randint(p + 1, p + 9)
+            a = rng.randint(2, 18)
+            r = Fraction(p, q)
+            answer = Fraction(a, (1 - r) ** 2)
+            candidates = (
+                frac_tex(Fraction(a, 1 - r)),
+                frac_tex(Fraction(a * r, (1 - r) ** 2)),
+                frac_tex(Fraction(a, (1 + r) ** 2)),
+            )
+            if len({frac_tex(answer), *candidates}) == 4:
+                break
+        wrongs = [named(key, value) for key, value in zip((
+            "series.forgot_term_weight", "series.shifted_weight_index",
+            "series.used_plus_ratio"), candidates)]
+        return _maths([text("จงหาผลบวกของอนุกรมอนันต์"),
+                       content_math(rf"\sum_{{n=1}}^{{\infty}} {a}n\left(\frac{{{p}}}{{{q}}}\right)^{{n-1}}")],
+                      frac_tex(answer), wrongs, self.topic)
+WeightedGeometricInfiniteM6.PROVENANCE = Provenance("original")

@@ -1,0 +1,22 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.hensel-divisor-lift",
+      "kind": "procedure",
+      "title": "Lift a polynomial root to force arbitrarily many divisors",
+      "statement": "Because 2023 is divisible by 7 and the derivative of a²+a+2023 at a=0 is 1 modulo 7, the root a=0 modulo 7 lifts uniquely to a root modulo every 7^k. Taking a positive representative makes a²+a+2023 divisible by 7^k and hence gives at least k+1 distinct divisors 1,7,...,7^k.",
+      "steps": [
+        "Start with root 0 modulo 7",
+        "If a is a root modulo 7^j, choose the next base-7 digit to solve a linear congruence",
+        "Use the powers of 7 as explicitly distinct divisors"
+      ],
+      "sources": [
+        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 9}
+      ],
+      "covered_by": ["math.hensel_divisor_lift_olympiad"]
+    }
+  ]
+}

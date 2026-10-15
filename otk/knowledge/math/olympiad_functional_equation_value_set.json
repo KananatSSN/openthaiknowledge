@@ -1,0 +1,22 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cubic-functional-equation-classification",
+      "kind": "procedure",
+      "title": "Classify a cubic functional equation by reciprocal normalization",
+      "statement": "The solutions of f(x)f(y)f(x-y)=x²f(y)-y²f(x) on the real numbers are f=0 and f(x)=±x. If one nonzero value exists, all nonzero arguments have nonzero values. With g(x)=x²/f(x), the equation becomes f(x-y)=g(x)-g(y). Oddness and the substitutions y=-x,2x show g=f; therefore f is additive and f(x)²=x², forcing ± identity.",
+      "steps": [
+        "Use x=y=0 to obtain f(0)=0 and rule out isolated nonzero values",
+        "Divide by f(x)f(y), derive oddness, and compare x, -x, 2x",
+        "Apply additivity and the square identity to classify the two nonzero maps"
+      ],
+      "sources": [
+        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 3}
+      ],
+      "covered_by": ["math.functional_equation_value_set_olympiad"]
+    }
+  ]
+}

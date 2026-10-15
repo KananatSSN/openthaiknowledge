@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "วงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.tangent-circles-inner-chord",
+      "kind": "procedure",
+      "title": "Chord lengths in the tangent and two circumcircle construction",
+      "statement": "For A=(−a,0), B=(a,0), C=(u,v) in an acute triangle, let the tangents to the circumcircle at A and B meet at T, D=CT∩AB, E be the second intersection of TA with the circumcircle of CAD, and F the second intersection of TB with the circumcircle of CBD. If EF meets AC and BC at P and Q, then E,F,P,Q are horizontal, PQ=2a(u²+v²−a²)/(u²+v²+a²), and EF=PQ+AB.",
+      "steps": [
+        "Compute the tangent intersection and D in coordinates",
+        "Find the second circle intersections E and F and observe they have equal height",
+        "Intersect the horizontal line with AC and BC and subtract their coordinates"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 8}],
+      "covered_by": ["math.tangent_circles_inner_chord_olympiad"]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.integer-valued-product-inequality",
+      "kind": "procedure",
+      "title": "Classify integer-valued functions under a product inequality",
+      "statement": "The functions f:R→Z satisfying f(x)^2+f(y)^2≤2f(xy) for every real x,y are precisely f=0, f=1, and f=1 at zero and 0 elsewhere. Substitution at (0,0) gives f(0)∈{0,1}. If f(0)=0, using y=0 gives f=0. If f(0)=1, the same substitution bounds values to {-1,0,1}; using y=1 eliminates -1. A nonzero x with f(x)=1 forces f(xy)=1 for every y, so f=1. Otherwise only f(0)=1 remains.",
+      "steps": [
+        "Determine f(0) from the inequality at (0,0)",
+        "Bound all values using y=0 and y=1",
+        "Use a nonzero point with value 1 to force the constant solution"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 7}],
+      "covered_by": ["math.integer_valued_product_inequality_olympiad"]
+    }
+  ]
+}

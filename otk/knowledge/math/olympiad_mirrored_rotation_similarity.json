@@ -1,0 +1,20 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "เรขาคณิต",
+ "level": "โอลิมปิก (สอวน.)",
+ "units": [
+  {
+   "id": "math.olympiad.mirrored-rotation-similarity",
+   "kind": "procedure",
+   "title": "สามเหลี่ยมคล้ายจากการหมุนออกนอกมุมสองด้าน",
+   "statement": "เมื่อ E และ F อยู่บนรังสีตรงข้าม AB และ AC โดย AE/AF=AC/AB และสร้าง AP, AR จากการหมุน AC, AB ออกนอกมุมด้วยมุมและอัตราขยายเดียวกัน จะมี AE/AF=AP/AR และมุม EAP เท่ากับ FAR ดังนั้นสามเหลี่ยม AEP และ AFR คล้ายกัน โดย FR/EP=AB/AC ถ้า B,C,E,F อยู่บนวงกลมเดียวกันและ EP,FR ตัดวงกลมอีกครั้งที่ X,Y มุมในวงกลมที่เท่ากันให้ BX=CY",
+   "steps": [
+    "ใช้กำลังของจุด A เมื่อ B,C,E,F อยู่บนวงกลมเดียวกัน เพื่อได้ AB·AE=AC·AF",
+    "เทียบอัตราส่วน AE/AF กับ AP/AR และเทียบมุม EAP กับ FAR",
+    "สรุปความคล้ายของ AEP กับ AFR แล้วใช้มุมในวงกลมรองรับคอร์ด BX และ CY"
+   ],
+   "sources": [{"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 1}],
+   "covered_by": ["math.mirrored_rotation_similarity_olympiad"]
+  }
+ ]
+}

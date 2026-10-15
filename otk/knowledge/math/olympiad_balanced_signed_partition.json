@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.balanced-signed-partition",
+      "kind": "procedure",
+      "title": "Choose a zero-sum half of symmetric nonzero integers",
+      "statement": "The nonzero integers from -n through n admit an n-element subset summing to zero exactly when n is at least 2. For even n, take opposite pairs. For odd n, take -2, -1, 3 and enough opposite pairs with magnitudes at least 4.",
+      "steps": [
+        "Exclude n=1 by direct inspection",
+        "For even n select n/2 opposite pairs",
+        "For odd n select the zero-sum triple and (n-3)/2 opposite pairs"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "math.balanced_signed_partition_olympiad"
+      ]
+    }
+  ]
+}

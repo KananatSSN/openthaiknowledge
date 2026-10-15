@@ -12,14 +12,16 @@ from fractions import Fraction
 from random import Random
 
 from otk.core.content import text
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem
+from otk.kit.math_problems import MathDraw, WordProblem, frac_tex
 from otk.sets._support.math_diagrams import _img, _math_q
 from otk.sets._support.math_diagrams_geo import SIMILAR_PAIRS, SimilarPair
 from otk.sets._support.math_m3 import LEVEL
+from otk.sets._support.math_p2 import _maths
 
 PROVENANCE = Provenance("original")
 
@@ -152,3 +154,72 @@ class SimilarRatioArea(WordProblem):
         return MathDraw(
             "", str(big), prompt=prompt,
             distractors=[str(small * k), str(small * k ** 3), str(small + k)])
+
+
+@question_type("math.similar_parallel_segment_m3",
+               display_name={"th": "ส่วนของด้านที่เหลือในสามเหลี่ยมคล้าย"},
+               level=LEVEL, topic="ความคล้าย")
+class SimilarParallelSegmentM3(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            a, b = rng.sample(range(2, 9), 2)
+            k, m = rng.sample(range(2, 8), 2)
+            ad, db, ae, ec = a * k, b * k, a * m, b * m
+            candidates = (str(ae + ec), str(db), frac_tex(Fraction(ad * ae, db)))
+            if len({str(ec), *candidates}) == 4:
+                break
+        wrongs = [named(key, value) for key, value in zip((
+            "similar.used_whole_side", "similar.copied_corresponding_segment",
+            "similar.reversed_ratio"), candidates)]
+        return _maths([text("ในสามเหลี่ยม ABC จุด D อยู่บนด้าน AB และจุด E อยู่บนด้าน AC "
+                            f"โดย DE ขนานกับ BC ถ้า AD = {ad}, DB = {db}, AE = {ae} หน่วย "
+                            "ส่วน EC ยาวกี่หน่วย")], str(ec), wrongs, self.topic)
+
+
+@question_type("math.similar_remaining_area_m3",
+               display_name={"th": "พื้นที่ส่วนที่เหลือจากสามเหลี่ยมคล้าย"},
+               level=LEVEL, topic="ความคล้าย")
+class SimilarRemainingAreaM3(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            p = rng.randint(2, 16)
+            q = rng.randint(p + 2, p + 14)
+            ratio = Fraction(p, q)
+            answer = frac_tex(1 - ratio ** 2)
+            candidates = (frac_tex(1 - ratio), frac_tex(ratio ** 2), frac_tex(ratio))
+            if len({answer, *candidates}) == 4:
+                break
+        wrongs = [named(key, value) for key, value in zip((
+            "similar.used_length_ratio_for_area", "similar.found_inner_area",
+            "similar.reported_length_ratio"), candidates)]
+        return _maths([text("ในสามเหลี่ยม ABC จุด D อยู่บนด้าน AB และจุด E อยู่บนด้าน AC "
+                            f"โดย DE ขนานกับ BC และ AD : AB = {p} : {q} "
+                            "พื้นที่สี่เหลี่ยม DBCE เป็นส่วนเท่าใดของพื้นที่สามเหลี่ยม ABC")],
+                      answer, wrongs, self.topic)
+
+
+@question_type("math.similar_side_from_areas_m3",
+               display_name={"th": "ความยาวด้านรูปคล้ายจากอัตราส่วนพื้นที่"},
+               level=LEVEL, topic="ความคล้าย")
+class SimilarSideFromAreasM3(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        small_root = rng.randint(2, 6)
+        large_root = rng.randint(small_root + 1, small_root + 5)
+        area_unit = rng.randint(2, 7)
+        side_unit = rng.randint(2, 8)
+        small_area = area_unit * small_root ** 2
+        large_area = area_unit * large_root ** 2
+        small_side = small_root * side_unit
+        large_side = large_root * side_unit
+        wrongs = [
+            named("similar.used_area_ratio_for_length",
+                  frac_tex(Fraction(small_side * large_area, small_area))),
+            named("similar.kept_length_unchanged", str(small_side)),
+            named("similar.reversed_length_ratio", frac_tex(Fraction(small_side * small_root,
+                                                                     large_root))),
+        ]
+        return _maths([text(f"รูปสามเหลี่ยมสองรูปคล้ายกัน รูปเล็กมีพื้นที่ {small_area} ตารางเซนติเมตร "
+                            f"รูปใหญ่มีพื้นที่ {large_area} ตารางเซนติเมตร "
+                            f"ถ้าด้านหนึ่งของรูปเล็กยาว {small_side} เซนติเมตร "
+                            "ด้านที่สมนัยกันของรูปใหญ่ยาวกี่เซนติเมตร")],
+                      str(large_side), wrongs, self.topic)

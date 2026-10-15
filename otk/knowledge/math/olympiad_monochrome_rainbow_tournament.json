@@ -1,0 +1,22 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การจัดหมู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.monochrome-rainbow-tournament",
+      "kind": "procedure",
+      "title": "Complete-edge-coloring bound from monochromatic-or-rainbow triangles",
+      "statement": "In a complete graph with q edge colors, at least two used, and every triangle monochromatic or rainbow, each color component is a clique of size at most q-1. For a fixed vertex, each of q color classes contains at most q-2 neighbors, so there are at most (q-1)^2 vertices. When q-1 is prime, coloring pairs in the affine plane by line direction attains the bound. The 101-player, 11-score case therefore forces a triangle with exactly two equal scores.",
+      "steps": [
+        "Show a path of two edges with one color closes to a same-color triangle",
+        "Use an outside vertex to bound a maximal color clique by q-1",
+        "Count neighbors of one vertex across q colors and construct equality by slopes"
+      ],
+      "sources": [
+        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 4}
+      ],
+      "covered_by": ["math.monochrome_rainbow_tournament_olympiad"]
+    }
+  ]
+}

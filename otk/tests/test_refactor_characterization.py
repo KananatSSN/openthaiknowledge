@@ -177,4 +177,5 @@ def test_sheet_publication_manifest_is_frozen():
     # second wave added 16 (weather, seasons, Thailand's regions, continents),
     # and a third 11 (waste, livelihoods, economic location, landforms, population).
     # A fourth wave brought each geography unit to a full three stages: 20 more.
-    assert len(REGISTRY) == 3548
+    # Local math variety and original olympiad practice add another 88 sets.
+    assert len(REGISTRY) == 3666

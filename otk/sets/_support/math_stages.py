@@ -433,12 +433,14 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ม.1", "สมการเชิงเส้น"): (
         ("balance_equation_m1", "linear_equation"),
         ("linear_equation_both_sides", "linear_equation_brackets"),
-        ("linear_equation_setup_m1", "linear_word_problem_m1"),
+        ("linear_equation_setup_m1", "linear_word_problem_m1",
+         "linear_fee_comparison_m1", "linear_remaining_fraction_m1", "linear_transfer_m1"),
     ),
     (B, "ม.1", "อัตราส่วนและสัดส่วน"): (
         ("simplify_ratio", "solve_proportion"),
         ("three_term_ratio_m1", "proportion_word_problem_m1"),
-        ("percent_word_problem_m1",),
+        ("percent_word_problem_m1", "inverse_work_proportion_m1", "map_area_scale_m1",
+         "ratio_after_adding_m1"),
     ),
     (B, "ม.1", "กราฟความสัมพันธ์เชิงเส้น"): (
         ("linear_graph_read_m1", "linear_graph_point"),
@@ -506,7 +508,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ม.2", "การแปลงทางเรขาคณิต"): (
         ("reflect_point", "translate_point"),
         ("coordinate_transform",),
-        ("transformation_picture_m2",),
+        ("transformation_picture_m2", "rotation_about_center_m2", "translation_then_reflection_m2",
+         "inverse_transformation_m2"),
     ),
     (B, "ม.2", "ความเท่ากันทุกประการ"): (
         ("congruence_case",),
@@ -531,7 +534,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ม.2", "สถิติ"): (
         ("dot_plot_picture_m2", "dot_plot_m2", "central_tendency"),
         ("stem_and_leaf_m2", "histogram_picture_m2", "median_from_data"),
-        ("grouped_frequency_m2",),
+        ("grouped_frequency_m2", "missing_frequency_mean_m2", "corrected_mean_m2",
+         "median_after_new_value_m2"),
     ),
     # ── ม.3 ──────────────────────────────────────────────────────────────
     (B, "ม.3", "อสมการเชิงเส้น"): (
@@ -572,7 +576,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ม.3", "ความคล้าย"): (
         ("similar_triangle_picture_m3", "similar_triangle"),
         ("similar_shadow", "similar_figures_ratio_m3"),
-        ("similar_ratio_area",),
+        ("similar_ratio_area", "similar_parallel_segment_m3", "similar_remaining_area_m3",
+         "similar_side_from_areas_m3"),
     ),
     (B, "ม.3", "อัตราส่วนตรีโกณมิติ"): (
         ("trig_special_values_m3", "trig_ratio_from_triple"),
@@ -597,7 +602,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ม.3", "ความน่าจะเป็นเบื้องต้น"): (
         ("probability_die_coin_m3",),
         ("spinner_probability_m3", "probability_bag_m3"),
-        ("probability_two_events_m3",),
+        ("probability_two_events_m3", "probability_number_card_or_m3",
+         "probability_two_colours_without_replacement_m3", "probability_add_balls_m3"),
     ),
     # ── ม.4–ม.6 พื้นฐาน ────────────────────────────────────────────────────
     (B, "ม.4", "เซต"): (
@@ -637,7 +643,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ม.5", "ดอกเบี้ยและมูลค่าของเงิน"): (
         ("simple_interest_years_m5",),
         ("future_present_value_m5",),
-        ("compare_offers_m5", "interest_plan_m5"),
+        ("compare_offers_m5", "interest_plan_m5", "compound_quarterly_m5",
+         "regular_deposit_future_value_m5", "regular_payment_present_value_m5"),
     ),
     (B, "ม.5", "ลำดับและอนุกรม"): (
         ("arithmetic_sequence_word_m5",),
@@ -699,7 +706,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (A, "ม.4", "ฟังก์ชันประกอบ"): (
         ("composite_evaluate",),
         ("composite_function",),
-        ("composite_formula", "composite_context_m4"),
+        ("composite_formula", "composite_context_m4", "composite_equation_m4",
+         "composite_sqrt_domain_m4", "composite_recover_inner_m4"),
     ),
     (A, "ม.4", "สมการเลขชี้กำลัง"): (
         ("exponential_equation",),
@@ -745,7 +753,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (A, "ม.4", "เรนจ์ของฟังก์ชันกำลังสอง"): (
         ("quadratic_max_min_word",),
         ("quadratic_range_open_interval",),
-        ("quadratic_range",),
+        ("quadratic_range", "quadratic_range_half_line_m4", "quadratic_range_open_domain_m4",
+         "quadratic_integer_optimum_m4"),
     ),
     (A, "ม.4", "ฟังก์ชัน"): (
         ("inverse_function_value_m4",),
@@ -828,7 +837,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (A, "ม.5", "กฎของไซน์"): (
         ("triangle_area_sine_m5",),
         ("sine_rule_side_m5",),
-        ("sine_rule_angle_m5",),
+        ("sine_rule_angle_m5", "sine_rule_circumradius_m5", "sine_rule_area_from_angles_m5",
+         "sine_rule_ambiguous_case_m5"),
     ),
     (A, "ม.5", "กฎของโคไซน์"): (
         ("cosine_rule_side",),
@@ -874,7 +884,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (A, "ม.6", "อนุกรม"): (
         ("series_converges",),
         ("infinite_geometric_series",),
-        ("repeating_decimal_to_fraction", "infinite_series_word_m6", "telescoping_series_m6", "sigma_sums_m6"),
+        ("repeating_decimal_to_fraction", "infinite_series_word_m6", "telescoping_series_m6", "sigma_sums_m6",
+         "alternating_geometric_sum_m6", "finite_telescoping_fraction_m6", "weighted_geometric_infinite_m6"),
     ),
     (A, "ม.6", "ลิมิต"): (
         ("limit_graph_picture_m6", "limit"),
@@ -919,7 +930,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (A, "ม.6", "พื้นที่ระหว่างเส้นโค้ง"): (
         ("area_integral_setup_m6",),
         ("area_two_curves_m6", "area_region_picture_m6"),
-        ("area_between_curves",),
+        ("area_between_curves", "area_absolute_line_parabola_m6", "area_cubic_axis_lobes_m6",
+         "area_crossing_curves_bounded_m6"),
     ),
     (A, "ม.6", "การแจกแจงความน่าจะเป็น"): (
         ("uniform_distribution_m6", "binomial_mean_variance_m6", "random_variable_variance_m6"),

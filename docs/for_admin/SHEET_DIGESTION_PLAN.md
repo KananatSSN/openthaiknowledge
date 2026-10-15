@@ -496,3 +496,374 @@ TOTAL         338   316     17     4   66      255      6     11
   not 25.33 km / 380 baht) and 60 (17/4, not 2); 2.1ก 1.2's table repeats
   rows; 2.8.3 item 8 says วินาที for นาที; ตรีโกณมิติ ท้ายบท 20.10
   (3π/4, not ∅).
+
+### 2026-10-13 — POSN archive local extraction
+
+- The official POSN mathematics archive supplied 25 PDFs. Seven selection
+  papers already have green 30-question packages; the other 18 papers were
+  extracted locally into the ignored `sheet_database/_local_digest/posn_math/`
+  folder, yielding 284 numbered questions and page renders for visual review.
+- The scanned 2565 national paper was hand-transcribed locally: 10 questions,
+  six with independently checked answers and four proof prompts. The 2554
+  paper's 15 pages of worked solutions were kept separate from its 12 prompts.
+- Four answers in the 2569 selection paper were checked independently. Two
+  original algebra practice sets were added to the public registry, with no
+  source text or figures published. All other newly extracted questions still
+  require manual figure/notation review, solver checks, and generators.
+- The private bank clone was unavailable; the user chose local-only extracts.
+  Its tracked index and the bank-wide knowledge coverage stages were not
+  advanced. The local progress file records the remaining work.
+
+### 2026-10-13 — POSN bank installation and 2565 national paper
+
+- Restored the private bank clone at `sheet_database/`, preserving the former
+  local folder as a sibling backup. Its 25 POSN PDFs and private extracts were
+  merged; `bank scan` added 18 exam PDFs and the ignored source manifest.
+- Checked and converted the 2565 national transcript: 10 questions, 6 with
+  answers and 4 proof prompts. The digest remains in the private bank.
+- Claimed questions 2 and 7 with new knowledge units. Original practice sets
+  for signed pair sums and recurrence divisibility use independently checked
+  solvers; neither publishes source wording or figures.
+- Remaining on this paper: questions 1, 3–5, 9 need knowledge mapping and
+  suitable generators. The 2569 selection paper and other national papers
+  remain in the private review queue.
+- Question 8 was checked against its page render. The reduced denominator in
+  `aₙ = aₙ₊₁² − aₙ₊₁` is the square of the next term's denominator, forcing
+  an infinite rational sequence to consist of integers. Descent leaves only
+  the two constant sequences. A shifted original generator and a finite-path
+  cross-check now cover the associated knowledge unit.
+- Question 6 was checked against its page render. Each disjoint 2×2 block
+  holds at most one infected seat if infected seats do not touch and no seat
+  receives two transmissions. The 60×60 grid has 900 blocks, so 901 infected
+  seats force the stated conclusion. A signal-grid original generator tests
+  that block bound, with exhaustive checks on small grids.
+- Question 10 was proved using digit sums modulo 9. A multiple of 3 excludes
+  infinitely many sums; otherwise one of `n, 2n, …, 9n` supplies any desired
+  residue and `n(10^k−1)` supplies a digit-sum increment of `9k` for large k.
+  Concatenating these multiples reaches every sufficiently large sum. A
+  bounded-count original generator is checked by explicit constructions.
+- Question 5 was proved by comparing noncollinear point tuples with the same
+  centroid. Any nonzero solution gives a multiplicative character of the
+  additive plane; divisibility and the centroid equation force it to be
+  constant. An original generator varies the number of points and a nonzero
+  coefficient, and independently counts the real roots of the constant
+  equation.
+- Question 4 was classified by the collision
+  `P(0)P(1-u)=P(-v)` for every monic quadratic `P=x²+ux+v`, together with the
+  monic construction `x^(n-3)(x³-x)+2` for every `n≥3`. The latter is always
+  `2 mod 3`, while products of two values are `1 mod 3`. An original bounded
+  degree-count generator covers the unit.
+- Question 3 follows by splitting the circle into four right-angle sectors.
+  With 543 more blue than pink points overall, one sector has excess at least
+  136. Its angular prefix differences change by one at each point, so a prefix
+  has excess exactly 100; trimming the boundary yields an acute sector. An
+  original four-list prefix-sum generator tests the same pigeonhole and unit-
+  step principle without reproducing the source setup. Knowledge coverage is
+  8/10; geometry items 1 and 9 remain.
+- Page 2 of the 2569 selection paper was reviewed for items 3 and 5. Their
+  private digest is explicitly partial (2/30), and the bank entry remains
+  `new`. Item 3's fixed-gcd, square-lcm sum is 1500; item 5's real-root product
+  after polynomial composition is 35. Two original generators vary the
+  parameters, with direct enumeration and exact-root checks respectively.
+  The remaining 28 items are not represented by this partial digest.
+- Page 3 of that paper was checked for items 8 and 9, extending the partial
+  digest to 4/30 while leaving the bank entry `new`. Counting noncollinear
+  triples among square-edge marks gives 4736, and counting distinct sums of
+  three draws from six powers of three gives 56. Original generators extend
+  these to convex polygons and bounded power-sum multisets, with direct
+  coordinate and sum-enumeration checks. The other 26 items remain unreviewed
+  in the digest.
+- Page 3 item 10 and page 4 item 11 of the 2569 selection paper were checked
+  against page renders. The explicitly partial digest now contains 6/30 items;
+  the bank entry remains `new`. The consecutive obtuse-triangle event has
+  probability 1/84, giving requested sum 85. Five-position proper colorings
+  with three colors used at most twice number 36. Original generators vary the
+  progression gap and capped path-coloring parameters; direct enumeration
+  checks both solvers. The other 24 items remain unreviewed in the digest.
+- Page 4 items 12 and 13 of the 2569 selection paper were checked against the
+  render. The explicitly partial digest now contains 8/30 items; the bank
+  entry remains `new`. The probability of three distinct labels from the
+  overlapping boxes is 9/20. The six-character code count is 48,000 because
+  digits may repeat, while the four vowels must be distinct. Original
+  generators vary box overlaps and code alphabets, with independent exhaustive
+  checks. The other 22 items remain unreviewed in the digest.
+- Page 5 items 15 and 17 of the 2569 selection paper were checked against the
+  render. The explicitly partial digest now contains 10/30 items; the bank
+  entry remains `new`. Three water depths determine a rectangular box capacity
+  of 480 cubic centimeters, and perpendicular chords determine a circle area
+  of 65π. Original generators vary box dimensions and chord segments, with
+  physical-box and exact-coordinate circle checks. The other 20 items remain
+  unreviewed in the digest.
+- Page 6 items 18 and 19 of the 2569 selection paper were checked against the
+  render. The explicitly partial digest now contains 12/30 items; the bank
+  entry remains `new`. Incenter parallels give a sum of three small-triangle
+  perimeters equal to the original perimeter, 40. A circle through an altitude
+  foot and base midpoint meets a side again at distance 134/13 from the apex.
+  Exact-coordinate checks validate both original generators. The other 18
+  items remain unreviewed in the digest.
+- Page 7 figure items 21 and 22 of the 2569 selection paper were checked
+  against the render. The explicitly partial digest now contains 14/30 items;
+  the bank entry remains `new`. A circle tangent to two sides and passing
+  through a square's center gives square area 8. A tangent and horizontal
+  chord give circle area 60 from a triangle area. Exact-coordinate checks
+  validate both original generators; source figures remain private. The other
+  16 items remain unreviewed in the digest.
+- Page 8 figure items 23 and 24 of the 2569 selection paper were checked
+  against the render. The explicitly partial digest now contains 16/30 items;
+  the bank entry remains `new`. Three tangent semicircles give equilateral
+  triangle area 27√3, and four equal links give a circle central angle of
+  106°. Original generators vary the radius and apex angle, with coordinate
+  checks for all tangencies and the circle center. The other 14 items remain
+  unreviewed in the digest.
+- Page 9 items 25 and 26 of the 2569 selection paper were checked against the
+  render. The explicitly partial digest now contains 18/30 items; the bank
+  entry remains `new`. Minimizing the squares of the final three labels gives
+  208 for the first six. The racing conditions allow five distinct pairs of
+  first- and third-place finishers. Original generators vary the fixed sum and
+  race constraints; independent exhaustive enumeration checks both solvers.
+  The other 12 items remain unreviewed in the digest.
+- Page 9 items 27 and 28 of the 2569 selection paper were checked against the
+  render. The explicitly partial digest now contains 20/30 items; the bank
+  entry remains `new`. The digit-ordering puzzle has eight valid five-digit
+  endings, and two equal-share observations give 1,344 chicks initially.
+  Original generators vary the target digit sum and redistribution sizes;
+  independent enumeration and sharing checks validate them. The other 10
+  items remain unreviewed in the digest.
+- Page 10 items 29 and 30 of the 2569 selection paper were checked against
+  the render. The explicitly partial digest now contains 22/30 items; the
+  bank entry remains `new`. Conditional switch passes leave 845 switches on.
+  Strictly diagonal-free strip placements give 86 favorable pairs out of
+  12×12, so the probability is 43/72 and the requested value is 4372.
+  Original generators vary switch divisors and grid dimensions; independent
+  set-count and cell-enumeration checks validate them. Eight items remain
+  unreviewed in the digest.
+- Page 2 items 1 and 2 of the 2569 selection paper were checked against the
+  render. The explicitly partial digest now contains 24/30 items; the bank
+  entry remains `new`. Expanding shifted squares gives 1086, and simplifying
+  the symmetric cubic quotient using the roots' sum and product gives 425.
+  Original generators vary the power sums and quadratic roots; direct
+  numerical substitution checks both identities. Six items remain unreviewed.
+- Page 3 items 6 and 7 of the 2569 selection paper were checked against the
+  render. The explicitly partial digest now contains 26/30 items; the bank
+  entry remains `new`. Checking all three coefficient swaps gives the unique
+  positive integer 11. Reducing the polynomial quotient at a quadratic
+  irrational gives exactly 5. Original generators vary the quadratic
+  coefficients and reducible quotient; rational-root enumeration and SymPy
+  substitution check them. Four items remain unreviewed.
+- Page 2 item 4 and page 4 item 14 of the 2569 selection paper were checked
+  against their renders. The explicitly partial digest now contains 28/30
+  items; the bank entry remains `new`. A nested-radical substitution gives
+  minimum parameter 7 for two distinct real solutions. Row fractions and the
+  stated size range give a 24-person group. Original generators vary radical
+  offsets and row fractions; direct root substitution and integral-headcount
+  enumeration check them. Items 16 and 20 remain unreviewed.
+- Page 5 figure item 16 and page 6 figure item 20 of the 2569 selection paper
+  were checked against their renders. The digest now contains all 30/30 items.
+  Vector closure gives the notched hexagon perimeter 80; the area of the
+  diagonal 8–15–17 triangle gives (ab+bc+ca)² = 19200. Original generators
+  vary side lengths and diagonal squares, with exact-coordinate and direct
+  algebra checks. Knowledge coverage is 30/30, the bank entry is `generated`,
+  and source figures remain private.
+- Question 1 of the 2565 national paper is now solved and mapped. Power of the
+  interior point gives the side ratio; outward right-isosceles constructions
+  give an SAS similarity, then equal inscribed angles give equal chords.
+  Coordinate line-circle intersections independently check the result. An
+  original mirrored-rotation ratio generator practices the similarity lemma.
+  Knowledge coverage is 9/10; only the geometry proof in item 9 remains.
+- The remaining 2565 national geometry item is now solved and mapped.
+  A tangent-chord identity places the first intersection on the opposite
+  contact chord; two Menelaus applications turn the construction into
+  complementary angle bisectors. An original triangle exercise asks for
+  the variable segment ratio behind the proof, with exact-coordinate
+  checks. Knowledge coverage is 10/10 and the bank entry is `generated`.
+- Items 6 and 8 of the 2567 national paper were checked against the page 2
+  render. A zero-sum half of the symmetric nonzero integers exists for every
+  n at least 2, using opposite pairs and, for odd n, the triple -2,-1,3.
+  The opposite midpoint chords of a convex hexagon satisfy UX + WZ = VY as
+  directed vectors, giving strict triangle inequalities. Original generators
+  exercise the partition classification and the chord cosine relation;
+  brute-force subsets and exact midpoint coordinates independently check them.
+  The private digest is partial (2/10); the bank entry remains `new`.
+- Page 2 items 7 and 9 of the 2567 national paper are now verified. For item
+  7, the cubic roots are 1 and a conjugate sixth-root pair; seventh powers
+  preserve them, and a multinomial coefficient counts the tuples. For item 9,
+  CRT produces consecutive numbers with a prime valuation of exactly one;
+  the central binomial coefficient for a=d-1 is divisible by d. Original
+  generators vary tuple sizes and prime-square congruences. Independent
+  ordered-tuple enumeration, brute CRT search, perfect-power checks, and
+  direct binomial divisibility checks support the solutions. The private
+  digest is partial (4/10); the bank entry remains `new`.
+- Items 3 and 10 of the 2567 national paper are now verified against the
+  rendered pages. Normalizing the functional equation and using image-value
+  anti-periods forces f(x)=sqrt(c)/x. Concavity equalizes opposite cube roots
+  in the cyclic-product problem; one-variable optimization gives the exact
+  maximum 4^14/5^10 for the source constraint. Original generators vary the
+  constant and the cube-root sum. Exact substitution, symbolic concavity,
+  an attaining configuration, and a rational grid check support the results.
+  The private digest is partial (6/10); the bank entry remains `new`.
+- Items 2 and 4 of the 2567 national paper are now verified against page 1.
+  The paired fifth-power divisibility conditions force coprime m,n, then
+  incompatible eighth- and twenty-fourth-power congruences unless m=n=1.
+  The grid minimum is 2024: a row with at most 22 purple cells forces at
+  least 231 columns to have at least 9, while eleven complete 8-by-23 blocks
+  attain the bound. Original generators vary modular remainders and block
+  dimensions; direct exponentiation, finite search, small-grid brute force,
+  and constructive checks independently verify them. The private digest is
+  partial (8/10); questions 1 and 5 remain and the bank entry stays `new`.
+- The last two 2567 national questions, 1 and 5, are now mapped. Equal arm
+  lengths give a directed intersection parameter on BD from both A and C;
+  equality forces AB+CD=BC+AD for interior construction points. A coordinate
+  model for the acute triangle gives the same slope from D to the two
+  right-angle intersections on its circumcircle when AH=2HD. Original
+  generators vary the directed parameter and the triangle coordinates;
+  exact line and circle intersections check both. The source wording of
+  item 1 permits a boundary interpretation that gives a counterexample;
+  the private notes record this and the set explicitly uses interior points.
+  Knowledge coverage is 10/10 and the bank entry is `generated`.
+- Began the 2566 national paper with page 1 items 1 and 4. Wilson's theorem
+  reduces the 20-integer product modulo 23 to a quadratic nonresidue unless
+  the sum is divisible by 23. Coloring each match by the losing score gives
+  a bound of 100 players when every triangle is monochromatic or rainbow,
+  contradicting the paper's 101. Original generators vary near-complete
+  residue products and sharp color bounds for affine planes of prime order.
+  Direct modular products and exhaustive small-plane triangle checks support
+  the results. The private digest is partial (2/10); eight items remain, and
+  the bank entry stays `new`.
+- Page 1 item 3 and page 2 item 9 of the 2566 national paper are now mapped.
+  The functional equation has exactly the zero map and the two signed identity
+  maps; an exhaustive finite-field search checks the classification on small
+  fields. A simple root of a²+a+2023 modulo 7 lifts through every power of 7,
+  giving arbitrarily many divisors; brute congruence search checks the first
+  levels. Original generators vary the equation's scale and the lifting
+  constant and depth. The private digest is partial (4/10); items 2, 5, 6, 7,
+  8, and 10 remain pending, and the bank entry stays `new`.
+- Page 2 items 6 and 7 of the 2566 national paper are now mapped. Cauchy
+  and AM–GM prove the sharp cyclic inequality, with equality when a=b=c;
+  exact rational samples check its homogeneous extension. The diagonal-strip
+  lamp minimum is n+1: off-diagonal lamp pairs can be replaced by diagonal
+  endpoints without increasing the count, after which every diagonal point
+  needs a lamp. Exhaustive small placements and independent integer
+  optimization support the construction. Original generators vary the
+  product constraint and strip length. The private digest is partial (6/10);
+  items 2, 5, 8, and 10 remain pending, and the bank entry stays `new`.
+- Page 1 item 2 and page 2 item 10 of the 2566 national paper are now mapped.
+  Side-weighted coordinates show that the incenter and excenter heights sum
+  to BC, putting their midpoint on its perpendicular bisector; exact and
+  numerical coordinate checks support a height generator. The flag colors
+  are cyclic cosets. A primitive-root sum forces at least three smallest
+  color classes for odd vertex count, while prime-power examples force and
+  attain p classes; exact-cover enumeration checks small polygons. The
+  private digest is partial (8/10); only items 5 and 8 remain pending, and
+  the bank entry stays `new`.
+- The last two 2566 national questions, 5 and 8, are now mapped. A cotangent
+  comparison confines the second viewpoint to a sharp wedge and gives the
+  minimum angle 270°−θ; numerical sight-angle checks verify the boundary.
+  Coordinates of the two tangent-circle intersections make EF horizontal and
+  give PQ=2a(u²+v²−a²)/(u²+v²+a²) when AB=2a; exact rational circle and line
+  constructions independently verify EF=PQ+AB. Original numeric variants
+  are registered for both topics, and the private digest covers all ten items.
+  The bank entry is `generated`.
+- Began the 2564 national paper with items 2 and 6. The positive-integer
+  recurrence has a unique sequence: its nonnegative quotient would otherwise
+  be divisible by arbitrarily large products. The 21-by-21 odd-parity grid
+  has 2^400 colorings, since the final row and column are forced by the
+  freely chosen 20-by-20 block. Parameterized generators vary the recurrence
+  constants and same-parity grid dimensions. Direct recurrence searches and
+  exhaustive small-grid counts independently check them. The private digest
+  is partial (2/10), and the bank entry remains `new`.
+- Items 1 and 7 of the 2564 national paper are now mapped. Coordinates of the
+  tangent contact points show their crossing chord meets the isosceles base
+  at its midpoint; direct tangent construction checks varied exact triangles.
+  The functional equation has only the constant solutions 0 and ±1, since
+  f(1) either vanishes identically or forces nonvanishing and then constancy.
+  A scaled version varies the two nonzero values; finite-domain enumeration
+  and exact substitutions independently check it. The private digest is
+  partial (4/10), with six questions remaining and the bank entry still `new`.
+- Items 8 and 10 of the 2564 national paper are now mapped. Equal powers of A
+  to the two diameter circles force equal side fractions, placing P on the
+  A-median; exact line intersections and circle geometry check a height
+  generator. Reciprocal pairing puts at least seven roots of a degree-13
+  palindromic polynomial in the unit disk, where six angular sectors force
+  two roots less than one unit apart. A degree-varying generator counts the
+  pairs certified by that argument; independent occupancy optimization and
+  reciprocal-root constructions check its bound. The private digest is
+  partial (6/10); items 3, 4, 5, and 9 remain, and the bank entry stays `new`.
+- Item 3 of the 2564 national paper is now mapped. The reciprocal-sum
+  constraint bounds abc and a+b+c by AM–GM; convexity of x^(x−1) minimizes
+  a^a bc+b^b ca+c^c ab at a=b=c=3. The scaled generator has attained
+  minimum 3(3k)^(3k+2), checked by
+  direct evaluation of all small integer reciprocal triples. The private
+  digest is partial (7/10); items 4, 5, and 9 remain, and the bank entry
+  stays `new`.
+- Item 9 of the 2564 national paper is now mapped. Coprime reduction of the
+  LCM divisibility condition forces each pair's difference to equal its gcd.
+  The least member makes S finite; comparing the least and greatest shows any
+  intermediate member would generate an LCM quotient above the greatest.
+  A minimum-to-maximum generator covers both possible two-member families,
+  with exhaustive small-set checks. The private digest is partial (8/10);
+  items 4 and 5 remain, and the bank entry stays `new`.
+- Item 4 of the 2564 national paper is now mapped. Each of 21 near-diameter
+  chords splits the other 19 gates into groups of 9 and 10 and has 90 distinct
+  crossings. Two lotus-pot types force at least 45 of one type, lighting all
+  21 paths; two path materials force at least 11 lighted paths of one material.
+  A gate-count generator asks for this bound, with direct chord enumeration and
+  small exhaustive colourings as independent checks. The private digest is
+  partial (9/10); item 5 remains, and the bank entry stays `new`.
+- A higher-resolution reading corrected items 3 and 4 and resolved item 5 of
+  the 2564 national paper. Item 3 is a^a bc+b^b ca+c^c ab and now uses
+  convexity of x^(x−1); item 4 requires 11 lighted paths sharing a material,
+  obtained by two pigeonhole steps. Item 5 has 4^k p^4 and odd m,k. Prime-power
+  reduction followed by Sophie Germain factorization leaves only (5,5,1),
+  verified by direct substitution and a bounded independent search. The
+  complete 10/10 digest and all ten generator links are recorded in the bank;
+  coverage and plan checks advanced its stage to `generated`.
+- Items 1 and 2 of the 2563 national paper are now mapped. Partitioning
+  n-cycles into generator classes proves phi(2n)|n!; an Euler-product
+  generator varies the quotient and independent tests enumerate reduced
+  residues and small cycle groups. A reverse-order elf assignment minimizes
+  the latest delivery at floor((N+1)^2/4), with brute-force matching checks.
+  The private digest is partial (2/10); items 3–10 remain and the bank entry
+  stays `new`.
+- Item 3 of the 2563 national paper is now mapped. Tangential kites and squares
+  give midpoint Jensen and a scaling identity, which together force additivity.
+  A rational-value generator uses this result, with exact repeated-addition
+  checks. The private digest is partial (3/10); items 4–10 remain and the bank
+  entry stays `new`.
+- Item 7 of the 2563 national paper is now mapped. Values at zero and one
+  restrict the integer-valued inequality to three functions: zero, one, and
+  the indicator of zero. A parameterized generator asks for possible sample
+  sums; finite-domain function enumeration checks the classification. The
+  private digest is partial (4/10); items 4–6 and 8–10 remain. Item 5's
+  three-edge process still needs a complete existence proof.
+- Item 10 of the 2563 national paper is now mapped. Polynomial congruence
+  forces every value P(m) to divide the fixed factorial offset, so P is
+  constant. The source case has only P=±1; a parameterized starting index and
+  offset produce a divisor-count generator, checked against direct factorial
+  gcds. The private digest is partial (5/10); items 4–6 and 8–9 remain.
+- Item 9 of the 2563 national paper is now mapped. Each tractor visits one
+  cell per fixed-coordinate-sum diagonal, giving a lower bound of (n−k)²
+  unvisited cells. Boundary and nested L-shaped routes attain the bound;
+  exhaustive small-grid path combinations check it independently. The private
+  digest is partial (6/10); items 4–6 and 8 remain.
+- Item 8 of the 2563 national paper is now mapped. Cauchy reduces the cyclic
+  fraction sum to a bound in the sums of squares and cubes; power means prove
+  the minimum 1 at equal variables. A scaled generator has minimum t⁴, checked
+  on exact rational grids. The private digest is partial (7/10); items 4–6
+  remain.
+- Item 6 of the 2563 national paper is now mapped. With tangent lengths
+  x=AF=AE and y=BF=BD, the two angle-bisector intersections on AB satisfy
+  AL=x²/(x+y) and AK=x+xy/(x+y). Thus the stated triangles are similar and
+  FK=FL=xy/(x+y). Independent coordinate ray reflections check both
+  bisectors across acute triangles. The private digest is partial (8/10);
+  items 4–5 remain.
+- Item 4 of the 2563 national paper is now mapped. Coordinate equations for
+  the two circles make their tangents meet AB and AC at height huv/(h²+uv),
+  while EF meets the altitude at twice that height. An exact rational
+  construction of feet, circumcentres and line intersections checks the
+  midpoint generator. The private digest is partial (9/10); item 5 remains.
+- Item 5 completes the 2563 national paper. An edge count forces n≡0 or 2
+  modulo 3. Boundary-ring capacity forces the inner open grid's side cells to
+  alternate, so n must be odd except for n=2. Base constructions and a
+  repeatable six-wide frame prove every n≡3 or 5 modulo 6 works. An explicit
+  edge-owner test validates constructions through n=61 and tiny boards by
+  exhaustive search. All ten items are mapped; the bank entry is `generated`.

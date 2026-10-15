@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.obtuse-angle-dominance",
+      "kind": "procedure",
+      "title": "Sharp angle bound from dominance of subtended obtuse angles",
+      "statement": "Let P=(0,0), Q=(0,1), R=(u,v) with v>0, and 90°<θ<180°. If every pair A,B on the horizontal line subtending θ at R subtends at least θ at Q, then v>1 and |u|≤−cot(θ)(v−1). Conversely those inequalities imply the condition. Thus the least possible angle PQR is 270°−θ, attained along either boundary ray of the wedge.",
+      "steps": [
+        "Write A=(m−h,0), B=(m+h,0) and express their angle at R with a cotangent identity",
+        "Let m tend to both infinities to obtain v>1 and |u|≤−cot(θ)(v−1)",
+        "Use the same identity to prove the wedge sufficient and optimize angle PQR"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 5}],
+      "covered_by": ["math.obtuse_angle_dominance_olympiad"]
+    }
+  ]
+}

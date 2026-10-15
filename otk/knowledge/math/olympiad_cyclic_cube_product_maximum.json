@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ค่าสูงสุด-ต่ำสุดสัมพัทธ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cyclic-cube-product-maximum",
+      "kind": "procedure",
+      "title": "Maximize a cyclic product under a cube-root sum",
+      "statement": "For positive a,b,c,d whose cube roots sum to 4s, the maximum of abcd(a+b)(b+c)(c+d)(d+a) is 4 to the 14th times s to the 24th divided by 5 to the 10th. Concavity in opposite cube roots forces them equal; the remaining product is u^6(8-6u)^4 times s^24 with u in (0,1].",
+      "steps": [
+        "Substitute the four cube roots",
+        "Use concavity of log[x(x cubed+t)] to equalize opposite variables",
+        "Let u be the product of the two remaining normalized values and optimize on (0,1]"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "math.cyclic_cube_product_maximum_olympiad"
+      ]
+    }
+  ]
+}

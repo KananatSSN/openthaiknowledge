@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.monotone-grid-fleet",
+      "kind": "procedure",
+      "title": "Cover a square grid with k monotone paths",
+      "statement": "For 1≤k<n, each up-or-right path from the lower-left to upper-right cell meets every northeast diagonal exactly once. Since the diagonals have sizes 1,2,...,n-1,n,n-1,...,1, at least sum(max(0,size-k))=(n-k)^2 cells remain uncovered. This bound is attained by the lower/right boundary route together with k−1 nested L-shaped routes indexed i=0,...,k−2: move right i, up n−1−i, right n−1−i, and up i.",
+      "steps": [
+        "Count cells on each fixed-coordinate-sum diagonal",
+        "Bound visits on each diagonal by k",
+        "Use boundary and nested L-shaped routes to attain the bound"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 9}],
+      "covered_by": ["math.monotone_grid_fleet_olympiad"]
+    }
+  ]
+}

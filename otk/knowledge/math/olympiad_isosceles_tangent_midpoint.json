@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "วงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.isosceles-tangent-midpoint",
+      "kind": "procedure",
+      "title": "Opposite contact-point chord passes through an isosceles base midpoint",
+      "statement": "Let A=(0,h), B=(−b,0), C=(b,0), and draw a circle centered at A with radius r<AB. Choose one tangent point P from B and one Q from C so that PQ meets BC at M. The matching contact points are reflections across the altitude and give a chord parallel to BC; the crossing pairs use the two distinct contact-point heights. Their line crosses BC at x=0, so M is the midpoint of BC. If AB=L and AH=h, then BM=√(L²−h²).",
+      "steps": [
+        "Use symmetry to pair the tangent points from B and C",
+        "Compare the two contact-point heights and show a crossing pair meets the base at its midpoint",
+        "Use the right triangle ABH to compute the half-base length"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 1}],
+      "covered_by": ["math.isosceles_tangent_midpoint_olympiad"]
+    }
+  ]
+}

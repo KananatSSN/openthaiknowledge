@@ -11,12 +11,14 @@ from __future__ import annotations
 from random import Random
 
 from otk.core.content import text
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit.math_problems import MathDraw, MathType
 from otk.sets._support.math_diagrams import _img, _math_q, _text_q
 from otk.sets._support.math_diagrams_geo import TRANSFORMS
+from otk.sets._support.math_p2 import _maths
 
 PROVENANCE = Provenance("original")
 
@@ -119,3 +121,90 @@ class TransformationPictureM2(QuestionType):
                   _pt((q[0], q[1] - 1)), _pt((-q[1], q[0]))]
         return _math_q([text(f"จากรูป จุด {name}' ซึ่งเป็นภาพของจุด {name} มีพิกัดเป็นเท่าใด"), img],
                        _pt(q), wrongs, self.topic)
+
+
+_TRANSFORM_TOPIC = "การแปลงทางเรขาคณิต"
+
+
+@question_type("math.rotation_about_center_m2",
+               display_name={"th": "หมุนจุดรอบศูนย์กลางที่กำหนด"},
+               level={"th": "ม.2"}, topic=_TRANSFORM_TOPIC)
+class RotationAboutCenterM2(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            h, k = rng.sample([n for n in range(-6, 7) if n], 2)
+            dx, dy = rng.sample([n for n in range(-5, 6) if n], 2)
+            x, y = h + dx, k + dy
+            turn = rng.choice(("ทวนเข็มนาฬิกา 90", "ตามเข็มนาฬิกา 90", "180"))
+            if turn.startswith("ทวน"):
+                answer = (h - dy, k + dx)
+                opposite = (h + dy, k - dx)
+                origin = (-y, x)
+            elif turn.startswith("ตาม"):
+                answer = (h + dy, k - dx)
+                opposite = (h - dy, k + dx)
+                origin = (y, -x)
+            else:
+                answer = (h - dx, k - dy)
+                opposite = (h + dx, k - dy)
+                origin = (-x, -y)
+            unchanged = (x, y)
+            if len({answer, opposite, origin, unchanged}) == 4:
+                break
+        wrongs = [
+            named("transform.reflected_instead_of_rotated" if turn == "180"
+                  else "transform.wrong_rotation_direction", _pt(opposite)),
+            named("transform.rotated_about_origin", _pt(origin)),
+            named("transform.left_point_unchanged", _pt(unchanged)),
+        ]
+        return _maths([text(f"จุด A = {_pt((x, y))} ถูกหมุนรอบจุด C = {_pt((h, k))} "
+                            f"เป็นมุม {turn} องศา ภาพของจุด A มีพิกัดใด")],
+                      _pt(answer), wrongs, self.topic)
+
+
+@question_type("math.translation_then_reflection_m2",
+               display_name={"th": "เลื่อนขนานแล้วสะท้อนจุดตามลำดับ"},
+               level={"th": "ม.2"}, topic=_TRANSFORM_TOPIC)
+class TranslationThenReflectionM2(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            x, y = rng.randint(-7, 7), rng.randint(-7, 7)
+            u, v = rng.choice([n for n in range(-5, 6) if n]), rng.choice([n for n in range(-5, 6) if n])
+            shifted = (x + u, y + v)
+            answer = (-shifted[0], shifted[1])
+            reflected_first = (-x + u, y + v)
+            wrong_axis = (shifted[0], -shifted[1])
+            if len({answer, shifted, reflected_first, wrong_axis}) == 4:
+                break
+        wrongs = [
+            named("transform.reversed_order", _pt(reflected_first)),
+            named("transform.skipped_reflection", _pt(shifted)),
+            named("transform.reflected_wrong_axis", _pt(wrong_axis)),
+        ]
+        return _maths([text(f"เริ่มจากจุด A = {_pt((x, y))} เลื่อนขนานด้วยเวกเตอร์ {_pt((u, v))} "
+                            "แล้วสะท้อนภาพที่ได้ข้ามแกน y จุดสุดท้ายมีพิกัดใด")],
+                      _pt(answer), wrongs, self.topic)
+
+
+@question_type("math.inverse_transformation_m2",
+               display_name={"th": "หาจุดต้นฉบับจากภาพหลังการแปลงสองขั้น"},
+               level={"th": "ม.2"}, topic=_TRANSFORM_TOPIC)
+class InverseTransformationM2(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            x, y = rng.randint(-7, 7), rng.randint(-7, 7)
+            u, v = rng.choice([n for n in range(-5, 6) if n]), rng.choice([n for n in range(-5, 6) if n])
+            image = (x + u, -y + v)
+            translation_only = (image[0] - u, image[1] - v)
+            added_vector = (image[0] + u, v - image[1])
+            reflected_only = (image[0], -image[1])
+            if len({(x, y), translation_only, added_vector, reflected_only}) == 4:
+                break
+        wrongs = [
+            named("transform.skipped_inverse_reflection", _pt(translation_only)),
+            named("transform.applied_forward_translation", _pt(added_vector)),
+            named("transform.skipped_inverse_translation", _pt(reflected_only)),
+        ]
+        return _maths([text(f"จุด A ถูกสะท้อนข้ามแกน x แล้วเลื่อนขนานด้วยเวกเตอร์ {_pt((u, v))} "
+                            f"ได้ภาพ A' = {_pt(image)} จุด A เดิมมีพิกัดใด")],
+                      _pt((x, y)), wrongs, self.topic)

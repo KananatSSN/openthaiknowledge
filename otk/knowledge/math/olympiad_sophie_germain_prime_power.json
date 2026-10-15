@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามและการแยกตัวประกอบ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.sophie-germain-prime-power",
+      "kind": "procedure",
+      "title": "Sophie Germain factorization in a prime-power divisibility problem",
+      "statement": "For prime p and odd positive m,k, suppose m⁴+4^k p⁴ divides m²(m⁴−4^k p⁴). If p∤m, the divisor is coprime to m and would divide both m⁴+4^k p⁴ and m⁴−4^k p⁴, hence divide 2m⁴, impossible. Write m=p^t u with p∤u. Cancelling p⁴ and reducing modulo A=p^(4t−4)u⁴+4^k gives A|p^(2t), because A is coprime to 2u. For t≥2, p∤A, impossible. Thus t=1 and A=u⁴+4^k is p or p². Since k is odd, put v=2^((k−1)/2) and factor A=(u²−2uv+2v²)(u²+2uv+2v²). The factors are unequal positive integers, so the smaller must be 1; (u−v)²+v²=1 forces u=v=1, k=1, p=5, m=5. Direct substitution gives quotient −15.",
+      "steps": [
+        "Show p divides m and cancel its fourth power",
+        "Reduce the quotient condition to a small p-power",
+        "Apply Sophie Germain's identity and inspect the smaller factor"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 5}],
+      "covered_by": ["math.sophie_germain_prime_power_olympiad"]
+    }
+  ]
+}

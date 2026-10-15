@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.elf-delivery-minimax",
+      "kind": "procedure",
+      "title": "Opposite-order assignment minimizes the latest delivery",
+      "statement": "For houses at distances 1,…,N and elves needing i minutes per kilometre, assigning elf i to distance N+1−i minimizes the maximum arrival time. If i<j but i is assigned the nearer of two houses a<b, swapping those assignments changes their times from ia,jb to ib,ja; both new times are at most jb. Repeating removes all same-order pairs. The optimal makespan is max_i i(N+1−i)=floor((N+1)^2/4), which is 1024 for N=63.",
+      "steps": [
+        "Use a pairwise exchange to pair faster elves with farther houses",
+        "Write the arrival times as i(N+1−i)",
+        "Maximize the concave quadratic over integer i"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 2}],
+      "covered_by": ["math.elf_delivery_minimax_olympiad"]
+    }
+  ]
+}

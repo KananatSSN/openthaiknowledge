@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ลำดับและอนุกรม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.integer-recurrence-rigidity",
+      "kind": "procedure",
+      "title": "Uniqueness of a positive-integer recurrence by divisibility descent",
+      "statement": "For c≥1 and t≥0, suppose positive integers a_n satisfy (n²+c)a_(n+1)−a_n=n³+(t+1)n²+(c−1)n+c+t(c−1) for every n≥1. The only solution is a_n=n+t. The equation modulo n²+c forces a_n=n+t+(n²+c)b_n with b_n≥0, and substitution gives b_n=((n+1)²+c)b_(n+1). Any positive b_1 would be divisible by arbitrarily large products, so every b_n is zero.",
+      "steps": [
+        "Reduce the recurrence modulo n²+c",
+        "Write the nonnegative quotient b_n and derive its multiplicative descent",
+        "Use unbounded products to force b_1=0 and check the resulting sequence"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 2}],
+      "covered_by": ["math.integer_recurrence_rigidity_olympiad"]
+    }
+  ]
+}

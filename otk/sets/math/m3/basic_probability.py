@@ -8,10 +8,12 @@ Sets moved here from: math_m3, math_pictures_extra.
 
 from __future__ import annotations
 
+import math
 from fractions import Fraction
 from random import Random
 
 from otk.core.content import image, text
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
@@ -179,3 +181,99 @@ class ProbabilityTwoEventsM3(QuestionType):
                 wrongs = [Fraction(1, 8), Fraction(1, 6), Fraction(1, 2), Fraction(2, 12)]
             stem = f"โยนเหรียญ 1 เหรียญ และทอดลูกเต๋า 1 ลูกพร้อมกัน ความน่าจะเป็นที่จะ{want}เท่ากับเท่าใด"
         return _maths([text(stem)], frac_tex(value), _fracs(value, wrongs), self.topic)
+
+
+def _card_union_parameters(rng: Random) -> tuple[int, int, int]:
+    count = rng.randint(24, 60)
+    first, second = rng.sample((2, 3, 4, 5, 6), 2)
+    return count, first, second
+
+
+@question_type("math.probability_number_card_or_m3",
+               display_name={"th": "ความน่าจะเป็นของบัตรเลขที่ตรงเงื่อนไขอย่างน้อยหนึ่งข้อ"},
+               level=LEVEL, topic=_PROB_TOPIC)
+class ProbabilityNumberCardOrM3(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        count, first, second = _card_union_parameters(rng)
+        first_count, second_count = count // first, count // second
+        overlap = count // math.lcm(first, second)
+        hits = first_count + second_count - overlap
+        answer = Fraction(hits, count)
+        counted_twice = Fraction(first_count + second_count, count)
+        wrongs = _fracs(answer, (
+            counted_twice, Fraction(overlap, count), 1 - answer,
+            Fraction(first_count, count), Fraction(second_count, count),
+            Fraction(hits + 1, count), Fraction(1, count),
+        ))
+        if frac_tex(counted_twice) in wrongs:
+            named("probability.double_count_overlap", frac_tex(counted_twice))
+        if frac_tex(1 - answer) in wrongs:
+            named("part.complement", frac_tex(1 - answer))
+        return _maths([text(
+            f"บัตร {count} ใบ เขียนหมายเลข 1 ถึง {count} ใบละหนึ่งหมายเลข สุ่มหยิบ 1 ใบ "
+            f"ความน่าจะเป็นที่จะได้หมายเลขที่หารด้วย {first} หรือ {second} ลงตัวเท่ากับเท่าใด"
+        )], frac_tex(answer), wrongs, self.topic)
+
+
+def _two_draw_parameters(rng: Random) -> tuple[int, int, bool]:
+    return rng.randint(2, 12), rng.randint(2, 12), rng.random() < 0.5
+
+
+@question_type("math.probability_two_colours_without_replacement_m3",
+               display_name={"th": "ความน่าจะเป็นเมื่อหยิบสองครั้งไม่ใส่คืน"},
+               level=LEVEL, topic=_PROB_TOPIC)
+class ProbabilityTwoColoursWithoutReplacementM3(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        red, blue, same = _two_draw_parameters(rng)
+        total = red + blue
+        if same:
+            hits = red * (red - 1) + blue * (blue - 1)
+            with_replacement = Fraction(red * red + blue * blue, total * total)
+            one_case = Fraction(red * (red - 1), total * (total - 1))
+            event = "ลูกบอลทั้งสองลูกมีสีเดียวกัน"
+        else:
+            hits = 2 * red * blue
+            with_replacement = Fraction(2 * red * blue, total * total)
+            one_case = Fraction(red * blue, total * (total - 1))
+            event = "ลูกบอลทั้งสองลูกมีสีต่างกัน"
+        answer = Fraction(hits, total * (total - 1))
+        wrongs = _fracs(answer, (
+            with_replacement, one_case,
+            Fraction(hits, total * total),
+            Fraction(red, total), 1 - answer,
+            Fraction(hits + 1, total * (total - 1)),
+        ))
+        if frac_tex(with_replacement) in wrongs:
+            named("probability.with_replacement", frac_tex(with_replacement))
+        if frac_tex(one_case) in wrongs:
+            named("steps.missed_a_step", frac_tex(one_case))
+        return _maths([text(
+            f"ถุงมีลูกบอลสีแดง {red} ลูก และสีน้ำเงิน {blue} ลูก ขนาดเท่ากัน "
+            f"สุ่มหยิบทีละลูก 2 ครั้งโดยไม่ใส่คืน ความน่าจะเป็นที่{event}เท่ากับเท่าใด"
+        )], frac_tex(answer), wrongs, self.topic)
+
+
+def _target_probability_parameters(rng: Random) -> tuple[int, int, int]:
+    return rng.randint(2, 8), rng.randint(3, 10), rng.randint(2, 12)
+
+
+@question_type("math.probability_add_balls_m3",
+               display_name={"th": "เพิ่มลูกบอลให้ได้ความน่าจะเป็นที่กำหนด"},
+               level=LEVEL, topic=_PROB_TOPIC)
+class ProbabilityAddBallsM3(QuestionType):
+    invent_numbers = True
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        red, blue, added = _target_probability_parameters(rng)
+        target = Fraction(red + added, red + blue + added)
+        wrongs = [
+            named("steps.missed_a_step", str(red + added)),
+            str(red + blue + added),
+            str(added + 1), str(max(1, added - 1)),
+            str(added + 2),
+        ]
+        return _maths([text(
+            f"ถุงมีลูกบอลสีแดง {red} ลูก และสีน้ำเงิน {blue} ลูก ขนาดเท่ากัน "
+            f"ต้องเพิ่มลูกบอลสีแดงอีกกี่ลูก เพื่อให้ความน่าจะเป็นที่สุ่มหยิบ 1 ลูกแล้วได้สีแดง"
+            f"เท่ากับ {target.numerator}/{target.denominator}"
+        )], str(added), wrongs, self.topic)

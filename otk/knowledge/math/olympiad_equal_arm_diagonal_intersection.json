@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "รูปหลายเหลี่ยม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.equal-arm-diagonal-intersection",
+      "kind": "procedure",
+      "title": "Use directed diagonal intersections for equal side offsets",
+      "statement": "For interior points T on AB and S on AD with AT=AS=s, the lines ST and BD meet at P=B+lambda(D-B), where lambda=(AB-s)/(AB-AD). Applying the same identity from the opposite vertex of a quadrilateral and using BT=BU and CU=CV yields AB+CD=BC+AD when the three lines have a nondegenerate common intersection.",
+      "steps": [
+        "Express S and T as affine points on AD and AB",
+        "Solve for the intersection parameter on the line BD",
+        "Repeat from C and equate the directed parameters"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "math.equal_arm_diagonal_intersection_olympiad"
+      ]
+    }
+  ]
+}

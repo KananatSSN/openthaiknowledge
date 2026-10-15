@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.lcm-difference-set",
+      "kind": "procedure",
+      "title": "Extremal argument for a set closed under an LCM quotient",
+      "statement": "Let S contain positive integers and suppose for every a<b in S, the difference b−a divides lcm(a,b) and the quotient belongs to S. Write a=gu,b=gv with gcd(u,v)=1. Divisibility forces v−u=1, so b−a=g divides a. With m=min S, all members are m+d for divisors d of m, hence S is finite. Write M=max S=d(u+1),m=du. Since u(u+1)=lcm(m,M)/(M−m) lies between m and M, d is u or u+1. Any intermediate b=m+s has s<d and s|m; putting v=m/s≥u+1 gives lcm(m,b)/(b−m)=v(v+1)>M, a contradiction. Thus |S|≤2. Its two-member forms are {u²,u(u+1)} and {u(u+1),(u+1)²}.",
+      "steps": [
+        "Reduce each pair to coprime factors and show its difference equals its gcd",
+        "Use the minimum to establish finiteness and inspect the maximum",
+        "Rule out an intermediate member through an LCM quotient above the maximum"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 9}],
+      "covered_by": ["math.lcm_difference_set_olympiad"]
+    }
+  ]
+}

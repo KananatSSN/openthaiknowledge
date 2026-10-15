@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "วงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.diameter-circles-median",
+      "kind": "procedure",
+      "title": "Radical axis of diameter circles locates a cevian intersection on a median",
+      "statement": "In an acute triangle ABC, let D∈AC and E∈AB, with P=BD∩CE. If the circles with diameters BD and CE meet at S,T and A,S,T are collinear, then power(A,BD)=AB·AD cos A equals power(A,CE)=AC·AE cos A. Since cos A>0, AD/AC=AE/AB=t. Thus DE∥BC, P lies on the A-median, and if the altitude from A is h, the height of P above BC is h(1−t)/(1+t).",
+      "steps": [
+        "Compute power of A to each diameter circle using the endpoint dot product",
+        "Use the radical axis through A to equate the two side ratios",
+        "Intersect the cevians with a median to find P's height"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 8}],
+      "covered_by": ["math.diameter_circles_median_olympiad"]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.reciprocal-functional-equation",
+      "kind": "procedure",
+      "title": "Normalize and solve a reciprocal functional equation",
+      "statement": "A positive function satisfying x squared times f(xf(y))f(x)f(y)=c for every positive x,y must be f(x)=sqrt(c)/x. Normalize c to 1 and set F(x)=xf(x). Every value in the image of f is an anti-period of F, forcing F to be identically 1.",
+      "steps": [
+        "Rescale the input by sqrt(c) to reduce to c=1",
+        "Set F(x)=xf(x), so F(xf(y))=1/F(x)",
+        "Use a=f(1), f(a)=a to the power -2, and the period and anti-period relations to force F=1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "math.reciprocal_function_equation_olympiad"
+      ]
+    }
+  ]
+}

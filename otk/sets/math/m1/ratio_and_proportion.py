@@ -10,15 +10,17 @@ from __future__ import annotations
 
 import math
 import math as _math
+from fractions import Fraction
 from random import Random
 
 from otk.core.content import math as content_math
 from otk.core.content import text
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem
+from otk.kit.math_problems import MathDraw, MathType, WordProblem, frac_tex
 from otk.sets._support.math_m1 import LEVEL
 from otk.sets._support.math_p2 import _maths
 from otk.sets._support.math_p4 import grouped
@@ -189,3 +191,67 @@ class PercentWordProblemM1(WordProblem):
                                 f"ผลิตได้เพิ่มขึ้นร้อยละเท่าใด"),
                         distractors=_story.keep(new - base, (new - base) * 100 // new, pct + 5,
                                                 answer=pct, lo=1))
+
+
+@question_type("math.inverse_work_proportion_m1",
+               display_name={"th": "จำนวนคนกับเวลาทำงานแบบแปรผกผัน"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class InverseWorkProportionM1(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        old_workers, new_workers = rng.sample((3, 4, 5, 6, 8, 10), 2)
+        total_worker_days = math.lcm(old_workers, new_workers) * rng.randint(2, 5)
+        old_days = total_worker_days // old_workers
+        new_days = total_worker_days // new_workers
+        wrongs = [
+            named("proportion.direct_instead_of_inverse", frac_tex(Fraction(old_days * new_workers,
+                                                                        old_workers))),
+            named("proportion.kept_time_fixed", str(old_days)),
+            named("proportion.multiplied_without_dividing", str(total_worker_days)),
+        ]
+        return _maths([text(f"ช่าง {old_workers} คน ทำงานชิ้นหนึ่งเสร็จใน {old_days} วัน "
+                            f"ถ้าช่างทุกคนทำงานเร็วเท่ากันและมีช่าง {new_workers} คน "
+                            "จะทำงานชิ้นเดิมเสร็จในกี่วัน")],
+                      str(new_days), wrongs, self.topic)
+
+
+@question_type("math.map_area_scale_m1",
+               display_name={"th": "พื้นที่จริงจากมาตราส่วนแผนที่"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class MapAreaScaleM1(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        scale = rng.choice((50_000, 200_000, 300_000))
+        length, width = rng.randint(3, 12), rng.randint(2, 9)
+        km_per_cm = Fraction(scale, 100_000)
+        map_area = length * width
+        area = map_area * km_per_cm ** 2
+        wrongs = [
+            named("proportion.area_scaled_once", frac_tex(map_area * km_per_cm)),
+            named("proportion.map_area_unscaled", str(map_area)),
+            named("proportion.scale_reversed", frac_tex(map_area / km_per_cm ** 2)),
+        ]
+        return _maths([text(f"แผนที่มาตราส่วน 1 : {grouped(scale)} แสดงที่ดินรูปสี่เหลี่ยมผืนผ้า "
+                            f"ยาว {length} เซนติเมตร กว้าง {width} เซนติเมตร "
+                            "ที่ดินจริงมีพื้นที่กี่ตารางกิโลเมตร")],
+                      frac_tex(area), wrongs, self.topic)
+
+
+@question_type("math.ratio_after_adding_m1",
+               display_name={"th": "สัดส่วนของส่วนผสมหลังเติมวัตถุดิบ"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class RatioAfterAddingM1(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        red_parts, blue_parts = rng.sample(range(2, 9), 2)
+        batch = rng.randint(3, 9)
+        added = rng.randint(2, 12)
+        red, blue = red_parts * batch, blue_parts * batch
+        total = red + blue
+        answer = Fraction(red + added, total + added)
+        wrongs = [
+            named("proportion.ignored_added_part", frac_tex(Fraction(red, total))),
+            named("proportion.changed_total_only", frac_tex(Fraction(red, total + added))),
+            named("proportion.changed_part_only", frac_tex(Fraction(red + added, total))),
+        ]
+        return _maths([text(f"ผสมน้ำสีแดง {red} ลิตร กับน้ำสีน้ำเงิน {blue} ลิตร "
+                            f"แล้วเติมน้ำสีแดงอีก {added} ลิตร "
+                            "น้ำสีแดงคิดเป็นส่วนเท่าใดของน้ำสีทั้งหมดหลังเติม")],
+                      frac_tex(answer), wrongs, self.topic)

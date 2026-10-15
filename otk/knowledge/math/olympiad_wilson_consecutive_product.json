@@ -1,0 +1,22 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.wilson-consecutive-product",
+      "kind": "procedure",
+      "title": "Wilson's theorem on near-complete consecutive residue products",
+      "statement": "For a prime p congruent to 7 modulo 8, a run of p-3 positive consecutive integers with neither its sum nor product divisible by p cannot have square product. The only possible first residues are 1, 2, 3. Wilson's theorem gives product -1/2, 1, -1/2 modulo p respectively. Since 2 is a quadratic residue and -1 is not, only residue 2 could yield a square, but that run has sum 0 modulo p.",
+      "steps": [
+        "Use product nondivisibility to restrict the first residue to 1, 2, or 3",
+        "Divide Wilson's product by the two omitted nonzero residues",
+        "Compare quadratic characters and check the sum for the middle run"
+      ],
+      "sources": [
+        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 1}
+      ],
+      "covered_by": ["math.wilson_consecutive_product_olympiad"]
+    }
+  ]
+}

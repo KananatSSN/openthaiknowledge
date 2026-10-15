@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.sixth-root-tuple-count",
+      "kind": "procedure",
+      "title": "Count ordered tuples of three sixth roots",
+      "statement": "The roots of z cubed minus 2z squared plus 2z minus 1 are 1 and two conjugate sixth roots. Each seventh power equals the root itself. A real target sum fixes equal counts of the conjugate pair, after which a multinomial coefficient counts ordered tuples.",
+      "steps": [
+        "Factor the cubic into a linear and quadratic factor",
+        "Use seventh powers and compare imaginary parts",
+        "Solve for the three root multiplicities and count their arrangements"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "math.sixth_root_tuples_olympiad"
+      ]
+    }
+  ]
+}

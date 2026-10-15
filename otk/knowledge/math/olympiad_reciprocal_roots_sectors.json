@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามและเศษเหลือ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.reciprocal-roots-sectors",
+      "kind": "procedure",
+      "title": "Reciprocal polynomial roots forced close by six disk sectors",
+      "statement": "For a degree-d polynomial with nonzero palindromic coefficients and simple roots, z is a root exactly when 1/z is. Hence at least N=ceil(d/2) distinct nonzero roots lie in the closed unit disk. Partition the disk into six half-open sectors of angle 60°. Two nonzero roots in the same sector have distance strictly less than 1. If N=6q+r with 0≤r<6, distributing roots as evenly as possible yields at least 6·q(q−1)/2+r·q close pairs. For d≥13 this is positive, proving the source result.",
+      "steps": [
+        "Use P(z)=z^dP(1/z) to pair nonunit roots reciprocally",
+        "Place at least ceil(d/2) roots in the six sectors of the unit disk",
+        "Count same-sector pairs with a balanced occupancy argument"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 10}],
+      "covered_by": ["math.reciprocal_roots_sectors_olympiad"]
+    }
+  ]
+}
