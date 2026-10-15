@@ -39,6 +39,17 @@ BURNING = {
 }
 
 
+# More observations, each enough on its own to name the plastic.
+MORE_BURNING = {
+    PE_OR_PP: ("เปลวไฟสีน้ำเงินขอบเหลือง พลาสติกหลอมหยดลงมาขณะไหม้ และมีกลิ่นคล้ายเทียนไขที่ดับแล้ว",
+               "ไหม้ต่อได้เองหลังนำออกจากเปลวไฟ แทบไม่มีควันดำ และได้กลิ่นคล้ายพาราฟิน"),
+    PS: ("ติดไฟง่ายและไหม้ต่อได้เอง มีควันดำเป็นเขม่าลอยเป็นสาย และมีกลิ่นหวานเฉพาะตัว",
+         "เปลวไฟสีเหลืองสว่าง มีเขม่าดำเกาะปลายคีมที่จับชิ้นพลาสติกจำนวนมาก"),
+    PVC: ("ไม่ไหม้ต่อเมื่อนำออกจากไฟ ควันมีกลิ่นฉุนแสบจมูก "
+          "และกระดาษลิตมัสสีน้ำเงินชื้นที่จ่อในควันเปลี่ยนเป็นสีแดง",
+          "เมื่อนำลวดทองแดงที่แตะพลาสติกไปลนไฟ เปลวไฟเป็นสีเขียว และชิ้นพลาสติกไม่ไหม้ต่อเอง"),
+}
+
 # Float (True) or sink in water (density 1.0 g/cm³), and in a saturated salt
 # solution (about 1.2 g/cm³).
 IN_WATER = {PE_OR_PP: True, PS: False, PVC: False, PET: False}
@@ -52,6 +63,14 @@ HEATING = (
     ("เทอร์มอเซต", "ไม่อ่อนตัวเมื่อได้รับความร้อน ถ้าร้อนมากจะไหม้เกรียม"),
 )
 
+
+# More responses to heat, keyed by the type each one shows.
+MORE_HEATING = {
+    "เทอร์มอพลาสติก": ("นิ่มลงจนดัดงอได้เมื่ออังกับน้ำร้อน และแข็งตัวคงรูปใหม่เมื่อเย็นลง",
+                       "หลอมเป็นของเหลวหนืดเมื่อร้อน แล้วกลับแข็งตัวได้อีกเมื่อเย็นลง"),
+    "เทอร์มอเซต": ("ไม่นิ่มลงเลยแม้แช่ในน้ำเดือดนาน ๆ และยังคงรูปเดิมทุกประการ",
+                   "ไม่หลอมเหลวแม้ร้อนจัด แต่แตกร้าวและไหม้เป็นสีดำ"),
+}
 
 # (rubber, property, a job only it suits among these, or None). Unvulcanised
 # rubber is a raw material, not a product, so it is never the answer to a job.
@@ -76,13 +95,15 @@ class PlasticTestFoundation(QuestionType):
     def build(self, rng: Random, **params) -> GeneratedQuestion:
         if rng.random() < 0.65:
             plastic = rng.choice(sorted(BURNING))
-            return _labelled(stem=f"เมื่อเผาพลาสติกชิ้นหนึ่งพบว่า{BURNING[plastic]} พลาสติกนี้น่าจะเป็นชนิดใด",
+            seen = rng.choice((BURNING[plastic], *MORE_BURNING[plastic]))
+            return _labelled(stem=f"เมื่อเผาพลาสติกชิ้นหนึ่งพบว่า{seen} พลาสติกนี้น่าจะเป็นชนิดใด",
                              # Not PET: it burns much like PS, so it would be a second right answer.
                              correct=plastic, wrongs=tuple(p for p in BURNING if p != plastic) + (THERMOSET,),
                              topic=TOPIC_PLASTIC,
                              hint="PE กับ PP เผาแล้วเหมือนกัน (เปลวน้ำเงินขอบเหลือง) PS มีเขม่ามาก PVC ติดไฟยากและขอบเปลวสีเขียว")
         kind, behaviour = rng.choice(HEATING)
         other = next(h for h in HEATING if h[0] != kind)
+        behaviour = rng.choice((behaviour, *MORE_HEATING[kind]))
         return _labelled(stem=f"ให้ความร้อนแก่ชิ้นพลาสติกแล้วพบว่า{behaviour} พลาสติกนี้เป็นประเภทใด",
                          correct=kind, wrongs=(other[0], "ยางธรรมชาติ", "เส้นใยธรรมชาติ"),
                          topic=TOPIC_PLASTIC, hint="เทอร์มอพลาสติกหลอมขึ้นรูปใหม่ได้ เทอร์มอเซตไม่อ่อนตัว")

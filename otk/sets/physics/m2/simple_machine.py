@@ -177,3 +177,17 @@ class SimpleMachineApplication(QuestionType):
                        answer=force, wrongs=[weight, weight * length / Fraction(height) if (weight * length / Fraction(height) * 100).denominator == 1 else force * 2,
                                              weight - force], unit="นิวตัน", topic=SIMPLE_MACHINE_TOPIC,
                        hint="แรงที่ใช้ = น้ำหนัก × ความสูง ÷ ความยาวพื้นเอียง")
+
+# More items: these tables held six or fewer, so a learner met them all in
+# a few tries. Each added item has wrong readings of its own.
+MACHINE_FACTS = (*MACHINE_FACTS,
+    ('ไขควงที่ใช้ขันสกรูจัดเป็นเครื่องกลอย่างง่ายประเภทใด',
+     'ล้อและเพลา',
+     ('รอกเดี่ยวตายตัว', 'คานอันดับหนึ่ง', 'พื้นเอียง', 'ลิ่ม', 'รอกเดี่ยวเคลื่อนที่')),
+    ('ทางลาดสำหรับรถเข็นช่วยให้ออกแรงน้อยลงได้อย่างไร',
+     'เพิ่มระยะทางที่ออกแรง แรงที่ต้องใช้จึงน้อยลง',
+     ('ลดน้ำหนักของรถเข็นและผู้ที่นั่งอยู่ลงครึ่งหนึ่ง', 'ลดระยะทางที่ต้องเข็นให้สั้นที่สุด', 'ทำให้ไม่ต้องออกแรงเข็นเลยแม้แต่น้อย', 'เพิ่มงานที่ต้องทำให้มากขึ้นเป็นสองเท่า', 'ทำให้แรงโน้มถ่วงหายไปขณะเข็นขึ้นทางลาด')),
+    ('มีดและขวานจัดเป็นเครื่องกลอย่างง่ายประเภทใด',
+     'ลิ่ม',
+     ('รอก', 'ล้อและเพลา', 'คาน', 'สกรู', 'พื้นเอียงที่ยาวมาก')),
+)

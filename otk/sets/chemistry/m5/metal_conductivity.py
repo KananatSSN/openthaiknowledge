@@ -127,3 +127,13 @@ class MetalConductivityApplication(QuestionType):
             topic=TOPIC_CONDUCTIVITY,
             hint="ดูก่อนว่าธาตุนี้เป็นโลหะหรืออโลหะ แล้วใช้สมบัติของกลุ่มนั้น",
         )
+
+
+# More single facts, three for metals and two for non-metals.
+MetalConductivityFoundation.FACTS = (*MetalConductivityFoundation.FACTS,
+    ("ธาตุกลุ่มใดมักมีผิวมันวาวเมื่อขัดผิวใหม่ ระหว่างโลหะกับอโลหะ", METAL),
+    ("ธาตุกลุ่มใดนำความร้อนได้ดีกว่ากัน ระหว่างโลหะกับอโลหะ", METAL),
+    ("ธาตุกลุ่มใดมีพลังงานไอออไนเซชันลำดับที่หนึ่งต่ำกว่า ระหว่างโลหะกับอโลหะ", METAL),
+    ("ธาตุกลุ่มใดมีค่าอิเล็กโทรเนกาติวิตีสูงกว่า ระหว่างโลหะกับอโลหะ", NONMETAL),
+    ("ธาตุกลุ่มใดที่เป็นของแข็งส่วนใหญ่เปราะ ทุบแล้วแตกเป็นผง ระหว่างโลหะกับอโลหะ", NONMETAL),
+)

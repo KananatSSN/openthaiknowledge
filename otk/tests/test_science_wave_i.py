@@ -11,7 +11,7 @@ from otk.core import REGISTRY, generate
 from otk.core.curriculum_science import (REVIEW_PENDING, SCIENCE_PLACEMENTS,
                                          SCIENCE_WAVE_I_APPROVED_KEYS, SCIENCE_WAVE_I_KEYS)
 from otk.core.provenance import provenance
-from otk.sets.chemistry.m6.plastic_test import BURNING, IN_BRINE, IN_WATER
+from otk.sets.chemistry.m6.plastic_test import BURNING, IN_BRINE, IN_WATER, MORE_BURNING
 from otk.sets.biology.m1.microscope_use import DIRECTIONS, MICROSCOPE_PARTS
 from otk.sets.chemistry.m6.ester_test import ESTER_SMELLS
 
@@ -122,7 +122,7 @@ def test_an_ester_comes_from_its_own_acid_and_alcohol():
 def test_plastics_are_named_by_their_tests():
     for stem, answer, choices in _draws("chem.plastic_test_foundation"):
         for plastic, flame in BURNING.items():
-            if flame in stem:
+            if any(seen in stem for seen in (flame, *MORE_BURNING[plastic])):
                 assert answer == plastic
                 assert "PET" not in " ".join(choices)  # it burns like PS: never offered
     words = {True: "ลอย", False: "จม"}

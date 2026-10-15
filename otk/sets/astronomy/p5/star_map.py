@@ -37,8 +37,27 @@ CHART = (
 )
 
 
-def _chart() -> str:
-    return " / ".join(f"{group}: {where}" for group, where in CHART)
+# Charts for other nights at the same hour, as seen from Thailand. Every chart
+# lists its eastern group first and the group about to set last.
+CHARTS = (
+    ("ช่วงต้นเดือนมกราคม", CHART),
+    ("ช่วงต้นเดือนเมษายน", (
+        ("กลุ่มดาวหญิงสาว", "ทางทิศตะวันออก สูงจากขอบฟ้าประมาณ 30 องศา"),
+        ("กลุ่มดาวสิงโต", "ทางทิศตะวันออก สูงจากขอบฟ้าประมาณ 70 องศา"),
+        ("กลุ่มดาวคนคู่", "ทางทิศตะวันตกเฉียงเหนือ สูงจากขอบฟ้าประมาณ 50 องศา"),
+        ("กลุ่มดาวลูกไก่", "ทางทิศตะวันตก ใกล้จะลับขอบฟ้า"),
+    )),
+    ("ช่วงกลางเดือนกรกฎาคม", (
+        ("กลุ่มดาวนกอินทรี", "ทางทิศตะวันออก สูงจากขอบฟ้าประมาณ 25 องศา"),
+        ("กลุ่มดาวพิณ", "ทางทิศตะวันออกเฉียงเหนือ สูงจากขอบฟ้าประมาณ 35 องศา"),
+        ("กลุ่มดาวแมงป่อง", "ทางทิศใต้ สูงจากขอบฟ้าประมาณ 45 องศา"),
+        ("กลุ่มดาวสิงโต", "ทางทิศตะวันตก ใกล้จะลับขอบฟ้า"),
+    )),
+)
+
+
+def _chart(chart=CHART) -> str:
+    return " / ".join(f"{group}: {where}" for group, where in chart)
 
 
 # The same group, seen at the same clock time in different months. At a fixed
@@ -94,29 +113,30 @@ class StarMapFoundation(QuestionType):
     """
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
-        stem = (f"แผนที่ดาวสำหรับคืนหนึ่ง เวลา {CHART_TIME} แสดงตำแหน่งของกลุ่มดาว "
-                f"ดังนี้ {_chart()} ")
+        night, chart = rng.choice(CHARTS)
+        stem = (f"แผนที่ดาวสำหรับคืนหนึ่ง{night} เวลา {CHART_TIME} แสดงตำแหน่งของกลุ่มดาว "
+                f"ดังนี้ {_chart(chart)} ")
         draw = rng.random()
         if draw < 0.4:
-            group, where = rng.choice(CHART)
+            group, where = rng.choice(chart)
             return _labelled(
                 stem=stem + f"จากแผนที่ดาวนี้ “{group}” อยู่ที่ตำแหน่งใด",
                 correct=where,
-                wrongs=tuple([other for name, other in CHART if name != group]
+                wrongs=tuple([other for name, other in chart if name != group]
                                         + list(CHART_DECOYS)),
                 hint="หาชื่อกลุ่มดาวที่โจทย์ถาม แล้วอ่านตำแหน่งที่เขียนไว้ข้างชื่อนั้น",
                 topic=SKY_TOPIC,
             )
         if draw < 0.7:
-            group = CHART[3][0]
+            group = chart[3][0]
             return _labelled(
                 stem=stem + "จากแผนที่ดาวนี้ กลุ่มดาวใดกำลังจะตกลับขอบฟ้าเป็นกลุ่มแรก",
                 correct=group,
-                wrongs=tuple(name for name, _ in CHART if name != group),
+                wrongs=tuple(name for name, _ in chart if name != group),
                 hint=f"กลุ่มดาวตกทาง{WEST} จึงหากลุ่มที่แผนที่วางไว้ใกล้ขอบฟ้าด้านนั้น",
                 topic=SKY_TOPIC,
             )
-        group = CHART[0][0]
+        group = chart[0][0]
         return _labelled(
             stem=stem + f"จากแผนที่ดาวนี้ เส้นทางการขึ้นและตกของ “{group}” "
                         "ในคืนนี้เป็นอย่างไร",

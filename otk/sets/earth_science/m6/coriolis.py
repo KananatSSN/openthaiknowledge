@@ -51,6 +51,16 @@ ROTATION = "เพราะโลกหมุนรอบตัวเองจ�
 CYCLONE = {NORTH: "ทวนเข็มนาฬิกา", SOUTH: "ตามเข็มนาฬิกา"}
 
 
+# Things that travel far enough through the air for the turn to show.
+MOVERS = (
+    "อากาศที่เคลื่อนที่เป็นระยะทางไกล",
+    "ลมที่พัดเป็นระยะทางไกล",
+    "ลมค้าที่พัดจากละติจูดประมาณ 30 องศาเข้าหาเส้นศูนย์สูตร",
+    "อากาศที่ไหลออกจากเขตความกดอากาศสูงไปเป็นระยะทางหลายร้อยกิโลเมตร",
+    "ลมที่พัดจากขั้วโลกลงมายังละติจูดกลาง",
+    "ลูกโป่งตรวจอากาศที่ลอยไปตามลมเป็นระยะทางไกล",
+)
+
 def turned(hemisphere: str, heading: str) -> str:
     return TURN[(heading, SIDE[hemisphere])]
 
@@ -67,7 +77,7 @@ class CoriolisFoundation(QuestionType):
         hemisphere = rng.choice((NORTH, SOUTH))
         other = SOUTH if hemisphere == NORTH else NORTH
         if rng.random() < 0.5:
-            mover = rng.choice(("อากาศที่เคลื่อนที่เป็นระยะทางไกล", "ลมที่พัดเป็นระยะทางไกล"))
+            mover = rng.choice(MOVERS)
             return _labelled(
                 stem=f"{mover}ใน{hemisphere}เบนไปทางใด",
                 correct=f"เบนไปทาง{SIDE[hemisphere]}ของทิศที่เคลื่อนที่ {ROTATION}",
@@ -79,6 +89,19 @@ class CoriolisFoundation(QuestionType):
                             "เบนขึ้นด้านบนเสมอ เพราะอากาศที่เคลื่อนที่ร้อนขึ้นและลอยตัว",
                         ), 2)),
                 hint="ซีกโลกเหนือเบนขวา ซีกโลกใต้เบนซ้าย และเหตุคือการหมุนรอบตัวเองของโลก",
+                topic=CORIOLIS_TOPIC,
+            )
+        if rng.random() < 0.5:
+            # Air leaving a high turns the same side, so it spins the other way.
+            return _labelled(
+                stem=f"เมื่อมองจากด้านบน อากาศที่พัดออกจากศูนย์กลางความกดอากาศสูงใน{hemisphere}หมุนทางใด",
+                correct=f"หมุน{CYCLONE[other]} เพราะอากาศที่พัดออกจากศูนย์กลางเบนไปทาง{SIDE[hemisphere]}",
+                wrongs=(f"หมุน{CYCLONE[hemisphere]} เพราะอากาศที่พัดออกจากศูนย์กลางเบนไปทาง{SIDE[other]}",
+                        f"หมุน{CYCLONE[hemisphere]} เพราะอากาศที่พัดออกจากศูนย์กลางเบนไปทาง{SIDE[hemisphere]}",
+                        rng.choice(("ไม่หมุน เพราะอากาศพัดตรงออกจากศูนย์กลางไปทุกทิศ",
+                                    "หมุนสลับทิศทุกวัน เพราะกลางวันและกลางคืนอากาศเบนต่างกัน",
+                                    "ไม่หมุน เพราะอากาศพัดเข้าหาศูนย์กลางความกดอากาศสูงเสมอ"))),
+                hint="อากาศที่พุ่งออกจากศูนย์กลางแล้วเบนไปทางเดียวกันทุกทิศ จะวนเป็นวงสวนกับวงของหย่อมความกดอากาศต่ำ",
                 topic=CORIOLIS_TOPIC,
             )
         return _labelled(

@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-3,548 sets in 976 unit files. Each subject's `README.md` lists its units with their indicators.
+3,602 sets in 994 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -1406,6 +1406,7 @@
 
 | File | Unit | Sets |
 |---|---|---|
+| [`environment_change.py`](geography/p1/environment_change.py) | การเปลี่ยนแปลงของสิ่งแวดล้อมรอบตัว | `geog.change_cause_p1`, `geog.change_compare_p1`, `geog.change_action_p1` |
 | [`position_and_direction.py`](geography/p1/position_and_direction.py) | ตำแหน่งและทิศของสิ่งต่าง ๆ | `geog.lineup_position_p1`, `geog.near_far_p1`, `geog.classroom_plan_p1` |
 | [`surroundings.py`](geography/p1/surroundings.py) | สิ่งแวดล้อมรอบตัว | `geog.natural_or_made_p1`, `geog.nature_benefit_p1`, `geog.nature_and_living_p1` |
 | [`weather_in_a_day.py`](geography/p1/weather_in_a_day.py) | สภาพอากาศในรอบวัน | `geog.weather_in_a_day_p1`, `geog.shadow_length_p1`, `geog.weather_prepare_p1` |
@@ -1416,6 +1417,7 @@
 |---|---|---|
 | [`earth_sun_moon.py`](geography/p2/earth_sun_moon.py) | โลก ดวงอาทิตย์ และดวงจันทร์ | `geog.earth_sun_moon_p2`, `geog.sun_direction_p2`, `geog.earth_sun_moon_reasoning_p2` |
 | [`maps_and_globes.py`](geography/p2/maps_and_globes.py) | แผนผัง แผนที่ และลูกโลก | `geog.globe_and_map_p2`, `geog.map_colour_p2`, `geog.map_nearest_p2` |
+| [`natural_and_built.py`](geography/p2/natural_and_built.py) | สิ่งแวดล้อมทางธรรมชาติและที่มนุษย์สร้างขึ้น | `geog.natural_or_built_p2`, `geog.environment_importance_p2`, `geog.route_environment_p2` |
 | [`natural_resources.py`](geography/p2/natural_resources.py) | ทรัพยากรธรรมชาติ | `geog.resource_kind_p2`, `geog.resource_wise_use_p2`, `geog.resource_consequence_p2` |
 | [`seasons.py`](geography/p2/seasons.py) | ฤดูกาลกับการดำเนินชีวิต | `geog.season_month_p2`, `geog.season_life_p2`, `geog.season_plan_p2` |
 | [`waste.py`](geography/p2/waste.py) | การจัดการขยะ | `geog.waste_bin_p2`, `geog.three_r_p2`, `geog.waste_count_p2` |
@@ -1425,13 +1427,30 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`community_environment.py`](geography/p3/community_environment.py) | สิ่งแวดล้อมในชุมชน | `geog.city_or_country_p3`, `geog.pollution_cause_p3`, `geog.pollution_fix_p3` |
+| [`community_then_now.py`](geography/p3/community_then_now.py) | สิ่งแวดล้อมของชุมชนในอดีตกับปัจจุบัน | `geog.then_or_now_p3`, `geog.then_now_change_p3`, `geog.then_now_evidence_p3` |
 | [`compass_directions.py`](geography/p3/compass_directions.py) | ทิศและแผนที่ชุมชน | `geog.facing_direction_p3`, `geog.turning_direction_p3`, `geog.map_direction_p3`, `geog.walk_route_p3` |
 | [`resources_and_living.py`](geography/p3/resources_and_living.py) | ทรัพยากรกับการดำเนินชีวิต | `geog.basic_needs_p3`, `geog.land_occupation_p3`, `geog.local_product_p3` |
+
+### p4 — ป.4
+
+| File | Unit | Sets |
+|---|---|---|
+| [`province_environment.py`](geography/p4/province_environment.py) | สิ่งแวดล้อมกับการดำเนินชีวิตในจังหวัด | `geog.province_problem_cause_p4`, `geog.province_living_p4`, `geog.province_manage_p4` |
+| [`province_physical.py`](geography/p4/province_physical.py) | ลักษณะทางกายภาพและแหล่งทรัพยากรในจังหวัด | `geog.province_feature_kind_p4`, `geog.province_map_reading_p4`, `geog.province_place_reason_p4` |
+
+### p5 — ป.5
+
+| File | Unit | Sets |
+|---|---|---|
+| [`region_living.py`](geography/p5/region_living.py) | สิ่งแวดล้อมกับการตั้งถิ่นฐานและวิถีชีวิตในภูมิภาค | `geog.migration_factor_p5`, `geog.region_settlement_p5`, `geog.region_care_p5` |
+| [`region_physical.py`](geography/p5/region_physical.py) | ลักษณะทางกายภาพของภูมิภาค | `geog.region_feature_p5`, `geog.region_describe_p5`, `geog.region_resource_reason_p5` |
 
 ### p6 — ป.6
 
 | File | Unit | Sets |
 |---|---|---|
+| [`sustainable_resources.py`](geography/p6/sustainable_resources.py) | การจัดการทรัพยากรและสิ่งแวดล้อมอย่างยั่งยืนในประเทศไทย | `geog.keep_or_harm_p6`, `geog.conservation_example_p6`, `geog.sustainable_choice_p6` |
+| [`thailand_change.py`](geography/p6/thailand_change.py) | การเปลี่ยนแปลงทางกายภาพของประเทศไทย | `geog.change_evidence_kind_p6`, `geog.change_effect_p6`, `geog.change_data_p6` |
 | [`thailand_disasters.py`](geography/p6/thailand_disasters.py) | ภัยพิบัติในประเทศไทย | `geog.thai_disaster_p6`, `geog.disaster_kind_p6`, `geog.disaster_response_p6` |
 | [`thailand_physical.py`](geography/p6/thailand_physical.py) | ลักษณะทางกายภาพของประเทศไทย | `geog.province_region_p6`, `geog.region_landform_p6`, `geog.region_livelihood_p6` |
 
@@ -1439,6 +1458,7 @@
 
 | File | Unit | Sets |
 |---|---|---|
+| [`asia_environment.py`](geography/m1/asia_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปเอเชีย ออสเตรเลีย และโอเชียเนีย | `geog.asia_issue_place_m1`, `geog.asia_issue_cause_m1`, `geog.asia_manage_m1` |
 | [`asia_oceania.py`](geography/m1/asia_oceania.py) | ทวีปเอเชีย ออสเตรเลีย และโอเชียเนีย | `geog.continent_landform_m1`, `geog.disaster_asia_m1`, `geog.continent_reasoning_m1` |
 | [`coordinates_and_time.py`](geography/m1/coordinates_and_time.py) | พิกัดภูมิศาสตร์และเวลาของโลก | `geog.hemisphere_m1`, `geog.local_time_hours_m1`, `geog.local_time_minutes_m1`, `geog.time_zone_m1`, `geog.date_line_m1`, `geog.latitude_distance_m1` |
 | [`economic_location.py`](geography/m1/economic_location.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจ | `geog.economic_sector_m1`, `geog.location_factor_m1`, `geog.choose_location_m1` |
@@ -1448,6 +1468,8 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`europe_africa.py`](geography/m2/europe_africa.py) | ทวีปยุโรปและแอฟริกา | `geog.continent_landform_m2`, `geog.disaster_europe_africa_m2`, `geog.continent_reasoning_m2` |
+| [`europe_africa_economy.py`](geography/m2/europe_africa_economy.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจในทวีปยุโรปและทวีปแอฟริกา | `geog.europe_africa_activity_m2`, `geog.europe_africa_factor_m2`, `geog.europe_africa_site_m2` |
+| [`europe_africa_environment.py`](geography/m2/europe_africa_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปยุโรปและทวีปแอฟริกา | `geog.europe_africa_issue_place_m2`, `geog.europe_africa_issue_cause_m2`, `geog.europe_africa_manage_m2` |
 | [`scale_and_bearing.py`](geography/m2/scale_and_bearing.py) | มาตราส่วน ทิศ และสัญลักษณ์ | `geog.map_to_ground_m2`, `geog.ground_to_map_m2`, `geog.find_scale_m2`, `geog.scale_detail_m2`, `geog.azimuth_m2`, `geog.back_azimuth_m2`, `geog.map_symbol_m2` |
 
 ### m3 — ม.3
@@ -1455,12 +1477,18 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`americas.py`](geography/m3/americas.py) | ทวีปอเมริกาเหนือและอเมริกาใต้ | `geog.continent_landform_m3`, `geog.disaster_americas_m3`, `geog.continent_reasoning_m3` |
+| [`americas_economy.py`](geography/m3/americas_economy.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจในทวีปอเมริกาเหนือและทวีปอเมริกาใต้ | `geog.americas_activity_m3`, `geog.americas_factor_m3`, `geog.americas_site_m3` |
+| [`americas_environment.py`](geography/m3/americas_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปอเมริกาเหนือและทวีปอเมริกาใต้ | `geog.americas_issue_place_m3`, `geog.americas_issue_cause_m3`, `geog.americas_manage_m3` |
 | [`environmental_cooperation.py`](geography/m3/environmental_cooperation.py) | ความร่วมมือระหว่างประเทศด้านสิ่งแวดล้อม | `geog.environmental_agreement_m3`, `geog.environmental_organisation_m3`, `geog.agreement_case_m3` |
 
 ### m4 — ม.4
 
 | File | Unit | Sets |
 |---|---|---|
+| [`environment_change.py`](geography/m4/environment_change.py) | การเปลี่ยนแปลงด้านทรัพยากรธรรมชาติและสิ่งแวดล้อม | `geog.global_issue_m4`, `geog.environment_cause_m4`, `geog.environment_data_m4` |
+| [`environment_policy.py`](geography/m4/environment_policy.py) | มาตรการ กฎหมาย และนโยบายด้านทรัพยากรธรรมชาติและสิ่งแวดล้อม | `geog.environment_instrument_m4`, `geog.environment_instrument_match_m4`, `geog.environment_measure_apply_m4` |
 | [`geographic_tools.py`](geography/m4/geographic_tools.py) | เครื่องมือทางภูมิศาสตร์ | `geog.contour_reading_m4`, `geog.contour_interval_m4`, `geog.contour_height_m4`, `geog.slope_gradient_m4`, `geog.geoinformatics_m4` |
+| [`natural_hazards.py`](geography/m4/natural_hazards.py) | ลักษณะทางกายภาพกับภัยพิบัติทางธรรมชาติ | `geog.hazard_setting_m4`, `geog.hazard_why_m4`, `geog.hazard_risk_m4` |
 | [`physical_change.py`](geography/m4/physical_change.py) | การเปลี่ยนแปลงทางกายภาพ | `geog.landform_agent_m4`, `geog.surface_process_m4`, `geog.landscape_change_m4` |
 | [`population.py`](geography/m4/population.py) | ประชากรและการตั้งถิ่นฐาน | `geog.population_density_m4`, `geog.natural_increase_m4`, `geog.doubling_time_m4`, `geog.settlement_pattern_m4` |
+| [`sustainable_management.py`](geography/m4/sustainable_management.py) | การจัดการทรัพยากรธรรมชาติและสิ่งแวดล้อมเพื่อการพัฒนาที่ยั่งยืน | `geog.conservation_method_m4`, `geog.sustainable_idea_m4`, `geog.sustainable_plan_m4` |

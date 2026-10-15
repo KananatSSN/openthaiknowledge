@@ -82,6 +82,21 @@ class OceanCurrentsFoundation(QuestionType):
         )
 
 
+OCEAN_ASK = ("ข้อใดอธิบายปัจจัยที่ทำให้เกิดการหมุนเวียนของน้ำผิวหน้าในมหาสมุทร "
+             "และรูปแบบการหมุนเวียนได้ถูกต้องทั้งหมด")
+
+
+# What the question opens on. Each ends where ``OCEAN_ASK`` begins, and none
+# changes which statement of the parts is true.
+OCEAN_LEADS = (
+    "",
+    "ทุ่นลอยที่ติดตามตำแหน่งด้วยดาวเทียมกลางมหาสมุทรแปซิฟิกเหนือ เคลื่อนเป็นวงขนาดใหญ่อยู่หลายปี ",
+    "จากแผนที่กระแสน้ำผิวหน้าของมหาสมุทรแอตแลนติกเหนือและแอตแลนติกใต้ ",
+    "เรือใบที่แล่นข้ามมหาสมุทรมักวางเส้นทางให้ไปตามกระแสน้ำผิวหน้า ",
+    "ครูใช้พัดลมเป่าผิวน้ำในอ่างที่มีแผ่นไม้กั้นขอบแทนทวีป แล้วชวนนักเรียนเทียบกับมหาสมุทรจริง ",
+)
+
+
 @question_type(
     "geo.ocean_currents_fluency",
     display_name={"th": "อธิบายปัจจัยและรูปแบบการหมุนเวียนของน้ำผิวหน้าในมหาสมุทร"},
@@ -93,7 +108,7 @@ class OceanCurrentsFluency(QuestionType):
     def build(self, rng: Random, **params) -> GeneratedQuestion:
         return parts_item(
             rng, OCEAN_PARTS,
-            stem="ข้อใดอธิบายปัจจัยที่ทำให้เกิดการหมุนเวียนของน้ำผิวหน้าในมหาสมุทร และรูปแบบการหมุนเวียนได้ถูกต้องทั้งหมด",
+            stem=rng.choice(OCEAN_LEADS) + OCEAN_ASK,
             hint="ตรวจทีละส่วน ข้อที่ผิดจะผิดอย่างน้อยหนึ่งส่วน",
             topic=OCEAN_TOPIC,
         )

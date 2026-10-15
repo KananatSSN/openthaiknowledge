@@ -58,6 +58,25 @@ CYCLE = (
 LOOK_DECOYS = ("มองเห็นดวงจันทร์สองดวงพร้อมกัน", "สว่างครึ่งดวง และไม่เปลี่ยนแปลงอีกเลย")
 
 
+
+# Names of days none of the four looks in CYCLE belongs to: both are thin crescents.
+NAME_DECOYS = ("ขึ้น 3 ค่ำ", "แรม 12 ค่ำ")
+
+
+# (how the model is set up, what is seen). Each keeps a lit side that never
+# changes while the part the observer sees lit does.
+MOON_MODELS = (
+    (MOON_MODEL, MOON_MODEL_SEEN),
+    ("นักเรียนวางไฟฉายบนโต๊ะส่องไปทางเดียวแทนดวงอาทิตย์ แล้วให้เพื่อนถือส้มเดินวนรอบตัวนักเรียน"
+     "ที่นั่งอยู่กลางวงแทนโลก จนครบหนึ่งรอบ ",
+     "ซีกของส้มที่หันเข้าหาไฟฉายสว่างเท่าเดิมตลอด แต่ส่วนสว่างที่ผู้นั่งกลางวงมองเห็นค่อย ๆ "
+     "เพิ่มจากไม่เห็นเลย เป็นเสี้ยว ครึ่งดวง จนเต็มดวง แล้วลดลงจนไม่เห็นอีกครั้ง"),
+    ("ครูติดหลอดไฟไว้ผนังด้านหนึ่งของห้องมืด ให้นักเรียนถือลูกปิงปองเสียบไม้ไว้เหนือศีรษะ "
+     "แล้วหมุนตัวช้า ๆ ไปทางซ้ายจนครบหนึ่งรอบ ",
+     "ด้านของลูกปิงปองที่หันเข้าหาหลอดไฟสว่างเสมอ แต่ส่วนสว่างที่นักเรียนมองเห็นเปลี่ยนจากมืดทั้งลูก "
+     "เป็นเสี้ยว เป็นครึ่งลูก เป็นเต็มลูก แล้วค่อย ๆ ลดลงจนมืดทั้งลูกอีกครั้ง"),
+)
+
 @question_type(
     "astro.moon_shape_cycle_foundation",
     display_name={"th": "อธิบายการเปลี่ยนรูปร่างปรากฏของดวงจันทร์"},
@@ -71,7 +90,8 @@ class MoonShapeCycleFoundation(QuestionType):
     """
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
-        stem = f"{MOON_MODEL}ผลที่สังเกตได้คือ {MOON_MODEL_SEEN} "
+        model, seen = rng.choice(MOON_MODELS)
+        stem = f"{model}ผลที่สังเกตได้คือ {seen} "
         draw = rng.random()
         if draw < 0.4:
             return _labelled(
@@ -88,7 +108,17 @@ class MoonShapeCycleFoundation(QuestionType):
                 hint="ในแบบจำลอง สิ่งที่เปลี่ยนไปคือมุมที่เรามอง ไม่ใช่ความสว่างของลูกบอล",
                 topic=SKY_TOPIC,
             )
-        if draw < 0.7:
+        if draw < 0.55:
+            item = rng.choice(CYCLE)
+            return _labelled(
+                stem=f"คืนที่เรามองเห็นดวงจันทร์ “{item.look}” ตรงกับวันใด",
+                correct=item.name,
+                wrongs=tuple([other.name for other in CYCLE if other.name != item.name]
+                             + list(NAME_DECOYS)),
+                hint="นึกถึงลำดับของรูปร่างปรากฏในหนึ่งเดือน",
+                topic=SKY_TOPIC,
+            )
+        if draw < 0.85:
             item = rng.choice(CYCLE)
             return _labelled(
                 stem=f"“{item.name}” เรามองเห็นดวงจันทร์เป็นอย่างไร",

@@ -97,7 +97,7 @@ from otk.sets.earth_science.m2.fuel_saving import FUEL_CARE, FUEL_NEEDS
 from otk.sets.earth_science.m2.fossil_fuel import FUELS, emissions_record
 from otk.sets.earth_science.m1.climate_action import CLIMATE_CARE, CLIMATE_NEEDS
 from otk.sets.earth_science.m1.climate_change import SERIES, climate_record
-from otk.sets.earth_science.m1.forecast_use import PLANS as FORECAST_PLANS
+from otk.sets.earth_science.m1.forecast_use import MORE_FORECAST_LINES, PLANS as FORECAST_PLANS
 from otk.sets.earth_science.m1.weather_forecast import (
     CLEAR,
     FORECAST_STEPS,
@@ -113,11 +113,11 @@ from otk.sets.earth_science.p6.greenhouse_effect import jar_readings
 from otk.sets.earth_science.p6.greenhouse_effect import EFFECTS as GREENHOUSE_EFFECTS
 from otk.sets.earth_science.m1.atmosphere_layers import LAYERS as ATMOSPHERE_LAYERS
 from otk.sets.earth_science.p6.natural_hazard import HAZARDS
-from otk.sets.earth_science.p6.hazard_safety import PLANS
+from otk.sets.earth_science.p6.hazard_safety import MORE_PLAN_LINES, PLANS
 from otk.sets.earth_science.p6.monsoon_season import SEASONS, season_record
 from otk.sets.earth_science.p6.fossil import FINDS, MODELS
 from otk.sets.earth_science.p6.uses_of_rocks_and_minerals import MATERIALS, MINERAL, ROCK
-from otk.sets.earth_science.p6.local_wind import WINDS
+from otk.sets.earth_science.p6.local_wind import MORE_EFFECTS, WINDS
 from otk.sets.earth_science.p5.precipitation_forms import FALLS, MORE_FALL_REPORTS
 from otk.sets.earth_science.p5.condensation_forms import FORMS
 from otk.sets.earth_science.p5.water_saving import CASES, CONSERVE, PRACTICES, SAVE
@@ -136,7 +136,7 @@ from otk.sets.earth_science.p3.air_composition import (
 )
 from otk.sets.earth_science.p3.wind_origin import PLACES, thermometer_readings
 from otk.sets.earth_science.p2.soil_use import CATEGORIES, SOIL_USES, survey
-from otk.sets.earth_science.p2.soil_type import COMPONENTS, SOILS
+from otk.sets.earth_science.p2.soil_type import COMPONENTS, MORE_FEELS, SOILS
 from otk.sets._support.science_wave_c10 import LETTERS
 from otk.sets.earth_science.p1.rock_look import ROCKS, _describe
 from otk.sets.astronomy.m6.space_exploration import (
@@ -166,7 +166,12 @@ from otk.sets.astronomy.m6.universe_after_the_big_bang import EPOCHS, SPANNING
 from otk.sets.astronomy.m6.milky_way import GALAXY_PARTS
 from otk.sets._support.science_wave_c5 import EQUATION_CASES
 from otk.sets.astronomy.m3.space_technology import MISSIONS, ORBITS
-from otk.sets.astronomy.m3.seasons_and_the_suns_path import SEASON_POINTS, _spans_both
+from otk.sets.astronomy.m3.seasons_and_the_suns_path import (
+    POSITION_WORDS,
+    SEASON_POINTS,
+    SEASON_SETUPS,
+    _spans_both,
+)
 from otk.sets.astronomy.p4.moon_shape_cycle import CYCLE
 from otk.sets.astronomy.p6.eclipse import ECLIPSES, LUNAR, SOLAR, _eclipse_pair, _eclipse_swapped
 from otk.sets.astronomy.p4.solar_system_periods import PLANETS
@@ -581,7 +586,8 @@ def test_every_classifying_answer_uses_both_criteria():
         stem, answer = _stem(question), _texts(question)[question.answer]
         soil = next(soil for soil in SOILS if soil.name == answer or soil.name in stem)
         text = answer if soil.name in stem else stem
-        assert soil.texture in text and soil.cohesion in text, (seed, stem, answer)
+        assert (soil.texture in text and soil.cohesion in text
+                or any(feel in text for feel in MORE_FEELS[soil.name])), (seed, stem, answer)
 
 
 def test_the_soil_survey_has_one_most_common_use_and_one_absent_use():
@@ -849,7 +855,10 @@ def test_every_wind_effect_answer_reaches_living_things_and_the_environment():
         question = generate("geo.local_wind_foundation", Random(seed))
         stem, answer = _stem(question), _texts(question)[question.answer]
         wind = next(wind for wind in WINDS if f"อธิบาย{wind.name} " in stem)
-        assert answer == f"ต่อสิ่งมีชีวิต: {wind.on_living} / ต่อสิ่งแวดล้อม: {wind.on_environment}"
+        living, environment = MORE_EFFECTS[wind.name]
+        assert any(answer == f"ต่อสิ่งมีชีวิต: {one} / ต่อสิ่งแวดล้อม: {other}"
+                   for one in (wind.on_living, *living)
+                   for other in (wind.on_environment, *environment)), (seed, answer)
 
 
 def test_the_wind_comparison_holds_all_three_and_wrongs_swap_two():
@@ -923,10 +932,13 @@ def test_every_safety_answer_proposes_both_halves_for_its_own_hazard():
         question = generate("geo.hazard_safety_fluency", Random(seed))
         stem, answer = _stem(question), _texts(question)[question.answer]
         plan = next(plan for plan in PLANS if plan.situation in stem)
-        assert plan.monitor in answer and plan.act in answer, (seed, answer)
+        watches, acts = (plan.monitor, *MORE_PLAN_LINES[plan.hazard][0]), (plan.act, *MORE_PLAN_LINES[plan.hazard][1])
+        def both(text):
+            return any(w in text for w in watches) and any(a in text for a in acts)
+        assert both(answer), (seed, answer)
         for wrong in _texts(question):
             if wrong != answer:
-                assert not (plan.monitor in wrong and plan.act in wrong), (seed, wrong)
+                assert not both(wrong), (seed, wrong)
 
 
 def test_the_greenhouse_answer_is_re_derived_from_the_jar_readings():
@@ -1035,10 +1047,14 @@ def test_every_forecast_answer_proposes_conduct_and_use_for_its_own_forecast():
         question = generate("geo.forecast_use_fluency", Random(seed))
         stem, answer = _stem(question), _texts(question)[question.answer]
         plan = next(plan for plan in FORECAST_PLANS if plan.situation in stem)
-        assert plan.conduct in answer and plan.use in answer, (seed, answer)
+        conducts = (plan.conduct, *MORE_FORECAST_LINES[plan.situation][0])
+        uses = (plan.use, *MORE_FORECAST_LINES[plan.situation][1])
+        def both(text):
+            return any(c in text for c in conducts) and any(u in text for u in uses)
+        assert both(answer), (seed, answer)
         for wrong in _texts(question):
             if wrong != answer:
-                assert not (plan.conduct in wrong and plan.use in wrong), (seed, wrong)
+                assert not both(wrong), (seed, wrong)
 
 
 def test_the_climate_trend_is_read_back_from_the_record():
@@ -1450,6 +1466,8 @@ def test_the_surface_wind_matches_band_and_hemisphere():
     for seed in range(SEEDS):
         question = generate("geo.latitude_circulation_foundation", Random(seed))
         stem = _stem(question)
+        if not stem.endswith("คือลมใด"):
+            continue  # the reverse and belt-line questions are checked by their tables
         belt = next(b for b in WIND_BELTS if f"ละติจูด {b.band}" in stem)
         source = belt.north if stem.endswith("เหนือ คือลมใด") else belt.south
         assert _texts(question)[question.answer] == f"{belt.name}ใน{belt.cell} พัดมาจาก{source}"
@@ -1779,7 +1797,10 @@ def test_the_season_set_reaches_both_objects_of_its_indicator():
     for seed in range(SEEDS):
         question = generate("astro.season_model_fluency", Random(seed))
         answer = _texts(question)[question.answer]
-        item = next(one for one in SEASON_POINTS if one.position in _stem(question))
+        item = next(one for one in SEASON_POINTS
+                    if any(word.format(light=light) in _stem(question)
+                           for word in POSITION_WORDS[one.position]
+                           for _, light in SEASON_SETUPS))
         assert answer == _spans_both(item), (seed, answer)
 
 

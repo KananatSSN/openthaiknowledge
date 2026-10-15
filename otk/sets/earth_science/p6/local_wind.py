@@ -80,6 +80,31 @@ MORE_OBSERVATIONS = {
 }
 
 
+# More effects of each wind, beside the one in ``WINDS``. No text is shared
+# between winds, so a borrowed half always makes a choice wrong.
+MORE_EFFECTS = {
+    "ลมทะเล": (("คนที่อาศัยริมทะเลเปิดหน้าต่างด้านทะเลรับลมเย็นในตอนกลางวัน",
+                "นักท่องเที่ยวริมหาดรู้สึกสบายตัวขึ้นในตอนบ่ายเพราะลมเย็นจากทะเล"),
+               ("พัดไอเค็มจากทะเลเข้ามา ทำให้ของที่เป็นเหล็กริมชายฝั่งเป็นสนิมง่าย",
+                "พัดความชื้นจากทะเลเข้าสู่ชายฝั่งในตอนกลางวัน")),
+    "ลมบก": (("ชาวประมงที่ออกเรือตอนกลางคืนได้ลมส่งท้ายเรือออกสู่ทะเล",
+              "ชาวประมงพื้นบ้านอาศัยลมนี้พาเรือออกไปวางอวนก่อนรุ่งสาง"),
+             ("พัดกลิ่นและฝุ่นจากแผ่นดินออกไปเหนือทะเลในตอนกลางคืน",
+              "พัดอากาศจากแผ่นดินออกสู่ทะเล ชายฝั่งจึงไม่ได้รับไอเค็มในตอนกลางคืน")),
+    "มรสุม": (("ชาวประมงชายฝั่งต้องหยุดออกเรือหลายเดือนเพราะคลื่นลมแรงในฤดูนี้",
+               "เกษตรกรวางแผนปลูกพืชตามช่วงเดือนที่ลมนี้นำฝนมา"),
+              ("ทำให้คลื่นในทะเลสูงและแรงต่อเนื่องหลายเดือน ชายหาดบางแห่งถูกกัดเซาะ",
+               "ทำให้แม่น้ำและอ่างเก็บน้ำมีน้ำเพิ่มขึ้นมากในช่วงหลายเดือนนั้น")),
+}
+
+
+def _one_effect_each(rng: Random, wind: Wind) -> Wind:
+    """The wind with one of its effects on each side, chosen from all it has."""
+    living, environment = MORE_EFFECTS[wind.name]
+    return wind._replace(on_living=rng.choice((wind.on_living, *living)),
+                         on_environment=rng.choice((wind.on_environment, *environment)))
+
+
 @question_type(
     "geo.local_wind_foundation",
     display_name={"th": "ผลของลมบก ลมทะเล และมรสุมต่อสิ่งมีชีวิตและสิ่งแวดล้อม"},
@@ -93,8 +118,8 @@ class LocalWindFoundation(QuestionType):
     """
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
-        wind = rng.choice(WINDS)
-        others = [other for other in WINDS if other.name != wind.name]
+        wind = _one_effect_each(rng, rng.choice(WINDS))
+        others = [_one_effect_each(rng, other) for other in WINDS if other.name != wind.name]
         rng.shuffle(others)
         # Every wrong choice borrows another wind's effect for at least one half.
         candidates = ([_effects(other) for other in others]

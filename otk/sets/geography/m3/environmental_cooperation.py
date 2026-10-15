@@ -11,7 +11,7 @@ from random import Random
 from otk.core.provenance import Provenance
 from otk.core.registry import QuestionType, question_type
 from otk.kit.classify import Category, ClassifyType
-from otk.kit.concept_bank import Concept, ConceptBankType
+from otk.kit.concept_bank import Concept, ConceptBankType, widen
 from otk.sets._support.geography import M3, SUBJECT, scenario, stage
 
 PROVENANCE = Provenance("original")
@@ -87,3 +87,47 @@ class AgreementCase(QuestionType):
         return scenario(rng, CASES, ask="เกี่ยวข้องกับความตกลงระหว่างประเทศใดมากที่สุด",
                         hint="ดูว่าสถานการณ์เกี่ยวกับเรื่องใด สัตว์ป่า โอโซน ของเสีย สภาพภูมิอากาศ พื้นที่ชุ่มน้ำ หรือความหลากหลายทางชีวภาพ",
                         topic=TOPIC)
+
+# More rows and items: these tables held five or six, so a learner met them
+# all in a few tries. Each added situation is one no other row answers.
+CASES += (
+    ('ประเทศในอาเซียนร่วมมือกันป้องกันหมอกควันจากไฟป่าที่ลอยข้ามพรมแดน',
+     'ความตกลงอาเซียนว่าด้วยมลพิษจากหมอกควันข้ามแดน', ()),
+    ('ประเทศต่าง ๆ ตกลงลดการใช้และการปล่อยสารปรอทที่เป็นอันตรายต่อสุขภาพ',
+     'อนุสัญญามินามาตะว่าด้วยปรอท', ()),
+    ('ประเทศต่าง ๆ ร่วมกันคุ้มครองแหล่งธรรมชาติที่มีคุณค่าโดดเด่น เช่น ผืนป่าทุ่งใหญ่นเรศวร-ห้วยขาแข้ง',
+     'อนุสัญญาคุ้มครองมรดกโลก', ()),
+    ('ประเทศพัฒนาแล้วกลุ่มหนึ่งรับข้อผูกพันลดก๊าซเรือนกระจกเป็นครั้งแรกใน ค.ศ. 1997',
+     'พิธีสารเกียวโต', ()),
+    ('ประเทศต่าง ๆ ร่วมกันแก้ปัญหาพื้นที่แห้งแล้งที่กำลังกลายสภาพเป็นทะเลทราย',
+     'อนุสัญญาว่าด้วยการต่อต้านการแปรสภาพเป็นทะเลทราย', ()),
+    ('ประเทศต่าง ๆ ตกลงห้ามเรือทิ้งของเสียอันตรายลงในทะเล',
+     'อนุสัญญาลอนดอนว่าด้วยการป้องกันมลพิษทางทะเล', ()),
+)
+
+EnvironmentalOrganisation.ITEMS = [*EnvironmentalOrganisation.ITEMS,
+    Concept('องค์การใดประเมินความรู้ทางวิทยาศาสตร์เรื่องการเปลี่ยนแปลงสภาพภูมิอากาศให้ประเทศต่าง ๆ ใช้ตัดสินใจ',
+            'คณะกรรมการระหว่างรัฐบาลว่าด้วยการเปลี่ยนแปลงสภาพภูมิอากาศ (IPCC)',
+            ('สำนักงานข้าหลวงใหญ่ผู้ลี้ภัยแห่งสหประชาชาติ (UNHCR)', 'องค์การเพื่อความร่วมมือและการพัฒนาทางเศรษฐกิจ (OECD)', 'องค์การการบินพลเรือนระหว่างประเทศ (ICAO)', 'สหภาพโทรคมนาคมระหว่างประเทศ (ITU)')),
+    Concept('องค์การใดจัดทำบัญชีแดงที่ระบุสถานภาพความเสี่ยงต่อการสูญพันธุ์ของสิ่งมีชีวิต',
+            'สหภาพสากลว่าด้วยการอนุรักษ์ธรรมชาติ (IUCN)',
+            ('องค์การการบินพลเรือนระหว่างประเทศ (ICAO)', 'สหภาพโทรคมนาคมระหว่างประเทศ (ITU)', 'กองทุนการเงินระหว่างประเทศ (IMF)', 'องค์การอาหารและเกษตร (FAO)')),
+    Concept('องค์การใดของสหประชาชาติดูแลด้านอุตุนิยมวิทยาและสภาพอากาศของโลก',
+            'องค์การอุตุนิยมวิทยาโลก (WMO)',
+            ('องค์การอนามัยโลก (WHO)', 'องค์การการค้าโลก (WTO)', 'องค์การยูเนสโก (UNESCO)', 'องค์การยูนิเซฟ (UNICEF)')),
+    Concept('องค์กรเอกชนระดับโลกที่รณรงค์ด้านสิ่งแวดล้อม เช่น ต่อต้านการล่าวาฬและมลพิษทางทะเล',
+            'กรีนพีซ (Greenpeace)',
+            ('องค์การอนามัยโลก (WHO)', 'องค์การการค้าโลก (WTO)', 'องค์การอาหารและเกษตร (FAO)', 'กองทุนการเงินระหว่างประเทศ (IMF)')),
+]
+
+# Long-named organisations as further wrong answers, so a long answer such as
+# IPCC or UNEP is not the only long choice.
+EnvironmentalOrganisation.ITEMS = widen(EnvironmentalOrganisation.ITEMS, tuple(
+    tuple(name for name in (
+        "สำนักงานข้าหลวงใหญ่ผู้ลี้ภัยแห่งสหประชาชาติ (UNHCR)",
+        "องค์การเพื่อความร่วมมือและการพัฒนาทางเศรษฐกิจ (OECD)",
+        "องค์การแรงงานระหว่างประเทศ (ILO)",
+        "องค์การทรัพย์สินทางปัญญาโลก (WIPO)",
+    ) if name not in item.distractors)
+    for item in EnvironmentalOrganisation.ITEMS
+))

@@ -58,6 +58,38 @@ SEASON_POINTS = (
 )
 
 
+# (how the model is set up, what stands for the sun). Each is the same tilted
+# globe carried round a light with its axis held in one direction.
+SEASON_SETUPS = (
+    (SEASON_MODEL, "โคมไฟ"),
+    ("นักเรียนวางหลอดไฟไว้กลางห้องมืดแทนดวงอาทิตย์ แล้วถือลูกโลกจำลองที่แกนเอียงประมาณ 23.5 องศา "
+     "เดินวนรอบหลอดไฟ โดยไม่เปลี่ยนทิศของแกนเลยตลอดการเดิน ", "หลอดไฟ"),
+    ("ครูแขวนหลอดไฟทรงกลมไว้กลางห้องแทนดวงอาทิตย์ ให้นักเรียนถือลูกโลกที่เสียบแกนเอียงประมาณ "
+     "23.5 องศา เดินรอบหลอดไฟช้า ๆ โดยให้ปลายแกนด้านเหนือชี้ไปทางผนังด้านเดิมตลอดทาง ",
+     "หลอดไฟทรงกลม"),
+)
+
+
+# Other ways to name each position, keyed by ``SeasonPoint.position``.
+POSITION_WORDS = {
+    SEASON_POINTS[0].position: (
+        "ซีกโลกเหนือเอียงเข้าหา{light}มากที่สุด",
+        "ปลายแกนด้านเหนือเอนเข้าหา{light}มากที่สุด",
+        "แสงจาก{light}ตกตั้งฉากกับผิวลูกโลกแถวเส้นทรอปิกออฟแคนเซอร์",
+    ),
+    SEASON_POINTS[1].position: (
+        "ซีกโลกเหนือเอียงออกจาก{light}มากที่สุด",
+        "ปลายแกนด้านเหนือเอนหนีจาก{light}มากที่สุด",
+        "แสงจาก{light}ตกตั้งฉากกับผิวลูกโลกแถวเส้นทรอปิกออฟแคปริคอร์น",
+    ),
+    SEASON_POINTS[2].position: (
+        "แกนเอียงไม่ได้ชี้เข้าหาหรือออกจาก{light}",
+        "แกนเอนไปด้านข้าง ไม่เข้าหาและไม่หนีจาก{light}",
+        "แสงจาก{light}ตกตั้งฉากกับผิวลูกโลกแถวเส้นศูนย์สูตร",
+    ),
+}
+
+
 def _spans_both(item: SeasonPoint) -> str:
     return f"{item.season} และ{item.sunrise}"
 
@@ -180,9 +212,11 @@ class SeasonModelFluency(QuestionType):
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
         item = rng.choice(SEASON_POINTS)
+        setup, light = rng.choice(SEASON_SETUPS)
+        where = rng.choice(POSITION_WORDS[item.position]).format(light=light)
         others = [other for other in SEASON_POINTS if other.position != item.position]
         return _labelled(
-            stem=f"{SEASON_MODEL}เมื่อลูกโลกมาถึงตำแหน่งที่{item.position} "
+            stem=f"{setup}เมื่อลูกโลกมาถึงตำแหน่งที่{where} "
                  "จากแบบจำลองนี้ ข้อใดกล่าวถึงฤดูและตำแหน่งการขึ้นของดวงอาทิตย์"
                  "ที่ซีกโลกเหนือได้ถูกต้อง",
             correct=_spans_both(item),
@@ -191,7 +225,7 @@ class SeasonModelFluency(QuestionType):
                 + [f"{other.season} และ{item.sunrise}" for other in others]
                 + [f"{item.season} และ{other.sunrise}" for other in others]
                 + [f"{item.season} และดวงอาทิตย์ขึ้นตรงทิศตะวันตกพอดี"]),
-            hint="ดูว่าซีกโลกเหนือเอียงเข้าหาหรือออกจากโคมไฟ แล้วตอบให้ครบทั้งสองเรื่อง",
+            hint="ดูว่าซีกโลกเหนือเอียงเข้าหาหรือออกจากแหล่งแสง แล้วตอบให้ครบทั้งสองเรื่อง",
             topic=SEASON_TOPIC,
         )
 

@@ -158,3 +158,13 @@ class NuclearEnergyApplication(QuestionType):
             correct=[math(correct)],
             distractors=fixed(*[[math(w)] for w in wrongs if w != correct]),
             topic=TOPIC_NUCLEAR, hint=[text("m = E/c² เมื่อ c² = 9 × 10¹⁶ m²/s²")])
+
+
+# More true accounts, at least one for each of the three objects.
+NUCLEAR_TRUE = (*NUCLEAR_TRUE,
+    ("ดวงอาทิตย์ได้พลังงานจากฟิวชันของนิวเคลียสไฮโดรเจนเป็นฮีเลียมที่แก่นของดาว", FUSION),
+    ("ในฟิชชัน นิวตรอนที่เกิดขึ้นใหม่ไปชนนิวเคลียสอื่นต่อได้ จึงเกิดปฏิกิริยาลูกโซ่", FISSION),
+    ("แท่งควบคุมในเครื่องปฏิกรณ์ดูดกลืนนิวตรอนไว้ เพื่อลดอัตราการเกิดฟิชชัน", FISSION),
+    ("มวลรวมหลังฟิวชันน้อยกว่ามวลรวมของนิวเคลียสก่อนรวมกันเล็กน้อย", FUSION),
+    ("พลังงานจากมวลที่หายไปคำนวณได้จาก E = mc² ไม่ว่าจะเป็นฟิชชันหรือฟิวชัน", "มวลกับพลังงาน"),
+)

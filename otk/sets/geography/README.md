@@ -2,12 +2,13 @@
 
 # ภูมิศาสตร์ (`geography`)
 
-80 sets in 23 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+134 sets in 41 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
+| [`environment_change`](p1/environment_change.py) | การเปลี่ยนแปลงของสิ่งแวดล้อมรอบตัว | ส 5.2 ป.1/2 | 3 |
 | [`position_and_direction`](p1/position_and_direction.py) | ตำแหน่งและทิศของสิ่งต่าง ๆ | ส 5.1 ป.1/2, ส 5.1 ป.1/3 | 3 |
 | [`surroundings`](p1/surroundings.py) | สิ่งแวดล้อมรอบตัว | ส 5.1 ป.1/1, ส 5.2 ป.1/1 | 3 |
 | [`weather_in_a_day`](p1/weather_in_a_day.py) | สภาพอากาศในรอบวัน | ส 5.1 ป.1/4 | 3 |
@@ -18,6 +19,7 @@
 |---|---|---|---:|
 | [`earth_sun_moon`](p2/earth_sun_moon.py) | โลก ดวงอาทิตย์ และดวงจันทร์ | ส 5.1 ป.2/3 | 3 |
 | [`maps_and_globes`](p2/maps_and_globes.py) | แผนผัง แผนที่ และลูกโลก | ส 5.1 ป.2/2 | 3 |
+| [`natural_and_built`](p2/natural_and_built.py) | สิ่งแวดล้อมทางธรรมชาติและที่มนุษย์สร้างขึ้น | ส 5.1 ป.2/1, ส 5.2 ป.2/1 | 3 |
 | [`natural_resources`](p2/natural_resources.py) | ทรัพยากรธรรมชาติ | ส 5.2 ป.2/2 | 3 |
 | [`seasons`](p2/seasons.py) | ฤดูกาลกับการดำเนินชีวิต | ส 5.2 ป.2/3 | 3 |
 | [`waste`](p2/waste.py) | การจัดการขยะ | ส 5.2 ป.2/4 | 3 |
@@ -27,13 +29,30 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`community_environment`](p3/community_environment.py) | สิ่งแวดล้อมในชุมชน | ส 5.2 ป.3/3, ส 5.2 ป.3/4 | 3 |
+| [`community_then_now`](p3/community_then_now.py) | สิ่งแวดล้อมของชุมชนในอดีตกับปัจจุบัน | ส 5.2 ป.3/1 | 3 |
 | [`compass_directions`](p3/compass_directions.py) | ทิศและแผนที่ชุมชน | ส 5.1 ป.3/1 | 4 |
 | [`resources_and_living`](p3/resources_and_living.py) | ทรัพยากรกับการดำเนินชีวิต | ส 5.2 ป.3/2, ส 5.2 ป.3/5 | 3 |
+
+## p4 — ป.4
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`province_environment`](p4/province_environment.py) | สิ่งแวดล้อมกับการดำเนินชีวิตในจังหวัด | ส 5.2 ป.4/1, ส 5.2 ป.4/2, ส 5.2 ป.4/3 | 3 |
+| [`province_physical`](p4/province_physical.py) | ลักษณะทางกายภาพและแหล่งทรัพยากรในจังหวัด | ส 5.1 ป.4/1, ส 5.1 ป.4/2, ส 5.1 ป.4/3 | 3 |
+
+## p5 — ป.5
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`region_living`](p5/region_living.py) | สิ่งแวดล้อมกับการตั้งถิ่นฐานและวิถีชีวิตในภูมิภาค | ส 5.2 ป.5/1, ส 5.2 ป.5/2, ส 5.2 ป.5/3 | 3 |
+| [`region_physical`](p5/region_physical.py) | ลักษณะทางกายภาพของภูมิภาค | ส 5.1 ป.5/1, ส 5.1 ป.5/2 | 3 |
 
 ## p6 — ป.6
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
+| [`sustainable_resources`](p6/sustainable_resources.py) | การจัดการทรัพยากรและสิ่งแวดล้อมอย่างยั่งยืนในประเทศไทย | ส 5.2 ป.6/3 | 3 |
+| [`thailand_change`](p6/thailand_change.py) | การเปลี่ยนแปลงทางกายภาพของประเทศไทย | ส 5.2 ป.6/2 | 3 |
 | [`thailand_disasters`](p6/thailand_disasters.py) | ภัยพิบัติในประเทศไทย | ส 5.1 ป.6/2 | 3 |
 | [`thailand_physical`](p6/thailand_physical.py) | ลักษณะทางกายภาพของประเทศไทย | ส 5.1 ป.6/1, ส 5.2 ป.6/1 | 3 |
 
@@ -41,6 +60,7 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
+| [`asia_environment`](m1/asia_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปเอเชีย ออสเตรเลีย และโอเชียเนีย | ส 5.2 ม.1/3, ส 5.2 ม.1/4 | 3 |
 | [`asia_oceania`](m1/asia_oceania.py) | ทวีปเอเชีย ออสเตรเลีย และโอเชียเนีย | ส 5.1 ม.1/1, ส 5.1 ม.1/3 | 3 |
 | [`coordinates_and_time`](m1/coordinates_and_time.py) | พิกัดภูมิศาสตร์และเวลาของโลก | ส 5.1 ม.1/2 | 6 |
 | [`economic_location`](m1/economic_location.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจ | ส 5.2 ม.1/1, ส 5.2 ม.1/2 | 3 |
@@ -50,6 +70,8 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`europe_africa`](m2/europe_africa.py) | ทวีปยุโรปและแอฟริกา | ส 5.1 ม.2/1, ส 5.1 ม.2/3 | 3 |
+| [`europe_africa_economy`](m2/europe_africa_economy.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจในทวีปยุโรปและทวีปแอฟริกา | ส 5.2 ม.2/1, ส 5.2 ม.2/2 | 3 |
+| [`europe_africa_environment`](m2/europe_africa_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปยุโรปและทวีปแอฟริกา | ส 5.2 ม.2/3, ส 5.2 ม.2/4 | 3 |
 | [`scale_and_bearing`](m2/scale_and_bearing.py) | มาตราส่วน ทิศ และสัญลักษณ์ | ส 5.1 ม.2/2 | 7 |
 
 ## m3 — ม.3
@@ -57,12 +79,18 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`americas`](m3/americas.py) | ทวีปอเมริกาเหนือและอเมริกาใต้ | ส 5.1 ม.3/1, ส 5.1 ม.3/2 | 3 |
+| [`americas_economy`](m3/americas_economy.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจในทวีปอเมริกาเหนือและทวีปอเมริกาใต้ | ส 5.2 ม.3/1, ส 5.2 ม.3/2 | 3 |
+| [`americas_environment`](m3/americas_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปอเมริกาเหนือและทวีปอเมริกาใต้ | ส 5.2 ม.3/3, ส 5.2 ม.3/4 | 3 |
 | [`environmental_cooperation`](m3/environmental_cooperation.py) | ความร่วมมือระหว่างประเทศด้านสิ่งแวดล้อม | ส 5.2 ม.3/5 | 3 |
 
 ## m4 — ม.4
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
+| [`environment_change`](m4/environment_change.py) | การเปลี่ยนแปลงด้านทรัพยากรธรรมชาติและสิ่งแวดล้อม | ส 5.2 ม.4-6/2 | 3 |
+| [`environment_policy`](m4/environment_policy.py) | มาตรการ กฎหมาย และนโยบายด้านทรัพยากรธรรมชาติและสิ่งแวดล้อม | ส 5.2 ม.4-6/3 | 3 |
 | [`geographic_tools`](m4/geographic_tools.py) | เครื่องมือทางภูมิศาสตร์ | ส 5.1 ม.4-6/3 | 5 |
+| [`natural_hazards`](m4/natural_hazards.py) | ลักษณะทางกายภาพกับภัยพิบัติทางธรรมชาติ | ส 5.1 ม.4-6/2 | 3 |
 | [`physical_change`](m4/physical_change.py) | การเปลี่ยนแปลงทางกายภาพ | ส 5.1 ม.4-6/1 | 3 |
 | [`population`](m4/population.py) | ประชากรและการตั้งถิ่นฐาน | ส 5.2 ม.4-6/1 | 4 |
+| [`sustainable_management`](m4/sustainable_management.py) | การจัดการทรัพยากรธรรมชาติและสิ่งแวดล้อมเพื่อการพัฒนาที่ยั่งยืน | ส 5.2 ม.4-6/4 | 3 |

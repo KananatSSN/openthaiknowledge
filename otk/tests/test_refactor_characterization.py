@@ -177,4 +177,6 @@ def test_sheet_publication_manifest_is_frozen():
     # second wave added 16 (weather, seasons, Thailand's regions, continents),
     # and a third 11 (waste, livelihoods, economic location, landforms, population).
     # A fourth wave brought each geography unit to a full three stages: 20 more.
-    assert len(REGISTRY) == 3548
+    # The coverage audit then added 54 for the 31 geography indicators no set
+    # taught: 18 units of three stages, ป.1 to ม.4-6.
+    assert len(REGISTRY) == 3602

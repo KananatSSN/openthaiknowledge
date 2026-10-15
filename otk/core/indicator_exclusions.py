@@ -24,4 +24,7 @@ NOT_ASSESSABLE_BY_MCQ: dict[str, str] = {
     "เคมีเพิ่มเติม 3 ม.6/2": "evidence of integrating knowledge in project work",
     "เคมีเพิ่มเติม 3 ม.6/3": "presenting work",
     "เคมีเพิ่มเติม 3 ม.6/4": "taking part in seminars or exhibitions",
+    "ส 5.1 ป.3/2": "drawing a plan of the school and community",
+    "ส 5.2 ป.1/3": "taking part in caring for the environment at home and in class",
+    "ส 5.2 ป.3/6": "taking part in managing the community's environment",
 }
