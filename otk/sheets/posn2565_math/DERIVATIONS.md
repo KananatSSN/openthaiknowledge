@@ -11,7 +11,7 @@ Render the rest yourself:
 
 ```python
 import fitz
-doc = fitz.open("sheet_database/สอวน_math/posn1-65-math.pdf")   # 7 pages
+doc = fitz.open("openthaiknowledge-bank/สอวน_math/posn1-65-math.pdf")   # 7 pages
 for i, page in enumerate(doc, 1):
     page.get_pixmap(dpi=150).save(f"p{i:02d}.png")
 ```

@@ -99,7 +99,7 @@ class LineClosestPointM4(QuestionType):
                   pt(Fraction(-c, a), 0), pt(0, Fraction(-c, b)), pt(foot[0] + b, foot[1] - a)]
         stem = [text("จุดบนเส้นตรง"), content_math(line), text(f"ซึ่งอยู่ใกล้{where} ที่สุดคือจุดในข้อใด")]
         return _tex_q(stem, right, wrongs, self.topic)
-LineClosestPointM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย',))
+LineClosestPointM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย',))
 
 
 @question_type("math.point_line_distance_m4",

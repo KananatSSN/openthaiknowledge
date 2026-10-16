@@ -128,7 +128,7 @@ class ParabolaAreaM6(QuestionType):
         r_rect = area / (2 * c)
         named = [c / (r_rect * r_rect) * t * t - c, t * t / (r * r) - c, a * t * t]
         return _num_q(stem, right, named, self.topic)
-ParabolaAreaM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/15 แคลคูลัส',))
+ParabolaAreaM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/15 แคลคูลัส',))
 
 
 @question_type("math.area_between_curve_and_line",

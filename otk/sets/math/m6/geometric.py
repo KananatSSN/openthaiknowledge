@@ -190,7 +190,7 @@ class GeometricSeriesTricksM6(QuestionType):
                 content_math(r"\sum_{n=1}^{\infty} a_{n}"), text("เท่ากับเท่าใด")]
         # x + y (the first 15 terms); x/(1 − t²); x/(1 + t).
         return _num_q(stem, infinite_from_blocks(Fraction(x), t), [x + y, x / (1 - t * t), x / (1 + t)], self.topic)
-GeometricSeriesTricksM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/14 ลำดับและอนุกรม',))
+GeometricSeriesTricksM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/14 ลำดับและอนุกรม',))
 
 
 @question_type("math.geometric_series_finite", display_name={"th": "ผลบวกอนุกรมเรขาคณิตจำกัด"},

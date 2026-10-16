@@ -251,4 +251,4 @@ class RadicalDenestM4(QuestionType):
                   f"{_root_tex(n)} {'+' if plus else '-'} {_root_tex(m)}" if not plus
                   else f"{_root_tex(2 * m)} + {_root_tex(n)}"]
         return _tex_q(stem, right, wrongs, self.topic)
-RadicalDenestM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/5 เลขยกกำลัง',))
+RadicalDenestM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/5 เลขยกกำลัง',))

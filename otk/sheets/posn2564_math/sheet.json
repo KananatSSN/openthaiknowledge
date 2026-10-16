@@ -1,7 +1,7 @@
 {
  "sheet_id": "posn2564_math",
  "title": "ข้อสอบคัดเลือกเข้าค่าย 1 สอวน. คณิตศาสตร์ ปีการศึกษา 2564",
- "source_pdf": "sheet_database/สอวน_math/posn1-64-math.pdf",
+ "source_pdf": "openthaiknowledge-bank/สอวน_math/posn1-64-math.pdf",
  "subject": "คณิตศาสตร์",
  "level": "โอลิมปิก (สอวน.)",
  "note": "ข้อสอบเติมคำตอบ 30 ข้อ เป็นภาพสแกนล้วน — ถอดความด้วยตาทุกข้อ คำตอบทุกข้อได้จาก solve() และ check() ที่เขียนแยกกันให้ผลตรงกัน ทั้งที่ค่าคงที่เดิมและที่ VARIANTS",

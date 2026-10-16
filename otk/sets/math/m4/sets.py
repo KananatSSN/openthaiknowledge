@@ -291,7 +291,7 @@ class SetExpressionEvalM4(QuestionType):
         # Forgetting the overlap; the whole union; the symmetric difference.
         wrongs = [union - A, union, union - inter, A]
         return _choice_q(stem, set_tex(B), [set_tex(w) for w in wrongs if w != B], self.topic)
-SetExpressionEvalM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/1 เซต',))
+SetExpressionEvalM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/1 เซต',))
 
 
 @question_type("math.count_subsets",
@@ -357,7 +357,7 @@ class SetExpressionMatchM4(QuestionType):
                      f"B = {set_plain(B)} และ C = {set_plain(C)}"),
                 text(f"เซตในข้อใดเท่ากับ {set_plain(target)}")]
         return _choice_q(stem, tex, picked, self.topic)
-SetExpressionMatchM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/1 เซต',))
+SetExpressionMatchM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/1 เซต',))
 
 
 @question_type("math.set_always_true_m4",
@@ -379,7 +379,7 @@ class SetAlwaysTrueM4(QuestionType):
         stem = [text("ให้ A, B และ C เป็นเซตที่ไม่เป็นเซตว่าง ถ้า"), *premise,
                 text("แล้วข้อใดต่อไปนี้เป็นจริงเสมอ")]
         return _choice_q(stem, right, false[:3], self.topic)
-SetAlwaysTrueM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/1 เซต',))
+SetAlwaysTrueM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/1 เซต',))
 
 
 @question_type("math.set_multiples_count_m4",
@@ -409,7 +409,7 @@ class SetMultiplesCountM4(QuestionType):
             wrongs = [na + nb - nab, na + nb - 3 * nab, na + nb]
         return _num_maths([text(f"{u} {ask}")], str(right),
                           [str(w) for w in wrongs if w > 0], self.topic)
-SetMultiplesCountM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/1 เซต',))
+SetMultiplesCountM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/1 เซต',))
 
 
 @question_type("math.venn_picture_m4", display_name={"th": "อ่านจำนวนสมาชิกจากแผนภาพเวนน์"},
@@ -479,7 +479,7 @@ class SetTwoSetWordM4(QuestionType):
             # Forgetting the "neither" group; counting it twice; the group itself.
             wrongs = [n_a + n_b - total, n_a + n_b - total + 2 * neither, neither]
         return _num_maths([text(stem)], str(right), [str(w) for w in wrongs if w > 0], self.topic)
-SetTwoSetWordM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/1 เซต',))
+SetTwoSetWordM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/1 เซต',))
 
 
 @question_type("math.set_exactly_k_m4",
@@ -519,7 +519,7 @@ class SetExactlyKM4(QuestionType):
             # The exactly-two group counted once; the all-three counted once; the "only" part.
             wrongs = [n[2] - e2, n[2] - 2 * e3, only[2]]
         return _num_maths([text(stem)], str(right), [str(w) for w in wrongs if w > 0], self.topic)
-SetExactlyKM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/1 เซต',))
+SetExactlyKM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/1 เซต',))
 
 
 @question_type("math.set_region_algebra_m4",
@@ -545,7 +545,7 @@ class SetRegionAlgebraM4(QuestionType):
             right = _agree(solve_all_three(total, abc, a_not_b, b_not_c, c_not_a), neither)
             wrongs = [neither + abc, total - a_not_b - b_not_c - c_not_a, abs(abc - neither)]
         return _num_maths([text(stem)], str(right), [str(w) for w in wrongs if w > 0], self.topic)
-SetRegionAlgebraM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/1 เซต',))
+SetRegionAlgebraM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/1 เซต',))
 
 
 @question_type("math.set_extremal_m4",
@@ -575,7 +575,7 @@ class SetExtremalM4(QuestionType):
                     f"และชมรม Y มีสมาชิกไม่เกิน {y_max} คน ชมรม X มีสมาชิกอย่างน้อยที่สุดกี่คน")
             wrongs = [right - both, right + both, total - only_z - both]
         return _num_maths([text(stem)], str(right), [str(w) for w in wrongs if w > 0], self.topic)
-SetExtremalM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/1 เซต',))
+SetExtremalM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/1 เซต',))
 
 
 @question_type("math.set_cardinality", display_name={"th": "จำนวนสมาชิกของยูเนียน"},

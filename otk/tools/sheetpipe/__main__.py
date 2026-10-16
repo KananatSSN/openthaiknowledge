@@ -11,7 +11,7 @@
     knowledge validate|coverage stage 3: check otk/knowledge/, and what it accounts for
     plan     [topic]            stage 4: knowledge units that no problem set practises
     ocr      <pdf>              OCR a scanned PDF (extract does this per scanned page)
-    bank scan|status|set|fetch|prune  the sheet_database/ index (otk/sheets/bank.json);
+    bank scan|status|set|fetch|prune  the openthaiknowledge-bank/ index (otk/sheets/bank.json);
                                 fetch downloads PDFs from Git LFS on demand
 
 Stage 3 — actually solving — is the part you do by hand (or with a model); the
@@ -416,7 +416,7 @@ def cmd_bank_set(args) -> int:
 def cmd_bank_fetch(args) -> int:
     """Download the LFS content of the bank PDFs matching a pattern.
 
-    The bank is its own (private) repository, cloned at ``sheet_database/``.
+    The bank is its own (private) repository, cloned at ``openthaiknowledge-bank/``.
     Its `.lfsconfig` excludes the PDFs from automatic fetches, to stay inside
     the GitHub LFS download quota; this pulls just the files a stage needs.
     """
@@ -495,7 +495,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("list")
     p.set_defaults(fn=cmd_list)
 
-    p = sub.add_parser("convert", help="stage 2: bank file(s) → sheet_database/_digest/")
+    p = sub.add_parser("convert", help="stage 2: bank file(s) → openthaiknowledge-bank/_digest/")
     p.add_argument("pattern", help="bank path, or a glob over bank paths")
     p.add_argument("--root", default="", help="bank folder holding the PDFs")
     p.add_argument("--force", action="store_true",
@@ -545,11 +545,11 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--out", default="")
     p.set_defaults(fn=cmd_ocr)
 
-    bank = sub.add_parser("bank", help="the sheet_database/ index").add_subparsers(
+    bank = sub.add_parser("bank", help="the openthaiknowledge-bank/ index").add_subparsers(
         dest="bank_cmd", required=True)
     p = bank.add_parser("scan")
     p.add_argument("--root", default="", help="bank folder (default: $SHEET_BANK "
-                   "or sheet_database/)")
+                   "or openthaiknowledge-bank/)")
     p.add_argument("--reprobe", action="store_true",
                    help="re-probe unchanged files too (after the probe changes)")
     p.set_defaults(fn=cmd_bank_scan)
@@ -566,7 +566,7 @@ def main(argv: list[str] | None = None) -> int:
                                         "or 'self' for a book with its key at the back")
     p.set_defaults(fn=cmd_bank_set)
     p = bank.add_parser("fetch", help="download bank PDFs from Git LFS on demand")
-    p.add_argument("pattern", help='glob under sheet_database/, e.g. "rathcenter/13 *"')
+    p.add_argument("pattern", help='glob under openthaiknowledge-bank/, e.g. "rathcenter/13 *"')
     p.set_defaults(fn=cmd_bank_fetch)
     p = bank.add_parser("prune")
     p.add_argument("--root", default="")

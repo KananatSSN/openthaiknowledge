@@ -191,7 +191,7 @@ class InequalityOrderPropertiesM3(QuestionType):
         ask = "ข้อใดเป็นจริงเสมอ" if ask_true else "ข้อใดไม่จำเป็นต้องเป็นจริง"
         stem = [text("กำหนดให้ a, b และ c เป็นจำนวนจริง โดยที่"), *premise, text(ask)]
         return _tex_q(stem, right, pool_wrong[:3], self.topic)
-InequalityOrderPropertiesM3.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/3 จำนวนจริง',))
+InequalityOrderPropertiesM3.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
 
 
 @question_type("math.inequality_word_problem_m3",

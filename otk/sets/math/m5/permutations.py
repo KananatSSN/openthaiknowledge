@@ -162,7 +162,7 @@ class ArrangementBlocksGapsM5(QuestionType):
                      "โดยไม่ให้มีใครนั่งเก้าอี้ติดกัน จะจัดได้ทั้งหมดกี่วิธี")]
         # The chairs chosen but the people not ordered; any seats; n − p gaps instead of n − p + 1.
         return _num_q(stem, right, [comb(n - p + 1, p), perm(n, p), comb(n - p, p) * factorial(p)], self.topic)
-ArrangementBlocksGapsM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/12 หลักการนับ',))
+ArrangementBlocksGapsM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/12 หลักการนับ',))
 
 
 @question_type("math.circular_permutation_m5",

@@ -419,7 +419,7 @@ def _sub_story(rng: Random, a: int, b: int) -> str:
 # ── Geometry ─────────────────────────────────────────────────────────────────
 
 
-# ══ Primary curriculum ป.1–ป.6 (spec: sheet_database/specs/math_questions.md) ════════
+# ══ Primary curriculum ป.1–ป.6 (spec: openthaiknowledge-bank/specs/math_questions.md) ════════
 #
 # Two extra bases carry the shapes the curriculum needs that a bare expression
 # cannot: WordProblem (a Thai narrative whose answer is a number — the sentence

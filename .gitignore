@@ -21,7 +21,7 @@ data/
 
 # The source bank is a separate, private repository (third-party material, not
 # published). Maintainers clone it here: see README → The source bank.
-/sheet_database/
+/openthaiknowledge-bank/
 
 # Sheet-pipeline page renders; regenerate with `sheetpipe extract`.
 # The extracted text alongside them is small and IS tracked.

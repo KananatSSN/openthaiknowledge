@@ -104,7 +104,7 @@ class RationalPowerEvaluateM5(QuestionType):
         # The sign dropped; the reciprocal (negative exponent ignored); the exponent's numerator only.
         named = [abs(right), 1 / right if right else 0, Fraction(sign * p, q) ** abs(m) * (1 if m > 0 else -1)]
         return _frac_q(stem, right, named, self.topic)
-RationalPowerEvaluateM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/5 เลขยกกำลัง',))
+RationalPowerEvaluateM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/5 เลขยกกำลัง',))
 
 
 @question_type("math.radical_to_power_m5", display_name={"th": "กรณฑ์และเลขยกกำลังที่มีเลขชี้กำลังเป็นจำนวนตรรกยะ"},
@@ -147,7 +147,7 @@ class RootSignPropertiesM5(QuestionType):
         ask = "ข้อใดถูกต้อง" if ask_true else "ข้อใดไม่ถูกต้อง"
         stem = [text(f"กำหนดให้ {premise} {ask}")]
         return _tex_q(stem, right, wrongs, self.topic)
-RootSignPropertiesM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/5 เลขยกกำลัง',))
+RootSignPropertiesM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/5 เลขยกกำลัง',))
 
 
 @question_type("math.simplify_radicals_m5", display_name={"th": "จัดรูปจำนวนจริงในรูปกรณฑ์"},
@@ -235,7 +235,7 @@ class PowerCompareM5(QuestionType):
                 content_math(rf"a = {shown[0]},\quad b = {shown[1]},\quad c = {shown[2]}"),
                 text("ข้อใดต่อไปนี้ถูกต้อง")]
         return _tex_q(stem, right, wrongs[:3], self.topic)
-PowerCompareM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/5 เลขยกกำลัง',))
+PowerCompareM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/5 เลขยกกำลัง',))
 
 
 @question_type("math.power_laws_rational_m5", display_name={"th": "สมบัติของเลขยกกำลังที่มีเลขชี้กำลังเป็นจำนวนตรรกยะ"},

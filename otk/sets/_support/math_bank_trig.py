@@ -1,7 +1,7 @@
 """Trigonometry sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found six units, exercised by A-level and กสพท questions in
-``sheet_database/rathcenter/8 ตรีโกณมิติ``, that no problem set practised:
+``openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ``, that no problem set practised:
 
 =====================================  ==========================================  ================================
 unit                                   set                                         topic

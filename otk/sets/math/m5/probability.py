@@ -185,7 +185,7 @@ class ProbabilityTwoWayTableM5(QuestionType):
             named = [Fraction(row_sum + col_sum, total), Fraction(cell, total), Fraction(row_sum, total)]
             pool = f"ถ้าสุ่ม{who}จากตารางนี้มา 1 {unit}"
         return _choices([text(table), text(f"{pool} {ask} เท่ากับเท่าใด")], p, named, self.topic)
-ProbabilityTwoWayTableM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/13 ความน่าจะเป็น',))
+ProbabilityTwoWayTableM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/13 ความน่าจะเป็น',))
 
 
 @question_type("math.probability_complement",
@@ -303,7 +303,7 @@ class ProbabilityUnionM5(QuestionType):
         # Subtracting x and y without adding the overlap back; the overlap; A ∪ B itself.
         named = [Fraction(total - x - y, total), Fraction(both, total), Fraction(x + y - both, total)]
         return _choices([text(stem)], p, named, self.topic)
-ProbabilityUnionM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/13 ความน่าจะเป็น',))
+ProbabilityUnionM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/13 ความน่าจะเป็น',))
 
 
 @question_type("math.probability_digit_numbers_m5",
@@ -335,7 +335,7 @@ class ProbabilityDigitNumbersM5(QuestionType):
             named = [Fraction(math.perm(10, d), 10 ** d), Fraction(math.perm(10, d), total), 1 - p]
         named = [w for w in named if w * total != good]
         return _choices([text(stem)], p, named, self.topic)
-ProbabilityDigitNumbersM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/13 ความน่าจะเป็น',))
+ProbabilityDigitNumbersM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/13 ความน่าจะเป็น',))
 
 
 @question_type("math.probability_marbles", display_name={"th": "ความน่าจะเป็นจากการหยิบลูกแก้ว"},
@@ -431,7 +431,7 @@ class ProbabilityWithoutReplacementM5(QuestionType):
         stem = (f"กล่องใบหนึ่งมีลูกบอล{box} สุ่มหยิบลูกบอลทีละลูก {times} ครั้ง "
                 f"โดยไม่ใส่คืนก่อนหยิบครั้งถัดไป ความน่าจะเป็นที่{ask} เท่ากับเท่าใด")
         return _choices([text(stem)], p, named, self.topic)
-ProbabilityWithoutReplacementM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/13 ความน่าจะเป็น',))
+ProbabilityWithoutReplacementM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/13 ความน่าจะเป็น',))
 
 
 @question_type("math.probability_random_arrangement_m5",
@@ -473,7 +473,7 @@ class ProbabilityRandomArrangementM5(QuestionType):
             stem = (f"ทอดลูกเต๋า {k} ลูกพร้อมกัน ความน่าจะเป็นที่ลูกเต๋าทุกลูกขึ้นแต้มไม่ซ้ำกัน เท่ากับเท่าใด")
             named = [Fraction(math.comb(6, k), 6 ** k), 1 - p, Fraction(1, 6 ** (k - 1))]
         return _choices([text(stem)], p, named, self.topic)
-ProbabilityRandomArrangementM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/13 ความน่าจะเป็น',))
+ProbabilityRandomArrangementM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/13 ความน่าจะเป็น',))
 
 
 @question_type("math.probability_grid_route_m5",
@@ -497,7 +497,7 @@ class ProbabilityGridRouteM5(QuestionType):
                  Fraction(math.comb(m - p + n - q, m - p), total),
                  Fraction(math.comb(p + q, p), 2 ** (p + q))]
         return _choices([text(stem)], prob, named, self.topic)
-ProbabilityGridRouteM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/13 ความน่าจะเป็น',))
+ProbabilityGridRouteM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/13 ความน่าจะเป็น',))
 
 
 @question_type("math.probability_independent",

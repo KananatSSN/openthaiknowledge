@@ -1,7 +1,7 @@
 """Random-variable sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found units of ``otk/knowledge/math/random-variables.json``,
-exercised by กสพท and A-level questions in ``sheet_database/rathcenter/17 ตัวแปรสุ่ม``,
+exercised by กสพท and A-level questions in ``openthaiknowledge-bank/rathcenter/17 ตัวแปรสุ่ม``,
 that no problem set practised. The existing normal-distribution sets use the
 68–95–99.7 rule only; the exams hand over a z-table:
 

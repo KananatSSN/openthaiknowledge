@@ -172,7 +172,7 @@ class RandomVariableVarianceM6(QuestionType):
             # E(X²) with μ² forgotten; the sample variance (divide by n − 1); E(X²) − μ.
             wrongs = [ex2, var * n / (n - 1), ex2 - mu, var + 1]
         return _tex_q(stem, frac_tex(var), [frac_tex(w) for w in wrongs if w > 0], self.topic)
-RandomVariableVarianceM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/17 ตัวแปรสุ่ม',))
+RandomVariableVarianceM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/17 ตัวแปรสุ่ม',))
 
 
 @question_type("math.uniform_distribution_m6", display_name={"th": "การแจกแจงเอกรูป"},
@@ -246,7 +246,7 @@ class ExpectedGameValueM6(QuestionType):
         wrongs = [w for w in dict.fromkeys(wrongs) if w != right][:3]
         return GeneratedQuestion(stem=stem, correct=[text(right)], distractors=fixed(*[[text(w)] for w in wrongs]),
                                  topic=self.topic)
-ExpectedGameValueM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/17 ตัวแปรสุ่ม',))
+ExpectedGameValueM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/17 ตัวแปรสุ่ม',))
 
 
 @question_type("math.normal_curve_picture_m6",
@@ -353,7 +353,7 @@ class NormalZTableM6(QuestionType):
         # σ read as the half-gap (z forgotten); μ alone; the gap as σ.
         wrongs = [dstr(m + k * (b - m)), dstr(m), dstr(m + k * (b - a)), dstr(m - k * s)]
         return _tex_q(stem, dstr(right), wrongs, self.topic)
-NormalZTableM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/17 ตัวแปรสุ่ม',))
+NormalZTableM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/17 ตัวแปรสุ่ม',))
 
 
 @question_type("math.normal_distribution_m6",

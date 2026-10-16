@@ -2,7 +2,7 @@
 
 ``sheetpipe plan เซต`` found nine units of ``otk/knowledge/math/sets.json``
 that no problem set practised, all exercised by A-level, กสพท and O-NET
-questions in ``sheet_database/rathcenter/1 เซต``. Eight sets cover them:
+questions in ``openthaiknowledge-bank/rathcenter/1 เซต``. Eight sets cover them:
 
 =====================================  ===========================================
 unit(s)                                set

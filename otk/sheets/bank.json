@@ -9,7 +9,7 @@
    "layout": "no-text",
    "scan_pages": 26,
    "stage": "generated",
-   "note": "hand-digested (scanned PDF, no text layer): science_wave_f1.py + sheet_database/teaching_plan/ข้อสอบแรง.md; no otk/sheets package"
+   "note": "hand-digested (scanned PDF, no text layer): science_wave_f1.py + openthaiknowledge-bank/teaching_plan/ข้อสอบแรง.md; no otk/sheets package"
   },
   {
    "path": "fact_data/ecology.py",

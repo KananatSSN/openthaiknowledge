@@ -195,7 +195,7 @@ class StatsTransformM6(QuestionType):
         at = lambda x: sum(w * abs(a - x) for a, w in points)
         named = [at(mean_x), at(median([a for a, _ in points])), pts[-1] - pts[0]]
         return _num_q(stem, right, named, self.topic)
-StatsTransformM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/16 สถิติ',))
+StatsTransformM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/16 สถิติ',))
 
 
 @question_type("math.coefficient_of_variation_m6",

@@ -15,7 +15,7 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.sets._support.science_wave_f1 import SUBJECT, UPPER_FOUR, G, _labelled, _num, _numeric
 
-PROVENANCE = Provenance("adapted", sources=('sheet_database/Faii/ข้อสอบแรง.pdf',))
+PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/Faii/ข้อสอบแรง.pdf',))
 
 
 TOPIC_FRICTION_COEFFICIENT = "แรงเสียดทานและสัมประสิทธิ์ความเสียดทาน"

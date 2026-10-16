@@ -251,7 +251,7 @@ class AbsoluteValueMultiEquationM4(QuestionType):
             return _frac_q(stem, right, wrongs, self.topic)
         stem = [text(ask), content_math(tex), text("เท่ากับเท่าใด")]
         return _frac_q(stem, right, wrongs, self.topic)
-AbsoluteValueMultiEquationM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/3 จำนวนจริง',))
+AbsoluteValueMultiEquationM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
 
 
 @question_type("math.absolute_value_graph_m4",
@@ -325,7 +325,7 @@ class AbsoluteValueIntegerCountM4(QuestionType):
         wrongs = [count_integers(mistake), right + 1, right - 1]
         stem = [text("จำนวนเต็ม x ที่สอดคล้องกับอสมการ"), content_math(tex), text("มีทั้งหมดกี่จำนวน")]
         return _count_q(stem, right, wrongs, self.topic)
-AbsoluteValueIntegerCountM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/3 จำนวนจริง',))
+AbsoluteValueIntegerCountM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
 
 
 @question_type("math.absolute_value_properties_m4",

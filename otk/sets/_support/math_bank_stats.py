@@ -1,7 +1,7 @@
 """Statistics sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found two units, exercised by กสพท, A-level and O-NET
-questions in ``sheet_database/rathcenter/16 สถิติ``, that no problem set
+questions in ``openthaiknowledge-bank/rathcenter/16 สถิติ``, that no problem set
 practised. The existing sets compute a measure from data they print; the
 exams hide data behind conditions or hand over sums and transforms:
 

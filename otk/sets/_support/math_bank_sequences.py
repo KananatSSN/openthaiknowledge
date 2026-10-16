@@ -1,7 +1,7 @@
 """Sequence, series and compounding sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found units, exercised by กสพท, A-level and O-NET
-questions in ``sheet_database/rathcenter/14 ลำดับและอนุกรม``, that no problem
+questions in ``openthaiknowledge-bank/rathcenter/14 ลำดับและอนุกรม``, that no problem
 set practised. The existing sets give the first term and the common
 difference or ratio; the exams hide them:
 

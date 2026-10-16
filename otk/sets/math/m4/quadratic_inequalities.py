@@ -164,7 +164,7 @@ class InequalityIntegerCountM4(QuestionType):
         wrongs = [count_integers(mistake), right + 1, right - 1]
         stem = [text("จำนวนเต็ม x ที่สอดคล้องกับอสมการ"), content_math(tex), text("มีทั้งหมดกี่จำนวน")]
         return _count_q(stem, right, wrongs, self.topic)
-InequalityIntegerCountM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/3 จำนวนจริง',))
+InequalityIntegerCountM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
 
 
 @question_type("math.quadratic_inequality_interval",
@@ -275,4 +275,4 @@ class InequalityParametersM4(QuestionType):
         # Signs flipped; one endpoint only; forgetting the excluded point.
         wrongs = [2 * k, -k, k]
         return _num_maths(stem, str(right), [str(w) for w in wrongs if w != right], self.topic)
-InequalityParametersM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/3 จำนวนจริง',))
+InequalityParametersM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))

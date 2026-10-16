@@ -294,7 +294,7 @@ class StatsDataConditionsM6(QuestionType):
         named = [n * median(data), mo + data[-1] - data[0], n * mo] if ask == "sum" else \
             [median(data) + data[-1] - data[0], mo + data[-1] - data[0] + 1, data[-1] - data[0]]
         return _num_q(stem, right, named, self.topic)
-StatsDataConditionsM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/16 สถิติ',))
+StatsDataConditionsM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/16 สถิติ',))
 
 
 @question_type("math.median_mode_frequency_m6",

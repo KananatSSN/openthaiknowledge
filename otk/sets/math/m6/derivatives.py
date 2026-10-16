@@ -122,7 +122,7 @@ class DerivativeChainM5(QuestionType):
         # Forgetting to divide by k²; using t + d; the value f(t) instead.
         named = [Fraction(2 * (t - d)), Fraction(2 * (t + d), k * k), Fraction((t - d) ** 2, k * k)]
         return _frac_q(stem, right, named, self.topic)
-DerivativeChainM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/4 ฟังก์ชัน',))
+DerivativeChainM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/4 ฟังก์ชัน',))
 
 
 @question_type("math.derivative_negative_power",
@@ -209,7 +209,7 @@ class DerivativeInverseProductM6(QuestionType):
                 text("อนุพันธ์ของ"), content_math(f"f\\left({poly_tex_math_bank_calculus(u)}\\right)"), text(f"ที่ x = {x0} มีค่าเท่ากับเท่าใด")]
         # Forgetting the inner derivative; the inner derivative alone; their sum.
         return _num_q(stem, v * du, [v, du, v + du], self.topic)
-DerivativeInverseProductM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/15 แคลคูลัส',))
+DerivativeInverseProductM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/15 แคลคูลัส',))
 
 
 @question_type("math.motion_derivative_m6", display_name={"th": "ความเร็วและความเร่งจากอนุพันธ์"},

@@ -9,7 +9,7 @@ after it). Transcribe from the page renders:
 
 ```python
 import fitz
-doc = fitz.open("sheet_database/สอวน_math/posn1-61-math.pdf")   # 8 pages
+doc = fitz.open("openthaiknowledge-bank/สอวน_math/posn1-61-math.pdf")   # 8 pages
 for i, page in enumerate(doc, 1):
     page.get_pixmap(dpi=200).save(f"p{i:02d}.png")
 ```

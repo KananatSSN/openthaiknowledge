@@ -179,7 +179,7 @@ class DistributeToGroupsM5(QuestionType):
         # The shared room's pair not chosen (only who is extra); the pair ordered; n·n!.
         wrongs = [rf"{n + 1} \cdot {n}!", rf"{num((n + 1) * n)} \cdot {n}!", rf"{n} \cdot {n}!"]
         return _tex_q(stem, right, wrongs, self.topic)
-DistributeToGroupsM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/12 หลักการนับ',))
+DistributeToGroupsM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/12 หลักการนับ',))
 
 
 @question_type("math.combination_committee",

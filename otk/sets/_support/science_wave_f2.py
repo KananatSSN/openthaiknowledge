@@ -4,7 +4,7 @@ Closes ``ฟิสิกส์เพิ่มเติม 1 ม.4/6`` อธิ�
 ที่ทำให้วัตถุมีน้ำหนัก รวมทั้งคำนวณปริมาณต่าง ๆ ที่เกี่ยวข้อง — an
 ``additional_outcome``, filed whole.
 
-Built while turning ``sheet_database/outputs/teaching_plan/ข้อสอบแรง.md`` into a formula-led plan.
+Built while turning ``openthaiknowledge-bank/outputs/teaching_plan/ข้อสอบแรง.md`` into a formula-led plan.
 ``W = mg`` is the formula the rest of that sheet stands on: every μ question
 converts a mass to a normal force with it, every pressure and buoyancy question
 uses ``ρg``, and every moment question weighs a load. It had no set of its own —

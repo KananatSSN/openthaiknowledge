@@ -1,7 +1,7 @@
 """ฟังก์ชัน-chapter sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found five units, exercised by A-level, กสพท and O-NET
-questions in ``sheet_database/rathcenter/4 ฟังก์ชัน``, that no problem set
+questions in ``openthaiknowledge-bank/rathcenter/4 ฟังก์ชัน``, that no problem set
 practised:
 
 =====================================  ==========================================  =========================

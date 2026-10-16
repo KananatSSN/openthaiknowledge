@@ -1,7 +1,7 @@
 """Calculus sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found four units, exercised by กสพท and A-level questions in
-``sheet_database/rathcenter/15 แคลคูลัส``, that no problem set practised. The
+``openthaiknowledge-bank/rathcenter/15 แคลคูลัส``, that no problem set practised. The
 existing sets hand over the function and ask for its derivative, extremum,
 tangent or area; the exams run the other way:
 

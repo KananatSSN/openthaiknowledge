@@ -149,7 +149,7 @@ class TangentConditionsM6(QuestionType):
                   line_form(-m2, Fraction(1), y0 - m2 * x0), line_form(-m, Fraction(1), y0),
                   line_form(-2 * m, Fraction(1), y0 - 2 * m * x0)]
         return _tex_q(stem, right, wrongs, self.topic)
-TangentConditionsM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/15 แคลคูลัส',))
+TangentConditionsM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/15 แคลคูลัส',))
 
 
 @question_type("math.normal_line", display_name={"th": "เส้นตั้งฉากกับเส้นโค้ง"},

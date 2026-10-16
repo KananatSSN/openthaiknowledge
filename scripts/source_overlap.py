@@ -10,13 +10,13 @@ the share of the remaining pieces found in the source text.
 Sources compared:
 
 * a digested paper's set → its item's original text (``sheet.json`` ``source``);
-* a module that cites ``sheet_database/<folder>`` → that folder's digests;
+* a module that cites ``openthaiknowledge-bank/<folder>`` → that folder's digests;
 * every other set → all digests and transcripts (should be near zero).
 
     python scripts/source_overlap.py               # summary per family
     python scripts/source_overlap.py --sets 0.5    # also list sets scoring >= 0.5
 
-Needs ``sheet_database/_digest`` and ``_transcribed`` (in this repository).
+Needs ``openthaiknowledge-bank/_digest`` and ``_transcribed`` (in this repository).
 Scores are a screening signal for a human reviewer, not a legal test.
 """
 
@@ -33,7 +33,7 @@ from otk.api import REGISTRY, provenance
 from otk.sheets import SHEETS_DIR
 
 ROOT = Path(__file__).resolve().parents[1]
-BANK = ROOT / "sheet_database"
+BANK = ROOT / "openthaiknowledge-bank"
 PIECE = 12
 SEEDS = (1, 2, 3)
 STOCK = 3          # pieces shared by more sets than this are stock phrasing
@@ -83,7 +83,7 @@ def scores() -> list[dict]:
             cited = origin.sources
             if cited not in folders:
                 folders[cited] = _corpus(p for c in cited
-                                         for p in (BANK / "_digest" / c.removeprefix("sheet_database/")).rglob("*.md"))
+                                         for p in (BANK / "_digest" / c.removeprefix("openthaiknowledge-bank/")).rglob("*.md"))
             source = folders[cited]
         else:
             family, source = "original", everything

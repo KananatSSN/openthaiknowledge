@@ -173,7 +173,7 @@ class CircleTangencyM4(QuestionType):
         wrong = [Fraction(k, r), Fraction(r, k), -m]
         return _tex_q(stem, frac_tex(m), [frac_tex(x) for x in wrong if x != m] + [frac_tex(m + 1)],
                       self.topic)
-CircleTangencyM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย',))
+CircleTangencyM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย',))
 
 
 @question_type("math.circle_from_centre_point",

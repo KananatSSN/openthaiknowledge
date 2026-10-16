@@ -175,11 +175,11 @@ transcripts. Everything in this repository works without it; the problem sets
 that were adapted from a source cite it ([SOURCES.md](SOURCES.md)), and a
 rights holder can ask for any of it to be removed.
 
-Maintainers with access clone the bank into `sheet_database/` (ignored by git):
+Maintainers with access clone the bank into `openthaiknowledge-bank/` (ignored by git):
 
 ```bash
 git lfs install   # once per machine; the bank's PDFs are Git LFS objects
-git clone https://github.com/KananatSSN/openthaiknowledge-bank.git sheet_database
+git clone https://github.com/KananatSSN/openthaiknowledge-bank.git openthaiknowledge-bank
 ```
 
 Then the `sheet-bank` skill (`.agents/skills/sheet-bank`) digests sources end to
@@ -187,7 +187,7 @@ end, and `python -m otk.tools.sheetpipe bank fetch "<pattern>"` downloads the
 PDFs a stage needs.
 
 Contributors without the bank can still digest an exam paper of their own: put
-it in `sheet_database/contrib/<your GitHub name>/` and use the
+it in `openthaiknowledge-bank/contrib/<your GitHub name>/` and use the
 `sheet-to-generator` skill (see [CONTRIBUTING.md](CONTRIBUTING.md)).
 
 ## Explorer

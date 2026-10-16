@@ -14,7 +14,7 @@ newest entry of §6 (session log), then pick up the first unchecked item.
 
 ## 1. Goal
 
-Drop a sheet into the **sheet bank** (`sheet_database/`), convert it to text,
+Drop a sheet into the **sheet bank** (`openthaiknowledge-bank/`), convert it to text,
 extract the knowledge it teaches, and generate verified problem sets from that
 knowledge — with the bank's state visible at a glance instead of living in
 per-folder handoff notes.
@@ -27,7 +27,7 @@ repo's standing guarantee (every answer cross-checked) and this system keeps it.
 ## 2. Design
 
 ```
-sheet_database/  ──1 scan────▶ otk/sheets/bank.json  (path, hash, kind, stage)
+openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path, hash, kind, stage)
                  ──2 convert──▶ otk/sheets/<id>/digest.md + items.json
                  ──3 extract──▶ otk/sheets/<id>/knowledge.json
                  ──4 plan─────▶ coverage diff vs registry → work list
@@ -50,9 +50,9 @@ sheet_database/  ──1 scan────▶ otk/sheets/bank.json  (path, hash, 
 |---|---|---|
 | 2026-09-30 | LLM at authoring time only | Keeps "every shipped answer is cross-checked" |
 | 2026-09-30 | `bank.json` lives in `otk/sheets/` (tracked); bank root is configurable (`--root` / `SHEET_BANK`) | Progress state must be versioned, and a checkout may lack the PDFs (CI, or before `git lfs pull`) |
-| 2026-09-30 | **Bank PDFs are tracked with Git LFS** (user decision). `.gitignore` un-ignores `sheet_database/**/*.pdf`, and `.gitattributes` routes them to LFS | 317 files, ~390 MB. Plain git would put that in every clone's history. CI checks out without LFS; `bank.present()` treats pointer files as absent |
+| 2026-09-30 | **Bank PDFs are tracked with Git LFS** (user decision). `.gitignore` un-ignores `openthaiknowledge-bank/**/*.pdf`, and `.gitattributes` routes them to LFS | 317 files, ~390 MB. Plain git would put that in every clone's history. CI checks out without LFS; `bank.present()` treats pointer files as absent |
 | 2026-09-30 | Bank entries keyed by bank-relative POSIX path; mechanical fields recomputed on scan, `sheet_id`/`stage`/`note` preserved | Rescans must never erase human/agent progress |
-| 2026-09-30 | Digests are committed under `sheet_database/_digest/` (3.6 MB for rathcenter), not under `otk/sheets/` | They are the only version-controlled form of a sheet's text, since the PDFs are gitignored. A digest is not a Python package, so it stays out of `otk/sheets/`, which is only for sheets with solvers. The bank scan skips `_`-prefixed folders |
+| 2026-09-30 | Digests are committed under `openthaiknowledge-bank/_digest/` (3.6 MB for rathcenter), not under `otk/sheets/` | They are the only version-controlled form of a sheet's text, since the PDFs are gitignored. A digest is not a Python package, so it stays out of `otk/sheets/`, which is only for sheets with solvers. The bank scan skips `_`-prefixed folders |
 | 2026-09-30 | Font repair is learned per document with a word-frequency model, not a fixed table | The same ASCII letter means different marks in different PDFs (`U` is `่` in some and `้` in others), and dictionary membership alone picks rare words (`ครั่ง`, `ทั่ง`) |
 
 ## 3. Status
@@ -79,7 +79,7 @@ itself; it refreshes the mechanical fields without marking anything stale.
 
 ### Phase 2 — convert (unlocks rathcenter's 305 PDFs)
 - [x] `choice-block` splitter (session 1): `choiceblock.py`. It cuts questions by margin-label geometry (labels are narrow blocks at x≈72, emitted at the page end), reads each band top to bottom, and takes the tag, choices (including stacked-math choices), answer and solution. Answers come from the second label run (the solutions), anchored by tag so that a dropped solution label does not merge two answers. Tests: `test_sheetpipe_choiceblock.py`.
-- [x] `sheetpipe convert <bank path|glob>` (session 1): `convert.py` writes `sheet_database/_digest/<bank path>.json` + `.md` and sets the bank stage to `converted` with an `items` count. It has run on all of rathcenter: **173 files → 1,071 questions**, 98% with answers.
+- [x] `sheetpipe convert <bank path|glob>` (session 1): `convert.py` writes `openthaiknowledge-bank/_digest/<bank path>.json` + `.md` and sets the bank stage to `converted` with an `items` count. It has run on all of rathcenter: **173 files → 1,071 questions**, 98% with answers.
 - [x] Thai glyph repair (session 1). There are two layers:
   - `thai.normalize`, a table: `9` for `้`, PUA tone marks, and OCR's split `ำ`.
   - `fontfix.py`, glyph level, learned per document and font: ASCII→tone-mark maps (`L/M/Q`→`่`, `U/9/1`→`้`, `K`→`็`, `f`→`์`), scored with a TNC unigram model from PyThaiNLP. It also handles Cordia's `า`→`ำ` swap and the zero-width-nikhahit `ำ` (`จ ำนวน`, `ก าหนด`, `น ้า`).
@@ -106,7 +106,7 @@ itself; it refreshes the mechanical fields without marking anything stale.
   - **All of rathcenter now stands at 3,617/3,617 converted questions claimed, with 0 units uncovered.**
 - [ ] `notes` splitter for `.md` banks
 - [~] **Transcription by eye for picture-maths sheets** (session 2): `transcript.py`. User decision: the pages are read in session (render, read, write), not through a model API.
-  - A transcript lives at `sheet_database/_transcribed/<bank path>.md`. `convert` prefers it to any splitter, needs no PDF, and marks the digest `"transcribed": true`. The format is in the module docstring: `# section`, `> lead`, `n.` items, `k)` sub-items, `= answer`, `(n)` choices, `@pN` pages, `{figure}`, trailing exam tags.
+  - A transcript lives at `openthaiknowledge-bank/_transcribed/<bank path>.md`. `convert` prefers it to any splitter, needs no PDF, and marks the digest `"transcribed": true`. The format is in the module docstring: `# section`, `> lead`, `n.` items, `k)` sub-items, `= answer`, `(n)` choices, `@pN` pages, `{figure}`, trailing exam tags.
   - Sub-items become their own questions with section `"<title> <n>.<k>"`, the answer-key convention. Knowledge sources gained `"number"`, so `{"sheet", "section": "แบบฝึกหัดท้ายบท", "number": 9}` claims one exercise and its subs (the chapter-end exercises mix topics).
   - Every transcribed answer is checked: SymPy for algebra, a numeric scan where SymPy stalls. Where the teacher's manual is wrong or answers another version of the question, the transcript says so in a `<!-- -->` line and carries the computed answer.
   - **Workflow (reusable): the `sheet-bank` skill (`.agents/skills/sheet-bank/SKILL.md`) runs the whole bank loop, and the `sheet-transcriber` subagent (`.claude/agents/sheet-transcriber.md`) transcribes one file.** The main session dispatches one subagent per file, a chapter at a time, then spot-checks, converts, claims and commits. CLI: `sheetpipe transcript todo` (what is left), `transcript pages <path> --render` (photo vs answer pages, PNG renders), `transcript check <glob>`. Measured: about 40k tokens and a minute per 2-page exercise file, 2–4× cheaper than reading in one long session (whose cost is dominated by re-reading its own history). No model API is used.
@@ -286,7 +286,7 @@ with the reason.
   - Put a space between a Latin letter and a Thai word (`โรงพยาบาล A และ`).
   - Don't nest same-type quotes in f-strings; the repo also runs Python 3.10/3.11.
   - Check every "named mistake" distractor really differs from the answer. Some are equal by identity, e.g. 2/C(a+b, a) = 2·a!·b!/(a+b)!.
-- [ ] Concept units → declarative fact-bank format (from `sheet_database/fact_data/*.py` dicts) + generic types (which-belongs, odd-one-out, match, classify). This waits until a topic has concept units without a set.
+- [ ] Concept units → declarative fact-bank format (from `openthaiknowledge-bank/fact_data/*.py` dicts) + generic types (which-belongs, odd-one-out, match, classify). This waits until a topic has concept units without a set.
 
 ### Phase 6 — automation
 - [ ] Extend the skill to the notes path; headless per-sheet runner
@@ -294,7 +294,7 @@ with the reason.
 ## 4. Bank at a glance
 
 _From `sheetpipe bank status`, 2026-10-02, after the root was tidied._
-`sheet_database/README.md` explains every folder and the `rathcenter` file
+`openthaiknowledge-bank/README.md` explains every folder and the `rathcenter` file
 prefixes.
 
 ```
@@ -326,7 +326,7 @@ TOTAL         338   316     17     4   66      255      6     11
 ## 5. Traps already found
 
 - **PDFs are in Git LFS and fetched on demand** (since session 1).
-  - `.lfsconfig` excludes `sheet_database/**` from automatic fetches. The
+  - `.lfsconfig` excludes `openthaiknowledge-bank/**` from automatic fetches. The
     reason is GitHub's free LFS quota: 1 GB storage, and 1 GB of downloads a
     month. A full pull of the bank used ~390 MB of that.
   - A clone therefore holds pointer files for the PDFs. `bank scan` skips them
@@ -338,7 +338,7 @@ TOTAL         338   316     17     4   66      255      6     11
   - If the bank outgrows ~1 GB, or several people pull it, move LFS storage to
     Cloudflare R2 (an LFS server on a Worker; R2 downloads are free), as
     proposed in session 1.
-  - The default bank root (`sheet_database/` of the checkout you run in) is
+  - The default bank root (`openthaiknowledge-bank/` of the checkout you run in) is
     enough; no `--root` is needed.
 - **rathcenter question numbers are margin labels.** Each is its own narrow
   block at x≈72, level with the question's first line, but the text layer
@@ -350,7 +350,7 @@ TOTAL         338   316     17     4   66      255      6     11
 - **Stacked math in choices.** `1.` alone on a line, then `1` / `5` = 1/5.
   The JSON keeps the lines; the Markdown shows `1/5`.
 - **สอวน. equations are vector art.** Text extraction drops exponents and
-  variables (see `sheet_database/สอวน_math/HANDOFF.md`). Transcribe from page
+  variables (see `openthaiknowledge-bank/สอวน_math/HANDOFF.md`). Transcribe from page
   renders.
 - **Glyph damage is per document, not per font name.** Each PDF embeds its
   own Cordia New subset with its own broken ToUnicode map. Only `Cordia New` /
@@ -373,7 +373,7 @@ TOTAL         338   316     17     4   66      255      6     11
   tracks, so `git merge` stops with "untracked working tree files would be
   overwritten". They are byte-identical to the committed ones (the bank
   hashes match). **Before merging**, move them aside, for example
-  `mv sheet_database ../sheet_database.bak`, then after the merge run
+  `mv openthaiknowledge-bank ../openthaiknowledge-bank.bak`, then after the merge run
   `git lfs pull`. Also delete the stale `teaching_plan/`, `new_sheet/` and
   `review_sheet/` folders at the repo root, which only hold untracked PDFs by
   then. The `.zip` in the bank stays ignored.
@@ -414,7 +414,7 @@ TOTAL         338   316     17     4   66      255      6     11
   6,503 hits of damage cut to 16.
 - Built the `choice-block` splitter (`choiceblock.py`) and `sheetpipe
   convert`. All of rathcenter's choice-block files are converted:
-  173 files, 1,071 questions, digests committed under `sheet_database/_digest/`.
+  173 files, 1,071 questions, digests committed under `openthaiknowledge-bank/_digest/`.
 - Probe: added the `book` and `scan` layouts and `scan_pages`; the bank gained
   an `items` field. The sheetpipe suites pass (1,342 passed).
 - User decision: **bank PDFs tracked with Git LFS** (see §2 and the merge
@@ -501,7 +501,7 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - The official POSN mathematics archive supplied 25 PDFs. Seven selection
   papers already have green 30-question packages; the other 18 papers were
-  extracted locally into the ignored `sheet_database/_local_digest/posn_math/`
+  extracted locally into the ignored `openthaiknowledge-bank/_local_digest/posn_math/`
   folder, yielding 284 numbered questions and page renders for visual review.
 - The scanned 2565 national paper was hand-transcribed locally: 10 questions,
   six with independently checked answers and four proof prompts. The 2554
@@ -516,7 +516,7 @@ TOTAL         338   316     17     4   66      255      6     11
 
 ### 2026-10-13 — POSN bank installation and 2565 national paper
 
-- Restored the private bank clone at `sheet_database/`, preserving the former
+- Restored the private bank clone at `openthaiknowledge-bank/`, preserving the former
   local folder as a sibling backup. Its 25 POSN PDFs and private extracts were
   merged; `bank scan` added 18 exam PDFs and the ignored source manifest.
 - Checked and converted the 2565 national transcript: 10 questions, 6 with

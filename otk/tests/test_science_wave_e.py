@@ -26,7 +26,7 @@ Slice 5 adds ``ม.5/14`` (saturated/unsaturated hydrocarbons), ``ม.5/15``
 organic structure).
 
 Slice 7 adds ``ว 2.2 ม.5/2`` (vector quantities and the resultant of coplanar
-forces), built to fill the one real gap ``sheet_database/outputs/teaching_plan/ข้อสอบแรง.md`` found.
+forces), built to fill the one real gap ``openthaiknowledge-bank/outputs/teaching_plan/ข้อสอบแรง.md`` found.
 Its Foundation carries the whole prerequisite tier rather than the rule alone,
 because the indicator's own verb — vector addition — has to sit in Fluency for
 that stage to be ``exact``.

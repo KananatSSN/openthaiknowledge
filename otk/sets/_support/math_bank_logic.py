@@ -3,7 +3,7 @@
 ``sheetpipe plan ตรรกศาสตร์`` found six units of
 ``otk/knowledge/math/logic.json`` that no problem set practised, all
 exercised by A-level, กสพท and O-NET questions in
-``sheet_database/rathcenter/2 ตรรกศาสตร์``:
+``openthaiknowledge-bank/rathcenter/2 ตรรกศาสตร์``:
 
 =====================================  ===========================================
 unit                                   set

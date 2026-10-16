@@ -51,7 +51,7 @@ testpaths = ["otk/tests"]
 addopts = "--import-mode=importlib -m 'not slow'"
 markers = ["slow: thousand-seed sweeps, run nightly rather than on every push"]
 consider_namespace_packages = true
-norecursedirs = [".*", "build", "dist", "*.egg-info", "output", "data", "sheet_database"]
+norecursedirs = [".*", "build", "dist", "*.egg-info", "output", "data", "openthaiknowledge-bank"]
 
 [tool.ruff]
 target-version = "py310"

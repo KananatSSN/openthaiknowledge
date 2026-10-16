@@ -3,7 +3,7 @@
 ข้อสอบวิชาคณิตศาสตร์ เพื่อคัดเลือกนักเรียนเข้ารับการอบรมค่าย 1 สอวน. ปีการศึกษา 2564
 (สอบวันอาทิตย์ที่ 9 มกราคม 2565, 09.00–12.00 น.)
 
-**Source: `sheet_database/สอวน_math/posn1-64-math.pdf` — a pure scan.** Zero
+**Source: `openthaiknowledge-bank/สอวน_math/posn1-64-math.pdf` — a pure scan.** Zero
 characters in the text layer, one full-page image per page. Every stem below was
 read off `extract/pages/pNN.png`; there are no `itemNN.txt` for this sheet and
 there never will be. Page 1 is the cover, so **question 1 is on page 2** and the
@@ -14,7 +14,7 @@ Render the pages with:
 ```python
 import fitz, pathlib
 out = pathlib.Path("otk/sheets/posn2564_math/extract/pages"); out.mkdir(parents=True, exist_ok=True)
-for i, p in enumerate(fitz.open("sheet_database/สอวน_math/posn1-64-math.pdf")):
+for i, p in enumerate(fitz.open("openthaiknowledge-bank/สอวน_math/posn1-64-math.pdf")):
     p.get_pixmap(dpi=220).save(str(out / f"p{i+1:02d}.png"))
 ```
 

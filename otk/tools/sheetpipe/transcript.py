@@ -3,7 +3,7 @@
 The ``(สสวท)`` textbook files and the scans in the bank print their maths as
 pictures. Neither the text layer nor OCR recovers it, so a person (or a model
 in a session) reads the rendered pages and writes a transcript to
-``sheet_database/_transcribed/<bank path>.md``. ``convert`` prefers a
+``openthaiknowledge-bank/_transcribed/<bank path>.md``. ``convert`` prefers a
 transcript to any splitter, needs no PDF to do so, and marks the digest
 ``"transcribed": true``.
 

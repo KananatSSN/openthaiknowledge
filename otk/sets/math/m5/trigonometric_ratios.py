@@ -190,7 +190,7 @@ class RightTriangleRelationsM5(QuestionType):
         wrongs = [surd_tex(Fraction(k, 2), 3), frac_tex(Fraction(3 * k, 4)), surd_tex(Fraction(k * k, 2), 3),
                   surd_tex(Fraction(k, 8), 3)]
         return _tex_q(stem_u(str(k), surd_tex(Fraction(k), 3)), right, wrongs, self.topic)
-RightTriangleRelationsM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/8 ตรีโกณมิติ',))
+RightTriangleRelationsM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ',))
 
 
 @question_type("math.trig_ratio_triangle_m5", display_name={"th": "อัตราส่วนตรีโกณมิติจากรูปสามเหลี่ยมมุมฉาก"},

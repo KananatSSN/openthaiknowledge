@@ -6,7 +6,7 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(r"C:\Users\acer\Desktop\tutorrank\.claude\worktrees\sheet-digestion")
 K = ROOT / "otk/knowledge/math"
-DIG = ROOT / "sheet_database/_digest/rathcenter"
+DIG = ROOT / "openthaiknowledge-bank/_digest/rathcenter"
 
 books = {}
 for js in DIG.glob("*/🍰*.json"):

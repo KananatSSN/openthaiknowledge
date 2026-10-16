@@ -1,7 +1,7 @@
 """Vector sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found three units of ``otk/knowledge/math/vectors.json``,
-exercised by กสพท and A-level questions in ``sheet_database/rathcenter/10 เวกเตอร์``,
+exercised by กสพท and A-level questions in ``openthaiknowledge-bank/rathcenter/10 เวกเตอร์``,
 that no problem set practised. The existing sets compute one dot or cross
 product of vectors they print; the exams combine them:
 

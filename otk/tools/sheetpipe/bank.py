@@ -1,4 +1,4 @@
-"""The sheet bank index — what is in ``sheet_database/`` and how far each file got.
+"""The sheet bank index — what is in ``openthaiknowledge-bank/`` and how far each file got.
 
 The bank is a folder people drop sheets into. This module keeps one record per
 file in ``otk/sheets/bank.json`` so the answer to "what is left to digest?" is
@@ -36,8 +36,8 @@ from .spec import SHEETS_ROOT, load_sheet, sheet_ids
 
 BANK_FILE = SHEETS_ROOT / "bank.json"
 REPO_ROOT = SHEETS_ROOT.parents[1]
-DEFAULT_ROOT = REPO_ROOT / "sheet_database"
-#: The maintainers' private source bank. A contributor's own ``sheet_database/``
+DEFAULT_ROOT = REPO_ROOT / "openthaiknowledge-bank"
+#: The maintainers' private source bank. A contributor's own ``openthaiknowledge-bank/``
 #: folder (their papers under ``contrib/<name>/``) is not a clone of it.
 PRIVATE_BANK = "openthaiknowledge-bank"
 

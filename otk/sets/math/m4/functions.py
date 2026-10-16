@@ -188,7 +188,7 @@ class GraphTransformPointM4(QuestionType):
         # The sign of a flipped; b alone; the y-intercept as b.
         named = [-a + c, c, a + y0]
         return _frac_q(stem, Fraction(right), named, self.topic)
-GraphTransformPointM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/4 ฟังก์ชัน',))
+GraphTransformPointM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/4 ฟังก์ชัน',))
 
 
 @question_type("math.graph_shift_m4", display_name={"th": "การเลื่อนกราฟของฟังก์ชัน"},

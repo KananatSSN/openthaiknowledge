@@ -196,7 +196,7 @@ class TriangleSideTypeM5(QuestionType):
         facing_x = (a + b - 1) - math.isqrt(a * a + b * b)
         # Only the obtuse angle opposite x; every x that makes a triangle; one more.
         return _int_q(stem, right, [facing_x, 2 * a - 1, right + 1, right - 1], self.topic)
-TriangleSideTypeM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/8 ตรีโกณมิติ',))
+TriangleSideTypeM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ',))
 
 
 @question_type("math.cosine_rule_angle", display_name={"th": "กฎของโคไซน์: หามุม"},
