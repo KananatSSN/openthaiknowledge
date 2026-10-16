@@ -236,15 +236,28 @@
 		// Set buttons are not drag handles; never leave a completed drag blocking them.
 		moved = false;
 	}
+	// The wheel zooms toward the pointer, like a map; dragging is how you move.
+	// A trackpad pinch arrives as a wheel event with ctrlKey and small deltas.
+	// A two-finger trackpad swipe that moves sideways still pans: a mouse wheel
+	// never sends horizontal movement, so this cannot catch a mouse.
 	function wheel(event: WheelEvent) {
 		event.preventDefault();
+		const rect = viewport.getBoundingClientRect();
+		const x = event.clientX - rect.left;
+		const y = event.clientY - rect.top;
 		if (event.ctrlKey || event.metaKey) {
-			const rect = viewport.getBoundingClientRect();
-			zoomAt(Math.exp(-event.deltaY * 0.008), event.clientX - rect.left, event.clientY - rect.top);
-		} else {
-			view.x -= event.shiftKey ? event.deltaY : event.deltaX;
-			view.y -= event.shiftKey ? 0 : event.deltaY;
+			zoomAt(Math.exp(-event.deltaY * 0.008), x, y);
+			return;
 		}
+		if (event.deltaX !== 0) {
+			view.x -= event.deltaX;
+			view.y -= event.deltaY;
+			return;
+		}
+		// Lines and pages (deltaMode 1 and 2) to pixels, so one notch zooms the same
+		// amount whatever the browser reports.
+		const pixels = event.deltaY * (event.deltaMode === 1 ? 33 : event.deltaMode === 2 ? 800 : 1);
+		zoomAt(Math.exp(-pixels * 0.0015), x, y);
 	}
 	function keyboard(event: KeyboardEvent) {
 		if (event.target !== viewport) return;
@@ -573,7 +586,7 @@
 				{text('ชุดโจทย์ที่พบ', 'matching sets')} <span>·</span>{/if}{text(
 				'ลากเพื่อเลื่อน',
 				'Drag to pan'
-			)} <span>·</span> Ctrl + {text('เลื่อนเพื่อซูม', 'scroll to zoom')}</span
+			)} <span>·</span> {text('หมุนล้อเมาส์เพื่อซูม', 'Scroll to zoom')}</span
 		>
 		<div class="zoom-controls glass">
 			<button
@@ -609,8 +622,8 @@
 			</p>
 			<p>
 				{text(
-					'ลากพื้นหลังหรือใช้ปุ่มลูกศรเพื่อเลื่อน ใช้ Ctrl + เลื่อน หรือจีบนิ้วเพื่อซูม กด 0 เพื่อดูทั้งแผนที่ คลิกแผนที่ย่อเพื่อไปยังตำแหน่งนั้น',
-					'Drag the background or use arrow keys to pan. Ctrl + scroll or pinch to zoom. Press 0 to fit the board. Click the minimap to jump there.'
+					'ลากพื้นหลังหรือใช้ปุ่มลูกศรเพื่อเลื่อน หมุนล้อเมาส์หรือจีบนิ้วเพื่อซูม กด 0 เพื่อดูทั้งแผนที่ คลิกแผนที่ย่อเพื่อไปยังตำแหน่งนั้น',
+					'Drag the background or use arrow keys to pan. Scroll the mouse wheel or pinch to zoom. Press 0 to fit the board. Click the minimap to jump there.'
 				)}
 			</p>
 			<button onclick={() => (showHelp = false)}>{text('เข้าใจแล้ว', 'Got it')}</button>
