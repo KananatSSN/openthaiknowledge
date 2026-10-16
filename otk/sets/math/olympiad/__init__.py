@@ -103,3 +103,15 @@ from . import cyclic_ratio_product_bound  # noqa: F401
 from . import prime_quadratic_cube  # noqa: F401
 from . import parallel_chord_circumcenters  # noqa: F401
 from . import factorial_card_cover  # noqa: F401
+from . import prime_power_minus_one_gcd  # noqa: F401
+from . import equal_bisector_segments_triangle  # noqa: F401
+from . import regular_polygon_right_triangles  # noqa: F401
+from . import shifted_product_closed_roots  # noqa: F401
+from . import cube_root_unity_digit_sum  # noqa: F401
+from . import power_sum_functional  # noqa: F401
+from . import triangulation_triangle_count  # noqa: F401
+from . import symmetric_root_coefficient_product  # noqa: F401
+from . import trapezoid_midpoint_distances  # noqa: F401
+from . import mersenne_cube_quotient  # noqa: F401
+from . import parity_subset_game  # noqa: F401
+from . import nagel_cevian_ratios  # noqa: F401

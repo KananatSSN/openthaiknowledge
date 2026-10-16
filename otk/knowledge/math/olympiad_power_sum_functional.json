@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.power-sum-functional",
+      "kind": "procedure",
+      "title": "สมการ (x² + y²)f(xy) = f(x)f(y)f(x² + y²)",
+      "statement": "x = y = 0 ได้ f(0) = 0 ถ้า f(x₀) = 0 ที่ x₀ ≠ 0 จะได้ f ≡ 0 มิฉะนั้นเขียน f(x) = x·h(x) เมื่อ x ≠ 0 ได้ h(xy) = h(x)h(y)h(x² + y²) ให้ y = 1 ได้ h(1)h(x² + 1) = 1 จึง h คงตัว c บน [1, ∞) และ c² = 1 ฟังก์ชัน g = ch คูณได้และเท่ากับ 1 บน [1, ∞) จึงเท่ากับ 1 บนจำนวนบวก และ g(−1) = ±1 คำตอบคือ f = 0, x, −x, |x|, −|x| ในรูปทั่วไป (x² + y²)ᵏ ได้ ±xᵏ, ±|x|ᵏ และ 0",
+      "steps": [
+        "ให้ x = y = 0 และแยกกรณี f มีศูนย์นอกจุดกำเนิด",
+        "เขียน f = x·h แล้วให้ y = 1",
+        "ใช้สมบัติการคูณสรุป h เป็น ±1 หรือ ±sign"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-56-math.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "math.power_sum_functional_olympiad"
+      ]
+    }
+  ]
+}

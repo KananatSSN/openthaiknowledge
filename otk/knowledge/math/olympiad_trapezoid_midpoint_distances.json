@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: สี่เหลี่ยมคางหมู",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.trapezoid-midpoint-distances",
+      "kind": "procedure",
+      "title": "AD ∥ BC ก็ต่อเมื่อ AB/CD = MP/NQ",
+      "statement": "MP เป็นค่าเฉลี่ยของระยะจาก A และ B ถึงเส้น CD จึง MP·CD = [ACD] + [BCD] ทำนองเดียวกัน NQ·AB = [ABC] + [ABD] และ [ABC] + [ACD] = [ABD] + [BCD] = [ABCD] เงื่อนไข AB·NQ = CD·MP จึงสมมูลกับ [ABC] = [BCD] คือ A และ D ห่างจาก BC เท่ากัน ซึ่งในรูปนูนคือ AD ∥ BC และในรูปคางหมู NQ = MP·CD/AB",
+      "steps": [
+        "เขียน MP·CD และ NQ·AB เป็นผลบวกพื้นที่",
+        "ใช้การแบ่งพื้นที่ ABCD สองแบบ",
+        "แปลง [ABC] = [BCD] เป็นการขนาน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-56-math.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "math.trapezoid_midpoint_distances_olympiad"
+      ]
+    }
+  ]
+}

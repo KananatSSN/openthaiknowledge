@@ -916,3 +916,21 @@ TOTAL         338   316     17     4   66      255      6     11
   irrational x is only sketched in the note.
 - Registry 3,767 sets; enrichment count 310.
 - Remaining POSN maths at `new`: national papers 2547–2556 (10 papers).
+
+### 2026-10-16 — 2556 national paper
+
+- The 2556 national paper (10th TMO): 12 questions, 6 answered.
+  - 1: 48, because p > 4 includes p = 5; this is not the familiar 240.
+  - 2: BC = 3 + √3.
+  - 4: five polynomials.
+  - 5: n = 21301.
+  - 6: f = 0, ±x, ±|x|.
+  - 10: (2, 14).
+- Twelve knowledge units and twelve original sets cover the paper, checked in
+  `test_math_olympiad_posn_national_2556.py`. The bank entry is `generated`.
+- A SymPy check caught a sign slip in the item 8 set: a₃ carries (−1)ⁿ⁻¹. The
+  minimum variant now uses even n only.
+- Item 12's area equality is verified by coordinates only; no synthetic proof
+  is written.
+- Registry 3,779 sets; enrichment count 322.
+- Remaining POSN maths at `new`: national papers 2547–2555 (9 papers).
