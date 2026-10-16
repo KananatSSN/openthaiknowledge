@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.square-root-shift-functional",
+      "kind": "procedure",
+      "title": "สมการ f(x + y f(x) + y²) = f(x) + 2y บนจำนวนจริงบวก",
+      "statement": "สำหรับ z > x สมการ y² + f(x)y = z − x มีรากบวก y เสมอ แทนลงในสมการได้ f(z) = f(x) + 2y และ (f(z) − f(x))² + 2f(x)(f(z) − f(x)) = 4(z − x) นั่นคือ f(z)² − 4z = f(x)² − 4x ดังนั้น f(x) = √(4x + c) สำหรับค่าคงตัว c และ f เป็นบวกบน ℝ⁺ เมื่อ c ≥ 0 ทุกค่า c ≥ 0 ใช้ได้เพราะ 4(x + yf + y²) + c = (f + 2y)² ในรูปทั่วไป f(x + y f(x) + m²y²) = f(x) + 2m²y ให้ f(x)² − 4m²x คงตัว",
+      "steps": [
+        "สำหรับ z > x เลือก y > 0 จาก y² + f(x)y = z − x",
+        "จัดรูปให้ f(z)² − 4z = f(x)² − 4x",
+        "ตรวจว่า f(x) = √(4x + c) ใช้ได้ทุก c ≥ 0"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-62-math.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "math.square_root_shift_functional_olympiad"
+      ]
+    }
+  ]
+}

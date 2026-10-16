@@ -868,3 +868,30 @@ TOTAL         338   316     17     4   66      255      6     11
   repeatable six-wide frame prove every n≡3 or 5 modulo 6 works. An explicit
   edge-owner test validates constructions through n=61 and tiny boards by
   exhaustive search. All ten items are mapped; the bank entry is `generated`.
+
+### 2026-10-16 — 2562 national paper; science papers indexed
+
+- Cloned the bank. `bank scan` found 177 new non-maths สอวน. papers (physics,
+  chemistry, biology, computing, astronomy, geography, earth science, IJSO,
+  linguistics). It indexed only their `MANIFEST.json`, `.docx` and `.emf`
+  files, all as `ignored`. Their ~1,000 PDFs stay unindexed until fetched;
+  they need a science knowledge path that does not exist yet. The user chose
+  to finish the POSN maths papers first.
+- The 2562 national paper (16th TMO) went through the documented route: a
+  transcript in `_transcribed/`, then `convert`. 10 questions; 4 have answers
+  (3: f(x) = √(4x + c) with c ≥ 0, not just 2√x; 4: a = ±1; 6: f(x) = x/2;
+  9: 4038), and 6 are proofs.
+- Ten knowledge units (`olympiad_*.json`) claim the ten items, each covered by
+  a new original set in `otk/sets/math/olympiad/`. Their independent checks
+  are in `test_math_olympiad_posn_national_2562.py`: coordinates for 1 and 8,
+  unbounded search for 2, substitution for 3, enumeration and a bitset parity
+  DP (including total 2019) for 4, brute-force bijections for 7, the
+  angle-sum bound for 9, and direct factorials for 10. Proof sketches are in
+  the bank's `_notes/posn-national-62-math.md`. The bank entry is
+  `generated`.
+- **Open:** item 5 (Σ(4a − 1)/(2b + 1)² ≥ 1 under abc = 1) has no written proof
+  yet. The bound is checked numerically, and the set relies only on the exact
+  scaling identity plus that bound. A separable tangent-line proof is
+  impossible here; the note says why.
+- `test_refactor_characterization` freezes the registry size, now 3,759.
+- Remaining POSN maths at `new`: the national papers 2547–2557 (11 papers).

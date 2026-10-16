@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,335 sets in 297 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,345 sets in 307 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -296,9 +296,11 @@
 | [`algebraic_invariants`](olympiad/algebraic_invariants.py) | Algebraic invariants from aggregate data, roots, and signed pairs. | — | 3 |
 | [`altitude_midpoint_circle`](olympiad/altitude_midpoint_circle.py) | Circle through an altitude foot and a side midpoint meets another side. | — | 1 |
 | [`altitude_tangent_midpoint`](olympiad/altitude_tangent_midpoint.py) | Find the midpoint cut by two circumcircle tangents. | — | 1 |
+| [`antipodal_bijection_maximum`](olympiad/antipodal_bijection_maximum.py) | Maximize Σ|f(k) − f(−k)| over bijections of {−n, …, n}. | — | 1 |
 | [`balanced_signed_partition`](olympiad/balanced_signed_partition.py) | Count sizes admitting a zero-sum half of a signed symmetric set. | — | 1 |
 | [`barycentric_functional`](olympiad/barycentric_functional.py) | A multiplicative functional equation at noncollinear barycentres. | — | 1 |
 | [`base_power_sums`](olympiad/base_power_sums.py) | Distinct sums of a few powers when their exponents may repeat. | — | 1 |
+| [`bilinear_bound_functional`](olympiad/bilinear_bound_functional.py) | x·f(y) + y·f(x) ≤ c·xy for all reals forces f(x) = cx/2. | — | 1 |
 | [`bounded_path_colorings`](olympiad/bounded_path_colorings.py) | Proper colorings of a row with bounded color use. | — | 1 |
 | [`cevian_angle_bisector_ratio`](olympiad/cevian_angle_bisector_ratio.py) | A variable segment ratio from an angle bisector and two cevians. | — | 1 |
 | [`circular_gate_crossings`](olympiad/circular_gate_crossings.py) | Find same-material lighted paths among near-diameter chords. | — | 1 |
@@ -308,6 +310,7 @@
 | [`constrained_race_ranks`](olympiad/constrained_race_ranks.py) | Count distinct first/third-rank pairs under order and spacing rules. | — | 1 |
 | [`contiguous_group_fraction`](olympiad/contiguous_group_fraction.py) | Recover a contiguous group size from front/back row fractions. | — | 1 |
 | [`convex_boundary_triangles`](olympiad/convex_boundary_triangles.py) | Count triangles formed by marked points on a convex polygon boundary. | — | 1 |
+| [`coprime_square_difference_quotient`](olympiad/coprime_square_difference_quotient.py) | Count coprime pairs making k·a(a²+b²)/(a²−b²) an integer. | — | 1 |
 | [`cyclic_cube_product_maximum`](olympiad/cyclic_cube_product_maximum.py) | Optimize a cyclic product under a sum of cube roots. | — | 1 |
 | [`cyclic_sixth_power_inequality`](olympiad/cyclic_sixth_power_inequality.py) | Minimize a cyclic sixth-power expression under a fixed sum. | — | 1 |
 | [`descending_password_suffix`](olympiad/descending_password_suffix.py) | Find feasible password endings under parity and descending-order rules. | — | 1 |
@@ -328,6 +331,7 @@
 | [`hensel_divisor_lift`](olympiad/hensel_divisor_lift.py) | Lift a simple polynomial root to guarantee many divisors. | — | 1 |
 | [`incenter_excenter_height`](olympiad/incenter_excenter_height.py) | Compare incenter and opposite-A excenter heights in a reflected triangle. | — | 1 |
 | [`incenter_parallel_perimeters`](olympiad/incenter_parallel_perimeters.py) | Sum perimeters of three triangles cut off by parallels through an incenter. | — | 1 |
+| [`incircle_arc_midpoint_power`](olympiad/incircle_arc_midpoint_power.py) | K, D, M collinear: the chord through the incircle touch point. | — | 1 |
 | [`incircle_bisector_equal_segments`](olympiad/incircle_bisector_equal_segments.py) | Compare two bisector intersections in an incircle triangle. | — | 1 |
 | [`integer_recurrence_rigidity`](olympiad/integer_recurrence_rigidity.py) | A divisibility recurrence with a unique positive-integer sequence. | — | 1 |
 | [`integer_valued_product_inequality`](olympiad/integer_valued_product_inequality.py) | Classify integer-valued functions obeying a product inequality. | — | 1 |
@@ -347,6 +351,7 @@
 | [`opposite_midpoint_chords`](olympiad/opposite_midpoint_chords.py) | A vector identity among opposite-side midpoint chords of a hexagon. | — | 1 |
 | [`orthocenter_circumcircle_collinearity`](olympiad/orthocenter_circumcircle_collinearity.py) | Slope of a collinear triple in an acute orthocenter construction. | — | 1 |
 | [`overlapping_boxes_probability`](olympiad/overlapping_boxes_probability.py) | Probability of distinct labels from three overlapping boxes. | — | 1 |
+| [`pentagon_bisector_circumcenter`](olympiad/pentagon_bisector_circumcenter.py) | Angles in a pentagon whose diagonal bisects two angles at right-angle feet. | — | 1 |
 | [`perpendicular_chords`](olympiad/perpendicular_chords.py) | Area of a circle from two intersecting perpendicular chords. | — | 1 |
 | [`polynomial_product_avoidance`](olympiad/polynomial_product_avoidance.py) | Degrees of integer polynomials whose value sets avoid products. | — | 1 |
 | [`posn2561`](olympiad/posn2561.py) | ปริศนาเชิงตรรกะ | — | 30 |
@@ -364,12 +369,16 @@
 | [`reciprocal_roots_sectors`](olympiad/reciprocal_roots_sectors.py) | Count close root pairs forced by reciprocity and six disk sectors. | — | 1 |
 | [`reciprocal_sum_power_minimum`](olympiad/reciprocal_sum_power_minimum.py) | Minimize a power sum under a reciprocal-sum constraint. | — | 1 |
 | [`regular_polygon_flag_classes`](olympiad/regular_polygon_flag_classes.py) | Count repeated minimal color classes in an odd regular polygon. | — | 1 |
+| [`regular_vertex_triangle_dissection`](olympiad/regular_vertex_triangle_dissection.py) | Most sides of a convex polygon cut into triangles on regular n-gon vertices. | — | 1 |
 | [`roots_cubic_quotient`](olympiad/roots_cubic_quotient.py) | Simplify a symmetric cubic quotient using quadratic-root identities. | — | 1 |
+| [`scaled_cyclic_fraction_inequality`](olympiad/scaled_cyclic_fraction_inequality.py) | Minimum of Σ (4a − s)/(2b + s)² when abc = s³. | — | 1 |
 | [`sequence_divisibility`](olympiad/sequence_divisibility.py) | Divisibility in a nonlinear recurrence. | — | 1 |
 | [`shifted_square_sums`](olympiad/shifted_square_sums.py) | Recover a shifted sum of squares from two power sums. | — | 1 |
+| [`signed_jump_paths`](olympiad/signed_jump_paths.py) | Count integer jump paths of a fixed total length, exactly or modulo 2. | — | 1 |
 | [`sixth_root_tuples`](olympiad/sixth_root_tuples.py) | Count ordered tuples of three roots subject to a sum constraint. | — | 1 |
 | [`sophie_germain_prime_power`](olympiad/sophie_germain_prime_power.py) | Expose the smaller Sophie Germain factor in a divisibility proof. | — | 1 |
 | [`square_corner_tangent_circle`](olympiad/square_corner_tangent_circle.py) | Square area from a circle tangent to two sides and passing its center. | — | 1 |
+| [`square_root_shift_functional`](olympiad/square_root_shift_functional.py) | f(x + y·f(x) + m²y²) = f(x) + 2m²y forces f(x)² − 4m²x to be constant. | — | 1 |
 | [`swapped_quadratic_coefficients`](olympiad/swapped_quadratic_coefficients.py) | Find constants preserving rational roots under quadratic coefficient swaps. | — | 1 |
 | [`tangent_circles_inner_chord`](olympiad/tangent_circles_inner_chord.py) | Find the inner segment cut by two circles from a tangent construction. | — | 1 |
 | [`tangent_secant_horizontal_chord`](olympiad/tangent_secant_horizontal_chord.py) | Circle area from a horizontal chord through a tangent point. | — | 1 |
@@ -380,3 +389,4 @@
 | [`totient_factorial_divisibility`](olympiad/totient_factorial_divisibility.py) | Use cycle generators to explain a totient divisibility. | — | 1 |
 | [`weighted_cyclic_inequality`](olympiad/weighted_cyclic_inequality.py) | A sharp Cauchy and AM–GM bound for cyclic denominators. | — | 1 |
 | [`wilson_consecutive_product`](olympiad/wilson_consecutive_product.py) | Use Wilson's theorem to reduce a near-complete residue product. | — | 1 |
+| [`wilson_reflection_factorial`](olympiad/wilson_reflection_factorial.py) | n! modulo a prime p from Wilson's theorem when n is close to p. | — | 1 |
