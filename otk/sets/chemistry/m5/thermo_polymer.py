@@ -57,6 +57,22 @@ BEHAVIOUR_LABEL = {
 }
 
 
+# More single facts about each kind, beside the two labels above. Each reads after
+# ``พอลิเมอร์ที่`` and none is part of another, so a stem names one kind only.
+MORE_CLUES = {
+    THERMOPLASTIC: (
+        "สายโซ่ยึดกันด้วยแรงยึดเหนี่ยวระหว่างโมเลกุลซึ่งอ่อน เมื่อได้รับความร้อนสายโซ่จึงเลื่อนผ่านกันได้",
+        "นำไปหลอมแล้วรีไซเคิลเป็นผลิตภัณฑ์ใหม่ได้หลายครั้ง",
+        "อ่อนนิ่มจนดัดหรือยืดเป็นรูปร่างใหม่ได้เมื่อได้รับความร้อน และกลับแข็งเมื่อเย็นลง",
+    ),
+    THERMOSET: (
+        "สายโซ่ถูกยึดไขว้กันด้วยพันธะโคเวเลนต์จำนวนมากเป็นโครงข่ายสามมิติ",
+        "ผ่านการบ่มหรือให้ความร้อนครั้งแรกแล้วเกิดการเชื่อมขวาง จึงคงรูปถาวร",
+        "ทนความร้อนได้ดี เมื่อร้อนมากจะสลายตัวหรือไหม้เกรียมโดยไม่หลอมเหลว",
+    ),
+}
+
+
 KIND_FILLERS = ("ทั้งสองประเภทพร้อมกัน", "ไม่จัดอยู่ในประเภทใด", "ยางธรรมชาติเท่านั้น", "โลหะผสม")
 
 
@@ -71,10 +87,8 @@ class ThermoPolymerFoundation(QuestionType):
     def build(self, rng: Random, **params) -> GeneratedQuestion:
         kind = rng.choice((THERMOPLASTIC, THERMOSET))
         other = THERMOSET if kind == THERMOPLASTIC else THERMOPLASTIC
-        if rng.random() < 0.5:
-            stem = f"พอลิเมอร์ที่มี{STRUCTURE_LABEL[kind]} จัดเป็นพอลิเมอร์ประเภทใด"
-        else:
-            stem = f"พอลิเมอร์ที่{BEHAVIOUR_LABEL[kind]} จัดเป็นพอลิเมอร์ประเภทใด"
+        clues = (f"มี{STRUCTURE_LABEL[kind]}", BEHAVIOUR_LABEL[kind], *MORE_CLUES[kind])
+        stem = f"พอลิเมอร์ที่{rng.choice(clues)} จัดเป็นพอลิเมอร์ประเภทใด"
         return _labelled(
             stem=stem,
             correct=kind,

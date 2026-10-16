@@ -87,6 +87,18 @@ def _both_criteria(soil: Soil) -> str:
     return f"{soil.texture} และ{soil.cohesion}"
 
 
+# Other ways a child might report the same two findings, keyed by soil name.
+# Each still names both criteria and fits that soil only.
+MORE_FEELS = {
+    "ดินร่วน": ("ถูแล้วรู้สึกนุ่ม ไม่สากและไม่ลื่นมาก และกำแล้วเป็นก้อนหลวม ๆ ใช้นิ้วบี้ก็ร่วนออก",
+               "ถูแล้วนุ่มมือ และปั้นเป็นก้อนได้ แต่พอปั้นเป็นเส้นก็ขาดง่าย"),
+    "ดินเหนียว": ("ถูแล้วเนียนลื่นและติดนิ้ว และปั้นเป็นเส้นยาวแล้วขดเป็นวงได้โดยไม่แตก",
+                 "ถูแล้วละเอียดมาก ลื่นเหมือนสบู่ และจับตัวเหนียวแน่น กดแล้วเป็นรอยนิ้วชัดเจน"),
+    "ดินทราย": ("ถูแล้วสากมือ เห็นเม็ดเล็ก ๆ ชัดเจน และกำแล้วแบมือออกดินก็ร่วงกระจาย",
+               "ถูแล้วหยาบและได้ยินเสียงเม็ดเสียดสีกัน และปั้นอย่างไรก็ไม่เป็นก้อน"),
+}
+
+
 @question_type(
     "geo.soil_type_foundation",
     display_name={"th": "ส่วนประกอบของดิน"},
@@ -141,7 +153,8 @@ class SoilTypeFluency(QuestionType):
         if rng.random() < 0.5:
             return _labelled(
                 stem=f"นักเรียนนำดินตัวอย่างมาพรมน้ำเล็กน้อยแล้วใช้นิ้วถูและปั้น "
-                     f"พบว่า{_both_criteria(soil)} ดินตัวอย่างนี้เป็นดินชนิดใด",
+                     f"พบว่า{rng.choice((_both_criteria(soil), *MORE_FEELS[soil.name]))} "
+                     "ดินตัวอย่างนี้เป็นดินชนิดใด",
                 correct=soil.name,
                 wrongs=tuple(other.name for other in others) + ("บอกไม่ได้ เพราะดินทุกชนิดมีลักษณะเหมือนกัน",),
                 hint="ใช้ทั้งเนื้อดินและการจับตัวเป็นเกณฑ์ ไม่ใช้เพียงอย่างเดียว",

@@ -198,6 +198,16 @@ class UniverseEvolutionFluency(QuestionType):
         )
 
 
+# Every timeline event in order, with two later ones the ordering set alone uses:
+# the dark age before the first stars, and the forming of the solar system.
+EVENTS_IN_ORDER = (
+    *(event for event, _ in TIMELINE[:5]),
+    "เอกภพเข้าสู่ยุคมืด มีแก๊สแต่ยังไม่มีดาวฤกษ์ส่องแสง",
+    TIMELINE[5][0],
+    "ระบบสุริยะและโลกก่อตัวขึ้นจากเนบิวลาในกาแล็กซีทางช้างเผือก",
+)
+
+
 @question_type(
     "astro.cosmic_timeline_fluency",
     display_name={"th": "ลำดับเหตุการณ์ของเอกภพ"},
@@ -207,11 +217,20 @@ class CosmicTimelineFluency(QuestionType):
     """Which of two or four events came first or last."""
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
-        idx = sorted(rng.sample(range(len(TIMELINE)), 4))
+        if rng.random() < 0.35:
+            # One event sits between two named ones; the rest lie outside them.
+            start = rng.randrange(len(EVENTS_IN_ORDER) - 2)
+            before, right, after = EVENTS_IN_ORDER[start:start + 3]
+            outside = [e for i, e in enumerate(EVENTS_IN_ORDER) if not start <= i <= start + 2]
+            return _labelled(stem=f"เหตุการณ์ใดเกิดขึ้นหลัง “{before}” แต่ก่อน “{after}”",
+                             correct=right, wrongs=tuple(rng.sample(outside, 3)),
+                             topic=TOPIC_TIMELINE, hint=TIMELINE_HINT)
+        idx = sorted(rng.sample(range(len(EVENTS_IN_ORDER)), 4))
         first = rng.random() < 0.5
-        right = TIMELINE[idx[0] if first else idx[-1]][0]
+        right = EVENTS_IN_ORDER[idx[0] if first else idx[-1]]
         return _labelled(stem=f"เหตุการณ์ใดเกิดขึ้น{'ก่อน' if first else 'หลัง'}สุดในบรรดาตัวเลือก", correct=right,
-                         wrongs=tuple(TIMELINE[i][0] for i in idx if TIMELINE[i][0] != right), topic=TOPIC_TIMELINE, hint=TIMELINE_HINT)
+                         wrongs=tuple(EVENTS_IN_ORDER[i] for i in idx if EVENTS_IN_ORDER[i] != right),
+                         topic=TOPIC_TIMELINE, hint=TIMELINE_HINT)
 
 
 @question_type(

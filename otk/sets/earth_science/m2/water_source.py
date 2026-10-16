@@ -66,6 +66,29 @@ GROUND_FALSES = (
 )
 
 
+# The same layers and pit set up in other ways, so the model reads differently.
+WATER_MODELS = (
+    WATER_MODEL,
+    "แบบจำลอง: กล่องพลาสติกใสใส่ดินเหนียวไว้ชั้นล่าง ทับด้วยชั้นกรวดและทราย "
+    "ทำผิวด้านบนให้ลาดลงสู่แอ่งตรงกลาง แล้วใช้บัวรดน้ำโปรยน้ำลงไปเหมือนฝนตก",
+    "แบบจำลอง: นักเรียนเทดินเหนียวลงก้นอ่างใสแล้วกดให้แน่น เทกรวดและทรายทับด้านบน "
+    "ขุดหลุมตื้นไว้ที่ผิวด้านบน แล้วฉีดน้ำเป็นฝอยลงไปนาน 10 นาที",
+)
+
+
+# What is seen at each source, in three wordings.
+SURFACE_SEEN = (
+    "มีน้ำขังในแอ่งด้านบน",
+    "น้ำไหลไปตามผิวด้านบนแล้วรวมอยู่ในแอ่ง",
+    "แอ่งที่ผิวด้านบนมีน้ำเจิ่งอยู่",
+)
+GROUND_SEEN = (
+    "มีน้ำสะสมอยู่เหนือชั้นดินเหนียว",
+    "เห็นน้ำแทรกอยู่ในชั้นกรวดและทรายตรงเหนือชั้นดินเหนียว",
+    "ชั้นดินเหนียวด้านล่างแทบไม่เปียก แต่ชั้นกรวดและทรายเหนือมันชุ่มน้ำ",
+)
+
+
 def _sources(surface: str, ground: str) -> str:
     return f"{SURFACE}: {surface} / {GROUND}: {ground}"
 
@@ -94,21 +117,22 @@ class WaterSourceFluency(QuestionType):
     """Explain both sources from the model together; each wrong choice gets one wrong."""
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
+        model = rng.choice(WATER_MODELS)
         if rng.random() < 0.5:
             # One source on its own, against its misreadings and the other source's account.
             surface = rng.random() < 0.5
             name, true, falses, other = ((SURFACE, SURFACE_TRUE, SURFACE_FALSES, GROUND_TRUE) if surface
                                          else (GROUND, GROUND_TRUE, GROUND_FALSES, SURFACE_TRUE))
-            seen = "มีน้ำขังในแอ่งด้านบน" if surface else "มีน้ำสะสมอยู่เหนือชั้นดินเหนียว"
+            seen = rng.choice(SURFACE_SEEN if surface else GROUND_SEEN)
             return _labelled(
-                stem=f"{WATER_MODEL} พบว่า{seen} ข้อใดอธิบายการเกิด{name}จากแบบจำลองนี้ได้ถูกต้อง",
+                stem=f"{model} พบว่า{seen} ข้อใดอธิบายการเกิด{name}จากแบบจำลองนี้ได้ถูกต้อง",
                 correct=true,
                 wrongs=(*falses, other),
                 hint="ดูว่าน้ำฝนส่วนนี้ไหลไปบนผิวดินหรือซึมลงไปในดิน และสุดท้ายไปถูกกักไว้ที่ใด",
                 topic=WATER_SOURCE_TOPIC,
             )
         return _labelled(
-            stem=f"{WATER_MODEL} พบว่ามีน้ำขังในแอ่งด้านบน และมีน้ำสะสมอยู่เหนือชั้นดินเหนียว "
+            stem=f"{model} พบว่า{rng.choice(SURFACE_SEEN)} และ{rng.choice(GROUND_SEEN)} "
                  "ข้อใดอธิบายปัจจัยและกระบวนการเกิดแหล่งน้ำผิวดินและแหล่งน้ำใต้ดินจากแบบจำลองนี้ได้ถูกต้อง",
             correct=_sources(SURFACE_TRUE, GROUND_TRUE),
             # Each wrong gets at least one half wrong, drawn from several misreadings.

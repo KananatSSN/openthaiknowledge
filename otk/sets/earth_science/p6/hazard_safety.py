@@ -147,7 +147,7 @@ class HazardSafetyFluency(QuestionType):
         rng.shuffle(others)
         return _labelled(
             stem=f"{plan.situation} ควรเสนอแนวทางใดในการเฝ้าระวังและปฏิบัติตนให้ปลอดภัยจากภัยที่อาจเกิดในท้องถิ่นนี้",
-            correct=_plan(plan.monitor, plan.act),
+            correct=_plan(_monitor(rng, plan), _act(rng, plan)),
             wrongs=(_plan(_monitor(rng, others[0]), plan.act),
                     _plan(plan.monitor, _act(rng, others[1])),
                     _plan(_monitor(rng, others[2]), _act(rng, others[2])),

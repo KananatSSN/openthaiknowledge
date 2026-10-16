@@ -27,15 +27,39 @@ Shared authoring tools are in `otk/kit/`.
 | Answers are right | the set's own tests | Compute answers from a solver; check them by an independent route (SymPy, brute force). Never hard-code an answer you did not derive. |
 | Choices do not give the answer away | `otk/tests/test_per_set.py` | Distractors are named mistakes, not padding; see `docs/for_admin/MCQ_GUESSABILITY.md`. |
 
-Run before you finish:
+### Targeted runs: adding or widening problem sets
+
+Work that only adds sets or changes sets' tables does not need the full suite.
+Run this before committing it (about a minute):
 
 ```bash
-python -m pytest otk/tests -q -n auto      # ~8 min on 8 cores
+# The changed and new sets
+python -m pytest -q -n auto otk/tests/test_per_set.py -k "KEY1 or KEY2"
+python -m pytest -q -n auto otk/tests/test_provenance.py otk/tests/test_set_safety.py \
+    otk/tests/test_<the sets' own tests>.py
+# Registry-wide: golden draws for every set (catches another set that shares a
+# table you changed), and the filing, stage, layout and count checks
+python -m pytest -q -n auto otk/tests/test_golden_draws.py \
+    otk/tests/test_science_curriculum.py otk/tests/test_science_stage_registry.py \
+    otk/tests/test_sets_layout.py otk/tests/test_refactor_characterization.py
 python -m ruff check otk
 ```
 
-For a quick loop on one new set, run `test_golden_draws.py`, `test_provenance.py`,
-`test_set_safety.py`, `test_per_set.py -k KEY` and the set's own test file.
+If you edited an existing table, also run the subject's older test file, and
+search for other code that imports the table (`git grep TABLE_NAME otk`); those
+tests sometimes look answers up by exact wording.
+
+### Full suite: before a release, or when shared code changes
+
+```bash
+python -m pytest otk/tests -q -n auto      # ~8-14 min on 8 cores
+python -m ruff check otk
+```
+
+Run it before tagging a release, and whenever a change touches shared code:
+`otk/kit/`, `otk/core/`, the picture or PDF rendering, or `otk/api.py`. A
+failure a targeted run missed still surfaces here before any consumer installs
+the release.
 
 ## Skills
 

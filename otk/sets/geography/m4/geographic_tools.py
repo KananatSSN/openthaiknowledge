@@ -12,7 +12,7 @@ from random import Random
 from otk.core.provenance import Provenance
 from otk.core.registry import QuestionType, question_type
 from otk.kit.classify import Category, ClassifyType
-from otk.kit.concept_bank import Concept, ConceptBankType
+from otk.kit.concept_bank import Concept, ConceptBankType, widen
 from otk.sets._support.geography import M4, SUBJECT, choices, number, stage
 
 PROVENANCE = Provenance("original")
@@ -158,3 +158,34 @@ class Geoinformatics(ClassifyType):
             "ใช้ภาพถ่ายทางอากาศสำรวจขอบเขตน้ำท่วมเป็นบริเวณกว้าง",
         )),
     ]
+
+# More rows and items: these tables held five or six, so a learner met them
+# all in a few tries. Each added situation is one no other row answers.
+ContourReading.ITEMS = [*ContourReading.ITEMS,
+    Concept('เส้นชั้นความสูงเป็นวงปิดซ้อนกัน โดยค่าความสูงลดลงเข้าหาวงในสุด แสดงลักษณะภูมิประเทศใด',
+            'แอ่งหรือหลุมยุบ',
+            ('เนินเขาหรือยอดเขา', 'ที่ราบกว้างใหญ่', 'สันเขาที่ยาวต่อเนื่อง', 'ลำน้ำที่ไหลผ่าน')),
+    Concept('เส้นชั้นความสูงหักเป็นรูปตัววี โดยปลายแหลมชี้ไปทางที่สูงขึ้น มักแสดงลักษณะใด',
+            'หุบเขาหรือร่องน้ำ',
+            ('สันเขาที่ยาวต่อเนื่อง', 'ยอดเขาที่สูงที่สุด', 'ที่ราบกว้างใหญ่', 'แอ่งหรือหลุมยุบ')),
+    Concept('ค่าความสูงที่ต่างกันระหว่างเส้นชั้นความสูงสองเส้นที่อยู่ติดกันเรียกว่าอะไร',
+            'ช่วงชั้นความสูง',
+            ('มาตราส่วนของแผนที่', 'ทิศเหนือของแผนที่', 'เส้นกริดของแผนที่', 'สัญลักษณ์ของแผนที่')),
+    Concept('บนแผนที่ภูมิประเทศ สีน้ำเงินมักใช้แสดงสิ่งใด',
+            'แหล่งน้ำ เช่น แม่น้ำ',
+            ('ถนนและทางรถไฟสายต่าง ๆ', 'ป่าไม้และพืชพรรณธรรมชาติ', 'อาคารบ้านเรือนและหมู่บ้าน', 'ยอดเขาและเนินเขาที่สูงชัน')),
+]
+
+# Longer wrong readings for the original items, so their answers are not the
+# longest choice.
+ContourReading.ITEMS = widen(ContourReading.ITEMS, (
+    ("เส้นที่ลากเชื่อมจุดที่มีความชื้นในดินเท่ากัน", "เส้นที่ลากแบ่งเขตจังหวัดและอำเภอบนแผนที่"),
+    ("เป็นหุบเหวลึกที่มีหน้าผาสองข้าง", "เป็นที่ราบกว้างที่ไม่มีความลาดเลย"),
+    ("เป็นภูเขาสูงชันที่ไต่ขึ้นได้ยากมาก", "เป็นหน้าผาสูงชันริมทะเลที่ลาดชันมาก"),
+    ("สันเขาที่ยาวต่อเนื่องหลายลูก", "หุบเขาลึกที่มีลำน้ำไหลผ่าน"),
+    ("ระดับเมฆที่อยู่ต่ำที่สุดบนท้องฟ้า", "ระดับความสูงของอาคารที่สูงที่สุดในเมือง"),
+    ("เนินเขาหรือยอดเขาที่สูงชัน", "ที่ราบกว้างใหญ่ไม่มีเนิน"),
+    ("ยอดเขาที่สูงที่สุดในแผนที่", "ทางเดินบนสันเขาที่ยาว"),
+    ("มาตราส่วนเส้นบรรทัดของแผนที่", "เส้นแบ่งเขตการปกครองบนแผนที่"),
+    ("พื้นที่เกษตรกรรมและทุ่งนา", "ทะเลทรายและพื้นที่แห้งแล้ง"),
+))

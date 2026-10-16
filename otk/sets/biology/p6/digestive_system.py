@@ -18,6 +18,8 @@ from otk.sets._support.science_wave_b9 import SUBJECT, scenario_question
 from otk.sets._support.science_wave_b15 import _retopic
 from otk.sets._support.science_wave_b17 import BODY_TOPIC, PRIMARY_SIX, _body
 from otk.sets._support.science_wave_b18 import DIGESTION_SCENARIOS
+from otk.sets._support.life_earth_diagrams import DIGESTIVE_ALT, DIGESTIVE_NAMES, DIGESTIVE_PICTURES
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -147,3 +149,48 @@ class DigestionApplication(QuestionType):
             hint="ระบุก่อนว่าเรื่องนี้เกี่ยวกับการทำให้อาหารเล็กลง การดูดซึม "
                  "หรือการดูดน้ำกลับ",
         ), BODY_TOPIC)
+
+
+@question_type(
+    "body.digestive_diagram",
+    display_name={"th": "ระบุอวัยวะในระบบย่อยอาหารจากภาพ"},
+    level=PRIMARY_SIX, subject=SUBJECT, topic=BODY_TOPIC,
+)
+class DigestiveDiagram(QuestionType):
+    """Six numbered organs: name one, give its job, or say where food goes next along the tract."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(DIGESTIVE_PICTURES)
+        organ = rng.choice(DIGESTIVE_ORGANS)
+        number = spec.numbers[DIGESTIVE_NAMES.index(organ.name)]
+        hint = "อาหารผ่านปาก หลอดอาหาร กระเพาะอาหาร ลำไส้เล็ก และลำไส้ใหญ่ ส่วนตับอยู่ข้างทางและสร้างน้ำดีช่วย"
+        kind = rng.randrange(3)
+        if kind == 0:
+            return diagram_question(
+                spec.asset_id, DIGESTIVE_ALT,
+                stem=f"จากภาพระบบย่อยอาหาร อวัยวะหมายเลข {number} คืออวัยวะใด",
+                correct=organ.name,
+                wrongs=tuple(o.name for o in DIGESTIVE_ORGANS if o is not organ),
+                hint=hint, topic=BODY_TOPIC,
+            )
+        if kind == 1:
+            return diagram_question(
+                spec.asset_id, DIGESTIVE_ALT,
+                stem=f"จากภาพระบบย่อยอาหาร อวัยวะหมายเลข {number} ทำหน้าที่ใด",
+                correct=organ.function,
+                wrongs=tuple(o.function for o in DIGESTIVE_ORGANS if o is not organ),
+                hint="ระบุชื่ออวัยวะจากตำแหน่งในภาพก่อน แล้วนึกถึงหน้าที่ของอวัยวะนั้น",
+                topic=BODY_TOPIC,
+            )
+        # Food moves on from mouth, gullet, stomach and small intestine to the next drawn organ.
+        step = rng.randrange(4)
+        here, there = FOOD_PATH[step], FOOD_PATH[step + 1]
+        source = spec.numbers[DIGESTIVE_NAMES.index(here)]
+        target = spec.numbers[DIGESTIVE_NAMES.index(there)]
+        return diagram_question(
+            spec.asset_id, DIGESTIVE_ALT,
+            stem=f"จากภาพระบบย่อยอาหาร อาหารที่ผ่านอวัยวะหมายเลข {source} จะเคลื่อนต่อไปยังอวัยวะหมายเลขใด",
+            correct=f"หมายเลข {target}",
+            wrongs=tuple(f"หมายเลข {n}" for n in spec.numbers if n not in (source, target)),
+            hint=hint, topic=BODY_TOPIC,
+        )

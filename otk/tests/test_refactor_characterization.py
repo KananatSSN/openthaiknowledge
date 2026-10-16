@@ -177,5 +177,13 @@ def test_sheet_publication_manifest_is_frozen():
     # second wave added 16 (weather, seasons, Thailand's regions, continents),
     # and a third 11 (waste, livelihoods, economic location, landforms, population).
     # A fourth wave brought each geography unit to a full three stages: 20 more.
+    # The coverage audit then added 54 for the 31 geography indicators no set
+    # taught: 18 units of three stages, ป.1 to ม.4-6.
+    # Process skills, until then only at ม.1, gained a three-stage unit at each
+    # of ป.4, ป.5, ป.6, ม.2 and ม.3. Then three diagram sets: Earth's interior,
+    # a food web and a cell, each read from a drawn picture; then four more:
+    # a soil profile, the water cycle, a flower and a food chain; then the rock
+    # cycle, plate boundaries, the heart and the digestive system; then the
+    # airway and lungs, a plant's organs, and rock layers with their fossils.
     # Local math variety and original olympiad practice add another 88 sets.
-    assert len(REGISTRY) == 3666
+    assert len(REGISTRY) == 3749

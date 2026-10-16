@@ -94,6 +94,16 @@ MORE_ORIGIN_WRONGS = (
 )
 
 
+# Three ways to ask for the one answer that links all three objects.
+ORIGIN_STEMS = (
+    f"ข้อใดอธิบาย{FORMATION} {ZONING} และ{HABITABLE}ได้ถูกต้องและเชื่อมโยงกัน",
+    "นักเรียนเขียนสรุปหนึ่งย่อหน้าว่าระบบสุริยะเกิดขึ้นอย่างไร เหตุใดบริวารจึงแบ่งเป็นเขต "
+    "และดาวเคราะห์แบบใดเอื้อต่อชีวิต ข้อใดเป็นข้อสรุปที่ถูกต้อง",
+    "เหตุใดโลกจึงเป็นดาวเคราะห์หินที่มีน้ำเป็นของเหลว ขณะที่ดาวเคราะห์ชั้นนอกเป็นแก๊สและน้ำแข็ง "
+    "ข้อใดอธิบายโดยเริ่มจากการเกิดระบบสุริยะได้ถูกต้อง",
+)
+
+
 ZONE_WHY_DECOYS = ("บริเวณนั้นได้รับวัตถุจากกาแล็กซีอื่นมากที่สุด",
                    "บริเวณนั้นมีดาวฤกษ์ดวงอื่นช่วยให้ความร้อน")
 
@@ -155,8 +165,7 @@ class SolarSystemOriginFluency(QuestionType):
     def build(self, rng: Random, **params) -> GeneratedQuestion:
         if rng.random() < 0.5:
             return _labelled(
-                stem=f"ข้อใดอธิบาย{FORMATION} {ZONING} และ{HABITABLE}"
-                     "ได้ถูกต้องและเชื่อมโยงกัน",
+                stem=rng.choice(ORIGIN_STEMS),
                 correct=ORIGIN_SPANNING,
                 wrongs=tuple(ORIGIN_SPANNING_WRONGS + MORE_ORIGIN_WRONGS),
                 hint="ตอบให้ครบทั้งสามเรื่อง แล้วตรวจว่าเขตชั้นในกับชั้นนอกสลับกันหรือไม่",
@@ -166,7 +175,8 @@ class SolarSystemOriginFluency(QuestionType):
         others = [other for other in ZONES if other.name != zone.name]
         rng.shuffle(others)
         return _labelled(
-            stem=f"เหตุใด “{zone.name}” จึงมีสมาชิกเป็น{zone.members}",
+            stem=rng.choice((f"เหตุใด “{zone.name}” จึงมีสมาชิกเป็น{zone.members}",
+                             f"เหตุใดบริเวณ{zone.where}จึงมีสมาชิกเป็น{zone.members}")),
             correct=zone.why,
             wrongs=tuple([other.why for other in others[:3]] + list(ZONE_WHY_DECOYS)),
             hint="ย้อนกลับไปที่อุณหภูมิและแรงโน้มถ่วงในจานเนบิวลาขณะที่ระบบสุริยะก่อตัว",

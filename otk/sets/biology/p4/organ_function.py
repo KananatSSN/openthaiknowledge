@@ -18,6 +18,8 @@ from otk.sets._support.science_wave_b9 import SUBJECT, labelled, scenario_questi
 from otk.sets._support.science_wave_b14 import PLANT_TOPIC
 from otk.sets._support.science_wave_b15 import _retopic
 from otk.sets._support.science_wave_b17 import PLANT_ORGAN_SCENARIOS, PRIMARY_FOUR
+from otk.sets._support.life_earth_diagrams import PLANT_ALT, PLANT_ORGANS, PLANT_PICTURES
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -162,3 +164,37 @@ class PlantOrganFunctionApplication(QuestionType):
             hint="ระบุก่อนว่าเรื่องนี้เกี่ยวกับการดูดน้ำ การลำเลียง การสร้างอาหาร "
                  "หรือการสืบพันธุ์",
         ), PLANT_TOPIC)
+
+
+@question_type(
+    "plant.organ_diagram",
+    display_name={"th": "ระบุส่วนของพืชจากภาพและบอกหน้าที่"},
+    level=PRIMARY_FOUR, subject=SUBJECT, topic=PLANT_TOPIC,
+)
+class PlantOrganDiagram(QuestionType):
+    """Root, stem, leaf and flower numbered on a drawn plant: name one, its job, or what fails without it."""
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(PLANT_PICTURES)
+        organ = rng.choice(PLANT_ORGANS)
+        number = spec.numbers[PLANT_ORGANS.index(organ)]
+        hint = "รากอยู่ในดิน ลำต้นชูส่วนอื่นขึ้นไป ใบแผ่ออกรับแสง และดอกอยู่ปลายยอด"
+        kind = rng.randrange(3)
+        if kind == 0:
+            return diagram_question(
+                spec.asset_id, PLANT_ALT,
+                stem=f"จากภาพต้นพืช ส่วนหมายเลข {number} คือส่วนใด",
+                correct=organ,
+                wrongs=tuple(o for o in PLANT_ORGANS if o != organ),
+                hint=hint, topic=PLANT_TOPIC,
+            )
+        table = ORGAN_JOBS if kind == 1 else ORGAN_FAILURES
+        ask = "ทำหน้าที่ใด" if kind == 1 else "ถ้าต้นพืชไม่มีส่วนนี้ จะเกิดผลอย่างไร"
+        return diagram_question(
+            spec.asset_id, PLANT_ALT,
+            stem=f"จากภาพต้นพืช ส่วนหมายเลข {number} {ask}",
+            correct=rng.choice(table[organ]),
+            wrongs=tuple(rng.choice(lines) for name, lines in table.items() if name != organ),
+            hint="ระบุชื่อส่วนจากตำแหน่งในภาพก่อน แล้วนึกถึงหน้าที่ของส่วนนั้น",
+            topic=PLANT_TOPIC,
+        )

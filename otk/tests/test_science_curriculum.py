@@ -20,6 +20,8 @@ from otk.core.curriculum_science import (
     SCIENCE_WAVE_I_KEYS,
     SCIENCE_TECHNOLOGY_KEYS,
     SCIENCE_PILOT_KEYS,
+    SCIENCE_PROCESS_SKILL_KEYS,
+    SCIENCE_DIAGRAM_KEYS,
     SCIENCE_PLACEMENTS,
     SCIENCE_SUCCESSOR_KEYS,
     SCIENCE_WAVE_B_KEYS,
@@ -61,14 +63,16 @@ def test_every_approved_science_set_has_stable_curriculum_filing():
                 | SCIENCE_WAVE_B_KEYS | SCIENCE_BIOLOGY_CLOSURE_KEYS
                 | SCIENCE_WAVE_C_KEYS | SCIENCE_WAVE_D_KEYS | SCIENCE_WAVE_E_KEYS
                 | SCIENCE_WAVE_F_KEYS | SCIENCE_WAVE_G_KEYS
-                | SCIENCE_TECHNOLOGY_KEYS | SCIENCE_WAVE_I_KEYS)
+                | SCIENCE_TECHNOLOGY_KEYS | SCIENCE_WAVE_I_KEYS
+                | SCIENCE_PROCESS_SKILL_KEYS | SCIENCE_DIAGRAM_KEYS)
     # Every additive cohort must be disjoint from every other, or a wave's review
     # gate could be read as covering sets from a wave that never went through one.
     cohorts = (SCIENCE_SUCCESSOR_KEYS, SCIENCE_PILOT_KEYS, SCIENCE_WAVE_KEYS,
                SCIENCE_WAVE_B_KEYS, SCIENCE_BIOLOGY_CLOSURE_KEYS,
                SCIENCE_WAVE_C_KEYS, SCIENCE_WAVE_D_KEYS, SCIENCE_WAVE_E_KEYS,
                SCIENCE_WAVE_F_KEYS, SCIENCE_WAVE_G_KEYS,
-               SCIENCE_TECHNOLOGY_KEYS, SCIENCE_WAVE_I_KEYS)
+               SCIENCE_TECHNOLOGY_KEYS, SCIENCE_WAVE_I_KEYS,
+               SCIENCE_PROCESS_SKILL_KEYS, SCIENCE_DIAGRAM_KEYS)
     assert sum(len(cohort) for cohort in cohorts) == len(additive)
     assert not SCIENCE_BASELINE_KEYS & additive
     assert SCIENCE_BASELINE_KEYS | additive == set(SCIENCE_KEYS)

@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-3,666 sets in 1,056 unit files. Each subject's `README.md` lists its units with their indicators.
+3,749 sets in 1,079 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -886,7 +886,7 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`flowering_group.py`](biology/p4/flowering_group.py) | พืชดอกและพืชไม่มีดอก | `plant.flowering_group_foundation`, `plant.flowering_group_fluency`, `plant.flowering_group_application` |
-| [`organ_function.py`](biology/p4/organ_function.py) | หน้าที่ของราก ลำต้น ใบ และดอก | `plant.organ_function_foundation`, `plant.organ_function_fluency`, `plant.organ_function_application` |
+| [`organ_function.py`](biology/p4/organ_function.py) | หน้าที่ของราก ลำต้น ใบ และดอก | `plant.organ_function_foundation`, `plant.organ_function_fluency`, `plant.organ_function_application`, `plant.organ_diagram` |
 | [`organism_group.py`](biology/p4/organism_group.py) | กลุ่มพืช กลุ่มสัตว์ และกลุ่มที่ไม่ใช่พืชและสัตว์ | `life.organism_group_foundation`, `life.organism_group_fluency`, `life.organism_group_application` |
 | [`vertebrate_class.py`](biology/p4/vertebrate_class.py) | กลุ่มของสัตว์มีกระดูกสันหลัง | `animal.vertebrate_class_foundation`, `animal.vertebrate_class_fluency`, `animal.vertebrate_class_application` |
 | [`vertebrate_group.py`](biology/p4/vertebrate_group.py) | สัตว์มีกระดูกสันหลังและสัตว์ไม่มีกระดูกสันหลัง | `animal.vertebrate_group_foundation`, `animal.vertebrate_group_fluency`, `animal.vertebrate_group_application` |
@@ -898,7 +898,7 @@
 | [`adaptation.py`](biology/p5/adaptation.py) | โครงสร้างและลักษณะของสิ่งมีชีวิตที่เกิดจากการปรับตัว | `ecology.adaptation_foundation`, `ecology.adaptation_fluency`, `ecology.adaptation_application` |
 | [`environment_care.py`](biology/p5/environment_care.py) | การมีส่วนร่วมดูแลรักษาสิ่งแวดล้อม | `ecology.environment_care_foundation`, `ecology.environment_care_fluency`, `ecology.environment_care_application` |
 | [`family_question.py`](biology/p5/family_question.py) | การตั้งคำถามเกี่ยวกับลักษณะที่คล้ายพ่อแม่ | `life.family_question_foundation`, `life.family_question_fluency`, `life.family_question_application` |
-| [`food_chains.py`](biology/p5/food_chains.py) | โซ่อาหารและบทบาทของสิ่งมีชีวิต | `ecology.feeding`, `ecology.food_chain_foundation`, `ecology.food_chain_fluency`, `ecology.food_chain_application` |
+| [`food_chains.py`](biology/p5/food_chains.py) | โซ่อาหารและบทบาทของสิ่งมีชีวิต | `ecology.feeding`, `ecology.food_chain_foundation`, `ecology.food_chain_fluency`, `ecology.food_chain_application`, `ecology.food_chain_diagram` |
 | [`inherited_trait.py`](biology/p5/inherited_trait.py) | ลักษณะทางพันธุกรรม | `life.inherited_trait_foundation`, `life.inherited_trait_fluency`, `life.inherited_trait_application` |
 | [`living_relations.py`](biology/p5/living_relations.py) | ความสัมพันธ์ระหว่างสิ่งมีชีวิตกับสิ่งมีชีวิตและสิ่งไม่มีชีวิต | `ecology.living_relations_foundation`, `ecology.living_relations_fluency`, `ecology.living_relations_application` |
 
@@ -907,7 +907,7 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`digestive_care.py`](biology/p6/digestive_care.py) | การดูแลรักษาระบบย่อยอาหาร | `body.digestive_care_foundation`, `body.digestive_care_fluency`, `body.digestive_care_application` |
-| [`digestive_system.py`](biology/p6/digestive_system.py) | ระบบย่อยอาหาร | `body.digestive_organs_foundation`, `body.digestion_fluency`, `body.digestion_application` |
+| [`digestive_system.py`](biology/p6/digestive_system.py) | ระบบย่อยอาหาร | `body.digestive_organs_foundation`, `body.digestion_fluency`, `body.digestion_application`, `body.digestive_diagram` |
 | [`food_choice.py`](biology/p6/food_choice.py) | แนวทางการเลือกรับประทานอาหาร | `body.food_choice_foundation`, `body.food_choice_fluency`, `body.food_choice_application` |
 | [`nutrient_group.py`](biology/p6/nutrient_group.py) | สารอาหารและประโยชน์ของสารอาหาร | `body.nutrient_group_foundation`, `body.nutrient_group_fluency`, `body.nutrient_group_application` |
 | [`own_diet.py`](biology/p6/own_diet.py) | การเลือกรับประทานอาหารของตนเอง | `body.own_diet_foundation`, `body.own_diet_fluency`, `body.own_diet_application` |
@@ -918,13 +918,13 @@
 |---|---|---|
 | [`diffusion.py`](biology/m1/diffusion.py) | การแพร่และออสโมซิส | `cell.diffusion_foundation`, `cell.diffusion_fluency`, `cell.diffusion_application` |
 | [`fertiliser.py`](biology/m1/fertiliser.py) | การเลือกใช้ปุ๋ยให้เหมาะกับพืช | `plant.fertiliser_foundation`, `plant.fertiliser_fluency`, `plant.fertiliser_application` |
-| [`flowers_fruits_and_seeds.py`](biology/m1/flowers_fruits_and_seeds.py) | โครงสร้างดอกและการเกิดผลและเมล็ด | `plant.flower_parts_foundation`, `plant.pollination_fluency`, `plant.seed_application` |
+| [`flowers_fruits_and_seeds.py`](biology/m1/flowers_fruits_and_seeds.py) | โครงสร้างดอกและการเกิดผลและเมล็ด | `plant.flower_parts_foundation`, `plant.pollination_fluency`, `plant.seed_application`, `plant.flower_diagram` |
 | [`microscope_use.py`](biology/m1/microscope_use.py) | การใช้กล้องจุลทรรศน์ใช้แสง | `cell.microscope_use_foundation`, `cell.microscope_use_fluency`, `cell.microscope_use_application` |
 | [`nutrient.py`](biology/m1/nutrient.py) | ธาตุอาหารของพืช | `plant.nutrient_foundation`, `plant.nutrient_deficiency_fluency`, `plant.nutrient_application` |
 | [`organisation.py`](biology/m1/organisation.py) | การจัดระบบของสิ่งมีชีวิต | `cell.organisation_foundation`, `cell.organisation_fluency`, `cell.organisation_application` |
 | [`photosynthesis.py`](biology/m1/photosynthesis.py) | ปัจจัยและผลผลิตของการสังเคราะห์ด้วยแสง | `plant.photosynthesis_foundation`, `plant.photosynthesis_fluency`, `plant.photosynthesis_application` |
 | [`photosynthesis_importance.py`](biology/m1/photosynthesis_importance.py) | ความสำคัญของการสังเคราะห์ด้วยแสง | `plant.photosynthesis_importance_foundation`, `plant.photosynthesis_importance_fluency`, `plant.photosynthesis_importance_application` |
-| [`plant_and_animal_cells.py`](biology/m1/plant_and_animal_cells.py) | เซลล์พืชและเซลล์สัตว์ | `cell.organelle_function_foundation`, `cell.plant_animal_fluency`, `cell.structure_application` |
+| [`plant_and_animal_cells.py`](biology/m1/plant_and_animal_cells.py) | เซลล์พืชและเซลล์สัตว์ | `cell.organelle_function_foundation`, `cell.plant_animal_fluency`, `cell.structure_application`, `cell.cell_diagram` |
 | [`propagation.py`](biology/m1/propagation.py) | การเลือกวิธีขยายพันธุ์พืช | `plant.propagation_foundation`, `plant.propagation_fluency`, `plant.propagation_application` |
 | [`reproduction.py`](biology/m1/reproduction.py) | การสืบพันธุ์ของพืชดอก | `plant.reproduction_foundation`, `plant.reproduction_fluency`, `plant.reproduction_application` |
 | [`shape_function.py`](biology/m1/shape_function.py) | รูปร่างของเซลล์กับการทำหน้าที่ | `cell.shape_function_foundation`, `cell.shape_function_fluency`, `cell.shape_function_application` |
@@ -936,7 +936,7 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`blood_circulation.py`](biology/m2/blood_circulation.py) | การทำงานของระบบหมุนเวียนเลือด | `body.blood_circuit_foundation`, `body.blood_circuit_fluency`, `body.circulation_model_application` |
+| [`blood_circulation.py`](biology/m2/blood_circulation.py) | การทำงานของระบบหมุนเวียนเลือด | `body.blood_circuit_foundation`, `body.blood_circuit_fluency`, `body.circulation_model_application`, `body.heart_diagram` |
 | [`breathing_and_gas_exchange.py`](biology/m2/breathing_and_gas_exchange.py) | กลไกการหายใจและการแลกเปลี่ยนแก๊ส | `body.breathing_mechanism_foundation`, `body.gas_exchange_fluency`, `body.breathing_application` |
 | [`central_nervous_system_organs.py`](biology/m2/central_nervous_system_organs.py) | อวัยวะในระบบประสาทส่วนกลาง | `body.nervous_organs_foundation`, `body.nervous_control_fluency`, `body.nervous_application` |
 | [`circulatory_care.py`](biology/m2/circulatory_care.py) | การดูแลรักษาระบบหมุนเวียนเลือด | `body.circulatory_care_foundation`, `body.circulatory_care_fluency`, `body.circulatory_care_application` |
@@ -949,7 +949,7 @@
 | [`nervous_care.py`](biology/m2/nervous_care.py) | การดูแลรักษาและป้องกันอันตรายต่อระบบประสาท | `body.nervous_care_foundation`, `body.nervous_care_fluency`, `body.nervous_care_application` |
 | [`puberty_care.py`](biology/m2/puberty_care.py) | การดูแลร่างกายและจิตใจในวัยหนุ่มสาว | `body.puberty_care_foundation`, `body.puberty_care_fluency`, `body.puberty_care_application` |
 | [`reproductive.py`](biology/m2/reproductive.py) | อวัยวะในระบบสืบพันธุ์ | `body.reproductive_organs_foundation`, `body.reproductive_organs_fluency`, `body.reproductive_model_application` |
-| [`respiratory.py`](biology/m2/respiratory.py) | อวัยวะในระบบหายใจ | `body.respiratory_organs_foundation`, `body.respiratory_path_fluency`, `body.respiratory_application` |
+| [`respiratory.py`](biology/m2/respiratory.py) | อวัยวะในระบบหายใจ | `body.respiratory_organs_foundation`, `body.respiratory_path_fluency`, `body.respiratory_application`, `body.breathing_diagram` |
 | [`respiratory_care.py`](biology/m2/respiratory_care.py) | การดูแลรักษาระบบหายใจ | `body.respiratory_care_foundation`, `body.respiratory_care_fluency`, `body.respiratory_care_application` |
 | [`sex_hormones_and_puberty.py`](biology/m2/sex_hormones_and_puberty.py) | ฮอร์โมนเพศและการเปลี่ยนแปลงเมื่อเข้าสู่วัยหนุ่มสาว | `body.sex_hormone_foundation`, `body.puberty_change_fluency`, `body.puberty_application` |
 | [`teen_pregnancy.py`](biology/m2/teen_pregnancy.py) | ผลกระทบของการตั้งครรภ์ก่อนวัยอันควร | `body.teen_pregnancy_foundation`, `body.teen_pregnancy_fluency`, `body.teen_pregnancy_application` |
@@ -965,7 +965,7 @@
 | [`division_compare.py`](biology/m3/division_compare.py) | ไมโทซิสและไมโอซิส | `cell.division_compare_foundation`, `cell.division_compare_fluency`, `cell.division_compare_application` |
 | [`ecosystem_balance_and_conservation.py`](biology/m3/ecosystem_balance_and_conservation.py) | สมดุลของระบบนิเวศและการอนุรักษ์ | `ecology.balance_foundation`, `ecology.balance_actions_fluency`, `ecology.balance_application` |
 | [`ecosystem_components_and_levels.py`](biology/m3/ecosystem_components_and_levels.py) | องค์ประกอบและระดับของระบบนิเวศ | `ecology.levels`, `ecology.ecosystem_components_fluency`, `ecology.ecosystem_interaction_application` |
-| [`food_webs_and_energy_transfer.py`](biology/m3/food_webs_and_energy_transfer.py) | สายใยอาหารและการถ่ายทอดพลังงาน | `ecology.food_web_foundation`, `ecology.energy_transfer_fluency`, `ecology.food_web_application` |
+| [`food_webs_and_energy_transfer.py`](biology/m3/food_webs_and_energy_transfer.py) | สายใยอาหารและการถ่ายทอดพลังงาน | `ecology.food_web_foundation`, `ecology.energy_transfer_fluency`, `ecology.food_web_application`, `ecology.food_web_diagram` |
 | [`gene_dna.py`](biology/m3/gene_dna.py) | ยีน ดีเอ็นเอ และโครโมโซม | `cell.gene_dna_foundation`, `cell.gene_dna_fluency`, `cell.gene_dna_application` |
 | [`genetic_counsel.py`](biology/m3/genetic_counsel.py) | การปรึกษาแพทย์ก่อนแต่งงาน | `life.genetic_counsel_foundation`, `life.genetic_counsel_fluency`, `life.genetic_counsel_application` |
 | [`genetic_disease.py`](biology/m3/genetic_disease.py) | โรคทางพันธุกรรมจากยีนและโครโมโซม | `life.genetic_disease_foundation`, `life.genetic_disease_fluency`, `life.genetic_disease_application` |
@@ -1153,21 +1153,21 @@
 | [`condensation_forms.py`](earth_science/p5/condensation_forms.py) | เมฆ หมอก น้ำค้าง และน้ำค้างแข็ง | `geo.condensation_forms_foundation`, `geo.condensation_forms_fluency`, `geo.condensation_forms_application` |
 | [`precipitation_forms.py`](earth_science/p5/precipitation_forms.py) | ฝน หิมะ และลูกเห็บ | `geo.precipitation_forms_foundation`, `geo.precipitation_forms_fluency`, `geo.precipitation_forms_application` |
 | [`water_amount.py`](earth_science/p5/water_amount.py) | ปริมาณน้ำในแหล่งต่าง ๆ | `geo.water_amount_foundation`, `geo.water_amount_fluency`, `geo.water_amount_application` |
-| [`water_cycle.py`](earth_science/p5/water_cycle.py) | วัฏจักรน้ำ | `geo.water_cycle_foundation`, `geo.water_cycle_fluency`, `geo.water_cycle_application` |
+| [`water_cycle.py`](earth_science/p5/water_cycle.py) | วัฏจักรน้ำ | `geo.water_cycle_foundation`, `geo.water_cycle_fluency`, `geo.water_cycle_application`, `geo.water_cycle_diagram` |
 | [`water_saving.py`](earth_science/p5/water_saving.py) | การใช้น้ำอย่างประหยัดและการอนุรักษ์น้ำ | `geo.water_saving_foundation`, `geo.water_saving_fluency`, `geo.water_saving_application` |
 
 ### p6 — ป.6
 
 | File | Unit | Sets |
 |---|---|---|
-| [`fossil.py`](earth_science/p6/fossil.py) | ซากดึกดำบรรพ์ | `geo.fossil_foundation`, `geo.fossil_fluency`, `geo.fossil_application` |
+| [`fossil.py`](earth_science/p6/fossil.py) | ซากดึกดำบรรพ์ | `geo.fossil_foundation`, `geo.fossil_fluency`, `geo.fossil_application`, `geo.rock_layers_diagram` |
 | [`greenhouse_action.py`](earth_science/p6/greenhouse_action.py) | การลดแก๊สเรือนกระจก | `geo.greenhouse_action_foundation`, `geo.greenhouse_action_fluency`, `geo.greenhouse_action_application` |
 | [`greenhouse_effect.py`](earth_science/p6/greenhouse_effect.py) | ปรากฏการณ์เรือนกระจก | `geo.greenhouse_effect_foundation`, `geo.greenhouse_effect_fluency`, `geo.greenhouse_effect_application` |
 | [`hazard_safety.py`](earth_science/p6/hazard_safety.py) | การเฝ้าระวังและปฏิบัติตนจากภัยธรรมชาติ | `geo.hazard_safety_foundation`, `geo.hazard_safety_fluency`, `geo.hazard_safety_application` |
 | [`local_wind.py`](earth_science/p6/local_wind.py) | ลมบก ลมทะเล และมรสุม | `geo.local_wind_foundation`, `geo.local_wind_fluency`, `geo.local_wind_application` |
 | [`monsoon_season.py`](earth_science/p6/monsoon_season.py) | มรสุมและฤดูของประเทศไทย | `geo.monsoon_season_foundation`, `geo.monsoon_season_fluency`, `geo.monsoon_season_application` |
 | [`natural_hazard.py`](earth_science/p6/natural_hazard.py) | ภัยธรรมชาติและธรณีพิบัติภัย | `geo.natural_hazard_foundation`, `geo.natural_hazard_fluency`, `geo.natural_hazard_application` |
-| [`rocks_and_the_rock_cycle.py`](earth_science/p6/rocks_and_the_rock_cycle.py) | หินและวัฏจักรหิน | `geo.rock_types`, `geo.rock_formation`, `geo.rock_texture`, `geo.metamorphic_parent`, `geo.rock_terms`, `geo.rock_photo_id`, `geo.rock_photo_group`, `geo.rock_cycle_foundation`, `geo.igneous_cooling`, `geo.rock_cycle`, `geo.rock_cycle_fluency`, `geo.rock_cycle_application` |
+| [`rocks_and_the_rock_cycle.py`](earth_science/p6/rocks_and_the_rock_cycle.py) | หินและวัฏจักรหิน | `geo.rock_types`, `geo.rock_formation`, `geo.rock_texture`, `geo.metamorphic_parent`, `geo.rock_terms`, `geo.rock_photo_id`, `geo.rock_photo_group`, `geo.rock_cycle_foundation`, `geo.igneous_cooling`, `geo.rock_cycle`, `geo.rock_cycle_fluency`, `geo.rock_cycle_application`, `geo.rock_cycle_diagram` |
 | [`uses_of_rocks_and_minerals.py`](earth_science/p6/uses_of_rocks_and_minerals.py) | ประโยชน์ของหินและแร่ | `geo.rock_uses`, `geo.rock_mineral_use_foundation`, `geo.rock_mineral_use_fluency`, `geo.rock_mineral_use_application` |
 
 ### m1 — ม.1
@@ -1188,11 +1188,11 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`earth_interior.py`](earth_science/m2/earth_interior.py) | โครงสร้างภายในโลก | `geo.earth_interior_foundation`, `geo.earth_interior_fluency`, `geo.earth_interior_application` |
+| [`earth_interior.py`](earth_science/m2/earth_interior.py) | โครงสร้างภายในโลก | `geo.earth_interior_foundation`, `geo.earth_interior_fluency`, `geo.earth_interior_application`, `geo.earth_interior_diagram` |
 | [`fossil_fuel.py`](earth_science/m2/fossil_fuel.py) | เชื้อเพลิงซากดึกดำบรรพ์ | `geo.fossil_fuel_foundation`, `geo.fossil_fuel_fluency`, `geo.fossil_fuel_application` |
 | [`fuel_saving.py`](earth_science/m2/fuel_saving.py) | การใช้เชื้อเพลิงซากดึกดำบรรพ์อย่างรู้คุณค่า | `geo.fuel_saving_foundation`, `geo.fuel_saving_fluency`, `geo.fuel_saving_application` |
 | [`renewable_energy.py`](earth_science/m2/renewable_energy.py) | พลังงานทดแทน | `geo.renewable_energy_foundation`, `geo.renewable_energy_fluency`, `geo.renewable_energy_application` |
-| [`soil_profile.py`](earth_science/m2/soil_profile.py) | ชั้นหน้าตัดดินและการเกิดดิน | `geo.soil_profile_foundation`, `geo.soil_profile_fluency`, `geo.soil_profile_application` |
+| [`soil_profile.py`](earth_science/m2/soil_profile.py) | ชั้นหน้าตัดดินและการเกิดดิน | `geo.soil_profile_foundation`, `geo.soil_profile_fluency`, `geo.soil_profile_application`, `geo.soil_profile_diagram` |
 | [`soil_property.py`](earth_science/m2/soil_property.py) | สมบัติของดินและการใช้ประโยชน์ | `geo.soil_property_foundation`, `geo.soil_property_fluency`, `geo.soil_property_application` |
 | [`surface_hazard.py`](earth_science/m2/surface_hazard.py) | ธรณีพิบัติภัยบนผิวโลก | `geo.surface_hazard_foundation`, `geo.surface_hazard_fluency`, `geo.surface_hazard_application` |
 | [`surface_processes.py`](earth_science/m2/surface_processes.py) | การผุพัง การกร่อน และการสะสมตัว | `geo.surface_processes_foundation`, `geo.surface_processes_fluency`, `geo.surface_processes_application` |
@@ -1245,7 +1245,7 @@
 | [`earthquake.py`](earth_science/m6/earthquake.py) | แผ่นดินไหว | `geo.earthquake_foundation`, `geo.earthquake_fluency`, `geo.earthquake_application` |
 | [`latitude_circulation.py`](earth_science/m6/latitude_circulation.py) | การหมุนเวียนของอากาศตามเขตละติจูด | `geo.latitude_circulation_foundation`, `geo.latitude_circulation_fluency`, `geo.latitude_circulation_application` |
 | [`ocean_currents.py`](earth_science/m6/ocean_currents.py) | การหมุนเวียนของน้ำผิวหน้าในมหาสมุทร | `geo.ocean_currents_foundation`, `geo.ocean_currents_fluency`, `geo.ocean_currents_application` |
-| [`plate_boundary.py`](earth_science/m6/plate_boundary.py) | แนวรอยต่อของแผ่นธรณี | `geo.plate_boundary_foundation`, `geo.plate_boundary_fluency`, `geo.plate_boundary_application` |
+| [`plate_boundary.py`](earth_science/m6/plate_boundary.py) | แนวรอยต่อของแผ่นธรณี | `geo.plate_boundary_foundation`, `geo.plate_boundary_fluency`, `geo.plate_boundary_application`, `geo.plate_boundary_diagram` |
 | [`plate_evidence.py`](earth_science/m6/plate_evidence.py) | หลักฐานการเคลื่อนที่ของแผ่นธรณี | `geo.plate_evidence_foundation`, `geo.plate_evidence_fluency`, `geo.plate_evidence_application` |
 | [`pressure_circulation.py`](earth_science/m6/pressure_circulation.py) | การหมุนเวียนของอากาศจากความกดอากาศ | `geo.pressure_circulation_foundation`, `geo.pressure_circulation_fluency`, `geo.pressure_circulation_application` |
 | [`solar_energy.py`](earth_science/m6/solar_energy.py) | การได้รับพลังงานจากดวงอาทิตย์ | `geo.solar_energy_foundation`, `geo.solar_energy_fluency`, `geo.solar_energy_application` |
@@ -1473,6 +1473,24 @@
 
 ## general_science — วิทยาศาสตร์ทั่วไป
 
+### p4 — ป.4
+
+| File | Unit | Sets |
+|---|---|---|
+| [`process_skill.py`](general_science/p4/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ป.4 | `sci.process_skill_p4_foundation`, `sci.process_skill_p4_fluency`, `sci.process_skill_p4_application` |
+
+### p5 — ป.5
+
+| File | Unit | Sets |
+|---|---|---|
+| [`process_skill.py`](general_science/p5/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ป.5 | `sci.process_skill_p5_foundation`, `sci.process_skill_p5_fluency`, `sci.process_skill_p5_application` |
+
+### p6 — ป.6
+
+| File | Unit | Sets |
+|---|---|---|
+| [`process_skill.py`](general_science/p6/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ป.6 | `sci.process_skill_p6_foundation`, `sci.process_skill_p6_fluency`, `sci.process_skill_p6_application` |
+
 ### m1 — ม.1
 
 | File | Unit | Sets |
@@ -1480,12 +1498,25 @@
 | [`process_skill.py`](general_science/m1/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ | `sci.process_skill_foundation`, `sci.process_skill_fluency`, `sci.process_skill_variables`, `sci.process_skill_application` |
 | [`scientific_method.py`](general_science/m1/scientific_method.py) | วิทยาศาสตร์และวิธีการทางวิทยาศาสตร์ | `sci.scientific_method_foundation`, `sci.scientific_method_fluency`, `sci.scientific_method_application` |
 
+### m2 — ม.2
+
+| File | Unit | Sets |
+|---|---|---|
+| [`process_skill.py`](general_science/m2/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ม.2 | `sci.process_skill_m2_foundation`, `sci.process_skill_m2_fluency`, `sci.process_skill_m2_application` |
+
+### m3 — ม.3
+
+| File | Unit | Sets |
+|---|---|---|
+| [`process_skill.py`](general_science/m3/process_skill.py) | ทักษะกระบวนการทางวิทยาศาสตร์ ม.3 | `sci.process_skill_m3_foundation`, `sci.process_skill_m3_fluency`, `sci.process_skill_m3_application` |
+
 ## geography — ภูมิศาสตร์
 
 ### p1 — ป.1
 
 | File | Unit | Sets |
 |---|---|---|
+| [`environment_change.py`](geography/p1/environment_change.py) | การเปลี่ยนแปลงของสิ่งแวดล้อมรอบตัว | `geog.change_cause_p1`, `geog.change_compare_p1`, `geog.change_action_p1` |
 | [`position_and_direction.py`](geography/p1/position_and_direction.py) | ตำแหน่งและทิศของสิ่งต่าง ๆ | `geog.lineup_position_p1`, `geog.near_far_p1`, `geog.classroom_plan_p1` |
 | [`surroundings.py`](geography/p1/surroundings.py) | สิ่งแวดล้อมรอบตัว | `geog.natural_or_made_p1`, `geog.nature_benefit_p1`, `geog.nature_and_living_p1` |
 | [`weather_in_a_day.py`](geography/p1/weather_in_a_day.py) | สภาพอากาศในรอบวัน | `geog.weather_in_a_day_p1`, `geog.shadow_length_p1`, `geog.weather_prepare_p1` |
@@ -1496,6 +1527,7 @@
 |---|---|---|
 | [`earth_sun_moon.py`](geography/p2/earth_sun_moon.py) | โลก ดวงอาทิตย์ และดวงจันทร์ | `geog.earth_sun_moon_p2`, `geog.sun_direction_p2`, `geog.earth_sun_moon_reasoning_p2` |
 | [`maps_and_globes.py`](geography/p2/maps_and_globes.py) | แผนผัง แผนที่ และลูกโลก | `geog.globe_and_map_p2`, `geog.map_colour_p2`, `geog.map_nearest_p2` |
+| [`natural_and_built.py`](geography/p2/natural_and_built.py) | สิ่งแวดล้อมทางธรรมชาติและที่มนุษย์สร้างขึ้น | `geog.natural_or_built_p2`, `geog.environment_importance_p2`, `geog.route_environment_p2` |
 | [`natural_resources.py`](geography/p2/natural_resources.py) | ทรัพยากรธรรมชาติ | `geog.resource_kind_p2`, `geog.resource_wise_use_p2`, `geog.resource_consequence_p2` |
 | [`seasons.py`](geography/p2/seasons.py) | ฤดูกาลกับการดำเนินชีวิต | `geog.season_month_p2`, `geog.season_life_p2`, `geog.season_plan_p2` |
 | [`waste.py`](geography/p2/waste.py) | การจัดการขยะ | `geog.waste_bin_p2`, `geog.three_r_p2`, `geog.waste_count_p2` |
@@ -1505,13 +1537,30 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`community_environment.py`](geography/p3/community_environment.py) | สิ่งแวดล้อมในชุมชน | `geog.city_or_country_p3`, `geog.pollution_cause_p3`, `geog.pollution_fix_p3` |
+| [`community_then_now.py`](geography/p3/community_then_now.py) | สิ่งแวดล้อมของชุมชนในอดีตกับปัจจุบัน | `geog.then_or_now_p3`, `geog.then_now_change_p3`, `geog.then_now_evidence_p3` |
 | [`compass_directions.py`](geography/p3/compass_directions.py) | ทิศและแผนที่ชุมชน | `geog.facing_direction_p3`, `geog.turning_direction_p3`, `geog.map_direction_p3`, `geog.walk_route_p3` |
 | [`resources_and_living.py`](geography/p3/resources_and_living.py) | ทรัพยากรกับการดำเนินชีวิต | `geog.basic_needs_p3`, `geog.land_occupation_p3`, `geog.local_product_p3` |
+
+### p4 — ป.4
+
+| File | Unit | Sets |
+|---|---|---|
+| [`province_environment.py`](geography/p4/province_environment.py) | สิ่งแวดล้อมกับการดำเนินชีวิตในจังหวัด | `geog.province_problem_cause_p4`, `geog.province_living_p4`, `geog.province_manage_p4` |
+| [`province_physical.py`](geography/p4/province_physical.py) | ลักษณะทางกายภาพและแหล่งทรัพยากรในจังหวัด | `geog.province_feature_kind_p4`, `geog.province_map_reading_p4`, `geog.province_place_reason_p4` |
+
+### p5 — ป.5
+
+| File | Unit | Sets |
+|---|---|---|
+| [`region_living.py`](geography/p5/region_living.py) | สิ่งแวดล้อมกับการตั้งถิ่นฐานและวิถีชีวิตในภูมิภาค | `geog.migration_factor_p5`, `geog.region_settlement_p5`, `geog.region_care_p5` |
+| [`region_physical.py`](geography/p5/region_physical.py) | ลักษณะทางกายภาพของภูมิภาค | `geog.region_feature_p5`, `geog.region_describe_p5`, `geog.region_resource_reason_p5` |
 
 ### p6 — ป.6
 
 | File | Unit | Sets |
 |---|---|---|
+| [`sustainable_resources.py`](geography/p6/sustainable_resources.py) | การจัดการทรัพยากรและสิ่งแวดล้อมอย่างยั่งยืนในประเทศไทย | `geog.keep_or_harm_p6`, `geog.conservation_example_p6`, `geog.sustainable_choice_p6` |
+| [`thailand_change.py`](geography/p6/thailand_change.py) | การเปลี่ยนแปลงทางกายภาพของประเทศไทย | `geog.change_evidence_kind_p6`, `geog.change_effect_p6`, `geog.change_data_p6` |
 | [`thailand_disasters.py`](geography/p6/thailand_disasters.py) | ภัยพิบัติในประเทศไทย | `geog.thai_disaster_p6`, `geog.disaster_kind_p6`, `geog.disaster_response_p6` |
 | [`thailand_physical.py`](geography/p6/thailand_physical.py) | ลักษณะทางกายภาพของประเทศไทย | `geog.province_region_p6`, `geog.region_landform_p6`, `geog.region_livelihood_p6` |
 
@@ -1519,6 +1568,7 @@
 
 | File | Unit | Sets |
 |---|---|---|
+| [`asia_environment.py`](geography/m1/asia_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปเอเชีย ออสเตรเลีย และโอเชียเนีย | `geog.asia_issue_place_m1`, `geog.asia_issue_cause_m1`, `geog.asia_manage_m1` |
 | [`asia_oceania.py`](geography/m1/asia_oceania.py) | ทวีปเอเชีย ออสเตรเลีย และโอเชียเนีย | `geog.continent_landform_m1`, `geog.disaster_asia_m1`, `geog.continent_reasoning_m1` |
 | [`coordinates_and_time.py`](geography/m1/coordinates_and_time.py) | พิกัดภูมิศาสตร์และเวลาของโลก | `geog.hemisphere_m1`, `geog.local_time_hours_m1`, `geog.local_time_minutes_m1`, `geog.time_zone_m1`, `geog.date_line_m1`, `geog.latitude_distance_m1` |
 | [`economic_location.py`](geography/m1/economic_location.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจ | `geog.economic_sector_m1`, `geog.location_factor_m1`, `geog.choose_location_m1` |
@@ -1528,6 +1578,8 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`europe_africa.py`](geography/m2/europe_africa.py) | ทวีปยุโรปและแอฟริกา | `geog.continent_landform_m2`, `geog.disaster_europe_africa_m2`, `geog.continent_reasoning_m2` |
+| [`europe_africa_economy.py`](geography/m2/europe_africa_economy.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจในทวีปยุโรปและทวีปแอฟริกา | `geog.europe_africa_activity_m2`, `geog.europe_africa_factor_m2`, `geog.europe_africa_site_m2` |
+| [`europe_africa_environment.py`](geography/m2/europe_africa_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปยุโรปและทวีปแอฟริกา | `geog.europe_africa_issue_place_m2`, `geog.europe_africa_issue_cause_m2`, `geog.europe_africa_manage_m2` |
 | [`scale_and_bearing.py`](geography/m2/scale_and_bearing.py) | มาตราส่วน ทิศ และสัญลักษณ์ | `geog.map_to_ground_m2`, `geog.ground_to_map_m2`, `geog.find_scale_m2`, `geog.scale_detail_m2`, `geog.azimuth_m2`, `geog.back_azimuth_m2`, `geog.map_symbol_m2` |
 
 ### m3 — ม.3
@@ -1535,12 +1587,18 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`americas.py`](geography/m3/americas.py) | ทวีปอเมริกาเหนือและอเมริกาใต้ | `geog.continent_landform_m3`, `geog.disaster_americas_m3`, `geog.continent_reasoning_m3` |
+| [`americas_economy.py`](geography/m3/americas_economy.py) | ทำเลที่ตั้งของกิจกรรมทางเศรษฐกิจในทวีปอเมริกาเหนือและทวีปอเมริกาใต้ | `geog.americas_activity_m3`, `geog.americas_factor_m3`, `geog.americas_site_m3` |
+| [`americas_environment.py`](geography/m3/americas_environment.py) | ปัญหาและการจัดการสิ่งแวดล้อมในทวีปอเมริกาเหนือและทวีปอเมริกาใต้ | `geog.americas_issue_place_m3`, `geog.americas_issue_cause_m3`, `geog.americas_manage_m3` |
 | [`environmental_cooperation.py`](geography/m3/environmental_cooperation.py) | ความร่วมมือระหว่างประเทศด้านสิ่งแวดล้อม | `geog.environmental_agreement_m3`, `geog.environmental_organisation_m3`, `geog.agreement_case_m3` |
 
 ### m4 — ม.4
 
 | File | Unit | Sets |
 |---|---|---|
+| [`environment_change.py`](geography/m4/environment_change.py) | การเปลี่ยนแปลงด้านทรัพยากรธรรมชาติและสิ่งแวดล้อม | `geog.global_issue_m4`, `geog.environment_cause_m4`, `geog.environment_data_m4` |
+| [`environment_policy.py`](geography/m4/environment_policy.py) | มาตรการ กฎหมาย และนโยบายด้านทรัพยากรธรรมชาติและสิ่งแวดล้อม | `geog.environment_instrument_m4`, `geog.environment_instrument_match_m4`, `geog.environment_measure_apply_m4` |
 | [`geographic_tools.py`](geography/m4/geographic_tools.py) | เครื่องมือทางภูมิศาสตร์ | `geog.contour_reading_m4`, `geog.contour_interval_m4`, `geog.contour_height_m4`, `geog.slope_gradient_m4`, `geog.geoinformatics_m4` |
+| [`natural_hazards.py`](geography/m4/natural_hazards.py) | ลักษณะทางกายภาพกับภัยพิบัติทางธรรมชาติ | `geog.hazard_setting_m4`, `geog.hazard_why_m4`, `geog.hazard_risk_m4` |
 | [`physical_change.py`](geography/m4/physical_change.py) | การเปลี่ยนแปลงทางกายภาพ | `geog.landform_agent_m4`, `geog.surface_process_m4`, `geog.landscape_change_m4` |
 | [`population.py`](geography/m4/population.py) | ประชากรและการตั้งถิ่นฐาน | `geog.population_density_m4`, `geog.natural_increase_m4`, `geog.doubling_time_m4`, `geog.settlement_pattern_m4` |
+| [`sustainable_management.py`](geography/m4/sustainable_management.py) | การจัดการทรัพยากรธรรมชาติและสิ่งแวดล้อมเพื่อการพัฒนาที่ยั่งยืน | `geog.conservation_method_m4`, `geog.sustainable_idea_m4`, `geog.sustainable_plan_m4` |

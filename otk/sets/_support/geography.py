@@ -12,6 +12,9 @@
   every drawable id in advance;
 * ``choices`` — a question whose choices are fixed strings, each wrong one
   optionally named for the mistake it stands for;
+* ``scenario`` and ``facts`` — one row of a fixed bank of authored items; a
+  scenario row also borrows the other rows' answers as wrong choices, a facts
+  row uses only its own;
 * ``clock`` — a time of day as Thai stems write it (``14.05 น.``).
 """
 
@@ -26,7 +29,8 @@ from otk.core.mistakes import named
 from otk.core.question import GeneratedQuestion
 
 SUBJECT = "ภูมิศาสตร์"
-P1, P2, P3, P6 = {"th": "ป.1"}, {"th": "ป.2"}, {"th": "ป.3"}, {"th": "ป.6"}
+P1, P2, P3 = {"th": "ป.1"}, {"th": "ป.2"}, {"th": "ป.3"}
+P4, P5, P6 = {"th": "ป.4"}, {"th": "ป.5"}, {"th": "ป.6"}
 M1, M2, M3, M4 = {"th": "ม.1"}, {"th": "ม.2"}, {"th": "ม.3"}, {"th": "ม.4"}
 
 
@@ -39,11 +43,15 @@ STAGE_METADATA = {
 }
 
 
-def stage(n: int):
-    """Class decorator, inside ``@question_type``: file the set at stage ``n``."""
+def stage(n: int, hint: str | None = None):
+    """Class decorator, inside ``@question_type``: file the set at stage ``n``.
+    ``hint`` is shown on every draw that carries none of its own (a classify or
+    concept-bank set, whose kit gives none)."""
     def deco(cls):
         key, label = STAGE_METADATA[n]
         cls.learning_stage, cls.learning_stage_key, cls.learning_stage_label = n, key, dict(label)
+        if hint:
+            cls.stage_hint = (text(hint),)
         return cls
     return deco
 
@@ -167,6 +175,20 @@ def scenario(rng: Random, rows, *, ask: str, hint: str, topic: str) -> Generated
     return GeneratedQuestion(
         stem=[text(f"{situation} {ask}")], correct=[text(right)],
         distractors=length_matched_label_pool([right, *wrongs, *others]),
+        topic=topic, hint=[text(hint)])
+
+
+def facts(rng: Random, rows, *, hint: str, topic: str) -> GeneratedQuestion:
+    """One row of a fixed bank: a question, its answer and three of its own wrongs.
+
+    ``rows`` are ``(stem, answer, wrongs)``. Unlike :func:`scenario`, the other
+    rows' answers never join the choices, so each row's wrongs are written for
+    it alone; give five or more and three are drawn, near the answer's length.
+    """
+    stem, right, wrongs = rows[rng.randrange(len(rows))]
+    return GeneratedQuestion(
+        stem=[text(stem)], correct=[text(right)],
+        distractors=length_matched_label_pool([right, *wrongs]),
         topic=topic, hint=[text(hint)])
 
 

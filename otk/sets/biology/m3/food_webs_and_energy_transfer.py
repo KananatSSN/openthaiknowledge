@@ -16,6 +16,9 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit.numeric_scenario import Calc, PhysCalc, fmt, slips
 from otk.sets._support.science_wave_b import LEVEL, SUBJECT, TOPIC, _labelled
+from otk.sets._support.life_earth_diagrams import FOOD_WEB_ALT
+from otk.sets._support.life_earth_diagrams import FOOD_WEBS as WEB_DIAGRAMS
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -314,4 +317,78 @@ class FoodWebApplication(QuestionType):
             wrongs=tuple(f"{number} เส้นทาง" for number in
                          (count + 1, count - 1, count + 2) if number >= 1)[:3],
             hint="ไล่จากผู้ผลิตขึ้นไปทีละขั้น แล้วนับทุกเส้นทางที่ไปจบที่สิ่งมีชีวิตนั้น",
+        )
+
+
+def _names(organisms) -> str:
+    return " และ".join(o.name for o in organisms)
+
+
+@question_type(
+    "ecology.food_web_diagram",
+    display_name={"th": "อ่านสายใยอาหารจากแผนภาพ"},
+    level=LEVEL, subject=SUBJECT, topic=TOPIC,
+)
+class FoodWebDiagram(QuestionType):
+    """A drawn web with lettered organisms; every answer is worked out from its arrows.
+
+    The stem gives the key from letters to names, so the picture holds no Thai.
+    Arrows run from food to eater, and the learner has to follow them, not
+    recall a chain from memory.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        web = rng.choice(WEB_DIAGRAMS)
+        key = " ".join(f"{o.letter} คือ{o.name}" for o in web.organisms)
+        stem = f"แผนภาพแสดงสายใยอาหารใน{web.place} โดย {key} "
+        hint = "ลูกศรชี้จากสิ่งที่ถูกกินไปยังผู้กิน ผู้ผลิตไม่มีลูกศรชี้เข้า"
+        kind = rng.randrange(4)
+        if kind == 0:
+            producers = web.producers()
+            tops = web.tops()
+            middle = [o for o in web.organisms if o.eats and o not in tops]
+            return diagram_question(
+                web.asset_id, FOOD_WEB_ALT,
+                stem=stem + "สิ่งมีชีวิตใดเป็นผู้ผลิตทั้งหมดในสายใยอาหารนี้",
+                correct=_names(producers),
+                wrongs=(_names(tops), _names(middle[:2]), _names([*producers[:1], *middle[:1]])),
+                hint=hint,
+                topic=TOPIC,
+            )
+        if kind == 1:
+            food = rng.choice([o for o in web.organisms if web.eaters_of(o.letter)])
+            eaters = web.eaters_of(food.letter)
+            eaten = [web.by_letter(x) for x in food.eats]
+            others = [o for o in web.organisms if o is not food and o not in eaters]
+            rng.shuffle(others)
+            wrongs = [_names(others[:len(eaters)]), _names(others[-1:] + eaters[:-1] or others[:1])]
+            if eaten:
+                wrongs.append(_names(eaten))
+            wrongs.append(_names(eaters + others[:1]))
+            return diagram_question(
+                web.asset_id, FOOD_WEB_ALT,
+                stem=stem + f"สิ่งมีชีวิตใดกิน{food.name}เป็นอาหาร",
+                correct=_names(eaters),
+                wrongs=tuple(dict.fromkeys(w for w in wrongs if w != _names(eaters))),
+                hint=hint,
+                topic=TOPIC,
+            )
+        if kind == 2:
+            count = len(web.chains())
+            return diagram_question(
+                web.asset_id, FOOD_WEB_ALT,
+                stem=stem + "สายใยอาหารนี้มีโซ่อาหารทั้งหมดกี่โซ่ (นับจากผู้ผลิตจนถึงผู้บริโภคที่ไม่มีใครกิน)",
+                correct=f"{count} โซ่",
+                wrongs=tuple(f"{n} โซ่" for n in (count - 2, count - 1, count + 1, count + 2) if n > 0),
+                hint="เริ่มจากผู้ผลิตแต่ละตัว แล้วไล่ตามลูกศรทุกทางจนถึงผู้บริโภคที่ไม่มีลูกศรชี้ออก",
+                topic=TOPIC,
+            )
+        tops = web.tops()
+        return diagram_question(
+            web.asset_id, FOOD_WEB_ALT,
+            stem=stem + "สิ่งมีชีวิตใดเป็นผู้บริโภคลำดับสุดท้าย ซึ่งไม่มีสิ่งมีชีวิตใดในสายใยอาหารนี้กิน",
+            correct=_names(tops),
+            wrongs=tuple(o.name for o in web.organisms if o not in tops)[-3:],
+            hint="หาสิ่งมีชีวิตที่มีลูกศรชี้เข้าแต่ไม่มีลูกศรชี้ออกไปหาสิ่งมีชีวิตอื่น",
+            topic=TOPIC,
         )

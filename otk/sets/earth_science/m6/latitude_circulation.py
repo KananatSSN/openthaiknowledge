@@ -50,6 +50,15 @@ BELTS = (
 )
 
 
+# Real places on or near each line, by the line's index in BELTS. Each reads
+# before ``ละติจูด``, so the stem still names the line itself.
+PLACES = (
+    ("ลุ่มน้ำแอมะซอน ใกล้", "ลุ่มน้ำคองโก ใกล้", "หมู่เกาะอินโดนีเซีย ใกล้"),
+    ("ทะเลทรายสะฮารา ใกล้", "ทะเลทรายเกรตวิกตอเรียในออสเตรเลีย ใกล้", "ทะเลทรายโซโนราในอเมริกาเหนือ ใกล้"),
+    ("ประเทศนอร์เวย์ตอนใต้ ใกล้", "รัฐอะแลสกาตอนใต้ ใกล้", "มหาสมุทรใต้ทางใต้ของแหลมฮอร์น ใกล้"),
+    ("ใจกลางมหาสมุทรอาร์กติก ที่", "ใจกลางทวีปแอนตาร์กติกา ที่"),
+)
+
 # Each rising belt is paired with a sinking one, so a swapped half is plainly wrong.
 OPPOSITE = {0: 1, 1: 0, 2: 3, 3: 2}
 
@@ -86,10 +95,31 @@ class LatitudeCirculationFoundation(QuestionType):
     """A band in one hemisphere; its surface wind and cell."""
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
+        draw = rng.random()
+        if draw < 0.25:
+            # One latitude line, and what the air near the ground does there.
+            index = rng.randrange(len(BELTS))
+            return _labelled(
+                stem=f"ที่ละติจูด {BELTS[index].latitude} อากาศใกล้ผิวพื้นมีลักษณะอย่างไร",
+                correct=BELTS[index].circulation,
+                wrongs=tuple(other.circulation for i, other in enumerate(BELTS) if i != index),
+                hint="เส้นศูนย์สูตรกับละติจูด 60 องศาอากาศลอยตัวขึ้น ละติจูด 30 องศากับขั้วโลกอากาศจมตัวลง",
+                topic=LATITUDE_TOPIC,
+            )
         index = rng.randrange(len(WIND_BELTS))
         belt = WIND_BELTS[index]
         north = rng.random() < 0.5
         hemisphere = "เหนือ" if north else "ใต้"
+        if draw < 0.5:
+            # The wind named in full; the learner gives back its band and hemisphere.
+            return _labelled(
+                stem=f"“{wind_text(belt, north)}” เป็นลมประจำที่พัดใกล้ผิวพื้นในช่วงละติจูดใด",
+                correct=f"{belt.band}{hemisphere}",
+                wrongs=tuple(f"{other.band}{side}" for other in WIND_BELTS for side in ("เหนือ", "ใต้")
+                             if (other.band, side) != (belt.band, hemisphere)),
+                hint="ชื่อเซลล์บอกช่วงละติจูด และทิศที่ลมพัดมาบอกว่าอยู่ซีกโลกใด",
+                topic=LATITUDE_TOPIC,
+            )
         return _labelled(
             stem=f"ลมประจำที่พัดใกล้ผิวพื้นระหว่างละติจูด {belt.band}{hemisphere} คือลมใด",
             correct=wind_text(belt, north),
@@ -114,7 +144,8 @@ class LatitudeCirculationFluency(QuestionType):
         belt = BELTS[index]
         _other = BELTS[rng.choice([i for i in range(len(BELTS)) if i not in (index, OPPOSITE[index])])]
         return _labelled(
-            stem=(f"ข้อใดอธิบายการหมุนเวียนของอากาศบริเวณละติจูด {belt.latitude} "
+            stem=(f"ข้อใดอธิบายการหมุนเวียนของอากาศบริเวณ{rng.choice(('', *PLACES[index]))}"
+                  f"ละติจูด {belt.latitude} "
                   "และผลที่มีต่อภูมิอากาศบริเวณนั้นได้ถูกต้องทั้งหมด"),
             correct=belt_line(belt.circulation, belt.climate),
             # Any pairing that gets at least one half wrong for this belt.

@@ -74,6 +74,20 @@ class SolarEnergyFoundation(QuestionType):
         )
 
 
+SOLAR_ASK = "ข้อใดอธิบายปัจจัยที่ทำให้แต่ละบริเวณของโลกได้รับพลังงานจากดวงอาทิตย์แตกต่างกันได้ถูกต้องทั้งหมด"
+
+
+# What the question opens on. Each ends where ``SOLAR_ASK`` begins, and none
+# changes which statement of a factor is true.
+SOLAR_LEADS = (
+    "",
+    "ในวันเดียวกัน เทอร์โมมิเตอร์ที่เขตศูนย์สูตรอ่านค่าได้สูงกว่าที่เขตขั้วโลกมาก ",
+    "นักเรียนส่องไฟฉายตั้งฉากกับกระดาษ แล้วเอียงไฟฉาย พบว่าวงแสงกว้างขึ้นแต่สลัวลง ",
+    "ภาพถ่ายดาวเทียมแสดงว่าพื้นที่ปกคลุมด้วยหิมะดูขาวสว่าง ส่วนป่าและมหาสมุทรดูเข้ม ",
+    "ในเมืองเดียวกัน วันที่ฟ้าโปร่งร้อนกว่าวันที่มีเมฆหนาปกคลุมตลอดวัน ",
+)
+
+
 @question_type(
     "geo.solar_energy_fluency",
     display_name={"th": "อธิบายปัจจัยที่มีผลต่อการได้รับพลังงานจากดวงอาทิตย์"},
@@ -85,7 +99,7 @@ class SolarEnergyFluency(QuestionType):
     def build(self, rng: Random, **params) -> GeneratedQuestion:
         return parts_item(
             rng, SOLAR_FACTORS,
-            stem="ข้อใดอธิบายปัจจัยที่ทำให้แต่ละบริเวณของโลกได้รับพลังงานจากดวงอาทิตย์แตกต่างกันได้ถูกต้องทั้งหมด",
+            stem=rng.choice(SOLAR_LEADS) + SOLAR_ASK,
             hint="ตรวจทีละปัจจัย ข้อที่ผิดจะผิดอย่างน้อยหนึ่งปัจจัย",
             topic=SOLAR_TOPIC,
         )

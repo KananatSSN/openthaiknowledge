@@ -52,6 +52,17 @@ GALAXIES = (
 )
 
 
+# Distances a measured table draws four of, in megaparsecs.
+DISTANCE_POOL = (10, 20, 30, 40, 50, 60, 80, 100, 120, 150, 200, 250, 300, 400)
+
+
+def measured_galaxies(rng: Random) -> tuple[Galaxy, ...]:
+    """Four galaxies at drawn distances, nearest first, each on v = H0 d exactly."""
+    distances = sorted(rng.sample(DISTANCE_POOL, 4))
+    return tuple(Galaxy(galaxy.name, distance, distance * HUBBLE_CONSTANT)
+                 for galaxy, distance in zip(GALAXIES, distances))
+
+
 PROPORTIONAL = "ยิ่งอยู่ไกล ยิ่งถอยห่างเร็วขึ้นเป็นสัดส่วนกัน"
 
 
@@ -73,11 +84,14 @@ BOTH_EVIDENCE = (f"{HUBBLE}แสดงว่าเอกภพกำลัง�
 
 BOTH_WRONGS = (
     f"{HUBBLE}แสดงว่าเอกภพกำลังหดตัว "
-    f"ส่วน{CMB}คือความร้อนที่ดาวฤกษ์ในปัจจุบันแผ่ออกมา",
+    f"ส่วน{CMB}คือความร้อนที่ดาวฤกษ์ในปัจจุบันแผ่ออกมา "
+    "หลักฐานทั้งสองจึงชี้ว่าเอกภพในอดีตใหญ่และเย็นกว่าปัจจุบัน ไม่เคยร้อนและหนาแน่น",
     f"{HUBBLE}แสดงว่าเอกภพมีขนาดคงที่ "
-    f"ส่วน{CMB}มาจากใจกลางกาแล็กซีของเราเพียงทิศเดียว",
+    f"ส่วน{CMB}มาจากใจกลางกาแล็กซีของเราเพียงทิศเดียว "
+    "หลักฐานทั้งสองจึงไม่ได้บอกอะไรเกี่ยวกับจุดเริ่มต้นของเอกภพ",
     f"{HUBBLE}เป็นหลักฐานเพียงอย่างเดียวที่ใช้ได้ "
-    f"ส่วน{CMB}ยังไม่เคยตรวจพบจริง",
+    f"ส่วน{CMB}ยังไม่เคยตรวจพบจริง "
+    "ทฤษฎีบิกแบงจึงอาศัยเพียงการที่กาแล็กซีถอยห่างออกไปเท่านั้น",
 )
 
 
@@ -87,9 +101,18 @@ RELATION_DECOYS = ("กาแล็กซีที่ใกล้ที่สุ
 
 MORE_BOTH_WRONGS = (
     f"{HUBBLE}แสดงว่ากาแล็กซีทั้งหมดเคลื่อนเข้าหาเรา "
-    f"ส่วน{CMB}คือคลื่นที่ส่งมาจากดาวเทียมของมนุษย์",
+    f"ส่วน{CMB}คือคลื่นที่ส่งมาจากดาวเทียมของมนุษย์ "
+    "หลักฐานทั้งสองจึงชี้ว่าเอกภพกำลังยุบตัวเข้าหากาแล็กซีของเรา",
     f"{HUBBLE}แสดงว่าเอกภพกำลังขยายตัว "
-    f"แต่{CMB}ไม่เกี่ยวกับอดีตของเอกภพเลย",
+    f"แต่{CMB}ไม่เกี่ยวกับอดีตของเอกภพเลย "
+    "เพราะเป็นเพียงคลื่นรบกวนจากชั้นบรรยากาศของโลกที่พบได้ทุกทิศ",
+    # Two that keep one half of the answer word for word and break the other.
+    f"{HUBBLE}แสดงว่าเอกภพกำลังขยายตัว จึงเคยเล็กและหนาแน่นกว่านี้ "
+    f"ส่วน{CMB}คือแสงจากดาวฤกษ์รุ่นแรกที่เพิ่งเกิดขึ้นเมื่อไม่นานมานี้ "
+    "หลักฐานทั้งสองจึงชี้ว่าเอกภพเพิ่งเริ่มมีดาวฤกษ์ ไม่ได้ชี้ไปที่จุดเริ่มต้นที่ร้อนและหนาแน่น",
+    f"{HUBBLE}แสดงว่ากาแล็กซีทั้งหมดถอยห่างออกจากกาแล็กซีของเรา เราจึงอยู่ตรงศูนย์กลางของการขยายตัว "
+    f"ส่วน{CMB}คือแสงที่เหลือจากยุคที่เอกภพร้อนและโปร่งใสขึ้นเป็นครั้งแรก "
+    "หลักฐานทั้งสองจึงชี้ว่ากาแล็กซีของเราคือจุดที่บิกแบงเริ่มต้น",
 )
 
 
@@ -117,10 +140,11 @@ class BigBangEvidenceFluency(QuestionType):
     """Read the measurements and reach both bodies of evidence the indicator names."""
 
     def build(self, rng: Random, **params) -> GeneratedQuestion:
+        galaxies = measured_galaxies(rng)
         table = " / ".join(
             f"{galaxy.name}: ระยะทาง {galaxy.distance} เมกะพาร์เซก "
             f"ความเร็วถอยห่าง {galaxy.speed} กิโลเมตรต่อวินาที"
-            for galaxy in GALAXIES)
+            for galaxy in galaxies)
         stem = f"จากการวัดกาแล็กซีสี่แห่ง ได้ผลดังนี้ {table} "
         draw = rng.random()
         if draw < 0.3:
@@ -132,13 +156,20 @@ class BigBangEvidenceFluency(QuestionType):
                 topic=EVIDENCE_TOPIC,
             )
         if draw < 0.6:
-            galaxy = rng.choice(GALAXIES)
-            others = [other for other in GALAXIES if other.name != galaxy.name]
+            galaxy = rng.choice(galaxies)
+            others = [other for other in galaxies if other.name != galaxy.name]
             return _labelled(
                 stem=stem + f"จากข้อมูลนี้ “{galaxy.name}” มีความเร็วถอยห่างเท่าใด",
                 correct=f"{galaxy.speed} กิโลเมตรต่อวินาที",
-                wrongs=tuple([f"{other.speed} กิโลเมตรต่อวินาที" for other in others]
-                    + [f"{galaxy.distance} กิโลเมตรต่อวินาที"]),
+                # The last two are slips a reader makes: taking 100 km/s for every
+                # megaparsec, and copying one zero too many. Both run as long as the
+                # answer, so the farthest galaxy's answer is not always the longest.
+                # A slip can land on another galaxy's speed, so repeats are dropped.
+                wrongs=tuple(dict.fromkeys(
+                    [f"{other.speed} กิโลเมตรต่อวินาที" for other in others]
+                    + [f"{galaxy.distance} กิโลเมตรต่อวินาที",
+                       f"{galaxy.distance * 100} กิโลเมตรต่อวินาที",
+                       f"{galaxy.speed * 10} กิโลเมตรต่อวินาที"])),
                 hint="หาชื่อกาแล็กซีที่โจทย์ถาม แล้วอ่านความเร็วในแถวนั้น",
                 topic=EVIDENCE_TOPIC,
             )

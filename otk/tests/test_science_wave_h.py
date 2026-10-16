@@ -1522,6 +1522,7 @@ def test_organic_rule_banks_answer_by_their_rule():
     )
     from otk.sets.chemistry.m5.thermo_polymer import (
         BEHAVIOUR_LABEL,
+        MORE_CLUES,
         STRUCTURE_LABEL,
         THERMO_POLYMER_ITEMS,
     )
@@ -1538,7 +1539,8 @@ def test_organic_rule_banks_answer_by_their_rule():
         assert _answer(q) == organic[_stem(q)]
         q = generate("chem.thermo_polymer_foundation", Random(seed))
         s = _stem(q)
-        kind = next(k for k in STRUCTURE_LABEL if STRUCTURE_LABEL[k] in s or BEHAVIOUR_LABEL[k] in s)
+        kind = next(k for k in STRUCTURE_LABEL
+                    if any(clue in s for clue in (STRUCTURE_LABEL[k], BEHAVIOUR_LABEL[k], *MORE_CLUES[k])))
         assert _answer(q) == kind, s
 
 

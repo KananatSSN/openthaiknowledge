@@ -18,6 +18,8 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit.classify import Category, ClassifyType
 from otk.sets._support.biology import SUBJECT, TOPIC_ECOLOGY
+from otk.sets._support.life_earth_diagrams import FOOD_CHAIN_ALT, FOOD_CHAIN_PICTURES
+from otk.sets._support.ms1_diagrams import diagram_question
 
 PROVENANCE = Provenance("original")
 
@@ -307,4 +309,42 @@ class FoodChainApplication(QuestionType):
                 f"{c}เพิ่มขึ้นทำให้{b}มีอาหารมากขึ้น แต่{b}ลดลงเพราะแย่งอาหารกับ{a}",
             ),
             hint="ใช้เหตุการณ์ที่กำหนดเป็นจุดเริ่ม แล้วตรวจว่าค่าถัดไปเปลี่ยนตามความสัมพันธ์ผู้ล่า–เหยื่อหรือไม่",
+        )
+
+
+@question_type(
+    "ecology.food_chain_diagram",
+    display_name={"th": "อ่านโซ่อาหารจากแผนภาพลูกศร"},
+    level={"th": "ป.5"}, subject=BIOLOGY, topic=ECOLOGY,
+)
+class FoodChainDiagram(QuestionType):
+    """A four-link chain drawn as lettered circles out of line; follow the arrows to read it.
+
+    The organisms come from ``FOOD_CHAINS`` and are given letters by the
+    picture's order, so the same chain is drawn several ways.
+    """
+
+    def build(self, rng: Random, **params) -> GeneratedQuestion:
+        spec = rng.choice(FOOD_CHAIN_PICTURES)
+        chain = rng.choice(FOOD_CHAINS)
+        name_of = dict(zip(spec.order, chain.members))
+        key = " ".join(f"{letter} คือ{name_of[letter]}" for letter in sorted(name_of))
+        stem = f"แผนภาพแสดงโซ่อาหารใน{chain.habitat} โดย {key} "
+        hint = "ลูกศรชี้จากสิ่งที่ถูกกินไปยังผู้กิน เริ่มจากตัวที่ไม่มีลูกศรชี้เข้า ซึ่งคือผู้ผลิต"
+        position = rng.randrange(4)
+        member = chain.members[position]
+        if rng.random() < 0.5:
+            return diagram_question(
+                spec.asset_id, FOOD_CHAIN_ALT,
+                stem=stem + f"จากแผนภาพ {member}มีบทบาทใดในโซ่อาหารนี้",
+                correct=ROLES[position],
+                wrongs=tuple(r for r in ROLES if r != ROLES[position]),
+                hint=hint, topic=ECOLOGY,
+            )
+        return diagram_question(
+            spec.asset_id, FOOD_CHAIN_ALT,
+            stem=stem + f"จากแผนภาพ สิ่งมีชีวิตใดเป็น{ROLES[position]}",
+            correct=member,
+            wrongs=tuple(m for m in chain.members if m != member),
+            hint=hint, topic=ECOLOGY,
         )
