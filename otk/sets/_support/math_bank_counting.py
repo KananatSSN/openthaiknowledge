@@ -1,7 +1,7 @@
 """Counting sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found four units, exercised by กสพท, A-level and O-NET
-questions in ``sheet_database/rathcenter/12 หลักการนับ``, that no problem set
+questions in ``openthaiknowledge-bank/rathcenter/12 หลักการนับ``, that no problem set
 practised:
 
 =====================================  ==========================================  ================

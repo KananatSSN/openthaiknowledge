@@ -388,7 +388,7 @@ class DeterminantPropertiesM5(QuestionType):
         # det A · det B taken for the quotient; det B / det A; the sign of det B lost.
         named = [v / (b22 * c11 * e22), Fraction(c11 * e22, b22) / v, -x]
         return _frac_q(stem, Fraction(x), named, self.topic)
-DeterminantPropertiesM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/9 เมทริกซ์',))
+DeterminantPropertiesM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/9 เมทริกซ์',))
 
 
 @question_type("math.matrix_system_word_m5",
@@ -468,7 +468,7 @@ class MatrixUniqueSolutionM5(QuestionType):
             return _tex_q(stem, _except(r), wrongs, self.topic)
         stem.append(text("ไม่มีคำตอบเพียงคำตอบเดียว (ไม่มีคำตอบหรือมีคำตอบมากมาย) เมื่อ a เท่ากับเท่าใด"))
         return _frac_q(stem, r, others, self.topic)
-MatrixUniqueSolutionM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/9 เมทริกซ์',))
+MatrixUniqueSolutionM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/9 เมทริกซ์',))
 
 
 @question_type("math.matrix_equation_m5",
@@ -531,7 +531,7 @@ class MatrixEquationM5(QuestionType):
         stem.append(text("จำนวนข้อความที่ถูกต้องเท่ากับเท่าใด"))
         wrongs = [str(v) for v in sorted(range(5), key=lambda v: abs(v - right)) if v != right]
         return _tex_q(stem, str(right), wrongs, self.topic)
-MatrixEquationM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/9 เมทริกซ์',))
+MatrixEquationM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/9 เมทริกซ์',))
 
 
 @question_type("math.matrix_power_cycle_m5",
@@ -559,7 +559,7 @@ class MatrixPowerCycleM5(QuestionType):
         wrongs = [mat_pow(a, n % k + 1), mat_pow(a, (n - 1) % k), mat([[1, 0], [0, 1]]), mat_pow(a, n % 4),
                   mat_pow(a, (n + 2) % k), [[-v for v in r] for r in right]]
         return _tex_q(stem, mat_tex(right), [mat_tex(w) for w in wrongs], self.topic)
-MatrixPowerCycleM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/9 เมทริกซ์',))
+MatrixPowerCycleM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/9 เมทริกซ์',))
 
 
 @question_type("math.matrix_row_operations_m5", display_name={"th": "แก้ระบบสมการด้วยการดำเนินการตามแถว"},

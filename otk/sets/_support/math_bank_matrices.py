@@ -1,7 +1,7 @@
 """Matrix sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found units of ``otk/knowledge/math/matrices.json``,
-exercised by กสพท and A-level questions in ``sheet_database/rathcenter/9 เมทริกซ์``,
+exercised by กสพท and A-level questions in ``openthaiknowledge-bank/rathcenter/9 เมทริกซ์``,
 that no problem set practised. The existing sets compute a determinant or an
 inverse of a matrix they print; the exams reason about them instead:
 

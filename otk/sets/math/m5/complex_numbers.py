@@ -322,7 +322,7 @@ class ComplexPowerCycleM5(QuestionType):
                  count_matching(n_max, p, q + 3, r, s), n_max // 4]
         out = [str(v) for v in [*named, right + 1, right - 1, right + 2] if v != right and v >= 0]
         return _tex_q(stem, str(right), out, self.topic)
-ComplexPowerCycleM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/11 จำนวนเชิงซ้อน',))
+ComplexPowerCycleM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/11 จำนวนเชิงซ้อน',))
 
 
 @question_type("math.complex_multiply",
@@ -423,7 +423,7 @@ class ComplexEquationPartsM5(QuestionType):
         # Keeping the rejected root; the opposite sign; the product of the roots.
         wrongs = [ctex(c(0, y1 + y2)), ctex(c(0, -sum(valid))), ctex(c(0, y1 * y2)), ctex(c(sum(valid)))]
         return _tex_q(stem, ctex(right), wrongs, self.topic)
-ComplexEquationPartsM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/11 จำนวนเชิงซ้อน',))
+ComplexEquationPartsM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/11 จำนวนเชิงซ้อน',))
 
 
 @question_type("math.complex_modulus_rules_m5",
@@ -472,7 +472,7 @@ class ComplexModulusRulesM5(QuestionType):
         stem.append(text("จำนวนข้อความที่ถูกต้องเท่ากับเท่าใด"))
         wrongs = [str(v) for v in sorted(range(5), key=lambda v: abs(v - right)) if v != right]
         return _tex_q(stem, str(right), wrongs, self.topic)
-ComplexModulusRulesM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/11 จำนวนเชิงซ้อน',))
+ComplexModulusRulesM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/11 จำนวนเชิงซ้อน',))
 
 
 @question_type("math.complex_conjugate_root_m5",
@@ -517,7 +517,7 @@ class ComplexConjugateRootM5(QuestionType):
         w1 = sum(poly_mul([1, -a, b], [1, -r])[1:])
         w2 = sum(poly_mul([1, a, b], [1, r])[1:])
         return _frac_q(stem, Fraction(right), [w1, w2, right + 1], self.topic)
-ComplexConjugateRootM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/11 จำนวนเชิงซ้อน',))
+ComplexConjugateRootM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/11 จำนวนเชิงซ้อน',))
 
 
 @question_type("math.complex_polynomial_solve_m5",
@@ -544,7 +544,7 @@ class ComplexPolynomialSolveM5(QuestionType):
         stem = [text("เซตคำตอบของสมการ"), content_math(f"{poly_tex_desc(f)} = 0"),
                 text("ในระบบจำนวนเชิงซ้อน คือข้อใด")]
         return _tex_q(stem, right, wrongs, self.topic)
-ComplexPolynomialSolveM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/11 จำนวนเชิงซ้อน',))
+ComplexPolynomialSolveM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/11 จำนวนเชิงซ้อน',))
 
 
 @question_type("math.complex_nth_roots_m5", display_name={"th": "รากที่ n ของจำนวนเชิงซ้อน"},

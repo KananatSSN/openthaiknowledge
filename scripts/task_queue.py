@@ -59,7 +59,7 @@ def digest_tasks() -> list[Task]:
         stage = entry.get("stage") or "new"
         tasks.append(Task(
             "digest", f"Digest: {path}",
-            f"Bank file `sheet_database/{path}` ({entry.get('kind', '?')}, stage `{stage}`)"
+            f"Bank file `openthaiknowledge-bank/{path}` ({entry.get('kind', '?')}, stage `{stage}`)"
             " has not been turned into problem sets yet.\n\n"
             "Follow the `sheet-bank` skill (`.agents/skills/sheet-bank/SKILL.md`). The PDF"
             " itself is in the maintainer's private store: ask on this issue if you"

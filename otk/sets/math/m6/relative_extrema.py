@@ -258,7 +258,7 @@ class CubicCriticalPointsM6(QuestionType):
         right = sum(t for _, t in picks)
         return _tex_q(stem, str(right), [str(v) for v in sorted(range(5), key=lambda v: abs(v - right))],
                       self.topic)
-CubicCriticalPointsM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/15 แคลคูลัส',))
+CubicCriticalPointsM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/15 แคลคูลัส',))
 
 
 @question_type("math.optimization_word_m6",

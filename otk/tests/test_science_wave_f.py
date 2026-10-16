@@ -1,6 +1,6 @@
 """Acceptance gate for Phase 5 Wave F — additional-course science.
 
-Slice 1 opens the wave from ``sheet_database/Faii/ข้อสอบแรง.pdf``. The sheet's
+Slice 1 opens the wave from ``openthaiknowledge-bank/Faii/ข้อสอบแรง.pdf``. The sheet's
 conceptual half is already filed under ``ว 2.2 ม.2`` by Wave D; its calculating
 half is what these sets cover, and it lands on four ``ฟิสิกส์เพิ่มเติม``
 outcomes that stood at zero sets:

@@ -157,18 +157,18 @@ question = REGISTRY["math.count_objects_p1"].generate(Random(42))
 ชุดโจทย์ที่ดัดแปลงจากแหล่งข้อมูลระบุที่มาไว้ ([SOURCES.md](SOURCES.md))
 และเจ้าของสิทธิ์ขอให้นำส่วนใดออกได้
 
-ผู้ดูแลที่มีสิทธิ์เข้าถึง clone คลังไว้ที่ `sheet_database/` (git ไม่ติดตามโฟลเดอร์นี้):
+ผู้ดูแลที่มีสิทธิ์เข้าถึง clone คลังไว้ที่ `openthaiknowledge-bank/` (git ไม่ติดตามโฟลเดอร์นี้):
 
 ```bash
 git lfs install   # ทำครั้งเดียวต่อเครื่อง: PDF ในคลังเป็น Git LFS object
-git clone https://github.com/KananatSSN/openthaiknowledge-bank.git sheet_database
+git clone https://github.com/KananatSSN/openthaiknowledge-bank.git openthaiknowledge-bank
 ```
 
 จากนั้นใช้ skill `sheet-bank` (`.agents/skills/sheet-bank`) ย่อยแหล่งข้อมูลตั้งแต่ต้นจนจบ
 และ `python -m otk.tools.sheetpipe bank fetch "<pattern>"` ดาวน์โหลด PDF ที่ต้องใช้
 
 ผู้ร่วมพัฒนาที่ไม่มีคลังนี้ก็ย่อยข้อสอบของตัวเองได้: วางไฟล์ไว้ที่
-`sheet_database/contrib/<ชื่อ GitHub ของคุณ>/` แล้วใช้ skill `sheet-to-generator`
+`openthaiknowledge-bank/contrib/<ชื่อ GitHub ของคุณ>/` แล้วใช้ skill `sheet-to-generator`
 (ดู [CONTRIBUTING.md](CONTRIBUTING.md)) ต้องเป็นข้อสอบที่คุณแต่งเองหรือมีสิทธิ์เผยแพร่
 
 ## Explorer

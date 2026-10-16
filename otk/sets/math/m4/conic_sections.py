@@ -177,7 +177,7 @@ class ConicGeneralFormM4(QuestionType):
         stem = [text("กราฟของสมการ"), content_math(general),
                 text(f"เป็น{name} {what}ของ{name}นี้คือข้อใด")]
         return _text_q(stem, right, wrongs, self.topic)
-ConicGeneralFormM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย',))
+ConicGeneralFormM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย',))
 
 
 @question_type("math.parabola_conic_m4",
@@ -284,7 +284,7 @@ class ConicFocalDefinitionM4(QuestionType):
         wrongs = [_radical(kk // 2, m), _radical(*_simplify_root(4 * (a * a + d * d))), str(2 * a),
                   str(2 * d)]
         return _tex_q(stem, right, wrongs, self.topic)
-ConicFocalDefinitionM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย',))
+ConicFocalDefinitionM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย',))
 
 
 @question_type("math.hyperbola_m4", display_name={"th": "ไฮเพอร์โบลา: โฟกัส จุดยอด และเส้นกำกับ"},

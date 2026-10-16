@@ -36,7 +36,7 @@ python -m otk.tools.sheetpipe figures  <pdf> <sheet_id>   #    ship the diagrams
 python -m otk.tools.sheetpipe list                        #    how green each sheet is
 ```
 
-What is in `sheet_database/` and how far each file has got is tracked in
+What is in `openthaiknowledge-bank/` and how far each file has got is tracked in
 `otk/sheets/bank.json`. Run `python -m otk.tools.sheetpipe bank status`
 to see it, and see [`SHEET_DIGESTION_PLAN.md`](SHEET_DIGESTION_PLAN.md) for
 the bank commands.
@@ -45,7 +45,7 @@ This guide covers sheets that get **one solver per question**, such as the
 สอวน. papers. Question banks (the rathcenter compilations: each question
 tagged with its exam, with choices and a worked solution) go through
 `sheetpipe convert` first. That writes a text digest per file to
-`sheet_database/_digest/`, and the knowledge-extraction stage works from
+`openthaiknowledge-bank/_digest/`, and the knowledge-extraction stage works from
 there.
 
 `sheet_id` is a package name under `otk/sheets/` — lowercase, no spaces, e.g.
@@ -60,7 +60,7 @@ without re-deriving anything.
 ## Stage 1 — `extract`
 
 ```bash
-python -m otk.tools.sheetpipe extract "sheet_database/สอวน_math/01-วิชาคณิตศาสตร์.pdf" posn2568_math
+python -m otk.tools.sheetpipe extract "openthaiknowledge-bank/สอวน_math/01-วิชาคณิตศาสตร์.pdf" posn2568_math
 ```
 
 Writes `otk/sheets/<sheet_id>/extract/`:

@@ -1,6 +1,6 @@
 """Wave F slice 1 — friction coefficient, mechanical equilibrium, fluid pressure and buoyancy.
 
-Built from ``sheet_database/Faii/ข้อสอบแรง.pdf``, a five-part Thai force paper
+Built from ``openthaiknowledge-bank/Faii/ข้อสอบแรง.pdf``, a five-part Thai force paper
 (แรงลัพธ์ / แรงเสียดทาน / ความดันและแรงพยุง / โมเมนต์ / สนามและแรงในสนาม).
 
 The sheet's *conceptual* half already has coverage: resultant force, the

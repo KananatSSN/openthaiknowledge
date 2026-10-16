@@ -1,7 +1,7 @@
 """Analytic-geometry sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found four units, exercised by A-level and กสพท questions
-in ``sheet_database/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย``, that no
+in ``openthaiknowledge-bank/rathcenter/7 เรขาคณิตวิเคราะห์ และภาคตัดกรวย``, that no
 problem set practised. The existing conic sets start from a standard form
 centred at the origin; the exams start from a general form or from foci:
 

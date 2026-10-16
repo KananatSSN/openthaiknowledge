@@ -228,7 +228,7 @@ class LogMixedBasesM5(QuestionType):
         # Subtracting inside (log bᵏ − log bʲ); k − j; the powers' ratio.
         named = [Fraction(k - j), Fraction(k - j, j), Fraction(b ** (k - j))]
         return _frac_q(stem, right, named, self.topic)
-LogMixedBasesM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/6 เอกโพเนนเชียล และ ลอการิทึม',))
+LogMixedBasesM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/6 เอกโพเนนเชียล และ ลอการิทึม',))
 
 
 @question_type("math.exp_log_graph_m4",
@@ -349,7 +349,7 @@ class LogEquationAdvancedM5(QuestionType):
         # b^k (the constant); b^(−k); b^(j + k).
         named = [Fraction(b) ** k, Fraction(b) ** -k, Fraction(b) ** (j + k)]
         return _frac_q(stem, right, named, self.topic)
-LogEquationAdvancedM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/6 เอกโพเนนเชียล และ ลอการิทึม',))
+LogEquationAdvancedM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/6 เอกโพเนนเชียล และ ลอการิทึม',))
 
 
 @question_type("math.log_inequality_m5",
@@ -392,7 +392,7 @@ class LogInequalityM5(QuestionType):
         wrongs = [interval_tex(flipped), rf"({frac_tex(t)}, \infty)", rf"(-\infty, {frac_tex(t)})",
                   rf"({frac_tex(lo)}, \infty)", rf"({frac_tex(t - 1)}, \infty)", rf"(-\infty, {frac_tex(lo)})"]
         return _tex_q(stem, interval_tex(iv), wrongs, self.topic)
-LogInequalityM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/6 เอกโพเนนเชียล และ ลอการิทึม',))
+LogInequalityM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/6 เอกโพเนนเชียล และ ลอการิทึม',))
 
 
 @question_type("math.logarithm_application_m4",

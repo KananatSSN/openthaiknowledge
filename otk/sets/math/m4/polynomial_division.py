@@ -260,7 +260,7 @@ class PolynomialUnknownCoefficientsM4(QuestionType):
             # The cofactor's sign flipped; a − b; b alone.
             wrongs = [(-m - s) + (t + s * m), a - b, b]
         return _num_maths(stem, str(right), [str(w) for w in wrongs if w != right], self.topic)
-PolynomialUnknownCoefficientsM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/3 จำนวนจริง',))
+PolynomialUnknownCoefficientsM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
 
 
 @question_type("math.remainder_arithmetic_m4",
@@ -298,7 +298,7 @@ class RemainderArithmeticM4(QuestionType):
         # a not squared; the sum not reduced (when it differs); c dropped.
         wrongs = [(ra * rb + rc) % m, ra * ra * rb + rc, (ra * ra * rb) % m, (right + 1) % m]
         return _count_q(stem, right, wrongs, self.topic)
-RemainderArithmeticM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/3 จำนวนจริง',))
+RemainderArithmeticM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
 
 
 @question_type("math.polynomial_long_division_m4",

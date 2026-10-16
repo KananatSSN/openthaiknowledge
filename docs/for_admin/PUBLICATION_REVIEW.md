@@ -38,8 +38,8 @@ are superseded by this decision; the recommendations are kept as the record.
 | 3 | Knowledge units `otk/knowledge/` | 45 files | Publish |
 | 4 | Team-written bank files: `notes/`, `specs/`, `fact_data/`, `outputs/*.md` | 21 files | Publish |
 | 5 | Official curriculum documents `docs/curriculum_sources/` | 31 files, 13 MB | Likely publishable; confirm |
-| 6 | Exam-compilation digests `sheet_database/_digest/` | 602 files, 8.8 MB | **Do not publish** |
-| 7 | Textbook transcripts `sheet_database/_transcribed/` | 97 files | **Do not publish** |
+| 6 | Exam-compilation digests `openthaiknowledge-bank/_digest/` | 602 files, 8.8 MB | **Do not publish** |
+| 7 | Textbook transcripts `openthaiknowledge-bank/_transcribed/` | 97 files | **Do not publish** |
 | 8 | Source PDF pointers and `misc/` | 317 files | Drop |
 | 9 | Digested olympiad papers `otk/sheets/posn25xx_math/` | 6 papers, 180 sets | **Keep private** (separate package) |
 | 10 | Bank-derived modules (`math_bank_*`, `science_wave_e7/f1/f2`) | 102 sets | Publish after rewording 12 sets and a look at 18 |
@@ -169,7 +169,7 @@ notes will list them), read the 18 science sets, and publish the rest as
 1. **Create a private companion repository** (`openthaiknowledge-bank`) for
    everything kept private: the bank (families 6–8) and, under option 9A, the
    `otk-papers` package. The sheet pipeline then reads the bank from a
-   configurable path instead of `sheet_database/` in this repository.
+   configurable path instead of `openthaiknowledge-bank/` in this repository.
 2. **Make the changes here** (families 9 and 10), with tests green and the
    golden draws updated only for the reworded sets.
 3. **Rewrite history**: everything removed must also leave the history, or it

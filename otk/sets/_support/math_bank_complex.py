@@ -2,7 +2,7 @@
 
 ``sheetpipe plan`` found four units of ``otk/knowledge/math/complex.json``,
 exercised by กสพท and A-level questions in
-``sheet_database/rathcenter/11 จำนวนเชิงซ้อน``, that no problem set practised (the last came with the (สสวท) exercises):
+``openthaiknowledge-bank/rathcenter/11 จำนวนเชิงซ้อน``, that no problem set practised (the last came with the (สสวท) exercises):
 
 =====================================  ==========================================
 unit                                   set

@@ -207,7 +207,7 @@ class InverseTrigSumM5(QuestionType):
         # Setting the arguments opposite; subtracting the wrong way; the value v itself.
         named = [Fraction(-(q + s), p + r), Fraction(q - s, p - r), Fraction(v)]
         return _frac_q(stem, Fraction(x0), named, self.topic)
-InverseTrigSumM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/8 ตรีโกณมิติ',))
+InverseTrigSumM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ',))
 
 
 @question_type("math.inverse_trig_negative",

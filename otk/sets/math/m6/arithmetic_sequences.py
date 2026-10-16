@@ -158,7 +158,7 @@ class SequenceTermsM6(QuestionType):
         # One step short; one step too many; the coefficient c dropped (Fibonacci rule).
         named = [recur_two(a1, a2, c, k - 1), recur_two(a1, a2, c, k + 1), recur_two(a1, a2, 1, k)]
         return _num_q(stem, recur_two(a1, a2, c, k), named, self.topic)
-SequenceTermsM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/14 ลำดับและอนุกรม',))
+SequenceTermsM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/14 ลำดับและอนุกรม',))
 
 
 @question_type("math.arithmetic_nth_term", display_name={"th": "พจน์ที่ n ของลำดับเลขคณิต"},
@@ -325,7 +325,7 @@ class ArithmeticSeriesTricksM6(QuestionType):
         named = [Fraction(c) ** j * Fraction(rho ** n - 1, rho - 1), exp_sum(rho, j, n - 1),
                  Fraction(rho ** n - 1, rho - 1)]
         return _num_q(stem, right, named, self.topic)
-ArithmeticSeriesTricksM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/14 ลำดับและอนุกรม',))
+ArithmeticSeriesTricksM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/14 ลำดับและอนุกรม',))
 
 
 @question_type("math.sequence_patterns_m6",
@@ -388,7 +388,7 @@ class SequencePatternsM6(QuestionType):
         # Starting the row one too late; k·first; the sum of rows 1 to k.
         _, nxt = triangle_row(k + 1)
         return _num_q(stem, total, [total + k, k * first, k * (k + 1) * (k * (k + 1) + 2) // 8, nxt], self.topic)
-SequencePatternsM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/14 ลำดับและอนุกรม',))
+SequencePatternsM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/14 ลำดับและอนุกรม',))
 
 
 @question_type("math.arithmetic_series_sum", display_name={"th": "ผลบวกอนุกรมเลขคณิต"},

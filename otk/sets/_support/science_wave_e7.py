@@ -7,7 +7,7 @@ applies: Foundation ``standard_scope``, Fluency ``exact``, Application
 ``standard_scope``.
 
 Built to fill the one real gap found while writing
-``sheet_database/outputs/teaching_plan/ข้อสอบแรง.md``: the sheet's ตอน 1 ข้อ 1, 2 and 4 ask which
+``openthaiknowledge-bank/outputs/teaching_plan/ข้อสอบแรง.md``: the sheet's ตอน 1 ข้อ 1, 2 and 4 ask which
 quantities are vectors, and nothing in the catalog answered that. The only
 ``เวกเตอร์`` sets were mathematics (``math.vectors``, ``math.vector_add`` —
 vector algebra in two dimensions), which is a different thing from knowing that

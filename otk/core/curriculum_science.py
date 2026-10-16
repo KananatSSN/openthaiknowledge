@@ -1238,7 +1238,7 @@ SCIENCE_PLACEMENTS: dict[str, SciencePlacementSpec] = {
     "phys.em_comms_foundation": SciencePlacementSpec(BASIC, "ม.5", "ว 2", "ว 2.3", ("ว 2.3 ม.5/12",), "การสื่อสารด้วยคลื่นแม่เหล็กไฟฟ้า และสัญญาณแอนะล็อกกับสัญญาณดิจิทัล", "exact"),
     "phys.em_comms_fluency": SciencePlacementSpec(BASIC, "ม.5", "ว 2", "ว 2.3", ("ว 2.3 ม.5/12",), "การสื่อสารด้วยคลื่นแม่เหล็กไฟฟ้า และสัญญาณแอนะล็อกกับสัญญาณดิจิทัล", "exact"),
     "phys.em_comms_application": SciencePlacementSpec(BASIC, "ม.5", "ว 2", "ว 2.3", ("ว 2.3 ม.5/12",), "การสื่อสารด้วยคลื่นแม่เหล็กไฟฟ้า และสัญญาณแอนะล็อกกับสัญญาณดิจิทัล", "standard_scope"),
-    # Phase 5 Wave F slice 1 — the calculating half of sheet_database/Faii/ข้อสอบแรง.pdf.
+    # Phase 5 Wave F slice 1 — the calculating half of openthaiknowledge-bank/Faii/ข้อสอบแรง.pdf.
     # Four ฟิสิกส์เพิ่มเติม outcomes that stood at zero sets; the sheet's conceptual
     # half is already filed under ว 2.2 ม.2 by Wave D.
     "phys.friction_coefficient_foundation": SciencePlacementSpec(ADDITIONAL, "ม.4", "ฟิสิกส์เพิ่มเติม", "ฟิสิกส์ 1", ("ฟิสิกส์เพิ่มเติม 1 ม.4/7",), "แรงเสียดทานและสัมประสิทธิ์ความเสียดทาน", "additional_outcome"),
@@ -4075,7 +4075,7 @@ SCIENCE_WAVE_E_APPROVED_KEYS = frozenset({
 })
 # Phase 5 Wave F opens the additional-science courses (ฟิสิกส์/เคมี/ชีววิทยา/
 # โลกฯ เพิ่มเติม). Slice 1 is the calculating half of
-# sheet_database/Faii/ข้อสอบแรง.pdf: สัมประสิทธิ์ความเสียดทาน (ฟิสิกส์ 1 ม.4/7),
+# openthaiknowledge-bank/Faii/ข้อสอบแรง.pdf: สัมประสิทธิ์ความเสียดทาน (ฟิสิกส์ 1 ม.4/7),
 # สมดุลกลและผลรวมของโมเมนต์ (ฟิสิกส์ 1 ม.4/8), ความดันเกจและความดันสัมบูรณ์
 # (ฟิสิกส์ 4 ม.6/3), and แรงพยุงจากของไหล (ฟิสิกส์ 4 ม.6/4). Wave E's remaining
 # 28 ม.5 core indicators are untouched by this slice and stay open.

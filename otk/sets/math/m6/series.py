@@ -235,7 +235,7 @@ class TelescopingSeriesM6(QuestionType):
         wrongs = [rf"{n} \cdot 2^{{{e}}} + {c}", rf"{a} \cdot 2^{{{n}}} + {c}", rf"{a} \cdot 2^{{{e}}} - {c}",
                   rf"{n} \cdot 2^{{{n}}}"]
         return _tex_q(stem, right, wrongs, self.topic)
-TelescopingSeriesM6.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/14 ลำดับและอนุกรม',))
+TelescopingSeriesM6.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/14 ลำดับและอนุกรม',))
 
 
 @question_type("math.repeating_decimal_to_fraction",

@@ -1,17 +1,17 @@
 ---
 name: sheet-bank
-description: Digest sheets added to sheet_database/ end to end — index them, turn them into text (splitters for text PDFs, parallel sheet-transcriber subagents for picture-maths PDFs), claim every question with a knowledge unit, build problem sets for the gaps, test, and commit. Use when the user adds sheets to the bank, asks to "digest", "continue the bank", "transcribe the (สสวท) files", or asks what is left.
+description: Digest sheets added to openthaiknowledge-bank/ end to end — index them, turn them into text (splitters for text PDFs, parallel sheet-transcriber subagents for picture-maths PDFs), claim every question with a knowledge unit, build problem sets for the gaps, test, and commit. Use when the user adds sheets to the bank, asks to "digest", "continue the bank", "transcribe the (สสวท) files", or asks what is left.
 ---
 
 # Sheet bank → knowledge → problem sets
 
-The bank is `sheet_database/`: a separate, private repository
+The bank is `openthaiknowledge-bank/`: a separate, private repository
 (KananatSSN/openthaiknowledge-bank) cloned there and ignored by this one; only
 maintainers have it (`sheetpipe` checks with `bank.has_private_bank()`). If it
 is missing, stop: to digest a paper of your own, use the `sheet-to-generator`
 skill and its "Your own paper" section instead. Commit bank files (digests,
 transcripts, notes) in the bank repository; commit everything else here.
-Layout: `sheet_database/README.md`. Its index
+Layout: `openthaiknowledge-bank/README.md`. Its index
 is `otk/sheets/bank.json`; every file moves through the stages
 `new → converted → extracted → generated` (or `ignored`). The progress log is
 `docs/for_admin/SHEET_DIGESTION_PLAN.md` — read its §3 and §6 first, and add a

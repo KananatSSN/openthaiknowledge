@@ -264,7 +264,7 @@ class CompoundingPeriodsM5(QuestionType):
         named = [simple, interest_earned(p, rate / 100, periods), interest_earned(p, i, periods - 1)]
         fmt = lambda v: money(Fraction(v))
         return _tex_q(stem, fmt(right), [fmt(w) for w in named] + [fmt(right + 1), fmt(right * 2)], self.topic)
-CompoundingPeriodsM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/14 ลำดับและอนุกรม',))
+CompoundingPeriodsM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/14 ลำดับและอนุกรม',))
 
 
 @question_type("math.present_value_m5", display_name={"th": "มูลค่าปัจจุบันของเงิน"},

@@ -23,7 +23,7 @@ from otk.sets._support.science_wave_f1 import (
     _numeric,
 )
 
-PROVENANCE = Provenance("adapted", sources=('sheet_database/Faii/ข้อสอบแรง.pdf',))
+PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/Faii/ข้อสอบแรง.pdf',))
 
 
 TOPIC_GAUGE_PRESSURE = "ความดันเกจและความดันสัมบูรณ์"

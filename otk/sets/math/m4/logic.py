@@ -411,7 +411,7 @@ class LogicCompoundValueM4(QuestionType):
         given = " ".join(f"{n} มีค่าความจริงเป็น{_tf(env[n])}" for n in names)
         stem = [text(f"กำหนดให้ {given} ประพจน์ในข้อใดมีค่าความจริงเป็น{_tf(want)}")]
         return _math_q(stem, tex(right), [tex(w) for w in wrongs], self.topic)
-LogicCompoundValueM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/2 ตรรกศาสตร์',))
+LogicCompoundValueM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/2 ตรรกศาสตร์',))
 
 
 @question_type("math.proposition_identify_m4",
@@ -447,7 +447,7 @@ class LogicDeduceValuesM4(QuestionType):
         stem = [text("ให้ p, q และ r เป็นประพจน์ ถ้า"), content_math(tex(premise)),
                 text(f"มีค่าความจริงเป็น{_tf(value)} ประพจน์ในข้อใดมีค่าความจริงเป็น{_tf(want)}")]
         return _math_q(stem, tex(right), [tex(w) for w in wrongs], self.topic)
-LogicDeduceValuesM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/2 ตรรกศาสตร์',))
+LogicDeduceValuesM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/2 ตรรกศาสตร์',))
 
 
 @question_type("math.logic_verbal_deduction_m4",
@@ -463,7 +463,7 @@ class LogicVerbalDeductionM4(QuestionType):
         stem = [text(f"กำหนดให้ประพจน์ {given} ประพจน์ในข้อใดมีค่าความจริงเป็น{_tf(want)}")]
         return _text_q(stem, thai(right, who, verbs), [thai(f, who, verbs) for f in options],
                        self.topic)
-LogicVerbalDeductionM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/2 ตรรกศาสตร์',))
+LogicVerbalDeductionM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/2 ตรรกศาสตร์',))
 
 
 @question_type("math.logic_quantifier_finite_m4",
@@ -495,7 +495,7 @@ class LogicQuantifierFiniteM4(QuestionType):
         u = "{" + ", ".join(map(str, U)) + "}"
         stem = [text(f"ให้เอกภพสัมพัทธ์ U = {u} ข้อความในข้อใดมีค่าความจริงเป็น{_tf(want)}")]
         return _math_q(stem, right, wrongs, self.topic)
-LogicQuantifierFiniteM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/2 ตรรกศาสตร์',))
+LogicQuantifierFiniteM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/2 ตรรกศาสตร์',))
 
 
 @question_type("math.quantifier_truth_m4",
@@ -559,7 +559,7 @@ class LogicTautologyM4(QuestionType):
                else "ข้อใดต่อไปนี้เป็นสัจนิรันดร์")
         stem = [text(f"ให้ p, q และ r เป็นประพจน์ {ask}")]
         return _math_q(stem, tex(right), [tex(w) for w in wrongs], self.topic)
-LogicTautologyM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/2 ตรรกศาสตร์',))
+LogicTautologyM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/2 ตรรกศาสตร์',))
 
 
 @question_type("math.logic_custom_connective_m4",
@@ -594,7 +594,7 @@ class LogicCustomConnectiveM4(QuestionType):
         stem = [text("กำหนดให้ p และ q เป็นประพจน์ และ p ∗ q มีค่าความจริงดังตาราง"),
                 text("\n".join(rows)), text(ask)]
         return _math_q(stem, tex(right), [tex(w) for w in wrongs], self.topic)
-LogicCustomConnectiveM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/2 ตรรกศาสตร์',))
+LogicCustomConnectiveM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/2 ตรรกศาสตร์',))
 
 
 @question_type("math.logic_equivalence_m4",

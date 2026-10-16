@@ -1,7 +1,7 @@
 """เลขยกกำลัง-chapter sets built from the sheet bank's knowledge units.
 
 ``sheetpipe plan`` found five units, exercised by A-level, กสพท and O-NET
-questions in ``sheet_database/rathcenter/5 เลขยกกำลัง``, that no problem set
+questions in ``openthaiknowledge-bank/rathcenter/5 เลขยกกำลัง``, that no problem set
 practised:
 
 =====================================  ==========================================  ==================================

@@ -137,7 +137,7 @@ class QuadraticDiscriminantM3(QuestionType):
         # The boundary itself; the positive twin; −p/2 truncated.
         wrongs = [right + 1, -right, -(p // 2)]
         return _num_maths(stem, str(right), [str(w) for w in wrongs if w != right], self.topic)
-QuadraticDiscriminantM3.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/3 จำนวนจริง',))
+QuadraticDiscriminantM3.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
 
 
 @question_type("math.quadratic_word_problem_m3",

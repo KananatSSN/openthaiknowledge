@@ -377,7 +377,7 @@ class TrigRadianArcM5(QuestionType):
         wrongs = [deg * r, deg * r * r, 180 - deg if deg < 180 else deg - 180, deg / 2, deg * 2]
         fmt = lambda d: rf"{frac_tex(Fraction(d))}^{{\circ}}"
         return _tex_q(stem, fmt(deg), [fmt(w) for w in wrongs], self.topic)
-TrigRadianArcM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/8 ตรีโกณมิติ',))
+TrigRadianArcM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ',))
 
 
 @question_type("math.trig_reduction_m5",
@@ -398,7 +398,7 @@ class TrigReductionM5(QuestionType):
         # The sign lost; the function kept (or swapped) wrongly; both.
         wrongs = [fmt(-out_sign, g), fmt(out_sign, other), fmt(-out_sign, other)]
         return _tex_q(stem, fmt(out_sign, g), wrongs, self.topic)
-TrigReductionM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/8 ตรีโกณมิติ',))
+TrigReductionM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ',))
 
 
 @question_type("math.trig_graph_m5",
@@ -472,7 +472,7 @@ class TrigIdentityReduceM5(QuestionType):
             wrongs.append(root_tex((1 + slip) / 2))
         wrongs += [root_tex(1 + c2), root_tex((1 + c2) / 4)]
         return _tex_q(stem, right, wrongs, self.topic)
-TrigIdentityReduceM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/8 ตรีโกณมิติ',))
+TrigIdentityReduceM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ',))
 
 
 @question_type("math.trig_product_sum_m5",
@@ -520,7 +520,7 @@ class TrigProductSumM5(QuestionType):
         # Doubled, halved, sign flipped.
         return _tex_q(stem, frac_tex(value), [frac_tex(value * 2), frac_tex(value / 2), frac_tex(-value),
                                               frac_tex(value * 4)], self.topic)
-TrigProductSumM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/8 ตรีโกณมิติ',))
+TrigProductSumM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ',))
 
 
 @question_type("math.sine_graph_picture_m5",

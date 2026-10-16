@@ -2,7 +2,7 @@
 
 ``sheetpipe plan`` found units of the real-numbers chapter that no problem
 set practised, all exercised by กสพท and O-NET questions in
-``sheet_database/rathcenter/3 จำนวนจริง``. The chapter spans several registry
+``openthaiknowledge-bank/rathcenter/3 จำนวนจริง``. The chapter spans several registry
 topics, so each set is filed with the existing sets of its own topic:
 
 =====================================  ==========================================  ==============

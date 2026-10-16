@@ -19,7 +19,7 @@ You can also propose your own: a topic that deserves more practice, or a
 source you are allowed to use. Open an issue first.
 
 **Digesting an exam paper of your own** (one you wrote, or may publish): put the
-PDF in `sheet_database/contrib/<your GitHub name>/` (git ignores that folder, so
+PDF in `openthaiknowledge-bank/contrib/<your GitHub name>/` (git ignores that folder, so
 the PDF is never committed) and ask your agent to use the `sheet-to-generator`
 skill. Its "Your own paper" section has the steps. The paper's question text is
 published with the generators, so the rights must be yours to give.

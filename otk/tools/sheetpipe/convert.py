@@ -1,7 +1,7 @@
 """Stage 2: a bank file in, a text digest out.
 
 ``sheetpipe convert <bank path | glob>`` picks a splitter from the file's
-probed layout and writes two files under ``sheet_database/_digest/``, at the
+probed layout and writes two files under ``openthaiknowledge-bank/_digest/``, at the
 file's bank path:
 
 * ``<name>.json`` — the machine-readable digest. It has the source path and
@@ -12,7 +12,7 @@ file's bank path:
 The digest is committed. The PDFs are gitignored, so it is the only form of a
 sheet's text that a checkout, a reviewer, or a later session can see.
 
-A sheet with a hand transcript (``sheet_database/_transcribed/<bank
+A sheet with a hand transcript (``openthaiknowledge-bank/_transcribed/<bank
 path>.md``, see :mod:`.transcript`) is read from that, and needs no PDF.
 Otherwise, a sheet whose bank record names an ``answer_key`` (a separate file holding
 its answers, as with the ``(rath)`` trigonometry notes) is split by
@@ -67,7 +67,7 @@ def render_md(entry: bk.BankEntry, items: list[choiceblock.Item],
               transcribed: bool = False) -> str:
     how = "transcribed by eye" if transcribed else f"layout `{entry.layout}`"
     out = [f"# {Path(entry.path).stem}", "",
-           f"Source: `sheet_database/{entry.path}` · {len(items)} questions · {how}", ""]
+           f"Source: `openthaiknowledge-bank/{entry.path}` · {len(items)} questions · {how}", ""]
     for it in items:
         head = f"## {it.number}"
         if it.section:

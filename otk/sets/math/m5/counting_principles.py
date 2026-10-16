@@ -117,7 +117,7 @@ class CountingComplementM5(QuestionType):
         right = above_power_of_ten(b, n)
         # Allowing a leading 0; not removing 10…0 itself; bⁿ⁻¹.
         return _num_q(stem, right, [b ** n - 1, right + 1, b ** (n - 1)], self.topic)
-CountingComplementM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/12 หลักการนับ',))
+CountingComplementM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/12 หลักการนับ',))
 
 
 @question_type("math.counting_menu", display_name={"th": "หลักการคูณ: การเลือกชุดอาหาร"},
@@ -170,7 +170,7 @@ class ColoringRegionsM5(QuestionType):
         # Treating the parts as a row; every part a different colour; k(k − 1)³ for a cycle as if open.
         named = [colourings("path", k, 4), perm(k, 4), colourings("triangle_plus", k), colourings("cycle", k)]
         return _num_q(stem, right, [v for v in named if v != right], self.topic)
-ColoringRegionsM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/12 หลักการนับ',))
+ColoringRegionsM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/12 หลักการนับ',))
 
 
 @question_type("math.stars_bars_m5",

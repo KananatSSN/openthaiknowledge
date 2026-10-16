@@ -338,7 +338,7 @@ class VectorPointsM5(QuestionType):
                   cos_tex(d2, m1, m2) if d2 and m1 and m2 else frac_tex(Fraction(dd, n1 + n2)),
                   frac_tex(Fraction(dd, n1 + n2))]
         return _tex_q(stem, cos_tex(dd, n1, n2), wrongs, self.topic)
-VectorPointsM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/10 เวกเตอร์',))
+VectorPointsM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/10 เวกเตอร์',))
 
 
 @question_type("math.vector_dot_product_m5", display_name={"th": "ผลคูณเชิงสเกลาร์ของเวกเตอร์"},
@@ -487,7 +487,7 @@ class VectorTripleProductM5(QuestionType):
         rng.shuffle(wrongs)
         fmt = lambda v: rf"\vec{{v}} = {ijk_tex(v)}"
         return _tex_q(stem, fmt(right), [fmt(w) for w in wrongs], self.topic)
-VectorTripleProductM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/10 เวกเตอร์',))
+VectorTripleProductM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/10 เวกเตอร์',))
 
 
 @question_type("math.vector_identity_m5",
@@ -540,7 +540,7 @@ class VectorIdentityM5(QuestionType):
         stem.append(text("จำนวนข้อความที่ถูกต้องเท่ากับเท่าใด"))
         wrongs = [str(v) for v in sorted(range(5), key=lambda v: abs(v - right)) if v != right]
         return _tex_q(stem, str(right), wrongs, self.topic)
-VectorIdentityM5.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/10 เวกเตอร์',))
+VectorIdentityM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/10 เวกเตอร์',))
 
 
 @question_type("math.vector_cross_product_m5", display_name={"th": "ผลคูณเชิงเวกเตอร์และพื้นที่"},

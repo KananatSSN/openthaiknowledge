@@ -66,7 +66,7 @@ the release.
 Step-by-step procedures live in `.agents/skills/` (Claude Code also finds them
 through `.claude/skills/`):
 
-- `sheet-bank` — digest sources in `sheet_database/` end to end (maintainers only: the bank is a private repository cloned there).
+- `sheet-bank` — digest sources in `openthaiknowledge-bank/` end to end (maintainers only: the bank is a private repository cloned there).
 - `sheet-to-generator` — turn one exam paper into per-question generators (contributors: a paper of your own; see its "Your own paper" section).
 - `sheet-transcriber` — transcribe one picture-maths PDF and verify its answers.
 

@@ -213,7 +213,7 @@ class PiecewiseFunctionM4(QuestionType):
         # Rounding down; charging every hour at the extra rate; forgetting the first block.
         named = [first + extra * math.floor(t - h), extra * math.ceil(t), extra * math.ceil(t - h)]
         return _num_maths(stem, str(right), [str(w) for w in named if w != right], self.topic)
-PiecewiseFunctionM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/4 ฟังก์ชัน',))
+PiecewiseFunctionM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/4 ฟังก์ชัน',))
 
 
 @question_type("math.relation_pairs_m4",
@@ -265,7 +265,7 @@ class RelationPairsM4(QuestionType):
                 text("จุดในข้อใดอยู่ในความสัมพันธ์ r")]
         fmt = lambda p: f"({p[0]}, {p[1]})"
         return _tex_q(stem, fmt(good[0]), [fmt(p) for p in bad[:3]], self.topic)
-RelationPairsM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/4 ฟังก์ชัน',))
+RelationPairsM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/4 ฟังก์ชัน',))
 
 
 @question_type("math.function_arithmetic_m4", display_name={"th": "การบวก ลบ คูณ และหารฟังก์ชัน"},
@@ -382,7 +382,7 @@ class GraphInequalityParametersM4(QuestionType):
                      f"[0, {s}] แล้ว f({_minus(t)}) + g({_minus(t)}) มีค่าเท่ากับเท่าใด")]
         named = [f_t - g_t, g_t, alpha * t * t + beta * (t + h) ** 2 + top]
         return _frac_q(stem, right, named, self.topic)
-GraphInequalityParametersM4.PROVENANCE = Provenance("adapted", sources=('sheet_database/rathcenter/4 ฟังก์ชัน',))
+GraphInequalityParametersM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/4 ฟังก์ชัน',))
 
 
 @question_type("math.cost_revenue_function_m4",

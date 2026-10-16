@@ -12,7 +12,7 @@ keeps two-column choices on one line. Expect small slips, such as ``ข้าย
 
 **What it is not good for.** Mathematics. Exponents, fractions and radicals
 come out garbled. Transcribe those pages from the render, as
-``sheet_database/สอวน_math/HANDOFF.md`` describes.
+``openthaiknowledge-bank/สอวน_math/HANDOFF.md`` describes.
 
 Setup (Windows)::
 

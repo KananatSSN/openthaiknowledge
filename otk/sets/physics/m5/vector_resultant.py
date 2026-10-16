@@ -16,7 +16,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 
-PROVENANCE = Provenance("adapted", sources=('sheet_database/outputs/teaching_plan/ข้อสอบแรง.md',))
+PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/outputs/teaching_plan/ข้อสอบแรง.md',))
 
 
 SUBJECT = "ฟิสิกส์"
