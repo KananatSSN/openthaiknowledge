@@ -95,3 +95,11 @@ from . import antipodal_bijection_maximum  # noqa: F401
 from . import incircle_arc_midpoint_power  # noqa: F401
 from . import regular_vertex_triangle_dissection  # noqa: F401
 from . import wilson_reflection_factorial  # noqa: F401
+from . import isosceles_extension_angles  # noqa: F401
+from . import two_solution_functional  # noqa: F401
+from . import lattice_walk_signed_distances  # noqa: F401
+from . import exponential_divisor_polynomials  # noqa: F401
+from . import cyclic_ratio_product_bound  # noqa: F401
+from . import prime_quadratic_cube  # noqa: F401
+from . import parallel_chord_circumcenters  # noqa: F401
+from . import factorial_card_cover  # noqa: F401

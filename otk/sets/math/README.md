@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,345 sets in 307 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,353 sets in 315 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -312,6 +312,7 @@
 | [`convex_boundary_triangles`](olympiad/convex_boundary_triangles.py) | Count triangles formed by marked points on a convex polygon boundary. | — | 1 |
 | [`coprime_square_difference_quotient`](olympiad/coprime_square_difference_quotient.py) | Count coprime pairs making k·a(a²+b²)/(a²−b²) an integer. | — | 1 |
 | [`cyclic_cube_product_maximum`](olympiad/cyclic_cube_product_maximum.py) | Optimize a cyclic product under a sum of cube roots. | — | 1 |
+| [`cyclic_ratio_product_bound`](olympiad/cyclic_ratio_product_bound.py) | Largest k with Π(k + a/b) ≤ c·(Σ a/b)(Σ b/a) for all positive a, b, c. | — | 1 |
 | [`cyclic_sixth_power_inequality`](olympiad/cyclic_sixth_power_inequality.py) | Minimize a cyclic sixth-power expression under a fixed sum. | — | 1 |
 | [`descending_password_suffix`](olympiad/descending_password_suffix.py) | Find feasible password endings under parity and descending-order rules. | — | 1 |
 | [`diagonal_strip_lamps`](olympiad/diagonal_strip_lamps.py) | Dominate a one-cell-wide lattice strip with unit-radius lamps. | — | 1 |
@@ -323,6 +324,8 @@
 | [`equal_links_circle_angle`](olympiad/equal_links_circle_angle.py) | Central angle from four equal links on a circle chord. | — | 1 |
 | [`equal_share_redistribution`](olympiad/equal_share_redistribution.py) | Recover an original equally shared population from two redistributions. | — | 1 |
 | [`equiangular_hexagon_diagonals`](olympiad/equiangular_hexagon_diagonals.py) | Recover a symmetric side expression from three equiangular-hexagon diagonals. | — | 1 |
+| [`exponential_divisor_polynomials`](olympiad/exponential_divisor_polynomials.py) | Integer polynomials with P(n) | bⁿ + K for every n are the divisors of a gcd. | — | 1 |
+| [`factorial_card_cover`](olympiad/factorial_card_cover.py) | Fewest factorial cards whose subset sums reach every t ≤ n!. | — | 1 |
 | [`factorial_offset_polynomial_divisors`](olympiad/factorial_offset_polynomial_divisors.py) | Classify polynomial divisors of factorials with a fixed offset. | — | 1 |
 | [`fifth_power_pair_remainders`](olympiad/fifth_power_pair_remainders.py) | Reduce paired fifth-power numerators modulo a sum of squares. | — | 1 |
 | [`functional_equation_value_set`](olympiad/functional_equation_value_set.py) | Classify a cubic functional equation after scaling its coefficient. | — | 1 |
@@ -335,7 +338,9 @@
 | [`incircle_bisector_equal_segments`](olympiad/incircle_bisector_equal_segments.py) | Compare two bisector intersections in an incircle triangle. | — | 1 |
 | [`integer_recurrence_rigidity`](olympiad/integer_recurrence_rigidity.py) | A divisibility recurrence with a unique positive-integer sequence. | — | 1 |
 | [`integer_valued_product_inequality`](olympiad/integer_valued_product_inequality.py) | Classify integer-valued functions obeying a product inequality. | — | 1 |
+| [`isosceles_extension_angles`](olympiad/isosceles_extension_angles.py) | Angles after extending the leg of an isosceles triangle by its base. | — | 1 |
 | [`isosceles_tangent_midpoint`](olympiad/isosceles_tangent_midpoint.py) | Locate a cross-pair tangent chord in an isosceles triangle. | — | 1 |
+| [`lattice_walk_signed_distances`](olympiad/lattice_walk_signed_distances.py) | Signed distances recorded along a lattice walk telescope to Δ(xy). | — | 1 |
 | [`lcm_difference_set`](olympiad/lcm_difference_set.py) | Locate the maximum of a set closed under an LCM quotient. | — | 1 |
 | [`leading_digit_passwords`](olympiad/leading_digit_passwords.py) | Count codes with an initial digit, nonadjacent digits, and unique letters. | — | 1 |
 | [`minimum_tail_squares`](olympiad/minimum_tail_squares.py) | Maximize the earlier square sum by minimizing a fixed-sum tail. | — | 1 |
@@ -351,6 +356,7 @@
 | [`opposite_midpoint_chords`](olympiad/opposite_midpoint_chords.py) | A vector identity among opposite-side midpoint chords of a hexagon. | — | 1 |
 | [`orthocenter_circumcircle_collinearity`](olympiad/orthocenter_circumcircle_collinearity.py) | Slope of a collinear triple in an acute orthocenter construction. | — | 1 |
 | [`overlapping_boxes_probability`](olympiad/overlapping_boxes_probability.py) | Probability of distinct labels from three overlapping boxes. | — | 1 |
+| [`parallel_chord_circumcenters`](olympiad/parallel_chord_circumcenters.py) | O₁O₂ is constant when E on CD makes BE ∥ AD: it equals AB/(2 sin ∠ADC). | — | 1 |
 | [`pentagon_bisector_circumcenter`](olympiad/pentagon_bisector_circumcenter.py) | Angles in a pentagon whose diagonal bisects two angles at right-angle feet. | — | 1 |
 | [`perpendicular_chords`](olympiad/perpendicular_chords.py) | Area of a circle from two intersecting perpendicular chords. | — | 1 |
 | [`polynomial_product_avoidance`](olympiad/polynomial_product_avoidance.py) | Degrees of integer polynomials whose value sets avoid products. | — | 1 |
@@ -362,6 +368,7 @@
 | [`posn2567`](olympiad/posn2567.py) | พหุนามสมมาตร | — | 30 |
 | [`posn2568`](olympiad/posn2568.py) | สมการเชิงเส้นบนเลขโดด | — | 30 |
 | [`prefix_pigeonhole`](olympiad/prefix_pigeonhole.py) | Pigeonhole and discrete intermediate values for signed prefix sums. | — | 1 |
+| [`prime_quadratic_cube`](olympiad/prime_quadratic_cube.py) | Primes p making αp² − βp − 1 a perfect cube, built from the n + 1 = p case. | — | 1 |
 | [`purple_grid_threshold`](olympiad/purple_grid_threshold.py) | Minimum marked cells under a missing-cell degree-product condition. | — | 1 |
 | [`quadratic_irrational_reduction`](olympiad/quadratic_irrational_reduction.py) | Reduce a high-degree quotient at a quadratic irrational. | — | 1 |
 | [`rational_recurrence`](olympiad/rational_recurrence.py) | Starting values of an infinite rational quadratic recurrence. | — | 1 |
@@ -387,6 +394,7 @@
 | [`three_orientation_volume`](olympiad/three_orientation_volume.py) | Recover a rectangular box's capacity from three water depths. | — | 1 |
 | [`three_semicircles_triangle`](olympiad/three_semicircles_triangle.py) | Area of an equilateral triangle from three tangent semicircles. | — | 1 |
 | [`totient_factorial_divisibility`](olympiad/totient_factorial_divisibility.py) | Use cycle generators to explain a totient divisibility. | — | 1 |
+| [`two_solution_functional`](olympiad/two_solution_functional.py) | f(xy − 1) + f(x)f(y) = 2xy − 1 has exactly the solutions x and −x². | — | 1 |
 | [`weighted_cyclic_inequality`](olympiad/weighted_cyclic_inequality.py) | A sharp Cauchy and AM–GM bound for cyclic denominators. | — | 1 |
 | [`wilson_consecutive_product`](olympiad/wilson_consecutive_product.py) | Use Wilson's theorem to reduce a near-complete residue product. | — | 1 |
 | [`wilson_reflection_factorial`](olympiad/wilson_reflection_factorial.py) | n! modulo a prime p from Wilson's theorem when n is close to p. | — | 1 |

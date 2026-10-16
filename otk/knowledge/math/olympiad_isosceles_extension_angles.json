@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สามเหลี่ยม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.isosceles-extension-angles",
+      "kind": "procedure",
+      "title": "มุมจากการต่อด้านของสามเหลี่ยมหน้าจั่วด้วยความยาวฐาน",
+      "statement": "ในสามเหลี่ยมหน้าจั่ว AB = AC ที่ ∠BAC = θ ต่อ AB ออกไปทาง B ถึง E โดย BE = BC จะได้ ∠CBE = 90° + θ/2 รูปสามเหลี่ยม BCE เป็นหน้าจั่ว จึง ∠BEC = ∠BCE = 45° − θ/4 และ ∠ACE = 135° − 3θ/4 เมื่อ θ = 100° ได้ ∠AEC = 20° และ ∠ACE = 60° ถ้า AD = BC ด้วย จะได้ DE = AB = AC และ BD = BC − AB ข้อพิสูจน์ BC · DE = BD · CE ลดเหลือ CE/AC = BC/BD ซึ่งจากกฎของไซน์ในรูปสามเหลี่ยม ACE คือ sin 100°/sin 20° = 2 sin 50°/(2 sin 50° − 1) และเท่ากันเพราะ 2 sin 50°(sin 80° − sin 20°) = 2 sin 50° cos 50° = sin 80°",
+      "steps": [
+        "หามุมภายนอก ∠CBE แล้วใช้รูปสามเหลี่ยมหน้าจั่ว BCE",
+        "แปลง DE และ BD เป็นความยาวด้านของรูปสามเหลี่ยมเดิม",
+        "เทียบอัตราส่วนด้วยกฎของไซน์และเอกลักษณ์ผลต่างของไซน์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-57-math.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "math.isosceles_extension_angles_olympiad"
+      ]
+    }
+  ]
+}

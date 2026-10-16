@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-3,759 sets in 1,089 unit files. Each subject's `README.md` lists its units with their indicators.
+3,767 sets in 1,097 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -314,6 +314,7 @@
 | [`convex_boundary_triangles.py`](math/olympiad/convex_boundary_triangles.py) | Count triangles formed by marked points on a convex polygon boundary. | `math.convex_boundary_triangles_olympiad` |
 | [`coprime_square_difference_quotient.py`](math/olympiad/coprime_square_difference_quotient.py) | Count coprime pairs making k·a(a²+b²)/(a²−b²) an integer. | `math.coprime_square_difference_quotient_olympiad` |
 | [`cyclic_cube_product_maximum.py`](math/olympiad/cyclic_cube_product_maximum.py) | Optimize a cyclic product under a sum of cube roots. | `math.cyclic_cube_product_maximum_olympiad` |
+| [`cyclic_ratio_product_bound.py`](math/olympiad/cyclic_ratio_product_bound.py) | Largest k with Π(k + a/b) ≤ c·(Σ a/b)(Σ b/a) for all positive a, b, c. | `math.cyclic_ratio_product_bound_olympiad` |
 | [`cyclic_sixth_power_inequality.py`](math/olympiad/cyclic_sixth_power_inequality.py) | Minimize a cyclic sixth-power expression under a fixed sum. | `math.cyclic_sixth_power_inequality_olympiad` |
 | [`descending_password_suffix.py`](math/olympiad/descending_password_suffix.py) | Find feasible password endings under parity and descending-order rules. | `math.descending_password_suffix_olympiad` |
 | [`diagonal_strip_lamps.py`](math/olympiad/diagonal_strip_lamps.py) | Dominate a one-cell-wide lattice strip with unit-radius lamps. | `math.diagonal_strip_lamps_olympiad` |
@@ -325,6 +326,8 @@
 | [`equal_links_circle_angle.py`](math/olympiad/equal_links_circle_angle.py) | Central angle from four equal links on a circle chord. | `math.equal_links_circle_central_angle_olympiad` |
 | [`equal_share_redistribution.py`](math/olympiad/equal_share_redistribution.py) | Recover an original equally shared population from two redistributions. | `math.equal_share_redistribution_olympiad` |
 | [`equiangular_hexagon_diagonals.py`](math/olympiad/equiangular_hexagon_diagonals.py) | Recover a symmetric side expression from three equiangular-hexagon diagonals. | `math.equiangular_hexagon_diagonals_olympiad` |
+| [`exponential_divisor_polynomials.py`](math/olympiad/exponential_divisor_polynomials.py) | Integer polynomials with P(n) | bⁿ + K for every n are the divisors of a gcd. | `math.exponential_divisor_polynomials_olympiad` |
+| [`factorial_card_cover.py`](math/olympiad/factorial_card_cover.py) | Fewest factorial cards whose subset sums reach every t ≤ n!. | `math.factorial_card_cover_olympiad` |
 | [`factorial_offset_polynomial_divisors.py`](math/olympiad/factorial_offset_polynomial_divisors.py) | Classify polynomial divisors of factorials with a fixed offset. | `math.factorial_offset_polynomial_divisors_olympiad` |
 | [`fifth_power_pair_remainders.py`](math/olympiad/fifth_power_pair_remainders.py) | Reduce paired fifth-power numerators modulo a sum of squares. | `math.fifth_power_pair_remainders_olympiad` |
 | [`functional_equation_value_set.py`](math/olympiad/functional_equation_value_set.py) | Classify a cubic functional equation after scaling its coefficient. | `math.functional_equation_value_set_olympiad` |
@@ -337,7 +340,9 @@
 | [`incircle_bisector_equal_segments.py`](math/olympiad/incircle_bisector_equal_segments.py) | Compare two bisector intersections in an incircle triangle. | `math.incircle_bisector_equal_segments_olympiad` |
 | [`integer_recurrence_rigidity.py`](math/olympiad/integer_recurrence_rigidity.py) | A divisibility recurrence with a unique positive-integer sequence. | `math.integer_recurrence_rigidity_olympiad` |
 | [`integer_valued_product_inequality.py`](math/olympiad/integer_valued_product_inequality.py) | Classify integer-valued functions obeying a product inequality. | `math.integer_valued_product_inequality_olympiad` |
+| [`isosceles_extension_angles.py`](math/olympiad/isosceles_extension_angles.py) | Angles after extending the leg of an isosceles triangle by its base. | `math.isosceles_extension_angles_olympiad` |
 | [`isosceles_tangent_midpoint.py`](math/olympiad/isosceles_tangent_midpoint.py) | Locate a cross-pair tangent chord in an isosceles triangle. | `math.isosceles_tangent_midpoint_olympiad` |
+| [`lattice_walk_signed_distances.py`](math/olympiad/lattice_walk_signed_distances.py) | Signed distances recorded along a lattice walk telescope to Δ(xy). | `math.lattice_walk_signed_distances_olympiad` |
 | [`lcm_difference_set.py`](math/olympiad/lcm_difference_set.py) | Locate the maximum of a set closed under an LCM quotient. | `math.lcm_difference_set_olympiad` |
 | [`leading_digit_passwords.py`](math/olympiad/leading_digit_passwords.py) | Count codes with an initial digit, nonadjacent digits, and unique letters. | `math.leading_digit_nonadjacent_codes_olympiad` |
 | [`minimum_tail_squares.py`](math/olympiad/minimum_tail_squares.py) | Maximize the earlier square sum by minimizing a fixed-sum tail. | `math.minimum_tail_squares_olympiad` |
@@ -353,6 +358,7 @@
 | [`opposite_midpoint_chords.py`](math/olympiad/opposite_midpoint_chords.py) | A vector identity among opposite-side midpoint chords of a hexagon. | `math.opposite_midpoint_chord_square_olympiad` |
 | [`orthocenter_circumcircle_collinearity.py`](math/olympiad/orthocenter_circumcircle_collinearity.py) | Slope of a collinear triple in an acute orthocenter construction. | `math.orthocenter_circumcircle_collinearity_olympiad` |
 | [`overlapping_boxes_probability.py`](math/olympiad/overlapping_boxes_probability.py) | Probability of distinct labels from three overlapping boxes. | `math.overlapping_boxes_probability_olympiad` |
+| [`parallel_chord_circumcenters.py`](math/olympiad/parallel_chord_circumcenters.py) | O₁O₂ is constant when E on CD makes BE ∥ AD: it equals AB/(2 sin ∠ADC). | `math.parallel_chord_circumcenters_olympiad` |
 | [`pentagon_bisector_circumcenter.py`](math/olympiad/pentagon_bisector_circumcenter.py) | Angles in a pentagon whose diagonal bisects two angles at right-angle feet. | `math.pentagon_bisector_circumcenter_olympiad` |
 | [`perpendicular_chords.py`](math/olympiad/perpendicular_chords.py) | Area of a circle from two intersecting perpendicular chords. | `math.perpendicular_chord_circle_area_olympiad` |
 | [`polynomial_product_avoidance.py`](math/olympiad/polynomial_product_avoidance.py) | Degrees of integer polynomials whose value sets avoid products. | `math.polynomial_product_avoidance_olympiad` |
@@ -364,6 +370,7 @@
 | [`posn2567.py`](math/olympiad/posn2567.py) | พหุนามสมมาตร | `math.posn2567_q01`, `math.posn2567_q02`, `math.posn2567_q03`, `math.posn2567_q04`, `math.posn2567_q05`, `math.posn2567_q06`, `math.posn2567_q07`, `math.posn2567_q08`, `math.posn2567_q09`, `math.posn2567_q10`, `math.posn2567_q11`, `math.posn2567_q12`, `math.posn2567_q13`, `math.posn2567_q14`, `math.posn2567_q15`, `math.posn2567_q16`, `math.posn2567_q17`, `math.posn2567_q18`, `math.posn2567_q19`, `math.posn2567_q20`, `math.posn2567_q21`, `math.posn2567_q22`, `math.posn2567_q23`, `math.posn2567_q24`, `math.posn2567_q25`, `math.posn2567_q26`, `math.posn2567_q27`, `math.posn2567_q28`, `math.posn2567_q29`, `math.posn2567_q30` |
 | [`posn2568.py`](math/olympiad/posn2568.py) | สมการเชิงเส้นบนเลขโดด | `math.posn2568_q01`, `math.posn2568_q02`, `math.posn2568_q03`, `math.posn2568_q04`, `math.posn2568_q05`, `math.posn2568_q06`, `math.posn2568_q07`, `math.posn2568_q08`, `math.posn2568_q09`, `math.posn2568_q10`, `math.posn2568_q11`, `math.posn2568_q12`, `math.posn2568_q13`, `math.posn2568_q14`, `math.posn2568_q15`, `math.posn2568_q16`, `math.posn2568_q17`, `math.posn2568_q18`, `math.posn2568_q19`, `math.posn2568_q20`, `math.posn2568_q21`, `math.posn2568_q22`, `math.posn2568_q23`, `math.posn2568_q24`, `math.posn2568_q25`, `math.posn2568_q26`, `math.posn2568_q27`, `math.posn2568_q28`, `math.posn2568_q29`, `math.posn2568_q30` |
 | [`prefix_pigeonhole.py`](math/olympiad/prefix_pigeonhole.py) | Pigeonhole and discrete intermediate values for signed prefix sums. | `math.prefix_pigeonhole_olympiad` |
+| [`prime_quadratic_cube.py`](math/olympiad/prime_quadratic_cube.py) | Primes p making αp² − βp − 1 a perfect cube, built from the n + 1 = p case. | `math.prime_quadratic_cube_olympiad` |
 | [`purple_grid_threshold.py`](math/olympiad/purple_grid_threshold.py) | Minimum marked cells under a missing-cell degree-product condition. | `math.purple_grid_threshold_olympiad` |
 | [`quadratic_irrational_reduction.py`](math/olympiad/quadratic_irrational_reduction.py) | Reduce a high-degree quotient at a quadratic irrational. | `math.quadratic_irrational_reduction_olympiad` |
 | [`rational_recurrence.py`](math/olympiad/rational_recurrence.py) | Starting values of an infinite rational quadratic recurrence. | `math.rational_recurrence_starts_olympiad` |
@@ -389,6 +396,7 @@
 | [`three_orientation_volume.py`](math/olympiad/three_orientation_volume.py) | Recover a rectangular box's capacity from three water depths. | `math.three_orientation_box_volume_olympiad` |
 | [`three_semicircles_triangle.py`](math/olympiad/three_semicircles_triangle.py) | Area of an equilateral triangle from three tangent semicircles. | `math.three_tangent_semicircles_triangle_area_olympiad` |
 | [`totient_factorial_divisibility.py`](math/olympiad/totient_factorial_divisibility.py) | Use cycle generators to explain a totient divisibility. | `math.totient_factorial_divisibility_olympiad` |
+| [`two_solution_functional.py`](math/olympiad/two_solution_functional.py) | f(xy − 1) + f(x)f(y) = 2xy − 1 has exactly the solutions x and −x². | `math.two_solution_functional_olympiad` |
 | [`weighted_cyclic_inequality.py`](math/olympiad/weighted_cyclic_inequality.py) | A sharp Cauchy and AM–GM bound for cyclic denominators. | `math.weighted_cyclic_inequality_olympiad` |
 | [`wilson_consecutive_product.py`](math/olympiad/wilson_consecutive_product.py) | Use Wilson's theorem to reduce a near-complete residue product. | `math.wilson_consecutive_product_olympiad` |
 | [`wilson_reflection_factorial.py`](math/olympiad/wilson_reflection_factorial.py) | n! modulo a prime p from Wilson's theorem when n is close to p. | `math.wilson_reflection_factorial_olympiad` |
