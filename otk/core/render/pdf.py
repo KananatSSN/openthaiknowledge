@@ -269,6 +269,22 @@ def _text_w(text: str, fontsize: float, font: str) -> float:
     return width
 
 
+@lru_cache(maxsize=8192)
+def _block_h(text: str, fontsize: float, font: str) -> float:
+    """Rendered height of a (possibly multi-line) block, as a fraction of the page.
+
+    Drawing takes the larger of the line estimate and this, so measuring must
+    too: Thai fonts such as Loma and Garuda draw taller than the estimate, and a
+    layout that trusts the estimate alone lets one question run into the next.
+    ``font`` keys the cache for the reason given in ``_text_w``.
+    """
+    fig = _measure_fig()
+    artist = fig.text(0, 0, text, fontsize=fontsize, linespacing=1.4)
+    height = artist.get_window_extent(fig.canvas.get_renderer()).height / fig.bbox.height
+    artist.remove()
+    return height
+
+
 def _break_point(text: str, fontsize: float, font: str, max_w: float) -> int:
     """How many characters of ``text`` fit in ``max_w`` (at least one)."""
     lo, hi = 1, len(text)
@@ -378,9 +394,11 @@ def _choice_lines(q: Question, avail_w: float, config: Worksheet) -> list[list[s
 
 
 def _choices_h(q: Question, avail_w: float, config: Worksheet) -> float:
-    """Height the printed options will need, for laying out what sits above."""
-    lines = sum(len(ls) for ls in _choice_lines(q, avail_w, config))
-    return lines * _line_h(_CHOICE_FONTSIZE) * 1.4 + len(q.choices) * _CHOICE_GAP
+    """Height the printed options will need, measured the way ``_draw_choices`` steps down."""
+    return sum(
+        max(len(lines) * _line_h(_CHOICE_FONTSIZE) * 1.4,
+            _block_h("\n".join(lines), _CHOICE_FONTSIZE, config.font_family)) + _CHOICE_GAP
+        for lines in _choice_lines(q, avail_w, config))
 
 
 def _draw_choices(fig, ax, q: Question, x: float, y_top: float, avail_w: float,
@@ -476,7 +494,8 @@ def _cell_pads(config: Worksheet, cell_h: float) -> tuple[float, float]:
 
 def _prompt_h(prompt: str, avail_w: float, config: Worksheet) -> float:
     lines = _wrap(prompt, _PROMPT_FONTSIZE, avail_w, config.font_family)
-    return len(lines) * _line_h(_PROMPT_FONTSIZE) * 1.4
+    return max(len(lines) * _line_h(_PROMPT_FONTSIZE) * 1.4,
+               _block_h("\n".join(lines), _PROMPT_FONTSIZE, config.font_family))
 
 
 def _question_h(q: Question, cell_w: float, body_offset: float,

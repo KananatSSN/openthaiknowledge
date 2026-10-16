@@ -4,6 +4,7 @@
 	import { SvelteMap, SvelteSet } from 'svelte/reactivity';
 	import type { SetDetail, SetRow } from './data';
 	import Brand from './Brand.svelte';
+	import DownloadSheet from './DownloadSheet.svelte';
 	import ExampleQuestion from './ExampleQuestion.svelte';
 	import GithubLink from './GithubLink.svelte';
 	import Minimap from './Minimap.svelte';
@@ -658,6 +659,7 @@
 			</div>
 			<h2>{current.display_name}</h2>
 			<p class="detail-topic">{current.unit || current.topic}</p>
+			<DownloadSheet setKey={current.key} />
 			{#key current.key}<ExampleQuestion
 					setKey={current.key}
 					{mistakes}
