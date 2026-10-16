@@ -326,16 +326,17 @@ TOTAL         338   316     17     4   66      255      6     11
 ## 5. Traps already found
 
 - **PDFs are in Git LFS and fetched on demand** (since session 1).
-  - `.lfsconfig` excludes `openthaiknowledge-bank/**` from automatic fetches. The
-    reason is GitHub's free LFS quota: 1 GB storage, and 1 GB of downloads a
-    month. A full pull of the bank used ~390 MB of that.
+  - The LFS objects are stored with the openthaiknowledge-bank repository
+    itself (until 2026-10-16 they were stored with TutorRank's). The bank's
+    `.lfsconfig` excludes every PDF from automatic fetches, to stay inside
+    GitHub's LFS download quota. The bank's PDFs total ~1.1 GB.
   - A clone therefore holds pointer files for the PDFs. `bank scan` skips them
     as absent, and `convert` says what to fetch.
   - Fetch only what a stage needs: `python -m otk.tools.sheetpipe bank fetch
     "rathcenter/13 *"`. That wraps `git lfs pull --include … --exclude ""`.
   - The pipeline mostly works from the committed digests, so most sessions
     fetch nothing.
-  - If the bank outgrows ~1 GB, or several people pull it, move LFS storage to
+  - If the bank outgrows the LFS quota, or several people pull it, move LFS storage to
     Cloudflare R2 (an LFS server on a Worker; R2 downloads are free), as
     proposed in session 1.
   - The default bank root (`openthaiknowledge-bank/` of the checkout you run in) is
