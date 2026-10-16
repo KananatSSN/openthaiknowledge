@@ -8,6 +8,8 @@ services:
       context: ..
       dockerfile: explorer/Dockerfile
     image: otk-explorer
+    depends_on:
+      - sheets
     ports:
       - "127.0.0.1:${EXPLORER_PORT:-8090}:80"
     restart: unless-stopped
@@ -21,4 +23,24 @@ services:
       test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/"]
       interval: 1m
       timeout: 3s
+      retries: 3
+
+  # Draws the one-page PDF sheets. Reachable only from nginx above, never from
+  # this machine's ports, which is why it can trust the client address nginx sends.
+  sheets:
+    build:
+      context: ..
+      dockerfile: explorer/Dockerfile
+      target: sheets
+    image: otk-explorer-sheets
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health')"]
+      interval: 1m
+      timeout: 5s
       retries: 3

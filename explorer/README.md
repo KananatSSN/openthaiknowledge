@@ -12,12 +12,20 @@ and English. A link such as `/?set=math.polynomial_area_m2` opens that set.
 a copy button on every code block, including the set-up prompt contributors
 paste into their agent. Edit the README, not the page.
 
+Each set's card has a **Download worksheet PDF** button. One click gives one
+PDF: a page of freshly drawn problems from that set, with the openthaiknowledge
+mark in the header, and a page of answers. There is nothing to configure.
+
 There are no accounts, no progress tracking and no practice; those stay in
 TutorRank.
 
-It has no server. `python -m otk.tools.explorer_data` writes everything the
-site shows into `static/data/` (git-ignored, about 30 MB), and the build is
-plain files.
+The site itself is plain files: `python -m otk.tools.explorer_data` writes
+everything it shows into `static/data/` (git-ignored, about 30 MB). The only
+server is the one behind the PDF button, `python -m otk.tools.explorer_pdf
+--serve`, which draws each sheet with otk's own renderer. It takes nothing but a
+set key, draws one sheet at a time, and gives each visitor one sheet every 30
+seconds (by Cloudflare's `CF-Connecting-IP`, which nginx passes on); the button
+counts the wait down.
 
 ## Develop
 
@@ -30,11 +38,22 @@ npm run dev                           # http://localhost:5173
 npm run check
 ```
 
+For the PDF button, run the sheets server beside `npm run dev`; the dev server
+forwards `/api/` to it:
+
+```bash
+python -m otk.tools.explorer_pdf --serve           # http://127.0.0.1:8000
+python -m otk.tools.explorer_pdf KEY sheet.pdf     # or one sheet straight to a file
+```
+
 ## Host it (Docker and Cloudflare Tunnel)
 
-The image builds the data from the checked-out release, builds the site, and
-serves it with nginx. It listens on this machine only, at
-`127.0.0.1:8090`, so nothing is exposed until a tunnel points at it.
+Compose runs two containers. `explorer` builds the data from the
+checked-out release, builds the site, and serves it with nginx; it listens on
+this machine only, at `127.0.0.1:8090`, so nothing is exposed until a tunnel
+points at it. `sheets` draws the PDF sheets (with the TLWG Loma Thai font) and
+has no port of its own: nginx forwards `/api/` to it. `deploy.sh` builds and
+starts both.
 
 On the machine that serves it (the Mac mini), once:
 
