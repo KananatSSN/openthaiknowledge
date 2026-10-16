@@ -4135,7 +4135,10 @@
    "pages": 2,
    "text_chars": 4131,
    "layout": "numbered",
-   "glyph_damage": 32
+   "glyph_damage": 32,
+   "items": 12,
+   "stage": "generated",
+   "note": "Transcribed from the renders (broken text layer): all 12 items mapped to original problem sets; item 5 uniqueness partly written"
   },
   {
    "path": "สอวน_math/posn-national-56-math.pdf",

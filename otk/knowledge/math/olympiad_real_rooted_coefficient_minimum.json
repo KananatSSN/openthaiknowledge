@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.real-rooted-coefficient-minimum",
+      "kind": "procedure",
+      "title": "พหุนามรากจริงสัมประสิทธิ์บวก P(x) ≥ (x + 1)ⁿ",
+      "statement": "สัมประสิทธิ์บวกทำให้รากทุกตัวเป็นลบ เขียน P(x) = (x + r₁)⋯(x + rₙ) โดย rᵢ > 0 และ r₁⋯rₙ = P(0) = 1 อสมการของเฮิลเดอร์ (หรือ AM–GM ทีละสัมประสิทธิ์) ให้ Π(x + rᵢ) ≥ (x + (Πrᵢ)^(1/n))ⁿ = (x + 1)ⁿ สำหรับ x > 0 และสัมประสิทธิ์ aₖ เป็นผลบวกของ C(n, k) พจน์ที่มีผลคูณ 1 จึง aₖ ≥ C(n, k)",
+      "steps": [
+        "แยกตัวประกอบด้วยรากลบ",
+        "ใช้ Πrᵢ = 1",
+        "ใช้อสมการของเฮิลเดอร์หรือ AM–GM"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-55-math.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "math.real_rooted_coefficient_minimum_olympiad"
+      ]
+    }
+  ]
+}

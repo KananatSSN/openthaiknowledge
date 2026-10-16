@@ -934,3 +934,21 @@ TOTAL         338   316     17     4   66      255      6     11
   is written.
 - Registry 3,779 sets; enrichment count 322.
 - Remaining POSN maths at `new`: national papers 2547–2555 (9 papers).
+
+### 2026-10-16 — 2555 national paper
+
+- The 2555 national paper (9th TMO): 12 questions, read from the renders
+  because the text layer misplaces Thai vowels. 3 have answers:
+  - 5: f(x) = 2x + 1;
+  - 6: n = 197;
+  - 8: P/Q = (3n − 1)/(4n − 1).
+
+  The other 9 are proofs.
+- Twelve knowledge units and twelve original sets, checked in
+  `test_math_olympiad_posn_national_2555.py`. The bank entry is `generated`.
+- A TeX trap: a clean-up step strips a coefficient "1" before a letter, so
+  `d_1d_2` renders as `d_d_2`. Write subscripts braced, as `d_{1}`.
+- Open: item 5's uniqueness proof stops at z = ±1/2, so the set asks only for
+  the linear solution. Item 11 is checked by coordinates only.
+- Registry 3,791 sets; enrichment count 334.
+- Remaining POSN maths at `new`: national papers 2547–2554 (8 papers).
