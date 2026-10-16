@@ -185,4 +185,5 @@ def test_sheet_publication_manifest_is_frozen():
     # a soil profile, the water cycle, a flower and a food chain; then the rock
     # cycle, plate boundaries, the heart and the digestive system; then the
     # airway and lungs, a plant's organs, and rock layers with their fossils.
-    assert len(REGISTRY) == 3631
+    # Local math variety and original olympiad practice add another 118 sets.
+    assert len(REGISTRY) == 3749

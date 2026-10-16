@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.three-edge-grid-erasure",
+      "kind": "procedure",
+      "title": "Classify square grids erasable three edges per move",
+      "statement": "A square n×n cell grid permits erasing every edge by repeatedly selecting a cell with at least three remaining edges and erasing exactly three iff n=2 or n≡3,5 (mod 6). The total 2n(n+1) edges force n≡0,2 (mod 3). For n≥3 every boundary cell must be selected. Their combined capacity equals all edges incident to the boundary ring, so those edges are all erased there. In the remaining (n−2)×(n−2) open cell grid, corners cannot be selected and the side cells must alternate selected/unselected, forcing n odd. Sufficiency follows from direct 2×2, 3×3, 5×5 constructions and an explicit six-cell-wide induction frame; its edge ownership pattern is recorded in the private digest notes and verified for many sizes in the generator test.",
+      "steps": [
+        "Count all edges modulo three",
+        "Use boundary-ring capacity to force alternating inner side cells",
+        "Construct valid boards with base patterns and a repeating frame"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 5}],
+      "covered_by": ["math.three_edge_grid_erasure_olympiad"]
+    }
+  ]
+}

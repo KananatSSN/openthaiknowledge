@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.purple-grid-degree-product",
+      "kind": "procedure",
+      "title": "Minimize marked grid cells under a missing-cell degree product",
+      "statement": "In a grid of kp rows and kq columns with k at least p+1, if every unmarked cell lies in a row and column whose marked counts multiply to at least pq, the minimum marked count is kpq. A row with fewer than q marks would force too many marked columns; k disjoint complete p-by-q blocks attain equality.",
+      "steps": [
+        "Assume fewer than kpq marks and choose a row with at most q-1 marks",
+        "Each unmarked column in that row must contain at least p+1 marks, contradicting the assumed total",
+        "Place k complete p-by-q marked blocks along the diagonal"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "math.purple_grid_threshold_olympiad"
+      ]
+    }
+  ]
+}

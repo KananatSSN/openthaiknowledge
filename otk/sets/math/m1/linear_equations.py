@@ -12,11 +12,12 @@ from fractions import Fraction
 from random import Random
 
 from otk.core.content import image, text
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem, poly_tex
+from otk.kit.math_problems import MathDraw, MathType, WordProblem, frac_tex, poly_tex
 from otk.sets._support.math_algebra import _nonzero
 from otk.sets._support.math_diagrams import _math_q
 from otk.sets._support.math_m1 import LEVEL
@@ -248,3 +249,100 @@ class LinearEquationSetupM1(QuestionType):
                 keep.append(w)
         return _maths([text(story), text("ถ้าให้ x แทนจำนวนที่ไม่ทราบค่า สมการใดใช้แก้โจทย์นี้ได้")],
                       eq, keep, self.topic)
+
+
+def _fee_parameters(rng: Random) -> tuple[int, int, int, int]:
+    low_rate, extra_rate = rng.randint(2, 12), rng.randint(2, 8)
+    units = rng.randint(5, 40)
+    low_fee = rng.randrange(10, 101, 5)
+    return low_fee + extra_rate * units, low_rate, low_fee, low_rate + extra_rate
+
+
+@question_type("math.linear_fee_comparison_m1",
+               display_name={"th": "สมการเปรียบเทียบค่าใช้จ่ายสองแบบ"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class LinearFeeComparisonM1(WordProblem):
+    def expr(self, rng: Random):
+        fee_a, rate_a, fee_b, rate_b = _fee_parameters(rng)
+        answer = Fraction(fee_a - fee_b, rate_b - rate_a)
+        service, fee, unit = rng.choice((
+            ("ร้านเช่าจักรยาน", "ค่าบริการเริ่มต้น", "ชั่วโมง"),
+            ("ร้านพิมพ์เอกสาร", "ค่าเตรียมงาน", "หน้า"),
+            ("บริการส่งพัสดุ", "ค่าบริการเริ่มต้น", "กิโลกรัม"),
+        ))
+        return MathDraw("", frac_tex(answer), prompt=(
+            f"{service}มีบริการสองแบบ แบบ A คิด{fee} {fee_a} บาท และเพิ่ม{unit}ละ {rate_a} บาท "
+            f"แบบ B คิด{fee} {fee_b} บาท และเพิ่ม{unit}ละ {rate_b} บาท "
+            f"ใช้บริการกี่{unit}จึงจะเสียค่าใช้จ่ายเท่ากัน"),
+            distractors=[
+                named("operation.reversed", frac_tex(Fraction(fee_a + fee_b, rate_b - rate_a))),
+                named("steps.missed_a_step", frac_tex(Fraction(fee_a, rate_b - rate_a))),
+                named("operation.reversed", frac_tex(Fraction(fee_a - fee_b, rate_a + rate_b))),
+                named("steps.missed_a_step", frac_tex(Fraction(fee_a - fee_b, rate_b))),
+            ])
+
+
+def _remaining_parameters(rng: Random) -> tuple[int, int, int, int]:
+    denominator = rng.randint(3, 9)
+    numerator = rng.randint(1, denominator - 1)
+    initial = denominator * rng.randint(8, 40)
+    after_fraction = initial * (denominator - numerator) // denominator
+    extra = rng.randint(2, after_fraction - 2)
+    return numerator, denominator, extra, after_fraction - extra
+
+
+@question_type("math.linear_remaining_fraction_m1",
+               display_name={"th": "สมการย้อนหาจำนวนเดิมจากส่วนที่เหลือ"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class LinearRemainingFractionM1(WordProblem):
+    def expr(self, rng: Random):
+        numerator, denominator, extra, remaining = _remaining_parameters(rng)
+        kept = Fraction(denominator - numerator, denominator)
+        answer = Fraction(remaining + extra, 1) / kept
+        subject, first, second, unit = rng.choice((
+            ("ร้านค้ามีสมุดจำนวนหนึ่ง", "ขายไป", "ขายเพิ่มอีก", "เล่ม"),
+            ("ชมรมมีเงินจำนวนหนึ่ง", "ใช้ไป", "จ่ายเพิ่มอีก", "บาท"),
+            ("ถังมีน้ำอยู่จำนวนหนึ่ง", "ใช้น้ำไป", "ใช้น้ำเพิ่มอีก", "ลิตร"),
+        ))
+        return MathDraw("", frac_tex(answer), prompt=(
+            f"{subject} {first} {numerator}/{denominator} ของจำนวนเดิม "
+            f"แล้ว{second} {extra} {unit} เหลือ {remaining} {unit} เดิมมีทั้งหมดกี่{unit}"),
+            distractors=[
+                named("steps.missed_a_step", frac_tex(Fraction(remaining, 1) / kept)),
+                named("steps.wrong_order", frac_tex(Fraction(remaining, 1) / kept + extra)),
+                named("part.complement", frac_tex(Fraction(remaining + extra) /
+                                                  Fraction(numerator, denominator))),
+                named("fraction.not_worked_back", frac_tex((remaining + extra) * kept)),
+                named("operation.reversed", frac_tex(Fraction(remaining - extra, 1) / kept)),
+            ])
+
+
+def _transfer_parameters(rng: Random) -> tuple[int, int, int]:
+    multiplier, transferred = rng.randint(2, 5), rng.randint(2, 15)
+    final_first = rng.randint(transferred + 1, transferred + 30)
+    second = multiplier * final_first - transferred
+    return second, transferred, multiplier
+
+
+@question_type("math.linear_transfer_m1",
+               display_name={"th": "สมการหาจำนวนก่อนย้ายสิ่งของ"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class LinearTransferM1(WordProblem):
+    def expr(self, rng: Random):
+        second, transferred, multiplier = _transfer_parameters(rng)
+        answer = Fraction(second + transferred, multiplier) + transferred
+        item, unit, container = rng.choice((
+            ("ลูกบอล", "ลูก", "กล่อง"),
+            ("หนังสือ", "เล่ม", "ชั้น"),
+            ("ดินสอ", "แท่ง", "กล่อง"),
+        ))
+        return MathDraw("", frac_tex(answer), prompt=(
+            f"{container}ที่สองมี{item} {second} {unit} ย้าย{item} {transferred} {unit} "
+            f"จาก{container}แรกไป{container}ที่สอง ทำให้{container}ที่สองมี{item}เป็น "
+            f"{multiplier} เท่าของ{container}แรก เดิม{container}แรกมี{item}กี่{unit}"),
+            distractors=[
+                named("steps.missed_a_step", frac_tex(Fraction(second + transferred, multiplier))),
+                named("steps.missed_a_step", frac_tex(Fraction(second, multiplier) + transferred)),
+                named("operation.reversed", frac_tex(Fraction(second + transferred, multiplier) - transferred)),
+                named("operation.reversed", frac_tex(Fraction(second - transferred, multiplier) + transferred)),
+            ])

@@ -13,6 +13,7 @@ from random import Random
 
 from otk.core.content import image, text
 from otk.core.content import math as content_math
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
@@ -118,3 +119,60 @@ class AreaBetweenCurves(MathType):
             frac_answer_tex(Fraction((r2 - r1) ** 3, 6)),
             hint=rf"\text{{intersections: }} x = {r1}, {r2}",
             prompt="จงหาพื้นที่ระหว่างเส้นโค้งทั้งสอง")
+
+
+_AREA_TOPIC = "พื้นที่ระหว่างเส้นโค้ง"
+
+
+@question_type("math.area_absolute_line_parabola_m6",
+               display_name={"th": "พื้นที่ระหว่างพาราโบลากับกราฟค่าสัมบูรณ์"},
+               level=M6, topic=_AREA_TOPIC)
+class AreaAbsoluteLineParabolaM6(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        a = rng.randint(2, 9)
+        area = Fraction(a ** 3, 3)
+        wrongs = [
+            named("area.one_region_only", frac_tex(area / 2)),
+            named("area.missed_antiderivative_divisor", frac_tex(2 * area)),
+            named("area.triangle_instead_of_integral", frac_tex(Fraction(a ** 3, 2))),
+        ]
+        return _maths([text("จงหาพื้นที่ทั้งหมดของบริเวณที่ปิดล้อมด้วยกราฟ"),
+                       content_math("y=x^{2}"), text("และ"),
+                       content_math(rf"y={a}|x|")],
+                      frac_tex(area), wrongs, self.topic)
+
+
+@question_type("math.area_cubic_axis_lobes_m6",
+               display_name={"th": "พื้นที่สองบริเวณระหว่างกราฟกำลังสามกับแกน x"},
+               level=M6, topic=_AREA_TOPIC)
+class AreaCubicAxisLobesM6(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        a = rng.randint(2, 7)
+        area = Fraction(a ** 4, 2)
+        wrongs = [
+            named("area.one_region_only", frac_tex(area / 2)),
+            named("area.added_signed_regions", "0"),
+            named("area.missed_antiderivative_divisor", frac_tex(2 * area)),
+        ]
+        return _maths([text("จงหาพื้นที่ทั้งหมดที่กราฟ"),
+                       content_math(rf"y=x^{{3}}-{a * a}x"),
+                       text("ปิดล้อมกับแกน x")], frac_tex(area), wrongs, self.topic)
+
+
+@question_type("math.area_crossing_curves_bounded_m6",
+               display_name={"th": "พื้นที่ระหว่างเส้นโค้งที่สลับบนล่างในช่วงที่กำหนด"},
+               level=M6, topic=_AREA_TOPIC)
+class AreaCrossingCurvesBoundedM6(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        a = rng.randint(2, 7)
+        area = 4 * a ** 3
+        wrongs = [
+            named("area.one_region_only", frac_tex(Fraction(area, 3))),
+            named("area.ignored_outer_regions", frac_tex(Fraction(8 * a ** 3, 3))),
+            named("area.ignored_subtracted_curve", frac_tex(Fraction(16 * a ** 3, 3))),
+        ]
+        return _maths([text("จงหาพื้นที่ทั้งหมดระหว่างกราฟ"),
+                       content_math("y=x^{2}"), text("และ"),
+                       content_math(rf"y={a * a}"),
+                       text(f"ตั้งแต่ x = {-2 * a} ถึง x = {2 * a}")],
+                      str(area), wrongs, self.topic)

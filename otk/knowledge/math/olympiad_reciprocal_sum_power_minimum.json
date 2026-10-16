@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.reciprocal-sum-power-minimum",
+      "kind": "procedure",
+      "title": "Power-sum minimum under a reciprocal-sum constraint",
+      "statement": "For k≥1 and positive a,b,c with ab+bc+ca=abc/k, the reciprocal sum is 1/k. AM–GM gives abc≥27k³ and a+b+c≥9k. Since every variable exceeds k≥1, f(x)=x^(x−1) is increasing and convex on this range. Jensen gives f(a)+f(b)+f(c)≥3f((a+b+c)/3)≥3(3k)^(3k−1). Thus a^a bc+b^b ca+c^c ab=abc(f(a)+f(b)+f(c))≥3(3k)^(3k+2), attained at a=b=c=3k.",
+      "steps": [
+        "Convert the constraint to a sum of reciprocals",
+        "Bound abc and a+b+c using AM–GM",
+        "Apply Jensen to x^(x−1) and check equality"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 3}],
+      "covered_by": ["math.reciprocal_sum_power_minimum_olympiad"]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.fifth-power-pair-integrality",
+      "kind": "procedure",
+      "title": "Paired fifth-power divisibility modulo a sum of squares",
+      "statement": "For positive integers m,n, both (m^5+n)/(m^2+n^2) and (n^5+m)/(m^2+n^2) are integers only at (1,1). First the common divisor of m,n must be 1. With D=m^2+n^2, the two congruences force m^8=-1 and m^24=1 modulo D, so D divides 2.",
+      "steps": [
+        "Factor out gcd(m,n) and reduce both numerators modulo that gcd",
+        "Use n=-m^5 and n^2=-m^2 modulo D",
+        "Cancel invertible m to derive contradictory eighth and twenty-fourth powers unless D=2"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "math.fifth_power_pair_remainders_olympiad"
+      ]
+    }
+  ]
+}

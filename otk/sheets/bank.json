@@ -3929,6 +3929,193 @@
    "stage": "green"
   },
   {
+   "path": "สอวน_math/manifest.json",
+   "kind": "other",
+   "sha256": "23104fd3b50f7c55",
+   "size": 11321,
+   "stage": "ignored"
+  },
+  {
+   "path": "สอวน_math/posn-national-47-math.pdf",
+   "kind": "exam",
+   "sha256": "c76c0314a5b84449",
+   "size": 105676,
+   "pages": 3,
+   "text_chars": 3932,
+   "layout": "numbered",
+   "glyph_damage": 49
+  },
+  {
+   "path": "สอวน_math/posn-national-48-math.pdf",
+   "kind": "exam",
+   "sha256": "484d08e375b55ad7",
+   "size": 111318,
+   "pages": 3,
+   "text_chars": 4701,
+   "layout": "numbered",
+   "glyph_damage": 40
+  },
+  {
+   "path": "สอวน_math/posn-national-49-math.pdf",
+   "kind": "exam",
+   "sha256": "f027b9ba73c9bfb3",
+   "size": 145725,
+   "pages": 3,
+   "text_chars": 3653,
+   "layout": "numbered",
+   "glyph_damage": 27
+  },
+  {
+   "path": "สอวน_math/posn-national-50-math.pdf",
+   "kind": "exam",
+   "sha256": "39b4b76bc2a3d87f",
+   "size": 142775,
+   "pages": 3,
+   "text_chars": 4492,
+   "layout": "numbered",
+   "glyph_damage": 32
+  },
+  {
+   "path": "สอวน_math/posn-national-51-math.pdf",
+   "kind": "exam",
+   "sha256": "6996105b2358472b",
+   "size": 220171,
+   "pages": 2,
+   "text_chars": 3246,
+   "layout": "numbered",
+   "glyph_damage": 34
+  },
+  {
+   "path": "สอวน_math/posn-national-52-math.pdf",
+   "kind": "exam",
+   "sha256": "5ea78015b0b19728",
+   "size": 173975,
+   "pages": 2,
+   "text_chars": 3722,
+   "layout": "numbered",
+   "glyph_damage": 37
+  },
+  {
+   "path": "สอวน_math/posn-national-53-math.pdf",
+   "kind": "exam",
+   "sha256": "55027f8c9aa33a7d",
+   "size": 144971,
+   "pages": 2,
+   "text_chars": 3859,
+   "layout": "numbered",
+   "glyph_damage": 40
+  },
+  {
+   "path": "สอวน_math/posn-national-54-math.pdf",
+   "kind": "exam",
+   "sha256": "ebc5e210cc74894a",
+   "size": 291817,
+   "pages": 17,
+   "text_chars": 23952,
+   "layout": "numbered",
+   "glyph_damage": 135
+  },
+  {
+   "path": "สอวน_math/posn-national-55-math.pdf",
+   "kind": "exam",
+   "sha256": "c08b85972d5e543d",
+   "size": 129164,
+   "pages": 2,
+   "text_chars": 4131,
+   "layout": "numbered",
+   "glyph_damage": 32
+  },
+  {
+   "path": "สอวน_math/posn-national-56-math.pdf",
+   "kind": "exam",
+   "sha256": "fefdf9120c6adbed",
+   "size": 536677,
+   "pages": 2,
+   "text_chars": 3178,
+   "layout": "numbered",
+   "glyph_damage": 147
+  },
+  {
+   "path": "สอวน_math/posn-national-57-math.pdf",
+   "kind": "exam",
+   "sha256": "b3f841913bfe58eb",
+   "size": 417513,
+   "pages": 2,
+   "text_chars": 2046,
+   "layout": "numbered",
+   "glyph_damage": 97
+  },
+  {
+   "path": "สอวน_math/posn-national-62-math.pdf",
+   "kind": "exam",
+   "sha256": "7d03ac9e58e4976b",
+   "size": 545870,
+   "pages": 2,
+   "text_chars": 2249,
+   "layout": "numbered",
+   "glyph_damage": 123
+  },
+  {
+   "path": "สอวน_math/posn-national-63-math.pdf",
+   "kind": "exam",
+   "sha256": "9f152d4817bf3356",
+   "size": 592723,
+   "pages": 2,
+   "text_chars": 2542,
+   "layout": "numbered",
+   "glyph_damage": 143,
+     "items": 10,
+     "stage": "generated",
+     "note": "Complete hand-reviewed digest: all 10 items mapped to original problem sets"
+  },
+  {
+   "path": "สอวน_math/posn-national-64-math.pdf",
+   "kind": "exam",
+   "sha256": "8904e9a95335b742",
+   "size": 582564,
+   "pages": 2,
+   "text_chars": 2831,
+   "layout": "numbered",
+   "items": 10,
+   "stage": "generated",
+   "note": "Complete hand-reviewed digest: all 10 items; corrected high-resolution readings of items 3-5"
+  },
+  {
+   "path": "สอวน_math/posn-national-65-math.pdf",
+   "kind": "exam",
+   "sha256": "85b0fd344fc45072",
+   "size": 761566,
+   "pages": 2,
+   "layout": "no-text",
+   "scan_pages": 2,
+   "items": 10,
+   "stage": "generated"
+  },
+  {
+   "path": "สอวน_math/posn-national-66-math.pdf",
+   "kind": "exam",
+   "sha256": "bac545f1a3ba01a7",
+   "size": 665491,
+   "pages": 2,
+   "text_chars": 3282,
+   "layout": "numbered",
+   "items": 10,
+   "stage": "generated",
+   "note": "Hand-reviewed ten-item text digest"
+  },
+  {
+   "path": "สอวน_math/posn-national-67-math.pdf",
+   "kind": "exam",
+   "sha256": "ecc960d89b4d24d5",
+   "size": 866755,
+   "pages": 2,
+   "text_chars": 2542,
+   "layout": "numbered",
+   "items": 10,
+   "stage": "generated",
+   "note": "Hand-reviewed ten-item text digest; item 1 requires interior points"
+  },
+  {
    "path": "สอวน_math/posn1-61-math.pdf",
    "kind": "exam",
    "sha256": "537ee58bfbb746af",
@@ -3996,6 +4183,17 @@
    "layout": "numbered",
    "sheet_id": "posn2567_math",
    "stage": "green"
+  },
+  {
+   "path": "สอวน_math/posn1-69-math.pdf",
+   "kind": "exam",
+   "sha256": "3dc5ebcf3803c4c6",
+   "size": 586793,
+   "pages": 10,
+   "text_chars": 12222,
+   "layout": "numbered",
+   "items": 30,
+   "stage": "generated"
   }
  ]
 }

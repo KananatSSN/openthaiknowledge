@@ -1,0 +1,22 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การจัดหมู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.regular-polygon-flag-classes",
+      "kind": "procedure",
+      "title": "Repeated smallest color classes in odd regular polygons",
+      "statement": "Partition the vertices of an odd regular n-gon into color classes, each itself the full vertex set of an inscribed regular polygon. A class of size m is a residue class modulo d=n/m. For maximal d, summing the d-th roots of unity over all vertices leaves only these smallest classes and gives a vanishing sum of their roots. Since d is odd, at least three such classes are necessary. If n is a power of an odd prime p, the number of smallest classes is a positive multiple of p, and p classes are attainable by residues modulo p.",
+      "steps": [
+        "Represent each regular subpolygon as a coset of a cyclic subgroup",
+        "Sum a primitive root of unity for the largest step across the partition",
+        "Use oddness to exclude one or two summands; for prime powers evaluate the cyclotomic factor at 1"
+      ],
+      "sources": [
+        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 10}
+      ],
+      "covered_by": ["math.regular_polygon_flag_classes_olympiad"]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.consecutive-nonpowers-crt",
+      "kind": "procedure",
+      "title": "Construct consecutive non-perfect-powers by CRT",
+      "statement": "For distinct primes p_i, CRT gives N+i congruent to p_i modulo p_i squared, making every N+i divisible by p_i exactly once and therefore not a perfect power. For any d at least 2, d divides the central binomial coefficient with a=d-1 because it is coprime to 2d-1.",
+      "steps": [
+        "Choose distinct primes and impose one congruence modulo each prime square",
+        "Apply CRT to obtain a block of consecutive integers",
+        "Use the binomial identity with 2d-1 to choose a=d-1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "math.consecutive_nonpowers_crt_olympiad"
+      ]
+    }
+  ]
+}

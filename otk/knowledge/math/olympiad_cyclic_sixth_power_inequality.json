@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cyclic-sixth-power-inequality",
+      "kind": "procedure",
+      "title": "A cyclic sixth-power inequality under a fixed sum",
+      "statement": "For a,b,c>0 with a+b+c=3, Cauchy gives Σ_cyclic a^6/(c²+2b³)≥(a³+b³+c³)²/(a²+b²+c²+2(a³+b³+c³)). Writing S2=Σa² and S3=Σa³, power means give S2≥3 and S3≥S2≥3. Hence S3²≥3S3≥S2+2S3, proving the lower bound 1. Equality holds only at a=b=c=1. Scaling a+b+c=3t and replacing 2b³ by (2/t)b³ gives lower bound t⁴ at a=b=c=t.",
+      "steps": [
+        "Apply Cauchy to the three cyclic fractions",
+        "Compare the sums of squares and cubes by power means",
+        "Rescale variables and identify the equality case"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 8}],
+      "covered_by": ["math.cyclic_sixth_power_inequality_olympiad"]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.weighted-cyclic-inequality",
+      "kind": "procedure",
+      "title": "Sharp cyclic fraction bound from Cauchy and AM–GM",
+      "statement": "For positive a,b,c,x,y with abc=P, the expression (x+y)(a²+b²+c²)[a⁵/(xc+yb)+b⁵/(xa+yc)+c⁵/(xb+ya)] is at least 9P², with equality at a=b=c=P^(1/3). Normalize x+y=1. Cauchy bounds the fraction sum by (a^(5/2)+b^(5/2)+c^(5/2))²/(a+b+c); AM–GM makes the numerator at least 9P^(5/3), and power-mean plus AM–GM gives (a²+b²+c²)/(a+b+c)≥P^(1/3).",
+      "steps": [
+        "Normalize the two denominator weights by x+y",
+        "Apply Cauchy–Schwarz to the three fractions",
+        "Use AM–GM and the root-mean-square inequality, then check equality"
+      ],
+      "sources": [
+        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 6}
+      ],
+      "covered_by": ["math.weighted_cyclic_inequality_olympiad"]
+    }
+  ]
+}

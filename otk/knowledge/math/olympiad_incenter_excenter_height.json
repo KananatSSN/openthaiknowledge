@@ -1,0 +1,22 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมแนบใน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.incenter-excenter-height",
+      "kind": "procedure",
+      "title": "Complementary incenter and excenter heights across a reflected side",
+      "statement": "In a right triangle ABC with B=(0,0), A=(a,0), C=(0,c), D=(d,0), and E=(-d,0), let I be the incenter of ACE and J the A-excenter of ACD. Put r=AC and s=CD. Then the heights above AB are c(a+d)/(r+s+a+d) and c(r+s)/(r+s+a+d), respectively. Their sum is BC=c, so the midpoint of IJ lies on the perpendicular bisector of BC.",
+      "steps": [
+        "Express the incenter and opposite-A excenter by side-length weights",
+        "Use (r-s)(r+s)=a²-d²=(a-d)(a+d) to simplify J's height",
+        "Add the two heights and locate the midpoint of IJ"
+      ],
+      "sources": [
+        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 2}
+      ],
+      "covered_by": ["math.incenter_excenter_height_olympiad"]
+    }
+  ]
+}

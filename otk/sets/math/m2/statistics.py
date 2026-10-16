@@ -12,6 +12,7 @@ from fractions import Fraction
 from random import Random
 
 from otk.core.content import image, text
+from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
@@ -238,3 +239,103 @@ class GroupedFrequencyM2(QuestionType):
         return _maths([text(table), text("ความกว้างของอันตรภาคชั้นเท่ากับเท่าใด")], str(width),
                       _story.keep(width - 1, width + 1, 5 * width, bins[0][0], answer=width, lo=1),
                       self.topic)
+
+
+def _missing_frequency_data(rng: Random) -> tuple[list[int], list[int], int]:
+    """A table whose whole-number mean determines one frequency uniquely."""
+    while True:
+        start = rng.randint(3, 5) * 10
+        values = [start + 10 * i for i in range(5)]
+        frequencies = [rng.randint(1, 6) for _ in values]
+        hidden = rng.randrange(1, 4)
+        total = sum(frequencies)
+        weighted = sum(v * f for v, f in zip(values, frequencies))
+        if weighted % total == 0 and weighted // total != values[hidden]:
+            return values, frequencies, hidden
+
+
+@question_type("math.missing_frequency_mean_m2",
+               display_name={"th": "หาความถี่ที่หายไปจากค่าเฉลี่ย"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MissingFrequencyMeanM2(WordProblem):
+    def expr(self, rng: Random):
+        values, frequencies, hidden = _missing_frequency_data(rng)
+        mean = sum(v * f for v, f in zip(values, frequencies)) // sum(frequencies)
+        known_count = sum(f for i, f in enumerate(frequencies) if i != hidden)
+        what, unit = rng.choice((
+            ("คะแนนสอบ", "คะแนน"),
+            ("น้ำหนักของนักเรียน", "กิโลกรัม"),
+            ("ความสูงของต้นกล้า", "เซนติเมตร"),
+        ))
+        lines = [f"ตารางความถี่ของ{what} ({unit})", f"ค่า ({unit}) | ความถี่"]
+        lines += [f"{value} | {'x' if i == hidden else frequency}"
+                  for i, (value, frequency) in enumerate(zip(values, frequencies))]
+        return MathDraw("", str(frequencies[hidden]), prompt=(
+            NL.join(lines) + f"{NL}ถ้าค่าเฉลี่ยเท่ากับ {mean} {unit} ค่า x เท่ากับเท่าใด"),
+            distractors=[
+                named("steps.missed_a_step", str(sum(frequencies))),
+                str(known_count),
+                str(frequencies[hidden] + 1),
+                str(max(1, frequencies[hidden] - 1)),
+            ])
+
+
+def _corrected_mean_data(rng: Random) -> tuple[int, int, int, int]:
+    count = rng.randint(5, 12)
+    recorded_mean = rng.randint(40, 75)
+    recorded_value = rng.randint(20, 60)
+    shift = rng.choice((-1, 1)) * count * rng.randint(1, 3)
+    return count, recorded_mean, recorded_value, recorded_value + shift
+
+
+@question_type("math.corrected_mean_m2",
+               display_name={"th": "แก้ค่าเฉลี่ยเมื่อบันทึกข้อมูลผิด"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class CorrectedMeanM2(WordProblem):
+    def expr(self, rng: Random):
+        count, recorded_mean, recorded, actual = _corrected_mean_data(rng)
+        answer = Fraction(count * recorded_mean - recorded + actual, count)
+        what, unit = rng.choice((
+            ("คะแนนสอบของนักเรียน", "คะแนน"),
+            ("จำนวนสินค้าที่ขายได้ในแต่ละวัน", "ชิ้น"),
+            ("จำนวนผู้เข้าชมในแต่ละวัน", "คน"),
+        ))
+        return MathDraw("", _num(answer), prompt=(
+            f"ข้อมูล{what} {count} ค่า มีค่าเฉลี่ยที่คำนวณไว้ {recorded_mean} {unit} "
+            f"ภายหลังพบว่าบันทึกค่า {recorded} ผิด ที่ถูกต้องคือ {actual} "
+            f"ค่าเฉลี่ยที่ถูกต้องเป็นเท่าใด"),
+            distractors=[
+                named("steps.missed_a_step", str(recorded_mean)),
+                named("operation.reversed", _num(Fraction(count * recorded_mean + recorded - actual, count))),
+                named("steps.missed_a_step", _num(Fraction(count * recorded_mean + actual, count))),
+                _num(Fraction(count * recorded_mean - recorded + actual, count - 1)),
+            ])
+
+
+def _new_median_data(rng: Random) -> tuple[list[int], int]:
+    return rng.sample(range(10, 70), 6), rng.randint(10, 69)
+
+
+@question_type("math.median_after_new_value_m2",
+               display_name={"th": "มัธยฐานเมื่อเพิ่มข้อมูลใหม่"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MedianAfterNewValueM2(WordProblem):
+    def expr(self, rng: Random):
+        data, new_value = _new_median_data(rng)
+        answer = sorted([*data, new_value])[3]
+        old_median = _median(data)
+        what, unit = rng.choice((
+            ("คะแนนสอบของนักเรียน 6 คน", "คะแนน"),
+            ("จำนวนหนังสือที่นักเรียน 6 คนอ่านในปีนี้", "เล่ม"),
+            ("ความสูงของต้นกล้า 6 ต้น", "เซนติเมตร"),
+        ))
+        return MathDraw("", str(answer), prompt=(
+            f"ข้อมูล{what} คือ {', '.join(map(str, data))} {unit} "
+            f"เมื่อเพิ่มข้อมูลอีกหนึ่งค่าเป็น {new_value} {unit} "
+            f"มัธยฐานของข้อมูลทั้ง 7 ค่าเท่ากับเท่าใด"),
+            distractors=[
+                named("steps.missed_a_step", _num(old_median)),
+                named("steps.wrong_order", str([*data, new_value][3])),
+                str(new_value),
+                str(sorted(data)[3]),
+            ])

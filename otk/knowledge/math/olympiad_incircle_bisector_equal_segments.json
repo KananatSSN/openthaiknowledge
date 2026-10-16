@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิตของวงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.incircle-bisector-equal-segments",
+      "kind": "procedure",
+      "title": "Two bisectors give equal segments around an incircle contact",
+      "statement": "Let an incircle touch BC,CA,AB at D,E,F of an acute triangle ABC. Put x=AF=AE, y=BF=BD, z=CE=CD, so AB=x+y. If DF bisects angle ADK and EF bisects angle BEL for K,L on AB, angle-bisector ratios give AL=x²/(x+y) and AK=x+xy/(x+y). Hence △ALE is similar to △AEB by the included angle at A and adjacent side ratio AL/AE=AE/AB, while FK=FL=xy/(x+y).",
+      "steps": [
+        "Replace the six contact segments by three tangent lengths",
+        "Apply the angle-bisector theorem in triangles ADK and BEL",
+        "Compare AL, AF, and AK on AB"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 6}],
+      "covered_by": ["math.incircle_bisector_equal_segments_olympiad"]
+    }
+  ]
+}

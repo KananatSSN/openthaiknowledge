@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "รูปหลายเหลี่ยม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.opposite-midpoint-chords",
+      "kind": "procedure",
+      "title": "Vector relation among opposite side-midpoint chords",
+      "statement": "For consecutive side midpoints U,V,W,X,Y,Z of a convex hexagon, vector UX plus vector WZ equals vector VY. The first two vectors are nonparallel, so their lengths and the length VY satisfy strict triangle inequalities.",
+      "steps": [
+        "Write each side midpoint as the average of its endpoints",
+        "Add the coordinate differences for UX and WZ",
+        "Use strict convexity and the crossing of chords UX and WZ to exclude parallel vectors"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-67-math.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "math.opposite_midpoint_chord_square_olympiad"
+      ]
+    }
+  ]
+}

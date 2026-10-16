@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิตของวงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.altitude-tangent-midpoint",
+      "kind": "procedure",
+      "title": "Tangents to two diameter circles pass through an altitude midpoint",
+      "statement": "In acute triangle ABC, let AD,BE,CF be altitudes and P=AD∩EF. The tangents at D to the circumcircles of ADC and ADB meet AB and AC at X and Y. Set D=(0,0), A=(0,h), B=(-u,0), C=(v,0), with h²>uv. The circles have equations x²+y²−vx−hy=0 and x²+y²+ux−hy=0, so their tangents at D yield X and Y at height huv/(h²+uv). Direct foot coordinates give P at height 2huv/(h²+uv). Thus XY crosses AD at the midpoint of DP.",
+      "steps": [
+        "Place BC on the horizontal axis with altitude AD vertical",
+        "Derive tangent lines at D from the two circle equations",
+        "Intersect EF with AD and compare the two heights"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 4}],
+      "covered_by": ["math.altitude_tangent_midpoint_olympiad"]
+    }
+  ]
+}

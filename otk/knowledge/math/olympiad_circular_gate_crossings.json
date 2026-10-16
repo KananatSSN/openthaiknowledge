@@ -1,0 +1,20 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.circular-gate-crossings",
+      "kind": "procedure",
+      "title": "Two pigeonhole steps for same-material lighted paths",
+      "statement": "Place n=2r+1 gates around a circle and connect every pair, with no three paths crossing at one interior point. Each of the n near-diameter chords separates the remaining gates into groups of r−1 and r and has r(r−1) distinct crossings. Among two flowerpot types, at least r(r−1)/2 pots on each such path share a type, so each is lighted at that threshold. Since these n paths use only two materials, at least r+1 lighted paths have the same material. For n=21 this yields 11.",
+      "steps": [
+        "Choose a chord with nearly equal numbers of gates on both sides",
+        "Count crossing chords using one endpoint on each side",
+        "Apply pigeonhole first to flowerpot types, then to path materials"
+      ],
+      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 4}],
+      "covered_by": ["math.circular_gate_crossings_olympiad"]
+    }
+  ]
+}

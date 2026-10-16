@@ -41,7 +41,7 @@ def test_basic_sets_have_indicator_coverage_and_extras_are_separate():
     counts = Counter(row["course_type"] for row in rows)
     assert counts[BASIC] > 0
     assert counts[ADDITIONAL] > 0
-    assert counts[ENRICHMENT] == 210  # seven สอวน. sheets of 30 (2564 added 2026-10-12)
+    assert counts[ENRICHMENT] == 292  # seven สอวน. sheets of 30, plus 82 further sets
     assert counts[TERTIARY] == 89
 
 
