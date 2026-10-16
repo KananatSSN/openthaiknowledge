@@ -1,9 +1,9 @@
 """One-page worksheets for the explorer: a page of problems and a page of answers.
 
-Each request draws a fresh sheet from one problem set. Only as many questions
-as fit on the first page are kept, so the PDF is always the problem page and
-its answer key. The explorer's "download PDF" button calls the small server
-below; nginx forwards ``/api/sheet`` to it.
+Each request draws a fresh sheet from one problem set, with as many questions
+as fill the first page, so the PDF is always the problem page and its answer
+key (laid out by ``otk.tools.explorer_sheet``). The explorer's "download PDF"
+button calls the small server below; nginx forwards ``/api/sheet`` to it.
 
     python -m otk.tools.explorer_pdf KEY out.pdf      # one sheet to a file
     python -m otk.tools.explorer_pdf --serve           # the server, port 8000
@@ -16,8 +16,8 @@ thread-safe, so one sheet is drawn at a time.
 from __future__ import annotations
 
 import argparse
-import io
 import json
+import os
 import secrets
 import tempfile
 import threading
@@ -25,26 +25,22 @@ import time
 from functools import lru_cache
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from random import Random
 from urllib.parse import parse_qs, quote, urlsplit
 
 from otk.core.registry import REGISTRY
 from otk.core.render.assets import shipped_asset
-from otk.core.render.pdf import _apply_font, _paginate_flow, render_pdf
-from otk.core.worksheet import Worksheet, build_worksheet
+from otk.tools.explorer_sheet import SheetInfo, plan_page, render_sheet, unique_draws
 
 #: Seconds a client waits between two sheets.
 COOLDOWN_SECONDS = 30
-
-#: Questions drawn before trimming to what fits on one page.
-CANDIDATES = 24
 
 #: Requests allowed to wait for the drawing lock before the server says busy.
 MAX_WAITING = 4
 
 
-#: Thai fonts whose line height matches what the renderer measures. Garuda,
-#: the first TLWG font matplotlib finds, draws taller lines than that, so
-#: questions overlap; the image installs Loma for this reason.
+#: Thai fonts preferred for the sheet, in order. The layout measures what it
+#: draws, so any of them fits; Loma is the one the image installs.
 COMPACT_THAI_FONTS = ("Tahoma", "Leelawadee UI", "Noto Sans Thai", "Loma")
 
 
@@ -94,48 +90,49 @@ def logo_path() -> Path:
     r = 1.6 * scale
     draw.ellipse((16 * scale - r, 6 * scale - r, 16 * scale + r, 6 * scale + r), fill=(255, 255, 255, 255))
     mark = Image.alpha_composite(mark, overlay)
+    # Written under a temporary name, then renamed into place, so another process
+    # drawing a sheet never reads a half-written PNG. The mark is always the same,
+    # so a file already there is the one this would write: on Windows it cannot
+    # be replaced while that other process has it open, and need not be.
     path = Path(tempfile.gettempdir()) / "otk-explorer-logo.png"
-    mark.save(path)
+    if path.exists():
+        return path
+    tmp = path.with_name(f".{path.stem}.{os.getpid()}.tmp")
+    mark.save(tmp, format="PNG")
+    try:
+        os.replace(tmp, path)
+    except PermissionError:
+        tmp.unlink(missing_ok=True)
+        if not path.exists():
+            raise
     return path
 
 
-def sheet_config(key: str, seed: int, num_problems: int, columns: int) -> Worksheet:
+def sheet_info(key: str) -> SheetInfo:
     spec = REGISTRY[key]
-    return Worksheet(
+    return SheetInfo(
         title=spec.display_name.get("th", key),
-        subtitle=f"{spec.subject} · {spec.topic}",
-        school_name="OpenThaiKnowledge",
+        meta=f"{spec.subject} · {spec.topic}",
         level=spec.level.get("th", ""),
+        key=key,
         instructions="เลือกคำตอบที่ถูกต้องที่สุด",
-        logo=str(logo_path()),
-        generators={key: 1},
-        num_problems=num_problems,
-        seed=seed,
-        columns=columns,
-        show_choices=True,
-        answer_key=True,
-        answer_key_title="เฉลย",
-        font_family=thai_font(),
+        logo=logo_path(),
+        font=thai_font(),
     )
 
 
-def one_page_sheet(key: str, seed: int) -> bytes:
-    """A PDF of exactly two pages: the problems that fit on one page, then their answers."""
+def plan_sheet(key: str, seed: int):
+    """Which questions of ``key`` fill the page, drawn from ``seed``, and where they go."""
     if key not in REGISTRY:
         raise KeyError(key)
-    probe = sheet_config(key, seed, CANDIDATES, columns=2)
-    questions = build_worksheet(probe)
-    # Pictures need the page's whole width to stay readable.
-    columns = 1 if any(block.kind == "image" for q in questions for block in q.stem) else 2
-    config = sheet_config(key, seed, CANDIDATES, columns)
-    # Measure in the font the page is drawn in, or the fit is wrong.
-    _apply_font(config)
-    first_page = _paginate_flow(config, questions, shipped_asset)[0]
-    questions = questions[:len(first_page)]
-    config = config.model_copy(update={"num_problems": len(questions)})
-    buffer = io.BytesIO()
-    render_pdf(config, questions, buffer, asset_resolver=shipped_asset)
-    return buffer.getvalue()
+    draw = unique_draws(REGISTRY[key].generate, Random(seed))
+    return plan_page(sheet_info(key), draw, shipped_asset)
+
+
+def one_page_sheet(key: str, seed: int) -> bytes:
+    """A PDF of exactly two pages: the problems that fill one page, then their answers."""
+    plan = plan_sheet(key, seed)
+    return render_sheet(sheet_info(key), plan, shipped_asset)
 
 
 class Cooldown:

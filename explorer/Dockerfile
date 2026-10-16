@@ -21,7 +21,7 @@ COPY --from=data /data ./static/data
 RUN npm run build
 
 # The PDF sheets behind the "download PDF" button: otk's own renderer, with the
-# TLWG Loma Thai font for matplotlib (its line height fits the renderer's layout). Built as its own image
+# TLWG Loma Thai font for matplotlib (the sheet measures whatever font it draws in). Built as its own image
 # (compose's "sheets" service, target "sheets"); nginx forwards /api/ to it.
 FROM python:3.12-slim AS sheets
 RUN apt-get update \
