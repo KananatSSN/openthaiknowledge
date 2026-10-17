@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: สามเหลี่ยมมุมฉาก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.right-triangle-cube-root",
+      "kind": "procedure",
+      "title": "AC = 2∛2 จาก BD = DC = CF = 2",
+      "statement": "ให้ AC = x สามเหลี่ยม AFC คล้าย BAC จึง CF = x²/BC = 2 หรือ BC² = x⁴/4 และ BD² = AB² + AD² = (BC² − x²) + (x − 2)² = 4 แทนค่าได้ x⁴/4 = 4x จึง x³ = 16 และ AC = 2∛2",
+      "steps": [
+        "ใช้ CF = AC²/BC จากสามเหลี่ยมคล้าย",
+        "ใช้พีทาโกรัสในสามเหลี่ยม ABD",
+        "กำจัด BC แล้วแก้สมการกำลังสาม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 5
+        }
+      ],
+      "covered_by": [
+        "math.right_triangle_cube_root_olympiad"
+      ]
+    }
+  ]
+}

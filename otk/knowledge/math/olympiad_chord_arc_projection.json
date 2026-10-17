@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "วงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.chord-arc-projection",
+      "kind": "procedure",
+      "title": "AC − OD = 2 เมื่อส่วนโค้ง AC เป็นหนึ่งในสามของวงกลม",
+      "statement": "ส่วนโค้ง AC ยาว 1/3 ของเส้นรอบวง จึงรองรับมุมที่จุดศูนย์กลาง 120° ได้ AC = R√3 วาง OA บนแกน x และ OB บนแกน y จะได้ C = (−R/2, R√3/2) และ OD = R√3/2 ดังนั้น AC − OD = R√3/2 = AC/2 = 2 จึง AC = 4",
+      "steps": [
+        "หามุมที่จุดศูนย์กลางจากความยาวส่วนโค้ง",
+        "เขียน AC และ OD ในรูปรัศมี",
+        "แก้สมการ AC − OD = 2"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.chord_arc_projection_olympiad"
+      ]
+    }
+  ]
+}

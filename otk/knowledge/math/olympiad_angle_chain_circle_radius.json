@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมสัมผัสกัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.angle-chain-circle-radius",
+      "kind": "procedure",
+      "title": "รัศมีวงกลมวงที่สองในมุม 60°",
+      "statement": "tan A = BC/AB = √3 ดังนั้น ∠A = 60° วงแรกสัมผัส AB ที่ B จุดศูนย์กลางอยู่บนเส้นแบ่งครึ่งมุม A รัศมี r₁ = AB tan 30° = 1 วงกลมที่สัมผัสสองแขนของมุมมีจุดศูนย์กลางห่างจาก A เป็น r/sin 30° = 2r การสัมผัสภายนอกให้ 2r₁ − 2r₂ = r₁ + r₂ จึง r₂ = r₁/3 = 1/3",
+      "steps": [
+        "หามุม A จาก AB และ BC",
+        "หารัศมีวงแรกจากการสัมผัสที่ B",
+        "ใช้อัตราส่วนรัศมี (1 − sin(A/2))/(1 + sin(A/2))"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.angle_chain_circle_radius_olympiad"
+      ]
+    }
+  ]
+}

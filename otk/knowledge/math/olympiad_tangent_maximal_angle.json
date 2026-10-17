@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: เส้นสัมผัสวงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.tangent-maximal-angle",
+      "kind": "procedure",
+      "title": "BC/BA เมื่อ ∠ABC มากที่สุด",
+      "statement": "จุด A ที่ ∠MAC = 20° อยู่บนส่วนโค้งของวงกลมผ่าน M และ C มุม ABC มากที่สุดเมื่อ BA สัมผัสวงกลมนี้ กำลังของจุด B ให้ BA² = BM·BC = BC²/2 จึง BC/BA = √2 (ทั่วไป (BC/BA)² = BC/BM)",
+      "steps": [
+        "หาโลคัสของ A จากมุม MAC คงที่",
+        "มุมที่ B มากที่สุดเมื่อ BA สัมผัสวงกลม",
+        "ใช้กำลังของจุด BA² = BM·BC"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.tangent_maximal_angle_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "วงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.arc-midpoint-chord",
+      "kind": "procedure",
+      "title": "AB เมื่อ B เป็นจุดกึ่งกลางส่วนโค้ง AC",
+      "statement": "AB = BC และ DB แบ่งครึ่งมุม ADC กฎของโคไซน์ในสามเหลี่ยม ABD และ CBD ให้ AB² = AD² + BD² − 2·AD·BD cos θ = CD² + BD² − 2·CD·BD cos θ จึง cos θ = (AD + CD)/(2BD) และ AB² = BD² − AD·CD = 16 − 6 = 10 ได้ AB = √10",
+      "steps": [
+        "ใช้ AB = BC และมุม ADB = มุม CDB",
+        "เขียนกฎของโคไซน์สองครั้งแล้วกำจัด cos θ",
+        "ได้ AB² = BD² − AD·CD"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.arc_midpoint_chord_olympiad"
+      ]
+    }
+  ]
+}
