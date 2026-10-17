@@ -4057,7 +4057,8 @@
    "layout": "numbered",
    "glyph_damage": 49,
    "items": 27,
-   "stage": "generated",
+   "sheet_id": "posnnat2547_math",
+   "stage": "green",
    "note": "2547 national paper (1st TMO) digested: 27 items, 27 knowledge units, 27 sets; day 1 item 2 has no real solution as printed; tests in test_math_olympiad_posn_national_2547.py"
   },
   {
