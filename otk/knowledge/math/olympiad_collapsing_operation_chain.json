@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ตัวดำเนินการนิยามใหม่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.collapsing-operation-chain",
+      "kind": "procedure",
+      "title": "0 ∗ (1 ∗ (⋯(2004 ∗ 2005)⋯)) เมื่อ a ∗ b = (a + b + 1)/(ab + 12)",
+      "statement": "3 ∗ w = (w + 4)/(3w + 12) = 1/3 ทุก w ≥ 0 ดังนั้นตั้งแต่ 3 ∗ (…) มีค่า 1/3 แล้ว 2 ∗ 1/3 = 5/19, 1 ∗ 5/19 = 43/233 และ 0 ∗ 43/233 = 23/233",
+      "steps": [
+        "หาค่า a ที่ทำให้ a ∗ w คงตัว",
+        "คำนวณย้อนกลับสามขั้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 17
+        }
+      ],
+      "covered_by": [
+        "math.collapsing_operation_chain_olympiad"
+      ]
+    }
+  ]
+}

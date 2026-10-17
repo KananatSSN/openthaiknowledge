@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การหารลงตัวและเศษเหลือ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.quartic-difference-pairs",
+      "kind": "procedure",
+      "title": "10 | a³b − ab³ สำหรับบางคู่ในสามจำนวน",
+      "statement": "a³b − ab³ = ab(a − b)(a + b) เป็นจำนวนคู่เสมอ ถ้ามีจำนวนหนึ่งหารด้วย 5 ลงตัวก็เสร็จ มิฉะนั้นกำลังสองมอดุโล 5 เป็น 1 หรือ 4 สามจำนวนต้องมีสองตัวที่ a² ≡ b² (mod 5) ทำให้ 5 | (a − b)(a + b)",
+      "steps": [
+        "แยกตัวประกอบ",
+        "ตัวประกอบ 2 มีเสมอ",
+        "ใช้หลักรังนกพิราบกับกำลังสองมอดุโล 5"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันที่สอง",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.quartic_difference_pairs_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.quadratic-cauchy-functional",
+      "kind": "procedure",
+      "title": "f(2) จาก f(m + n) = f(m) + f(n) + 2mn − 2548",
+      "statement": "ให้ h(n) = f(n) − n² − 2548 จะได้ h(m + n) = h(m) + h(n) บนจำนวนนับ จึง h(n) = cn และ f(n) = n² + cn + 2548 จาก f(2548) = −2548 ได้ 2548 + c + 1 = −1 คือ c = −2550 ดังนั้น f(2) = 4 − 5100 + 2548 = −2548",
+      "steps": [
+        "ลบพจน์กำลังสองและค่าคงตัว",
+        "ได้ฟังก์ชันบวกบนจำนวนนับ",
+        "หาค่าคงตัวจาก f(2548)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 14
+        }
+      ],
+      "covered_by": [
+        "math.quadratic_cauchy_functional_olympiad"
+      ]
+    }
+  ]
+}

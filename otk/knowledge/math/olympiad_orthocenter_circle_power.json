@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: กำลังของจุด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.orthocenter-circle-power",
+      "kind": "procedure",
+      "title": "AH·FH = GH²",
+      "statement": "BC เป็นเส้นผ่านศูนย์กลาง จึง ∠BDC = ∠BEC = 90° CD และ BE เป็นส่วนสูง F เป็นจุดออร์โทเซนเตอร์ และ AH ⟂ BC สามเหลี่ยม BHF คล้าย AHC จึง AH·FH = BH·HC และ G อยู่บนวงกลมที่มี BC เป็นเส้นผ่านศูนย์กลางโดย GH ⟂ BC จึง GH² = BH·HC",
+      "steps": [
+        "ใช้มุมในครึ่งวงกลม",
+        "F เป็นจุดออร์โทเซนเตอร์",
+        "ใช้สามเหลี่ยมคล้ายและกำลังของจุด H"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันที่สอง",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.orthocenter_circle_power_olympiad"
+      ]
+    }
+  ]
+}

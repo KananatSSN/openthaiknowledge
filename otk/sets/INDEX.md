@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-3,899 sets in 1,229 unit files. Each subject's `README.md` lists its units with their indicators.
+3,926 sets in 1,256 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -295,13 +295,16 @@
 
 | File | Unit | Sets |
 |---|---|---|
+| [`acquaintance_line_orders.py`](math/olympiad/acquaintance_line_orders.py) | Every prefix must be a block of morning neighbours: 2^(n − 1) orders after a line, n·2^(n − 2) after a circle. | `math.acquaintance_line_orders_olympiad` |
 | [`algebraic_invariants.py`](math/olympiad/algebraic_invariants.py) | Algebraic invariants from aggregate data, roots, and signed pairs. | `math.moment_shift_olympiad`, `math.symmetric_cubic_olympiad`, `math.signed_pair_minimum_olympiad` |
 | [`almost_additive_scaling_bound.py`](math/olympiad/almost_additive_scaling_bound.py) | |f(x + y) − f(x) − f(y)| < 1 gives |f(nx) − n f(x)| < n − 1, a sharp bound. | `math.almost_additive_scaling_bound_olympiad` |
 | [`alternating_harmonic_block.py`](math/olympiad/alternating_harmonic_block.py) | Σ 1/a_{2k−1} with aₙ = n(n + 1) telescopes to 1/(n + 1) + ⋯ + 1/(2n). | `math.alternating_harmonic_block_olympiad` |
+| [`alternating_subset_sum.py`](math/olympiad/alternating_subset_sum.py) | Alternating sums over all non-empty subsets of {1, …, n} total n·2^(n − 1). | `math.alternating_subset_sum_olympiad` |
 | [`altitude_midpoint_circle.py`](math/olympiad/altitude_midpoint_circle.py) | Circle through an altitude foot and a side midpoint meets another side. | `math.altitude_midpoint_circle_intersection_olympiad` |
 | [`altitude_tangent_midpoint.py`](math/olympiad/altitude_tangent_midpoint.py) | Find the midpoint cut by two circumcircle tangents. | `math.altitude_tangent_midpoint_olympiad` |
 | [`angle_chain_circle_radius.py`](math/olympiad/angle_chain_circle_radius.py) | Circles in the 60° angle at A: each next circle has a third of the radius. | `math.angle_chain_circle_radius_olympiad` |
 | [`antipodal_bijection_maximum.py`](math/olympiad/antipodal_bijection_maximum.py) | Maximize Σ|f(k) − f(−k)| over bijections of {−n, …, n}. | `math.antipodal_bijection_maximum_olympiad` |
+| [`arbelos_tangent_circle.py`](math/olympiad/arbelos_tangent_circle.py) | In the semicircle of radius R: the inner circle has radius R/2, the side semicircle R/3 at distance 2R/3, the fourth circle R/6. | `math.arbelos_tangent_circle_olympiad` |
 | [`arc_midpoint_chord.py`](math/olympiad/arc_midpoint_chord.py) | B the midpoint of arc AC in cyclic ABCD: AB² = BD² − AD·CD. | `math.arc_midpoint_chord_olympiad` |
 | [`balanced_signed_partition.py`](math/olympiad/balanced_signed_partition.py) | Count sizes admitting a zero-sum half of a signed symmetric set. | `math.balanced_signed_partition_olympiad` |
 | [`ball_box_extremes_count.py`](math/olympiad/ball_box_extremes_count.py) | Balls in five boxes where the largest and smallest box hold at least the rest. | `math.ball_box_extremes_count_olympiad` |
@@ -309,6 +312,7 @@
 | [`base_power_sums.py`](math/olympiad/base_power_sums.py) | Distinct sums of a few powers when their exponents may repeat. | `math.distinct_power_sums_olympiad` |
 | [`bilinear_bound_functional.py`](math/olympiad/bilinear_bound_functional.py) | x·f(y) + y·f(x) ≤ c·xy for all reals forces f(x) = cx/2. | `math.bilinear_bound_functional_olympiad` |
 | [`binomial_alternating_residue.py`](math/olympiad/binomial_alternating_residue.py) | Σ (−1)ᵏ C(2n + 1, 2k + 1)·cᵏ modulo p, via √(−c) in ℤ/p. | `math.binomial_alternating_residue_olympiad` |
+| [`binomial_difference_gcd.py`](math/olympiad/binomial_difference_gcd.py) | gcd(((3m)^e − m^e)/(2m)², (2m)²), computed exactly with big integers. | `math.binomial_difference_gcd_olympiad` |
 | [`binomial_prime_lucas.py`](math/olympiad/binomial_prime_lucas.py) | Primes p with p | C(N, p) + c: by Lucas, C(N, p) ≡ ⌊N/p⌋ (mod p). | `math.binomial_prime_lucas_olympiad` |
 | [`bisector_circumradius_angle.py`](math/olympiad/bisector_circumradius_angle.py) | The bisector from A meets the circumcircle at D; ∠ADO = |B − C|/2. | `math.bisector_circumradius_angle_olympiad` |
 | [`bisector_foot_midline.py`](math/olympiad/bisector_foot_midline.py) | Feet from A to the bisectors at B and C lie on the midline: DE = (b + c − a)/2. | `math.bisector_foot_midline_olympiad` |
@@ -322,8 +326,10 @@
 | [`chord_arc_projection.py`](math/olympiad/chord_arc_projection.py) | Arc AC is a third of the circle: AC = R√3 and OD = R√3/2, so AC = 2(AC − OD). | `math.chord_arc_projection_olympiad` |
 | [`circular_distance_pigeonhole.py`](math/olympiad/circular_distance_pigeonhole.py) | k residues on a cycle of length L: two lie within ⌊L/k⌋ of each other. | `math.circular_distance_pigeonhole_olympiad` |
 | [`circular_gate_crossings.py`](math/olympiad/circular_gate_crossings.py) | Find same-material lighted paths among near-diameter chords. | `math.circular_gate_crossings_olympiad` |
+| [`collapsing_operation_chain.py`](math/olympiad/collapsing_operation_chain.py) | a ∗ b = (a + b + α)/(ab + t(t + α)) makes t ∗ w = 1/t for every w, so the chain collapses. | `math.collapsing_operation_chain_olympiad` |
 | [`complex_power_sums.py`](math/olympiad/complex_power_sums.py) | From p₁, p₂, p₃ of three complex numbers, Newton's identities give p₄. | `math.complex_power_sums_olympiad` |
 | [`composed_polynomial_roots.py`](math/olympiad/composed_polynomial_roots.py) | Products of real roots after composing a cubic with a quadratic. | `math.composed_polynomial_real_roots_olympiad` |
+| [`composition_count.py`](math/olympiad/composition_count.py) | Ordered sums of positive integers: 2^(N − 1) − 1 with at least two parts, C(N − 1, k − 1) with exactly k. | `math.composition_count_olympiad` |
 | [`conditional_switch_passes.py`](math/olympiad/conditional_switch_passes.py) | Count switches after conditional passes over numbered positions. | `math.conditional_switch_passes_olympiad` |
 | [`consecutive_nonpowers_crt.py`](math/olympiad/consecutive_nonpowers_crt.py) | Construct consecutive non-perfect-powers using exact prime valuations. | `math.consecutive_nonpowers_crt_olympiad` |
 | [`consecutive_product_square_kernel.py`](math/olympiad/consecutive_product_square_kernel.py) | n + 1 is coprime to n(n + 2) = (n + 1)² − 1, so n(n + 1)(n + 2) is never a square; its squarefree part measures how far. | `math.consecutive_product_square_kernel_olympiad` |
@@ -334,22 +340,26 @@
 | [`coprime_exponent_pair.py`](math/olympiad/coprime_exponent_pair.py) | Coprime m, n with p | (ab)^m + a^n − 2b^n, found through a table of powers of ab. | `math.coprime_exponent_pair_olympiad` |
 | [`coprime_square_difference_quotient.py`](math/olympiad/coprime_square_difference_quotient.py) | Count coprime pairs making k·a(a²+b²)/(a²−b²) an integer. | `math.coprime_square_difference_quotient_olympiad` |
 | [`cosine_addition_functional.py`](math/olympiad/cosine_addition_functional.py) | f(cos(x + y)) = cos x f(cos y) + k f(sin x)f(sin y) with f(1) < 0 gives f(t) = −t/k. | `math.cosine_addition_functional_olympiad` |
+| [`cosine_difference_minimum.py`](math/olympiad/cosine_difference_minimum.py) | Σ_{i<j} cos(θᵢ − θⱼ) = (|Σ e^{iθ}|² − n)/2 ≥ −n/2. | `math.cosine_difference_minimum_olympiad` |
 | [`cube_ratio_difference_floor.py`](math/olympiad/cube_ratio_difference_floor.py) | (n + d)³/((n − d)n) − (n − d)³/(n(n + d)) = 8d + 16d³/(n² − d²). | `math.cube_ratio_difference_floor_olympiad` |
 | [`cube_root_unity_digit_sum.py`](math/olympiad/cube_root_unity_digit_sum.py) | Smallest digit sum of a d-digit n with n³ ≡ 1 modulo M. | `math.cube_root_unity_digit_sum_olympiad` |
 | [`cube_root_unity_divisibility.py`](math/olympiad/cube_root_unity_divisibility.py) | 1 + x + x² | 2xP(x³) + Q(−x − x²) forces P(1) = Q(1) = 0, so x − 1 divides P − Q. | `math.cube_root_unity_divisibility_olympiad` |
 | [`cyclic_cube_product_maximum.py`](math/olympiad/cyclic_cube_product_maximum.py) | Optimize a cyclic product under a sum of cube roots. | `math.cyclic_cube_product_maximum_olympiad` |
 | [`cyclic_ratio_integer_triples.py`](math/olympiad/cyclic_ratio_integer_triples.py) | a/b + b/c + c/a an integer forces abc to be a cube; count small triples. | `math.cyclic_ratio_integer_triples_olympiad` |
 | [`cyclic_ratio_product_bound.py`](math/olympiad/cyclic_ratio_product_bound.py) | Largest k with Π(k + a/b) ≤ c·(Σ a/b)(Σ b/a) for all positive a, b, c. | `math.cyclic_ratio_product_bound_olympiad` |
+| [`cyclic_ratio_square_sum.py`](math/olympiad/cyclic_ratio_square_sum.py) | With p = a/(a − b), q = b/(b − c), r = c/(c − a): pq + qr + rp = p + q + r − 1, so Σ(1 + p)² = (p + q + r)² + 5. | `math.cyclic_ratio_square_sum_olympiad` |
 | [`cyclic_sixth_power_inequality.py`](math/olympiad/cyclic_sixth_power_inequality.py) | Minimize a cyclic sixth-power expression under a fixed sum. | `math.cyclic_sixth_power_inequality_olympiad` |
 | [`descending_password_suffix.py`](math/olympiad/descending_password_suffix.py) | Find feasible password endings under parity and descending-order rules. | `math.descending_password_suffix_olympiad` |
 | [`diagonal_strip_lamps.py`](math/olympiad/diagonal_strip_lamps.py) | Dominate a one-cell-wide lattice strip with unit-radius lamps. | `math.diagonal_strip_lamps_olympiad` |
 | [`diagonal_strip_placements.py`](math/olympiad/diagonal_strip_placements.py) | Count independent strip placements on opposite sides of a diagonal. | `math.diagonal_strip_placements_olympiad` |
 | [`diameter_circles_median.py`](math/olympiad/diameter_circles_median.py) | Use two diameter circles to locate a cevian intersection on a median. | `math.diameter_circles_median_olympiad` |
 | [`diamond_sum_functional.py`](math/olympiad/diamond_sum_functional.py) | Values on every axis cross (x ± t, y), (x, y ± t) sum to K: f is the constant K/4. | `math.diamond_sum_functional_olympiad` |
+| [`dice_sum_count.py`](math/olympiad/dice_sum_count.py) | Ordered rolls of n dice with total s, by a convolution table. | `math.dice_sum_count_olympiad` |
 | [`digit_sum_multiples.py`](math/olympiad/digit_sum_multiples.py) | Digit sums of multiples and a modular obstruction. | `math.digit_sum_cofinite_olympiad` |
 | [`disjoint_subset_pairs.py`](math/olympiad/disjoint_subset_pairs.py) | Unordered pairs of disjoint non-empty subsets of an n-set: (3ⁿ − 2ⁿ⁺¹ + 1)/2. | `math.disjoint_subset_pairs_olympiad` |
 | [`distinct_factor_product_minimum.py`](math/olympiad/distinct_factor_product_minimum.py) | 2k distinct nonzero integers have |product| ≥ (k!)², equality only for ±1, …, ±k. | `math.distinct_factor_product_minimum_olympiad` |
 | [`divisor_fourth_power.py`](math/olympiad/divisor_fourth_power.py) | n = d(n)⁴: the solutions are 1, 5⁴, 3⁸ and 3⁸·5⁴. | `math.divisor_fourth_power_olympiad` |
+| [`double_iterate_values.py`](math/olympiad/double_iterate_values.py) | f(f(n)) = 2n gives f(2n) = f(f(f(n))) = 2f(n), so one value fixes a whole chain. | `math.double_iterate_values_olympiad` |
 | [`elf_delivery_minimax.py`](math/olympiad/elf_delivery_minimax.py) | Assign progressively slower elves to progressively nearer houses. | `math.elf_delivery_minimax_olympiad` |
 | [`equal_arm_diagonal_intersection.py`](math/olympiad/equal_arm_diagonal_intersection.py) | Directed diagonal intersection from equal arm lengths in a triangle. | `math.equal_arm_diagonal_intersection_olympiad` |
 | [`equal_bisector_segments_triangle.py`](math/olympiad/equal_bisector_segments_triangle.py) | PD = PE on two angle bisectors forces ∠A = 60°; extremal 30–60–90 sides. | `math.equal_bisector_segments_triangle_olympiad` |
@@ -376,6 +386,7 @@
 | [`garland_average.py`](math/olympiad/garland_average.py) | A random group of k boys and n − k girls holds Σcⱼ garlands on average. | `math.garland_average_olympiad` |
 | [`gcd_lcm_square.py`](math/olympiad/gcd_lcm_square.py) | Square least common multiples under a fixed gcd. | `math.gcd_lcm_square_olympiad` |
 | [`gcd_lcm_square_sum.py`](math/olympiad/gcd_lcm_square_sum.py) | Recover m + n from m² + n² and gcd + lcm. | `math.gcd_lcm_square_sum_olympiad` |
+| [`golden_isosceles_power.py`](math/olympiad/golden_isosceles_power.py) | Apex 36°, base angles 72°: AB/BC = φ, so (AB/BC)ⁿ = (Lₙ + Fₙ√5)/2. | `math.golden_isosceles_power_olympiad` |
 | [`grid_pigeonhole.py`](math/olympiad/grid_pigeonhole.py) | Pigeonhole bounds obtained by partitioning a grid into small blocks. | `math.grid_block_pigeonhole_olympiad` |
 | [`hensel_divisor_lift.py`](math/olympiad/hensel_divisor_lift.py) | Lift a simple polynomial root to guarantee many divisors. | `math.hensel_divisor_lift_olympiad` |
 | [`human_pyramid_orders.py`](math/olympiad/human_pyramid_orders.py) | Weight orders for a human pyramid are the linear extensions of its triangular poset. | `math.human_pyramid_orders_olympiad` |
@@ -385,6 +396,7 @@
 | [`incircle_arc_midpoint_power.py`](math/olympiad/incircle_arc_midpoint_power.py) | K, D, M collinear: the chord through the incircle touch point. | `math.incircle_arc_midpoint_power_olympiad` |
 | [`incircle_bisector_equal_segments.py`](math/olympiad/incircle_bisector_equal_segments.py) | Compare two bisector intersections in an incircle triangle. | `math.incircle_bisector_equal_segments_olympiad` |
 | [`incircle_vertex_ratio.py`](math/olympiad/incircle_vertex_ratio.py) | s²/r² = s³/((s − a)(s − b)(s − c)) from r² = (s − a)(s − b)(s − c)/s. | `math.incircle_vertex_ratio_olympiad` |
+| [`inscribed_trapezoid_leg.py`](math/olympiad/inscribed_trapezoid_leg.py) | AB a diameter of the unit circle, DC = k·AD: AD = (√(k² + 8) − k)/2. | `math.inscribed_trapezoid_leg_olympiad` |
 | [`integer_recurrence_rigidity.py`](math/olympiad/integer_recurrence_rigidity.py) | A divisibility recurrence with a unique positive-integer sequence. | `math.integer_recurrence_rigidity_olympiad` |
 | [`integer_root_quadratic_count.py`](math/olympiad/integer_root_quadratic_count.py) | x² + ax − n has integer roots iff n = r(r + a) for an integer r ≥ 1. | `math.integer_root_quadratic_count_olympiad` |
 | [`integer_valued_product_inequality.py`](math/olympiad/integer_valued_product_inequality.py) | Classify integer-valued functions obeying a product inequality. | `math.integer_valued_product_inequality_olympiad` |
@@ -398,11 +410,13 @@
 | [`lifting_order_exponent.py`](math/olympiad/lifting_order_exponent.py) | Smallest n with p^k | aⁿ − bⁿ; it exists for every k once p | a^m − b^m. | `math.lifting_order_exponent_olympiad` |
 | [`linear_composite_functional.py`](math/olympiad/linear_composite_functional.py) | The linear solution of f(f(x) + x f(y)) = (a + 1)f(x) + a²xy is ax + 1. | `math.linear_composite_functional_olympiad` |
 | [`linear_shift_functional.py`](math/olympiad/linear_shift_functional.py) | f(xy + (c+1)(x + y) + c² − d) = f(x)f(y) + f(y) + x − d has the linear solution x + c. | `math.linear_shift_functional_olympiad` |
+| [`linear_substitution_functional.py`](math/olympiad/linear_substitution_functional.py) | f(x + 2y) + k f(y − 2x) = linear: the substitution is invertible, so f is linear. | `math.linear_substitution_functional_olympiad` |
 | [`log_injective_collision.py`](math/olympiad/log_injective_collision.py) | f(xy) = f(x) + f(y) into ℚ is never injective: f(2^a) = f(3^b). | `math.log_injective_collision_olympiad` |
 | [`medians_shortest_side.py`](math/olympiad/medians_shortest_side.py) | From the medians, a² = (4/9)(2m_b² + 2m_c² − m_a²); the longest median gives the shortest side. | `math.medians_shortest_side_olympiad` |
 | [`mersenne_cube_quotient.py`](math/olympiad/mersenne_cube_quotient.py) | x·yᵏ/(x + y) = pᵏ: only x = 2, y = 2p with p = 2ᵏ − 1 prime. | `math.mersenne_cube_quotient_olympiad` |
 | [`minimum_tail_squares.py`](math/olympiad/minimum_tail_squares.py) | Maximize the earlier square sum by minimizing a fixed-sum tail. | `math.minimum_tail_squares_olympiad` |
 | [`mirrored_rotation_similarity.py`](math/olympiad/mirrored_rotation_similarity.py) | A similarity from opposite rays and equal outward rotations. | `math.mirrored_rotation_similarity_olympiad` |
+| [`monic_interpolation_value.py`](math/olympiad/monic_interpolation_value.py) | Monic P of even degree d with P(k) = αk + β for k = 1..d − 1: P(d) + P(0) = αd + 2β + d!. | `math.monic_interpolation_value_olympiad` |
 | [`monochromatic_rectangle_count.py`](math/olympiad/monochromatic_rectangle_count.py) | Two groups and two seat numbers whose four students share a gender; 4 × 7 forces one. | `math.monochromatic_rectangle_count_olympiad` |
 | [`monochrome_rainbow_tournament.py`](math/olympiad/monochrome_rainbow_tournament.py) | Bound a colored complete graph with no two-equal-edge triangles. | `math.monochrome_rainbow_tournament_olympiad` |
 | [`monotone_grid_fleet.py`](math/olympiad/monotone_grid_fleet.py) | Cover a square grid with several monotone corner-to-corner routes. | `math.monotone_grid_fleet_olympiad` |
@@ -419,8 +433,13 @@
 | [`obtuse_progressions.py`](math/olympiad/obtuse_progressions.py) | Probability that a fixed-gap triple is an obtuse triangle. | `math.obtuse_progression_probability_olympiad` |
 | [`odd_club_maximum.py`](math/olympiad/odd_club_maximum.py) | Distinct nonempty clubs where every club with the leader has odd size. | `math.odd_club_maximum_olympiad` |
 | [`odd_harmonic_three_adic.py`](math/olympiad/odd_harmonic_three_adic.py) | 1 + 1/3 + ⋯ + 1/(2n − 1): the power of 3 in its denominator. | `math.odd_harmonic_three_adic_olympiad` |
+| [`odd_power_root_mod_two_power.py`](math/olympiad/odd_power_root_mod_two_power.py) | x ↦ x^e is a bijection on odd residues mod 2^K for odd e, so x^e ≡ −1 forces x ≡ −1. | `math.odd_power_root_mod_two_power_olympiad` |
+| [`odd_power_sum_mod_two_power.py`](math/olympiad/odd_power_sum_mod_two_power.py) | Σ k^(M·2^M) mod 2^M: odd k give 1, even k give 0. | `math.odd_power_sum_mod_two_power_olympiad` |
 | [`odd_row_column_grids.py`](math/olympiad/odd_row_column_grids.py) | Count binary grids with odd parity in every row and column. | `math.odd_row_column_grids_olympiad` |
+| [`odd_step_sum_terms.py`](math/olympiad/odd_step_sum_terms.py) | k + (k + d) + … + (k + d(m − 1)) = N means m(2k + d(m − 1)) = 2N. | `math.odd_step_sum_terms_olympiad` |
 | [`opposite_midpoint_chords.py`](math/olympiad/opposite_midpoint_chords.py) | A vector identity among opposite-side midpoint chords of a hexagon. | `math.opposite_midpoint_chord_square_olympiad` |
+| [`orthocenter_altitude_ratio.py`](math/olympiad/orthocenter_altitude_ratio.py) | BH = 2R cos B, so BH = t·R gives A′B/AB = cos B = t/2. | `math.orthocenter_altitude_ratio_olympiad` |
+| [`orthocenter_circle_power.py`](math/olympiad/orthocenter_circle_power.py) | With BC a diameter, F is the orthocentre of ABC and AH·FH = BH·HC = GH². | `math.orthocenter_circle_power_olympiad` |
 | [`orthocenter_circumcircle_collinearity.py`](math/olympiad/orthocenter_circumcircle_collinearity.py) | Slope of a collinear triple in an acute orthocenter construction. | `math.orthocenter_circumcircle_collinearity_olympiad` |
 | [`overlapping_boxes_probability.py`](math/olympiad/overlapping_boxes_probability.py) | Probability of distinct labels from three overlapping boxes. | `math.overlapping_boxes_probability_olympiad` |
 | [`parallel_chord_circumcenters.py`](math/olympiad/parallel_chord_circumcenters.py) | O₁O₂ is constant when E on CD makes BE ∥ AD: it equals AB/(2 sin ∠ADC). | `math.parallel_chord_circumcenters_olympiad` |
@@ -437,6 +456,7 @@
 | [`posn2567.py`](math/olympiad/posn2567.py) | พหุนามสมมาตร | `math.posn2567_q01`, `math.posn2567_q02`, `math.posn2567_q03`, `math.posn2567_q04`, `math.posn2567_q05`, `math.posn2567_q06`, `math.posn2567_q07`, `math.posn2567_q08`, `math.posn2567_q09`, `math.posn2567_q10`, `math.posn2567_q11`, `math.posn2567_q12`, `math.posn2567_q13`, `math.posn2567_q14`, `math.posn2567_q15`, `math.posn2567_q16`, `math.posn2567_q17`, `math.posn2567_q18`, `math.posn2567_q19`, `math.posn2567_q20`, `math.posn2567_q21`, `math.posn2567_q22`, `math.posn2567_q23`, `math.posn2567_q24`, `math.posn2567_q25`, `math.posn2567_q26`, `math.posn2567_q27`, `math.posn2567_q28`, `math.posn2567_q29`, `math.posn2567_q30` |
 | [`posn2568.py`](math/olympiad/posn2568.py) | สมการเชิงเส้นบนเลขโดด | `math.posn2568_q01`, `math.posn2568_q02`, `math.posn2568_q03`, `math.posn2568_q04`, `math.posn2568_q05`, `math.posn2568_q06`, `math.posn2568_q07`, `math.posn2568_q08`, `math.posn2568_q09`, `math.posn2568_q10`, `math.posn2568_q11`, `math.posn2568_q12`, `math.posn2568_q13`, `math.posn2568_q14`, `math.posn2568_q15`, `math.posn2568_q16`, `math.posn2568_q17`, `math.posn2568_q18`, `math.posn2568_q19`, `math.posn2568_q20`, `math.posn2568_q21`, `math.posn2568_q22`, `math.posn2568_q23`, `math.posn2568_q24`, `math.posn2568_q25`, `math.posn2568_q26`, `math.posn2568_q27`, `math.posn2568_q28`, `math.posn2568_q29`, `math.posn2568_q30` |
 | [`power_sum_functional.py`](math/olympiad/power_sum_functional.py) | (x² + y²)ᵏ f(xy) = f(x)f(y)f(x² + y²): f = ±xᵏ, ±|x|ᵏ or 0. | `math.power_sum_functional_olympiad` |
+| [`power_tower_divisible_count.py`](math/olympiad/power_tower_divisible_count.py) | 5 | n²·2^(2n²) + 1 depends only on n mod 10. | `math.power_tower_divisible_count_olympiad` |
 | [`prefix_pigeonhole.py`](math/olympiad/prefix_pigeonhole.py) | Pigeonhole and discrete intermediate values for signed prefix sums. | `math.prefix_pigeonhole_olympiad` |
 | [`prime_power_minus_one_gcd.py`](math/olympiad/prime_power_minus_one_gcd.py) | The largest integer dividing pᵏ − 1 for every prime p above a bound. | `math.prime_power_minus_one_gcd_olympiad` |
 | [`prime_power_sum_divisibility.py`](math/olympiad/prime_power_sum_divisibility.py) | Prime triples with pq | rᵖ + r^q, by Fermat's little theorem. | `math.prime_power_sum_divisibility_olympiad` |
@@ -444,9 +464,11 @@
 | [`prime_quadratic_cube.py`](math/olympiad/prime_quadratic_cube.py) | Primes p making αp² − βp − 1 a perfect cube, built from the n + 1 = p case. | `math.prime_quadratic_cube_olympiad` |
 | [`prime_square_exponent_product.py`](math/olympiad/prime_square_exponent_product.py) | ∏ b^(p_n² − 1) mod a prime m: reduce the exponent sum modulo m − 1. | `math.prime_square_exponent_product_olympiad` |
 | [`purple_grid_threshold.py`](math/olympiad/purple_grid_threshold.py) | Minimum marked cells under a missing-cell degree-product condition. | `math.purple_grid_threshold_olympiad` |
+| [`quadratic_cauchy_functional.py`](math/olympiad/quadratic_cauchy_functional.py) | f(m + n) = f(m) + f(n) + 2mn − C on ℕ gives f(n) = n² + cn + C. | `math.quadratic_cauchy_functional_olympiad` |
 | [`quadratic_irrational_reduction.py`](math/olympiad/quadratic_irrational_reduction.py) | Reduce a high-degree quotient at a quadratic irrational. | `math.quadratic_irrational_reduction_olympiad` |
 | [`quadratic_scaling_functional.py`](math/olympiad/quadratic_scaling_functional.py) | f(3x + y) + f(3x − y) = f(x + y) + f(x − y) + 16f(x): f(4x) = 16f(x), f = cx² for polynomials. | `math.quadratic_scaling_functional_olympiad` |
 | [`quadratic_square_values_product.py`](math/olympiad/quadratic_square_values_product.py) | n² + bn + c = m² factors as (2n + b − 2m)(2n + b + 2m) = b² − 4c. | `math.quadratic_square_values_product_olympiad` |
+| [`quartic_difference_pairs.py`](math/olympiad/quartic_difference_pairs.py) | 10 | a³b − ab³ = ab(a − b)(a + b): always even, and divisible by 5 when 5 | ab or a² ≡ b² (mod 5). | `math.quartic_difference_pairs_olympiad` |
 | [`radical_axis_point.py`](math/olympiad/radical_axis_point.py) | The common chord of two circles meets the line of centres at P with PA·PC = PB·PD. | `math.radical_axis_point_olympiad` |
 | [`ramsey_class_threshold.py`](math/olympiad/ramsey_class_threshold.py) | Pigeonhole into classes, then a monochromatic triangle by Ramsey numbers. | `math.ramsey_class_threshold_olympiad` |
 | [`rational_recurrence.py`](math/olympiad/rational_recurrence.py) | Starting values of an infinite rational quadratic recurrence. | `math.rational_recurrence_starts_olympiad` |
@@ -463,6 +485,7 @@
 | [`repdigit_sandwich_divisibility.py`](math/olympiad/repdigit_sandwich_divisibility.py) | a b…b c divisible by the four-digit a b b c: the n repeat with a period. | `math.repdigit_sandwich_divisibility_olympiad` |
 | [`repunit_residue.py`](math/olympiad/repunit_residue.py) | The k-digit repunit modulo M is (10^k − 1)/9 mod M, computed through 10^k mod 9M. | `math.repunit_residue_olympiad` |
 | [`residue_sum_function_count.py`](math/olympiad/residue_sum_function_count.py) | Count maps {1..N} → {u, v, w} with Σ f(k) ≡ t (mod 3) by the residue transfer. | `math.residue_sum_function_count_olympiad` |
+| [`right_incenter_product.py`](math/olympiad/right_incenter_product.py) | In a right triangle with hypotenuse a and inradius r, ∠BOC = 135° and BO·OC = √2·r·a. | `math.right_incenter_product_olympiad` |
 | [`right_triangle_cevian_cosine.py`](math/olympiad/right_triangle_cevian_cosine.py) | cos∠CAE for E dividing the hypotenuse BE : EC = p : q in a right triangle. | `math.right_triangle_cevian_cosine_olympiad` |
 | [`right_triangle_cube_root.py`](math/olympiad/right_triangle_cube_root.py) | BD = DC = CF = t in a right triangle at A forces AC³ = 2t³. | `math.right_triangle_cube_root_olympiad` |
 | [`right_triangle_diameter_circle.py`](math/olympiad/right_triangle_diameter_circle.py) | Circle on diameter CP in a right triangle: AP·PR = BP·PC and AC·CQ = BC·PC. | `math.right_triangle_diameter_circle_olympiad` |
@@ -492,6 +515,7 @@
 | [`square_root_functional_iterate.py`](math/olympiad/square_root_functional_iterate.py) | (f(xy))² = f(x²)f(y²): y = 1 gives f(x²) = f(x)²/f(1). | `math.square_root_functional_iterate_olympiad` |
 | [`square_root_shift_functional.py`](math/olympiad/square_root_shift_functional.py) | f(x + y·f(x) + m²y²) = f(x) + 2m²y forces f(x)² − 4m²x to be constant. | `math.square_root_shift_functional_olympiad` |
 | [`squared_side_triangle_area.py`](math/olympiad/squared_side_triangle_area.py) | Sides √(a₁² + a₂²), …: the triangle exists and 16Δ² is a quadratic form. | `math.squared_side_triangle_area_olympiad` |
+| [`squared_sum_solution_count.py`](math/olympiad/squared_sum_solution_count.py) | (x₁ + x₂ + x₃)²(y₁ + y₂) = N: sum over squares s² | N of C(s − 1, 2)·(N/s² − 1). | `math.squared_sum_solution_count_olympiad` |
 | [`subset_range_count.py`](math/olympiad/subset_range_count.py) | Subsets of {1, …, n} whose largest minus smallest is k: (n − k)·2^{k−1}. | `math.subset_range_count_olympiad` |
 | [`sum_dependent_product_function.py`](math/olympiad/sum_dependent_product_function.py) | If f(m)f(n) depends only on m + n, then f is geometric. | `math.sum_dependent_product_function_olympiad` |
 | [`sum_of_squares_functional_seed.py`](math/olympiad/sum_of_squares_functional_seed.py) | f(m² + n²) = (f(m) − f(n))² + f(2mn) forces f(1) − f(0) ∈ {0, 1}. | `math.sum_of_squares_functional_seed_olympiad` |
@@ -499,6 +523,7 @@
 | [`swapped_argument_functional.py`](math/olympiad/swapped_argument_functional.py) | x ↦ 1 − x swaps x² + x + 3 and x² − 3x + 5, so the two values solve a 2 × 2 system. | `math.swapped_argument_functional_olympiad` |
 | [`swapped_quadratic_coefficients.py`](math/olympiad/swapped_quadratic_coefficients.py) | Find constants preserving rational roots under quadratic coefficient swaps. | `math.swapped_quadratic_coefficients_olympiad` |
 | [`symmedian_chord_ratio.py`](math/olympiad/symmedian_chord_ratio.py) | Through the pole P of AC, line PQ is the Q-symmedian of QAC: AB/BC = (QA/QC)² = (AR/RC)². | `math.symmedian_chord_ratio_olympiad` |
+| [`symmetric_power_root_sum.py`](math/olympiad/symmetric_power_root_sum.py) | (c − x)ⁿ + xⁿ = 0 is symmetric under x ↦ c − x; for odd n it has degree n − 1. | `math.symmetric_power_root_sum_olympiad` |
 | [`symmetric_reciprocal_bound.py`](math/olympiad/symmetric_reciprocal_bound.py) | Positive real roots with product 1: Σ 1/e_k ≤ Σ 1/C(n, k). | `math.symmetric_reciprocal_bound_olympiad` |
 | [`symmetric_reciprocal_constant.py`](math/olympiad/symmetric_reciprocal_constant.py) | t + u/(ab + bc + ca) ≥ k/(a + b + c) holds for all positives iff k ≤ 2√(3tu). | `math.symmetric_reciprocal_constant_olympiad` |
 | [`symmetric_root_coefficient_product.py`](math/olympiad/symmetric_root_coefficient_product.py) | Odd polynomial with roots 0, ±b_i: a₃·a_{2n−1} = (−1)ⁿ(Σ b_i²)(Σ b_i⁻²)·Π b_i². | `math.symmetric_root_coefficient_product_olympiad` |
@@ -508,6 +533,7 @@
 | [`tangent_maximal_angle.py`](math/olympiad/tangent_maximal_angle.py) | ∠ABC is largest when BA touches the circle through M, C, A: BA² = BM·BC. | `math.tangent_maximal_angle_olympiad` |
 | [`tangent_midpoint_rhombus_area.py`](math/olympiad/tangent_midpoint_rhombus_area.py) | MNOP is a rhombus of side PA/2, so its area is (PA/2)²·sin∠APB. | `math.tangent_midpoint_rhombus_area_olympiad` |
 | [`tangent_polar_altitude_foot.py`](math/olympiad/tangent_polar_altitude_foot.py) | In the tangent configuration of the circle on BC, S is the foot from A. | `math.tangent_polar_altitude_foot_olympiad` |
+| [`tangent_power_pair_sum.py`](math/olympiad/tangent_power_pair_sum.py) | 1/(1 + tanᵖx) + 1/(1 + tanᵖ(π/2 − x)) = 1 pairs the terms. | `math.tangent_power_pair_sum_olympiad` |
 | [`tangent_secant_horizontal_chord.py`](math/olympiad/tangent_secant_horizontal_chord.py) | Circle area from a horizontal chord through a tangent point. | `math.tangent_horizontal_chord_circle_area_olympiad` |
 | [`tangential_quadrilateral_additivity.py`](math/olympiad/tangential_quadrilateral_additivity.py) | Infer rational values from a tangential-quadrilateral identity. | `math.tangential_quadrilateral_additivity_olympiad` |
 | [`three_edge_grid_erasure.py`](math/olympiad/three_edge_grid_erasure.py) | Classify square grids erasable three sides at a time. | `math.three_edge_grid_erasure_olympiad` |
@@ -526,6 +552,7 @@
 | [`unit_root_power_index.py`](math/olympiad/unit_root_power_index.py) | a z^(n+1) − z^n − 1 = 0 has a root on the unit circle iff n ≡ −2 (mod 2m), where a = 2cos(π/m). | `math.unit_root_power_index_olympiad` |
 | [`vandermonde_shifted_sum.py`](math/olympiad/vandermonde_shifted_sum.py) | Σ_k C(k, a)C(n − k, b) = C(n + 1, a + b + 1). | `math.vandermonde_shifted_sum_olympiad` |
 | [`vieta_jump_chain.py`](math/olympiad/vieta_jump_chain.py) | (m − n)² = kmn + m + n: Vieta jumping from (k + 3, 1) gives infinitely many pairs. | `math.vieta_jump_chain_olympiad` |
+| [`weighted_amgm_maximiser.py`](math/olympiad/weighted_amgm_maximiser.py) | Maximise a·b^(1/2)·c^(1/3)·d^(1/4) on a linear constraint: each term cᵢxᵢ is proportional to its weight. | `math.weighted_amgm_maximiser_olympiad` |
 | [`weighted_cyclic_inequality.py`](math/olympiad/weighted_cyclic_inequality.py) | A sharp Cauchy and AM–GM bound for cyclic denominators. | `math.weighted_cyclic_inequality_olympiad` |
 | [`weighted_square_minimiser.py`](math/olympiad/weighted_square_minimiser.py) | Minimise αx² + βy² + γz² on x + y + z = s: each variable is proportional to its reciprocal weight. | `math.weighted_square_minimiser_olympiad` |
 | [`wilson_consecutive_product.py`](math/olympiad/wilson_consecutive_product.py) | Use Wilson's theorem to reduce a near-complete residue product. | `math.wilson_consecutive_product_olympiad` |

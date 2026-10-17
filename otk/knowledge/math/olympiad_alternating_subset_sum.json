@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เพาเวอร์เซตและการนับสับเซต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.alternating-subset-sum",
+      "kind": "procedure",
+      "title": "ผลบวกผลลัพธ์สลับเครื่องหมายของทุกสับเซตของ {1, …, 7}",
+      "statement": "จับคู่สับเซต T ที่ไม่มี 7 กับ T ∪ {7} ผลลัพธ์ของ T ∪ {7} เป็น 7 − (ผลลัพธ์ของ T) จึงคู่หนึ่งรวมได้ 7 มี 2⁶ คู่ (รวมคู่ ∅ กับ {7}) ได้ 7·2⁶ = 448",
+      "steps": [
+        "จับคู่สับเซตด้วยสมาชิกตัวมากสุด",
+        "นับจำนวนคู่"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 8
+        }
+      ],
+      "covered_by": [
+        "math.alternating_subset_sum_olympiad"
+      ]
+    }
+  ]
+}

@@ -4065,7 +4065,10 @@
    "pages": 3,
    "text_chars": 4701,
    "layout": "numbered",
-   "glyph_damage": 40
+   "glyph_damage": 40,
+   "items": 27,
+   "stage": "generated",
+   "note": "2548 national paper (2nd TMO) digested: 27 items, 27 knowledge units, 27 sets; tests in test_math_olympiad_posn_national_2548.py"
   },
   {
    "path": "สอวน_math/posn-national-49-math.pdf",

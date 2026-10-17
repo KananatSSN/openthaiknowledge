@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cosine-difference-minimum",
+      "kind": "procedure",
+      "title": "ค่าต่ำสุดของ cos(α − β) + cos(β − γ) + cos(γ − α)",
+      "statement": "|e^{iα} + e^{iβ} + e^{iγ}|² = 3 + 2(cos(α − β) + cos(β − γ) + cos(γ − α)) ≥ 0 จึงผลบวก ≥ −3/2 และเท่ากันเมื่อมุมห่างกัน 120°",
+      "steps": [
+        "เขียนเป็นขนาดของผลบวกจำนวนเชิงซ้อน",
+        "หากรณีที่เกิดสมการ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 21
+        }
+      ],
+      "covered_by": [
+        "math.cosine_difference_minimum_olympiad"
+      ]
+    }
+  ]
+}

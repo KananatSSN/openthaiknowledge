@@ -1089,4 +1089,25 @@ TOTAL         338   316     17     4   66      255      6     11
   bank entry is `generated`.
 - Open: none.
 - Registry 3,899 sets; enrichment count 442.
-- Remaining POSN maths at `new`: national papers 2547–2548 (2 papers).
+
+### 2026-10-17 — 2548 national paper
+
+- The 2548 national paper (2nd TMO) has 27 questions over two days: 21
+  short answers on day 1 and six items on day 2. The text layer drops the
+  mathematics and there are no answer pages, so every answer was derived and
+  checked by computer. 23 have answers, including:
+  - day 1, item 1: √6 − 2;
+  - day 1, item 6: 1701;
+  - day 1, item 9: 4050;
+  - day 1, item 13: k = 181;
+  - day 1, item 17: 23/233;
+  - day 1, item 18: 1275/2;
+  - day 1, item 20: √6/6;
+  - day 2, item 5: 2⁴⁹.
+- 27 knowledge units and 27 original sets, checked in
+  `test_math_olympiad_posn_national_2548.py`. Day 2, item 3 records an
+  explicit f with f(f(n)) = 2n, which the tests check directly. The bank
+  entry is `generated`.
+- Open: none.
+- Registry 3,926 sets; enrichment count 469.
+- Remaining POSN maths at `new`: national paper 2547 (1 paper).
