@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การวิเคราะห์มิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.energy_frequency_dimensions.procedure",
+      "kind": "procedure",
+      "title": "มิติของค่าคงที่ในสมการพลังงานกับความถี่",
+      "statement": "มิติของ k ใน E=kfⁿ คือ ML²Tⁿ⁻²",
+      "steps": [
+        "แทนมิติพลังงานและความถี่",
+        "หารมิติพลังงานด้วยมิติความถี่ยกกำลัง n"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q01"
+      ],
+      "note": ""
+    }
+  ]
+}

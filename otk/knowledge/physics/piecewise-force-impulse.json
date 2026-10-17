@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การดลจากกราฟแรงเป็นช่วง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.piecewise_force_impulse.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วหลังตีจากกราฟแรงกับเวลา",
+      "statement": "การดลคือพื้นที่ใต้กราฟแรงกับเวลา และการกระดอนต้องรวมการเปลี่ยนทิศโมเมนตัม",
+      "steps": [
+        "รวมพื้นที่สี่เหลี่ยมคางหมูและสามเหลี่ยม",
+        "ใช้ J=m(vออก+vเข้า) พร้อมหน่วย SI"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q25"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -4208,6 +4208,20 @@
    "sheet_id": "posn2560_physics",
    "stage": "generated",
    "note": "30 items in two sections; transcript corrects running-number extraction."
+  },
+  {
+   "path": "สอวน_physics/posn1-61-physics.pdf",
+   "kind": "exam",
+   "sha256": "0e859590795d8ab7",
+   "size": 1234335,
+   "pages": 14,
+   "text_chars": 11695,
+   "layout": "numbered",
+   "glyph_damage": 631,
+   "items": 30,
+   "sheet_id": "posn2561_physics",
+   "stage": "generated",
+   "note": "30 numbered questions in two sections; handwritten transcript preserves restarting numbering."
   }
  ]
 }

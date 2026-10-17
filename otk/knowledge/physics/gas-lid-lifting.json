@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความดัน แรงบนฝา และแก๊สอุดมคติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.gas_lid_lifting.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิแก๊สจากแรงเปิดฝาภาชนะ",
+      "statement": "ฝาเบาที่เริ่มยกมี PในA+Fดึง=PนอกA และแก๊สภายในมี PV=nRT",
+      "steps": [
+        "หาความดันภายในจากสมดุลแรงฝา",
+        "หาปริมาตรจากพื้นที่คูณสูงแล้วแก้อุณหภูมิ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q19"
+      ],
+      "note": ""
+    }
+  ]
+}

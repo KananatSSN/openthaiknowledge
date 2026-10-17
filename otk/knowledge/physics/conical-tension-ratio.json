@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เปรียบเทียบลูกตุ้มกรวยที่คาบต่างกัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.conical_tension_ratio.procedure",
+      "kind": "procedure",
+      "title": "แรงตึงเชือกของลูกตุ้มกรวยสองชุด",
+      "statement": "ลูกตุ้มกรวยมีแรงตึง T=m(2π/P)²ℓ จึงต้องยกกำลังสองอัตราส่วนคาบ",
+      "steps": [
+        "ใช้แรงเข้าสู่ศูนย์กลางและรัศมี ℓsinθ",
+        "จัดอัตราส่วนแรงตึงของสองชุด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q09"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

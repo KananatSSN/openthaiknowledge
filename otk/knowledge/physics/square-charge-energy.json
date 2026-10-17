@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานศักย์ไฟฟ้าของระบบประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.square_charge_energy.procedure",
+      "kind": "procedure",
+      "title": "พลังงานศักย์ของประจุที่มุมสี่เหลี่ยม",
+      "statement": "พลังงานระบบประจุคือผลรวม kqᵢqⱼ/rᵢⱼ ของแต่ละคู่เพียงครั้งเดียว",
+      "steps": [
+        "แยกคู่ตามขอบสี่เหลี่ยมและเส้นทแยง",
+        "รวมพลังงานพร้อมเครื่องหมายประจุ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q11"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

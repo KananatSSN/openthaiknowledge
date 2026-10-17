@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การขยายตัวเชิงเส้นด้วยความร้อน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.differential_circle_expansion.procedure",
+      "kind": "procedure",
+      "title": "ผลต่างสัมประสิทธิ์ขยายตัวของวงแหวน",
+      "statement": "ผลต่างเส้นรอบวงของแถบยาวเริ่มต้นเท่ากันคือ L₀ΔαΔT=2πΔr",
+      "steps": [
+        "แปลงช่องว่างรัศมีให้หน่วยเดียวกับความยาว",
+        "เทียบผลต่างการขยายตัวกับผลต่างเส้นรอบวง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q18"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

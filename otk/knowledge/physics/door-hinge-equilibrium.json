@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงบานพับประตูและสมดุลโมเมนต์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.door_hinge_equilibrium.procedure",
+      "kind": "procedure",
+      "title": "แรงบานพับล่างของประตูในสมดุล",
+      "statement": "โมเมนต์น้ำหนักกำหนดแรงแนวระดับที่บานพับ แต่ขนาดแรงบานพับบนอย่างเดียวไม่กำหนดเครื่องหมายแรงแนวดิ่ง",
+      "steps": [
+        "ตั้งโมเมนต์รอบบานพับหาแรงแนวระดับ",
+        "ใช้เงื่อนไขทิศแรงแนวดิ่งและสมดุลแรงหาขนาดแรงล่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q10"
+      ],
+      "note": "Upper vertical reaction can be ±40N in source: lower force sqrt3400 or sqrt17800N. Generator requires both hinges to support upward."
+    }
+  ]
+}

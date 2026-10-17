@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลสัมพัทธ์ในระบบเร่ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.accelerating_wedge_wall.procedure",
+      "kind": "procedure",
+      "title": "แรงผนังที่ลูกบอลบนพื้นเอียงเร่ง",
+      "statement": "บอลบนลาดลื่นติดผนังขวาที่เร่งซ้ายมี R=m(a+g tanθ)",
+      "steps": [
+        "ใช้สมดุลแนวดิ่งหาแรงปกติของลาด",
+        "เขียนกฎข้อสองแนวระดับในกรอบเฉื่อย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q22"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

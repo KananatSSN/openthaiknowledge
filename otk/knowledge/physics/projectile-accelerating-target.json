@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การพบกันของโพรเจกไทล์กับวัตถุเร่งขึ้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.projectile_accelerating_target.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งลูกโป่งเพื่อชนโพรเจกไทล์",
+      "statement": "เวลาพบเป้าแนวดิ่งถูกกำหนดด้วยระยะทางแนวระดับ ก่อนนำไปเทียบตำแหน่งแนวดิ่ง",
+      "steps": [
+        "หาเวลาจากการเคลื่อนที่แนวระดับ",
+        "เทียบความสูงของโพรเจกไทล์กับเป้าที่เริ่มจากหยุดนิ่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q08"
+      ],
+      "note": "Balloon explicitly starts from rest. With fixed launch data the meeting condition specifies one acceleration, not a minimization."
+    }
+  ]
+}

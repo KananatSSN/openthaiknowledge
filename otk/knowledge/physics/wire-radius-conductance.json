@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สภาพนำไฟฟ้าและรูปทรงลวด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wire_radius_conductance.procedure",
+      "kind": "procedure",
+      "title": "รัศมีลวดจากกราฟกระแสและความต่างศักย์",
+      "statement": "ความชันกราฟ I ต่อ V เท่ากับ σπr²/L โดยต้องใช้ความยาวและรัศมีหน่วยเดียวกัน",
+      "steps": [
+        "อ่านความนำไฟฟ้าจากความชันกราฟ",
+        "แก้พื้นที่หน้าตัดแล้วถอดรากหารัศมี"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q15"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ตัวเก็บประจุอนุกรมและขนาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.mixed_capacitor_branch.procedure",
+      "kind": "procedure",
+      "title": "ประจุบนตัวเก็บประจุในแขนงผสม",
+      "statement": "แขนงขนานรับแรงดันแหล่งจ่ายเต็ม แต่ตัวเก็บประจุอนุกรมในแขนงแบ่งแรงดันและมีประจุเท่ากัน",
+      "steps": [
+        "รวมความจุของกลุ่มขนาน",
+        "หาความจุสมมูลอนุกรมแล้วคูณแรงดัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q14"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

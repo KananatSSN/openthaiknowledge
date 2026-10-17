@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลความดันของของเหลวหลายชั้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.three_liquid_depth.procedure",
+      "kind": "procedure",
+      "title": "ความลึกของของเหลวสามชนิดในหลอดรูปตัวยู",
+      "statement": "ที่ระดับเดียวกันในของเหลวที่ต่อถึงกัน ความดันรวมจากทุกชั้นต้องเท่ากัน",
+      "steps": [
+        "เลือกแนวระดับร่วมต่ำกว่ารอยต่อทั้งสอง",
+        "รวมความดันของของเหลวเบาและหนักแล้วแก้ความลึก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q16"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

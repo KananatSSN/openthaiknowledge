@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแบ่งกระแสในวงจรที่มีตัวต้านทานร่วม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.switched_branch_current.procedure",
+      "kind": "procedure",
+      "title": "กระแสแขนงเปลี่ยนเมื่อปิดสวิตช์",
+      "statement": "เพิ่มแขนงขนานหลังตัวต้านทานร่วมทำให้กระแสรวมเพิ่ม แต่แรงดันและกระแสในแขนงเดิมลดลง",
+      "steps": [
+        "หาความต้านทานสมมูลและแรงดันแขนงก่อนหลังสวิตช์",
+        "คำนวณกระแสเฉพาะแอมมิเตอร์แล้วลบก่อนจากหลัง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 27
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q27"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

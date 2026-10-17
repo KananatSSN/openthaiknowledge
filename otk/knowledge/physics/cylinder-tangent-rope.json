@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลแรงและโมเมนต์ของทรงกระบอก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.cylinder_tangent_rope.procedure",
+      "kind": "procedure",
+      "title": "แรงเชือกแนวระดับที่พยุงทรงกระบอก",
+      "statement": "ทรงกระบอกนิ่งบนลาดที่เชือกแนวระดับสัมผัสด้านบนมี f=T และ T/W=tan(θ/2)",
+      "steps": [
+        "ใช้โมเมนต์รอบศูนย์กลางหาแรงเสียดทาน",
+        "ใช้สมดุลตามพื้นเอียงหาแรงตึง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q23"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

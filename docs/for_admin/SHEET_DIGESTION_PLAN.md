@@ -74,8 +74,13 @@ Phases in build order. Check an item only when its tests pass.
   full suite only when a sheet is completely digested. Waves here cover
   6, 10, and 14 items. The final batch exposed a shortest-choice cue in
   item 8, corrected before the completed-sheet full run.
-- Next source: `สอวน_physics/posn1-61-physics.pdf`. The other 32 papers
-  remain pending; do not infer folder completion from this first sheet.
+- `สอวน_physics/posn1-61-physics.pdf`: all 30 questions transcribed,
+  independently solved, claimed by 29 knowledge units, and linked to 30
+  generators in `otk/sets/physics/olympiad/posn2561.py`. Internal items 21–30
+  preserve the ten restarted Part 2 numbers in their provenance. The single
+  completed-sheet full run passed: 29,421 passed, 2 skipped (24m57s).
+- Next source: `สอวน_physics/posn1-62-physics.pdf`. Two of the 33 papers
+  are digested; the remaining 31 papers are pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -919,3 +924,31 @@ TOTAL         338   316     17     4   66      255      6     11
   Focused repairs and regression checks: **4,277 passed**; Ruff clean.
   No second full run was performed. The same focused batch also verifies the
   final distractor formulas and printed Part 2 provenance numbering.
+
+### 2026-10-17 — POSN physics 2561 camp selection
+
+- Reviewed the 14-page paper and all 14 automatic figure crops. The extractor
+  merges the ten restarted written questions into MC item 20, and its crop
+  for that item actually belongs to written question 2. A private hand
+  transcript preserves all 30 numbered items and answers; conversion yields
+  30/30 answered digest items.
+- Added 30 solver modules, each independently checked at the source data and
+  three changed-constant cases, plus 30 seeded generators. All 30 items are
+  claimed by 29 knowledge units (the two pulley items share one unit).
+  Knowledge validation reports zero problems and no generator gaps.
+- Explicit generated assumptions resolve source ambiguities: the table/pulley
+  speed is restricted to travel on the table, the balloon starts from rest,
+  and both door hinges have upward vertical components. The other source
+  hinge branch also satisfies equilibrium and is tested separately. Fluid
+  labels, circuit connections, graph coordinates, and torque arms are stated
+  directly; variable source figures are not attached as static crops.
+- The beam-expander source includes a ray drawing and a numerical separation.
+  Its checker traces three rays, verifies parallel output and the beam-width
+  ratio, and independently finds the lens separation. The generator practises
+  the afocal separation condition.
+- Targeted waves: 4,383 passed; 4,523 passed; 4,664 passed with one test-helper
+  failure parsing negative TeX fractions. Corrected the parser; its focused
+  regression passes. All 3,779 existing golden records remain unchanged.
+- The full suite ran once, after all 30 items were digested: **29,421 passed,
+  2 skipped in 24m57s**. Ruff is clean; source transcripts and full-text digests
+  remain in the private bank.

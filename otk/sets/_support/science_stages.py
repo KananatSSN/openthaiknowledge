@@ -1086,6 +1086,38 @@ PHYSICS_APPLICATION_KEYS = frozenset({
 })
 
 REVIEWED_PHYSICS_STAGES = {
+    # BEGIN POSN 2561
+    "phys.posn2561_q01": 2,
+    "phys.posn2561_q02": 3,
+    "phys.posn2561_q03": 2,
+    "phys.posn2561_q04": 3,
+    "phys.posn2561_q05": 3,
+    "phys.posn2561_q06": 2,
+    "phys.posn2561_q07": 3,
+    "phys.posn2561_q08": 3,
+    "phys.posn2561_q09": 3,
+    "phys.posn2561_q10": 3,
+    "phys.posn2561_q11": 3,
+    "phys.posn2561_q12": 3,
+    "phys.posn2561_q13": 2,
+    "phys.posn2561_q14": 3,
+    "phys.posn2561_q15": 2,
+    "phys.posn2561_q16": 3,
+    "phys.posn2561_q17": 3,
+    "phys.posn2561_q18": 2,
+    "phys.posn2561_q19": 3,
+    "phys.posn2561_q20": 2,
+    "phys.posn2561_q21": 2,
+    "phys.posn2561_q22": 3,
+    "phys.posn2561_q23": 3,
+    "phys.posn2561_q24": 3,
+    "phys.posn2561_q25": 3,
+    "phys.posn2561_q26": 2,
+    "phys.posn2561_q27": 3,
+    "phys.posn2561_q28": 3,
+    "phys.posn2561_q29": 3,
+    "phys.posn2561_q30": 3,
+    # END POSN 2561
     # BEGIN POSN PHYSICS
     "phys.posn2560_q01": 3,
     "phys.posn2560_q02": 3,
