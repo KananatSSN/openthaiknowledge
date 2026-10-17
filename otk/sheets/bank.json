@@ -4141,7 +4141,8 @@
    "layout": "numbered",
    "glyph_damage": 40,
    "items": 16,
-   "stage": "generated",
+   "sheet_id": "posnnat2553_math",
+   "stage": "green",
    "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to original problem sets; day 1 item 6 evenness and day 2 item 5 uniqueness only sketched"
   },
   {
