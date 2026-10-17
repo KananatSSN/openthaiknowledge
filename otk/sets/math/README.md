@@ -472,7 +472,7 @@
 | [`posn2567`](olympiad/posn2567.py) | พหุนามสมมาตร | — | 30 |
 | [`posn2568`](olympiad/posn2568.py) | สมการเชิงเส้นบนเลขโดด | — | 30 |
 | [`power_difference_gcd`](olympiad/power_difference_gcd.py) | gcd(a^m − 1, a^n − 1) = a^gcd(m, n) − 1, by the Euclidean algorithm on exponents. | — | 1 |
-| [`power_sum_functional`](olympiad/power_sum_functional.py) | (x² + y²)ᵏ f(xy) = f(x)f(y)f(x² + y²): f = ±xᵏ, ±|x|ᵏ or 0. | — | 1 |
+| [`power_sum_functional`](olympiad/power_sum_functional.py) | (x² + y²)ᵏ f(xy) = f(x)f(y)f(x² + y²): f = ±xᵏ, ±xᵏ⁻¹|x| or 0. | — | 1 |
 | [`power_sum_mod_prime_power`](olympiad/power_sum_mod_prime_power.py) | Σ k^E mod M over k ≤ N, reduced through the period M of k ↦ k^E mod M. | — | 1 |
 | [`power_tower_divisible_count`](olympiad/power_tower_divisible_count.py) | 5 | n²·2^(2n²) + 1 depends only on n mod 10. | — | 1 |
 | [`power_tower_last_digits`](olympiad/power_tower_last_digits.py) | Last three digits of b^(b^k): reduce the exponent modulo λ(1000) = 100 (with care for the factor 8). | — | 1 |

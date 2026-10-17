@@ -58,6 +58,7 @@ SHARED_GENERATORS = {
     "posnnat2553_math": "ระดับชาติ 2553",
     "posnnat2554_math": "ระดับชาติ 2554",
     "posnnat2555_math": "ระดับชาติ 2555",
+    "posnnat2556_math": "ระดับชาติ 2556",
 }
 
 
