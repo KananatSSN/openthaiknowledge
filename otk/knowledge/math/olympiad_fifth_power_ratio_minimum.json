@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.fifth-power-ratio-minimum",
+      "kind": "procedure",
+      "title": "Σa⁵/(bc²) ≥ a² + b² + c²",
+      "statement": "AM–GM ถ่วงน้ำหนัก: a⁵/(bc²) + b²/2 + c² ≥ (5/2)(a⁵/(bc²) · b · c²)^(2/5) = (5/2)a² รวมแบบวนรอบได้ Σa⁵/(bc²) + (3/2)Σa² ≥ (5/2)Σa² จึง Σa⁵/(bc²) ≥ Σa² และเมื่อ a + b + c = s ค่าต่ำสุดคือ s²/3",
+      "steps": [
+        "เลือกน้ำหนักให้ตัวแปร b, c หายจากผลคูณ",
+        "ใช้ AM–GM ถ่วงน้ำหนัก",
+        "รวมแบบวนรอบ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-53-math.pdf",
+          "section": "วันแรก",
+          "number": 7
+        }
+      ],
+      "covered_by": [
+        "math.fifth_power_ratio_minimum_olympiad"
+      ]
+    }
+  ]
+}

@@ -978,3 +978,28 @@ TOTAL         338   316     17     4   66      255      6     11
   - a reduced N/4 answer was the shortest choice, so item 6 now uses odd N,
     as in the source.
 - Remaining POSN maths at `new`: national papers 2547–2553 (7 papers).
+
+### 2026-10-17 — 2553 national paper
+
+- The 2553 national paper (7th TMO) has 16 questions: 10 on day 1 and 6 on
+  day 2, with numbering restarting on day 2. The transcript uses two sections,
+  and the knowledge units cite `{sheet, section, number}`.
+- Answers:
+  - day 1, item 1: 55;
+  - day 1, item 2: DF is a diameter, = xyz/(2Δ);
+  - day 1, item 4: 150°;
+  - day 1, item 9: −1/2;
+  - day 1, item 10: p = 7;
+  - day 2, item 5: f ≡ 1005/2.
+- Sixteen knowledge units and sixteen original sets, checked in
+  `test_math_olympiad_posn_national_2553.py`. That file includes a
+  Greenwood–Gleason colouring of K16, which shows R(3,3,3) = 17 is needed in
+  the day 2, item 2 argument. The bank entry is `generated`.
+- Set modules must register at least one set (`test_sets_layout`), so a shared
+  helper module in `olympiad/` is not allowed; helpers are inlined.
+- Open (sketched only):
+  - day 1, item 6: proof that f is even;
+  - day 2, item 4: the altitude inequality;
+  - day 2, item 5: uniqueness in the plane.
+- Registry 3,819 sets; enrichment count 362.
+- Remaining POSN maths at `new`: national papers 2547–2552 (6 papers).

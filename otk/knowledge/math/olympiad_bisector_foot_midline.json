@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: เส้นแบ่งครึ่งมุม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.bisector-foot-midline",
+      "kind": "procedure",
+      "title": "เท้าตั้งฉากจาก A บนเส้นแบ่งครึ่งมุมอยู่บนเส้นเชื่อมจุดกึ่งกลาง",
+      "statement": "สะท้อน A ข้ามเส้นแบ่งครึ่งมุม B ได้จุด A′ บนเส้นตรง BC และ D เป็นจุดกึ่งกลาง AA′ จึงอยู่บนเส้นเชื่อมจุดกึ่งกลาง M, N ของ AB, AC ซึ่งคือ M, N ในโจทย์ MD = c/2 และทำนองเดียวกัน NE = b/2 ได้ DE = (b + c − a)/2 และ MN = a/2 ดังนั้น DE/MN + 1 = (b + c)/a",
+      "steps": [
+        "สะท้อน A ข้ามเส้นแบ่งครึ่งมุม",
+        "สรุปว่า D, E อยู่บนเส้นเชื่อมจุดกึ่งกลาง",
+        "คำนวณ DE และ MN"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-53-math.pdf",
+          "section": "วันที่สอง",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.bisector_foot_midline_olympiad"
+      ]
+    }
+  ]
+}

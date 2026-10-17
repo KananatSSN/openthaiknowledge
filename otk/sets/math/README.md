@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,389 sets in 351 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,405 sets in 367 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -298,13 +298,17 @@
 | [`altitude_tangent_midpoint`](olympiad/altitude_tangent_midpoint.py) | Find the midpoint cut by two circumcircle tangents. | — | 1 |
 | [`antipodal_bijection_maximum`](olympiad/antipodal_bijection_maximum.py) | Maximize Σ|f(k) − f(−k)| over bijections of {−n, …, n}. | — | 1 |
 | [`balanced_signed_partition`](olympiad/balanced_signed_partition.py) | Count sizes admitting a zero-sum half of a signed symmetric set. | — | 1 |
+| [`ball_box_extremes_count`](olympiad/ball_box_extremes_count.py) | Balls in five boxes where the largest and smallest box hold at least the rest. | — | 1 |
 | [`barycentric_functional`](olympiad/barycentric_functional.py) | A multiplicative functional equation at noncollinear barycentres. | — | 1 |
 | [`base_power_sums`](olympiad/base_power_sums.py) | Distinct sums of a few powers when their exponents may repeat. | — | 1 |
 | [`bilinear_bound_functional`](olympiad/bilinear_bound_functional.py) | x·f(y) + y·f(x) ≤ c·xy for all reals forces f(x) = cx/2. | — | 1 |
+| [`binomial_prime_lucas`](olympiad/binomial_prime_lucas.py) | Primes p with p | C(N, p) + c: by Lucas, C(N, p) ≡ ⌊N/p⌋ (mod p). | — | 1 |
+| [`bisector_foot_midline`](olympiad/bisector_foot_midline.py) | Feet from A to the bisectors at B and C lie on the midline: DE = (b + c − a)/2. | — | 1 |
 | [`bounded_path_colorings`](olympiad/bounded_path_colorings.py) | Proper colorings of a row with bounded color use. | — | 1 |
 | [`bounded_variance_maximum`](olympiad/bounded_variance_maximum.py) | Max Σ(xᵢ − m)² over [0, 1]ᴺ: half the values at 0 and half at 1. | — | 1 |
 | [`cevian_angle_bisector_ratio`](olympiad/cevian_angle_bisector_ratio.py) | A variable segment ratio from an angle bisector and two cevians. | — | 1 |
 | [`cevian_bisector_midpoint`](olympiad/cevian_bisector_midpoint.py) | Concurrent cevians in a right triangle with RP bisecting ∠BRC: MR = MC = PQ/2. | — | 1 |
+| [`circular_distance_pigeonhole`](olympiad/circular_distance_pigeonhole.py) | k residues on a cycle of length L: two lie within ⌊L/k⌋ of each other. | — | 1 |
 | [`circular_gate_crossings`](olympiad/circular_gate_crossings.py) | Find same-material lighted paths among near-diameter chords. | — | 1 |
 | [`composed_polynomial_roots`](olympiad/composed_polynomial_roots.py) | Products of real roots after composing a cubic with a quadratic. | — | 1 |
 | [`conditional_switch_passes`](olympiad/conditional_switch_passes.py) | Count switches after conditional passes over numbered positions. | — | 1 |
@@ -322,6 +326,7 @@
 | [`diagonal_strip_lamps`](olympiad/diagonal_strip_lamps.py) | Dominate a one-cell-wide lattice strip with unit-radius lamps. | — | 1 |
 | [`diagonal_strip_placements`](olympiad/diagonal_strip_placements.py) | Count independent strip placements on opposite sides of a diagonal. | — | 1 |
 | [`diameter_circles_median`](olympiad/diameter_circles_median.py) | Use two diameter circles to locate a cevian intersection on a median. | — | 1 |
+| [`diamond_sum_functional`](olympiad/diamond_sum_functional.py) | Values on every axis cross (x ± t, y), (x, y ± t) sum to K: f is the constant K/4. | — | 1 |
 | [`digit_sum_multiples`](olympiad/digit_sum_multiples.py) | Digit sums of multiples and a modular obstruction. | — | 1 |
 | [`distinct_factor_product_minimum`](olympiad/distinct_factor_product_minimum.py) | 2k distinct nonzero integers have |product| ≥ (k!)², equality only for ±1, …, ±k. | — | 1 |
 | [`divisor_fourth_power`](olympiad/divisor_fourth_power.py) | n = d(n)⁴: the solutions are 1, 5⁴, 3⁸ and 3⁸·5⁴. | — | 1 |
@@ -331,6 +336,7 @@
 | [`equal_links_circle_angle`](olympiad/equal_links_circle_angle.py) | Central angle from four equal links on a circle chord. | — | 1 |
 | [`equal_share_redistribution`](olympiad/equal_share_redistribution.py) | Recover an original equally shared population from two redistributions. | — | 1 |
 | [`equiangular_hexagon_diagonals`](olympiad/equiangular_hexagon_diagonals.py) | Recover a symmetric side expression from three equiangular-hexagon diagonals. | — | 1 |
+| [`equilateral_cevian_angle`](olympiad/equilateral_cevian_angle.py) | Equilateral ABC with AN = BM: ∠BOC = 120°; for BM = AB/3, ∠AOB = 150°. | — | 1 |
 | [`euler_power_sum_remainder`](olympiad/euler_power_sum_remainder.py) | m^{φ(n)+1} + n^{φ(m)+1} ≡ m + n (mod mn) for coprime m, n. | — | 1 |
 | [`excentral_centroid_ratio`](olympiad/excentral_centroid_ratio.py) | I, the excentral centroid G and the intouch orthocentre H are collinear, IG : IH = 4R : 3r. | — | 1 |
 | [`exponential_divisor_polynomials`](olympiad/exponential_divisor_polynomials.py) | Integer polynomials with P(n) | bⁿ + K for every n are the divisors of a gcd. | — | 1 |
@@ -338,7 +344,9 @@
 | [`factorial_minus_one_prime`](olympiad/factorial_minus_one_prime.py) | Every prime factor of (n − 1)! − 1 exceeds n. | — | 1 |
 | [`factorial_offset_polynomial_divisors`](olympiad/factorial_offset_polynomial_divisors.py) | Classify polynomial divisors of factorials with a fixed offset. | — | 1 |
 | [`fifth_power_pair_remainders`](olympiad/fifth_power_pair_remainders.py) | Reduce paired fifth-power numerators modulo a sum of squares. | — | 1 |
+| [`fifth_power_ratio_minimum`](olympiad/fifth_power_ratio_minimum.py) | Σ a⁵/(bc²) ≥ a² + b² + c²: with a + b + c = s the minimum is s²/3. | — | 1 |
 | [`fifth_power_residue_square`](olympiad/fifth_power_residue_square.py) | p | ma² + b² with p ≡ 1 (mod 4) makes m a square mod p: n ≡ i·b/a. | — | 1 |
+| [`forced_equal_roots`](olympiad/forced_equal_roots.py) | Three leading coefficients can force every real root to be equal. | — | 1 |
 | [`functional_equation_value_set`](olympiad/functional_equation_value_set.py) | Classify a cubic functional equation after scaling its coefficient. | — | 1 |
 | [`gcd_lcm_square`](olympiad/gcd_lcm_square.py) | Square least common multiples under a fixed gcd. | — | 1 |
 | [`grid_pigeonhole`](olympiad/grid_pigeonhole.py) | Pigeonhole bounds obtained by partitioning a grid into small blocks. | — | 1 |
@@ -387,9 +395,12 @@
 | [`power_sum_functional`](olympiad/power_sum_functional.py) | (x² + y²)ᵏ f(xy) = f(x)f(y)f(x² + y²): f = ±xᵏ, ±|x|ᵏ or 0. | — | 1 |
 | [`prefix_pigeonhole`](olympiad/prefix_pigeonhole.py) | Pigeonhole and discrete intermediate values for signed prefix sums. | — | 1 |
 | [`prime_power_minus_one_gcd`](olympiad/prime_power_minus_one_gcd.py) | The largest integer dividing pᵏ − 1 for every prime p above a bound. | — | 1 |
+| [`prime_power_sum_divisibility`](olympiad/prime_power_sum_divisibility.py) | Prime triples with pq | rᵖ + r^q, by Fermat's little theorem. | — | 1 |
 | [`prime_quadratic_cube`](olympiad/prime_quadratic_cube.py) | Primes p making αp² − βp − 1 a perfect cube, built from the n + 1 = p case. | — | 1 |
 | [`purple_grid_threshold`](olympiad/purple_grid_threshold.py) | Minimum marked cells under a missing-cell degree-product condition. | — | 1 |
 | [`quadratic_irrational_reduction`](olympiad/quadratic_irrational_reduction.py) | Reduce a high-degree quotient at a quadratic irrational. | — | 1 |
+| [`quadratic_scaling_functional`](olympiad/quadratic_scaling_functional.py) | f(3x + y) + f(3x − y) = f(x + y) + f(x − y) + 16f(x): f(4x) = 16f(x), f = cx² for polynomials. | — | 1 |
+| [`ramsey_class_threshold`](olympiad/ramsey_class_threshold.py) | Pigeonhole into classes, then a monochromatic triangle by Ramsey numbers. | — | 1 |
 | [`rational_recurrence`](olympiad/rational_recurrence.py) | Starting values of an infinite rational quadratic recurrence. | — | 1 |
 | [`real_rooted_coefficient_minimum`](olympiad/real_rooted_coefficient_minimum.py) | Real-rooted P with positive coefficients and P(0) = 1: aₖ ≥ C(n, k), P(t) ≥ (t + 1)ⁿ. | — | 1 |
 | [`reciprocal_function_equation`](olympiad/reciprocal_function_equation.py) | Evaluate the unique positive solution of a nested functional equation. | — | 1 |
@@ -398,6 +409,7 @@
 | [`regular_polygon_flag_classes`](olympiad/regular_polygon_flag_classes.py) | Count repeated minimal color classes in an odd regular polygon. | — | 1 |
 | [`regular_polygon_right_triangles`](olympiad/regular_polygon_right_triangles.py) | Right triangles on the vertices of a regular 2n-gon (Thales). | — | 1 |
 | [`regular_vertex_triangle_dissection`](olympiad/regular_vertex_triangle_dissection.py) | Most sides of a convex polygon cut into triangles on regular n-gon vertices. | — | 1 |
+| [`repdigit_sandwich_divisibility`](olympiad/repdigit_sandwich_divisibility.py) | a b…b c divisible by the four-digit a b b c: the n repeat with a period. | — | 1 |
 | [`right_triangle_diameter_circle`](olympiad/right_triangle_diameter_circle.py) | Circle on diameter CP in a right triangle: AP·PR = BP·PC and AC·CQ = BC·PC. | — | 1 |
 | [`room_difference_pigeonhole`](olympiad/room_difference_pigeonhole.py) | N students in R rooms of L seats force two rooms to share a seat difference once N ≥ R + L. | — | 1 |
 | [`roots_cubic_quotient`](olympiad/roots_cubic_quotient.py) | Simplify a symmetric cubic quotient using quadratic-root identities. | — | 1 |
@@ -406,6 +418,7 @@
 | [`sequence_divisibility`](olympiad/sequence_divisibility.py) | Divisibility in a nonlinear recurrence. | — | 1 |
 | [`shift_additive_functional_existence`](olympiad/shift_additive_functional_existence.py) | f(m + f(n)) = f(m) + a·f(n) + b·f(n + 1) on ℕ: solvable only when b = 0. | — | 1 |
 | [`shifted_product_closed_roots`](olympiad/shifted_product_closed_roots.py) | Root sets closed under a + b + k·ab: shift to a set closed under products. | — | 1 |
+| [`shifted_square_pairs`](olympiad/shifted_square_pairs.py) | x with both ax − 1 and bx − 1 perfect squares; never all of 2, 5, 13. | — | 1 |
 | [`shifted_square_sums`](olympiad/shifted_square_sums.py) | Recover a shifted sum of squares from two power sums. | — | 1 |
 | [`signed_jump_paths`](olympiad/signed_jump_paths.py) | Count integer jump paths of a fixed total length, exactly or modulo 2. | — | 1 |
 | [`sixth_root_tuples`](olympiad/sixth_root_tuples.py) | Count ordered tuples of three roots subject to a sum constraint. | — | 1 |
@@ -413,6 +426,7 @@
 | [`square_corner_tangent_circle`](olympiad/square_corner_tangent_circle.py) | Square area from a circle tangent to two sides and passing its center. | — | 1 |
 | [`square_incenter_quadrilateral`](olympiad/square_incenter_quadrilateral.py) | Incentres of right triangles on a unit square's sides lie on its circumcircle. | — | 1 |
 | [`square_root_shift_functional`](olympiad/square_root_shift_functional.py) | f(x + y·f(x) + m²y²) = f(x) + 2m²y forces f(x)² − 4m²x to be constant. | — | 1 |
+| [`squared_side_triangle_area`](olympiad/squared_side_triangle_area.py) | Sides √(a₁² + a₂²), …: the triangle exists and 16Δ² is a quadratic form. | — | 1 |
 | [`sum_dependent_product_function`](olympiad/sum_dependent_product_function.py) | If f(m)f(n) depends only on m + n, then f is geometric. | — | 1 |
 | [`swapped_quadratic_coefficients`](olympiad/swapped_quadratic_coefficients.py) | Find constants preserving rational roots under quadratic coefficient swaps. | — | 1 |
 | [`symmetric_reciprocal_bound`](olympiad/symmetric_reciprocal_bound.py) | Positive real roots with product 1: Σ 1/e_k ≤ Σ 1/C(n, k). | — | 1 |
@@ -427,7 +441,9 @@
 | [`three_semicircles_triangle`](olympiad/three_semicircles_triangle.py) | Area of an equilateral triangle from three tangent semicircles. | — | 1 |
 | [`tie_heavy_round_robin`](olympiad/tie_heavy_round_robin.py) | Boys and girls round robin with asymmetric points: top score 4n − 1 forces ties. | — | 1 |
 | [`totient_factorial_divisibility`](olympiad/totient_factorial_divisibility.py) | Use cycle generators to explain a totient divisibility. | — | 1 |
+| [`tournament_square_sums`](olympiad/tournament_square_sums.py) | In a round robin without draws, Σ wins² = Σ losses². | — | 1 |
 | [`tournament_top_bottom_threshold`](olympiad/tournament_top_bottom_threshold.py) | Every k-group has a champion and a loser ⇒ distinct scores, once n ≥ 2k − 3. | — | 1 |
+| [`trapezoid_circle_diameter`](olympiad/trapezoid_circle_diameter.py) | DF is a diameter: DE ∥ BC and EF ⊥ BC, so DF = 2R of triangle BCF. | — | 1 |
 | [`trapezoid_midpoint_distances`](olympiad/trapezoid_midpoint_distances.py) | AD ∥ BC iff AB/CD = MP/NQ, so in a trapezoid NQ = MP·CD/AB. | — | 1 |
 | [`triangulation_triangle_count`](olympiad/triangulation_triangle_count.py) | A triangulation of a convex h-gon with N interior points has 2N + h − 2 triangles. | — | 1 |
 | [`two_solution_functional`](olympiad/two_solution_functional.py) | f(xy − 1) + f(x)f(y) = 2xy − 1 has exactly the solutions x and −x². | — | 1 |
