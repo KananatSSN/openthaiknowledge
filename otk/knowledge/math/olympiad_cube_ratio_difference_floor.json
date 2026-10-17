@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การจัดรูปพีชคณิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cube-ratio-difference-floor",
+      "kind": "procedure",
+      "title": "จำนวนเต็มมากสุดไม่เกินผลต่างเศษส่วนกำลังสาม",
+      "statement": "ให้ n = 2548 ผลต่างเป็น ((n + 1)⁴ − (n − 1)⁴)/((n − 1)n(n + 1)) = 8(n² + 1)/(n² − 1) = 8 + 16/(n² − 1) ซึ่งอยู่ระหว่าง 8 กับ 9 คำตอบคือ 8",
+      "steps": [
+        "ให้ตัวกลางเป็น n",
+        "รวมเศษส่วน",
+        "แยกส่วนจำนวนเต็ม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 9
+        }
+      ],
+      "covered_by": [
+        "math.cube_ratio_difference_floor_olympiad"
+      ]
+    }
+  ]
+}

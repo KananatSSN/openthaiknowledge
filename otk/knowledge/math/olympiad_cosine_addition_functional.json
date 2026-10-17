@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cosine-addition-functional",
+      "kind": "procedure",
+      "title": "f(2006/2549) จากสมการผลบวกโคไซน์",
+      "statement": "x = y = 0 ให้ 2f(0)² = 0 จึง f(0) = 0 แทน y = 0 ได้ f(cos x) = f(1)cos x จึง f(t) = ct บน [−1, 1] แทน x = y = π/2 ได้ f(−1) = 2f(1)² หรือ −c = 2c² และ c < 0 จึง c = −1/2 ได้ f(2006/2549) = −1003/2549",
+      "steps": [
+        "หา f(0)",
+        "แทน y = 0 ได้ f เชิงเส้นบน [−1, 1]",
+        "แทน x = y = π/2 หา f(1)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.cosine_addition_functional_olympiad"
+      ]
+    }
+  ]
+}

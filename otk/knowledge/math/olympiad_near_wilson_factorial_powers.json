@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.near-wilson-factorial-powers",
+      "kind": "procedure",
+      "title": "(26!)²⁶ + (27!)²⁷ มอดุโล 29",
+      "statement": "วิลสัน: 28! ≡ −1 และ 28 ≡ −1 จึง 27! ≡ 1 และ 26! ≡ 1/27 ≡ 1/(−2) ≡ 14 แฟร์มาต์: 14²⁶ = 14⁻² = (−2)² = 4 จึงผลบวกเป็น 4 + 1 = 5",
+      "steps": [
+        "ใช้ทฤษฎีบทวิลสัน",
+        "หาตัวผกผันมอดุโล 29",
+        "ลดเลขชี้กำลังด้วยแฟร์มาต์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 10
+        }
+      ],
+      "covered_by": [
+        "math.near_wilson_factorial_powers_olympiad"
+      ]
+    }
+  ]
+}

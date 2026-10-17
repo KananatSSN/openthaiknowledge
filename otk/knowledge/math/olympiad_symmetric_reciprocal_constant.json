@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.symmetric-reciprocal-constant",
+      "kind": "procedure",
+      "title": "1 + 3/(ab + bc + ca) ≥ 6/(a + b + c)",
+      "statement": "ให้ S = a + b + c จะได้ ab + bc + ca ≤ S²/3 จึงด้านซ้าย ≥ 1 + 9/S² และ 1 + 9/S² − 6/S = (1 − 3/S)² ≥ 0 สมการเมื่อ a = b = c = 1",
+      "steps": [
+        "ใช้ ab + bc + ca ≤ (a + b + c)²/3",
+        "จัดเป็นกำลังสองสมบูรณ์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันที่สอง",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.symmetric_reciprocal_constant_olympiad"
+      ]
+    }
+  ]
+}

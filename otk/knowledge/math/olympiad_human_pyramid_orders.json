@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.human-pyramid-orders",
+      "kind": "procedure",
+      "title": "จำนวนวิธีต่อตัว 6 คน",
+      "statement": "A เบาที่สุดต้องอยู่บนสุด เงื่อนไขคือ A < B, A < C, B < D, B < E, C < E, C < F นับการเรียงจากเบาไปหนักทีละขั้น (คนหนึ่งวางได้เมื่อคนที่อยู่บนเขาวางแล้ว) ได้ 16 วิธี",
+      "steps": [
+        "เขียนเงื่อนไขเป็นลำดับบางส่วน",
+        "นับการเรียงที่สอดคล้องทีละขั้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 17
+        }
+      ],
+      "covered_by": [
+        "math.human_pyramid_orders_olympiad"
+      ]
+    }
+  ]
+}

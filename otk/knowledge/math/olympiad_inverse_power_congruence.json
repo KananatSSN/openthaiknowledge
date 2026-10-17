@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.inverse-power-congruence",
+      "kind": "procedure",
+      "title": "n น้อยสุดที่ 2549 | n²⁵⁴⁵ − 2541",
+      "statement": "2549 เป็นจำนวนเฉพาะ แฟร์มาต์ให้ n²⁵⁴⁵ ≡ n⁻³ และ 2541 ≡ −8 จึง (−2n)³ ≡ 1 เนื่องจาก 3 ไม่หาร 2548 การยกกำลังสามเป็นฟังก์ชันหนึ่งต่อหนึ่ง จึง −2n ≡ 1 และ n ≡ −1/2 ≡ 1274",
+      "steps": [
+        "ใช้ทฤษฎีบทแฟร์มาต์",
+        "เขียนเป็นกำลังสาม",
+        "ใช้ 3 ∤ p − 1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 14
+        }
+      ],
+      "covered_by": [
+        "math.inverse_power_congruence_olympiad"
+      ]
+    }
+  ]
+}

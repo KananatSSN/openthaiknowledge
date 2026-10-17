@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: เส้นสัมผัสวงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.symmedian-chord-ratio",
+      "kind": "procedure",
+      "title": "AB/BC = (AR/RC)²",
+      "statement": "เส้นแบ่งครึ่งมุมให้ AR/RC = QA/QC P เป็นขั้วของคอร์ด AC (จุดตัดเส้นสัมผัส) จึง QP เป็นเส้นซิมมีเดียนของสามเหลี่ยม QAC และแบ่ง AC ในอัตราส่วน QA² : QC² (พิสูจน์ได้ด้วยกฎของไซน์ในสามเหลี่ยม PAQ, PCQ และ QAB, QCB) จึง AB/BC = (AR/RC)²",
+      "steps": [
+        "ใช้ทฤษฎีบทเส้นแบ่งครึ่งมุม",
+        "แสดงว่า QB เป็นเส้นซิมมีเดียน",
+        "เทียบอัตราส่วน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันที่สอง",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.symmedian_chord_ratio_olympiad"
+      ]
+    }
+  ]
+}
