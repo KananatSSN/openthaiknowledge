@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการและอสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.floor-equation-solutions",
+      "kind": "procedure",
+      "title": "x + ⌊x/3⌋ = ⌊2x/3⌋ + ⌊3x/5⌋",
+      "statement": "ทุกพจน์ยกเว้น x เป็นจำนวนเต็ม จึง x เป็นจำนวนเต็ม ความชันรวมด้านขวา 2/3 + 3/5 − 1/3 = 14/15 < 1 และพจน์พื้นต่างจากค่าจริงไม่เกิน 1 จึง x/15 ≤ 2 คือ x ≤ 30 ตรวจทุกค่าได้ x = 2 และ x = 5",
+      "steps": [
+        "แสดงว่า x เป็นจำนวนเต็ม",
+        "จำกัดขนาด x ด้วยความชัน",
+        "ตรวจค่าที่เหลือ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันแรก",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.floor_equation_solutions_olympiad"
+      ]
+    }
+  ]
+}

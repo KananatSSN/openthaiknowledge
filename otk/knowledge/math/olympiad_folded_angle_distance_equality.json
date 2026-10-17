@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.folded-angle-distance-equality",
+      "kind": "procedure",
+      "title": "√(a² + b² − √2ab) + √(b² + c² − √2bc) ≥ √(a² + c²)",
+      "statement": "วางจุด X, Y, Z ห่างจุดกำเนิด a, b, c บนรังสีที่ทำมุม 0°, 45°, 90° กฎของโคไซน์ให้ XY = √(a² + b² − √2ab), YZ = √(b² + c² − √2bc) และ XZ = √(a² + c²) อสมการสามเหลี่ยม XY + YZ ≥ XZ คืออสมการที่ต้องการ เท่ากันเมื่อ Y อยู่บน XZ คือ b = √2ac/(a + c)",
+      "steps": [
+        "ตีความแต่ละรากเป็นระยะด้วยกฎของโคไซน์",
+        "ใช้อสมการสามเหลี่ยม",
+        "หากรณีเท่ากัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันแรก",
+          "number": 4
+        }
+      ],
+      "covered_by": [
+        "math.folded_angle_distance_equality_olympiad"
+      ]
+    }
+  ]
+}

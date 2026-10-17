@@ -1026,3 +1026,25 @@ TOTAL         338   316     17     4   66      255      6     11
   - day 2, item 6: the degree bound.
 - Registry 3,835 sets; enrichment count 378.
 - Remaining POSN maths at `new`: national papers 2547–2551 (5 papers).
+
+### 2026-10-17 — 2551 national paper
+
+- The 2551 national paper (5th TMO) has 16 questions over two days. 8 have
+  answers:
+  - day 1, item 1: cos θ = 3√3/√31;
+  - day 1, item 2: 8/3, assuming BD > DC (the statement is symmetric in B and C);
+  - day 1, item 3: x = 2, 5;
+  - day 1, item 7: 87;
+  - day 1, item 9: 3¹⁰;
+  - day 1, item 10: 993;
+  - day 2, item 2: N = 130;
+  - day 2, item 5: (m(m − 1) + n(n − 1))/(m + n).
+- Sixteen knowledge units and sixteen original sets, checked in
+  `test_math_olympiad_posn_national_2551.py`. That file includes a full
+  coordinate construction of the day 2, item 1 rhombus. The bank entry is
+  `generated`.
+- Open (sketched only):
+  - day 2, item 1: the synthetic proof that ND ∥ PA;
+  - day 2, item 6: extending the equation from x²y³ > 2008 to all x, y.
+- Registry 3,851 sets; enrichment count 394.
+- Remaining POSN maths at `new`: national papers 2547–2550 (4 papers).

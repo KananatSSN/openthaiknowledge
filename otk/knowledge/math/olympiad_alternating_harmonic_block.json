@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อนุกรมสลับเครื่องหมาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.alternating-harmonic-block",
+      "kind": "procedure",
+      "title": "อสมการเลขชี้กำลังกับ aₙ = n(n + 1)",
+      "statement": "AM–GM ให้ด้านซ้าย ≥ n·n^((1/n)Σ1/a_{2k−1}) และ Σ_{k=1}^{n} 1/((2k − 1)2k) = Σ_{k=n+1}^{2n} 1/k ≥ n²/Σ_{k=n+1}^{2n} k = 2n/(3n + 1) ตาม HM–AM จึงเลขชี้กำลัง ≥ 1 + 2/(3n + 1) = (3n + 3)/(3n + 1) = a_{3n+2}/a_{3n+1}",
+      "steps": [
+        "ใช้ AM–GM กับผลบวกของกำลัง",
+        "แยกเศษส่วนย่อยได้ผลบวกฮาร์มอนิกช่วง n + 1 ถึง 2n",
+        "ใช้ HM–AM และเทียบเลขชี้กำลัง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันที่สอง",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.alternating_harmonic_block_olympiad"
+      ]
+    }
+  ]
+}
