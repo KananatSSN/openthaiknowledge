@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cubed-roots-polynomial",
+      "kind": "procedure",
+      "title": "สมการที่มีราก u³, v³, w³",
+      "statement": "e₁ = 5, e₂ = 4, e₃ = 3 ผลบวก u³ + v³ + w³ = e₁³ − 3e₁e₂ + 3e₃ = 74 ผลบวก Σ(uv)³ = e₂³ − 3e₂(e₁e₃) + 3e₃² = 64 − 180 + 27 = −89 และ (uvw)³ = 27 จึงได้ x³ − 74x² − 89x − 27 = 0",
+      "steps": [
+        "หาค่าสมมาตรพื้นฐาน",
+        "ใช้สูตรผลบวกกำลังสามกับรากและผลคูณคู่",
+        "ประกอบเป็นพหุนาม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.cubed_roots_polynomial_olympiad"
+      ]
+    }
+  ]
+}

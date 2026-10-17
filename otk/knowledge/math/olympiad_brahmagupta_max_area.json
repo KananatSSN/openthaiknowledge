@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: พื้นที่รูปสี่เหลี่ยม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.brahmagupta-max-area",
+      "kind": "procedure",
+      "title": "พื้นที่สี่เหลี่ยมนูน ≤ (AB² + BC² + CD² + DA²)/4",
+      "statement": "แบ่งด้วยเส้นทแยง AC: พื้นที่ = [ABC] + [CDA] ≤ AB·BC/2 + CD·DA/2 ≤ (AB² + BC²)/4 + (CD² + DA²)/4 สมการเมื่อเป็นสี่เหลี่ยมจัตุรัส (เมื่อกำหนดความยาวด้าน พื้นที่มากสุดคือรูปแนบในวงกลม ตามสูตรพรหมคุปต์)",
+      "steps": [
+        "แบ่งเป็นสองสามเหลี่ยม",
+        "ใช้ (1/2)xy sin θ ≤ xy/2",
+        "ใช้ xy ≤ (x² + y²)/2"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันที่สอง",
+          "number": 4
+        }
+      ],
+      "covered_by": [
+        "math.brahmagupta_max_area_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.power-tower-last-digits",
+      "kind": "procedure",
+      "title": "เลขสามหลักสุดท้ายของ 2^(2²⁰⁰⁴)",
+      "statement": "มอดุโล 8 ได้ 0 มอดุโล 125 ลดเลขชี้กำลังมอดุโล φ(125) = 100: 2²⁰⁰⁴ ≡ 16 (mod 100) จึง 2^(2²⁰⁰⁴) ≡ 2^16 ≡ 36 (mod 125) จำนวนที่ ≡ 0 (mod 8) และ ≡ 36 (mod 125) คือ 536",
+      "steps": [
+        "แยก 1000 = 8·125",
+        "ลดเลขชี้กำลังด้วย φ(125) = 100",
+        "รวมด้วยทฤษฎีบทเศษเหลือของจีน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 16
+        }
+      ],
+      "covered_by": [
+        "math.power_tower_last_digits_olympiad"
+      ]
+    }
+  ]
+}

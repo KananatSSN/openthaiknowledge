@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ค่าสัมบูรณ์และค่าสุดขีด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.absolute-sum-equality-set",
+      "kind": "procedure",
+      "title": "Σ√(x² − 2kx + k²) = |2nx − n − 2n²|",
+      "statement": "√(x² − 2kx + k²) = |x − k| และ Σₖ₌₁²ⁿ (x − k) = 2nx − n − 2n² อสมการสามเหลี่ยมให้ Σ|x − k| ≥ |Σ(x − k)| โดยเท่ากันเมื่อทุก x − k มีเครื่องหมายเดียวกัน คือ x ≤ 1 หรือ x ≥ 2n เซตคำตอบ (−∞, 1] ∪ [2n, ∞)",
+      "steps": [
+        "เขียนรากเป็นค่าสัมบูรณ์",
+        "ด้านขวาคือค่าสัมบูรณ์ของผลบวก",
+        "ใช้เงื่อนไขสมการของอสมการสามเหลี่ยม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 5
+        }
+      ],
+      "covered_by": [
+        "math.absolute_sum_equality_set_olympiad"
+      ]
+    }
+  ]
+}

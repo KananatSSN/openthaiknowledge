@@ -1110,4 +1110,28 @@ TOTAL         338   316     17     4   66      255      6     11
   entry is `generated`.
 - Open: none.
 - Registry 3,926 sets; enrichment count 469.
-- Remaining POSN maths at `new`: national paper 2547 (1 paper).
+
+### 2026-10-17 — 2547 national paper
+
+- The 2547 national paper (1st TMO) has 27 questions over two days: 21
+  short answers on day 1 and six items on day 2. The text layer drops the
+  mathematics and there are no answer pages, so every answer was derived
+  and checked by computer. 25 have answers, including:
+  - day 1, item 1: 5√6/18;
+  - day 1, item 3: x³ − 74x² − 89x − 27;
+  - day 1, item 11: 4620;
+  - day 1, item 13: 668;
+  - day 1, item 16: 536;
+  - day 1, item 21: 8;
+  - day 2, item 1: 35°;
+  - day 2, item 3: 951;
+  - day 2, item 5: p = 2.
+- Day 1, item 2 has no real solution as printed (the bank note proves it).
+  Its answer 3 is only a formal value, and its set uses the consistent sign.
+- 27 knowledge units and 27 original sets, checked in
+  `test_math_olympiad_posn_national_2547.py`. The bank entry is
+  `generated`.
+- Open: none.
+- Registry 3,953 sets; enrichment count 496.
+- Remaining POSN maths at `new`: none. `bank status` for `สอวน_math` now
+  shows 18 `generated`, 7 `green` and 1 `ignored`.
