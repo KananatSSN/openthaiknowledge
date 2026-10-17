@@ -4225,7 +4225,8 @@
    "layout": "numbered",
    "glyph_damage": 143,
    "items": 10,
-   "stage": "generated",
+   "sheet_id": "posnnat2563_math",
+   "stage": "green",
    "note": "Complete hand-reviewed digest: all 10 items mapped to original problem sets"
   },
   {
