@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเกิดภาพซ้ำของเลนส์และกระจก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.lens_mirror_self_image.procedure",
+      "kind": "procedure",
+      "title": "เลนส์กับกระจกนูนให้ภาพกลับหัวตรงระนาบวัตถุ",
+      "statement": "ระบบเลนส์กับกระจกนูนให้ภาพตรงระนาบวัตถุได้ทั้งตั้งตรงและกลับหัว จึงต้องระบุสาขา; สาขากลับหัวเลนส์สร้างภาพที่ศูนย์กลางความโค้งกระจก",
+      "steps": [
+        "ตรวจเงื่อนไขแนวรังสีและการกลับทิศภาพเพื่อแยกสองสาขา",
+        "สำหรับภาพกลับหัวใช้ v=d+R และสมการเลนส์ 1/f=1/u+1/v"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 20
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q20"
+      ],
+      "note": "Source has two valid choices: 30/7 cm upright and 12 cm inverted. Adaptation requires the inverted image."
+    }
+  ]
+}

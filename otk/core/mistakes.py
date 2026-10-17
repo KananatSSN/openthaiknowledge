@@ -441,6 +441,294 @@ MISTAKES: dict[str, dict[str, str]] = {
         "th": "ไม่ได้เปลี่ยนวันที่ เมื่อเวลาเลยเที่ยงคืนหรือข้ามเส้นวันที่สากล",
         "en": "Kept the same date when the time passed midnight or crossed the date line",
     },
+    "phys.area_dimension_ignored": {
+        "th": 'ละมิติพื้นที่ออกจากการหารมิติ',
+        "en": 'Omitted area dimensions when dividing dimensions',
+    },
+    "phys.time_dimension_wrong": {
+        "th": 'รวมเลขชี้กำลังเวลาไม่ถูกต้อง',
+        "en": 'Combined time exponents incorrectly',
+    },
+    "phys.dimensions_multiplied": {
+        "th": 'คูณมิติตัวประกอบแทนการหารออก',
+        "en": 'Multiplied dimensions instead of dividing them out',
+    },
+    "phys.used_full_gravity": {
+        "th": 'ใช้ g แทนองค์ประกอบตามแนวราง',
+        "en": 'Used full gravity instead of its tangential component',
+    },
+    "phys.halved_speed": {
+        "th": 'หารความเร็วด้วยสองแทนใช้ความสัมพันธ์พลังงาน',
+        "en": 'Halved speed instead of applying the energy relation',
+    },
+    "phys.ignored_lift_acceleration": {
+        "th": 'ละความเร่งพื้นลิฟต์',
+        "en": 'Ignored the elevator floor acceleration',
+    },
+    "phys.lift_acceleration_subtracted": {
+        "th": 'ลบความเร่งลิฟต์ขึ้นออกจาก g',
+        "en": 'Subtracted upward elevator acceleration from gravity',
+    },
+    "phys.halved_time": {
+        "th": 'หารเวลาด้วยสองแทนแก้สมการกำลังสอง',
+        "en": 'Halved the time instead of solving the quadratic relation',
+    },
+    "phys.ignored_weight": {
+        "th": 'ละน้ำหนักในสมดุลแรงลอยตัว',
+        "en": 'Omitted weight from the buoyancy balance',
+    },
+    "phys.added_weight_to_buoyancy": {
+        "th": 'บวกน้ำหนักกับแรงลอยตัวทั้งที่ทิศตรงข้าม',
+        "en": 'Added weight to the opposing buoyant force',
+    },
+    "phys.ignored_buoyancy": {
+        "th": 'ใช้เฉพาะน้ำหนักสมดุลกับแรงต้าน',
+        "en": 'Balanced drag against weight alone',
+    },
+    "phys.ignored_contact_weight": {
+        "th": 'ละแรงน้ำหนักระหว่างช่วงสัมผัสพื้น',
+        "en": 'Omitted weight during floor contact',
+    },
+    "phys.subtracted_rebound_speed": {
+        "th": 'ลบอัตราเร็วก่อนและหลังชนที่ทิศตรงข้าม',
+        "en": 'Subtracted speeds across the reversal at impact',
+    },
+    "phys.ignored_rebound": {
+        "th": 'ละโมเมนตัมขาขึ้นหลังชน',
+        "en": 'Omitted the upward rebound momentum',
+    },
+    "phys.used_sticking_collision": {
+        "th": 'สมมติว่าวัตถุติดลูกตุ้มหลังชน',
+        "en": 'Assumed the projectile remained attached to the pendulum',
+    },
+    "phys.conserved_collision_energy": {
+        "th": 'อนุรักษ์พลังงานจลน์ผ่านการชนที่สูญเสียพลังงาน',
+        "en": 'Conserved kinetic energy through a dissipative collision',
+    },
+    "phys.used_final_force_for_work": {
+        "th": 'ใช้แรงสุดท้ายคูณระยะทั้งช่วงที่แรงเพิ่ม',
+        "en": 'Used the final force over the whole extension',
+    },
+    "phys.kept_release_angle": {
+        "th": 'ใช้มุมปล่อยเป็นมุมหลุด',
+        "en": 'Used the release angle as the separation angle',
+    },
+    "phys.extra_factor_two": {
+        "th": 'หารด้วยสองซ้ำในเงื่อนไขหลุด',
+        "en": 'Divided by two again in the separation condition',
+    },
+    "phys.used_half_release_cosine": {
+        "th": 'ใช้ครึ่งหนึ่งของโคไซน์มุมปล่อยแทนแก้แรงรัศมี',
+        "en": 'Halved the release cosine instead of solving radial balance',
+    },
+    "phys.used_vertical_tension": {
+        "th": 'ตอบองค์ประกอบแนวดิ่งแทนขนาดแรงตึง',
+        "en": 'Reported vertical tension component instead of its magnitude',
+    },
+    "phys.weight_at_beam_end": {
+        "th": 'วางน้ำหนักคานที่ปลายแทนกึ่งกลาง',
+        "en": 'Placed beam weight at its end instead of its midpoint',
+    },
+    "phys.ignored_beam_weight": {
+        "th": 'ละโมเมนต์น้ำหนักคาน',
+        "en": 'Omitted the torque of the beam weight',
+    },
+    "phys.used_charge_ratio_not_root": {
+        "th": 'ใช้สัดส่วนประจุแทนรากที่สองของสัดส่วน',
+        "en": 'Used charge ratio instead of its square root',
+    },
+    "phys.charge_zero_between": {
+        "th": 'วางจุดสนามศูนย์ระหว่างประจุต่างเครื่องหมาย',
+        "en": 'Placed zero field between opposite-sign charges',
+    },
+    "phys.ignored_charge_weights": {
+        "th": 'ใช้แนวเรขาคณิตโดยละขนาดประจุ',
+        "en": 'Used geometry without weighting charge magnitudes',
+    },
+    "phys.reversed_charge_sign": {
+        "th": 'กลับทิศองค์ประกอบสนามจากประจุลบ',
+        "en": 'Reversed a field component from a negative charge',
+    },
+    "phys.subtracted_parallel_resistances": {
+        "th": 'ลบค่าความต้านทานขนานโดยตรง',
+        "en": 'Subtracted parallel resistances directly',
+    },
+    "phys.added_parallel_resistances": {
+        "th": 'บวกค่าความต้านทานขนานโดยตรง',
+        "en": 'Added parallel resistances directly',
+    },
+    "phys.equal_capacitor_voltage": {
+        "th": 'ให้ตัวเก็บประจุอนุกรมแต่ละตัวรับแรงดันรวม',
+        "en": 'Assigned the full voltage to each series capacitor',
+    },
+    "phys.ignored_divider": {
+        "th": 'ใช้แรงดันแหล่งจ่ายแทนแรงดันที่แบ่งแล้ว',
+        "en": 'Used supply voltage instead of divided voltage',
+    },
+    "phys.added_series_capacitance": {
+        "th": 'บวกความจุอนุกรมเหมือนต่อขนาน',
+        "en": 'Added series capacitances as if in parallel',
+    },
+    "phys.kept_wire_area": {
+        "th": 'รักษาพื้นที่ลวดแทนรักษาปริมาตรลวด',
+        "en": 'Kept wire area fixed instead of wire volume',
+    },
+    "phys.power_tracks_resistance": {
+        "th": 'ให้กำลังเพิ่มตามความต้านทานเมื่อแรงดันคงเดิม',
+        "en": 'Made power track resistance at fixed voltage',
+    },
+    "phys.used_emerged_second_volume": {
+        "th": 'ใช้ส่วนพ้นน้ำของชิ้นที่สองแทนส่วนจม',
+        "en": 'Used the second body emerged fraction instead of submerged fraction',
+    },
+    "phys.pressure_height_added": {
+        "th": 'บวกความสูงคอลัมน์เมื่อความดันต้องลด',
+        "en": 'Added the column height when pressure should decrease',
+    },
+    "phys.ignored_column_height": {
+        "th": 'ละความดันต่างจากคอลัมน์ของเหลว',
+        "en": 'Ignored the pressure difference from the liquid column',
+    },
+    "phys.pressure_height_only": {
+        "th": 'ตอบความดันต่างแทนความดันสัมบูรณ์',
+        "en": 'Reported pressure difference instead of absolute pressure',
+    },
+    "phys.ignored_oil_heat": {
+        "th": 'ละความร้อนที่น้ำมันรับ',
+        "en": 'Omitted the heat absorbed by oil',
+    },
+    "phys.final_temperature_only": {
+        "th": 'ตอบอุณหภูมิสมดุลแทนอุณหภูมิเริ่มต้น',
+        "en": 'Reported equilibrium instead of initial temperature',
+    },
+    "phys.equal_heat_capacities": {
+        "th": 'ถือว่าความจุความร้อนน้ำและน้ำมันเท่ากัน',
+        "en": 'Assumed equal total heat capacities for water and oil',
+    },
+    "phys.celsius_for_gas": {
+        "th": 'ใช้เซลเซียสในสมการแก๊สแทนเคลวิน',
+        "en": 'Used Celsius instead of Kelvin in the gas law',
+    },
+    "phys.upright_self_image": {
+        "th": 'เลือกสาขาภาพตั้งตรงทั้งที่โจทย์ระบุกลับหัว',
+        "en": 'Selected the upright branch despite the inverted-image condition',
+    },
+    "phys.mirror_focus_not_centre": {
+        "th": 'ใช้โฟกัสกระจกแทนศูนย์กลางความโค้ง',
+        "en": 'Used mirror focus instead of centre of curvature',
+    },
+    "phys.lens_sign_reversed": {
+        "th": 'กลับเครื่องหมายระยะในสมการเลนส์',
+        "en": 'Reversed a distance sign in the lens equation',
+    },
+    "phys.velocity_angle_unchanged": {
+        "th": 'ให้ทิศความเร็วระหว่างทางเท่ากับมุมยิง',
+        "en": 'Kept the intermediate velocity angle equal to launch angle',
+    },
+    "phys.height_factor_inverted": {
+        "th": 'คูณเศษส่วนพลังงานที่เหลือแทนหารย้อนกลับ',
+        "en": 'Multiplied by the remaining energy fraction instead of dividing back',
+    },
+    "phys.ignored_small_mass": {
+        "th": 'ละมวลก้อนเล็กจากมวลที่เร่ง',
+        "en": 'Omitted the small mass from the accelerated system',
+    },
+    "phys.ignored_big_mass": {
+        "th": 'ละมวลกล่องใหญ่จากมวลที่เร่ง',
+        "en": 'Omitted the large block from the accelerated system',
+    },
+    "phys.multiplied_friction_coefficient": {
+        "th": 'คูณสัมประสิทธิ์เสียดทานแทนหารหาแรงขั้นต่ำ',
+        "en": 'Multiplied by friction coefficient instead of dividing for threshold force',
+    },
+    "phys.used_one_rod_balance": {
+        "th": 'ใช้สมดุลคานเพียงครั้งเดียว',
+        "en": 'Used only one of the two rod balances',
+    },
+    "phys.wrong_pivot_distance": {
+        "th": 'ใช้แขนโมเมนต์อ้างจุดรองรับผิด',
+        "en": 'Used a lever arm measured from the wrong support',
+    },
+    "phys.added_lever_lengths": {
+        "th": 'บวกแขนโมเมนต์ที่ต้องกำจัดด้วยสมดุลสองครั้ง',
+        "en": 'Added lever lengths instead of eliminating them across the balances',
+    },
+    "phys.radial_force_only": {
+        "th": 'ตอบแรงรัศมีโดยละแรงตั้งฉากอีกองค์ประกอบ',
+        "en": 'Reported radial force alone without the perpendicular component',
+    },
+    "phys.added_perpendicular_forces": {
+        "th": 'บวกขนาดแรงตั้งฉากแทนรวมแบบเวกเตอร์',
+        "en": 'Added magnitudes of perpendicular forces',
+    },
+    "phys.kinetic_factor_two_missing": {
+        "th": 'ละตัวคูณสองเมื่อเปลี่ยนพลังงานเป็นความเร็วกำลังสอง',
+        "en": 'Omitted the factor two when converting energy to squared speed',
+    },
+    "phys.rectangle_for_force_graph": {
+        "th": 'ใช้แรงสูงสุดคูณระยะทั้งกราฟ',
+        "en": 'Used peak force over the full graph width',
+    },
+    "phys.ignored_ramp_work": {
+        "th": 'ละงานส่วนแรงเพิ่มเชิงเส้น',
+        "en": 'Omitted work during the rising-force segment',
+    },
+    "phys.total_charge_one_sphere": {
+        "th": 'ใช้ประจุเริ่มต้นลูกเดียวแทนผลรวมสองลูก',
+        "en": 'Used one sphere initial charge instead of the conserved total',
+    },
+    "phys.ignored_other_final_charge": {
+        "th": 'ละการหาประจุสุดท้ายของอีกทรงกลม',
+        "en": 'Skipped finding the other sphere final charge',
+    },
+    "phys.added_branch_currents": {
+        "th": 'บวกกระแสที่ต้องลบตามทิศที่โหนด',
+        "en": 'Added branch currents that should be subtracted at the node',
+    },
+    "phys.ignored_node_voltage": {
+        "th": 'ละแรงดันระหว่างโหนดเมื่อหากระแสแขนง',
+        "en": 'Omitted node voltage when computing branch current',
+    },
+    "phys.radius_not_area": {
+        "th": 'หารด้วยรัศมีแทนรัศมีกำลังสอง',
+        "en": 'Divided by radius instead of squared radius',
+    },
+    "phys.multiplied_tank_area": {
+        "th": 'คูณพื้นที่ถังแทนหารอัตราการไหลด้วยพื้นที่',
+        "en": 'Multiplied by tank area instead of dividing flow by area',
+    },
+    "phys.radius_not_diameter": {
+        "th": 'เทียบกับรัศมีแทนเส้นผ่านศูนย์กลาง',
+        "en": 'Compared with radius instead of diameter',
+    },
+    "phys.image_distances_as_conjugates": {
+        "th": 'ใช้ระยะภาพสองครั้งเป็นคู่ระยะวัตถุและภาพ',
+        "en": 'Used the two image distances as object-image conjugates',
+    },
+    "phys.image_distance_as_focal": {
+        "th": 'ตอบระยะภาพแทนความยาวโฟกัส',
+        "en": 'Reported image distance instead of focal length',
+    },
+    "phys.doubled_focal": {
+        "th": 'เพิ่มโฟกัสสองเท่าจากการหักเหสองสถานการณ์',
+        "en": 'Doubled the focal length for the two imaging situations',
+    },
+    "phys.kinetic_half_missing": {
+        "th": "ละตัวประกอบหนึ่งส่วนสองของพลังงานจลน์",
+        "en": "Omitted the one-half factor in kinetic energy",
+    },
+    "phys.drag_range_unchanged": {
+        "th": 'ถือว่าแรงต้านไม่ลดพิสัย',
+        "en": 'Assumed drag left the range unchanged',
+    },
+    "phys.drag_height_unchanged": {
+        "th": 'ถือว่าแรงต้านไม่ลดความสูงสูงสุด',
+        "en": 'Assumed drag left maximum height unchanged',
+    },
+    "phys.drag_increases_motion": {
+        "th": 'ถือว่าแรงต้านเพิ่มทั้งความสูงและพิสัย',
+        "en": 'Assumed drag increased both height and range',
+    },
 }
 
 

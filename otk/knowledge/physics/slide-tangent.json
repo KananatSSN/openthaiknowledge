@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความเร่งตามแนวสัมผัส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.slide_tangent.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วและความเร่งตามแนวสัมผัสของรางลื่น",
+      "statement": "บนรางลื่น v²=2gΔh และ a ตามแนวสัมผัส=g sinθ; ความเร่งทั้งหมดมีส่วนตั้งฉากซึ่งขึ้นกับความโค้ง",
+      "steps": [
+        "ใช้การอนุรักษ์พลังงานหาความเร็ว",
+        "ฉายแรงโน้มถ่วงตามแนวสัมผัส ไม่ปนกับความเร่งสู่ศูนย์กลาง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q02"
+      ],
+      "note": "Source total acceleration is underdetermined by slope alone. Adaptation explicitly asks tangential acceleration."
+    }
+  ]
+}

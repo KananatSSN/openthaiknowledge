@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สภาพต้านทานและกำลังไฟฟ้า",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wire_stretch_power.procedure",
+      "kind": "procedure",
+      "title": "กำลังไฟฟ้าหลังยืดลวด",
+      "statement": "เมื่อยืดลวดปริมาตรคงเดิม L เพิ่ม x เท่า A ลด x เท่า R เพิ่ม x² เท่า และกำลังที่แรงดันเดิมลดเป็น 1/x²",
+      "steps": [
+        "ใช้ AL คงตัวก่อนแทนใน R=ρL/A",
+        "ใช้ P=V²/R โดยรักษาความต่างศักย์เดิม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q15"
+      ],
+      "note": ""
+    }
+  ]
+}

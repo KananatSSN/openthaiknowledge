@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-3,749 sets in 1,079 unit files. Each subject's `README.md` lists its units with their indicators.
+3,779 sets in 1,080 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -620,6 +620,12 @@
 | [`surface_tension.py`](physics/m6/surface_tension.py) | ความตึงผิวและแรงหนืดของของเหลว | `phys.surface_tension_foundation`, `phys.surface_tension_fluency`, `phys.surface_tension_application` |
 | [`thermo_first_law.py`](physics/m6/thermo_first_law.py) | งาน ความร้อน และพลังงานภายในระบบ | `phys.thermo_first_law_foundation`, `phys.thermo_first_law_fluency`, `phys.thermo_first_law_application` |
 | [`transformer_threephase.py`](physics/m6/transformer_threephase.py) | เครื่องกำเนิดไฟฟ้ากระแสสลับ 3 เฟสและหม้อแปลง | `phys.transformer_threephase_foundation`, `phys.transformer_threephase_fluency`, `phys.transformer_threephase_application` |
+
+### olympiad — โอลิมปิก (สอวน.)
+
+| File | Unit | Sets |
+|---|---|---|
+| [`posn2560.py`](physics/olympiad/posn2560.py) | POSN camp 1 physics, 2560: computed variants with audited solvers. | `phys.posn2560_q03`, `phys.posn2560_q04`, `phys.posn2560_q06`, `phys.posn2560_q07`, `phys.posn2560_q09`, `phys.posn2560_q10`, `phys.posn2560_q11`, `phys.posn2560_q12`, `phys.posn2560_q13`, `phys.posn2560_q14`, `phys.posn2560_q15`, `phys.posn2560_q16`, `phys.posn2560_q17`, `phys.posn2560_q18`, `phys.posn2560_q19`, `phys.posn2560_q20`, `phys.posn2560_q01`, `phys.posn2560_q02`, `phys.posn2560_q05`, `phys.posn2560_q08`, `phys.posn2560_q21`, `phys.posn2560_q22`, `phys.posn2560_q23`, `phys.posn2560_q24`, `phys.posn2560_q25`, `phys.posn2560_q26`, `phys.posn2560_q27`, `phys.posn2560_q28`, `phys.posn2560_q29`, `phys.posn2560_q30` |
 
 ## chemistry — เคมี
 

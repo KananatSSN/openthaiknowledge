@@ -68,6 +68,7 @@ def test_pdf_output_contract_is_frozen():
 
 def test_sheet_publication_manifest_is_frozen():
     expected = {
+        "posn2560_physics": (30, 30, 30, 0),
         "posn2561_math": (30, 30, 30, 6),
         "posn2562_math": (30, 30, 30, 2),
         "posn2564_math": (30, 30, 30, 5),
@@ -186,4 +187,4 @@ def test_sheet_publication_manifest_is_frozen():
     # cycle, plate boundaries, the heart and the digestive system; then the
     # airway and lungs, a plant's organs, and rock layers with their fossils.
     # Local math variety and original olympiad practice add another 118 sets.
-    assert len(REGISTRY) == 3749
+    assert len(REGISTRY) == 3779

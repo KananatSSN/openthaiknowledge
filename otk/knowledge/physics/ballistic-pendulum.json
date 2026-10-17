@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "โมเมนตัมและพลังงานของลูกตุ้ม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.ballistic_pendulum.procedure",
+      "kind": "procedure",
+      "title": "ชนลูกตุ้มแล้ววัตถุตกในแนวดิ่ง",
+      "statement": "ใช้โมเมนตัมแนวระดับระหว่างชน แล้วใช้พลังงานกลระหว่างลูกตุ้มแกว่งขึ้น เป็นคนละช่วงกัน",
+      "steps": [
+        "หาอัตราเร็วลูกตุ้มจากโมเมนตัม เมื่อวัตถุแรกไม่มีโมเมนตัมแนวระดับหลังชน",
+        "เปลี่ยนพลังงานจลน์ลูกตุ้มหลังชนเป็น Mgh"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q06"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

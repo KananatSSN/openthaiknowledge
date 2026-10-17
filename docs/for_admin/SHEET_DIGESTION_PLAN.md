@@ -59,6 +59,24 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
+### Physics POSN bank — 2026-10-17
+
+- Scope: `สอวน_physics/MANIFEST.json` lists 33 papers (135 PDF components,
+  including national theory/practical papers and answer files).
+- `สอวน_physics/posn1-60-physics.pdf`: all 30 questions transcribed,
+  independently solved, mapped to knowledge, and linked to 30 generators in
+  `otk/sets/physics/olympiad/posn2560.py`. Part 2 restarts at 1 in the
+  source; it is numbered 21–30 in the solver package.
+- Validation complete: 30/30 solvers, 90 variant cross-checks, 30/30 knowledge
+  coverage, Ruff clean. One completed-sheet full run followed by focused
+  repairs; the final focused batch passed all 4,277 checks.
+- Test cadence requested by the maintainer: one targeted batch per wave;
+  full suite only when a sheet is completely digested. Waves here cover
+  6, 10, and 14 items. The final batch exposed a shortest-choice cue in
+  item 8, corrected before the completed-sheet full run.
+- Next source: `สอวน_physics/posn1-61-physics.pdf`. The other 32 papers
+  remain pending; do not infer folder completion from this first sheet.
+
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
 - [x] `sheetpipe bank scan|status|set|prune` CLI
@@ -868,3 +886,36 @@ TOTAL         338   316     17     4   66      255      6     11
   repeatable six-wide frame prove every n≡3 or 5 modulo 6 works. An explicit
   edge-owner test validates constructions through n=61 and tiny boards by
   exhaustive search. All ten items are mapped; the bank entry is `generated`.
+
+### 2026-10-17 — first POSN physics paper, 2560 camp selection
+
+- Reviewed every exercise page of the 11-page PDF and all six automatic
+  figure crops. The running-number extractor found only the 20 MCQs and
+  merged the ten written items into item 20; the private transcript correctly
+  preserves both sections and converts to 30/30 answered digest items.
+- Added 30 solver modules with independent checks and 90 changed-constant
+  cases, 30 seeded generators, 30 physics knowledge units, supplemental
+  curriculum filing, stage metadata, provenance, diagnostic mistake names,
+  golden draws, and source/generator regression checks. Knowledge validation
+  reports zero problems, coverage is 30/30, and no knowledge gaps remain.
+- Recorded four source caveats: item 2 specifies too little curvature data
+  for total acceleration; item 5 determines average rather than instantaneous
+  contact force; item 20 has both upright and inverted self-image answers
+  (30/7 cm and 12 cm); written item 10 needs the screen displacement frame
+  stated explicitly. Generated wording resolves each caveat.
+- Source text and the full transcript stay in the private bank. The public
+  sheet records source citations, paraphrases, parameter readings, and
+  diagram notes. No static source crop is attached: labels vary, and crops
+  for extracted items 9 and 20 actually contain later questions. Generated
+  questions supply explicit geometry or graph coordinates instead.
+- Targeted batches: wave 1, 3,878 passed; wave 2, 3,998 passed; wave 3,
+  4,172 passed and one choice-length failure, corrected for the full run.
+  The full suite ran **once**, after all 30 items were digested: 28,950 passed,
+  2 skipped, 30 failed in 30m25s. Of the failures, 29 were new fingerprints
+  captured before diagnostic names were added (the fingerprint includes
+  those names); the other was the legacy electricity-topic test's cohort
+  exclusion. Refreshed only the 30 new keys and added the explicit new cohort
+  to that legacy assertion. Existing fingerprints are byte-for-byte unchanged.
+  Focused repairs and regression checks: **4,277 passed**; Ruff clean.
+  No second full run was performed. The same focused batch also verifies the
+  final distractor formulas and printed Part 2 provenance numbering.

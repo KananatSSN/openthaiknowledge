@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่บนผิวทรงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.leaving_sphere.procedure",
+      "kind": "procedure",
+      "title": "จุดหลุดจากผิวทรงกลมลื่น",
+      "statement": "มวลที่ไถลด้านนอกทรงกลมเริ่มหลุดเมื่อแรงปกติเป็นศูนย์; cosθ=2cosθ₀/3",
+      "steps": [
+        "ใช้พลังงานหาความเร็วจากความสูงที่ลดลง",
+        "ใช้แรงแนวรัศมี mg cosθ−N=mv²/R แล้วตั้ง N=0"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q09"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

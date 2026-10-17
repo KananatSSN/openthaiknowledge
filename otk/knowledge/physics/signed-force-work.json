@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พื้นที่แบบมีเครื่องหมายใต้กราฟแรง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.signed_force_work.procedure",
+      "kind": "procedure",
+      "title": "งานจากกราฟแรงที่มีส่วนลบ",
+      "statement": "งานจากกราฟแรงกับตำแหน่งคือพื้นที่แบบมีเครื่องหมาย; กราฟกระโดดในแนวดิ่งไม่มีงาน",
+      "steps": [
+        "แบ่งช่วงเชิงเส้นเป็นสามเหลี่ยมและสี่เหลี่ยม",
+        "บวกพื้นที่เหนือแกนแล้วลบพื้นที่ใต้แกน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q25"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

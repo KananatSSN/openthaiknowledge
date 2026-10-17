@@ -4194,6 +4194,20 @@
    "layout": "numbered",
    "items": 30,
    "stage": "generated"
+  },
+  {
+   "path": "สอวน_physics/posn1-60-physics.pdf",
+   "kind": "exam",
+   "sha256": "41d9d01bd6da234d",
+   "size": 457417,
+   "pages": 11,
+   "text_chars": 11915,
+   "layout": "numbered",
+   "glyph_damage": 103,
+   "items": 30,
+   "sheet_id": "posn2560_physics",
+   "stage": "generated",
+   "note": "30 items in two sections; transcript corrects running-number extraction."
   }
  ]
 }

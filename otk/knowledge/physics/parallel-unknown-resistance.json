@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความต้านทานรวมของวงจรขนาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.parallel_unknown_resistance.procedure",
+      "kind": "procedure",
+      "title": "หาตัวต้านทานที่ซ่อนอยู่ในวงจรขนาน",
+      "statement": "ตัวต้านทานขนานมีผลรวมส่วนกลับของความต้านทานเท่ากับส่วนกลับของความต้านทานรวม",
+      "steps": [
+        "ระบุทุกแขนงที่มีปลายต่ออยู่ระหว่างโหนดเดียวกัน",
+        "ลบค่านำไฟฟ้าของแขนงที่ทราบออกจากค่านำไฟฟ้ารวมเพื่อหา 1/X"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q13"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

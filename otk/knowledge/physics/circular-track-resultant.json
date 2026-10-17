@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงลัพธ์ในการเคลื่อนที่ตามรางวงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.circular_track_resultant.procedure",
+      "kind": "procedure",
+      "title": "แรงลัพธ์ที่ขอบวงกลมของรางลื่น",
+      "statement": "ที่ขอบวงกลมด้านข้าง แรงรัศมีกับน้ำหนักตั้งฉากกัน แรงลัพธ์ไม่เท่ากับแรงปกติอย่างเดียว",
+      "steps": [
+        "ใช้พลังงานหาความเร็วที่ขอบด้านข้าง",
+        "รวมแรงรัศมี mv²/R กับน้ำหนัก mg ด้วยพีทาโกรัส"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q24"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

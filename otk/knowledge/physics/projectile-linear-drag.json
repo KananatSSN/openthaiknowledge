@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "โพรเจกไทล์เมื่อมีแรงต้านอากาศ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.projectile_linear_drag.procedure",
+      "kind": "procedure",
+      "title": "ผลของแรงต้านต่อวิถีโพรเจกไทล์",
+      "statement": "แรงต้านเชิงเส้นในอากาศนิ่งลดทั้งความสูงสูงสุดและพิสัยเมื่อยิงด้วยความเร็วต้นเดิมและตกที่ระดับเดิม",
+      "steps": [
+        "แยกสมการ dvx/dt=−kvx และ dvy/dt=−g−kvy",
+        "หาจุด vy=0 และจุด y กลับเป็นศูนย์แล้วเทียบกับสุญญากาศ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q08"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

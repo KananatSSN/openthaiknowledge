@@ -2969,6 +2969,72 @@ SCIENCE_WAVE_C_KEYS = frozenset({
     "geo.weather_map_fluency",
     "geo.weather_map_application",
 })
+# BEGIN POSN PHYSICS
+SCIENCE_POSN_PHYSICS_KEYS = frozenset({
+    "phys.posn2560_q01",
+    "phys.posn2560_q02",
+    "phys.posn2560_q03",
+    "phys.posn2560_q04",
+    "phys.posn2560_q05",
+    "phys.posn2560_q06",
+    "phys.posn2560_q07",
+    "phys.posn2560_q08",
+    "phys.posn2560_q09",
+    "phys.posn2560_q10",
+    "phys.posn2560_q11",
+    "phys.posn2560_q12",
+    "phys.posn2560_q13",
+    "phys.posn2560_q14",
+    "phys.posn2560_q15",
+    "phys.posn2560_q16",
+    "phys.posn2560_q17",
+    "phys.posn2560_q18",
+    "phys.posn2560_q19",
+    "phys.posn2560_q20",
+    "phys.posn2560_q21",
+    "phys.posn2560_q22",
+    "phys.posn2560_q23",
+    "phys.posn2560_q24",
+    "phys.posn2560_q25",
+    "phys.posn2560_q26",
+    "phys.posn2560_q27",
+    "phys.posn2560_q28",
+    "phys.posn2560_q29",
+    "phys.posn2560_q30",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การวิเคราะห์มิติ', "outside_scope"),
+    "phys.posn2560_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความเร่งตามแนวสัมผัส', "outside_scope"),
+    "phys.posn2560_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความเร่งสัมพัทธ์', "outside_scope"),
+    "phys.posn2560_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงลอยตัวและแรงต้าน', "outside_scope"),
+    "phys.posn2560_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การดลของแรงเฉลี่ย', "outside_scope"),
+    "phys.posn2560_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โมเมนตัมและพลังงานของลูกตุ้ม', "outside_scope"),
+    "phys.posn2560_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานยืดหยุ่น', "outside_scope"),
+    "phys.posn2560_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โพรเจกไทล์เมื่อมีแรงต้านอากาศ', "outside_scope"),
+    "phys.posn2560_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่บนผิวทรงกลม', "outside_scope"),
+    "phys.posn2560_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมดุลโมเมนต์ของคาน', "outside_scope"),
+    "phys.posn2560_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมดุลของประจุบนเส้นตรง', "outside_scope"),
+    "phys.posn2560_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การรวมเวกเตอร์สนามไฟฟ้า', "outside_scope"),
+    "phys.posn2560_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความต้านทานรวมของวงจรขนาน', "outside_scope"),
+    "phys.posn2560_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'วงจรตัวต้านทานและตัวเก็บประจุ', "outside_scope"),
+    "phys.posn2560_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สภาพต้านทานและกำลังไฟฟ้า', "outside_scope"),
+    "phys.posn2560_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การลอยตัวและความหนาแน่น', "outside_scope"),
+    "phys.posn2560_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมดุลความดันของของไหล', "outside_scope"),
+    "phys.posn2560_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมดุลความร้อนในระบบปิด', "outside_scope"),
+    "phys.posn2560_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'จำนวนอนุภาคของแก๊สอุดมคติ', "outside_scope"),
+    "phys.posn2560_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเกิดภาพซ้ำของเลนส์และกระจก', "outside_scope"),
+    "phys.posn2560_q21": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความเร็วของโพรเจกไทล์ระหว่างทาง', "outside_scope"),
+    "phys.posn2560_q22": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงเสียดทานบนผนังที่เร่ง', "outside_scope"),
+    "phys.posn2560_q23": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมดุลคานเมื่อเปลี่ยนจุดรองรับ', "outside_scope"),
+    "phys.posn2560_q24": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงลัพธ์ในการเคลื่อนที่ตามรางวงกลม', "outside_scope"),
+    "phys.posn2560_q25": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พื้นที่แบบมีเครื่องหมายใต้กราฟแรง', "outside_scope"),
+    "phys.posn2560_q26": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ศักย์ไฟฟ้าของทรงกลมตัวนำที่เชื่อมกัน', "outside_scope"),
+    "phys.posn2560_q27": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎของเคอร์ชอฟฟ์และขั้วแบตเตอรี่', "outside_scope"),
+    "phys.posn2560_q28": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความต่อเนื่องของการไหล', "outside_scope"),
+    "phys.posn2560_q29": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การขยายตัวเชิงความร้อนและเรขาคณิต', "outside_scope"),
+    "phys.posn2560_q30": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมการเลนส์เมื่อเลื่อนเลนส์และฉาก', "outside_scope"),
+})
+# END POSN PHYSICS
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them
@@ -6331,6 +6397,7 @@ _BUILT_PENDING: dict[str, frozenset[str]] = {
     "Phase 5 Wave I": SCIENCE_WAVE_I_KEYS - SCIENCE_WAVE_I_APPROVED_KEYS,
     "Process skills": SCIENCE_PROCESS_SKILL_KEYS - SCIENCE_PROCESS_SKILL_APPROVED_KEYS,
     "Diagrams": SCIENCE_DIAGRAM_KEYS - SCIENCE_DIAGRAM_APPROVED_KEYS,
+    "POSN physics": SCIENCE_POSN_PHYSICS_KEYS,
     "Phase 7 Technology": SCIENCE_TECHNOLOGY_KEYS - SCIENCE_TECHNOLOGY_APPROVED_KEYS,
 }
 REVIEW_PENDING: dict[str, frozenset[str]] = {
@@ -6346,6 +6413,7 @@ SCIENCE_BASELINE_KEYS = (
     - SCIENCE_WAVE_C_KEYS - SCIENCE_WAVE_D_KEYS - SCIENCE_WAVE_E_KEYS
     - SCIENCE_WAVE_F_KEYS - SCIENCE_WAVE_G_KEYS - SCIENCE_TECHNOLOGY_KEYS
     - SCIENCE_WAVE_I_KEYS - SCIENCE_PROCESS_SKILL_KEYS - SCIENCE_DIAGRAM_KEYS
+    - SCIENCE_POSN_PHYSICS_KEYS
 )
 
 

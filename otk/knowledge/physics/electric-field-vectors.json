@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การรวมเวกเตอร์สนามไฟฟ้า",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.electric_field_vectors.procedure",
+      "kind": "procedure",
+      "title": "ทิศสนามไฟฟ้าจากสองประจุ",
+      "statement": "รวมสนามไฟฟ้าเป็นเวกเตอร์ ไม่ใช่บวกขนาด; ประจุลบให้สนามชี้เข้าหาประจุ",
+      "steps": [
+        "หาองค์ประกอบสนามจากประจุแต่ละตัว ณ พิกัดสังเกต",
+        "รวม Ex,Ey แล้วใช้ tanθ=Ey/Ex พร้อมตรวจควอดแรนต์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q12"
+      ],
+      "note": ""
+    }
+  ]
+}

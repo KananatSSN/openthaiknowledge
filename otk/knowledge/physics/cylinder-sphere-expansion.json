@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การขยายตัวเชิงความร้อนและเรขาคณิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.cylinder_sphere_expansion.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนการขยายตัวของทรงกระบอกและทรงกลม",
+      "statement": "วัตถุวัสดุเดียวกันที่อุณหภูมิเพิ่มเท่ากันมีสัดส่วนการขยายเชิงเส้นเท่ากัน จึงเทียบการเพิ่มความยาวจากขนาดเดิมได้",
+      "steps": [
+        "ใช้ปริมาตรเริ่มต้นเท่ากันหาความสูงทรงกระบอกเทียบรัศมีทรงกลม",
+        "หารความสูงด้วยเส้นผ่านศูนย์กลางเพื่อหาอัตราส่วนการเพิ่ม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 29
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q29"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}
