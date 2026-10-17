@@ -1153,7 +1153,7 @@ TOTAL         338   316     17     4   66      255      6     11
 - **2547 (`posnnat2547_math`).** 27/27 green. `bank scan` moved the record to
   `green`.
 - **All national papers green.** 2547–2557 and 2562–2567 each have a
-  `posnnat25YY_math` package, every solver verified. Together they hold 239
+  `posnnat25YY_math` package, every solver verified. Together they hold 254
   solvers; `bank scan` moved every record to `green`.
   - 2563, 2564, 2566 and 2567 had no transcript. They were transcribed from the
     renders into the bank's `_transcribed/`. Fetch their PDFs with
