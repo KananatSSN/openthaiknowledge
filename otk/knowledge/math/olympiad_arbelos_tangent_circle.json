@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมสัมผัสกัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.arbelos-tangent-circle",
+      "kind": "procedure",
+      "title": "P เป็นจุดศูนย์กลางวงกลมที่สัมผัสสามวง",
+      "statement": "ให้รัศมีครึ่งวงกลมใหญ่ R, O₁ = (0, 0), O₂ = (0, R/2) รัศมี R/2 ครึ่งวงกลม O₃ = (d, 0) รัศมี ρ: d + ρ = R และ √(d² + R²/4) = R/2 + ρ ได้ d = 2R/3, ρ = R/3 แล้ว P = (2R/3, R/2) มี O₁P = 5R/6 = R − R/6, O₂P = 2R/3 = R/2 + R/6, O₃P = R/2 = R/3 + R/6 จึงวงกลมรัศมี R/6 ที่ P สัมผัสทั้งสามวง",
+      "steps": [
+        "ตั้งพิกัด",
+        "หาจุดศูนย์กลางและรัศมีของ O₃",
+        "ตรวจระยะจาก P ถึงสามจุดศูนย์กลาง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันที่สอง",
+          "number": 4
+        }
+      ],
+      "covered_by": [
+        "math.arbelos_tangent_circle_olympiad"
+      ]
+    }
+  ]
+}

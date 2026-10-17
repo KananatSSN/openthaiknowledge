@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.binomial-prime-lucas",
+      "kind": "procedure",
+      "title": "p | C(100, p) + 7",
+      "statement": "ถ้า p > 100 จะได้ C(100, p) = 0 และต้อง p | 7 ขัดแย้ง ถ้า p ≤ 100 ทฤษฎีบทของลูคัสให้ C(100, p) ≡ ⌊100/p⌋ (mod p) จึงต้องการ p | ⌊100/p⌋ + 7 ตรวจจำนวนเฉพาะไม่เกิน 100 ได้เพียง p = 7 (⌊100/7⌋ + 7 = 21)",
+      "steps": [
+        "แยกกรณี p > 100",
+        "ใช้ทฤษฎีบทของลูคัส",
+        "ตรวจจำนวนเฉพาะที่เหลือ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-53-math.pdf",
+          "section": "วันแรก",
+          "number": 10
+        }
+      ],
+      "covered_by": [
+        "math.binomial_prime_lucas_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.root-square-root-sum",
+      "kind": "procedure",
+      "title": "s⁴ − 18s² − 8s เมื่อ s = √a + √b + √c",
+      "statement": "ให้ t = √(ab) + √(bc) + √(ca) จะได้ s² = 9 + 2t และ t² = 11 + 2√(abc)·s = 11 + 2s แทน t = (s² − 9)/2 ได้ (s² − 9)² = 44 + 8s จึง s⁴ − 18s² − 8s = −37 (รากทั้งสามเป็นบวก)",
+      "steps": [
+        "ยกกำลังสอง s และ t",
+        "ใช้ abc = 1",
+        "กำจัด t"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 8
+        }
+      ],
+      "covered_by": [
+        "math.root_square_root_sum_olympiad"
+      ]
+    }
+  ]
+}

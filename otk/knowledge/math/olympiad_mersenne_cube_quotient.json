@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวนเชิงพีชคณิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.mersenne-cube-quotient",
+      "kind": "procedure",
+      "title": "xy³/(x + y) เป็นกำลังสามของจำนวนเฉพาะ",
+      "statement": "ให้ d = ห.ร.ม.(x, y), x = du, y = dv ได้ d³uv³ = p³(u + v) และ u + v เฉพาะสัมพัทธ์กับ uv จึง uv³ หาร p³ และ u + v หาร d³ ถ้า v = 1 และ u = pʲ จะได้ d³ = p^(3−j)(pʲ + 1) ซึ่งไม่เป็นกำลังสามทุก j เหลือ u = 1, v = p ได้ d³ = p + 1 จึง p = 7, d = 2 และ (x, y) = (2, 14) ในรูปทั่วไป xyᵏ/(x + y) = pᵏ มีคำตอบเดียว (2, 2p) เมื่อ p = 2ᵏ − 1 เป็นจำนวนเฉพาะ",
+      "steps": [
+        "ดึง ห.ร.ม. ออกและใช้ความเฉพาะสัมพัทธ์ของ u + v กับ uv",
+        "แจกแจงตัวหารของ p³",
+        "แก้ d³ = p + 1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-56-math.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "math.mersenne_cube_quotient_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ตัวประกอบของจำนวนเต็ม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.consecutive-product-square-kernel",
+      "kind": "procedure",
+      "title": "ผลคูณจำนวนนับสามจำนวนเรียงกันไม่เป็นกำลังสอง",
+      "statement": "n + 1 เป็นจำนวนเฉพาะสัมพัทธ์กับ n และ n + 2 ถ้า n(n + 1)(n + 2) เป็นกำลังสอง n + 1 และ n(n + 2) ต้องเป็นกำลังสองทั้งคู่ แต่ n² < n(n + 2) = (n + 1)² − 1 < (n + 1)² จึงเป็นไปไม่ได้",
+      "steps": [
+        "ใช้ความเป็นจำนวนเฉพาะสัมพัทธ์",
+        "แยกเป็นสองกำลังสอง",
+        "บีบระหว่างกำลังสองที่ติดกัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันที่สอง",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.consecutive_product_square_kernel_olympiad"
+      ]
+    }
+  ]
+}

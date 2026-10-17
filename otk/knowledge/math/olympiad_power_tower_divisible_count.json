@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การหารลงตัวและเศษเหลือ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.power-tower-divisible-count",
+      "kind": "procedure",
+      "title": "จำนวน n คู่ ≤ 100 ที่ 5 | n²·2^(2n²) + 1",
+      "statement": "n คู่ทำให้ n² หารด้วย 4 ลงตัว จึง 2^(2n²) = 16^(n²/2) ≡ 1 (mod 5) ต้องการ n² ≡ −1 คือ n ≡ 2, 3 (mod 5) จำนวนคู่ตั้งแต่ 0 ถึง 100 ที่ ≡ 2 หรือ 3 (mod 5) คือ n ≡ 2 หรือ 8 (mod 10) มี 20 จำนวน",
+      "steps": [
+        "ลด 2^(2n²) มอดุโล 5",
+        "แก้ n² ≡ −1 (mod 5)",
+        "นับจำนวนคู่ในช่วง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 12
+        }
+      ],
+      "covered_by": [
+        "math.power_tower_divisible_count_olympiad"
+      ]
+    }
+  ]
+}

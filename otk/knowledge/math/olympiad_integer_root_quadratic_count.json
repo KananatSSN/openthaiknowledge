@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการกำลังสอง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.integer-root-quadratic-count",
+      "kind": "procedure",
+      "title": "จำนวน n < 2549 ที่ x² + x − n มีรากเป็นจำนวนเต็ม",
+      "statement": "ถ้ารากหนึ่งคือ r อีกรากคือ −1 − r และ n = r(r + 1) นับ r ≥ 1 ที่ r(r + 1) < 2549 ได้ r = 1, …, 49 (49·50 = 2450, 50·51 = 2550) จึงมี 49 จำนวน",
+      "steps": [
+        "ใช้ผลบวกและผลคูณของราก",
+        "นับจำนวน r"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 15
+        }
+      ],
+      "covered_by": [
+        "math.integer_root_quadratic_count_olympiad"
+      ]
+    }
+  ]
+}

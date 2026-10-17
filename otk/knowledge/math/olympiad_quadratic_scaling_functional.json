@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.quadratic-scaling-functional",
+      "kind": "procedure",
+      "title": "f(3x + y) + f(3x − y) = f(x + y) + f(x − y) + 16f(x)",
+      "statement": "x = y = 0 ให้ f(0) = 0 และ y = x ให้ f(4x) + f(2x) = f(2x) + f(0) + 16f(x) คือ f(4x) = 16f(x) ส่วนคี่ g(x) = f(x) − f(−x) สอดคล้องสมการเดียวกันและเป็นฟังก์ชันคี่ ข้อพิสูจน์ว่า g ≡ 0 (ซึ่งให้ f(−x) = f(x)) ยังเขียนไม่ครบ ในกรณีพหุนามเทียบสัมประสิทธิ์ได้ f = cx² เท่านั้น ซึ่งเป็นฟังก์ชันคู่",
+      "steps": [
+        "หา f(0) = 0 และ f(4x) = 16f(x)",
+        "พิจารณาส่วนคี่ g(x) = f(x) − f(−x)",
+        "กรณีพหุนาม: เทียบสัมประสิทธิ์ได้ f = cx²"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-53-math.pdf",
+          "section": "วันแรก",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.quadratic_scaling_functional_olympiad"
+      ]
+    }
+  ]
+}

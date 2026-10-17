@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: สามเหลี่ยมมุมฉาก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.right-triangle-cevian-cosine",
+      "kind": "procedure",
+      "title": "cos∠CAE เมื่อ E แบ่ง BC",
+      "statement": "วาง A ที่จุดกำเนิด AB = 1 บนแกน x และ AC = tan 60° = √3 บนแกน y จาก BE : EC = 3 : 2 ได้ E = (2/5, 3√3/5) จึง cos∠CAE = (3√3/5)/√(4/25 + 27/25) = 3√3/√31 = 3√93/31 ในรูปทั่วไป cos = p tan B/√(q² + p² tan² B)",
+      "steps": [
+        "ตั้งพิกัดให้ขาของมุมฉากอยู่บนแกน",
+        "หาพิกัด E จากอัตราส่วน",
+        "คำนวณโคไซน์ของมุมกับแกน y"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันแรก",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.right_triangle_cevian_cosine_olympiad"
+      ]
+    }
+  ]
+}

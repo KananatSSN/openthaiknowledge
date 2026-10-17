@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.factorial-minus-one-prime",
+      "kind": "procedure",
+      "title": "ตัวประกอบเฉพาะของ (n − 1)! − 1 มากกว่า n",
+      "statement": "ถ้าจำนวนเฉพาะ q หาร (n − 1)! − 1 แล้ว q ไม่หาร (n − 1)! จึง q > n − 1 ถ้า q = n แล้ว n เป็นจำนวนเฉพาะ และทฤษฎีบทวิลสันให้ (n − 1)! ≡ −1 จึง (n − 1)! − 1 ≡ −2 (mod n) ซึ่ง n หารไม่ได้เมื่อ n ≥ 3 ดังนั้น q > n ขณะที่ p | n! ให้ p ≤ n จึง p < q",
+      "steps": [
+        "แสดงว่า q ไม่หาร (n − 1)! จึง q ≥ n",
+        "ใช้ทฤษฎีบทวิลสันตัดกรณี q = n",
+        "เทียบกับ p ≤ n"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-54-math.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "math.factorial_minus_one_prime_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.symmetric-reciprocal-bound",
+      "kind": "procedure",
+      "title": "Σ 1/e_k ≤ Σ 1/C(n, k) เมื่อรากบวกผลคูณ 1",
+      "statement": "x⁵ − ax⁴ + bx³ − cx² + dx − 1 = 0 มีรากจริงทั้งหมดและเครื่องหมายสลับ รากทุกตัวจึงบวก และผลคูณราก = 1 สัมประสิทธิ์ a, b, c, d คือ e₁, …, e₄ ของราก ซึ่ง e_k เป็นผลบวกของ C(5, k) พจน์ที่ผลคูณเป็น 1 จึง e_k ≥ C(5, k) ตาม AM–GM ได้ 1/a + 1/b + 1/c + 1/d ≤ 1/5 + 1/10 + 1/10 + 1/5 = 3/5",
+      "steps": [
+        "ใช้กฎเครื่องหมายแสดงว่ารากบวก",
+        "ระบุสัมประสิทธิ์เป็นฟังก์ชันสมมาตรมูลฐาน",
+        "ใช้ AM–GM กับ e_k"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-54-math.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "math.symmetric_reciprocal_bound_olympiad"
+      ]
+    }
+  ]
+}

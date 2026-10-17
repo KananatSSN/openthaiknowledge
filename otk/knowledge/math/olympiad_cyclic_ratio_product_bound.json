@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cyclic-ratio-product-bound",
+      "kind": "procedure",
+      "title": "ค่า k มากสุดใน Π(k + a/b) ≤ (Σa/b)(Σb/a)",
+      "statement": "ให้ x = a/b, y = b/c, z = c/a ได้ xyz = 1 และ xy + yz + zx = Σb/a ให้ S = Σa/b และ T = Σb/a (ทั้งคู่ ≥ 3) ด้านซ้ายคือ k³ + k²S + kT + 1 และ ST − k²S − kT = (S − k)(T − k²) − k³ เมื่อ k < √3 ทั้งสองวงเล็บเป็นบวกและน้อยสุดที่ S = T = 3 อสมการจึงจริงทุก a, b, c ก็ต่อเมื่อ (3 − k)(3 − k²) ≥ 2k³ + 1 นั่นคือ (k + 1)³ ≤ 9 ค่ามากสุดคือ k = ∛9 − 1 ในรูปทั่วไปที่คูณด้านขวาด้วย c ได้ (k + 1)³ ≤ 9c",
+      "steps": [
+        "แทนอัตราส่วนด้วย x, y, z ที่ xyz = 1",
+        "กระจายและจัดรูปเป็น (S − k)(T − k²) − k³",
+        "ใช้ S, T ≥ 3 และกรณีเท่ากัน a = b = c"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-57-math.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "math.cyclic_ratio_product_bound_olympiad"
+      ]
+    }
+  ]
+}

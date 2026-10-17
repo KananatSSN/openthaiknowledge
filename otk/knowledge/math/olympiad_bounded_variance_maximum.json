@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.bounded-variance-maximum",
+      "kind": "procedure",
+      "title": "ค่ามากสุดของ Σ(xᵢ − m)² บน [0, 1]",
+      "statement": "Σ(xᵢ − m)² = Σxᵢ² − (Σxᵢ)²/N เป็นฟังก์ชันนูนในแต่ละ xᵢ จึงค่ามากสุดเกิดที่ xᵢ ∈ {0, 1} ถ้ามี k ตัวเป็น 1 ค่าคือ k(N − k)/N ซึ่งมากสุดที่ k = ⌊N/2⌋ สำหรับ N = 2011 ได้ 1005·1006/2011 ตรงกับเฉลยทางการ",
+      "steps": [
+        "เขียนผลบวกเป็น Σxᵢ² − (Σxᵢ)²/N",
+        "ใช้ความนูนให้ xᵢ เป็น 0 หรือ 1",
+        "หาค่ามากสุดของ k(N − k)/N"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-54-math.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "math.bounded_variance_maximum_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: เส้นแบ่งครึ่งมุม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.side-centered-tangent-circle",
+      "kind": "procedure",
+      "title": "วงกลมจุดศูนย์กลางบน BC สัมผัส AB และ AC",
+      "statement": "จุดศูนย์กลางอยู่บนเส้นแบ่งครึ่งมุม A แบ่งรูปสามเหลี่ยมด้วยเส้นจาก A ไปยังจุดศูนย์กลาง ได้ Δ = r(AB + AC)/2 สูตรเฮรอนให้ Δ = 3√15/4 จึง r = 2Δ/5 = 3√15/10",
+      "steps": [
+        "หาพื้นที่ด้วยสูตรเฮรอน",
+        "แบ่งพื้นที่เป็นสองรูปที่มีส่วนสูง r",
+        "แก้หา r"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.side_centered_tangent_circle_olympiad"
+      ]
+    }
+  ]
+}

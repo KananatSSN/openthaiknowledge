@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมล้อมรูปสามเหลี่ยม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.bisector-circumradius-angle",
+      "kind": "procedure",
+      "title": "∠ADO เมื่อเส้นแบ่งครึ่งมุม A ตัดวงกลมล้อมที่ D",
+      "statement": "∠A = 60° D เป็นจุดกึ่งกลางส่วนโค้ง BC จึง OD ตั้งฉากกับ BC และ OA = OD ทำให้ ∠ADO = ∠OAD ∠BAO = 90° − C = 40° และ ∠BAD = 30° จึง ∠OAD = 10° (ทั่วไป ∠ADO = |B − C|/2)",
+      "steps": [
+        "หามุม A",
+        "ใช้ OA = OD",
+        "∠OAD = |∠BAD − ∠BAO|"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.bisector_circumradius_angle_olympiad"
+      ]
+    }
+  ]
+}

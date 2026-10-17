@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.set-union-cover-count",
+      "kind": "procedure",
+      "title": "จำนวน (A, B, C) ที่ A ∪ B ∪ C = {1, …, 2549}",
+      "statement": "สมาชิกแต่ละตัวเลือกเซตย่อยที่ไม่ว่างของ {A, B, C} ที่ตนอยู่ได้ 2³ − 1 = 7 วิธีอย่างอิสระ จึงได้ 7²⁵⁴⁹ วิธี",
+      "steps": [
+        "พิจารณาสมาชิกทีละตัว",
+        "นับตัวเลือกที่ไม่ว่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 16
+        }
+      ],
+      "covered_by": [
+        "math.set_union_cover_count_olympiad"
+      ]
+    }
+  ]
+}

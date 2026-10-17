@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมล้อมรูปสามเหลี่ยม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.parallel-chord-circumcenters",
+      "kind": "procedure",
+      "title": "ระยะคงตัวระหว่างจุดศูนย์กลางวงกลม APD และ BPE",
+      "statement": "เลือก E บน CD ที่ BE ขนานกับ AD (เงื่อนไข AB สั้นสุดและ CD ยาวสุดทำให้ E อยู่ระหว่าง C และ D) จะได้ ∠BEP = ∠ADP = θ ในวงกลม APD คอร์ด PA = 2R₁ sin θ และในวงกลม BPE คอร์ด PB = 2R₂ sin θ ทั้งรัศมี PO₁, PO₂ ทำมุม 90° − θ กับคอร์ด PA, PB ในทิศเดียวกัน จึงมีการหมุนขยายที่ P อัตราส่วน 1/(2 sin θ) ส่ง A, B ไป O₁, O₂ ดังนั้น O₁O₂ = AB/(2 sin ∠ADC) ไม่ขึ้นกับ P",
+      "steps": [
+        "เลือก E ให้ BE ∥ AD เพื่อให้มุมที่ D และ E เท่ากัน",
+        "ใช้กฎของไซน์ในวงกลมทั้งสองหาอัตราส่วนรัศมีต่อคอร์ด",
+        "ใช้การหมุนขยายที่ P ได้ O₁O₂ = AB/(2 sin θ)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-57-math.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "math.parallel_chord_circumcenters_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "รากของพหุนาม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.root-shift-reciprocal-sum",
+      "kind": "procedure",
+      "title": "Σ xₖ/(xₖ − 1) บนรากของ x⁸⁴ + 7x − 6",
+      "statement": "เขียน x/(x − 1) = 1 + 1/(x − 1) และ Σ 1/(1 − xₖ) = P′(1)/P(1) = (84 + 7)/(1 + 7 − 6) = 91/2 จึงผลบวกเป็น 84 − 91/2 = 77/2",
+      "steps": [
+        "แยก x/(x − 1) = 1 + 1/(x − 1)",
+        "ใช้ Σ 1/(t − xₖ) = P′(t)/P(t) ที่ t = 1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 8
+        }
+      ],
+      "covered_by": [
+        "math.root_shift_reciprocal_sum_olympiad"
+      ]
+    }
+  ]
+}

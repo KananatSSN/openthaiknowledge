@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามและเศษเหลือ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cube-root-unity-divisibility",
+      "kind": "procedure",
+      "title": "x − 1 หาร P(x) − Q(x)",
+      "statement": "แทน x = ω โดย ω³ = 1, ω ≠ 1 จะได้ −ω − ω² = 1 และด้านขวาเป็น 0 จึง 2ωP(1) + Q(1) = 0 แทน x = ω² ได้ 2ω²P(1) + Q(1) = 0 ลบกันได้ 2P(1)(ω − ω²) = 0 จึง P(1) = 0 = Q(1) ดังนั้น x − 1 หาร P(x) − Q(x)",
+      "steps": [
+        "แทนรากที่สามของหนึ่ง",
+        "ได้สองสมการเชิงเส้นใน P(1), Q(1)",
+        "สรุป P(1) = Q(1)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันที่สอง",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.cube_root_unity_divisibility_olympiad"
+      ]
+    }
+  ]
+}

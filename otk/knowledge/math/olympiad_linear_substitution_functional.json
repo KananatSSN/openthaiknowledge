@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.linear-substitution-functional",
+      "kind": "procedure",
+      "title": "f(2548) จาก f(x + 2y) + 2f(y − 2x) = 3x − 4y + 6",
+      "statement": "แทน x = y = 0 ได้ 3f(0) = 6 จึง f(0) = 2 แทน y = 2x ได้ f(5x) + 2f(0) = −5x + 6 จึง f(5x) = −5x + 2 คือ f(t) = −t + 2 (ตรวจแล้วสอดคล้อง) ได้ f(2548) = −2546",
+      "steps": [
+        "แทน x = y = 0",
+        "แทน y = 2x เพื่อให้อาร์กิวเมนต์หนึ่งเป็นศูนย์",
+        "ตรวจคำตอบ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 15
+        }
+      ],
+      "covered_by": [
+        "math.linear_substitution_functional_olympiad"
+      ]
+    }
+  ]
+}

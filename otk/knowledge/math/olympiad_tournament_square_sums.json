@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การจัดหมู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.tournament-square-sums",
+      "kind": "procedure",
+      "title": "Σaᵢ² = Σbᵢ² ในการแข่งพบกันหมด",
+      "statement": "aᵢ + bᵢ = n − 1 และ Σaᵢ = Σbᵢ = C(n, 2) จึง Σaᵢ² − Σbᵢ² = Σ(aᵢ − bᵢ)(aᵢ + bᵢ) = (n − 1)Σ(aᵢ − bᵢ) = 0",
+      "steps": [
+        "เขียน aᵢ + bᵢ = n − 1",
+        "ใช้ Σaᵢ = Σbᵢ",
+        "แยกตัวประกอบผลต่างกำลังสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-53-math.pdf",
+          "section": "วันแรก",
+          "number": 5
+        }
+      ],
+      "covered_by": [
+        "math.tournament_square_sums_olympiad"
+      ]
+    }
+  ]
+}

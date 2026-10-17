@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.odd-power-sum-mod-two-power",
+      "kind": "procedure",
+      "title": "Σ k^(2005·2²⁰⁰⁵) มอดุโล 2²⁰⁰⁵",
+      "statement": "ถ้า k คี่ อันดับของ k มอดุโล 2²⁰⁰⁵ หาร 2²⁰⁰³ ซึ่งหารเลขชี้กำลัง จึงได้ 1 ถ้า k คู่ k ยกกำลังที่มากกว่า 2005 หารด้วย 2²⁰⁰⁵ ลงตัว ผลบวกจึงเท่ากับจำนวน k คี่ใน 1, …, 2005 คือ 1003",
+      "steps": [
+        "แยก k คู่และคี่",
+        "ใช้อันดับของจำนวนคี่มอดุโลกำลังของสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 10
+        }
+      ],
+      "covered_by": [
+        "math.odd_power_sum_mod_two_power_olympiad"
+      ]
+    }
+  ]
+}

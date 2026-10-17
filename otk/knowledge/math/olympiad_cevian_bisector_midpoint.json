@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: สามเหลี่ยมมุมฉาก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cevian-bisector-midpoint",
+      "kind": "procedure",
+      "title": "MR = MC เมื่อ RP แบ่งครึ่งมุม BRC",
+      "statement": "เส้นตรงจากจุดยอดที่พบกันที่ D ทำให้ RC และเส้น RS (S = PQ ∩ AB) เป็นสังยุคฮาร์มอนิกเทียบกับ RA, RB ดังนั้นถ้า RP แบ่งครึ่ง ∠BRC แล้ว RQ แบ่งครึ่ง ∠CRA และ ∠PRQ = ½·180° = 90° เพราะ ∠PCQ = 90° ด้วย จุด R และ C อยู่บนวงกลมที่มี PQ เป็นเส้นผ่านศูนย์กลาง จุดศูนย์กลางคือ M จึง MR = MC = PQ/2",
+      "steps": [
+        "ใช้ความเป็นฮาร์มอนิกของเส้นตรงจากจุดยอดที่พบกัน",
+        "สรุปว่า ∠PRQ = 90°",
+        "ใช้วงกลมเส้นผ่านศูนย์กลาง PQ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-54-math.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "math.cevian_bisector_midpoint_olympiad"
+      ]
+    }
+  ]
+}

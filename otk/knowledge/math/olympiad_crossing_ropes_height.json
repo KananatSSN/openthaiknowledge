@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อัตราส่วนและสัดส่วน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.crossing-ropes-height",
+      "kind": "procedure",
+      "title": "ความสูงจุดตัดของเชือกระหว่างเสาสองต้น",
+      "statement": "ให้เสาห่างกัน d จุดตัดสูง h อยู่ห่างจากเสาแรก x สามเหลี่ยมคล้ายให้ h/b = x/d และ h/a = (d − x)/d บวกกันได้ h/a + h/b = 1 จึง h = ab/(a + b) ไม่ขึ้นกับ d",
+      "steps": [
+        "ใช้สามเหลี่ยมคล้ายสองคู่",
+        "บวกสมการเพื่อตัด x และ d"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 20
+        }
+      ],
+      "covered_by": [
+        "math.crossing_ropes_height_olympiad"
+      ]
+    }
+  ]
+}

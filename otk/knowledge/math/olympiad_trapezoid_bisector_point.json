@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: สี่เหลี่ยมคางหมู",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.trapezoid-bisector-point",
+      "kind": "procedure",
+      "title": "เส้นแบ่งครึ่งมุม ACD ตัดรังสี BA ที่ K",
+      "statement": "ถ้า AB ∥ CD มุมแย้งให้ ∠AKC = ∠KCD = ∠ACK จึง AK = AC และ BK = AB + AC จากนั้นเงื่อนไข MA·MC + MA·CD = MB·MD ร่วมกับรูปสามเหลี่ยมคล้ายจากเส้นขนานให้ BC = DK และทิศกลับใช้เงื่อนไขเดียวกันบังคับให้ AB ∥ CD (ร่างไว้ในบันทึก)",
+      "steps": [
+        "ใช้มุมแย้งระหว่างเส้นขนาน",
+        "ได้รูปสามเหลี่ยม AKC หน้าจั่ว",
+        "ใช้เงื่อนไขผลคูณของส่วนของเส้นทแยงมุม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันที่สอง",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.trapezoid_bisector_point_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.sum-dependent-product-function",
+      "kind": "procedure",
+      "title": "f(2m + 2n) = f(m)f(n) บนจำนวนนับ",
+      "statement": "ด้านซ้ายขึ้นกับ m + n เท่านั้น จึง f(m)f(n) ขึ้นกับ m + n เทียบ f(1)f(n) = f(2)f(n − 1) ได้ f(n) = f(1)rⁿ⁻¹ โดย r = f(2)/f(1) แทนกลับได้ f(1)r^(2s−1) = f(1)²r^(s−2) ทุก s = m + n ≥ 2 นั่นคือ r^(s+1) = f(1) ทุก s จึง r = 1 และ f(1) = 1 คำตอบเดียวคือ f ≡ 1",
+      "steps": [
+        "สังเกตว่า f(m)f(n) ขึ้นกับ m + n เท่านั้น",
+        "ได้ f เป็นลำดับเรขาคณิต",
+        "แทนกลับบังคับ r = 1 และ f(1) = 1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-54-math.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "math.sum_dependent_product_function_olympiad"
+      ]
+    }
+  ]
+}

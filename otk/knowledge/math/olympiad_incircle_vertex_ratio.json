@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมแนบใน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.incircle-vertex-ratio",
+      "kind": "procedure",
+      "title": "3/4 + Σ r/sₐ ≤ s²/(12r²)",
+      "statement": "r/sₐ = sin(A/2) และจากสูตรเฮรอน s²/r² = s³/((s − a)(s − b)(s − c)) อสมการกลายเป็น 3/4 + Σ sin(A/2) ≤ s²/(12r²) โดย Σ sin(A/2) ≤ 3/2 และ s²/r² ≥ 27 ด้านขวา ≥ 9/4 ≥ ด้านซ้าย สมการเมื่อเป็นสามเหลี่ยมด้านเท่า",
+      "steps": [
+        "เขียน r/sₐ = sin(A/2)",
+        "ใช้ Σ sin(A/2) ≤ 3/2",
+        "ใช้ s² ≥ 27r²"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันที่สอง",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.incircle_vertex_ratio_olympiad"
+      ]
+    }
+  ]
+}

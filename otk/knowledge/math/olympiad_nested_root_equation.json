@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การถอดกรณฑ์ซ้อน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.nested-root-equation",
+      "kind": "procedure",
+      "title": "x = √(x − 1/x) + √(1 − 1/x)",
+      "statement": "x > 0 ย้าย √(x − 1/x) ไปอีกข้างแล้วยกกำลังสอง ได้ x² + x − 1 = 2√(x³ − x) ยกกำลังสองอีกครั้งได้ (x² − x − 1)² = 0 จึง x = (1 + √5)/2 (ค่าลบตกโดเมน) และตรวจแล้วสอดคล้อง",
+      "steps": [
+        "ย้ายข้างแล้วยกกำลังสองสองครั้ง",
+        "จัดเป็นกำลังสองสมบูรณ์",
+        "ตรวจโดเมนและคำตอบ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 4
+        }
+      ],
+      "covered_by": [
+        "math.nested_root_equation_olympiad"
+      ]
+    }
+  ]
+}

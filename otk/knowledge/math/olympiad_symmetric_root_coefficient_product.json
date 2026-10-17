@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.symmetric-root-coefficient-product",
+      "kind": "procedure",
+      "title": "ผลคูณสัมประสิทธิ์ a₃·a_{2n−1} ของพหุนามที่รากสมมาตร",
+      "statement": "p(x) = x(x² − b₁²)⋯(x² − bₙ²) อ่านจากพหุนามในตัวแปร t = x² ได้ a_{2n−1} = −Σb² และ a₃ = (−1)ⁿ⁻¹ Πb²·Σ1/b² เมื่อ n คู่และ Πb = 1 ได้ a₃a_{2n−1} = (Σb²)(Σ1/b²) ≥ n² ตามอสมการโคชี–ชวาร์ซ สำหรับ n = 1006 ได้ 1006² = 1012036",
+      "steps": [
+        "มอง p(x)/x เป็นพหุนามใน x²",
+        "อ่านสัมประสิทธิ์ด้วยฟังก์ชันสมมาตรมูลฐาน",
+        "ใช้ Πb = 1 และอสมการโคชี–ชวาร์ซ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-56-math.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "math.symmetric_root_coefficient_product_olympiad"
+      ]
+    }
+  ]
+}

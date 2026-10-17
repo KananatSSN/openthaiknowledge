@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "กำลังสองสมบูรณ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.quadratic-square-values-product",
+      "kind": "procedure",
+      "title": "ผลคูณ n ที่ทำให้ n² + 59n + 881 เป็นกำลังสองสมบูรณ์",
+      "statement": "ให้ n² + 59n + 881 = m² คูณ 4 ได้ (2n + 59)² − (2m)² = 59² − 4·881 = −43 จึง (2n + 59 − 2m)(2n + 59 + 2m) = −43 ซึ่งเป็นจำนวนเฉพาะ ได้ 2n + 59 = ±21 จึง n = −19 หรือ −40 ผลคูณเป็น 760",
+      "steps": [
+        "คูณ 4 แล้วเขียนเป็นผลต่างกำลังสอง",
+        "แยกตัวประกอบ −43",
+        "แก้หา n ทุกกรณี"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 17
+        }
+      ],
+      "covered_by": [
+        "math.quadratic_square_values_product_olympiad"
+      ]
+    }
+  ]
+}

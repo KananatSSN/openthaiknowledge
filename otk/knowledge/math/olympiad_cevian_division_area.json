@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: สามเหลี่ยมและเส้นมัธยฐาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cevian-division-area",
+      "kind": "procedure",
+      "title": "อัตราส่วนพื้นที่ △BGH ต่อ △ABC",
+      "statement": "อัตราส่วนพื้นที่ไม่เปลี่ยนภายใต้การแปลงอะฟฟีน ใช้พิกัด A = (0, 0), B = (1, 0), C = (0, 1) และ D = (1/2, 1/2) เส้น BF (F ที่ 1/3 ของ AC) ตัด AD ที่ H ซึ่ง AH = AD/2 และเส้น BE (E ที่ 2/3 ของ AC) ตัด AD ที่ G ซึ่ง AG = (4/5)AD จึง GH = (3/10)AD และ [BGH] = (3/10)[ABD] = (3/10)(1/2)[ABC] = (3/20)[ABC]",
+      "steps": [
+        "ใช้มวลจุดหาอัตราส่วนบน AD",
+        "คำนวณพื้นที่จากอัตราส่วน",
+        "ตรวจด้วยพิกัด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันแรก",
+          "number": 4
+        }
+      ],
+      "covered_by": [
+        "math.cevian_division_area_olympiad"
+      ]
+    }
+  ]
+}

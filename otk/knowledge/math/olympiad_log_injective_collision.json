@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.log-injective-collision",
+      "kind": "procedure",
+      "title": "ไม่มี f หนึ่งต่อหนึ่งจาก ℕ ไป ℚ ที่ f(xy) = f(x) + f(y)",
+      "statement": "f(1) = 0 และ f(2ᵃ) = a·f(2), f(3ᵇ) = b·f(3) ถ้า f(2) หรือ f(3) เป็นศูนย์ขัดกับ f(1) = 0 ถ้าเครื่องหมายต่างกัน เลือก a, b ให้ a·f(2) + b·f(3) = 0 ได้ f(2ᵃ3ᵇ) = f(1) ถ้าเครื่องหมายเดียวกัน เลือก a/b = f(3)/f(2) ได้ f(2ᵃ) = f(3ᵇ) ทุกกรณีไม่เป็นหนึ่งต่อหนึ่ง",
+      "steps": [
+        "หา f(1) = 0",
+        "ใช้อัตราส่วนตรรกยะ f(3)/f(2)",
+        "สร้างจำนวนต่างกันที่มีค่า f เท่ากัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันที่สอง",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.log_injective_collision_olympiad"
+      ]
+    }
+  ]
+}
