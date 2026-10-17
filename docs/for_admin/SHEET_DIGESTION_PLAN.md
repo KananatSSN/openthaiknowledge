@@ -1003,3 +1003,26 @@ TOTAL         338   316     17     4   66      255      6     11
   - day 2, item 5: uniqueness in the plane.
 - Registry 3,819 sets; enrichment count 362.
 - Remaining POSN maths at `new`: national papers 2547–2552 (6 papers).
+
+### 2026-10-17 — 2552 national paper
+
+- The 2552 national paper (6th TMO) has 16 questions over two days, laid out
+  like 2553. 9 have answers:
+  - day 1, item 1: 2;
+  - day 1, item 2: (n − k)2ᵏ⁻¹;
+  - day 1, item 3: 393215;
+  - day 1, item 4: 3/20;
+  - day 1, item 5: x + 1;
+  - day 1, item 6: 2(c − b)/(a + b + c);
+  - day 1, item 9: √((4 − √3)/13);
+  - day 2, item 2: no such f;
+  - day 2, item 6: three polynomials.
+- Sixteen knowledge units and sixteen original sets, checked in
+  `test_math_olympiad_posn_national_2552.py`. The bank entry is `generated`.
+- Open (sketched only):
+  - day 1, item 5: uniqueness beyond linear f;
+  - day 2, item 3: the "only if" direction;
+  - day 2, item 5: the Zarankiewicz and pigeonhole argument;
+  - day 2, item 6: the degree bound.
+- Registry 3,835 sets; enrichment count 378.
+- Remaining POSN maths at `new`: national papers 2547–2551 (5 papers).

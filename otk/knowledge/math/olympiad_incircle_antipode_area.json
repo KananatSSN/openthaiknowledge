@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมแนบใน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.incircle-antipode-area",
+      "kind": "procedure",
+      "title": "พื้นที่ △DEF เมื่อ DE เป็นเส้นผ่านศูนย์กลางวงกลมแนบใน",
+      "statement": "การขยายที่ A ส่งวงกลมแนบในไปยังวงกลมแนบนอกด้าน A และส่ง E (จุดตรงข้าม D) ไปยังจุดสัมผัสบน BC จึง F เป็นจุดสัมผัสวงกลมแนบนอก BF = s − c, BD = s − b จึง DF = c − b รูปสามเหลี่ยม DEF มีมุมฉากที่ D ขา 2r และ c − b และ [ABC] = rs ได้อัตราส่วน (c − b)/s = 2(AB − AC)/(AB + BC + CA)",
+      "steps": [
+        "ระบุ F เป็นจุดสัมผัสวงกลมแนบนอก",
+        "หา DF = c − b",
+        "ใช้ [ABC] = rs"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันแรก",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.incircle_antipode_area_olympiad"
+      ]
+    }
+  ]
+}

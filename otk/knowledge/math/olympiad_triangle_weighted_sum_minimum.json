@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.triangle-weighted-sum-minimum",
+      "kind": "procedure",
+      "title": "Σ2a(2a − s)/(b + c) ≥ s",
+      "statement": "ให้ x = a/s ∈ (0, 1) แต่ละพจน์คือ s·g(x) โดย g(x) = 2x(2x − 1)/(2 − x) เส้นสัมผัสที่ x = 2/3 ให้ g(x) ≥ 1/3 + (11/4)(x − 2/3) บน (0, 1) และผลบวก x ทั้งสามเท่ากับ 2 จึงผลบวกไม่น้อยกว่า s เท่ากันเมื่อรูปสามเหลี่ยมด้านเท่า",
+      "steps": [
+        "เปลี่ยนตัวแปร x = a/s",
+        "ใช้เส้นสัมผัสที่จุดเท่ากัน",
+        "รวมสามพจน์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันแรก",
+          "number": 8
+        }
+      ],
+      "covered_by": [
+        "math.triangle_weighted_sum_minimum_olympiad"
+      ]
+    }
+  ]
+}
