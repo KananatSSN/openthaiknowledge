@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเสียดทานบนผนังที่เร่ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.accelerating_wall_friction.procedure",
+      "kind": "procedure",
+      "title": "แรงผลักขั้นต่ำให้ก้อนเล็กเกาะผนัง",
+      "statement": "ก้อนที่เกาะผนังเร่งต้องมีแรงปกติ ma มากพอให้ μma≥mg; แรงผลักเร่งมวลทั้งสอง",
+      "steps": [
+        "ใช้สมดุลแนวดิ่งของก้อนเล็กและกฎนิวตันแนวระดับหา aขั้นต่ำ",
+        "คูณ aขั้นต่ำด้วย M+m เพื่อหาแรงผลักทั้งระบบ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q22"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

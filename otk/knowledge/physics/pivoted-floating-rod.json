@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงลอยตัวและสมดุลโมเมนต์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pivoted_floating_rod.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนความหนาแน่นของแท่งลอยมีจุดหมุน",
+      "statement": "แท่งสม่ำเสมอยึดปลายบนและจมปลายล่างต้องสมดุลโมเมนต์ โดยแรงลอยตัวผ่านกลางส่วนจม",
+      "steps": [
+        "วางน้ำหนักกลางแท่งและแรงลอยตัวกลางส่วนจม",
+        "ตั้งโมเมนต์รอบจุดหมุนเพื่อหาอัตราส่วนความหนาแน่น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 28
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q28"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

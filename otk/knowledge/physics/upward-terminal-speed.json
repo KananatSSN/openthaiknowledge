@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงลอยตัวและแรงต้าน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.upward_terminal_speed.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วปลายของวัตถุลอยขึ้นในน้ำ",
+      "statement": "อัตราเร็วปลายเกิดเมื่อแรงลอยตัวเท่ากับน้ำหนักรวมแรงต้าน Cv",
+      "steps": [
+        "วาดแรงลอยตัวขึ้น น้ำหนักและแรงต้านลง",
+        "ตั้ง ρVg−mg−Cv=0 และตรวจว่า ρV>m"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q04"
+      ],
+      "note": ""
+    }
+  ]
+}

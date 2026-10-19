@@ -299,9 +299,11 @@ def test_electricity_is_a_second_topic_under_physics():
         SCIENCE_WAVE_E_KEYS,
         SCIENCE_WAVE_F_KEYS,
         SCIENCE_WAVE_G_KEYS,
+        SCIENCE_POSN_PHYSICS_KEYS,
     )
     later_waves = (SCIENCE_WAVE_D_KEYS | SCIENCE_WAVE_E_KEYS
-                   | SCIENCE_WAVE_F_KEYS | SCIENCE_WAVE_G_KEYS)
+                   | SCIENCE_WAVE_F_KEYS | SCIENCE_WAVE_G_KEYS
+                   | SCIENCE_POSN_PHYSICS_KEYS)
     topics = {t["topic"] for t in catalog()
               if t["subject"] == "ฟิสิกส์" and t["key"] not in later_waves}
     assert topics == {"คลื่นและแสง", "ไฟฟ้า"}

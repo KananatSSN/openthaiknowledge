@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรตัวต้านทานและตัวเก็บประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.steady_rc_network.procedure",
+      "kind": "procedure",
+      "title": "ประจุในวงจรตัวเก็บประจุเมื่อกระแสคงตัว",
+      "statement": "เมื่อกระแสตรงคงตัว ตัวเก็บประจุไม่เป็นทางผ่านกระแส; แรงดันจากวงจรตัวต้านทานกำหนดประจุในแขนงอนุกรม",
+      "steps": [
+        "ตัดแขนงตัวเก็บประจุออกจากการหากระแสคงตัวแล้วใช้ตัวแบ่งแรงดัน",
+        "ใช้ความเป็นกลางของโหนดลอยและความจุอนุกรมเพื่อหาประจุ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q14"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

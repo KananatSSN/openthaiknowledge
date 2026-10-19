@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานการเลื่อนที่ร่วมการหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.sliding_falling_rod.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วศูนย์กลางแท่งที่ล้มบนพื้นลื่น",
+      "statement": "แท่งล้มบนพื้นลื่นรักษาโมเมนตัมแนวระดับและเปลี่ยนพลังงานศักย์เป็นทั้งการเลื่อนและหมุน",
+      "steps": [
+        "ใช้เงื่อนไขจุดสัมผัสพื้นและศูนย์กลางไม่มีความเร็วแนวระดับ",
+        "รวมพลังงานจลน์สองส่วนขณะปลายบนถึงพื้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q19"
+      ],
+      "note": "Limit of release from nearly vertical; exactly vertical at rest is an unstable equilibrium."
+    }
+  ]
+}

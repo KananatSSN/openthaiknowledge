@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรตัวเก็บประจุและสมการกำลังสอง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.self_equal_capacitance.procedure",
+      "kind": "procedure",
+      "title": "ความจุที่ทำให้ความจุรวมเท่ากับตัวมันเอง",
+      "statement": "C₁ อนุกรมกับกลุ่มขนาน C₂ กับ C มีความจุรวมเท่ากับ C เมื่อ C²+C₂C−C₁C₂=0 และต้องเลือกรากบวก",
+      "steps": [
+        "รวมความจุขนานแล้วต่ออนุกรม",
+        "ตั้งค่าเท่ากับ C และตัดรากลบที่ไม่เป็นความจุจริง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q21"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

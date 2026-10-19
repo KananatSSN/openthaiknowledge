@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การขยายตัวและคาบลูกตุ้มอย่างง่าย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.heated_pendulum_period.procedure",
+      "kind": "procedure",
+      "title": "คาบลูกตุ้มเมื่อสายแขวนขยายตัว",
+      "statement": "สายลูกตุ้มขยายเป็น ℓ(1+αΔT) ทำให้คาบมุมเล็กเป็น √(1+αΔT) เท่าของเดิม",
+      "steps": [
+        "คำนวณอัตราส่วนความยาวหลังขยาย",
+        "ใช้คาบแปรตามรากที่สองของความยาว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q08"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

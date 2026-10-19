@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎข้อหนึ่งในกระบวนการความดันคงตัว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.monatomic_isobaric_heating.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิแก๊สอะตอมเดี่ยวที่รับความร้อน",
+      "statement": "แก๊สอะตอมเดี่ยวขยายแบบความดันคงที่มี Q=(5/2)nRΔT",
+      "steps": [
+        "รวมพลังงานภายใน (3/2)nRΔT กับงาน PΔV",
+        "ใช้กฎแก๊สที่ความดันคงที่หาอุณหภูมิที่เพิ่ม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q16"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ระบบเลนส์เว้าร่วมเลนส์นูนแบบไร้โฟกัส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.galilean_beam_expander.procedure",
+      "kind": "procedure",
+      "title": "ระยะเลนส์ของชุดขยายลำแสงขนาน",
+      "statement": "เลนส์เว้าตามด้วยเลนส์นูนที่ d=fนูน−|fเว้า| ให้ลำแสงขนานออกและขยายเส้นผ่านศูนย์กลาง fนูน/|fเว้า|",
+      "steps": [
+        "ให้โฟกัสเสมือนเลนส์เว้าตรงกับโฟกัสหน้าเลนส์นูน",
+        "ตรวจรังสีแกนและรังสีขนานสองข้างด้วยการหักเหเลนส์บาง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 30
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q30"
+      ],
+      "note": "Source includes drawing rays and calculating separation. Numerical ray tracing verifies the drawing construction; generator asks afocal separation."
+    }
+  ]
+}

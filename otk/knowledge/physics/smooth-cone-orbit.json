@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเข้าสู่ศูนย์กลางบนผิวกรวย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.smooth_cone_orbit.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็ววงกลมด้านในกรวยลื่น",
+      "statement": "มวลโคจรแนวระดับด้านในกรวยลื่นที่สูง h จากยอดมี v²=gh ไม่ขึ้นกับมุมเปิดกรวย",
+      "steps": [
+        "ฉายแรงปกติแนวดิ่งให้สมดุลน้ำหนัก",
+        "ใช้แรงแนวระดับเป็นแรงสู่ศูนย์กลางและ r=h tanβ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q06"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

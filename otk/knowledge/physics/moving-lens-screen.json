@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมการเลนส์เมื่อเลื่อนเลนส์และฉาก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.moving_lens_screen.procedure",
+      "kind": "procedure",
+      "title": "หาโฟกัสจากการเลื่อนเลนส์และฉาก",
+      "statement": "เมื่อเลนส์และฉากเลื่อนเทียบห้อง ระยะภาพใหม่ต้องลบการเลื่อนของทั้งเลนส์และฉาก ไม่ใช่เพียงฉาก",
+      "steps": [
+        "เขียน u₂=u₁+a และ v₂=v₁−a−b จากพิกัดที่ระบุ",
+        "ใช้สมการเลนส์สองครั้งโดย f เดิมแล้วแก้หาระยะวัตถุและ f"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 30
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q30"
+      ],
+      "note": "Screen displacement is explicitly measured in the room frame, giving source focal length 18 cm."
+    }
+  ]
+}

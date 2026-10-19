@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่พร้อมกันบนพื้นเอียง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.incline_midpoint_meeting.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วต้นเพื่อพบกันกลางพื้นเอียง",
+      "statement": "สองก้อนบนลาดลื่นที่พบกลางลาดมีเวลาเดียวกัน โดยเวลาถูกกำหนดจากก้อนที่ปล่อยจากหยุดนิ่ง",
+      "steps": [
+        "หากำหนดเวลาจากระยะครึ่งลาดของก้อนบน",
+        "แทนเวลาในสมการตำแหน่งของก้อนล่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q24"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

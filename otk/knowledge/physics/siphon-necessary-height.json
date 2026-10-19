@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความดันและหัวความดันของของเหลว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.siphon_necessary_height.procedure",
+      "kind": "procedure",
+      "title": "ขอบเขตจำเป็นของความสูงกาลักน้ำ",
+      "statement": "กาลักน้ำมีเงื่อนไขจำเป็น h<Pบรรยากาศ/(ρg); หัวความเร็วและความดันไอทำให้ข้อจำกัดจริงเข้มขึ้น",
+      "steps": [
+        "เขียนแบร์นูลลีจากผิวถังถึงยอดท่อ",
+        "กำหนดความดันยอดเป็นบวกแล้วหาขอบเขตจำเป็น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q03"
+      ],
+      "note": "Necessary hydrostatic upper bound only; finite flow speed and vapor pressure require a stricter operating limit."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ศักย์ไฟฟ้าของประจุกระจายตามเส้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charged_arc_potential.procedure",
+      "kind": "procedure",
+      "title": "ศักย์ไฟฟ้าที่ศูนย์กลางส่วนโค้งมีประจุ",
+      "statement": "ศักย์ที่ศูนย์กลางส่วนโค้งมีประจุสม่ำเสมอคือ kλφ โดย φ เป็นเรเดียนและรัศมีหักล้าง",
+      "steps": [
+        "หาประจุรวมจากความยาวส่วนโค้ง",
+        "รวมศักย์สเกลาร์ที่ระยะเดียวกันทุกชิ้นประจุ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q09"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

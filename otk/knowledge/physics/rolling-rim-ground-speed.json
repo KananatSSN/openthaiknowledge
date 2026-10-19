@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความเร็วจากการเลื่อนที่ร่วมการหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rolling_rim_ground_speed.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วจุดบนขอบล้อเทียบพื้น",
+      "statement": "อัตราเร็วจุดขอบล้อเทียบพื้นต้องรวมความเร็วศูนย์กลางกับความเร็วหมุนเป็นเวกเตอร์",
+      "steps": [
+        "วัดมุมจากรัศมีชี้ขึ้นให้ตรงกับรูป",
+        "รวมองค์ประกอบแล้วหาขนาด Rω√(2+2cosθ)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q23"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

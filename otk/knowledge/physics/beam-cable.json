@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลโมเมนต์ของคาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.beam_cable.procedure",
+      "kind": "procedure",
+      "title": "แรงตึงสายเคเบิลค้ำคาน",
+      "statement": "แรงตึงสายค้ำคานต้องคำนวณโมเมนต์จากองค์ประกอบตั้งฉาก และน้ำหนักคานสม่ำเสมอกระทำที่กึ่งกลาง",
+      "steps": [
+        "ตั้งโมเมนต์รอบบานพับเพื่อตัดแรงบานพับออก",
+        "ใช้เรขาคณิตสามเหลี่ยมหาองค์ประกอบตั้งฉากของแรงตึง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q10"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

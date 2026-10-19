@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเสียดทานสถิตและการหาค่าน้อยสุด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.minimum_angled_pull.procedure",
+      "kind": "procedure",
+      "title": "แรงดึงน้อยสุดที่ทำให้ก้อนเริ่มเคลื่อน",
+      "statement": "แรงดึงขึ้นเฉียงทำให้แรงปกติลดลง ค่าน้อยสุดที่เริ่มเคลื่อนคือ μMg/√(1+μ²)",
+      "steps": [
+        "เขียน N=Mg−Fsinθ และ Fcosθ=μN",
+        "หาค่าสูงสุดของ cosθ+μsinθ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 20
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q20"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

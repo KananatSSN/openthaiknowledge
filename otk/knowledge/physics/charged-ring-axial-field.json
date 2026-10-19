@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การอินทิเกรตสนามและสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charged_ring_axial_field.procedure",
+      "kind": "procedure",
+      "title": "สนามไฟฟ้าบนแกนวงแหวนมีประจุ",
+      "statement": "สมมาตรวงแหวนทำให้สนามขวางแกนหักล้าง เหลือสนามตามแกน kQx/(R²+x²)³ᐟ²",
+      "steps": [
+        "ฉายสนามแต่ละชิ้นประจุตามแกน",
+        "อินทิเกรตโดยใช้ Q=2πRλ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q25"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

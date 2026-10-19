@@ -2,7 +2,7 @@
 
 # ฟิสิกส์ (`physics`)
 
-539 sets in 176 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+625 sets in 179 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -239,3 +239,11 @@
 | [`surface_tension`](m6/surface_tension.py) | ความตึงผิวและแรงหนืดของของเหลว | ฟิสิกส์เพิ่มเติม 4 ม.6/5 | 3 |
 | [`thermo_first_law`](m6/thermo_first_law.py) | งาน ความร้อน และพลังงานภายในระบบ | ฟิสิกส์เพิ่มเติม 4 ม.6/9 | 3 |
 | [`transformer_threephase`](m6/transformer_threephase.py) | เครื่องกำเนิดไฟฟ้ากระแสสลับ 3 เฟสและหม้อแปลง | ฟิสิกส์เพิ่มเติม 3 ม.6/6 | 3 |
+
+## olympiad — โอลิมปิก (สอวน.)
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`posn2560`](olympiad/posn2560.py) | POSN camp 1 physics, 2560: computed variants with audited solvers. | — | 30 |
+| [`posn2561`](olympiad/posn2561.py) | POSN physics camp selection 2561: verified variants of each source item. | — | 30 |
+| [`posn2562`](olympiad/posn2562.py) | Seeded variants of the reviewed POSN physics 2562 camp selection paper. | — | 26 |

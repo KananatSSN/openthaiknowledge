@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-3,953 sets in 1,283 unit files. Each subject's `README.md` lists its units with their indicators.
+4,039 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -824,6 +824,14 @@
 | [`surface_tension.py`](physics/m6/surface_tension.py) | ความตึงผิวและแรงหนืดของของเหลว | `phys.surface_tension_foundation`, `phys.surface_tension_fluency`, `phys.surface_tension_application` |
 | [`thermo_first_law.py`](physics/m6/thermo_first_law.py) | งาน ความร้อน และพลังงานภายในระบบ | `phys.thermo_first_law_foundation`, `phys.thermo_first_law_fluency`, `phys.thermo_first_law_application` |
 | [`transformer_threephase.py`](physics/m6/transformer_threephase.py) | เครื่องกำเนิดไฟฟ้ากระแสสลับ 3 เฟสและหม้อแปลง | `phys.transformer_threephase_foundation`, `phys.transformer_threephase_fluency`, `phys.transformer_threephase_application` |
+
+### olympiad — โอลิมปิก (สอวน.)
+
+| File | Unit | Sets |
+|---|---|---|
+| [`posn2560.py`](physics/olympiad/posn2560.py) | POSN camp 1 physics, 2560: computed variants with audited solvers. | `phys.posn2560_q03`, `phys.posn2560_q04`, `phys.posn2560_q06`, `phys.posn2560_q07`, `phys.posn2560_q09`, `phys.posn2560_q10`, `phys.posn2560_q11`, `phys.posn2560_q12`, `phys.posn2560_q13`, `phys.posn2560_q14`, `phys.posn2560_q15`, `phys.posn2560_q16`, `phys.posn2560_q17`, `phys.posn2560_q18`, `phys.posn2560_q19`, `phys.posn2560_q20`, `phys.posn2560_q01`, `phys.posn2560_q02`, `phys.posn2560_q05`, `phys.posn2560_q08`, `phys.posn2560_q21`, `phys.posn2560_q22`, `phys.posn2560_q23`, `phys.posn2560_q24`, `phys.posn2560_q25`, `phys.posn2560_q26`, `phys.posn2560_q27`, `phys.posn2560_q28`, `phys.posn2560_q29`, `phys.posn2560_q30` |
+| [`posn2561.py`](physics/olympiad/posn2561.py) | POSN physics camp selection 2561: verified variants of each source item. | `phys.posn2561_q01`, `phys.posn2561_q02`, `phys.posn2561_q03`, `phys.posn2561_q04`, `phys.posn2561_q05`, `phys.posn2561_q06`, `phys.posn2561_q07`, `phys.posn2561_q08`, `phys.posn2561_q09`, `phys.posn2561_q10`, `phys.posn2561_q11`, `phys.posn2561_q12`, `phys.posn2561_q13`, `phys.posn2561_q14`, `phys.posn2561_q15`, `phys.posn2561_q16`, `phys.posn2561_q17`, `phys.posn2561_q18`, `phys.posn2561_q19`, `phys.posn2561_q20`, `phys.posn2561_q21`, `phys.posn2561_q22`, `phys.posn2561_q23`, `phys.posn2561_q24`, `phys.posn2561_q25`, `phys.posn2561_q26`, `phys.posn2561_q27`, `phys.posn2561_q28`, `phys.posn2561_q29`, `phys.posn2561_q30` |
+| [`posn2562.py`](physics/olympiad/posn2562.py) | Seeded variants of the reviewed POSN physics 2562 camp selection paper. | `phys.posn2562_q01`, `phys.posn2562_q02`, `phys.posn2562_q03`, `phys.posn2562_q04`, `phys.posn2562_q05`, `phys.posn2562_q06`, `phys.posn2562_q07`, `phys.posn2562_q08`, `phys.posn2562_q09`, `phys.posn2562_q10`, `phys.posn2562_q11`, `phys.posn2562_q12`, `phys.posn2562_q13`, `phys.posn2562_q14`, `phys.posn2562_q15`, `phys.posn2562_q16`, `phys.posn2562_q17`, `phys.posn2562_q18`, `phys.posn2562_q19`, `phys.posn2562_q20`, `phys.posn2562_q21`, `phys.posn2562_q22`, `phys.posn2562_q23`, `phys.posn2562_q24`, `phys.posn2562_q25`, `phys.posn2562_q26` |
 
 ## chemistry — เคมี
 

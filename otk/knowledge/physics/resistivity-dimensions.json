@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "หน่วยและมิติของสภาพต้านทาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.resistivity_dimensions.procedure",
+      "kind": "procedure",
+      "title": "หน่วยของสภาพต้านทานและความยาว",
+      "statement": "จาก R=ρL/A หน่วยสภาพต้านทานคือ Ω m และ ρ/Lⁿ มีหน่วย Ω m¹⁻ⁿ",
+      "steps": [
+        "จัด ρ=RA/L",
+        "รวมเลขชี้กำลังหน่วยความยาวตามปริมาณที่ถาม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q01"
+      ],
+      "note": ""
+    }
+  ]
+}

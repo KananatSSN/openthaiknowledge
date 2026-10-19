@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การนำความร้อนคงตัวหนึ่งมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.steady_rod_conduction.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิตามแท่งนำความร้อน",
+      "statement": "แท่งสม่ำเสมอผิวข้างฉนวนในสถานะคงตัวมีอุณหภูมิเปลี่ยนเชิงเส้นตามระยะ",
+      "steps": [
+        "ใช้ความเท่ากันของอัตราถ่ายเทความร้อนทุกหน้าตัด",
+        "คั่นค่าอุณหภูมิระหว่างปลายร้อนกับปลายเย็น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q07"
+      ],
+      "note": "Generated question explicitly assumes steady conduction, with no internal heating."
+    }
+  ]
+}

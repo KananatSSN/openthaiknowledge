@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงดลตามแนวศูนย์กลางของผิวเกลี้ยง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.offset_disc_collision_direction.procedure",
+      "kind": "procedure",
+      "title": "ทิศเหรียญหลังชนเยื้องศูนย์",
+      "statement": "ผิวเหรียญเกลี้ยงให้แรงดลตามแนวศูนย์กลาง ขณะชนเหรียญรัศมีเท่ากันห่างกัน 2R",
+      "steps": [
+        "สร้างสามเหลี่ยมแนวศูนย์กลางกับระยะเยื้อง a",
+        "ใช้ sinθ=a/(2R) หาทิศเหรียญเป้าหมาย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q15"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความเร็วของโพรเจกไทล์ระหว่างทาง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.projectile_intermediate_angle.procedure",
+      "kind": "procedure",
+      "title": "มุมยิงจากทิศความเร็วระหว่างทาง",
+      "statement": "ที่เศษส่วนความสูง f ของความสูงสูงสุด มี vy²=uy²(1−f) ขณะที่ vx คงเดิม",
+      "steps": [
+        "ใช้ทิศความเร็ว ณ ตำแหน่งที่กำหนดหา vy/vx",
+        "ย้อนด้วยสัดส่วนความสูงเพื่อหามุมความเร็วต้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q21"
+      ],
+      "note": ""
+    }
+  ]
+}

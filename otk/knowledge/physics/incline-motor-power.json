@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กำลังต้านน้ำหนักและแรงเสียดทาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.incline_motor_power.procedure",
+      "kind": "procedure",
+      "title": "กำลังมอเตอร์ดึงวัตถุขึ้นพื้นเอียงฝืด",
+      "statement": "กำลังดึงขึ้นลาดด้วยความเร็วคงตัวคือ W(sinθ+μcosθ)L/t",
+      "steps": [
+        "ฉายน้ำหนักและหาแรงเสียดทาน",
+        "คูณแรงดึงด้วยระยะและหารเวลา"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q07"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

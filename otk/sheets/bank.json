@@ -4247,6 +4247,48 @@
    "layout": "numbered",
    "items": 30,
    "stage": "generated"
+  },
+  {
+   "path": "สอวน_physics/posn1-60-physics.pdf",
+   "kind": "exam",
+   "sha256": "41d9d01bd6da234d",
+   "size": 457417,
+   "pages": 11,
+   "text_chars": 11915,
+   "layout": "numbered",
+   "glyph_damage": 103,
+   "items": 30,
+   "sheet_id": "posn2560_physics",
+   "stage": "generated",
+   "note": "30 items in two sections; transcript corrects running-number extraction."
+  },
+  {
+   "path": "สอวน_physics/posn1-61-physics.pdf",
+   "kind": "exam",
+   "sha256": "0e859590795d8ab7",
+   "size": 1234335,
+   "pages": 14,
+   "text_chars": 11695,
+   "layout": "numbered",
+   "glyph_damage": 631,
+   "items": 30,
+   "sheet_id": "posn2561_physics",
+   "stage": "generated",
+   "note": "30 numbered questions in two sections; handwritten transcript preserves restarting numbering."
+  },
+  {
+   "path": "สอวน_physics/posn1-62-physics.pdf",
+   "kind": "exam",
+   "sha256": "fc0b9ac6e1accedc",
+   "size": 950322,
+   "pages": 13,
+   "text_chars": 9456,
+   "layout": "numbered",
+   "glyph_damage": 21,
+   "items": 26,
+   "sheet_id": "posn2562_physics",
+   "stage": "generated",
+   "note": "26 questions:15 MC,10 short answers,1 worked item; private hand-reviewed transcript."
   }
  ]
 }

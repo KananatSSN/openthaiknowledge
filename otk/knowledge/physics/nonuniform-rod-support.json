@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลคานเมื่อเปลี่ยนจุดรองรับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.nonuniform_rod_support.procedure",
+      "kind": "procedure",
+      "title": "น้ำหนักคานไม่สม่ำเสมอจากสองสมดุล",
+      "statement": "ข้อมูลสมดุลสองการรองรับกำจัดตำแหน่งศูนย์มวลที่ไม่ทราบได้ โดยห้ามสมมติศูนย์มวลอยู่กึ่งกลาง",
+      "steps": [
+        "ตั้งสมดุลแรงและโมเมนต์ของคานในการแขวนครั้งแรก",
+        "ตั้งโมเมนต์หลังย้ายจุดรองรับแล้วกำจัดตำแหน่งศูนย์มวล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q23"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

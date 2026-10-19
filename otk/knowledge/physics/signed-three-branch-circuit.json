@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎของเคอร์ชอฟฟ์และขั้วแบตเตอรี่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.signed_three_branch_circuit.procedure",
+      "kind": "procedure",
+      "title": "กระแสในวงจรสามแขนงที่มีแบตเตอรี่",
+      "statement": "สมการวงจรหลายแหล่งจ่ายต้องรักษาเครื่องหมายขั้วแบตเตอรี่และทิศกระแส ทั้งกฎโหนดและกฎวงรอบ",
+      "steps": [
+        "ใช้แขนงที่ทราบกระแสหาความต่างศักย์ระหว่างโหนด",
+        "ใช้แรงดันนั้นหากระแสแขนงกลางแล้วใช้กฎโหนดหากระแสแขนงล่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 27
+        },
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q27",
+        "phys.posn2562_q13"
+      ],
+      "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
+    }
+  ]
+}

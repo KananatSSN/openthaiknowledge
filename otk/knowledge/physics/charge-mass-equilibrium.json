@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลแรงไฟฟ้าและน้ำหนัก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charge_mass_equilibrium.procedure",
+      "kind": "procedure",
+      "title": "ปรับประจุเมื่อเพิ่มมวลลูกทรงกลม",
+      "statement": "รักษามุมแขวนและระยะประจุเดิมต้องรักษา Fไฟฟ้า/mg ดังนั้นประจุแปรตามรากที่สองของมวล",
+      "steps": [
+        "เทียบสมดุลแรงก่อนและหลัง",
+        "ใช้แรงคูลอมบ์แปรตามประจุแต่ละลูกยกกำลังสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q12"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

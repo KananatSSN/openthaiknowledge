@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลเชือกที่มีน้ำหนัก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.heavy_rope_lowest_tension.procedure",
+      "kind": "procedure",
+      "title": "แรงตึงจุดต่ำสุดของเชือกห้อยท้องช้าง",
+      "statement": "เชือกห้อยสมมาตรที่ปลายเอียง θ จากดิ่งมีแรงตึงจุดต่ำสุด Wtanθ/2",
+      "steps": [
+        "แต่ละจุดแขวนรับแรงแนวดิ่ง W/2",
+        "หาแรงแนวระดับที่คงที่ตลอดเชือก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q12"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

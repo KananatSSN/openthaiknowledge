@@ -59,6 +59,33 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
+### Physics POSN bank — 2026-10-17
+
+- Scope: `สอวน_physics/MANIFEST.json` lists 33 papers (135 PDF components,
+  including national theory/practical papers and answer files).
+- `สอวน_physics/posn1-60-physics.pdf`: all 30 questions transcribed,
+  independently solved, mapped to knowledge, and linked to 30 generators in
+  `otk/sets/physics/olympiad/posn2560.py`. Part 2 restarts at 1 in the
+  source; it is numbered 21–30 in the solver package.
+- Validation complete: 30/30 solvers, 90 variant cross-checks, 30/30 knowledge
+  coverage, Ruff clean. One completed-sheet full run followed by focused
+  repairs; the final focused batch passed all 4,277 checks.
+- Test cadence requested by the maintainer: one targeted batch per wave;
+  full suite only when a sheet is completely digested. Waves here cover
+  6, 10, and 14 items. The final batch exposed a shortest-choice cue in
+  item 8, corrected before the completed-sheet full run.
+- `สอวน_physics/posn1-61-physics.pdf`: all 30 questions transcribed,
+  independently solved, claimed by 29 knowledge units, and linked to 30
+  generators in `otk/sets/physics/olympiad/posn2561.py`. Internal items 21–30
+  preserve the ten restarted Part 2 numbers in their provenance. The single
+  completed-sheet full run passed: 29,421 passed, 2 skipped (24m57s).
+- `สอวน_physics/posn1-62-physics.pdf`: all 26 questions (15 MC, 10 short
+  answers, one worked problem) are transcribed, independently solved, and
+  linked to 26 generators and knowledge units. The equal-source circuit reuses
+  the existing signed three-branch circuit unit; 25 units are new.
+- Next source: `สอวน_physics/posn1-64-physics.pdf` (the manifest has no 2563
+  camp-selection paper). Three of 33 papers are digested; 30 remain pending.
+
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
 - [x] `sheetpipe bank scan|status|set|prune` CLI
@@ -1170,4 +1197,91 @@ TOTAL         338   316     17     4   66      255      6     11
   extracts and figures stay private, and the paper forbids publication without
   POSN's permission. A sheet package would publish its text and figure crops,
   so it waits for the maintainer.
+- Review: the `ignored` index entries for the non-maths สอวน. folders (see
+  the 2562 entry) were dropped from this branch to keep it to the maths
+  papers. A later `bank scan` adds them back in a change of their own.
 
+### 2026-10-17 — first POSN physics paper, 2560 camp selection
+
+- Reviewed every exercise page of the 11-page PDF and all six automatic
+  figure crops. The running-number extractor found only the 20 MCQs and
+  merged the ten written items into item 20; the private transcript correctly
+  preserves both sections and converts to 30/30 answered digest items.
+- Added 30 solver modules with independent checks and 90 changed-constant
+  cases, 30 seeded generators, 30 physics knowledge units, supplemental
+  curriculum filing, stage metadata, provenance, diagnostic mistake names,
+  golden draws, and source/generator regression checks. Knowledge validation
+  reports zero problems, coverage is 30/30, and no knowledge gaps remain.
+- Recorded four source caveats: item 2 specifies too little curvature data
+  for total acceleration; item 5 determines average rather than instantaneous
+  contact force; item 20 has both upright and inverted self-image answers
+  (30/7 cm and 12 cm); written item 10 needs the screen displacement frame
+  stated explicitly. Generated wording resolves each caveat.
+- Source text and the full transcript stay in the private bank. The public
+  sheet records source citations, paraphrases, parameter readings, and
+  diagram notes. No static source crop is attached: labels vary, and crops
+  for extracted items 9 and 20 actually contain later questions. Generated
+  questions supply explicit geometry or graph coordinates instead.
+- Targeted batches: wave 1, 3,878 passed; wave 2, 3,998 passed; wave 3,
+  4,172 passed and one choice-length failure, corrected for the full run.
+  The full suite ran **once**, after all 30 items were digested: 28,950 passed,
+  2 skipped, 30 failed in 30m25s. Of the failures, 29 were new fingerprints
+  captured before diagnostic names were added (the fingerprint includes
+  those names); the other was the legacy electricity-topic test's cohort
+  exclusion. Refreshed only the 30 new keys and added the explicit new cohort
+  to that legacy assertion. Existing fingerprints are byte-for-byte unchanged.
+  Focused repairs and regression checks: **4,277 passed**; Ruff clean.
+  No second full run was performed. The same focused batch also verifies the
+  final distractor formulas and printed Part 2 provenance numbering.
+
+### 2026-10-17 — POSN physics 2561 camp selection
+
+- Reviewed the 14-page paper and all 14 automatic figure crops. The extractor
+  merges the ten restarted written questions into MC item 20, and its crop
+  for that item actually belongs to written question 2. A private hand
+  transcript preserves all 30 numbered items and answers; conversion yields
+  30/30 answered digest items.
+- Added 30 solver modules, each independently checked at the source data and
+  three changed-constant cases, plus 30 seeded generators. All 30 items are
+  claimed by 29 knowledge units (the two pulley items share one unit).
+  Knowledge validation reports zero problems and no generator gaps.
+- Explicit generated assumptions resolve source ambiguities: the table/pulley
+  speed is restricted to travel on the table, the balloon starts from rest,
+  and both door hinges have upward vertical components. The other source
+  hinge branch also satisfies equilibrium and is tested separately. Fluid
+  labels, circuit connections, graph coordinates, and torque arms are stated
+  directly; variable source figures are not attached as static crops.
+- The beam-expander source includes a ray drawing and a numerical separation.
+  Its checker traces three rays, verifies parallel output and the beam-width
+  ratio, and independently finds the lens separation. The generator practises
+  the afocal separation condition.
+- Targeted waves: 4,383 passed; 4,523 passed; 4,664 passed with one test-helper
+  failure parsing negative TeX fractions. Corrected the parser; its focused
+  regression passes. All 3,779 existing golden records remain unchanged.
+- The full suite ran once, after all 30 items were digested: **29,421 passed,
+  2 skipped in 24m57s**. Ruff is clean; source transcripts and full-text digests
+  remain in the private bank.
+
+### 2026-10-17 — POSN physics 2562 camp selection
+
+- Reviewed exercise pages 2–10 of the 13-page paper and all 23 automatic
+  crops. The paper declares 26 questions: 15 MC, ten short answers, one worked
+  problem; pages 11–13 are answer forms. Crops for items 1 and 2 are fragments
+  of item 4's choices, and item 26's crop is an answer form. No crop is shipped;
+  the generators state geometry, polarity, angle conventions, and topology.
+- Added 26 solvers with independent derivations and 78 changed-constant cases,
+  plus 26 seeded generators. Every converted item is claimed; the existing
+  signed circuit procedure covers item 13, and 25 knowledge units are new.
+  Knowledge validation reports zero problems and no generator gaps.
+- Source caveats are explicit in generated wording: item 3 gives only a
+  necessary siphon-height bound; item 7 requires steady conduction; item 14
+  starts with DC steady charging; item 19 uses the limiting release from nearly
+  vertical; item 24 needs small-angle motion for the intended half-period.
+  Finite-amplitude pendulum timing is not fixed by the source as printed.
+- The simultaneous three-disc impact verifies and generates the ordered pair
+  of both requested outgoing speeds, including momentum, kinetic energy, and
+  restitution checks. Ring-field choices retain exact reduced radicals.
+- Targeted waves: 4,394 passed; 4,522 passed; 4,636 passed.
+- The full suite ran once, after all 26 items were digested: **29,796 passed,
+  2 skipped in 20m08s**. Ruff is clean; full source text and the verified
+  transcript remain in the private bank.

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงตึงระหว่างวัตถุที่เร่งร่วมกัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.accelerating_block_tension.procedure",
+      "kind": "procedure",
+      "title": "ตาชั่งสปริงระหว่างก้อนที่ถูกผลักไปทิศเดียวกัน",
+      "statement": "ความเร่งร่วมมาจากแรงภายนอกรวม ส่วนแรงตึงต้องหาโดยแยกพิจารณามวลหนึ่ง",
+      "steps": [
+        "หา a จากระบบรวม",
+        "เขียนกฎข้อสองสำหรับก้อนเดียวเพื่อหาแรงตึง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-61-physics.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.posn2561_q04"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

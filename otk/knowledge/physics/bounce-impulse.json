@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การดลของแรงเฉลี่ย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.bounce_impulse.procedure",
+      "kind": "procedure",
+      "title": "แรงปกติเฉลี่ยระหว่างลูกบอลกระดอน",
+      "statement": "แรงปกติเฉลี่ยระหว่างกระดอนต้องรวมการเปลี่ยนโมเมนตัมทั้งขาลงและขาขึ้นกับน้ำหนักระหว่างสัมผัส",
+      "steps": [
+        "ใช้ความสูงหาความเร็วก่อนและหลังชนโดยให้ทิศตรงข้ามกัน",
+        "ตั้ง (Nเฉลี่ย−mg)Δt=m(vขึ้น+vลง); ข้อสรุปนี้ไม่ระบุแรงขณะใดขณะหนึ่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-60-physics.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.posn2560_q05"
+      ],
+      "note": "Source comparison determines average normal force only. Adaptation states average force and negligible displacement during contact."
+    }
+  ]
+}
