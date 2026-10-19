@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมแนบใน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.right-incenter-product",
+      "kind": "procedure",
+      "title": "BO·OC ในสามเหลี่ยม 3-4-5",
+      "statement": "BC เป็นเส้นผ่านศูนย์กลาง จึงมุม A ฉาก BC = 5 และ r = (3 + 4 − 5)/2 = 1 ∠BOC = 90° + A/2 = 135° พื้นที่สามเหลี่ยม BOC = r·BC/2 = BO·OC·sin 135°/2 จึง BO·OC = 5√2",
+      "steps": [
+        "หา r ของสามเหลี่ยมมุมฉาก",
+        "∠BOC = 90° + A/2",
+        "เทียบพื้นที่สามเหลี่ยม BOC สองแบบ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 4
+        }
+      ],
+      "covered_by": [
+        "math.right_incenter_product_olympiad"
+      ]
+    }
+  ]
+}

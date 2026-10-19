@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.weighted-amgm-maximiser",
+      "kind": "procedure",
+      "title": "ค่าสูงสุดของ ab^(1/2)c^(1/3)d^(1/4)",
+      "statement": "AM–GM แบบถ่วงน้ำหนัก (น้ำหนัก 1, 1/2, 1/3, 1/4 รวม 25/12): ค่าสูงสุดเกิดเมื่อ 36a : 4b : 4c : 3d = 1 : 1/2 : 1/3 : 1/4 และผลรวม 25 ได้ 36a = 12, 4b = 6, 4c = 4, 3d = 3 คือ a = 1/3, b = 3/2, c = d = 1 ค่าสูงสุด (1/3)√(3/2) = √6/6",
+      "steps": [
+        "ใช้ AM–GM ถ่วงน้ำหนัก",
+        "หาจุดที่เกิดสมการ",
+        "แทนค่าหาค่าสูงสุด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 20
+        }
+      ],
+      "covered_by": [
+        "math.weighted_amgm_maximiser_olympiad"
+      ]
+    }
+  ]
+}

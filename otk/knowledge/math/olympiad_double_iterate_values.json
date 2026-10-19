@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.double-iterate-values",
+      "kind": "procedure",
+      "title": "ฟังก์ชันที่ f(f(n)) = 2n",
+      "statement": "มี เช่น เขียน n = 2ᵏ·m (m คี่) ให้ f(2ᵏ(4j + 1)) = 2ᵏ(4j + 3) และ f(2ᵏ(4j + 3)) = 2ᵏ⁺¹(4j + 1) ตรวจได้ f(f(2ᵏ(4j + 1))) = 2ᵏ⁺¹(4j + 1) และ f(f(2ᵏ(4j + 3))) = 2ᵏ⁺¹(4j + 3) ทุกฟังก์ชันเช่นนี้สอดคล้อง f(2n) = 2f(n)",
+      "steps": [
+        "แยกกำลังของ 2",
+        "จับคู่จำนวนคี่",
+        "ตรวจทั้งสองกรณี"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันที่สอง",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.double_iterate_values_olympiad"
+      ]
+    }
+  ]
+}
