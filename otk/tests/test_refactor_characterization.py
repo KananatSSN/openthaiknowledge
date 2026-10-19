@@ -68,6 +68,7 @@ def test_pdf_output_contract_is_frozen():
 
 def test_sheet_publication_manifest_is_frozen():
     expected = {
+        "posn2567_physics": (16, 16, 16, 0),
         "posn2566_physics": (28, 28, 28, 0),
         "posn2565_physics": (30, 30, 30, 0),
         "posn2564_physics": (30, 30, 30, 0),
@@ -212,5 +213,5 @@ def test_sheet_publication_manifest_is_frozen():
     # The national สอวน. maths papers 2547–2557 and 2562 add 204 more, one per
     # question; the 2563–2567 papers reuse sets that were already registered.
     # The สอวน. physics camp-selection papers 2560–2562 add 86, one per question,
-    # the 2564 and 2565 papers 30 more each, and the 2566 paper 28.
-    assert len(REGISTRY) == 4127
+    # the 2564 and 2565 papers 30 more each, the 2566 paper 28 and 2567 16.
+    assert len(REGISTRY) == 4143

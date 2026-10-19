@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎบีโอต์ซาวาร์ตสำหรับลวดโค้ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.concentric_loops_field.procedure",
+      "kind": "procedure",
+      "title": "สนามแม่เหล็กจากวงลวดสองวงกระแสสวนกัน",
+      "statement": "วงลวดร่วมศูนย์สองวงให้สนามที่ศูนย์กลาง (μ₀I/2)(1/R₁ ± 1/R₂) บวกเมื่อกระแสวนทางเดียวกัน",
+      "steps": [
+        "หาทิศการวนของกระแสในแต่ละวง",
+        "รวมสนามแบบมีเครื่องหมาย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-67-physics.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q09"
+      ],
+      "note": "Generator varies whether the loops oppose; positive is out of the page."
+    }
+  ]
+}

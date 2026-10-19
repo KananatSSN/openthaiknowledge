@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ตัวต้านทานขนานและการประมาณผลรวม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.harmonic_parallel_resistance.procedure",
+      "kind": "procedure",
+      "title": "ความต้านทานขนานจากอนุกรมฮาร์มอนิก",
+      "statement": "ตัวต้านทาน 1..N kΩ ขนานกันมี 1/R = H_N ≈ ln N + 0.577 ต่อ kΩ",
+      "steps": [
+        "รวมส่วนกลับเป็นอนุกรมฮาร์มอนิก",
+        "ประมาณด้วย ln N บวกค่าคงที่ออยเลอร์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-67-physics.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q11"
+      ],
+      "note": "Answer given to 3 significant figures, as the source asks."
+    }
+  ]
+}

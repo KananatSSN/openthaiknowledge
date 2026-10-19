@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงแม่เหล็กระหว่างกระแส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.close_loops_force.procedure",
+      "kind": "procedure",
+      "title": "แรงระหว่างวงลวดร่วมแกนที่อยู่ใกล้กัน",
+      "statement": "วงลวดร่วมแกนที่ห่างกัน d≪R ประมาณเป็นลวดตรงยาว 2πR แรงจึงเป็น μ₀I²R/d ดูดกันเมื่อกระแสทางเดียวกัน",
+      "steps": [
+        "ใช้แรงต่อความยาวของลวดตรงขนาน",
+        "คูณด้วยเส้นรอบวงและหาทิศจากทิศกระแส"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-67-physics.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q05"
+      ],
+      "note": "Generator varies the current sense; the answer is signed (positive = attraction)."
+    }
+  ]
+}

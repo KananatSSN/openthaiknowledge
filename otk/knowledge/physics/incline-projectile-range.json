@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบโพรเจกไทล์บนพื้นเอียง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.incline_projectile_range.procedure",
+      "kind": "procedure",
+      "title": "ระยะและมุมกระทบของโพรเจกไทล์บนพื้นเอียง",
+      "statement": "ยิง 30° เหนือแนวระดับลงพื้นเอียงลาดลง 30° ระยะตามพื้นเอียงเป็น 2u²/g และความเร็วที่จุดกระทบทำมุม 30° กับพื้นเอียง",
+      "steps": [
+        "หาเวลาที่ตำแหน่งตกบนแนวพื้นเอียง",
+        "หาระยะและทิศความเร็วที่เวลานั้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-67-physics.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q02"
+      ],
+      "note": "Both requested values are generated as one ordered pair."
+    }
+  ]
+}

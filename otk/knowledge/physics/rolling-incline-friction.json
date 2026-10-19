@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การกลิ้งโดยไม่ไถล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rolling_incline_friction.procedure",
+      "kind": "procedure",
+      "title": "แรงเสียดทานบนล้อที่กลิ้งลงพื้นเอียง",
+      "statement": "ล้อกลิ้งไม่ไถลลงพื้นเอียงรับแรงเสียดทาน MgI sinθ/(I+MR²)",
+      "steps": [
+        "เขียนสมการแรงและทอร์กกับเงื่อนไข a=αR",
+        "แก้หาแรงเสียดทาน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-67-physics.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q04"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

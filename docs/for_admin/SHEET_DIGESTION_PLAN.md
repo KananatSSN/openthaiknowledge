@@ -97,8 +97,14 @@ Phases in build order. Check an item only when its tests pass.
   transcribed, solved, independently checked and linked to 28 generators in
   `otk/sets/physics/olympiad/posn2566.py`. 26 knowledge units are new; items 12
   and 24 reuse the ring-field and steam-volume units.
-- Next source: `สอวน_physics/posn1-67-physics.pdf`. Six of 33 papers are
-  digested; 27 remain pending.
+- `สอวน_physics/posn1-67-physics.pdf`: 16 questions (15 short answers, one
+  worked problem), maths printed as pictures, no answer key; all are
+  transcribed, solved, independently checked and linked to 16 generators in
+  `otk/sets/physics/olympiad/posn2567.py`. 12 knowledge units are new; items 1,
+  8, 10 and 16 reuse existing units. This completes the camp-1 selection
+  papers 2560–2567 in the manifest (there is no 2563 paper).
+- Next source: `สอวน_physics/posn1-68-physics.pdf`. Seven of 33 papers are
+  digested; 26 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1383,3 +1389,27 @@ TOTAL         338   316     17     4   66      255      6     11
   passed; the sheet's own tests: 60 passed; Ruff clean.
 - The full suite ran once, after all 28 items were digested: **34,082 passed,
   13 skipped in 10m01s**.
+
+### 2026-10-19 — POSN physics 2567 camp selection
+
+- 10-page PDF, formulas and figures as pictures; the cover declares 16
+  questions (1–15 short answer, 16 worked) and gives Coulomb's and the
+  Biot–Savart law and ln 10 ≈ 2.303. No answer key; conversion yields 16/16
+  answered digest items.
+- Readings from 300–600 dpi crops: item 7's plates 1 and 4 share the negative
+  terminal and 2 and 3 the positive one, so only the outer two gaps hold
+  charge (C = 2ε₀A/d); in item 9 the inner loop runs counter-clockwise and the
+  outer loop clockwise, B = (μ₀I/2)(1/R₁ − 1/R₂) out of the page.
+- Each answer has a solver with an independently written check (time-stepped
+  slides and flights, Cramer's rule, a double Biot–Savart sum for the loop
+  force, Gauss-law plate charges, RC simulation, direction-vector rotation for
+  the raindrop, Gauss–Seidel ladder). `sheetpipe verify`: 16/16 green, 48
+  variant runs. Item 11's check confirms the ln N + 0.577 estimate against the
+  exact harmonic sum to 0.5%.
+- Generalized items: 1 (free-fall depth), 3 (energy fraction), 5 (current
+  sense, signed force), 7 (any plate pattern), 9 (loop senses), 11 (N = 10^k),
+  15 (T₁ and K/l), 16 (ladder values and node).
+- Targeted run: 19,131 passed, 4 skipped; `test_per_set` for the 16 keys: 46
+  passed; the sheet's own tests: 35 passed; Ruff clean.
+- The full suite ran once, after all 16 items were digested: **34,314 passed,
+  13 skipped in 10m54s**.
