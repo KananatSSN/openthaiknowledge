@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.exponential-sequence-gcd",
+      "kind": "procedure",
+      "title": "gcd(a₁, …, a₂₅₄₉) = 14",
+      "statement": "a₁ = 4 + 81 + 125 = 210 = 2·3·5·7 ทุก aₙ เป็นคู่ มอดุโล 7: 2³ ≡ 3⁶ ≡ 5⁶ ≡ 1 จึง aₙ ≡ 2⁻¹ + 3⁻² + 5⁻³ ≡ 4 + 4 + 6 ≡ 0 แต่ a₂ ไม่หารด้วย 3 และ 5 (a₂ ≡ 1 ทั้งมอดุโล 3 และ 5) และ 4 ไม่หาร a₁ จึง ห.ร.ม. = 14",
+      "steps": [
+        "คำนวณ a₁ และแยกตัวประกอบ",
+        "ตรวจแต่ละจำนวนเฉพาะด้วยมอดุลาร์",
+        "ใช้ a₂ ตัดตัวประกอบที่ไม่หารทุกตัว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 12
+        }
+      ],
+      "covered_by": [
+        "math.exponential_sequence_gcd_olympiad"
+      ]
+    }
+  ]
+}

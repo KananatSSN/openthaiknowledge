@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.weighted-square-minimiser",
+      "kind": "procedure",
+      "title": "x ที่ทำให้ 2x² + 3y² + 4z² ต่ำสุด",
+      "statement": "โคชี–ชวาร์ซ: (2x² + 3y² + 4z²)(1/2 + 1/3 + 1/4) ≥ (x + y + z)² = 1 สมการเมื่อ 2x = 3y = 4z ร่วมกับ x + y + z = 1 ได้ x = (1/2)/(13/12) = 6/13",
+      "steps": [
+        "ใช้อสมการโคชี–ชวาร์ซ",
+        "ใช้เงื่อนไขสมการ 2x = 3y = 4z"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 7
+        }
+      ],
+      "covered_by": [
+        "math.weighted_square_minimiser_olympiad"
+      ]
+    }
+  ]
+}

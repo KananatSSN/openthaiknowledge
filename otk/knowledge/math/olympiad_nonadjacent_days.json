@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การจัดหมู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.nonadjacent-days",
+      "kind": "procedure",
+      "title": "เลือก 10 วันในเดือนพฤษภาคมไม่ติดกัน",
+      "statement": "ถ้าเลือกวัน d₁ < … < d₁₀ ไม่ติดกัน แล้ว dᵢ − (i − 1) เป็นวันต่างกันใน 22 วัน เป็นการสมนัยหนึ่งต่อหนึ่ง จึงได้ C(22, 10) = 646646 วิธี",
+      "steps": [
+        "เลื่อนวันที่เลือกเพื่อตัดช่องว่าง",
+        "นับการเลือกจาก 31 − 10 + 1 วัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 18
+        }
+      ],
+      "covered_by": [
+        "math.nonadjacent_days_olympiad"
+      ]
+    }
+  ]
+}

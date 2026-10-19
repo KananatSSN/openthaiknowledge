@@ -1068,4 +1068,25 @@ TOTAL         338   316     17     4   66      255      6     11
 - Open (sketched only):
   - day 2, item 3: the angle chase that makes A, M, N, D concyclic.
 - Registry 3,875 sets; enrichment count 418.
-- Remaining POSN maths at `new`: national papers 2547–2549 (3 papers).
+
+### 2026-10-17 — 2549 national paper
+
+- The 2549 national paper (3rd TMO) has 24 questions over two days: 18
+  short answers on day 1 and six proofs on day 2. The text layer drops the
+  mathematics and there are no answer pages, so every answer was derived
+  and checked by computer. 18 have answers, including:
+  - day 1, item 4: 1/√5;
+  - day 1, item 5: 118;
+  - day 1, item 8: −37;
+  - day 1, item 12: 14;
+  - day 1, item 13: 781;
+  - day 1, item 14: 1274;
+  - day 1, item 17: 16.
+- 24 knowledge units and 24 original sets, checked in
+  `test_math_olympiad_posn_national_2549.py`. Day 2, item 4 (the 4 × 7
+  foursome) has a written case proof and an exhaustive search; 4 × 6 can
+  avoid one. Day 2, item 5 is settled by the witness m = 1, n = 45. The
+  bank entry is `generated`.
+- Open: none.
+- Registry 3,899 sets; enrichment count 442.
+- Remaining POSN maths at `new`: national papers 2547–2548 (2 papers).
