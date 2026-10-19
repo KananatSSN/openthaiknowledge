@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎความโน้มถ่วงสากลและวงโคจร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.binary_orbit_energy.procedure",
+      "kind": "procedure",
+      "title": "พลังงานจลน์ของระบบดาวคู่",
+      "statement": "ดาวคู่ระยะห่าง R มีพลังงานจลน์รวม GMm/(2R)",
+      "steps": [
+        "หา ω² จาก G(M+m)/R³",
+        "รวมพลังงานจลน์ของสองดาวรอบศูนย์กลางมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q22"
+      ],
+      "note": "Generator asks KE/G for masses in kg and R in m."
+    }
+  ]
+}

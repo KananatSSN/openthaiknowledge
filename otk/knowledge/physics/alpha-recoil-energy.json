@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "โมเมนตัมในการสลายตัว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.alpha_recoil_energy.procedure",
+      "kind": "procedure",
+      "title": "พลังงานจลน์ของนิวเคลียสที่สะท้อนกลับ",
+      "statement": "นิวเคลียสนิ่งที่ปล่อยอนุภาคแอลฟามีโมเมนตัมเท่ากันสองข้าง พลังงานจลน์จึงแปรผกผันกับมวล",
+      "steps": [
+        "ตั้งโมเมนตัมเท่ากัน",
+        "ใช้ K=p²/(2m)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q23"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

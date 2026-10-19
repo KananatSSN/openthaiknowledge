@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "หลักของอาร์คิมีดีสกับการละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.floating_ice_melt_level.procedure",
+      "kind": "procedure",
+      "title": "ระดับน้ำเมื่อน้ำแข็งลอยละลาย",
+      "statement": "น้ำแข็งลอยในน้ำบริสุทธิ์ละลายแล้วระดับไม่เปลี่ยน ในของเหลวหนาแน่นกว่าระดับจะสูงขึ้น m(1/ρน้ำ−1/ρของเหลว)/A",
+      "steps": [
+        "หาปริมาตรที่จมจากการลอย",
+        "เทียบกับปริมาตรน้ำที่ละลาย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q11"
+      ],
+      "note": "Generalized to brine denser than the melt water."
+    }
+  ]
+}

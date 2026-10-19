@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การซ้อนทับของคลื่นและคลื่นนิ่ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.standing_wave_superposition.procedure",
+      "kind": "procedure",
+      "title": "ค่าของคลื่นนิ่งจากสองคลื่นสวนกัน",
+      "statement": "sin(x−t)+sin(x+t)=2 sin x cos t เป็นคลื่นนิ่ง",
+      "steps": [
+        "ใช้สูตรผลบวกของไซน์",
+        "แทนค่า x และ t"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q09"
+      ],
+      "note": "Source asks the graph at t=π; generator asks ψ at given x, t."
+    }
+  ]
+}

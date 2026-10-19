@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การอนุรักษ์พลังงานและโมเมนตัมของประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.free_target_closest_approach.procedure",
+      "kind": "procedure",
+      "title": "พลังงานจลน์ที่ต้องใช้เข้าใกล้ประจุที่เคลื่อนได้",
+      "statement": "ยิงประจุเข้าหาประจุอิสระ ที่ระยะใกล้สุดทั้งสองมีความเร็วเท่ากัน พลังงานที่ต้องใช้คือ (kqQ/D)(1+m/M)",
+      "steps": [
+        "ใช้โมเมนตัมหาความเร็วร่วม",
+        "ตั้งพลังงานจลน์ที่หายไปเท่ากับพลังงานศักย์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 26
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q26"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรตัวต้านทานและความต้านทานภายใน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.equivalent_branch_current.procedure",
+      "kind": "procedure",
+      "title": "ความต้านทานที่ให้กระแสเท่ากันสองวงจร",
+      "statement": "กระแสในแขนงหนึ่งของตัวต้านทานขนานหาได้จากตัวแบ่งกระแส แล้วเทียบกับวงจรตัวต้านทานเดี่ยว",
+      "steps": [
+        "หากระแสรวมแล้วแบ่งตามส่วนกลับของความต้านทาน",
+        "ตั้ง ℰ/(r+x) เท่ากับกระแสแขนงแล้วแก้หา x"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q08"
+      ],
+      "note": "Generalized to unequal parallel resistors."
+    }
+  ]
+}

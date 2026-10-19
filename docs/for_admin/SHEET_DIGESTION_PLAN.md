@@ -92,8 +92,13 @@ Phases in build order. Check an item only when its tests pass.
   questions (25 MC, 5 short answers) are transcribed, solved, independently
   checked and linked to 30 generators in `otk/sets/physics/olympiad/posn2565.py`.
   26 knowledge units are new; items 8, 9, 23 and 30 reuse existing units.
-- Next source: `สอวน_physics/posn1-66-physics.pdf`. Five of 33 papers are
-  digested; 28 remain pending.
+- `สอวน_physics/posn1-66-physics.pdf`: 28 questions (20 MC, 7 short answers,
+  one worked problem), maths printed as pictures, no answer key; all are
+  transcribed, solved, independently checked and linked to 28 generators in
+  `otk/sets/physics/olympiad/posn2566.py`. 26 knowledge units are new; items 12
+  and 24 reuse the ring-field and steam-volume units.
+- Next source: `สอวน_physics/posn1-67-physics.pdf`. Six of 33 papers are
+  digested; 27 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1353,3 +1358,28 @@ TOTAL         338   316     17     4   66      255      6     11
   passed; the sheet's own tests: 64 passed; Ruff clean.
 - The full suite ran once, after all 30 items were digested: **33,681 passed,
   13 skipped in 10m09s**.
+
+### 2026-10-19 — POSN physics 2566 camp selection
+
+- 12-page PDF with a text layer but every formula and figure as a picture;
+  the text runs out of order, so the transcript comes from page renders. The
+  cover declares 28 questions: 1–20 four-choice, 21–27 short answer, 28 worked.
+  No answer key; conversion yields 28/28 answered digest items.
+- Each answer has a solver with an independently written check (rigid-body
+  slicing, time-domain splat impulse, golden-section peak search, isothermal
+  column integration, Gauss–Seidel network relaxation, RC circuit simulation,
+  paraxial ray trace through a swapped meniscus, torque bisection). `sheetpipe
+  verify`: 28/28 green, 84 variant runs.
+- Readings made explicit: item 4 uses the splat model (stopping time 2r/v);
+  item 10's still strand runs from A to the fold; item 13's starred capacitor
+  is in parallel with the lower resistor, so its charge rises then decays;
+  item 17's lens B is a diverging meniscus with its R₂ surface first; item 19's
+  six resistors join four nodes pairwise. The four graph items become numeric
+  (5: peak speed; 9: ψ at given x, t; 12: field-peak distance) or a concept
+  choice whose solver is checked by simulation (13).
+- Generalized items: 2 (support position), 8 (unequal branches), 11 (brine),
+  16 (incidence angle), 19 (six arbitrary resistors), 25 (final angle).
+- Targeted run: 18,975 passed, 4 skipped; `test_per_set` for the 28 keys: 58
+  passed; the sheet's own tests: 60 passed; Ruff clean.
+- The full suite ran once, after all 28 items were digested: **34,082 passed,
+  13 skipped in 10m01s**.

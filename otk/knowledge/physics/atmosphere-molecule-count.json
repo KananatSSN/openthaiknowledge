@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความดันบรรยากาศและน้ำหนักอากาศ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.atmosphere_molecule_count.procedure",
+      "kind": "procedure",
+      "title": "จำนวนโมเลกุลในบรรยากาศโลก",
+      "statement": "น้ำหนักบรรยากาศทั้งหมดเท่ากับความดันผิวโลกคูณพื้นที่ผิว จำนวนโมเลกุลจึงเป็น 4πR²P/(mg)",
+      "steps": [
+        "หามวลบรรยากาศจาก P·4πR²/g",
+        "หารด้วยมวลหนึ่งโมเลกุล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q07"
+      ],
+      "note": "Generator asks the exact value with π for the given data."
+    }
+  ]
+}

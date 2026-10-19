@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจร RC ในสภาวะชั่วครู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rc_ladder_transient.procedure",
+      "kind": "procedure",
+      "title": "ประจุในตัวเก็บประจุของวงจร RC สองชั้น",
+      "statement": "ในวงจร RC ที่กระแสคงตัวเป็นศูนย์ ตัวเก็บประจุที่ขนานกับตัวต้านทานจะเพิ่มประจุแล้วคายจนหมด",
+      "steps": [
+        "หาสถานะสุดท้ายเมื่อกระแสเป็นศูนย์",
+        "เทียบสถานะเริ่มต้นกับสุดท้ายเพื่อหารูปกราฟ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q13"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

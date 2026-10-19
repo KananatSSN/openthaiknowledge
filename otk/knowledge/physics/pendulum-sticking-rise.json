@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนไม่ยืดหยุ่นร่วมกับพลังงาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pendulum_sticking_rise.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนมวลลูกตุ้มที่ชนแล้วติดกัน",
+      "statement": "ลูกตุ้มที่ชนติดกันใช้พลังงานก่อนชน โมเมนตัมขณะชน และพลังงานหลังชน แยกเป็นสามช่วง",
+      "steps": [
+        "หาความเร็วก่อนชนจากพลังงาน",
+        "ใช้โมเมนตัมขณะชนแล้วพลังงานถึงมุมสูงสุด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q25"
+      ],
+      "note": "Generalized to any final angle with a rational answer."
+    }
+  ]
+}

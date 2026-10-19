@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การดลและแรงเฉลี่ย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.splat_average_force.procedure",
+      "kind": "procedure",
+      "title": "แรงเฉลี่ยของหยดน้ำกระแทกกำแพง",
+      "statement": "หยดของเหลวที่กระแทกแล้วหยุดใช้เวลา 2r/v แรงเฉลี่ยจึงเป็น mv²/(2r)",
+      "steps": [
+        "หาการเปลี่ยนโมเมนตัม mv",
+        "หาเวลาสัมผัสจากเส้นผ่านศูนย์กลางหารความเร็ว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q04"
+      ],
+      "note": "Splat model: momentum removed over 2r/v."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การอนุรักษ์โมเมนตัมสองมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.explosion_fragment_direction.procedure",
+      "kind": "procedure",
+      "title": "ทิศชิ้นส่วนหลังวัตถุระเบิด",
+      "statement": "เมื่อวัตถุแยกเป็นสองชิ้น โมเมนตัมแต่ละแกนคงที่ ชิ้นที่สองจึงมี tanθ=αv/u",
+      "steps": [
+        "เขียนโมเมนตัมแกน x และ y ก่อนและหลัง",
+        "หาองค์ประกอบความเร็วชิ้นที่สองแล้วหามุม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q03"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

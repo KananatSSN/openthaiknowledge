@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนไม่ยืดหยุ่นและโมเมนตัม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.successive_sticking_collisions.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วหลังชนติดกันหลายครั้ง",
+      "statement": "ชนแล้วติดกันทีละลูก โมเมนตัมรวมคงที่ ความเร็วหลัง N ลูกคือ Mu/(M+Nm)",
+      "steps": [
+        "โมเมนตัมเริ่มต้น Mu คงที่ตลอด",
+        "หารด้วยมวลรวมหลังชน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q06"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

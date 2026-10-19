@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่สัมพัทธ์ของเชือก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.folded_chain_speed.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วปลายเชือกที่พับซ้อน",
+      "statement": "เชือกพับซ้อนที่ดึงปลายล่างด้วยความเร็ว v จุดพับเคลื่อนด้วย v/2",
+      "steps": [
+        "ความยาวรวมของสองช่วงคงที่",
+        "หาความสัมพันธ์ของการเลื่อนจุดพับกับปลาย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q10"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

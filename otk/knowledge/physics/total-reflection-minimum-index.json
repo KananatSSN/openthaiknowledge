@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การสะท้อนกลับหมด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.total_reflection_minimum_index.procedure",
+      "kind": "procedure",
+      "title": "ดรรชนีต่ำสุดของปริซึมสะท้อนกลับหมด",
+      "statement": "จะสะท้อนกลับหมดที่มุมตกกระทบ φ ต้องมี μ ≥ 1/sin φ",
+      "steps": [
+        "หามุมตกกระทบที่ผิวสะท้อน",
+        "ใช้มุมวิกฤต sin θc=1/μ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q16"
+      ],
+      "note": "Generalized: the ray meets the reflecting face at φ."
+    }
+  ]
+}

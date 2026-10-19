@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สูตรผู้สร้างเลนส์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.swapped_meniscus_focal.procedure",
+      "kind": "procedure",
+      "title": "ความยาวโฟกัสของเลนส์ที่กลับผิว",
+      "statement": "เลนส์เมนิสคัสที่สลับลำดับผิวแต่โค้งทางเดียวกันกลายเป็นเลนส์เว้า 1/f=(1−μ)(1/R₁−1/R₂)",
+      "steps": [
+        "กำหนดเครื่องหมายรัศมีตามทิศศูนย์กลางความโค้ง",
+        "แทนในสูตรผู้สร้างเลนส์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-66-physics.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q17"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}
