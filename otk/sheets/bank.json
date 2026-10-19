@@ -4367,6 +4367,54 @@
    "sheet_id": "posn2569_physics",
    "stage": "generated",
    "note": "10 eight-choice MC and 20 short answers in two sections (Part 2 restarts at 1; items 11-30 here); private hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-45-physics/tpho_1_expt.pdf",
+   "kind": "exam",
+   "sha256": "6abd72af94772ee2",
+   "size": 196694,
+   "pages": 3,
+   "text_chars": 2421,
+   "layout": "numbered",
+   "items": 3,
+   "sheet_id": "tpho2545_physics",
+   "stage": "generated",
+   "note": "Experimental paper; its 3 theory parts digested with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-45-physics/tpho_1_theory.pdf",
+   "kind": "exam",
+   "sha256": "214cfd44b4dce241",
+   "size": 282361,
+   "pages": 6,
+   "text_chars": 5193,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Thai version of tpho_1_theory_eng.pdf; digested through the English paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+   "kind": "exam",
+   "sha256": "489c5bc72c9d64bb",
+   "size": 93481,
+   "pages": 5,
+   "text_chars": 5687,
+   "layout": "numbered",
+   "items": 14,
+   "sheet_id": "tpho2545_physics",
+   "stage": "generated",
+   "note": "English theory paper; 14 sub-part items; hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-45-physics/tpho_1_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "ac8264b3b4ab06fd",
+   "size": 461056,
+   "pages": 7,
+   "text_chars": 8512,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer."
   }
  ]
 }

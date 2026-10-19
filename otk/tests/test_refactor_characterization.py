@@ -68,6 +68,7 @@ def test_pdf_output_contract_is_frozen():
 
 def test_sheet_publication_manifest_is_frozen():
     expected = {
+        "tpho2545_physics": (17, 17, 17, 0),
         "posn2569_physics": (30, 30, 30, 0),
         "posn2568_physics": (25, 25, 25, 0),
         "posn2567_physics": (16, 16, 16, 0),
@@ -216,5 +217,5 @@ def test_sheet_publication_manifest_is_frozen():
     # question; the 2563–2567 papers reuse sets that were already registered.
     # The สอวน. physics camp-selection papers 2560–2562 add 86, one per question,
     # the 2564 and 2565 papers 30 more each, 2566 28, 2567 16, 2568 25 and
-    # 2569 30.
-    assert len(REGISTRY) == 4198
+    # 2569 30. The first national physics olympiad (TPhO 2545) adds 17.
+    assert len(REGISTRY) == 4215

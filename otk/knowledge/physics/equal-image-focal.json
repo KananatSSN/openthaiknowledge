@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมการเลนส์และกำลังขยายภาพเสมือน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.equal_image_focal.procedure",
+      "kind": "procedure",
+      "title": "ความยาวโฟกัสจากภาพจริงและภาพเสมือนขนาดเท่ากัน",
+      "statement": "ภาพเสมือนจากวัตถุที่ระยะ a เท่ากับภาพจริงจากวัตถุที่ระยะ b เมื่อ f = (a+b)/2",
+      "steps": [
+        "เขียนกำลังขยาย f/(f−a) และ f/(b−f)",
+        "ตั้งเท่ากันแล้วแก้หา f"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q04"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเคลื่อนไฟฟ้าเหนี่ยวนำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.magnetic_drag_decay.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วของแท่งที่ถูกหน่วงด้วยแรงแม่เหล็ก",
+      "statement": "แท่งเลื่อนบนรางที่มีตัวต้านทานถูกหน่วงด้วยแรง L²B²v/R ความเร็วลดแบบเอกซ์โพเนนเชียล v₀e^(−L²B²t/(MR))",
+      "steps": [
+        "เขียนสมการ M dv/dt = −L²B²v/R",
+        "แก้สมการเชิงอนุพันธ์แยกตัวแปร"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q03"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

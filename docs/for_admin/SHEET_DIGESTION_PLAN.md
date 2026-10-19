@@ -114,8 +114,17 @@ Phases in build order. Check an item only when its tests pass.
   generators in `otk/sets/physics/olympiad/posn2569.py`. 17 knowledge units are
   new; 13 items reuse existing units.
 - All nine camp-1 selection papers in the manifest (2560–2562, 2564–2569) are
-  digested. Next: the national (TPhO) papers, `สอวน_physics/tpho-45-physics/`
-  onward — folders of theory, solution and practical PDFs; 24 remain pending.
+  digested.
+- National olympiad (TPhO) papers: each folder holds a theory paper (often in
+  Thai and English), an official solution, and an experimental paper. One
+  sheet per year: every answerable sub-part of the theory paper is an item,
+  and the experimental paper's theory parts are items with synthetic data.
+  Duplicate-language versions and solutions are indexed as `ignored` with a
+  note; the solution confirms each independently derived answer.
+- `สอวน_physics/tpho-45-physics/` (TPhO 1, 2545): 14 theory sub-parts and 3
+  experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2545.py`.
+- Next source: `สอวน_physics/tpho-46-physics/`. Ten of 33 papers are digested;
+  23 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1473,3 +1482,23 @@ TOTAL         338   316     17     4   66      255      6     11
   passed; the sheet's own tests: 65 passed; Ruff clean.
 - The full suite ran once, after all 30 items were digested: **35,104 passed,
   13 skipped in 14m08s**.
+
+### 2026-10-19 — TPhO 1 (2545) national physics olympiad
+
+- Folder of four PDFs, all with text layers: theory in Thai and English, the
+  official theory solution, and the experimental paper. The English theory
+  paper is the digested source (cleaner text; generated wording is Thai);
+  the Thai theory paper and the solution are indexed `ignored` with notes.
+- 17 items: theory I.1–I.5 (I.2 in two parts), II.a–e (hoop rolling on a rod),
+  III.a–c (magnetic pump), and the experiment's theory parts (Newton's cooling
+  law solved and fitted; the Airy dark-ring wavelength) with synthetic data.
+  Every answer was re-derived and agrees with the official solution, whose
+  III.c data line misprints B = 0.1 T while its arithmetic uses 1.0 T (13.8 W).
+- Independent checks include a two-mass spring simulation, a shoelace flux
+  for the tilted rod, time-stepped magnetic drag and rolling in the bowl,
+  rolling-contact geometry and a mass-element KE sum for the hoop, and root
+  finding for the cooling constant. `sheetpipe verify`: 17/17 green, 51 runs.
+- Targeted run: 19,941 passed, 4 skipped; `test_per_set` for the 17 keys: 17
+  passed; the sheet's own tests: 38 passed; Ruff clean.
+- The full suite ran once, after all 17 items were digested: **35,351 passed,
+  13 skipped in 11m20s**.

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การสะท้อนกลับหมด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.ionosphere_limiting_wavelength.procedure",
+      "kind": "procedure",
+      "title": "ความยาวคลื่นจำกัดที่ไอโอโนสเฟียร์สะท้อนกลับหมด",
+      "statement": "คลื่นวิทยุสะท้อนกลับหมดที่ไอโอโนสเฟียร์เมื่อ sinθ₁ = R sinα/(R+h) ไม่น้อยกว่าดรรชนี √(1−λ²/A)",
+      "steps": [
+        "ใช้กฎไซน์หามุมตกกระทบที่ขอบไอโอโนสเฟียร์",
+        "ตั้งเงื่อนไขการสะท้อนกลับหมดแล้วแก้หา λ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q06"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

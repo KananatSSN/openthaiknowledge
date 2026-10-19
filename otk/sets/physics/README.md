@@ -2,7 +2,7 @@
 
 # ฟิสิกส์ (`physics`)
 
-784 sets in 185 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+801 sets in 186 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -253,3 +253,4 @@
 | [`posn2567`](olympiad/posn2567.py) | Seeded variants of the reviewed POSN physics 2567 camp selection paper. | — | 16 |
 | [`posn2568`](olympiad/posn2568.py) | Seeded variants of the reviewed POSN physics 2568 camp selection paper. | — | 25 |
 | [`posn2569`](olympiad/posn2569.py) | Seeded variants of the reviewed POSN physics 2569 camp selection paper. | — | 30 |
+| [`tpho2545`](olympiad/tpho2545.py) | Seeded variants of the reviewed TPhO 1 (2545) national physics olympiad. | — | 17 |

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ศูนย์กลางมวลของระบบ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.released_spring_centre.procedure",
+      "kind": "procedure",
+      "title": "ตำแหน่งมวลบนสปริงที่ปล่อยจากหยุดนิ่ง",
+      "statement": "ระบบที่ปล่อยจากหยุดนิ่งบนพื้นลื่นมีศูนย์กลางมวลอยู่กับที่ ระยะของแต่ละมวลจากศูนย์กลางมวลแบ่งตามส่วนกลับของมวล",
+      "steps": [
+        "หาตำแหน่งศูนย์กลางมวลเริ่มต้น",
+        "แบ่งความยาวสปริงใหม่ตามสัดส่วนมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q01"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

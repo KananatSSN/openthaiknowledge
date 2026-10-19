@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเลี้ยวเบนของแสง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.airy_ring_wavelength.procedure",
+      "kind": "procedure",
+      "title": "ความยาวคลื่นจากวงแหวนมืดของการเลี้ยวเบน",
+      "statement": "วงแหวนมืดวงในสุดของการเลี้ยวเบนรอบวัตถุทึบกลมเส้นผ่านศูนย์กลาง D อยู่ที่ D sinθ = 1.22λ",
+      "steps": [
+        "หามุมจากระยะเลื่อนและระยะห่างรู",
+        "แทนในเงื่อนไขวงแหวนมืดหา λ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-45-physics/tpho_1_expt.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q17"
+      ],
+      "note": "Experiment 2 with a synthetic reading."
+    }
+  ]
+}
