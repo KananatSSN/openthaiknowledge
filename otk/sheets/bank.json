@@ -4155,7 +4155,8 @@
    "layout": "numbered",
    "glyph_damage": 135,
    "items": 12,
-   "stage": "generated",
+   "sheet_id": "posnnat2554_math",
+   "stage": "green",
    "note": "Questions on pp. 1–2 transcribed from the renders; official solutions pp. 3–17 used as a cross-check. All 12 items mapped; item 12's official key undercounts (2·3^2554, verified by brute force)"
   },
   {
