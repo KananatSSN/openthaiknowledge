@@ -1143,12 +1143,31 @@ TOTAL         338   316     17     4   66      255      6     11
   an independent `check`, ≥ 3 `VARIANTS`) that `sheetpipe verify` passes.
 - **Generators.** Each item's generator is the olympiad set already built from
   that question, not a second per-paper module. `test_sheetpipe.py` lists
-  these sheets in `SHARED_GENERATORS` and checks that each set's provenance
-  cites the paper.
+  these sheets in `SHARED_GENERATORS` and checks that each `adapted` set's
+  provenance cites the paper. The 2563–2567 papers' sets are declared
+  `original`, so they are accepted without a citation.
 - **Numbering.** Day 2 restarts at 1, so its six items are stored after day 1:
   q22–q27 for a 21-item day 1.
 - **Proof items.** The solver computes the quantity the proof establishes, and
   the item's `note` says so.
 - **2547 (`posnnat2547_math`).** 27/27 green. `bank scan` moved the record to
   `green`.
+- **All national papers green.** 2547–2557 and 2562–2567 each have a
+  `posnnat25YY_math` package, every solver verified. Together they hold 239
+  solvers; `bank scan` moved every record to `green`.
+  - 2563, 2564, 2566 and 2567 had no transcript. They were transcribed from the
+    renders into the bank's `_transcribed/`. Fetch their PDFs with
+    `sheetpipe bank fetch`; a plain `git lfs pull` fetches nothing, because the
+    bank's `.lfsconfig` excludes PDFs.
+- **Checks that caught real errors.**
+  - The 2556 item 6 check found that for even k, ±sign(x)|x|ᵏ also solves the
+    equation. The `power_sum_functional` helper was fixed; draws are unchanged.
+  - The 2557 item 6 check found the extra prime 67 for (α, β) = (13, 52). The
+    solver now searches both divisibility cases to a proven bound.
+  - The 2566 item 5 boundary showed up only when the check tested the circle
+    centres directly. Sampled chords missed it.
+- **Still `generated`: `posn1-69` (2569 first round).** Its digest says the
+  extracts and figures stay private, and the paper forbids publication without
+  POSN's permission. A sheet package would publish its text and figure crops,
+  so it waits for the maintainer.
 
