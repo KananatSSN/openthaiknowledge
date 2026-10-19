@@ -39,7 +39,9 @@ class PowerSumFunctional(WordProblem):
         b = rng.choice([v for v in range(2, 10) if v != a])
         sign = rng.choice([1, -1])
         given = sign * a**k
-        answer = sign * b**k
+        values = {f(b) for f in solutions(k) if f(a) == given}
+        assert len(values) == 1, f"f({a}) = {given} leaves f({b}) undetermined: {values}"
+        answer = values.pop()
         wrong = [v for v in dict.fromkeys([-answer, sign * b ** (k + 1), sign * b * a ** (k - 1), sign * b, answer + sign, sign * (b**k + a**k)]) if v != answer]
         power = "" if k == 1 else f"^{k}"
         return MathDraw(
