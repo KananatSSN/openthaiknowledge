@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "วงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.trapezoid-circle-diameter",
+      "kind": "procedure",
+      "title": "DF เป็นเส้นผ่านศูนย์กลาง",
+      "statement": "เพราะ AB = AC รูปสี่เหลี่ยม BCED แนบในวงกลมเป็นรูปคางหมูหน้าจั่ว DE ∥ BC เมื่อ EF ⊥ BC จะได้ EF ⊥ DE คือ ∠DEF = 90° ดังนั้น DF เป็นเส้นผ่านศูนย์กลาง เท่ากับ 2R ของรูปสามเหลี่ยม BCF ซึ่งมีด้าน x, y, z จึง DF = xyz/(2Δ) = 2xyz/√(2x²y² + 2y²z² + 2z²x² − x⁴ − y⁴ − z⁴)",
+      "steps": [
+        "แสดงว่า DE ∥ BC",
+        "สรุปว่า ∠DEF = 90° และ DF เป็นเส้นผ่านศูนย์กลาง",
+        "ใช้ 2R = xyz/(2Δ) กับสูตรเฮรอน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-53-math.pdf",
+          "section": "วันแรก",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.trapezoid_circle_diameter_olympiad"
+      ]
+    }
+  ]
+}
