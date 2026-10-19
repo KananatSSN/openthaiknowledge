@@ -1135,3 +1135,20 @@ TOTAL         338   316     17     4   66      255      6     11
 - Registry 3,953 sets; enrichment count 496.
 - Remaining POSN maths at `new`: none. `bank status` for `สอวน_math` now
   shows 18 `generated`, 7 `green` and 1 `ignored`.
+
+### 2026-10-17 — national papers to `green`
+
+- A national paper reaches `green` once it has its own package under
+  `otk/sheets/`. Each question gets a solver (`PARAMS`, `ANSWER`, `solve`,
+  an independent `check`, ≥ 3 `VARIANTS`) that `sheetpipe verify` passes.
+- **Generators.** Each item's generator is the olympiad set already built from
+  that question, not a second per-paper module. `test_sheetpipe.py` lists
+  these sheets in `SHARED_GENERATORS` and checks that each set's provenance
+  cites the paper.
+- **Numbering.** Day 2 restarts at 1, so its six items are stored after day 1:
+  q22–q27 for a 21-item day 1.
+- **Proof items.** The solver computes the quantity the proof establishes, and
+  the item's `note` says so.
+- **2547 (`posnnat2547_math`).** 27/27 green. `bank scan` moved the record to
+  `green`.
+
