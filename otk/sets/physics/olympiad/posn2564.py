@@ -5,6 +5,7 @@ from math import isqrt
 
 from otk.core.mistakes import named
 from otk.core.registry import question_type
+from otk.kit.answer_choices import exact as number
 from otk.kit.math_problems import MathDraw, WordProblem, frac_tex
 from otk.sheets.posn2564_physics import q01, q02, q03, q04, q05, q06, q07, q08, q09, q10
 
@@ -40,14 +41,6 @@ def radical(value):
         if coefficient.denominator == 1
         else rf"\frac{{{numerator}}}{{{coefficient.denominator}}}"
     )
-
-
-def show(value):
-    """Exact plain text: a short decimal when one is exact, otherwise a/b."""
-    value = Fraction(value)
-    if (value * 100).denominator == 1:
-        return f"{float(value):g}"
-    return f"{value.numerator}/{value.denominator}"
 
 
 def agree(computed, exact):
@@ -139,7 +132,7 @@ class PlankSlip(PhysicsSheet):
         return draw(
             1,
             tex(answer),
-            f"แผ่น B วางบนแผ่น A ซึ่งวางบนพื้นระดับ สัมประสิทธิ์ความเสียดทานระหว่าง A กับ B เท่ากับ {show(mu)} (ใช้ค่าเดียวกันทั้งสถิตและจลน์) ดึง A ไปทางขวาด้วยความเร่งคงตัว {accel} m/s² ให้ g=10 m/s² B จะไถลบน A หรือไม่ ถ้าไถล ความเร่งของ B เทียบกับ A มีขนาดกี่ m/s²",
+            f"แผ่น B วางบนแผ่น A ซึ่งวางบนพื้นระดับ สัมประสิทธิ์ความเสียดทานระหว่าง A กับ B เท่ากับ {number(mu)} (ใช้ค่าเดียวกันทั้งสถิตและจลน์) ดึง A ไปทางขวาด้วยความเร่งคงตัว {accel} m/s² ให้ g=10 m/s² B จะไถลบน A หรือไม่ ถ้าไถล ความเร่งของ B เทียบกับ A มีขนาดกี่ m/s²",
             r"a_B\le\mu g,\quad a_{B/A}=a-\mu g",
             [str(accel), tex(limit), tex(accel + limit)],
         )
@@ -160,7 +153,7 @@ class SurfaceGravityScale(PhysicsSheet):
         return draw(
             2,
             tex(answer),
-            f"ดาวเคราะห์ทรงกลมดวงหนึ่ง ถ้ามวลเป็น {mass} เท่าของเดิมและรัศมีเป็น {show(radius)} เท่าของเดิม ความเร่งโน้มถ่วงที่ผิวดาวใหม่เป็นกี่เท่าของค่าเดิม",
+            f"ดาวเคราะห์ทรงกลมดวงหนึ่ง ถ้ามวลเป็น {mass} เท่าของเดิมและรัศมีเป็น {number(radius)} เท่าของเดิม ความเร่งโน้มถ่วงที่ผิวดาวใหม่เป็นกี่เท่าของค่าเดิม",
             r"g=GM/R^2",
             [tex(mass / radius), tex(mass * radius**2), tex(mass / radius**3)],
         )
@@ -225,7 +218,7 @@ class SpringRelease(PhysicsSheet):
         return draw(
             5,
             tex(answer),
-            f"มวล {show(Fraction(mass))} kg แขวนกับสปริงเบาค่าคงตัว {k} N/m อยู่นิ่งที่ตำแหน่งสมดุล ยกมวลขึ้นตรงๆ {lift} cm จากตำแหน่งสมดุล จับนิ่งแล้วปล่อย ขณะมวลอยู่ต่ำสุด สปริงยืดออกจากความยาวธรรมชาติกี่ cm ให้ g=10 m/s² ไม่คิดแรงต้าน",
+            f"มวล {number(Fraction(mass))} kg แขวนกับสปริงเบาค่าคงตัว {k} N/m อยู่นิ่งที่ตำแหน่งสมดุล ยกมวลขึ้นตรงๆ {lift} cm จากตำแหน่งสมดุล จับนิ่งแล้วปล่อย ขณะมวลอยู่ต่ำสุด สปริงยืดออกจากความยาวธรรมชาติกี่ cm ให้ g=10 m/s² ไม่คิดแรงต้าน",
             r"x_{eq}=mg/k,\quad\text{amplitude}=a",
             [str(lift), tex(static + 2 * lift), tex(2 * static)],
         )
@@ -271,7 +264,7 @@ class LiquidMixing(PhysicsSheet):
         return draw(
             7,
             tex(answer),
-            f"ของเหลว A อุณหภูมิ {hot} °C ผสมกับของเหลว B อุณหภูมิ {cold} °C ในภาชนะฉนวนจนเป็นเนื้อเดียว ไม่มีปฏิกิริยาเคมีหรือการเปลี่ยนสถานะ และไม่คิดความจุความร้อนของภาชนะ กำหนดให้ m_A S_A = {show(ratio)} m_B S_B อุณหภูมิสุดท้ายเป็นกี่ °C",
+            f"ของเหลว A อุณหภูมิ {hot} °C ผสมกับของเหลว B อุณหภูมิ {cold} °C ในภาชนะฉนวนจนเป็นเนื้อเดียว ไม่มีปฏิกิริยาเคมีหรือการเปลี่ยนสถานะ และไม่คิดความจุความร้อนของภาชนะ กำหนดให้ m_A S_A = {number(ratio)} m_B S_B อุณหภูมิสุดท้ายเป็นกี่ °C",
             r"m_AS_A(\theta_A-T)=m_BS_B(T-\theta_B)",
             [
                 tex(Fraction(hot + cold, 2)),
@@ -441,7 +434,7 @@ class IsothermalSlope(PhysicsSheet):
         return draw(
             14,
             tex(answer),
-            f"แก๊สอุดมคติมีความดัน {pressure} kPa ปริมาตร {show(volume)} L ถ้าเปลี่ยนสถานะเพียงเล็กน้อยโดยอุณหภูมิคงที่ ค่า ΔP/ΔV เป็นกี่ kPa/L โดยประมาณ",
+            f"แก๊สอุดมคติมีความดัน {pressure} kPa ปริมาตร {number(volume)} L ถ้าเปลี่ยนสถานะเพียงเล็กน้อยโดยอุณหภูมิคงที่ ค่า ΔP/ΔV เป็นกี่ kPa/L โดยประมาณ",
             r"PV=\text{const}\Rightarrow\frac{dP}{dV}=-\frac PV",
             [tex(-exact), tex(volume / pressure), tex(-volume / pressure)],
         )
@@ -538,7 +531,7 @@ class ProjectileMeeting(PhysicsSheet):
         return draw(
             18,
             tex(answer),
-            f"จุด A และ B อยู่บนพื้นระดับห่างกัน {distance} m ยิงโพรเจกไทล์จาก A และ B เข้าหากันพร้อมกันในระนาบดิ่งเดียวกัน ด้วยอัตราเร็วต้น {speed} m/s และมุมเงย θ₀ เท่ากัน โดย cos θ₀ = {show(cos)} ทั้งสองชนกันกลางอากาศก่อนถึงพื้น เวลาที่ชนกันหลังยิงเป็นกี่ s ให้ g=10 m/s²",
+            f"จุด A และ B อยู่บนพื้นระดับห่างกัน {distance} m ยิงโพรเจกไทล์จาก A และ B เข้าหากันพร้อมกันในระนาบดิ่งเดียวกัน ด้วยอัตราเร็วต้น {speed} m/s และมุมเงย θ₀ เท่ากัน โดย cos θ₀ = {number(cos)} ทั้งสองชนกันกลางอากาศก่อนถึงพื้น เวลาที่ชนกันหลังยิงเป็นกี่ s ให้ g=10 m/s²",
             r"y_A=y_B,\quad 2u\cos\theta_0\,t=D",
             [tex(time * 2), tex(time * cos), tex(time * 2 * cos)],
         )
@@ -614,7 +607,7 @@ class RightPrism(PhysicsSheet):
         return draw(
             21,
             tex(answer),
-            f"ปริซึมแก้วมุมยอด 90° มีดรรชนีหักเห {show(index)} ลำแสงตกกระทบผิวแรกด้วยมุมตกกระทบ i โดย sin i = {show(sine)} หักเหเข้าไปกระทบผิวที่สองด้วยมุม θ จากเส้นปกติแล้วสะท้อนกลับหมด cos θ มีค่าเท่าใด",
+            f"ปริซึมแก้วมุมยอด 90° มีดรรชนีหักเห {number(index)} ลำแสงตกกระทบผิวแรกด้วยมุมตกกระทบ i โดย sin i = {number(sine)} หักเหเข้าไปกระทบผิวที่สองด้วยมุม θ จากเส้นปกติแล้วสะท้อนกลับหมด cos θ มีค่าเท่าใด",
             r"\sin i=\mu\sin r,\quad r+\theta=90^\circ",
             [tex(index * sine), tex(index * cos), tex(cos / index)],
         )
@@ -687,7 +680,7 @@ class CapillaryScaling(PhysicsSheet):
         return draw(
             24,
             tex(answer),
-            f"อัตราเร็วคลื่นผิวน้ำเป็นไปตาม v² = λg/(2π) + 2πS/(λρ) สำหรับคลื่นที่ความยาวคลื่นสั้นมากจนตัดพจน์ λg/(2π) ได้ คลื่นที่ 1 และ 2 มีความยาวคลื่น λ₁ และ λ₂ โดย λ₁/λ₂ = {show(ratio)} ความถี่ f₂ เป็นกี่เท่าของ f₁",
+            f"อัตราเร็วคลื่นผิวน้ำเป็นไปตาม v² = λg/(2π) + 2πS/(λρ) สำหรับคลื่นที่ความยาวคลื่นสั้นมากจนตัดพจน์ λg/(2π) ได้ คลื่นที่ 1 และ 2 มีความยาวคลื่น λ₁ และ λ₂ โดย λ₁/λ₂ = {number(ratio)} ความถี่ f₂ เป็นกี่เท่าของ f₁",
             r"v^2\approx\frac{2\pi S}{\lambda\rho},\quad f=\frac v\lambda",
             [tex(ratio), tex(root), tex(ratio**2)],
         )
@@ -709,7 +702,7 @@ class SlabCriticalAngle(PhysicsSheet):
         return draw(
             25,
             tex(answer),
-            f"แผ่นตัวกลางหน้าขนานดรรชนีหักเห {show(slab)} กั้นระหว่างตัวกลางดรรชนี {show(first)} กับสุญญากาศ แสงจากตัวกลางดรรชนี {show(first)} ตกกระทบแผ่นด้วยมุม θ₁ จากเส้นปกติ ผ่านแผ่นแล้วสะท้อนกลับหมดพอดีที่ผิวแผ่นด้านสุญญากาศ sin θ₁ มีค่าเท่าใด",
+            f"แผ่นตัวกลางหน้าขนานดรรชนีหักเห {number(slab)} กั้นระหว่างตัวกลางดรรชนี {number(first)} กับสุญญากาศ แสงจากตัวกลางดรรชนี {number(first)} ตกกระทบแผ่นด้วยมุม θ₁ จากเส้นปกติ ผ่านแผ่นแล้วสะท้อนกลับหมดพอดีที่ผิวแผ่นด้านสุญญากาศ sin θ₁ มีค่าเท่าใด",
             r"\mu_1\sin\theta_1=\mu_2\sin\theta_2=1\cdot\sin90^\circ",
             [tex(1 / slab), tex(first / slab), tex(slab / first)],
         )
@@ -773,7 +766,7 @@ class AirGapShift(PhysicsSheet):
         return draw(
             27,
             tex(answer),
-            f"ลำแสงในก้อนน้ำแข็งดรรชนีหักเห {show(index)} ตกกระทบโพรงอากาศที่มีผิวขนานกันกว้าง {width} cm ด้วยมุม θ จากเส้นปกติ โดย sin θ = {show(sine)} ผ่านโพรงแล้วกลับเข้าน้ำแข็ง ลำแสงออกขนานกับลำแสงเข้า ระยะห่างตั้งฉากระหว่างแนวลำแสงออกกับแนวต่อของลำแสงเข้าเป็นกี่ cm (ดรรชนีอากาศเท่ากับ 1)",
+            f"ลำแสงในก้อนน้ำแข็งดรรชนีหักเห {number(index)} ตกกระทบโพรงอากาศที่มีผิวขนานกันกว้าง {width} cm ด้วยมุม θ จากเส้นปกติ โดย sin θ = {number(sine)} ผ่านโพรงแล้วกลับเข้าน้ำแข็ง ลำแสงออกขนานกับลำแสงเข้า ระยะห่างตั้งฉากระหว่างแนวลำแสงออกกับแนวต่อของลำแสงเข้าเป็นกี่ cm (ดรรชนีอากาศเท่ากับ 1)",
             r"\sin\phi=\mu\sin\theta,\quad x=\frac{D\sin(\phi-\theta)}{\cos\phi}",
             [
                 tex(width * tilt),
@@ -829,7 +822,7 @@ class WedgeRecoil(PhysicsSheet):
         return draw(
             29,
             tex(answer),
-            f"ลิ่มมวล {big} kg วางบนพื้นระดับลื่น ผิวเอียงของลิ่มลื่นและทำมุม θ กับพื้นโดย cos θ = {show(cos)} ก้อนมวล {small} kg ถูกปล่อยจากหยุดนิ่งให้ไถลลงตามผิวเอียงขณะลิ่มก็เริ่มจากหยุดนิ่ง ขณะที่ก้อนมีอัตราเร็ว {speed} m/s เทียบกับลิ่ม ลิ่มถอยหนีด้วยอัตราเร็วกี่ m/s",
+            f"ลิ่มมวล {big} kg วางบนพื้นระดับลื่น ผิวเอียงของลิ่มลื่นและทำมุม θ กับพื้นโดย cos θ = {number(cos)} ก้อนมวล {small} kg ถูกปล่อยจากหยุดนิ่งให้ไถลลงตามผิวเอียงขณะลิ่มก็เริ่มจากหยุดนิ่ง ขณะที่ก้อนมีอัตราเร็ว {speed} m/s เทียบกับลิ่ม ลิ่มถอยหนีด้วยอัตราเร็วกี่ m/s",
             r"m(v\cos\theta-V)=MV",
             [
                 tex(small * speed * cos / big),

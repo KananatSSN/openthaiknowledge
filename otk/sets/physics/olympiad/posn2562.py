@@ -5,7 +5,7 @@ from math import isqrt, atan, degrees, cos, radians, pi
 
 from otk.core.mistakes import named
 from otk.core.registry import question_type
-from otk.kit.answer_choices import show
+from otk.kit.answer_choices import exact
 from otk.kit.math_problems import MathDraw, WordProblem, frac_tex
 from otk.sheets.posn2562_physics import q01, q02, q03, q04, q05, q06, q07, q08, q09
 
@@ -190,7 +190,7 @@ class FiniteTankJet(PhysicsSheet):
         return draw(
             4,
             radical(answer**2),
-            f"ถังเปิดหน้าตัด A มีรูที่ก้นให้ลำน้ำหน้าตัด a ผิวน้ำสูงเหนือรู {height} m ณ ขณะพิจารณา ให้ a/A={show(ratio)} ใช้การไหลอุดมคติแบบกึ่งคงตัว ผิวน้ำและลำน้ำมีความดันบรรยากาศ และ g=10 m/s² อัตราเร็วลำน้ำที่รูเป็นกี่ m/s โดยต้องคิดการลดระดับผิวน้ำด้วย",
+            f"ถังเปิดหน้าตัด A มีรูที่ก้นให้ลำน้ำหน้าตัด a ผิวน้ำสูงเหนือรู {height} m ณ ขณะพิจารณา ให้ a/A={exact(ratio)} ใช้การไหลอุดมคติแบบกึ่งคงตัว ผิวน้ำและลำน้ำมีความดันบรรยากาศ และ g=10 m/s² อัตราเร็วลำน้ำที่รูเป็นกี่ m/s โดยต้องคิดการลดระดับผิวน้ำด้วย",
             r"Av_s=av,\quad gh+v_s^2/2=v^2/2",
             [
                 radical(20 * height),
@@ -258,7 +258,7 @@ class SteadyRodTemperature(PhysicsSheet):
         return draw(
             7,
             tex(answer),
-            f"แท่งโลหะสม่ำเสมอยาว L ผิวด้านข้างหุ้มฉนวน ปลาย A คงที่ {hot} °C ปลาย B คงที่ {cold} °C เมื่อการนำความร้อนอยู่ในสถานะคงตัวแล้ว ที่ระยะ {show(fraction)}L จาก A มีอุณหภูมิกี่ °C ไม่มีแหล่งความร้อนภายใน",
+            f"แท่งโลหะสม่ำเสมอยาว L ผิวด้านข้างหุ้มฉนวน ปลาย A คงที่ {hot} °C ปลาย B คงที่ {cold} °C เมื่อการนำความร้อนอยู่ในสถานะคงตัวแล้ว ที่ระยะ {exact(fraction)}L จาก A มีอุณหภูมิกี่ °C ไม่มีแหล่งความร้อนภายใน",
             r"T(x)=T_A-(T_A-T_B)x/L",
             [
                 tex(fraction * (hot - cold)),
@@ -284,7 +284,7 @@ class HeatedPendulumPeriod(PhysicsSheet):
         return draw(
             8,
             radical(answer**2),
-            f"ลูกตุ้มอย่างง่ายแกว่งมุมเล็ก สายแขวนมีสัมประสิทธิ์ขยายตัวเชิงเส้น {show(alpha)} K⁻¹ เมื่อเพิ่มอุณหภูมิ {dt} K คาบใหม่เป็นกี่เท่าของเดิม ให้ความยาวเป็นไปตามกฎขยายตัวเชิงเส้น ใช้ค่า g เดิมและไม่ตัดพจน์รากที่สองทิ้ง",
+            f"ลูกตุ้มอย่างง่ายแกว่งมุมเล็ก สายแขวนมีสัมประสิทธิ์ขยายตัวเชิงเส้น {exact(alpha)} K⁻¹ เมื่อเพิ่มอุณหภูมิ {dt} K คาบใหม่เป็นกี่เท่าของเดิม ให้ความยาวเป็นไปตามกฎขยายตัวเชิงเส้น ใช้ค่า g เดิมและไม่ตัดพจน์รากที่สองทิ้ง",
             r"P=2\pi\sqrt{\ell/g},\quad \ell'=\ell(1+\alpha\Delta T)",
             [radical(1 + 2 * x), radical(x), tex(1 + x)],
         )
@@ -504,7 +504,7 @@ class OffsetDiscCollision(PhysicsSheet):
         return draw(
             15,
             fmt("arcsin", ratio / 2),
-            f"เหรียญกลมเกลี้ยง A และ B รัศมีเท่ากัน {radius} cm A เคลื่อนแนวตรงชน B ซึ่งหยุดนิ่งก่อนชน ศูนย์กลาง B เยื้องจากเส้นทางศูนย์กลาง A ในแนวตั้งฉากเป็น {show(offset)} cm หลังชน B เคลื่อนทำมุม θ กับทิศเดิมของ A ตามข้อใด ไม่คิดแรงเสียดทาน",
+            f"เหรียญกลมเกลี้ยง A และ B รัศมีเท่ากัน {radius} cm A เคลื่อนแนวตรงชน B ซึ่งหยุดนิ่งก่อนชน ศูนย์กลาง B เยื้องจากเส้นทางศูนย์กลาง A ในแนวตั้งฉากเป็น {exact(offset)} cm หลังชน B เคลื่อนทำมุม θ กับทิศเดิมของ A ตามข้อใด ไม่คิดแรงเสียดทาน",
             r"2R\sin\theta=a",
             [fmt("arcsin", ratio), fmt("arctan", ratio), fmt("arctan", ratio / 2)],
         )
@@ -665,7 +665,7 @@ class MinimumAngledPull(PhysicsSheet):
         return draw(
             20,
             tex(answer),
-            f"ก้อนมวล {mass} kg วางบนพื้นราบมีสัมประสิทธิ์เสียดทานสถิต {show(mu)} ดึงด้วยแรง F ที่ปรับมุมขึ้นจากแนวระดับได้ 0° ถึง 90° แรง F น้อยที่สุดที่ทำให้เริ่มเคลื่อนมีขนาดกี่ N ให้ g=10 m/s² และก้อนยังสัมผัสพื้น",
+            f"ก้อนมวล {mass} kg วางบนพื้นราบมีสัมประสิทธิ์เสียดทานสถิต {exact(mu)} ดึงด้วยแรง F ที่ปรับมุมขึ้นจากแนวระดับได้ 0° ถึง 90° แรง F น้อยที่สุดที่ทำให้เริ่มเคลื่อนมีขนาดกี่ N ให้ g=10 m/s² และก้อนยังสัมผัสพื้น",
             r"F(\cos\theta+\mu_s\sin\theta)=\mu_s mg",
             [
                 tex(10 * mass * mu),

@@ -1310,11 +1310,13 @@ TOTAL         338   316     17     4   66      255      6     11
   a computed quantity that follows from the printed condition (relative
   acceleration, greatest extension, least energy); item 4 asks e for given
   masses; item 30 generates the ordered pair (tanθ, u²).
-- Fraction display: `otk.kit.answer_choices.show` rounds to two decimals, so
-  this file uses an exact a/b helper. Earlier physics files still print
-  rounded repeating decimals in some stems (`posn2562_q04` a/A = 1/3 shows
-  as 0.33; `posn2560_q07` shows 66.67); fixing them changes their draws and
-  needs the maintainer's agreement.
+- Fraction display: `otk.kit.answer_choices.show` rounds to two decimals, and
+  four earlier sets printed a wrong number in their stems: `posn2562_q04`
+  (a/A = 1/3 as 0.33), `posn2562_q20` (μ = 5/12 as 0.42), `posn2560_q07`
+  (40/3 N as 13.33 N) and `posn2562_q08` (α = 3×10⁻⁵ as 0). The new
+  `answer_choices.exact` never rounds (short decimal, k×10⁻ⁿ, or a/b); the
+  2560, 2562 and 2564 physics files use it. Only those four sets' golden
+  draws changed (maintainer-approved); `test_exact_stem_numbers.py` guards them.
 - Targeted run: 18,332 passed, 4 skipped (golden draws, curriculum, stages,
   layout, characterization, sheetpipe, choice counts, answer length, the
   sheet's own tests); `test_per_set` for the 30 keys: 60 passed; Ruff clean.
