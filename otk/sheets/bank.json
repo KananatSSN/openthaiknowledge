@@ -134,8 +134,8 @@
   {
    "path": "outputs/review_sheet/ทบทวน-แรง.md",
    "kind": "notes",
-   "sha256": "47b4bd77edfc87e2",
-   "size": 15473,
+   "sha256": "7938b12d3441473c",
+   "size": 15465,
    "stage": "ignored",
    "note": "output, not a source: student review sheet written from existing problem sets"
   },
@@ -150,8 +150,8 @@
   {
    "path": "outputs/teaching_plan/ข้อสอบแรง.md",
    "kind": "notes",
-   "sha256": "a747a621e43f34c7",
-   "size": 25526,
+   "sha256": "8c8e862c7a88bb7e",
+   "size": 25518,
    "stage": "ignored",
    "note": "output, not a source: teaching plan written from existing problem sets (.pdf is a Chromium print of the .md)"
   },
@@ -3918,118 +3918,6 @@
    "note": "spec for the primary-curriculum block of otk/kit/math_problems.py"
   },
   {
-   "path": "สอวน_astronomy/MANIFEST.json",
-   "kind": "other",
-   "sha256": "61fa0bd6fdf499e0",
-   "size": 29251,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_biology/MANIFEST.json",
-   "kind": "other",
-   "sha256": "329650e5e3e6db99",
-   "size": 17524,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_biology/tbo-58-biology/ข้อสอบปรนัย Final 23-3-58.docx",
-   "kind": "other",
-   "sha256": "6527be0d105bcaeb",
-   "size": 2876132,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_biology/tbo-58-biology/ข้อสอบอัตนัยFinal 24.3.58.docx",
-   "kind": "other",
-   "sha256": "d09a662df8c5e80b",
-   "size": 4172087,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_chemistry/MANIFEST.json",
-   "kind": "other",
-   "sha256": "97bee951ca0ef44d",
-   "size": 30741,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_computer/MANIFEST.json",
-   "kind": "other",
-   "sha256": "4bf6aee9b3b944ea",
-   "size": 21337,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_earth_space/MANIFEST.json",
-   "kind": "other",
-   "sha256": "9835806f4228417f",
-   "size": 18325,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_geography/MANIFEST.json",
-   "kind": "other",
-   "sha256": "6eb4ca2e92faa7ff",
-   "size": 12885,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_geography/tgeo-61-geography/FWE/FWE1 Map2.emf",
-   "kind": "other",
-   "sha256": "e7707c9eca188c4e",
-   "size": 525804,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_geography/tgeo-61-geography/FWE/FWE2 Map4.emf",
-   "kind": "other",
-   "sha256": "49c423a1b09d204b",
-   "size": 269620,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_geography/tgeo-61-geography/MMT/กระดาษคำตอบ MMT.docx",
-   "kind": "other",
-   "sha256": "f58b257c145cf401",
-   "size": 44217,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_geography/tgeo-61-geography/WRT/color_pic_physical_igeo_2018.docx",
-   "kind": "other",
-   "sha256": "8280da39d6b044a8",
-   "size": 3699575,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_geography/tgeo-61-geography/WRT/iGEO_human2018 Pannee_key.docx",
-   "kind": "other",
-   "sha256": "09d00a4b000bca21",
-   "size": 192735,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_geography/tgeo-61-geography/WRT/iGEO_physical2018 Pannee_key.docx",
-   "kind": "other",
-   "sha256": "d1154699553a3c12",
-   "size": 3226059,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_ijso/MANIFEST.json",
-   "kind": "other",
-   "sha256": "3021716af4b224dd",
-   "size": 23818,
-   "stage": "ignored"
-  },
-  {
-   "path": "สอวน_linguistics/MANIFEST.json",
-   "kind": "other",
-   "sha256": "bba56efce39a4ba1",
-   "size": 1511,
-   "stage": "ignored"
-  },
-  {
    "path": "สอวน_math/01-วิชาคณิตศาสตร์.pdf",
    "kind": "exam",
    "sha256": "51893800608a42cb",
@@ -4115,7 +4003,7 @@
    "items": 16,
    "sheet_id": "posnnat2551_math",
    "stage": "green",
-   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to original problem sets; a few proofs only sketched (see notes)"
+   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to adapted problem sets; a few proofs only sketched (see notes)"
   },
   {
    "path": "สอวน_math/posn-national-52-math.pdf",
@@ -4129,7 +4017,7 @@
    "items": 16,
    "sheet_id": "posnnat2552_math",
    "stage": "green",
-   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to original problem sets; a few proofs only sketched (see notes)"
+   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to adapted problem sets; a few proofs only sketched (see notes)"
   },
   {
    "path": "สอวน_math/posn-national-53-math.pdf",
@@ -4143,7 +4031,7 @@
    "items": 16,
    "sheet_id": "posnnat2553_math",
    "stage": "green",
-   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to original problem sets; day 1 item 6 evenness and day 2 item 5 uniqueness only sketched"
+   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to adapted problem sets; day 1 item 6 evenness and day 2 item 5 uniqueness only sketched"
   },
   {
    "path": "สอวน_math/posn-national-54-math.pdf",
@@ -4171,7 +4059,7 @@
    "items": 12,
    "sheet_id": "posnnat2555_math",
    "stage": "green",
-   "note": "Transcribed from the renders (broken text layer): all 12 items mapped to original problem sets; item 5 uniqueness partly written"
+   "note": "Transcribed from the renders (broken text layer): all 12 items mapped to adapted problem sets; item 5 uniqueness partly written"
   },
   {
    "path": "สอวน_math/posn-national-56-math.pdf",
@@ -4185,7 +4073,7 @@
    "items": 12,
    "sheet_id": "posnnat2556_math",
    "stage": "green",
-   "note": "Transcribed and checked against the renders: all 12 items mapped to original problem sets"
+   "note": "Transcribed and checked against the renders: all 12 items mapped to adapted problem sets"
   },
   {
    "path": "สอวน_math/posn-national-57-math.pdf",
@@ -4199,7 +4087,7 @@
    "items": 8,
    "sheet_id": "posnnat2557_math",
    "stage": "green",
-   "note": "Transcribed and checked against the renders: all 8 items mapped to original problem sets"
+   "note": "Transcribed and checked against the renders: all 8 items mapped to adapted problem sets"
   },
   {
    "path": "สอวน_math/posn-national-62-math.pdf",
@@ -4213,7 +4101,7 @@
    "items": 10,
    "sheet_id": "posnnat2562_math",
    "stage": "green",
-   "note": "Transcribed and checked against the renders: all 10 items mapped to original problem sets; item 5's written proof still open (numerically verified)"
+   "note": "Transcribed and checked against the renders: all 10 items mapped to adapted problem sets; item 5's written proof still open (numerically verified)"
   },
   {
    "path": "สอวน_math/posn-national-63-math.pdf",
@@ -4227,7 +4115,7 @@
    "items": 10,
    "sheet_id": "posnnat2563_math",
    "stage": "green",
-   "note": "Complete hand-reviewed digest: all 10 items mapped to original problem sets"
+   "note": "Complete hand-reviewed digest: all 10 items mapped to adapted problem sets"
   },
   {
    "path": "สอวน_math/posn-national-64-math.pdf",
@@ -4359,13 +4247,6 @@
    "layout": "numbered",
    "items": 30,
    "stage": "generated"
-  },
-  {
-   "path": "สอวน_physics/MANIFEST.json",
-   "kind": "other",
-   "sha256": "a5f9c08f1a716a58",
-   "size": 31495,
-   "stage": "ignored"
   }
  ]
 }
