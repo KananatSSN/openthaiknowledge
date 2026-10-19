@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.reciprocal-square-residue",
+      "kind": "procedure",
+      "title": "p หารตัวเศษของ Σ1/(2k)²",
+      "statement": "ผลบวกเท่ากับ (1/4)Σ_{k ≤ (p−1)/2} 1/k² ในมอดุโล p, k และ p − k มีกำลังสองเท่ากัน จึงผลบวกครึ่งหนึ่งเท่ากับครึ่งหนึ่งของ Σ_{k=1}^{p−1} k⁻² ≡ Σ k² = (p − 1)p(2p − 1)/6 ≡ 0 (mod p) เมื่อ p ≥ 5 ดังนั้น p | a",
+      "steps": [
+        "แปลงเป็นผลบวกตัวผกผันมอดุโล p",
+        "จับคู่ k กับ p − k",
+        "ใช้ Σk² ≡ 0 (mod p)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันแรก",
+          "number": 10
+        }
+      ],
+      "covered_by": [
+        "math.reciprocal_square_residue_olympiad"
+      ]
+    }
+  ]
+}

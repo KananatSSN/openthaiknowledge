@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.lifting-order-exponent",
+      "kind": "procedure",
+      "title": "Aₖ ไม่ว่างทุก k",
+      "statement": "ถ้า p | aᵐ − bᵐ และ p ∤ b (ถ้า p | b ก็ได้ p | a และ n ใหญ่พอใช้ได้) แล้ว aᵐ = bᵐ + pt และการยกกำลัง p ยกระดับ: x ≡ y (mod pʲ) ทำให้ xᵖ ≡ yᵖ (mod pʲ⁺¹) จึง n = m·p^(k−1) อยู่ใน Aₖ",
+      "steps": [
+        "จัดการกรณี p | b",
+        "ใช้ x ≡ y (mod pʲ) ⇒ xᵖ ≡ yᵖ (mod pʲ⁺¹)",
+        "สรุป n = m·p^(k−1)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันที่สอง",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.lifting_order_exponent_olympiad"
+      ]
+    }
+  ]
+}
