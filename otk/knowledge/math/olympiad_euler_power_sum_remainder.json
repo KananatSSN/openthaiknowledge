@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.euler-power-sum-remainder",
+      "kind": "procedure",
+      "title": "เศษของ m^(φ(n)+1) + n^(φ(m)+1) มอดุโล mn",
+      "statement": "ทฤษฎีบทของออยเลอร์ให้ m^φ(n) ≡ 1 (mod n) และ n^φ(m) ≡ 1 (mod m) จึงผลบวก ≡ m (mod n) และ ≡ n (mod m) และ m + n มีเศษทั้งสองนี้ ตามทฤษฎีบทเศษเหลือของจีน ผลบวก ≡ m + n (mod mn) และเพราะ m + n < mn ผลบวก = mn·q + (m + n) โดย q คือฟังก์ชันพื้น เมื่อ m, n คี่ ผลบวกและ m + n เป็นคู่ จึง mn·q คู่ และ mn คี่ ดังนั้น q คู่",
+      "steps": [
+        "ใช้ทฤษฎีบทของออยเลอร์มอดุโล m และ n",
+        "รวมเศษด้วยทฤษฎีบทเศษเหลือของจีน",
+        "เทียบภาวะคู่หรือคี่"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-55-math.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "math.euler_power_sum_remainder_olympiad"
+      ]
+    }
+  ]
+}

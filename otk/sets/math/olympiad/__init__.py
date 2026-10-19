@@ -115,3 +115,15 @@ from . import trapezoid_midpoint_distances  # noqa: F401
 from . import mersenne_cube_quotient  # noqa: F401
 from . import parity_subset_game  # noqa: F401
 from . import nagel_cevian_ratios  # noqa: F401
+from . import right_triangle_diameter_circle  # noqa: F401
+from . import distinct_factor_product_minimum  # noqa: F401
+from . import euler_power_sum_remainder  # noqa: F401
+from . import square_incenter_quadrilateral  # noqa: F401
+from . import linear_composite_functional  # noqa: F401
+from . import tournament_top_bottom_threshold  # noqa: F401
+from . import fifth_power_residue_square  # noqa: F401
+from . import tie_heavy_round_robin  # noqa: F401
+from . import real_rooted_coefficient_minimum  # noqa: F401
+from . import irrational_multiple_window  # noqa: F401
+from . import tangent_polar_altitude_foot  # noqa: F401
+from . import cyclic_ratio_integer_triples  # noqa: F401
