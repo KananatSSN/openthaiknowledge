@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนผ่านสปริงและโมเมนตัม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.spring_closest_approach.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วขณะสปริงหดมากที่สุด",
+      "statement": "ขณะสปริงระหว่างสองมวลหดมากที่สุด ทั้งสองเคลื่อนที่ด้วยความเร็วเท่ากัน mu/(m+M)",
+      "steps": [
+        "ระยะใกล้สุดเกิดเมื่อความเร็วสัมพัทธ์เป็นศูนย์",
+        "ใช้การอนุรักษ์โมเมนตัม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q03"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

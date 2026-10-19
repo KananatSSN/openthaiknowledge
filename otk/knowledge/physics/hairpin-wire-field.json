@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎบีโอต์ซาวาร์ตสำหรับลวดโค้ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.hairpin_wire_field.procedure",
+      "kind": "procedure",
+      "title": "สนามแม่เหล็กจากลวดรูปตัวยูกึ่งอนันต์",
+      "statement": "ลวดกึ่งอนันต์ที่ปลายอยู่บนแนวตั้งฉากผ่านจุดให้สนามครึ่งหนึ่งของลวดยาวอนันต์ รวมกับครึ่งวงกลมได้ (μ₀I/(4R))(1+2/π)",
+      "steps": [
+        "ใช้ครึ่งหนึ่งของ μ₀I/(2πR) สำหรับแต่ละลวดกึ่งอนันต์",
+        "บวกสนามครึ่งวงกลมตามทิศการวน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q25"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

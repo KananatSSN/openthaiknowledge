@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,143 sets in 1,290 unit files. Each subject's `README.md` lists its units with their indicators.
+4,168 sets in 1,291 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -836,6 +836,7 @@
 | [`posn2565.py`](physics/olympiad/posn2565.py) | Seeded variants of the reviewed POSN physics 2565 camp selection paper. | `phys.posn2565_q01`, `phys.posn2565_q02`, `phys.posn2565_q03`, `phys.posn2565_q04`, `phys.posn2565_q05`, `phys.posn2565_q06`, `phys.posn2565_q07`, `phys.posn2565_q08`, `phys.posn2565_q09`, `phys.posn2565_q10`, `phys.posn2565_q11`, `phys.posn2565_q12`, `phys.posn2565_q13`, `phys.posn2565_q14`, `phys.posn2565_q15`, `phys.posn2565_q16`, `phys.posn2565_q17`, `phys.posn2565_q18`, `phys.posn2565_q19`, `phys.posn2565_q20`, `phys.posn2565_q21`, `phys.posn2565_q22`, `phys.posn2565_q23`, `phys.posn2565_q24`, `phys.posn2565_q25`, `phys.posn2565_q26`, `phys.posn2565_q27`, `phys.posn2565_q28`, `phys.posn2565_q29`, `phys.posn2565_q30` |
 | [`posn2566.py`](physics/olympiad/posn2566.py) | Seeded variants of the reviewed POSN physics 2566 camp selection paper. | `phys.posn2566_q01`, `phys.posn2566_q02`, `phys.posn2566_q03`, `phys.posn2566_q04`, `phys.posn2566_q05`, `phys.posn2566_q06`, `phys.posn2566_q07`, `phys.posn2566_q08`, `phys.posn2566_q09`, `phys.posn2566_q10`, `phys.posn2566_q11`, `phys.posn2566_q12`, `phys.posn2566_q13`, `phys.posn2566_q14`, `phys.posn2566_q15`, `phys.posn2566_q16`, `phys.posn2566_q17`, `phys.posn2566_q18`, `phys.posn2566_q19`, `phys.posn2566_q20`, `phys.posn2566_q21`, `phys.posn2566_q22`, `phys.posn2566_q23`, `phys.posn2566_q24`, `phys.posn2566_q25`, `phys.posn2566_q26`, `phys.posn2566_q27`, `phys.posn2566_q28` |
 | [`posn2567.py`](physics/olympiad/posn2567.py) | Seeded variants of the reviewed POSN physics 2567 camp selection paper. | `phys.posn2567_q01`, `phys.posn2567_q02`, `phys.posn2567_q03`, `phys.posn2567_q04`, `phys.posn2567_q05`, `phys.posn2567_q06`, `phys.posn2567_q07`, `phys.posn2567_q08`, `phys.posn2567_q09`, `phys.posn2567_q10`, `phys.posn2567_q11`, `phys.posn2567_q12`, `phys.posn2567_q13`, `phys.posn2567_q14`, `phys.posn2567_q15`, `phys.posn2567_q16` |
+| [`posn2568.py`](physics/olympiad/posn2568.py) | Seeded variants of the reviewed POSN physics 2568 camp selection paper. | `phys.posn2568_q01`, `phys.posn2568_q02`, `phys.posn2568_q03`, `phys.posn2568_q04`, `phys.posn2568_q05`, `phys.posn2568_q06`, `phys.posn2568_q07`, `phys.posn2568_q08`, `phys.posn2568_q09`, `phys.posn2568_q10`, `phys.posn2568_q11`, `phys.posn2568_q12`, `phys.posn2568_q13`, `phys.posn2568_q14`, `phys.posn2568_q15`, `phys.posn2568_q16`, `phys.posn2568_q17`, `phys.posn2568_q18`, `phys.posn2568_q19`, `phys.posn2568_q20`, `phys.posn2568_q21`, `phys.posn2568_q22`, `phys.posn2568_q23`, `phys.posn2568_q24`, `phys.posn2568_q25` |
 
 ## chemistry — เคมี
 

@@ -20,11 +20,16 @@
         {
           "sheet": "สอวน_physics/posn1-67-physics.pdf",
           "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 18
         }
       ],
       "covered_by": [
         "phys.posn2565_q28",
-        "phys.posn2567_q10"
+        "phys.posn2567_q10",
+        "phys.posn2568_q18"
       ],
       "note": "Variable source labels replaced by explicit geometry/data."
     }

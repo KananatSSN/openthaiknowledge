@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การนำความร้อนคงตัวหนึ่งมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.thermal_resistance.procedure",
+      "kind": "procedure",
+      "title": "ความต้านทานความร้อนของแท่งตัวนำ",
+      "statement": "ความต้านทานความร้อนของแท่งคือ L/(KA) เช่นเดียวกับความต้านทานไฟฟ้า",
+      "steps": [
+        "เขียนกฎของฟูริเยร์ Q=KAΔT/L",
+        "เทียบกับรูป ΔT/ℛ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q09"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

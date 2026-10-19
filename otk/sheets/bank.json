@@ -4341,6 +4341,19 @@
    "sheet_id": "posn2567_physics",
    "stage": "generated",
    "note": "16 questions: 15 short answers, 1 worked; maths printed as pictures; private hand transcript."
+  },
+  {
+   "path": "สอวน_physics/posn1-68-physics.pdf",
+   "kind": "exam",
+   "sha256": "11bb3f58f892aa73",
+   "size": 1521601,
+   "pages": 9,
+   "text_chars": 8380,
+   "layout": "numbered",
+   "items": 25,
+   "sheet_id": "posn2568_physics",
+   "stage": "generated",
+   "note": "25 short-answer questions; maths printed as pictures; private hand transcript."
   }
  ]
 }

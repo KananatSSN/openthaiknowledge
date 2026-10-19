@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สนามแม่เหล็กจากกระแสวงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rotating_ring_field.procedure",
+      "kind": "procedure",
+      "title": "สนามแม่เหล็กจากวงแหวนมีประจุที่หมุน",
+      "statement": "วงแหวนประจุที่หมุนให้สนามที่ศูนย์กลาง μ₀Qω/(4πR)",
+      "steps": [
+        "หากระแสจากการหมุน",
+        "ใช้สนามที่ศูนย์กลางวงกระแส μ₀I/(2R)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q06"
+      ],
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความดันในของไหลที่มีความเร่ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.accelerating_tank_pressure.procedure",
+      "kind": "procedure",
+      "title": "ความดันก้นถังที่ถูกเร่งขึ้น",
+      "statement": "ของเหลวในภาชนะที่เร่งขึ้นด้วย a มีความดันเพิ่มตามความลึกเป็น ρ(g+a)h",
+      "steps": [
+        "เขียนกฎข้อสองของนิวตันกับลำน้ำ",
+        "บวกความดันบรรยากาศที่ผิว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q11"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

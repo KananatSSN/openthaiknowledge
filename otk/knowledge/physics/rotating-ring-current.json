@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กระแสไฟฟ้าจากประจุที่เคลื่อนที่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rotating_ring_current.procedure",
+      "kind": "procedure",
+      "title": "กระแสจากวงแหวนมีประจุที่หมุน",
+      "statement": "วงแหวนประจุ Q หมุนด้วย ω ให้กระแส Qω/(2π)",
+      "steps": [
+        "หาคาบการหมุน",
+        "หารประจุด้วยคาบ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q05"
+      ],
+      "note": ""
+    }
+  ]
+}

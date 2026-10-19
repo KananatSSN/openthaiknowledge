@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความหนืดและกฎของปัวเซย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.poiseuille_tank_drain.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วน้ำไหลออกจากท่อหนืด",
+      "statement": "น้ำไหลจากถังผ่านท่อหนืดด้วยผลต่างความดัน ρgh ความเร็วเฉลี่ย ρghr²/(8ηl)",
+      "steps": [
+        "ใช้กฎของปัวเซยหาอัตราการไหล",
+        "หารด้วยพื้นที่หน้าตัด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q24"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

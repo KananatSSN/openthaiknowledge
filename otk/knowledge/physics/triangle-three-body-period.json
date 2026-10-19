@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎความโน้มถ่วงสากลและวงโคจร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.triangle_three_body_period.procedure",
+      "kind": "procedure",
+      "title": "คาบการโคจรของดาวสามดวงสามเหลี่ยมด้านเท่า",
+      "statement": "ดาวสามดวงมวลเท่ากันที่มุมสามเหลี่ยมด้านเท่า D มีคาบ 2π√(D³/(3GM))",
+      "steps": [
+        "รวมแรงดึงดูดสองแรงเข้าหาศูนย์กลาง",
+        "ใช้รัศมีวงโคจร D/√3"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-68-physics.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q23"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

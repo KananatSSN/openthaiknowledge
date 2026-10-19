@@ -103,8 +103,13 @@ Phases in build order. Check an item only when its tests pass.
   `otk/sets/physics/olympiad/posn2567.py`. 12 knowledge units are new; items 1,
   8, 10 and 16 reuse existing units. This completes the camp-1 selection
   papers 2560–2567 in the manifest (there is no 2563 paper).
-- Next source: `สอวน_physics/posn1-68-physics.pdf`. Seven of 33 papers are
-  digested; 26 remain pending.
+- `สอวน_physics/posn1-68-physics.pdf`: 25 short-answer questions, maths
+  printed as pictures, no answer key; all are transcribed, solved,
+  independently checked and linked to 25 generators in
+  `otk/sets/physics/olympiad/posn2568.py`. 18 knowledge units are new (items 20
+  and 21 share one); items 2, 4, 13, 16, 18 and 19 reuse existing units.
+- Next source: `สอวน_physics/posn1-69-physics.pdf`. Eight of 33 papers are
+  digested; 25 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1413,3 +1418,29 @@ TOTAL         338   316     17     4   66      255      6     11
   passed; the sheet's own tests: 35 passed; Ruff clean.
 - The full suite ran once, after all 16 items were digested: **34,314 passed,
   13 skipped in 10m54s**.
+
+### 2026-10-19 — POSN physics 2568 camp selection
+
+- 9-page PDF, formulas and figures as pictures; 25 short-answer questions,
+  Coulomb's and the Biot–Savart law given, no answer key. Conversion yields
+  25/25 answered digest items.
+- Readings: item 1's angles are measured from the vertical; item 14's object
+  runs from 2.0f (A) to 1.5f (B); item 24 neglects the outlet's kinetic head
+  (Poiseuille flow driven by ρgh); item 25's two straight wires are
+  semi-infinite and end on the line through O, and all three parts of the
+  path add at O.
+- Each answer has a solver with an independently written check (time-stepped
+  flights, slides and spring collision, ring element sums for E and moving
+  charges for B, 1-D finite-volume heat relaxation, paraxial trace through
+  the afocal pair, a direct sum of 1/i² to 200,000 terms, virtual work for
+  the plate force, vector-summed three-body forces, the Poiseuille velocity
+  profile integrated over the section, a Biot–Savart sum along the hairpin).
+  `sheetpipe verify`: 25/25 green, 75 variant runs.
+- Generalized items: 1 (launch and A directions), 2 (line-of-centres angle),
+  10 (bar lengths and areas), 13 (focal ratio), 14 (object ends), 15 (δr/δl
+  ratio), 16 (emf from R, C, q, i), 20 (exact π² form), 21 (six planets),
+  22 (period scaling).
+- Targeted run: 19,431 passed, 4 skipped; `test_per_set` for the 25 keys: 55
+  passed; the sheet's own tests: 55 passed; Ruff clean.
+- The full suite ran once, after all 25 items were digested: **34,674 passed,
+  13 skipped in 11m53s**.

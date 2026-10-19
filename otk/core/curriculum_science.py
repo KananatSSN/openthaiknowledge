@@ -3391,6 +3391,62 @@ SCIENCE_PLACEMENTS.update({
     "phys.posn2567_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'วงจรตัวเก็บประจุและสมการกำลังสอง', "outside_scope"),
 })
 # END POSN 2567
+# BEGIN POSN 2568
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.posn2568_q01",
+    "phys.posn2568_q02",
+    "phys.posn2568_q03",
+    "phys.posn2568_q04",
+    "phys.posn2568_q05",
+    "phys.posn2568_q06",
+    "phys.posn2568_q07",
+    "phys.posn2568_q08",
+    "phys.posn2568_q09",
+    "phys.posn2568_q10",
+    "phys.posn2568_q11",
+    "phys.posn2568_q12",
+    "phys.posn2568_q13",
+    "phys.posn2568_q14",
+    "phys.posn2568_q15",
+    "phys.posn2568_q16",
+    "phys.posn2568_q17",
+    "phys.posn2568_q18",
+    "phys.posn2568_q19",
+    "phys.posn2568_q20",
+    "phys.posn2568_q21",
+    "phys.posn2568_q22",
+    "phys.posn2568_q23",
+    "phys.posn2568_q24",
+    "phys.posn2568_q25",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.posn2568_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่แบบโพรเจกไทล์', "outside_scope"),
+    "phys.posn2568_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงดลตามแนวศูนย์กลางของผิวเกลี้ยง', "outside_scope"),
+    "phys.posn2568_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การชนผ่านสปริงและโมเมนตัม', "outside_scope"),
+    "phys.posn2568_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การอินทิเกรตสนามและสมมาตร', "outside_scope"),
+    "phys.posn2568_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กระแสไฟฟ้าจากประจุที่เคลื่อนที่', "outside_scope"),
+    "phys.posn2568_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามแม่เหล็กจากกระแสวงกลม', "outside_scope"),
+    "phys.posn2568_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ตัวต้านทานขนานและค่าสูงสุด', "outside_scope"),
+    "phys.posn2568_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'วงจรตัวต้านทานและสมการกำลังสอง', "outside_scope"),
+    "phys.posn2568_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การนำความร้อนคงตัวหนึ่งมิติ', "outside_scope"),
+    "phys.posn2568_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การนำความร้อนคงตัวหนึ่งมิติ', "outside_scope"),
+    "phys.posn2568_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความดันในของไหลที่มีความเร่ง', "outside_scope"),
+    "phys.posn2568_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แบร์นูลลีและการเคลื่อนที่แบบโพรเจกไทล์', "outside_scope"),
+    "phys.posn2568_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ระบบเลนส์เว้าร่วมเลนส์นูนแบบไร้โฟกัส', "outside_scope"),
+    "phys.posn2568_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมการเลนส์และกำลังขยายตามแนวแกน', "outside_scope"),
+    "phys.posn2568_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การยืดและปริมาตร', "outside_scope"),
+    "phys.posn2568_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานในวงจร RC', "outside_scope"),
+    "phys.posn2568_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ตัวเก็บประจุต่ออนุกรมและอนุกรมอนันต์', "outside_scope"),
+    "phys.posn2568_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'เสียงสะท้อนจากผู้สังเกตที่เคลื่อนที่', "outside_scope"),
+    "phys.posn2568_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงในตัวเก็บประจุแผ่นขนาน', "outside_scope"),
+    "phys.posn2568_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่แบบวงกลมกับน้ำหนักปรากฏ', "outside_scope"),
+    "phys.posn2568_q21": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่แบบวงกลมกับน้ำหนักปรากฏ', "outside_scope"),
+    "phys.posn2568_q22": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎความโน้มถ่วงสากลและวงโคจร', "outside_scope"),
+    "phys.posn2568_q23": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎความโน้มถ่วงสากลและวงโคจร', "outside_scope"),
+    "phys.posn2568_q24": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความหนืดและกฎของปัวเซย', "outside_scope"),
+    "phys.posn2568_q25": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎบีโอต์ซาวาร์ตสำหรับลวดโค้ง', "outside_scope"),
+})
+# END POSN 2568
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them
