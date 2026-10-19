@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ฟังก์ชันเวียนเกิด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.alternating-recurrence-value",
+      "kind": "procedure",
+      "title": "f(n) จากความสัมพันธ์เวียนเกิดสลับเครื่องหมาย",
+      "statement": "ผลต่างที่สอง f(n) − 2f(n − 1) + f(n − 2) = (−1)ⁿ(2n − 4) คำนวณได้ 0, 1, 2, 1, 4, 1, 6, … และพิสูจน์ด้วยอุปนัยว่า f(n) = n เมื่อ n คู่ และ f(n) = 1 เมื่อ n คี่ (หรือ f(n) = (n + 1)/2 + (−1)ⁿ(n − 1)/2)",
+      "steps": [
+        "คำนวณค่าแรก ๆ",
+        "แยกกรณีคู่คี่",
+        "พิสูจน์ด้วยอุปนัย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 7
+        }
+      ],
+      "covered_by": [
+        "math.alternating_recurrence_value_olympiad"
+      ]
+    }
+  ]
+}

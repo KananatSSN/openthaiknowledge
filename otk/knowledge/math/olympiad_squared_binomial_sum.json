@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การนับเชิงการจัด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.squared-binomial-sum",
+      "kind": "procedure",
+      "title": "Σ (2n)!/((k!)²((n − k)!)²)",
+      "statement": "(2n)!/(k!²(n − k)!²) = C(2n, n)·C(n, k)² และ Σ C(n, k)² = C(2n, n) (แวนเดอร์มอนด์) จึงผลบวกเป็น C(2n, n)²",
+      "steps": [
+        "แยกเป็นผลคูณสัมประสิทธิ์ทวินาม",
+        "ใช้เอกลักษณ์ Σ C(n, k)² = C(2n, n)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 9
+        }
+      ],
+      "covered_by": [
+        "math.squared_binomial_sum_olympiad"
+      ]
+    }
+  ]
+}

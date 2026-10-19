@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.constrained-product-max",
+      "kind": "procedure",
+      "title": "abc สูงสุดเมื่อ b(a² + 2) + c(a + 2) = 12",
+      "statement": "ตรึง a: AM–GM ให้ b(a² + 2)·c(a + 2) ≤ 36 จึง abc ≤ 36a/((a² + 2)(a + 2)) อนุพันธ์ของ a/((a² + 2)(a + 2)) เป็นศูนย์เมื่อ a³ + a² − 2 = 0 คือ a = 1 ได้ b·3 = c·3 = 6 จึง a = 1, b = 2, c = 2 และ abc = 4",
+      "steps": [
+        "ใช้ AM–GM กับสองพจน์",
+        "หาค่าสูงสุดของฟังก์ชันตัวแปรเดียว",
+        "ย้อนหา b, c"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 18
+        }
+      ],
+      "covered_by": [
+        "math.constrained_product_max_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ระบบสมการไม่เชิงเส้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.complex-cube-modulus",
+      "kind": "procedure",
+      "title": "a⁴ + b⁴ จาก a⁶ − 3a²b⁴ = 3 และ b⁶ − 3a⁴b² = 3√2",
+      "statement": "ให้ z = a² + ib² จะได้ z³ = (a⁶ − 3a²b⁴) + i(3a⁴b² − b⁶) = 3 − 3√2i จึง |z|⁶ = 9 + 18 = 27 และ a⁴ + b⁴ = |z|² = 3 (ข้อสังเกต: ระบบตามที่พิมพ์ไม่มีคำตอบที่เป็นจำนวนจริง เพราะ z³ อยู่ในจตุภาคที่สี่ ซึ่งทำให้ z อยู่นอกจตุภาคที่หนึ่ง ค่า 3 เป็นค่าตามรูปแบบ)",
+      "steps": [
+        "ตั้ง z = a² + ib²",
+        "เทียบส่วนจริงและส่วนจินตภาพของ z³",
+        "ใช้ขนาด |z|"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.complex_cube_modulus_olympiad"
+      ]
+    }
+  ]
+}

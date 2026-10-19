@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การหารพหุนาม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cyclotomic-power-remainder",
+      "kind": "procedure",
+      "title": "เศษจากการหาร f(x⁷) ด้วย f(x)",
+      "statement": "f(x) หาร x⁷ − 1 ลงตัว จึง x⁷ ≡ 1 (mod f) และ f(x⁷) = Σ x^(7k) ≡ Σ 1 = 7 เศษคือ 7",
+      "steps": [
+        "ใช้ f(x)(x − 1) = x⁷ − 1",
+        "ลดแต่ละพจน์มอดุโล f"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.cyclotomic_power_remainder_olympiad"
+      ]
+    }
+  ]
+}
