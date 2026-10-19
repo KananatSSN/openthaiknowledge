@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ศูนย์กลางมวลของวัตถุแผ่น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.disc_with_hole_centre.procedure",
+      "kind": "procedure",
+      "title": "ศูนย์กลางมวลของแผ่นกลมที่ถูกเจาะรู",
+      "statement": "ศูนย์กลางมวลของแผ่นที่เจาะรูหาได้โดยคิดรูเป็นมวลลบ",
+      "steps": [
+        "หาพื้นที่และตำแหน่งของรู",
+        "ใช้โมเมนต์ของแผ่นเต็มลบโมเมนต์ของรู"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q15"
+      ],
+      "note": "Part 2 item 5. Generalized hole radius kR touching the rim."
+    }
+  ]
+}

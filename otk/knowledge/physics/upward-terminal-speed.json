@@ -16,10 +16,15 @@
         {
           "sheet": "สอวน_physics/posn1-60-physics.pdf",
           "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 3
         }
       ],
       "covered_by": [
-        "phys.posn2560_q04"
+        "phys.posn2560_q04",
+        "phys.posn2569_q03"
       ],
       "note": ""
     }

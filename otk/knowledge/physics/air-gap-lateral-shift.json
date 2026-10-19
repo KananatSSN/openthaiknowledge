@@ -16,10 +16,15 @@
         {
           "sheet": "สอวน_physics/posn1-64-physics.pdf",
           "item": 27
+        },
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 5
         }
       ],
       "covered_by": [
-        "phys.posn2564_q27"
+        "phys.posn2564_q27",
+        "phys.posn2569_q05"
       ],
       "note": "x read as the perpendicular distance between the leaving ray and the incident line; needs μ sinθ<1."
     }

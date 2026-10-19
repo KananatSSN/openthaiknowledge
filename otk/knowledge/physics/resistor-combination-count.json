@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การต่อตัวต้านทานแบบอนุกรมและขนาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.resistor_combination_count.procedure",
+      "kind": "procedure",
+      "title": "จำนวนค่าความต้านทานจากตัวต้านทานสามตัว",
+      "statement": "ตัวต้านทานสามตัวใช้ทีละหนึ่ง สอง หรือสามตัวแบบอนุกรมขนานได้ 3+6+8 = 17 แบบ ค่าที่ซ้ำกันลดจำนวนค่าที่ต่างกัน",
+      "steps": [
+        "แจกแจงทุกแบบของแต่ละกลุ่มย่อย",
+        "นับเฉพาะค่าที่ไม่ซ้ำกัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q06"
+      ],
+      "note": "Generator gives values, which can make some combinations coincide."
+    }
+  ]
+}

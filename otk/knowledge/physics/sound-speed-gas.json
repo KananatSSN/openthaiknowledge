@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "อัตราเร็วเสียงในแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.sound_speed_gas.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วเสียงในรูปอุณหภูมิและมวลโมเลกุล",
+      "statement": "ในแก๊สอุดมคติ P/ρ = RT/M ดังนั้น v² = γRT/M โดย T เป็นเคลวิน",
+      "steps": [
+        "แทน P/ρ ด้วยกฎแก๊สอุดมคติ",
+        "แปลงอุณหภูมิเป็นเคลวิน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 20
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q20"
+      ],
+      "note": "Part 2 item 10."
+    }
+  ]
+}

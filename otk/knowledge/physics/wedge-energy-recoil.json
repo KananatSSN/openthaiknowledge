@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "โมเมนตัมแนวระดับของลิ่มและมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wedge_energy_recoil.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วสุดท้ายของลิ่มเมื่อมวลไถลถึงพื้น",
+      "statement": "มวลไถลลงลิ่มบนพื้นลื่นถึงพื้น ใช้โมเมนตัมแนวระดับและพลังงานได้ V = m√(2gh/(M(M+m)))",
+      "steps": [
+        "โมเมนตัมแนวระดับรวมเป็นศูนย์",
+        "พลังงานศักย์เปลี่ยนเป็นพลังงานจลน์ของทั้งสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 28
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q28"
+      ],
+      "note": "Part 2 item 18. Assumes m runs onto the floor horizontally without loss."
+    }
+  ]
+}

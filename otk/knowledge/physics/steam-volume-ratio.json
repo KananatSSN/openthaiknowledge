@@ -20,11 +20,16 @@
         {
           "sheet": "สอวน_physics/posn1-66-physics.pdf",
           "item": 24
+        },
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 26
         }
       ],
       "covered_by": [
         "phys.posn2565_q14",
-        "phys.posn2566_q24"
+        "phys.posn2566_q24",
+        "phys.posn2569_q26"
       ],
       "note": ""
     }

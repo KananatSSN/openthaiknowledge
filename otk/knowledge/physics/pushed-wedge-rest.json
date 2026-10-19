@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงในกรอบอ้างอิงที่มีความเร่ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pushed_wedge_rest.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งที่ผลักลิ่มให้มวลไม่ไถล",
+      "statement": "มวลบนผิวลื่นของลิ่มที่ถูกผลักไม่ไถลเมื่อ a = g tanβ",
+      "steps": [
+        "ให้แรงปกติให้ทั้งความเร่งแนวระดับและรับน้ำหนัก",
+        "หารสองสมการหา a"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q13"
+      ],
+      "note": "Part 2 item 3."
+    }
+  ]
+}

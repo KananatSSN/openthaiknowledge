@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบวงกลมของวัตถุต่อเนื่อง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.spinning_ring_tension.procedure",
+      "kind": "procedure",
+      "title": "แรงตึงในวงลวดที่หมุน",
+      "statement": "วงลวดมวล M ที่หมุนด้วยอัตราเร็ว v มีแรงตึง Mv²/(2πR)",
+      "steps": [
+        "แรงตึงสองข้างของส่วนโค้งเล็กให้แรงสู่ศูนย์กลาง Tθ",
+        "ตั้งเท่ากับมวลส่วนโค้งคูณ v²/R"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q17"
+      ],
+      "note": "Part 2 item 7."
+    }
+  ]
+}

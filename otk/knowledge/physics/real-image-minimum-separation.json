@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมการเลนส์และกำลังขยายภาพเสมือน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.real_image_minimum_separation.procedure",
+      "kind": "procedure",
+      "title": "ระยะห่างน้อยที่สุดระหว่างวัตถุจริงกับภาพจริง",
+      "statement": "เลนส์นูนให้ภาพจริงของวัตถุจริงได้เมื่อระยะวัตถุถึงภาพไม่น้อยกว่า 4f",
+      "steps": [
+        "เขียน x = u + uf/(u−f)",
+        "หาค่าต่ำสุดที่ u = 2f"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q12"
+      ],
+      "note": "Part 2 item 2."
+    }
+  ]
+}

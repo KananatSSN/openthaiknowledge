@@ -4354,6 +4354,19 @@
    "sheet_id": "posn2568_physics",
    "stage": "generated",
    "note": "25 short-answer questions; maths printed as pictures; private hand transcript."
+  },
+  {
+   "path": "สอวน_physics/posn1-69-physics.pdf",
+   "kind": "exam",
+   "sha256": "95fbbe2d5005424f",
+   "size": 2395418,
+   "pages": 15,
+   "text_chars": 10943,
+   "layout": "numbered",
+   "items": 30,
+   "sheet_id": "posn2569_physics",
+   "stage": "generated",
+   "note": "10 eight-choice MC and 20 short answers in two sections (Part 2 restarts at 1; items 11-30 here); private hand transcript."
   }
  ]
 }

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สูตรผู้สร้างเลนส์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.split_lens_focal.procedure",
+      "kind": "procedure",
+      "title": "ความยาวโฟกัสของครึ่งเลนส์นูน",
+      "statement": "ผ่าเลนส์นูนสองหน้าตามระนาบกลางได้เลนส์แกมราบ 1/f = (μ−1)/R ของผิวที่เหลือ",
+      "steps": [
+        "เขียน 1/F เป็นผลรวมของสองผิว",
+        "เก็บเฉพาะผิวของครึ่งที่สนใจ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q11"
+      ],
+      "note": "Part 2 item 1. Generalized radii ratio."
+    }
+  ]
+}

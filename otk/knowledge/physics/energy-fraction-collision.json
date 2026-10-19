@@ -16,10 +16,15 @@
         {
           "sheet": "สอวน_physics/posn1-67-physics.pdf",
           "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/posn1-69-physics.pdf",
+          "item": 1
         }
       ],
       "covered_by": [
-        "phys.posn2567_q03"
+        "phys.posn2567_q03",
+        "phys.posn2569_q01"
       ],
       "note": "Generalized energy fraction f = (1+s²)/2."
     }

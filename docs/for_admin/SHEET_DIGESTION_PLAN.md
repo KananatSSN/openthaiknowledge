@@ -108,8 +108,14 @@ Phases in build order. Check an item only when its tests pass.
   independently checked and linked to 25 generators in
   `otk/sets/physics/olympiad/posn2568.py`. 18 knowledge units are new (items 20
   and 21 share one); items 2, 4, 13, 16, 18 and 19 reuse existing units.
-- Next source: `สอวน_physics/posn1-69-physics.pdf`. Eight of 33 papers are
-  digested; 25 remain pending.
+- `สอวน_physics/posn1-69-physics.pdf`: 10 eight-choice MC and 20 short answers;
+  Part 2 restarts at 1 and is numbered 11–30 (provenance keeps "ตอนที่ 2 ข้อ k").
+  All 30 are transcribed, solved, independently checked and linked to 30
+  generators in `otk/sets/physics/olympiad/posn2569.py`. 17 knowledge units are
+  new; 13 items reuse existing units.
+- All nine camp-1 selection papers in the manifest (2560–2562, 2564–2569) are
+  digested. Next: the national (TPhO) papers, `สอวน_physics/tpho-45-physics/`
+  onward — folders of theory, solution and practical PDFs; 24 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1444,3 +1450,26 @@ TOTAL         338   316     17     4   66      255      6     11
   passed; the sheet's own tests: 55 passed; Ruff clean.
 - The full suite ran once, after all 25 items were digested: **34,674 passed,
   13 skipped in 11m53s**.
+
+### 2026-10-19 — POSN physics 2569 camp selection
+
+- 15-page PDF, formulas and figures as pictures. Part 1 has 10 questions with
+  eight choices each; Part 2 has 20 short answers and restarts at 1. The
+  transcript uses section headings, so conversion numbers them 1–30 (30/30
+  answered); `sheet.json` sources keep the printed "ตอนที่ 2 ข้อ k".
+- Readings: MC2 is the small-amplitude period with the peg at l/2; MC6 assumes
+  three unrelated values (17 combinations); Part 2 item 5's hole touches the
+  rim and passes through O; item 12's form asks a percentage, 100·C₁/(C₁+C₂);
+  item 18 assumes m runs onto the floor without loss; item 20's second lens
+  images the first lens's virtual focus.
+- Each answer has a solver with an independently written check (bisection on
+  conservation laws, time-stepped pendulum with peg and terminal fall, ring
+  element sums, a recursive series–parallel enumeration for MC6, grid
+  integration of the holed disc, catenary, torque bisection, a simulated
+  projectile for the receding condition, paraxial ray traces). `sheetpipe
+  verify`: 30/30 green, 90 variant runs. MC6's generator draws actual values,
+  so coinciding combinations (e.g. 1, 2, 3 → 16) are counted exactly.
+- Targeted run: 19,776 passed, 4 skipped; `test_per_set` for the 30 keys: 30
+  passed; the sheet's own tests: 65 passed; Ruff clean.
+- The full suite ran once, after all 30 items were digested: **35,104 passed,
+  13 skipped in 14m08s**.
