@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมการนิวตันและออยเลอร์ร่วมเงื่อนไขกลิ้ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.spool_pull_critical_angle.procedure",
+      "kind": "procedure",
+      "title": "มุมวิกฤตของล้อม้วนเชือกที่กลิ้งเข้าหาผู้ดึง",
+      "statement": "ล้อม้วนเชือกที่ดึงจากด้านล่างเพลามีเครื่องหมายความเร่งตาม R₂cosθ−R₁ ภายใต้การกลิ้งไม่ไถล",
+      "steps": [
+        "รวมสมการแรง โมเมนต์ และ a=ΩR₂",
+        "กำหนดความเร่งบวกแล้วแก้มุมวิกฤต"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q22"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

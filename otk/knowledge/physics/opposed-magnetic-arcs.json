@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎบีโอต์ซาวาร์ตสำหรับลวดโค้ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.opposed_magnetic_arcs.procedure",
+      "kind": "procedure",
+      "title": "สนามแม่เหล็กจากส่วนโค้งครึ่งวงกลมร่วมศูนย์",
+      "statement": "ส่วนโค้งครึ่งวงกลมร่วมศูนย์ที่กระแสสวนกันให้สนามผลต่าง ส่วนสายตามแนวรัศมีไม่ให้สนามที่ศูนย์กลาง",
+      "steps": [
+        "คำนวณสนามแต่ละส่วนโค้งด้วยกฎบีโอต์ซาวาร์ต",
+        "กำหนดทิศแล้วหาผลต่างสนาม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q11"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

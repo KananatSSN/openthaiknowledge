@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แบร์นูลลีและสมการความต่อเนื่อง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.finite_tank_outflow.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วลำน้ำจากถังหน้าตัดจำกัด",
+      "statement": "เมื่อพื้นที่ลำน้ำไม่เล็กจนละได้ ต้องใช้ความเร็วผิวน้ำ av/A ในแบร์นูลลีด้วย",
+      "steps": [
+        "ใช้ความต่อเนื่อง Avผิว=avลำน้ำ",
+        "แทนในสมการพลังงานเพื่อหาอัตราเร็วลำน้ำ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q04"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

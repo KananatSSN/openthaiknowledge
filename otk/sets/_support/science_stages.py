@@ -1086,6 +1086,34 @@ PHYSICS_APPLICATION_KEYS = frozenset({
 })
 
 REVIEWED_PHYSICS_STAGES = {
+    # BEGIN POSN 2562
+    "phys.posn2562_q01": 2,
+    "phys.posn2562_q02": 2,
+    "phys.posn2562_q03": 2,
+    "phys.posn2562_q04": 3,
+    "phys.posn2562_q05": 2,
+    "phys.posn2562_q06": 2,
+    "phys.posn2562_q07": 2,
+    "phys.posn2562_q08": 2,
+    "phys.posn2562_q09": 2,
+    "phys.posn2562_q10": 2,
+    "phys.posn2562_q11": 3,
+    "phys.posn2562_q12": 2,
+    "phys.posn2562_q13": 3,
+    "phys.posn2562_q14": 3,
+    "phys.posn2562_q15": 2,
+    "phys.posn2562_q16": 2,
+    "phys.posn2562_q17": 2,
+    "phys.posn2562_q18": 3,
+    "phys.posn2562_q19": 3,
+    "phys.posn2562_q20": 3,
+    "phys.posn2562_q21": 2,
+    "phys.posn2562_q22": 3,
+    "phys.posn2562_q23": 3,
+    "phys.posn2562_q24": 3,
+    "phys.posn2562_q25": 3,
+    "phys.posn2562_q26": 3,
+    # END POSN 2562
     # BEGIN POSN 2561
     "phys.posn2561_q01": 2,
     "phys.posn2561_q02": 3,

@@ -4222,6 +4222,20 @@
    "sheet_id": "posn2561_physics",
    "stage": "generated",
    "note": "30 numbered questions in two sections; handwritten transcript preserves restarting numbering."
+  },
+  {
+   "path": "สอวน_physics/posn1-62-physics.pdf",
+   "kind": "exam",
+   "sha256": "fc0b9ac6e1accedc",
+   "size": 950322,
+   "pages": 13,
+   "text_chars": 9456,
+   "layout": "numbered",
+   "glyph_damage": 21,
+   "items": 26,
+   "sheet_id": "posn2562_physics",
+   "stage": "generated",
+   "note": "26 questions:15 MC,10 short answers,1 worked item; private hand-reviewed transcript."
   }
  ]
 }

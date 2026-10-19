@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแกว่งความถี่เท่ากันและการชน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.equal_pendulum_collision_time.procedure",
+      "kind": "procedure",
+      "title": "ช่วงเวลาระหว่างการชนสองครั้งของลูกตุ้ม",
+      "statement": "ลูกตุ้มยาวเท่ากันภายใต้แบบจำลองมุมเล็กมีความถี่เดียวกัน หลังชนที่สมดุลจึงกลับมาพบกันครั้งถัดไปในครึ่งคาบ",
+      "steps": [
+        "หาทิศความเร็วหลังชนและเขียนการแกว่งสองลูก",
+        "หาศูนย์แรกหลัง t=0 ของผลต่างตำแหน่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q24"
+      ],
+      "note": "Source omits small-angle restriction. The intended half-period formula requires SHM; finite-amplitude timing is not universal. Generator explicitly uses small angles and elastic impact."
+    }
+  ]
+}

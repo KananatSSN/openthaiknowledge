@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เงื่อนไขรากจริงและการถ่ายโอนกำลังสูงสุด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.maximum_load_power.procedure",
+      "kind": "procedure",
+      "title": "กำลังสูงสุดที่จ่ายให้ตัวต้านทานโหลด",
+      "statement": "กำลังที่โหลดของแหล่งจ่ายที่มี r ภายในมากที่สุดเมื่อโหลดเท่ากับ r และกำลังเป็น E²/(4r)",
+      "steps": [
+        "กำหนดให้สมการกำลังสองของโหลดมีรากจริงบวก",
+        "หาเงื่อนไขรากซ้ำหรือหาค่าสูงสุดของ I²x"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q17"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

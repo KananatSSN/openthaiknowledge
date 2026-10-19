@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความต่อเนื่องกระแสตัวเหนี่ยวนำและเครื่องหมายศักย์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.inductor_switched_node_potential.procedure",
+      "kind": "procedure",
+      "title": "ศักย์จุดต่อหลังตัดแหล่งจ่ายของตัวเหนี่ยวนำ",
+      "statement": "กระแสตัวเหนี่ยวนำต่อเนื่องหลังตัดแหล่งจ่าย จึงบังคับกระแสกลับผ่านโหลดและทำให้จุดบนมีศักย์ลบได้",
+      "steps": [
+        "เก็บทิศและขนาดกระแสก่อนสับ",
+        "ใช้กฎโหนดและกฎโอห์มหาศักย์เทียบกราวด์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q18"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

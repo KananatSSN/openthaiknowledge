@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การหักเหพาราเซียลของเลนส์บาง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.diverging_ray_deflection.procedure",
+      "kind": "procedure",
+      "title": "มุมเบี่ยงเบนผ่านเลนส์เว้า",
+      "statement": "เลนส์เว้าบางเปลี่ยนความชันรังสีพาราเซียลที่สูง h เป็นขนาด h/|f|",
+      "steps": [
+        "แยกมุมก่อนและหลังผ่านเลนส์",
+        "ใช้การเปลี่ยนความชันจากเลนส์บางพร้อมเครื่องหมายโฟกัส"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q02"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

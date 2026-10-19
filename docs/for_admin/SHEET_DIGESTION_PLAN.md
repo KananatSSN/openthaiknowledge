@@ -79,8 +79,12 @@ Phases in build order. Check an item only when its tests pass.
   generators in `otk/sets/physics/olympiad/posn2561.py`. Internal items 21–30
   preserve the ten restarted Part 2 numbers in their provenance. The single
   completed-sheet full run passed: 29,421 passed, 2 skipped (24m57s).
-- Next source: `สอวน_physics/posn1-62-physics.pdf`. Two of the 33 papers
-  are digested; the remaining 31 papers are pending.
+- `สอวน_physics/posn1-62-physics.pdf`: all 26 questions (15 MC, 10 short
+  answers, one worked problem) are transcribed, independently solved, and
+  linked to 26 generators and knowledge units. The equal-source circuit reuses
+  the existing signed three-branch circuit unit; 25 units are new.
+- Next source: `สอวน_physics/posn1-64-physics.pdf` (the manifest has no 2563
+  camp-selection paper). Three of 33 papers are digested; 30 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -952,3 +956,27 @@ TOTAL         338   316     17     4   66      255      6     11
 - The full suite ran once, after all 30 items were digested: **29,421 passed,
   2 skipped in 24m57s**. Ruff is clean; source transcripts and full-text digests
   remain in the private bank.
+
+### 2026-10-17 — POSN physics 2562 camp selection
+
+- Reviewed exercise pages 2–10 of the 13-page paper and all 23 automatic
+  crops. The paper declares 26 questions: 15 MC, ten short answers, one worked
+  problem; pages 11–13 are answer forms. Crops for items 1 and 2 are fragments
+  of item 4's choices, and item 26's crop is an answer form. No crop is shipped;
+  the generators state geometry, polarity, angle conventions, and topology.
+- Added 26 solvers with independent derivations and 78 changed-constant cases,
+  plus 26 seeded generators. Every converted item is claimed; the existing
+  signed circuit procedure covers item 13, and 25 knowledge units are new.
+  Knowledge validation reports zero problems and no generator gaps.
+- Source caveats are explicit in generated wording: item 3 gives only a
+  necessary siphon-height bound; item 7 requires steady conduction; item 14
+  starts with DC steady charging; item 19 uses the limiting release from nearly
+  vertical; item 24 needs small-angle motion for the intended half-period.
+  Finite-amplitude pendulum timing is not fixed by the source as printed.
+- The simultaneous three-disc impact verifies and generates the ordered pair
+  of both requested outgoing speeds, including momentum, kinetic energy, and
+  restitution checks. Ring-field choices retain exact reduced radicals.
+- Targeted waves: 4,394 passed; 4,522 passed; 4,636 passed.
+- The full suite ran once, after all 26 items were digested: **29,796 passed,
+  2 skipped in 20m08s**. Ruff is clean; full source text and the verified
+  transcript remain in the private bank.

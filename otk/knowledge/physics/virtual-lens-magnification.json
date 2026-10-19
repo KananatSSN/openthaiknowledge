@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมการเลนส์และกำลังขยายภาพเสมือน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.virtual_lens_magnification.procedure",
+      "kind": "procedure",
+      "title": "กำลังขยายเลนส์นูนที่ให้ภาพเสมือน",
+      "statement": "ภาพเสมือนหัวตั้งของเลนส์นูนที่ระยะ d จากเลนส์มีกำลังขยาย 1+d/f",
+      "steps": [
+        "ใส่ระยะภาพ v=−d ในสมการเลนส์",
+        "ใช้ขนาดกำลังขยาย d/u"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q10"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

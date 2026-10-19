@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนยืดหยุ่นพร้อมกันหลายจุดสัมผัส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.symmetric_three_disc_impact.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วหลังชนเหรียญสามเหรียญสมมาตร",
+      "statement": "เหรียญเท่ากันชนสองเป้าพร้อมกันสมมาตรให้ A กระดอน u/5 และแต่ละเป้าเคลื่อน 2√3u/5",
+      "steps": [
+        "ใช้แนวศูนย์กลาง ±30° และสมมาตรของแรงดล",
+        "แก้โมเมนตัมกับพลังงานแล้วตรวจสมการการคืนตัวแต่ละจุดสัมผัส"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 26
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q26"
+      ],
+      "note": "Simultaneous symmetric elastic impact. Both outgoing speeds are solved and checked; generator requests the ordered pair of both speeds."
+    }
+  ]
+}

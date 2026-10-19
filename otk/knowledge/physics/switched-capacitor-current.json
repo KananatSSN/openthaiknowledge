@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความต่อเนื่องแรงดันตัวเก็บประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.switched_capacitor_current.procedure",
+      "kind": "procedure",
+      "title": "กระแสเริ่มต้นหลังสลับตัวเก็บประจุ",
+      "statement": "แรงดันตัวเก็บประจุต่อเนื่องผ่านการสับสวิตช์ กระแสเริ่มคายประจุจึงเป็นแรงดันเดิมหารความต้านทานใหม่",
+      "steps": [
+        "หาตัวแบ่งแรงดันตอนกระแสตรงคงตัวก่อนสับ",
+        "รักษาแรงดันบนตัวเก็บประจุแล้วใช้กฎโอห์มกับโหลดใหม่"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-62-physics.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.posn2562_q14"
+      ],
+      "note": "Switch starts in position1 until DC steady state before connecting the charged capacitor to R."
+    }
+  ]
+}
