@@ -50,7 +50,8 @@ KEY_PREFIX = {"posn2568_math": "math.posn2568_",
 #: The value is the citation those sets' PROVENANCE must carry.
 SHARED_GENERATORS = {"posnnat2547_math": "ระดับชาติ 2547", "posnnat2548_math": "ระดับชาติ 2548",
                      "posnnat2549_math": "ระดับชาติ 2549", "posnnat2550_math": "ระดับชาติ 2550",
-                     "posnnat2551_math": "ระดับชาติ 2551"}
+                     "posnnat2551_math": "ระดับชาติ 2551", "posnnat2552_math": "ระดับชาติ 2552",
+                     "posnnat2553_math": "ระดับชาติ 2553"}
 
 
 def test_at_least_one_sheet_is_digested():
