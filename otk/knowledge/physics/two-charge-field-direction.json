@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การรวมสนามไฟฟ้าแบบเวกเตอร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.two_charge_field_direction.procedure",
+      "kind": "procedure",
+      "title": "ทิศสนามไฟฟ้าลัพธ์จากสองประจุ",
+      "statement": "ทิศสนามลัพธ์จากสองประจุหาได้จากผลรวมองค์ประกอบของสนามแต่ละประจุ",
+      "steps": [
+        "เขียนสนามแต่ละประจุเป็นเวกเตอร์พร้อมทิศเข้าออกตามเครื่องหมาย",
+        "รวมองค์ประกอบแล้วหา tan ของมุม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-65-physics.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q03"
+      ],
+      "note": "Generator asks tan θ for charges +pQ and −sQ."
+    }
+  ]
+}

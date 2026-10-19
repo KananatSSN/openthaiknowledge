@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงลอยตัวและกฎข้อสองของนิวตัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.tethered_buoyant_release.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งลูกลอยเมื่อเชือกขาด",
+      "statement": "เมื่อเชือกที่รั้งลูกลอยขาด แรงลัพธ์ทันทีเท่ากับแรงตึงเดิม ρVg−mg",
+      "steps": [
+        "หาแรงตึงจากสมดุลก่อนเชือกขาด",
+        "หารด้วยมวลหาความเร่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-65-physics.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q19"
+      ],
+      "note": "No drag and no added mass, as the printed answer assumes."
+    }
+  ]
+}

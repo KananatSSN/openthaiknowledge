@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความจุไฟฟ้าของตัวเก็บประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.thin_coaxial_capacitance.procedure",
+      "kind": "procedure",
+      "title": "ความจุตัวเก็บประจุทรงกระบอกช่องแคบ",
+      "statement": "ทรงกระบอกซ้อนช่องแคบ d≪r ประมาณเป็นแผ่นขนานพื้นที่ 2πrl จึง C=2πε₀rl/d",
+      "steps": [
+        "หาพื้นที่ผิวทรงกระบอก",
+        "ใช้สูตรตัวเก็บประจุแผ่นขนาน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-65-physics.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q17"
+      ],
+      "note": "Thin-gap limit d ≪ r."
+    }
+  ]
+}

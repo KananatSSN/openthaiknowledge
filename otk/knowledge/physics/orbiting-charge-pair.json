@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบวงกลมด้วยแรงไฟฟ้า",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.orbiting_charge_pair.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วของคู่ประจุที่โคจรรอบกัน",
+      "statement": "ประจุคู่มวลเท่ากันโคจรรอบศูนย์กลางร่วมรัศมี D/2 ด้วยแรงคูลอมบ์ที่ระยะ D",
+      "steps": [
+        "ใช้รัศมีวงโคจร D/2 สำหรับแรงสู่ศูนย์กลาง",
+        "ใช้ระยะระหว่างประจุ D ในกฎคูลอมบ์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-65-physics.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q07"
+      ],
+      "note": "Generator asks the orbital speed in m/s."
+    }
+  ]
+}

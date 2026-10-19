@@ -88,8 +88,12 @@ Phases in build order. Check an item only when its tests pass.
   and independently checked, and linked to 30 generators in
   `otk/sets/physics/olympiad/posn2564.py`. 27 knowledge units are new; items
   8, 11 and 26 reuse the ring-field, steady-RC and signed-circuit units.
-- Next source: `สอวน_physics/posn1-65-physics.pdf`. Four of 33 papers are
-  digested; 29 remain pending.
+- `สอวน_physics/posn1-65-physics.pdf`: also a scan with no answer key; all 30
+  questions (25 MC, 5 short answers) are transcribed, solved, independently
+  checked and linked to 30 generators in `otk/sets/physics/olympiad/posn2565.py`.
+  26 knowledge units are new; items 8, 9, 23 and 30 reuse existing units.
+- Next source: `สอวน_physics/posn1-66-physics.pdf`. Five of 33 papers are
+  digested; 28 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1322,3 +1326,30 @@ TOTAL         338   316     17     4   66      255      6     11
   sheet's own tests); `test_per_set` for the 30 keys: 60 passed; Ruff clean.
 - The full suite ran once, after all 30 items were digested: **33,240 passed,
   13 skipped in 12m23s**.
+
+### 2026-10-19 — POSN physics 2565 camp selection
+
+- 12-page scan (no text layer, no answer key): cover, questions on pages
+  2–11, answer form on page 12. A private hand transcript converts to 30/30
+  answered digest items. Item 2's battery polarities and item 11's arcs were
+  read from 250 dpi crops: all four emfs face the same way, and both arcs are
+  half circles with the same circulation joined by radial leads.
+- Every answer was derived and given a solver with an independently written
+  check (KCL bisection, Gauss-law integration, catenary, paraxial ray trace
+  through lens and mirror, Biot–Savart sums, velocity-Verlet orbit, time-stepped
+  slides and pendulum). Four first-draft checks disagreed with their solvers;
+  each was a fault in the check, not the answer, and was rewritten.
+  `sheetpipe verify`: 30/30 green, 90 variant runs.
+- Readings made explicit: item 9's centre offset equals the radius; item 19
+  ignores added mass; item 27 is the first-order aim correction for a target at
+  launch height; item 29 assumes thin spokes and entry just after a spoke.
+  Generalized items: 1 (m^a v^b in the exponent), 2 (any emfs), 3 (+pQ, −sQ),
+  13 (any of the five heating-curve processes), 22 (mixtures of monatomic and
+  diatomic gas).
+- `test_per_set` flagged three shortest-choice cues (items 12, 23, 28: an
+  integer or plain decimal among fractions and powers of ten). The generators
+  now draw values that put the answer in the same form as its distractors.
+- Targeted run: 18,666 passed, 4 skipped; `test_per_set` for the 30 keys: 60
+  passed; the sheet's own tests: 64 passed; Ruff clean.
+- The full suite ran once, after all 30 items were digested: **33,681 passed,
+  13 skipped in 10m09s**.

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ศักย์ไฟฟ้าของตัวนำทรงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.grounded_shell_potential.procedure",
+      "kind": "procedure",
+      "title": "ผลต่างศักย์ระหว่างทรงกลมร่วมศูนย์",
+      "statement": "ทรงกลมนอกต่อดินมีศักย์ศูนย์ ผลต่างศักย์กับทรงกลมในประจุ −Q คือ kQ(1/R₁−1/R₂)",
+      "steps": [
+        "ใช้กฎของเกาส์หาสนามระหว่างทรงกลม",
+        "อินทิเกรตสนามจาก R₁ ถึง R₂ เทียบศักย์ศูนย์ของทรงกลมนอก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-65-physics.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q04"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

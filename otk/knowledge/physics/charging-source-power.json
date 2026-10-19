@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานในวงจร RC",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charging_source_power.procedure",
+      "kind": "procedure",
+      "title": "กำลังของแหล่งจ่ายขณะอัดประจุ",
+      "statement": "ขณะอัดประจุ กำลังของแหล่งจ่าย ℰI แบ่งเป็นอัตราสะสมพลังงาน qI/C กับความร้อน RI²",
+      "steps": [
+        "ใช้กฎวงรอบ ℰ=IR+q/C",
+        "คูณด้วย I เพื่อหากำลัง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-65-physics.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q06"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

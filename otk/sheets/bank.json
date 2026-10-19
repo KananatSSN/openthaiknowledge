@@ -4302,6 +4302,19 @@
    "sheet_id": "posn2564_physics",
    "stage": "generated",
    "note": "Scanned, no text layer: 25 MC and 5 short answers; private hand transcript."
+  },
+  {
+   "path": "สอวน_physics/posn1-65-physics.pdf",
+   "kind": "exam",
+   "sha256": "6b4d4742cfa77c5b",
+   "size": 771402,
+   "pages": 12,
+   "layout": "scan",
+   "scan_pages": 12,
+   "items": 30,
+   "sheet_id": "posn2565_physics",
+   "stage": "generated",
+   "note": "Scanned, no text layer: 25 MC and 5 short answers; private hand transcript."
   }
  ]
 }
