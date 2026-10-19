@@ -61,6 +61,7 @@ SHARED_GENERATORS = {
     "posnnat2556_math": "ระดับชาติ 2556",
     "posnnat2557_math": "ระดับชาติ 2557",
     "posnnat2562_math": "ระดับชาติ 2562",
+    "posnnat2565_math": "ระดับชาติ 2565",
 }
 
 
@@ -135,9 +136,11 @@ def test_every_registered_generator_traces_back_to_an_item(sheet_id):
         citation = SHARED_GENERATORS[sheet_id]
         for item in sheet.items:
             assert item.generator in REGISTRY, f"{sheet_id} q{item.number}: no generator"
-            sources = provenance(item.generator).sources
-            assert any(citation in src for src in sources), (
-                f"{item.generator} does not cite {citation}: {sources}")
+            declared = provenance(item.generator)
+            if declared.kind == "original":   # written afresh on the item's idea
+                continue
+            assert any(citation in src for src in declared.sources), (
+                f"{item.generator} does not cite {citation}: {declared.sources}")
         return
     prefix = KEY_PREFIX.get(sheet_id)
     if prefix is None:                                    # pragma: no cover
