@@ -4211,7 +4211,8 @@
    "layout": "numbered",
    "glyph_damage": 123,
    "items": 10,
-   "stage": "generated",
+   "sheet_id": "posnnat2562_math",
+   "stage": "green",
    "note": "Transcribed and checked against the renders: all 10 items mapped to original problem sets; item 5's written proof still open (numerically verified)"
   },
   {
