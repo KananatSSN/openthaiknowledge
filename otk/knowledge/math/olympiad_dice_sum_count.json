@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.dice-sum-count",
+      "kind": "procedure",
+      "title": "โยนลูกเต๋า 6 ครั้งได้ผลรวม 21",
+      "statement": "นับคำตอบของ x₁ + ⋯ + x₆ = 21 เมื่อ 1 ≤ xᵢ ≤ 6 ด้วยหลักการรวมและแยก: Σⱼ (−1)ʲ C(6, j) C(20 − 6j, 5) = 15504 − 6·2002 + 15·56 = 4332",
+      "steps": [
+        "แปลงเป็นการนับคำตอบสมการ",
+        "ใช้หลักการรวมและแยกสำหรับขอบบน 6"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 5
+        }
+      ],
+      "covered_by": [
+        "math.dice_sum_count_olympiad"
+      ]
+    }
+  ]
+}

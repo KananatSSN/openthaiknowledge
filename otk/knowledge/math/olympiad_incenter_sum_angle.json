@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมแนบใน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.incenter-sum-angle",
+      "kind": "procedure",
+      "title": "มุม B เมื่อ CA + AI = BC และ A = 70°",
+      "statement": "หา D บน BC ที่ CD = CA สามเหลี่ยม CAI และ CDI เท่ากันทุกประการ (CI แบ่งครึ่งมุม C) จึง DI = AI และ ∠CDI = A/2 = 35° แต่ DB = BC − CA = AI = DI สามเหลี่ยม DBI หน้าจั่ว ∠DBI = ∠DIB = B/2 มุมภายนอก ∠CDI = B จึง B = A/2 = 35°",
+      "steps": [
+        "สร้างจุด D ที่ CD = CA",
+        "ใช้สามเหลี่ยมเท่ากันทุกประการ",
+        "ใช้มุมภายนอกของสามเหลี่ยมหน้าจั่ว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันที่สอง",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.incenter_sum_angle_olympiad"
+      ]
+    }
+  ]
+}

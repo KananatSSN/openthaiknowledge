@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.centroid-angle-ratio",
+      "kind": "procedure",
+      "title": "AB/BC จากมุมที่จุดเซนทรอยด์",
+      "statement": "P เป็นจุดเซนทรอยด์ ตั้ง A = (0, 0), D = (3, 0), P = (2, 0), C ที่มุม α = 15° และ B = 2D − C เงื่อนไข ∠APB = β = 60° ให้ AC = 4 sin β/sin(β − α) = 2√6 แล้ว AB² = 36 − 12·AC cos α + AC² = 24 − 12√3 และ BC² = 36 − 24·AC cos α + 4AC² = 60 − 24√3 จึง AB/BC = √((4 − √3)/13)",
+      "steps": [
+        "ตั้งพิกัดตามเส้นมัธยฐาน",
+        "หา AC จากมุม APB",
+        "คำนวณ AB และ BC"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันแรก",
+          "number": 9
+        }
+      ],
+      "covered_by": [
+        "math.centroid_angle_ratio_olympiad"
+      ]
+    }
+  ]
+}

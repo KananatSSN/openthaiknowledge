@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.shift-additive-functional-existence",
+      "kind": "procedure",
+      "title": "f(m + f(n)) = f(m) + f(n) + f(n + 1) ไม่มีคำตอบบนจำนวนนับ",
+      "statement": "จากสมการ f(m + T) = f(m) + Cₙ โดย T = f(n) และ Cₙ = f(n) + f(n + 1) ใช้สองครั้งเทียบ f(m + f(n)f(k)) สองแบบได้ Cₙ/f(n) = C_k/f(k) = λ คงตัว จึง f(n + 1) = (λ − 1)f(n) เป็นลำดับเรขาคณิตอัตราส่วน μ ขณะที่ f(m + kT) = f(m) + kλT โตแบบเชิงเส้นตามลำดับเลขคณิต จึงต้อง μ = 1 คือ f คงตัว c แล้ว c = 3c ขัดกับ c ∈ ℕ จึงไม่มีฟังก์ชันดังกล่าว ในรูปทั่วไป f(m + f(n)) = f(m) + af(n) + bf(n + 1) มีคำตอบ (เช่น f(n) = an + c) เมื่อ b = 0 เท่านั้น",
+      "steps": [
+        "เขียนเป็นการเลื่อนคงที่ f(m + T) = f(m) + C",
+        "เทียบสองแบบให้ f เป็นลำดับเรขาคณิต",
+        "เทียบการเติบโตแบบเรขาคณิตกับเชิงเส้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-54-math.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "math.shift_additive_functional_existence_olympiad"
+      ]
+    }
+  ]
+}

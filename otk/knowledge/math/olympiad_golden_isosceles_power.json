@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.golden-isosceles-power",
+      "kind": "procedure",
+      "title": "AB/BC ในสามเหลี่ยมหน้าจั่วมุมยอด 36°",
+      "statement": "ให้มุมยอด x มุมฐาน 2x จะได้ 5x = 180° x = 36° ลากเส้นแบ่งครึ่งมุม B ตัด AC ที่ D ได้สามเหลี่ยม BCD คล้าย ABC และ AD = BD = BC จึง AB/BC = BC/(AB − BC) ได้ AB/BC = (1 + √5)/2",
+      "steps": [
+        "หามุม",
+        "ลากเส้นแบ่งครึ่งมุมที่ฐาน",
+        "ใช้สามเหลี่ยมคล้ายได้สมการกำลังสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 3
+        }
+      ],
+      "covered_by": [
+        "math.golden_isosceles_power_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.lifted-order-largest",
+      "kind": "procedure",
+      "title": "n มากสุด ≤ 2004 ที่ 169 | 3^(3n+3) − 27",
+      "statement": "3^(3n+3) − 27 = 27(27ⁿ − 1) และ 13 ∤ 27 จึงต้องการ 27ⁿ ≡ 1 (mod 169) อันดับของ 27 มอดุโล 13 คือ 1 (27 ≡ 1) แต่ 27 ≢ 1 (mod 169) อันดับมอดุโล 169 จึงเป็น 13 ต้องการ 13 | n ได้ n = 2002",
+      "steps": [
+        "ดึงตัวประกอบ 27",
+        "หาอันดับของ 27 มอดุโล 169",
+        "หาพหุคูณที่มากที่สุด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 15
+        }
+      ],
+      "covered_by": [
+        "math.lifted_order_largest_olympiad"
+      ]
+    }
+  ]
+}

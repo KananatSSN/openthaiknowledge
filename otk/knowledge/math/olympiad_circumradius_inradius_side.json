@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมแนบใน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.circumradius-inradius-side",
+      "kind": "procedure",
+      "title": "ด้านที่สามเมื่อ R = (7/2)r และสองด้านยาว 3, 7",
+      "statement": "R/r = abc/(4(s − a)(s − b)(s − c)) = 2abc/((−a + b + c)(a − b + c)(a + b − c)) ด้านที่สามเป็นจำนวนเต็มระหว่าง 5 ถึง 9 แทนค่าแต่ละตัว: c = 8 ให้ 2·168/(12·4·2) = 7/2 พอดี (ตัวอื่นไม่ได้) จึงด้านที่เหลือยาว 8",
+      "steps": [
+        "เขียน R/r ในรูปด้าน",
+        "ไล่ค่าจำนวนเต็มที่เป็นไปได้ตามอสมการสามเหลี่ยม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 21
+        }
+      ],
+      "covered_by": [
+        "math.circumradius_inradius_side_olympiad"
+      ]
+    }
+  ]
+}

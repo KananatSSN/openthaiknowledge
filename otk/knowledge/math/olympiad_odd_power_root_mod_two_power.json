@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.odd-power-root-mod-two-power",
+      "kind": "procedure",
+      "title": "x น้อยสุดที่ 2²⁵⁴⁸ | x²⁰⁰⁵ + 1",
+      "statement": "x ต้องเป็นคี่ ถ้า x^e ≡ y^e สำหรับ x, y คี่ และ e คี่ แล้ว (x^e − y^e)/(x − y) เป็นผลบวกของพจน์คี่ e พจน์ จึงเป็นคี่ ทำให้ x ≡ y ดังนั้นการยกกำลัง 2005 เป็นหนึ่งต่อหนึ่ง และ (−1)²⁰⁰⁵ = −1 จึง x ≡ −1 และ x = 2²⁵⁴⁸ − 1",
+      "steps": [
+        "x ต้องเป็นคี่",
+        "การยกกำลังคี่เป็นหนึ่งต่อหนึ่งมอดุโล 2ᴷ",
+        "ใช้ x = −1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 11
+        }
+      ],
+      "covered_by": [
+        "math.odd_power_root_mod_two_power_olympiad"
+      ]
+    }
+  ]
+}

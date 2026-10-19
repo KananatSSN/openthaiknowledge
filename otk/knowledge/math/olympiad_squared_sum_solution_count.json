@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.squared-sum-solution-count",
+      "kind": "procedure",
+      "title": "ผลเฉลยของ (x₁ + x₂ + x₃)²(y₁ + y₂) = 2548",
+      "statement": "2548 = 2²·7²·13 ให้ s = x₁ + x₂ + x₃ ≥ 3 ต้องมี s² หาร 2548 จึง s = 7 หรือ 14 s = 7: y₁ + y₂ = 52 ได้ C(6, 2)·51 = 765 s = 14: y₁ + y₂ = 13 ได้ C(13, 2)·12 = 936 รวม 1701",
+      "steps": [
+        "แยกตัวประกอบ 2548",
+        "หาค่า s ที่เป็นไปได้",
+        "นับวิธีแบ่ง x และ y"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.squared_sum_solution_count_olympiad"
+      ]
+    }
+  ]
+}

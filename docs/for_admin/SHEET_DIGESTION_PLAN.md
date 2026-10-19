@@ -896,6 +896,311 @@ TOTAL         338   316     17     4   66      255      6     11
   edge-owner test validates constructions through n=61 and tiny boards by
   exhaustive search. All ten items are mapped; the bank entry is `generated`.
 
+### 2026-10-16 — 2562 national paper; science papers indexed
+
+- Cloned the bank. `bank scan` found 177 new non-maths สอวน. papers (physics,
+  chemistry, biology, computing, astronomy, geography, earth science, IJSO,
+  linguistics). It indexed only their `MANIFEST.json`, `.docx` and `.emf`
+  files, all as `ignored`. Their ~1,000 PDFs stay unindexed until fetched;
+  they need a science knowledge path that does not exist yet. The user chose
+  to finish the POSN maths papers first.
+- The 2562 national paper (16th TMO) went through the documented route: a
+  transcript in `_transcribed/`, then `convert`. 10 questions; 4 have answers
+  (3: f(x) = √(4x + c) with c ≥ 0, not just 2√x; 4: a = ±1; 6: f(x) = x/2;
+  9: 4038), and 6 are proofs.
+- Ten knowledge units (`olympiad_*.json`) claim the ten items, each covered by
+  a new original set in `otk/sets/math/olympiad/`. Their independent checks
+  are in `test_math_olympiad_posn_national_2562.py`: coordinates for 1 and 8,
+  unbounded search for 2, substitution for 3, enumeration and a bitset parity
+  DP (including total 2019) for 4, brute-force bijections for 7, the
+  angle-sum bound for 9, and direct factorials for 10. Proof sketches are in
+  the bank's `_notes/posn-national-62-math.md`. The bank entry is
+  `generated`.
+- **Open:** item 5 (Σ(4a − 1)/(2b + 1)² ≥ 1 under abc = 1) has no written proof
+  yet. The bound is checked numerically, and the set relies only on the exact
+  scaling identity plus that bound. A separable tangent-line proof is
+  impossible here; the note says why.
+- `test_refactor_characterization` freezes the registry size, now 3,759.
+- Remaining POSN maths at `new`: the national papers 2547–2557 (11 papers).
+
+### 2026-10-16 — 2557 national paper
+
+- The 2557 national paper (11th TMO) went through the same route. 8 questions,
+  5 answered:
+  - 2: f(x) = x and f(x) = −x²;
+  - 4: P = ±1, since gcd(2557 + 213·2014, 2557·2556) = 1;
+  - 5: k = ∛9 − 1;
+  - 6: p = 2, 3;
+  - 8: n(n − 1)/2 + 1 cards.
+
+  Items 1, 3 and 7 are proofs.
+- Eight knowledge units and eight original sets cover them, checked in
+  `test_math_olympiad_posn_national_2557.py`. The bank entry is `generated`.
+- Item 7's point E is the one with BE ∥ AD, which gives
+  O₁O₂ = AB/(2 sin ∠ADC). The tempting "ABED cyclic" is wrong, and the
+  coordinates show why.
+- Open: item 2's case f(1) = −1 is proved only for rational x; the step for
+  irrational x is only sketched in the note.
+- Registry 3,767 sets; enrichment count 310.
+- Remaining POSN maths at `new`: national papers 2547–2556 (10 papers).
+
+### 2026-10-16 — 2556 national paper
+
+- The 2556 national paper (10th TMO): 12 questions, 6 answered.
+  - 1: 48, because p > 4 includes p = 5; this is not the familiar 240.
+  - 2: BC = 3 + √3.
+  - 4: five polynomials.
+  - 5: n = 21301.
+  - 6: f = 0, ±x, ±|x|.
+  - 10: (2, 14).
+- Twelve knowledge units and twelve original sets cover the paper, checked in
+  `test_math_olympiad_posn_national_2556.py`. The bank entry is `generated`.
+- A SymPy check caught a sign slip in the item 8 set: a₃ carries (−1)ⁿ⁻¹. The
+  minimum variant now uses even n only.
+- Item 12's area equality is verified by coordinates only; no synthetic proof
+  is written.
+- Registry 3,779 sets; enrichment count 322.
+- Remaining POSN maths at `new`: national papers 2547–2555 (9 papers).
+
+### 2026-10-16 — 2555 national paper
+
+- The 2555 national paper (9th TMO): 12 questions, read from the renders
+  because the text layer misplaces Thai vowels. 3 have answers:
+  - 5: f(x) = 2x + 1;
+  - 6: n = 197;
+  - 8: P/Q = (3n − 1)/(4n − 1).
+
+  The other 9 are proofs.
+- Twelve knowledge units and twelve original sets, checked in
+  `test_math_olympiad_posn_national_2555.py`. The bank entry is `generated`.
+- A TeX trap: a clean-up step strips a coefficient "1" before a letter, so
+  `d_1d_2` renders as `d_d_2`. Write subscripts braced, as `d_{1}`.
+- Open: item 5's uniqueness proof stops at z = ±1/2, so the set asks only for
+  the linear solution. Item 11 is checked by coordinates only.
+- Registry 3,791 sets; enrichment count 334.
+- Remaining POSN maths at `new`: national papers 2547–2554 (8 papers).
+
+### 2026-10-16 — 2554 national paper
+
+- The 2554 national paper (8th TMO): 12 questions on pages 1–2. Pages 3–17
+  are official worked solutions, used only as a cross-check.
+- Answers:
+  - 2: f ≡ 1.
+  - 5: n ∈ {1, 625, 6561, 4100625}.
+  - 6: 1005·1006/2011.
+  - 10: no such f.
+  - 12: 2·3²⁵⁵⁴.
+
+  The first four agree with the official key.
+- **The official key undercounts item 12.** It prints 3² + 3¹²⁷⁷ + 3²⁵⁵⁴ and
+  counts only one shift direction per period. Brute force on 6, 12 and 15
+  chairs gives 2·3ᵐ. The transcript carries the corrected answer, with a
+  comment, as the (สสวท) transcripts do for teacher's-manual errors.
+- Twelve knowledge units and twelve original sets, checked in
+  `test_math_olympiad_posn_national_2554.py`. The bank entry is `generated`.
+- Registry 3,803 sets; enrichment count 346.
+- `test_per_set` caught two choice-length cues, and both sets were reworked:
+  - a "∅" answer was always the shortest choice, so item 10 became a count
+    of the (a, b) pairs that admit a solution;
+  - a reduced N/4 answer was the shortest choice, so item 6 now uses odd N,
+    as in the source.
+- Remaining POSN maths at `new`: national papers 2547–2553 (7 papers).
+
+### 2026-10-17 — 2553 national paper
+
+- The 2553 national paper (7th TMO) has 16 questions: 10 on day 1 and 6 on
+  day 2, with numbering restarting on day 2. The transcript uses two sections,
+  and the knowledge units cite `{sheet, section, number}`.
+- Answers:
+  - day 1, item 1: 55;
+  - day 1, item 2: DF is a diameter, = xyz/(2Δ);
+  - day 1, item 4: 150°;
+  - day 1, item 9: −1/2;
+  - day 1, item 10: p = 7;
+  - day 2, item 5: f ≡ 1005/2.
+- Sixteen knowledge units and sixteen original sets, checked in
+  `test_math_olympiad_posn_national_2553.py`. That file includes a
+  Greenwood–Gleason colouring of K16, which shows R(3,3,3) = 17 is needed in
+  the day 2, item 2 argument. The bank entry is `generated`.
+- Set modules must register at least one set (`test_sets_layout`), so a shared
+  helper module in `olympiad/` is not allowed; helpers are inlined.
+- Open (sketched only):
+  - day 1, item 6: proof that f is even;
+  - day 2, item 4: the altitude inequality;
+  - day 2, item 5: uniqueness in the plane.
+- Registry 3,819 sets; enrichment count 362.
+- Remaining POSN maths at `new`: national papers 2547–2552 (6 papers).
+
+### 2026-10-17 — 2552 national paper
+
+- The 2552 national paper (6th TMO) has 16 questions over two days, laid out
+  like 2553. 9 have answers:
+  - day 1, item 1: 2;
+  - day 1, item 2: (n − k)2ᵏ⁻¹;
+  - day 1, item 3: 393215;
+  - day 1, item 4: 3/20;
+  - day 1, item 5: x + 1;
+  - day 1, item 6: 2(c − b)/(a + b + c);
+  - day 1, item 9: √((4 − √3)/13);
+  - day 2, item 2: no such f;
+  - day 2, item 6: three polynomials.
+- Sixteen knowledge units and sixteen original sets, checked in
+  `test_math_olympiad_posn_national_2552.py`. The bank entry is `generated`.
+- Open (sketched only):
+  - day 1, item 5: uniqueness beyond linear f;
+  - day 2, item 3: the "only if" direction;
+  - day 2, item 5: the Zarankiewicz and pigeonhole argument;
+  - day 2, item 6: the degree bound.
+- Registry 3,835 sets; enrichment count 378.
+- Remaining POSN maths at `new`: national papers 2547–2551 (5 papers).
+
+### 2026-10-17 — 2551 national paper
+
+- The 2551 national paper (5th TMO) has 16 questions over two days. 8 have
+  answers:
+  - day 1, item 1: cos θ = 3√3/√31;
+  - day 1, item 2: 8/3, assuming BD > DC (the statement is symmetric in B and C);
+  - day 1, item 3: x = 2, 5;
+  - day 1, item 7: 87;
+  - day 1, item 9: 3¹⁰;
+  - day 1, item 10: 993;
+  - day 2, item 2: N = 130;
+  - day 2, item 5: (m(m − 1) + n(n − 1))/(m + n).
+- Sixteen knowledge units and sixteen original sets, checked in
+  `test_math_olympiad_posn_national_2551.py`. That file includes a full
+  coordinate construction of the day 2, item 1 rhombus. The bank entry is
+  `generated`.
+- Open (sketched only):
+  - day 2, item 1: the synthetic proof that ND ∥ PA;
+  - day 2, item 6: extending the equation from x²y³ > 2008 to all x, y.
+- Registry 3,851 sets; enrichment count 394.
+
+### 2026-10-17 — 2550 national paper
+
+- The 2550 national paper (4th TMO) has 24 questions over two days: 18
+  short answers on day 1 and six proofs on day 2. The PDF has no text layer
+  and no answer pages, so every answer was derived and checked by computer.
+  20 have answers, including:
+  - day 1, item 2: √10;
+  - day 1, item 5: 2∛2;
+  - day 1, item 10: n = 10;
+  - day 1, item 14: C(8085, 169);
+  - day 1, item 15: 225;
+  - day 1, item 18: 1273;
+  - day 2, item 1: f constant;
+  - day 2, item 4: p = 3, 7.
+- 24 knowledge units and 24 original sets, checked in
+  `test_math_olympiad_posn_national_2550.py`. The bank entry is
+  `generated`.
+- Open (sketched only):
+  - day 2, item 3: the angle chase that makes A, M, N, D concyclic.
+- Registry 3,875 sets; enrichment count 418.
+
+### 2026-10-17 — 2549 national paper
+
+- The 2549 national paper (3rd TMO) has 24 questions over two days: 18
+  short answers on day 1 and six proofs on day 2. The text layer drops the
+  mathematics and there are no answer pages, so every answer was derived
+  and checked by computer. 18 have answers, including:
+  - day 1, item 4: 1/√5;
+  - day 1, item 5: 118;
+  - day 1, item 8: −37;
+  - day 1, item 12: 14;
+  - day 1, item 13: 781;
+  - day 1, item 14: 1274;
+  - day 1, item 17: 16.
+- 24 knowledge units and 24 original sets, checked in
+  `test_math_olympiad_posn_national_2549.py`. Day 2, item 4 (the 4 × 7
+  foursome) has a written case proof and an exhaustive search; 4 × 6 can
+  avoid one. Day 2, item 5 is settled by the witness m = 1, n = 45. The
+  bank entry is `generated`.
+- Open: none.
+- Registry 3,899 sets; enrichment count 442.
+
+### 2026-10-17 — 2548 national paper
+
+- The 2548 national paper (2nd TMO) has 27 questions over two days: 21
+  short answers on day 1 and six items on day 2. The text layer drops the
+  mathematics and there are no answer pages, so every answer was derived and
+  checked by computer. 23 have answers, including:
+  - day 1, item 1: √6 − 2;
+  - day 1, item 6: 1701;
+  - day 1, item 9: 4050;
+  - day 1, item 13: k = 181;
+  - day 1, item 17: 23/233;
+  - day 1, item 18: 1275/2;
+  - day 1, item 20: √6/6;
+  - day 2, item 5: 2⁴⁹.
+- 27 knowledge units and 27 original sets, checked in
+  `test_math_olympiad_posn_national_2548.py`. Day 2, item 3 records an
+  explicit f with f(f(n)) = 2n, which the tests check directly. The bank
+  entry is `generated`.
+- Open: none.
+- Registry 3,926 sets; enrichment count 469.
+
+### 2026-10-17 — 2547 national paper
+
+- The 2547 national paper (1st TMO) has 27 questions over two days: 21
+  short answers on day 1 and six items on day 2. The text layer drops the
+  mathematics and there are no answer pages, so every answer was derived
+  and checked by computer. 25 have answers, including:
+  - day 1, item 1: 5√6/18;
+  - day 1, item 3: x³ − 74x² − 89x − 27;
+  - day 1, item 11: 4620;
+  - day 1, item 13: 668;
+  - day 1, item 16: 536;
+  - day 1, item 21: 8;
+  - day 2, item 1: 35°;
+  - day 2, item 3: 951;
+  - day 2, item 5: p = 2.
+- Day 1, item 2 has no real solution as printed (the bank note proves it).
+  Its answer 3 is only a formal value, and its set uses the consistent sign.
+- 27 knowledge units and 27 original sets, checked in
+  `test_math_olympiad_posn_national_2547.py`. The bank entry is
+  `generated`.
+- Open: none.
+- Registry 3,953 sets; enrichment count 496.
+- Remaining POSN maths at `new`: none. `bank status` for `สอวน_math` now
+  shows 18 `generated`, 7 `green` and 1 `ignored`.
+
+### 2026-10-17 — national papers to `green`
+
+- A national paper reaches `green` once it has its own package under
+  `otk/sheets/`. Each question gets a solver (`PARAMS`, `ANSWER`, `solve`,
+  an independent `check`, ≥ 3 `VARIANTS`) that `sheetpipe verify` passes.
+- **Generators.** Each item's generator is the olympiad set already built from
+  that question, not a second per-paper module. `test_sheetpipe.py` lists
+  these sheets in `SHARED_GENERATORS` and checks that each `adapted` set's
+  provenance cites the paper. The 2563–2567 papers' sets are declared
+  `original`, so they are accepted without a citation.
+- **Numbering.** Day 2 restarts at 1, so its six items are stored after day 1:
+  q22–q27 for a 21-item day 1.
+- **Proof items.** The solver computes the quantity the proof establishes, and
+  the item's `note` says so.
+- **2547 (`posnnat2547_math`).** 27/27 green. `bank scan` moved the record to
+  `green`.
+- **All national papers green.** 2547–2557 and 2562–2567 each have a
+  `posnnat25YY_math` package, every solver verified. Together they hold 254
+  solvers; `bank scan` moved every record to `green`.
+  - 2563, 2564, 2566 and 2567 had no transcript. They were transcribed from the
+    renders into the bank's `_transcribed/`. Fetch their PDFs with
+    `sheetpipe bank fetch`; a plain `git lfs pull` fetches nothing, because the
+    bank's `.lfsconfig` excludes PDFs.
+- **Checks that caught real errors.**
+  - The 2556 item 6 check found that for even k, ±sign(x)|x|ᵏ also solves the
+    equation. The `power_sum_functional` helper was fixed; draws are unchanged.
+  - The 2557 item 6 check found the extra prime 67 for (α, β) = (13, 52). The
+    solver now searches both divisibility cases to a proven bound.
+  - The 2566 item 5 boundary showed up only when the check tested the circle
+    centres directly. Sampled chords missed it.
+- **Still `generated`: `posn1-69` (2569 first round).** Its digest says the
+  extracts and figures stay private, and the paper forbids publication without
+  POSN's permission. A sheet package would publish its text and figure crops,
+  so it waits for the maintainer.
+- Review: the `ignored` index entries for the non-maths สอวน. folders (see
+  the 2562 entry) were dropped from this branch to keep it to the maths
+  papers. A later `bank scan` adds them back in a change of their own.
+
 ### 2026-10-17 — first POSN physics paper, 2560 camp selection
 
 - Reviewed every exercise page of the 11-page PDF and all six automatic

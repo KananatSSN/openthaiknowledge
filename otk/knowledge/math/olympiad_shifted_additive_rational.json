@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.shifted-additive-rational",
+      "kind": "procedure",
+      "title": "f(2547) เมื่อ f(x + y) = f(x) + f(y) + 2547",
+      "statement": "ให้ g(x) = f(x) + 2547 จะได้ g(x + y) = g(x) + g(y) บนจำนวนตรรกยะ จึง g(x) = kx โดย k = g(2004)/2004 = 5094/2004 ได้ f(2547) = 2547·5094/2004 − 2547 = 2547·515/334 = 1311705/334",
+      "steps": [
+        "เลื่อนค่าคงตัวให้เป็นสมการโคชี",
+        "ใช้ g(x) = kx บนจำนวนตรรกยะ",
+        "คำนวณ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันที่สอง",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.shifted_additive_rational_olympiad"
+      ]
+    }
+  ]
+}

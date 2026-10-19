@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.composed-linear-functional",
+      "kind": "procedure",
+      "title": "f(0) จาก f(x + f(y)) = 2x + 4y + 2547",
+      "statement": "แทน x = t − f(y) ได้ f(t) = 2t − 2f(y) + 4y + 2547 สำหรับทุก t จึง f(t) = 2t + c สำหรับค่าคงตัว c แทนกลับได้ 2x + 4y + 3c = 2x + 4y + 2547 จึง c = 849 และ f(0) = 849",
+      "steps": [
+        "แทน x = t − f(y)",
+        "สรุปว่า f เป็นเชิงเส้นความชัน 2",
+        "เทียบค่าคงตัว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 8
+        }
+      ],
+      "covered_by": [
+        "math.composed_linear_functional_olympiad"
+      ]
+    }
+  ]
+}

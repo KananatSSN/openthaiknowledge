@@ -3931,8 +3931,8 @@
   {
    "path": "สอวน_math/manifest.json",
    "kind": "other",
-   "sha256": "23104fd3b50f7c55",
-   "size": 11321,
+   "sha256": "8d7e987c357b15be",
+   "size": 11040,
    "stage": "ignored"
   },
   {
@@ -3943,7 +3943,11 @@
    "pages": 3,
    "text_chars": 3932,
    "layout": "numbered",
-   "glyph_damage": 49
+   "glyph_damage": 49,
+   "items": 27,
+   "sheet_id": "posnnat2547_math",
+   "stage": "green",
+   "note": "2547 national paper (1st TMO) digested: 27 items, 27 knowledge units, 27 sets; day 1 item 2 has no real solution as printed; tests in test_math_olympiad_posn_national_2547.py"
   },
   {
    "path": "สอวน_math/posn-national-48-math.pdf",
@@ -3953,7 +3957,11 @@
    "pages": 3,
    "text_chars": 4701,
    "layout": "numbered",
-   "glyph_damage": 40
+   "glyph_damage": 40,
+   "items": 27,
+   "sheet_id": "posnnat2548_math",
+   "stage": "green",
+   "note": "2548 national paper (2nd TMO) digested: 27 items, 27 knowledge units, 27 sets; tests in test_math_olympiad_posn_national_2548.py"
   },
   {
    "path": "สอวน_math/posn-national-49-math.pdf",
@@ -3963,7 +3971,11 @@
    "pages": 3,
    "text_chars": 3653,
    "layout": "numbered",
-   "glyph_damage": 27
+   "glyph_damage": 27,
+   "items": 24,
+   "sheet_id": "posnnat2549_math",
+   "stage": "green",
+   "note": "2549 national paper (3rd TMO) digested: 24 items, 24 knowledge units, 24 sets; tests in test_math_olympiad_posn_national_2549.py"
   },
   {
    "path": "สอวน_math/posn-national-50-math.pdf",
@@ -3973,7 +3985,11 @@
    "pages": 3,
    "text_chars": 4492,
    "layout": "numbered",
-   "glyph_damage": 32
+   "glyph_damage": 32,
+   "items": 24,
+   "sheet_id": "posnnat2550_math",
+   "stage": "green",
+   "note": "2550 national paper (4th TMO) digested: 24 items, 24 knowledge units, 24 sets; tests in test_math_olympiad_posn_national_2550.py"
   },
   {
    "path": "สอวน_math/posn-national-51-math.pdf",
@@ -3983,7 +3999,11 @@
    "pages": 2,
    "text_chars": 3246,
    "layout": "numbered",
-   "glyph_damage": 34
+   "glyph_damage": 34,
+   "items": 16,
+   "sheet_id": "posnnat2551_math",
+   "stage": "green",
+   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to adapted problem sets; a few proofs only sketched (see notes)"
   },
   {
    "path": "สอวน_math/posn-national-52-math.pdf",
@@ -3993,7 +4013,11 @@
    "pages": 2,
    "text_chars": 3722,
    "layout": "numbered",
-   "glyph_damage": 37
+   "glyph_damage": 37,
+   "items": 16,
+   "sheet_id": "posnnat2552_math",
+   "stage": "green",
+   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to adapted problem sets; a few proofs only sketched (see notes)"
   },
   {
    "path": "สอวน_math/posn-national-53-math.pdf",
@@ -4003,7 +4027,11 @@
    "pages": 2,
    "text_chars": 3859,
    "layout": "numbered",
-   "glyph_damage": 40
+   "glyph_damage": 40,
+   "items": 16,
+   "sheet_id": "posnnat2553_math",
+   "stage": "green",
+   "note": "Transcribed from the renders (two days, numbering restarts): all 16 items mapped to adapted problem sets; day 1 item 6 evenness and day 2 item 5 uniqueness only sketched"
   },
   {
    "path": "สอวน_math/posn-national-54-math.pdf",
@@ -4013,7 +4041,11 @@
    "pages": 17,
    "text_chars": 23952,
    "layout": "numbered",
-   "glyph_damage": 135
+   "glyph_damage": 135,
+   "items": 12,
+   "sheet_id": "posnnat2554_math",
+   "stage": "green",
+   "note": "Questions on pp. 1–2 transcribed from the renders; official solutions pp. 3–17 used as a cross-check. All 12 items mapped; item 12's official key undercounts (2·3^2554, verified by brute force)"
   },
   {
    "path": "สอวน_math/posn-national-55-math.pdf",
@@ -4023,7 +4055,11 @@
    "pages": 2,
    "text_chars": 4131,
    "layout": "numbered",
-   "glyph_damage": 32
+   "glyph_damage": 32,
+   "items": 12,
+   "sheet_id": "posnnat2555_math",
+   "stage": "green",
+   "note": "Transcribed from the renders (broken text layer): all 12 items mapped to adapted problem sets; item 5 uniqueness partly written"
   },
   {
    "path": "สอวน_math/posn-national-56-math.pdf",
@@ -4033,7 +4069,11 @@
    "pages": 2,
    "text_chars": 3178,
    "layout": "numbered",
-   "glyph_damage": 147
+   "glyph_damage": 147,
+   "items": 12,
+   "sheet_id": "posnnat2556_math",
+   "stage": "green",
+   "note": "Transcribed and checked against the renders: all 12 items mapped to adapted problem sets"
   },
   {
    "path": "สอวน_math/posn-national-57-math.pdf",
@@ -4043,7 +4083,11 @@
    "pages": 2,
    "text_chars": 2046,
    "layout": "numbered",
-   "glyph_damage": 97
+   "glyph_damage": 97,
+   "items": 8,
+   "sheet_id": "posnnat2557_math",
+   "stage": "green",
+   "note": "Transcribed and checked against the renders: all 8 items mapped to adapted problem sets"
   },
   {
    "path": "สอวน_math/posn-national-62-math.pdf",
@@ -4053,7 +4097,11 @@
    "pages": 2,
    "text_chars": 2249,
    "layout": "numbered",
-   "glyph_damage": 123
+   "glyph_damage": 123,
+   "items": 10,
+   "sheet_id": "posnnat2562_math",
+   "stage": "green",
+   "note": "Transcribed and checked against the renders: all 10 items mapped to adapted problem sets; item 5's written proof still open (numerically verified)"
   },
   {
    "path": "สอวน_math/posn-national-63-math.pdf",
@@ -4064,9 +4112,10 @@
    "text_chars": 2542,
    "layout": "numbered",
    "glyph_damage": 143,
-     "items": 10,
-     "stage": "generated",
-     "note": "Complete hand-reviewed digest: all 10 items mapped to original problem sets"
+   "items": 10,
+   "sheet_id": "posnnat2563_math",
+   "stage": "green",
+   "note": "Complete hand-reviewed digest: all 10 items mapped to adapted problem sets"
   },
   {
    "path": "สอวน_math/posn-national-64-math.pdf",
@@ -4077,7 +4126,8 @@
    "text_chars": 2831,
    "layout": "numbered",
    "items": 10,
-   "stage": "generated",
+   "sheet_id": "posnnat2564_math",
+   "stage": "green",
    "note": "Complete hand-reviewed digest: all 10 items; corrected high-resolution readings of items 3-5"
   },
   {
@@ -4089,7 +4139,8 @@
    "layout": "no-text",
    "scan_pages": 2,
    "items": 10,
-   "stage": "generated"
+   "sheet_id": "posnnat2565_math",
+   "stage": "green"
   },
   {
    "path": "สอวน_math/posn-national-66-math.pdf",
@@ -4100,7 +4151,8 @@
    "text_chars": 3282,
    "layout": "numbered",
    "items": 10,
-   "stage": "generated",
+   "sheet_id": "posnnat2566_math",
+   "stage": "green",
    "note": "Hand-reviewed ten-item text digest"
   },
   {
@@ -4112,7 +4164,8 @@
    "text_chars": 2542,
    "layout": "numbered",
    "items": 10,
-   "stage": "generated",
+   "sheet_id": "posnnat2567_math",
+   "stage": "green",
    "note": "Hand-reviewed ten-item text digest; item 1 requires interior points"
   },
   {

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.subset-range-count",
+      "kind": "procedure",
+      "title": "เซตย่อยที่ผลต่างค่ามากสุดกับน้อยสุดเท่ากับ k",
+      "statement": "เลือกค่าน้อยสุด m ได้ n − k แบบ (m = 1, …, n − k) ค่ามากสุดคือ m + k และจำนวน k − 1 จำนวนที่อยู่ระหว่างเลือกเป็นสมาชิกหรือไม่ก็ได้ 2^(k−1) แบบ รวม (n − k)·2^(k−1)",
+      "steps": [
+        "เลือกค่าน้อยสุด",
+        "กำหนดค่ามากสุด",
+        "เลือกสมาชิกระหว่างกลางอย่างอิสระ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันแรก",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.subset_range_count_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.linear-shift-functional",
+      "kind": "procedure",
+      "title": "f(xy + 2x + 2y − 1) = f(x)f(y) + f(y) + x − 2",
+      "statement": "แทน f(x) = px + q เทียบสัมประสิทธิ์ xy ได้ p = p² จึง p = 1 (p = 0 ทำให้ด้านขวามี x ด้านเดียว) สัมประสิทธิ์ x และ y ให้ q = 1 และค่าคงตัวสอดคล้อง จึง f(x) = x + 1 การพิสูจน์ว่าไม่มีคำตอบที่ไม่เป็นเชิงเส้นร่างไว้ในบันทึก ในรูปทั่วไป f(xy + (c + 1)(x + y) + c² − d) = f(x)f(y) + f(y) + x − d มีคำตอบเชิงเส้น x + c",
+      "steps": [
+        "แทนรูปเชิงเส้น",
+        "เทียบสัมประสิทธิ์",
+        "ตรวจคำตอบ f(x) = x + 1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันแรก",
+          "number": 5
+        }
+      ],
+      "covered_by": [
+        "math.linear_shift_functional_olympiad"
+      ]
+    }
+  ]
+}

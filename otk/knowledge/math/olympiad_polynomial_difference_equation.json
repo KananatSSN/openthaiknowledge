@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนาม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.polynomial-difference-equation",
+      "kind": "procedure",
+      "title": "P(α) = 0 ⇒ P(α + 1) = 1 บังคับรากซ้ำ",
+      "statement": "ถ้ารากทั้ง 2008 ตัวต่างกัน พหุนาม Q(x) = P(x + 1) − 1 − P(x) มีดีกรีน้อยกว่า 2008 (สัมประสิทธิ์นำหักล้าง) แต่มีราก 2008 ตัว จึง Q ≡ 0 คือ P(x + 1) − P(x) = 1 ทุก x ซึ่งบังคับให้ P เป็นพหุนามดีกรีหนึ่ง ขัดแย้ง ในรูปทั่วไป P(x + 1) − P(x) = ax + b กับ P(0) = c ให้ P(n) = c + a·n(n − 1)/2 + bn โดยการบวกแบบยุบตัว",
+      "steps": [
+        "สร้าง Q(x) = P(x + 1) − 1 − P(x)",
+        "นับรากเทียบกับดีกรี",
+        "สรุปว่า P ต้องเป็นเชิงเส้น ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันแรก",
+          "number": 5
+        }
+      ],
+      "covered_by": [
+        "math.polynomial_difference_equation_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: สามเหลี่ยมและเส้นมัธยฐาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cevian-segment-ratio",
+      "kind": "procedure",
+      "title": "EG : GF เมื่อ EF ตัดเส้นมัธยฐาน CM",
+      "statement": "ใช้เวกเตอร์จาก C ให้ CA = a, CB = b จะได้ E = (CE/16)a และ F = (CF/12)b จุด G บน CM เป็นพหุคูณของ a + b เขียน G = (1 − t)E + tF แล้วเทียบสัมประสิทธิ์ ได้ (1 − t)·CE/16 = t·CF/12 เมื่อ CE = 3CF ได้ t/(1 − t) = 36/16 จึง EG : GF = 9 : 4 (ทั่วไป EG : GF = k·BC : AC เมื่อ CE = k·CF)",
+      "steps": [
+        "ตั้งเวกเตอร์จาก C",
+        "จุดบน CM มีสัมประสิทธิ์ของ a และ b เท่ากัน",
+        "แก้หาอัตราส่วนที่ G แบ่ง EF"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 4
+        }
+      ],
+      "covered_by": [
+        "math.cevian_segment_ratio_olympiad"
+      ]
+    }
+  ]
+}

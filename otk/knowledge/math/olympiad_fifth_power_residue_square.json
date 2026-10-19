@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.residue-square-from-sum",
+      "kind": "procedure",
+      "title": "m เป็นกำลังสองมอดุโล 5 เมื่อ 5 หาร ma² + b²",
+      "statement": "ถ้า 5 หาร a แล้ว 5 หาร b² ขัดกับ (a, b) = 1 จึง a มีตัวผกผันมอดุโล 5 และ m ≡ −(b/a)² (mod 5) เพราะ −1 ≡ 4 = 2² (mod 5) จะได้ m ≡ (2b/a)² จึงมี n ที่ 5 | m − n² ทั่วไปกว่านั้น สำหรับจำนวนเฉพาะ p ≡ 1 (mod 4) ที่ i² ≡ −1 ได้ n ≡ i·b/a",
+      "steps": [
+        "แสดงว่า a ไม่เป็นพหุคูณของ 5",
+        "หารด้วย a² มอดุโล 5",
+        "ใช้ −1 ≡ 2² (mod 5)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-55-math.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "math.fifth_power_residue_square_olympiad"
+      ]
+    }
+  ]
+}

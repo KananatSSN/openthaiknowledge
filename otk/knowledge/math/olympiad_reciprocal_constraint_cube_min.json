@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.reciprocal-constraint-cube-min",
+      "kind": "procedure",
+      "title": "a³ + b³ + c³ ≥ a + b + c เมื่อ a + b + c ≥ 1/a + 1/b + 1/c",
+      "statement": "ให้ s = a + b + c จาก 1/a + 1/b + 1/c ≥ 9/s ได้ s ≥ 9/s จึง s ≥ 3 อสมการค่าเฉลี่ยกำลังให้ a³ + b³ + c³ ≥ s³/9 ≥ s",
+      "steps": [
+        "ใช้ AM–HM",
+        "ได้ s ≥ 3",
+        "ใช้ค่าเฉลี่ยกำลังสาม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันที่สอง",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.reciprocal_constraint_cube_min_olympiad"
+      ]
+    }
+  ]
+}

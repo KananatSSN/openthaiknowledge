@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.sum-of-squares-functional-seed",
+      "kind": "procedure",
+      "title": "f(0) จาก 8f(0) + 9f(1) = 2006",
+      "statement": "แทน m = 1, n = 0 ได้ f(1) = (f(1) − f(0))² + f(0) จึง f(1) − f(0) เป็น 0 หรือ 1 ถ้าเป็น 1 จะได้ 17f(0) = 1997 ไม่ใช่จำนวนเต็ม ดังนั้น f(1) = f(0) และ 17f(0) = 2006 ได้ f(0) = 118 (ฟังก์ชันคงตัว 118 สอดคล้องจริง)",
+      "steps": [
+        "แทน m = 1, n = 0",
+        "แยกสองกรณีของ f(1) − f(0)",
+        "ตรวจว่าคำตอบเป็นจำนวนเต็ม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 5
+        }
+      ],
+      "covered_by": [
+        "math.sum_of_squares_functional_seed_olympiad"
+      ]
+    }
+  ]
+}

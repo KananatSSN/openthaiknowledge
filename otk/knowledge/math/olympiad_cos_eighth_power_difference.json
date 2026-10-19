@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ฟังก์ชันตรีโกณมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cos-eighth-power-difference",
+      "kind": "procedure",
+      "title": "cos⁸A − sin⁸A เมื่อ cos 4A = 1/3",
+      "statement": "cos⁸A − sin⁸A = (cos²A − sin²A)(cos⁴A + sin⁴A) = cos 2A·(1 − ½sin²2A) ในช่วง −π/4 ≤ A ≤ π/4 ได้ cos 2A ≥ 0 และ cos²2A = (1 + 1/3)/2 = 2/3, sin²2A = 1/3 จึงได้ √(2/3)·(5/6) = 5√6/18",
+      "steps": [
+        "แยกตัวประกอบผลต่างกำลังแปด",
+        "หา cos 2A จาก cos 4A พร้อมเครื่องหมาย",
+        "แทนค่า"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.cos_eighth_power_difference_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: สี่เหลี่ยมขนมเปียกปูน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.tangent-midpoint-rhombus-area",
+      "kind": "procedure",
+      "title": "MNOP เป็นรูปสี่เหลี่ยมขนมเปียกปูน",
+      "statement": "MN เป็นเส้นกึ่งกลางของ △APB จึง MN ∥ PB และ MN = PB/2 = PA/2 = PM ถ้าแสดงได้ว่า ND ∥ PA แล้ว NO ∥ PM และ MNOP เป็นรูปสี่เหลี่ยมด้านขนานที่ด้านประชิด PM = MN เท่ากัน จึงเป็นรูปขนมเปียกปูน การขนาน ND ∥ PA ตรวจด้วยการสร้างพิกัดแล้ว บทพิสูจน์เชิงสังเคราะห์ (ใช้กำลังของจุด N และมุมในวงกลม) ร่างไว้ในบันทึก พื้นที่คือ (PA/2)²·sin∠APB = c√(4t² − c²)/8 เมื่อ PA = t และ AB = c",
+      "steps": [
+        "ใช้เส้นกึ่งกลาง MN ∥ PB",
+        "แสดงว่า ND ∥ PA ด้วยกำลังของจุดและมุมในวงกลม",
+        "สรุปเป็นรูปขนมเปียกปูน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันที่สอง",
+          "number": 1
+        }
+      ],
+      "covered_by": [
+        "math.tangent_midpoint_rhombus_area_olympiad"
+      ]
+    }
+  ]
+}

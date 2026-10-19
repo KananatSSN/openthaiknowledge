@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.product-sum-solution-count",
+      "kind": "procedure",
+      "title": "ผลเฉลยของ (x₁ + x₂ + x₃)(y₁ + ⋯ + y₄) = 91",
+      "statement": "91 = 7·13 ผลบวก x อย่างน้อย 3 และผลบวก y อย่างน้อย 4 จึงได้ (7, 13) หรือ (13, 7) นับ C(6, 2)·C(12, 3) = 15·220 = 3300 และ C(12, 2)·C(6, 3) = 66·20 = 1320 รวม 4620",
+      "steps": [
+        "แยกตัวประกอบ 91",
+        "ตัดกรณีที่ผลบวกน้อยเกินไป",
+        "นับด้วยดาวและเส้นแบ่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 11
+        }
+      ],
+      "covered_by": [
+        "math.product_sum_solution_count_olympiad"
+      ]
+    }
+  ]
+}

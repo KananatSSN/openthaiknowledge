@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การจัดหมู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.nonincreasing-function-count",
+      "kind": "procedure",
+      "title": "จำนวนฟังก์ชันไม่เพิ่มจาก Aₙ ไป Aₙ",
+      "statement": "ฟังก์ชันไม่เพิ่มกำหนดได้ด้วยพหุเซตของค่า n ค่าที่เลือกจาก n ชนิดแบบซ้ำได้ จึงมี C(2n − 1, n) ฟังก์ชัน",
+      "steps": [
+        "แปลงเป็นการเลือกแบบซ้ำได้",
+        "ใช้สูตร C(n + k − 1, k)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 12
+        }
+      ],
+      "covered_by": [
+        "math.nonincreasing_function_count_olympiad"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมแนบใน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.equal-bisector-segments-triangle",
+      "kind": "procedure",
+      "title": "PD = PE บนเส้นแบ่งครึ่งมุมบังคับ ∠A = 60°",
+      "statement": "P เป็นจุดศูนย์กลางวงกลมแนบใน มีระยะถึง AB และ AC เท่ากัน ถ้า PD = PE รูปสามเหลี่ยมมุมฉากที่ลากจาก P ตั้งฉากไป AB และ AC เท่ากันทุกประการ จึง ∠AEP = ∠ADP (ซึ่งให้ B = C) หรือ ∠AEP + ∠ADP = 180° ทำให้ AEPD แนบในวงกลม เมื่อ ∠B > ∠C จึงได้ ∠EPD = 180° − A และ ∠EPD = ∠BPC = 90° + A/2 ดังนั้น A = 60° แล้ว BC = r(cot(B/2) + cot(C/2)) โดย B + C = 120° และ 30° ≤ C < 60° ค่ามากสุดที่ C = 30° คือรูปสามเหลี่ยม 30–60–90 ที่ BC = r(3 + √3), AB = r(1 + √3), CA = 2r(1 + √3) และพื้นที่ r²(3 + 2√3)",
+      "steps": [
+        "ใช้ระยะเท่ากันจาก P ถึง AB, AC แสดงว่า AEPD แนบในวงกลม",
+        "เทียบ ∠BPC = 90° + A/2 ได้ A = 60°",
+        "หาค่ามากสุดของ cot(B/2) + cot(C/2) บนช่วงของ C"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-56-math.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "math.equal_bisector_segments_triangle_olympiad"
+      ]
+    }
+  ]
+}

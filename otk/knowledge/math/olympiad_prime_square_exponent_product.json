@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เลขคณิตมอดุลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.prime-square-exponent-product",
+      "kind": "procedure",
+      "title": "∏ 2006^(pₙ² − 1) มอดุโล 13",
+      "statement": "2006 ≡ 4 (mod 13) และ 4 มีอันดับ 6 สำหรับ p > 3 ได้ 24 | p² − 1 จึงเลขชี้กำลังรวม ≡ 3 + 8 = 11 ≡ 5 (mod 6) ผลคูณจึง ≡ 4⁵ = 1024 ≡ 10",
+      "steps": [
+        "รวมเลขชี้กำลัง",
+        "ใช้ 24 | p² − 1 เมื่อ p > 3",
+        "ลดเลขชี้กำลังด้วยอันดับของ 4"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-49-math.pdf",
+          "section": "วันแรก",
+          "number": 11
+        }
+      ],
+      "covered_by": [
+        "math.prime_square_exponent_product_olympiad"
+      ]
+    }
+  ]
+}

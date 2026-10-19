@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "การจัดหมู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.composition-count",
+      "kind": "procedure",
+      "title": "เขียน 2548 เป็นผลบวกสองจำนวนขึ้นไปโดยลำดับมีความสำคัญ",
+      "statement": "เขียน 1 เรียงกัน 2548 ตัว มีช่องว่าง 2547 ช่อง เลือกใส่เส้นแบ่งในเซตย่อยที่ไม่ว่างของช่องว่าง ได้ 2²⁵⁴⁷ − 1 วิธี",
+      "steps": [
+        "ใช้วิธีดาวและเส้นแบ่ง",
+        "ตัดกรณีไม่มีเส้นแบ่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 7
+        }
+      ],
+      "covered_by": [
+        "math.composition_count_olympiad"
+      ]
+    }
+  ]
+}

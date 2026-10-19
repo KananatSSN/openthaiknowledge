@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "หลักการนับ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.circular-distance-pigeonhole",
+      "kind": "procedure",
+      "title": "ระยะบนวงรอบมอดุโล 2553",
+      "statement": "d(x, y) คือระยะของ x − y บนวงรอบ ℤ/2553 (ค่าน้อยกว่าระหว่าง r และ 2553 − r) ถ้ามีสองสมาชิกที่เศษเท่ากันได้ d = 0 มิฉะนั้นเรียงเศษ 70 ตัวบนวงกลม ช่องว่าง 70 ช่องรวม 2553 จึงมีช่องหนึ่ง ≤ 2553/70 < 37 คือ ≤ 36",
+      "steps": [
+        "ตีความ d เป็นระยะบนวงรอบ",
+        "เรียงเศษบนวงกลม",
+        "ใช้หลักรังนกพิราบกับช่องว่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-53-math.pdf",
+          "section": "วันแรก",
+          "number": 8
+        }
+      ],
+      "covered_by": [
+        "math.circular_distance_pigeonhole_olympiad"
+      ]
+    }
+  ]
+}

@@ -78,6 +78,23 @@ def test_sheet_publication_manifest_is_frozen():
         "posn2566_math": (30, 30, 30, 4),
         "posn2567_math": (30, 30, 30, 7),
         "posn2568_math": (30, 30, 30, 9),
+        "posnnat2547_math": (27, 27, 27, 0),
+        "posnnat2548_math": (27, 27, 27, 0),
+        "posnnat2549_math": (24, 24, 24, 0),
+        "posnnat2550_math": (24, 24, 24, 0),
+        "posnnat2551_math": (16, 16, 16, 0),
+        "posnnat2552_math": (16, 16, 16, 0),
+        "posnnat2553_math": (16, 16, 16, 0),
+        "posnnat2554_math": (12, 12, 12, 0),
+        "posnnat2555_math": (12, 12, 12, 0),
+        "posnnat2556_math": (12, 12, 12, 0),
+        "posnnat2557_math": (8, 8, 8, 0),
+        "posnnat2562_math": (10, 10, 10, 0),
+        "posnnat2563_math": (10, 10, 10, 0),
+        "posnnat2564_math": (10, 10, 10, 0),
+        "posnnat2565_math": (10, 10, 10, 0),
+        "posnnat2566_math": (10, 10, 10, 0),
+        "posnnat2567_math": (10, 10, 10, 0),
     }
     actual = {}
     for sheet_id in sheet_ids():
@@ -189,4 +206,7 @@ def test_sheet_publication_manifest_is_frozen():
     # cycle, plate boundaries, the heart and the digestive system; then the
     # airway and lungs, a plant's organs, and rock layers with their fossils.
     # Local math variety and original olympiad practice add another 118 sets.
-    assert len(REGISTRY) == 3835
+    # The national สอวน. maths papers 2547–2557 and 2562 add 204 more, one per
+    # question; the 2563–2567 papers reuse sets that were already registered.
+    # The สอวน. physics camp-selection papers 2560–2562 add 86, one per question.
+    assert len(REGISTRY) == 4039

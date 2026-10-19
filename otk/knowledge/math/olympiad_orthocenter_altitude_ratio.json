@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: วงกลมล้อมรูปสามเหลี่ยม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.orthocenter-altitude-ratio",
+      "kind": "procedure",
+      "title": "A′B/AB เมื่อ BH เท่ากับรัศมี",
+      "statement": "ในรูปสามเหลี่ยมมุมแหลม BH = 2R cos B จึง cos B = 1/2 และในสามเหลี่ยมมุมฉาก ABA′ ได้ A′B = AB cos B ดังนั้น A′B/AB = 1/2",
+      "steps": [
+        "ใช้ BH = 2R cos B",
+        "ใช้ A′B = AB cos B"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันแรก",
+          "number": 2
+        }
+      ],
+      "covered_by": [
+        "math.orthocenter_altitude_ratio_olympiad"
+      ]
+    }
+  ]
+}

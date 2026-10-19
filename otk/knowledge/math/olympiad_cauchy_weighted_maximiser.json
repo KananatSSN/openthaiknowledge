@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cauchy-weighted-maximiser",
+      "kind": "procedure",
+      "title": "a + 2b + 3c สูงสุดเมื่อ 9a² + 4b² + c² = 91",
+      "statement": "โคชี–ชวาร์ซ: (a + 2b + 3c)² ≤ (9a² + 4b² + c²)(1/9 + 1 + 9) = 91·91/9 จึงค่าสูงสุดเป็น 91/3 เมื่อ 9a = 2b = c/3 แทนในเงื่อนไขได้ a = 1/3, b = 3/2, c = 9",
+      "steps": [
+        "ใช้โคชี–ชวาร์ซแบบถ่วงน้ำหนัก",
+        "หาเงื่อนไขสมการ",
+        "แก้หาค่าตัวแปร"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-47-math.pdf",
+          "section": "วันแรก",
+          "number": 19
+        }
+      ],
+      "covered_by": [
+        "math.cauchy_weighted_maximiser_olympiad"
+      ]
+    }
+  ]
+}

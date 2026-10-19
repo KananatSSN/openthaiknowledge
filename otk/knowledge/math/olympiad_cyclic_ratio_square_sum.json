@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "อสมการ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.cyclic-ratio-square-sum",
+      "kind": "procedure",
+      "title": "Σ((2a − b)/(a − b))² ≥ 5",
+      "statement": "ให้ p = a/(a − b), q = b/(b − c), r = c/(c − a) จะได้ (2a − b)/(a − b) = 1 + p และ (p − 1)(q − 1)(r − 1) = pqr จึง pq + qr + rp = p + q + r − 1 ดังนั้น Σ(1 + p)² = 3 + 2S + S² − 2(S − 1) = S² + 5 ≥ 5 เมื่อ S = p + q + r",
+      "steps": [
+        "แทนตัวแปรใหม่",
+        "หาความสัมพันธ์ pq + qr + rp",
+        "จัดเป็น S² + 5"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-48-math.pdf",
+          "section": "วันที่สอง",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.cyclic_ratio_square_sum_olympiad"
+      ]
+    }
+  ]
+}

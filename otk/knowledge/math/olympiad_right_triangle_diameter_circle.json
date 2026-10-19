@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต: กำลังของจุด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.right-triangle-diameter-circle",
+      "kind": "procedure",
+      "title": "ผลคูณในวงกลมที่มี CP เป็นเส้นผ่านศูนย์กลาง",
+      "statement": "ในรูปสามเหลี่ยม ABC ที่มุม B ฉาก และ P บน BC วงกลมเส้นผ่านศูนย์กลาง CP ให้ ∠CQP = 90° จึง CQ = CP·cos C = CP·BC/AC ได้ AC·CQ = BC·CP กำลังของจุด A ให้ AP·AR = AQ·AC จึง AP·PR = AQ·AC − AP² = AC² − AC·CQ − AP² = AB² + BC² − BC·CP − AB² − BP² = BP·PC ลบกันได้ AC·CQ − AP·PR = CP(BC − BP) = CP²",
+      "steps": [
+        "ใช้ ∠CQP = 90° หา CQ",
+        "ใช้กำลังของจุด A กับ ω",
+        "ใช้ทฤษฎีบทพีทาโกรัสใน ABC และ ABP"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-55-math.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "math.right_triangle_diameter_circle_olympiad"
+      ]
+    }
+  ]
+}

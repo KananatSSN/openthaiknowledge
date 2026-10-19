@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.complex-power-sums",
+      "kind": "procedure",
+      "title": "a⁴ + b⁴ + c⁴ จาก p₁, p₂, p₃",
+      "statement": "เอกลักษณ์ของนิวตันให้ e₁ = 1, e₂ = (p₁² − p₂)/2 = −1/2, e₃ = (p₃ − e₁p₂ + e₂p₁)/3 = 1/6 แล้ว p₄ = e₁p₃ − e₂p₂ + e₃p₁ = 3 + 1 + 1/6 = 25/6",
+      "steps": [
+        "หา e₂ และ e₃ จากเอกลักษณ์ของนิวตัน",
+        "ใช้ p₄ = e₁p₃ − e₂p₂ + e₃p₁"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 7
+        }
+      ],
+      "covered_by": [
+        "math.complex_power_sums_olympiad"
+      ]
+    }
+  ]
+}

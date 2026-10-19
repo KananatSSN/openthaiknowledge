@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "เรขาคณิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.equilateral-cevian-angle",
+      "kind": "procedure",
+      "title": "มุมที่จุดตัดของเส้นจากจุดยอดในสามเหลี่ยมด้านเท่า",
+      "statement": "AN = BM ทำให้รูปสามเหลี่ยม ABN และ BCM เท่ากันทุกประการ (ด้าน-มุม-ด้าน) จึง ∠ABN = ∠BCM และ ∠BOC = 180° − 60° = 120° เมื่อ 3MB = AB จะได้ AO ⊥ OC (O อยู่บนวงกลมที่มี AC เป็นเส้นผ่านศูนย์กลาง ตรวจด้วยพิกัด) ดังนั้น ∠AOB = 360° − 120° − 90° = 150°",
+      "steps": [
+        "แสดงว่ารูปสามเหลี่ยม ABN และ BCM เท่ากันทุกประการ",
+        "ได้ ∠BOC = 120°",
+        "ใช้ AO ⊥ OC เมื่อ BM = AB/3"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-53-math.pdf",
+          "section": "วันแรก",
+          "number": 4
+        }
+      ],
+      "covered_by": [
+        "math.equilateral_cevian_angle_olympiad"
+      ]
+    }
+  ]
+}

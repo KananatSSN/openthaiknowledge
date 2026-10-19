@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "พหุนามสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.newton-power-sum",
+      "kind": "procedure",
+      "title": "Sₙ เป็นจำนวนเต็มจากเอกลักษณ์ของนิวตัน",
+      "statement": "e₁ = S₁, e₂ = (S₁² − S₂)/2, e₃ = (S₁³ − 3S₁S₂ + 2S₃)/6 เงื่อนไข 6 | 5S₁ − 3S₂ − 2S₃ ร่วมกับ S₁² ≡ S₂ (mod 2) และ S₁³ ≡ S₁ ทำให้ e₂, e₃ เป็นจำนวนเต็ม แล้ว Sₙ = e₁Sₙ₋₁ − e₂Sₙ₋₂ + e₃Sₙ₋₃ เป็นจำนวนเต็มโดยอุปนัย",
+      "steps": [
+        "เขียน e₂, e₃ ด้วย S₁, S₂, S₃",
+        "แสดงว่าเงื่อนไขทำให้ e₂, e₃ เป็นจำนวนเต็ม",
+        "ใช้การเวียนเกิดของนิวตัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-52-math.pdf",
+          "section": "วันแรก",
+          "number": 7
+        }
+      ],
+      "covered_by": [
+        "math.newton_power_sum_olympiad"
+      ]
+    }
+  ]
+}
