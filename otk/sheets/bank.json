@@ -4155,7 +4155,10 @@
    "pages": 2,
    "text_chars": 2046,
    "layout": "numbered",
-   "glyph_damage": 97
+   "glyph_damage": 97,
+   "items": 8,
+   "stage": "generated",
+   "note": "Transcribed and checked against the renders: all 8 items mapped to original problem sets"
   },
   {
    "path": "สอวน_math/posn-national-62-math.pdf",

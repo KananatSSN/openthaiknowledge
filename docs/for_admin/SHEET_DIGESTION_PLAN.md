@@ -895,3 +895,24 @@ TOTAL         338   316     17     4   66      255      6     11
   impossible here; the note says why.
 - `test_refactor_characterization` freezes the registry size, now 3,759.
 - Remaining POSN maths at `new`: the national papers 2547–2557 (11 papers).
+
+### 2026-10-16 — 2557 national paper
+
+- The 2557 national paper (11th TMO) went through the same route. 8 questions,
+  5 answered:
+  - 2: f(x) = x and f(x) = −x²;
+  - 4: P = ±1, since gcd(2557 + 213·2014, 2557·2556) = 1;
+  - 5: k = ∛9 − 1;
+  - 6: p = 2, 3;
+  - 8: n(n − 1)/2 + 1 cards.
+
+  Items 1, 3 and 7 are proofs.
+- Eight knowledge units and eight original sets cover them, checked in
+  `test_math_olympiad_posn_national_2557.py`. The bank entry is `generated`.
+- Item 7's point E is the one with BE ∥ AD, which gives
+  O₁O₂ = AB/(2 sin ∠ADC). The tempting "ABED cyclic" is wrong, and the
+  coordinates show why.
+- Open: item 2's case f(1) = −1 is proved only for rational x; the step for
+  irrational x is only sketched in the note.
+- Registry 3,767 sets; enrichment count 310.
+- Remaining POSN maths at `new`: national papers 2547–2556 (10 papers).
