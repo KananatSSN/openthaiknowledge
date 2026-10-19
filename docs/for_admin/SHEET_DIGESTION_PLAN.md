@@ -1047,4 +1047,25 @@ TOTAL         338   316     17     4   66      255      6     11
   - day 2, item 1: the synthetic proof that ND ∥ PA;
   - day 2, item 6: extending the equation from x²y³ > 2008 to all x, y.
 - Registry 3,851 sets; enrichment count 394.
-- Remaining POSN maths at `new`: national papers 2547–2550 (4 papers).
+
+### 2026-10-17 — 2550 national paper
+
+- The 2550 national paper (4th TMO) has 24 questions over two days: 18
+  short answers on day 1 and six proofs on day 2. The PDF has no text layer
+  and no answer pages, so every answer was derived and checked by computer.
+  20 have answers, including:
+  - day 1, item 2: √10;
+  - day 1, item 5: 2∛2;
+  - day 1, item 10: n = 10;
+  - day 1, item 14: C(8085, 169);
+  - day 1, item 15: 225;
+  - day 1, item 18: 1273;
+  - day 2, item 1: f constant;
+  - day 2, item 4: p = 3, 7.
+- 24 knowledge units and 24 original sets, checked in
+  `test_math_olympiad_posn_national_2550.py`. The bank entry is
+  `generated`.
+- Open (sketched only):
+  - day 2, item 3: the angle chase that makes A, M, N, D concyclic.
+- Registry 3,875 sets; enrichment count 418.
+- Remaining POSN maths at `new`: national papers 2547–2549 (3 papers).

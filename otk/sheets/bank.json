@@ -4085,7 +4085,10 @@
    "pages": 3,
    "text_chars": 4492,
    "layout": "numbered",
-   "glyph_damage": 32
+   "glyph_damage": 32,
+   "items": 24,
+   "stage": "generated",
+   "note": "2550 national paper (4th TMO) digested: 24 items, 24 knowledge units, 24 sets; tests in test_math_olympiad_posn_national_2550.py"
   },
   {
    "path": "สอวน_math/posn-national-51-math.pdf",

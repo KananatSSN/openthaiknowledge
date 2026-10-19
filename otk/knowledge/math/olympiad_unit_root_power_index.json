@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "รากของพหุนาม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.unit-root-power-index",
+      "kind": "procedure",
+      "title": "n น้อยสุดที่ √3 zⁿ⁺¹ − zⁿ − 1 = 0 มีรากบนวงกลมหนึ่งหน่วย",
+      "statement": "เขียนสมการเป็น zⁿ(√3z − 1) = 1 ถ้า |z| = 1 แล้ว |√3z − 1| = 1 จึง cos θ = √3/2 และ z = e^{±iπ/6} ได้ √3z − 1 = e^{±iπ/3} จึงต้องการ zⁿ = e^{∓iπ/3} หรือ nπ/6 ≡ −π/3 (mod 2π) คือ n ≡ −2 (mod 12) จึง n = 10 (ทั่วไป a = 2cos(π/m) ให้ n = 2m − 2)",
+      "steps": [
+        "ใช้ |z| = 1 หา z",
+        "คำนวณ az − 1 เป็นจำนวนเชิงซ้อนขนาดหนึ่ง",
+        "แก้สมภาคของเลขชี้กำลัง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 10
+        }
+      ],
+      "covered_by": [
+        "math.unit_root_power_index_olympiad"
+      ]
+    }
+  ]
+}

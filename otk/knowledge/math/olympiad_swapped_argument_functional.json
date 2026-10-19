@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.swapped-argument-functional",
+      "kind": "procedure",
+      "title": "f(85) จากการแทน x ด้วย 1 − x",
+      "statement": "ให้ u = x² + x + 3 และ v = x² − 3x + 5 การแทน x ด้วย 1 − x สลับ u กับ v จึงได้ระบบ f(u) + 2f(v) = 6x² − 10x + 17 และ f(v) + 2f(u) = 6x² − 2x + 13 แก้ได้ f(u) = 2x² + 2x + 3 = 2u − 3 ดังนั้น f(t) = 2t − 3 และ f(85) = 167",
+      "steps": [
+        "สังเกตว่า x ↦ 1 − x สลับสองอาร์กิวเมนต์",
+        "แก้ระบบสมการสองตัวแปร",
+        "เขียน f(u) ในรูปของ u"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-50-math.pdf",
+          "section": "วันแรก",
+          "number": 9
+        }
+      ],
+      "covered_by": [
+        "math.swapped_argument_functional_olympiad"
+      ]
+    }
+  ]
+}
