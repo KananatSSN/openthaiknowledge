@@ -4071,7 +4071,8 @@
    "layout": "numbered",
    "glyph_damage": 40,
    "items": 27,
-   "stage": "generated",
+   "sheet_id": "posnnat2548_math",
+   "stage": "green",
    "note": "2548 national paper (2nd TMO) digested: 27 items, 27 knowledge units, 27 sets; tests in test_math_olympiad_posn_national_2548.py"
   },
   {
@@ -4084,7 +4085,8 @@
    "layout": "numbered",
    "glyph_damage": 27,
    "items": 24,
-   "stage": "generated",
+   "sheet_id": "posnnat2549_math",
+   "stage": "green",
    "note": "2549 national paper (3rd TMO) digested: 24 items, 24 knowledge units, 24 sets; tests in test_math_olympiad_posn_national_2549.py"
   },
   {
