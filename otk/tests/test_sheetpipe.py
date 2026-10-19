@@ -69,6 +69,21 @@ SHARED_GENERATORS = {
 }
 
 
+def _shared_citation(sheet_id, sheet, item) -> str:
+    """The exact item an adapted shared set must cite: year, day and number.
+
+    A two-day paper records day two's ข้อ 1–6 after day one's items, with the
+    item title starting "วันที่สอง ข้อ k:"; its sets cite the day's own number.
+    """
+    year = SHARED_GENERATORS[sheet_id]
+    day_two = re.match(r"วันที่สอง ข้อ (\d+):", item.title)
+    if day_two:
+        return f"{year}, วันที่สอง ข้อ {day_two.group(1)}"
+    if "ข้อสอบสองวัน" in sheet.note:
+        return f"{year}, วันแรก ข้อ {item.number}"
+    return f"{year}, ข้อ {item.number}"
+
+
 def test_at_least_one_sheet_is_digested():
     assert SHEETS, "no sheets under otk/sheets — the pipeline has no output"
 
@@ -137,14 +152,20 @@ def test_every_registered_generator_traces_back_to_an_item(sheet_id):
     sheet = load_sheet(sheet_id)
     claimed = {item.generator for item in sheet.items if item.generator}
     if sheet_id in SHARED_GENERATORS:
-        citation = SHARED_GENERATORS[sheet_id]
+        generators = [item.generator for item in sheet.items]
+        assert len(set(generators)) == len(generators), (
+            f"{sheet_id}: a set is mapped to more than one item")
         for item in sheet.items:
             assert item.generator in REGISTRY, f"{sheet_id} q{item.number}: no generator"
+            assert REGISTRY[item.generator].topic == item.topic, (
+                f"{sheet_id} q{item.number}: {item.generator} is filed under "
+                f"{REGISTRY[item.generator].topic!r}, the item under {item.topic!r}")
             declared = provenance(item.generator)
             if declared.kind == "original":   # written afresh on the item's idea
                 continue
-            assert any(citation in src for src in declared.sources), (
-                f"{item.generator} does not cite {citation}: {declared.sources}")
+            citation = _shared_citation(sheet_id, sheet, item)
+            assert any(src.endswith(citation) for src in declared.sources), (
+                f"{item.generator} does not cite {citation!r}: {declared.sources}")
         return
     prefix = KEY_PREFIX.get(sheet_id)
     if prefix is None:                                    # pragma: no cover
