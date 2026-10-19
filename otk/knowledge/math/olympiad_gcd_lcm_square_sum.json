@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "ทฤษฎีจำนวน: ห.ร.ม. และ ค.ร.น.",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.gcd-lcm-square-sum",
+      "kind": "procedure",
+      "title": "m² + n² = 3789, (m, n) + [m, n] = 633",
+      "statement": "ให้ g = (m, n), m = gu, n = gv ได้ g²(u² + v²) = 3789 = 3²·421 และ g(1 + uv) = 633 = 3·211 ดังนั้น g = 3 (g = 1 ให้ uv = 632 กับ u² + v² = 3789 ซึ่งไม่มีคำตอบ) u² + v² = 421, uv = 210 ได้ u + v = √841 = 29 จึง m + n = 3·29 = 87 (m, n = 42, 45)",
+      "steps": [
+        "ดึง ห.ร.ม. ออก",
+        "ใช้การแยกตัวประกอบของ 3789 และ 633",
+        "หา u + v จาก u² + v² และ uv"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันแรก",
+          "number": 7
+        }
+      ],
+      "covered_by": [
+        "math.gcd_lcm_square_sum_olympiad"
+      ]
+    }
+  ]
+}

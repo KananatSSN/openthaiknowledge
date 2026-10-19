@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.almost-additive-scaling-bound",
+      "kind": "procedure",
+      "title": "ฟังก์ชันที่เกือบบวกได้",
+      "statement": "อุปนัย: f(kx) = f((k − 1)x) + f(x) + εₖ โดย |εₖ| < 1 ได้ |f(nx) − nf(x)| < n − 1 แทน x ด้วย x/n แล้วหารด้วย n ได้ |f(x)/n − f(x/n)| < (n − 1)/n < 1 สำหรับ n = 2008 ขอบเขต n − 1 ลดไม่ได้ ดูจาก f(x) = c⌊x⌋ เมื่อ c เข้าใกล้ 1",
+      "steps": [
+        "อุปนัยบน n",
+        "แทน x ด้วย x/n",
+        "ตรวจความคมของขอบเขต"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันแรก",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.almost_additive_scaling_bound_olympiad"
+      ]
+    }
+  ]
+}

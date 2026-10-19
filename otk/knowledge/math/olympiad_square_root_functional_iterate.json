@@ -1,0 +1,28 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.square-root-functional-iterate",
+      "kind": "procedure",
+      "title": "(f(xy))² = f(x²)f(y²) เมื่อ x²y³ > 2008",
+      "statement": "สำหรับ x, y ใด ๆ เลือก t ใหญ่พอ แล้วใช้สมการกับคู่ (xt, y/t), (x, t) และ (t, y) ที่ทุกคู่สอดคล้องเงื่อนไข x²y³ > 2008 เพื่อเขียน f(x²), f(y²) และ f(xy) ผ่านค่าที่ t และตัดกันได้ (ร่างไว้ในบันทึก) เมื่อสมการใช้ได้ทุกคู่ ให้ y = 1 ได้ f(x)² = f(x²)f(1) จึง f(x²) = f(x)²/f(1)",
+      "steps": [
+        "เลือกตัวแปรช่วย t ใหญ่พอ",
+        "ใช้สมการกับคู่ที่สอดคล้องเงื่อนไข",
+        "ตัดตัวแปรช่วยออก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-51-math.pdf",
+          "section": "วันที่สอง",
+          "number": 6
+        }
+      ],
+      "covered_by": [
+        "math.square_root_functional_iterate_olympiad"
+      ]
+    }
+  ]
+}
