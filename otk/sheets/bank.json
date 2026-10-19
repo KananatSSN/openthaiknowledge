@@ -4125,7 +4125,10 @@
    "pages": 17,
    "text_chars": 23952,
    "layout": "numbered",
-   "glyph_damage": 135
+   "glyph_damage": 135,
+   "items": 12,
+   "stage": "generated",
+   "note": "Questions on pp. 1–2 transcribed from the renders; official solutions pp. 3–17 used as a cross-check. All 12 items mapped; item 12's official key undercounts (2·3^2554, verified by brute force)"
   },
   {
    "path": "สอวน_math/posn-national-55-math.pdf",

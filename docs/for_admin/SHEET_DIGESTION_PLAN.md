@@ -952,3 +952,29 @@ TOTAL         338   316     17     4   66      255      6     11
   the linear solution. Item 11 is checked by coordinates only.
 - Registry 3,791 sets; enrichment count 334.
 - Remaining POSN maths at `new`: national papers 2547–2554 (8 papers).
+
+### 2026-10-16 — 2554 national paper
+
+- The 2554 national paper (8th TMO): 12 questions on pages 1–2. Pages 3–17
+  are official worked solutions, used only as a cross-check.
+- Answers:
+  - 2: f ≡ 1.
+  - 5: n ∈ {1, 625, 6561, 4100625}.
+  - 6: 1005·1006/2011.
+  - 10: no such f.
+  - 12: 2·3²⁵⁵⁴.
+
+  The first four agree with the official key.
+- **The official key undercounts item 12.** It prints 3² + 3¹²⁷⁷ + 3²⁵⁵⁴ and
+  counts only one shift direction per period. Brute force on 6, 12 and 15
+  chairs gives 2·3ᵐ. The transcript carries the corrected answer, with a
+  comment, as the (สสวท) transcripts do for teacher's-manual errors.
+- Twelve knowledge units and twelve original sets, checked in
+  `test_math_olympiad_posn_national_2554.py`. The bank entry is `generated`.
+- Registry 3,803 sets; enrichment count 346.
+- `test_per_set` caught two choice-length cues, and both sets were reworked:
+  - a "∅" answer was always the shortest choice, so item 10 became a count
+    of the (a, b) pairs that admit a solution;
+  - a reduced N/4 answer was the shortest choice, so item 6 now uses odd N,
+    as in the source.
+- Remaining POSN maths at `new`: national papers 2547–2553 (7 papers).
