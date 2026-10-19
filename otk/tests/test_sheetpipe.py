@@ -49,7 +49,8 @@ KEY_PREFIX = {"posn2568_math": "math.posn2568_",
 #: the paper was digested (otk/sets/math/olympiad/), not by a per-paper module.
 #: The value is the citation those sets' PROVENANCE must carry.
 SHARED_GENERATORS = {"posnnat2547_math": "ระดับชาติ 2547", "posnnat2548_math": "ระดับชาติ 2548",
-                     "posnnat2549_math": "ระดับชาติ 2549"}
+                     "posnnat2549_math": "ระดับชาติ 2549", "posnnat2550_math": "ระดับชาติ 2550",
+                     "posnnat2551_math": "ระดับชาติ 2551"}
 
 
 def test_at_least_one_sheet_is_digested():
