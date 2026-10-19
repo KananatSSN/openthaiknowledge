@@ -1,0 +1,27 @@
+{
+  "subject": "คณิตศาสตร์",
+  "topic": "สมการเชิงฟังก์ชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "math.olympiad.bilinear-bound-functional",
+      "kind": "procedure",
+      "title": "อสมการเชิงฟังก์ชัน x f(y) + y f(x) ≤ cxy",
+      "statement": "ให้ h(x) = f(x) − cx/2 เงื่อนไขกลายเป็น x h(y) + y h(x) ≤ 0 ให้ x = y ได้ h ≤ 0 บนจำนวนบวกและ h ≥ 0 บนจำนวนลบ เมื่อ x > 0 และ y < 0 ทั้ง x h(y) และ y h(x) ไม่เป็นลบ แต่ผลบวกไม่เกิน 0 จึงเป็นศูนย์ทั้งคู่ และ x = 0 ให้ y h(0) ≤ 0 ทุก y จึง h(0) = 0 ดังนั้น f(x) = cx/2 เป็นคำตอบเดียว (โจทย์ต้นฉบับ c = 1 ได้ f(x) = x/2)",
+      "steps": [
+        "แทน f = cx/2 + h",
+        "ให้ x = y หาเครื่องหมายของ h สองฝั่งของศูนย์",
+        "ใช้ x > 0, y < 0 และ x = 0 สรุป h ≡ 0"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_math/posn-national-62-math.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "math.bilinear_bound_functional_olympiad"
+      ]
+    }
+  ]
+}
