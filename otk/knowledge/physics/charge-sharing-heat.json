@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานตัวเก็บประจุและการแบ่งประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charge_sharing_heat.procedure",
+      "kind": "procedure",
+      "title": "ความร้อนเมื่อแบ่งประจุระหว่างตัวเก็บประจุ",
+      "statement": "ต่อตัวเก็บประจุที่มีประจุกับตัวที่ว่างผ่านตัวต้านทาน ความร้อนคือผลต่างพลังงานก่อนและหลัง q₀²C₂/(2C₁(C₁+C₂))",
+      "steps": [
+        "ประจุรวมคงที่และแรงดันสุดท้ายเท่ากัน",
+        "ลบพลังงานสะสมสุดท้ายออกจากพลังงานเริ่มต้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q10"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

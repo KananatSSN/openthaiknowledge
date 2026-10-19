@@ -83,8 +83,13 @@ Phases in build order. Check an item only when its tests pass.
   answers, one worked problem) are transcribed, independently solved, and
   linked to 26 generators and knowledge units. The equal-source circuit reuses
   the existing signed three-branch circuit unit; 25 units are new.
-- Next source: `สอวน_physics/posn1-64-physics.pdf` (the manifest has no 2563
-  camp-selection paper). Three of 33 papers are digested; 30 remain pending.
+- `สอวน_physics/posn1-64-physics.pdf`: a scan with no text layer and no answer
+  key. All 30 questions (25 MC, 5 short answers) are hand-transcribed, solved
+  and independently checked, and linked to 30 generators in
+  `otk/sets/physics/olympiad/posn2564.py`. 27 knowledge units are new; items
+  8, 11 and 26 reuse the ring-field, steady-RC and signed-circuit units.
+- Next source: `สอวน_physics/posn1-65-physics.pdf`. Four of 33 papers are
+  digested; 29 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1285,3 +1290,33 @@ TOTAL         338   316     17     4   66      255      6     11
 - The full suite ran once, after all 26 items were digested: **29,796 passed,
   2 skipped in 20m08s**. Ruff is clean; full source text and the verified
   transcript remain in the private bank.
+
+### 2026-10-19 — POSN physics 2564 camp selection
+
+- The 11-page PDF is a scan (no text layer): page 1 is the cover, pages 2–10
+  the questions, page 11 the answer form. There is no answer key. A private
+  hand transcript from page renders converts to 30/30 answered digest items;
+  item 26's battery polarities were read from a 300 dpi crop.
+- Every answer was derived, checked symbolically in SymPy, and then given a
+  solver with an independently written check (time-stepping, Simpson
+  quadrature, Biot–Savart and Coulomb element sums, ray tracing in
+  coordinates, bisection on the original equations). `sheetpipe verify`:
+  30/30 green, 90 variant runs, none without an independent check.
+- Source readings made explicit in generated wording: item 6 treats the ball
+  as a point with full buoyancy to the surface; item 21's θ is the incidence
+  angle at the second face; item 27's x is the perpendicular distance between
+  the leaving ray and the incident line, and needs μ sinθ < 1; item 28 names
+  each body's mass m, which the source leaves unnamed. Items 1, 5 and 16 ask
+  a computed quantity that follows from the printed condition (relative
+  acceleration, greatest extension, least energy); item 4 asks e for given
+  masses; item 30 generates the ordered pair (tanθ, u²).
+- Fraction display: `otk.kit.answer_choices.show` rounds to two decimals, so
+  this file uses an exact a/b helper. Earlier physics files still print
+  rounded repeating decimals in some stems (`posn2562_q04` a/A = 1/3 shows
+  as 0.33; `posn2560_q07` shows 66.67); fixing them changes their draws and
+  needs the maintainer's agreement.
+- Targeted run: 18,332 passed, 4 skipped (golden draws, curriculum, stages,
+  layout, characterization, sheetpipe, choice counts, answer length, the
+  sheet's own tests); `test_per_set` for the 30 keys: 60 passed; Ruff clean.
+- The full suite ran once, after all 30 items were digested: **33,240 passed,
+  13 skipped in 12m23s**.

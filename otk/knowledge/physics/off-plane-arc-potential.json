@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ศักย์ไฟฟ้าของประจุกระจายตามเส้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.off_plane_arc_potential.procedure",
+      "kind": "procedure",
+      "title": "ศักย์บนแกนของครึ่งวงกลมมีประจุ",
+      "statement": "จุดบนแกนของส่วนโค้งวงกลมห่างทุกชิ้นประจุเท่ากัน √(x²+R²) ศักย์จึงเป็น kq/√(x²+R²)",
+      "steps": [
+        "หาระยะจากชิ้นประจุถึงจุดด้วยพีทาโกรัส",
+        "รวมศักย์สเกลาร์ของประจุรวม q"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q09"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

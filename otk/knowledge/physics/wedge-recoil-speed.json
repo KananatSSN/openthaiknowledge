@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "โมเมนตัมแนวระดับของลิ่มและมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wedge_recoil_speed.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วถอยของลิ่มบนพื้นลื่น",
+      "statement": "ลิ่มบนพื้นลื่นถอยด้วย V=mv cosθ/(m+M) เมื่อมวลไถลด้วยอัตราเร็ว v เทียบลิ่ม",
+      "steps": [
+        "เขียนความเร็วมวลเทียบพื้นเป็นผลรวมเวกเตอร์",
+        "ใช้โมเมนตัมแนวระดับรวมเป็นศูนย์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 29
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q29"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

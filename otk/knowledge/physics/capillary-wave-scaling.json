@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การวิเคราะห์สมการคลื่นผิว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.capillary_wave_scaling.procedure",
+      "kind": "procedure",
+      "title": "ความถี่ของคลื่นผิวความยาวคลื่นสั้น",
+      "statement": "คลื่นผิวความยาวคลื่นสั้นมี v²∝1/λ ความถี่จึงแปรตาม λ^(−3/2)",
+      "steps": [
+        "ตัดพจน์โน้มถ่วงเหลือพจน์แรงตึงผิว",
+        "ใช้ f=v/λ หาเลขชี้กำลัง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q24"
+      ],
+      "note": ""
+    }
+  ]
+}

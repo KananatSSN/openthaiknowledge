@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงลอยตัวและงานพลังงาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.buoyant_ball_rise.procedure",
+      "kind": "procedure",
+      "title": "ความสูงที่ลูกเบาพุ่งพ้นผิวน้ำ",
+      "statement": "ลูกเบาที่ลอยขึ้นจากความลึก h โดยไม่มีแรงต้านพุ่งพ้นผิวสูง (ρV/m−1)h",
+      "steps": [
+        "หางานสุทธิของแรงลอยตัวลบน้ำหนักระหว่างลอยขึ้น",
+        "เปลี่ยนพลังงานจลน์ที่ผิวเป็นความสูงภายใต้ g"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q06"
+      ],
+      "note": "Ball treated as a point: full buoyancy until the surface, no drag, no added mass."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานจลน์การหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rod_translation_rotation_energy.procedure",
+      "kind": "procedure",
+      "title": "พลังงานจลน์ของแท่งที่เลื่อนและหมุน",
+      "statement": "พลังงานจลน์ของแท่งที่เลื่อนและหมุนรอบศูนย์มวลคือ Mv²/2+ML²ω²/24",
+      "steps": [
+        "ใช้โมเมนต์ความเฉื่อยรอบศูนย์มวล ML²/12",
+        "บวกพลังงานการเลื่อนที่กับการหมุน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q23"
+      ],
+      "note": ""
+    }
+  ]
+}

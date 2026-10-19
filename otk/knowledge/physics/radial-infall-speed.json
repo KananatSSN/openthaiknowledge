@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานศักย์โน้มถ่วงระยะไกล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.radial_infall_speed.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วเมื่อตกจากระยะไกลสู่ผิวโลก",
+      "statement": "วัตถุตกจากหยุดนิ่งที่ระยะ x จากศูนย์กลางถึงผิว R มี v²=2gR(1−R/x)",
+      "steps": [
+        "ใช้พลังงานศักย์โน้มถ่วง −GMm/r ที่สองตำแหน่ง",
+        "แทน GM=gR² แล้วหาอัตราเร็ว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q03"
+      ],
+      "note": "Answer expressed as a multiple of √(gR) with x=nR."
+    }
+  ]
+}

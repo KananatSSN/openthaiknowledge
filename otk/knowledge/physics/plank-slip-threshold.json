@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเสียดทานและความเร่งสัมพัทธ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.plank_slip_threshold.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งสัมพัทธ์ของแผ่นที่ไถล",
+      "statement": "แผ่นบนแผ่นที่ถูกเร่งจะไถลเมื่อ a>μg และขณะไถลมีความเร่งเทียบแผ่นล่าง a−μg",
+      "steps": [
+        "หาความเร่งสูงสุดที่แรงเสียดทานให้แผ่นบนได้คือ μg",
+        "เทียบกับความเร่งของแผ่นล่างแล้วหาความเร่งสัมพัทธ์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q01"
+      ],
+      "note": "Source asks the slip condition a>μg; the generator asks the relative acceleration a−μg in the slipping case."
+    }
+  ]
+}

@@ -20,11 +20,16 @@
         {
           "sheet": "สอวน_physics/posn1-62-physics.pdf",
           "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 26
         }
       ],
       "covered_by": [
         "phys.posn2560_q27",
-        "phys.posn2562_q13"
+        "phys.posn2562_q13",
+        "phys.posn2564_q26"
       ],
       "note": "Source diagram replaced by explicit verbal geometry or coordinate data; printed constants vary, so no static crop attached."
     }

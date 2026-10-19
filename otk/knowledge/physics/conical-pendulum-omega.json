@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบวงกลมของลูกตุ้มกรวย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.conical_pendulum_omega.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วเชิงมุมของลูกตุ้มกรวย",
+      "statement": "ลูกตุ้มกรวยสาย l รัศมีวง R มี ω²=g/√(l²−R²)",
+      "steps": [
+        "แยกแรงตึงเป็นแนวดิ่งสมดุลน้ำหนักและแนวระดับเป็นแรงสู่ศูนย์กลาง",
+        "ใช้ความสูงกรวย √(l²−R²) หา ω"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q17"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

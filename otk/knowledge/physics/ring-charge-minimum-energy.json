@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานศักย์ของระบบประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.ring_charge_minimum_energy.procedure",
+      "kind": "procedure",
+      "title": "พลังงานต่ำสุดของประจุบนวงกลม",
+      "statement": "ประจุลบสองตัวบนวงกลมรอบประจุบวกมีพลังงานต่ำสุดเมื่ออยู่ตรงข้ามกัน เพราะพจน์คู่ที่ศูนย์กลางคงที่",
+      "steps": [
+        "แยกพลังงานคู่กับศูนย์กลางซึ่งไม่ขึ้นกับมุม",
+        "ทำให้ระยะระหว่างประจุลบมากที่สุดที่ 2r"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q16"
+      ],
+      "note": "Source asks the angle (180°); the generator asks the least energy, reached at 180°."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบซิมเปิลฮาร์มอนิกของสปริงแขวน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.released_spring_amplitude.procedure",
+      "kind": "procedure",
+      "title": "ระยะยืดมากสุดของสปริงหลังปล่อย",
+      "statement": "มวลบนสปริงแขวนที่ยกจากสมดุลขึ้น a แล้วปล่อยจะแกว่งแอมพลิจูด a รอบสมดุล ระยะยืดมากสุดคือ mg/k+a",
+      "steps": [
+        "หาตำแหน่งสมดุล mg/k",
+        "บวกแอมพลิจูดของการแกว่งแบบซิมเปิลฮาร์มอนิก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q05"
+      ],
+      "note": "Source asks x=a below equilibrium; the generator asks the greatest extension from natural length, mg/k+a."
+    }
+  ]
+}

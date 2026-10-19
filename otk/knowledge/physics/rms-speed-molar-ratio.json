@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ทฤษฎีจลน์ของแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rms_speed_molar_ratio.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนอัตราเร็วรากที่สองของกำลังสองเฉลี่ย",
+      "statement": "ที่อุณหภูมิเดียวกัน v_rms แปรผกผันกับรากที่สองของมวลโมเลกุล",
+      "steps": [
+        "เขียน v_rms=√(3RT/M)",
+        "หารสองแก๊สให้ RT หักล้าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q15"
+      ],
+      "note": ""
+    }
+  ]
+}

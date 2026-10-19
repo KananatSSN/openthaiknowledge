@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมการเลนส์และการเปลี่ยนแปลงเล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.image_distance_sensitivity.procedure",
+      "kind": "procedure",
+      "title": "การเปลี่ยนระยะภาพเมื่อโฟกัสเปลี่ยนเล็กน้อย",
+      "statement": "สำหรับภาพจริงที่ระยะวัตถุคงที่ dv/df=(u/(u−f))²",
+      "steps": [
+        "เขียน v=uf/(u−f)",
+        "หาอนุพันธ์เทียบ f"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q12"
+      ],
+      "note": ""
+    }
+  ]
+}

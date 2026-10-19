@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเลื่อนขนานของแสงผ่านแผ่นหน้าขนาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.air_gap_lateral_shift.procedure",
+      "kind": "procedure",
+      "title": "ระยะเลื่อนขนานของแสงผ่านช่องอากาศ",
+      "statement": "รังสีจากตัวกลาง μ ผ่านช่องอากาศหน้าขนานกว้าง D เลื่อนขนาน Dsin(φ−θ)/cosφ โดย sinφ=μsinθ",
+      "steps": [
+        "หามุมในช่องอากาศด้วยกฎสเนลล์",
+        "หาระยะตั้งฉากระหว่างแนวรังสีเดิมกับรังสีออก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 27
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q27"
+      ],
+      "note": "x read as the perpendicular distance between the leaving ray and the incident line; needs μ sinθ<1."
+    }
+  ]
+}

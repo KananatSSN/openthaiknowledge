@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การหักเหและการสะท้อนกลับหมดในปริซึม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.right_prism_second_face.procedure",
+      "kind": "procedure",
+      "title": "มุมตกกระทบผิวที่สองของปริซึมมุมฉาก",
+      "statement": "ปริซึมมุมยอด 90° มี r+θ=90° ระหว่างมุมหักเหที่ผิวแรกกับมุมตกกระทบที่ผิวสอง จึง cosθ=sin i/μ",
+      "steps": [
+        "ใช้กฎของสเนลล์ที่ผิวแรก",
+        "ใช้มุมรวมในสามเหลี่ยมที่มุมยอด 90°"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q21"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

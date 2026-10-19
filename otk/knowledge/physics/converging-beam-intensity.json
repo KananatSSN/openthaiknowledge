@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เลนส์นูนและความเข้มแสง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.converging_beam_intensity.procedure",
+      "kind": "procedure",
+      "title": "ความเข้มแสงบนฉากก่อนจุดโฟกัส",
+      "statement": "ลำแสงขนานผ่านเลนส์นูนไปฉากที่ระยะ pf (p<1) มีรัศมี (1−p) เท่า ความเข้มจึงเพิ่ม 1/(1−p)²",
+      "steps": [
+        "ใช้สามเหลี่ยมคล้ายของรังสีที่ลู่เข้าโฟกัส",
+        "กำลังเท่าเดิมกระจายบนพื้นที่ที่ลดลงตามกำลังสองของรัศมี"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q13"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

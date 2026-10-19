@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรตัวต้านทานแบบขั้นบันได",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.ladder_network_tail.procedure",
+      "kind": "procedure",
+      "title": "ตัวต้านทานปลายวงจรขั้นบันได",
+      "statement": "ขั้นบันได s+(2s∥X) เท่ากับ 2s เมื่อ X=2s จึงลดวงจรจากปลายได้ทีละขั้น",
+      "steps": [
+        "หาความต้านทานที่ทำให้แต่ละขั้นคงค่าเดิม",
+        "แก้หาตัวต้านทานในขั้นสุดท้าย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/posn1-64-physics.pdf",
+          "item": 20
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q20"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -68,6 +68,7 @@ def test_pdf_output_contract_is_frozen():
 
 def test_sheet_publication_manifest_is_frozen():
     expected = {
+        "posn2564_physics": (30, 30, 30, 0),
         "posn2562_physics": (26, 26, 26, 0),
         "posn2561_physics": (30, 30, 30, 0),
         "posn2560_physics": (30, 30, 30, 0),
@@ -208,5 +209,6 @@ def test_sheet_publication_manifest_is_frozen():
     # Local math variety and original olympiad practice add another 118 sets.
     # The national สอวน. maths papers 2547–2557 and 2562 add 204 more, one per
     # question; the 2563–2567 papers reuse sets that were already registered.
-    # The สอวน. physics camp-selection papers 2560–2562 add 86, one per question.
-    assert len(REGISTRY) == 4039
+    # The สอวน. physics camp-selection papers 2560–2562 add 86, one per question,
+    # and the 2564 paper 30 more.
+    assert len(REGISTRY) == 4069
