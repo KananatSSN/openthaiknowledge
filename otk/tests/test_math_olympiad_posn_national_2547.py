@@ -383,3 +383,20 @@ def test_generated_draws(key):
         choices = [choice.model_dump_json() for choice in question.choices]
         assert len(choices) == REGISTRY[key].max_choices == len(set(choices))
         assert question.model_dump_json() == generate(key, rng=Random(seed)).model_dump_json()
+
+
+def test_printed_2547_q2_system_has_no_real_solution():
+    """Day one ข้อ 2 as printed: a⁶ − 3a²b⁴ = 3, b⁶ − 3a⁴b² = 3√2.
+
+    With x = a², y = b², (x + iy)³ = (x³ − 3xy²) − i(y³ − 3x²y) = 3 − 3√2 i, so
+    x + iy is a cube root of 3 − 3√2 i. A real a, b needs x, y ≥ 0; no cube
+    root has both, which is why the sheet's q02 verifies the corrected sign.
+    """
+    w = sympy.symbols("w")
+    roots = sympy.Poly(w**3 - (3 - 3 * sympy.sqrt(2) * sympy.I), w).nroots(n=30)
+    assert len(roots) == 3
+    for root in roots:
+        x, y = sympy.re(root), sympy.im(root)
+        assert abs(x**3 - 3 * x * y**2 - 3) < 1e-20          # each root is a real
+        assert abs(y**3 - 3 * x**2 * y - 3 * sympy.sqrt(2)) < 1e-20  # pair (x, y)
+        assert x < 0 or y < 0

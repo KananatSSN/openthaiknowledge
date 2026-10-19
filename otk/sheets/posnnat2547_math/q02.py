@@ -7,9 +7,12 @@ The paper's system as printed has no real solution: with x = a², y = b² ≥ 0 
 second equation forces y² > 3x², and then x³ − 3xy² ≤ 0 ≠ 3. The answer 3 is the
 formal value; the solver works with q² so the sign of q does not enter.
 
-``check`` builds an actual solution of the consistent system
-(3a⁴b² − b⁶ = +q): the principal cube root z of p + iq lies in the first
-quadrant, a = √Re z, b = √Im z, and it measures a⁴ + b⁴.
+So ANSWER is verified for the corrected system (3a⁴b² − b⁶ = +q), not the
+printed one. ``check`` builds an actual solution of it: the principal cube root
+z of p + iq lies in the first quadrant, a = √Re z, b = √Im z; it confirms that
+this a, b satisfies both corrected equations, then measures a⁴ + b⁴.
+test_math_olympiad_posn_national_2547.py proves the printed system has no real
+solution.
 """
 
 from __future__ import annotations
@@ -28,4 +31,6 @@ def solve(p=3, q2=18):
 def check(p=3, q2=18):
     z = complex(p, math.sqrt(q2)) ** (1 / 3)
     a, b = math.sqrt(z.real), math.sqrt(max(z.imag, 0.0))
+    assert math.isclose(a**6 - 3 * a**2 * b**4, p, rel_tol=1e-9, abs_tol=1e-9)
+    assert math.isclose(3 * a**4 * b**2 - b**6, math.sqrt(q2), rel_tol=1e-9, abs_tol=1e-9)
     return a**4 + b**4
