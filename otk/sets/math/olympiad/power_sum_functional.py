@@ -1,4 +1,4 @@
-"""(x² + y²)ᵏ f(xy) = f(x)f(y)f(x² + y²): f = ±xᵏ, ±|x|ᵏ or 0."""
+"""(x² + y²)ᵏ f(xy) = f(x)f(y)f(x² + y²): f = ±xᵏ, ±xᵏ⁻¹|x| or 0."""
 
 from __future__ import annotations
 
@@ -15,12 +15,13 @@ PROVENANCE = Provenance(
 
 def solutions(k: int):
     """f = xᵏh: h(xy) = h(x)h(y)h(x² + y²). y = 1 makes h constant c = ±1 on
-    [1, ∞), so g = ch is multiplicative and 1 there, hence 1 or sign(x)."""
+    [1, ∞), so g = ch is multiplicative and 1 there, hence 1 or sign(x).
+    sign(x)·xᵏ = xᵏ⁻¹|x| is |x|ᵏ for odd k and sign(x)|x|ᵏ for even k."""
     return (
         lambda x: x**k,
         lambda x: -(x**k),
-        lambda x: abs(x) ** k,
-        lambda x: -(abs(x) ** k),
+        lambda x: x ** (k - 1) * abs(x),
+        lambda x: -(x ** (k - 1) * abs(x)),
         lambda x: 0,
     )
 
