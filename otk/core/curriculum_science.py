@@ -4175,6 +4175,56 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2560_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แม่เหล็กนีโอดิเมียม', "outside_scope"),
 })
 # END TPhO 2560
+# BEGIN TPhO 2561
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2561_q01",
+    "phys.tpho2561_q02",
+    "phys.tpho2561_q03",
+    "phys.tpho2561_q04",
+    "phys.tpho2561_q05",
+    "phys.tpho2561_q06",
+    "phys.tpho2561_q07",
+    "phys.tpho2561_q08",
+    "phys.tpho2561_q09",
+    "phys.tpho2561_q10",
+    "phys.tpho2561_q11",
+    "phys.tpho2561_q12",
+    "phys.tpho2561_q13",
+    "phys.tpho2561_q14",
+    "phys.tpho2561_q15",
+    "phys.tpho2561_q16",
+    "phys.tpho2561_q17",
+    "phys.tpho2561_q18",
+    "phys.tpho2561_q19",
+    "phys.tpho2561_q20",
+    "phys.tpho2561_q21",
+    "phys.tpho2561_q22",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2561_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การกระดอนซ้ำรอยบนคานหมุน', "outside_scope"),
+    "phys.tpho2561_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การกระดอนซ้ำรอยบนคานหมุน', "outside_scope"),
+    "phys.tpho2561_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การกระดอนซ้ำรอยบนคานหมุน', "outside_scope"),
+    "phys.tpho2561_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแผ่รังสีในภาชนะผนังสองชั้น', "outside_scope"),
+    "phys.tpho2561_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแผ่รังสีในภาชนะผนังสองชั้น', "outside_scope"),
+    "phys.tpho2561_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การตกของท่อนไม้กับมวลแขวน', "outside_scope"),
+    "phys.tpho2561_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การตกของท่อนไม้กับมวลแขวน', "outside_scope"),
+    "phys.tpho2561_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ตาชั่งแม่เหล็กไฟฟ้า', "outside_scope"),
+    "phys.tpho2561_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ตาชั่งแม่เหล็กไฟฟ้า', "outside_scope"),
+    "phys.tpho2561_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ตาชั่งแม่เหล็กไฟฟ้า', "outside_scope"),
+    "phys.tpho2561_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มาตรฐานทางไฟฟ้าเชิงควอนตัม', "outside_scope"),
+    "phys.tpho2561_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มาตรฐานทางไฟฟ้าเชิงควอนตัม', "outside_scope"),
+    "phys.tpho2561_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มาตรฐานทางไฟฟ้าเชิงควอนตัม', "outside_scope"),
+    "phys.tpho2561_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การยกตัวด้วยเสียง', "outside_scope"),
+    "phys.tpho2561_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การยกตัวด้วยเสียง', "outside_scope"),
+    "phys.tpho2561_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การยกตัวด้วยเสียง', "outside_scope"),
+    "phys.tpho2561_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การยกตัวด้วยเสียง', "outside_scope"),
+    "phys.tpho2561_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การยกตัวด้วยเสียง', "outside_scope"),
+    "phys.tpho2561_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การยกตัวด้วยเสียง', "outside_scope"),
+    "phys.tpho2561_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มุมทรงตัวและความหนาแน่นการอัดของข้าว', "outside_scope"),
+    "phys.tpho2561_q21": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มุมทรงตัวและความหนาแน่นการอัดของข้าว', "outside_scope"),
+    "phys.tpho2561_q22": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มุมทรงตัวและความหนาแน่นการอัดของข้าว', "outside_scope"),
+})
+# END TPhO 2561
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

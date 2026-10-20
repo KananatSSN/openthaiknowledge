@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,481 sets in 1,308 unit files. Each subject's `README.md` lists its units with their indicators.
+4,503 sets in 1,309 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -854,6 +854,7 @@
 | [`tpho2558.py`](physics/olympiad/tpho2558.py) | Seeded variants of the reviewed TPhO 14 (2558) national physics olympiad. | `phys.tpho2558_q01`, `phys.tpho2558_q02`, `phys.tpho2558_q03`, `phys.tpho2558_q04`, `phys.tpho2558_q05`, `phys.tpho2558_q06`, `phys.tpho2558_q07`, `phys.tpho2558_q08`, `phys.tpho2558_q09`, `phys.tpho2558_q10`, `phys.tpho2558_q11`, `phys.tpho2558_q12`, `phys.tpho2558_q13`, `phys.tpho2558_q14`, `phys.tpho2558_q15`, `phys.tpho2558_q16`, `phys.tpho2558_q17` |
 | [`tpho2559.py`](physics/olympiad/tpho2559.py) | Seeded variants of the reviewed TPhO 15 (2559) national physics olympiad. | `phys.tpho2559_q01`, `phys.tpho2559_q02`, `phys.tpho2559_q03`, `phys.tpho2559_q04`, `phys.tpho2559_q05`, `phys.tpho2559_q06`, `phys.tpho2559_q07`, `phys.tpho2559_q08`, `phys.tpho2559_q09`, `phys.tpho2559_q10`, `phys.tpho2559_q11`, `phys.tpho2559_q12`, `phys.tpho2559_q13`, `phys.tpho2559_q14`, `phys.tpho2559_q15`, `phys.tpho2559_q16`, `phys.tpho2559_q17`, `phys.tpho2559_q18`, `phys.tpho2559_q19`, `phys.tpho2559_q20`, `phys.tpho2559_q21`, `phys.tpho2559_q22`, `phys.tpho2559_q23` |
 | [`tpho2560.py`](physics/olympiad/tpho2560.py) | Seeded variants of the reviewed TPhO 16 (2560) national physics olympiad. | `phys.tpho2560_q01`, `phys.tpho2560_q02`, `phys.tpho2560_q03`, `phys.tpho2560_q04`, `phys.tpho2560_q05`, `phys.tpho2560_q06`, `phys.tpho2560_q07`, `phys.tpho2560_q08`, `phys.tpho2560_q09`, `phys.tpho2560_q10`, `phys.tpho2560_q11`, `phys.tpho2560_q12`, `phys.tpho2560_q13`, `phys.tpho2560_q14`, `phys.tpho2560_q15`, `phys.tpho2560_q16`, `phys.tpho2560_q17`, `phys.tpho2560_q18`, `phys.tpho2560_q19`, `phys.tpho2560_q20` |
+| [`tpho2561.py`](physics/olympiad/tpho2561.py) | Seeded variants of the reviewed TPhO 17 (2561) national physics olympiad. | `phys.tpho2561_q01`, `phys.tpho2561_q02`, `phys.tpho2561_q03`, `phys.tpho2561_q04`, `phys.tpho2561_q05`, `phys.tpho2561_q06`, `phys.tpho2561_q07`, `phys.tpho2561_q08`, `phys.tpho2561_q09`, `phys.tpho2561_q10`, `phys.tpho2561_q11`, `phys.tpho2561_q12`, `phys.tpho2561_q13`, `phys.tpho2561_q14`, `phys.tpho2561_q15`, `phys.tpho2561_q16`, `phys.tpho2561_q17`, `phys.tpho2561_q18`, `phys.tpho2561_q19`, `phys.tpho2561_q20`, `phys.tpho2561_q21`, `phys.tpho2561_q22` |
 
 ## chemistry — เคมี
 

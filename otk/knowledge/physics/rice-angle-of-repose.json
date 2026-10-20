@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "มุมทรงตัวและความหนาแน่นการอัดของข้าว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rice_angle_of_repose.procedure",
+      "kind": "procedure",
+      "title": "มุมทรงตัวจากความสูงและรัศมีกองข้าว",
+      "statement": "มุมทรงตัวของข้าว: วัดจากกองข้าวโดยตรง tan α = h/r หรือจากทรงกระบอกที่เริ่มกลิ้งบนพื้นเอียง sin θ_c = (x_cm/R) sin α₁ ซึ่งประมาณเป็นเส้นตรงในปริมาณข้าว และความหนาแน่นการอัดหาจากปริมาตรน้ำที่เติมเต็มช่องว่าง",
+      "steps": [
+        "วัดความสูงและรัศมีกองหรือมุมวิกฤติที่ปริมาณข้าวต่าง ๆ",
+        "เขียนกราฟเส้นตรงหรือใช้ปริมาตรน้ำหามุมและความหนาแน่นการอัด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_exp.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2561_q20",
+        "phys.tpho2561_q21",
+        "phys.tpho2561_q22"
+      ],
+      "note": "Synthetic readings."
+    }
+  ]
+}

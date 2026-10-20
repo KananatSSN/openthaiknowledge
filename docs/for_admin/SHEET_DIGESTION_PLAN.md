@@ -153,8 +153,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 23 generators in `otk/sets/physics/olympiad/tpho2559.py`.
 - `สอวน_physics/tpho-60-physics/` (TPhO 16, 2560): 18 theory items and 2
   experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2560.py`.
-- Next source: `สอวน_physics/tpho-61-physics/`. Twenty-five of 33 papers are
-  digested; 8 remain pending.
+- `สอวน_physics/tpho-61-physics/` (TPhO 17, 2561): 19 theory items and 3
+  experiment parts → 22 generators in `otk/sets/physics/olympiad/tpho2561.py`.
+- Next source: `สอวน_physics/tpho-62-physics/`. Twenty-six of 33 papers are
+  digested; 7 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1931,3 +1933,33 @@ TOTAL         338   316     17     4   66      255      6     11
   passed; the sheet's own tests: 44 passed; Ruff clean.
 - Full suite: **39,228 passed, 13 skipped in 28m19s** (slower than usual
   on this run).
+
+### 2026-10-20 — TPhO 17 (2561) national physics olympiad
+
+- Three PDFs: theory paper, its solution (a scan whose text layer is
+  unreadable; `ignored`, used to confirm the answers it shows legibly) and
+  the lab paper (no lab solution). The theory paper's text layer has a
+  garbled maths font, so equations were read from page images.
+- 22 items: 1.1 (a mass bouncing on a spinning beam: L = 2v² sin θ₀/g,
+  MLω = 6mv, m/M = θ₀ tan θ₀/3 for the smallest turn 2θ₀), 1.2 (vacuum
+  flask: net flow ε₁ε₂σ(T₁⁴ − T₂⁴)/(ε₁ + ε₂ − ε₁ε₂), 6.24 days to melt),
+  1.3 (falling rod on a smooth floor: a_B and a_C, strings slack above
+  54.7°; 1.3 d is left unanswered), 2 (watt balance: B_r = 0.081 T,
+  m = 1.0 kg, m = VI/(ug), the Josephson voltage, the Hall resistance
+  h/(νe²), the relative error 1.8×10⁻⁸), 3 (acoustic levitation: P_m, c,
+  kinetic and momentum densities, the second-order mean pressure, the push
+  of 2.9×10⁻³ N/m² at 120 dB), and the rice lab with synthetic data: the
+  heap angle, α₁ from the rolling cylinder, the packing density.
+- Scheme note: the lab's linearisation sin θ_c = 0.508 η sin α₁ + const
+  does not match its own x_cm(η) (tangent 16/(3π²) = 0.540; a fit over its
+  range gives 0.522). The generated item follows the paper's equation (2);
+  a test pins the exact tangent.
+- Independent checks include a stepped projectile, an elastic-impact
+  bisection for the spin, an explicit bounce-by-bounce radiation sum, a
+  3 × 3 force-torque system for the rod, a segment-summed coil force,
+  dimensional exponents by substitution, worst-case error propagation,
+  period averages of the sound fields, and the intensity route for the push.
+  `sheetpipe verify`: 22/22 green, 66 runs.
+- Targeted run: 23,193 passed, 4 skipped; `test_per_set` for the 22 keys
+  passed; the sheet's own tests: 48 passed; Ruff clean.
+- Full suite: **39,546 passed, 13 skipped in 14m12s**.

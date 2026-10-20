@@ -1,0 +1,40 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การตกของท่อนไม้กับมวลแขวน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.falling_rod_smooth_floor.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งของจุดกึ่งกลางท่อนไม้ที่ล้มบนพื้นลื่น",
+      "statement": "ท่อนไม้ที่ปลายหนึ่งแตะพื้นลื่นเริ่มล้มจากหยุดนิ่ง: แรงตั้งฉากและสมการหมุนให้จุดกึ่งกลางตกด้วย 3g cos²θ/(1 + 3cos²θ) และปลายบนด้วยสองเท่า เชือกที่แขวนมวลจะหย่อนทั้งหมดเมื่อ θ ≥ 54.7°",
+      "steps": [
+        "เขียนสมการแรงและทอร์กพร้อมเงื่อนไขที่ปลายแตะพื้น",
+        "เทียบความเร่งของแต่ละจุดกับ g หาเงื่อนไขเชือกหย่อน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2561_q06",
+        "phys.tpho2561_q07"
+      ],
+      "note": "theta varies."
+    }
+  ]
+}

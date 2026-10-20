@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การกระดอนซ้ำรอยบนคานหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rotating_beam_bounce.procedure",
+      "kind": "procedure",
+      "title": "ความยาวคานจากวิถีโพรเจกไทล์ของมวลที่กระดอน",
+      "statement": "มวลที่กระดอนซ้ำรอยบนคานหมุน: ต้องกระทบตั้งฉากกับคาน จึงได้ L = 2v² sin θ₀/g การชนยืดหยุ่นกลับทิศทั้งมวลและคาน MLω = 6mv และคานต้องหมุน 2θ₀ ระหว่างการกระทบ ได้ m/M = θ₀ tan θ₀/3",
+      "steps": [
+        "ใช้การเคลื่อนที่แบบโพรเจกไทล์หาความยาวคาน",
+        "ใช้การดลเชิงมุมและเวลาบินหาอัตราเร็วเชิงมุมและอัตราส่วนมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2561_q01",
+        "phys.tpho2561_q02",
+        "phys.tpho2561_q03"
+      ],
+      "note": "v and theta0 vary."
+    }
+  ]
+}

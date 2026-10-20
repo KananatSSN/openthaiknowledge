@@ -5521,6 +5521,45 @@
    "sheet_id": "tpho2560_physics",
    "stage": "generated",
    "note": "Theory paper (20 pages); 25 sub-parts, 18 items; answers from TPhO2017_Theory-Sol.pdf; hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-61-physics/tpho_17_exp.pdf",
+   "kind": "exam",
+   "sha256": "276d77710fd51f59",
+   "size": 1347412,
+   "pages": 9,
+   "text_chars": 10769,
+   "layout": "numbered",
+   "glyph_damage": 613,
+   "items": 4,
+   "sheet_id": "tpho2561_physics",
+   "stage": "generated",
+   "note": "Experimental paper (rice: angles of repose and packing density); no lab solution in the folder; 3 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+   "kind": "exam",
+   "sha256": "573200156755c994",
+   "size": 3619385,
+   "pages": 18,
+   "text_chars": 21817,
+   "layout": "numbered",
+   "glyph_damage": 1180,
+   "items": 28,
+   "sheet_id": "tpho2561_physics",
+   "stage": "generated",
+   "note": "Theory paper (18 pages); 28 sub-parts, 19 items; checked against the scanned solution and re-derived; hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-61-physics/tpho_17_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "ce84f73e2e91eae4",
+   "size": 337539,
+   "pages": 15,
+   "text_chars": 10680,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper (a scan with a poor text layer); used to confirm the answers it shows legibly (all agree)."
   }
  ]
 }

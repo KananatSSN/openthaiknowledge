@@ -1,0 +1,36 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแผ่รังสีในภาชนะผนังสองชั้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.vacuum_flask_radiation.procedure",
+      "kind": "procedure",
+      "title": "อัตราความร้อนสุทธิผ่านผนังสองชั้นสุญญากาศ",
+      "statement": "ภาชนะผนังสองชั้นสุญญากาศ: รวมการสะท้อนไปมาเป็นอนุกรมเรขาคณิต ได้ความร้อนสุทธิ ε₁ε₂σ(T₁⁴ − T₂⁴)/(ε₁ + ε₂ − ε₁ε₂) ต่อพื้นที่ และเวลาที่น้ำแข็งละลายหมดเท่ากับ mL_f หารด้วยกำลังผ่านผนังด้านข้าง",
+      "steps": [
+        "รวมรังสีที่ผนังในดูดกลืนจากการสะท้อนทุกรอบ",
+        "หักการแผ่รังสีของผนังในแล้วคูณพื้นที่หาเวลาละลาย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2561_q04",
+        "phys.tpho2561_q05"
+      ],
+      "note": "Emissivities and outside temperature vary."
+    }
+  ]
+}
