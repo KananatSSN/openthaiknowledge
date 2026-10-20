@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความสัมพันธ์ของความดัน ปริมาตร และอุณหภูมิแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.ideal_gas_proportionality_kelvin.procedure",
+      "kind": "procedure",
+      "title": "ตรวจข้อความจากกฎแก๊สอุดมคติ",
+      "statement": "จาก PV=nRT ปริมาตรแปรตามจำนวนโมลเมื่อ P,T คงที่ ความหนาแน่นแปรตาม P เมื่อ T คงที่ และความดันแปรตาม T ในหน่วยเคลวินเมื่อ n,V คงที่",
+      "steps": [
+        "ระบุค่าที่คงที่ในแต่ละข้อความก่อนเลือกสัดส่วนจากสมการแก๊ส",
+        "ตรวจการอ้างว่าอุณหภูมิเซลเซียสเพิ่มเป็นหลายเท่าจะทำให้ความดันเพิ่มเท่ากันหรือไม่"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 39
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q39"
+      ],
+      "note": "The ratio of pressures is 323.15/298.15, about 1.084, not 2. Other claims follow PV=nRT and rho=PM/RT."
+    }
+  ]
+}

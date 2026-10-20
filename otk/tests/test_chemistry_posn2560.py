@@ -10,6 +10,7 @@ from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
+    q37, q38, q39,
 )
 
 
@@ -132,6 +133,13 @@ def test_phase_lattice_and_charles_law_variants():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_helium_ideality_stp_and_ideal_gas_claim_variants():
+    for module in (q37, q38, q39):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -154,7 +162,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 37)))
+@pytest.mark.parametrize("number", tuple(range(1, 40)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -462,10 +470,32 @@ def test_generated_answers_follow_the_written_data(number):
                                 if f"{label}. {value}" in stem)
                            for label in "abc")
             expected = _LATTICE_OPTION_TEXT[q35.check(claims=claims)]
-        else:
+        elif number == 36:
             volume, initial, final = map(int, re.search(
                 r"ปริมาตร (\d+) cm³ ที่ (\d+) °C.*?เป็น (\d+) °C", stem,
             ).groups())
             expected = f"{q36.check(initial_volume=volume, initial_celsius=initial, final_celsius=final):.1f}"
+        elif number == 37:
+            conditions = []
+            for choice in question.choices:
+                temp, pressure, unit = re.fullmatch(
+                    r"(\d+) K และ ([\d.]+) (mmHg|atm)", choice.content[0].text,
+                ).groups()
+                conditions.append((int(temp), round(float(pressure) *
+                                                    (760 if unit == "atm" else 1))))
+            expected = question.choices[q37.check(conditions=tuple(conditions))].content[0].text
+        elif number == 38:
+            volume, pressure, celsius = re.search(
+                r"ปริมาตร ([\d.]+) L ที่ความดัน ([\d.]+) atm และอุณหภูมิ (\d+) °C",
+                stem,
+            ).groups()
+            expected = f"{q38.check(volume_l=float(volume), pressure_atm=float(pressure), initial_celsius=int(celsius)):.2f}"
+        else:
+            initial, final, factor = map(int, re.search(
+                r"อุณหภูมิจาก (\d+) °C เป็น (\d+) °C ความดันเพิ่ม (\d+) เท่า", stem,
+            ).groups())
+            assert q39.check(factor=factor, initial_celsius=initial,
+                             final_celsius=final) == 2
+            expected = "ค"
         assert answer == expected
         assert len(question.choices) == 4

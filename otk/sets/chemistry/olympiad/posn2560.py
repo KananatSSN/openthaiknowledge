@@ -12,6 +12,7 @@ from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
+    q37, q38, q39,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1312,4 +1313,119 @@ class CharlesLawVolume(ChemistrySheet):
                 "chem.inverted_charles_temperature_ratio",
                 "chem.used_celsius_in_charles_law",
             ), distractors)],
+        )
+
+
+def _helium_condition_text(condition):
+    temperature, pressure_mm_hg = condition
+    pressure = f"{pressure_mm_hg / 760:g} atm" if pressure_mm_hg >= 760 else f"{pressure_mm_hg} mmHg"
+    return f"{temperature} K และ {pressure}"
+
+
+@question_type(
+    "chem.posn2560_q37", display_name={"th": "ภาวะที่แก๊สฮีเลียมใกล้อุดมคติ"},
+    level=LEVEL, subject="เคมี", topic="พฤติกรรมแก๊สจริงและแก๊สอุดมคติ",
+)
+class HeliumIdeality(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        conditions = rng.choice((q37.PARAMS, *q37.VARIANTS))["conditions"]
+        correct_index = q37.solve(conditions=conditions)
+        wrong_keys = {
+            (False, True): "chem.chose_cold_low_pressure_gas",
+            (False, False): "chem.chose_cold_high_pressure_gas",
+            (True, False): "chem.chose_hot_high_pressure_gas",
+        }
+        hottest = max(temperature for temperature, _ in conditions)
+        lowest = min(pressure for _, pressure in conditions)
+        return GeneratedQuestion(
+            stem=[text("ภาวะใดทำให้แก๊สฮีเลียมมีพฤติกรรมใกล้แก๊สอุดมคติมากที่สุด")],
+            correct=[text(_helium_condition_text(conditions[correct_index]))],
+            distractors=fixed(*[[text(named(wrong_keys[(temperature == hottest,
+                                                       pressure == lowest)],
+                                            _helium_condition_text((temperature, pressure))))]
+                                for i, (temperature, pressure) in enumerate(conditions)
+                                if i != correct_index]),
+            topic="พฤติกรรมแก๊สจริงและแก๊สอุดมคติ",
+            hint=[text("แก๊สจริงเข้าใกล้อุดมคติมากขึ้นเมื่ออุณหภูมิสูงและความดันต่ำ")],
+        )
+
+
+@question_type(
+    "chem.posn2560_q38", display_name={"th": "ปริมาตรแก๊สที่ STP"},
+    level=LEVEL, subject="เคมี", topic="กฎรวมแก๊สและสภาวะ STP",
+)
+class GasVolumeAtSTP(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q38.PARAMS, *q38.VARIANTS))
+        volume, pressure, celsius = (values["volume_l"], values["pressure_atm"],
+                                     values["initial_celsius"])
+        answer = q38.solve(**values)
+        candidates = (
+            ("chem.ignored_pressure_in_combined_gas_law",
+             volume * 273.15 / (celsius + 273.15)),
+            ("chem.ignored_temperature_in_combined_gas_law", volume * pressure),
+            ("chem.inverted_temperature_in_combined_gas_law",
+             volume * pressure * (celsius + 273.15) / 273.15),
+            ("chem.inverted_pressure_in_combined_gas_law",
+             volume / pressure * 273.15 / (celsius + 273.15)),
+        )
+        distractors = []
+        seen = {f"{answer:.2f}"}
+        for key, value in candidates:
+            label = f"{value:.2f}"
+            if label not in seen:
+                distractors.append(named(key, label))
+                seen.add(label)
+            if len(distractors) == 3:
+                break
+        assert len(distractors) == 3
+        return MathDraw(
+            "", f"{answer:.2f}",
+            prompt=(f"แก๊สอุดมคติมีปริมาตร {volume:.2f} L ที่ความดัน {pressure:.1f} atm "
+                    f"และอุณหภูมิ {celsius} °C ถ้าเปลี่ยนเป็น STP (1 atm, 0 °C) "
+                    "ปริมาตรเป็นกี่ลิตร (ตอบทศนิยมสองตำแหน่ง)"),
+            hint="ใช้ P₁V₁/T₁ = P₂V₂/T₂ โดยอุณหภูมิเป็นเคลวิน",
+            distractors=distractors,
+        )
+
+
+@question_type(
+    "chem.posn2560_q39", display_name={"th": "ตรวจข้อความจากกฎแก๊สอุดมคติ"},
+    level=LEVEL, subject="เคมี", topic="ความสัมพันธ์ของความดัน ปริมาตร และอุณหภูมิแก๊ส",
+)
+class IdealGasClaims(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        values = rng.choice((q39.PARAMS, *q39.VARIANTS))
+        factor = values["factor"]
+        claims = (
+            f"เมื่อ P และ T คงที่ จำนวนโมลเพิ่ม {factor} เท่า ปริมาตรเพิ่ม {factor} เท่า",
+            f"เมื่อ T คงที่ ความดันเพิ่ม {factor} เท่า ความหนาแน่นเพิ่ม {factor} เท่า",
+            (f"เมื่อ V และมวลคงที่ อุณหภูมิจาก {values['initial_celsius']} °C เป็น "
+             f"{values['final_celsius']} °C ความดันเพิ่ม {factor} เท่า"),
+            f"เมื่อ T และ V คงที่ จำนวนโมลเพิ่ม {factor} เท่า ความดันเพิ่ม {factor} เท่า",
+        )
+        false_index = q39.solve(**values)
+        labels = "กขคง"
+        mistake_keys = (
+            "chem.misread_avogadro_volume_trend",
+            "chem.misread_pressure_density_trend",
+            "chem.confused_celsius_with_kelvin_pressure_ratio",
+            "chem.misread_mole_pressure_trend",
+        )
+        return GeneratedQuestion(
+            stem=[text("สำหรับแก๊สอุดมคติ พิจารณาข้อความ: "
+                       + "; ".join(f"{labels[i]}. {claim}"
+                                   for i, claim in enumerate(claims))
+                       + " ข้อใดไม่ถูกต้อง")],
+            correct=[text(labels[false_index])],
+            distractors=fixed(*[[text(named(mistake_keys[i], labels[i]))]
+                                for i in range(len(claims)) if i != false_index]),
+            topic="ความสัมพันธ์ของความดัน ปริมาตร และอุณหภูมิแก๊ส",
+            hint=[text("จาก PV=nRT อัตราส่วนอุณหภูมิต้องใช้เคลวิน")],
         )

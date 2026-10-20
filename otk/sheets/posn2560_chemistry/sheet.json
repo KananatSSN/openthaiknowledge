@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–36 are reviewed, solved and generated (36/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 34 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 36/36 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–39 are reviewed, solved and generated (39/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 31 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 39/39 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -473,6 +473,45 @@
       "answer": "96.6",
       "generator": "chem.posn2560_q36",
       "note": "Convert both temperatures to kelvin before applying V2/V1=T2/T1; round to one decimal place."
+    },
+    {
+      "number": 37,
+      "solver": "q37",
+      "title": "ภาวะที่แก๊สฮีเลียมใกล้อุดมคติ",
+      "source": "Part I, question 37, p11: 750 K and 150 mmHg is highest-T lowest-P condition, choice ค.",
+      "page": 11,
+      "figure": "Rendered p11 visually checked the temperatures, pressure units, and all four choices.",
+      "figure_asset": "",
+      "topic": "พฤติกรรมแก๊สจริงและแก๊สอุดมคติ",
+      "answer": "2",
+      "generator": "chem.posn2560_q37",
+      "note": "All choices use helium; high temperature and low pressure minimize real-gas deviations in this comparison."
+    },
+    {
+      "number": 38,
+      "solver": "q38",
+      "title": "ปริมาตรแก๊สที่ STP",
+      "source": "Part I, question 38, p11: 0.40 L at 2.0 atm and 273 C becomes 0.40 L at STP, choice ข.",
+      "page": 11,
+      "figure": "Rendered p11 visually checked the temperatures, pressure units, and all four choices.",
+      "figure_asset": "",
+      "topic": "กฎรวมแก๊สและสภาวะ STP",
+      "answer": "0.4",
+      "generator": "chem.posn2560_q38",
+      "note": "273 C is about 546 K; the halved pressure and halved absolute temperature cancel. The adaptation explicitly defines STP as 1 atm and 0 C."
+    },
+    {
+      "number": 39,
+      "solver": "q39",
+      "title": "ตรวจข้อความจากกฎแก๊สอุดมคติ",
+      "source": "Part I, question 39, p11: 25 C to 50 C at fixed V and mass does not double gas pressure, choice ค.",
+      "page": 11,
+      "figure": "Rendered p11 visually checked the temperatures, pressure units, and all four choices.",
+      "figure_asset": "",
+      "topic": "ความสัมพันธ์ของความดัน ปริมาตร และอุณหภูมิแก๊ส",
+      "answer": "2",
+      "generator": "chem.posn2560_q39",
+      "note": "The ratio of pressures is 323.15/298.15, about 1.084, not 2. Other claims follow PV=nRT and rho=PM/RT."
     }
   ]
 }

@@ -37,6 +37,17 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.chose_cold_low_pressure_gas": {"th": "เลือกความดันต่ำแต่ไม่คำนึงถึงอุณหภูมิต่ำ", "en": "Chose low pressure but cold gas"},
+    "chem.chose_cold_high_pressure_gas": {"th": "เลือกแก๊สอุณหภูมิต่ำและความดันสูง", "en": "Chose cold high-pressure gas"},
+    "chem.chose_hot_high_pressure_gas": {"th": "เลือกอุณหภูมิสูงแต่ไม่คำนึงถึงความดันสูง", "en": "Chose hot but high-pressure gas"},
+    "chem.ignored_pressure_in_combined_gas_law": {"th": "ไม่ปรับปริมาตรตามความดัน", "en": "Ignored pressure in the combined gas law"},
+    "chem.ignored_temperature_in_combined_gas_law": {"th": "ไม่ปรับปริมาตรตามอุณหภูมิ", "en": "Ignored temperature in the combined gas law"},
+    "chem.inverted_temperature_in_combined_gas_law": {"th": "กลับอัตราส่วนอุณหภูมิในกฎรวมแก๊ส", "en": "Inverted the gas temperature ratio"},
+    "chem.inverted_pressure_in_combined_gas_law": {"th": "กลับอัตราส่วนความดันในกฎรวมแก๊ส", "en": "Inverted the gas pressure ratio"},
+    "chem.misread_avogadro_volume_trend": {"th": "อ่านความสัมพันธ์จำนวนโมลกับปริมาตรผิด", "en": "Misread the mole-volume relationship"},
+    "chem.misread_pressure_density_trend": {"th": "อ่านความสัมพันธ์ความดันกับความหนาแน่นผิด", "en": "Misread the pressure-density relationship"},
+    "chem.confused_celsius_with_kelvin_pressure_ratio": {"th": "ใช้อัตราส่วนองศาเซลเซียสแทนเคลวิน", "en": "Used a Celsius ratio for pressure"},
+    "chem.misread_mole_pressure_trend": {"th": "อ่านความสัมพันธ์จำนวนโมลกับความดันผิด", "en": "Misread the mole-pressure relationship"},
     "chem.inverted_external_pressure_boiling_trend": {"th": "กลับทิศของผลความดันต่อจุดเดือด", "en": "Inverted the pressure-boiling trend"},
     "chem.confused_evaporation_with_bulk_boiling": {"th": "สับสนการระเหยกับการเดือดในเนื้อของเหลว", "en": "Confused evaporation with bulk boiling"},
     "chem.assumed_iodine_sublimes_because_melting_below_room": {"th": "คิดว่าไอโอดีนหลอมเหลวต่ำกว่าอุณหภูมิห้อง", "en": "Assumed iodine melts below room temperature"},
