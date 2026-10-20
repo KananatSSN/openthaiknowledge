@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมการไอออนิกสุทธิ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.net_ionic_precipitation.procedure",
+      "kind": "procedure",
+      "title": "สมการไอออนิกสุทธิของตะกอน",
+      "statement": "สมการไอออนิกสุทธิแสดงเฉพาะไอออนที่รวมตัวเป็นตะกอน; ไอออนผู้ชมที่ละลายได้ถูกตัดจากทั้งสองข้าง",
+      "steps": [
+        "แยกสารละลายเกลือออกเป็นไอออนและระบุตะกอน",
+        "ตัดไอออนผู้ชมแล้วดุลประจุและจำนวนอะตอมของสมการที่เหลือ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q19"
+      ],
+      "note": "Solver returns (cation charge magnitude, anion charge magnitude, precipitate formula). Variants use BaSO4, AgCl and CaCO3 precipitation with soluble spectator ions."
+    }
+  ]
+}

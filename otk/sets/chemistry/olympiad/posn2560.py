@@ -5,7 +5,7 @@ from otk.core.registry import question_type
 from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15, q16, q17, q18,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -589,4 +589,143 @@ class HydrogenHalideBoilingOrder(ChemistrySheet):
                 named("chem.swapped_two_highest_halide_boiling_points",
                       _halide_order((*answer[:-2], answer[-1], answer[-2]))),
             ],
+        )
+
+
+_ION_TEX = {
+    "Pb": r"\mathrm{Pb}", "Ba": r"\mathrm{Ba}",
+    "Ag": r"\mathrm{Ag}", "Ca": r"\mathrm{Ca}",
+    "SO4": r"\mathrm{SO_4}", "Cl": r"\mathrm{Cl}",
+    "CO3": r"\mathrm{CO_3}", "K": r"\mathrm{K}",
+    "Na": r"\mathrm{Na}", "NO3": r"\mathrm{NO_3}",
+}
+_PRECIPITATE_TEX = {
+    "PbSO4": r"\mathrm{PbSO_4}", "BaSO4": r"\mathrm{BaSO_4}",
+    "AgCl": r"\mathrm{AgCl}", "CaCO3": r"\mathrm{CaCO_3}",
+    "KNO3": r"\mathrm{KNO_3}", "NaNO3": r"\mathrm{NaNO_3}",
+    "NaCl": r"\mathrm{NaCl}",
+}
+_MIXTURES = {
+    ("Pb", "SO4"): ("Pb(NO₃)₂", "K₂SO₄", "K", "NO3", "KNO3"),
+    ("Ba", "SO4"): ("BaCl₂", "Na₂SO₄", "Na", "Cl", "NaCl"),
+    ("Ag", "Cl"): ("AgNO₃", "NaCl", "Na", "NO3", "NaNO3"),
+    ("Ca", "CO3"): ("CaCl₂", "Na₂CO₃", "Na", "Cl", "NaCl"),
+}
+
+
+def _ion_tex(symbol, charge, state="aq"):
+    sign = "+" if charge > 0 else "-"
+    magnitude = "" if abs(charge) == 1 else str(abs(charge))
+    return rf"{_ION_TEX[symbol]}^{{{magnitude}{sign}}}_{{({state})}}"
+
+
+def _net_ionic(metal, metal_charge, anion, anion_charge, product, state="s"):
+    return (f"{_ion_tex(metal, metal_charge)}+{_ion_tex(anion, -anion_charge)}"
+            rf"\rightarrow {_PRECIPITATE_TEX[product]}_{{({state})}}")
+
+
+@question_type(
+    "chem.posn2560_q19", display_name={"th": "สมการไอออนิกสุทธิของตะกอน"},
+    level=LEVEL, subject="เคมี", topic="สมการไอออนิกสุทธิ",
+)
+class NetIonicPrecipitation(ChemistrySheet):
+    def expr(self, rng):
+        params = rng.choice((q19.PARAMS, *q19.VARIANTS))
+        metal, anion = params["metal"], params["anion"]
+        positive, negative, product = q19.solve(**params)
+        first, second, spectator_positive, spectator_negative, spectator_salt = _MIXTURES[(metal, anion)]
+        spectator_tex = (f"{_ion_tex(spectator_positive, 1)}+"
+                         f"{_ion_tex(spectator_negative, -1)}"
+                         rf"\rightarrow {_PRECIPITATE_TEX[spectator_salt]}_{{(s)}}")
+        wrong_charge = 1 if positive == 2 else 2
+        return MathDraw(
+            "", _net_ionic(metal, positive, anion, negative, product),
+            prompt=(f"ผสมสารละลาย {first} กับ {second} แล้วเกิดตะกอน "
+                    "สมการไอออนิกสุทธิข้อใดถูกต้อง"),
+            hint="แยกเกลือที่ละลายได้เป็นไอออน แล้วตัดไอออนผู้ชมทั้งสองข้าง",
+            distractors=[
+                named("chem.precipitated_spectator_salt", spectator_tex),
+                named("chem.misassigned_metal_ion_charge",
+                      _net_ionic(metal, wrong_charge, anion, negative, product)),
+                named("chem.kept_precipitate_aqueous",
+                      _net_ionic(metal, positive, anion, negative, product, "aq")),
+            ],
+        )
+
+
+_CONDUCTIVITY_ROWS = (
+    (1455, 2837, "นำ", "นำ", "ไม่ละลาย"),
+    (-56, -28, "ไม่นำ", "ไม่นำ", "ไม่นำ"),
+    (685, 1324, "ไม่นำ", "นำ", "นำ"),
+    (-51, -35, "ไม่นำ", "ไม่นำ", "นำ"),
+    (-89, 118, "ไม่นำ", "ไม่นำ", "ไม่นำ"),
+)
+
+
+def _type_triplet(labels):
+    return "(" + ",".join(labels) + ")"
+
+
+@question_type(
+    "chem.posn2560_q20", display_name={"th": "จำแนกสารจากการนำไฟฟ้า"},
+    level=LEVEL, subject="เคมี", topic="สมบัติของสารไอออนิก โคเวเลนต์ และโลหะ",
+)
+class ConductivitySubstanceTypes(ChemistrySheet):
+    def expr(self, rng):
+        labels = rng.choice((q20.PARAMS, *q20.VARIANTS))["labels"]
+        ionic, ionizing, metal = q20.solve(labels=labels)
+        rows = "; ".join(
+            f"{label}=({mp},{bp};{solid}/{liquid}/{water})"
+            for label, (mp, bp, solid, liquid, water) in zip(labels, _CONDUCTIVITY_ROWS)
+        )
+        return MathDraw(
+            "", _type_triplet((ionic, ionizing, metal)),
+            prompt=("ข้อมูลแต่ละสารเป็น (จุดหลอมเหลว°C, จุดเดือด°C; การนำไฟฟ้า"
+                    "ของแข็ง/ของเหลว/สารละลายน้ำ): " + rows + " "
+                    "จงระบุ (สารไอออนิก, สารโคเวเลนต์ที่สารละลายน้ำนำไฟฟ้า, โลหะ)"),
+            hint="โลหะนำไฟฟ้าในของแข็ง; ไอออนิกนำเมื่อหลอม/ละลาย; โมเลกุลบางชนิดแตกตัวในน้ำ",
+            distractors=[
+                named("chem.swapped_ionic_and_metal_properties",
+                      _type_triplet((metal, ionizing, ionic))),
+                named("chem.ignored_aqueous_molecular_ionization",
+                      _type_triplet((ionic, labels[1], metal))),
+                named("chem.swapped_ionic_and_ionizing_molecular",
+                      _type_triplet((ionizing, ionic, metal))),
+            ],
+        )
+
+
+_NITROGEN_OXIDE_TEX = {
+    "NO+": r"\mathrm{NO}^{+}", "NO": r"\mathrm{NO}",
+    "NO2+": r"\mathrm{NO_2}^{+}", "NO2-": r"\mathrm{NO_2}^{-}",
+    "NO3-": r"\mathrm{NO_3}^{-}",
+}
+_NITROGEN_OXIDE_TEXT = {
+    "NO+": "NO⁺", "NO": "NO", "NO2+": "NO₂⁺",
+    "NO2-": "NO₂⁻", "NO3-": "NO₃⁻",
+}
+_BOND_MISTAKES = {
+    "NO": "chem.ignored_no_antibonding_electron",
+    "NO2+": "chem.assumed_nitronium_shorter_than_nitrosonium",
+    "NO2-": "chem.overstated_nitrite_bond_order",
+    "NO3-": "chem.overstated_nitrate_bond_order",
+}
+
+
+@question_type(
+    "chem.posn2560_q21", display_name={"th": "ไอออนที่มีพันธะไนโตรเจนออกซิเจนสั้นที่สุด"},
+    level=LEVEL, subject="เคมี", topic="อันดับพันธะและความยาวพันธะ",
+)
+class NitrogenOxygenBondLength(ChemistrySheet):
+    def expr(self, rng):
+        species = rng.choice((q21.PARAMS, *q21.VARIANTS))["species"]
+        answer = q21.solve(species=species)
+        return MathDraw(
+            "", _NITROGEN_OXIDE_TEX[answer],
+            prompt=("ในบรรดาชนิดต่อไปนี้ " + ", ".join(
+                _NITROGEN_OXIDE_TEXT[item] for item in species)
+                + " ชนิดใดมีพันธะ N–O สั้นที่สุด"),
+            hint="พันธะสั้นมักมีอันดับพันธะสูง; NO⁺ มีอันดับพันธะ 3",
+            distractors=[named(_BOND_MISTAKES[item], _NITROGEN_OXIDE_TEX[item])
+                         for item in species if item != answer],
         )

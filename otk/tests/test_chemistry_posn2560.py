@@ -8,7 +8,7 @@ import pytest
 from otk.core import generate
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15, q16, q17, q18,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21,
 )
 
 
@@ -88,6 +88,13 @@ def test_nuclear_balance_valence_counts_and_halide_boiling_order():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_net_ionic_conductivity_and_nitrogen_oxygen_bonds():
+    for module in (q19, q20, q21):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -110,7 +117,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18))
+@pytest.mark.parametrize("number", tuple(range(1, 22)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -228,9 +235,48 @@ def test_generated_answers_follow_the_written_data(number):
             hydrogen_count, halogen_count = q17.check(halogen=halogen)
             expected = (rf"n_v(\mathrm{{H}})={hydrogen_count},\;"
                         rf"n_v(\mathrm{{{halogen}}})={halogen_count}")
-        else:
+        elif number == 18:
             molecules = tuple(re.search(r"จุดเดือดปกติของ ([A-Za-z, ]+) จากต่ำไปสูง", stem)[1].split(", "))
             expected = "<".join(rf"\mathrm{{{molecule}}}" for molecule in
                                 q18.check(molecules=molecules))
+        elif number == 19:
+            reaction = next(pair for reagent, pair in (
+                ("Pb(NO₃)₂", ("Pb", "SO4")), ("BaCl₂", ("Ba", "SO4")),
+                ("AgNO₃", ("Ag", "Cl")), ("CaCl₂", ("Ca", "CO3")),
+            ) if reagent in stem)
+            positive, negative, product = q19.check(metal=reaction[0], anion=reaction[1])
+            ion_tex = {"Pb": r"\mathrm{Pb}", "Ba": r"\mathrm{Ba}",
+                       "Ag": r"\mathrm{Ag}", "Ca": r"\mathrm{Ca}",
+                       "SO4": r"\mathrm{SO_4}", "Cl": r"\mathrm{Cl}",
+                       "CO3": r"\mathrm{CO_3}"}
+            product_tex = {"PbSO4": r"\mathrm{PbSO_4}", "BaSO4": r"\mathrm{BaSO_4}",
+                           "AgCl": r"\mathrm{AgCl}", "CaCO3": r"\mathrm{CaCO_3}"}
+            plus = f"{positive if positive > 1 else ''}+"
+            minus = f"{negative if negative > 1 else ''}-"
+            expected = (f"{ion_tex[reaction[0]]}^{{{plus}}}_{{(aq)}}+"
+                        f"{ion_tex[reaction[1]]}^{{{minus}}}_{{(aq)}}"
+                        rf"\rightarrow {product_tex[product]}_{{(s)}}")
+        elif number == 20:
+            rows = re.findall(
+                r"([A-E])=\((-?\d+),(-?\d+);(ไม่นำ|นำ)/(ไม่นำ|นำ)/(ไม่ละลาย|ไม่นำ|นำ)\)",
+                stem,
+            )
+            assert len(rows) == 5
+            metal = next(label for label, _, _, solid, liquid, _ in rows
+                         if solid == liquid == "นำ")
+            ionic = next(label for label, _, _, solid, liquid, water in rows
+                         if solid == "ไม่นำ" and liquid == water == "นำ")
+            molecular = next(label for label, _, _, solid, liquid, water in rows
+                             if solid == liquid == "ไม่นำ" and water == "นำ")
+            expected = f"({ionic},{molecular},{metal})"
+        else:
+            listed = re.search(r"ในบรรดาชนิดต่อไปนี้ (.+?) ชนิดใด", stem)[1].split(", ")
+            by_text = {"NO⁺": "NO+", "NO": "NO", "NO₂⁺": "NO2+",
+                       "NO₂⁻": "NO2-", "NO₃⁻": "NO3-"}
+            species = tuple(by_text[value] for value in listed)
+            shortest = q21.check(species=species)
+            expected = {"NO+": r"\mathrm{NO}^{+}", "NO": r"\mathrm{NO}",
+                        "NO2+": r"\mathrm{NO_2}^{+}", "NO2-": r"\mathrm{NO_2}^{-}",
+                        "NO3-": r"\mathrm{NO_3}^{-}"}[shortest]
         assert answer == expected
         assert len(question.choices) == 4

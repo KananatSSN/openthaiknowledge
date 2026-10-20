@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–6, 2026-10-21
+### Chemistry POSN bank — waves 1–7, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–18 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **18/70 complete; 52 pending.**
+  1–21 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **21/70 complete; 49 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  eighteen reviewed items. Its `verify` result of 18/18 describes this batch, not the
+  twenty-one reviewed items. Its `verify` result of 21/21 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -533,6 +533,24 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-21 — POSN chemistry 2560, seventh precipitation and bonding batch
+
+- Visually checked MC19–MC21 and MC20's five-row table on p8. Built
+  solvers, generators and knowledge claims for all three.
+- MC19 uses spectator cancellation to produce the Pb²⁺/SO₄²⁻ net ionic
+  equation. MC20's printed "covalent" category fits B, D and E; its
+  generated prompt specifies the covalent substance whose aqueous solution
+  conducts, identifying D uniquely. MC21 selects NO⁺ by N–O bond order and
+  checks against experimental bond lengths; variants add neutral NO to
+  enable four distinct choices.
+- `verify posn2560_chemistry`: 21/21 green, 65 variant checks, all
+  independent. Knowledge validation: 792 units in 658 files, zero problems;
+  source coverage: 21/70. Only the three new golden keys were added.
+- Targeted wave validation: 153 sheet/set checks and 16,295 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
 
 ### 2026-10-21 — POSN chemistry 2560, sixth nuclear and bonding batch
 

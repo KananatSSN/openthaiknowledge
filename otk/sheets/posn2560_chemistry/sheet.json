@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–18 are reviewed, solved and generated (18/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 52 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 18/18 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–21 are reviewed, solved and generated (21/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 49 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 21/21 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -239,6 +239,45 @@
       "answer": "('HCl', 'HBr', 'HI', 'HF')",
       "generator": "chem.posn2560_q18",
       "note": "Normal boiling points approximately -85.1, -66.8, -35.4, +19.5 deg C respectively. HCl/HBr/HI rise with dispersion; HF is highest through hydrogen bonding. Reference: https://webbook.nist.gov/chemistry/ ; variants use three-member subsets."
+    },
+    {
+      "number": 19,
+      "solver": "q19",
+      "title": "สมการไอออนิกสุทธิของตะกอน",
+      "source": "Part I, question 19, p8: Pb(NO3)2(aq) + K2SO4(aq) gives PbSO4(s); net ionic equation Pb2+ + SO4(2-) -> PbSO4(s), choice ข.",
+      "page": 8,
+      "figure": "Rendered p8 checked charges, phases and the four printed equations.",
+      "figure_asset": "",
+      "topic": "สมการไอออนิกสุทธิ",
+      "answer": "(2, 2, 'PbSO4')",
+      "generator": "chem.posn2560_q19",
+      "note": "Solver returns (cation charge magnitude, anion charge magnitude, precipitate formula). Variants use BaSO4, AgCl and CaCO3 precipitation with soluble spectator ions."
+    },
+    {
+      "number": 20,
+      "solver": "q20",
+      "title": "จำแนกสารจากการนำไฟฟ้า",
+      "source": "Part I, question 20, p8: source table A conducts solid and liquid, C conducts liquid and water solution, D conducts only in water solution; printed choice ค gives C,D,A for ionic,covalent,metal.",
+      "page": 8,
+      "figure": "Rendered p8 table visually checked for all melting/boiling and conductivity entries. The generated stem renders those entries as text, without reusing the source image.",
+      "figure_asset": "",
+      "topic": "สมบัติของสารไอออนิก โคเวเลนต์ และโลหะ",
+      "answer": "('C', 'D', 'A')",
+      "generator": "chem.posn2560_q20",
+      "note": "SOURCE AMBIGUITY: B, D and E are all molecular covalent by conductivity; only D is the printed covalent choice paired with C and A. The adaptation explicitly asks for the covalent substance whose aqueous solution conducts, making D unique. Variants relabel the five source rows."
+    },
+    {
+      "number": 21,
+      "solver": "q21",
+      "title": "ไอออนที่มีพันธะไนโตรเจนออกซิเจนสั้นที่สุด",
+      "source": "Part I, question 21, p8: among NO+, NO2-, NO2+ and NO3-, nitrosonium NO+ has the shortest N-O bond, choice ก.",
+      "page": 8,
+      "figure": "Rendered p8 checked the superscript charges and subscripts in each printed choice.",
+      "figure_asset": "",
+      "topic": "อันดับพันธะและความยาวพันธะ",
+      "answer": "NO+",
+      "generator": "chem.posn2560_q21",
+      "note": "NO+ bond order 3 and observed N-O length about 1.06 A, shorter than NO2+ near 1.116 A, neutral NO near 1.15 A and nitrite/nitrate near 1.24-1.26 A. Variants include neutral NO but retain NO+; bond order alone does not rank neutral NO against NO2+ because their measured lengths reverse that simple trend. Sources: https://journals.iucr.org/m/issues/2021/02/00/lt5036/lt5036.pdf ; https://onlinelibrary.wiley.com/doi/abs/10.1107/S1600536807000207 ."
     }
   ]
 }

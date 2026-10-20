@@ -37,6 +37,46 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.precipitated_spectator_salt": {
+        "th": "ให้เกลือของไอออนผู้ชมตกตะกอน",
+        "en": "Precipitated a soluble spectator-ion salt",
+    },
+    "chem.misassigned_metal_ion_charge": {
+        "th": "ใส่ประจุไอออนโลหะผิดในสมการไอออนิกสุทธิ",
+        "en": "Assigned the wrong metal-ion charge in the net ionic equation",
+    },
+    "chem.kept_precipitate_aqueous": {
+        "th": "เขียนผลิตภัณฑ์ตะกอนเป็นสารละลาย",
+        "en": "Marked the precipitate as aqueous",
+    },
+    "chem.swapped_ionic_and_metal_properties": {
+        "th": "สลับสมบัติการนำไฟฟ้าของสารไอออนิกกับโลหะ",
+        "en": "Swapped the conductivity patterns of ionic and metallic solids",
+    },
+    "chem.ignored_aqueous_molecular_ionization": {
+        "th": "มองข้ามการแตกตัวในน้ำของสารโคเวเลนต์",
+        "en": "Ignored ionization of a molecular substance in water",
+    },
+    "chem.swapped_ionic_and_ionizing_molecular": {
+        "th": "สลับสารไอออนิกกับสารโคเวเลนต์ที่แตกตัวในน้ำ",
+        "en": "Swapped an ionic substance with an ionizing molecular substance",
+    },
+    "chem.ignored_no_antibonding_electron": {
+        "th": "ไม่นับอิเล็กตรอนในออร์บิทัลต้านพันธะของ NO",
+        "en": "Ignored the antibonding electron in neutral NO",
+    },
+    "chem.assumed_nitronium_shorter_than_nitrosonium": {
+        "th": "คิดว่าพันธะใน NO₂⁺ สั้นกว่า NO⁺",
+        "en": "Assumed the N-O bond in NO2+ is shorter than in NO+",
+    },
+    "chem.overstated_nitrite_bond_order": {
+        "th": "ประเมินอันดับพันธะของไนไตรต์สูงเกินจริง",
+        "en": "Overstated the nitrite N-O bond order",
+    },
+    "chem.overstated_nitrate_bond_order": {
+        "th": "ประเมินอันดับพันธะของไนเตรตสูงเกินจริง",
+        "en": "Overstated the nitrate N-O bond order",
+    },
     "chem.confused_neutron_with_proton": {
         "th": "ใช้นิวตรอนสลับกับโปรตอนเมื่อดุลเลขอะตอม",
         "en": "Used a proton in place of a neutron in nuclear balance",
