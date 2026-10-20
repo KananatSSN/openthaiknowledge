@@ -4279,6 +4279,52 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2562_q24": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมบัติโฟโตวอลเทอิกของหลอด LED', "outside_scope"),
 })
 # END TPhO 2562
+# BEGIN TPhO 2563
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2563_q01",
+    "phys.tpho2563_q02",
+    "phys.tpho2563_q03",
+    "phys.tpho2563_q04",
+    "phys.tpho2563_q05",
+    "phys.tpho2563_q06",
+    "phys.tpho2563_q07",
+    "phys.tpho2563_q08",
+    "phys.tpho2563_q09",
+    "phys.tpho2563_q10",
+    "phys.tpho2563_q11",
+    "phys.tpho2563_q12",
+    "phys.tpho2563_q13",
+    "phys.tpho2563_q14",
+    "phys.tpho2563_q15",
+    "phys.tpho2563_q16",
+    "phys.tpho2563_q17",
+    "phys.tpho2563_q18",
+    "phys.tpho2563_q19",
+    "phys.tpho2563_q20",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2563_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'หยดน้ำใต้ไฟกระพริบ', "outside_scope"),
+    "phys.tpho2563_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'หยดน้ำใต้ไฟกระพริบ', "outside_scope"),
+    "phys.tpho2563_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'หยดน้ำใต้ไฟกระพริบ', "outside_scope"),
+    "phys.tpho2563_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แหนบเชิงแสง', "outside_scope"),
+    "phys.tpho2563_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แหนบเชิงแสง', "outside_scope"),
+    "phys.tpho2563_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แหนบเชิงแสง', "outside_scope"),
+    "phys.tpho2563_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แหนบเชิงแสง', "outside_scope"),
+    "phys.tpho2563_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อัตราการลดลงของอุณหภูมิตามความสูง', "outside_scope"),
+    "phys.tpho2563_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อัตราการลดลงของอุณหภูมิตามความสูง', "outside_scope"),
+    "phys.tpho2563_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อัตราการลดลงของอุณหภูมิตามความสูง', "outside_scope"),
+    "phys.tpho2563_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อัตราการลดลงของอุณหภูมิตามความสูง', "outside_scope"),
+    "phys.tpho2563_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อัตราการลดลงของอุณหภูมิตามความสูง', "outside_scope"),
+    "phys.tpho2563_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'เลนส์แรงโน้มถ่วง', "outside_scope"),
+    "phys.tpho2563_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'เลนส์แรงโน้มถ่วง', "outside_scope"),
+    "phys.tpho2563_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'เลนส์แรงโน้มถ่วง', "outside_scope"),
+    "phys.tpho2563_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงเสียดทานของสมุดที่สอดสลับกัน', "outside_scope"),
+    "phys.tpho2563_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงเสียดทานของสมุดที่สอดสลับกัน', "outside_scope"),
+    "phys.tpho2563_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงเสียดทานของสมุดที่สอดสลับกัน', "outside_scope"),
+    "phys.tpho2563_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงเสียดทานของสมุดที่สอดสลับกัน', "outside_scope"),
+    "phys.tpho2563_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงเสียดทานของสมุดที่สอดสลับกัน', "outside_scope"),
+})
+# END TPhO 2563
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

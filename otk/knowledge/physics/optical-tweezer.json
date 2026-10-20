@@ -1,0 +1,46 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แหนบเชิงแสง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.optical_tweezer.procedure",
+      "kind": "procedure",
+      "title": "มุมเบี่ยงเบนของแสงผ่านลูกแก้วทรงกลม",
+      "statement": "แหนบเชิงแสง: ลำแสงที่ผ่านลูกแก้วห่างแกน a − x เบี่ยงเบน δ = 2((n − 1)/n)(a − x)/R โฟตอน Pλ/(hc) ต่อวินาทีพาโมเมนตัม P/c จึงเกิดแรงด้านข้าง (P/c)δ และสองลำแสงให้แรงคืนตัว ω² = 4P(n − 1)/(mcRn)",
+      "steps": [
+        "หามุมเบี่ยงเบนจากกฎของสเนลล์ที่มุมเล็ก",
+        "ใช้อัตราการเปลี่ยนโมเมนตัมของแสงหาแรงและความถี่การสั่น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2563_q04",
+        "phys.tpho2563_q05",
+        "phys.tpho2563_q06",
+        "phys.tpho2563_q07"
+      ],
+      "note": "The index, offsets and radius vary."
+    }
+  ]
+}

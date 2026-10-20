@@ -157,8 +157,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 22 generators in `otk/sets/physics/olympiad/tpho2561.py`.
 - `สอวน_physics/tpho-62-physics/` (TPhO 18, 2562): 18 theory items and 6
   experiment parts → 24 generators in `otk/sets/physics/olympiad/tpho2562.py`.
-- Next source: `สอวน_physics/tpho-63-physics/`. Twenty-seven of 33 papers are
-  digested; 6 remain pending.
+- `สอวน_physics/tpho-63-physics/` (TPhO 19, 2563): 15 theory items and 5
+  experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2563.py`.
+- Next source: `สอวน_physics/tpho-64-physics/`. Twenty-eight of 33 papers are
+  digested; 5 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -2000,3 +2002,33 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 23,469 passed, 4 skipped; `test_per_set` for the 24 keys
   passed; the sheet's own tests: 54 passed; Ruff clean.
 - Full suite: **39,894 passed, 13 skipped in 14m06s**.
+
+### 2026-10-21 — TPhO 19 (2563) national physics olympiad
+
+- Eight PDFs: three theory problems and the lab, each with its own solution
+  (the four solutions `ignored`, used to confirm every answer). Clean text
+  layers; the lab's part 3 formula was checked on the page image
+  (T = 2μNW₁√(π/(4k))√d exp(k/d) + T₀).
+- 20 items: 1.1 (strobe-lit drops: u′ = √(2gh)Δt/(T₀ + Δt),
+  a′ = g(Δt/(T₀ + Δt))², A = d₀τ/(T₀²ω)), 1.2 (optical tweezer: δ, photon
+  count, F_x, ω² = 4P(n − 1)/(mcRn)), 2 (lapse rates: T₁ = 5.95 °C,
+  α = 9.78 K/km, z₁ = 1.44 km and z₂ = 2.90 km, T₂ = −1.7 °C, −5.2 °C/km),
+  3 (lensing by Fermat's principle: y², β, the Einstein ring mass
+  3.55×10⁴¹ kg), and the interleaved-notebook lab with synthetic data
+  (μ from single pulls, the T–N slope and intercept, k and μ from the
+  self-amplified pulls). 1.1 a), 1.2 c), 3.1 and the derivations share items.
+- Readings: 2.8 reads β(T₂) off the paper's graph; the generated item uses a
+  straight line through the solution's β(T₁) = 6.0×10⁻³ with the slope its
+  answer implies (0.349×10⁻³ per °C), which reproduces −1.7 °C. The lab's
+  part 2 slope in the solution is hand-drawn (0.863 N/sheet, μ = 0.57);
+  least squares over the same N ≤ 8 points gives 0.935 (μ = 0.62) and
+  T₀ = −0.385 N. The solution converts with 273 K (T₁ = 5.95 °C; 5.94 °C
+  with 273.15).
+- Independent checks include a two-flash fit for the strobe, the
+  quarter-cycle flash sum, exact ray tracing through the sphere, a numerical
+  restoring stiffness, integrated adiabatic climbs, a moist-ascent bisection
+  and stepping, a golden-section Fermat minimum over the exact path, and
+  centred least squares. `sheetpipe verify`: 20/20 green, 60 runs.
+- Targeted run: 23,686 passed, 4 skipped; `test_per_set` for the 20 keys
+  passed; the sheet's own tests: 45 passed; Ruff clean.
+- Full suite: **40,185 passed, 13 skipped in 14m21s**.

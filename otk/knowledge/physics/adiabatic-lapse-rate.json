@@ -1,0 +1,63 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "อัตราการลดลงของอุณหภูมิตามความสูง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.adiabatic_lapse_rate.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิของอากาศแห้งที่ลอยขึ้นแบบแอเดียแบติก",
+      "statement": "อุณหภูมิตามความสูง: อากาศแห้งขยายตัวแบบแอเดียแบติก T ∝ p^(2/7) และ dp/dz = −ρg ให้อัตราลดลง α = 2gμ/(7R) = 9.78 K/km ส่วนอากาศชื้นได้ความร้อนแฝงจากการควบแน่น T₂ − T₁ = −α(z₂ − z₁) − (αL_v/g)Δβ จึงลดลงช้ากว่า",
+      "steps": [
+        "ใช้ความสัมพันธ์แอเดียแบติกกับสมดุลความดันหาอุณหภูมิและความสูง",
+        "เพิ่มความร้อนแฝงจากไอน้ำที่ควบแน่นหาอุณหภูมิของอากาศชื้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "สอวน_physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2563_q08",
+        "phys.tpho2563_q09",
+        "phys.tpho2563_q10",
+        "phys.tpho2563_q11",
+        "phys.tpho2563_q12"
+      ],
+      "note": "The ground temperature and pressures vary; 273.15 K offset (the solution uses 273)."
+    }
+  ]
+}

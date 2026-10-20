@@ -2853,3 +2853,23 @@ phys.tpho2562_q21,ฟิสิกส์,โอลิมปิก (สอวน.)
 phys.tpho2562_q22,ฟิสิกส์,โอลิมปิก (สอวน.),สมบัติทางไฟฟ้าและแสงของหลอด LED,supplemental,โอลิมปิก (สอวน.),,,,สมบัติทางไฟฟ้าและแสงของหลอด LED,outside_scope,2,TPhO 2562 reviewed variants; no school indicator claimed
 phys.tpho2562_q23,ฟิสิกส์,โอลิมปิก (สอวน.),สมบัติโฟโตวอลเทอิกของหลอด LED,supplemental,โอลิมปิก (สอวน.),,,,สมบัติโฟโตวอลเทอิกของหลอด LED,outside_scope,1,TPhO 2562 reviewed variants; no school indicator claimed
 phys.tpho2562_q24,ฟิสิกส์,โอลิมปิก (สอวน.),สมบัติโฟโตวอลเทอิกของหลอด LED,supplemental,โอลิมปิก (สอวน.),,,,สมบัติโฟโตวอลเทอิกของหลอด LED,outside_scope,2,TPhO 2562 reviewed variants; no school indicator claimed
+phys.tpho2563_q01,ฟิสิกส์,โอลิมปิก (สอวน.),หยดน้ำใต้ไฟกระพริบ,supplemental,โอลิมปิก (สอวน.),,,,หยดน้ำใต้ไฟกระพริบ,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q02,ฟิสิกส์,โอลิมปิก (สอวน.),หยดน้ำใต้ไฟกระพริบ,supplemental,โอลิมปิก (สอวน.),,,,หยดน้ำใต้ไฟกระพริบ,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q03,ฟิสิกส์,โอลิมปิก (สอวน.),หยดน้ำใต้ไฟกระพริบ,supplemental,โอลิมปิก (สอวน.),,,,หยดน้ำใต้ไฟกระพริบ,outside_scope,3,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q04,ฟิสิกส์,โอลิมปิก (สอวน.),แหนบเชิงแสง,supplemental,โอลิมปิก (สอวน.),,,,แหนบเชิงแสง,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q05,ฟิสิกส์,โอลิมปิก (สอวน.),แหนบเชิงแสง,supplemental,โอลิมปิก (สอวน.),,,,แหนบเชิงแสง,outside_scope,1,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q06,ฟิสิกส์,โอลิมปิก (สอวน.),แหนบเชิงแสง,supplemental,โอลิมปิก (สอวน.),,,,แหนบเชิงแสง,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q07,ฟิสิกส์,โอลิมปิก (สอวน.),แหนบเชิงแสง,supplemental,โอลิมปิก (สอวน.),,,,แหนบเชิงแสง,outside_scope,3,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q08,ฟิสิกส์,โอลิมปิก (สอวน.),อัตราการลดลงของอุณหภูมิตามความสูง,supplemental,โอลิมปิก (สอวน.),,,,อัตราการลดลงของอุณหภูมิตามความสูง,outside_scope,1,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q09,ฟิสิกส์,โอลิมปิก (สอวน.),อัตราการลดลงของอุณหภูมิตามความสูง,supplemental,โอลิมปิก (สอวน.),,,,อัตราการลดลงของอุณหภูมิตามความสูง,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q10,ฟิสิกส์,โอลิมปิก (สอวน.),อัตราการลดลงของอุณหภูมิตามความสูง,supplemental,โอลิมปิก (สอวน.),,,,อัตราการลดลงของอุณหภูมิตามความสูง,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q11,ฟิสิกส์,โอลิมปิก (สอวน.),อัตราการลดลงของอุณหภูมิตามความสูง,supplemental,โอลิมปิก (สอวน.),,,,อัตราการลดลงของอุณหภูมิตามความสูง,outside_scope,3,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q12,ฟิสิกส์,โอลิมปิก (สอวน.),อัตราการลดลงของอุณหภูมิตามความสูง,supplemental,โอลิมปิก (สอวน.),,,,อัตราการลดลงของอุณหภูมิตามความสูง,outside_scope,3,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q13,ฟิสิกส์,โอลิมปิก (สอวน.),เลนส์แรงโน้มถ่วง,supplemental,โอลิมปิก (สอวน.),,,,เลนส์แรงโน้มถ่วง,outside_scope,3,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q14,ฟิสิกส์,โอลิมปิก (สอวน.),เลนส์แรงโน้มถ่วง,supplemental,โอลิมปิก (สอวน.),,,,เลนส์แรงโน้มถ่วง,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q15,ฟิสิกส์,โอลิมปิก (สอวน.),เลนส์แรงโน้มถ่วง,supplemental,โอลิมปิก (สอวน.),,,,เลนส์แรงโน้มถ่วง,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q16,ฟิสิกส์,โอลิมปิก (สอวน.),แรงเสียดทานของสมุดที่สอดสลับกัน,supplemental,โอลิมปิก (สอวน.),,,,แรงเสียดทานของสมุดที่สอดสลับกัน,outside_scope,1,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q17,ฟิสิกส์,โอลิมปิก (สอวน.),แรงเสียดทานของสมุดที่สอดสลับกัน,supplemental,โอลิมปิก (สอวน.),,,,แรงเสียดทานของสมุดที่สอดสลับกัน,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q18,ฟิสิกส์,โอลิมปิก (สอวน.),แรงเสียดทานของสมุดที่สอดสลับกัน,supplemental,โอลิมปิก (สอวน.),,,,แรงเสียดทานของสมุดที่สอดสลับกัน,outside_scope,1,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q19,ฟิสิกส์,โอลิมปิก (สอวน.),แรงเสียดทานของสมุดที่สอดสลับกัน,supplemental,โอลิมปิก (สอวน.),,,,แรงเสียดทานของสมุดที่สอดสลับกัน,outside_scope,2,TPhO 2563 reviewed variants; no school indicator claimed
+phys.tpho2563_q20,ฟิสิกส์,โอลิมปิก (สอวน.),แรงเสียดทานของสมุดที่สอดสลับกัน,supplemental,โอลิมปิก (สอวน.),,,,แรงเสียดทานของสมุดที่สอดสลับกัน,outside_scope,1,TPhO 2563 reviewed variants; no school indicator claimed
