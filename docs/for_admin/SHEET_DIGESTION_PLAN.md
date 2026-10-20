@@ -141,8 +141,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 14 generators in `otk/sets/physics/olympiad/tpho2553.py`.
 - `สอวน_physics/tpho-54-physics/` (TPhO 10, 2554): 16 theory items and 4
   experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2554.py`.
-- Next source: `สอวน_physics/tpho-55-physics/`. Nineteen of 33 papers are
-  digested; 14 remain pending.
+- `สอวน_physics/tpho-55-physics/` (TPhO 11, 2555): 13 theory items and 5
+  experiment parts → 18 generators in `otk/sets/physics/olympiad/tpho2555.py`.
+- Next source: `สอวน_physics/tpho-56-physics/`. Twenty of 33 papers are
+  digested; 13 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1756,3 +1758,28 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 21,624 passed, 4 skipped; `test_per_set` for the 20 keys
   passed; the sheet's own tests: 45 passed; Ruff clean.
 - Full suite: **37,535 passed, 13 skipped in 11m06s**.
+
+### 2026-10-20 — TPhO 11 (2555) national physics olympiad
+
+- Eleven PDFs: the theory paper (4 pages) and its separate solution
+  (5 pages), per-problem copies of both, and the labs combined and split.
+  The digested sources are `tpho_11_theory.pdf` (answers confirmed against
+  `tpho_11_theory_solution.pdf`) and `tpho_11_exp.pdf`; the other nine are
+  `ignored` with notes.
+- 18 items: 1.1 ก–ค (pinhole image size, with diffraction, best hole
+  √(2.44λL)), 1.2 ข (W-tube level H = 2h; 1.2 ก is a sketch), 2 ก–จ (dust
+  sticking to a spring oscillator: u₀, loss ½Δmv², loss per cycle
+  ΔmE₀/(2m), Δω = ω₀ΔE/E₀, E ∝ ω), 3 ก–จ (charged conducting plate with a
+  hole: σ/ε₀, E_r/E = r/d, v_r = erE/(mu) with 3 ค as its step, focus
+  3mu²/(2eE)), and the labs with synthetic data: a nut's mass by
+  comparison with a battery, a plastic tube's spring constant, k from
+  Hooke's law, β₁ from T² against M, and β₂ from the top and bottom turn
+  lengths. Every answer agrees with the solution.
+- Independent checks include traced extreme rays, a golden-section search
+  for the best hole, a pressure bisection, an exact sticking collision
+  scaled to first order, dust added in 200,000 small portions (E ∝ ω), a
+  finite-disc field, div E = 0 in the hole, time-stepped protons, and
+  reverse or Cramer's-rule fits. `sheetpipe verify`: 18/18 green, 54 runs.
+- Targeted run: 21,823 passed, 4 skipped; `test_per_set` for the 18 keys
+  passed; the sheet's own tests: 40 passed; Ruff clean.
+- Full suite: **37,797 passed, 13 skipped in 12m32s**.

@@ -1,0 +1,46 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สนามไฟฟ้าในรูของแผ่นประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charged_plate_hole_lens.procedure",
+      "kind": "procedure",
+      "title": "สนามไฟฟ้านอกแผ่นตัวนำที่มีประจุ",
+      "statement": "แผ่นตัวนำที่มีประจุ σ ทั้งสองผิวให้สนาม σ/ε₀ ในรูของแผ่นหนา d สนามแนวรัศมี E_r = −rE/d จากกฎของเกาส์ ลำโปรตอนความเร็ว u ที่ผ่านรูได้ความเร็วแนวรัศมี erE/(mu) และถูกโฟกัสที่ระยะ 3mu²/(2eE)",
+      "steps": [
+        "ใช้กฎของเกาส์กับทรงกระบอกในรูหาสนามแนวรัศมี",
+        "ใช้การดลหาความเร็วแนวรัศมีแล้วรวมความเร่งตามแกนหาระยะโฟกัส"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2555_q10",
+        "phys.tpho2555_q11",
+        "phys.tpho2555_q12",
+        "phys.tpho2555_q13"
+      ],
+      "note": "The charge density varies."
+    }
+  ]
+}

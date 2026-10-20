@@ -1,0 +1,31 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความดันอากาศในหลอดรูปตัว W",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.trapped_air_w_tube.procedure",
+      "kind": "procedure",
+      "title": "ระดับน้ำในหลอดรูปตัว W ขณะน้ำเริ่มล้น",
+      "statement": "ในหลอดรูปตัว W อากาศที่ถูกขังมีความดันเดียวกันตลอด จึงต้องรับผลต่างระดับน้ำทั้งสองด้านเท่ากัน ขณะน้ำเริ่มล้นจากปลายสั้นสูง h ระดับด้านสูงต้องเป็น 2h",
+      "steps": [
+        "วาดตำแหน่งของน้ำและช่องอากาศขณะเริ่มล้น",
+        "เขียนความดันของช่องอากาศจากทั้งสองด้านแล้วจับเท่ากัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2555_q04"
+      ],
+      "note": "The short end's height varies."
+    }
+  ]
+}

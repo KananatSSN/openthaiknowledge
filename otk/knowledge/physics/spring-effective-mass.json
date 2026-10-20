@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "มวลยังผลของสปริง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.spring_effective_mass.procedure",
+      "kind": "procedure",
+      "title": "ค่าคงตัวสปริงจากกราฟกฎของฮุก",
+      "statement": "สปริงมวล m มีมวลยังผล β₁m ในการสั่น ω = √(k/(M + β₁m)) จึงหา β₁ จากจุดตัดแกนต่อความชันของกราฟ T² กับ M ถ้าความหนาแน่นเชิงเส้นเปลี่ยนจาก λ₀ ด้านบนถึง λₙ ด้านล่าง β₂ = (λ₀/6 + λₙ/2)/(λ₀ + λₙ) ซึ่งเป็น 1/3 เมื่อสปริงสม่ำเสมอ",
+      "steps": [
+        "หาค่าคงตัวสปริงจากกราฟกฎของฮุก",
+        "เขียนกราฟ T² กับ M หรือคำนวณ β₂ จากระยะยืดของขดบนและล่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_exp.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_exp.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_exp.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2555_q16",
+        "phys.tpho2555_q17",
+        "phys.tpho2555_q18"
+      ],
+      "note": "Synthetic readings."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กล้องรูเข็มและการเลี้ยวเบน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pinhole_camera_diffraction.procedure",
+      "kind": "procedure",
+      "title": "ขนาดภาพดวงอาทิตย์ในกล้องรูเข็ม",
+      "statement": "กล้องรูเข็มรูเส้นผ่านศูนย์กลาง a ห่างฉาก L ให้ภาพวัตถุขนาดเชิงมุม θ ขนาด a + Lθ การเลี้ยวเบนที่รูกลม (มุม 1.22λ/a) เพิ่มขนาดอีก 2.44λL/a ภาพจึงเล็กที่สุดเมื่อ a = √(2.44λL)",
+      "steps": [
+        "ลากรังสีจากขอบวัตถุผ่านขอบรูหาขนาดภาพเชิงเรขาคณิต",
+        "เพิ่มการแผ่ออกจากการเลี้ยวเบนแล้วหาขนาดรูที่ทำให้ผลรวมน้อยที่สุด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2555_q01",
+        "phys.tpho2555_q02",
+        "phys.tpho2555_q03"
+      ],
+      "note": "Hole, screen distance and the Sun's angular size vary."
+    }
+  ]
+}

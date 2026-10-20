@@ -3907,6 +3907,48 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2554_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สัมประสิทธิ์ความเสียดทานสถิตและจลน์', "outside_scope"),
 })
 # END TPhO 2554
+# BEGIN TPhO 2555
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2555_q01",
+    "phys.tpho2555_q02",
+    "phys.tpho2555_q03",
+    "phys.tpho2555_q04",
+    "phys.tpho2555_q05",
+    "phys.tpho2555_q06",
+    "phys.tpho2555_q07",
+    "phys.tpho2555_q08",
+    "phys.tpho2555_q09",
+    "phys.tpho2555_q10",
+    "phys.tpho2555_q11",
+    "phys.tpho2555_q12",
+    "phys.tpho2555_q13",
+    "phys.tpho2555_q14",
+    "phys.tpho2555_q15",
+    "phys.tpho2555_q16",
+    "phys.tpho2555_q17",
+    "phys.tpho2555_q18",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2555_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กล้องรูเข็มและการเลี้ยวเบน', "outside_scope"),
+    "phys.tpho2555_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กล้องรูเข็มและการเลี้ยวเบน', "outside_scope"),
+    "phys.tpho2555_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กล้องรูเข็มและการเลี้ยวเบน', "outside_scope"),
+    "phys.tpho2555_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความดันอากาศในหลอดรูปตัว W', "outside_scope"),
+    "phys.tpho2555_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสั่นของมวลติดสปริงที่ฝุ่นเกาะ', "outside_scope"),
+    "phys.tpho2555_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสั่นของมวลติดสปริงที่ฝุ่นเกาะ', "outside_scope"),
+    "phys.tpho2555_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสั่นของมวลติดสปริงที่ฝุ่นเกาะ', "outside_scope"),
+    "phys.tpho2555_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสั่นของมวลติดสปริงที่ฝุ่นเกาะ', "outside_scope"),
+    "phys.tpho2555_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสั่นของมวลติดสปริงที่ฝุ่นเกาะ', "outside_scope"),
+    "phys.tpho2555_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามไฟฟ้าในรูของแผ่นประจุ', "outside_scope"),
+    "phys.tpho2555_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามไฟฟ้าในรูของแผ่นประจุ', "outside_scope"),
+    "phys.tpho2555_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามไฟฟ้าในรูของแผ่นประจุ', "outside_scope"),
+    "phys.tpho2555_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามไฟฟ้าในรูของแผ่นประจุ', "outside_scope"),
+    "phys.tpho2555_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การวัดมวลแบบเทียบอ้างอิงด้วยตัวเก็บประจุ', "outside_scope"),
+    "phys.tpho2555_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การวัดมวลแบบเทียบอ้างอิงด้วยตัวเก็บประจุ', "outside_scope"),
+    "phys.tpho2555_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มวลยังผลของสปริง', "outside_scope"),
+    "phys.tpho2555_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มวลยังผลของสปริง', "outside_scope"),
+    "phys.tpho2555_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มวลยังผลของสปริง', "outside_scope"),
+})
+# END TPhO 2555
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

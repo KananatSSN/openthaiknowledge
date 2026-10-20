@@ -5157,6 +5157,131 @@
    "sheet_id": "tpho2554_physics",
    "stage": "generated",
    "note": "Theory paper (pages 1-8) with its solution (pages 9-17); 19 sub-parts, 16 items (1.1 is a step of 1.2, 3.3 and 3.4 are steps of 3.5); hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_exp.pdf",
+   "kind": "exam",
+   "sha256": "a83cac8f4c4414b3",
+   "size": 307455,
+   "pages": 4,
+   "text_chars": 5682,
+   "layout": "numbered",
+   "items": 6,
+   "sheet_id": "tpho2555_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 5 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_exp1.pdf",
+   "kind": "exam",
+   "sha256": "e64d79541e021c54",
+   "size": 155841,
+   "pages": 2,
+   "text_chars": 2994,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-2 of tpho_11_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_exp2.pdf",
+   "kind": "exam",
+   "sha256": "714aea5effb19fbc",
+   "size": 179381,
+   "pages": 2,
+   "text_chars": 2688,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 3-4 of tpho_11_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_theory.pdf",
+   "kind": "exam",
+   "sha256": "baf9c54cc848b3ea",
+   "size": 472110,
+   "pages": 4,
+   "text_chars": 4847,
+   "layout": "numbered",
+   "items": 15,
+   "sheet_id": "tpho2555_physics",
+   "stage": "generated",
+   "note": "Theory paper (4 pages); 15 sub-parts, 13 items (1.2 ก is a sketch, 3 ค is a step of 3 ง); answers from tpho_11_theory_solution.pdf; hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_theory1.pdf",
+   "kind": "exam",
+   "sha256": "acc535379de67b5f",
+   "size": 198273,
+   "pages": 2,
+   "text_chars": 1602,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Theory problem 1 alone: pages 1-2 of tpho_11_theory.pdf; digested through that file."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_theory1_solution.pdf",
+   "kind": "exam",
+   "sha256": "694ec485972a18dd",
+   "size": 170619,
+   "pages": 2,
+   "text_chars": 1942,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 1 alone: pages 1-2 of tpho_11_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_theory2.pdf",
+   "kind": "exam",
+   "sha256": "f8061ee772a31954",
+   "size": 231462,
+   "pages": 1,
+   "text_chars": 1721,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Theory problem 2 alone: page 3 of tpho_11_theory.pdf; digested through that file."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_theory2_solution.pdf",
+   "kind": "exam",
+   "sha256": "319ebfa4e2dc8de6",
+   "size": 122753,
+   "pages": 2,
+   "text_chars": 1677,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 2 alone: pages 3-4 of tpho_11_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_theory3.pdf",
+   "kind": "exam",
+   "sha256": "53ec64e6fb717c73",
+   "size": 227608,
+   "pages": 1,
+   "text_chars": 1524,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Theory problem 3 alone: page 4 of tpho_11_theory.pdf; digested through that file."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_theory3_solution.pdf",
+   "kind": "exam",
+   "sha256": "ee7a3998a4b941d3",
+   "size": 117492,
+   "pages": 1,
+   "text_chars": 1420,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 3 alone: page 5 of tpho_11_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-55-physics/tpho_11_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "62bd97af587d041b",
+   "size": 329057,
+   "pages": 5,
+   "text_chars": 5039,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
   }
  ]
 }
