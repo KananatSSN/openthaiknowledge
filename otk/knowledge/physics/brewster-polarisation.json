@@ -1,0 +1,40 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แสงโพลาไรซ์จากการสะท้อน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.brewster_polarisation.procedure",
+      "kind": "procedure",
+      "title": "มุมบริวสเตอร์ของการสะท้อนจากของเหลว",
+      "statement": "ที่มุมบริวสเตอร์แสงสะท้อนและแสงหักเหตั้งฉากกัน tan θ_B = n แสงสะท้อนโพลาไรซ์ตั้งฉากกับระนาบตกกระทบ จึงใช้หาดัชนีหักเหของของเหลวได้",
+      "steps": [
+        "ใช้กฎของสเนลล์กับเงื่อนไขมุม 90°",
+        "วัดมุมที่แสงโพลาไรซ์ขนานสะท้อนน้อยที่สุดแล้วหา n = tan θ_B"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_exp.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2553_q12",
+        "phys.tpho2553_q13"
+      ],
+      "note": "n varies; three significant figures."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแทรกสอดของสลิตคู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.double_star_interferometer.procedure",
+      "kind": "procedure",
+      "title": "ระยะห่างเชิงมุมของดาวคู่จากการหายของริ้วแทรกสอด",
+      "statement": "แสงจากดาวที่มุม ±α ผ่านสลิตคู่ให้ริ้วเลื่อนสวนกัน ริ้วหายเมื่อ 2d sin α = (n + ½)λ ระยะสลิตสองค่าที่ริ้วหายต่อเนื่องกันให้ 2α ≈ λ/(d₁ − d₀)",
+      "steps": [
+        "เขียนผลต่างเส้นทางแสง d sin α + d sin β ของดาวแต่ละดวง",
+        "ตั้งแถบสว่างของดวงหนึ่งทับแถบมืดของอีกดวงแล้วแก้หา α"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2553_q10",
+        "phys.tpho2553_q11"
+      ],
+      "note": "3.2.1-3.2.2 (path differences, zeroth-order angles) are its steps. Synthetic slit separations."
+    }
+  ]
+}

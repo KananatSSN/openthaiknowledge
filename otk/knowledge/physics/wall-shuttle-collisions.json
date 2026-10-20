@@ -1,0 +1,42 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนแบบยืดหยุ่นหนึ่งมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wall_shuttle_collisions.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วมวลเบาหลังถูกมวลหนักชน",
+      "statement": "มวลหนักชนมวลเบาที่ไป-กลับระหว่างมวลหนักกับผนังแบบยืดหยุ่น: ระยะการชนแต่ละครั้งสัมพันธ์กันด้วย ℓₙ(vₙ + Vₙ) = ℓ₀V₀ และเมื่อ M ≫ m มวลหนักเข้าใกล้ผนังที่สุดประมาณ ℓ₀√(m/M)",
+      "steps": [
+        "หาความเร็วหลังชนแต่ละครั้งจากการชนยืดหยุ่น",
+        "ใช้ระยะทางรวมที่ทั้งสองไถลหาตำแหน่งการชนครั้งถัดไป"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2553_q01",
+        "phys.tpho2553_q02",
+        "phys.tpho2553_q03",
+        "phys.tpho2553_q04"
+      ],
+      "note": "Masses and V0 vary."
+    }
+  ]
+}

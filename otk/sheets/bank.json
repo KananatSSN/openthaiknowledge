@@ -5011,6 +5011,79 @@
    "layout": "unknown",
    "stage": "ignored",
    "note": "Official solution to the theory paper; used to confirm every answer (its 2.3 height, 0.82 m, should be 0.90 m)."
+  },
+  {
+   "path": "สอวน_physics/tpho-53-physics/tpho_9_exp.pdf",
+   "kind": "exam",
+   "sha256": "ee1d2df2955b466a",
+   "size": 404976,
+   "pages": 7,
+   "text_chars": 8645,
+   "layout": "numbered",
+   "items": 5,
+   "sheet_id": "tpho2553_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 3 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-53-physics/tpho_9_exp1.pdf",
+   "kind": "exam",
+   "sha256": "27bd732f97439ed5",
+   "size": 252193,
+   "pages": 4,
+   "text_chars": 5513,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-4 of tpho_9_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-53-physics/tpho_9_exp2.pdf",
+   "kind": "exam",
+   "sha256": "368bad40d1278262",
+   "size": 207797,
+   "pages": 3,
+   "text_chars": 3132,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 5-7 of tpho_9_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-53-physics/tpho_9_theory.pdf",
+   "kind": "exam",
+   "sha256": "6555c3990d77506a",
+   "size": 346460,
+   "pages": 7,
+   "text_chars": 9616,
+   "layout": "numbered",
+   "glyph_damage": 496,
+   "stage": "ignored",
+   "note": "Theory paper alone: pages 1-7 of tpho_9_theory_with_solution.pdf; digested through that file."
+  },
+  {
+   "path": "สอวน_physics/tpho-53-physics/tpho_9_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "ab0e256b1ba51869",
+   "size": 132006,
+   "pages": 12,
+   "text_chars": 9440,
+   "layout": "unknown",
+   "glyph_damage": 306,
+   "stage": "ignored",
+   "note": "Solution alone: pages 8-19 of tpho_9_theory_with_solution.pdf; used to confirm every answer."
+  },
+  {
+   "path": "สอวน_physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+   "kind": "exam",
+   "sha256": "005f2f034533d08a",
+   "size": 380823,
+   "pages": 19,
+   "text_chars": 19056,
+   "layout": "numbered",
+   "glyph_damage": 802,
+   "items": 12,
+   "sheet_id": "tpho2553_physics",
+   "stage": "generated",
+   "note": "Theory paper (pages 1-7) with its solution (pages 8-19); 12 sub-parts, 11 items (3.2.1-3.2.2 are steps of 3.2.3); hand transcript."
   }
  ]
 }

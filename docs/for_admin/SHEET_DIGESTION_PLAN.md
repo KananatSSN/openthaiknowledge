@@ -137,8 +137,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 15 generators in `otk/sets/physics/olympiad/tpho2551.py`.
 - `สอวน_physics/tpho-52-physics/` (TPhO 8, 2552): 12 theory items and 4
   experiment parts → 16 generators in `otk/sets/physics/olympiad/tpho2552.py`.
-- Next source: `สอวน_physics/tpho-53-physics/`. Seventeen of 33 papers are
-  digested; 16 remain pending.
+- `สอวน_physics/tpho-53-physics/` (TPhO 9, 2553): 11 theory items and 3
+  experiment parts → 14 generators in `otk/sets/physics/olympiad/tpho2553.py`.
+- Next source: `สอวน_physics/tpho-54-physics/`. Eighteen of 33 papers are
+  digested; 15 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1701,3 +1703,26 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 21,228 passed, 4 skipped; `test_per_set` for the 16 keys
   passed; the sheet's own tests: 36 passed; Ruff clean.
 - Full suite: **37,038 passed, 13 skipped in 11m38s**.
+
+### 2026-10-20 — TPhO 9 (2553) national physics olympiad
+
+- Folder of six PDFs laid out like TPhO 6: the bound theory-with-solution
+  file (19 pages) and the combined experiments are the digested sources;
+  the four copies are `ignored` with notes.
+- 14 items: 1.1–1.4 (a light block shuttling between a heavy block and a
+  wall: v1, the second and third meeting points, the closest approach
+  ℓ₀√(m/M)), 2.1–2.4 (twin pistons on helium: pressure, rise on warming,
+  restoring force, period), 3.1 (voltage-doubler table rows, a choice
+  item), 3.2.3 (double-star separation and the first vanishing slit
+  spacing; 3.2.1–3.2.2 are its steps), and the labs: Brewster angle, a
+  syrup's index from its Brewster angle, the seiche period of student 3's
+  model (the other students' models are the named mistakes). Every answer
+  agrees with the bound solution.
+- Independent checks include an exact collision-by-collision simulation
+  (which also confirms ℓ₀√(m/M) within 0.2% at M/m = 100), force
+  bisections, an exact adiabatic linearisation and a time-stepped piston,
+  a time-stepped diode circuit, Fresnel's r_p for the Brewster angle, and
+  an energy route for the seiche. `sheetpipe verify`: 14/14 green, 42 runs.
+- Targeted run: 21,383 passed, 4 skipped; `test_per_set` for the 14 keys
+  passed; the sheet's own tests: 31 passed; Ruff clean.
+- Full suite: **37,243 passed, 13 skipped in 11m14s**.
