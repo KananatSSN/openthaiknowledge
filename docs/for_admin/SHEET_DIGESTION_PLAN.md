@@ -127,8 +127,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 21 generators in `otk/sets/physics/olympiad/tpho2546.py`.
 - `สอวน_physics/tpho-47-physics/` (TPhO 3, 2547): 12 theory sub-parts and 3
   experiment parts → 15 generators in `otk/sets/physics/olympiad/tpho2547.py`.
-- Next source: `สอวน_physics/tpho-48-physics/`. Twelve of 33 papers are
-  digested; 21 remain pending.
+- `สอวน_physics/tpho-48-physics/` (TPhO 4, 2548): 16 theory items and 3
+  experiment parts → 19 generators in `otk/sets/physics/olympiad/tpho2548.py`.
+- Next source: `สอวน_physics/tpho-49-physics/`. Thirteen of 33 papers are
+  digested; 20 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1563,3 +1565,33 @@ TOTAL         338   316     17     4   66      255      6     11
 - Full suite: **35,873 passed, 13 skipped in 11m01s**. (A first run started
   in the same batch as the bank commit ran from the bank directory and
   collected nothing; the full suite must run alone.)
+
+### 2026-10-20 — TPhO 4 (2548) national physics olympiad
+
+- Folder of four PDFs: the theory paper, its marking scheme, the two bound
+  together (15 pages), and both experimental papers in one file (misspelt
+  `thpo_4_exp.pdf`). The bound theory file and the experiments are the
+  digested sources; the separate theory and scheme files are `ignored`.
+- 19 items: 1.1 (two velocities), 1.2, 1.3 (best intermediate mass and the
+  largest fraction it passes on), 1.4 (collisions to halve the energy), 2.1
+  (assembly work, adapted to rectangles with whole-number sides and
+  diagonal), 2.2–2.5 (proton square: centre potential, positron energy on
+  the axis, launch speed over the numerical barrier, small-oscillation ω),
+  3.1–3.5 (air between discs: speed, gauge pressure, lift, jet force,
+  largest mass), and the labs' theory: κε₀/d from a foil capacitor's
+  current, κ of the transparency, λ from a laser reflected off a steel
+  ruler.
+- Marking-scheme error: 1.4's n ≈ M/(8m) linearises (1 − 2m/M)^(2n) where
+  4nm/M = 1/2 is not small. The scheme's own exact line,
+  n = −ln 2/(2 ln((M − m)/(M + m))) ≈ (M/m) ln 2/4, is used (about 39% more
+  collisions); M/(8m) is the named mistake `collision_count_linearised`.
+- Independent checks include centre-of-mass reversal and the
+  momentum–energy quadratic, golden-section search for the best mass,
+  collision-by-collision counting, a potential grid search, a 45° curvature
+  for ω, the radial Euler equation and ring sums for the discs, and
+  arctangent angles for the laser. `sheetpipe verify`: 19/19 green, 57 runs.
+- Item 18 failed the length-cue rule (a plain κ beside slips in scientific
+  notation); one slip became the inverted ratio 1/κ.
+- Targeted run: 20,539 passed, 4 skipped; `test_per_set` for the 19 keys
+  passed after that change; the sheet's own tests: 41 passed; Ruff clean.
+- Full suite: **36,147 passed, 13 skipped in 11m09s**.

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแทรกสอดจากเกรตติงสะท้อน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.reflection_grating_ruler.procedure",
+      "kind": "procedure",
+      "title": "ความยาวคลื่นเลเซอร์จากการสะท้อนบนสเกลฟุตเหล็ก",
+      "statement": "แสงเลเซอร์ที่สะท้อนจากขีดสเกลห่าง d ที่มุมเฉียด ให้จุดสว่างเมื่อ d cos θ − d cos φ = nλ",
+      "steps": [
+        "หามุมของจุดสว่างจากความสูงบนฉากและระยะฉาก",
+        "แทนในเงื่อนไขการแทรกสอดหา λ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/thpo_4_exp.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2548_q19"
+      ],
+      "note": "Synthetic spot heights on a screen."
+    }
+  ]
+}

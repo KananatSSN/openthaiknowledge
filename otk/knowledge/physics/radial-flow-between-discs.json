@@ -1,0 +1,47 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แบร์นูลลีและสมการความต่อเนื่อง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.radial_flow_between_discs.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วลมที่แผ่ออกระหว่างแผ่นกลม",
+      "statement": "อากาศจากท่อรัศมี a ที่แผ่ออกระหว่างแผ่นกลมห่าง t มีความเร็ว v = a²v₀/(2tr) ความดันต่ำกว่าบรรยากาศตามแบร์นูลลี ทำให้เกิดแรงยก πρK²[ln(R/a) − 1/2 + a²/(2R²)] หักแรงจากโมเมนตัมของลม ρπa²v₀²",
+      "steps": [
+        "ใช้สมการความต่อเนื่องและแบร์นูลลีหาความเร็วและความดัน",
+        "อินทิเกรตความดันบนวงแหวนแล้วหักแรงจากการเปลี่ยนโมเมนตัม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2548_q12",
+        "phys.tpho2548_q13",
+        "phys.tpho2548_q14",
+        "phys.tpho2548_q15",
+        "phys.tpho2548_q16"
+      ],
+      "note": "Numbers for a, v0, t and r."
+    }
+  ]
+}

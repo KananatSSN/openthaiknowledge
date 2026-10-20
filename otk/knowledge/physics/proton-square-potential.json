@@ -1,0 +1,42 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานศักย์ไฟฟ้าของระบบประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.proton_square_potential.procedure",
+      "kind": "procedure",
+      "title": "งานในการนำประจุสี่ตัวมาวางที่มุมสี่เหลี่ยม",
+      "statement": "งานที่ใช้จัดประจุคือผลรวม kq²/r ของทุกคู่ ศักย์ภายในสี่เหลี่ยมโปรตอนต่ำสุดที่จุดกลาง และพลังงานศักย์ของโพสิตรอนบนแกนผ่านกลางมีสองยอดใกล้ ±0.39a",
+      "steps": [
+        "รวมพลังงานศักย์หรือศักย์ไฟฟ้าจากประจุแต่ละตัว",
+        "หาค่าสูงสุดหรือต่ำสุดตามเส้นทางแล้วใช้การอนุรักษ์พลังงาน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2548_q07",
+        "phys.tpho2548_q08",
+        "phys.tpho2548_q09",
+        "phys.tpho2548_q10"
+      ],
+      "note": "Adapted: rectangles with whole-number sides and diagonal (the square is the paper's case)."
+    }
+  ]
+}

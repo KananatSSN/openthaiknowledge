@@ -4623,6 +4623,58 @@
    "sheet_id": "tpho2547_physics",
    "stage": "generated",
    "note": "Theory paper with its marking scheme bound in; 16 sub-parts, 12 items (1(c), 1(d), 1(f), 3(d) are steps or limits claimed by their units); hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-48-physics/thpo_4_exp.pdf",
+   "kind": "exam",
+   "sha256": "3b03fb302be05a16",
+   "size": 180232,
+   "pages": 6,
+   "text_chars": 6777,
+   "layout": "numbered",
+   "glyph_damage": 422,
+   "items": 5,
+   "sheet_id": "tpho2548_physics",
+   "stage": "generated",
+   "note": "Both experimental papers (file name misspelt thpo); their theory parts digested as 3 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-48-physics/tpho_4_theory.pdf",
+   "kind": "exam",
+   "sha256": "0efb078dd94440c5",
+   "size": 188315,
+   "pages": 5,
+   "text_chars": 5595,
+   "layout": "choice-block",
+   "glyph_damage": 323,
+   "stage": "ignored",
+   "note": "Theory paper alone: pages 1-5 of tpho_4_theory_with_solution.pdf; digested through that file."
+  },
+  {
+   "path": "สอวน_physics/tpho-48-physics/tpho_4_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "f0c2fcdad300c903",
+   "size": 247571,
+   "pages": 10,
+   "text_chars": 11445,
+   "layout": "unknown",
+   "glyph_damage": 341,
+   "stage": "ignored",
+   "note": "Marking scheme alone: pages 6-15 of tpho_4_theory_with_solution.pdf; used to confirm every answer."
+  },
+  {
+   "path": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+   "kind": "exam",
+   "sha256": "ac2730be4d72dc04",
+   "size": 339187,
+   "pages": 15,
+   "text_chars": 17040,
+   "layout": "numbered",
+   "glyph_damage": 664,
+   "items": 14,
+   "sheet_id": "tpho2548_physics",
+   "stage": "generated",
+   "note": "Theory paper (pages 1-5) with its marking scheme (pages 6-15); 14 sub-parts, 16 items; hand transcript. 1.4 uses the scheme's exact formula, not its M/(8m) approximation."
   }
  ]
 }

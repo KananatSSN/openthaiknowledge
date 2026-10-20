@@ -3637,6 +3637,50 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2547_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'วงจรไฟฟ้ากระแสสลับ RL', "outside_scope"),
 })
 # END TPhO 2547
+# BEGIN TPhO 2548
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2548_q01",
+    "phys.tpho2548_q02",
+    "phys.tpho2548_q03",
+    "phys.tpho2548_q04",
+    "phys.tpho2548_q05",
+    "phys.tpho2548_q06",
+    "phys.tpho2548_q07",
+    "phys.tpho2548_q08",
+    "phys.tpho2548_q09",
+    "phys.tpho2548_q10",
+    "phys.tpho2548_q11",
+    "phys.tpho2548_q12",
+    "phys.tpho2548_q13",
+    "phys.tpho2548_q14",
+    "phys.tpho2548_q15",
+    "phys.tpho2548_q16",
+    "phys.tpho2548_q17",
+    "phys.tpho2548_q18",
+    "phys.tpho2548_q19",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2548_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การชนแบบยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2548_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การชนแบบยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2548_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สัดส่วนพลังงานในการชนยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2548_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สัดส่วนพลังงานในการชนยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2548_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สัดส่วนพลังงานในการชนยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2548_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สัดส่วนพลังงานในการชนยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2548_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานศักย์ไฟฟ้าของระบบประจุ', "outside_scope"),
+    "phys.tpho2548_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานศักย์ไฟฟ้าของระบบประจุ', "outside_scope"),
+    "phys.tpho2548_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานศักย์ไฟฟ้าของระบบประจุ', "outside_scope"),
+    "phys.tpho2548_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานศักย์ไฟฟ้าของระบบประจุ', "outside_scope"),
+    "phys.tpho2548_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสั่นรอบสมดุลในสนามไฟฟ้า', "outside_scope"),
+    "phys.tpho2548_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แบร์นูลลีและสมการความต่อเนื่อง', "outside_scope"),
+    "phys.tpho2548_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แบร์นูลลีและสมการความต่อเนื่อง', "outside_scope"),
+    "phys.tpho2548_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงจากความดันของการไหล', "outside_scope"),
+    "phys.tpho2548_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การดลจากการไหลของของไหล', "outside_scope"),
+    "phys.tpho2548_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงจากความดันของการไหล', "outside_scope"),
+    "phys.tpho2548_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความจุของตัวเก็บประจุแผ่นขนาน', "outside_scope"),
+    "phys.tpho2548_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ความจุของตัวเก็บประจุแผ่นขนาน', "outside_scope"),
+    "phys.tpho2548_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแทรกสอดจากเกรตติงสะท้อน', "outside_scope"),
+})
+# END TPhO 2548
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

@@ -1,0 +1,38 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สัดส่วนพลังงานในการชนยืดหยุ่นหนึ่งมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.elastic_energy_transfer.procedure",
+      "kind": "procedure",
+      "title": "สัดส่วนพลังงานที่ส่งให้มวลที่หยุดนิ่ง",
+      "statement": "มวลที่หยุดนิ่งรับพลังงาน 4M_AM_B/(M_A + M_B)² ของพลังงานมวลที่ชน การส่งผ่านมวลตัวกลางได้มากที่สุดเมื่อ m = √(M_AM_B) และการชนซ้ำกับมวลใหญ่ลดพลังงานลงตัวประกอบ ((M − m)/(M + m))² ต่อครั้ง",
+      "steps": [
+        "หาสัดส่วนพลังงานต่อการชนหนึ่งครั้ง",
+        "คูณสัดส่วนของการชนต่อเนื่องแล้วหาค่าสูงสุดหรือจำนวนครั้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2548_q03",
+        "phys.tpho2548_q04",
+        "phys.tpho2548_q05",
+        "phys.tpho2548_q06"
+      ],
+      "note": "The fraction M_A keeps is one minus this; numbers for the masses."
+    }
+  ]
+}

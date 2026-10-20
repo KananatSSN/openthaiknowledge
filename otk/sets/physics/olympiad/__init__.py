@@ -10,3 +10,4 @@ from . import posn2569  # noqa: F401
 from . import tpho2545  # noqa: F401
 from . import tpho2546  # noqa: F401
 from . import tpho2547  # noqa: F401
+from . import tpho2548  # noqa: F401
