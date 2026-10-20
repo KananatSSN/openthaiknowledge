@@ -147,8 +147,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 21 generators in `otk/sets/physics/olympiad/tpho2556.py`.
 - `สอวน_physics/tpho-57-physics/` (TPhO 13, 2557): 12 theory items and 5
   experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2557.py`.
-- Next source: `สอวน_physics/tpho-58-physics/`. Twenty-two of 33 papers are
-  digested; 11 remain pending.
+- `สอวน_physics/tpho-58-physics/` (TPhO 14, 2558): 13 theory items and 4
+  experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2558.py`.
+- Next source: `สอวน_physics/tpho-59-physics/`. Twenty-three of 33 papers are
+  digested; 10 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1844,3 +1846,28 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 22,254 passed, 4 skipped; `test_per_set` for the 17 keys
   passed; the sheet's own tests: 38 passed; Ruff clean.
 - Full suite: **38,354 passed, 13 skipped in 11m52s**.
+
+### 2026-10-20 — TPhO 14 (2558) national physics olympiad
+
+- Four PDFs: theory and lab papers with a solution each (the solutions
+  `ignored`, used to confirm every answer).
+- 17 items: 1.1 (charged pendulum in a horizontal field: θ_m = 2 tan⁻¹(qE/mg),
+  θ₀, the small-oscillation frequency), 1.2 (railway barrier: the
+  counterweight distance for the fastest lift, exact and with τ ≈ MgL/2),
+  2.1 (sealed vessel with a water film: P_G, the film thickness, t_B/t_A),
+  2.2 (pop gun: the adiabatic gap L, the muzzle speed, the best barrel D),
+  3 (eddy heating of a copper disc: peak emf, mean power zπa⁴B₀²ω²/(16ρ)),
+  and the saline lab with synthetic data: needle bore from the jet, viscosity
+  from Poiseuille, the series viscosity η_c, surface tension from drops.
+- Scheme slip: the lab's per-drop volume, 1.20 ml/50 = 0.0240 ml, is used as
+  0.0235 ml (γ = 83.6 instead of 85.4 mN/m; both pinned in the test).
+- Independent checks include an RK4 swing to the turning point, golden-section
+  maximisation of the barrier's angular acceleration, mole counting, an Euler
+  adiabatic compression, Simpson-integrated pellet work, ring-by-ring and
+  period-averaged eddy power, and bisected radius, viscosity and tension.
+  `sheetpipe verify`: 17/17 green, 51 runs.
+- A q10 draw could leave negative work (the pellet stops in the barrel); the
+  generator now redraws those.
+- Targeted run: 22,448 passed, 4 skipped; `test_per_set` for the 17 keys
+  passed; the sheet's own tests: 38 passed; Ruff clean.
+- Full suite: **38,603 passed, 13 skipped in 11m44s**.

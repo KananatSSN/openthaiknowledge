@@ -1,0 +1,44 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การให้ความร้อนด้วยการเหนี่ยวนำแม่เหล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.eddy_heating_disc.procedure",
+      "kind": "procedure",
+      "title": "อีเอ็มเอฟเหนี่ยวนำสูงสุดในแผ่นทองแดง",
+      "statement": "แผ่นทองแดงในสนาม B₀ cos ωt: อีเอ็มเอฟรอบวงรัศมี r เป็น πr²B₀ω sin ωt วงแหวนแต่ละวงสูญเสียกำลัง ε²zΔr/(2πρr) รวมทั้งแผ่นได้กำลังเฉลี่ย zπa⁴B₀²ω²/(16ρ)",
+      "steps": [
+        "หาอีเอ็มเอฟจากอัตราการเปลี่ยนฟลักซ์",
+        "รวมกำลังของวงแหวนทุกวงแล้วเฉลี่ยตามเวลา"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2558_q12",
+        "phys.tpho2558_q13"
+      ],
+      "note": "r, B0 and omega vary."
+    }
+  ]
+}

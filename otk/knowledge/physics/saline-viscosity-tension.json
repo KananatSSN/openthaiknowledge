@@ -1,0 +1,50 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความหนืดและความตึงผิวของน้ำเกลือ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.saline_viscosity_tension.procedure",
+      "kind": "procedure",
+      "title": "รัศมีรูเข็มจากระยะตกของน้ำ",
+      "statement": "น้ำเกลือพุ่งจากเข็มแนวนอนให้ Q = √(g/2y)πr²x จึงหารัศมีรูเข็ม การไหลผ่านเข็มตามกฎปัวซอย Q = πr⁴ρg(h − y)/(8ηℓ) ให้ความหนืด เมื่อคิดสายน้ำเกลืออนุกรมใช้ ℓ/r⁴ + L/R⁴ และหยดน้ำ mg = 1.4πr_oγ ให้ความตึงผิว",
+      "steps": [
+        "เขียนกราฟเส้นตรงของอัตราการไหลกับระยะตกหรือความสูง",
+        "แปลงความชันเป็นรัศมี ความหนืด หรือใช้น้ำหนักหยดหาความตึงผิว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO2015_Lab_Problem.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO2015_Lab_Problem.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO2015_Lab_Problem.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO2015_Lab_Problem.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO2015_Lab_Problem.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO2015_Lab_Problem.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2558_q14",
+        "phys.tpho2558_q15",
+        "phys.tpho2558_q16",
+        "phys.tpho2558_q17"
+      ],
+      "note": "Synthetic readings."
+    }
+  ]
+}

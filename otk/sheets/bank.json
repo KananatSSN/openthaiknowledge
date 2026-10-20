@@ -5372,6 +5372,55 @@
    "glyph_damage": 1,
    "stage": "ignored",
    "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
+  },
+  {
+   "path": "สอวน_physics/tpho-58-physics/TPhO14_theory-solution.pdf",
+   "kind": "exam",
+   "sha256": "d365a314a0ed1844",
+   "size": 1114892,
+   "pages": 9,
+   "text_chars": 7493,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
+  },
+  {
+   "path": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+   "kind": "exam",
+   "sha256": "ad5fa94329cc39f1",
+   "size": 966954,
+   "pages": 7,
+   "text_chars": 6666,
+   "layout": "numbered",
+   "items": 17,
+   "sheet_id": "tpho2558_physics",
+   "stage": "generated",
+   "note": "Theory paper (7 pages); 17 sub-parts, 13 items; answers from TPhO14_theory-solution.pdf; hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-58-physics/TPhO2015_Lab_Problem.pdf",
+   "kind": "exam",
+   "sha256": "55fe0ea6e269f774",
+   "size": 688342,
+   "pages": 6,
+   "text_chars": 8214,
+   "layout": "numbered",
+   "items": 6,
+   "sheet_id": "tpho2558_physics",
+   "stage": "generated",
+   "note": "Experimental paper (viscosity and surface tension of saline); its theory parts digested as 4 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-58-physics/TPhO2015_Lab_Solution.pdf",
+   "kind": "exam",
+   "sha256": "fa420dd2f93263b0",
+   "size": 465418,
+   "pages": 6,
+   "text_chars": 5327,
+   "layout": "unknown",
+   "glyph_damage": 3,
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (all agree)."
   }
  ]
 }

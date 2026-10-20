@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ชั้นน้ำในภาชนะปิดที่ร้อนขึ้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.sealed_vessel_water_film.procedure",
+      "kind": "procedure",
+      "title": "ความดันก๊าซในภาชนะปิดเมื่อร้อนขึ้น",
+      "statement": "ภาชนะปิดปริมาตรคงตัว: ก๊าซมีความดัน P₀T₁/T₀ ความดันส่วนที่เกินมาจากไอน้ำที่ระเหยจากฟิล์ม จึงหาโมลน้ำและความหนาฟิล์มได้ และเวลาให้ความร้อนเพิ่มตามความร้อนของไอน้ำและความร้อนแฝง",
+      "steps": [
+        "ใช้กฎของก๊าซแยกความดันย่อยของก๊าซและไอน้ำ",
+        "แปลงโมลน้ำเป็นปริมาตรของเหลวหรือความร้อนที่ต้องใช้"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2558_q06",
+        "phys.tpho2558_q07",
+        "phys.tpho2558_q08"
+      ],
+      "note": "P0 and temperatures vary."
+    }
+  ]
+}
