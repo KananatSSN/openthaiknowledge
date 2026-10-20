@@ -12,7 +12,7 @@ from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39,
+    q37, q38, q39, q40, q41, q42,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1428,4 +1428,88 @@ class IdealGasClaims(QuestionType):
                                 for i in range(len(claims)) if i != false_index]),
             topic="ความสัมพันธ์ของความดัน ปริมาตร และอุณหภูมิแก๊ส",
             hint=[text("จาก PV=nRT อัตราส่วนอุณหภูมิต้องใช้เคลวิน")],
+        )
+
+
+@question_type(
+    "chem.posn2560_q40", display_name={"th": "มวลแก๊สจากความหนาแน่นที่ STP"},
+    level=LEVEL, subject="เคมี", topic="ปริมาตรโมลาร์และความหนาแน่นแก๊ส",
+)
+class GasMassFromDensity(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q40.PARAMS, *q40.VARIANTS))
+        density, amount = values["density_g_l"], values["amount_mol"]
+        answer = q40.solve(**values)
+        return MathDraw(
+            "", f"{answer:.1f}",
+            prompt=(f"แก๊สชนิดหนึ่งที่ STP มีความหนาแน่น {density:.2f} g/L "
+                    f"แก๊สจำนวน {amount} mol มีมวลกี่กรัม "
+                    "(ใช้ปริมาตรโมลาร์ 22.4 L/mol; ตอบหนึ่งตำแหน่ง)"),
+            hint="หาปริมาตรทั้งหมดจากจำนวนโมลก่อน แล้วคูณด้วยความหนาแน่น",
+            distractors=[
+                named("chem.used_density_times_moles", f"{density * amount:.1f}"),
+                named("chem.reported_molar_mass_instead_of_sample_mass",
+                      f"{density * 22.4:.1f}"),
+                named("chem.used_twenty_liters_per_mole",
+                      f"{density * 20 * amount:.1f}"),
+            ],
+        )
+
+
+_EFFUSION_GASES = {2: "H₂", 4: "He", 16: "CH₄", 28: "N₂", 32: "O₂"}
+
+
+@question_type(
+    "chem.posn2560_q41", display_name={"th": "เวลากระจายผ่านรูพรุนตามกฎของเกรแฮม"},
+    level=LEVEL, subject="เคมี", topic="กฎการแพร่ของเกรแฮม",
+)
+class GrahamEffusionTime(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q41.PARAMS, *q41.VARIANTS))
+        first, second, seconds = (values["first_molar"], values["second_molar"],
+                                  values["first_seconds"])
+        answer = q41.solve(**values)
+        ratio = (second / first) ** 0.5
+        return MathDraw(
+            "", f"{answer:.1f}",
+            prompt=(f"ภายใต้ภาวะเดียวกัน แก๊ส {_EFFUSION_GASES[first]} "
+                    f"(มวลโมลาร์ {first} g/mol) ปริมาณเท่ากันแพร่ผ่านรูพรุนใน {seconds} s "
+                    f"แก๊ส {_EFFUSION_GASES[second]} (มวลโมลาร์ {second} g/mol) "
+                    "ใช้เวลากี่วินาที (ตอบหนึ่งตำแหน่ง)"),
+            hint="สำหรับจำนวนโมเลกุลเท่ากัน เวลาแปรตามรากที่สองของมวลโมลาร์",
+            distractors=[
+                named("chem.inverted_graham_time_ratio", f"{seconds / ratio:.1f}"),
+                named("chem.used_molar_mass_ratio_without_root",
+                      f"{seconds * second / first:.1f}"),
+                named("chem.assumed_equal_effusion_times", f"{seconds:.1f}"),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q42", display_name={"th": "ร้อยละทองแดงในโลหะผสมจาก ZnCl₂"},
+    level=LEVEL, subject="เคมี", topic="องค์ประกอบโลหะผสมและปริมาณสัมพันธ์",
+)
+class CopperAlloyPercent(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q42.PARAMS, *q42.VARIANTS))
+        alloy, product = values["alloy_g"], values["zinc_chloride_g"]
+        answer = q42.solve(**values)
+        zinc_percent = 100 - answer
+        product_percent = 100 * product / alloy
+        zinc_only_percent = 100 * (alloy - product) / alloy
+        return MathDraw(
+            "", f"{answer:.1f}",
+            prompt=(f"โลหะผสม Zn และ Cu มวล {alloy:.2f} g ทำปฏิกิริยากับ HCl มากเกินพอ "
+                    f"ได้ ZnCl₂ {product:.2f} g โลหะผสมมี Cu ร้อยละโดยมวลเท่าใด "
+                    "(Zn=65.0, Cl=35.5; ตอบหนึ่งตำแหน่ง)"),
+            hint="หาโมล ZnCl₂ แล้วหามวล Zn ที่ทำปฏิกิริยา; Cu ไม่ทำปฏิกิริยากับ HCl",
+            distractors=[
+                named("chem.reported_zinc_percent_instead_of_copper",
+                      f"{zinc_percent:.1f}"),
+                named("chem.used_product_mass_as_copper_percent",
+                      f"{product_percent:.1f}"),
+                named("chem.treated_zinc_chloride_mass_as_zinc",
+                      f"{zinc_only_percent:.1f}"),
+            ],
         )

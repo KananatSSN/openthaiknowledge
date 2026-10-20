@@ -37,6 +37,15 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.used_density_times_moles": {"th": "คูณความหนาแน่นด้วยจำนวนโมลโดยไม่แปลงเป็นปริมาตร", "en": "Multiplied density directly by moles"},
+    "chem.reported_molar_mass_instead_of_sample_mass": {"th": "ตอบมวลโมลาร์แทนมวลของแก๊สทั้งหมด", "en": "Reported molar mass instead of sample mass"},
+    "chem.used_twenty_liters_per_mole": {"th": "ใช้ 20 L/mol แทน 22.4 L/mol ที่ STP", "en": "Used 20 rather than 22.4 liters per mole"},
+    "chem.inverted_graham_time_ratio": {"th": "กลับอัตราส่วนเวลาในกฎของเกรแฮม", "en": "Inverted Graham's time ratio"},
+    "chem.used_molar_mass_ratio_without_root": {"th": "ใช้อัตราส่วนมวลโมลาร์โดยไม่ถอดราก", "en": "Used molar masses without a square root"},
+    "chem.assumed_equal_effusion_times": {"th": "คิดว่าแก๊สต่างมวลใช้เวลาแพร่เท่ากัน", "en": "Assumed equal effusion times"},
+    "chem.reported_zinc_percent_instead_of_copper": {"th": "ตอบร้อยละสังกะสีแทนทองแดง", "en": "Reported zinc percentage instead of copper"},
+    "chem.used_product_mass_as_copper_percent": {"th": "ใช้มวล ZnCl₂ เป็นมวล Cu", "en": "Used zinc chloride mass as copper mass"},
+    "chem.treated_zinc_chloride_mass_as_zinc": {"th": "คิดว่ามวล ZnCl₂ เท่ากับมวล Zn", "en": "Treated zinc chloride mass as zinc mass"},
     "chem.chose_cold_low_pressure_gas": {"th": "เลือกความดันต่ำแต่ไม่คำนึงถึงอุณหภูมิต่ำ", "en": "Chose low pressure but cold gas"},
     "chem.chose_cold_high_pressure_gas": {"th": "เลือกแก๊สอุณหภูมิต่ำและความดันสูง", "en": "Chose cold high-pressure gas"},
     "chem.chose_hot_high_pressure_gas": {"th": "เลือกอุณหภูมิสูงแต่ไม่คำนึงถึงความดันสูง", "en": "Chose hot but high-pressure gas"},

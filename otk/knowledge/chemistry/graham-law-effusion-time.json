@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎการแพร่ของเกรแฮม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.graham_law_effusion_time.procedure",
+      "kind": "procedure",
+      "title": "เวลาแพร่ผ่านรูพรุนตามกฎของเกรแฮม",
+      "statement": "เวลาแพร่ของแก๊สปริมาณเท่ากันผ่านรูพรุนภายใต้ภาวะเดียวกันแปรตามรากที่สองของมวลโมลาร์",
+      "steps": [
+        "เขียนอัตราส่วนอัตราเร็วการแพร่ตามกฎของเกรแฮม",
+        "กลับอัตราส่วนอัตราเร็วเพื่อหาเวลาและตรวจทิศของแก๊สที่หนักกว่า"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 41
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q41"
+      ],
+      "note": "At fixed conditions and equal amount, effusion time is proportional to sqrt(molar mass). The O2/H2 mass ratio is 16, so the time ratio is four."
+    }
+  ]
+}

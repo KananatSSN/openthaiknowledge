@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–39 are reviewed, solved and generated (39/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 31 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 39/39 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–42 are reviewed, solved and generated (42/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 28 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 42/42 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -512,6 +512,45 @@
       "answer": "2",
       "generator": "chem.posn2560_q39",
       "note": "The ratio of pressures is 323.15/298.15, about 1.084, not 2. Other claims follow PV=nRT and rho=PM/RT."
+    },
+    {
+      "number": 40,
+      "solver": "q40",
+      "title": "มวลแก๊สจากความหนาแน่นที่ STP",
+      "source": "Part I, question 40, p11: 1.25 g/L and five moles at STP give 140 g, choice ข.",
+      "page": 11,
+      "figure": "Rendered p11 visually checked all printed values and choices.",
+      "figure_asset": "",
+      "topic": "ปริมาตรโมลาร์และความหนาแน่นแก๊ส",
+      "answer": "140.0",
+      "generator": "chem.posn2560_q40",
+      "note": "Uses the school convention 22.4 L/mol at STP. Five moles occupy 112 L and have mass 140 g."
+    },
+    {
+      "number": 41,
+      "solver": "q41",
+      "title": "เวลาแพร่ผ่านรูพรุนตามกฎของเกรแฮม",
+      "source": "Part I, question 41, p11: H2 takes 12 s and O2 takes 48 s for the same amount through the same porous sheet, choice ง.",
+      "page": 11,
+      "figure": "Rendered p11 visually checked all printed values and choices.",
+      "figure_asset": "",
+      "topic": "กฎการแพร่ของเกรแฮม",
+      "answer": "48.0",
+      "generator": "chem.posn2560_q41",
+      "note": "At fixed conditions and equal amount, effusion time is proportional to sqrt(molar mass). The O2/H2 mass ratio is 16, so the time ratio is four."
+    },
+    {
+      "number": 42,
+      "solver": "q42",
+      "title": "ร้อยละทองแดงในโลหะผสม Zn–Cu",
+      "source": "Part I, question 42, p11: 5.00 g alloy produces 2.72 g ZnCl2, giving 74.0% Cu by mass, choice ง.",
+      "page": 11,
+      "figure": "Rendered p11 visually checked all printed values and choices.",
+      "figure_asset": "",
+      "topic": "องค์ประกอบโลหะผสมและปริมาณสัมพันธ์",
+      "answer": "74.0",
+      "generator": "chem.posn2560_q42",
+      "note": "Uses Zn=65.0 and Cl=35.5; 2.72 g ZnCl2 is 0.020 mol, so zinc mass is 1.30 g and copper mass is 3.70 g."
     }
   ]
 }

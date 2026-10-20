@@ -66,10 +66,10 @@ Phases in build order. Check an item only when its tests pass.
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–39 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **39/70 complete; 31 pending.**
+  1–42 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **42/70 complete; 28 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  thirty-nine reviewed items. Its `verify` result of 39/39 describes this batch, not the
+  forty-two reviewed items. Its `verify` result of 42/42 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -2143,3 +2143,10 @@ TOTAL         338   316     17     4   66      255      6     11
 - MC39 initially exposed a normalization mistake in the independent ideal-gas check and a choice-length cue. Both were corrected before acceptance; the choices now use equal-length statement labels.
 - The paper remains partial at 39/70. The full suite stays deferred until all 70 questions are digested.
 - Wave validation: 39/39 sheet solvers and 120 variants green; 810 knowledge units in 676 files with zero problems; source coverage 39/70. Focused sheet/set checks passed (267). Registry checks passed 16,366 cases and exposed one q37 safety-style issue; after replacing the method reference, the affected 41 checks and sheet verification passed. Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC40–42
+
+- Reviewed p11 gas-density, Graham-law, and Zn–Cu alloy questions. Added independently checked solvers, three variants, generators, and knowledge units for each.
+- MC40 uses the printed STP convention 22.4 L/mol. MC41's equal-amount effusion times scale as sqrt(M). MC42 uses Zn=65.0 and Cl=35.5, giving 1.30 g Zn and 74.0% Cu.
+- Wave validation: 42/42 sheet solvers and 129 variant checks green; 813 knowledge units in 679 files with zero problems; source coverage 42/70; focused sheet/set checks passed (286). The full suite remains deferred until the entire sheet is digested.
+- Targeted registry, provenance, safety, golden and layout checks passed (16,379); Ruff and whitespace checks passed.

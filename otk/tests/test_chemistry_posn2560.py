@@ -10,7 +10,7 @@ from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39,
+    q37, q38, q39, q40, q41, q42,
 )
 
 
@@ -140,6 +140,13 @@ def test_helium_ideality_stp_and_ideal_gas_claim_variants():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_stp_density_graham_law_and_alloy_variants():
+    for module in (q40, q41, q42):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -162,7 +169,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 40)))
+@pytest.mark.parametrize("number", tuple(range(1, 43)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -490,12 +497,28 @@ def test_generated_answers_follow_the_written_data(number):
                 stem,
             ).groups()
             expected = f"{q38.check(volume_l=float(volume), pressure_atm=float(pressure), initial_celsius=int(celsius)):.2f}"
-        else:
+        elif number == 39:
             initial, final, factor = map(int, re.search(
                 r"อุณหภูมิจาก (\d+) °C เป็น (\d+) °C ความดันเพิ่ม (\d+) เท่า", stem,
             ).groups())
             assert q39.check(factor=factor, initial_celsius=initial,
                              final_celsius=final) == 2
             expected = "ค"
+        elif number == 40:
+            density, amount = re.search(
+                r"ความหนาแน่น ([\d.]+) g/L แก๊สจำนวน (\d+) mol", stem,
+            ).groups()
+            expected = f"{q40.check(density_g_l=float(density), amount_mol=int(amount)):.1f}"
+        elif number == 41:
+            first, seconds, second = map(int, re.search(
+                r"มวลโมลาร์ (\d+) g/mol\) ปริมาณเท่ากันแพร่ผ่านรูพรุนใน (\d+) s .*?มวลโมลาร์ (\d+) g/mol",
+                stem,
+            ).groups())
+            expected = f"{q41.check(first_molar=first, second_molar=second, first_seconds=seconds):.1f}"
+        else:
+            alloy, product = map(float, re.search(
+                r"มวล ([\d.]+) g ทำปฏิกิริยา.*?ได้ ZnCl₂ ([\d.]+) g", stem,
+            ).groups())
+            expected = f"{q42.check(alloy_g=alloy, zinc_chloride_g=product):.1f}"
         assert answer == expected
         assert len(question.choices) == 4

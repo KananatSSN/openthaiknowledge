@@ -4145,6 +4145,7 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q31", "chem.posn2560_q32", "chem.posn2560_q33",
     "chem.posn2560_q34", "chem.posn2560_q35", "chem.posn2560_q36",
     "chem.posn2560_q37", "chem.posn2560_q38", "chem.posn2560_q39",
+    "chem.posn2560_q40", "chem.posn2560_q41", "chem.posn2560_q42",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4186,6 +4187,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q37": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พฤติกรรมแก๊สจริงและแก๊สอุดมคติ", "outside_scope"),
     "chem.posn2560_q38": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "กฎรวมแก๊สและสภาวะ STP", "outside_scope"),
     "chem.posn2560_q39": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ความสัมพันธ์ของความดัน ปริมาตร และอุณหภูมิแก๊ส", "outside_scope"),
+    "chem.posn2560_q40": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ปริมาตรโมลาร์และความหนาแน่นแก๊ส", "outside_scope"),
+    "chem.posn2560_q41": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "กฎการแพร่ของเกรแฮม", "outside_scope"),
+    "chem.posn2560_q42": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "องค์ประกอบโลหะผสมและปริมาณสัมพันธ์", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
