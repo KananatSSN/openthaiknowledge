@@ -4415,6 +4415,131 @@
    "layout": "numbered",
    "stage": "ignored",
    "note": "Official solution to the theory paper; used to confirm every answer."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_exp.pdf",
+   "kind": "exam",
+   "sha256": "c5cc9e8debe2e12e",
+   "size": 389964,
+   "pages": 5,
+   "text_chars": 4393,
+   "layout": "numbered",
+   "items": 7,
+   "sheet_id": "tpho2546_physics",
+   "stage": "generated",
+   "note": "Experimental paper (two labs); its theory parts digested as 5 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_exp1.pdf",
+   "kind": "exam",
+   "sha256": "5048fcf0d572c7ef",
+   "size": 236949,
+   "pages": 2,
+   "text_chars": 1960,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: the first two pages of tpho_2_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_exp2.pdf",
+   "kind": "exam",
+   "sha256": "0ac6c1a96ccdd146",
+   "size": 190208,
+   "pages": 3,
+   "text_chars": 2433,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 2 alone: the last three pages of tpho_2_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_theory.pdf",
+   "kind": "exam",
+   "sha256": "1b08b09da175e9f6",
+   "size": 466598,
+   "pages": 3,
+   "text_chars": 3792,
+   "layout": "numbered",
+   "items": 17,
+   "sheet_id": "tpho2546_physics",
+   "stage": "generated",
+   "note": "Theory paper (three problems); 17 sub-parts, 16 items (2.6 and 3.6 are sketches, claimed by their units); hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_theory1.pdf",
+   "kind": "exam",
+   "sha256": "d9e798f5f6ec3535",
+   "size": 174286,
+   "pages": 1,
+   "text_chars": 1091,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 1 alone: page 1 of tpho_2_theory.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_theory1_solution.pdf",
+   "kind": "exam",
+   "sha256": "a5652d749b02123a",
+   "size": 169658,
+   "pages": 1,
+   "text_chars": 1129,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 1: page 1 of tpho_2_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_theory2.pdf",
+   "kind": "exam",
+   "sha256": "c534cfeeea126d42",
+   "size": 175789,
+   "pages": 1,
+   "text_chars": 1226,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 2 alone: page 2 of tpho_2_theory.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_theory2_solution.pdf",
+   "kind": "exam",
+   "sha256": "bba732d6b2e89b80",
+   "size": 170522,
+   "pages": 1,
+   "text_chars": 1368,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 2: page 2 of tpho_2_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_theory3.pdf",
+   "kind": "exam",
+   "sha256": "447220ec53fa5569",
+   "size": 174577,
+   "pages": 1,
+   "text_chars": 1475,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 3 alone: page 3 of tpho_2_theory.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_theory3_solution.pdf",
+   "kind": "exam",
+   "sha256": "11f6b5765dfeff90",
+   "size": 204216,
+   "pages": 2,
+   "text_chars": 2435,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 3: pages 3-4 of tpho_2_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-46-physics/tpho_2_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "f9f5f974d53645b8",
+   "size": 465897,
+   "pages": 4,
+   "text_chars": 4932,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official marking scheme for the theory paper; used to confirm every answer."
   }
  ]
 }

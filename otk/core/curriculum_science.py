@@ -3553,6 +3553,54 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2545_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเลี้ยวเบนของแสง', "outside_scope"),
 })
 # END TPhO 2545
+# BEGIN TPhO 2546
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2546_q01",
+    "phys.tpho2546_q02",
+    "phys.tpho2546_q03",
+    "phys.tpho2546_q04",
+    "phys.tpho2546_q05",
+    "phys.tpho2546_q06",
+    "phys.tpho2546_q07",
+    "phys.tpho2546_q08",
+    "phys.tpho2546_q09",
+    "phys.tpho2546_q10",
+    "phys.tpho2546_q11",
+    "phys.tpho2546_q12",
+    "phys.tpho2546_q13",
+    "phys.tpho2546_q14",
+    "phys.tpho2546_q15",
+    "phys.tpho2546_q16",
+    "phys.tpho2546_q17",
+    "phys.tpho2546_q18",
+    "phys.tpho2546_q19",
+    "phys.tpho2546_q20",
+    "phys.tpho2546_q21",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2546_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โมเมนตัมแนวระดับของลิ่มและมวล', "outside_scope"),
+    "phys.tpho2546_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โมเมนตัมแนวระดับของลิ่มและมวล', "outside_scope"),
+    "phys.tpho2546_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โมเมนตัมแนวระดับของลิ่มและมวล', "outside_scope"),
+    "phys.tpho2546_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงในกรอบอ้างอิงที่มีความเร่ง', "outside_scope"),
+    "phys.tpho2546_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานไฟฟ้าและความร้อนจูล', "outside_scope"),
+    "phys.tpho2546_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานไฟฟ้าและความร้อนจูล', "outside_scope"),
+    "phys.tpho2546_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายโอนความร้อนและการเย็นตัว', "outside_scope"),
+    "phys.tpho2546_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายโอนความร้อนและการเย็นตัว', "outside_scope"),
+    "phys.tpho2546_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายโอนความร้อนและการเย็นตัว', "outside_scope"),
+    "phys.tpho2546_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การอินทิเกรตสนามและสมมาตร', "outside_scope"),
+    "phys.tpho2546_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การอินทิเกรตสนามและสมมาตร', "outside_scope"),
+    "phys.tpho2546_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การอินทิเกรตสนามและสมมาตร', "outside_scope"),
+    "phys.tpho2546_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การอินทิเกรตสนามและสมมาตร', "outside_scope"),
+    "phys.tpho2546_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ศักย์ไฟฟ้าของทรงกลมประจุร่วมจุดประจุ', "outside_scope"),
+    "phys.tpho2546_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ศักย์ไฟฟ้าของทรงกลมประจุร่วมจุดประจุ', "outside_scope"),
+    "phys.tpho2546_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ศักย์ไฟฟ้าของทรงกลมประจุร่วมจุดประจุ', "outside_scope"),
+    "phys.tpho2546_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'วงจรตัวต้านทานและตัวเก็บประจุ', "outside_scope"),
+    "phys.tpho2546_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'วงจรตัวต้านทานและตัวเก็บประจุ', "outside_scope"),
+    "phys.tpho2546_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งของวัตถุแข็งเกร็ง', "outside_scope"),
+    "phys.tpho2546_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งของวัตถุแข็งเกร็ง', "outside_scope"),
+    "phys.tpho2546_q21": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งของวัตถุแข็งเกร็ง', "outside_scope"),
+})
+# END TPhO 2546
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

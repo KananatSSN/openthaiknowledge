@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานไฟฟ้าและความร้อนจูล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.fuse_joule_heating.procedure",
+      "kind": "procedure",
+      "title": "อัตราการเพิ่มอุณหภูมิของฟิวส์เมื่อเปลี่ยนกระแสและรัศมี",
+      "statement": "ลวดที่ไม่เสียความร้อนมีอุณหภูมิเพิ่มในอัตรา dT/dt = i²ρ/(π²r⁴cD) ไม่ขึ้นกับความยาวลวด",
+      "steps": [
+        "หากำลัง i²R ด้วย R = ρℓ/(πr²)",
+        "หารด้วยความจุความร้อน cDπr²ℓ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2546_q05",
+        "phys.tpho2546_q06"
+      ],
+      "note": "The 2.1 formula asked through its scaling with i and r."
+    }
+  ]
+}

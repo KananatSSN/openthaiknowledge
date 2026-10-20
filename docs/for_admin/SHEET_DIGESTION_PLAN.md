@@ -123,8 +123,10 @@ Phases in build order. Check an item only when its tests pass.
   note; the solution confirms each independently derived answer.
 - `สอวน_physics/tpho-45-physics/` (TPhO 1, 2545): 14 theory sub-parts and 3
   experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2545.py`.
-- Next source: `สอวน_physics/tpho-46-physics/`. Ten of 33 papers are digested;
-  23 remain pending.
+- `สอวน_physics/tpho-46-physics/` (TPhO 2, 2546): 16 theory sub-parts and 5
+  experiment parts → 21 generators in `otk/sets/physics/olympiad/tpho2546.py`.
+- Next source: `สอวน_physics/tpho-47-physics/`. Eleven of 33 papers are
+  digested; 22 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1502,3 +1504,33 @@ TOTAL         338   316     17     4   66      255      6     11
   passed; the sheet's own tests: 38 passed; Ruff clean.
 - The full suite ran once, after all 17 items were digested: **35,351 passed,
   13 skipped in 11m20s**.
+
+### 2026-10-20 — TPhO 2 (2546) national physics olympiad
+
+- Folder of eleven PDFs: the combined theory paper (three problems) and its
+  combined marking scheme, the same split per problem, and the combined
+  experimental paper with its two labs split out. The two combined papers are
+  the digested sources; the nine copies and marking schemes are `ignored` with
+  notes.
+- 21 items: 1.1 (v and V), 1.2 (first-order correction), 1.3 (detach angle,
+  a choice item), 2.1–2.5 (fuse heating, loss and melting), 3.1–3.5, 3.7, 3.8
+  (uniformly charged ball with point charges), and the labs' theory parts:
+  rms V_C and C from the 1/V_C² against R² line; I from a bifilar period, the
+  cavity shape and the cylinder radius. The sketches 2.6 and 3.6, the
+  measurement 1.3 and the error discussion 2.3 have no generator but are
+  claimed by their units. Every answer agrees with the marking scheme (2.2:
+  0.694 °C/s, 0.70 in the scheme).
+- Hanging 2.2(ข) turns the cube about an axis perpendicular to the cylinder,
+  which reproduces the paper's I₂ = ρa⁵/6 − πρa³b²/12 − πρab⁴/4.
+- Independent checks include RK4 of the Lagrangian for the sliding mass, a
+  Newton solve of momentum and energy, the cylinder's maximum speed as the
+  detach point, Coulomb quadrature over shells, field integration from
+  infinity, complex impedance, and the exact bifilar geometry.
+  `sheetpipe verify`: 21/21 green, 63 runs.
+- Items 6, 7, 8 and 19 answer to three significant figures (their exact
+  forms were fractions over π² with seven-digit terms); stems stay exact.
+  Draws whose choices coincide are redrawn.
+- Targeted run: `test_per_set` for the 21 keys passed; registry-wide and
+  sheetpipe tests passed after recording `str(ANSWER)` in `sheet.json`; the
+  sheet's own tests: 46 passed; Ruff clean.
+- Full suite: **35,654 passed, 13 skipped in 12m22s**.

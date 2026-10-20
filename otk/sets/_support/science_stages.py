@@ -1086,6 +1086,29 @@ PHYSICS_APPLICATION_KEYS = frozenset({
 })
 
 REVIEWED_PHYSICS_STAGES = {
+    # BEGIN TPhO 2546
+    "phys.tpho2546_q01": 3,
+    "phys.tpho2546_q02": 2,
+    "phys.tpho2546_q03": 3,
+    "phys.tpho2546_q04": 2,
+    "phys.tpho2546_q05": 2,
+    "phys.tpho2546_q06": 2,
+    "phys.tpho2546_q07": 3,
+    "phys.tpho2546_q08": 3,
+    "phys.tpho2546_q09": 3,
+    "phys.tpho2546_q10": 2,
+    "phys.tpho2546_q11": 2,
+    "phys.tpho2546_q12": 2,
+    "phys.tpho2546_q13": 2,
+    "phys.tpho2546_q14": 3,
+    "phys.tpho2546_q15": 3,
+    "phys.tpho2546_q16": 3,
+    "phys.tpho2546_q17": 2,
+    "phys.tpho2546_q18": 3,
+    "phys.tpho2546_q19": 2,
+    "phys.tpho2546_q20": 1,
+    "phys.tpho2546_q21": 3,
+    # END TPhO 2546
     # BEGIN TPhO 2545
     "phys.tpho2545_q01": 2,
     "phys.tpho2545_q02": 2,

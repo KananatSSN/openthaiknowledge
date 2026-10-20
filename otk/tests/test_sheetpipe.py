@@ -36,7 +36,8 @@ ITEMS = [(sid, item, mod)
 #: skipped by the orphan test rather than silently passing it. posn2566_math is
 #: listed with nothing registered under it yet — the entry is what will catch a
 #: half-wired sheet the moment its first generator lands.
-KEY_PREFIX = {"tpho2545_physics": "phys.tpho2545_",
+KEY_PREFIX = {"tpho2546_physics": "phys.tpho2546_",
+              "tpho2545_physics": "phys.tpho2545_",
               "posn2569_physics": "phys.posn2569_",
               "posn2568_physics": "phys.posn2568_",
               "posn2567_physics": "phys.posn2567_",

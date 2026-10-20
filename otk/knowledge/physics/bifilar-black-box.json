@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแกว่งของวัตถุแข็งเกร็ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.bifilar_black_box.procedure",
+      "kind": "procedure",
+      "title": "โมเมนต์ความเฉื่อยจากคาบการแกว่งแบบสองเส้นเชือก",
+      "statement": "ลูกบาศก์ที่แขวนด้วยเชือกสองเส้นแกว่งบิดด้วย T² = 16π²Iℓ/(m₀gd²) โพรงทรงกลมให้ I เท่ากันทุกแบบการแขวน ส่วนโพรงทรงกระบอกให้ I ต่างกันและบอกรัศมีโพรงได้",
+      "steps": [
+        "หาโมเมนต์ความเฉื่อยจากคาบในแต่ละแบบการแขวน",
+        "เทียบค่าทั้งสองเพื่อแยกรูปร่างโพรงแล้วแก้สูตร I หารัศมี"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-46-physics/tpho_2_exp.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-46-physics/tpho_2_exp.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-46-physics/tpho_2_exp.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2546_q19",
+        "phys.tpho2546_q20",
+        "phys.tpho2546_q21"
+      ],
+      "note": "Synthetic period and string data."
+    }
+  ]
+}

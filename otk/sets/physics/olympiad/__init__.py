@@ -8,3 +8,4 @@ from . import posn2567  # noqa: F401
 from . import posn2568  # noqa: F401
 from . import posn2569  # noqa: F401
 from . import tpho2545  # noqa: F401
+from . import tpho2546  # noqa: F401
