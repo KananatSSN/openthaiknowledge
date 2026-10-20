@@ -131,8 +131,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 19 generators in `otk/sets/physics/olympiad/tpho2548.py`.
 - `สอวน_physics/tpho-49-physics/` (TPhO 5, 2549): 11 theory sub-parts and 3
   experiment parts → 14 generators in `otk/sets/physics/olympiad/tpho2549.py`.
-- Next source: `สอวน_physics/tpho-50-physics/`. Fourteen of 33 papers are
-  digested; 19 remain pending.
+- `สอวน_physics/tpho-50-physics/` (TPhO 6, 2550): 12 theory items and 4
+  experiment parts → 16 generators in `otk/sets/physics/olympiad/tpho2550.py`.
+- Next source: `สอวน_physics/tpho-51-physics/`. Fifteen of 33 papers are
+  digested; 18 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1620,3 +1622,28 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 20,689 passed, 4 skipped; `test_per_set` for the 14 keys
   passed; the sheet's own tests: 32 passed; Ruff clean.
 - Full suite: **36,352 passed, 13 skipped in 11m44s**.
+
+### 2026-10-20 — TPhO 6 (2550) national physics olympiad
+
+- Folder of six PDFs: the theory paper, its marking scheme, the two bound
+  together (24 pages), and the experimental papers both combined and split.
+  The bound theory file and the combined experiments are the digested
+  sources; the four copies are `ignored` with notes.
+- 16 items: 1.1.1 (bar lengths from equal sound travel times, adapted ratios;
+  1.1.2's zero phase difference is claimed by the unit), 1.2 (plano-convex
+  radius and the internal-reflection image), 1.3 (adiabatic piston drop,
+  adapted compression ratio), 2.1–2.3.2 (sliding and spinning rod emf, the
+  spoked wheel's current and terminal speed), 3.1–3.4 (roller and block on
+  an incline: least and greatest holding force, acceleration with a hanging
+  mass, μ_s for rolling), and the labs: thermistor B, spring constant and
+  effective mass from the T²–M line, beam mass on a spring. Every answer
+  agrees with the marking scheme.
+- Independent checks include exact Snell ray traces through the lens and
+  its inner reflection, an adiabatic work integral, the swept-flux route,
+  a time-stepped wheel (sized to its time constant after a first run
+  stopped short), friction-limit bisections, an energy route for the
+  rolling system, and bisections on B, k and M. `sheetpipe verify`: 16/16
+  green, 48 runs.
+- Targeted run: 20,873 passed, 4 skipped; `test_per_set` for the 16 keys
+  passed; the sheet's own tests: 35 passed; Ruff clean.
+- Full suite: **36,584 passed, 13 skipped in 12m02s**.

@@ -1,0 +1,28 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การหักเหและการสะท้อนในเลนส์หนา",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.thick_plano_convex_lens.procedure",
+      "kind": "procedure",
+      "title": "รัศมีความโค้งของเลนส์นูนแกมระนาบจากจุดโฟกัส",
+      "statement": "เลนส์นูนแกมระนาบที่แสงเข้าทางผิวระนาบหักเหที่ผิวโค้งเท่านั้น R = (n − 1)(D − t) แสงสะท้อนภายในจากผิวโค้งรวมที่ R/2 แล้วหักเหออกที่ผิวระนาบปรากฏที่ (R/2 − t)/n",
+      "steps": [
+        "ใช้การหักเหที่ผิวโค้งผิวเดียวหารัศมีความโค้ง",
+        "ใช้กระจกเว้าและความลึกปรากฏที่ผิวระนาบ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2550_q02",
+        "phys.tpho2550_q03"
+      ],
+      "note": "Numbers for n, t and the focus distance."
+    }
+  ]
+}

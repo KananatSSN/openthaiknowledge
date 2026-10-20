@@ -1,0 +1,39 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เทอร์มิสเตอร์และการวัดอุณหภูมิ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.thermistor_b_constant.procedure",
+      "kind": "procedure",
+      "title": "ค่าคงตัว B ของเทอร์มิสเตอร์",
+      "statement": "ความต้านทานเทอร์มิสเตอร์ R = R₀ exp[B(1/T − 1/T₀)] ทำให้ ln R เป็นเส้นตรงกับ 1/T ที่มีความชัน B (T เป็นเคลวิน)",
+      "steps": [
+        "วัดความต้านทานที่หลายอุณหภูมิ",
+        "เขียนกราฟ ln R กับ 1/T แล้วหาความชัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-50-physics/tpho_6_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-50-physics/tpho_6_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-50-physics/tpho_6_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-50-physics/tpho_6_exp.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2550_q13"
+      ],
+      "note": "Synthetic readings at two temperatures."
+    }
+  ]
+}

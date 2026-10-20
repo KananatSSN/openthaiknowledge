@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กระบวนการแอเดียแบติก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.adiabatic_piston_drop.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนมวลที่อัดอากาศแบบแอเดียแบติก",
+      "statement": "ลูกสูบที่ตกอัดแก๊สแบบแอเดียแบติกจนหยุดชั่วขณะ: พลังงานศักย์ที่ลดลงเท่ากับพลังงานภายในที่เพิ่ม (5/2)nRΔT และ TV^(γ−1) คงที่",
+      "steps": [
+        "เขียนการอนุรักษ์พลังงานจากตำแหน่งเริ่มถึงตำแหน่งต่ำสุด",
+        "ใช้ความสัมพันธ์แอเดียแบติกหา T แล้วแก้หาอัตราส่วนมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2550_q04"
+      ],
+      "note": "Adapted: the lowest volume is V0/k; three significant figures."
+    }
+  ]
+}

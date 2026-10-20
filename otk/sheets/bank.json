@@ -4688,6 +4688,79 @@
    "sheet_id": "tpho2549_physics",
    "stage": "generated",
    "note": "Theory paper, marking scheme and experimental paper in one file; 18 parts, 14 items (lab procedure and measurement parts claimed by their units); hand transcript. Scheme's 3(b) ~0.28 nm does not follow from its formula (0.313 nm)."
+  },
+  {
+   "path": "สอวน_physics/tpho-50-physics/tpho_6_exp.pdf",
+   "kind": "exam",
+   "sha256": "cc23f5d923b253ec",
+   "size": 265382,
+   "pages": 6,
+   "text_chars": 6117,
+   "layout": "numbered",
+   "glyph_damage": 370,
+   "items": 8,
+   "sheet_id": "tpho2550_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 4 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-50-physics/tpho_6_exp1.pdf",
+   "kind": "exam",
+   "sha256": "49973efbf25bd939",
+   "size": 222067,
+   "pages": 3,
+   "text_chars": 3283,
+   "layout": "numbered",
+   "glyph_damage": 211,
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-3 of tpho_6_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-50-physics/tpho_6_exp2.pdf",
+   "kind": "exam",
+   "sha256": "f0bfaa4d46518439",
+   "size": 235382,
+   "pages": 3,
+   "text_chars": 2834,
+   "layout": "numbered",
+   "glyph_damage": 159,
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 4-6 of tpho_6_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-50-physics/tpho_6_theory.pdf",
+   "kind": "exam",
+   "sha256": "1e227935b3d39ee2",
+   "size": 253758,
+   "pages": 6,
+   "text_chars": 5793,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Theory paper alone: pages 1-6 of tpho_6_theory_with_solution.pdf; digested through that file."
+  },
+  {
+   "path": "สอวน_physics/tpho-50-physics/tpho_6_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "cf50d3c1595a4cd2",
+   "size": 676014,
+   "pages": 18,
+   "text_chars": 15227,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme alone: pages 7-24 of tpho_6_theory_with_solution.pdf; used to confirm every answer."
+  },
+  {
+   "path": "สอวน_physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+   "kind": "exam",
+   "sha256": "93ee701e198af2e3",
+   "size": 789516,
+   "pages": 24,
+   "text_chars": 21020,
+   "layout": "numbered",
+   "items": 12,
+   "sheet_id": "tpho2550_physics",
+   "stage": "generated",
+   "note": "Theory paper (pages 1-6) with its marking scheme (pages 7-24); 12 sub-parts, 12 items (1.2 gives two; 1.1.2 claimed by its unit); hand transcript."
   }
  ]
 }

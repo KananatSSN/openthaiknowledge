@@ -1,0 +1,31 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "อัตราเร็วเสียงในของแข็ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.sound_bar_travel_time.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนความยาวแท่งโลหะจากเวลาเดินทางของเสียง",
+      "statement": "เสียงในแท่งของแข็งมีอัตราเร็ว √(Y/ρ) เวลาผ่านแท่งต่อกันเป็นผลรวมของ L/v ทุกท่อน ถ้าเวลาและความถี่เท่ากัน เฟสที่ออกมาก็เท่ากัน",
+      "steps": [
+        "เขียนเวลาเดินทางของแต่ละเส้นทางเป็น ΣL√(ρ/Y)",
+        "ตั้งเวลาเท่ากันแล้วแก้หาอัตราส่วนความยาว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2550_q01"
+      ],
+      "note": "Adapted: Y and rho ratios vary; 1.1.2 (zero phase difference) is its corollary."
+    }
+  ]
+}
