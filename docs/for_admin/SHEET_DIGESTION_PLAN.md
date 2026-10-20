@@ -139,8 +139,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 16 generators in `otk/sets/physics/olympiad/tpho2552.py`.
 - `สอวน_physics/tpho-53-physics/` (TPhO 9, 2553): 11 theory items and 3
   experiment parts → 14 generators in `otk/sets/physics/olympiad/tpho2553.py`.
-- Next source: `สอวน_physics/tpho-54-physics/`. Eighteen of 33 papers are
-  digested; 15 remain pending.
+- `สอวน_physics/tpho-54-physics/` (TPhO 10, 2554): 16 theory items and 4
+  experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2554.py`.
+- Next source: `สอวน_physics/tpho-55-physics/`. Nineteen of 33 papers are
+  digested; 14 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1726,3 +1728,31 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 21,383 passed, 4 skipped; `test_per_set` for the 14 keys
   passed; the sheet's own tests: 31 passed; Ruff clean.
 - Full suite: **37,243 passed, 13 skipped in 11m14s**.
+
+### 2026-10-20 — TPhO 10 (2554) national physics olympiad
+
+- Same six-PDF layout as TPhO 9: the bound theory-with-solution file
+  (17 pages) and the combined experiments are the digested sources; the
+  four copies are `ignored` with notes.
+- 20 items: 1.2–1.6 (a superconducting ring falling onto a magnet: current
+  at depth z, the stiffness k, equilibrium z₀, ω, peak current at 2z₀;
+  1.1 is a step of 1.2), 2.1–2.6 (two masses on one string turning about
+  the vertical: centre of mass, upper tension, the constants A–D as a
+  choice item, the small-angle β, and with the middle mass sliding: β and
+  L₂/L₁), 3.1–3.7 (a falling water jet: Bernoulli radius, the γ/R pressure,
+  the first-order ΔR with 3.3–3.4 as its steps, the break-up distance, the
+  drop radius 3R/2), and the labs with synthetic data: one diode's
+  threshold from the two directions' thresholds, R from a least-squares
+  slope, μ_s from a slope, μ_k from the x_A–x_B slope.
+- Scheme slips: 3.6 prints 0.84 m, but t = 0.12 s gives 0.084 m (pinned in
+  the test). 3.5's ΔR = 1.34×10⁻⁵ m is its simplified form; the generators
+  use the full first-order form (1.32×10⁻⁵ m), and the test pins both.
+- Independent checks include an RK4 fall of the ring (ω from turning
+  points, peak current from the deepest point), Newton's-law bisections
+  for the string angles (the A–D constants recovered by Cramer's rule from
+  three solved configurations), a Newton step on the 3.3 relation for ΔR,
+  and pressure integrals and time-stepped falls for the jet.
+  `sheetpipe verify`: 20/20 green, 60 runs.
+- Targeted run: 21,624 passed, 4 skipped; `test_per_set` for the 20 keys
+  passed; the sheet's own tests: 45 passed; Ruff clean.
+- Full suite: **37,535 passed, 13 skipped in 11m06s**.

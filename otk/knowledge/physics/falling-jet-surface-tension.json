@@ -1,0 +1,55 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ลำน้ำและแรงตึงผิว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.falling_jet_surface_tension.procedure",
+      "kind": "procedure",
+      "title": "รัศมีลำน้ำที่ตกลงมาตามสมการแบร์นูลลี",
+      "statement": "ลำน้ำที่ตกจากท่อเล็กลงตามแบร์นูลลีและความต่อเนื่อง R = R₀(1 + 2gh/v₀²)^(−1/4) แรงตึงผิวเพิ่มความดันในลำน้ำ γ/R ทำให้รัศมีเปลี่ยนเล็กน้อย ΔR หาได้จากการประมาณอันดับหนึ่ง ลำน้ำแตกเป็นหยดหลังเวลาประมาณ 2.91√(ρR₀³/γ) และการคงปริมาตรกับพื้นที่ผิวให้หยดรัศมี 3R/2",
+      "steps": [
+        "ใช้แบร์นูลลีกับความต่อเนื่องหารัศมีลำน้ำ",
+        "เพิ่มความดันจากแรงตึงผิวแล้วประมาณอันดับหนึ่งหรือใช้การอนุรักษ์ปริมาตรและพื้นที่ผิว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 17
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 18
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2554_q12",
+        "phys.tpho2554_q13",
+        "phys.tpho2554_q14",
+        "phys.tpho2554_q15",
+        "phys.tpho2554_q16"
+      ],
+      "note": "R0, v0 and h vary."
+    }
+  ]
+}

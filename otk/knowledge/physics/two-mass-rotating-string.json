@@ -1,0 +1,52 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การหมุนของมวลสองก้อนบนเชือก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.two_mass_rotating_string.procedure",
+      "kind": "procedure",
+      "title": "ศูนย์กลางมวลของมวลสองก้อนที่หมุนบนเชือก",
+      "statement": "มวลสองก้อนบนเชือกเส้นเดียวหมุนรอบแกนดิ่ง: แรงตึงแนวดิ่งรับน้ำหนัก T₂cos α = (m₁ + m₂)g, T₁cos β = m₁g แรงแนวระดับให้แรงสู่ศูนย์กลาง เมื่อผูกมวลกลางที่กึ่งกลาง (m₁/(m₁ + m₂))sin²β/cos β = sin α tan β − tan α sin β + tan α sin α และเมื่อมวลกลางไถลได้แรงตึงเท่ากันทั้งเส้น cos β = m₁cos α/(m₁ + m₂)",
+      "steps": [
+        "เขียนสมดุลแรงแนวดิ่งและแรงสู่ศูนย์กลางของแต่ละมวล",
+        "กำจัดอัตราเร็วเชิงมุมเพื่อหาความสัมพันธ์ของมุมหรือความยาว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2554_q06",
+        "phys.tpho2554_q07",
+        "phys.tpho2554_q08",
+        "phys.tpho2554_q09",
+        "phys.tpho2554_q10",
+        "phys.tpho2554_q11"
+      ],
+      "note": "Masses, L and alpha vary; beta comes from Newton's laws."
+    }
+  ]
+}
