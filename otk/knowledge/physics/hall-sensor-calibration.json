@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สนามแม่เหล็กและเซนเซอร์ฮอลล์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.hall_sensor_calibration.procedure",
+      "kind": "procedure",
+      "title": "สนามแม่เหล็กบนแกนของขดลวดสี่เหลี่ยมจัตุรัส",
+      "statement": "ขดลวดสี่เหลี่ยมให้สนามบนแกน μ₀a²iN/(2π(x² + a²/4)√(x² + a²/2)) ใช้เทียบความไวของเซนเซอร์ฮอลล์ ΔV/B แล้ววัดสนามแม่เหล็กอื่น เช่นสนามที่ผิวแม่เหล็กจานกลม",
+      "steps": [
+        "คำนวณสนามของขดลวดที่ตำแหน่งเซนเซอร์",
+        "หาความไวจากการเปลี่ยนของ V_out แล้วใช้วัดสนามอื่น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-52-physics/tpho_8_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-52-physics/tpho_8_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-52-physics/tpho_8_exp.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-52-physics/tpho_8_exp.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2552_q13",
+        "phys.tpho2552_q14",
+        "phys.tpho2552_q15"
+      ],
+      "note": "The paper's coil; a and x vary."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎแก๊สอุดมคติกับแรงดัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.gas_leak_thrust.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งของถังแก๊สที่เกิดรูรั่ว",
+      "statement": "ถังแก๊สที่เกิดรูรั่วในสุญญากาศได้แรงลัพธ์ PA จากผนังฝั่งตรงข้ามรู โดย P = nRT/V ความเร่งจึงเป็น PA/M",
+      "steps": [
+        "หาความดันจากกฎแก๊สอุดมคติ",
+        "หาแรงลัพธ์จากพื้นที่รูแล้วหารด้วยมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-52-physics/tpho_8_theory.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2552_q01"
+      ],
+      "note": "Numbers vary; three significant figures."
+    }
+  ]
+}

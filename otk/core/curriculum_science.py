@@ -3789,6 +3789,44 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2551_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โพเทนชิออมิเตอร์', "outside_scope"),
 })
 # END TPhO 2551
+# BEGIN TPhO 2552
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2552_q01",
+    "phys.tpho2552_q02",
+    "phys.tpho2552_q03",
+    "phys.tpho2552_q04",
+    "phys.tpho2552_q05",
+    "phys.tpho2552_q06",
+    "phys.tpho2552_q07",
+    "phys.tpho2552_q08",
+    "phys.tpho2552_q09",
+    "phys.tpho2552_q10",
+    "phys.tpho2552_q11",
+    "phys.tpho2552_q12",
+    "phys.tpho2552_q13",
+    "phys.tpho2552_q14",
+    "phys.tpho2552_q15",
+    "phys.tpho2552_q16",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2552_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎแก๊สอุดมคติกับแรงดัน', "outside_scope"),
+    "phys.tpho2552_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมการเลนส์และภาพจริงบนฉาก', "outside_scope"),
+    "phys.tpho2552_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่ของประจุในสนามแม่เหล็ก', "outside_scope"),
+    "phys.tpho2552_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่ในสนามไฟฟ้าและแรงโน้มถ่วง', "outside_scope"),
+    "phys.tpho2552_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การชนแบบยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2552_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การชนแบบยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2552_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การชนแบบยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2552_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การชนแบบยืดหยุ่นหนึ่งมิติ', "outside_scope"),
+    "phys.tpho2552_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงในตัวเก็บประจุแผ่นขนาน', "outside_scope"),
+    "phys.tpho2552_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงในตัวเก็บประจุแผ่นขนาน', "outside_scope"),
+    "phys.tpho2552_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงในตัวเก็บประจุแผ่นขนาน', "outside_scope"),
+    "phys.tpho2552_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงในตัวเก็บประจุแผ่นขนาน', "outside_scope"),
+    "phys.tpho2552_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามแม่เหล็กและเซนเซอร์ฮอลล์', "outside_scope"),
+    "phys.tpho2552_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามแม่เหล็กและเซนเซอร์ฮอลล์', "outside_scope"),
+    "phys.tpho2552_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามแม่เหล็กและเซนเซอร์ฮอลล์', "outside_scope"),
+    "phys.tpho2552_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งของวัตถุแข็งเกร็ง', "outside_scope"),
+})
+# END TPhO 2552
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

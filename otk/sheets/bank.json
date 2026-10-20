@@ -4886,6 +4886,131 @@
    "layout": "numbered",
    "stage": "ignored",
    "note": "Official marking scheme for the theory paper; used to confirm every answer."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_exp.pdf",
+   "kind": "exam",
+   "sha256": "be940f107f1796ec",
+   "size": 386015,
+   "pages": 5,
+   "text_chars": 5899,
+   "layout": "numbered",
+   "items": 6,
+   "sheet_id": "tpho2552_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 4 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_exp1.pdf",
+   "kind": "exam",
+   "sha256": "e8e0f6442b85d9dd",
+   "size": 258437,
+   "pages": 3,
+   "text_chars": 4066,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-3 of tpho_8_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_exp2.pdf",
+   "kind": "exam",
+   "sha256": "ce2783bf073f1e65",
+   "size": 179536,
+   "pages": 2,
+   "text_chars": 1833,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 4-5 of tpho_8_exp.pdf; digested through the combined paper."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_theory.pdf",
+   "kind": "exam",
+   "sha256": "b8e9951f5bd7f930",
+   "size": 378297,
+   "pages": 4,
+   "text_chars": 4843,
+   "layout": "numbered",
+   "items": 11,
+   "sheet_id": "tpho2552_physics",
+   "stage": "generated",
+   "note": "Theory paper (three problems); 11 sub-parts, 12 items (2.3 gives time and height); hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_theory1.pdf",
+   "kind": "exam",
+   "sha256": "15ba7975b1724a1a",
+   "size": 129013,
+   "pages": 2,
+   "text_chars": 2444,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 1 alone: pages 1-2 of tpho_8_theory.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_theory1_solution.pdf",
+   "kind": "exam",
+   "sha256": "99724ed06a52aa17",
+   "size": 275391,
+   "pages": 2,
+   "text_chars": 2608,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 1: pages 1-2 of tpho_8_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_theory2.pdf",
+   "kind": "exam",
+   "sha256": "4a671ba58f12bf7a",
+   "size": 139029,
+   "pages": 1,
+   "text_chars": 1113,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 2 alone: page 3 of tpho_8_theory.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_theory2_solution.pdf",
+   "kind": "exam",
+   "sha256": "7281d64db336b57b",
+   "size": 146116,
+   "pages": 2,
+   "text_chars": 3130,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 2: pages 3-4 of tpho_8_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_theory3.pdf",
+   "kind": "exam",
+   "sha256": "a86fc58096d5c813",
+   "size": 180782,
+   "pages": 1,
+   "text_chars": 1286,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 3 alone: page 4 of tpho_8_theory.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_theory3_solution.pdf",
+   "kind": "exam",
+   "sha256": "af12f95983de99b2",
+   "size": 185900,
+   "pages": 2,
+   "text_chars": 1917,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 3: pages 5-6 of tpho_8_theory_solution.pdf."
+  },
+  {
+   "path": "สอวน_physics/tpho-52-physics/tpho_8_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "95efdc80df262cee",
+   "size": 537789,
+   "pages": 6,
+   "text_chars": 7655,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (its 2.3 height, 0.82 m, should be 0.90 m)."
   }
  ]
 }

@@ -1,0 +1,38 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนแบบยืดหยุ่นหนึ่งมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.stacked_ball_bounce.procedure",
+      "kind": "procedure",
+      "title": "ความสูงที่ลูกบอลเบาเด้งขึ้นหลังชนลูกบอลหนัก",
+      "statement": "ลูกบอลเบาบนลูกบอลหนักที่ตกพร้อมกัน ลูกหนักเด้งจากพื้นแล้วชนลูกเบาแบบยืดหยุ่น ลูกเบาออกด้วย ((3 − m/M)/(1 + m/M))v₀ และชนครั้งต่อไปตามสมการการเคลื่อนที่ของทั้งสองลูก",
+      "steps": [
+        "ใช้การชนยืดหยุ่นหนึ่งมิติหาความเร็วหลังชน",
+        "เขียนตำแหน่งของทั้งสองลูกตามเวลาแล้วหาจุดที่ตรงกัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-52-physics/tpho_8_theory.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-52-physics/tpho_8_theory.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-52-physics/tpho_8_theory.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2552_q05",
+        "phys.tpho2552_q06",
+        "phys.tpho2552_q07",
+        "phys.tpho2552_q08"
+      ],
+      "note": "Adapted: m/M given (0 for M >> m)."
+    }
+  ]
+}

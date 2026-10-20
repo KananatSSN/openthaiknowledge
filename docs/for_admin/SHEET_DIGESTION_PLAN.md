@@ -135,8 +135,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 16 generators in `otk/sets/physics/olympiad/tpho2550.py`.
 - `สอวน_physics/tpho-51-physics/` (TPhO 7, 2551): 13 theory items and 2
   experiment parts → 15 generators in `otk/sets/physics/olympiad/tpho2551.py`.
-- Next source: `สอวน_physics/tpho-52-physics/`. Sixteen of 33 papers are
-  digested; 17 remain pending.
+- `สอวน_physics/tpho-52-physics/` (TPhO 8, 2552): 12 theory items and 4
+  experiment parts → 16 generators in `otk/sets/physics/olympiad/tpho2552.py`.
+- Next source: `สอวน_physics/tpho-53-physics/`. Seventeen of 33 papers are
+  digested; 16 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1673,3 +1675,29 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 21,043 passed, 4 skipped; `test_per_set` for the 15 keys
   passed; the sheet's own tests: 33 passed; Ruff clean.
 - Full suite: **36,804 passed, 13 skipped in 11m08s**.
+
+### 2026-10-20 — TPhO 8 (2552) national physics olympiad
+
+- Folder of eleven PDFs laid out like TPhO 7: the theory paper and the
+  combined experiments are the digested sources; the separate solution and
+  the per-problem and per-lab copies are `ignored` with notes.
+- 16 items: 1.1–1.4 (leaking gas tank, moving object's image, electron
+  leaving a triangular field parallel to x, charged ball through two
+  regions), 2.1–2.3 (stacked elastic balls: height multiple for a general
+  m/M, the light ball's speed, time and height of the second collision),
+  3.1–3.4 (plate force, spring constant, oscillation ω, the d ≥ D/3 limit),
+  and the labs: the square coil's axial field, the Hall sensor's
+  sensitivity, a disc magnet's surface field, g from a rod pendulum.
+- Marking-scheme error: 2.3 prints the second collision at 0.82 m; its own
+  equations (4)–(5) at t = 0.224 s give 0.90 m (an event simulation
+  agrees, and a test pins it). The time, 0.48 s, is right. The generator
+  keeps to the case the scheme solves (the light ball reaches the ceiling;
+  the heavy ball is still in flight).
+- Independent checks include a wall-force sum, a chief-ray image, a
+  bisection on the exit point, an event simulation of the stacked balls, an
+  energy route for the plate force, a bisection on the stable stretch, a
+  Biot–Savart sum for the square coil, and a compound-pendulum bisection.
+  `sheetpipe verify`: 16/16 green, 48 runs.
+- Targeted run: 21,228 passed, 4 skipped; `test_per_set` for the 16 keys
+  passed; the sheet's own tests: 36 passed; Ruff clean.
+- Full suite: **37,038 passed, 13 skipped in 11m38s**.
