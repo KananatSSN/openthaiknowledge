@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–9, 2026-10-21
+### Chemistry POSN bank — waves 1–10, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–27 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **27/70 complete; 43 pending.**
+  1–30 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **30/70 complete; 40 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  twenty-seven reviewed items. Its `verify` result of 27/27 describes this batch, not the
+  thirty reviewed items. Its `verify` result of 30/30 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -533,6 +533,23 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-21 — POSN chemistry 2560, tenth shape, names and bond batch
+
+- Visually checked MC28–MC30 on p9, including MC29's four-row naming table
+  and MC30's four reactions. Built solvers, generators and knowledge claims.
+- MC28 uses an explicit Lewis/VSEPR model: KrO₂H₂ is AX₄E and seesaw.
+  MC29 has **no incorrect printed choice**: all four formula–name pairs match.
+  The generator asks for the number of mismatches (zero for the source) and
+  variants introduce one to three mismatches. MC30 restores the C=C bond
+  marks absent from the PDF's displayed reaction formulas.
+- `verify posn2560_chemistry`: 30/30 green, 93 variant checks, all
+  independent. Knowledge validation: 801 units in 667 files, zero problems;
+  source coverage: 30/70. Only the three new golden keys were added.
+- Targeted wave validation: 210 sheet/set checks and 16,331 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
 
 ### 2026-10-21 — POSN chemistry 2560, ninth polarity and bonding batch
 

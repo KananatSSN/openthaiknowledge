@@ -1,12 +1,17 @@
 """Reviewed waves of POSN camp-selection chemistry 2560."""
 
+import re
+
+from otk.core.content import text
+from otk.core.distractors import fixed
 from otk.core.mistakes import named
-from otk.core.registry import question_type
+from otk.core.question import GeneratedQuestion
+from otk.core.registry import QuestionType, question_type
 from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27,
+    q25, q26, q27, q28, q29, q30,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -944,4 +949,123 @@ class CoordinateLewisDepiction(ChemistrySheet):
             hint="หาโมเลกุลที่มีภาพลูอิสเรโซแนนซ์สองแบบและมีการบริจาคคู่โดดเดี่ยวในภาพตำรา",
             distractors=[named(_DATIVE_MISTAKES[item], _BONDING_TEX[item])
                          for item in species if item != answer],
+        )
+
+
+_Q28_SHAPES = {
+    "tetrahedral": "ทรงสี่หน้า", "square_planar": "สี่เหลี่ยมแบนราบ",
+    "seesaw": "ทรงสี่หน้าบิดเบี้ยว", "trigonal_pyramidal": "พีระมิดฐานสามเหลี่ยม",
+    "square_pyramidal": "พีระมิดฐานสี่เหลี่ยม",
+}
+_Q28_MISTAKES = {
+    "tetrahedral": "chem.ignored_noble_gas_lone_pair",
+    "square_planar": "chem.assigned_two_noble_gas_lone_pairs",
+    "seesaw": "chem.assumed_four_ligands_one_lone_pair",
+    "trigonal_pyramidal": "chem.counted_double_oxo_as_two_ligands",
+    "square_pyramidal": "chem.confused_five_and_six_domains",
+}
+_Q28_DISTRACTORS = {
+    "seesaw": ("tetrahedral", "square_planar", "trigonal_pyramidal"),
+    "square_pyramidal": ("tetrahedral", "square_planar", "seesaw"),
+    "trigonal_pyramidal": ("tetrahedral", "seesaw", "square_pyramidal"),
+    "square_planar": ("tetrahedral", "seesaw", "square_pyramidal"),
+}
+
+
+@question_type(
+    "chem.posn2560_q28", display_name={"th": "รูปร่างของออกไซด์แก๊สมีตระกูล"},
+    level=LEVEL, subject="เคมี", topic="รูปร่างโมเลกุลตาม VSEPR",
+)
+class NobleGasOxoShape(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        formula = rng.choice((q28.PARAMS, *q28.VARIANTS))["formula"]
+        answer = q28.solve(formula=formula)
+        return GeneratedQuestion(
+            stem=[text("ตามแบบจำลองลูอิสที่ O ปลายสร้างพันธะคู่ และ H/F สร้างพันธะเดี่ยว "
+                       f"รูปร่างการจัดเรียงอะตอมรอบอะตอมกลางของ {formula} เป็นอย่างไร")],
+            correct=[text(_Q28_SHAPES[answer])],
+            distractors=fixed(*[[text(named(_Q28_MISTAKES[shape], _Q28_SHAPES[shape]))]
+                                for shape in _Q28_DISTRACTORS[answer]]),
+            topic="รูปร่างโมเลกุลตาม VSEPR",
+            hint=[text("นับหนึ่งโดเมนต่อพันธะคู่ แล้วนับคู่โดดเดี่ยวของ Kr/Xe แยกต่างหาก")],
+        )
+
+
+_Q29_NAMES = {
+    "chromium_trioxide": "โครเมียมไตรออกไซด์",
+    "chromium_dioxide": "โครเมียมไดออกไซด์",
+    "sodium_thiosulfate": "โซเดียมไทโอซัลเฟต",
+    "sodium_sulfite": "โซเดียมซัลไฟต์",
+    "mercury_i_chloride": "เมอร์คิวรี(I)คลอไรด์",
+    "mercury_ii_chloride": "เมอร์คิวรี(II)คลอไรด์",
+    "barium_nitrite": "แบเรียมไนไตรต์",
+    "barium_nitrate": "แบเรียมไนเตรต",
+}
+
+
+@question_type(
+    "chem.posn2560_q29", display_name={"th": "ตรวจชื่อสารจากสูตรเคมี"},
+    level=LEVEL, subject="เคมี", topic="การเรียกชื่อสารประกอบอนินทรีย์",
+)
+class CompoundNameAudit(ChemistrySheet):
+    def expr(self, rng):
+        names = rng.choice((q29.PARAMS, *q29.VARIANTS))["names"]
+        answer = q29.solve(names=names)
+        rows = "; ".join(f"{formula} = {_Q29_NAMES[name]}"
+                         for formula, name in zip(q29.FORMULAS, names))
+        return MathDraw(
+            "", str(answer),
+            prompt=f"พิจารณาคู่สูตร–ชื่อสารต่อไปนี้: {rows} มีคู่ที่เรียกชื่อผิดกี่คู่",
+            hint="ตรวจไนไตรต์/ไนเตรต และประจุเมอร์คิวรี(I) ใน Hg₂Cl₂ ด้วย",
+            distractors=[named("chem.overcounted_nomenclature_errors" if number > answer
+                               else "chem.undercounted_nomenclature_errors", str(number))
+                         for number in range(4) if number != answer],
+        )
+
+
+_Q30_WRONG = {
+    "CH2=CHCH3": (("CH2=CCH3", "H"), ("CH2=CH", "CH3"),
+                   ("CH2=CHCH2", "H")),
+    "CH2=CHCH2CH3": (("CH2=CCH2CH3", "H"), ("CH2=CH", "CH2CH3"),
+                      ("CH2=CHCH2CH2", "H")),
+    "CH3CH=CHCH3": (("CH3C=CHCH3", "H"), ("CH3", "CH=CHCH3"),
+                     ("CH2CH=CHCH3", "H")),
+    "CH2=CHCH2CH2CH3": (("CH2=CCH2CH2CH3", "H"),
+                         ("CH2=CH", "CH2CH2CH3"), ("CH2=CHCH2CH2CH2", "H")),
+}
+_Q30_MISTAKES = (
+    "chem.broke_vinylic_carbon_hydrogen", "chem.broke_alkene_adjacent_single_bond",
+    "chem.broke_alkyl_carbon_hydrogen",
+)
+
+
+def _hydrocarbon_tex(formula):
+    pieces = formula.split("=")
+    return "=".join(r"\mathrm{" + re.sub(r"([A-Z][a-z]?)(\d+)", r"\1_\2", part) + "}"
+                    for part in pieces)
+
+
+def _cleavage_tex(alkene, products):
+    return (_hydrocarbon_tex(alkene) + r"_{(g)}\rightarrow "
+            + "+".join(_hydrocarbon_tex(item) + r"_{(g)}" for item in products))
+
+
+@question_type(
+    "chem.posn2560_q30", display_name={"th": "การสลายพันธะคู่คาร์บอนคาร์บอน"},
+    level=LEVEL, subject="เคมี", topic="พลังงานสลายพันธะและการแยกพันธะ",
+)
+class AlkeneDoubleBondDissociation(ChemistrySheet):
+    def expr(self, rng):
+        alkene = rng.choice((q30.PARAMS, *q30.VARIANTS))["alkene"]
+        answer = q30.solve(alkene=alkene)
+        return MathDraw(
+            "", _cleavage_tex(alkene, answer),
+            prompt=(f"จาก {alkene}(g) ปฏิกิริยาแตกตัวเป็นชิ้นส่วนข้อใด "
+                    "ตัดพันธะ C=C เดิมทั้งพันธะโดยตรง"),
+            hint="เมื่อตัดพันธะคู่ C=C ชิ้นส่วนต้องอยู่คนละด้านของเครื่องหมาย = เดิม",
+            distractors=[named(key, _cleavage_tex(alkene, products))
+                         for key, products in zip(_Q30_MISTAKES, _Q30_WRONG[alkene])],
         )

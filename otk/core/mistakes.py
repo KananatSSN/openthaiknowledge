@@ -37,6 +37,46 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.ignored_noble_gas_lone_pair": {
+        "th": "ไม่นับคู่โดดเดี่ยวบนอะตอมกลางของแก๊สมีตระกูล",
+        "en": "Ignored the central noble-gas lone pair",
+    },
+    "chem.assigned_two_noble_gas_lone_pairs": {
+        "th": "นับคู่โดดเดี่ยวบนอะตอมกลางเกินหนึ่งคู่",
+        "en": "Assigned two central lone pairs instead of one",
+    },
+    "chem.assumed_four_ligands_one_lone_pair": {
+        "th": "ใช้รูปร่างสี่ลิแกนด์หนึ่งคู่โดดเดี่ยวกับจำนวนโดเมนอื่น",
+        "en": "Applied AX4E geometry to a different domain count",
+    },
+    "chem.counted_double_oxo_as_two_ligands": {
+        "th": "นับพันธะคู่กับออกซิเจนเป็นสองอะตอมปลาย",
+        "en": "Counted a double-bonded oxygen as two ligands",
+    },
+    "chem.confused_five_and_six_domains": {
+        "th": "สับสนจำนวนโดเมนอิเล็กตรอนห้ากับหก",
+        "en": "Confused five and six electron domains",
+    },
+    "chem.overcounted_nomenclature_errors": {
+        "th": "นับชื่อสารที่ผิดมากกว่าที่มีจริง",
+        "en": "Overcounted incorrect compound names",
+    },
+    "chem.undercounted_nomenclature_errors": {
+        "th": "นับชื่อสารที่ผิดน้อยกว่าที่มีจริง",
+        "en": "Undercounted incorrect compound names",
+    },
+    "chem.broke_vinylic_carbon_hydrogen": {
+        "th": "เลือกการสลายพันธะ C–H บนคาร์บอนของพันธะคู่",
+        "en": "Broke a vinylic C–H bond instead of C=C",
+    },
+    "chem.broke_alkene_adjacent_single_bond": {
+        "th": "เลือกการสลายพันธะ C–C เดี่ยวที่ติดพันธะคู่",
+        "en": "Broke the adjacent single C–C bond instead of C=C",
+    },
+    "chem.broke_alkyl_carbon_hydrogen": {
+        "th": "เลือกการสลายพันธะ C–H ของหมู่แอลคิล",
+        "en": "Broke an alkyl C–H bond instead of C=C",
+    },
     "chem.ignored_seesaw_dipole": {
         "th": "คิดว่าไดโพลในโมเลกุลทรงสี่หน้าบิดเบี้ยวหักล้างกัน",
         "en": "Assumed bond dipoles cancel in a seesaw molecule",

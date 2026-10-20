@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–27 are reviewed, solved and generated (27/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 43 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 27/27 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–30 are reviewed, solved and generated (30/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 40 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 30/30 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -356,6 +356,45 @@
       "answer": "O3",
       "generator": "chem.posn2560_q27",
       "note": "The source convention allows O=O→O as a donor–acceptor Lewis depiction. This is bookkeeping, not a localized distinct bond: actual ozone has two equivalent O–O bonds through resonance. The generated prompt states that the arrow is a model. Reference: https://www.open.edu/openlearn/mod/oucontent/view.php?id=87848&section=_unit5.2 ."
+    },
+    {
+      "number": 28,
+      "solver": "q28",
+      "title": "รูปร่างของออกไซด์แก๊สมีตระกูล",
+      "source": "Part I, question 28, p9: formal KrO2H2 geometry; with two Kr=O and two Kr-H bonds, AX4E gives seesaw, choice ค.",
+      "page": 9,
+      "figure": "Rendered p9 visually checked formula subscripts, four table rows or reaction fragments.",
+      "figure_asset": "",
+      "topic": "รูปร่างโมเลกุลตาม VSEPR",
+      "answer": "seesaw",
+      "generator": "chem.posn2560_q28",
+      "note": "The Lewis/VSEPR model is stated in the generator; no claim is made that free KrO2H2 is isolable. The source formula and four shape choices were visually checked."
+    },
+    {
+      "number": 29,
+      "solver": "q29",
+      "title": "ตรวจชื่อสารจากสูตรเคมี",
+      "source": "Part I, question 29, p9: CrO3/chromium trioxide, Na2S2O3/sodium thiosulfate, Hg2Cl2/mercury(I) chloride, Ba(NO2)2/barium nitrite.",
+      "page": 9,
+      "figure": "Rendered p9 visually checked formula subscripts, four table rows or reaction fragments.",
+      "figure_asset": "",
+      "topic": "การเรียกชื่อสารประกอบอนินทรีย์",
+      "answer": "0",
+      "generator": "chem.posn2560_q29",
+      "note": "SOURCE ERROR: all four printed names match their formulas, so the request to select an incorrect pair has no valid choice. The adaptation asks how many pairs are wrong (0 in the source); variants deliberately change 1–3 names. Cross-checked against PubChem CIDs 14915, 24477, 24956, 166820."
+    },
+    {
+      "number": 30,
+      "solver": "q30",
+      "title": "การสลายพันธะคู่คาร์บอนคาร์บอน",
+      "source": "Part I, question 30, p9: propene splits into CH2 and CHCH3 when the C=C connection is severed, choice ข.",
+      "page": 9,
+      "figure": "Rendered p9 visually checked formula subscripts, four table rows or reaction fragments.",
+      "figure_asset": "",
+      "topic": "พลังงานสลายพันธะและการแยกพันธะ",
+      "answer": "('CH2', 'CHCH3')",
+      "generator": "chem.posn2560_q30",
+      "note": "The source reactions appear without visible bond strokes in the PDF. The adaptation prints the parent C=C explicitly and distinguishes C=C cleavage from adjacent C-C and two C-H cleavages."
     }
   ]
 }

@@ -9,7 +9,7 @@ from otk.core import generate
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27,
+    q25, q26, q27, q28, q29, q30,
 )
 
 
@@ -110,6 +110,14 @@ def test_polarity_mixed_bonds_and_dative_lewis_depiction():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_noble_gas_shapes_names_and_alkene_bond_cleavage():
+    for module in (q28, q29, q30):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+    assert q29.ANSWER == 0  # all four printed names are correct
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -132,12 +140,13 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 28)))
+@pytest.mark.parametrize("number", tuple(range(1, 31)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
         stem = " ".join(b.text for b in question.stem if b.kind == "text")
-        answer = question.choices[question.answer].content[0].tex
+        answer_block = question.choices[question.answer].content[0]
+        answer = getattr(answer_block, "tex", getattr(answer_block, "text", None))
         if number == 1:
             isotope = re.search(r"ไอออนของ (H-1|H-2|He-4|Ne-20)", stem)[1]
             nucleons = int(isotope.split("-")[1])
@@ -326,7 +335,7 @@ def test_generated_answers_follow_the_written_data(number):
                         "NO2-": r"\mathrm{NO_2}^{-}", "SO3^2-": r"\mathrm{SO_3}^{2-}",
                         "I3-": r"\mathrm{I_3}^{-}", "XeF4": r"\mathrm{XeF_4}",
                         "ClF3": r"\mathrm{ClF_3}", "SF4": r"\mathrm{SF_4}"}[most]
-        else:
+        elif number in (25, 26, 27):
             listed = re.search(r"(?:ในบรรดา|พิจารณาสารบริสุทธิ์) (.+?) (?:โมเลกุลใด|สารใด)", stem)[1]
             formulas = tuple(listed.split(", "))
             module = {25: q25, 26: q26, 27: q27}[number]
@@ -346,5 +355,37 @@ def test_generated_answers_follow_the_written_data(number):
                 "H2CO": r"\mathrm{H_2CO}", "CH2NH": r"\mathrm{CH_2NH}",
                 "CH4": r"\mathrm{CH_4}", "HCl": r"\mathrm{HCl}",
             }[result]
+        elif number == 28:
+            formula = re.search(r"ของ (KrO2H2|XeO2F2|XeOF4|XeO3|XeF4) เป็น", stem)[1]
+            expected = {
+                "seesaw": "ทรงสี่หน้าบิดเบี้ยว", "square_pyramidal": "พีระมิดฐานสี่เหลี่ยม",
+                "trigonal_pyramidal": "พีระมิดฐานสามเหลี่ยม",
+                "square_planar": "สี่เหลี่ยมแบนราบ",
+            }[q28.check(formula=formula)]
+        elif number == 29:
+            names_thai = re.findall(r"(?:CrO3|Na2S2O3|Hg2Cl2|Ba\(NO2\)2) = ([^;]+?)(?:;| มี)", stem)
+            assert len(names_thai) == 4
+            thai_to_code = {
+                "โครเมียมไตรออกไซด์": "chromium_trioxide",
+                "โครเมียมไดออกไซด์": "chromium_dioxide",
+                "โซเดียมไทโอซัลเฟต": "sodium_thiosulfate",
+                "โซเดียมซัลไฟต์": "sodium_sulfite",
+                "เมอร์คิวรี(I)คลอไรด์": "mercury_i_chloride",
+                "เมอร์คิวรี(II)คลอไรด์": "mercury_ii_chloride",
+                "แบเรียมไนไตรต์": "barium_nitrite",
+                "แบเรียมไนเตรต": "barium_nitrate",
+            }
+            expected = str(q29.check(names=tuple(thai_to_code[name] for name in names_thai)))
+        else:
+            alkene = re.search(r"จาก ([A-Z0-9=]+)\(g\)", stem)[1]
+            left, right = q30.check(alkene=alkene)
+
+            def fragment_tex(formula):
+                return r"\mathrm{" + re.sub(r"([A-Z][a-z]?)(\d+)", r"\1_\2", formula) + "}"
+
+            reactant = "=".join(fragment_tex(part) for part in alkene.split("="))
+            expected = (reactant + r"_{(g)}\rightarrow "
+                        + fragment_tex(left) + r"_{(g)}+"
+                        + fragment_tex(right) + r"_{(g)}")
         assert answer == expected
         assert len(question.choices) == 4

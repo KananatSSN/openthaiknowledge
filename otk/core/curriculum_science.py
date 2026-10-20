@@ -4141,6 +4141,7 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q19", "chem.posn2560_q20", "chem.posn2560_q21",
     "chem.posn2560_q22", "chem.posn2560_q23", "chem.posn2560_q24",
     "chem.posn2560_q25", "chem.posn2560_q26", "chem.posn2560_q27",
+    "chem.posn2560_q28", "chem.posn2560_q29", "chem.posn2560_q30",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4170,6 +4171,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q25": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ขั้วโมเลกุลและรูปร่างโมเลกุล", "outside_scope"),
     "chem.posn2560_q26": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พันธะไอออนิกและโคเวเลนต์ในสารประกอบ", "outside_scope"),
     "chem.posn2560_q27": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พันธะโคออร์ดิเนตและเรโซแนนซ์", "outside_scope"),
+    "chem.posn2560_q28": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รูปร่างโมเลกุลตาม VSEPR", "outside_scope"),
+    "chem.posn2560_q29": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การเรียกชื่อสารประกอบอนินทรีย์", "outside_scope"),
+    "chem.posn2560_q30": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พลังงานสลายพันธะและการแยกพันธะ", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)

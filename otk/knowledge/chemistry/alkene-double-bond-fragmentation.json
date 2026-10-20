@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พลังงานสลายพันธะและการแยกพันธะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.alkene_double_bond_fragmentation.procedure",
+      "kind": "procedure",
+      "title": "การสลายพันธะคู่คาร์บอนคาร์บอน",
+      "statement": "การแยกพันธะคู่ C=C ของแอลคีนเป็นชิ้นส่วนสองด้านของพันธะเดิม ต่างจากการแยก C–C เดี่ยวหรือ C–H ที่ยังคงโครง C=C ไว้",
+      "steps": [
+        "เขียนพันธะคู่ที่หายไปจากชั้นข้อความ PDF ให้ชัดเจน",
+        "เทียบชิ้นส่วนผลิตภัณฑ์กับสองฝั่งของพันธะ C=C เดิม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 30
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q30"
+      ],
+      "note": "The source reactions appear without visible bond strokes in the PDF. The adaptation prints the parent C=C explicitly and distinguishes C=C cleavage from adjacent C-C and two C-H cleavages."
+    }
+  ]
+}
