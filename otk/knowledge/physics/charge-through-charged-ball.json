@@ -1,0 +1,46 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่ของประจุผ่านทรงกลมประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charge_through_charged_ball.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วของประจุลบที่ทะลุทรงกลมประจุบวก",
+      "statement": "ประจุ −q ที่ผ่านรูของทรงกลมประจุ +Q สม่ำเสมอ: นอกทรงกลมคิดเหมือนจุดประจุ ภายในแรงเป็น kqQx/R³ เข้าหาศูนย์กลาง จึงสั่นแบบฮาร์มอนิกด้วย ω = √(kqQ/(mR³)) งานจากศูนย์กลางถึงผิวคือ −kqQ/(2R)",
+      "steps": [
+        "ใช้การอนุรักษ์พลังงานกับศักย์นอกและในทรงกลม",
+        "ใช้การเคลื่อนที่แบบฮาร์มอนิกภายในหาเวลา"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2551_q04",
+        "phys.tpho2551_q05",
+        "phys.tpho2551_q06",
+        "phys.tpho2551_q07"
+      ],
+      "note": "Adapted: K = kqQ/m given; 2.2 (the force graph) is claimed by the unit."
+    }
+  ]
+}

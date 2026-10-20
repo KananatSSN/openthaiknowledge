@@ -3753,6 +3753,42 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2550_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งของวัตถุแข็งเกร็ง', "outside_scope"),
 })
 # END TPhO 2550
+# BEGIN TPhO 2551
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2551_q01",
+    "phys.tpho2551_q02",
+    "phys.tpho2551_q03",
+    "phys.tpho2551_q04",
+    "phys.tpho2551_q05",
+    "phys.tpho2551_q06",
+    "phys.tpho2551_q07",
+    "phys.tpho2551_q08",
+    "phys.tpho2551_q09",
+    "phys.tpho2551_q10",
+    "phys.tpho2551_q11",
+    "phys.tpho2551_q12",
+    "phys.tpho2551_q13",
+    "phys.tpho2551_q14",
+    "phys.tpho2551_q15",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2551_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กระจกเว้าและเลนส์ของเหลว', "outside_scope"),
+    "phys.tpho2551_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การหักเหในหยดน้ำและรุ้ง', "outside_scope"),
+    "phys.tpho2551_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การหักเหในหยดน้ำและรุ้ง', "outside_scope"),
+    "phys.tpho2551_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่ของประจุผ่านทรงกลมประจุ', "outside_scope"),
+    "phys.tpho2551_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่ของประจุผ่านทรงกลมประจุ', "outside_scope"),
+    "phys.tpho2551_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่ของประจุผ่านทรงกลมประจุ', "outside_scope"),
+    "phys.tpho2551_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การเคลื่อนที่ของประจุผ่านทรงกลมประจุ', "outside_scope"),
+    "phys.tpho2551_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงตึงเชือกและรอกที่มีมวล', "outside_scope"),
+    "phys.tpho2551_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงตึงเชือกและรอกที่มีมวล', "outside_scope"),
+    "phys.tpho2551_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โมเมนตัมแนวระดับของลิ่มและมวล', "outside_scope"),
+    "phys.tpho2551_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โมเมนตัมแนวระดับของลิ่มและมวล', "outside_scope"),
+    "phys.tpho2551_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โมเมนตัมแนวระดับของลิ่มและมวล', "outside_scope"),
+    "phys.tpho2551_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โมเมนตัมแนวระดับของลิ่มและมวล', "outside_scope"),
+    "phys.tpho2551_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎของบอยล์กับความดันของของเหลว', "outside_scope"),
+    "phys.tpho2551_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โพเทนชิออมิเตอร์', "outside_scope"),
+})
+# END TPhO 2551
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

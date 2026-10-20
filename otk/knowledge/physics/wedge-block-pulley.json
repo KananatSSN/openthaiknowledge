@@ -1,0 +1,60 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงตึงเชือกและรอกที่มีมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wedge_block_pulley.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งของกล่องบนลิ่มที่ยึดไว้เมื่อเชือกหมุนรอก",
+      "statement": "กล่องบนลิ่มลื่นที่ดึงเชือกพันรอกมวล m_C: เมื่อจับลิ่มไว้ a = m_B g sin θ/(m_B + m_C/2) เมื่อเชือกขาดและลิ่มเลื่อนได้ a_A = mg sin θ cos θ/(M + m sin²θ) และเมื่อเชือกไม่ขาดต้องแก้สมการกล่อง ลิ่มพร้อมรอก และรอกพร้อมกัน",
+      "steps": [
+        "เลือกระบบและเขียนสมการตามแนวผิวเอียง ตั้งฉาก และแนวระดับ",
+        "แก้ระบบสมการเชิงเส้นหาความเร่ง แรงตึง และแรงปฏิกิริยา"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 17
+        },
+        {
+          "sheet": "สอวน_physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2551_q08",
+        "phys.tpho2551_q09",
+        "phys.tpho2551_q10",
+        "phys.tpho2551_q11",
+        "phys.tpho2551_q12",
+        "phys.tpho2551_q13"
+      ],
+      "note": "Masses vary; g = 9.80."
+    }
+  ]
+}

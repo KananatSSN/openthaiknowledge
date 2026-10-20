@@ -133,8 +133,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 14 generators in `otk/sets/physics/olympiad/tpho2549.py`.
 - `สอวน_physics/tpho-50-physics/` (TPhO 6, 2550): 12 theory items and 4
   experiment parts → 16 generators in `otk/sets/physics/olympiad/tpho2550.py`.
-- Next source: `สอวน_physics/tpho-51-physics/`. Fifteen of 33 papers are
-  digested; 18 remain pending.
+- `สอวน_physics/tpho-51-physics/` (TPhO 7, 2551): 13 theory items and 2
+  experiment parts → 15 generators in `otk/sets/physics/olympiad/tpho2551.py`.
+- Next source: `สอวน_physics/tpho-52-physics/`. Sixteen of 33 papers are
+  digested; 17 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1647,3 +1649,27 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 20,873 passed, 4 skipped; `test_per_set` for the 16 keys
   passed; the sheet's own tests: 35 passed; Ruff clean.
 - Full suite: **36,584 passed, 13 skipped in 12m02s**.
+
+### 2026-10-20 — TPhO 7 (2551) national physics olympiad
+
+- Folder of eleven PDFs: the theory paper, its 23-page marking scheme, both
+  split per problem, and the experimental papers combined and split. The
+  theory paper and the combined experiments are the digested sources; the
+  nine others are `ignored` with notes.
+- 15 items: 1.1.2 (slit shift when liquid fills the mirror-lens, L' =
+  R/(2n − 1)), 1.2.2–1.2.3 (drop deviation and the minimum-deviation
+  incidence), 2.1 and 2.3–2.5 (a charge through a uniformly charged ball:
+  exit speed, work inside, centre speed, centre-to-surface time), 3.1–3.3
+  (wedge, block and pulley: held wedge, cut string, intact string with the
+  wedge free; masses adapted), and the labs: P_atm from the 1/L–h line
+  (asked in kPa so the answer is not the only number in scientific
+  notation), and a potentiometer emf. Steps 1.1.1, 1.2.1, 2.2, 3.3.2 and
+  3.3.3 are claimed by their units; the drop items join the existing
+  `raindrop-deviation` unit. Every answer agrees with the marking scheme.
+- Independent checks include a vector ray trace through the drop, RK4 runs
+  through the charged ball, an energy route for the held wedge, and a
+  Lagrangian for the free wedge against the paper's four force equations.
+  `sheetpipe verify`: 15/15 green, 45 runs.
+- Targeted run: 21,043 passed, 4 skipped; `test_per_set` for the 15 keys
+  passed; the sheet's own tests: 33 passed; Ruff clean.
+- Full suite: **36,804 passed, 13 skipped in 11m08s**.
