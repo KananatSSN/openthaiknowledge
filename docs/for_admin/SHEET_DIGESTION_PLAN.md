@@ -66,10 +66,10 @@ Phases in build order. Check an item only when its tests pass.
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–33 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **33/70 complete; 37 pending.**
+  1–36 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **36/70 complete; 34 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  thirty-three reviewed items. Its `verify` result of 33/33 describes this batch, not the
+  thirty-six reviewed items. Its `verify` result of 36/36 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -2129,3 +2129,10 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 22,722 passed, 4 skipped; `test_per_set` for the 23 keys
   passed; the sheet's own tests: 51 passed; Ruff clean.
 - Full suite: **38,938 passed, 13 skipped in 12m06s**.
+
+### 2026-10-21 — POSN chemistry 2560, MC34–36
+
+- Reviewed the p10 phase-change choices, NaCl lattice drawing, and Charles-law numbers; added independent solvers, three variants, generators and knowledge units for each.
+- MC34's broad ionic/covalent vapor-pressure claim is expressed as a specific NaCl/iodine comparison in the adaptation. MC35's 14/13 visible-ion crop is identified as a finite drawing, not a formula unit. MC36 uses kelvin and reports 96.6 cm³.
+- The paper remains partial at 36/70; the full suite is deferred until all 70 questions are digested, per the requested test cadence.
+- Wave validation: 36/36 sheet solvers and 111 variants green, 807 knowledge units in 673 files with zero validation problems, source coverage 36/70. The focused sheet/set checks passed (248), followed by 37 rechecks after tightening independent verification. Registry, provenance, golden, layout and safety checks passed (16,355); Ruff and whitespace checks passed.

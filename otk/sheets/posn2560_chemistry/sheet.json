@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–33 are reviewed, solved and generated (33/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 37 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 33/33 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–36 are reviewed, solved and generated (36/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 34 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 36/36 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -434,6 +434,45 @@
       "answer": "3",
       "generator": "chem.posn2560_q33",
       "note": "The adaptation specifies the same liquid and fixed molecular separation for the force comparison; a temperature change alters kinetic energy, vapor pressure and surface tension, not the pair-force law at that distance. Reference: https://openstax.org/books/chemistry-2e/pages/10-2-properties-of-liquids and https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions ."
+    },
+    {
+      "number": 34,
+      "solver": "q34",
+      "title": "การระเหยและความดันไอ",
+      "source": "Part I, question 34, p10: evaporation is a surface process, choice ข.",
+      "page": 10,
+      "figure": "Rendered p10 visually checked all choices and units.",
+      "figure_asset": "",
+      "topic": "การเปลี่ยนสถานะและความดันไอ",
+      "answer": "1",
+      "generator": "chem.posn2560_q34",
+      "note": "Source claims about boiling under reduced pressure, room-temperature iodine, and ionic vapor pressure are false. The adaptation names NaCl and iodine at 25 °C instead of making a universal ionic/covalent comparison."
+    },
+    {
+      "number": 35,
+      "solver": "q35",
+      "title": "โครงผลึกและสูตรหน่วยของ NaCl",
+      "source": "Part I, question 35, p10: statements a and b are true; c wrongly infers Na14Cl13 from pictured ions, choice ค.",
+      "page": 10,
+      "figure": "Rendered p10 visually checked the NaCl lattice and all three questions.",
+      "figure_asset": "",
+      "topic": "โครงสร้างผลึกไอออนิกและสูตรหน่วย",
+      "answer": "(0, 1)",
+      "generator": "chem.posn2560_q35",
+      "note": "The figure shows a finite 3D crop with 14 visible Na+ and 13 Cl- spheres. Its counts do not give the formula unit; charge balance gives NaCl. The adaptation describes the lattice in words and does not reproduce the source figure."
+    },
+    {
+      "number": 36,
+      "solver": "q36",
+      "title": "กฎของชาร์ลส์จากองศาเซลเซียส",
+      "source": "Part I, question 36, p10: 100 cm3 at 20 C cooled to 10 C at constant pressure gives 96.6 cm3, choice ข.",
+      "page": 10,
+      "figure": "Rendered p10 visually checked all choices and units.",
+      "figure_asset": "",
+      "topic": "กฎแก๊สอุดมคติและอุณหภูมิสัมบูรณ์",
+      "answer": "96.6",
+      "generator": "chem.posn2560_q36",
+      "note": "Convert both temperatures to kelvin before applying V2/V1=T2/T1; round to one decimal place."
     }
   ]
 }

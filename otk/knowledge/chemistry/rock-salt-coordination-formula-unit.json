@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "โครงสร้างผลึกไอออนิกและสูตรหน่วย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.rock_salt_coordination_formula_unit.procedure",
+      "kind": "procedure",
+      "title": "โครงผลึกและสูตรหน่วยของ NaCl",
+      "statement": "ผลึก NaCl แบบร็อกซอลต์มีเลขโคออร์ดิเนชัน 6:6 และสูตรหน่วย NaCl จากสมดุลประจุ; จำนวนลูกไอออนในภาพตัดไม่ใช่สูตรหน่วย",
+      "steps": [
+        "นับเพื่อนบ้านประจุตรงข้ามรอบ Na⁺ และ Cl⁻",
+        "แยกภาพตัดของโครงผลึกจากอัตราส่วนไอออนที่ทำให้ประจุรวมเป็นศูนย์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 35
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q35"
+      ],
+      "note": "The figure shows a finite 3D crop with 14 visible Na+ and 13 Cl- spheres. Its counts do not give the formula unit; charge balance gives NaCl. The adaptation describes the lattice in words and does not reproduce the source figure."
+    }
+  ]
+}

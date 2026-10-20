@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การเปลี่ยนสถานะและความดันไอ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.evaporation_boiling_vapor_pressure.procedure",
+      "kind": "procedure",
+      "title": "การระเหยและความดันไอ",
+      "statement": "การระเหยเกิดที่ผิวของเหลวและเกิดได้ต่ำกว่าจุดเดือด; ความดันภายนอกต่ำลงทำให้จุดเดือดต่ำลง และไอโอดีนแข็งระเหิดได้แม้จุดหลอมเหลวสูงกว่าอุณหภูมิห้อง",
+      "steps": [
+        "แยกการระเหยที่ผิวจากการเดือดในเนื้อของเหลว",
+        "พิจารณาสมดุลความดันไอกับความดันภายนอกและจุดหลอมเหลวจริงของไอโอดีน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 34
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q34"
+      ],
+      "note": "Source claims about boiling under reduced pressure, room-temperature iodine, and ionic vapor pressure are false. The adaptation names NaCl and iodine at 25 °C instead of making a universal ionic/covalent comparison."
+    }
+  ]
+}

@@ -37,6 +37,15 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.inverted_external_pressure_boiling_trend": {"th": "กลับทิศของผลความดันต่อจุดเดือด", "en": "Inverted the pressure-boiling trend"},
+    "chem.confused_evaporation_with_bulk_boiling": {"th": "สับสนการระเหยกับการเดือดในเนื้อของเหลว", "en": "Confused evaporation with bulk boiling"},
+    "chem.assumed_iodine_sublimes_because_melting_below_room": {"th": "คิดว่าไอโอดีนหลอมเหลวต่ำกว่าอุณหภูมิห้อง", "en": "Assumed iodine melts below room temperature"},
+    "chem.assumed_ionic_solid_has_higher_vapor_pressure": {"th": "คิดว่าผลึก NaCl มีความดันไอสูงกว่าไอโอดีน", "en": "Assumed NaCl has higher vapor pressure than iodine"},
+    "chem.omitted_true_lattice_claim": {"th": "ละข้อความจริงเกี่ยวกับผลึกไอออนิก", "en": "Omitted a true lattice claim"},
+    "chem.misread_lattice_claim_combination": {"th": "เลือกชุดข้อความจริงของผลึก NaCl ผิด", "en": "Misidentified true NaCl lattice claims"},
+    "chem.halved_volume_for_temperature_change": {"th": "หารปริมาตรครึ่งหนึ่งเมื่ออุณหภูมิเปลี่ยน", "en": "Halved the volume for a temperature change"},
+    "chem.inverted_charles_temperature_ratio": {"th": "กลับอัตราส่วนอุณหภูมิในกฎของชาร์ลส์", "en": "Inverted the Charles-law temperature ratio"},
+    "chem.used_celsius_in_charles_law": {"th": "ใช้องศาเซลเซียสแทนเคลวินในกฎของชาร์ลส์", "en": "Used Celsius instead of kelvin in Charles's law"},
     "chem.assumed_diatomic_halide_breaks_octet": {
         "th": "คิดว่าอินเตอร์แฮโลเจนสองอะตอมไม่ครบออกเตต",
         "en": "Assumed a diatomic interhalogen breaks the octet rule",

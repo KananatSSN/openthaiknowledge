@@ -11,7 +11,7 @@ from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27, q28, q29, q30, q31, q32, q33,
+    q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1200,4 +1200,116 @@ class LiquidCoolingClaims(QuestionType):
             topic="สมบัติของเหลวและแรงยึดเหนี่ยวระหว่างโมเลกุล",
             hint=[text("ความดันไอและพลังงานจลน์เปลี่ยนตามอุณหภูมิ; "
                        "แรงระหว่างโมเลกุลชนิดเดิมที่ระยะห่างเท่าเดิมไม่เปลี่ยน")],
+        )
+
+
+_PHASE_CLAIMS = {
+    "boil_pressure_up": "เมื่อความดันภายนอกลดลง จุดเดือดของของเหลวสูงขึ้น",
+    "boil_pressure_down": "เมื่อความดันภายนอกลดลง จุดเดือดของของเหลวต่ำลง",
+    "evap_surface": "การระเหยเกิดขึ้นที่ผิวหน้าของของเหลว",
+    "evap_bulk_only": "การระเหยเกิดขึ้นเฉพาะในเนื้อของเหลว ไม่เกิดที่ผิวหน้า",
+    "iodine_melts_below_room": "ไอโอดีนมีจุดหลอมเหลวต่ำกว่าอุณหภูมิห้อง 25 °C",
+    "iodine_melts_above_room": "ไอโอดีนมีจุดหลอมเหลวสูงกว่าอุณหภูมิห้อง 25 °C",
+    "salt_vapor_higher": "ที่ 25 °C NaCl แข็งมีความดันไอสูงกว่าไอโอดีนแข็ง",
+    "salt_vapor_lower": "ที่ 25 °C NaCl แข็งมีความดันไอต่ำกว่าไอโอดีนแข็ง",
+}
+_PHASE_MISTAKES = {
+    "boil_pressure_up": "chem.inverted_external_pressure_boiling_trend",
+    "evap_bulk_only": "chem.confused_evaporation_with_bulk_boiling",
+    "iodine_melts_below_room": "chem.assumed_iodine_sublimes_because_melting_below_room",
+    "salt_vapor_higher": "chem.assumed_ionic_solid_has_higher_vapor_pressure",
+}
+
+
+@question_type(
+    "chem.posn2560_q34", display_name={"th": "การระเหยและสมดุลไอของสาร"},
+    level=LEVEL, subject="เคมี", topic="การเปลี่ยนสถานะและความดันไอ",
+)
+class PhaseChangeClaims(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        claims = rng.choice((q34.PARAMS, *q34.VARIANTS))["claims"]
+        correct_index = q34.solve(claims=claims)
+        return GeneratedQuestion(
+            stem=[text("ที่ความดันปกติและอุณหภูมิห้อง 25 °C ข้อความใดถูกต้อง")],
+            correct=[text(_PHASE_CLAIMS[claims[correct_index]])],
+            distractors=fixed(*[[text(named(_PHASE_MISTAKES[claim], _PHASE_CLAIMS[claim]))]
+                                for i, claim in enumerate(claims) if i != correct_index]),
+            topic="การเปลี่ยนสถานะและความดันไอ",
+            hint=[text("จุดเดือดขึ้นกับความดันภายนอก; แยกการระเหยที่ผิวหน้าออกจากการเดือด")],
+        )
+
+
+_LATTICE_CLAIMS = {
+    "coord_equal": "จำนวน Cl⁻ เพื่อนบ้านใกล้สุดรอบ Na⁺ เท่ากับจำนวน Na⁺ รอบ Cl⁻",
+    "coord_unequal": "Na⁺ และ Cl⁻ ในโครงสร้าง NaCl มีจำนวนเพื่อนบ้านประจุตรงข้ามไม่เท่ากัน",
+    "lattice_overcome": "เมื่อละลายน้ำ โครงข่ายไอออนิกของผลึก NaCl ถูกแยกออกเป็นไอออนที่ไฮเดรต",
+    "lattice_unchanged": "เมื่อละลายน้ำ โครงข่ายผลึก NaCl ยังคงเดิมทั้งก้อน",
+    "crop_is_formula": "ถ้าภาพตัดแสดง Na⁺ 14 ลูกกับ Cl⁻ 13 ลูก สูตรของเกลือคือ Na₁₄Cl₁₃",
+    "formula_one_to_one": "ถึงภาพตัดจะมีจำนวนลูกไม่เท่ากัน สูตรหน่วยของเกลือนี้คือ NaCl",
+}
+_LATTICE_OPTIONS = ((0,), (1, 2), (0, 1), (0, 2))
+_LATTICE_OPTION_TEXT = {
+    (0,): "a เท่านั้น", (1, 2): "b และ c", (0, 1): "a และ b", (0, 2): "a และ c",
+}
+
+
+@question_type(
+    "chem.posn2560_q35", display_name={"th": "โครงผลึกและสูตรหน่วยของ NaCl"},
+    level=LEVEL, subject="เคมี", topic="โครงสร้างผลึกไอออนิกและสูตรหน่วย",
+)
+class SaltLatticeClaims(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        claims = rng.choice((q35.PARAMS, *q35.VARIANTS))["claims"]
+        correct = q35.solve(claims=claims)
+        labels = "abc"
+        lines = "; ".join(f"{labels[i]}. {_LATTICE_CLAIMS[claim]}"
+                          for i, claim in enumerate(claims))
+        wrong = {
+            (0,): "chem.omitted_true_lattice_claim",
+            (1, 2): "chem.misread_lattice_claim_combination",
+            (0, 1): "chem.misread_lattice_claim_combination",
+            (0, 2): "chem.misread_lattice_claim_combination",
+        }
+        return GeneratedQuestion(
+            stem=[text("ผลึก NaCl แบบร็อกซอลต์มีเพื่อนบ้านประจุตรงข้าม 6 ตัวต่อไอออน "
+                       f"พิจารณาข้อความต่อไปนี้: {lines} ข้อใดถูกต้อง")],
+            correct=[text(_LATTICE_OPTION_TEXT[correct])],
+            distractors=fixed(*[[text(named(wrong[option], _LATTICE_OPTION_TEXT[option]))]
+                                for option in _LATTICE_OPTIONS if option != correct]),
+            topic="โครงสร้างผลึกไอออนิกและสูตรหน่วย",
+            hint=[text("ภาพตัดไม่ใช่หนึ่งสูตรหน่วย; สูตร NaCl ต้องเป็นกลางทางไฟฟ้า")],
+        )
+
+
+@question_type(
+    "chem.posn2560_q36", display_name={"th": "กฎของชาร์ลส์จากองศาเซลเซียส"},
+    level=LEVEL, subject="เคมี", topic="กฎแก๊สอุดมคติและอุณหภูมิสัมบูรณ์",
+)
+class CharlesLawVolume(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q36.PARAMS, *q36.VARIANTS))
+        volume = values["initial_volume"]
+        initial = values["initial_celsius"]
+        final = values["final_celsius"]
+        answer = q36.solve(**values)
+        mistaken_celsius = round(volume * final / initial, 1) if initial else 0.0
+        distractors = [volume / 2, round(volume * (initial + 273.15) /
+                                          (final + 273.15), 1), mistaken_celsius]
+        return MathDraw(
+            "", f"{answer:.1f}",
+            prompt=(f"แก๊สมีปริมาตร {volume} cm³ ที่ {initial} °C และความดันคงที่ "
+                    f"เมื่ออุณหภูมิเป็น {final} °C ปริมาตรเป็นกี่ cm³ "
+                    "(ตอบทศนิยมหนึ่งตำแหน่ง)"),
+            hint="ใช้ V₁/T₁ = V₂/T₂ โดย T เป็นเคลวิน",
+            distractors=[named(key, f"{value:.1f}") for key, value in zip((
+                "chem.halved_volume_for_temperature_change",
+                "chem.inverted_charles_temperature_ratio",
+                "chem.used_celsius_in_charles_law",
+            ), distractors)],
         )
