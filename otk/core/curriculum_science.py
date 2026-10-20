@@ -3949,6 +3949,54 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2555_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'มวลยังผลของสปริง', "outside_scope"),
 })
 # END TPhO 2555
+# BEGIN TPhO 2556
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2556_q01",
+    "phys.tpho2556_q02",
+    "phys.tpho2556_q03",
+    "phys.tpho2556_q04",
+    "phys.tpho2556_q05",
+    "phys.tpho2556_q06",
+    "phys.tpho2556_q07",
+    "phys.tpho2556_q08",
+    "phys.tpho2556_q09",
+    "phys.tpho2556_q10",
+    "phys.tpho2556_q11",
+    "phys.tpho2556_q12",
+    "phys.tpho2556_q13",
+    "phys.tpho2556_q14",
+    "phys.tpho2556_q15",
+    "phys.tpho2556_q16",
+    "phys.tpho2556_q17",
+    "phys.tpho2556_q18",
+    "phys.tpho2556_q19",
+    "phys.tpho2556_q20",
+    "phys.tpho2556_q21",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2556_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การดลท่อนไม้ที่ต่อด้วยจุดหมุน', "outside_scope"),
+    "phys.tpho2556_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การดลท่อนไม้ที่ต่อด้วยจุดหมุน', "outside_scope"),
+    "phys.tpho2556_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การดลท่อนไม้ที่ต่อด้วยจุดหมุน', "outside_scope"),
+    "phys.tpho2556_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงต้านอากาศต่ออุกกาบาต', "outside_scope"),
+    "phys.tpho2556_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงต้านอากาศต่ออุกกาบาต', "outside_scope"),
+    "phys.tpho2556_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงต้านอากาศต่ออุกกาบาต', "outside_scope"),
+    "phys.tpho2556_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงต้านอากาศต่ออุกกาบาต', "outside_scope"),
+    "phys.tpho2556_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงต้านอากาศต่ออุกกาบาต', "outside_scope"),
+    "phys.tpho2556_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายเทก๊าซผ่านวาล์ว', "outside_scope"),
+    "phys.tpho2556_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายเทก๊าซผ่านวาล์ว', "outside_scope"),
+    "phys.tpho2556_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายเทก๊าซผ่านวาล์ว', "outside_scope"),
+    "phys.tpho2556_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายเทก๊าซผ่านวาล์ว', "outside_scope"),
+    "phys.tpho2556_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายเทก๊าซผ่านวาล์ว', "outside_scope"),
+    "phys.tpho2556_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การถ่ายเทก๊าซผ่านวาล์ว', "outside_scope"),
+    "phys.tpho2556_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'รุ้งกินน้ำ', "outside_scope"),
+    "phys.tpho2556_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'รุ้งกินน้ำ', "outside_scope"),
+    "phys.tpho2556_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'รุ้งกินน้ำ', "outside_scope"),
+    "phys.tpho2556_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งคู่ควบและสนามแม่เหล็กโลก', "outside_scope"),
+    "phys.tpho2556_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งคู่ควบและสนามแม่เหล็กโลก', "outside_scope"),
+    "phys.tpho2556_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งคู่ควบและสนามแม่เหล็กโลก', "outside_scope"),
+    "phys.tpho2556_q21": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งคู่ควบและสนามแม่เหล็กโลก', "outside_scope"),
+})
+# END TPhO 2556
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

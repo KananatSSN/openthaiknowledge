@@ -1,0 +1,50 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแกว่งคู่ควบและสนามแม่เหล็กโลก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.magnet_coupled_oscillation.procedure",
+      "kind": "procedure",
+      "title": "โมเมนต์แม่เหล็กจากการแกว่งแบบบิด",
+      "statement": "แท่งแม่เหล็กแขวนด้วยเชือกแกว่งแบบบิดด้วย f = (1/2π)√(μB_h/I) จึงหา magnetic moment ได้ เมื่อคาบลูกตุ้มเท่าคาบการบิด พลังงานถ่ายโอนช้าที่สุด τ_max ≅ (B_h/B_v)(1/f)(2ℓ/√(R² + d²/3)) จึงหา B_v และมุมเอียง tan γ = B_v/B_h",
+      "steps": [
+        "วัดความถี่การบิดและคาบลูกตุ้มที่ความยาวต่าง ๆ",
+        "หาความยาวที่คาบเท่ากันและ τ_max แล้วคำนวณ B_v และมุมเอียง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_exp.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_exp.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_exp.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2556_q18",
+        "phys.tpho2556_q19",
+        "phys.tpho2556_q20",
+        "phys.tpho2556_q21"
+      ],
+      "note": "Synthetic timings."
+    }
+  ]
+}

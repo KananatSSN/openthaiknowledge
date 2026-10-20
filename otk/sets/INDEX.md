@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,383 sets in 1,303 unit files. Each subject's `README.md` lists its units with their indicators.
+4,404 sets in 1,304 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -849,6 +849,7 @@
 | [`tpho2553.py`](physics/olympiad/tpho2553.py) | Seeded variants of the reviewed TPhO 9 (2553) national physics olympiad. | `phys.tpho2553_q01`, `phys.tpho2553_q02`, `phys.tpho2553_q03`, `phys.tpho2553_q04`, `phys.tpho2553_q05`, `phys.tpho2553_q06`, `phys.tpho2553_q07`, `phys.tpho2553_q08`, `phys.tpho2553_q09`, `phys.tpho2553_q10`, `phys.tpho2553_q11`, `phys.tpho2553_q12`, `phys.tpho2553_q13`, `phys.tpho2553_q14` |
 | [`tpho2554.py`](physics/olympiad/tpho2554.py) | Seeded variants of the reviewed TPhO 10 (2554) national physics olympiad. | `phys.tpho2554_q01`, `phys.tpho2554_q02`, `phys.tpho2554_q03`, `phys.tpho2554_q04`, `phys.tpho2554_q05`, `phys.tpho2554_q06`, `phys.tpho2554_q07`, `phys.tpho2554_q08`, `phys.tpho2554_q09`, `phys.tpho2554_q10`, `phys.tpho2554_q11`, `phys.tpho2554_q12`, `phys.tpho2554_q13`, `phys.tpho2554_q14`, `phys.tpho2554_q15`, `phys.tpho2554_q16`, `phys.tpho2554_q17`, `phys.tpho2554_q18`, `phys.tpho2554_q19`, `phys.tpho2554_q20` |
 | [`tpho2555.py`](physics/olympiad/tpho2555.py) | Seeded variants of the reviewed TPhO 11 (2555) national physics olympiad. | `phys.tpho2555_q01`, `phys.tpho2555_q02`, `phys.tpho2555_q03`, `phys.tpho2555_q04`, `phys.tpho2555_q05`, `phys.tpho2555_q06`, `phys.tpho2555_q07`, `phys.tpho2555_q08`, `phys.tpho2555_q09`, `phys.tpho2555_q10`, `phys.tpho2555_q11`, `phys.tpho2555_q12`, `phys.tpho2555_q13`, `phys.tpho2555_q14`, `phys.tpho2555_q15`, `phys.tpho2555_q16`, `phys.tpho2555_q17`, `phys.tpho2555_q18` |
+| [`tpho2556.py`](physics/olympiad/tpho2556.py) | Seeded variants of the reviewed TPhO 12 (2556) national physics olympiad. | `phys.tpho2556_q01`, `phys.tpho2556_q02`, `phys.tpho2556_q03`, `phys.tpho2556_q04`, `phys.tpho2556_q05`, `phys.tpho2556_q06`, `phys.tpho2556_q07`, `phys.tpho2556_q08`, `phys.tpho2556_q09`, `phys.tpho2556_q10`, `phys.tpho2556_q11`, `phys.tpho2556_q12`, `phys.tpho2556_q13`, `phys.tpho2556_q14`, `phys.tpho2556_q15`, `phys.tpho2556_q16`, `phys.tpho2556_q17`, `phys.tpho2556_q18`, `phys.tpho2556_q19`, `phys.tpho2556_q20`, `phys.tpho2556_q21` |
 
 ## chemistry — เคมี
 

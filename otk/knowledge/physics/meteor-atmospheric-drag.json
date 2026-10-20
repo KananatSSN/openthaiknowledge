@@ -1,0 +1,47 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงต้านอากาศต่ออุกกาบาต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.meteor_atmospheric_drag.procedure",
+      "kind": "procedure",
+      "title": "แรงจากความดันอากาศด้านหน้าอุกกาบาต",
+      "statement": "อากาศที่หยุดนิ่งหน้าอุกกาบาตเพิ่มความดัน ½ρv² ให้แรงต้าน C_d½ρv²πr² ในบรรยากาศ ρ₀e^(−αz) อัตราเร็วเป็น v = u·exp(−Ae^(−αz)) กับ A = C_dρ₀πr²/(2mα sin θ) กำลังที่สูญเสียมากที่สุดที่ e^(−αz) = 1/(3A) และความดันหยุดนิ่งที่นั่นต้องไม่เกินความแข็งแรงของวัสดุ",
+      "steps": [
+        "หาแรงต้านจากความดันหยุดนิ่งและเขียนสมการการเคลื่อนที่ตามความสูง",
+        "อินทิเกรตหาอัตราเร็วแล้วหาความสูงที่ ρv³ มากที่สุด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2556_q04",
+        "phys.tpho2556_q05",
+        "phys.tpho2556_q06",
+        "phys.tpho2556_q07",
+        "phys.tpho2556_q08"
+      ],
+      "note": "rho, v and r vary."
+    }
+  ]
+}

@@ -5282,6 +5282,45 @@
    "layout": "unknown",
    "stage": "ignored",
    "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
+  },
+  {
+   "path": "สอวน_physics/tpho-56-physics/tpho_12_exp.pdf",
+   "kind": "exam",
+   "sha256": "fbabe8c44faae8e5",
+   "size": 214671,
+   "pages": 5,
+   "text_chars": 8484,
+   "layout": "numbered",
+   "glyph_damage": 38,
+   "items": 6,
+   "sheet_id": "tpho2556_physics",
+   "stage": "generated",
+   "note": "Experimental paper (coupled oscillation of a disc magnet); its theory parts digested as 4 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-56-physics/tpho_12_exp_solution.pdf",
+   "kind": "exam",
+   "sha256": "74027dd444a5d6f9",
+   "size": 284209,
+   "pages": 4,
+   "text_chars": 3001,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (its part 5 B_v = 0.13 T should be 0.133 G)."
+  },
+  {
+   "path": "สอวน_physics/tpho-56-physics/tpho_12_theory.pdf",
+   "kind": "exam",
+   "sha256": "8c2ceb21c7c3d42b",
+   "size": 245559,
+   "pages": 5,
+   "text_chars": 7351,
+   "layout": "numbered",
+   "glyph_damage": 51,
+   "items": 26,
+   "sheet_id": "tpho2556_physics",
+   "stage": "generated",
+   "note": "Theory paper (5 pages); 26 sub-parts, 17 items; no theory solution in the folder, so every answer was derived and checked independently; hand transcript."
   }
  ]
 }

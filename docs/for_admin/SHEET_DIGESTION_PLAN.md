@@ -143,8 +143,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2554.py`.
 - `สอวน_physics/tpho-55-physics/` (TPhO 11, 2555): 13 theory items and 5
   experiment parts → 18 generators in `otk/sets/physics/olympiad/tpho2555.py`.
-- Next source: `สอวน_physics/tpho-56-physics/`. Twenty of 33 papers are
-  digested; 13 remain pending.
+- `สอวน_physics/tpho-56-physics/` (TPhO 12, 2556): 17 theory items and 4
+  experiment parts → 21 generators in `otk/sets/physics/olympiad/tpho2556.py`.
+- Next source: `สอวน_physics/tpho-57-physics/`. Twenty-one of 33 papers are
+  digested; 12 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1783,3 +1785,34 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 21,823 passed, 4 skipped; `test_per_set` for the 18 keys
   passed; the sheet's own tests: 40 passed; Ruff clean.
 - Full suite: **37,797 passed, 13 skipped in 12m32s**.
+
+### 2026-10-20 — TPhO 12 (2556) national physics olympiad
+
+- Three PDFs: the theory paper, the experimental paper and the
+  experiment's solution (`ignored`, used to confirm the lab answers).
+  There is **no theory solution**: every theory answer was derived here and
+  checked by an independent route; the transcript says so.
+- 21 items: 1.1 ก–ค (three hinged rods jerked at the middle: CD's v_y,
+  ω = 3u cos θ/(2l), impulse (3/2)mu(1 + sin²θ)), 1.2 ก–จ (meteor: stagnation
+  force, deceleration, the constant a in v = u·e^(a·e^(bz)), the brightest
+  height, read as the largest power ρv³, and the pressure there), 2 ก–ช
+  (gas through a valve into a spring cylinder: P_B, V_B, W_A, W_B, ΔU,
+  T_B/T_A = 2γ/(γ + 1)), 3 (rainbow: the bright incidence, primary 42.5°,
+  secondary 50.1°; sketches and the dark band are claimed by the units), and
+  the lab with synthetic data: μ from the torsion period, the matching
+  string length, B_v from τ_max and the inclination.
+- Solution slip: the lab's part 5 prints B_v = 0.13 T; its numbers give
+  0.133 G = 1.3×10⁻⁵ T (pinned in the test).
+- Independent checks include a five-unknown impulse system for the rods,
+  Bernoulli integrated along the stagnation line, a Simpson descent of the
+  meteor with the brightest point from the ODE's own rate, a parcel-by-parcel
+  enthalpy simulation of the valve, golden-section searches on the ray
+  deviation, a time-stepped torsion pendulum, and bisections of equation (2).
+  `sheetpipe verify`: 21/21 green, 63 runs.
+- Process note: a script that set `ANSWER` opened each solver for writing
+  before reading it and emptied all 21 files; they were rebuilt from the
+  session's own heredocs, the later edits re-applied, and verify re-run.
+  Read a file fully before reopening it for writing.
+- Targeted run: 22,071 passed, 4 skipped; `test_per_set` for the 21 keys
+  passed; the sheet's own tests: 48 passed; Ruff clean.
+- Full suite: **38,106 passed, 13 skipped in 11m24s**.
