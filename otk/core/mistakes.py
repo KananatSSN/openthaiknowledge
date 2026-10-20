@@ -37,6 +37,54 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.ignored_seesaw_dipole": {
+        "th": "คิดว่าไดโพลในโมเลกุลทรงสี่หน้าบิดเบี้ยวหักล้างกัน",
+        "en": "Assumed bond dipoles cancel in a seesaw molecule",
+    },
+    "chem.ignored_bent_dipole": {
+        "th": "คิดว่าไดโพลในโมเลกุลงอหักล้างกัน",
+        "en": "Assumed bond dipoles cancel in a bent molecule",
+    },
+    "chem.ignored_pyramidal_dipole": {
+        "th": "คิดว่าไดโพลในโมเลกุลพีระมิดหักล้างกัน",
+        "en": "Assumed bond dipoles cancel in a pyramidal molecule",
+    },
+    "chem.ignored_t_shape_dipole": {
+        "th": "คิดว่าไดโพลในโมเลกุลรูปตัวทีหักล้างกัน",
+        "en": "Assumed bond dipoles cancel in a T-shaped molecule",
+    },
+    "chem.assumed_simple_ionic_has_covalent_bond": {
+        "th": "นับพันธะโคเวเลนต์ในเกลือที่มีไอออนอะตอมเดี่ยวเท่านั้น",
+        "en": "Counted a covalent bond in a simple monatomic-ion salt",
+    },
+    "chem.assumed_molecular_compound_ionic": {
+        "th": "นับแรงยึดเหนี่ยวไอออนิกในสารโมเลกุล",
+        "en": "Counted ionic bonding in a molecular compound",
+    },
+    "chem.confused_pure_acid_with_aqueous_ions": {
+        "th": "นำการแตกตัวของกรดในน้ำมาใช้กับกรดบริสุทธิ์",
+        "en": "Applied aqueous acid ionization to the pure acid",
+    },
+    "chem.confused_peroxide_single_bond_with_dative": {
+        "th": "คิดว่าพันธะ O–O ในเปอร์ออกไซด์เป็นพันธะผู้ให้ผู้รับ",
+        "en": "Treated the peroxide O–O bond as dative",
+    },
+    "chem.confused_carbonyl_double_bond_with_dative": {
+        "th": "คิดว่าพันธะคู่คาร์บอนิลเป็นพันธะแบบผู้ให้ผู้รับ",
+        "en": "Treated a carbonyl double bond as dative",
+    },
+    "chem.confused_imine_double_bond_with_dative": {
+        "th": "คิดว่าพันธะคู่อิมีนเป็นพันธะแบบผู้ให้ผู้รับ",
+        "en": "Treated an imine double bond as dative",
+    },
+    "chem.confused_oxygen_lone_pairs_with_dative": {
+        "th": "คิดว่าการมีคู่โดดเดี่ยวทำให้มีพันธะผู้ให้ผู้รับทันที",
+        "en": "Assumed a lone pair alone implies a dative bond",
+    },
+    "chem.confused_ordinary_single_bond_with_dative": {
+        "th": "คิดว่าพันธะเดี่ยวทั่วไปเป็นพันธะผู้ให้ผู้รับ",
+        "en": "Treated an ordinary single bond as dative",
+    },
     "chem.confused_tetrahedral_with_square_planar": {
         "th": "คิดว่ารูปร่างทรงสี่หน้าเหมือนสี่เหลี่ยมแบนราบ",
         "en": "Confused tetrahedral with square-planar geometry",

@@ -9,6 +9,7 @@ from otk.core import generate
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
+    q25, q26, q27,
 )
 
 
@@ -102,6 +103,13 @@ def test_vsepr_shapes_angles_and_central_lone_pairs():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_polarity_mixed_bonds_and_dative_lewis_depiction():
+    for module in (q25, q26, q27):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -124,7 +132,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 25)))
+@pytest.mark.parametrize("number", tuple(range(1, 28)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -307,7 +315,7 @@ def test_generated_answers_follow_the_written_data(number):
                         "SiF4": r"\mathrm{SiF_4}", "NCl3": r"\mathrm{NCl_3}",
                         "OCl2": r"\mathrm{OCl_2}", "BF3": r"\mathrm{BF_3}",
                         "NH3": r"\mathrm{NH_3}", "H2O": r"\mathrm{H_2O}"}[shortest]
-        else:
+        elif number == 24:
             listed = re.search(r"ในบรรดา (.+?) ชนิดใด", stem)[1].split(", ")
             text_to_formula = {"NH₃": "NH3", "XeF₂": "XeF2", "NO₂⁻": "NO2-",
                                "SO₃²⁻": "SO3^2-", "I₃⁻": "I3-", "XeF₄": "XeF4",
@@ -318,5 +326,25 @@ def test_generated_answers_follow_the_written_data(number):
                         "NO2-": r"\mathrm{NO_2}^{-}", "SO3^2-": r"\mathrm{SO_3}^{2-}",
                         "I3-": r"\mathrm{I_3}^{-}", "XeF4": r"\mathrm{XeF_4}",
                         "ClF3": r"\mathrm{ClF_3}", "SF4": r"\mathrm{SF_4}"}[most]
+        else:
+            listed = re.search(r"(?:ในบรรดา|พิจารณาสารบริสุทธิ์) (.+?) (?:โมเลกุลใด|สารใด)", stem)[1]
+            formulas = tuple(listed.split(", "))
+            module = {25: q25, 26: q26, 27: q27}[number]
+            parameter = "compounds" if number == 26 else "species"
+            result = module.check(**{parameter: formulas})
+            expected = {
+                "SF4": r"\mathrm{SF_4}", "SCl2": r"\mathrm{SCl_2}",
+                "PCl3": r"\mathrm{PCl_3}", "PF5": r"\mathrm{PF_5}",
+                "H2O": r"\mathrm{H_2O}", "NH3": r"\mathrm{NH_3}",
+                "CO2": r"\mathrm{CO_2}", "BF3": r"\mathrm{BF_3}",
+                "XeF4": r"\mathrm{XeF_4}", "ClF3": r"\mathrm{ClF_3}",
+                "Na2O": r"\mathrm{Na_2O}", "COCl2": r"\mathrm{COCl_2}",
+                "H2SO4": r"\mathrm{H_2SO_4}", "CaCO3": r"\mathrm{CaCO_3}",
+                "NaNO3": r"\mathrm{NaNO_3}", "NH4Cl": r"\mathrm{NH_4Cl}",
+                "K2SO4": r"\mathrm{K_2SO_4}", "NaCl": r"\mathrm{NaCl}",
+                "O3": r"\mathrm{O_3}", "H2O2": r"\mathrm{H_2O_2}",
+                "H2CO": r"\mathrm{H_2CO}", "CH2NH": r"\mathrm{CH_2NH}",
+                "CH4": r"\mathrm{CH_4}", "HCl": r"\mathrm{HCl}",
+            }[result]
         assert answer == expected
         assert len(question.choices) == 4

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ขั้วโมเลกุลและรูปร่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.nonpolar_vsepr_dipole_cancellation.procedure",
+      "kind": "procedure",
+      "title": "โมเลกุลไม่มีขั้วจากรูปร่าง",
+      "statement": "โมเลกุลสมมาตรที่มีลิแกนด์ชนิดเดียวกัน เช่น PF₅ มีเวกเตอร์ขั้วพันธะหักล้างกัน ขณะที่รูปร่างงอ พีระมิด และสี่หน้าบิดเบี้ยวมีขั้วสุทธิ",
+      "steps": [
+        "เขียนโครงสร้างลูอิสและระบุรูปร่าง VSEPR ของแต่ละโมเลกุล",
+        "รวมเวกเตอร์ไดโพลพันธะเพื่อตรวจการหักล้าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q25"
+      ],
+      "note": "PF5 has a symmetric trigonal-bipyramidal arrangement; the bond dipoles cancel. Source page and all four subscripts visually checked."
+    }
+  ]
+}

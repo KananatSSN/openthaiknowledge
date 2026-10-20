@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–24 are reviewed, solved and generated (24/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 46 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 24/24 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–27 are reviewed, solved and generated (27/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 43 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 27/27 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -317,6 +317,45 @@
       "answer": "XeF2",
       "generator": "chem.posn2560_q24",
       "note": "Counts electron pairs on the central atom only. Variants compare I3-, XeF4, ClF3 and SF4 with source species; each pool has a unique maximum."
+    },
+    {
+      "number": 25,
+      "solver": "q25",
+      "title": "โมเลกุลไม่มีขั้วจากรูปร่าง",
+      "source": "Part I, question 25, p9: SF4, SCl2, PCl3 and PF5; PF5 is nonpolar, choice ง.",
+      "page": 9,
+      "figure": "Rendered p9 visually checked all four choices and molecular subscripts.",
+      "figure_asset": "",
+      "topic": "ขั้วโมเลกุลและรูปร่างโมเลกุล",
+      "answer": "PF5",
+      "generator": "chem.posn2560_q25",
+      "note": "PF5 has a symmetric trigonal-bipyramidal arrangement; the bond dipoles cancel. Source page and all four subscripts visually checked."
+    },
+    {
+      "number": 26,
+      "solver": "q26",
+      "title": "สารประกอบที่มีพันธะไอออนิกและโคเวเลนต์",
+      "source": "Part I, question 26, p9: Na2O, COCl2, H2SO4 and CaCO3; CaCO3 contains both bonding types, choice ง.",
+      "page": 9,
+      "figure": "Rendered p9 visually checked all four choices and molecular subscripts.",
+      "figure_asset": "",
+      "topic": "พันธะไอออนิกและโคเวเลนต์ในสารประกอบ",
+      "answer": "CaCO3",
+      "generator": "chem.posn2560_q26",
+      "note": "The adaptation explicitly considers pure compounds: Ca2+ and CO3(2-) form an ionic crystal, while the carbonate ion has covalent C–O bonds. This avoids treating aqueous acid ionization as an ionic bond in pure H2SO4."
+    },
+    {
+      "number": 27,
+      "solver": "q27",
+      "title": "ภาพลูอิสแบบโคออร์ดิเนตของโอโซน",
+      "source": "Part I, question 27, p9: H2O2, O3, H2CO and CH2NH; textbook coordinate-bond representation selects ozone, choice ข.",
+      "page": 9,
+      "figure": "Rendered p9 visually checked all four choices and molecular subscripts.",
+      "figure_asset": "",
+      "topic": "พันธะโคออร์ดิเนตและเรโซแนนซ์",
+      "answer": "O3",
+      "generator": "chem.posn2560_q27",
+      "note": "The source convention allows O=O→O as a donor–acceptor Lewis depiction. This is bookkeeping, not a localized distinct bond: actual ozone has two equivalent O–O bonds through resonance. The generated prompt states that the arrow is a model. Reference: https://www.open.edu/openlearn/mod/oucontent/view.php?id=87848&section=_unit5.2 ."
     }
   ]
 }

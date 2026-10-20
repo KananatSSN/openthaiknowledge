@@ -6,6 +6,7 @@ from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
+    q25, q26, q27,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -840,5 +841,107 @@ class CentralLonePairs(ChemistrySheet):
                     + " ชนิดใดมีอิเล็กตรอนคู่โดดเดี่ยวบนอะตอมกลางมากที่สุด"),
             hint="วาดโครงสร้างลูอิสและนับคู่โดดเดี่ยวบนอะตอมกลาง ไม่ใช่อะตอมปลาย",
             distractors=[named(_LONE_PAIR_MISTAKES[item], _LONE_PAIR_TEX[item])
+                         for item in species if item != answer],
+        )
+
+
+_BONDING_TEX = {
+    "SF4": r"\mathrm{SF_4}", "SCl2": r"\mathrm{SCl_2}",
+    "PCl3": r"\mathrm{PCl_3}", "PF5": r"\mathrm{PF_5}",
+    "H2O": r"\mathrm{H_2O}", "NH3": r"\mathrm{NH_3}",
+    "CO2": r"\mathrm{CO_2}", "BF3": r"\mathrm{BF_3}",
+    "CF4": r"\mathrm{CF_4}", "XeF4": r"\mathrm{XeF_4}",
+    "ClF3": r"\mathrm{ClF_3}", "Na2O": r"\mathrm{Na_2O}",
+    "COCl2": r"\mathrm{COCl_2}", "H2SO4": r"\mathrm{H_2SO_4}",
+    "CaCO3": r"\mathrm{CaCO_3}", "NaNO3": r"\mathrm{NaNO_3}",
+    "NH4Cl": r"\mathrm{NH_4Cl}", "K2SO4": r"\mathrm{K_2SO_4}",
+    "NaCl": r"\mathrm{NaCl}", "O3": r"\mathrm{O_3}",
+    "H2O2": r"\mathrm{H_2O_2}", "H2CO": r"\mathrm{H_2CO}",
+    "CH2NH": r"\mathrm{CH_2NH}", "CH4": r"\mathrm{CH_4}",
+    "HCl": r"\mathrm{HCl}",
+}
+_BONDING_TEXT = {
+    key: value.replace(r"\mathrm{", "").replace("}", "").replace("_", "")
+    for key, value in _BONDING_TEX.items()
+}
+_POLAR_MISTAKES = {
+    "SF4": "chem.ignored_seesaw_dipole", "SCl2": "chem.ignored_bent_dipole",
+    "PCl3": "chem.ignored_pyramidal_dipole", "H2O": "chem.ignored_bent_dipole",
+    "NH3": "chem.ignored_pyramidal_dipole", "ClF3": "chem.ignored_t_shape_dipole",
+}
+_MIXED_BOND_MISTAKES = {
+    "Na2O": "chem.assumed_simple_ionic_has_covalent_bond",
+    "NaCl": "chem.assumed_simple_ionic_has_covalent_bond",
+    "COCl2": "chem.assumed_molecular_compound_ionic",
+    "H2SO4": "chem.confused_pure_acid_with_aqueous_ions",
+    "H2O": "chem.assumed_molecular_compound_ionic",
+    "CO2": "chem.assumed_molecular_compound_ionic",
+}
+_DATIVE_MISTAKES = {
+    "H2O2": "chem.confused_peroxide_single_bond_with_dative",
+    "H2CO": "chem.confused_carbonyl_double_bond_with_dative",
+    "CH2NH": "chem.confused_imine_double_bond_with_dative",
+    "H2O": "chem.confused_oxygen_lone_pairs_with_dative",
+    "CO2": "chem.confused_carbonyl_double_bond_with_dative",
+    "NH3": "chem.confused_oxygen_lone_pairs_with_dative",
+    "CH4": "chem.confused_ordinary_single_bond_with_dative",
+    "HCl": "chem.confused_ordinary_single_bond_with_dative",
+}
+
+
+@question_type(
+    "chem.posn2560_q25", display_name={"th": "โมเลกุลไม่มีขั้วจากรูปร่าง"},
+    level=LEVEL, subject="เคมี", topic="ขั้วโมเลกุลและรูปร่างโมเลกุล",
+)
+class NonpolarMolecule(ChemistrySheet):
+    def expr(self, rng):
+        species = rng.choice((q25.PARAMS, *q25.VARIANTS))["species"]
+        answer = q25.solve(species=species)
+        return MathDraw(
+            "", _BONDING_TEX[answer],
+            prompt=("ในบรรดา " + ", ".join(_BONDING_TEXT[item] for item in species)
+                    + " โมเลกุลใดไม่มีขั้วโดยรวม"),
+            hint="ใช้รูปร่าง VSEPR และดูว่าทิศทางไดโพลของพันธะหักล้างกันหรือไม่",
+            distractors=[named(_POLAR_MISTAKES[item], _BONDING_TEX[item])
+                         for item in species if item != answer],
+        )
+
+
+@question_type(
+    "chem.posn2560_q26", display_name={"th": "สารประกอบที่มีพันธะไอออนิกและโคเวเลนต์"},
+    level=LEVEL, subject="เคมี", topic="พันธะไอออนิกและโคเวเลนต์ในสารประกอบ",
+)
+class IonicAndCovalentBonds(ChemistrySheet):
+    def expr(self, rng):
+        compounds = rng.choice((q26.PARAMS, *q26.VARIANTS))["compounds"]
+        answer = q26.solve(compounds=compounds)
+        return MathDraw(
+            "", _BONDING_TEX[answer],
+            prompt=("พิจารณาสารบริสุทธิ์ "
+                    + ", ".join(_BONDING_TEXT[item] for item in compounds)
+                    + " สารใดมีทั้งแรงยึดเหนี่ยวแบบไอออนิกระหว่างไอออน "
+                    "และพันธะโคเวเลนต์ภายในไอออนหลายอะตอม"),
+            hint="หาเกลือที่มีไอออนหลายอะตอม เช่น CO₃²⁻ หรือ NO₃⁻",
+            distractors=[named(_MIXED_BOND_MISTAKES[item], _BONDING_TEX[item])
+                         for item in compounds if item != answer],
+        )
+
+
+@question_type(
+    "chem.posn2560_q27", display_name={"th": "ภาพลูอิสแบบโคออร์ดิเนตของโอโซน"},
+    level=LEVEL, subject="เคมี", topic="พันธะโคออร์ดิเนตและเรโซแนนซ์",
+)
+class CoordinateLewisDepiction(ChemistrySheet):
+    def expr(self, rng):
+        species = rng.choice((q27.PARAMS, *q27.VARIANTS))["species"]
+        answer = q27.solve(species=species)
+        return MathDraw(
+            "", _BONDING_TEX[answer],
+            prompt=("ในบรรดา " + ", ".join(_BONDING_TEXT[item] for item in species)
+                    + " โมเลกุลใดแสดงภาพลูอิสแบบผู้ให้คู่อิเล็กตรอน→ผู้รับ "
+                    "และมีภาพเรโซแนนซ์ที่สลับตำแหน่งพันธะได้ "
+                    "(ลูกศรเป็นแบบจำลองการนับอิเล็กตรอน)"),
+            hint="หาโมเลกุลที่มีภาพลูอิสเรโซแนนซ์สองแบบและมีการบริจาคคู่โดดเดี่ยวในภาพตำรา",
+            distractors=[named(_DATIVE_MISTAKES[item], _BONDING_TEX[item])
                          for item in species if item != answer],
         )
