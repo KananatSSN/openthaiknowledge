@@ -155,8 +155,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2560.py`.
 - `สอวน_physics/tpho-61-physics/` (TPhO 17, 2561): 19 theory items and 3
   experiment parts → 22 generators in `otk/sets/physics/olympiad/tpho2561.py`.
-- Next source: `สอวน_physics/tpho-62-physics/`. Twenty-six of 33 papers are
-  digested; 7 remain pending.
+- `สอวน_physics/tpho-62-physics/` (TPhO 18, 2562): 18 theory items and 6
+  experiment parts → 24 generators in `otk/sets/physics/olympiad/tpho2562.py`.
+- Next source: `สอวน_physics/tpho-63-physics/`. Twenty-seven of 33 papers are
+  digested; 6 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1963,3 +1965,38 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 23,193 passed, 4 skipped; `test_per_set` for the 22 keys
   passed; the sheet's own tests: 48 passed; Ruff clean.
 - Full suite: **39,546 passed, 13 skipped in 14m12s**.
+
+### 2026-10-21 — TPhO 18 (2562) national physics olympiad
+
+- Two PDFs, the theory paper and the LED lab paper, both with clean text
+  layers; the folder has no solutions, so every answer is derived here and
+  checked by an independent route.
+- 24 items: 1 (hydraulic jump: momentum flux ρLh₁v₁², the net hydrostatic
+  force, h₂ = (h₁/2)[√(1 + 8v₁²/(gh₁)) − 1], the energy loss with k = 1/4,
+  the circular jump R = 4Q²/(π²d²gH²)), 2 (power transmission: P_LR_w/V_L²
+  = 0.207, solenoid L = μ₀n²πr²ℓ, M = √(L₁L₂), the primary current, the line
+  loss 2.07×10⁻⁷ with a 1000:1 transformer), 3 (protostars: the Sun's
+  surface 5.80×10³ K, the binary K.E. = Gm²/(4r), A = 3/5, the virial
+  temperature 4.61×10⁶ K, dE/dT = −2.48×10³⁴ J/K, α = 1/2, N/V =
+  4.36×10³² m⁻³, M_min = 2.0×10²⁹ kg ≈ 0.1 M☉), and the LED lab with
+  synthetic data: the ideality factor, I₀, R_s, the infrared wavelength from
+  V_t against 1/λ, the fill factor, R_SH. 2.6 and 3.8 (qualitative) have no
+  generator; lab 3.2 C is left unanswered.
+- Readings: 1.5's form k ρg(h₂ − h₁)(h₂² + h₁²)/(h₁h₂) needs the energy
+  per volume ½ρv² + ½ρgh (k = 1/4); the head h + v²/2g gives the textbook
+  (h₂ − h₁)³/(4h₁h₂) instead (a test pins both). 3.10's "smallest N/V" is
+  read as the density where the lightest igniting cloud peaks, P_deg =
+  P_ideal, which also minimises the mass in 3.11 (a test checks both agree).
+- Independent checks include a strip-summed hydrostatic thrust, a momentum
+  bisection for h₂, complex phasors for the transformer, an ideal-transformer
+  line current, a shell-summed self-energy, an integrated hydrostatic centre
+  pressure, golden-section searches for the ignition density and mass,
+  centred least squares for the lab lines, and bisections for R_s and R_SH.
+  `sheetpipe verify`: 24/24 green, 72 runs.
+- Generators reject a draw whose choices mix plain and scientific numbers;
+  stems state small readings as mantissa×10ⁿ in plain text.
+- Bank index: only the folder's two files were added (a scan also listed
+  unrelated new files elsewhere in the bank, left unindexed).
+- Targeted run: 23,469 passed, 4 skipped; `test_per_set` for the 24 keys
+  passed; the sheet's own tests: 54 passed; Ruff clean.
+- Full suite: **39,894 passed, 13 skipped in 14m06s**.

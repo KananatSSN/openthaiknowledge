@@ -1,0 +1,46 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมบัติทางไฟฟ้าและแสงของหลอด LED",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.led_diode_characteristics.procedure",
+      "kind": "procedure",
+      "title": "แฟกเตอร์อุดมคติของ LED จากกราฟ ln I กับ V",
+      "statement": "หลอด LED: ที่กระแสน้อย ln I เป็นเส้นตรงกับ V ความชัน e/(nkT) และจุดตัด ln I₀ ส่วนที่กระแสสูงเบี่ยงด้วย IR_s ความต่างศักย์ขีดเริ่ม eV_t = hc/λ − E₀ เป็นเส้นตรงกับ 1/λ จึงหาความยาวคลื่นของ LED อินฟราเรดได้",
+      "steps": [
+        "เขียนกราฟเส้นตรงจากสมการของชอกลีย์หรือจาก V_t กับ 1/λ",
+        "อ่านความชันและจุดตัดหาแฟกเตอร์อุดมคติ กระแสอิ่มตัว ความต้านทานอนุกรม หรือความยาวคลื่น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2562_q19",
+        "phys.tpho2562_q20",
+        "phys.tpho2562_q21",
+        "phys.tpho2562_q22"
+      ],
+      "note": "Synthetic readings (n = 3.0, I0 = 4e-17 A); the folder has no lab solution."
+    }
+  ]
+}

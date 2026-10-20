@@ -5560,6 +5560,33 @@
    "layout": "unknown",
    "stage": "ignored",
    "note": "Official solution to the theory paper (a scan with a poor text layer); used to confirm the answers it shows legibly (all agree)."
+  },
+  {
+   "path": "สอวน_physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+   "kind": "exam",
+   "sha256": "e40c63809238b2e4",
+   "size": 1308282,
+   "pages": 12,
+   "text_chars": 15036,
+   "layout": "numbered",
+   "glyph_damage": 98,
+   "items": 9,
+   "sheet_id": "tpho2562_physics",
+   "stage": "generated",
+   "note": "Experimental paper (LEDs: I-V and ideality, threshold voltage and wavelength, photovoltaic fill factor); no lab solution in the folder; 6 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+   "kind": "exam",
+   "sha256": "2722c5179ece69a4",
+   "size": 1627381,
+   "pages": 8,
+   "text_chars": 13601,
+   "layout": "numbered",
+   "items": 29,
+   "sheet_id": "tpho2562_physics",
+   "stage": "generated",
+   "note": "Theory paper (8 pages); 29 sub-parts, 18 items; no solution in the folder, answers derived here; hand transcript."
   }
  ]
 }

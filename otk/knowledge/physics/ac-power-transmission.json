@@ -1,0 +1,71 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การส่งพลังงานไฟฟ้าและหม้อแปลง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.ac_power_transmission.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนกำลังสูญเสียในสายส่งไฟฟ้ากระแสตรง",
+      "statement": "การส่งไฟฟ้า: กำลังสูญเสียในสายเทียบกับโหลดคือ P_LR_w/V_L² ความเหนี่ยวนำของโซเลนอยด์ μ₀n²πr²ℓ และความเหนี่ยวนำร่วม M = √(L₁L₂) ทำให้หม้อแปลงขึ้นแรงดัน V_S/V_L = M/L_L และลดอัตราส่วนกำลังสูญเสียลงด้วยกำลังสองของอัตราส่วนแรงดัน",
+      "steps": [
+        "หาความเหนี่ยวนำจากฟลักซ์ที่คล้องขดลวดต่อกระแส",
+        "เขียนสมการวงจรหม้อแปลงหากระแสปฐมภูมิและอัตราส่วนกำลังสูญเสีย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 8
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 9
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 12
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 15
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 16
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 17
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2562_q06",
+        "phys.tpho2562_q07",
+        "phys.tpho2562_q08",
+        "phys.tpho2562_q09",
+        "phys.tpho2562_q10"
+      ],
+      "note": "The load power, voltage and wire resistance vary."
+    }
+  ]
+}

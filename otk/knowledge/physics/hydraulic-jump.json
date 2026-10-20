@@ -1,0 +1,55 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ไฮดรอลิกจัมพ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.hydraulic_jump.procedure",
+      "kind": "procedure",
+      "title": "โมเมนตัมต่อวินาทีของน้ำที่ไหลเข้าบริเวณจัมพ์",
+      "statement": "ไฮดรอลิกจัมพ์: โมเมนตัมต่อเวลา ρAv² ต่างกันเท่ากับแรงดันของของไหลหยุดนิ่ง ½ρgL(h₂² − h₁²) ร่วมกับความต่อเนื่อง h₁v₁ = h₂v₂ ได้ h₂ = (h₁/2)[√(1 + 8v₁²/(gh₁)) − 1] พลังงานที่หายไปต่อปริมาตร ρg(h₂ − h₁)(h₂² + h₁²)/(4h₁h₂) และจัมพ์วงกลมรัศมี R = 4Q²/(π²d²gH²)",
+      "steps": [
+        "เขียนสมดุลโมเมนตัมกับแรงดันของของไหลหยุดนิ่งและความต่อเนื่อง",
+        "แก้หาความสูงหลังจัมพ์ พลังงานที่หาย หรือรัศมีจัมพ์วงกลม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2562_q01",
+        "phys.tpho2562_q02",
+        "phys.tpho2562_q03",
+        "phys.tpho2562_q04",
+        "phys.tpho2562_q05"
+      ],
+      "note": "The density, width, depth and speed vary."
+    }
+  ]
+}
