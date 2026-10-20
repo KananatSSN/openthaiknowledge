@@ -145,8 +145,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 18 generators in `otk/sets/physics/olympiad/tpho2555.py`.
 - `สอวน_physics/tpho-56-physics/` (TPhO 12, 2556): 17 theory items and 4
   experiment parts → 21 generators in `otk/sets/physics/olympiad/tpho2556.py`.
-- Next source: `สอวน_physics/tpho-57-physics/`. Twenty-one of 33 papers are
-  digested; 12 remain pending.
+- `สอวน_physics/tpho-57-physics/` (TPhO 13, 2557): 12 theory items and 5
+  experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2557.py`.
+- Next source: `สอวน_physics/tpho-58-physics/`. Twenty-two of 33 papers are
+  digested; 11 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1816,3 +1818,29 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 22,071 passed, 4 skipped; `test_per_set` for the 21 keys
   passed; the sheet's own tests: 48 passed; Ruff clean.
 - Full suite: **38,106 passed, 13 skipped in 11m24s**.
+
+### 2026-10-20 — TPhO 13 (2557) national physics olympiad
+
+- Four PDFs: theory and experiment papers with a solution each (the
+  solutions `ignored`, used to confirm every answer; all agree).
+- 17 items: 1.1 (wedge fringes: spacing λ/(2n tan θ), expansion
+  coefficient from the fringes that pass), 1.2 (passing source: the shift
+  heard at closest approach f₀v²/(v² − u²) − f₀, the distance when f₀ is
+  heard), 2 (one-wheeled table: stopping distance, the no-tipping limit
+  w/(2h), μ from the reversed/forward distance ratio), 3.1 (water hammer:
+  ρvu, v = √(B/ρ), the lift vu/g + u²/g), 3.2 (moving dielectric:
+  polarisation field and emf vBd(1 − 1/εᵣ)), and the eddy-current lab with
+  synthetic data: B of the wheels from V² against a, b and μ from terminal
+  speeds, σ = b/Λ and k = Λ/(dD²B²).
+- Scheme note: the lab solution's sin θ column corresponds to a 0.75 m
+  incline, not the stated 0.70 m; its own v/cos θ and tan θ columns give
+  the printed slope 0.366, b = 0.466 kg/s and μ = 0.18 (pinned in a test).
+  The generators use the stated 0.70 m with self-consistent data.
+- Independent checks include bisected fringe positions and fringe counts,
+  retarded-time Doppler from arrival times, a 3 × 3 force-and-torque system
+  for the table, a time-stepped falling parcel, a self-consistent
+  polarisation bisection, a numerically integrated Faraday-disc emf, and a
+  strip-summed disc for Λ. `sheetpipe verify`: 17/17 green, 51 runs.
+- Targeted run: 22,254 passed, 4 skipped; `test_per_set` for the 17 keys
+  passed; the sheet's own tests: 38 passed; Ruff clean.
+- Full suite: **38,354 passed, 13 skipped in 11m52s**.

@@ -5321,6 +5321,57 @@
    "sheet_id": "tpho2556_physics",
    "stage": "generated",
    "note": "Theory paper (5 pages); 26 sub-parts, 17 items; no theory solution in the folder, so every answer was derived and checked independently; hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-57-physics/tpho_13_exp.pdf",
+   "kind": "exam",
+   "sha256": "d22e68f1ad271352",
+   "size": 570457,
+   "pages": 7,
+   "text_chars": 10455,
+   "layout": "numbered",
+   "glyph_damage": 2,
+   "items": 4,
+   "sheet_id": "tpho2557_physics",
+   "stage": "generated",
+   "note": "Experimental paper (eddy currents and a magnetic brake); its theory parts digested as 5 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-57-physics/tpho_13_exp_solution.pdf",
+   "kind": "exam",
+   "sha256": "6077d1c462086f97",
+   "size": 426518,
+   "pages": 8,
+   "text_chars": 8478,
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (all agree)."
+  },
+  {
+   "path": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+   "kind": "exam",
+   "sha256": "e50df1c44f3a9847",
+   "size": 742377,
+   "pages": 6,
+   "text_chars": 6655,
+   "layout": "numbered",
+   "glyph_damage": 5,
+   "items": 22,
+   "sheet_id": "tpho2557_physics",
+   "stage": "generated",
+   "note": "Theory paper (6 pages); 22 sub-parts, 12 items; answers from tpho_13_theory_solution.pdf; hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-57-physics/tpho_13_theory_solution.pdf",
+   "kind": "exam",
+   "sha256": "fa59153b4f9aeb34",
+   "size": 401691,
+   "pages": 10,
+   "text_chars": 8114,
+   "layout": "unknown",
+   "glyph_damage": 1,
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
   }
  ]
 }

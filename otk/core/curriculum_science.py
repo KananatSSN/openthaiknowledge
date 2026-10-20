@@ -3997,6 +3997,46 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2556_q21": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งคู่ควบและสนามแม่เหล็กโลก', "outside_scope"),
 })
 # END TPhO 2556
+# BEGIN TPhO 2557
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2557_q01",
+    "phys.tpho2557_q02",
+    "phys.tpho2557_q03",
+    "phys.tpho2557_q04",
+    "phys.tpho2557_q05",
+    "phys.tpho2557_q06",
+    "phys.tpho2557_q07",
+    "phys.tpho2557_q08",
+    "phys.tpho2557_q09",
+    "phys.tpho2557_q10",
+    "phys.tpho2557_q11",
+    "phys.tpho2557_q12",
+    "phys.tpho2557_q13",
+    "phys.tpho2557_q14",
+    "phys.tpho2557_q15",
+    "phys.tpho2557_q16",
+    "phys.tpho2557_q17",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2557_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแทรกสอดในลิ่มใส', "outside_scope"),
+    "phys.tpho2557_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแทรกสอดในลิ่มใส', "outside_scope"),
+    "phys.tpho2557_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ปรากฏการณ์ดอปเพลอร์ของแหล่งกำเนิดที่ผ่านหน้า', "outside_scope"),
+    "phys.tpho2557_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ปรากฏการณ์ดอปเพลอร์ของแหล่งกำเนิดที่ผ่านหน้า', "outside_scope"),
+    "phys.tpho2557_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โต๊ะมีล้อด้านเดียว', "outside_scope"),
+    "phys.tpho2557_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โต๊ะมีล้อด้านเดียว', "outside_scope"),
+    "phys.tpho2557_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'โต๊ะมีล้อด้านเดียว', "outside_scope"),
+    "phys.tpho2557_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ตะบันน้ำ', "outside_scope"),
+    "phys.tpho2557_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ตะบันน้ำ', "outside_scope"),
+    "phys.tpho2557_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ตะบันน้ำ', "outside_scope"),
+    "phys.tpho2557_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ไดอิเล็กทริกเคลื่อนที่ในสนามแม่เหล็ก', "outside_scope"),
+    "phys.tpho2557_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ไดอิเล็กทริกเคลื่อนที่ในสนามแม่เหล็ก', "outside_scope"),
+    "phys.tpho2557_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กระแสไหลวนและเบรกแม่เหล็ก', "outside_scope"),
+    "phys.tpho2557_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กระแสไหลวนและเบรกแม่เหล็ก', "outside_scope"),
+    "phys.tpho2557_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กระแสไหลวนและเบรกแม่เหล็ก', "outside_scope"),
+    "phys.tpho2557_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กระแสไหลวนและเบรกแม่เหล็ก', "outside_scope"),
+    "phys.tpho2557_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กระแสไหลวนและเบรกแม่เหล็ก', "outside_scope"),
+})
+# END TPhO 2557
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

@@ -1,0 +1,43 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กระแสไหลวนและเบรกแม่เหล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.eddy_current_brake.procedure",
+      "kind": "procedure",
+      "title": "สนามแม่เหล็กของล้อแม่เหล็กจากกราฟ V² กับ a",
+      "statement": "ล้อแม่เหล็กที่กลิ้งบนแถบตัวนำเป็นจานฟาราเดย์ V = vB(R² − R₀²)/R แม่เหล็กที่ไถลบนแผ่นตัวนำถูกหน่วงด้วย −bv ความเร็วปลายให้ v_T/cos θ = (mg/b)(tan θ − μ) และ b = σΛ กับ Λ = kdD²B²",
+      "steps": [
+        "เขียนกราฟเส้นตรง V² กับ a หรือ v_T/cos θ กับ tan θ",
+        "อ่านความชันและจุดตัดแกนหาสนามแม่เหล็ก b, μ, σ และ k"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_exp.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2557_q13",
+        "phys.tpho2557_q14",
+        "phys.tpho2557_q15",
+        "phys.tpho2557_q16",
+        "phys.tpho2557_q17"
+      ],
+      "note": "Synthetic readings."
+    }
+  ]
+}

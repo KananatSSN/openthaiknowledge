@@ -1,0 +1,57 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ตะบันน้ำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.water_hammer_ram.procedure",
+      "kind": "procedure",
+      "title": "ความดันที่เพิ่มขึ้นในตะบันน้ำ",
+      "statement": "ตะบันน้ำ: น้ำไหลด้วย u = √(2gh₀) แล้วถูกหยุดกะทันหัน รอยต่อเคลื่อนย้อนด้วยอัตราเร็วเสียง v = √(B/ρ) ความดันเพิ่ม ρvu + ρu² ≈ ρvu และดันน้ำขึ้นได้สูง vu/g + u²/g",
+      "steps": [
+        "หาปริมาตรที่หยุดและโมเมนตัมที่เปลี่ยนในเวลา Δt",
+        "แปลงการดลเป็นความดันแล้วเทียบกับมอดุลัสเชิงปริมาตรและความดันของลำน้ำ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "สอวน_physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2557_q08",
+        "phys.tpho2557_q09",
+        "phys.tpho2557_q10"
+      ],
+      "note": "h0 and v vary."
+    }
+  ]
+}
