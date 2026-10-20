@@ -1,0 +1,70 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ท่อกลิ้งบนพื้นเอียง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rolling_tube_half_cylinder.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งของท่อกลวงที่กลิ้งเฉียงลงพื้นเอียง",
+      "statement": "ท่อกลวงกลิ้งบนพื้นเอียง: a = ½g sin θ cos φ และต้องการ μ ≥ ½tan θ √(1 + 3 sin²φ) ครึ่งทรงกระบอกหลวมภายในไม่หมุนจึงได้ a = ((m′ + m)/(2m′ + m))g sin θ ส่วนเมื่อเชื่อมติดกัน จุดศูนย์กลางมวล k′R ทำให้ต้องเอียงอย่างน้อย sin⁻¹(k′ sin θ₀) และพลังงาน ความเร็วเชิงมุม และแรงตั้งฉากหาได้จากโมเมนต์ความเฉื่อยรอบจุดสัมผัส",
+      "steps": [
+        "เขียนกฎของนิวตันกับทอร์กหรือพลังงานรอบจุดสัมผัส",
+        "ใช้เงื่อนไขกลิ้งไม่ไถลหาความเร่ง แรงเสียดทาน มุม หรือแรงตั้งฉาก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2564_q01",
+        "phys.tpho2564_q02",
+        "phys.tpho2564_q03",
+        "phys.tpho2564_q04",
+        "phys.tpho2564_q05",
+        "phys.tpho2564_q06",
+        "phys.tpho2564_q07",
+        "phys.tpho2564_q08"
+      ],
+      "note": "theta and phi vary."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กลไกการหายใจ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.breathing_lung_work.procedure",
+      "kind": "procedure",
+      "title": "ผลต่างความดันเมื่อหายใจเข้าสุดปอด",
+      "statement": "กลไกการหายใจ: ปอดเป็นไปตาม p_D = (1/k)ln(α/(α − V)) งานขยายเนื้อเยื่อ ∫p_D dV = (α/k)[1 − e^(−kp)(1 + kp)] กะบังลมใช้พลังงานราว 2% ของอัตราการเผาผลาญ และอากาศในปอดได้ความร้อน (5/2)p_DV + w",
+      "steps": [
+        "หาผลต่างความดันจากปริมาตรแล้วอินทิเกรตหางาน",
+        "ใช้กฎข้อหนึ่งของเทอร์โมไดนามิกส์หาพลังงานภายในและความร้อน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 18
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 19
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 20
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 21
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 22
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 23
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 24
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2564_q14",
+        "phys.tpho2564_q15",
+        "phys.tpho2564_q16",
+        "phys.tpho2564_q17",
+        "phys.tpho2564_q18",
+        "phys.tpho2564_q19"
+      ],
+      "note": "V_f, alpha and k vary (alpha_I = 3.58 L as in the solution's c)."
+    }
+  ]
+}

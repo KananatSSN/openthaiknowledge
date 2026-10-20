@@ -5691,6 +5691,34 @@
    "glyph_damage": 180,
    "stage": "ignored",
    "note": "Official solution to TPhO2020_Experiment_Question.pdf; used to confirm the answers (all re-derived)."
+  },
+  {
+   "path": "สอวน_physics/tpho-64-physics/tpho2021_experiment.pdf",
+   "kind": "exam",
+   "sha256": "6f39af612e435fcb",
+   "size": 1155934,
+   "pages": 21,
+   "text_chars": 16773,
+   "layout": "numbered",
+   "glyph_damage": 758,
+   "items": 9,
+   "sheet_id": "tpho2564_physics",
+   "stage": "generated",
+   "note": "Experimental paper with its solution bound in (21 pages: cantilever beam deflection and vibration); 9 parts, 5 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+   "kind": "exam",
+   "sha256": "0a6cb5e30d957165",
+   "size": 2390364,
+   "pages": 35,
+   "text_chars": 33749,
+   "layout": "numbered",
+   "glyph_damage": 1412,
+   "items": 31,
+   "sheet_id": "tpho2564_physics",
+   "stage": "generated",
+   "note": "Theory paper with its solution bound in (35 pages); 31 sub-parts, 24 items; answers from the bound solution, re-derived; hand transcript. Scheme notes: 2 g) sign of sigma+ in its first method; 3.1 h) sensitive to the graph-read alpha_O."
   }
  ]
 }

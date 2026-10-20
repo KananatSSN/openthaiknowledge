@@ -159,8 +159,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 24 generators in `otk/sets/physics/olympiad/tpho2562.py`.
 - `สอวน_physics/tpho-63-physics/` (TPhO 19, 2563): 15 theory items and 5
   experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2563.py`.
-- Next source: `สอวน_physics/tpho-64-physics/`. Twenty-eight of 33 papers are
-  digested; 5 remain pending.
+- `สอวน_physics/tpho-64-physics/` (TPhO 20, 2564): 24 theory items and 5
+  experiment parts → 29 generators in `otk/sets/physics/olympiad/tpho2564.py`.
+- Next source: `สอวน_physics/tpho-65-physics/`. Twenty-nine of 33 papers are
+  digested; 4 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -2032,3 +2034,34 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 23,686 passed, 4 skipped; `test_per_set` for the 20 keys
   passed; the sheet's own tests: 45 passed; Ruff clean.
 - Full suite: **40,185 passed, 13 skipped in 14m21s**.
+
+### 2026-10-21 — TPhO 20 (2564) national physics olympiad
+
+- Two PDFs, each with its solution bound in (theory 35 pages, lab 21);
+  clean text layers.
+- 29 items: 1 (rolling thin tube: a = ½g sin θ cos φ, μ ≥ ½tan θ√(1 +
+  3sin²φ); loose half cylinder: a = ((m′ + m)/(2m′ + m))g sin θ and the
+  tilt β; welded: θ_min = sin⁻¹(k′ sin θ₀) with θ₀ = tan(θ₀/2) = 2.33 rad,
+  the kinetic energy, ω at the top and the normal force), 2 (vacuum diode:
+  single-electron speed, the Child–Langmuir current, V ∝ x^{4/3}, the space
+  charge and the anode charge), 3.1 (breathing: p_D, the work 2.7 J, 30.9
+  kcal/day, ΔU = 22.1 J, Q = 24.8 J, the heat-to-work ratio), 3.2 (bilens:
+  |v|, the image separation, L_max, fringe spacing λf/a, the most fringes),
+  and the cantilever lab with synthetic data (E from the bare sag and from
+  the Δy–m slope, the slope change e_N, E and the equivalent mass from
+  vibration).
+- Scheme notes: 2 g)'s first method gives σ₊ = −(4/3)ε₀V_d/d; its second
+  method and neutrality give +, which the item uses (a test pins it). In
+  3.1 the α values are graph readings; h)'s w_O = −1.94 J needs α_O ≈ 3.335
+  L, and the tabulated 3.35 L gives −1.91 J and a ratio of 31 against 32.6
+  (a test pins the sensitivity). The lab's part 1 slope is a drawn line
+  (62 GPa; least squares 60.5); its part 3 line is the least-squares fit.
+- Independent checks include a Cramer force–torque solve, energy for the
+  loose half cylinder, a golden-section worst turn, inertia about the
+  contact point, a finite-difference normal force, a stepped electron, a
+  Poisson first-integral quadrature for the diode, sliced lung work, ray
+  tracing and beam-overlap searches for the bilens, and centred least
+  squares. `sheetpipe verify`: 29/29 green, 87 runs.
+- Targeted run: 24,029 passed, 4 skipped; `test_per_set` for the 29 keys
+  passed; the sheet's own tests: 63 passed; Ruff clean.
+- Full suite: **40,602 passed, 13 skipped in 12m59s**.

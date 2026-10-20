@@ -1,0 +1,51 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแทรกสอดด้วยไบเลนส์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.bilens_interference.procedure",
+      "kind": "procedure",
+      "title": "ระยะภาพจากไบเลนส์",
+      "statement": "ไบเลนส์: สองส่วนของเลนส์ที่ตัดกลางออกมีศูนย์กลางเลื่อน ±a/2 ให้ภาพเสมือนสองภาพที่ |v| = uf/(f − u) ห่างกัน au/(f − u) เมื่อแหล่งกำเนิดอยู่ที่โฟกัส ลำแสงขนานตัดกันที่มุม a/f ริ้วห่าง λf/a หายไปที่ f(D − a)/a และมีมากที่สุด (D − a)a/(2λf) ริ้ว",
+      "steps": [
+        "ใช้สมการเลนส์บางกับศูนย์กลางที่เลื่อนหาภาพสองภาพ",
+        "ใช้การแทรกสอดของสองแหล่งหรือสองลำแสงขนานหาระยะริ้วและจำนวนริ้ว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 26
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 27
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 28
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 29
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 30
+        },
+        {
+          "sheet": "สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 31
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2564_q20",
+        "phys.tpho2564_q21",
+        "phys.tpho2564_q22",
+        "phys.tpho2564_q23",
+        "phys.tpho2564_q24"
+      ],
+      "note": "u and f vary."
+    }
+  ]
+}
