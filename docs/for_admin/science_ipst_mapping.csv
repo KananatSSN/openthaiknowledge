@@ -2790,3 +2790,6 @@ phys.tpho2559_q23,ฟิสิกส์,โอลิมปิก (สอวน.)
 chem.posn2560_q03,เคมี,โอลิมปิก (สอวน.),สเปกตรัมของอะตอม,supplemental,โอลิมปิก (สอวน.),,,,สเปกตรัมของอะตอม,outside_scope,3,POSN chemistry 2560 first batch; reviewed solver variants; no school indicator claimed
 chem.posn2560_q04,เคมี,โอลิมปิก (สอวน.),ไอโซโทปและไอออน,supplemental,โอลิมปิก (สอวน.),,,,ไอโซโทปและไอออน,outside_scope,3,POSN chemistry 2560 first batch; reviewed solver variants; no school indicator claimed
 chem.posn2560_q06,เคมี,โอลิมปิก (สอวน.),การจัดเรียงอิเล็กตรอนของไอออน,supplemental,โอลิมปิก (สอวน.),,,,การจัดเรียงอิเล็กตรอนของไอออน,outside_scope,3,POSN chemistry 2560 first batch; reviewed solver variants; no school indicator claimed
+chem.posn2560_q01,เคมี,โอลิมปิก (สอวน.),รังสีแคโทดและรังสีบวก,supplemental,โอลิมปิก (สอวน.),,,,รังสีแคโทดและรังสีบวก,outside_scope,3,POSN chemistry 2560 second batch; reviewed solver variants; no school indicator claimed
+chem.posn2560_q02,เคมี,โอลิมปิก (สอวน.),หมู่ธาตุและเลขออกซิเดชัน,supplemental,โอลิมปิก (สอวน.),,,,หมู่ธาตุและเลขออกซิเดชัน,outside_scope,3,POSN chemistry 2560 second batch; reviewed solver variants; no school indicator claimed
+chem.posn2560_q05,เคมี,โอลิมปิก (สอวน.),แนวโน้มขนาดไอออน,supplemental,โอลิมปิก (สอวน.),,,,แนวโน้มขนาดไอออน,outside_scope,3,POSN chemistry 2560 second batch; reviewed solver variants; no school indicator claimed

@@ -37,6 +37,42 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.used_nucleon_count_only": {
+        "th": "ใช้เพียงจำนวนนิวคลีออนเป็นอัตราส่วนมวล",
+        "en": "Used the nucleon count alone as the mass ratio",
+    },
+    "chem.added_mass_factors": {
+        "th": "บวกปัจจัยมวลแทนการคูณ",
+        "en": "Added the mass factors instead of multiplying them",
+    },
+    "chem.included_extra_nucleon": {
+        "th": "นับนิวคลีออนเกินไปหนึ่งตัว",
+        "en": "Counted one extra nucleon",
+    },
+    "chem.confused_member_with_only_state": {
+        "th": "สับสนระหว่างเลขออกซิเดชันที่เป็นไปได้กับเลขออกซิเดชันเพียงค่าเดียว",
+        "en": "Confused a possible oxidation state with the only possible state",
+    },
+    "chem.ignored_positive_oxidation": {
+        "th": "มองข้ามเลขออกซิเดชันบวกในแบบจำลอง",
+        "en": "Overlooked positive oxidation states in the model",
+    },
+    "chem.miscounted_unpaired_p": {
+        "th": "นับอิเล็กตรอนเดี่ยวใน p⁵ ผิด",
+        "en": "Miscounted unpaired electrons in p5",
+    },
+    "chem.reversed_ionic_shell_order": {
+        "th": "กลับลำดับขนาดไอออนที่มีจำนวนชั้นต่างกัน",
+        "en": "Reversed the size order of ions with different shell counts",
+    },
+    "chem.assumed_equal_ionic_radii": {
+        "th": "คิดว่าไอออนที่มีจำนวนชั้นต่างกันมีขนาดเท่ากัน",
+        "en": "Assumed equal radii despite different occupied shells",
+    },
+    "chem.assumed_ionic_radius_unknown": {
+        "th": "คิดว่าเปรียบเทียบขนาดไอออนไม่ได้แม้จำนวนชั้นต่างกัน",
+        "en": "Assumed ionic radii cannot be compared despite different shells",
+    },
     "chem.only_ground_transitions": {
         "th": "นับเฉพาะการเปลี่ยนระดับลงสู่สถานะพื้น",
         "en": "Counted only transitions ending at the ground state",

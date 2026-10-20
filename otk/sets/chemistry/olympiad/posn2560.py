@@ -1,9 +1,9 @@
-"""First reviewed batch of POSN camp-selection chemistry 2560."""
+"""Reviewed waves of POSN camp-selection chemistry 2560."""
 
 from otk.core.mistakes import named
 from otk.core.registry import question_type
 from otk.kit.math_problems import MathDraw, WordProblem
-from otk.sheets.posn2560_chemistry import q03, q04, q06
+from otk.sheets.posn2560_chemistry import q01, q02, q03, q04, q05, q06
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
 
@@ -11,6 +11,61 @@ LEVEL = {"th": "โอลิมปิก (สอวน.)"}
 class ChemistrySheet(WordProblem):
     sheet_id = "posn2560_chemistry"
     sheet = "สอวน. ค่าย 1 เคมี (2560)"
+
+
+@question_type(
+    "chem.posn2560_q01", display_name={"th": "มวลรังสีบวกและรังสีแคโทด"},
+    level=LEVEL, subject="เคมี", topic="รังสีแคโทดและรังสีบวก",
+)
+class CanalRayMass(ChemistrySheet):
+    def expr(self, rng):
+        isotope, nucleons = rng.choice((("H-1", 1), ("H-2", 2), ("He-4", 4), ("Ne-20", 20)))
+        answer = q01.solve(nucleons=nucleons)
+        return MathDraw(
+            "", str(answer),
+            prompt=(
+                f"ในหลอดรังสีแคโทด อนุภาคบวก X เป็นไอออนของ {isotope} "
+                "และอนุภาค Y เป็นอิเล็กตรอน สมมติให้มวลของไอออนเท่ากับจำนวน "
+                "นิวคลีออนคูณมวลนิวคลีออน และมวลนิวคลีออนเป็น 1836 เท่าของมวลอิเล็กตรอน "
+                "มวลของ X เป็นกี่เท่าของมวล Y"
+            ),
+            hint=r"m_X/m_Y=A(m_{\rm nucleon}/m_e)",
+            distractors=[
+                named("chem.used_nucleon_count_only", str(nucleons)),
+                named("chem.added_mass_factors", str(nucleons + 1836)),
+                named("chem.included_extra_nucleon", str((nucleons + 1) * 1836)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q02", display_name={"th": "ข้อสันนิษฐานเลขออกซิเดชันของแฮโลเจน"},
+    level=LEVEL, subject="เคมี", topic="หมู่ธาตุและเลขออกซิเดชัน",
+)
+class HalogenOxidationClaims(ChemistrySheet):
+    def expr(self, rng):
+        symbol, states = rng.choice((
+            ("Ts", (-1, 1, 3, 5)),
+            ("Cl", (-1, 1, 3, 5, 7)),
+            ("Br", (-1, 1, 3, 5, 7)),
+            ("I", (-1, 1, 3, 5, 7)),
+        ))
+        answer = q02.solve(states=states)
+        assert answer == "only_minus_one"
+        return MathDraw(
+            "", r"S=\{-1\}",
+            prompt=(
+                f"แบบจำลองของธาตุ {symbol} หมู่ 17 ให้ชุดเลขออกซิเดชันที่เป็นไปได้ "
+                f"S = {{{', '.join(f'{s:+d}' if s > 0 else str(s) for s in states)}}} "
+                "และอิเล็กตรอนชั้นนอกเป็น p⁵ ข้อความใดขัดกับแบบจำลองนี้"
+            ),
+            hint="ตรวจสมาชิกของ S ก่อนสรุปว่ามีเลขออกซิเดชันเพียงค่าเดียว",
+            distractors=[
+                named("chem.confused_member_with_only_state", r"-1\in S"),
+                named("chem.ignored_positive_oxidation", r"+1\in S"),
+                named("chem.miscounted_unpaired_p", r"n_{\rm unpaired}=1"),
+            ],
+        )
 
 
 @question_type(
@@ -65,6 +120,39 @@ class IsotopeNotation(ChemistrySheet):
                 named("chem.ignored_ion_charge", _nucleus(electrons, electrons + neutrons - fewer)),
                 named("chem.reversed_ion_charge", _nucleus(electrons - charge, mass - 2 * charge)),
                 named("chem.kept_other_isotope_neutrons", _nucleus(atomic, mass + fewer)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q05", display_name={"th": "ขนาดไอออนจากจำนวนชั้นอิเล็กตรอน"},
+    level=LEVEL, subject="เคมี", topic="แนวโน้มขนาดไอออน",
+)
+class IonicShellRadius(ChemistrySheet):
+    def expr(self, rng):
+        first, second = rng.choice((
+            (("Mg", 12, 2), ("P", 15, -3)),
+            (("P", 15, -3), ("Mg", 12, 2)),
+            (("Na", 11, 1), ("Cl", 17, -1)),
+            (("Ca", 20, 2), ("As", 33, -3)),
+        ))
+        answer = q05.solve(first_atomic=first[1], first_charge=first[2],
+                           second_atomic=second[1], second_charge=second[2])
+        smaller = "A" if answer == "first" else "B"
+        larger = "B" if answer == "first" else "A"
+        return MathDraw(
+            "", rf"r_{{{smaller}}}<r_{{{larger}}}",
+            prompt=(
+                f"ให้ A = {first[0]} ({first[1]}) ที่มีประจุ {first[2]:+d} และ "
+                f"B = {second[0]} ({second[1]}) ที่มีประจุ {second[2]:+d} "
+                "เลขในวงเล็บคือเลขอะตอม เมื่อไอออนทั้งสองมีจำนวนชั้นอิเล็กตรอน "
+                "ที่ครองอยู่ต่างกัน ความสัมพันธ์ของรัศมีไอออนข้อใดถูกต้อง"
+            ),
+            hint="หาจำนวนอิเล็กตรอนของไอออนก่อน แล้วดูชั้นนอกสุดที่ครองอยู่",
+            distractors=[
+                named("chem.reversed_ionic_shell_order", rf"r_{{{smaller}}}>r_{{{larger}}}"),
+                named("chem.assumed_equal_ionic_radii", r"r_A=r_B"),
+                named("chem.assumed_ionic_radius_unknown", r"\text{insufficient data}"),
             ],
         )
 

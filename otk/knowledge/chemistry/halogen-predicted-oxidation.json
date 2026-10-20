@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "หมู่ธาตุและเลขออกซิเดชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.halogen_predicted_oxidation.procedure",
+      "kind": "procedure",
+      "title": "ข้อสันนิษฐานเลขออกซิเดชันของแฮโลเจน",
+      "statement": "ธาตุหมู่ 17 มีเวเลนซ์ ns²np⁵ และ p⁵ มีอิเล็กตรอนเดี่ยวหนึ่งตัว; แบบจำลอง Ts ทำนายเลขออกซิเดชันหลายค่า รวมทั้งค่าบวก",
+      "steps": [
+        "แยกข้อเท็จจริงการจัดอิเล็กตรอนออกจากค่าที่แบบจำลองทำนาย",
+        "ตรวจว่าชุดเลขออกซิเดชันที่เป็นไปได้มีค่าอื่นนอกจาก −1"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q02"
+      ],
+      "note": "Ts oxidation states -1,+1,+3,+5 are predictions, not observations; the generated question explicitly supplies the model set. 7p5 has one unpaired electron."
+    }
+  ]
+}

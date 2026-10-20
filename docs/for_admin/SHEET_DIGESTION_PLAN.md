@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — first batch, 2026-10-20
+### Chemistry POSN bank — waves 1–2, 2026-10-20
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
-- All 70 have text-layer extraction in the private bank. Only Part I questions
-  3, 4 and 6 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **3/70 complete; 67 pending.**
+- All 70 have text-layer extraction in the private bank. Part I questions
+  1–6 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **6/70 complete; 64 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  three reviewed items. Its `verify` result of 3/3 describes this batch, not the
+  six reviewed items. Its `verify` result of 6/6 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -84,7 +84,11 @@ Phases in build order. Check an item only when its tests pass.
   curriculum/stage/layout checks and Ruff. Run the full suite once all 70
   questions are solved, generated and claimed. The first batch's full run is
   historical; do not repeat it before 70/70 is complete.
-- Next: review and digest Part I 1–2 and 5, then continue from 7.
+- MC1's diagram has the positive ray behind the cathode and electrons behind
+  the anode. MC2's Ts oxidation states are model predictions, not measured
+  properties. MC5's specified Mg²⁺ and P³⁻ differ in occupied shell count.
+  These adaptations state their model assumptions in the generated prompts.
+- Next: review and digest Part I from question 7.
 
 ### Physics POSN bank — 2026-10-17
 
@@ -521,6 +525,21 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-20 — POSN chemistry 2560, second atomic-structure batch
+
+- Visually rechecked p3's perforated cathode/anode diagram and reviewed MC1,
+  MC2 and MC5; source choices ง, ค and ง are reproduced by the stated
+  physical or chemical models. Built three independent solvers, generators,
+  knowledge claims and named distractors. No source artwork was shipped.
+- `verify posn2560_chemistry`: 6/6 green, 19 variant checks, all independent.
+  Knowledge validation: 777 units in 643 files, zero problems; source
+  coverage: 6/70. Only the three new golden keys were added.
+- Targeted sheet/solver checks: 6,526 passed, 4 skipped. Registry and safety
+  batch: 16,233 passed; its two initial failures were stale frozen sheet
+  counts and the generated set index, both corrected. The affected checks
+  passed on rerun; Ruff and whitespace checks passed. Full suite deferred
+  until the whole 70-question sheet is complete.
 
 ### 2026-10-20 — POSN chemistry 2560, first atomic-structure batch
 

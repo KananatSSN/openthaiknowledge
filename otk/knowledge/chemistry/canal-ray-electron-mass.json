@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รังสีแคโทดและรังสีบวก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.canal_ray_electron_mass.procedure",
+      "kind": "procedure",
+      "title": "มวลรังสีบวกและรังสีแคโทด",
+      "statement": "รังสีบวกหลังแคโทดเป็นไอออนของแก๊ส ส่วนรังสีแคโทดหลังแอโนดเป็นอิเล็กตรอน; มวลไอออนมากกว่ามวลอิเล็กตรอนมาก",
+      "steps": [
+        "อ่านตำแหน่งขั้วและฉากเรืองแสงเพื่อระบุอนุภาค",
+        "เทียบมวลของไอออนและอิเล็กตรอนโดยคูณจำนวนนิวคลีออน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q01"
+      ],
+      "note": "Source choice ง is true even if X from H2 is H+ or H2+. Adaptation explicitly uses H-1+ and approximates one nucleon as 1836 electron masses; variants specify the ion isotope."
+    }
+  ]
+}

@@ -4,8 +4,34 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: only source Part I questions 3, 4 and 6 are reviewed, solved and generated (3/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 67 are pending. Raw 70-item extraction and page text stay in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 3/3 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–6 are reviewed, solved and generated (6/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 64 are pending. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 6/6 solver checks as whole-paper completion.",
   "items": [
+    {
+      "number": 1,
+      "solver": "q01",
+      "title": "มวลรังสีบวกและรังสีแคโทด",
+      "source": "Part I, question 1, p3: X reaches screen ก behind cathode and Y reaches screen ข behind anode; true choice ง compares positive-ion mass with electron mass.",
+      "page": 3,
+      "figure": "The diagram shows cathode left, anode right, both perforated, screen ก behind the cathode and screen ข behind the anode. The adaptation states X and Y in words; the original picture is not attached.",
+      "figure_asset": "",
+      "topic": "รังสีแคโทดและรังสีบวก",
+      "answer": "1836",
+      "generator": "chem.posn2560_q01",
+      "note": "Source choice ง is true even if X from H2 is H+ or H2+. Adaptation explicitly uses H-1+ and approximates one nucleon as 1836 electron masses; variants specify the ion isotope."
+    },
+    {
+      "number": 2,
+      "solver": "q02",
+      "title": "ข้อสันนิษฐานเลขออกซิเดชันของแฮโลเจน",
+      "source": "Part I, question 2, p3: for Ts (Z=117) identify false conjecture ค that -1 is its only oxidation state.",
+      "page": 3,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "หมู่ธาตุและเลขออกซิเดชัน",
+      "answer": "only_minus_one",
+      "generator": "chem.posn2560_q02",
+      "note": "Ts oxidation states -1,+1,+3,+5 are predictions, not observations; the generated question explicitly supplies the model set. 7p5 has one unpaired electron."
+    },
     {
       "number": 3,
       "solver": "q03",
@@ -31,6 +57,19 @@
       "answer": "(12, 22)",
       "generator": "chem.posn2560_q04",
       "note": "Solver returns (atomic number, mass number). Signed charge is accepted; the generator uses cations as in the source."
+    },
+    {
+      "number": 5,
+      "solver": "q05",
+      "title": "ขนาดไอออนจากจำนวนชั้นอิเล็กตรอน",
+      "source": "Part I, question 5, p4: A=Mg (Z=12), E=P (Z=15), J=As (Z=33); true choice ง says Mg ion smaller than P ion.",
+      "page": 4,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "แนวโน้มขนาดไอออน",
+      "answer": "first",
+      "generator": "chem.posn2560_q05",
+      "note": "Adaptation specifies Mg2+ and P3- explicitly: 10 electrons in n=2 versus 18 electrons in n=3. Variants only compare ions with different outer occupied shells."
     },
     {
       "number": 6,

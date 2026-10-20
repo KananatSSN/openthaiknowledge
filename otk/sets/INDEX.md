@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,464 sets in 1,308 unit files. Each subject's `README.md` lists its units with their indicators.
+4,467 sets in 1,308 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -1089,7 +1089,7 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`posn2560.py`](chemistry/olympiad/posn2560.py) | First reviewed batch of POSN camp-selection chemistry 2560. | `chem.posn2560_q03`, `chem.posn2560_q04`, `chem.posn2560_q06` |
+| [`posn2560.py`](chemistry/olympiad/posn2560.py) | Reviewed waves of POSN camp-selection chemistry 2560. | `chem.posn2560_q01`, `chem.posn2560_q02`, `chem.posn2560_q03`, `chem.posn2560_q04`, `chem.posn2560_q05`, `chem.posn2560_q06` |
 
 ## biology — ชีวะ
 

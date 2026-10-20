@@ -4129,14 +4129,18 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2559_q23": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสอบเทียบตัวต้านทานไวแสง', "outside_scope"),
 })
 # END TPhO 2559
-# First reviewed batch of the POSN 2560 chemistry paper; school indicators
+# Reviewed waves of the POSN 2560 chemistry paper; school indicators
 # are not claimed for these supplemental olympiad adaptations.
 SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
-    "chem.posn2560_q03", "chem.posn2560_q04", "chem.posn2560_q06",
+    "chem.posn2560_q01", "chem.posn2560_q02", "chem.posn2560_q03",
+    "chem.posn2560_q04", "chem.posn2560_q05", "chem.posn2560_q06",
 })
 SCIENCE_PLACEMENTS.update({
+    "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
+    "chem.posn2560_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "หมู่ธาตุและเลขออกซิเดชัน", "outside_scope"),
     "chem.posn2560_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สเปกตรัมของอะตอม", "outside_scope"),
     "chem.posn2560_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ไอโซโทปและไอออน", "outside_scope"),
+    "chem.posn2560_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "แนวโน้มขนาดไอออน", "outside_scope"),
     "chem.posn2560_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การจัดเรียงอิเล็กตรอนของไอออน", "outside_scope"),
 })
 
