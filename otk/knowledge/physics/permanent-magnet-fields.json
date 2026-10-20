@@ -1,0 +1,55 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แม่เหล็กถาวรและสนามแม่เหล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.permanent_magnet_fields.procedure",
+      "kind": "procedure",
+      "title": "เลขชี้กำลังของสนามแม่เหล็กตามระยะบนแกนแม่เหล็ก",
+      "statement": "แม่เหล็กถาวร: สนามบนแกนลดลงแบบ x^n (n ≈ −3) จึงหา n และไดโพลโมเมนต์จากกราฟ log B กับ log x และ M = m/V ลูปเหล็กส่งสนาม B_g = 2B₀(1 − d/√(d² + R²)) และฟลักซ์จากครึ่งแท่ง Φ = μ₀M((L/2)/√(R² + (L/2)²))πR²",
+      "steps": [
+        "วัดสนามด้วย Hall sensor ที่ระยะ ช่องอากาศ หรือวงแหวนต่าง ๆ",
+        "เขียนกราฟเส้นตรงหรือรวมฟลักซ์เพื่อหา n, M และ B₀"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2565_q18",
+        "phys.tpho2565_q19",
+        "phys.tpho2565_q20",
+        "phys.tpho2565_q21",
+        "phys.tpho2565_q22"
+      ],
+      "note": "Synthetic readings; least squares (the solution's drawn line gives -2.86)."
+    }
+  ]
+}

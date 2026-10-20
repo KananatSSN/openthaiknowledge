@@ -5719,6 +5719,34 @@
    "sheet_id": "tpho2564_physics",
    "stage": "generated",
    "note": "Theory paper with its solution bound in (35 pages); 31 sub-parts, 24 items; answers from the bound solution, re-derived; hand transcript. Scheme notes: 2 g) sign of sigma+ in its first method; 3.1 h) sensitive to the graph-read alpha_O."
+  },
+  {
+   "path": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
+   "kind": "exam",
+   "sha256": "55c7e9bdc3621bab",
+   "size": 2201944,
+   "pages": 25,
+   "text_chars": 18576,
+   "layout": "numbered",
+   "glyph_damage": 772,
+   "items": 7,
+   "sheet_id": "tpho2565_physics",
+   "stage": "generated",
+   "note": "Experimental paper with its solution bound in (25 pages: permanent magnets and a Hall sensor); 7 parts, 5 items with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+   "kind": "exam",
+   "sha256": "2c96d95f3321433f",
+   "size": 1590915,
+   "pages": 24,
+   "text_chars": 25717,
+   "layout": "numbered",
+   "glyph_damage": 576,
+   "items": 26,
+   "sheet_id": "tpho2565_physics",
+   "stage": "generated",
+   "note": "Theory paper with its solution bound in (24 pages: electric dipole and a point charge, magnetic cooling, sonic flow); 26 sub-parts, 17 items; answers from the bound solution, re-derived; hand transcript. Scheme note: 1 g)'s period 10.3/beta should be 10.4/beta."
   }
  ]
 }

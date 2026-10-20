@@ -1,0 +1,72 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การทำความเย็นด้วยสนามแม่เหล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.paramagnetic_demagnetisation.procedure",
+      "kind": "procedure",
+      "title": "สภาพแม่เหล็กของวัสดุพาราแมกเนติกสองระดับ",
+      "statement": "การทำความเย็นด้วยสนามแม่เหล็ก: ไดโพลสองระดับกระจายตามโบลต์ซมันน์ M/(Nμ) = tanh(μB/k_BT) เอนโทรปีขึ้นกับ μB/k_BT เท่านั้น จึงลดสนามแบบแอเดียแบติกได้ T_f = (B_L/B_H)T_i โดย B_L มาจากไดโพลเพื่อนบ้าน และความร้อนที่ถ่ายออก T_iΔS",
+      "steps": [
+        "เขียนการแจกแจงโบลต์ซมันน์และเอนโทรปีของสองระดับ",
+        "ใช้เอนโทรปีคงที่และ Q = TΔS หาอุณหภูมิสุดท้ายและความร้อน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 17
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2565_q06",
+        "phys.tpho2565_q07",
+        "phys.tpho2565_q08",
+        "phys.tpho2565_q09",
+        "phys.tpho2565_q10",
+        "phys.tpho2565_q11"
+      ],
+      "note": "B and T vary."
+    }
+  ]
+}

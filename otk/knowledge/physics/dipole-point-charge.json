@@ -1,0 +1,55 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ไดโพลไฟฟ้ากับประจุจุด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.dipole_point_charge.procedure",
+      "kind": "procedure",
+      "title": "สนามไฟฟ้าบนแกนของไดโพล",
+      "statement": "ไดโพลไฟฟ้ากับประจุจุด: สนามระยะไกล E = (2p cos θ r̂ + p sin θ θ̂)/(4πε₀r³) ประจุโคจรเป็นวงกลมรอบแกนได้เมื่อ 3cos²θ = 1 (θ = 125.3°) ด้วย L_z² = (1/4πε₀)(4/3√3)pq₀m₀ และประจุที่ปล่อยจากแนวตั้งฉากเคลื่อนที่บนส่วนโค้งวงกลม เร็วที่สุดที่ θ = π",
+      "steps": [
+        "แยกองค์ประกอบของไดโพลหรือรวมศักย์ของสองประจุ",
+        "ใช้เงื่อนไขแรง พลังงาน และโมเมนตัมเชิงมุมหาวงโคจร อัตราเร็ว และคาบ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2565_q01",
+        "phys.tpho2565_q02",
+        "phys.tpho2565_q03",
+        "phys.tpho2565_q04",
+        "phys.tpho2565_q05"
+      ],
+      "note": "Charge, spacing and distance vary."
+    }
+  ]
+}

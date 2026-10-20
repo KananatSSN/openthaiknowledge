@@ -1,0 +1,60 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การไหลของแก๊สในหัวฉีด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.compressible_nozzle_flow.procedure",
+      "kind": "procedure",
+      "title": "ความดันที่ปลายหัวฉีดเมื่อแก๊สไม่อัดตัว",
+      "statement": "การไหลของแก๊สในหัวฉีด: ไม่อัดตัว P₁ = P₀ − Q²/(2ρ₀A²) ส่วนแบบแอเดียแบติก c²/(γ − 1) + v²/2 คงที่ ให้ T₁ = T₀/(1 + (γ − 1)M²/2) และ Q² = P₀ρ₀A²(2γ/(γ − 1))(β^{2/γ} − β^{1+1/γ}) ซึ่งสูงสุดที่ M = 1, P₁* = P₀(2/(γ + 1))^{γ/(γ−1)}",
+      "steps": [
+        "เขียนสมการแบร์นูลลีรวมพลังงานภายในและความสัมพันธ์แอเดียแบติก",
+        "หาอุณหภูมิ ความดัน อัตราการไหล และสภาวะวิกฤติ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 19
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 20
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 21
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 22
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 23
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 24
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 25
+        },
+        {
+          "sheet": "สอวน_physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
+          "item": 26
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2565_q12",
+        "phys.tpho2565_q13",
+        "phys.tpho2565_q14",
+        "phys.tpho2565_q15",
+        "phys.tpho2565_q16",
+        "phys.tpho2565_q17"
+      ],
+      "note": "P0, rho0, A and Q vary."
+    }
+  ]
+}

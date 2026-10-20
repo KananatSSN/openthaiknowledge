@@ -161,8 +161,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2563.py`.
 - `สอวน_physics/tpho-64-physics/` (TPhO 20, 2564): 24 theory items and 5
   experiment parts → 29 generators in `otk/sets/physics/olympiad/tpho2564.py`.
-- Next source: `สอวน_physics/tpho-65-physics/`. Twenty-nine of 33 papers are
-  digested; 4 remain pending.
+- `สอวน_physics/tpho-65-physics/` (TPhO 21, 2565): 17 theory items and 5
+  experiment parts → 22 generators in `otk/sets/physics/olympiad/tpho2565.py`.
+- Next source: `สอวน_physics/tpho-66-physics/`. Thirty of 33 papers are
+  digested; 3 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -2065,3 +2067,34 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 24,029 passed, 4 skipped; `test_per_set` for the 29 keys
   passed; the sheet's own tests: 63 passed; Ruff clean.
 - Full suite: **40,602 passed, 13 skipped in 12m59s**.
+
+### 2026-10-21 — TPhO 21 (2565) national physics olympiad
+
+- Two PDFs, each with its solution bound in (theory 24 pages, lab 25);
+  clean text layers apart from a few lost fraction slashes.
+- 22 items: 1 (a charge in a dipole's field: the axial field, |E| at
+  (r, θ), the circling charge's L_z with θ_c = 125.3°, the top speed and the
+  swing period), 2 (magnetic cooling: M/(Nμ) = tanh x, S/(Nk_B), χ = Nμ²/k_BT,
+  the neighbours' field B_L, T_f = (B_L/B_H)T_i, the heat Q/N), 3 (sonic
+  flow: incompressible P₁, T₁ and P₁ from the Mach number, Q(β), the
+  critical pressure and the choked flow), and the permanent-magnet lab with
+  synthetic data (n and M from log B against log x, B₀ of an iron loop with
+  an air gap, M from half-magnet flux, flux summed over rings).
+- Scheme notes: 1 g)'s period is written 10.3/β, but its own approximation
+  gives 10.44/β (exact 10.49/β); the item uses the paper's approximation and
+  a test pins both. 2 i) and k) round 1.85 mT to 2 mT and 2.5×10⁻²⁴ J to
+  3×10⁻²⁴ J. The lab's part 1 line is drawn (n = −2.86, M = 1.2×10⁶ A/m);
+  least squares gives −2.90 and 1.08×10⁶ A/m. Its part 2 slope is the
+  least-squares one.
+- Generators: q09's r² slip now stays in the plain-number range (in nm), as
+  the format guard otherwise redrew forever; the spin items use cold states
+  so that tanh x and its linearisation stay apart.
+- Independent checks include two-charge Coulomb sums, a bisected orbit
+  angle, a velocity-Verlet swing, the exact period integral, Boltzmann
+  weights, multinomial entropy via lgamma, an entropy-matching bisection,
+  integrated B dM heat, an enthalpy bisection, a golden-section flow peak,
+  the sonic state, and centred least squares. `sheetpipe verify`: 22/22
+  green, 66 runs.
+- Targeted run: 24,263 passed, 4 skipped; `test_per_set` for the 22 keys
+  passed; the sheet's own tests: 49 passed; Ruff clean.
+- Full suite: **40,921 passed, 13 skipped in 14m22s**.
