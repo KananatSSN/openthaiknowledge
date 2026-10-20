@@ -8,7 +8,7 @@ import pytest
 from otk.core import generate
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15, q16, q17, q18, q19, q20, q21,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
 )
 
 
@@ -95,6 +95,13 @@ def test_net_ionic_conductivity_and_nitrogen_oxygen_bonds():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_vsepr_shapes_angles_and_central_lone_pairs():
+    for module in (q22, q23, q24):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -117,7 +124,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 22)))
+@pytest.mark.parametrize("number", tuple(range(1, 25)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -269,7 +276,7 @@ def test_generated_answers_follow_the_written_data(number):
             molecular = next(label for label, _, _, solid, liquid, water in rows
                              if solid == liquid == "ไม่นำ" and water == "นำ")
             expected = f"({ionic},{molecular},{metal})"
-        else:
+        elif number == 21:
             listed = re.search(r"ในบรรดาชนิดต่อไปนี้ (.+?) ชนิดใด", stem)[1].split(", ")
             by_text = {"NO⁺": "NO+", "NO": "NO", "NO₂⁺": "NO2+",
                        "NO₂⁻": "NO2-", "NO₃⁻": "NO3-"}
@@ -278,5 +285,38 @@ def test_generated_answers_follow_the_written_data(number):
             expected = {"NO+": r"\mathrm{NO}^{+}", "NO": r"\mathrm{NO}",
                         "NO2+": r"\mathrm{NO_2}^{+}", "NO2-": r"\mathrm{NO_2}^{-}",
                         "NO3-": r"\mathrm{NO_3}^{-}"}[shortest]
+        elif number == 22:
+            tex = {"BF4-": r"\mathrm{BF_4}^{-}", "POCl3": r"\mathrm{POCl_3}",
+                   "ICl4-": r"\mathrm{ICl_4}^{-}", "XeF4": r"\mathrm{XeF_4}",
+                   "TeCl4": r"\mathrm{TeCl_4}", "SF4": r"\mathrm{SF_4}",
+                   "NH3": r"\mathrm{NH_3}", "PCl3": r"\mathrm{PCl_3}"}
+            reverse = {value: key for key, value in tex.items()}
+            pairs = tuple(tuple(reverse[part] for part in
+                                choice.content[0].tex.split(r",\;"))
+                          for choice in question.choices)
+            matching = q22.check(pairs=pairs)
+            expected = tex[matching[0]] + r",\;" + tex[matching[1]]
+        elif number == 23:
+            listed = re.search(r"แต่ละโมเลกุล: (.+?) โมเลกุลใด", stem)[1].split(", ")
+            text_to_formula = {"ClF₃": "ClF3", "ClF₅": "ClF5", "SiF₄": "SiF4",
+                               "NCl₃": "NCl3", "OCl₂": "OCl2", "BF₃": "BF3",
+                               "NH₃": "NH3", "H₂O": "H2O"}
+            molecules = tuple(text_to_formula[value] for value in listed)
+            shortest = q23.check(molecules=molecules)
+            expected = {"ClF3": r"\mathrm{ClF_3}", "ClF5": r"\mathrm{ClF_5}",
+                        "SiF4": r"\mathrm{SiF_4}", "NCl3": r"\mathrm{NCl_3}",
+                        "OCl2": r"\mathrm{OCl_2}", "BF3": r"\mathrm{BF_3}",
+                        "NH3": r"\mathrm{NH_3}", "H2O": r"\mathrm{H_2O}"}[shortest]
+        else:
+            listed = re.search(r"ในบรรดา (.+?) ชนิดใด", stem)[1].split(", ")
+            text_to_formula = {"NH₃": "NH3", "XeF₂": "XeF2", "NO₂⁻": "NO2-",
+                               "SO₃²⁻": "SO3^2-", "I₃⁻": "I3-", "XeF₄": "XeF4",
+                               "ClF₃": "ClF3", "SF₄": "SF4"}
+            species = tuple(text_to_formula[value] for value in listed)
+            most = q24.check(species=species)
+            expected = {"NH3": r"\mathrm{NH_3}", "XeF2": r"\mathrm{XeF_2}",
+                        "NO2-": r"\mathrm{NO_2}^{-}", "SO3^2-": r"\mathrm{SO_3}^{2-}",
+                        "I3-": r"\mathrm{I_3}^{-}", "XeF4": r"\mathrm{XeF_4}",
+                        "ClF3": r"\mathrm{ClF_3}", "SF4": r"\mathrm{SF_4}"}[most]
         assert answer == expected
         assert len(question.choices) == 4

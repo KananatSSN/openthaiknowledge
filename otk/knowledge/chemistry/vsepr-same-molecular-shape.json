@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รูปร่างโมเลกุลตาม VSEPR",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.vsepr_same_molecular_shape.procedure",
+      "kind": "procedure",
+      "title": "คู่สารที่มีรูปร่างโมเลกุลเหมือนกัน",
+      "statement": "รูปร่างโมเลกุลตาม VSEPR ขึ้นกับจำนวนโดเมนพันธะและคู่โดดเดี่ยวบนอะตอมกลาง; BF₄⁻ กับ POCl₃ เป็นทรงสี่หน้า ส่วน ICl₄⁻ เป็นสี่เหลี่ยมแบนราบและ TeCl₄ เป็นทรงสี่หน้าบิดเบี้ยว",
+      "steps": [
+        "เขียนโครงสร้างลูอิสและนับโดเมนรอบอะตอมกลาง",
+        "เทียบรูปร่างการจัดเรียงอะตอมโดยไม่นับคู่โดดเดี่ยวเป็นอะตอมปลาย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q22"
+      ],
+      "note": "Shape comparison uses central-atom AXE domains; P=O in POCl3 counts as one domain. Variants match square-planar, seesaw and trigonal-pyramidal pairs."
+    }
+  ]
+}

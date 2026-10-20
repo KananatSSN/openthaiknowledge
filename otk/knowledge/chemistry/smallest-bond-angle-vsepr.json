@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "มุมพันธะและรูปร่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.smallest_bond_angle_vsepr.procedure",
+      "kind": "procedure",
+      "title": "มุมพันธะที่เล็กที่สุด",
+      "statement": "มุมพันธะที่เล็กที่สุดของ ClF₃ อยู่ใกล้ 87.5° ต่ำกว่ามุมของ SiF₄ NCl₃ และ OCl₂; ต้องเทียบมุมเล็กที่สุดในโมเลกุลที่มีหลายมุม",
+      "steps": [
+        "หารูปร่าง VSEPR และมุมพันธะทุกชนิดในแต่ละโมเลกุล",
+        "เลือกมุมต่ำสุดของแต่ละโมเลกุลแล้วเทียบข้อมูลเรขาคณิตที่วัดได้"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q23"
+      ],
+      "note": "Compares the smallest angle within each molecule. NIST CCCBDB reports ClF3 87.45 deg, NCl3 107.1 deg and OCl2 about 110.88 deg; SiF4 is tetrahedral near 109.5 deg. Variants may use ClF5 at 86.5 deg. Reference: https://cccbdb.nist.gov/expangle2x.asp?all=0&descript=aFClF ; https://cccbdb.nist.gov/exp2x.asp?casno=7791211&charge=0 ."
+    }
+  ]
+}

@@ -5,7 +5,7 @@ from otk.core.registry import question_type
 from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15, q16, q17, q18, q19, q20, q21,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -727,5 +727,118 @@ class NitrogenOxygenBondLength(ChemistrySheet):
                 + " ชนิดใดมีพันธะ N–O สั้นที่สุด"),
             hint="พันธะสั้นมักมีอันดับพันธะสูง; NO⁺ มีอันดับพันธะ 3",
             distractors=[named(_BOND_MISTAKES[item], _NITROGEN_OXIDE_TEX[item])
+                         for item in species if item != answer],
+        )
+
+
+_VSEPR_TEX = {
+    "BF4-": r"\mathrm{BF_4}^{-}", "POCl3": r"\mathrm{POCl_3}",
+    "ICl4-": r"\mathrm{ICl_4}^{-}", "XeF4": r"\mathrm{XeF_4}",
+    "TeCl4": r"\mathrm{TeCl_4}", "SF4": r"\mathrm{SF_4}",
+    "NH3": r"\mathrm{NH_3}", "PCl3": r"\mathrm{PCl_3}",
+}
+_SHAPE_PAIR_MISTAKES = {
+    ("BF4-", "ICl4-"): "chem.confused_tetrahedral_with_square_planar",
+    ("TeCl4", "POCl3"): "chem.confused_seesaw_with_tetrahedral",
+    ("ICl4-", "TeCl4"): "chem.confused_square_planar_with_seesaw",
+}
+
+
+def _shape_pair_tex(pair):
+    return _VSEPR_TEX[pair[0]] + r",\;" + _VSEPR_TEX[pair[1]]
+
+
+@question_type(
+    "chem.posn2560_q22", display_name={"th": "คู่สารที่มีรูปร่างโมเลกุลเหมือนกัน"},
+    level=LEVEL, subject="เคมี", topic="รูปร่างโมเลกุลตาม VSEPR",
+)
+class SameMolecularShape(ChemistrySheet):
+    def expr(self, rng):
+        pairs = rng.choice((q22.PARAMS, *q22.VARIANTS))["pairs"]
+        answer = q22.solve(pairs=pairs)
+        return MathDraw(
+            "", _shape_pair_tex(answer),
+            prompt="สารหรือไอออนคู่ใดมีรูปร่างการจัดเรียงอะตอมเหมือนกัน",
+            hint="นับโดเมนพันธะและคู่โดดเดี่ยวบนอะตอมกลาง แล้วพิจารณารูปร่างของอะตอม",
+            distractors=[named(_SHAPE_PAIR_MISTAKES[pair], _shape_pair_tex(pair))
+                         for pair in pairs if pair != answer],
+        )
+
+
+_ANGLE_TEX = {
+    "ClF3": r"\mathrm{ClF_3}", "ClF5": r"\mathrm{ClF_5}",
+    "SiF4": r"\mathrm{SiF_4}", "NCl3": r"\mathrm{NCl_3}",
+    "OCl2": r"\mathrm{OCl_2}", "BF3": r"\mathrm{BF_3}",
+    "NH3": r"\mathrm{NH_3}", "H2O": r"\mathrm{H_2O}",
+}
+_ANGLE_TEXT = {
+    "ClF3": "ClF₃", "ClF5": "ClF₅", "SiF4": "SiF₄",
+    "NCl3": "NCl₃", "OCl2": "OCl₂", "BF3": "BF₃",
+    "NH3": "NH₃", "H2O": "H₂O",
+}
+_ANGLE_MISTAKES = {
+    "SiF4": "chem.assumed_tetrahedral_bond_angle_smallest",
+    "NCl3": "chem.assumed_pyramidal_bond_angle_smallest",
+    "OCl2": "chem.assumed_bent_bond_angle_smallest",
+    "BF3": "chem.assumed_trigonal_bond_angle_smallest",
+    "NH3": "chem.assumed_pyramidal_bond_angle_smallest",
+    "H2O": "chem.assumed_bent_bond_angle_smallest",
+}
+
+
+@question_type(
+    "chem.posn2560_q23", display_name={"th": "มุมพันธะที่เล็กที่สุด"},
+    level=LEVEL, subject="เคมี", topic="มุมพันธะและรูปร่างโมเลกุล",
+)
+class SmallestBondAngle(ChemistrySheet):
+    def expr(self, rng):
+        molecules = rng.choice((q23.PARAMS, *q23.VARIANTS))["molecules"]
+        answer = q23.solve(molecules=molecules)
+        return MathDraw(
+            "", _ANGLE_TEX[answer],
+            prompt=("พิจารณามุมระหว่างพันธะที่เล็กที่สุดในแต่ละโมเลกุล: "
+                    + ", ".join(_ANGLE_TEXT[molecule] for molecule in molecules)
+                    + " โมเลกุลใดมีมุมดังกล่าวเล็กที่สุด"),
+            hint="ClF₃ และ ClF₅ มีมุมติดกันต่ำกว่า 90° จากคู่โดดเดี่ยวของอะตอมกลาง",
+            distractors=[named(_ANGLE_MISTAKES[molecule], _ANGLE_TEX[molecule])
+                         for molecule in molecules if molecule != answer],
+        )
+
+
+_LONE_PAIR_TEX = {
+    "NH3": r"\mathrm{NH_3}", "XeF2": r"\mathrm{XeF_2}",
+    "NO2-": r"\mathrm{NO_2}^{-}", "SO3^2-": r"\mathrm{SO_3}^{2-}",
+    "I3-": r"\mathrm{I_3}^{-}", "XeF4": r"\mathrm{XeF_4}",
+    "ClF3": r"\mathrm{ClF_3}", "SF4": r"\mathrm{SF_4}",
+}
+_LONE_PAIR_TEXT = {
+    "NH3": "NH₃", "XeF2": "XeF₂", "NO2-": "NO₂⁻",
+    "SO3^2-": "SO₃²⁻", "I3-": "I₃⁻", "XeF4": "XeF₄",
+    "ClF3": "ClF₃", "SF4": "SF₄",
+}
+_LONE_PAIR_MISTAKES = {
+    "NH3": "chem.assumed_nh3_most_lone_pairs",
+    "NO2-": "chem.assumed_nitrite_most_lone_pairs",
+    "SO3^2-": "chem.assumed_sulfite_most_lone_pairs",
+    "XeF4": "chem.confused_xef4_with_xef2_lone_pairs",
+    "ClF3": "chem.confused_clf3_with_xef2_lone_pairs",
+    "SF4": "chem.assumed_sf4_most_lone_pairs",
+}
+
+
+@question_type(
+    "chem.posn2560_q24", display_name={"th": "คู่โดดเดี่ยวบนอะตอมกลางมากที่สุด"},
+    level=LEVEL, subject="เคมี", topic="คู่โดดเดี่ยวและโครงสร้างลูอิส",
+)
+class CentralLonePairs(ChemistrySheet):
+    def expr(self, rng):
+        species = rng.choice((q24.PARAMS, *q24.VARIANTS))["species"]
+        answer = q24.solve(species=species)
+        return MathDraw(
+            "", _LONE_PAIR_TEX[answer],
+            prompt=("ในบรรดา " + ", ".join(_LONE_PAIR_TEXT[item] for item in species)
+                    + " ชนิดใดมีอิเล็กตรอนคู่โดดเดี่ยวบนอะตอมกลางมากที่สุด"),
+            hint="วาดโครงสร้างลูอิสและนับคู่โดดเดี่ยวบนอะตอมกลาง ไม่ใช่อะตอมปลาย",
+            distractors=[named(_LONE_PAIR_MISTAKES[item], _LONE_PAIR_TEX[item])
                          for item in species if item != answer],
         )

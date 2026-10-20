@@ -37,6 +37,58 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.confused_tetrahedral_with_square_planar": {
+        "th": "คิดว่ารูปร่างทรงสี่หน้าเหมือนสี่เหลี่ยมแบนราบ",
+        "en": "Confused tetrahedral with square-planar geometry",
+    },
+    "chem.confused_seesaw_with_tetrahedral": {
+        "th": "คิดว่ารูปร่างทรงสี่หน้าบิดเบี้ยวเหมือนทรงสี่หน้า",
+        "en": "Confused seesaw with tetrahedral geometry",
+    },
+    "chem.confused_square_planar_with_seesaw": {
+        "th": "คิดว่าสี่เหลี่ยมแบนราบเหมือนทรงสี่หน้าบิดเบี้ยว",
+        "en": "Confused square-planar with seesaw geometry",
+    },
+    "chem.assumed_tetrahedral_bond_angle_smallest": {
+        "th": "เลือกมุมพันธะทรงสี่หน้าว่าเล็กที่สุด",
+        "en": "Selected a tetrahedral angle as the smallest",
+    },
+    "chem.assumed_pyramidal_bond_angle_smallest": {
+        "th": "เลือกมุมพันธะพีระมิดฐานสามเหลี่ยมว่าเล็กที่สุด",
+        "en": "Selected a trigonal-pyramidal angle as the smallest",
+    },
+    "chem.assumed_bent_bond_angle_smallest": {
+        "th": "เลือกมุมพันธะโมเลกุลงอว่าเล็กที่สุด",
+        "en": "Selected a bent-molecule angle as the smallest",
+    },
+    "chem.assumed_trigonal_bond_angle_smallest": {
+        "th": "เลือกมุมพันธะแบบสามเหลี่ยมแบนราบว่าเล็กที่สุด",
+        "en": "Selected a trigonal-planar angle as the smallest",
+    },
+    "chem.assumed_nh3_most_lone_pairs": {
+        "th": "คิดว่า NH₃ มีคู่โดดเดี่ยวบนอะตอมกลางมากที่สุด",
+        "en": "Assumed NH3 has the most central-atom lone pairs",
+    },
+    "chem.assumed_nitrite_most_lone_pairs": {
+        "th": "คิดว่า NO₂⁻ มีคู่โดดเดี่ยวบนอะตอมกลางมากที่สุด",
+        "en": "Assumed nitrite has the most central-atom lone pairs",
+    },
+    "chem.assumed_sulfite_most_lone_pairs": {
+        "th": "คิดว่า SO₃²⁻ มีคู่โดดเดี่ยวบนอะตอมกลางมากที่สุด",
+        "en": "Assumed sulfite has the most central-atom lone pairs",
+    },
+    "chem.confused_xef4_with_xef2_lone_pairs": {
+        "th": "สับสนคู่โดดเดี่ยวบน Xe ใน XeF₄ กับ XeF₂",
+        "en": "Confused the central lone-pair counts in XeF4 and XeF2",
+    },
+    "chem.confused_clf3_with_xef2_lone_pairs": {
+        "th": "สับสนคู่โดดเดี่ยวบน ClF₃ กับ XeF₂",
+        "en": "Confused central lone-pair counts in ClF3 and XeF2",
+    },
+    "chem.assumed_sf4_most_lone_pairs": {
+        "th": "คิดว่า SF₄ มีคู่โดดเดี่ยวบนอะตอมกลางมากที่สุด",
+        "en": "Assumed SF4 has the most central-atom lone pairs",
+    },
     "chem.precipitated_spectator_salt": {
         "th": "ให้เกลือของไอออนผู้ชมตกตะกอน",
         "en": "Precipitated a soluble spectator-ion salt",

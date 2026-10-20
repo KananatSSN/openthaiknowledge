@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–7, 2026-10-21
+### Chemistry POSN bank — waves 1–8, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–21 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **21/70 complete; 49 pending.**
+  1–24 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **24/70 complete; 46 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  twenty-one reviewed items. Its `verify` result of 21/21 describes this batch, not the
+  twenty-four reviewed items. Its `verify` result of 24/24 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -533,6 +533,22 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-21 — POSN chemistry 2560, eighth VSEPR batch
+
+- Visually checked MC22–MC23 on p8 and MC24 on p9. Built solvers,
+  generators, and knowledge claims for all three.
+- MC22 pairs tetrahedral BF₄⁻ with POCl₃; variants also exercise square
+  planar, seesaw and trigonal-pyramidal shapes. MC23 compares each molecule's
+  smallest bond angle, using NIST geometry data for ClF₃, ClF₅ and OCl₂.
+  MC24 counts only central-atom lone pairs; XeF₂ has three in the source.
+- `verify posn2560_chemistry`: 24/24 green, 74 variant checks, all
+  independent. Knowledge validation: 795 units in 661 files, zero problems;
+  source coverage: 24/70. Only the three new golden keys were added.
+- Targeted wave validation: 172 sheet/set checks and 16,307 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
 
 ### 2026-10-21 — POSN chemistry 2560, seventh precipitation and bonding batch
 
