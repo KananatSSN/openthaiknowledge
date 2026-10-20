@@ -3918,6 +3918,26 @@
    "note": "spec for the primary-curriculum block of otk/kit/math_problems.py"
   },
   {
+   "path": "สอวน_chemistry/MANIFEST.json",
+   "kind": "other",
+   "sha256": "97bee951ca0ef44d",
+   "size": 30741,
+   "stage": "ignored"
+  },
+  {
+   "path": "สอวน_chemistry/posn1-60-chemistry.pdf",
+   "kind": "exam",
+   "sha256": "1863b75af26c9cfa",
+   "size": 709225,
+   "pages": 19,
+   "text_chars": 26808,
+   "layout": "numbered",
+   "items": 70,
+   "sheet_id": "posn2560_chemistry",
+   "stage": "converted",
+   "note": "PARTIAL 3/70: Part I q3, q4, q6 have independent solvers and generators. 60 MC + 10 written questions extracted; other 67 pending visual review and solving. Written 9 . heading normalized for extraction. Do not mark the whole sheet green."
+  },
+  {
    "path": "สอวน_math/01-วิชาคณิตศาสตร์.pdf",
    "kind": "exam",
    "sha256": "51893800608a42cb",

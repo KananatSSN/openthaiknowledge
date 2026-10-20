@@ -59,6 +59,28 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
+### Chemistry POSN bank — first batch, 2026-10-20
+
+- Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
+- First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
+  60 multiple-choice questions plus 10 written questions. Written questions
+  restart at 1 and will use internal numbers 61–70.
+- All 70 have text-layer extraction in the private bank. Only Part I questions
+  3, 4 and 6 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **3/70 complete; 67 pending.**
+- `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
+  three reviewed items. Its `verify` result of 3/3 describes this batch, not the
+  whole paper. Keep the bank entry `converted` until the remaining questions
+  are claimed; a future bank scan may infer `green` from the partial package,
+  so restore `converted` while the paper remains incomplete.
+- Source MC3's diagram maps 97 nm to n=4; the generator gives n explicitly
+  and specifies an ensemble with all cascades. MC4 returns (Z,A)=(12,22).
+  MC6 gives cobalt(III), [Ar]3d6. Figures are restated in words, with no static
+  source artwork shipped. Full copied text remains in the private bank.
+- Extraction normalized the written heading `9 .` to `9.`; the count check
+  confirms 60+10, rather than silently losing written questions 9 and 10.
+- Next: review and digest Part I 1–2 and 5, then continue from 7.
+
 ### Physics POSN bank — 2026-10-17
 
 - Scope: `สอวน_physics/MANIFEST.json` lists 33 papers (135 PDF components,
@@ -494,6 +516,33 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-20 — POSN chemistry 2560, first atomic-structure batch
+
+- Created isolated worktree `.worktrees/posn-chemistry-2560` on
+  `codex/posn-chemistry-2560` from `457822b`; existing physics work stayed in
+  the original checkout. The worktree shares the ignored source bank and venv.
+- Fetched the 2560 chemistry paper from LFS and split both parts separately:
+  all 70 questions accounted for, including the printed `9 .` heading.
+  Raw extraction and review notes are private-bank commit `c138e7d`.
+- Visually checked source p4 and built three independently checked solvers
+  and generators (MC3, MC4, MC6), with three knowledge claims and nine named
+  mistakes. No full copied source text or source PDF is published here.
+- `verify posn2560_chemistry`: 3/3 green, 10 variant checks, all independently
+  checked. Knowledge validation: 774 units in 640 files, zero problems;
+  source coverage: 3/70. First generator/solver batch: 39 checks passed.
+  Existing golden fixtures are unchanged; only three new keys were recorded.
+- Required full run: 38,977 passed, 13 skipped, seven failures all caused by
+  omitting the new chemistry cohort from the frozen-baseline subtraction, and
+  two setup errors because the sandbox denied binding a localhost HTTP server.
+  Fixed the subtraction; all nine failed/error checks then passed, with local
+  server access for the two explorer tests. Ruff and whitespace checks pass.
+  The full suite was not repeated after this isolated cohort repair; the
+  affected registry/curriculum checks were rerun separately.
+- Final focused registry/curriculum/layout/solver checks: 64 passed. The final
+  diagnostic label describes the oxide distractor as assuming metal charge +1.
+  Its final generator/golden checks: six passed; no existing golden entry changed.
+- Keep this paper partial; next items are MC1–2 and MC5, then MC7 onward.
 
 ### 2026-09-30 — session 1
 - Surveyed existing pieces; wrote this plan.

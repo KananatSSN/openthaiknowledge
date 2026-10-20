@@ -1,0 +1,49 @@
+{
+  "sheet_id": "posn2560_chemistry",
+  "title": "ข้อสอบคัดเลือกค่าย 1 สอวน. เคมี ปี 2560",
+  "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
+  "subject": "เคมี",
+  "level": "โอลิมปิก (สอวน.)",
+  "note": "PARTIAL: only source Part I questions 3, 4 and 6 are reviewed, solved and generated (3/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 67 are pending. Raw 70-item extraction and page text stay in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 3/3 solver checks as whole-paper completion.",
+  "items": [
+    {
+      "number": 3,
+      "solver": "q03",
+      "title": "จำนวนเส้นสเปกตรัมไฮโดรเจน",
+      "source": "Part I, question 3, p4: source 97 nm excitation is labelled n=1 to n=4. Count all distinct emitted lines, including cascades.",
+      "page": 4,
+      "figure": "Source diagram labels the n=4 to n=1 transition as 97 nm. Adaptation gives n explicitly and asks about an ensemble, including cascades; no static figure is needed.",
+      "figure_asset": "",
+      "topic": "สเปกตรัมของอะตอม",
+      "answer": "6",
+      "generator": "chem.posn2560_q03",
+      "note": "Source diagram labels the n=4 to n=1 transition as 97 nm. Adaptation gives n explicitly and asks about an ensemble, including cascades; no static figure is needed."
+    },
+    {
+      "number": 4,
+      "solver": "q04",
+      "title": "สัญลักษณ์นิวเคลียร์จากข้อมูลไอโซโทป",
+      "source": "Part I, question 4, p4: B2+ has 10 electrons and 15 neutrons; isotope A has five fewer neutrons. Determine nuclear notation of A.",
+      "page": 4,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ไอโซโทปและไอออน",
+      "answer": "(12, 22)",
+      "generator": "chem.posn2560_q04",
+      "note": "Solver returns (atomic number, mass number). Signed charge is accepted; the generator uses cations as in the source."
+    },
+    {
+      "number": 6,
+      "solver": "q06",
+      "title": "อิเล็กตรอน 3d ของไอออนในออกไซด์",
+      "source": "Part I, question 6, p4: determine electron configuration of cobalt ion in Co2O3 (Z=27, oxygen=-2).",
+      "page": 4,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การจัดเรียงอิเล็กตรอนของไอออน",
+      "answer": "6",
+      "generator": "chem.posn2560_q06",
+      "note": "Return the 3d exponent; remove 4s electrons first. Variants restricted to Mn, Fe, Co and Ni with integral +2..+4 oxidation states and O=-2; no spin-state assumption."
+    }
+  ]
+}

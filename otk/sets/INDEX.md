@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,461 sets in 1,307 unit files. Each subject's `README.md` lists its units with their indicators.
+4,464 sets in 1,308 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -1084,6 +1084,12 @@
 | [`polymerization.py`](chemistry/m6/polymerization.py) | ประเภทของปฏิกิริยาการเกิดพอลิเมอร์ | `chem.polymerization_foundation`, `chem.polymerization_fluency`, `chem.polymerization_application` |
 | [`structural_formula.py`](chemistry/m6/structural_formula.py) | สูตรโครงสร้างลิวอิส สูตรโครงสร้างแบบย่อ และสูตรโครงสร้างแบบเส้น | `chem.structural_formula_foundation`, `chem.structural_formula_fluency`, `chem.structural_formula_application` |
 | [`structural_isomer.py`](chemistry/m6/structural_isomer.py) | ไอโซเมอร์โครงสร้างของสารประกอบอินทรีย์ | `chem.structural_isomer_foundation`, `chem.structural_isomer_fluency`, `chem.structural_isomer_application` |
+
+### olympiad — โอลิมปิก (สอวน.)
+
+| File | Unit | Sets |
+|---|---|---|
+| [`posn2560.py`](chemistry/olympiad/posn2560.py) | First reviewed batch of POSN camp-selection chemistry 2560. | `chem.posn2560_q03`, `chem.posn2560_q04`, `chem.posn2560_q06` |
 
 ## biology — ชีวะ
 

@@ -37,6 +37,42 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.only_ground_transitions": {
+        "th": "นับเฉพาะการเปลี่ยนระดับลงสู่สถานะพื้น",
+        "en": "Counted only transitions ending at the ground state",
+    },
+    "chem.counted_upward_transitions": {
+        "th": "นับการดูดกลืนขึ้นระดับรวมกับการเปล่งแสงลงระดับ",
+        "en": "Counted upward absorption as well as downward emission",
+    },
+    "chem.included_extra_level": {
+        "th": "นับระดับพลังงานเกินระดับสูงสุดที่กระตุ้น",
+        "en": "Included a level above the excited level",
+    },
+    "chem.ignored_ion_charge": {
+        "th": "ใช้จำนวนอิเล็กตรอนของไอออนเป็นจำนวนโปรตอน",
+        "en": "Used the ion electron count as its proton count",
+    },
+    "chem.reversed_ion_charge": {
+        "th": "กลับเครื่องหมายประจุเมื่อหาจำนวนโปรตอนจากอิเล็กตรอน",
+        "en": "Reversed the charge sign when recovering the proton count",
+    },
+    "chem.kept_other_isotope_neutrons": {
+        "th": "ใช้จำนวนนิวตรอนของอีกไอโซโทปโดยไม่ปรับผลต่าง",
+        "en": "Kept the other isotope neutron count without applying the offset",
+    },
+    "chem.removed_3d_before_4s": {
+        "th": "นำอิเล็กตรอน 3d ออกก่อน 4s เมื่อเกิดแคตไอออน",
+        "en": "Removed 3d electrons before 4s electrons during cation formation",
+    },
+    "chem.added_electrons_for_cation": {
+        "th": "เพิ่มอิเล็กตรอนแทนการนำออกเมื่อเกิดแคตไอออน",
+        "en": "Added electrons instead of removing them for a cation",
+    },
+    "chem.assumed_monovalent_metal": {
+        "th": "สมมติให้โลหะมีประจุ +1 โดยไม่คำนวณจากสูตรออกไซด์",
+        "en": "Assumed a monovalent metal instead of balancing the oxide charges",
+    },
     "series.ignored_alternation": {
         "th": "มองอนุกรมสลับเครื่องหมายเป็นอนุกรมพจน์บวกทั้งหมด",
         "en": "Ignored the alternating signs in the series",

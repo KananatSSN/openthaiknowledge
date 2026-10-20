@@ -532,6 +532,9 @@ CHEMISTRY_APPLICATION_KEYS = frozenset({
 })
 
 REVIEWED_CHEMISTRY_STAGES = {
+    "chem.posn2560_q03": 3,
+    "chem.posn2560_q04": 3,
+    "chem.posn2560_q06": 3,
     **dict.fromkeys(CHEMISTRY_FOUNDATION_KEYS, 1),
     **dict.fromkeys(CHEMISTRY_FLUENCY_KEYS, 2),
     **dict.fromkeys(CHEMISTRY_APPLICATION_KEYS, 3),

@@ -4129,6 +4129,17 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2559_q23": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสอบเทียบตัวต้านทานไวแสง', "outside_scope"),
 })
 # END TPhO 2559
+# First reviewed batch of the POSN 2560 chemistry paper; school indicators
+# are not claimed for these supplemental olympiad adaptations.
+SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
+    "chem.posn2560_q03", "chem.posn2560_q04", "chem.posn2560_q06",
+})
+SCIENCE_PLACEMENTS.update({
+    "chem.posn2560_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สเปกตรัมของอะตอม", "outside_scope"),
+    "chem.posn2560_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ไอโซโทปและไอออน", "outside_scope"),
+    "chem.posn2560_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การจัดเรียงอิเล็กตรอนของไอออน", "outside_scope"),
+})
+
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them
@@ -7492,6 +7503,7 @@ _BUILT_PENDING: dict[str, frozenset[str]] = {
     "Process skills": SCIENCE_PROCESS_SKILL_KEYS - SCIENCE_PROCESS_SKILL_APPROVED_KEYS,
     "Diagrams": SCIENCE_DIAGRAM_KEYS - SCIENCE_DIAGRAM_APPROVED_KEYS,
     "POSN physics": SCIENCE_POSN_PHYSICS_KEYS,
+    "POSN chemistry": SCIENCE_POSN_CHEMISTRY_KEYS,
     "Phase 7 Technology": SCIENCE_TECHNOLOGY_KEYS - SCIENCE_TECHNOLOGY_APPROVED_KEYS,
 }
 REVIEW_PENDING: dict[str, frozenset[str]] = {
@@ -7507,7 +7519,7 @@ SCIENCE_BASELINE_KEYS = (
     - SCIENCE_WAVE_C_KEYS - SCIENCE_WAVE_D_KEYS - SCIENCE_WAVE_E_KEYS
     - SCIENCE_WAVE_F_KEYS - SCIENCE_WAVE_G_KEYS - SCIENCE_TECHNOLOGY_KEYS
     - SCIENCE_WAVE_I_KEYS - SCIENCE_PROCESS_SKILL_KEYS - SCIENCE_DIAGRAM_KEYS
-    - SCIENCE_POSN_PHYSICS_KEYS
+    - SCIENCE_POSN_PHYSICS_KEYS - SCIENCE_POSN_CHEMISTRY_KEYS
 )
 
 

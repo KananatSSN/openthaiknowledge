@@ -2787,3 +2787,6 @@ phys.tpho2559_q20,ฟิสิกส์,โอลิมปิก (สอวน.)
 phys.tpho2559_q21,ฟิสิกส์,โอลิมปิก (สอวน.),การสอบเทียบตัวต้านทานไวแสง,supplemental,โอลิมปิก (สอวน.),,,,การสอบเทียบตัวต้านทานไวแสง,outside_scope,2,TPhO 2559 reviewed variants; no school indicator claimed
 phys.tpho2559_q22,ฟิสิกส์,โอลิมปิก (สอวน.),การสอบเทียบตัวต้านทานไวแสง,supplemental,โอลิมปิก (สอวน.),,,,การสอบเทียบตัวต้านทานไวแสง,outside_scope,1,TPhO 2559 reviewed variants; no school indicator claimed
 phys.tpho2559_q23,ฟิสิกส์,โอลิมปิก (สอวน.),การสอบเทียบตัวต้านทานไวแสง,supplemental,โอลิมปิก (สอวน.),,,,การสอบเทียบตัวต้านทานไวแสง,outside_scope,1,TPhO 2559 reviewed variants; no school indicator claimed
+chem.posn2560_q03,เคมี,โอลิมปิก (สอวน.),สเปกตรัมของอะตอม,supplemental,โอลิมปิก (สอวน.),,,,สเปกตรัมของอะตอม,outside_scope,3,POSN chemistry 2560 first batch; reviewed solver variants; no school indicator claimed
+chem.posn2560_q04,เคมี,โอลิมปิก (สอวน.),ไอโซโทปและไอออน,supplemental,โอลิมปิก (สอวน.),,,,ไอโซโทปและไอออน,outside_scope,3,POSN chemistry 2560 first batch; reviewed solver variants; no school indicator claimed
+chem.posn2560_q06,เคมี,โอลิมปิก (สอวน.),การจัดเรียงอิเล็กตรอนของไอออน,supplemental,โอลิมปิก (สอวน.),,,,การจัดเรียงอิเล็กตรอนของไอออน,outside_scope,3,POSN chemistry 2560 first batch; reviewed solver variants; no school indicator claimed
