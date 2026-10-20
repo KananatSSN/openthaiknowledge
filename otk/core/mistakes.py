@@ -37,6 +37,46 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.confused_neutron_with_proton": {
+        "th": "ใช้นิวตรอนสลับกับโปรตอนเมื่อดุลเลขอะตอม",
+        "en": "Used a proton in place of a neutron in nuclear balance",
+    },
+    "chem.confused_deuteron_with_proton": {
+        "th": "ใช้โปรตอนแทนดิวทีรอนโดยไม่ดุลเลขมวล",
+        "en": "Used a proton instead of a deuteron without balancing mass number",
+    },
+    "chem.failed_alpha_mass_balance": {
+        "th": "นับเลขมวลของอนุภาคแอลฟาผิดในผลิตภัณฑ์",
+        "en": "Miscalculated the alpha particle's mass contribution",
+    },
+    "chem.assumed_halogen_one_valence_electron": {
+        "th": "นับเวเลนซ์อิเล็กตรอนของแฮโลเจนเป็นหนึ่ง",
+        "en": "Counted one valence electron for a halogen",
+    },
+    "chem.swapped_hydrogen_halogen_valence": {
+        "th": "สลับจำนวนเวเลนซ์อิเล็กตรอนของไฮโดรเจนกับแฮโลเจน",
+        "en": "Swapped hydrogen and halogen valence-electron counts",
+    },
+    "chem.confused_hydrogen_duet_with_valence": {
+        "th": "นับจำนวนอิเล็กตรอนที่ไฮโดรเจนต้องการให้ครบดูเอตเป็นเวเลนซ์",
+        "en": "Confused hydrogen's duet target with its valence count",
+    },
+    "chem.ignored_hf_hydrogen_bonding": {
+        "th": "เรียงจุดเดือด HF ตามมวลโดยไม่คิดพันธะไฮโดรเจน",
+        "en": "Ranked HF by mass without accounting for hydrogen bonding",
+    },
+    "chem.reversed_hcl_hbr_boiling_order": {
+        "th": "กลับลำดับจุดเดือดของ HCl กับ HBr",
+        "en": "Reversed the HCl and HBr boiling-point order",
+    },
+    "chem.reversed_halide_boiling_order": {
+        "th": "กลับลำดับจุดเดือดของไฮโดรเจนเฮไลด์ทั้งหมด",
+        "en": "Reversed the entire hydrogen-halide boiling-point order",
+    },
+    "chem.swapped_two_highest_halide_boiling_points": {
+        "th": "สลับสารสองชนิดที่มีจุดเดือดสูงสุด",
+        "en": "Swapped the two highest-boiling hydrogen halides",
+    },
     "chem.confused_amphoteric_oxide_with_acid": {
         "th": "จัดออกไซด์แอมโฟเทอริกเป็นออกไซด์ที่ให้น้ำเป็นกรด",
         "en": "Classified an amphoteric oxide as an acidifying oxide",

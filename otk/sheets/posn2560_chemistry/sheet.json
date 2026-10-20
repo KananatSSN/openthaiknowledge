@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–15 are reviewed, solved and generated (15/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 55 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 15/15 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–18 are reviewed, solved and generated (18/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 52 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 18/18 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -200,6 +200,45 @@
       "answer": "('X', 'Z', 'Y')",
       "generator": "chem.posn2560_q15",
       "note": "The printed stem omits an explicit distinctness condition for X,Y,Z; the adaptation states they are three distinct members of Cl, Br, I. The iodine color after shaking Br2 with KI identifies I-, and the remaining label is Cl."
+    },
+    {
+      "number": 16,
+      "solver": "q16",
+      "title": "อนุรักษ์เลขมวลในสมการนิวเคลียร์",
+      "source": "Part I, question 16, p7: Co-59 + A -> Mn-56 + alpha; Te-130 + B -> I-130 + 2 neutrons; Rn-222 + alpha -> C + gamma. Choice ก: neutron, deuteron, Ra-226.",
+      "page": 7,
+      "figure": "The three nuclear equations and isotope superscripts were checked on rendered p7; the adaptation writes isotope mass numbers in words.",
+      "figure_asset": "",
+      "topic": "สมการปฏิกิริยานิวเคลียร์",
+      "answer": "('n', 'd', (226, 88))",
+      "generator": "chem.posn2560_q16",
+      "note": "Balance mass and atomic numbers separately: A=(1,0), B=(2,1), C=(226,88). Variants shift isotope mass numbers while preserving particle identities."
+    },
+    {
+      "number": 17,
+      "solver": "q17",
+      "title": "เวเลนซ์อิเล็กตรอนของไฮโดรเจนและแฮโลเจน",
+      "source": "Part I, question 17, p7: the property differing between H and group VIIA is one valence electron for H versus seven for halogens, choice ค.",
+      "page": 7,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "เวเลนซ์อิเล็กตรอนและหมู่ธาตุ",
+      "answer": "(1, 7)",
+      "generator": "chem.posn2560_q17",
+      "note": "The source distractor about multiple oxidation states has fluorine as an exception. The adaptation asks directly for neutral-atom valence counts, and variants compare H with F, Cl, Br or I."
+    },
+    {
+      "number": 18,
+      "solver": "q18",
+      "title": "ลำดับจุดเดือดของไฮโดรเจนเฮไลด์",
+      "source": "Part I, question 18, p8: HCl < HBr < HI < HF by normal boiling point, choice ก.",
+      "page": 8,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "แรงยึดเหนี่ยวระหว่างโมเลกุล",
+      "answer": "('HCl', 'HBr', 'HI', 'HF')",
+      "generator": "chem.posn2560_q18",
+      "note": "Normal boiling points approximately -85.1, -66.8, -35.4, +19.5 deg C respectively. HCl/HBr/HI rise with dispersion; HF is highest through hydrogen bonding. Reference: https://webbook.nist.gov/chemistry/ ; variants use three-member subsets."
     }
   ]
 }

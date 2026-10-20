@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–5, 2026-10-20
+### Chemistry POSN bank — waves 1–6, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–15 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **15/70 complete; 55 pending.**
+  1–18 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **18/70 complete; 52 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  fifteen reviewed items. Its `verify` result of 15/15 describes this batch, not the
+  eighteen reviewed items. Its `verify` result of 18/18 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -533,6 +533,24 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-21 — POSN chemistry 2560, sixth nuclear and bonding batch
+
+- Visually checked the three nuclear equations and the hydrogen comparison
+  on p7, then the hydrogen-halide boiling choices on p8. Built solvers,
+  generators and knowledge claims for MC16–MC18.
+- MC16 balances (A,Z) separately: neutron, deuteron, and Ra-226. MC17's
+  adaptation directly asks valence counts because the printed oxidation-state
+  distractor has a fluorine exception. MC18 uses normal boiling-point data
+  and the HF hydrogen-bonding exception.
+- `verify posn2560_chemistry`: 18/18 green, 56 variant checks, all
+  independent. Knowledge validation: 789 units in 655 files, zero problems;
+  source coverage: 18/70. Only the three new golden keys were added.
+- Targeted wave validation: 134 sheet/set checks and 16,283 affected
+  registry, provenance, safety, golden and layout checks passed. The q18
+  safety rule rejected a direct method reference; its lambda replacement
+  passed the specific rerun. Ruff and whitespace checks passed. Full suite
+  remains deferred until all 70 questions are complete.
 
 ### 2026-10-20 — POSN chemistry 2560, fifth oxides and halogens batch
 

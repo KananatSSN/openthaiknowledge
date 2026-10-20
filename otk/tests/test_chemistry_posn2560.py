@@ -8,7 +8,7 @@ import pytest
 from otk.core import generate
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15,
+    q13, q14, q15, q16, q17, q18,
 )
 
 
@@ -81,6 +81,13 @@ def test_acidic_oxide_products_precipitation_and_halogen_order():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_nuclear_balance_valence_counts_and_halide_boiling_order():
+    for module in (q16, q17, q18):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -103,7 +110,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15))
+@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -200,12 +207,30 @@ def test_generated_answers_follow_the_written_data(number):
             assert len(cations) == len(anions) == 3
             expected = r",\;".join(r"\mathrm{" + formula + "}" for formula in
                                     q14.check(cations=cations, anions=anions))
-        else:
+        elif number == 15:
             bromine = re.search(r"สารละลาย ([XYZ])₂ ใน CCl₄ มีสีส้ม", stem)[1]
             iodine = re.search(r"สารละลาย K([XYZ]) ชั้น", stem)[1]
             chlorine = (set("XYZ") - {bromine, iodine}).pop()
             assignment = tuple({bromine: "Br", iodine: "I", chlorine: "Cl"}[label]
                                for label in "XYZ")
             expected = ">".join(q15.check(assignment=assignment))
+        elif number == 16:
+            co, mn, te, iodine, rn = map(int, re.search(
+                r"Co-(\d+).*?Mn-(\d+).*?Te-(\d+).*?I-(\d+).*?Rn-(\d+)", stem,
+            ).groups())
+            first, second, (mass, atomic) = q16.check(
+                co_mass=co, mn_mass=mn, te_mass=te, iodine_mass=iodine, rn_mass=rn,
+            )
+            expected = (rf"(\mathrm{{{first}}},\;\mathrm{{{second}}},\;"
+                        rf"{{}}^{{{mass}}}_{{{atomic}}}\mathrm{{Ra}})")
+        elif number == 17:
+            halogen = re.search(r"แฮโลเจน (F|Cl|Br|I) มีจำนวน", stem)[1]
+            hydrogen_count, halogen_count = q17.check(halogen=halogen)
+            expected = (rf"n_v(\mathrm{{H}})={hydrogen_count},\;"
+                        rf"n_v(\mathrm{{{halogen}}})={halogen_count}")
+        else:
+            molecules = tuple(re.search(r"จุดเดือดปกติของ ([A-Za-z, ]+) จากต่ำไปสูง", stem)[1].split(", "))
+            expected = "<".join(rf"\mathrm{{{molecule}}}" for molecule in
+                                q18.check(molecules=molecules))
         assert answer == expected
         assert len(question.choices) == 4

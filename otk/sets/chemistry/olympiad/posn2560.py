@@ -5,7 +5,7 @@ from otk.core.registry import question_type
 from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15,
+    q13, q14, q15, q16, q17, q18,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -491,4 +491,102 @@ class HalogenDisplacementOrder(ChemistrySheet):
             ),
             hint="สีส้มระบุ Br₂; สีม่วงหลังแทนที่ระบุ I₂ แล้วใช้แนวโน้มในหมู่ 17",
             distractors=[named(mistake, _label_order(order)) for order, mistake in wrong],
+        )
+
+
+def _nuclear_triplet(first, second, product):
+    mass, atomic = product
+    return (rf"(\mathrm{{{first}}},\;\mathrm{{{second}}},\;"
+            rf"{{}}^{{{mass}}}_{{{atomic}}}\mathrm{{Ra}})")
+
+
+@question_type(
+    "chem.posn2560_q16", display_name={"th": "อนุรักษ์เลขมวลในสมการนิวเคลียร์"},
+    level=LEVEL, subject="เคมี", topic="สมการปฏิกิริยานิวเคลียร์",
+)
+class NuclearReactionBalance(ChemistrySheet):
+    def expr(self, rng):
+        params = rng.choice((q16.PARAMS, *q16.VARIANTS))
+        first, second, product = q16.solve(**params)
+        return MathDraw(
+            "", _nuclear_triplet(first, second, product),
+            prompt=(
+                "กำหนดเลขอะตอม Co=27, Mn=25, Te=52, I=53 และ Rn=86 "
+                f"สมการ Co-{params['co_mass']} + A → Mn-{params['mn_mass']} + α; "
+                f"Te-{params['te_mass']} + B → I-{params['iodine_mass']} + 2n; "
+                f"Rn-{params['rn_mass']} + α → C + γ "
+                "โดย n คือนิวตรอน, p คือโปรตอน, d คือดิวทีรอน, α คืออนุภาคแอลฟา "
+                "จงระบุ A, B และ C ตามลำดับ"
+            ),
+            hint="เลขมวล A และเลขอะตอม Z ต้องอนุรักษ์แยกกัน; γ ไม่มีทั้ง A และ Z",
+            distractors=[
+                named("chem.confused_neutron_with_proton",
+                      _nuclear_triplet("p", second, product)),
+                named("chem.confused_deuteron_with_proton",
+                      _nuclear_triplet(first, "p", product)),
+                named("chem.failed_alpha_mass_balance",
+                      _nuclear_triplet(first, second, (product[0] - 2, product[1]))),
+            ],
+        )
+
+
+def _valence_pair(halogen, counts):
+    return (rf"n_v(\mathrm{{H}})={counts[0]},\;"
+            rf"n_v(\mathrm{{{halogen}}})={counts[1]}")
+
+
+@question_type(
+    "chem.posn2560_q17", display_name={"th": "เวเลนซ์อิเล็กตรอนของไฮโดรเจนและแฮโลเจน"},
+    level=LEVEL, subject="เคมี", topic="เวเลนซ์อิเล็กตรอนและหมู่ธาตุ",
+)
+class HydrogenHalogenValence(ChemistrySheet):
+    def expr(self, rng):
+        halogen = rng.choice((q17.PARAMS, *q17.VARIANTS))["halogen"]
+        answer = q17.solve(halogen=halogen)
+        return MathDraw(
+            "", _valence_pair(halogen, answer),
+            prompt=(f"ไฮโดรเจน H และแฮโลเจน {halogen} มีจำนวนอิเล็กตรอนเวเลนซ์"
+                    "ตามลำดับเท่าใด"),
+            hint="นับอิเล็กตรอนในชั้นพลังงานนอกสุดของอะตอมเป็นกลาง",
+            distractors=[
+                named("chem.assumed_halogen_one_valence_electron",
+                      _valence_pair(halogen, (1, 1))),
+                named("chem.swapped_hydrogen_halogen_valence",
+                      _valence_pair(halogen, (7, 1))),
+                named("chem.confused_hydrogen_duet_with_valence",
+                      _valence_pair(halogen, (2, 7))),
+            ],
+        )
+
+
+def _halide_order(molecules):
+    return "<".join(rf"\mathrm{{{molecule}}}" for molecule in molecules)
+
+
+@question_type(
+    "chem.posn2560_q18", display_name={"th": "ลำดับจุดเดือดของไฮโดรเจนเฮไลด์"},
+    level=LEVEL, subject="เคมี", topic="แรงยึดเหนี่ยวระหว่างโมเลกุล",
+)
+class HydrogenHalideBoilingOrder(ChemistrySheet):
+    def expr(self, rng):
+        molecules = rng.choice((q18.PARAMS, *q18.VARIANTS))["molecules"]
+        answer = q18.solve(molecules=molecules)
+        if "HF" in molecules:
+            first_wrong = tuple(m for m in ("HF", "HCl", "HBr", "HI") if m in molecules)
+            first_mistake = "chem.ignored_hf_hydrogen_bonding"
+        else:
+            first_wrong = (answer[1], answer[0], *answer[2:])
+            first_mistake = "chem.reversed_hcl_hbr_boiling_order"
+        return MathDraw(
+            "", _halide_order(answer),
+            prompt=("เรียงจุดเดือดปกติของ " + ", ".join(molecules)
+                    + " จากต่ำไปสูง ข้อใดถูกต้อง"),
+            hint="HCl, HBr, HI สูงขึ้นตามแรงลอนดอน; HF มีพันธะไฮโดรเจนเด่น",
+            distractors=[
+                named(first_mistake, _halide_order(first_wrong)),
+                named("chem.reversed_halide_boiling_order",
+                      _halide_order(tuple(reversed(answer)))),
+                named("chem.swapped_two_highest_halide_boiling_points",
+                      _halide_order((*answer[:-2], answer[-1], answer[-2]))),
+            ],
         )
