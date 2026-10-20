@@ -37,6 +37,42 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.thought_parallel_p_singles_invalid": {
+        "th": "คิดว่า 2p ที่มีอิเล็กตรอนเดี่ยวขนานกันผิดกฎของฮุนด์",
+        "en": "Thought parallel singly occupied p orbitals violate Hund's rule",
+    },
+    "chem.confused_excitation_with_hund": {
+        "th": "สับสนสถานะกระตุ้นกับการผิดกฎของฮุนด์",
+        "en": "Confused an excited configuration with a Hund-rule violation",
+    },
+    "chem.thought_p4_pairing_invalid": {
+        "th": "คิดว่า 2p⁴ จับคู่หลังครองเดี่ยวครบแล้วยังผิดกฎของฮุนด์",
+        "en": "Thought pairing in p4 after single occupancy violates Hund's rule",
+    },
+    "chem.reversed_ga_as_radius": {
+        "th": "กลับลำดับรัศมีอะตอมของ Ga และ As",
+        "en": "Reversed the empirical radius order of Ga and As",
+    },
+    "chem.put_as_above_o_ionization": {
+        "th": "จัดพลังงานไอออไนเซชัน As สูงกว่า O",
+        "en": "Ranked As above O in first ionization energy",
+    },
+    "chem.reversed_ionization_order": {
+        "th": "กลับลำดับพลังงานไอออไนเซชันลำดับที่หนึ่ง",
+        "en": "Reversed the first-ionization-energy order",
+    },
+    "chem.swapped_group_and_period": {
+        "th": "สลับหมู่กับคาบของธาตุ X",
+        "en": "Swapped the group and period of element X",
+    },
+    "chem.put_halogen_in_next_period": {
+        "th": "วางธาตุแฮโลเจน Y ไว้ในคาบถัดไป",
+        "en": "Placed halogen Y in the following period",
+    },
+    "chem.treated_anion_as_group_two": {
+        "th": "คิดว่าธาตุ Y ที่เกิดแอนไอออนอยู่หมู่ 2",
+        "en": "Placed the anion-forming Y in group 2",
+    },
     "chem.confused_p3_with_d5": {
         "th": "คิดว่า p³ และ d⁵ มีอิเล็กตรอนเดี่ยวเท่ากัน",
         "en": "Treated p3 and d5 as having equal unpaired counts",

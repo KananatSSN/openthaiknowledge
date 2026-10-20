@@ -3,7 +3,9 @@
 from otk.core.mistakes import named
 from otk.core.registry import question_type
 from otk.kit.math_problems import MathDraw, WordProblem
-from otk.sheets.posn2560_chemistry import q01, q02, q03, q04, q05, q06, q07, q08, q09
+from otk.sheets.posn2560_chemistry import (
+    q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+)
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
 
@@ -287,5 +289,108 @@ class ThreeOxidationStates(ChemistrySheet):
                       _oxidation_triplet((answer[0], answer[1] + 1, answer[2]))),
                 named("chem.ignored_complex_charge",
                       _oxidation_triplet((answer[0], answer[1], cyanides))),
+            ],
+        )
+
+
+def _orbital_box(electrons):
+    return r"\boxed{" + r"\uparrow" * min(electrons, 1) + r"\downarrow" * (electrons == 2) + "}"
+
+
+def _orbital_diagram(pattern):
+    s, p = pattern
+    return (r"1s:" + _orbital_box(2) + r",\;2s:" + _orbital_box(s)
+            + r",\;2p:" + "".join(_orbital_box(count) for count in p))
+
+
+@question_type(
+    "chem.posn2560_q10", display_name={"th": "แผนภาพออร์บิทัลกับกฎของฮุนด์"},
+    level=LEVEL, subject="เคมี", topic="การบรรจุอิเล็กตรอนในออร์บิทัล",
+)
+class HundOrbitalDiagram(ChemistrySheet):
+    def expr(self, rng):
+        invalid = rng.choice(((2, (2, 1, 0)), (2, (2, 0, 0)), (2, (2, 2, 0))))
+        valid = ((2, (1, 1, 1)), (1, (2, 1, 1)), (2, (2, 1, 1)))
+        patterns = [*valid, invalid]
+        rng.shuffle(patterns)
+        answer = q10.solve(patterns=tuple(patterns))
+        mistake = {
+            valid[0]: "chem.thought_parallel_p_singles_invalid",
+            valid[1]: "chem.confused_excitation_with_hund",
+            valid[2]: "chem.thought_p4_pairing_invalid",
+        }
+        return MathDraw(
+            "", _orbital_diagram(patterns[answer]),
+            prompt="แผนภาพใดไม่เป็นไปตามกฎของฮุนด์ในการบรรจุอิเล็กตรอน 2p (พิจารณาแต่ละอะตอมแยกกัน)",
+            hint="ออร์บิทัล 2p ทั้งสามต้องครองเดี่ยวก่อนจึงจับคู่",
+            distractors=[named(mistake[pattern], _orbital_diagram(pattern))
+                         for i, pattern in enumerate(patterns) if i != answer],
+        )
+
+
+def _rank_tex(rankings):
+    radius, ionization = rankings
+    return (r"r:" + ">".join(radius) + r",\quad I_1:"
+            + ">".join(ionization))
+
+
+@question_type(
+    "chem.posn2560_q11", display_name={"th": "ลำดับขนาดอะตอมและพลังงานไอออไนเซชัน"},
+    level=LEVEL, subject="เคมี", topic="แนวโน้มรัศมีอะตอมและพลังงานไอออไนเซชัน",
+)
+class RadiusAndIonizationOrder(ChemistrySheet):
+    def expr(self, rng):
+        elements = list(("O", "P", "Ga", "As"))
+        rng.shuffle(elements)
+        radius, ionization = q11.solve(elements=tuple(elements))
+        choices = (
+            ((radius[1], radius[0], *radius[2:]), ionization),
+            (radius, (ionization[2], ionization[1], ionization[0], ionization[3])),
+            (radius, tuple(reversed(ionization))),
+        )
+        labels = "ADEG"
+        assignment = ", ".join(f"{label}={symbol}" for label, symbol in zip(labels, elements))
+        return MathDraw(
+            "", _rank_tex((radius, ionization)),
+            prompt=(
+                f"กำหนด {assignment} โดยอะตอมทั้งหมดอยู่ในสถานะพื้น "
+                "ข้อใดเรียงรัศมีอะตอมเชิงประจักษ์ r และพลังงานไอออไนเซชันลำดับที่ 1 "
+                "I₁ จากมากไปน้อยได้ถูกต้องทั้งสองลำดับ"
+            ),
+            hint="ตรวจลำดับในคาบและหมู่แยกสำหรับรัศมีและพลังงานไอออไนเซชัน",
+            distractors=[
+                named("chem.reversed_ga_as_radius", _rank_tex(choices[0])),
+                named("chem.put_as_above_o_ionization", _rank_tex(choices[1])),
+                named("chem.reversed_ionization_order", _rank_tex(choices[2])),
+            ],
+        )
+
+
+def _position_tuple(values):
+    return "(" + ",".join(map(str, values)) + ")"
+
+
+@question_type(
+    "chem.posn2560_q12", display_name={"th": "หมู่และคาบของไอออนที่ไอโซอิเล็กทรอนิก"},
+    level=LEVEL, subject="เคมี", topic="ไอออนไอโซอิเล็กทรอนิกและตารางธาตุ",
+)
+class IsoelectronicIonPositions(ChemistrySheet):
+    def expr(self, rng):
+        gas, electrons = rng.choice((("Ne", 10), ("Ar", 18), ("Kr", 36), ("Xe", 54)))
+        group_x, period_x, group_y, period_y = q12.solve(noble_electrons=electrons)
+        return MathDraw(
+            "", _position_tuple((group_x, period_x, group_y, period_y)),
+            prompt=(
+                f"ไอออน X²⁺ และ Y⁻ มีอิเล็กตรอนเท่ากับแก๊สมีตระกูล {gas} "
+                "จงระบุ (หมู่ X, คาบ X, หมู่ Y, คาบ Y) โดยใช้เลขหมู่หลักแบบเดิม 1–8"
+            ),
+            hint="หาเลขอะตอมของ X และ Y จากจำนวนอิเล็กตรอนของไอออนก่อน",
+            distractors=[
+                named("chem.swapped_group_and_period", _position_tuple(
+                    (period_x, group_x, group_y, period_y))),
+                named("chem.put_halogen_in_next_period", _position_tuple(
+                    (group_x, period_x, group_y, period_x))),
+                named("chem.treated_anion_as_group_two", _position_tuple(
+                    (group_x, period_x, group_x, period_y))),
             ],
         )

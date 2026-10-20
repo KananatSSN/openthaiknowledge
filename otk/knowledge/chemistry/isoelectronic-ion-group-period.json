@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ไอออนไอโซอิเล็กทรอนิกและตารางธาตุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.isoelectronic_ion_group_period.procedure",
+      "kind": "procedure",
+      "title": "หมู่และคาบของไอออนที่ไอโซอิเล็กทรอนิก",
+      "statement": "เมื่อ X²⁺ และ Y⁻ มีอิเล็กตรอนเท่าแก๊สมีตระกูล เลขอะตอมของ X สูงกว่าจำนวนอิเล็กตรอน 2 และของ Y ต่ำกว่า 1",
+      "steps": [
+        "หาจำนวนอิเล็กตรอนของแก๊สมีตระกูล",
+        "หาธาตุเป็นกลาง X และ Y แล้วอ่านหมู่และคาบในตารางธาตุ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q12"
+      ],
+      "note": "Uses source old main-group numbering (halogen group 7) and noble-gas variants Ne, Ar, Kr, Xe."
+    }
+  ]
+}

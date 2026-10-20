@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แนวโน้มรัศมีอะตอมและพลังงานไอออไนเซชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.atomic_radius_ionization_rankings.procedure",
+      "kind": "procedure",
+      "title": "ลำดับขนาดอะตอมและพลังงานไอออไนเซชัน",
+      "statement": "ลำดับรัศมีอะตอมเชิงประจักษ์และพลังงานไอออไนเซชันลำดับที่หนึ่งต้องตรวจแยกกัน; ข้อเลือกของต้นฉบับไม่มีคู่ลำดับที่ถูกต้อง",
+      "steps": [
+        "ระบุ O P Ga As จากการจัดเรียงอิเล็กตรอน",
+        "เทียบค่ารัศมีและพลังงานไอออไนเซชันจากข้อมูลอ้างอิงที่ระบุนิยาม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q11"
+      ],
+      "note": "SOURCE ERROR: printed choices ก–ง are all false. Empirical radii pm O60,P100,Ga130,As115; first IE eV O13.618055,P10.486686,Ga5.999302,As9.78855. Correct full rankings: E>G>D>A and A>D>G>E. Data: https://pubchem.ncbi.nlm.nih.gov/element/8 ; https://pubchem.ncbi.nlm.nih.gov/element/15 ; https://pubchem.ncbi.nlm.nih.gov/element/31 ; https://pubchem.ncbi.nlm.nih.gov/element/33 ; https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html ."
+    }
+  ]
+}

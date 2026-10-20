@@ -6,7 +6,9 @@ import re
 import pytest
 
 from otk.core import generate
-from otk.sheets.posn2560_chemistry import q01, q02, q03, q04, q05, q06, q07, q08, q09
+from otk.sheets.posn2560_chemistry import (
+    q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+)
 
 
 def test_canal_ray_mass_from_independent_acceleration_route():
@@ -42,6 +44,35 @@ def test_three_oxidation_balances():
         assert q09.solve(**params) == q09.check(**params)
 
 
+def test_hund_violation_from_orbital_box_enumeration():
+    for params in (q10.PARAMS, *q10.VARIANTS):
+        assert q10.solve(**params) == q10.check(**params)
+
+
+def test_source_radius_ionization_choices_have_no_correct_answer():
+    for params in (q11.PARAMS, *q11.VARIANTS):
+        assert q11.solve(**params) == q11.check(**params)
+    radius, ionization = q11.check(**q11.PARAMS)
+    printed = (
+        (("G", "E", "D"), ("A", "D", "E")),
+        (("D", "G", "A"), ("E", "G", "A")),
+        (("A", "E", "G"), ("D", "G", "A")),
+        (("E", "G", "A"), ("G", "A", "E")),
+    )
+
+    def descending(subsequence, order):
+        return list(subsequence) == sorted(subsequence, key=order.index)
+
+    assert not any(descending(r, radius) and descending(ie, ionization)
+                   for r, ie in printed)
+    assert (radius, ionization) == (("E", "G", "D", "A"), ("A", "D", "G", "E"))
+
+
+def test_isoelectronic_ion_positions_against_element_lookup():
+    for params in (q12.PARAMS, *q12.VARIANTS):
+        assert q12.solve(**params) == q12.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -64,7 +95,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9))
+@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -115,7 +146,7 @@ def test_generated_answers_follow_the_written_data(number):
         elif number == 8:
             atomic = int(re.search(r"เลขอะตอม (\d+)", stem)[1])
             expected = rf"\mathrm{{{q08.check(atomic=atomic)}}}"
-        else:
+        elif number == 9:
             first = next(params for formula, params in (
                 ("[Co(NH₃)₄SO₄]Cl", (4, -2)), ("NaNO₃", (3, -1)),
                 ("Na₃PO₄", (4, -3)),
@@ -132,5 +163,25 @@ def test_generated_answers_follow_the_written_data(number):
                                complex_charge=complex_[1])
             expected = "(" + ",".join(f"+{state}" if state > 0 else str(state)
                                      for state in states) + ")"
+        elif number == 10:
+            def counts(tex):
+                boxes = re.findall(r"\\boxed\{([^}]*)\}", tex)
+                assert len(boxes) == 5
+                return (sum(boxes[1].count(arrow) for arrow in (r"\uparrow", r"\downarrow")),
+                        tuple(sum(box.count(arrow) for arrow in (r"\uparrow", r"\downarrow"))
+                              for box in boxes[2:]))
+
+            patterns = tuple(counts(choice.content[0].tex) for choice in question.choices)
+            assert question.answer == q10.check(patterns=patterns)
+            expected = question.choices[q10.check(patterns=patterns)].content[0].tex
+        elif number == 11:
+            assignments = dict(re.findall(r"([ADEG])=(O|P|Ga|As)", stem))
+            elements = tuple(assignments[label] for label in "ADEG")
+            radius, ionization = q11.check(elements=elements)
+            expected = r"r:" + ">".join(radius) + r",\quad I_1:" + ">".join(ionization)
+        else:
+            gas = re.search(r"แก๊สมีตระกูล (Ne|Ar|Kr|Xe)", stem)[1]
+            electrons = {"Ne": 10, "Ar": 18, "Kr": 36, "Xe": 54}[gas]
+            expected = "(" + ",".join(map(str, q12.check(noble_electrons=electrons))) + ")"
         assert answer == expected
         assert len(question.choices) == 4

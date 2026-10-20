@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–9 are reviewed, solved and generated (9/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 61 are pending. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 9/9 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–12 are reviewed, solved and generated (12/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 58 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 12/12 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -122,6 +122,45 @@
       "answer": "(6, 7, 1)",
       "generator": "chem.posn2560_q09",
       "note": "Balance sulfate/other oxyanion, neutral oxyacid, and negative cyanide complex separately. NH3 is neutral, CN is -1."
+    },
+    {
+      "number": 10,
+      "solver": "q10",
+      "title": "แผนภาพออร์บิทัลกับกฎของฮุนด์",
+      "source": "Part I, question 10, p5: orbital diagrams A–D; B pairs 2p electrons while leaving one 2p orbital empty, so source choice ข is true.",
+      "page": 5,
+      "figure": "Rendered p5 inspected: A has 2s2 2p(1,1,1); B 2s2 2p(2,1,0); C 2s1 2p(2,1,1); D 2s2 2p(2,1,1). The adaptation redraws boxes from parameters; no fixed source image is attached.",
+      "figure_asset": "",
+      "topic": "การบรรจุอิเล็กตรอนในออร์บิทัล",
+      "answer": "1",
+      "generator": "chem.posn2560_q10",
+      "note": "Source correct statement identifies B as the Hund-rule violation; C is excited but respects Pauli. Generator asks directly for a Hund violation."
+    },
+    {
+      "number": 11,
+      "solver": "q11",
+      "title": "ลำดับขนาดอะตอมและพลังงานไอออไนเซชัน",
+      "source": "Part I, question 11, p6: A=O, D=P, E=Ga, G=As. No printed option has both a correct empirical-radius and a correct first-ionization-energy ranking.",
+      "page": 6,
+      "figure": "Rendered p6 table visually checked; the four printed pairs were tested against source element data. No figure is attached because the adaptation permutes labels.",
+      "figure_asset": "",
+      "topic": "แนวโน้มรัศมีอะตอมและพลังงานไอออไนเซชัน",
+      "answer": "(('E', 'G', 'D', 'A'), ('A', 'D', 'G', 'E'))",
+      "generator": "chem.posn2560_q11",
+      "note": "SOURCE ERROR: printed choices ก–ง are all false. Empirical radii pm O60,P100,Ga130,As115; first IE eV O13.618055,P10.486686,Ga5.999302,As9.78855. Correct full rankings: E>G>D>A and A>D>G>E. Data: https://pubchem.ncbi.nlm.nih.gov/element/8 ; https://pubchem.ncbi.nlm.nih.gov/element/15 ; https://pubchem.ncbi.nlm.nih.gov/element/31 ; https://pubchem.ncbi.nlm.nih.gov/element/33 ; https://physics.nist.gov/PhysRefData/ASD/ionEnergy.html ."
+    },
+    {
+      "number": 12,
+      "solver": "q12",
+      "title": "หมู่และคาบของไอออนที่ไอโซอิเล็กทรอนิก",
+      "source": "Part I, question 12, p6: X2+ and Y- are isoelectronic with Ar; X=Ca (group 2 period 4), Y=Cl (old group 7 period 3), choice ข.",
+      "page": 6,
+      "figure": "Rendered p6 answer table checked for column order: X group, X period, Y group, Y period. No static figure is needed.",
+      "figure_asset": "",
+      "topic": "ไอออนไอโซอิเล็กทรอนิกและตารางธาตุ",
+      "answer": "(2, 4, 7, 3)",
+      "generator": "chem.posn2560_q12",
+      "note": "Uses source old main-group numbering (halogen group 7) and noble-gas variants Ne, Ar, Kr, Xe."
     }
   ]
 }
