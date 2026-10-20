@@ -49,6 +49,16 @@ If you edited an existing table, also run the subject's older test file, and
 search for other code that imports the table (`git grep TABLE_NAME otk`); those
 tests sometimes look answers up by exact wording.
 
+### Exam sheets digested in waves
+
+Run one targeted test batch for each wave: the changed keys' per-set checks,
+their solver tests, provenance and safety, golden draws, and the relevant
+registry, curriculum, stage and layout checks. Run Ruff as part of the batch.
+This cadence also applies when a wave adds curriculum placements or named
+mistakes under `otk/core/`. Run the full `otk/tests` suite once every question
+in that sheet is solved, generated and claimed by a knowledge unit, before
+calling the sheet complete.
+
 ### Full suite: before a release, or when shared code changes
 
 ```bash
@@ -59,7 +69,8 @@ python -m ruff check otk
 Run it before tagging a release, and whenever a change touches shared code:
 `otk/kit/`, `otk/core/`, the picture or PDF rendering, or `otk/api.py`. A
 failure a targeted run missed still surfaces here before any consumer installs
-the release.
+the release. For incremental exam-sheet waves, follow the cadence above;
+run the full suite when the sheet is complete.
 
 ## Skills
 

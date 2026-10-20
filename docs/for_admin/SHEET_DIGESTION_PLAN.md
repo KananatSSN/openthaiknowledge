@@ -79,6 +79,11 @@ Phases in build order. Check an item only when its tests pass.
   source artwork shipped. Full copied text remains in the private bank.
 - Extraction normalized the written heading `9 .` to `9.`; the count check
   confirms 60+10, rather than silently losing written questions 9 and 10.
+- Maintainer test cadence: one targeted batch after each chemistry wave,
+  including the changed keys, solver checks, provenance, safety, golden draws,
+  curriculum/stage/layout checks and Ruff. Run the full suite once all 70
+  questions are solved, generated and claimed. The first batch's full run is
+  historical; do not repeat it before 70/70 is complete.
 - Next: review and digest Part I 1–2 and 5, then continue from 7.
 
 ### Physics POSN bank — 2026-10-17
