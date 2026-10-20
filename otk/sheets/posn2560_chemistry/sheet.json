@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–12 are reviewed, solved and generated (12/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 58 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 12/12 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–15 are reviewed, solved and generated (15/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 55 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 15/15 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -161,6 +161,45 @@
       "answer": "(2, 4, 7, 3)",
       "generator": "chem.posn2560_q12",
       "note": "Uses source old main-group numbering (halogen group 7) and noble-gas variants Ne, Ar, Kr, Xe."
+    },
+    {
+      "number": 13,
+      "solver": "q13",
+      "title": "ออกไซด์ที่ทำให้น้ำเป็นกรด",
+      "source": "Part I, question 13, p6: P4O10 and Cl2O7 react with water to give acids; choice ข.",
+      "page": 6,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สมบัติกรดเบสของออกไซด์",
+      "answer": "('Cl2O7', 'P4O10')",
+      "generator": "chem.posn2560_q13",
+      "note": "P4O10 + 6H2O -> 4H3PO4; Cl2O7 + H2O -> 2HClO4. Cr2O3 is practically insoluble in water; Na2O gives NaOH. The generator varies familiar acid/base/amphoteric oxides."
+    },
+    {
+      "number": 14,
+      "solver": "q14",
+      "title": "ตะกอนจากส่วนผสมของไอออน",
+      "source": "Part I, question 14, p6: Ba2+, Mg2+, Na+, Cl-, SO4(2-) and HPO4(2-) give MgHPO4, BaSO4 and BaHPO4 as the precipitates, choice ง.",
+      "page": 6,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การละลายและการเกิดตะกอน",
+      "answer": "('BaHPO4', 'BaSO4', 'MgHPO4')",
+      "generator": "chem.posn2560_q14",
+      "note": "Uses general solubility rules for the source ion pool; precipitation in a real mixture depends on concentrations and pH. Variants change soluble group-1 and spectator ions while preserving the three relevant precipitates."
+    },
+    {
+      "number": 15,
+      "solver": "q15",
+      "title": "สีของแฮโลเจนและลำดับอิเล็กโทรเนกาติวิตี",
+      "source": "Part I, question 15, p7: Z2 is orange in CCl4 and oxidizes Y- to violet iodine; Z=Br, Y=I, X=Cl, so EN X>Z>Y, choice ค.",
+      "page": 7,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ปฏิกิริยาแทนที่ของแฮโลเจน",
+      "answer": "('X', 'Z', 'Y')",
+      "generator": "chem.posn2560_q15",
+      "note": "The printed stem omits an explicit distinctness condition for X,Y,Z; the adaptation states they are three distinct members of Cl, Br, I. The iodine color after shaking Br2 with KI identifies I-, and the remaining label is Cl."
     }
   ]
 }

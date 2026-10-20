@@ -8,6 +8,7 @@ import pytest
 from otk.core import generate
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+    q13, q14, q15,
 )
 
 
@@ -73,6 +74,13 @@ def test_isoelectronic_ion_positions_against_element_lookup():
         assert q12.solve(**params) == q12.check(**params)
 
 
+def test_acidic_oxide_products_precipitation_and_halogen_order():
+    for module in (q13, q14, q15):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -95,7 +103,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12))
+@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -179,9 +187,25 @@ def test_generated_answers_follow_the_written_data(number):
             elements = tuple(assignments[label] for label in "ADEG")
             radius, ionization = q11.check(elements=elements)
             expected = r"r:" + ">".join(radius) + r",\quad I_1:" + ">".join(ionization)
-        else:
+        elif number == 12:
             gas = re.search(r"แก๊สมีตระกูล (Ne|Ar|Kr|Xe)", stem)[1]
             electrons = {"Ne": 10, "Ar": 18, "Kr": 36, "Xe": 54}[gas]
             expected = "(" + ",".join(map(str, q12.check(noble_electrons=electrons))) + ")"
+        elif number == 13:
+            oxides = tuple(re.search(r"แดง: ([A-Za-z0-9, ]+)", stem)[1].split(", "))
+            expected = r"\mathrm{" + r"},\;\mathrm{".join(q13.check(oxides=oxides)) + "}"
+        elif number == 14:
+            cations = tuple(re.findall(r"(Ba|Mg|Na|K)(?:²|)⁺", stem))
+            anions = tuple(re.findall(r"(Cl|NO3|SO4|HPO4)(?:²|)⁻", stem))
+            assert len(cations) == len(anions) == 3
+            expected = r",\;".join(r"\mathrm{" + formula + "}" for formula in
+                                    q14.check(cations=cations, anions=anions))
+        else:
+            bromine = re.search(r"สารละลาย ([XYZ])₂ ใน CCl₄ มีสีส้ม", stem)[1]
+            iodine = re.search(r"สารละลาย K([XYZ]) ชั้น", stem)[1]
+            chlorine = (set("XYZ") - {bromine, iodine}).pop()
+            assignment = tuple({bromine: "Br", iodine: "I", chlorine: "Cl"}[label]
+                               for label in "XYZ")
+            expected = ">".join(q15.check(assignment=assignment))
         assert answer == expected
         assert len(question.choices) == 4

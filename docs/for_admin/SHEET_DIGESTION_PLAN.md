@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–4, 2026-10-20
+### Chemistry POSN bank — waves 1–5, 2026-10-20
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–12 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **12/70 complete; 58 pending.**
+  1–15 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **15/70 complete; 55 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  twelve reviewed items. Its `verify` result of 12/12 describes this batch, not the
+  fifteen reviewed items. Its `verify` result of 15/15 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -533,6 +533,24 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-20 — POSN chemistry 2560, fifth oxides and halogens batch
+
+- Visually checked MC13–MC14 on p6 and MC15 on p7. Built independent
+  solvers, generators, and knowledge claims for all three.
+- MC13 identifies P₄O₁₀ and Cl₂O₇ as acidifying oxides. MC14 uses the
+  source's general solubility-rule model for BaSO₄, BaHPO₄, and MgHPO₄;
+  actual precipitation depends on concentration and pH. MC15 adds the
+  distinctness condition omitted by the printed stem, making X=Cl,
+  Y=I, and Z=Br unique.
+- `verify posn2560_chemistry`: 15/15 green, 47 variant checks, all
+  independent. Knowledge validation: 786 units in 652 files, zero problems;
+  source coverage: 15/70. Only the three new golden keys were added.
+- Targeted wave validation: 115 sheet/set checks and 16,270 affected
+  registry, provenance, safety, golden and layout checks passed. The frozen
+  registry count was updated from 4,473 to 4,476 and its one failing check
+  was rerun successfully. Ruff and whitespace checks passed. Full suite
+  deferred until all 70 questions are complete.
 
 ### 2026-10-20 — POSN chemistry 2560, fourth atomic-structure batch
 

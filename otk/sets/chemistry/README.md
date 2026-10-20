@@ -2,7 +2,7 @@
 
 # เคมี (`chemistry`)
 
-519 sets in 170 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+522 sets in 170 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -237,4 +237,4 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`posn2560`](olympiad/posn2560.py) | Reviewed waves of POSN camp-selection chemistry 2560. | — | 12 |
+| [`posn2560`](olympiad/posn2560.py) | Reviewed waves of POSN camp-selection chemistry 2560. | — | 15 |

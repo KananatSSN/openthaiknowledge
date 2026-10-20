@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การละลายและการเกิดตะกอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.mixed_ion_precipitation_rules.procedure",
+      "kind": "procedure",
+      "title": "ตะกอนจากส่วนผสมของไอออน",
+      "statement": "ในส่วนผสม Ba²⁺ Mg²⁺ Na⁺ Cl⁻ SO₄²⁻ HPO₄²⁻ เกลือ BaSO₄ BaHPO₄ และ MgHPO₄ เป็นตะกอนตามกฎการละลายทั่วไป",
+      "steps": [
+        "จับคู่ไอออนบวกและลบพร้อมดุลประจุของสูตรเกลือ",
+        "ตัดเกลือหมู่ 1 คลอไรด์ และ MgSO₄ ที่ละลายได้ออก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q14"
+      ],
+      "note": "Uses general solubility rules for the source ion pool; precipitation in a real mixture depends on concentrations and pH. Variants change soluble group-1 and spectator ions while preserving the three relevant precipitates."
+    }
+  ]
+}

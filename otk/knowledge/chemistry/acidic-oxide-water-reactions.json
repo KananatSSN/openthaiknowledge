@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติกรดเบสของออกไซด์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.acidic_oxide_water_reactions.procedure",
+      "kind": "procedure",
+      "title": "ออกไซด์ที่ทำให้น้ำเป็นกรด",
+      "statement": "ออกไซด์อโลหะที่เป็นแอนไฮไดรด์ของกรดทำปฏิกิริยากับน้ำให้กรด; ออกไซด์โลหะหมู่ 1 ให้เบส และ Cr₂O₃ ไม่ละลายน้ำอย่างมีนัยสำคัญ",
+      "steps": [
+        "จำแนกออกไซด์อโลหะ โลหะ และแอมโฟเทอริก",
+        "ระบุผลิตภัณฑ์เมื่อเติมน้ำและคัดคู่ที่ทำให้ลิตมัสน้ำเงินเป็นแดง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q13"
+      ],
+      "note": "P4O10 + 6H2O -> 4H3PO4; Cl2O7 + H2O -> 2HClO4. Cr2O3 is practically insoluble in water; Na2O gives NaOH. The generator varies familiar acid/base/amphoteric oxides."
+    }
+  ]
+}

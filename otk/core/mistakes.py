@@ -37,6 +37,42 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.confused_amphoteric_oxide_with_acid": {
+        "th": "จัดออกไซด์แอมโฟเทอริกเป็นออกไซด์ที่ให้น้ำเป็นกรด",
+        "en": "Classified an amphoteric oxide as an acidifying oxide",
+    },
+    "chem.confused_basic_oxide_with_acid": {
+        "th": "จัดออกไซด์เบสเป็นออกไซด์ที่ให้น้ำเป็นกรด",
+        "en": "Classified a basic oxide as an acidifying oxide",
+    },
+    "chem.ignored_nonmetal_acid_anhydrides": {
+        "th": "ไม่ระบุแอนไฮไดรด์ของกรดที่เป็นออกไซด์อโลหะ",
+        "en": "Missed the nonmetal acid anhydrides",
+    },
+    "chem.assumed_magnesium_sulfate_precipitates": {
+        "th": "คิดว่าแมกนีเซียมซัลเฟตตกตะกอน",
+        "en": "Assumed magnesium sulfate precipitates",
+    },
+    "chem.assumed_alkali_hydrogen_phosphate_precipitates": {
+        "th": "คิดว่าไฮโดรเจนฟอสเฟตของโลหะหมู่ 1 ตกตะกอน",
+        "en": "Assumed an alkali-metal hydrogen phosphate precipitates",
+    },
+    "chem.selected_soluble_spectator_salts": {
+        "th": "เลือกเกลือคลอไรด์หรือไนเตรตที่ละลายได้เป็นตะกอน",
+        "en": "Selected soluble spectator salts as precipitates",
+    },
+    "chem.put_bromine_above_chlorine": {
+        "th": "เรียงอิเล็กโทรเนกาติวิตีของโบรมีนสูงกว่าคลอรีน",
+        "en": "Ranked bromine above chlorine in electronegativity",
+    },
+    "chem.reversed_halogen_group_trend": {
+        "th": "กลับแนวโน้มอิเล็กโทรเนกาติวิตีลงหมู่แฮโลเจน",
+        "en": "Reversed the halogen electronegativity trend",
+    },
+    "chem.put_iodine_above_bromine": {
+        "th": "เรียงอิเล็กโทรเนกาติวิตีของไอโอดีนสูงกว่าโบรมีน",
+        "en": "Ranked iodine above bromine in electronegativity",
+    },
     "chem.thought_parallel_p_singles_invalid": {
         "th": "คิดว่า 2p ที่มีอิเล็กตรอนเดี่ยวขนานกันผิดกฎของฮุนด์",
         "en": "Thought parallel singly occupied p orbitals violate Hund's rule",

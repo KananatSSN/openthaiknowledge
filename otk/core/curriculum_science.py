@@ -4136,6 +4136,7 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q04", "chem.posn2560_q05", "chem.posn2560_q06",
     "chem.posn2560_q07", "chem.posn2560_q08", "chem.posn2560_q09",
     "chem.posn2560_q10", "chem.posn2560_q11", "chem.posn2560_q12",
+    "chem.posn2560_q13", "chem.posn2560_q14", "chem.posn2560_q15",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4150,6 +4151,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การบรรจุอิเล็กตรอนในออร์บิทัล", "outside_scope"),
     "chem.posn2560_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "แนวโน้มรัศมีอะตอมและพลังงานไอออไนเซชัน", "outside_scope"),
     "chem.posn2560_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ไอออนไอโซอิเล็กทรอนิกและตารางธาตุ", "outside_scope"),
+    "chem.posn2560_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สมบัติกรดเบสของออกไซด์", "outside_scope"),
+    "chem.posn2560_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การละลายและการเกิดตะกอน", "outside_scope"),
+    "chem.posn2560_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ปฏิกิริยาแทนที่ของแฮโลเจน", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)

@@ -5,6 +5,7 @@ from otk.core.registry import question_type
 from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+    q13, q14, q15,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -393,4 +394,101 @@ class IsoelectronicIonPositions(ChemistrySheet):
                 named("chem.treated_anion_as_group_two", _position_tuple(
                     (group_x, period_x, group_x, period_y))),
             ],
+        )
+
+
+def _oxide_pair(pair):
+    return r"\mathrm{" + r"},\;\mathrm{".join(pair) + "}"
+
+
+@question_type(
+    "chem.posn2560_q13", display_name={"th": "ออกไซด์ที่ทำให้น้ำเป็นกรด"},
+    level=LEVEL, subject="เคมี", topic="สมบัติกรดเบสของออกไซด์",
+)
+class AcidicOxides(ChemistrySheet):
+    def expr(self, rng):
+        oxides = rng.choice((q13.PARAMS, *q13.VARIANTS))["oxides"]
+        acids = q13.solve(oxides=oxides)
+        others = [oxide for oxide in oxides if oxide not in acids]
+        amphoteric = next(oxide for oxide in others if oxide in ("Cr2O3", "Al2O3"))
+        basic = next(oxide for oxide in others if oxide in ("Na2O", "K2O"))
+        wrong = (
+            (tuple(sorted((acids[0], amphoteric))), "chem.confused_amphoteric_oxide_with_acid"),
+            (tuple(sorted((acids[1], basic))), "chem.confused_basic_oxide_with_acid"),
+            (tuple(sorted(others)), "chem.ignored_nonmetal_acid_anhydrides"),
+        )
+        return MathDraw(
+            "", _oxide_pair(acids),
+            prompt=("ออกไซด์คู่ใดเมื่อลงน้ำแล้วให้สารละลายที่เปลี่ยนกระดาษลิตมัส"
+                    "จากน้ำเงินเป็นแดง: " + ", ".join(oxides)),
+            hint="พิจารณาว่าออกไซด์ใดเป็นแอนไฮไดรด์ของกรด และตัวใดเป็นเบสหรือแอมโฟเทอริก",
+            distractors=[named(mistake, _oxide_pair(pair)) for pair, mistake in wrong],
+        )
+
+
+def _salt_list(formulas):
+    return r",\;".join(r"\mathrm{" + formula + "}" for formula in sorted(formulas))
+
+
+@question_type(
+    "chem.posn2560_q14", display_name={"th": "ตะกอนจากส่วนผสมของไอออน"},
+    level=LEVEL, subject="เคมี", topic="การละลายและการเกิดตะกอน",
+)
+class MixedIonPrecipitates(ChemistrySheet):
+    def expr(self, rng):
+        params = rng.choice((q14.PARAMS, *q14.VARIANTS))
+        cations, anions = params["cations"], params["anions"]
+        answer = q14.solve(**params)
+        alkali = next(c for c in cations if c in ("Na", "K"))
+        spectator = next(a for a in anions if a in ("Cl", "NO3"))
+        spectator_salts = (("BaCl2", "MgCl2") if spectator == "Cl"
+                           else ("Ba(NO3)2", "Mg(NO3)2"))
+        sulfate = f"{alkali}2SO4"
+        wrong = (
+            (("BaSO4", "MgSO4", "MgHPO4"), "chem.assumed_magnesium_sulfate_precipitates"),
+            (("BaSO4", f"{alkali}2HPO4", "MgHPO4"),
+             "chem.assumed_alkali_hydrogen_phosphate_precipitates"),
+            ((*spectator_salts, sulfate),
+             "chem.selected_soluble_spectator_salts"),
+        )
+        return MathDraw(
+            "", _salt_list(answer),
+            prompt=("ผสมสารละลายที่มีไอออน " + ", ".join(
+                f"{cation}{'⁺' if cation in ('Na', 'K') else '²⁺'}" for cation in cations)
+                + " และ " + ", ".join(
+                    f"{anion}{'⁻' if anion in ('Cl', 'NO3') else '²⁻'}" for anion in anions)
+                + " เข้าด้วยกัน ภายใต้สมมติฐานกฎการละลายทั่วไป ข้อใดระบุสารที่ตกตะกอนทั้งหมด"),
+            hint="เกลือหมู่ 1 และไนเตรตละลายได้; เทียบซัลเฟตกับไฮโดรเจนฟอสเฟตของ Ba และ Mg",
+            distractors=[named(mistake, _salt_list(salts)) for salts, mistake in wrong],
+        )
+
+
+def _label_order(labels):
+    return ">".join(labels)
+
+
+@question_type(
+    "chem.posn2560_q15", display_name={"th": "สีของแฮโลเจนและลำดับอิเล็กโทรเนกาติวิตี"},
+    level=LEVEL, subject="เคมี", topic="ปฏิกิริยาแทนที่ของแฮโลเจน",
+)
+class HalogenDisplacementOrder(ChemistrySheet):
+    def expr(self, rng):
+        assignment = rng.choice((q15.PARAMS, *q15.VARIANTS))["assignment"]
+        labels = {symbol: "XYZ"[i] for i, symbol in enumerate(assignment)}
+        answer = q15.solve(assignment=assignment)
+        wrong = (
+            ((labels["Br"], labels["Cl"], labels["I"]), "chem.put_bromine_above_chlorine"),
+            ((labels["I"], labels["Br"], labels["Cl"]), "chem.reversed_halogen_group_trend"),
+            ((labels["Cl"], labels["I"], labels["Br"]), "chem.put_iodine_above_bromine"),
+        )
+        return MathDraw(
+            "", _label_order(answer),
+            prompt=(
+                "X, Y, Z เป็นธาตุแฮโลเจนสามชนิดที่ต่างกันในชุด Cl, Br, I "
+                f"สารละลาย {labels['Br']}₂ ใน CCl₄ มีสีส้ม; เมื่อนำไปเขย่ากับสารละลาย "
+                f"K{labels['I']} ชั้น CCl₄ เปลี่ยนเป็นสีม่วง จงเรียงค่าอิเล็กโทรเนกาติวิตี"
+                "ของ X, Y, Z จากมากไปน้อย"
+            ),
+            hint="สีส้มระบุ Br₂; สีม่วงหลังแทนที่ระบุ I₂ แล้วใช้แนวโน้มในหมู่ 17",
+            distractors=[named(mistake, _label_order(order)) for order, mistake in wrong],
         )
