@@ -4142,6 +4142,7 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q22", "chem.posn2560_q23", "chem.posn2560_q24",
     "chem.posn2560_q25", "chem.posn2560_q26", "chem.posn2560_q27",
     "chem.posn2560_q28", "chem.posn2560_q29", "chem.posn2560_q30",
+    "chem.posn2560_q31", "chem.posn2560_q32", "chem.posn2560_q33",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4174,6 +4175,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q28": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รูปร่างโมเลกุลตาม VSEPR", "outside_scope"),
     "chem.posn2560_q29": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การเรียกชื่อสารประกอบอนินทรีย์", "outside_scope"),
     "chem.posn2560_q30": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พลังงานสลายพันธะและการแยกพันธะ", "outside_scope"),
+    "chem.posn2560_q31": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "กฎออกเตตและโครงสร้างลูอิส", "outside_scope"),
+    "chem.posn2560_q32": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ขั้วโมเลกุลและรูปร่างโมเลกุล", "outside_scope"),
+    "chem.posn2560_q33": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สมบัติของเหลวและแรงยึดเหนี่ยวระหว่างโมเลกุล", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)

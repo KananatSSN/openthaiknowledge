@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–30 are reviewed, solved and generated (30/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 40 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 30/30 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–33 are reviewed, solved and generated (33/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 37 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 33/33 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -395,6 +395,45 @@
       "answer": "('CH2', 'CHCH3')",
       "generator": "chem.posn2560_q30",
       "note": "The source reactions appear without visible bond strokes in the PDF. The adaptation prints the parent C=C explicitly and distinguishes C=C cleavage from adjacent C-C and two C-H cleavages."
+    },
+    {
+      "number": 31,
+      "solver": "q31",
+      "title": "กฎออกเตตของไอออนอินเตอร์แฮโลเจน",
+      "source": "Part I, question 31, p9: IF, IF2+, IF3(2+) and IF4+; only IF4+ has an expanded central shell, choice ง.",
+      "page": 9,
+      "figure": "Rendered p9/p10 visually checked charge superscripts, formulas and all printed choices.",
+      "figure_asset": "",
+      "topic": "กฎออกเตตและโครงสร้างลูอิส",
+      "answer": "('I', 4, 1)",
+      "generator": "chem.posn2560_q31",
+      "note": "After F atoms reach octets, central I has respectively 8, 8, 8 and 10 electrons. The generated prompt states the single-bond Lewis model."
+    },
+    {
+      "number": 32,
+      "solver": "q32",
+      "title": "คู่โมเลกุลที่มีขั้วทั้งสองชนิด",
+      "source": "Part I, question 32, p9: HCN/KrF4, AsI5/SBr2, ClH3/TeF4 and SO3/PBr3; the intended VSEPR pair is ClH3/TeF4, choice ค.",
+      "page": 9,
+      "figure": "Rendered p9/p10 visually checked charge superscripts, formulas and all printed choices.",
+      "figure_asset": "",
+      "topic": "ขั้วโมเลกุลและรูปร่างโมเลกุล",
+      "answer": "('ClH3', 'TeF4')",
+      "generator": "chem.posn2560_q32",
+      "note": "SOURCE MODEL ASSUMPTION: ClH3 is printed exactly; as a formal AX3E2 Lewis species it is T-shaped and polar, but the adaptation does not claim an isolable molecule. TeF4 is AX4E seesaw and polar. The competing partners KrF4, AsI5 and SO3 are symmetric/nonpolar."
+    },
+    {
+      "number": 33,
+      "solver": "q33",
+      "title": "ผลของอุณหภูมิต่อสมบัติของเหลว",
+      "source": "Part I, question 33, p10: on cooling, the printed false statement is that intermolecular attraction decreases, choice ง.",
+      "page": 10,
+      "figure": "Rendered p9/p10 visually checked charge superscripts, formulas and all printed choices.",
+      "figure_asset": "",
+      "topic": "สมบัติของเหลวและแรงยึดเหนี่ยวระหว่างโมเลกุล",
+      "answer": "3",
+      "generator": "chem.posn2560_q33",
+      "note": "The adaptation specifies the same liquid and fixed molecular separation for the force comparison; a temperature change alters kinetic energy, vapor pressure and surface tension, not the pair-force law at that distance. Reference: https://openstax.org/books/chemistry-2e/pages/10-2-properties-of-liquids and https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions ."
     }
   ]
 }

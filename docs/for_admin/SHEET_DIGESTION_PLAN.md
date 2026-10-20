@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–10, 2026-10-21
+### Chemistry POSN bank — waves 1–11, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–30 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **30/70 complete; 40 pending.**
+  1–33 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **33/70 complete; 37 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  thirty reviewed items. Its `verify` result of 30/30 describes this batch, not the
+  thirty-three reviewed items. Its `verify` result of 33/33 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -533,6 +533,23 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-21 — POSN chemistry 2560, eleventh octet and liquids batch
+
+- Visually checked MC31–MC32 on p9 and MC33 on p10. Added independent
+  solvers, generators and knowledge claims for all three.
+- IF₄⁺ has ten electrons around I while the other printed species have
+  octets. MC32's printed ClH₃ is handled as a formal AX₃E₂ model rather than
+  a claim about an isolable gas. MC33 states a fixed molecular separation
+  when comparing attractive force, so cooling does not change the pair
+  force law.
+- `verify posn2560_chemistry`: 33/33 green, 102 variant checks, all
+  independent. Knowledge validation: 804 units in 670 files, zero problems;
+  source coverage: 33/70. Only the three new golden keys were added.
+- Targeted wave validation: 229 sheet/set checks and 16,343 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
 
 ### 2026-10-21 — POSN chemistry 2560, tenth shape, names and bond batch
 

@@ -9,7 +9,7 @@ from otk.core import generate
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27, q28, q29, q30,
+    q25, q26, q27, q28, q29, q30, q31, q32, q33,
 )
 
 
@@ -118,6 +118,13 @@ def test_noble_gas_shapes_names_and_alkene_bond_cleavage():
     assert q29.ANSWER == 0  # all four printed names are correct
 
 
+def test_interhalogen_octets_polar_pairs_and_liquid_trends():
+    for module in (q31, q32, q33):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -140,7 +147,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 31)))
+@pytest.mark.parametrize("number", tuple(range(1, 34)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -376,7 +383,7 @@ def test_generated_answers_follow_the_written_data(number):
                 "แบเรียมไนเตรต": "barium_nitrate",
             }
             expected = str(q29.check(names=tuple(thai_to_code[name] for name in names_thai)))
-        else:
+        elif number == 30:
             alkene = re.search(r"จาก ([A-Z0-9=]+)\(g\)", stem)[1]
             left, right = q30.check(alkene=alkene)
 
@@ -387,5 +394,53 @@ def test_generated_answers_follow_the_written_data(number):
             expected = (reactant + r"_{(g)}\rightarrow "
                         + fragment_tex(left) + r"_{(g)}+"
                         + fragment_tex(right) + r"_{(g)}")
+        elif number == 31:
+            def parse_interhalogen(tex):
+                match = re.fullmatch(
+                    r"\\mathrm\{(I|Br|Cl)F\}(?:_\{(\d+)\})?(?:\^\{(\d*)\+\})?", tex,
+                )
+                assert match
+                return (match[1], int(match[2] or 1),
+                        0 if match[3] is None else int(match[3] or 1))
+
+            species = tuple(parse_interhalogen(choice.content[0].tex)
+                            for choice in question.choices)
+            nonoctet = q31.check(species=species)
+            expected = next(choice.content[0].tex for choice in question.choices
+                            if parse_interhalogen(choice.content[0].tex) == nonoctet)
+        elif number == 32:
+            formula_tex = {
+                "HCN": r"\mathrm{HCN}", "KrF4": r"\mathrm{KrF_4}",
+                "AsI5": r"\mathrm{AsI_5}", "SBr2": r"\mathrm{SBr_2}",
+                "ClH3": r"\mathrm{ClH_3}", "TeF4": r"\mathrm{TeF_4}",
+                "SO3": r"\mathrm{SO_3}", "PBr3": r"\mathrm{PBr_3}",
+                "NH3": r"\mathrm{NH_3}", "H2O": r"\mathrm{H_2O}",
+                "CO2": r"\mathrm{CO_2}", "XeF4": r"\mathrm{XeF_4}",
+                "BF3": r"\mathrm{BF_3}", "PCl3": r"\mathrm{PCl_3}",
+                "SF4": r"\mathrm{SF_4}",
+            }
+            reverse = {tex: formula for formula, tex in formula_tex.items()}
+            pairs = tuple(tuple(reverse[part] for part in choice.content[0].tex.split(r",\;"))
+                          for choice in question.choices)
+            polar_pair = q32.check(pairs=pairs)
+            expected = formula_tex[polar_pair[0]] + r",\;" + formula_tex[polar_pair[1]]
+        else:
+            direction = "cool" if "เมื่อลดอุณหภูมิ" in stem else "warm"
+            trend_text = {
+                "ความดันไอลดลง": ("vapor_pressure", "decrease"),
+                "ความดันไอเพิ่มขึ้น": ("vapor_pressure", "increase"),
+                "ความตึงผิวลดลง": ("surface_tension", "decrease"),
+                "ความตึงผิวเพิ่มขึ้น": ("surface_tension", "increase"),
+                "พลังงานจลน์เฉลี่ยของโมเลกุลลดลง": ("kinetic_energy", "decrease"),
+                "พลังงานจลน์เฉลี่ยของโมเลกุลเพิ่มขึ้น": ("kinetic_energy", "increase"),
+                "แรงดึงดูดระหว่างโมเลกุลที่ระยะห่างเท่าเดิมลดลง":
+                    ("fixed_distance_attraction", "decrease"),
+                "แรงดึงดูดระหว่างโมเลกุลที่ระยะห่างเท่าเดิมเพิ่มขึ้น":
+                    ("fixed_distance_attraction", "increase"),
+                "แรงดึงดูดระหว่างโมเลกุลที่ระยะห่างเท่าเดิมไม่เปลี่ยน":
+                    ("fixed_distance_attraction", "same"),
+            }
+            claims = tuple(trend_text[choice.content[0].text] for choice in question.choices)
+            expected = question.choices[q33.check(direction=direction, claims=claims)].content[0].text
         assert answer == expected
         assert len(question.choices) == 4

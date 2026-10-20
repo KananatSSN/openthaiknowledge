@@ -37,6 +37,62 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.assumed_diatomic_halide_breaks_octet": {
+        "th": "คิดว่าอินเตอร์แฮโลเจนสองอะตอมไม่ครบออกเตต",
+        "en": "Assumed a diatomic interhalogen breaks the octet rule",
+    },
+    "chem.ignored_charge_in_difluoride_octet": {
+        "th": "ไม่นำประจุบวกของไดฟลูออไรด์มาหักจากอิเล็กตรอน",
+        "en": "Ignored the positive charge when counting difluoride electrons",
+    },
+    "chem.assumed_trifluoride_exceeds_octet": {
+        "th": "คิดว่าไตรฟลูออไรด์ที่มีประจุบวกเกินออกเตตเสมอ",
+        "en": "Assumed a charged trifluoride always expands its octet",
+    },
+    "chem.assumed_four_bonds_always_exceed_octet": {
+        "th": "คิดว่าพันธะสี่พันธะทำให้อะตอมกลางเกินออกเตตเสมอ",
+        "en": "Assumed four bonds always exceed a central octet",
+    },
+    "chem.assumed_square_planar_krf4_polar": {
+        "th": "คิดว่า KrF₄ สี่เหลี่ยมแบนราบมีขั้วสุทธิ",
+        "en": "Assumed square-planar KrF4 has a net dipole",
+    },
+    "chem.assumed_symmetric_trigonal_bipyramid_polar": {
+        "th": "คิดว่าพีระมิดคู่ฐานสามเหลี่ยมสมมาตรมีขั้วสุทธิ",
+        "en": "Assumed a symmetric trigonal bipyramid is polar",
+    },
+    "chem.assumed_trigonal_planar_oxide_polar": {
+        "th": "คิดว่าออกไซด์สามเหลี่ยมแบนราบสมมาตรมีขั้ว",
+        "en": "Assumed a symmetric trigonal-planar oxide is polar",
+    },
+    "chem.assumed_linear_co2_polar": {
+        "th": "คิดว่า CO₂ เส้นตรงมีขั้วสุทธิ",
+        "en": "Assumed linear CO2 has a net dipole",
+    },
+    "chem.assumed_square_planar_xef4_polar": {
+        "th": "คิดว่า XeF₄ สี่เหลี่ยมแบนราบมีขั้วสุทธิ",
+        "en": "Assumed square-planar XeF4 has a net dipole",
+    },
+    "chem.assumed_trigonal_planar_bf3_polar": {
+        "th": "คิดว่า BF₃ สามเหลี่ยมแบนราบมีขั้วสุทธิ",
+        "en": "Assumed trigonal-planar BF3 has a net dipole",
+    },
+    "chem.misread_vapor_pressure_temperature_trend": {
+        "th": "อ่านแนวโน้มความดันไอกับอุณหภูมิผิด",
+        "en": "Misread the vapor-pressure trend with temperature",
+    },
+    "chem.misread_surface_tension_temperature_trend": {
+        "th": "อ่านแนวโน้มความตึงผิวกับอุณหภูมิผิด",
+        "en": "Misread the surface-tension trend with temperature",
+    },
+    "chem.misread_kinetic_energy_temperature_trend": {
+        "th": "อ่านแนวโน้มพลังงานจลน์กับอุณหภูมิผิด",
+        "en": "Misread the kinetic-energy trend with temperature",
+    },
+    "chem.confused_temperature_with_pair_force_law": {
+        "th": "คิดว่าการเปลี่ยนอุณหภูมิเปลี่ยนแรงระหว่างโมเลกุลที่ระยะเท่าเดิม",
+        "en": "Assumed temperature changes the fixed-distance pair force law",
+    },
     "chem.ignored_noble_gas_lone_pair": {
         "th": "ไม่นับคู่โดดเดี่ยวบนอะตอมกลางของแก๊สมีตระกูล",
         "en": "Ignored the central noble-gas lone pair",

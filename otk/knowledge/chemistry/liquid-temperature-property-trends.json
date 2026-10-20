@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติของเหลวและแรงยึดเหนี่ยวระหว่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.liquid_temperature_property_trends.procedure",
+      "kind": "procedure",
+      "title": "ผลของอุณหภูมิต่อสมบัติของเหลว",
+      "statement": "เมื่อทำให้ของเหลวชนิดเดิมเย็นลง ความดันไอและพลังงานจลน์เฉลี่ยลดลง ความตึงผิวเพิ่มขึ้น แต่กฎแรงดึงดูดระหว่างโมเลกุลคู่เดิมที่ระยะเท่าเดิมไม่เปลี่ยน",
+      "steps": [
+        "แยกสมบัติที่ขึ้นกับอุณหภูมิจากกฎแรงระหว่างโมเลกุล",
+        "เทียบเครื่องหมายการเปลี่ยนของความดันไอ ความตึงผิว และพลังงานจลน์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 33
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q33"
+      ],
+      "note": "The adaptation specifies the same liquid and fixed molecular separation for the force comparison; a temperature change alters kinetic energy, vapor pressure and surface tension, not the pair-force law at that distance. Reference: https://openstax.org/books/chemistry-2e/pages/10-2-properties-of-liquids and https://openstax.org/books/chemistry-2e/pages/10-3-phase-transitions ."
+    }
+  ]
+}

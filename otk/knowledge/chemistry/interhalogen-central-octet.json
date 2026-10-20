@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎออกเตตและโครงสร้างลูอิส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.interhalogen_central_octet.procedure",
+      "kind": "procedure",
+      "title": "กฎออกเตตของไอออนอินเตอร์แฮโลเจน",
+      "statement": "สำหรับ XFₙ ที่มี F ปลายพันธะเดี่ยวและประจุบวก q อิเล็กตรอนรอบ X เท่ากับ 7+n−q; IF₄⁺ มี 10 อิเล็กตรอนรอบ I จึงเกินออกเตต",
+      "steps": [
+        "นับอิเล็กตรอนเวเลนซ์และหักประจุออกจากไอออนบวก",
+        "เติมออกเตตให้ F ปลายแล้วนับพันธะกับคู่โดดเดี่ยวของอะตอมกลาง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 31
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q31"
+      ],
+      "note": "After F atoms reach octets, central I has respectively 8, 8, 8 and 10 electrons. The generated prompt states the single-bond Lewis model."
+    }
+  ]
+}

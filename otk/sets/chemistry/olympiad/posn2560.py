@@ -11,7 +11,7 @@ from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27, q28, q29, q30,
+    q25, q26, q27, q28, q29, q30, q31, q32, q33,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1068,4 +1068,136 @@ class AlkeneDoubleBondDissociation(ChemistrySheet):
             hint="เมื่อตัดพันธะคู่ C=C ชิ้นส่วนต้องอยู่คนละด้านของเครื่องหมาย = เดิม",
             distractors=[named(key, _cleavage_tex(alkene, products))
                          for key, products in zip(_Q30_MISTAKES, _Q30_WRONG[alkene])],
+        )
+
+
+def _interhalogen_tex(item):
+    element, count, charge = item
+    formula = element + "F"
+    subscript = "" if count == 1 else f"_{{{count}}}"
+    superscript = "" if charge == 0 else "^{+}" if charge == 1 else f"^{{{charge}+}}"
+    return rf"\mathrm{{{formula}}}{subscript}{superscript}"
+
+
+def _interhalogen_text(item):
+    element, count, charge = item
+    return element + "F" + (str(count) if count > 1 else "") + (
+        "" if charge == 0 else "+" if charge == 1 else f"^{charge}+")
+
+
+_OCTET_MISTAKES = {
+    1: "chem.assumed_diatomic_halide_breaks_octet",
+    2: "chem.ignored_charge_in_difluoride_octet",
+    3: "chem.assumed_trifluoride_exceeds_octet",
+    4: "chem.assumed_four_bonds_always_exceed_octet",
+}
+
+
+@question_type(
+    "chem.posn2560_q31", display_name={"th": "กฎออกเตตของไอออนอินเตอร์แฮโลเจน"},
+    level=LEVEL, subject="เคมี", topic="กฎออกเตตและโครงสร้างลูอิส",
+)
+class InterhalogenOctet(ChemistrySheet):
+    def expr(self, rng):
+        species = rng.choice((q31.PARAMS, *q31.VARIANTS))["species"]
+        answer = q31.solve(species=species)
+        return MathDraw(
+            "", _interhalogen_tex(answer),
+            prompt=("สมมติโครงสร้างลูอิสที่มีพันธะเดี่ยวระหว่างอะตอมกลางกับ F ทุกอะตอม "
+                    "ในบรรดา " + ", ".join(_interhalogen_text(item) for item in species)
+                    + " ชนิดใดมีอิเล็กตรอนรอบอะตอมกลางไม่เท่ากับ 8"),
+            hint="นับอิเล็กตรอนเวเลนซ์รวม หักประจุบวก และเติมออกเตตให้ F ปลายก่อน",
+            distractors=[named(_OCTET_MISTAKES[item[1]], _interhalogen_tex(item))
+                         for item in species if item != answer],
+        )
+
+
+_POLAR_PAIR_TEX = {
+    "HCN": r"\mathrm{HCN}", "KrF4": r"\mathrm{KrF_4}",
+    "AsI5": r"\mathrm{AsI_5}", "SBr2": r"\mathrm{SBr_2}",
+    "ClH3": r"\mathrm{ClH_3}", "TeF4": r"\mathrm{TeF_4}",
+    "SO3": r"\mathrm{SO_3}", "PBr3": r"\mathrm{PBr_3}",
+    "NH3": r"\mathrm{NH_3}", "H2O": r"\mathrm{H_2O}",
+    "CO2": r"\mathrm{CO_2}", "XeF4": r"\mathrm{XeF_4}",
+    "BF3": r"\mathrm{BF_3}", "PCl3": r"\mathrm{PCl_3}",
+    "SF4": r"\mathrm{SF_4}",
+}
+_NONPOLAR_MISTAKES = {
+    "KrF4": "chem.assumed_square_planar_krf4_polar",
+    "AsI5": "chem.assumed_symmetric_trigonal_bipyramid_polar",
+    "SO3": "chem.assumed_trigonal_planar_oxide_polar",
+    "CO2": "chem.assumed_linear_co2_polar",
+    "XeF4": "chem.assumed_square_planar_xef4_polar",
+    "BF3": "chem.assumed_trigonal_planar_bf3_polar",
+}
+
+
+def _polar_pair_tex(pair):
+    return _POLAR_PAIR_TEX[pair[0]] + r",\;" + _POLAR_PAIR_TEX[pair[1]]
+
+
+@question_type(
+    "chem.posn2560_q32", display_name={"th": "คู่โมเลกุลที่มีขั้วทั้งสองชนิด"},
+    level=LEVEL, subject="เคมี", topic="ขั้วโมเลกุลและรูปร่างโมเลกุล",
+)
+class BothMoleculesPolar(ChemistrySheet):
+    def expr(self, rng):
+        pairs = rng.choice((q32.PARAMS, *q32.VARIANTS))["pairs"]
+        answer = q32.solve(pairs=pairs)
+        model_note = (" สำหรับ ClH3 ให้ถือเป็นแบบจำลอง Cl–H สามพันธะ"
+                      "และคู่โดดเดี่ยวสองคู่" if any("ClH3" in pair for pair in pairs) else "")
+        return MathDraw(
+            "", _polar_pair_tex(answer),
+            prompt=("พิจารณารูปร่างตามแบบลูอิส/VSEPR" + model_note
+                    + " คู่ใดมีขั้วสุทธิทั้งสองชนิด"),
+            hint="โมเลกุลสมมาตรที่พันธะปลายเหมือนกันมีไดโพลหักล้างกัน",
+            distractors=[named(_NONPOLAR_MISTAKES[next(item for item in pair
+                                                     if item in _NONPOLAR_MISTAKES)],
+                               _polar_pair_tex(pair))
+                         for pair in pairs if pair != answer],
+        )
+
+
+_LIQUID_TREND_TEXT = {
+    ("vapor_pressure", "decrease"): "ความดันไอลดลง",
+    ("vapor_pressure", "increase"): "ความดันไอเพิ่มขึ้น",
+    ("surface_tension", "decrease"): "ความตึงผิวลดลง",
+    ("surface_tension", "increase"): "ความตึงผิวเพิ่มขึ้น",
+    ("kinetic_energy", "decrease"): "พลังงานจลน์เฉลี่ยของโมเลกุลลดลง",
+    ("kinetic_energy", "increase"): "พลังงานจลน์เฉลี่ยของโมเลกุลเพิ่มขึ้น",
+    ("fixed_distance_attraction", "decrease"): "แรงดึงดูดระหว่างโมเลกุลที่ระยะห่างเท่าเดิมลดลง",
+    ("fixed_distance_attraction", "increase"): "แรงดึงดูดระหว่างโมเลกุลที่ระยะห่างเท่าเดิมเพิ่มขึ้น",
+    ("fixed_distance_attraction", "same"): "แรงดึงดูดระหว่างโมเลกุลที่ระยะห่างเท่าเดิมไม่เปลี่ยน",
+}
+_LIQUID_MISTAKES = {
+    "vapor_pressure": "chem.misread_vapor_pressure_temperature_trend",
+    "surface_tension": "chem.misread_surface_tension_temperature_trend",
+    "kinetic_energy": "chem.misread_kinetic_energy_temperature_trend",
+    "fixed_distance_attraction": "chem.confused_temperature_with_pair_force_law",
+}
+
+
+@question_type(
+    "chem.posn2560_q33", display_name={"th": "ผลของอุณหภูมิต่อสมบัติของเหลว"},
+    level=LEVEL, subject="เคมี", topic="สมบัติของเหลวและแรงยึดเหนี่ยวระหว่างโมเลกุล",
+)
+class LiquidCoolingClaims(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        values = rng.choice((q33.PARAMS, *q33.VARIANTS))
+        direction, claims = values["direction"], values["claims"]
+        wrong = q33.solve(direction=direction, claims=claims)
+        verb = "ลด" if direction == "cool" else "เพิ่ม"
+        return GeneratedQuestion(
+            stem=[text(f"เมื่อ{verb}อุณหภูมิของของเหลวชนิดเดิม (ยังอยู่ในสถานะของเหลว) "
+                       "ข้อความใดไม่ถูกต้อง")],
+            correct=[text(_LIQUID_TREND_TEXT[claims[wrong]])],
+            distractors=fixed(*[[text(named(_LIQUID_MISTAKES[claim[0]],
+                                            _LIQUID_TREND_TEXT[claim]))]
+                                for i, claim in enumerate(claims) if i != wrong]),
+            topic="สมบัติของเหลวและแรงยึดเหนี่ยวระหว่างโมเลกุล",
+            hint=[text("ความดันไอและพลังงานจลน์เปลี่ยนตามอุณหภูมิ; "
+                       "แรงระหว่างโมเลกุลชนิดเดิมที่ระยะห่างเท่าเดิมไม่เปลี่ยน")],
         )
