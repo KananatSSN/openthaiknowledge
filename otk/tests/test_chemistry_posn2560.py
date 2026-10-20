@@ -6,7 +6,7 @@ import re
 import pytest
 
 from otk.core import generate
-from otk.sheets.posn2560_chemistry import q01, q02, q03, q04, q05, q06
+from otk.sheets.posn2560_chemistry import q01, q02, q03, q04, q05, q06, q07, q08, q09
 
 
 def test_canal_ray_mass_from_independent_acceleration_route():
@@ -22,6 +22,24 @@ def test_group_17_model_claims_and_hunds_rule():
 def test_ionic_shells_from_orbital_filling():
     for params in (q05.PARAMS, *q05.VARIANTS):
         assert q05.solve(**params) == q05.check(**params)
+
+
+def test_unpaired_counts_for_source_and_variant_pairs():
+    for params in (q07.PARAMS, *q07.VARIANTS):
+        assert q07.solve(**params) == q07.check(**params)
+    assert q07.solve(**q07.PARAMS)
+    assert not q07.solve(first_symbol="Cu", first_charge=2,
+                         second_symbol="Cr", second_charge=3)
+
+
+def test_group_two_dications_reach_closed_shells():
+    for params in (q08.PARAMS, *q08.VARIANTS):
+        assert q08.solve(**params) == q08.check(**params)
+
+
+def test_three_oxidation_balances():
+    for params in (q09.PARAMS, *q09.VARIANTS):
+        assert q09.solve(**params) == q09.check(**params)
 
 
 def test_all_spectral_level_variants_have_distinct_energy_differences():
@@ -46,7 +64,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6))
+@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -78,9 +96,41 @@ def test_generated_answers_follow_the_written_data(number):
                                          second_atomic=second_atomic, second_charge=second_charge) == "first" else "B"
             larger = "B" if smaller == "A" else "A"
             expected = rf"r_{{{smaller}}}<r_{{{larger}}}"
-        else:
+        elif number == 6:
             atomic = int(re.search(r"เลขอะตอม (\d+)", stem)[1])
             counts = (2, 3) if "₂O₃" in stem else (1, 1)
             expected = str(q06.check(atomic=atomic, metal_count=counts[0], oxygen_count=counts[1]))
+        elif number == 7:
+            def pair_is_equal(tex):
+                found = re.findall(r"\\mathrm\{([A-Z][a-z]?)\}(\^\{\d*\+\})?", tex)
+                assert len(found) == 2
+                atoms = [(symbol, int(re.search(r"\d+", suffix)[0]) if re.search(r"\d+", suffix)
+                          else 1 if suffix else 0) for symbol, suffix in found]
+                return q07.check(first_symbol=atoms[0][0], first_charge=atoms[0][1],
+                                 second_symbol=atoms[1][0], second_charge=atoms[1][1])
+
+            assert sum(pair_is_equal(choice.content[0].tex) for choice in question.choices) == 1
+            assert pair_is_equal(answer)
+            expected = answer
+        elif number == 8:
+            atomic = int(re.search(r"เลขอะตอม (\d+)", stem)[1])
+            expected = rf"\mathrm{{{q08.check(atomic=atomic)}}}"
+        else:
+            first = next(params for formula, params in (
+                ("[Co(NH₃)₄SO₄]Cl", (4, -2)), ("NaNO₃", (3, -1)),
+                ("Na₃PO₄", (4, -3)),
+            ) if formula in stem)
+            acid = next(oxygen for formula, oxygen in (
+                ("HClO₄", 4), ("HClO₃", 3), ("HBrO₃", 3),
+            ) if formula in stem)
+            complex_ = next(params for formula, params in (
+                ("Na[Au(CN)₂]", (2, -1)), ("K₃[Co(CN)₆]", (6, -3)),
+                ("K₂[Pt(CN)₄]", (4, -2)),
+            ) if formula in stem)
+            states = q09.check(oxo_oxygen=first[0], oxo_charge=first[1],
+                               acid_oxygen=acid, cyanide_count=complex_[0],
+                               complex_charge=complex_[1])
+            expected = "(" + ",".join(f"+{state}" if state > 0 else str(state)
+                                     for state in states) + ")"
         assert answer == expected
         assert len(question.choices) == 4

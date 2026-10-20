@@ -37,6 +37,38 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.confused_p3_with_d5": {
+        "th": "คิดว่า p³ และ d⁵ มีอิเล็กตรอนเดี่ยวเท่ากัน",
+        "en": "Treated p3 and d5 as having equal unpaired counts",
+    },
+    "chem.assumed_d_ions_same_spin": {
+        "th": "คิดว่าไอออนโลหะทรานซิชันต่างชนิดมีอิเล็กตรอนเดี่ยวเท่ากัน",
+        "en": "Assumed different d-block ions have equal unpaired counts",
+    },
+    "chem.ignored_p_electron_loss": {
+        "th": "ไม่นำอิเล็กตรอน 4p ออกเมื่อเกิดแคตไอออน",
+        "en": "Did not remove 4p electrons on forming a cation",
+    },
+    "chem.ignored_cation_electron_loss": {
+        "th": "ไม่นำอิเล็กตรอนออกสองตัวเมื่อเกิดไอออนประจุ +2",
+        "en": "Did not remove two electrons for a 2+ ion",
+    },
+    "chem.removed_extra_shell": {
+        "th": "นำอิเล็กตรอนออกเกินจนข้ามแก๊สมีตระกูลหนึ่งชั้น",
+        "en": "Removed too many electrons and skipped a noble-gas shell",
+    },
+    "chem.used_oxoanion_charge_as_central_state": {
+        "th": "ใช้ประจุของออกซีแอนไอออนแทนเลขออกซิเดชันของอะตอมกลาง",
+        "en": "Used the oxoanion charge as the central atom's oxidation state",
+    },
+    "chem.ignored_acid_hydrogen": {
+        "th": "ลืมนับเลขออกซิเดชัน +1 ของไฮโดรเจนในกรด",
+        "en": "Omitted hydrogen's +1 oxidation state in the acid",
+    },
+    "chem.ignored_complex_charge": {
+        "th": "ลืมนับประจุรวมของไซยาโนคอมเพล็กซ์",
+        "en": "Ignored the cyanide complex's net charge",
+    },
     "chem.used_nucleon_count_only": {
         "th": "ใช้เพียงจำนวนนิวคลีออนเป็นอัตราส่วนมวล",
         "en": "Used the nucleon count alone as the mass ratio",

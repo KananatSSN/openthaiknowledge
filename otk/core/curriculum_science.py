@@ -4134,6 +4134,7 @@ SCIENCE_PLACEMENTS.update({
 SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q01", "chem.posn2560_q02", "chem.posn2560_q03",
     "chem.posn2560_q04", "chem.posn2560_q05", "chem.posn2560_q06",
+    "chem.posn2560_q07", "chem.posn2560_q08", "chem.posn2560_q09",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4142,6 +4143,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ไอโซโทปและไอออน", "outside_scope"),
     "chem.posn2560_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "แนวโน้มขนาดไอออน", "outside_scope"),
     "chem.posn2560_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การจัดเรียงอิเล็กตรอนของไอออน", "outside_scope"),
+    "chem.posn2560_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "อิเล็กตรอนเดี่ยวและกฎของฮุนด์", "outside_scope"),
+    "chem.posn2560_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สารประกอบไอออนิกและแก๊สมีตระกูล", "outside_scope"),
+    "chem.posn2560_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การหาเลขออกซิเดชัน", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)

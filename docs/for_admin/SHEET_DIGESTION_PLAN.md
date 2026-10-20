@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–2, 2026-10-20
+### Chemistry POSN bank — waves 1–3, 2026-10-20
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–6 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **6/70 complete; 64 pending.**
+  1–9 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **9/70 complete; 61 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  six reviewed items. Its `verify` result of 6/6 describes this batch, not the
+  nine reviewed items. Its `verify` result of 9/9 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -88,7 +88,10 @@ Phases in build order. Check an item only when its tests pass.
   the anode. MC2's Ts oxidation states are model predictions, not measured
   properties. MC5's specified Mg²⁺ and P³⁻ differ in occupied shell count.
   These adaptations state their model assumptions in the generated prompts.
-- Next: review and digest Part I from question 7.
+- MC7 compares free-atom/ion unpaired counts; MC8's adaptation names the
+  group-2 metal explicitly. MC9's page image shows that S, Cl and Au are
+  underlined; the plain-text extraction omits those underlines.
+- Next: review and digest Part I from question 10.
 
 ### Physics POSN bank — 2026-10-17
 
@@ -525,6 +528,20 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-20 — POSN chemistry 2560, third atomic-structure batch
+
+- Visually checked source p5 and built solvers and generators for MC7–MC9.
+  The printed underlines on MC9 identify sulfur, chlorine and gold, so the
+  verified source oxidation-state answer is (+6,+7,+1).
+- Added three knowledge claims and linked the new keys to the supplemental
+  chemistry registry; bank progress is 9/70 and remains `converted`.
+- `verify posn2560_chemistry`: 9/9 green, 29 variant checks, all independent.
+  Knowledge validation: 780 units in 646 files, zero problems; source
+  coverage: 9/70. Only the three new golden keys were added.
+- Targeted wave validation: 75 sheet/set checks and 16,247 affected registry,
+  provenance, safety, golden and layout checks passed. Ruff and whitespace
+  checks passed. The full suite remains deferred until all 70 are complete.
 
 ### 2026-10-20 — POSN chemistry 2560, second atomic-structure batch
 

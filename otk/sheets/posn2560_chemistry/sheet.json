@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–6 are reviewed, solved and generated (6/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 64 are pending. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 6/6 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–9 are reviewed, solved and generated (9/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 61 are pending. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 9/9 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -83,6 +83,45 @@
       "answer": "6",
       "generator": "chem.posn2560_q06",
       "note": "Return the 3d exponent; remove 4s electrons first. Variants restricted to Mn, Fe, Co and Ni with integral +2..+4 oxidation states and O=-2; no spin-state assumption."
+    },
+    {
+      "number": 7,
+      "solver": "q07",
+      "title": "จำนวนอิเล็กตรอนเดี่ยวของอะตอมและไอออน",
+      "source": "Part I, question 7, p5: Cr+ and Mn2+ have the same ground-state unpaired electron count (choice ก).",
+      "page": 5,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "อิเล็กตรอนเดี่ยวและกฎของฮุนด์",
+      "answer": "True",
+      "generator": "chem.posn2560_q07",
+      "note": "Free-atom/ion orbital filling, including neutral Cr and Cu exceptions; generated pairs include other true comparisons and the three source false pairs."
+    },
+    {
+      "number": 8,
+      "solver": "q08",
+      "title": "ไอออนของโลหะหมู่ 2 กับแก๊สมีตระกูล",
+      "source": "Part I, question 8, p5: ACl2 is an ionic solid with conducting neutral solution; true choice ง identifies noble-gas configuration for A2+.",
+      "page": 5,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สารประกอบไอออนิกและแก๊สมีตระกูล",
+      "answer": "Ar",
+      "generator": "chem.posn2560_q08",
+      "note": "Source leaves A unspecified; adaptation states Ca (Z=20) explicitly, so Ca2+ is isoelectronic with Ar. Variants use Mg, Sr, Ba."
+    },
+    {
+      "number": 9,
+      "solver": "q09",
+      "title": "เลขออกซิเดชันในออกซีแอนไอออนและไซยาโนคอมเพล็กซ์",
+      "source": "Part I, question 9, p5: underlined atoms are S in [Co(NH3)4SO4]Cl, Cl in HClO4, and Au in Na[Au(CN)2]; answer (+6,+7,+1), choice ง.",
+      "page": 5,
+      "figure": "Rendered page inspected: the text layer omits underlines. The table header underlines S, Cl and Au, not Co in the first compound. Adaptation names target elements, no static artwork needed.",
+      "figure_asset": "",
+      "topic": "การหาเลขออกซิเดชัน",
+      "answer": "(6, 7, 1)",
+      "generator": "chem.posn2560_q09",
+      "note": "Balance sulfate/other oxyanion, neutral oxyacid, and negative cyanide complex separately. NH3 is neutral, CN is -1."
     }
   ]
 }

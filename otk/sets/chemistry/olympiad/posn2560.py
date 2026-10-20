@@ -3,7 +3,7 @@
 from otk.core.mistakes import named
 from otk.core.registry import question_type
 from otk.kit.math_problems import MathDraw, WordProblem
-from otk.sheets.posn2560_chemistry import q01, q02, q03, q04, q05, q06
+from otk.sheets.posn2560_chemistry import q01, q02, q03, q04, q05, q06, q07, q08, q09
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
 
@@ -180,5 +180,112 @@ class OxideDElectrons(ChemistrySheet):
                 named("chem.removed_3d_before_4s", str(answer - 2)),
                 named("chem.added_electrons_for_cation", str(atomic - 18 + charge)),
                 named("chem.assumed_monovalent_metal", str(atomic - 19)),
+            ],
+        )
+
+
+def _species_tex(symbol, charge):
+    suffix = "" if charge == 0 else ("+" if charge == 1 else f"{charge}+")
+    return rf"\mathrm{{{symbol}}}^{{{suffix}}}" if suffix else rf"\mathrm{{{symbol}}}"
+
+
+def _pair_tex(pair):
+    return rf"({_species_tex(*pair[0])},\,{_species_tex(*pair[1])})"
+
+
+@question_type(
+    "chem.posn2560_q07", display_name={"th": "จำนวนอิเล็กตรอนเดี่ยวของอะตอมและไอออน"},
+    level=LEVEL, subject="เคมี", topic="อิเล็กตรอนเดี่ยวและกฎของฮุนด์",
+)
+class UnpairedIonPair(ChemistrySheet):
+    def expr(self, rng):
+        correct = rng.choice((
+            (("Cr", 1), ("Mn", 2)),
+            (("Mn", 2), ("Fe", 3)),
+            (("As", 0), ("Cr", 3)),
+            (("Cu", 2), ("Cu", 0)),
+        ))
+        wrong = (
+            ((("As", 0), ("Mn", 2)), "chem.confused_p3_with_d5"),
+            ((("Cu", 2), ("Cr", 3)), "chem.assumed_d_ions_same_spin"),
+            ((("As", 3), ("Cu", 0)), "chem.ignored_p_electron_loss"),
+        )
+        assert q07.solve(first_symbol=correct[0][0], first_charge=correct[0][1],
+                         second_symbol=correct[1][0], second_charge=correct[1][1])
+        return MathDraw(
+            "", _pair_tex(correct),
+            prompt="อะตอมหรือไอออนคู่ใดมีจำนวนอิเล็กตรอนเดี่ยวในสถานะพื้นเท่ากัน (พิจารณาอนุภาคอิสระ)",
+            hint="ไอออนโลหะทรานซิชันนำอิเล็กตรอน 4s ออกก่อน 3d; ใช้กฎของฮุนด์นับอิเล็กตรอนเดี่ยว",
+            distractors=[named(mistake, _pair_tex(pair)) for pair, mistake in wrong],
+        )
+
+
+@question_type(
+    "chem.posn2560_q08", display_name={"th": "ไอออนของโลหะหมู่ 2 กับแก๊สมีตระกูล"},
+    level=LEVEL, subject="เคมี", topic="สารประกอบไอออนิกและแก๊สมีตระกูล",
+)
+class DichlorideNobleGas(ChemistrySheet):
+    def expr(self, rng):
+        symbol, atomic = rng.choice((("Mg", 12), ("Ca", 20), ("Sr", 38), ("Ba", 56)))
+        answer = q08.solve(atomic=atomic)
+        gases = ("Ne", "Ar", "Kr", "Xe")
+        index = gases.index(answer)
+        wrong = [gas for gas in gases if gas != answer]
+        return MathDraw(
+            "", rf"\mathrm{{{answer}}}",
+            prompt=(
+                f"สารประกอบ {symbol}Cl₂ เป็นของแข็งไอออนิก; ธาตุ {symbol} มีเลขอะตอม {atomic} "
+                "เมื่อละลายน้ำได้ไอออนประจุ +2 ไอออนนี้มีจำนวนอิเล็กตรอนเท่ากับแก๊สมีตระกูลใด"
+            ),
+            hint="นับอิเล็กตรอนของไอออน +2 โดยนำออกสองตัวจากอะตอมเป็นกลาง",
+            distractors=[
+                named("chem.ignored_cation_electron_loss" if gases.index(gas) > index
+                      else "chem.removed_extra_shell", rf"\mathrm{{{gas}}}")
+                for gas in wrong
+            ],
+        )
+
+
+def _oxidation_triplet(values):
+    return "(" + ",".join(f"+{value}" if value > 0 else str(value) for value in values) + ")"
+
+
+@question_type(
+    "chem.posn2560_q09", display_name={"th": "เลขออกซิเดชันในออกซีแอนไอออนและไซยาโนคอมเพล็กซ์"},
+    level=LEVEL, subject="เคมี", topic="การหาเลขออกซิเดชัน",
+)
+class ThreeOxidationStates(ChemistrySheet):
+    def expr(self, rng):
+        first_formula, first_element, oxygen, oxo_charge = rng.choice((
+            ("[Co(NH₃)₄SO₄]Cl", "S", 4, -2),
+            ("NaNO₃", "N", 3, -1),
+            ("Na₃PO₄", "P", 4, -3),
+        ))
+        acid_formula, acid_element, acid_oxygen = rng.choice((
+            ("HClO₄", "Cl", 4), ("HClO₃", "Cl", 3), ("HBrO₃", "Br", 3),
+        ))
+        complex_formula, metal, cyanides, complex_charge = rng.choice((
+            ("Na[Au(CN)₂]", "Au", 2, -1),
+            ("K₃[Co(CN)₆]", "Co", 6, -3),
+            ("K₂[Pt(CN)₄]", "Pt", 4, -2),
+        ))
+        answer = q09.solve(oxo_oxygen=oxygen, oxo_charge=oxo_charge,
+                           acid_oxygen=acid_oxygen, cyanide_count=cyanides,
+                           complex_charge=complex_charge)
+        return MathDraw(
+            "", _oxidation_triplet(answer),
+            prompt=(
+                f"จงหาเลขออกซิเดชันของ {first_element} ใน {first_formula}, "
+                f"{acid_element} ใน {acid_formula} และ {metal} ใน {complex_formula} "
+                "ตามลำดับ (NH₃ เป็นลิแกนด์เป็นกลาง, CN⁻ มีประจุ −1)"
+            ),
+            hint="ผลรวมเลขออกซิเดชันในแต่ละไอออนเท่ากับประจุของไอออน; O = −2 และ H = +1",
+            distractors=[
+                named("chem.used_oxoanion_charge_as_central_state",
+                      _oxidation_triplet((oxo_charge, answer[1], answer[2]))),
+                named("chem.ignored_acid_hydrogen",
+                      _oxidation_triplet((answer[0], answer[1] + 1, answer[2]))),
+                named("chem.ignored_complex_charge",
+                      _oxidation_triplet((answer[0], answer[1], cyanides))),
             ],
         )

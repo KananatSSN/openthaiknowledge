@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "อิเล็กตรอนเดี่ยวและกฎของฮุนด์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.free_ion_unpaired_electrons.procedure",
+      "kind": "procedure",
+      "title": "จำนวนอิเล็กตรอนเดี่ยวของอะตอมและไอออน",
+      "statement": "นับอิเล็กตรอนเดี่ยวของอะตอมและไอออนอิสระด้วยการจัดเรียงอิเล็กตรอนและกฎของฮุนด์; Cr และ Cu มีการจัดเรียงอะตอมเป็นกลางแบบยกเว้น",
+      "steps": [
+        "นำอิเล็กตรอนออกจาก 4p หรือ 4s ก่อน 3d ตามชั้นนอกสุด",
+        "กระจายอิเล็กตรอนในออร์บิทัลเทียบจำนวนเดี่ยวของแต่ละคู่"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q07"
+      ],
+      "note": "Free-atom/ion orbital filling, including neutral Cr and Cu exceptions; generated pairs include other true comparisons and the three source false pairs."
+    }
+  ]
+}
