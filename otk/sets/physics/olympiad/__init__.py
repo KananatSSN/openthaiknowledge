@@ -21,3 +21,4 @@ from . import tpho2555  # noqa: F401
 from . import tpho2556  # noqa: F401
 from . import tpho2557  # noqa: F401
 from . import tpho2558  # noqa: F401
+from . import tpho2559  # noqa: F401

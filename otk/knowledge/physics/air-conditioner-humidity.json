@@ -1,0 +1,61 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เครื่องปรับอากาศและความชื้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.air_conditioner_humidity.procedure",
+      "kind": "procedure",
+      "title": "ความดันย่อยของไนโตรเจนหลังเปิดเครื่องปรับอากาศ",
+      "statement": "เครื่องปรับอากาศ: ความดันไอน้ำ hP_sat/100 ไนโตรเจนรับความดันที่เหลือและมีจำนวนโมลคงที่ จึงหาปริมาตรอากาศเดิม งานของบรรยากาศ มวลน้ำที่ควบแน่น และความร้อนทั้งหมดที่ต้องเอาออกจากกฎข้อที่หนึ่งได้",
+      "steps": [
+        "ใช้ความชื้นสัมพัทธ์และความดันย่อยหาโมลของแต่ละก๊าซ",
+        "รวมพลังงานภายใน งาน และความร้อนแฝงของการควบแน่น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2559_q07",
+        "phys.tpho2559_q08",
+        "phys.tpho2559_q09",
+        "phys.tpho2559_q10",
+        "phys.tpho2559_q11",
+        "phys.tpho2559_q12",
+        "phys.tpho2559_q13"
+      ],
+      "note": "Humidity and saturation pressure vary."
+    }
+  ]
+}

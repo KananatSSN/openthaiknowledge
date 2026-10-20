@@ -149,8 +149,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2557.py`.
 - `สอวน_physics/tpho-58-physics/` (TPhO 14, 2558): 13 theory items and 4
   experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2558.py`.
-- Next source: `สอวน_physics/tpho-59-physics/`. Twenty-three of 33 papers are
-  digested; 10 remain pending.
+- `สอวน_physics/tpho-59-physics/` (TPhO 15, 2559): 19 theory items and 4
+  experiment parts → 23 generators in `otk/sets/physics/olympiad/tpho2559.py`.
+- Next source: `สอวน_physics/tpho-60-physics/`. Twenty-four of 33 papers are
+  digested; 9 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1871,3 +1873,30 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 22,448 passed, 4 skipped; `test_per_set` for the 17 keys
   passed; the sheet's own tests: 38 passed; Ruff clean.
 - Full suite: **38,603 passed, 13 skipped in 11m44s**.
+
+### 2026-10-20 — TPhO 15 (2559) national physics olympiad
+
+- Four PDFs: theory and lab papers with a solution each (the solutions
+  `ignored`, used to confirm every answer).
+- 23 items: 1.1 (streamlines; the Venturi sprayer's minimum speed
+  √(8ρ_wgh/(15ρ_a))), 1.2 (wire stretch with temperature: ΔL₁, ΔL₂, the
+  compensating area A = (W/Y₀)(ε/(αY₀) − 1), using the solution's
+  consistent second form), 1.3 (vacuum lamp: σA(T⁴ − T₀⁴), I ∝ V^0.6
+  generalised to R ∝ T^p), 2 (air conditioner: P′_N₂, V = 77.33 m³, the
+  atmosphere's work, 777.6 g condensed, 1929 kJ latent, 2506 kJ total, 77%),
+  3 (pump drill: α, b = L(θ₀ − θₙ), ω, the balanced push, mean power,
+  k = μr/2), and the LDR lab with synthetic data: γ from log R against
+  log x, the lamp's luminous flux, grating wavelengths, the corrected
+  response ratio.
+- Scheme notes: the lab solution's γ = −0.63 (slope 1.2531) comes from a
+  graph whose points differ from its table; the table's 14 readings fit
+  slope 1.302 (γ = −0.65), pinned in the test. Its 263 lux uses c₁ rounded
+  to 4.3×10⁴ while its 294 lm uses 4.27×10⁴ (rounding, not an error).
+- Independent checks include a bisected Venturi suction, stepwise warming
+  of the wire, an exact small-ΔT bisection for the area, two hot steady
+  states for n, mole counting for the air conditioner, RK4 winding of the
+  rope angle, the unwinding torque integrated for ω, and summed blade and
+  sphere elements. `sheetpipe verify`: 23/23 green, 69 runs.
+- Targeted run: 22,722 passed, 4 skipped; `test_per_set` for the 23 keys
+  passed; the sheet's own tests: 51 passed; Ruff clean.
+- Full suite: **38,938 passed, 13 skipped in 12m06s**.

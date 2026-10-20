@@ -1,0 +1,42 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การสอบเทียบตัวต้านทานไวแสง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.ldr_calibration.procedure",
+      "kind": "procedure",
+      "title": "เลขชี้กำลังของตัวต้านทานไวแสงจากกราฟ log-log",
+      "statement": "ตัวต้านทานไวแสง R = c₁E^γ กับแหล่งกำเนิดแบบจุด E ∝ 1/x² ให้ log R = −2γ log x + c₂ จึงหา γ จากความชัน แล้วใช้ R ที่วัดได้หา E และฟลักซ์ E·4πx² สเปกตรัมจากเกรตติง λ = d sin θ ต้องปรับแก้ด้วยกำลังแสงของหลอดในการหาการตอบสนองสัมพัทธ์",
+      "steps": [
+        "เขียนกราฟ log R กับ log x หาเลขชี้กำลัง",
+        "แปลงความต้านทานเป็น illuminance และฟลักซ์ หรือปรับแก้ด้วยกำลังแสง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Expt_Question.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Expt_Question.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Expt_Question.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "สอวน_physics/tpho-59-physics/TPhO2016_Expt_Question.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2559_q20",
+        "phys.tpho2559_q21",
+        "phys.tpho2559_q22",
+        "phys.tpho2559_q23"
+      ],
+      "note": "Synthetic readings."
+    }
+  ]
+}
