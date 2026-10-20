@@ -1,0 +1,40 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรไฟฟ้ากระแสสลับ RL",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rl_coil_voltage_ratio.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนความต่างศักย์คร่อมตัวต้านทานต่อขดลวด",
+      "statement": "ขดลวด L ที่มีความต้านทาน r อนุกรมกับ R มี V_R/V_L = R/√((ωL)² + r²) ดังนั้น (V_L/V_R)² แปรผันตรงกับ 1/R² ด้วยความชัน (ωL)² + r²",
+      "steps": [
+        "เขียนอัตราส่วนความต่างศักย์จากกระแสเดียวกัน",
+        "จัดเป็นเส้นตรงแล้วหา L จากความชัน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-47-physics/tpho_3_exp.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "สอวน_physics/tpho-47-physics/tpho_3_exp.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-47-physics/tpho_3_exp.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-47-physics/tpho_3_exp.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2547_q14",
+        "phys.tpho2547_q15"
+      ],
+      "note": "Numbers for R, r, omega and L."
+    }
+  ]
+}

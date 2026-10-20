@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "จลนศาสตร์ของระบบเชือกคล้องรอก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.string_over_pulley_kinematics.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วของมวลที่ถูกดึงด้วยเชือกคล้องรอก",
+      "statement": "มวลแขวนเชือกยาว 2H คล้องรอกสูง H ที่ปลายเชือกเลื่อนด้วย v₀ คงที่ มีความเร็ว v = v₀²t/√(v₀²t² + H²) และความเร่ง v₀²H²/(v₀²t² + H²)^(3/2)",
+      "steps": [
+        "เขียนความยาวเชือกส่วนเอียงด้วยทฤษฎีบทพีทาโกรัส",
+        "หาอนุพันธ์เทียบเวลาครั้งที่หนึ่งและสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2547_q01",
+        "phys.tpho2547_q02"
+      ],
+      "note": "Symbols replaced by numbers for v0, H and t."
+    }
+  ]
+}

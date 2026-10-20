@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเคลื่อนไฟฟ้าเหนี่ยวนำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.sliding_loop_parallel_emf.procedure",
+      "kind": "procedure",
+      "title": "กระแสในวงลวดสี่เหลี่ยมที่เลื่อนบนราง",
+      "statement": "วงลวดสี่เหลี่ยมที่แตะรางที่กึ่งกลางด้านมี emf vBL ในสองด้านที่ขนานกัน เทียบเท่าเซลล์ emf vBL ความต้านทานภายใน r กระแสจึงลดลงแบบเอกซ์โพเนนเชียล",
+      "steps": [
+        "ยุบวงจรเป็นเซลล์ขนานเทียบเท่า",
+        "เขียนสมการแรงแม่เหล็กหน่วงแล้วแก้หา v(t) และ I(t)"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2547_q08"
+      ],
+      "note": "Numbers; t chosen so the exponent is a whole number."
+    }
+  ]
+}

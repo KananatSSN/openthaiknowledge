@@ -125,8 +125,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2545.py`.
 - `สอวน_physics/tpho-46-physics/` (TPhO 2, 2546): 16 theory sub-parts and 5
   experiment parts → 21 generators in `otk/sets/physics/olympiad/tpho2546.py`.
-- Next source: `สอวน_physics/tpho-47-physics/`. Eleven of 33 papers are
-  digested; 22 remain pending.
+- `สอวน_physics/tpho-47-physics/` (TPhO 3, 2547): 12 theory sub-parts and 3
+  experiment parts → 15 generators in `otk/sets/physics/olympiad/tpho2547.py`.
+- Next source: `สอวน_physics/tpho-48-physics/`. Twelve of 33 papers are
+  digested; 21 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1534,3 +1536,30 @@ TOTAL         338   316     17     4   66      255      6     11
   sheetpipe tests passed after recording `str(ANSWER)` in `sheet.json`; the
   sheet's own tests: 46 passed; Ruff clean.
 - Full suite: **35,654 passed, 13 skipped in 12m22s**.
+
+### 2026-10-20 — TPhO 3 (2547) national physics olympiad
+
+- Folder of seven PDFs: the theory paper with its marking scheme bound in
+  (11 pages), the same split per problem, and the combined experimental paper
+  with its two labs split out. The combined theory paper and the combined
+  experiment are the digested sources; the five copies are `ignored` with
+  notes.
+- 15 items: 1(a), 1(b), 1(e), 1(g) (mass pulled by a string over a pulley,
+  with and without the pulley's inertia), 2.1 (rod on two springs), 2.2(a),
+  2.2(b) (cue ball sliding to rolling), 2.3 (square loop on rails: the two
+  sides are parallel cells with internal resistance r), 3(a), 3(b), 3(c),
+  3(e) (echoes from a moving reflector; 3(e) is a choice item), and the labs'
+  theory parts: I about the centre of mass of a physical pendulum, V_R/V_L of
+  an RL circuit, L from the (V_L/V_R)² against 1/R² line. Parts 1(c), 1(d),
+  1(f) and 3(d) are steps or limits of other items, claimed by their units.
+  Every answer agrees with the bound marking scheme.
+- Independent checks include finite differences of the string geometry,
+  free-body torque on the pulley, a time-stepped rod with exact spring
+  torque, a stepped slide-to-roll, a nodal-analysis loop circuit, event
+  simulation of pulse reflections, and phasors. `sheetpipe verify`: 15/15
+  green, 45 runs.
+- Targeted run: 20,318 passed, 4 skipped; `test_per_set` for the 15 keys: 15
+  passed; the sheet's own tests: 34 passed; Ruff clean.
+- Full suite: **35,873 passed, 13 skipped in 11m01s**. (A first run started
+  in the same batch as the bank commit ran from the bank directory and
+  collected nothing; the full suite must run alone.)

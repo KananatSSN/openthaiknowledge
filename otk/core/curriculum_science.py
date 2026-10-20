@@ -3601,6 +3601,42 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2546_q21": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งของวัตถุแข็งเกร็ง', "outside_scope"),
 })
 # END TPhO 2546
+# BEGIN TPhO 2547
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2547_q01",
+    "phys.tpho2547_q02",
+    "phys.tpho2547_q03",
+    "phys.tpho2547_q04",
+    "phys.tpho2547_q05",
+    "phys.tpho2547_q06",
+    "phys.tpho2547_q07",
+    "phys.tpho2547_q08",
+    "phys.tpho2547_q09",
+    "phys.tpho2547_q10",
+    "phys.tpho2547_q11",
+    "phys.tpho2547_q12",
+    "phys.tpho2547_q13",
+    "phys.tpho2547_q14",
+    "phys.tpho2547_q15",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2547_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'จลนศาสตร์ของระบบเชือกคล้องรอก', "outside_scope"),
+    "phys.tpho2547_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'จลนศาสตร์ของระบบเชือกคล้องรอก', "outside_scope"),
+    "phys.tpho2547_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงตึงเชือกและรอกที่มีมวล', "outside_scope"),
+    "phys.tpho2547_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงตึงเชือกและรอกที่มีมวล', "outside_scope"),
+    "phys.tpho2547_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งของวัตถุแข็งเกร็ง', "outside_scope"),
+    "phys.tpho2547_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมการนิวตันและออยเลอร์ร่วมเงื่อนไขกลิ้ง', "outside_scope"),
+    "phys.tpho2547_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมการนิวตันและออยเลอร์ร่วมเงื่อนไขกลิ้ง', "outside_scope"),
+    "phys.tpho2547_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แรงเคลื่อนไฟฟ้าเหนี่ยวนำ', "outside_scope"),
+    "phys.tpho2547_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'คลื่นดลสะท้อนจากวัตถุเคลื่อนที่', "outside_scope"),
+    "phys.tpho2547_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'คลื่นดลสะท้อนจากวัตถุเคลื่อนที่', "outside_scope"),
+    "phys.tpho2547_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'คลื่นดลสะท้อนจากวัตถุเคลื่อนที่', "outside_scope"),
+    "phys.tpho2547_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'คลื่นดลสะท้อนจากวัตถุเคลื่อนที่', "outside_scope"),
+    "phys.tpho2547_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแกว่งของวัตถุแข็งเกร็ง', "outside_scope"),
+    "phys.tpho2547_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'วงจรไฟฟ้ากระแสสลับ RL', "outside_scope"),
+    "phys.tpho2547_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'วงจรไฟฟ้ากระแสสลับ RL', "outside_scope"),
+})
+# END TPhO 2547
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them
