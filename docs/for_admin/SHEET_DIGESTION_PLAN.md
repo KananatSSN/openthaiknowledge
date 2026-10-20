@@ -151,8 +151,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2558.py`.
 - `สอวน_physics/tpho-59-physics/` (TPhO 15, 2559): 19 theory items and 4
   experiment parts → 23 generators in `otk/sets/physics/olympiad/tpho2559.py`.
-- Next source: `สอวน_physics/tpho-60-physics/`. Twenty-four of 33 papers are
-  digested; 9 remain pending.
+- `สอวน_physics/tpho-60-physics/` (TPhO 16, 2560): 18 theory items and 2
+  experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2560.py`.
+- Next source: `สอวน_physics/tpho-61-physics/`. Twenty-five of 33 papers are
+  digested; 8 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1900,3 +1902,32 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 22,722 passed, 4 skipped; `test_per_set` for the 23 keys
   passed; the sheet's own tests: 51 passed; Ruff clean.
 - Full suite: **38,938 passed, 13 skipped in 12m06s**.
+
+### 2026-10-20 — TPhO 16 (2560) national physics olympiad
+
+- Four PDFs: theory (20 pages, the last two background reading) and lab
+  papers with a solution each (the solutions `ignored`, used to confirm
+  every answer). The text layer was readable, so most of the transcript was
+  taken from it and checked against page images.
+- 20 items: 1.1 (a planet hitting a resting rock: √(u² + 2gR) − u),
+  1.2 (triangle cycle: p_C = 7.5 atm, e = 4.8%, the limit 5%), 1.3 (eye
+  resolution: 336 µrad diffraction, 42 µrad cones, 101 µm pixels),
+  2 (Mach-Zehnder sugar sensor: 377 ppm per fringe, the bright-port
+  intensity, 12 ppm from a 0.6 V reading, the 6 ppm misreading after a
+  brightness change), 3 (accelerator: proton speed, the dipole current
+  1.14×10⁴ A, beam spreading a₀ and β = 5.94×10⁻⁷ m⁻¹, the quadrupole
+  gradient 2μ₀I/(πR²), f = mv/(bqd), the doublet f(f − L)/L), and the
+  magnet lab with synthetic data: n from log M against log r, k from the
+  fall time against 1/m.
+- Scheme slip: the lab's k = 27.05 g·s × 9.78/1.01 m = 0.262 kg/s, printed
+  as 0.265 (pinned in the test).
+- Independent checks include a finite-mass collision bisection, a
+  numerically integrated triangle cycle, the Airy zero from a J₁ series,
+  a time-averaged field sum, a finite-length Biot-Savart dipole, shell-summed
+  beam forces, four-wire field sums, a thin-lens limit by shrinking the lens,
+  and ray-transfer matrices for the doublet. `sheetpipe verify`: 20/20 green,
+  60 runs.
+- Targeted run: 22,941 passed, 4 skipped; `test_per_set` for the 20 keys
+  passed; the sheet's own tests: 44 passed; Ruff clean.
+- Full suite: **39,228 passed, 13 skipped in 28m19s** (slower than usual
+  on this run).

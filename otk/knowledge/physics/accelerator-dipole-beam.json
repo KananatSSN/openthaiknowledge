@@ -1,0 +1,46 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สนามแม่เหล็กในเครื่องเร่งอนุภาค",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.accelerator_dipole_beam.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วโปรตอนจากพลังงานจลน์",
+      "statement": "เครื่องเร่งอนุภาคจำลอง: ไดโพลจากลวดสองเส้นให้สนาม μ₀I/(πR) ที่แกน ซึ่งต้องเลี้ยวโปรตอนรัศมี ND/(2π) ลำอนุภาคกระจายออกด้วยความเร่ง nq²(1 − v²/c²)/(2πε₀mℓr₀) จากแรงไฟฟ้าที่ชนะแรงแม่เหล็ก",
+      "steps": [
+        "หาอัตราเร็วจากพลังงานจลน์และรัศมีความโค้งที่ต้องการ",
+        "ใช้กฎของแอมแปร์และเกาส์หาสนามและแรงในลำอนุภาค"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 17
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 18
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 19
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 20
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2560_q12",
+        "phys.tpho2560_q13",
+        "phys.tpho2560_q14",
+        "phys.tpho2560_q15"
+      ],
+      "note": "The energy varies."
+    }
+  ]
+}

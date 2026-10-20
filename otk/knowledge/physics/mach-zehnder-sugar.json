@@ -1,0 +1,54 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "อุปกรณ์แทรกสอดมัคเซนเดอร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.mach_zehnder_sugar.procedure",
+      "kind": "procedure",
+      "title": "ความเข้มข้นที่เปลี่ยนต่อหนึ่งริ้วการแทรกสอด",
+      "statement": "อุปกรณ์แทรกสอดมัคเซนเดอร์: สารละลายน้ำตาล n = 1.33 + αh ในท่อยาว L ทำให้เฟสต่างกัน 2πLαh/λ₀ ความเข้มที่พอร์ตสว่าง 2I₀cos²(πLαh/λ₀) จึงวัดความเข้มข้นได้จากความต่างศักย์ และใช้สองพอร์ตเพื่อแก้ผลของแสงผันผวน",
+      "steps": [
+        "หาผลต่างทางเดินแสงจากดัชนีหักเหที่ต่างกัน",
+        "แปลงความเข้มหรือความต่างศักย์ที่วัดได้เป็นเฟสและความเข้มข้น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2560_q08",
+        "phys.tpho2560_q09",
+        "phys.tpho2560_q10",
+        "phys.tpho2560_q11"
+      ],
+      "note": "lambda0, L and alpha vary."
+    }
+  ]
+}

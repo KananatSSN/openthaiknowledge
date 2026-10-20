@@ -5471,6 +5471,56 @@
    "sheet_id": "tpho2559_physics",
    "stage": "generated",
    "note": "Theory paper (12 pages); 23 sub-parts, 15 items; answers from TPhO2016_Theory-Solution.pdf; hand transcript."
+  },
+  {
+   "path": "สอวน_physics/tpho-60-physics/TPhO2017_Expt___Question.pdf",
+   "kind": "exam",
+   "sha256": "b96d484c62e755e1",
+   "size": 627648,
+   "pages": 7,
+   "text_chars": 7937,
+   "layout": "numbered",
+   "items": 2,
+   "sheet_id": "tpho2560_physics",
+   "stage": "generated",
+   "note": "Experimental paper (neodymium magnets); its two parts digested with synthetic data."
+  },
+  {
+   "path": "สอวน_physics/tpho-60-physics/TPhO2017_Expt___Solution.pdf",
+   "kind": "exam",
+   "sha256": "c662d061c02bbd5b",
+   "size": 595931,
+   "pages": 5,
+   "text_chars": 6153,
+   "layout": "unknown",
+   "glyph_damage": 1,
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (its k = 0.265 kg/s should be 0.262)."
+  },
+  {
+   "path": "สอวน_physics/tpho-60-physics/TPhO2017_Theory-Sol.pdf",
+   "kind": "exam",
+   "sha256": "a5117d29e87b4edb",
+   "size": 1509843,
+   "pages": 18,
+   "text_chars": 20444,
+   "layout": "unknown",
+   "glyph_damage": 10,
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
+  },
+  {
+   "path": "สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+   "kind": "exam",
+   "sha256": "aa27f8430911d2f0",
+   "size": 1548953,
+   "pages": 20,
+   "text_chars": 27088,
+   "layout": "numbered",
+   "items": 25,
+   "sheet_id": "tpho2560_physics",
+   "stage": "generated",
+   "note": "Theory paper (20 pages); 25 sub-parts, 18 items; answers from TPhO2017_Theory-Sol.pdf; hand transcript."
   }
  ]
 }

@@ -4129,6 +4129,52 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2559_q23": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสอบเทียบตัวต้านทานไวแสง', "outside_scope"),
 })
 # END TPhO 2559
+# BEGIN TPhO 2560
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2560_q01",
+    "phys.tpho2560_q02",
+    "phys.tpho2560_q03",
+    "phys.tpho2560_q04",
+    "phys.tpho2560_q05",
+    "phys.tpho2560_q06",
+    "phys.tpho2560_q07",
+    "phys.tpho2560_q08",
+    "phys.tpho2560_q09",
+    "phys.tpho2560_q10",
+    "phys.tpho2560_q11",
+    "phys.tpho2560_q12",
+    "phys.tpho2560_q13",
+    "phys.tpho2560_q14",
+    "phys.tpho2560_q15",
+    "phys.tpho2560_q16",
+    "phys.tpho2560_q17",
+    "phys.tpho2560_q18",
+    "phys.tpho2560_q19",
+    "phys.tpho2560_q20",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การชนของดาวเคราะห์กับก้อนหิน', "outside_scope"),
+    "phys.tpho2560_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'เครื่องจักรความร้อนวัฏจักรสามเหลี่ยม', "outside_scope"),
+    "phys.tpho2560_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'เครื่องจักรความร้อนวัฏจักรสามเหลี่ยม', "outside_scope"),
+    "phys.tpho2560_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'เครื่องจักรความร้อนวัฏจักรสามเหลี่ยม', "outside_scope"),
+    "phys.tpho2560_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ขีดจำกัดการแยกภาพของตา', "outside_scope"),
+    "phys.tpho2560_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ขีดจำกัดการแยกภาพของตา', "outside_scope"),
+    "phys.tpho2560_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'ขีดจำกัดการแยกภาพของตา', "outside_scope"),
+    "phys.tpho2560_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อุปกรณ์แทรกสอดมัคเซนเดอร์', "outside_scope"),
+    "phys.tpho2560_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อุปกรณ์แทรกสอดมัคเซนเดอร์', "outside_scope"),
+    "phys.tpho2560_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อุปกรณ์แทรกสอดมัคเซนเดอร์', "outside_scope"),
+    "phys.tpho2560_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'อุปกรณ์แทรกสอดมัคเซนเดอร์', "outside_scope"),
+    "phys.tpho2560_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามแม่เหล็กในเครื่องเร่งอนุภาค', "outside_scope"),
+    "phys.tpho2560_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามแม่เหล็กในเครื่องเร่งอนุภาค', "outside_scope"),
+    "phys.tpho2560_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามแม่เหล็กในเครื่องเร่งอนุภาค', "outside_scope"),
+    "phys.tpho2560_q15": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สนามแม่เหล็กในเครื่องเร่งอนุภาค', "outside_scope"),
+    "phys.tpho2560_q16": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การโฟกัสลำอนุภาคด้วย Quadrupole', "outside_scope"),
+    "phys.tpho2560_q17": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การโฟกัสลำอนุภาคด้วย Quadrupole', "outside_scope"),
+    "phys.tpho2560_q18": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การโฟกัสลำอนุภาคด้วย Quadrupole', "outside_scope"),
+    "phys.tpho2560_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แม่เหล็กนีโอดิเมียม', "outside_scope"),
+    "phys.tpho2560_q20": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แม่เหล็กนีโอดิเมียม', "outside_scope"),
+})
+# END TPhO 2560
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

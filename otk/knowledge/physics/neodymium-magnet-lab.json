@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แม่เหล็กนีโอดิเมียม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.neodymium_magnet_lab.procedure",
+      "kind": "procedure",
+      "title": "เลขชี้กำลังของแรงแม่เหล็กกับระยะห่าง",
+      "statement": "แรงระหว่างแม่เหล็กกระดุมแปรตาม rⁿ จึงหา n จากความชันของกราฟ log M กับ log r แม่เหล็กตกในท่ออะลูมิเนียมด้วยอัตราเร็วสุดท้ายเมื่อ mg = ks/t จึงหา k จากความชันของกราฟเวลากับ 1/มวล",
+      "steps": [
+        "วัดมวลที่ทำให้แม่เหล็กหลุดหรือเวลาตกที่มวลต่าง ๆ",
+        "เขียนกราฟเส้นตรงที่เหมาะสมแล้วแปลงความชันเป็น n หรือ k"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Expt___Question.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "สอวน_physics/tpho-60-physics/TPhO2017_Expt___Question.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2560_q19",
+        "phys.tpho2560_q20"
+      ],
+      "note": "Synthetic readings."
+    }
+  ]
+}
