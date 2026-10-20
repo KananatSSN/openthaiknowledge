@@ -3681,6 +3681,40 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2548_q19": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การแทรกสอดจากเกรตติงสะท้อน', "outside_scope"),
 })
 # END TPhO 2548
+# BEGIN TPhO 2549
+SCIENCE_POSN_PHYSICS_KEYS = SCIENCE_POSN_PHYSICS_KEYS | frozenset({
+    "phys.tpho2549_q01",
+    "phys.tpho2549_q02",
+    "phys.tpho2549_q03",
+    "phys.tpho2549_q04",
+    "phys.tpho2549_q05",
+    "phys.tpho2549_q06",
+    "phys.tpho2549_q07",
+    "phys.tpho2549_q08",
+    "phys.tpho2549_q09",
+    "phys.tpho2549_q10",
+    "phys.tpho2549_q11",
+    "phys.tpho2549_q12",
+    "phys.tpho2549_q13",
+    "phys.tpho2549_q14",
+})
+SCIENCE_PLACEMENTS.update({
+    "phys.tpho2549_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'เลนส์บางสองอันต่อกัน', "outside_scope"),
+    "phys.tpho2549_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมการนิวตันและออยเลอร์ร่วมเงื่อนไขกลิ้ง', "outside_scope"),
+    "phys.tpho2549_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานการเลื่อนที่ร่วมการหมุน', "outside_scope"),
+    "phys.tpho2549_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'พลังงานการเลื่อนที่ร่วมการหมุน', "outside_scope"),
+    "phys.tpho2549_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎของบอยล์กับความดันของของเหลว', "outside_scope"),
+    "phys.tpho2549_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎของบอยล์กับความดันของของเหลว', "outside_scope"),
+    "phys.tpho2549_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'กฎของบอยล์กับความดันของของเหลว', "outside_scope"),
+    "phys.tpho2549_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แบบจำลองอะตอมของทอมสัน', "outside_scope"),
+    "phys.tpho2549_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แบบจำลองอะตอมของทอมสัน', "outside_scope"),
+    "phys.tpho2549_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แบบจำลองอะตอมของทอมสัน', "outside_scope"),
+    "phys.tpho2549_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'แบบจำลองอะตอมของทอมสัน', "outside_scope"),
+    "phys.tpho2549_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การหักเหผ่านปริซึม', "outside_scope"),
+    "phys.tpho2549_q13": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'สมดุลโมเมนต์ของคาน', "outside_scope"),
+    "phys.tpho2549_q14": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'หลักของอาร์คิมีดีสกับความถ่วงจำเพาะ', "outside_scope"),
+})
+# END TPhO 2549
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)
 
 # Cohorts whose review gate is still open, under the name the reviewer knows them

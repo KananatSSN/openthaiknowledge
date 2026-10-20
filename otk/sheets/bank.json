@@ -4675,6 +4675,19 @@
    "sheet_id": "tpho2548_physics",
    "stage": "generated",
    "note": "Theory paper (pages 1-5) with its marking scheme (pages 6-15); 14 sub-parts, 16 items; hand transcript. 1.4 uses the scheme's exact formula, not its M/(8m) approximation."
+  },
+  {
+   "path": "สอวน_physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+   "kind": "exam",
+   "sha256": "003967074673211c",
+   "size": 396177,
+   "pages": 16,
+   "text_chars": 15128,
+   "layout": "numbered",
+   "items": 18,
+   "sheet_id": "tpho2549_physics",
+   "stage": "generated",
+   "note": "Theory paper, marking scheme and experimental paper in one file; 18 parts, 14 items (lab procedure and measurement parts claimed by their units); hand transcript. Scheme's 3(b) ~0.28 nm does not follow from its formula (0.313 nm)."
   }
  ]
 }

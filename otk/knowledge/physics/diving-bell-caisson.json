@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎของบอยล์กับความดันของของเหลว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.diving_bell_caisson.procedure",
+      "kind": "procedure",
+      "title": "ความลึกของแม่น้ำจากระดับน้ำในถังคว่ำ",
+      "statement": "ถังคว่ำที่หย่อนลงน้ำบีบอากาศตามกฎของบอยล์ ระดับน้ำในถังบอกความลึก ไล่น้ำออกหมดต้องเพิ่มอากาศเป็น ρgh/P_a เท่าของเดิม และถังต้องมีมวลอย่างน้อย ρLA",
+      "steps": [
+        "สมดุลความดันอากาศในถังกับความดันน้ำที่ระดับผิวน้ำในถัง",
+        "ใช้ PV = nRT ที่อุณหภูมิคงที่และสมดุลแรงบนถัง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "สอวน_physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "สอวน_physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2549_q05",
+        "phys.tpho2549_q06",
+        "phys.tpho2549_q07"
+      ],
+      "note": "Adapted: tank height and fill fraction vary; three significant figures."
+    }
+  ]
+}

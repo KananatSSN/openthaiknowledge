@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เลนส์บางสองอันต่อกัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.convex_concave_lens_pair.procedure",
+      "kind": "procedure",
+      "title": "ตำแหน่งโฟกัสของเลนส์นูนคู่เลนส์เว้า",
+      "statement": "เลนส์นูนกับเลนส์เว้าความยาวโฟกัส f เท่ากันห่างกัน L < f รวมแสงขนานที่ระยะ f(f − L)/L หลังเลนส์เว้า",
+      "steps": [
+        "หาภาพจากเลนส์นูนแล้วใช้เป็นวัตถุของเลนส์เว้า",
+        "บวกระยะห่าง L เพื่อวัดจากเลนส์นูน"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2549_q01"
+      ],
+      "note": "Numbers for f and L (L < f)."
+    }
+  ]
+}

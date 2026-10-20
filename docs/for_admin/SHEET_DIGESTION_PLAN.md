@@ -129,8 +129,10 @@ Phases in build order. Check an item only when its tests pass.
   experiment parts → 15 generators in `otk/sets/physics/olympiad/tpho2547.py`.
 - `สอวน_physics/tpho-48-physics/` (TPhO 4, 2548): 16 theory items and 3
   experiment parts → 19 generators in `otk/sets/physics/olympiad/tpho2548.py`.
-- Next source: `สอวน_physics/tpho-49-physics/`. Thirteen of 33 papers are
-  digested; 20 remain pending.
+- `สอวน_physics/tpho-49-physics/` (TPhO 5, 2549): 11 theory sub-parts and 3
+  experiment parts → 14 generators in `otk/sets/physics/olympiad/tpho2549.py`.
+- Next source: `สอวน_physics/tpho-50-physics/`. Fourteen of 33 papers are
+  digested; 19 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1595,3 +1597,26 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 20,539 passed, 4 skipped; `test_per_set` for the 19 keys
   passed after that change; the sheet's own tests: 41 passed; Ruff clean.
 - Full suite: **36,147 passed, 13 skipped in 11m09s**.
+
+### 2026-10-20 — TPhO 5 (2549) national physics olympiad
+
+- One 16-page PDF holds the theory paper (pages 1–5), its marking scheme
+  (6–12) and the experimental paper (13–16); transcribed as 18 parts.
+- 14 items: 1.1 (focus of a convex–concave pair), 1.2 (least friction to
+  roll, adapted to a cylinder, sphere or hoop), 1.3 (least height for a
+  loop; normal force level with its centre), 2(a)–(c) (diving-bell caisson:
+  river depth, extra air, least tank mass), 3(a)–(d) (Thomson atom: ω for
+  one electron, radius from a spectral line, two-electron spacing and
+  frequency), and the labs: prism index at minimum deviation, a steelyard
+  reading, specific gravity by Archimedes. Lab procedure and measurement
+  parts are claimed by their units.
+- Marking-scheme discrepancy: 3(b) prints R ~ 0.28 nm for 656 nm; its formula
+  with the paper's constants gives 0.313 nm (checked by bisection on the
+  emitted wavelength); a test pins it.
+- Independent checks include ray-transfer matrices, a slip bisection, energy
+  with explicit rotation, Boyle's-law bisection on the fill, a time-stepped
+  Thomson oscillator, a numerical two-electron stiffness, and a prism ray
+  trace for minimum deviation. `sheetpipe verify`: 14/14 green, 42 runs.
+- Targeted run: 20,689 passed, 4 skipped; `test_per_set` for the 14 keys
+  passed; the sheet's own tests: 32 passed; Ruff clean.
+- Full suite: **36,352 passed, 13 skipped in 11m44s**.
