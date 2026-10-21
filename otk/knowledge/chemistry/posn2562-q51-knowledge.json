@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การตกตะกอนและความเข้มข้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q51.procedure",
+      "kind": "procedure",
+      "title": "คลอไรด์ในสารละลายผสม",
+      "statement": "AgCl หนึ่งโมลแทน Cl⁻ หนึ่งโมล; หักส่วน HCl แล้วหารสองเพราะ CaCl₂ ให้ Cl⁻ สองตัว",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 51
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q51"
+      ],
+      "note": "AgCl 0.574 g corresponds to 0.004 mol chloride; CaCl2 is 3.33 g/L."
+    }
+  ]
+}

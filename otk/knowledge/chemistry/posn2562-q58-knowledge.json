@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การลดจุดเยือกแข็ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q58.procedure",
+      "kind": "procedure",
+      "title": "จุดเยือกแข็งของสารละลายสองชนิด",
+      "statement": "สารไม่แตกตัวมีการลดจุดเยือกแข็ง ΔTf=Kf m; เปรียบเทียบโมลาลิตีของ X และ Y",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 58
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q58"
+      ],
+      "note": "With Kf water 1.86, Y is colder by about 0.52 C."
+    }
+  ]
+}

@@ -59,12 +59,12 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN 2562 bank — first three waves, 2026-10-21
+### Chemistry POSN 2562 bank — first four waves, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2562`, `.worktrees/posn-chemistry-2562/`.
 - Source: `สอวน_chemistry/posn1-62-chemistry.pdf`, 17 pages, 60 multiple-choice and 15 written questions. Extraction counted all 75. Its public mirror matched the bank LFS object's SHA-256 exactly when private Git LFS credentials were unavailable.
-- **48/75 reviewed:** Part I questions 1–48 have independent solvers, three variants each, generators, named mistakes, and knowledge claims. The private digest contains concise paraphrases of those forty-eight; public sheet metadata contains only reviewed items. The q12 reaction table was checked against its figure crop and restated in text.
-- Q3's source assumes adjacent electronic gaps shrink as n rises; the generated question states the hydrogen-like model explicitly. Questions 17 and 25 were read from their page figures and recast as textual structures. Q20 narrows the oxoanion claim to exclude O–F and O–O bonds. Q32, Q36 and Q39 figures were read from rendered pages and expressed in the stems; Q35 supplies Z vapor pressure and states the vapor-curve assumption used for its boiling order. The bank entry remains `PARTIAL 48/75` at the converted stage. Targeted wave checks passed; the full suite is deferred until all 75 questions are digested.
+- **66/75 reviewed:** all Part I questions 1–60 and Part II questions 61–66 have independent solvers, three variants each, generators, named mistakes, and knowledge claims. The private digest contains concise paraphrases of those sixty-six; public sheet metadata contains only reviewed items. The q12 reaction table was checked against its figure crop and restated in text.
+- Q3's source assumes adjacent electronic gaps shrink as n rises; the generated question states the hydrogen-like model explicitly. Questions 17 and 25 were read from their page figures and recast as textual structures. Q20 narrows the oxoanion claim to exclude O–F and O–O bonds. Q32, Q36 and Q39 figures were read from rendered pages and expressed in the stems; Q35 supplies Z vapor pressure and states the vapor-curve assumption used for its boiling order. Q54 names benzene as the requested solute; Q61 uses the verified Tc configuration; Q62 specifies an average N oxidation state in N₂O; Q64 records all three net ionic equations; Q66 transcribes the bond-energy table. The bank entry remains `PARTIAL 66/75` at the converted stage. Targeted wave checks passed; the full suite is deferred until all 75 questions are digested.
 
 ### Chemistry POSN 2561 bank — complete, 2026-10-21
 

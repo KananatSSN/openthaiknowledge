@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "โมลาลิตีและองค์ประกอบสารละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q53.procedure",
+      "kind": "procedure",
+      "title": "หน่วยความเข้มข้นกรดแอซีติก",
+      "statement": "15 mol CH₃COOH หนัก 900 g ในสารละลาย 1500 g จึงเหลือน้ำ 600 g; โมลกรดหารโมลรวมราว 31%",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 53
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q53"
+      ],
+      "note": "900 g acid and 600 g water; acid mole percent about 31, not 69."
+    }
+  ]
+}

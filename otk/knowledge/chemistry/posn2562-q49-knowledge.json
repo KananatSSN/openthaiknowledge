@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สโตอิชิโอเมทรีแร่และร้อยละโดยมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q49.procedure",
+      "kind": "procedure",
+      "title": "เผาไพไรต์ให้ซัลเฟอร์ไดออกไซด์",
+      "statement": "FeS₂ หนึ่งโมลมี S สองอะตอมจึงให้ SO₂ สองโมล; คิดมวล FeS₂ จากร้อยละของแร่ก่อน",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 49
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q49"
+      ],
+      "note": "FeS2 24 g gives SO2 25.6 g after complete roasting."
+    }
+  ]
+}

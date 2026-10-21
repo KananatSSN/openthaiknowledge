@@ -10,6 +10,8 @@ from otk.sheets.posn2562_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
+    q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
+    q61, q62, q63, q64, q65, q66,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1054,3 +1056,276 @@ class ReviewedQuestion48(_Base):
             "มวล C = 12/44 ของ CO₂; มวล H = 2/18 ของ H₂O",
             mistakes,
         )
+
+
+@question_type("chem.posn2562_q49", display_name={"th": 'เผาไพไรต์ให้ซัลเฟอร์ไดออกไซด์'},
+               level=LEVEL, subject="เคมี", topic='สโตอิชิโอเมทรีแร่และร้อยละโดยมวล')
+class ReviewedQuestion49(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q49.PARAMS, *q49.VARIANTS))
+        ans = q49.solve(**v)
+        base = tuple(str(round(x,2)) for x in (ans/4,ans,ans*10,ans*20))
+        errors = ('forgets_second_sulfur_and_fraction', 'correct', 'treats_percent_as_half', 'omits_percent_conversion')
+        choices = base
+        mistakes = errors
+        answer = 1
+        return _question(49, f'ตัวอย่างแร่ {v["sample_g"]} g มี FeS₂ {v["pyrite_percent"]}% โดยมวล; เผาจนสมบูรณ์ให้ Fe₂O₃ และ SO₂ ได้ SO₂ กี่กรัม', choices, answer, 'สโตอิชิโอเมทรีแร่และร้อยละโดยมวล',
+                         'ดุล 4FeS₂ + 11O₂ → 2Fe₂O₃ + 8SO₂', mistakes)
+
+
+@question_type("chem.posn2562_q50", display_name={"th": 'ยูเรียกับสารกำหนดปริมาณ'},
+               level=LEVEL, subject="เคมี", topic='สารกำหนดปริมาณและยูเรีย')
+class ReviewedQuestion50(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q50.PARAMS, *q50.VARIANTS))
+        base = ('NH₃ ถูกใช้ 4 mol','CO₂ เหลือ 22 g','ได้ยูเรียเพียง 75 g','NH₃ เป็นสารกำหนดปริมาณ')
+        errors = ('confuses_ammonia_consumption', 'miscounts_co2_excess', 'correct', 'misidentifies_limiting_reagent')
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q50.solve(**v)
+        return _question(50, '2NH₃ + CO₂ → (NH₂)₂CO + H₂O; เริ่ม NH₃ 68 g และ CO₂ 2.5 mol ข้อใดผิด', choices, answer, 'สารกำหนดปริมาณและยูเรีย',
+                         'เทียบ NH₃ 4 mol กับอัตราส่วน 2:1 ก่อนหามวลยูเรีย', mistakes)
+
+
+@question_type("chem.posn2562_q51", display_name={"th": 'คลอไรด์ในสารละลายผสม'},
+               level=LEVEL, subject="เคมี", topic='การตกตะกอนและความเข้มข้น')
+class ReviewedQuestion51(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q51.PARAMS, *q51.VARIANTS))
+        ans = q51.solve(**v)
+        base = tuple(str(round(ans*k,2)) for k in (1,2,3,4))
+        errors = ('correct', 'forgets_two_chlorides', 'triples_calcium_chloride', 'quadruples_calcium_chloride')
+        choices = base
+        mistakes = errors
+        answer = 0
+        return _question(51, f'สารผสม HCl {v["hcl_m"]} M กับ CaCl₂: ตัวอย่าง {v["aliquot_l"]*1000:g} mL ให้ AgCl {v["agcl_g"]} g เมื่อตกตะกอนด้วย AgNO₃ เกินพอ. CaCl₂ มีกี่ g/L', choices, answer, 'การตกตะกอนและความเข้มข้น',
+                         'คลอไรด์จาก HCl ต้องหักจากคลอไรด์รวมก่อนหารสองเพื่อหา CaCl₂', mistakes)
+
+
+@question_type("chem.posn2562_q52", display_name={"th": 'ละลายเบสหลังเปลี่ยนเกลือ'},
+               level=LEVEL, subject="เคมี", topic='ความสามารถละลายและดุลมวล')
+class ReviewedQuestion52(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q52.PARAMS, *q52.VARIANTS))
+        ans = q52.solve(**v)
+        base = tuple(str(round(ans*k,2)) for k in (0.25,0.5,0.75,1))
+        errors = ('forgets_salt_solubility', 'halves_required_dilution', 'ignores_molar_mass_conversion', 'correct')
+        choices = base
+        mistakes = errors
+        answer = 3
+        return _question(52, f'เกลือ [R₃NH]Cl ละลายสูงสุด {v["salt_sol_g_l"]} g/L ในน้ำ {v["sample_l"]} L; เปลี่ยนเป็น R₃N ทั้งหมดซึ่งละลายได้ {v["base_sol_g_l"]} g/L. M(R₃N)={v["base_molar"]}, M(เกลือ)={v["salt_molar"]}. ต้องใช้น้ำทั้งหมดกี่ลิตร', choices, answer, 'ความสามารถละลายและดุลมวล',
+                         'แปลงมวลเกลือเป็นโมล แล้วคูณมวลโมลาร์ R₃N ก่อนหารความสามารถละลาย', mistakes)
+
+
+@question_type("chem.posn2562_q53", display_name={"th": 'หน่วยความเข้มข้นกรดแอซีติก'},
+               level=LEVEL, subject="เคมี", topic='โมลาลิตีและองค์ประกอบสารละลาย')
+class ReviewedQuestion53(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q53.PARAMS, *q53.VARIANTS))
+        base = ('น้ำมีมวล 600 g','กรดมี 60% โดยมวล','ความเข้มข้นเท่ากับ 25 mol/kg','กรดมี 69% โดยโมล')
+        errors = ('miscomputes_water_mass', 'miscomputes_mass_percent', 'confuses_molarity_molality', 'correct')
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q53.solve(**v)
+        return _question(53, 'CH₃COOH 15 M ปริมาตร 1 L ความหนาแน่น 1.50 g/mL: ข้อใดผิด', choices, answer, 'โมลาลิตีและองค์ประกอบสารละลาย',
+                         'หามวลสารละลาย 1500 g และมวลกรด 900 g; โมลน้ำคือ 600/18', mistakes)
+
+
+@question_type("chem.posn2562_q54", display_name={"th": 'โมลาริตีเบนซีนในตัวทำละลายโทลูอีน'},
+               level=LEVEL, subject="เคมี", topic='โมลาริตีสารละลายผสม')
+class ReviewedQuestion54(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q54.PARAMS, *q54.VARIANTS))
+        ans = q54.solve(**v)
+        base = (str(ans),str(round((v['benzene_ml']*v['benzene_density']/v['benzene_molar'])/(v['toluene_ml']/1000),2)),str(round((v['toluene_ml']*.9/92)/((v['benzene_ml']+v['toluene_ml'])/1000),2)),str(round(ans+(v['toluene_ml']*.9/92)/((v['benzene_ml']+v['toluene_ml'])/1000),2)))
+        errors = ('correct', 'uses_solvent_volume', 'reports_toluene_molarity', 'counts_both_solutes')
+        choices = base
+        mistakes = errors
+        answer = 0
+        return _question(54, f'ผสมเบนซีน {v["benzene_ml"]} mL กับโทลูอีน {v["toluene_ml"]} mL โดยถือว่าปริมาตรรวมบวกตรงกัน เบนซีนมีความหนาแน่น {v["benzene_density"]} g/mL และ M={v["benzene_molar"]}; โทลูอีนมีความหนาแน่น 0.900 g/mL และ M=92. โมลาริตีของเบนซีนเท่าใด', choices, answer, 'โมลาริตีสารละลายผสม',
+                         'โมลเบนซีน = มวลเบนซีน/78; หารปริมาตรรวมเป็นลิตร', mistakes)
+
+
+@question_type("chem.posn2562_q55", display_name={"th": 'เปรียบเทียบโมลาลิตีที่ร้อยละมวลเท่ากัน'},
+               level=LEVEL, subject="เคมี", topic='โมลาลิตีและมวลโมลาร์')
+class ReviewedQuestion55(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q55.PARAMS, *q55.VARIANTS))
+        base = ('กรดแอซีติก > เอทานอล > NaOH','เอทานอล > NaOH > กรดแอซีติก','NaOH > กรดแอซีติก > เอทานอล','NaOH > เอทานอล > กรดแอซีติก')
+        errors = ('ranks_by_molar_mass', 'swaps_naoh_ethanol', 'swaps_acid_ethanol', 'correct')
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q55.solve(**v)
+        return _question(55, f'สารละลายในน้ำทุกชนิดเข้มข้น {v["percent"]}% โดยมวล; M(NaOH)=40, M(C₂H₅OH)=46, M(CH₃COOH)=60. ลำดับโมลาลิตีจากมากไปน้อยคือข้อใด', choices, answer, 'โมลาลิตีและมวลโมลาร์',
+                         'ที่ร้อยละมวลเท่ากัน มวลน้ำเท่ากัน; เปรียบเทียบจำนวนโมลของตัวถูกละลาย', mistakes)
+
+
+@question_type("chem.posn2562_q56", display_name={"th": 'เตรียมสารละลายปรอทไนเตรต'},
+               level=LEVEL, subject="เคมี", topic='ร้อยละมวลต่อปริมาตรและสูตรเกลือ')
+class ReviewedQuestion56(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q56.PARAMS, *q56.VARIANTS))
+        ans = q56.solve(**v)
+        hg_g = v["hg_percent_wv"] * v["volume_l"] * 10
+        base = tuple(str(round(x,2)) for x in (ans-hg_g,hg_g,hg_g+hg_g*62/v['hg_atomic'],ans))
+        errors = ('counts_only_nitrate_mass', 'uses_hg_mass_as_salt', 'forgets_second_nitrate', 'correct')
+        choices = base
+        mistakes = errors
+        answer = 3
+        return _question(56, f'เตรียม Hg(NO₃)₂ {v["volume_l"]} L ให้มี Hg {v["hg_percent_wv"]}% มวลต่อปริมาตร; Hg={v["hg_atomic"]}, N=14, O=16. ต้องชั่ง Hg(NO₃)₂ กี่กรัม', choices, answer, 'ร้อยละมวลต่อปริมาตรและสูตรเกลือ',
+                         'คิดมวล Hg จาก g ต่อ 100 mL แล้วคูณอัตราส่วน M(Hg(NO₃)₂)/M(Hg)', mistakes)
+
+
+@question_type("chem.posn2562_q57", display_name={"th": 'เจือจางสารละลายโซเดียมไฮดรอกไซด์'},
+               level=LEVEL, subject="เคมี", topic='การเจือจางจากร้อยละมวล')
+class ReviewedQuestion57(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q57.PARAMS, *q57.VARIANTS))
+        ans = q57.solve(**v)
+        base = tuple(str(round(x,2)) for x in (ans*10/9,ans,ans/2,ans*4/9))
+        errors = ('ignores_stock_volume_in_total', 'correct', 'halves_solute_amount', 'overdilutes_solution')
+        choices = base
+        mistakes = errors
+        answer = 1
+        return _question(57, f'NaOH {v["stock_percent"]}% โดยมวล ความหนาแน่น {v["density"]} g/mL ปริมาตร {v["stock_ml"]} mL; เติมน้ำ {v["water_ml"]} mL (ถือว่าปริมาตรบวกตรงกัน) โมลาริตีสุดท้ายเท่าใด', choices, answer, 'การเจือจางจากร้อยละมวล',
+                         'มวล NaOH = ปริมาตรตั้งต้น × ความหนาแน่น × ร้อยละมวล', mistakes)
+
+
+@question_type("chem.posn2562_q58", display_name={"th": 'จุดเยือกแข็งของสารละลายสองชนิด'},
+               level=LEVEL, subject="เคมี", topic='การลดจุดเยือกแข็ง')
+class ReviewedQuestion58(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q58.PARAMS, *q58.VARIANTS))
+        ans = q58.solve(**v)
+        wrong = round(ans * 0.6, 2)
+        base = (f'X ต่ำกว่า Y {wrong} °C',f'Y ต่ำกว่า X {wrong} °C',f'X ต่ำกว่า Y {ans} °C',f'Y ต่ำกว่า X {ans} °C')
+        errors = ('reverses_freezing_order_small', 'uses_wrong_molality_difference', 'reverses_freezing_order', 'correct')
+        choices = base
+        mistakes = errors
+        answer = 3
+        return _question(58, f'X ในน้ำ {v["x_percent"]}% โดยมวล M={v["x_molar"]}; Y ในน้ำ {v["y_percent"]}% M={v["y_molar"]}. เป็นสารไม่แตกตัวและ Kf น้ำ={v["kf"]} °C·kg/mol; จุดเยือกแข็งต่างกันอย่างไร', choices, answer, 'การลดจุดเยือกแข็ง',
+                         'คำนวณโมลาลิตีจากตัวถูกละลายต่อมวลน้ำ แล้วใช้ ΔTf=Kf m', mistakes)
+
+
+@question_type("chem.posn2562_q59", display_name={"th": 'จุดเยือกแข็งเท่ากันของสองสารละลาย'},
+               level=LEVEL, subject="เคมี", topic='สมบัติคอลลิเกทีฟและโมลาลิตี')
+class ReviewedQuestion59(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q59.PARAMS, *q59.VARIANTS))
+        ans = q59.solve(**v)
+        base = tuple(str(round(ans*k,2)) for k in (1/9,1/4,1,2.25))
+        errors = ('uses_molar_ratio_without_water', 'uses_half_required_moles', 'correct', 'overcounts_glucose_moles')
+        choices = base
+        mistakes = errors
+        answer = 2
+        return _question(59, f'เอทิลีนไกลคอล {v["eg_g"]} g (M={v["eg_molar"]}) ในน้ำ {v["eg_water_g"]} g มีจุดเยือกแข็งเท่ากับกลูโคส (M={v["glucose_molar"]}) ในน้ำ {v["glucose_water_g"]} g; ต้องใช้กลูโคสกี่กรัม', choices, answer, 'สมบัติคอลลิเกทีฟและโมลาลิตี',
+                         'สารไม่แตกตัวที่จุดเยือกแข็งเท่ากันมีโมลาลิตีเท่ากัน', mistakes)
+
+
+@question_type("chem.posn2562_q60", display_name={"th": 'จุดเดือดกับจุดเยือกแข็ง'},
+               level=LEVEL, subject="เคมี", topic='ค่าคงที่คอลลิเกทีฟของน้ำ')
+class ReviewedQuestion60(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q60.PARAMS, *q60.VARIANTS))
+        ans = q60.solve(**v)
+        wrong = round((v["boiling_c"] - 100) * v["kb"] / v["kf"], 2)
+        base = tuple(str(x) for x in (ans,-wrong,wrong,-ans))
+        errors = ('correct', 'uses_inverse_k_ratio_negative', 'uses_inverse_k_ratio_positive', 'reports_freezing_rise')
+        choices = base
+        mistakes = errors
+        answer = 0
+        return _question(60, f'สารละลายไม่แตกตัวในน้ำเดือดที่ {v["boiling_c"]} °C; ให้ Kb={v["kb"]}, Kf={v["kf"]} °C·kg/mol จุดเยือกแข็งคือเท่าใด', choices, answer, 'ค่าคงที่คอลลิเกทีฟของน้ำ',
+                         'ΔTb=Kb m และ ΔTf=Kf m จึง ΔTf=ΔTb Kf/Kb', mistakes)
+
+
+@question_type("chem.posn2562_q61", display_name={"th": 'การจัดอิเล็กตรอนของ Tc3+'},
+               level=LEVEL, subject="เคมี", topic='การจัดอิเล็กตรอนของไอออนแทรนซิชัน')
+class ReviewedQuestion61(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q61.PARAMS, *q61.VARIANTS))
+        base = ('[Kr] 4d⁵','[Kr] 4d³5s¹','[Kr] 4d⁴','[Kr] 4d²5s²')
+        errors = ('removes_only_5s', 'leaves_5s_electron', 'correct', 'removes_4d_before_5s')
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q61.solve(**v)
+        return _question(61, f'ธาตุ X มีเลขมวล {v["mass"]} และนิวตรอน {v["neutrons"]}; การจัดอิเล็กตรอนของ X³⁺ คือข้อใด', choices, answer, 'การจัดอิเล็กตรอนของไอออนแทรนซิชัน',
+                         'เลขอะตอมคือ A−N; ธาตุ 43 คือ Tc และดึง 5s ก่อน 4d', mistakes)
+
+
+@question_type("chem.posn2562_q62", display_name={"th": 'เลขออกซิเดชันของไนโตรเจน'},
+               level=LEVEL, subject="เคมี", topic='เลขออกซิเดชัน')
+class ReviewedQuestion62(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q62.PARAMS, *q62.VARIANTS))
+        base = ('+5, −3, −2, +1','+3, −3, −2, +1','+5, +3, −2, +1','+5, −3, −1, +2')
+        errors = ('correct', 'miscounts_nitrate_charge', 'miscounts_ammonium_charge', 'ignores_average_nitrous_oxide')
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q62.solve(**v)
+        return _question(62, 'หาเลขออกซิเดชัน N ใน NO₃⁻, NH₄⁺, N₂H₄ และค่าเฉลี่ยของ N ใน N₂O ตามลำดับ', choices, answer, 'เลขออกซิเดชัน',
+                         'ให้ O=−2 และ H=+1 แล้วดุลผลรวมเลขออกซิเดชันกับประจุ', mistakes)
+
+
+@question_type("chem.posn2562_q63", display_name={"th": 'หมู่ธาตุและพลังงานไอออไนเซชัน'},
+               level=LEVEL, subject="เคมี", topic='การจัดอิเล็กตรอนและแนวโน้มคาบ')
+class ReviewedQuestion63(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q63.PARAMS, *q63.VARIANTS))
+        base = ('A, D','D, A','E, A','D, G')
+        errors = ('confuses_oxygen_group', 'correct', 'treats_excited_sc_as_group13', 'chooses_sodium_highest_ie')
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q63.solve(**v)
+        return _question(63, 'กำหนด A:1s²2s²2p⁴; D:[Ne]3s²3p¹; E:[Ar]4s²4p¹ (สถานะกระตุ้น); G:[Ne]3s¹. คู่ใดให้ธาตุหมู่ 13 และธาตุที่ใช้พลังงานมากสุดในการเสียอิเล็กตรอนแรก ตามลำดับ', choices, answer, 'การจัดอิเล็กตรอนและแนวโน้มคาบ',
+                         'นับอิเล็กตรอนทั้งหมดของ E แม้อยู่สถานะกระตุ้น; เปรียบเทียบ IE₁', mistakes)
+
+
+@question_type("chem.posn2562_q64", display_name={"th": 'สมการไอออนิกสุทธิของตะกอน'},
+               level=LEVEL, subject="เคมี", topic='ปฏิกิริยาการตกตะกอน')
+class ReviewedQuestion64(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q64.PARAMS, *q64.VARIANTS))
+        base = ('I Ca²⁺+CO₃²⁻→CaCO₃; II Al³⁺+Cl⁻→AlCl₃; III Ba²⁺+SO₄²⁻→BaSO₄','I Ca²⁺+CO₃²⁻→CaCO₃; III Ba²⁺+SO₄²⁻→BaSO₄; IV Sr²⁺+HPO₄²⁻→SrHPO₄','I Ca²⁺+CO₃²⁻→CaCO₃; IV Sr²⁺+HPO₄²⁻→SrHPO₄; V Mg²⁺+Cl⁻→MgCl₂','II Al³⁺+Cl⁻→AlCl₃; III Ba²⁺+SO₄²⁻→BaSO₄; V Mg²⁺+Cl⁻→MgCl₂')
+        errors = ('assumes_alcl3_precipitates', 'correct', 'assumes_mgcl2_precipitates', 'ignores_calcium_carbonate')
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q64.solve(**v)
+        return _question(64, 'ผสม I CaCl₂+Na₂CO₃; II Al₂(SO₄)₃+HCl; III Ba(NO₃)₂+Na₂SO₄; IV SrCl₂+Na₂HPO₄; V Mg(NO₃)₂+KCl. ชุดใดมีตะกอน และสมการไอออนิกสุทธิข้อใดถูก', choices, answer, 'ปฏิกิริยาการตกตะกอน',
+                         'คาร์บอเนตของ Ca และซัลเฟตของ Ba ไม่ละลาย; SrHPO₄ ตกตะกอน', mistakes)
+
+
+@question_type("chem.posn2562_q65", display_name={"th": 'ครึ่งชีวิตและมวลคงเหลือ'},
+               level=LEVEL, subject="เคมี", topic='การสลายกัมมันตรังสี')
+class ReviewedQuestion65(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q65.PARAMS, *q65.VARIANTS))
+        ans = q65.solve(**v)
+        base = (f'{ans[0]} เดือน; {ans[1]} mg',f'{ans[0]} เดือน; {round(ans[1]*2,3)} mg',f'{round(ans[0]*2,2)} เดือน; {ans[1]} mg',f'{round(ans[0]*2,2)} เดือน; {round(ans[1]*2,3)} mg')
+        errors = ('correct', 'one_fewer_halving', 'doubles_half_life', 'doubles_both_results')
+        choices = base
+        mistakes = errors
+        answer = 0
+        return _question(65, f'ไอโซโทปเริ่ม {v["start_mg"]} mg ผ่าน 12 เดือนเหลือ {v["after_12_mg"]} mg ครึ่งชีวิตกี่เดือน และเมื่อครบ 18 เดือนเหลือกี่ mg', choices, answer, 'การสลายกัมมันตรังสี',
+                         'นับว่ามวลลดลงครึ่งหนึ่งกี่ครั้งใน 12 เดือน แล้วต่อไปถึงเดือนที่ 18', mistakes)
+
+
+@question_type("chem.posn2562_q66", display_name={"th": 'พลังงานพันธะ C=O จากเอนทัลปี'},
+               level=LEVEL, subject="เคมี", topic='พลังงานพันธะและเอนทัลปี')
+class ReviewedQuestion66(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q66.PARAMS, *q66.VARIANTS))
+        ans = q66.solve(**v)
+        base = tuple(str(x) for x in (ans-v['c_c'],v['c_triple_o']-v['c_c'],ans,v['c_triple_o']))
+        errors = ('subtracts_c_c_twice', 'drops_reaction_enthalpy', 'correct', 'uses_co_triple_bond')
+        choices = base
+        mistakes = errors
+        answer = 2
+        return _question(66, f'CH₃OH + CO → CH₃COOH มี ΔH={v["delta_h"]} kJ/mol; จากตารางพันธะ C–C={v["c_c"]} และ C≡O={v["c_triple_o"]} kJ/mol (พันธะ C–H, C–O, O–H เหมือนกันทั้งสองด้าน) พลังงานพันธะ C=O คือเท่าใด', choices, answer, 'พลังงานพันธะและเอนทัลปี',
+                         'ΔH = ผลรวมพันธะที่แตก − ผลรวมพันธะที่เกิด; ตัดพันธะที่เหมือนกันสองข้าง', mistakes)

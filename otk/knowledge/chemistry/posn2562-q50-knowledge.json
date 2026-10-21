@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารกำหนดปริมาณและยูเรีย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q50.procedure",
+      "kind": "procedure",
+      "title": "ยูเรียกับสารกำหนดปริมาณ",
+      "statement": "ปฏิกิริยา 2NH₃+CO₂ ให้ยูเรีย 1 โมล; NH₃ 4 โมลจำกัดผลิตภัณฑ์ยูเรีย 2 โมล",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 50
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q50"
+      ],
+      "note": "4 mol NH3 limits production to 2 mol urea or 120 g; CO2 left 0.5 mol."
+    }
+  ]
+}
