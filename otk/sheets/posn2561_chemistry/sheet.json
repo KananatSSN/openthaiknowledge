@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 36/75: all 75 items extracted; Part I questions 1–36 reviewed, independently solved, claimed by knowledge units and linked to generators. MC34–36 have numerical variants. Remaining 39 await review.",
+  "note": "PARTIAL 39/75: all 75 items extracted; Part I questions 1–39 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 36 await review.",
   "items": [
     {
       "number": 1,
@@ -473,6 +473,45 @@
       "answer": "18",
       "generator": "chem.posn2561_q36",
       "note": "Source choice ข is 18 g Mg: 4.48 L/22.4=0.2 mol NH3, requiring 0.1 mol actual Mg3N2, 0.25 mol theoretical Mg3N2 at 40% yield, and 0.75 mol Mg. Adaptation explicitly specifies 0°C, 1 atm and 22.4 L/mol, and omits the source color description. https://chem.libretexts.org/Courses/CSU_San_Bernardino/CHEM_2200%3A_General_Chemistry_II_%28Mink%29/18%3A_Representative_Metals_Metalloids_and_Nonmetals/18.06%3A_Occurrence_Preparation_and_Compounds_of_Hydrogen"
+    },
+    {
+      "number": 37,
+      "solver": "q37",
+      "title": "คาร์บอเนตคงเหลือหลังตกตะกอนซิลเวอร์",
+      "source": "Part I, question 37, p9: mix 0.0800 M sodium carbonate, 75.0 mL, with 0.200 M silver nitrate, 25.0 mL, then find excess reagent concentration.",
+      "page": 9,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สารกำหนดปริมาณและความเข้มข้นหลังผสม",
+      "answer": "0.035",
+      "generator": "chem.posn2561_q37",
+      "note": "Source choice ข is 0.0350 M Na2CO3: 6.00 mmol CO3^2− and 5.00 mmol Ag+ yield 2.50 mmol Ag2CO3, leaving 3.50 mmol carbonate in 100 mL. Adaptation explicitly assumes additive volumes and varies concentrations and volumes."
+    },
+    {
+      "number": 38,
+      "solver": "q38",
+      "title": "ร้อยละอะลูมิเนียมจากโลหะผสมและแก๊สไฮโดรเจน",
+      "source": "Part I, question 38, p9: a 1000 mg Al/Zn/Si/Cu alloy releases 448 cm3 H2 with excess HCl at STP, leaving 350 mg Si/Cu; find Al mass percent.",
+      "page": 9,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ปริมาณสารสัมพันธ์และองค์ประกอบโลหะผสม",
+      "answer": "24.9",
+      "generator": "chem.posn2561_q38",
+      "note": "Source choice ข is 24.9% Al: reactive mass is 650 mg; 448 cm3 H2 is 20 mmol. Solve 27a+65z=650 mg and 1.5a+z=20 mmol for a=9.21986 mmol, Al mass 248.94 mg. Adaptation defines 0°C and 1 atm as 22.4 L/mol and rounds percent to one decimal."
+    },
+    {
+      "number": 39,
+      "solver": "q39",
+      "title": "ความเข้มข้นเหล็กสามหลังปฏิกิริยาเปอร์แมงกาเนต",
+      "source": "Part I, question 39, p9: combine 30.0 mL of 0.150 M Mohr salt, 0.00150 M ferric sulfate and excess acid with 30.0 mL of 0.0200 M KMnO4; find final Fe3+ concentration.",
+      "page": 9,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "รีดอกซ์และความเข้มข้นไอออนหลังผสม",
+      "answer": "0.0515",
+      "generator": "chem.posn2561_q39",
+      "note": "Source choice ค is 0.0515 M Fe3+: initial Fe3+ is 0.090 mmol; permanganate oxidizes 3.00 mmol Fe2+; 3.090 mmol in 60.0 mL is 0.0515 M. Adaptation assumes additive volumes, retains acid excess and varies reagent concentrations."
     }
   ]
 }

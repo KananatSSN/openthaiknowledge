@@ -11,7 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
-    q34, q35, q36,
+    q34, q35, q36, q37, q38, q39,
 )
 
 
@@ -19,13 +19,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 37))
+@pytest.mark.parametrize("number", range(1, 40))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -284,7 +284,7 @@ def test_generated_answers_follow_the_stem(number):
                                          int(oxygen * 200 / air_percent),
                                          int(oxygen * 100 / air_percent))
             }
-        else:
+        elif number == 36:
             yield_percent, liters = re.search(
                 r"ได้ผลได้ (\d+)%.*?NH₃ ([\d.]+) L", stem,
             ).groups()
@@ -297,4 +297,47 @@ def test_generated_answers_follow_the_stem(number):
                     grams * Fraction(2, 3), grams * 2,
                 )
             }
+        elif number == 37:
+            c, cv, ag, av = re.search(
+                r"Na₂CO₃ ([\d.]+) mol/L ปริมาตร (\d+) mL.*?AgNO₃ ([\d.]+) mol/L ปริมาตร (\d+) mL", stem,
+            ).groups()
+            cv, av = int(cv), int(av)
+            carbonate = Fraction(c) * cv
+            silver = Fraction(ag) * av
+            remaining = carbonate - silver / 2
+            assert remaining > 0 and "ปริมาตรรวม" in stem
+            assert answer == f"{float(remaining / (cv + av)):.4f}"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                f"{float(value):.4f}" for value in (
+                    remaining / (cv + av), carbonate / (cv + av),
+                    remaining / cv, Fraction(c),
+                )
+            }
+        elif number == 38:
+            total, gas, residue = re.search(
+                r"มวล (\d+) mg.*?H₂ ([\d.]+) cm³.*?Cu (\d+) mg", stem,
+            ).groups()
+            total, residue = int(total), int(residue)
+            hydrogen = Fraction(gas) / Fraction("22.4")
+            zinc = (total - residue - 18 * hydrogen) / 47
+            aluminium = total - residue - 65 * zinc
+            from decimal import Decimal, ROUND_HALF_UP
+            percent = (Decimal(100 * aluminium.numerator) /
+                       Decimal(aluminium.denominator * total)).quantize(
+                Decimal("0.1"), rounding=ROUND_HALF_UP,
+            )
+            assert answer == f"{percent:.1f}" and "22.4 L/mol" in stem
+        else:
+            matched = re.search(
+                r"สารละลายผสม (\d+) mL มี Fe\(NH₄\)₂\(SO₄\)₂ ([\d.]+) mol/L, Fe₂\(SO₄\)₃ ([\d.]+) mol/L.*?KMnO₄ ([\d.]+) mol/L (\d+) mL",
+                stem,
+            )
+            assert matched
+            v, initial_ii, initial_iii, oxidant, pv = matched.groups()
+            v, pv = int(v), int(pv)
+            oxidized = 5 * Fraction(oxidant) * pv
+            assert Fraction(initial_ii) * v > oxidized
+            ferric = 2 * Fraction(initial_iii) * v + oxidized
+            assert answer == f"{float(ferric / (v + pv)):.4f}"
+            assert "ปริมาตรรวม" in stem
         assert len(question.choices) == 4

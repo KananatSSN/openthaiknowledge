@@ -1,5 +1,7 @@
 """Reviewed waves of POSN camp-selection chemistry 2561."""
 
+from fractions import Fraction
+
 from otk.core.content import text
 from otk.core.distractors import fixed
 from otk.core.mistakes import named
@@ -9,6 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
+    q37, q38, q39,
 )
 
 
@@ -1172,4 +1175,113 @@ class MagnesiumForAmmoniaYield(QuestionType):
             ),
             topic="ปริมาณสารสัมพันธ์และร้อยละผลได้",
             hint=[text("3Mg → Mg₃N₂ → 2NH₃; ปรับปริมาณ Mg ตามผลได้ของ Mg₃N₂")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q37", display_name={"th": "คาร์บอเนตเหลือหลังตกตะกอน"},
+    level=LEVEL, subject="เคมี", topic="สารกำหนดปริมาณและความเข้มข้นหลังผสม",
+)
+class CarbonateAfterSilverPrecipitation(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q37.PARAMS, *q37.VARIANTS))
+        answer = q37.solve(**values)
+        c, cv, s, sv = (values[key] for key in
+                        ("carbonate_mm", "carbonate_ml", "silver_mm", "silver_ml"))
+        volume = cv + sv
+        carbonate = Fraction(c * cv, 1000)
+        silver = Fraction(s * sv, 1000)
+        leftover = carbonate - silver / 2
+        fmt = lambda value: f"{float(value):.4f}"
+        return GeneratedQuestion(
+            stem=[text(f"ผสม Na₂CO₃ {c / 1000:.3f} mol/L ปริมาตร {cv} mL "
+                       f"กับ AgNO₃ {s / 1000:.3f} mol/L ปริมาตร {sv} mL "
+                       "เกิดตะกอน Ag₂CO₃ จนปฏิกิริยาสมบูรณ์ "
+                       "สมมติปริมาตรรวมเท่ากับผลบวกของปริมาตรสารละลาย "
+                       "สารตั้งต้นที่เหลือมีความเข้มข้นกี่ mol/L")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_ignored_silver_precipitation",
+                            fmt(carbonate / volume)))],
+                [text(named("chem.posn2561_ignored_mixed_solution_volume",
+                            fmt(leftover / cv)))],
+                [text(named("chem.posn2561_used_initial_carbonate_concentration",
+                            fmt(Fraction(c, 1000))))],
+            ),
+            topic="สารกำหนดปริมาณและความเข้มข้นหลังผสม",
+            hint=[text("Ag₂CO₃ ใช้ Ag⁺ สองโมลต่อ CO₃²⁻ หนึ่งโมล; หักโมลที่ตกตะกอนแล้วหารด้วยปริมาตรรวม")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q38", display_name={"th": "อะลูมิเนียมในโลหะผสมจากแก๊สไฮโดรเจน"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสารสัมพันธ์และองค์ประกอบโลหะผสม",
+)
+class AluminiumFractionInAlloy(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q38.PARAMS, *q38.VARIANTS))
+        answer = q38.solve(**values)
+        total, residue = values["alloy_mg"], values["residue_mg"]
+        hydrogen = Fraction(values["hydrogen_cm3"]) / Fraction("22.4")
+        fmt = lambda value: f"{float(value):.1f}"
+        return GeneratedQuestion(
+            stem=[text(f"โลหะผสม Al, Zn, Si และ Cu มวล {total} mg "
+                       "ทำปฏิกิริยากับ HCl มากเกินพอ ได้ H₂ "
+                       f"{values['hydrogen_cm3']} cm³ ที่ 0°C, 1 atm "
+                       f"(22.4 L/mol) และเหลือ Si กับ Cu {residue} mg "
+                       "Al เป็นร้อยละโดยมวลเท่าใด กำหนดมวลอะตอม Al=27, Zn=65")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_assumed_all_hydrogen_from_aluminium",
+                            fmt(100 * hydrogen * 18 / total)))],
+                [text(named("chem.posn2561_treated_all_reactive_mass_as_aluminium",
+                            fmt(100 * (total - residue) / total)))],
+                [text(named("chem.posn2561_used_one_to_one_aluminium_hydrogen",
+                            fmt(100 * hydrogen * 27 / total)))],
+            ),
+            topic="ปริมาณสารสัมพันธ์และองค์ประกอบโลหะผสม",
+            hint=[text("ตั้งมวล Al+Zn เท่ากับมวลที่ละลาย และโมล H₂ = 3/2 โมล Al + โมล Zn")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q39", display_name={"th": "เหล็กสามหลังออกซิเดชันด้วยเปอร์แมงกาเนต"},
+    level=LEVEL, subject="เคมี", topic="รีดอกซ์และความเข้มข้นไอออนหลังผสม",
+)
+class FerricConcentrationAfterPermanganate(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q39.PARAMS, *q39.VARIANTS))
+        answer = q39.solve(**values)
+        v, pv = values["mixture_ml"], values["permanganate_ml"]
+        ferric = Fraction(values["iron_iii_sulfate_m"]) * v
+        oxidized = 5 * Fraction(values["permanganate_m"]) * pv
+        fmt = lambda value: f"{float(value):.4f}"
+        return GeneratedQuestion(
+            stem=[text(f"สารละลายผสม {v} mL มี Fe(NH₄)₂(SO₄)₂ "
+                       f"{values['iron_ii_m']} mol/L, Fe₂(SO₄)₃ "
+                       f"{values['iron_iii_sulfate_m']} mol/L และ H₂SO₄ มากเกินพอ "
+                       f"เติม KMnO₄ {values['permanganate_m']} mol/L {pv} mL "
+                       "สมมติปริมาตรรวมเป็นผลบวกของปริมาตรสารละลาย "
+                       "ความเข้มข้น Fe³⁺ สุดท้ายเป็นกี่ mol/L? "
+                       "5Fe²⁺ + MnO₄⁻ + 8H⁺ → 5Fe³⁺ + Mn²⁺ + 4H₂O")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_omitted_initial_ferric_ions",
+                            fmt(oxidized / (v + pv))))],
+                [text(named("chem.posn2561_counted_one_ferric_per_ferric_sulfate",
+                            fmt((ferric + oxidized) / (v + pv))))],
+                [text(named("chem.posn2561_ignored_permanganate_solution_volume",
+                            fmt((2 * ferric + oxidized) / v)))],
+            ),
+            topic="รีดอกซ์และความเข้มข้นไอออนหลังผสม",
+            hint=[text("Fe₂(SO₄)₃ เริ่มต้นให้ Fe³⁺ สองโมลต่อโมล; MnO₄⁻ หนึ่งโมลออกซิไดซ์ Fe²⁺ ห้าโมล")],
         )

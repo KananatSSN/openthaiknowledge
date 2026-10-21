@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารกำหนดปริมาณและความเข้มข้นหลังผสม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.carbonate_left_after_silver_precipitation.procedure",
+      "kind": "procedure",
+      "title": "คาร์บอเนตคงเหลือหลังตกตะกอนซิลเวอร์",
+      "statement": "Ag₂CO₃ ใช้ Ag⁺ สองโมลต่อ CO₃²⁻ หนึ่งโมล; หักคาร์บอเนตที่ตกตะกอนแล้วหารด้วยปริมาตรรวม",
+      "steps": [
+        "หาจำนวนโมลเริ่มต้นของ CO₃²⁻ และ Ag⁺ เพื่อระบุ Ag⁺ เป็นสารกำหนดปริมาณ",
+        "หัก CO₃²⁻ ครึ่งหนึ่งของโมล Ag⁺ แล้วหารด้วยปริมาตรสารละลายผสม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 37
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q37"
+      ],
+      "note": "Source choice ข is 0.0350 M Na2CO3: 6.00 mmol CO3^2− and 5.00 mmol Ag+ yield 2.50 mmol Ag2CO3, leaving 3.50 mmol carbonate in 100 mL. Adaptation explicitly assumes additive volumes and varies concentrations and volumes."
+    }
+  ]
+}
