@@ -8,7 +8,7 @@ from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27, q28, q29, q30,
+    q25, q26, q27, q28, q29, q30, q31, q32, q33,
 )
 
 
@@ -975,4 +975,99 @@ class SmallestMolecularBondAngle(QuestionType):
                                 for i, claim in enumerate(claims) if i != answer)),
             topic="รูปทรงโมเลกุลและมุมพันธะ",
             hint=[text("PCl₅ แบบพีระมิดคู่ฐานสามเหลี่ยมมีมุมระหว่างพันธะแนวแกนกับแนวระนาบ 90°")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q31", display_name={"th": "คู่โมเลกุลที่มีแรงระหว่างขั้ว"},
+    level=LEVEL, subject="เคมี", topic="สภาพขั้วโมเลกุลและแรงระหว่างขั้ว",
+)
+class PolarMoleculePair(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q31.PARAMS, *q31.VARIANTS))
+        answer = q31.solve(**values)
+        options = values["options"]
+        claims = tuple(" และ ".join(q31.PAIRS[i]) for i in options)
+        mistakes = (
+            "chem.posn2561_assumed_co2_polar_imf",
+            "chem.posn2561_assumed_o2_polar_imf",
+            "chem.posn2561_assumed_methane_silane_polar_imf",
+            "",
+        )
+        return GeneratedQuestion(
+            stem=[text("คู่ใดมีแรงดึงดูดระหว่างโมเลกุลแบบขั้ว–ขั้วทั้งสองสาร "
+                       "(ไม่นับแรงลอนดอนซึ่งมีในทุกสาร)")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="สภาพขั้วโมเลกุลและแรงระหว่างขั้ว",
+            hint=[text("ตรวจรูปร่างและการหักล้างของขั้ว; PH₃ และ H₂S มีขั้วอ่อน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q32", display_name={"th": "พันธะและขั้วของสารโคเวเลนต์"},
+    level=LEVEL, subject="เคมี", topic="อันดับพันธะ สภาพขั้ว และจุดเดือด",
+)
+class BondPolarityBoilingClaims(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q32.PARAMS, *q32.VARIANTS))
+        answer = q32.solve(**values)
+        options = values["options"]
+        claims = tuple(q32.CLAIMS[i] for i in options)
+        mistakes = (
+            "chem.posn2561_ignored_cf4_chf3_boiling_order", "",
+            "chem.posn2561_assumed_bf3_polar_ignored_carbonate_bond",
+            "chem.posn2561_assumed_bf3_polar",
+        )
+        distractors = fixed(*( [text(named(mistakes[options[i]], claim))]
+                               for i, claim in enumerate(claims) if i != answer))
+        distractors.balanced = True  # Fixed statement combinations only.
+        return GeneratedQuestion(
+            stem=[text("พิจารณาข้อความ: " + " ; ".join(
+                f"{i}. {statement}" for i, statement in enumerate(q32.STATEMENTS, 1)
+            ) + " ข้อใดถูกต้อง")],
+            correct=[text(claims[answer])],
+            distractors=distractors,
+            topic="อันดับพันธะ สภาพขั้ว และจุดเดือด",
+            hint=[text("CO₃²⁻ มีอันดับพันธะเฉลี่ย 4/3; BF₃ สมมาตร; CF₄ เดือดต่ำกว่า CHF₃")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q33", display_name={"th": "ส่วนผสมแก๊สก่อนเกิด HCl"},
+    level=LEVEL, subject="เคมี", topic="สัดส่วนแก๊สและปริมาณสารสัมพันธ์",
+)
+class InitialHydrogenGasFraction(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q33.PARAMS, *q33.VARIANTS))
+        answer = q33.solve(**values)
+        initial_chlorine = 100 - answer
+        return GeneratedQuestion(
+            stem=[text("ในขวดปิดที่อุณหภูมิและความดันคงที่ ฉาย UV ให้ H₂ และ Cl₂ "
+                       f"ทำปฏิกิริยา พบว่า Cl₂ ลดลง {values['chlorine_consumed_percent']}% "
+                       "จากปริมาณเริ่มต้น และแก๊สสุดท้ายมี "
+                       f"Cl₂ {values['final_chlorine']}%, H₂ {values['final_hydrogen']}%, "
+                       f"HCl {values['final_hcl']}% โดยปริมาตร "
+                       "ตอนเริ่มต้น H₂ คิดเป็นร้อยละเท่าใดโดยปริมาตร")],
+            correct=[text(str(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_used_final_hydrogen_as_initial",
+                            str(values["final_hydrogen"])))],
+                [text(named("chem.posn2561_reported_initial_chlorine_instead",
+                            str(initial_chlorine)))],
+                [text(named("chem.posn2561_counted_all_hcl_as_consumed_hydrogen",
+                            str(values["final_hydrogen"] + values["final_hcl"])))],
+            ),
+            topic="สัดส่วนแก๊สและปริมาณสารสัมพันธ์",
+            hint=[text("H₂ + Cl₂ → 2HCl; H₂ ที่ใช้เท่ากับครึ่งหนึ่งของ HCl ที่เกิด")],
         )

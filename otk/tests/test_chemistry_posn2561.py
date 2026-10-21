@@ -9,7 +9,7 @@ from otk.core import generate
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27, q28, q29, q30,
+    q25, q26, q27, q28, q29, q30, q31, q32, q33,
 )
 
 
@@ -17,13 +17,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30):
+                   q28, q29, q30, q31, q32, q33):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 31))
+@pytest.mark.parametrize("number", range(1, 34))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -233,8 +233,31 @@ def test_generated_answers_follow_the_stem(number):
             assert "สถานะแก๊ส" in stem
             assert answer == "SO₂"
             assert set(choice.content[0].text for choice in question.choices) == set(q29.MOLECULES)
-        else:
+        elif number == 30:
             assert "สถานะแก๊ส" in stem
             assert answer == "PCl₅"
             assert set(choice.content[0].text for choice in question.choices) == set(q30.MOLECULES)
+        elif number == 31:
+            assert answer == "PH₃ และ H₂S"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                " และ ".join(pair) for pair in q31.PAIRS
+            }
+        elif number == 32:
+            assert all(statement in stem for statement in q32.STATEMENTS)
+            assert answer == q32.CLAIMS[1]
+            assert set(choice.content[0].text for choice in question.choices) == set(q32.CLAIMS)
+        else:
+            reduction = int(re.search(r"Cl₂ ลดลง (\d+)%", stem).group(1))
+            chlorine, hydrogen, hcl = map(int, re.search(
+                r"Cl₂ (\d+)%, H₂ (\d+)%, HCl (\d+)%", stem,
+            ).groups())
+            assert chlorine + hydrogen + hcl == 100
+            initial_hydrogen = hydrogen + hcl // 2
+            initial_chlorine = chlorine + hcl // 2
+            assert hcl % 2 == 0 and 100 * (hcl // 2) == reduction * initial_chlorine
+            assert answer == str(initial_hydrogen)
+            assert set(choice.content[0].text for choice in question.choices) == {
+                str(value) for value in (hydrogen, initial_chlorine,
+                                         hydrogen + hcl, initial_hydrogen)
+            }
         assert len(question.choices) == 4

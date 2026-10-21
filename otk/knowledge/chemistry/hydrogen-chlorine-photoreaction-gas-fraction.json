@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สัดส่วนแก๊สและปริมาณสารสัมพันธ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hydrogen_chlorine_photoreaction_gas_fraction.procedure",
+      "kind": "procedure",
+      "title": "หาสัดส่วนไฮโดรเจนเริ่มต้นจากปฏิกิริยากับคลอรีน",
+      "statement": "H₂ + Cl₂ → 2HCl รักษาจำนวนโมลแก๊สรวม; ปริมาณ H₂ เริ่มต้นเท่ากับ H₂ ที่เหลือบวกครึ่งหนึ่งของ HCl ที่เกิด",
+      "steps": [
+        "ใช้เศษส่วนปริมาตรแทนเศษส่วนโมลที่อุณหภูมิและความดันเดียวกัน",
+        "ทำบัญชี H₂, Cl₂ และ HCl ก่อนหลัง แล้วตรวจร้อยละ Cl₂ ที่ลดลง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 33
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q33"
+      ],
+      "note": "Source choice ค is 60% initial H2: H2 + Cl2 → 2HCl leaves total gas moles fixed; 20% HCl uses 10% H2, so initial H2 was 50%+10%=60%. Initial Cl2 was 40%, of which 10% reacted, matching the stated 25% decrease. Adaptation uses new consistent final mixtures."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สภาพขั้วโมเลกุลและแรงระหว่างขั้ว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.permanent_dipole_intermolecular_pairs.procedure",
+      "kind": "procedure",
+      "title": "คู่สารที่มีแรงดึงดูดระหว่างขั้วทั้งคู่",
+      "statement": "PH₃ และ H₂S เป็นโมเลกุลมีขั้วอ่อนจึงมีแรงระหว่างขั้วทั้งคู่; CO₂, O₂, CH₄ และ SiH₄ ไม่มีขั้วถาวร",
+      "steps": [
+        "พิจารณารูปร่างและสมมาตรของโมเลกุลทุกตัวในแต่ละคู่",
+        "ตรวจว่าทั้งสองตัวมีโมเมนต์ขั้วถาวรหรือไม่ โดยแยกแรงลอนดอนที่มีในทุกสาร"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 31
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q31"
+      ],
+      "note": "Source choice ง is PH3 and H2S. Their nonzero molecular dipoles produce dipole-dipole attractions; CO2, O2, CH4 and SiH4 have zero permanent dipole. https://www.nobraintoosmall.co.nz/NCEA/cheSch/Exams/Sch/AS/93102-ass-2016.pdf"
+    }
+  ]
+}

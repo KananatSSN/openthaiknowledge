@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 30/75: all 75 items extracted; Part I questions 1–30 reviewed, independently solved, claimed by knowledge units and linked to generators. MC30 close bond-angle comparison checked against measured geometry data. Remaining 45 await review.",
+  "note": "PARTIAL 33/75: all 75 items extracted; Part I questions 1–33 reviewed, independently solved, claimed by knowledge units and linked to generators. MC33 has consistent stoichiometric variants. Remaining 42 await review.",
   "items": [
     {
       "number": 1,
@@ -395,6 +395,45 @@
       "answer": "1",
       "generator": "chem.posn2561_q30",
       "note": "Source choice ข is gaseous PCl5: axial-equatorial Cl-P-Cl is 90°. Measured smallest angles of alternatives exceed 90° (SOCl2 Cl-S-Cl 96.1°, NCl3 ~107°, CH2Cl2 >108°). https://cccbdb.nist.gov/expangle2x.asp?all=0&descript=aClSCl https://guweb2.gonzaga.edu/faculty/cronk/CHEM101pub/molecular_structure.html"
+    },
+    {
+      "number": 31,
+      "solver": "q31",
+      "title": "คู่สารที่มีแรงดึงดูดระหว่างขั้วทั้งคู่",
+      "source": "Part I, question 31, p8: identify the only pair of molecules with permanent dipole attractions in both.",
+      "page": 8,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สภาพขั้วโมเลกุลและแรงระหว่างขั้ว",
+      "answer": "3",
+      "generator": "chem.posn2561_q31",
+      "note": "Source choice ง is PH3 and H2S. Their nonzero molecular dipoles produce dipole-dipole attractions; CO2, O2, CH4 and SiH4 have zero permanent dipole. https://www.nobraintoosmall.co.nz/NCEA/cheSch/Exams/Sch/AS/93102-ass-2016.pdf"
+    },
+    {
+      "number": 32,
+      "solver": "q32",
+      "title": "ตรวจข้อความเรื่องพันธะคาร์บอเนต BF₃ และจุดเดือด",
+      "source": "Part I, question 32, p8: select true claims about C–O bond lengths, BF3 polarity and CF4 versus CHF3 boiling points.",
+      "page": 8,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "อันดับพันธะ สภาพขั้ว และจุดเดือด",
+      "answer": "1",
+      "generator": "chem.posn2561_q32",
+      "note": "Source choice ข has statements 1 and 3. Carbonate C–O bonds average order 4/3 and ~129 pm, longer than CO2 ~116 pm; BF3 and F2 are both nonpolar; CF4 boils at −127.9°C versus CHF3 −82.0°C. https://chem.libretexts.org/Bookshelves/General_Chemistry/ChemPRIME_%28Moore_et_al.%29/07%3A_Further_Aspects_of_Covalent_Bonding/7.14%3A_Resonance https://pubchem.ncbi.nlm.nih.gov/compound/6393 https://pubchem.ncbi.nlm.nih.gov/compound/TRIFLUOROMETHANE"
+    },
+    {
+      "number": 33,
+      "solver": "q33",
+      "title": "หาสัดส่วนไฮโดรเจนเริ่มต้นจากปฏิกิริยากับคลอรีน",
+      "source": "Part I, question 33, p8: chlorine falls 25% from its initial amount; the final gas is 30% Cl2, 50% H2 and 20% HCl. Find initial H2 volume percent.",
+      "page": 8,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สัดส่วนแก๊สและปริมาณสารสัมพันธ์",
+      "answer": "60",
+      "generator": "chem.posn2561_q33",
+      "note": "Source choice ค is 60% initial H2: H2 + Cl2 → 2HCl leaves total gas moles fixed; 20% HCl uses 10% H2, so initial H2 was 50%+10%=60%. Initial Cl2 was 40%, of which 10% reacted, matching the stated 25% decrease. Adaptation uses new consistent final mixtures."
     }
   ]
 }
