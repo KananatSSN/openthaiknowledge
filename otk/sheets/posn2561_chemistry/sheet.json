@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 24/75: all 75 items extracted; Part I questions 1–24 reviewed, independently solved, claimed by knowledge units and linked to generators. MC20 printed equation was balanced in adaptation; MC21 table was restated as text. Remaining 51 await review.",
+  "note": "PARTIAL 27/75: all 75 items extracted; Part I questions 1–27 reviewed, independently solved, claimed by knowledge units and linked to generators. MC25–26 tables were visually checked and restated in text. Remaining 48 await review.",
   "items": [
     {
       "number": 1,
@@ -317,6 +317,45 @@
       "answer": "1",
       "generator": "chem.posn2561_q24",
       "note": "Ethanol, hydrogen fluoride and acetic acid dissolve well in water; every other group contains an insoluble substance, and ammonium chloride is ionic. https://pubchem.ncbi.nlm.nih.gov/compound/E260"
+    },
+    {
+      "number": 25,
+      "solver": "q25",
+      "title": "อนุมานสภาพขั้วจากการสกัดสมุนไพร",
+      "source": "Part I, question 25, p7: three solvent extracts contain A/B, B/C and C/D at given relative proportions; assess which polarity conclusions follow.",
+      "page": 7,
+      "figure": "The source has a three-row extraction table, visually reviewed and restated in text.",
+      "figure_asset": "",
+      "topic": "ความมีขั้วและการสกัดด้วยตัวทำละลาย",
+      "answer": "2",
+      "generator": "chem.posn2561_q25",
+      "note": "The chloroform-dominant B is intermediate, ethanol-dominant C trends more polar, and D may have dipole forces and hydrogen bonding if its structure permits. The original table does not reveal exact functional groups, so the adaptation explicitly frames these as trends and possibilities. https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Supplemental_Modules_%28Organic_Chemistry%29/Fundamentals/Intermolecular_Forces/Polar_Protic_and_Aprotic_Solvents"
+    },
+    {
+      "number": 26,
+      "solver": "q26",
+      "title": "เรียงลำดับการกลั่นของบิวเทน อีเทอร์ และเอทานอล",
+      "source": "Part I, question 26, pp7–8: order butane, diethyl ether and ethanol as they distil from a mixture.",
+      "page": 7,
+      "figure": "The source has a four-row distillation-order table, visually reviewed and restated in text.",
+      "figure_asset": "",
+      "topic": "จุดเดือด แรงยึดเหนี่ยว และการกลั่นลำดับส่วน",
+      "answer": "2",
+      "generator": "chem.posn2561_q26",
+      "note": "Source choice ค: butane (~−0.5°C), diethyl ether (34.6°C), then ethanol (78.4°C). Adaptation starts with a cooled liquid mixture at 1 atm so butane can be collected. https://pubchem.ncbi.nlm.nih.gov/compound/diethyl_ether"
+    },
+    {
+      "number": 27,
+      "solver": "q27",
+      "title": "ตรวจออกเตตของอะตอมกลางในโมเลกุลและไอออน",
+      "source": "Part I, question 27, p8: choose the pair whose central atoms both obey the octet rule among NO2, BF4−, XeF4 and CO3²−.",
+      "page": 8,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "กฎออกเตตและโครงสร้างลิวอิส",
+      "answer": "3",
+      "generator": "chem.posn2561_q27",
+      "note": "Source choice ง is BF4− and CO3²−. NO2 is an odd-electron radical with seven electrons about N; XeF4 has an expanded octet with 12 about Xe."
     }
   ]
 }

@@ -9,19 +9,20 @@ from otk.core import generate
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
+    q25, q26, q27,
 )
 
 
 def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
-                   q19, q20, q21, q22, q23, q24):
+                   q19, q20, q21, q22, q23, q24, q25, q26, q27):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 25))
+@pytest.mark.parametrize("number", range(1, 28))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -199,9 +200,28 @@ def test_generated_answers_follow_the_stem(number):
             assert all(statement in stem for statement in q23.STATEMENTS)
             assert answer == "1 และ 3 เท่านั้น"
             assert set(choice.content[0].text for choice in question.choices) == set(q23.CLAIMS)
-        else:
+        elif number == 24:
             assert answer == " / ".join(q24.GROUPS[1])
             assert set(choice.content[0].text for choice in question.choices) == {
                 " / ".join(group) for group in q24.GROUPS
+            }
+        elif number == 25:
+            assert all(statement in stem for statement in q25.STATEMENTS)
+            assert all(f"{name} {fraction}%" in stem
+                       for _, composition in q25.EXTRACTS
+                       for name, fraction in composition)
+            assert answer == q25.CLAIMS[2]
+            assert set(choice.content[0].text for choice in question.choices) == set(q25.CLAIMS)
+        elif number == 26:
+            assert "ความดัน 1 atm" in stem and "ทำให้เย็น" in stem
+            assert answer == "บิวเทน → ไดเอทิลอีเทอร์ → เอทานอล"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                " → ".join(order) for order in q26.ORDERS
+            }
+        else:
+            assert all(species in stem for species in q27.CENTRAL_ELECTRONS)
+            assert answer == "BF₄⁻ และ CO₃²⁻"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                " และ ".join(pair) for pair in q27.PAIRS
             }
         assert len(question.choices) == 4

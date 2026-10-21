@@ -8,6 +8,7 @@ from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
+    q25, q26, q27,
 )
 
 
@@ -785,4 +786,105 @@ class CovalentWaterSolubilityGroup(QuestionType):
                                 for i, claim in enumerate(claims) if i != answer)),
             topic="สภาพขั้วและการละลายน้ำของสารโคเวเลนต์",
             hint=[text("ตรวจทุกสารในแต่ละกลุ่ม รวมทั้งแยกสารไอออนิกออกจากโคเวเลนต์")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q25", display_name={"th": "อนุมานสภาพขั้วจากการสกัด"},
+    level=LEVEL, subject="เคมี", topic="ความมีขั้วและการสกัดด้วยตัวทำละลาย",
+)
+class SolventExtractionPolarityTrend(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q25.PARAMS, *q25.VARIANTS))
+        answer = q25.solve(**values)
+        options = values["options"]
+        claims = tuple(q25.CLAIMS[i] for i in options)
+        mistakes = (
+            "chem.posn2561_assumed_extraction_proves_binary_polarity",
+            "chem.posn2561_rejected_possible_d_hydrogen_bonding",
+            "",
+            "chem.posn2561_assumed_chloroform_extract_nonpolar",
+        )
+        distractors = fixed(*( [text(named(mistakes[options[i]], claim))]
+                               for i, claim in enumerate(claims) if i != answer))
+        # These statement combinations are the complete reviewed choice set.
+        distractors.balanced = True
+        rows = "; ".join(
+            f"{solvent}: " + ", ".join(f"{name} {percent}%" for name, percent in composition)
+            for solvent, composition in q25.EXTRACTS
+        )
+        return GeneratedQuestion(
+            stem=[text("สารสกัดจากสมุนไพรถูกแยกด้วยตัวทำละลายเรียงจากขั้วน้อยไปมาก "
+                       f"(ร้อยละโดยมวลในแต่ละสารสกัด): {rows} "
+                       + "พิจารณาข้อสรุปเชิงแนวโน้ม: " + " ; ".join(
+                           f"{i}. {statement}" for i, statement in enumerate(q25.STATEMENTS, 1)
+                       ) + " ข้อใดเหมาะสม")],
+            correct=[text(claims[answer])],
+            distractors=distractors,
+            topic="ความมีขั้วและการสกัดด้วยตัวทำละลาย",
+            hint=[text("เฮกเซน < คลอโรฟอร์ม < เอทานอลด้านความมีขั้ว; "
+                       "การสกัดบอกแนวโน้ม ไม่ยืนยันหมู่ฟังก์ชันของสาร")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q26", display_name={"th": "ลำดับการกลั่นของบิวเทน อีเทอร์ และเอทานอล"},
+    level=LEVEL, subject="เคมี", topic="จุดเดือด แรงยึดเหนี่ยว และการกลั่นลำดับส่วน",
+)
+class FractionalDistillationOrder(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q26.PARAMS, *q26.VARIANTS))
+        answer = q26.solve(**values)
+        options = values["options"]
+        claims = tuple(" → ".join(q26.ORDERS[i]) for i in options)
+        mistakes = (
+            "chem.posn2561_reversed_distillation_by_boiling_point",
+            "chem.posn2561_ranked_ether_below_butane_boiling",
+            "",
+            "chem.posn2561_ignored_ethanol_hydrogen_bonding",
+        )
+        return GeneratedQuestion(
+            stem=[text("ของผสมบิวเทน ไดเอทิลอีเทอร์ และเอทานอลถูกทำให้เย็นจนเป็นของเหลว "
+                       "แล้วกลั่นลำดับส่วนที่ความดัน 1 atm สารออกมาก่อนจนถึงสุดท้ายเรียงอย่างไร")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="จุดเดือด แรงยึดเหนี่ยว และการกลั่นลำดับส่วน",
+            hint=[text("เปรียบเทียบจุดเดือด: บิวเทนต่ำสุด อีเทอร์ถัดมา เอทานอลสูงสุด")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q27", display_name={"th": "กฎออกเตตที่อะตอมกลาง"},
+    level=LEVEL, subject="เคมี", topic="กฎออกเตตและโครงสร้างลิวอิส",
+)
+class CentralAtomOctetPairs(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q27.PARAMS, *q27.VARIANTS))
+        answer = q27.solve(**values)
+        options = values["options"]
+        claims = tuple(" และ ".join(q27.PAIRS[i]) for i in options)
+        mistakes = (
+            "chem.posn2561_treated_no2_radical_as_octet",
+            "chem.posn2561_treated_no2_radical_as_octet_with_carbonate",
+            "chem.posn2561_treated_xef4_expanded_octet_as_eight",
+            "",
+        )
+        return GeneratedQuestion(
+            stem=[text("ใน NO₂, BF₄⁻, XeF₄ และ CO₃²⁻ คู่ใดมีอะตอมกลางที่นับ "
+                       "อิเล็กตรอนในโครงสร้างลิวอิสได้แปดตัวทั้งคู่")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="กฎออกเตตและโครงสร้างลิวอิส",
+            hint=[text("NO₂ เป็นอนุมูลอิสระอิเล็กตรอนคี่; XeF₄ มีคู่โดดเดี่ยวบน Xe สองคู่")],
         )
