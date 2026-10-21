@@ -14,6 +14,7 @@ from otk.sheets.posn2561_chemistry import (
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51,
     q52, q53, q54, q55, q56, q57, q58, q59, q60,
     q61, q62, q63, q64, q65, q66, q67, q68, q69,
+    q70, q71, q72, q73, q74, q75,
 )
 
 
@@ -2323,4 +2324,226 @@ class PhosphateSilverBackTitration(QuestionType):
             ),
             topic="การไทเทรตกลับและร้อยละฟอสฟอรัส",
             hint=[text("Ag⁺ เหลือจาก SCN⁻ แบบ 1:1; Ag⁺ ที่ใช้ต่อ P₂O₅ หนึ่งโมลเท่ากับหกโมล")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q70", display_name={"th": "สูตรเอมพิริคัลและสูตรโมเลกุล"},
+    level=LEVEL, subject="เคมี", topic="สูตรเอมพิริคัลและมวลโมเลกุล",
+)
+class EmpiricalAndMolecularFormula(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q70.PARAMS, *q70.VARIANTS))
+        empirical, molecular = q70.solve(**values)
+        multiple = int(Fraction(values["sample_g"]) * 1000 /
+                       (Fraction(values["molarity"]) * values["volume_ml"] * 118))
+        return GeneratedQuestion(
+            stem=[text(f"สารประกอบ C,H,Br มี C {values['carbon_pct']}%, "
+                       f"H {values['hydrogen_pct']}%, Br {values['bromine_pct']}% "
+                       f"โดยมวล สาร {values['sample_g']} g ทำสารละลาย "
+                       f"{values['volume_ml']} mL ความเข้มข้น "
+                       f"{values['molarity']} mol/L จงหาสูตรเอมพิริคัล "
+                       "และสูตรโมเลกุลตามลำดับ "
+                       "(มวลอะตอมเพื่อคำนวณสูตร: C=12.01, H=1.008, Br=79.90; "
+                       "เพื่อคำนวณมวลสูตรปัดเป็น 12, 1, 80)")],
+            correct=[text(f"{empirical}; {molecular}")],
+            distractors=fixed(
+                [text(named("chem.posn2561_swapped_empirical_and_molecular_formula",
+                            f"{molecular}; {empirical}"))],
+                [text(named("chem.posn2561_doubled_bromine_in_empirical_formula",
+                            f"C3H2Br2; {molecular}"))],
+                [text(named("chem.posn2561_added_extra_empirical_multiple",
+                            f"{empirical}; C{3 * (multiple + 1)}H{2 * (multiple + 1)}"
+                            f"Br{multiple + 1}"))],
+            ),
+            topic="สูตรเอมพิริคัลและมวลโมเลกุล",
+            hint=[text("หารร้อยละมวลด้วยมวลอะตอมก่อน แล้วหามวลต่อโมลจากมวล/โมลสารละลาย")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q71", display_name={"th": "มวลตัวทำละลายที่ระเหย"},
+    level=LEVEL, subject="เคมี", topic="การเพิ่มจุดเดือดและโมแลลิตี",
+)
+class EvaporatedSolventFromBoilingPoint(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q71.PARAMS, *q71.VARIANTS))
+        answer = q71.solve(**values)
+        initial_g = (1000 * Fraction(values["kb"]) * Fraction(values["solute_mol"])
+                     / (Fraction(values["initial_bp"]) - Fraction(values["pure_bp"])))
+        final_g = initial_g - Fraction(answer)
+        linear_error = (initial_g * (Fraction(values["final_bp"])
+                       - Fraction(values["initial_bp"])) /
+                       (Fraction(values["initial_bp"]) - Fraction(values["pure_bp"])))
+        fmt = lambda amount: f"{float(amount):.1f} g"
+        return GeneratedQuestion(
+            stem=[text(f"สารไม่ระเหยและไม่แตกตัว {values['solute_mol']} mol "
+                       f"ในตัวทำละลายที่มี T_b บริสุทธิ์ {values['pure_bp']}°C "
+                       f"และ K_b={values['kb']}°C/m ให้สารละลายเดือดที่ "
+                       f"{values['initial_bp']}°C หลังตัวทำละลายระเหยบางส่วน "
+                       f"เดือดที่ {values['final_bp']}°C ตัวทำละลายระเหยกี่กรัม")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_reported_initial_solvent_mass",
+                            fmt(initial_g)))],
+                [text(named("chem.posn2561_reported_final_solvent_mass",
+                            fmt(final_g)))],
+                [text(named("chem.posn2561_scaled_solvent_loss_linearly",
+                            fmt(linear_error)))],
+            ),
+            topic="การเพิ่มจุดเดือดและโมแลลิตี",
+            hint=[text("ใช้ ΔT_b=K_b nตัวถูกละลาย/kgตัวทำละลายสองครั้ง แล้วลบมวลตัวทำละลาย")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q72", display_name={"th": "เศษส่วนโมลและความเข้มข้นหลังเติมน้ำ"},
+    level=LEVEL, subject="เคมี", topic="เศษส่วนโมล ความหนาแน่น และโมลาริตี",
+)
+class MoleFractionToDilutedMolarity(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q72.PARAMS, *q72.VARIANTS))
+        solute_g, molarity = q72.solve(**values)
+        water_g = values["solution_g"] - solute_g
+        solute_mol = Fraction(solute_g, values["solute_molar_mass"])
+        no_added_water = (1000 * solute_mol * Fraction(values["final_density"])
+                          / values["solution_g"])
+        ignored_density = 1000 * solute_mol / (values["solution_g"]
+                                                + values["added_water_g"])
+        fmt = lambda mass, concentration: f"{mass} g; {float(concentration):.2f} mol/L"
+        return GeneratedQuestion(
+            stem=[text(f"สาร Y ไม่แตกตัว (M={values['solute_molar_mass']}) "
+                       f"ละลายในน้ำ (M={values['water_molar_mass']}) "
+                       f"เป็นสารละลาย {values['solution_g']} g "
+                       f"โดย X_Y={values['mole_fraction']} เติมน้ำ "
+                       f"{values['added_water_g']} g แล้วความหนาแน่นเป็น "
+                       f"{values['final_density']} g/mL จงหามวล Y เดิม "
+                       "และโมลาริตีหลังเติมน้ำ (สองตำแหน่ง)")],
+            correct=[text(fmt(solute_g, molarity))],
+            distractors=fixed(
+                [text(named("chem.posn2561_reported_water_instead_of_solute_mass",
+                            fmt(water_g, molarity)))],
+                [text(named("chem.posn2561_omitted_added_water_in_molarity",
+                            fmt(solute_g, no_added_water)))],
+                [text(named("chem.posn2561_treated_grams_as_milliliters",
+                            fmt(solute_g, ignored_density)))],
+            ),
+            topic="เศษส่วนโมล ความหนาแน่น และโมลาริตี",
+            hint=[text("X_Y=n_Y/(n_Y+nน้ำ); หลังเติมน้ำ โมล Y คงเดิมและ V=mรวม/ρ")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q73", display_name={"th": "ลำดับความดันไอของสารบริสุทธิ์"},
+    level=LEVEL, subject="เคมี", topic="ความดันไอและแรงระหว่างโมเลกุล",
+)
+class VaporPressureOrderFourSubstances(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q73.PARAMS, *q73.VARIANTS))
+        order = q73.solve(**values)
+        show = {"CH4": "CH₄", "C2H5OH": "C₂H₅OH",
+                "C2H5OC2H5": "C₂H₅OC₂H₅", "SiH4": "SiH₄"}
+        fmt = lambda names: " < ".join(show[name] for name in names)
+        return GeneratedQuestion(
+            stem=[text("ที่อุณหภูมิเดียวกันซึ่งสารบริสุทธิ์ทั้งสี่อยู่เป็นของเหลวได้ "
+                       "จงเรียงความดันไอจากน้อยไปมาก: "
+                       + ", ".join(show[name] for name in values["sequence"]))],
+            correct=[text(fmt(order))],
+            distractors=fixed(
+                [text(named("chem.posn2561_reversed_vapor_pressure_order",
+                            fmt(tuple(reversed(order)))))],
+                [text(named("chem.posn2561_swapped_methane_and_silane_vapor_pressure",
+                            fmt((order[0], order[1], order[3], order[2]))))],
+                [text(named("chem.posn2561_missed_ethanol_hydrogen_bonding",
+                            fmt((order[1], order[0], order[2], order[3]))))],
+            ),
+            topic="ความดันไอและแรงระหว่างโมเลกุล",
+            hint=[text("แรงยึดเหนี่ยวมากทำให้ความดันไอต่ำ; เอทานอลเกิดพันธะไฮโดรเจน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q74", display_name={"th": "ความดันในถังและวาล์วนิรภัย"},
+    level=LEVEL, subject="เคมี", topic="กฎแก๊สและการแปลงหน่วยความดัน",
+)
+class RigidTankReliefValve(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q74.PARAMS, *q74.VARIANTS))
+        pressure, opens = q74.solve(**values)
+        celsius_error = Fraction(values["initial_atm"]) * Fraction(
+            values["final_c"], values["initial_c"])
+        inverse_error = Fraction(values["initial_atm"]) * Fraction(
+            values["initial_c"] + 273, values["final_c"] + 273)
+        fmt = lambda p, state: f"{float(p):.1f} atm; {'เปิด' if state else 'ไม่เปิด'}"
+        return GeneratedQuestion(
+            stem=[text(f"ถังแก๊สแข็งปริมาตรคงที่ 10.0 L มี O₂ "
+                       f"ที่ {values['initial_c']}°C ความดัน "
+                       f"{values['initial_atm']} atm; เมื่อร้อนเป็น "
+                       f"{values['final_c']}°C วาล์วเปิดเมื่อความดันเกิน "
+                       f"{values['valve_mmhg']} mmHg จงหาความดัน "
+                       "(หนึ่งตำแหน่ง) และวาล์วเปิดหรือไม่ (1 atm=760 mmHg)")],
+            correct=[text(fmt(pressure, opens))],
+            distractors=fixed(
+                [text(named("chem.posn2561_used_celsius_in_gas_law",
+                            fmt(celsius_error, opens)))],
+                [text(named("chem.posn2561_inverted_temperature_ratio",
+                            fmt(inverse_error, opens)))],
+                [text(named("chem.posn2561_reversed_valve_threshold_decision",
+                            fmt(pressure, not opens)))],
+            ),
+            topic="กฎแก๊สและการแปลงหน่วยความดัน",
+            hint=[text("ถังปริมาตรคงที่ใช้ P₂/P₁=T₂/T₁ โดย T เป็นเคลวิน แล้วเทียบกับเกณฑ์ mmHg")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q75", display_name={"th": "มวลโมลาร์จากการแพร่ผ่านรูเล็ก"},
+    level=LEVEL, subject="เคมี", topic="กฎการแพร่ของเกรแฮม",
+)
+class GrahamEffusionMolarMass(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q75.PARAMS, *q75.VARIANTS))
+        mass = q75.solve(**values)
+        sample_rate = Fraction(values["sample_mol"]) / Fraction(values["sample_s"])
+        argon_rate = Fraction(values["argon_mol"]) / Fraction(values["argon_s"])
+        inverse = values["argon_mass"] * (sample_rate / argon_rate) ** 2
+        ignored_times = (values["argon_mass"] *
+                         (Fraction(values["argon_mol"]) /
+                          Fraction(values["sample_mol"])) ** 2)
+        fmt = lambda value: f"{float(value):.1f} g/mol"
+        return GeneratedQuestion(
+            stem=[text(f"แก๊สตัวอย่าง {values['sample_mol']} mol ผ่านรูเล็กใน "
+                       f"{values['sample_s']} s; Ar {values['argon_mol']} mol "
+                       f"ผ่านรูเดียวกันใน {values['argon_s']} s "
+                       f"ที่สภาวะเดียวกัน ถ้า M(Ar)={values['argon_mass']} g/mol "
+                       "มวลโมลาร์ของแก๊สตัวอย่างเป็นเท่าใด (หนึ่งตำแหน่ง)")],
+            correct=[text(fmt(mass))],
+            distractors=fixed(
+                [text(named("chem.posn2561_inverted_graham_rate_ratio",
+                            fmt(inverse)))],
+                [text(named("chem.posn2561_assumed_equal_effusion_rates",
+                            fmt(values["argon_mass"])))],
+                [text(named("chem.posn2561_ignored_effusion_times",
+                            fmt(ignored_times)))],
+            ),
+            topic="กฎการแพร่ของเกรแฮม",
+            hint=[text("อัตราการแพร่คือ mol/s และ rตัวอย่าง/rAr=√(MAr/Mตัวอย่าง)")],
         )

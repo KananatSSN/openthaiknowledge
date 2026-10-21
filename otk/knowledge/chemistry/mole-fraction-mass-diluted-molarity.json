@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เศษส่วนโมล ความหนาแน่น และโมลาริตี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.mole_fraction_mass_diluted_molarity.procedure",
+      "kind": "procedure",
+      "title": "มวลตัวถูกละลายและโมลาริตีหลังเติมน้ำ",
+      "statement": "เศษส่วนโมลกำหนดสัดส่วนโมล Y ต่อน้ำ; เติมน้ำแล้วโมล Y คงเดิมและปริมาตรสุดท้ายเท่ากับมวลรวมหารความหนาแน่น",
+      "steps": [
+        "ใช้เศษส่วนโมลและมวลสารละลายหาโมลกับมวล Y",
+        "บวกมวลน้ำที่เติม แปลงความหนาแน่นเป็นปริมาตร แล้วหารโมล Y ด้วยลิตร"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 72
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q72"
+      ],
+      "note": "The ratio nY:nwater is 1:24, so 1264 g holds 2 mol Y or 400 g. Final 1400 g occupies 1.000 L, giving 2.00 M."
+    }
+  ]
+}

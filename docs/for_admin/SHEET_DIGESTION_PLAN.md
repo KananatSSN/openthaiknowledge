@@ -59,10 +59,10 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN 2561 bank — waves 1–12, 2026-10-21
+### Chemistry POSN 2561 bank — complete, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
-- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first fifty-one were reviewed, independently solved, claimed by knowledge units, and linked to generators. **51/75 complete; 24 pending.**
+- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. Every item was reviewed, independently solved, claimed by a knowledge unit, and linked to a generator. **75/75 complete.**
 - MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
 - MC4's only always-true claim is that Z has more than six electrons in its second shell; the adaptation says “always” explicitly. MC5 selects fluorine. MC6's false comparison is K < Ca for IE₂; the close Se < Br comparison was checked against NIST ionization data.
 - MC7's mixed atomic/ionic radius comparison depends on a radius convention; its adaptation supplies the specific table used. MC8's false order places Ca above As for IE₁; its adaptation supplies measured property values and specifies grey arsenic melting under pressure. MC9 pairs SO₃ with Na₂O to give an acid and a base in water.
@@ -80,8 +80,8 @@ Phases in build order. Check an item only when its tests pass.
 - MC43 balances 4KO₂+2CO₂→2K₂CO₃+3O₂ and finds KO₂ limiting, yielding 168 cm³ O₂. MC44 uses mass per litre and molarity to identify H₃PO₄. MC45 counts 49 mmol Na⁺ in 70 mL, or 0.70 mol/L.
 - MC46 uses four HCl per Cl₂ and the 36.5% mass fraction to obtain 20.0 g of acid solution; its wording now distinguishes solution from pure HCl. MC47 leaves 0.708 M acetic acid after NaHCO₃ consumes 0.050 mol. MC48 counts 0.0008 mol OH⁻ from the Ba(OH)₂ stock before adding 20.0 mL of NaOH stock.
 - MC49 gives about 158 g/mol from benzene boiling-point elevation. MC50 transfers 0.5 m molality from solvent A’s freezing depression to solvent B’s boiling rise, giving 65.0°C. MC51 uses both water constants to obtain 4 m and 72.0 g of X. The adaptations state the nondissociation assumption behind the source answers.
-- The private bank digest contains paraphrased records for the fifty-one reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 52.
-- Maintain the requested cadence: targeted tests each wave; the full suite only when all 75 items are digested.
+- The private bank digest contains concise paraphrases of all 75 questions. Figures were read from the source during review; no source artwork or copied question text ships in the public repository. The bank entry is `green`.
+- The requested cadence was targeted tests for each wave and one full suite after all 75 items were digested.
 
 ### Chemistry POSN bank — waves 1–23, 2026-10-21
 
@@ -2319,3 +2319,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed six written questions covering Cr/Mn/Fe, Es synthesis and decay, a Born–Haber cycle, COF₂ Lewis structure, aluminium per pancake and phosphate back titration. Added independently checked solvers, three variants, generators, named misconceptions and knowledge claims. The COF₂ adaptation names dipole–dipole attraction as the strongest specific interaction while acknowledging dispersion.
 - Wave validation: 69/69 sheet solvers and 207 variant runs green; 909 knowledge units in 775 files with zero validation problems; source coverage 69/69. Focused generator tests passed (70), new-set choice checks passed (6), registry/provenance/safety/layout checks passed (779), and the partial-digest bank check passed (2). Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, written 10–15 (items 70–75)
+
+- Reviewed the final six written questions: C/H/Br empirical and molecular formulas, solvent evaporation from boiling elevation, mole fraction and molarity after dilution, vapor-pressure order, a heated oxygen cylinder, and Graham-law effusion. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. The vapor-pressure adaptation specifies a common temperature where all four substances can be liquids; its order agrees with [NIST methane](https://webbook.nist.gov/cgi/cbook.cgi?ID=C74828&Type=TBOIL), [ethanol](https://webbook.nist.gov/cgi/cbook.cgi?ID=C64175&Type=TBOIL), [ethyl ether](https://webbook.nist.gov/cgi/cbook.cgi?ID=C60297&Type=TBOIL) and [silane](https://webbook.nist.gov/cgi/cbook.cgi?ID=C7803625&Mask=1E9F) phase data.
+- Final validation: 75/75 solvers and 225 variant runs green, 915 knowledge units in 781 topic files with zero validation problems, and source coverage 75/75. Focused generator tests passed (76), new-set choice checks passed (6), registry/provenance/safety/layout checks passed after the q73 style correction (803 including the corrected case), and golden/layout checks passed (4613). The completed-sheet full suite passed: 40,866 passed, 13 skipped. Two older sheet-answer strings were adjusted to match solver precision; the PDF explorer tests were rerun with loopback socket access after the default sandbox denied binding. Ruff and whitespace checks passed. The bank entry is `green`.

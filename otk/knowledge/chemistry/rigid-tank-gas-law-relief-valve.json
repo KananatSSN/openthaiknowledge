@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎแก๊สและการแปลงหน่วยความดัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.rigid_tank_gas_law_relief_valve.procedure",
+      "kind": "procedure",
+      "title": "ความดันในถังแข็งและการเปิดวาล์ว",
+      "statement": "ถังปริมาตรคงที่มี P₂/P₁=T₂/T₁ โดยใช้อุณหภูมิสัมบูรณ์ และวาล์วเปิดเมื่อความดันเกินเกณฑ์หลังแปลง mmHg เป็น atm",
+      "steps": [
+        "แปลงอุณหภูมิทั้งสองเป็นเคลวินและคำนวณความดันสุดท้าย",
+        "แปลงเกณฑ์วาล์วเป็น atm แล้วเปรียบเทียบกับความดันสุดท้าย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 74
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q74"
+      ],
+      "note": "P2=50.0×321/300=53.5 atm; threshold 57000/760=75 atm, so the valve stays closed."
+    }
+  ]
+}

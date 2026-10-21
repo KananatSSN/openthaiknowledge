@@ -3945,10 +3945,10 @@
    "pages": 18,
    "text_chars": 30015,
    "layout": "numbered",
-   "sheet_id": "posn2561_chemistry",
    "items": 75,
-   "stage": "converted",
-   "note": "PARTIAL 69/75: Part I q1–60 and written 1–9 reviewed with solvers, generators and knowledge claims. Six written items pending. Do not mark entire sheet green."
+   "sheet_id": "posn2561_chemistry",
+   "stage": "green",
+   "note": "COMPLETE 75/75: all Part I and written items reviewed with independent solvers, generators and knowledge claims; sheet verification and completed-sheet full suite passed."
   },
   {
    "path": "สอวน_math/01-วิชาคณิตศาสตร์.pdf",

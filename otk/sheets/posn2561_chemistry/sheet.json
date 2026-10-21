@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 69/75: all 75 items extracted; Part I questions 1–60 and written questions 1–9 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining six written items await review.",
+  "note": "COMPLETE 75/75: all Part I and written items reviewed, independently solved, claimed by knowledge units and linked to generators.",
   "items": [
     {
       "number": 1,
@@ -522,7 +522,7 @@
       "figure": "",
       "figure_asset": "",
       "topic": "ดุลสมการและร้อยละผลได้",
-      "answer": "0.45",
+      "answer": "0.450",
       "generator": "chem.posn2561_q40",
       "note": "Source choice ง is 0.450 mol NaBH4: balanced 3NaBH4+4BF3→3NaBF4+2B2H6. Theoretical diborane needed is 0.300 mol; multiply by 3/2. Adaptation varies target amount and yield."
     },
@@ -548,7 +548,7 @@
       "figure": "",
       "figure_asset": "",
       "topic": "สมมูลกรดของคาร์บอเนตและไบคาร์บอเนต",
-      "answer": "48",
+      "answer": "48.0",
       "generator": "chem.posn2561_q42",
       "note": "Source choice ค is 48.0 mL: 0.452/226=0.002 mol trona, each formula unit requires three H+ equivalents, and 0.006 mol/0.125 M is 0.048 L. Adaptation varies trona mass and acid concentration."
     },
@@ -902,6 +902,84 @@
       "answer": "('1.80×10⁻⁴ mol', '6.70%')",
       "generator": "chem.posn2561_q69",
       "note": "SCN⁻ measures 1.80×10⁻⁴ mol leftover Ag⁺. Of 0.00420 mol initially, 0.00402 mol precipitates phosphate; six Ag⁺ per P₂O₅ give 6.70% by mass."
+    },
+    {
+      "number": 70,
+      "solver": "q70",
+      "title": "สูตรเอมพิริคัลและสูตรโมเลกุลจากองค์ประกอบ",
+      "source": "Part II, written question 10, p16: C/H/Br mass percentages 30.55/1.71/67.74; 4.72 g gives 200 mL of 0.100 M solution. Find empirical and molecular formulas.",
+      "page": 16,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สูตรเอมพิริคัลและมวลโมเลกุล",
+      "answer": "('C3H2Br', 'C6H4Br2')",
+      "generator": "chem.posn2561_q70",
+      "note": "The percentages give C:H:Br=3:2:1. The solution contains 0.0200 mol, so M=236 g/mol, twice the 118 g/mol empirical mass."
+    },
+    {
+      "number": 71,
+      "solver": "q71",
+      "title": "มวลตัวทำละลายที่ระเหยจากจุดเดือด",
+      "source": "Part II, written question 11, p16: 0.10 mol nonvolatile nonelectrolyte changes boiling point from 75.0 to 75.5°C; pure solvent 73.0°C and Kb=2.0°C/m. Find solvent lost.",
+      "page": 16,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การเพิ่มจุดเดือดและโมแลลิตี",
+      "answer": "20.0",
+      "generator": "chem.posn2561_q71",
+      "note": "Initial solvent mass is 100 g and final mass is 80 g, so 20 g evaporated."
+    },
+    {
+      "number": 72,
+      "solver": "q72",
+      "title": "มวลตัวถูกละลายและโมลาริตีหลังเติมน้ำ",
+      "source": "Part II, written question 12, p16: 1264 g solution has solute mole fraction 0.0400, Y molar mass 200 and water 18; add 136 g water at final density 1.400 g/mL.",
+      "page": 16,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "เศษส่วนโมล ความหนาแน่น และโมลาริตี",
+      "answer": "(400, Decimal('2.00'))",
+      "generator": "chem.posn2561_q72",
+      "note": "The ratio nY:nwater is 1:24, so 1264 g holds 2 mol Y or 400 g. Final 1400 g occupies 1.000 L, giving 2.00 M."
+    },
+    {
+      "number": 73,
+      "solver": "q73",
+      "title": "เรียงความดันไอของสารบริสุทธิ์สี่ชนิด",
+      "source": "Part II, written question 13, p16: rank vapor pressures of methane, ethanol, diethyl ether and silane.",
+      "page": 16,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ความดันไอและแรงระหว่างโมเลกุล",
+      "answer": "('C2H5OH', 'C2H5OC2H5', 'SiH4', 'CH4')",
+      "generator": "chem.posn2561_q73",
+      "note": "At a common temperature where all can be liquids, ethanol < diethyl ether < silane < methane in vapor pressure. The adaptation states the shared-liquid condition explicitly."
+    },
+    {
+      "number": 74,
+      "solver": "q74",
+      "title": "ความดันในถังแข็งและการเปิดวาล์ว",
+      "source": "Part II, written question 14, p16: rigid 10.0 L oxygen tank at 50.0 atm and 27°C reaches 48°C; relief valve threshold 5.7×10^4 mmHg.",
+      "page": 16,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "กฎแก๊สและการแปลงหน่วยความดัน",
+      "answer": "(Decimal('53.5'), False)",
+      "generator": "chem.posn2561_q74",
+      "note": "P2=50.0×321/300=53.5 atm; threshold 57000/760=75 atm, so the valve stays closed."
+    },
+    {
+      "number": 75,
+      "solver": "q75",
+      "title": "มวลโมลาร์จากอัตราการแพร่ผ่านรูเล็ก",
+      "source": "Part II, written question 15, p16: sample gas 2.35×10^-4 mol effuses in 100.0 s; argon 1.05×10^-4 mol in 50.0 s. Find sample molar mass.",
+      "page": 16,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "กฎการแพร่ของเกรแฮม",
+      "answer": "31.9",
+      "generator": "chem.posn2561_q75",
+      "note": "Rates are 2.35×10^-6 and 2.10×10^-6 mol/s; Graham’s law with Ar=40 gives sample M=31.9 g/mol, approximately 32."
     }
   ]
 }

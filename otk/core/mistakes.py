@@ -37,6 +37,25 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.posn2561_swapped_empirical_and_molecular_formula": {"th": "สลับสูตรเอมพิริคัลกับสูตรโมเลกุล", "en": "Swapped empirical and molecular formulas"},
+    "chem.posn2561_doubled_bromine_in_empirical_formula": {"th": "นับ Br เป็นสองตัวในสูตรเอมพิริคัล", "en": "Doubled bromine in empirical formula"},
+    "chem.posn2561_added_extra_empirical_multiple": {"th": "คูณสูตรเอมพิริคัลเกินหนึ่งเท่า", "en": "Added an extra empirical-formula multiple"},
+    "chem.posn2561_reported_initial_solvent_mass": {"th": "ตอบมวลตัวทำละลายเริ่มต้น", "en": "Reported initial solvent mass"},
+    "chem.posn2561_reported_final_solvent_mass": {"th": "ตอบมวลตัวทำละลายหลังระเหย", "en": "Reported final solvent mass"},
+    "chem.posn2561_scaled_solvent_loss_linearly": {"th": "เทียบมวลตัวทำละลายกับจุดเดือดแบบเชิงเส้น", "en": "Scaled solvent loss linearly"},
+    "chem.posn2561_reported_water_instead_of_solute_mass": {"th": "ตอบมวลน้ำแทนมวลตัวถูกละลาย", "en": "Reported water mass instead of solute"},
+    "chem.posn2561_omitted_added_water_in_molarity": {"th": "ลืมน้ำที่เติมในการหาโมลาริตี", "en": "Omitted added water in molarity"},
+    "chem.posn2561_treated_grams_as_milliliters": {"th": "ใช้มวลสารละลายเป็นปริมาตรโดยไม่ใช้ความหนาแน่น", "en": "Treated grams as milliliters"},
+    "chem.posn2561_reversed_vapor_pressure_order": {"th": "เรียงความดันไอจากมากไปน้อย", "en": "Reversed vapor-pressure order"},
+    "chem.posn2561_swapped_methane_and_silane_vapor_pressure": {"th": "สลับความดันไอมีเทนกับไซเลน", "en": "Swapped methane and silane vapor pressures"},
+    "chem.posn2561_missed_ethanol_hydrogen_bonding": {"th": "ละเลยพันธะไฮโดรเจนของเอทานอล", "en": "Missed ethanol hydrogen bonding"},
+    "chem.posn2561_used_celsius_in_gas_law": {"th": "ใช้อุณหภูมิเซลเซียสในกฎแก๊ส", "en": "Used Celsius in the gas law"},
+    "chem.posn2561_inverted_temperature_ratio": {"th": "กลับอัตราส่วนอุณหภูมิในกฎแก๊ส", "en": "Inverted temperature ratio"},
+    "chem.posn2561_reversed_valve_threshold_decision": {"th": "ตัดสินการเปิดวาล์วตรงข้ามเกณฑ์", "en": "Reversed valve threshold decision"},
+    "chem.posn2561_inverted_graham_rate_ratio": {"th": "กลับอัตราส่วนอัตราการแพร่ในกฎเกรแฮม", "en": "Inverted Graham rate ratio"},
+    "chem.posn2561_assumed_equal_effusion_rates": {"th": "สมมติว่าแก๊สสองชนิดแพร่เร็วเท่ากัน", "en": "Assumed equal effusion rates"},
+    "chem.posn2561_ignored_effusion_times": {"th": "ละเลยเวลาเมื่อหาอัตราการแพร่", "en": "Ignored effusion times"},
+
     "chem.posn2561_shifted_transition_metal_trio": {"th": "เลื่อนลำดับธาตุแทรนซิชันหนึ่งตำแหน่ง", "en": "Shifted the transition-metal trio"},
     "chem.posn2561_used_iron_configuration_for_manganese": {"th": "ใช้การจัดอิเล็กตรอนของเหล็กแทนแมงกานีส", "en": "Used iron configuration for manganese"},
     "chem.posn2561_misidentified_heme_metal": {"th": "ระบุโลหะในฮีมผิด", "en": "Misidentified the heme metal"},

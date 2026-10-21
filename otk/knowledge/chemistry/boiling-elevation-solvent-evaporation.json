@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การเพิ่มจุดเดือดและโมแลลิตี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.boiling_elevation_solvent_evaporation.procedure",
+      "kind": "procedure",
+      "title": "มวลตัวทำละลายที่ระเหยจากจุดเดือด",
+      "statement": "ตัวถูกละลายไม่ระเหยและไม่แตกตัวมีโมลคงเดิม; ΔT_b=K_b nตัวถูกละลาย/มวลตัวทำละลายเป็นกิโลกรัมทั้งก่อนและหลังระเหย",
+      "steps": [
+        "คำนวณมวลตัวทำละลายเริ่มต้นจากจุดเดือดครั้งแรก",
+        "คำนวณมวลตัวทำละลายหลังระเหยจากจุดเดือดครั้งหลัง แล้วหาผลต่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 71
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q71"
+      ],
+      "note": "Initial solvent mass is 100 g and final mass is 80 g, so 20 g evaporated."
+    }
+  ]
+}

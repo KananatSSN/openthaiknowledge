@@ -1,6 +1,7 @@
 """Cross-check the 2561 chemistry pools and generated wording."""
 
 import re
+from decimal import Decimal, ROUND_HALF_UP
 from fractions import Fraction
 from random import Random
 
@@ -14,6 +15,7 @@ from otk.sheets.posn2561_chemistry import (
     q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
     q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57,
     q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69,
+    q70, q71, q72, q73, q74, q75,
 )
 
 
@@ -21,13 +23,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69, q70, q71, q72, q73, q74, q75):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 70))
+@pytest.mark.parametrize("number", range(1, 76))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -323,7 +325,6 @@ def test_generated_answers_follow_the_stem(number):
             hydrogen = Fraction(gas) / Fraction("22.4")
             zinc = (total - residue - 18 * hydrogen) / 47
             aluminium = total - residue - 65 * zinc
-            from decimal import Decimal, ROUND_HALF_UP
             percent = (Decimal(100 * aluminium.numerator) /
                        Decimal(aluminium.denominator * total)).quantize(
                 Decimal("0.1"), rounding=ROUND_HALF_UP,
@@ -356,7 +357,6 @@ def test_generated_answers_follow_the_stem(number):
             nitrogen = Fraction(volume) * Fraction(int(pressure), 760)
             nitrogen /= Fraction("0.082") * (int(temperature) + 273)
             grams = nitrogen * Fraction(5, 8) * 65
-            from decimal import Decimal, ROUND_HALF_UP
             rounded = (Decimal(grams.numerator) / Decimal(grams.denominator)).quantize(
                 Decimal("0.1"), rounding=ROUND_HALF_UP,
             )
@@ -418,7 +418,6 @@ def test_generated_answers_follow_the_stem(number):
             acid_mol = Fraction(volume) * Fraction(density) * Fraction(percent) / 6000
             residual = acid_mol - Fraction(bicarbonate) / 84
             concentration = residual * 1000 / volume
-            from decimal import Decimal, ROUND_HALF_UP
             rounded = (Decimal(concentration.numerator) /
                        Decimal(concentration.denominator)).quantize(
                 Decimal("0.001"), rounding=ROUND_HALF_UP,
@@ -582,7 +581,7 @@ def test_generated_answers_follow_the_stem(number):
                      * Fraction(alumina) / 100 * Fraction(54, 102)
                      * 1000 / int(pieces))
             assert answer == f"{float(al_mg):.2f} mg"
-        else:
+        elif number == 69:
             sample, ag_m, ag_ml, scn_m, scn_ml = re.search(
                 r"ปุ๋ย ([\d.]+) g.*?AgNO₃ ([\d.]+) mol/L ปริมาตร "
                 r"([\d.]+) mL.*?KSCN ([\d.]+) mol/L ปริมาตร ([\d.]+) mL", stem,
@@ -591,4 +590,63 @@ def test_generated_answers_follow_the_stem(number):
             initial = Fraction(ag_m) * Fraction(ag_ml) / 1000
             percent = (initial - leftover) / 6 * 142 / Fraction(sample) * 100
             assert answer == f"{q69._sci(leftover)}; {float(percent):.2f}%"
+        elif number == 70:
+            sample, volume, molarity = re.search(
+                r"สาร ([\d.]+) g ทำสารละลาย (\d+) mL ความเข้มข้น "
+                r"([\d.]+) mol/L", stem,
+            ).groups()
+            molecular_mass = Fraction(sample) * 1000 / (Fraction(molarity)
+                                                         * int(volume))
+            multiplier = round(float(molecular_mass / 118))
+            assert answer == (f"C3H2Br; C{3 * multiplier}H{2 * multiplier}"
+                              f"Br{multiplier}")
+        elif number == 71:
+            n, pure, kb, initial, final = re.search(
+                r"สารไม่ระเหยและไม่แตกตัว ([\d.]+) mol.*?บริสุทธิ์ "
+                r"([\d.]+)°C และ K_b=([\d.]+)°C/m.*?ที่ ([\d.]+)°C.*?"
+                r"เดือดที่ ([\d.]+)°C", stem,
+            ).groups()
+            first_g = 1000 * Fraction(kb) * Fraction(n) / (Fraction(initial)
+                                                            - Fraction(pure))
+            second_g = 1000 * Fraction(kb) * Fraction(n) / (Fraction(final)
+                                                             - Fraction(pure))
+            assert answer == f"{float(first_g - second_g):.1f} g"
+        elif number == 72:
+            my, mw, mass, x, added, density = re.search(
+                r"Y ไม่แตกตัว \(M=(\d+)\).*?น้ำ \(M=(\d+)\).*?สารละลาย "
+                r"(\d+) g โดย X_Y=([\d.]+) เติมน้ำ (\d+) g.*?"
+                r"([\d.]+) g/mL", stem,
+            ).groups()
+            fraction = Fraction(x)
+            solute_mol = Fraction(int(mass)) * fraction / (
+                fraction * int(my) + (1 - fraction) * int(mw))
+            solute_mass = solute_mol * int(my)
+            volume_l = Fraction(int(mass) + int(added)) / Fraction(density) / 1000
+            assert answer == (f"{solute_mass} g; "
+                              f"{float(solute_mol / volume_l):.2f} mol/L")
+        elif number == 73:
+            assert all(name in stem for name in
+                       ("CH₄", "C₂H₅OH", "C₂H₅OC₂H₅", "SiH₄"))
+            assert answer == "C₂H₅OH < C₂H₅OC₂H₅ < SiH₄ < CH₄"
+        elif number == 74:
+            initial_c, initial_atm, final_c, threshold = re.search(
+                r"ที่ (\d+)°C ความดัน ([\d.]+) atm; เมื่อร้อนเป็น "
+                r"(\d+)°C.*?เกิน (\d+) mmHg", stem,
+            ).groups()
+            pressure = Fraction(initial_atm) * Fraction(int(final_c) + 273,
+                                                         int(initial_c) + 273)
+            opens = pressure > Fraction(int(threshold), 760)
+            rounded = (Decimal(pressure.numerator) /
+                       Decimal(pressure.denominator)).quantize(
+                           Decimal("0.1"), rounding=ROUND_HALF_UP)
+            assert answer == (f"{rounded:.1f} atm; "
+                              f"{'เปิด' if opens else 'ไม่เปิด'}")
+        else:
+            sample, sample_s, argon, argon_s, argon_mass = re.search(
+                r"แก๊สตัวอย่าง ([\d.]+) mol.*?ใน ([\d.]+) s; Ar "
+                r"([\d.]+) mol.*?ใน ([\d.]+) s.*?M\(Ar\)=(\d+) g/mol", stem,
+            ).groups()
+            mass = (int(argon_mass) * (Fraction(argon) / Fraction(argon_s)
+                                      / (Fraction(sample) / Fraction(sample_s))) ** 2)
+            assert answer == f"{float(mass):.1f} g/mol"
         assert len(question.choices) == 4
