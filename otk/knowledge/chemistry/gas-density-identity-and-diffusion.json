@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความหนาแน่นแก๊สและกฎการแพร่ของเกรแฮม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.gas_density_identity_and_diffusion.procedure",
+      "kind": "procedure",
+      "title": "ความหนาแน่นและการแพร่ของฟอสฟอรัสฟลูออไรด์",
+      "statement": "จาก d=PM/RT หา M ของแก๊ส แล้วใช้กฎของเกรแฮมว่าอัตราการแพร่แปรผกผันกับรากที่สองของมวลโมล",
+      "steps": [
+        "คำนวณมวลโมลจากความหนาแน่น ความดัน และอุณหภูมิเคลวิน",
+        "เทียบมวลโมลของสูตรผู้สมัคร แล้วเลือกแก๊สเบาสุดเป็นผู้แพร่เร็วสุด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 58
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q58"
+      ],
+      "note": "dRT/P gives 138 g/mol, identifying P2F4. PF3 is lightest at 88 g/mol and diffuses fastest. The source diagram is a simple A-to-B tube; the adaptation states equal path length."
+    }
+  ]
+}

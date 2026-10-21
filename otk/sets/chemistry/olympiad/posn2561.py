@@ -12,7 +12,7 @@ from otk.sheets.posn2561_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51,
-    q52, q53, q54, q55, q56, q57,
+    q52, q53, q54, q55, q56, q57, q58, q59, q60,
 )
 
 
@@ -1911,4 +1911,111 @@ class EqualGasMeanKineticEnergy(QuestionType):
             ),
             topic="ทฤษฎีจลน์ของแก๊สและอุณหภูมิ",
             hint=[text("พลังงานจลน์เฉลี่ยขึ้นกับอุณหภูมิเคลวิน; ที่ปริมาตรคงที่ P แปรตาม T(K)")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q58", display_name={"th": "ความหนาแน่นแก๊สและการแพร่"},
+    level=LEVEL, subject="เคมี", topic="ความหนาแน่นแก๊สและกฎการแพร่ของเกรแฮม",
+)
+class GasDensityAndDiffusion(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q58.PARAMS, *q58.VARIANTS))
+        dense, fastest = q58.solve(**values)
+        formula = {"PF3": "PF₃", "PF5": "PF₅", "P2F4": "P₂F₄"}
+
+        def pair(first, second):
+            return f"{formula[first]}; {formula[second]}"
+
+        others = tuple(gas for gas in q58.MOLAR_MASS if gas != dense)
+        heavy = max((gas for gas in q58.MOLAR_MASS if gas != fastest),
+                    key=q58.MOLAR_MASS.get)
+        return GeneratedQuestion(
+            stem=[text(f"ไอ PF₃, PF₅ และ P₂F₄ เป็นแก๊สอุดมคติ ที่ "
+                       f"{values['pressure']} atm และ {values['temperature_c']}°C "
+                       f"ไอชนิดหนึ่งหนาแน่น {values['density']} g/L "
+                       "จงระบุไอชนิดนั้นและไอที่แพร่ผ่านท่อระยะเท่ากันเร็วที่สุด "
+                       "ตามลำดับ กำหนด R=0.082 L·atm/(mol·K), P=31, F=19")],
+            correct=[text(pair(dense, fastest))],
+            distractors=fixed(
+                [text(named("chem.posn2561_selected_heavier_diffuser",
+                            pair(dense, heavy)))],
+                [text(named("chem.posn2561_misidentified_first_density_gas",
+                            pair(others[0], fastest)))],
+                [text(named("chem.posn2561_misidentified_second_density_gas",
+                            pair(others[1], fastest)))],
+            ),
+            topic="ความหนาแน่นแก๊สและกฎการแพร่ของเกรแฮม",
+            hint=[text("หา M จาก dRT/P แล้วเปรียบเทียบอัตราการแพร่ซึ่งแปรผกผันกับ √M")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q59", display_name={"th": "อัตราส่วนปริมาตรตามกฎของบอยล์"},
+    level=LEVEL, subject="เคมี", topic="กฎของบอยล์และอัตราส่วนปริมาตร",
+)
+class BoyleOriginalFinalVolumeRatio(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q59.PARAMS, *q59.VARIANTS))
+        ratio = q59.solve(**values)
+        fmt = lambda value: f"{float(value):.2f}:1"
+        return GeneratedQuestion(
+            stem=[text(f"แก๊สอุดมคติปริมาณคงที่ขยายตัวที่อุณหภูมิคงที่ "
+                       f"ความดันลดจาก {values['initial_mmhg']} เป็น "
+                       f"{values['final_mmhg']} mmHg "
+                       "อัตราส่วนปริมาตรเดิมต่อปริมาตรใหม่เป็นเท่าใด "
+                       "เขียนในรูป x:1")],
+            correct=[text(fmt(ratio))],
+            distractors=fixed(
+                [text(named("chem.posn2561_inverted_boyle_volume_ratio",
+                            fmt(1 / ratio)))],
+                [text(named("chem.posn2561_used_pressure_drop_fraction",
+                            fmt(1 - ratio)))],
+                [text(named("chem.posn2561_added_pressure_fraction_to_one",
+                            fmt(1 + ratio)))],
+            ),
+            topic="กฎของบอยล์และอัตราส่วนปริมาตร",
+            hint=[text("P₁V₁=P₂V₂ ดังนั้น V₁/V₂=P₂/P₁")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q60", display_name={"th": "ฟองแก๊สขยายตัวขณะลอยขึ้น"},
+    level=LEVEL, subject="เคมี", topic="กฎรวมแก๊สและอุณหภูมิสัมบูรณ์",
+)
+class RisingBubbleCombinedGasLaw(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q60.PARAMS, *q60.VARIANTS))
+        answer = q60.solve(**values)
+        initial = Fraction(values["initial_cm3"])
+        pressure_factor = Fraction(values["bottom_atm"]) / Fraction(values["surface_atm"])
+        temperature_factor = Fraction(values["surface_c"] + 273, values["bottom_c"] + 273)
+        fmt = lambda value: f"{float(value):.1f}"
+        return GeneratedQuestion(
+            stem=[text(f"ฟองแก๊สปริมาตร {values['initial_cm3']} cm³ ที่ก้นทะเลสาบ "
+                       f"มีความดัน {values['bottom_atm']} atm อุณหภูมิ "
+                       f"{values['bottom_c']}°C ลอยขึ้นสู่ผิวน้ำที่ "
+                       f"{values['surface_atm']} atm และ {values['surface_c']}°C "
+                       "ปริมาตรสุดท้ายกี่ cm³ สมมติว่าแก๊สอุดมคติ "
+                       "จำนวนโมลคงที่ และใช้ T(K)=t(°C)+273")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_ignored_bubble_temperature_change",
+                            fmt(initial * pressure_factor)))],
+                [text(named("chem.posn2561_ignored_bubble_pressure_change",
+                            fmt(initial * temperature_factor)))],
+                [text(named("chem.posn2561_inverted_bubble_temperature_ratio",
+                            fmt(initial * pressure_factor / temperature_factor)))],
+            ),
+            topic="กฎรวมแก๊สและอุณหภูมิสัมบูรณ์",
+            hint=[text("ใช้ P₁V₁/T₁=P₂V₂/T₂ โดยเปลี่ยนเซลเซียสเป็นเคลวินก่อน")],
         )

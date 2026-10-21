@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 57/75: all 75 items extracted; Part I questions 1–57 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 18 await review.",
+  "note": "PARTIAL 60/75: all 75 items extracted; Part I questions 1–60 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 15 written items await review.",
   "items": [
     {
       "number": 1,
@@ -746,6 +746,45 @@
       "answer": "1",
       "generator": "chem.posn2561_q57",
       "note": "Mean translational kinetic energy depends on absolute temperature alone, so gases at the same temperature have equal average values. Cooling at fixed volume lowers pressure."
+    },
+    {
+      "number": 58,
+      "solver": "q58",
+      "title": "ความหนาแน่นและการแพร่ของฟอสฟอรัสฟลูออไรด์",
+      "source": "Part I, question 58, p13: distinguish PF3, PF5 and P2F4 from 4.60 g/L at 0.82 atm and 27°C, then select the fastest diffuser.",
+      "page": 13,
+      "figure": "An A-to-B tube and a four-row pair table for density identification and fastest diffusion; no numerical data are in the tube.",
+      "figure_asset": "",
+      "topic": "ความหนาแน่นแก๊สและกฎการแพร่ของเกรแฮม",
+      "answer": "('P2F4', 'PF3')",
+      "generator": "chem.posn2561_q58",
+      "note": "dRT/P gives 138 g/mol, identifying P2F4. PF3 is lightest at 88 g/mol and diffuses fastest. The source diagram is a simple A-to-B tube; the adaptation states equal path length."
+    },
+    {
+      "number": 59,
+      "solver": "q59",
+      "title": "อัตราส่วนปริมาตรจากการลดความดัน",
+      "source": "Part I, question 59, p14: ideal-gas pressure falls from 700 to 200 mmHg at fixed temperature; find old-to-new volume ratio.",
+      "page": 14,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "กฎของบอยล์และอัตราส่วนปริมาตร",
+      "answer": "2/7",
+      "generator": "chem.posn2561_q59",
+      "note": "P1V1=P2V2 gives V1/V2=2/7≈0.29. Printed choices 0.29:1 and 1:3.5 are equivalent, so the adaptation normalizes every option to x:1 and replaces the duplicate."
+    },
+    {
+      "number": 60,
+      "solver": "q60",
+      "title": "ปริมาตรฟองแก๊สที่ผิวน้ำ",
+      "source": "Part I, question 60, p14: a 2.10 cm3 bubble rises from 5.66 atm, 10°C to 1.00 atm, 27°C; find its final volume.",
+      "page": 14,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "กฎรวมแก๊สและอุณหภูมิสัมบูรณ์",
+      "answer": "12.6",
+      "generator": "chem.posn2561_q60",
+      "note": "Combined gas law with T=283 and 300 K gives 12.6 cm3. The adaptation states fixed moles and ideal behavior."
     }
   ]
 }

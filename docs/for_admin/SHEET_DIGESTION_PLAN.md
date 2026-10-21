@@ -2304,3 +2304,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed p13 temperature/phase table, lotus-leaf wetting, and kinetic-gas statements. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC56 specifies untreated clean glass for an unambiguous surface comparison.
 - Wave validation: 57/57 sheet solvers and 171 variant runs green; 897 knowledge units in 763 files with zero validation problems; source coverage 57/57. Focused generator tests passed (58), catalog checks passed (3), registry/provenance/safety/layout checks passed (731), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC58–60
+
+- Reviewed p13–14 gas density/diffusion, Boyle-law volume ratio and rising-bubble combined gas law. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC59 has two equivalent printed options; the adaptation normalizes all choices to x:1 and removes the duplicate. Part I is now complete; fifteen written items remain.
+- Wave validation: 60/60 sheet solvers and 180 variant runs green; 900 knowledge units in 766 files with zero validation problems; source coverage 60/60. Focused generator tests passed (61), catalog checks passed (3), registry/provenance/safety/layout checks passed (743), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.

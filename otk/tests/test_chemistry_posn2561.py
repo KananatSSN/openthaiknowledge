@@ -13,6 +13,7 @@ from otk.sheets.posn2561_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
     q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
     q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57,
+    q58, q59, q60,
 )
 
 
@@ -20,13 +21,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 58))
+@pytest.mark.parametrize("number", range(1, 61))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -498,10 +499,36 @@ def test_generated_answers_follow_the_stem(number):
             lotus = names.index("ใบบัว") + 1
             assert answer == f"ข้อ {lotus} เท่านั้น"
             assert "ไม่เคลือบสารกันน้ำ" in stem
-        else:
+        elif number == 57:
             assert "พลังงานจลน์เฉลี่ยต่ออนุภาคเท่ากัน" in answer
             cooling = next(choice.content[0].text for choice in question.choices
                            if "ปริมาตรคงที่เย็นจาก" in choice.content[0].text)
             start, end = map(int, re.search(r"เย็นจาก (\d+)°C เป็น (\d+)°C", cooling).groups())
             assert (end + 273.15) / (start + 273.15) < 1
+        elif number == 58:
+            pressure, temperature, density = re.search(
+                r"ที่ ([\d.]+) atm และ (\d+)°C ไอชนิดหนึ่งหนาแน่น ([\d.]+) g/L",
+                stem,
+            ).groups()
+            implied = Fraction(density) * Fraction("0.082") * (int(temperature) + 273)
+            implied /= Fraction(pressure)
+            candidate = min(q58.MOLAR_MASS,
+                            key=lambda gas: abs(q58.MOLAR_MASS[gas] - implied))
+            display = {"PF3": "PF₃", "PF5": "PF₅", "P2F4": "P₂F₄"}
+            assert answer == f"{display[candidate]}; PF₃"
+        elif number == 59:
+            initial, final = map(int, re.search(
+                r"ลดจาก (\d+) เป็น (\d+) mmHg", stem,
+            ).groups())
+            assert answer == f"{final / initial:.2f}:1"
+            assert len({choice.content[0].text for choice in question.choices}) == 4
+        else:
+            initial, bottom_p, bottom_c, surface_p, surface_c = re.search(
+                r"ปริมาตร ([\d.]+) cm³.*?ความดัน ([\d.]+) atm อุณหภูมิ "
+                r"(\d+)°C.*?ที่ ([\d.]+) atm และ (\d+)°C", stem,
+            ).groups()
+            volume = (Fraction(initial) * Fraction(bottom_p) *
+                      (int(surface_c) + 273) / Fraction(surface_p) /
+                      (int(bottom_c) + 273))
+            assert answer == f"{float(volume):.1f}"
         assert len(question.choices) == 4

@@ -37,6 +37,16 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.posn2561_selected_heavier_diffuser": {"th": "เลือกสารมวลโมลมากเป็นสารแพร่เร็วสุด", "en": "Selected a heavier diffuser"},
+    "chem.posn2561_misidentified_first_density_gas": {"th": "ระบุแก๊สความหนาแน่นผิดตัวแรก", "en": "Misidentified the first density gas"},
+    "chem.posn2561_misidentified_second_density_gas": {"th": "ระบุแก๊สความหนาแน่นผิดตัวที่สอง", "en": "Misidentified the second density gas"},
+    "chem.posn2561_inverted_boyle_volume_ratio": {"th": "กลับอัตราส่วนปริมาตรตามกฎบอยล์", "en": "Inverted the Boyle-law volume ratio"},
+    "chem.posn2561_used_pressure_drop_fraction": {"th": "ใช้เศษส่วนความดันที่ลดลงแทนอัตราส่วน", "en": "Used pressure-drop fraction as volume ratio"},
+    "chem.posn2561_added_pressure_fraction_to_one": {"th": "บวกเศษส่วนความดันกับหนึ่ง", "en": "Added pressure fraction to one"},
+    "chem.posn2561_ignored_bubble_temperature_change": {"th": "ไม่คิดอุณหภูมิฟองแก๊สที่เปลี่ยน", "en": "Ignored bubble temperature change"},
+    "chem.posn2561_ignored_bubble_pressure_change": {"th": "ไม่คิดความดันฟองแก๊สที่เปลี่ยน", "en": "Ignored bubble pressure change"},
+    "chem.posn2561_inverted_bubble_temperature_ratio": {"th": "กลับอัตราส่วนอุณหภูมิฟองแก๊ส", "en": "Inverted bubble temperature ratio"},
+
     "chem.posn2561_confused_liquid_and_solid_thresholds": {"th": "ใช้ช่วงอุณหภูมิของของเหลวแทนของแข็ง", "en": "Confused liquid and solid thresholds"},
     "chem.posn2561_ignored_gas_boiling_threshold": {"th": "ไม่ตรวจว่าจุดเดือดของแก๊สต่ำกว่าอุณหภูมิ", "en": "Ignored the gas boiling threshold"},
     "chem.posn2561_reversed_gas_solid_phases": {"th": "สลับเงื่อนไขสถานะแก๊สกับของแข็ง", "en": "Reversed gas and solid phases"},
