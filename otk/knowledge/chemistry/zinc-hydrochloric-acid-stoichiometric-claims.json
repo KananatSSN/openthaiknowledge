@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาณสัมพันธ์ของโลหะกับกรด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.zinc_hydrochloric_acid_stoichiometric_claims.procedure",
+      "kind": "procedure",
+      "title": "ตรวจปริมาณ H₂ ZnCl₂ และ HCl ที่เหลือ",
+      "statement": "Zn+2HCl→ZnCl₂+H₂; สังกะสีหนึ่งโมลให้ H₂ และ ZnCl₂ อย่างละหนึ่งโมล แต่ใช้ HCl สองโมล",
+      "steps": [
+        "หาจำนวนโมล Zn และตรวจว่ากรด HCl มีมากพอ",
+        "คำนวณ H₂ ที่ STP มวล ZnCl₂ และจำนวนโมลกรดที่ใช้กับที่เหลือ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 51
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q51"
+      ],
+      "note": "Source equation is unbalanced; adaptation prints Zn+2HCl->ZnCl2+H2. Source c halves acid consumption; generated prompt specifies unchanged nominal solution volume for w/v calculation."
+    }
+  ]
+}

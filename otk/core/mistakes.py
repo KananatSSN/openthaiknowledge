@@ -37,6 +37,17 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.undercounted_hydrogen_from_oxygen_balance": {"th": "นับไฮโดรเจนจากสมดุลออกซิเจนน้อยเกินไป", "en": "Undercounted H from the oxygen balance"},
+    "chem.halved_combustion_water_volume": {"th": "หารปริมาตรไอน้ำจากการเผาไหม้ด้วยสองซ้ำ", "en": "Halved combustion water volume again"},
+    "chem.doubled_carbon_from_co2_volume": {"th": "นับคาร์บอนจากปริมาตร CO₂ เป็นสองเท่า", "en": "Doubled carbon count from CO2 volume"},
+    "chem.selected_sulfate_a_only": {"th": "เลือกเฉพาะข้อ a ของการตกตะกอนโดยประเมินข้ออื่นผิด", "en": "Selected only sulfate claim a"},
+    "chem.selected_sulfate_b_only": {"th": "เลือกเฉพาะข้อ b ของการตกตะกอนโดยประเมินข้ออื่นผิด", "en": "Selected only sulfate claim b"},
+    "chem.selected_sulfate_a_b": {"th": "เลือกข้อ a และ b ของการตกตะกอนโดยประเมินข้ออื่นผิด", "en": "Selected sulfate claims a and b"},
+    "chem.selected_sulfate_b_c": {"th": "เลือกข้อ b และ c ของการตกตะกอนโดยประเมินข้ออื่นผิด", "en": "Selected sulfate claims b and c"},
+    "chem.selected_zinc_a_b": {"th": "เลือกข้อ a และ b ของปฏิกิริยา Zn กับ HCl โดยประเมินข้ออื่นผิด", "en": "Selected zinc-acid claims a and b"},
+    "chem.selected_zinc_a_c": {"th": "เลือกข้อ a และ c ของปฏิกิริยา Zn กับ HCl โดยประเมินข้ออื่นผิด", "en": "Selected zinc-acid claims a and c"},
+    "chem.selected_zinc_b_c": {"th": "เลือกข้อ b และ c ของปฏิกิริยา Zn กับ HCl โดยประเมินข้ออื่นผิด", "en": "Selected zinc-acid claims b and c"},
+    "chem.selected_zinc_all": {"th": "คิดว่าข้อ a b และ c ของปฏิกิริยา Zn กับ HCl ถูกทั้งหมด", "en": "Selected all zinc-acid claims"},
     "chem.used_excess_reagent_as_limiting": {"th": "ใช้สารที่เหลือเกินกำหนดผลผลิต", "en": "Used the excess reagent to set the yield"},
     "chem.assumed_all_reagent_mass_becomes_methanol": {"th": "คิดว่ามวลสารตั้งต้นทั้งหมดกลายเป็นเมทานอล", "en": "Assumed all reactant mass becomes methanol"},
     "chem.made_two_methanol_per_co": {"th": "นับเมทานอลสองโมลต่อ CO หนึ่งโมล", "en": "Made two methanol molecules per CO"},

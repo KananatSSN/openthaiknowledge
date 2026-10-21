@@ -11,6 +11,7 @@ from otk.sheets.posn2560_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
+    q49, q50, q51,
 )
 
 
@@ -162,6 +163,14 @@ def test_methanol_hydrate_and_mass_rank_variants():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_combustion_precipitation_and_zinc_acid_variants():
+    for module in (q49, q50, q51):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+    assert q50.ANSWER == (0, 1)  # after making BaCl2 addition exact
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -184,7 +193,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 49)))
+@pytest.mark.parametrize("number", tuple(range(1, 52)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -567,7 +576,7 @@ def test_generated_answers_follow_the_written_data(number):
         elif number == 47:
             water, sample = re.search(r"มีน้ำ ([\d.]+)% โดยมวล สารตัวอย่าง ([\d.]+) g", stem).groups()
             expected = f"{q47.check(water_percent=float(water), sample_g=float(sample)):.2f}"
-        else:
+        elif number == 48:
             a, b, c, xmass = re.search(
                 r"a: H₂ ([\d.]+)×10²³ โมเลกุล; b: NH₃ ([\d.]+) L ที่ STP; "
                 r"c: สาร X ([\d.]+)×10²² โมเลกุล โดย X 0.25 mol มีมวล ([\d.]+) g",
@@ -576,5 +585,40 @@ def test_generated_answers_follow_the_written_data(number):
             order = q48.check(a_molecules=float(a) * 1e23, b_l=float(b),
                               c_molecules=float(c) * 1e22, x_sample_g=float(xmass))
             expected = " > ".join(order)
+        elif number == 49:
+            hydro, oxygen, carbon_dioxide = map(int, re.search(
+                r"CxHy (\d+) cm³.*?O₂ (\d+) cm³ ได้ CO₂ (\d+) cm³", stem,
+            ).groups())
+            expected = ", ".join(map(str, q49.check(
+                hydrocarbon_ml=hydro, oxygen_ml=oxygen,
+                carbon_dioxide_ml=carbon_dioxide)))
+        elif number == 50:
+            barium, sulfate, sulfate_ml = re.search(
+                r"BaCl₂ ([\d.]+) mol/L กับ Na₂SO₄ ([\d.]+)%.*?ปริมาตร (\d+) cm³",
+                stem,
+            ).groups()
+            claim_x, claim_solid, claim_sodium = re.search(
+                r"a\. ใช้ BaCl₂ ([\d.]+) cm³; b\. ได้ BaSO₄ ([\d.]+) g; "
+                r"c\. Na⁺ ในสารละลายสุดท้าย ([\d.]+)%", stem,
+            ).groups()
+            truth = q50.check(sulfate_percent=float(sulfate), sulfate_ml=int(sulfate_ml),
+                              barium_molar=float(barium), claim_x_ml=float(claim_x),
+                              claim_precipitate_g=float(claim_solid),
+                              claim_sodium_percent=float(claim_sodium))
+            expected = "กขคง"[((0,), (1,), (0, 1), (1, 2)).index(truth)]
+        else:
+            zn, acid, acid_ml = re.search(
+                r"Zn ([\d.]+) g เติมใน HCl ([\d.]+) mol/L ปริมาตร (\d+) cm³",
+                stem,
+            ).groups()
+            hydrogen, chloride, used, left = re.search(
+                r"a\. ได้ H₂ ([\d.]+) L.*?b\. ZnCl₂ มีความเข้มข้น ([\d.]+)%.*?"
+                r"c\. HCl ใช้ไป ([\d.]+) mol และเหลือ ([\d.]+) mol", stem,
+            ).groups()
+            truth = q51.check(zn_g=float(zn), acid_molar=float(acid), acid_ml=int(acid_ml),
+                              claim_hydrogen_l=float(hydrogen),
+                              claim_zinc_chloride_percent=float(chloride),
+                              claim_acid_used_mol=float(used), claim_acid_left_mol=float(left))
+            expected = "กขคง"[((0, 1), (0, 2), (1, 2), (0, 1, 2)).index(truth)]
         assert answer == expected
         assert len(question.choices) == 4

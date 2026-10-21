@@ -13,6 +13,7 @@ from otk.sheets.posn2560_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
+    q49, q50, q51,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1717,4 +1718,114 @@ class GasSampleMassRanking(QuestionType):
                                 for order in _MASS_RANK_OPTIONS if order != answer]),
             topic="โมล จำนวนอนุภาค และมวลแก๊ส",
             hint=[text("แปลงทั้งสามตัวอย่างเป็นโมล แล้วคูณด้วยมวลโมลาร์ของแต่ละชนิด")],
+        )
+
+
+@question_type(
+    "chem.posn2560_q49", display_name={"th": "สูตรไฮโดรคาร์บอนจากปริมาตรการเผาไหม้"},
+    level=LEVEL, subject="เคมี", topic="ปริมาตรแก๊สและสมการการเผาไหม้",
+)
+class HydrocarbonCombustionVolumes(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q49.PARAMS, *q49.VARIANTS))
+        carbon, hydrogen, water_ml = q49.solve(**values)
+        answer = f"{carbon}, {hydrogen}, {water_ml}"
+        return MathDraw(
+            "", answer,
+            prompt=(f"CxHy {values['hydrocarbon_ml']} cm³ เผาไหม้สมบูรณ์ด้วย O₂ "
+                    f"{values['oxygen_ml']} cm³ ได้ CO₂ {values['carbon_dioxide_ml']} cm³ "
+                    "และไอน้ำ V cm³ ที่สภาวะเดียวกัน ค่า x, y, V ตามลำดับคือข้อใด"),
+            hint="เทียบอัตราส่วนปริมาตรกับสัมประสิทธิ์ใน CxHy + (x+y/4)O₂ → xCO₂+(y/2)H₂O",
+            distractors=[
+                named("chem.undercounted_hydrogen_from_oxygen_balance",
+                      f"{carbon}, {hydrogen - 2}, {water_ml - values['hydrocarbon_ml']}"),
+                named("chem.halved_combustion_water_volume",
+                      f"{carbon}, {hydrogen}, {water_ml // 2}"),
+                named("chem.doubled_carbon_from_co2_volume",
+                      f"{2 * carbon}, {hydrogen}, {water_ml}"),
+            ],
+        )
+
+
+_SULFATE_OPTIONS = ((0,), (1,), (0, 1), (1, 2))
+_SULFATE_LABELS = "กขคง"
+
+
+@question_type(
+    "chem.posn2560_q50", display_name={"th": "ปริมาณตะกอน BaSO₄ และไอออน Na⁺"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสัมพันธ์ของการตกตะกอน",
+)
+class BariumSulfateClaims(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        values = rng.choice((q50.PARAMS, *q50.VARIANTS))
+        correct = q50.solve(**values)
+        options = "ก: a เท่านั้น; ข: b เท่านั้น; ค: a และ b; ง: b และ c"
+        claims = (
+            f"a. ใช้ BaCl₂ {values['claim_x_ml']:g} cm³",
+            f"b. ได้ BaSO₄ {values['claim_precipitate_g']:.2f} g",
+            f"c. Na⁺ ในสารละลายสุดท้าย {values['claim_sodium_percent']:g}% มวลต่อปริมาตร",
+        )
+        wrong_keys = (
+            "chem.selected_sulfate_a_only", "chem.selected_sulfate_b_only",
+            "chem.selected_sulfate_a_b", "chem.selected_sulfate_b_c",
+        )
+        index = _SULFATE_OPTIONS.index(correct)
+        return GeneratedQuestion(
+            stem=[text(f"ผสม BaCl₂ {values['barium_molar']:.2f} mol/L "
+                       f"กับ Na₂SO₄ {values['sulfate_percent']:.1f}% มวลต่อปริมาตร "
+                       f"ปริมาตร {values['sulfate_ml']} cm³ โดยเติม BaCl₂ พอดีตามสมการ "
+                       "BaCl₂+Na₂SO₄→BaSO₄↓+2NaCl และสมมติปริมาตรรวมเป็นผลบวก "
+                       "พิจารณา " + "; ".join(claims) + "; ตัวเลือก " + options
+                       + " ข้อใดถูกต้อง")],
+            correct=[text(_SULFATE_LABELS[index])],
+            distractors=fixed(*[[text(named(wrong_keys[i], _SULFATE_LABELS[i]))]
+                                for i in range(4) if i != index]),
+            topic="ปริมาณสัมพันธ์ของการตกตะกอน",
+            hint=[text("Na₂SO₄ หนึ่งโมลให้ BaSO₄ หนึ่งโมลและ Na⁺ สองโมล")],
+        )
+
+
+_ZINC_OPTIONS = ((0, 1), (0, 2), (1, 2), (0, 1, 2))
+_ZINC_LABELS = "กขคง"
+
+
+@question_type(
+    "chem.posn2560_q51", display_name={"th": "ตรวจปริมาณ H₂ ZnCl₂ และ HCl ที่เหลือ"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสัมพันธ์ของโลหะกับกรด",
+)
+class ZincAcidClaims(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        values = rng.choice((q51.PARAMS, *q51.VARIANTS))
+        correct = q51.solve(**values)
+        option_text = "ก: a และ b; ข: a และ c; ค: b และ c; ง: a, b และ c"
+        claims = (
+            f"a. ได้ H₂ {values['claim_hydrogen_l']:.3f} L ที่ STP",
+            (f"b. ZnCl₂ มีความเข้มข้น {values['claim_zinc_chloride_percent']:.2f}% "
+             "มวลต่อปริมาตร"),
+            (f"c. HCl ใช้ไป {values['claim_acid_used_mol']:.3f} mol "
+             f"และเหลือ {values['claim_acid_left_mol']:.2f} mol"),
+        )
+        wrong_keys = (
+            "chem.selected_zinc_a_b", "chem.selected_zinc_a_c",
+            "chem.selected_zinc_b_c", "chem.selected_zinc_all",
+        )
+        index = _ZINC_OPTIONS.index(correct)
+        return GeneratedQuestion(
+            stem=[text(f"Zn {values['zn_g']:.2f} g เติมใน HCl "
+                       f"{values['acid_molar']:.1f} mol/L ปริมาตร {values['acid_ml']} cm³ "
+                       "ให้ปฏิกิริยาสมบูรณ์ Zn+2HCl→ZnCl₂+H₂ "
+                       "และสมมติปริมาตรสารละลายสุดท้ายเท่าเดิม พิจารณา "
+                       + "; ".join(claims) + "; ตัวเลือก " + option_text
+                       + " ข้อใดถูกต้อง")],
+            correct=[text(_ZINC_LABELS[index])],
+            distractors=fixed(*[[text(named(wrong_keys[i], _ZINC_LABELS[i]))]
+                                for i in range(4) if i != index]),
+            topic="ปริมาณสัมพันธ์ของโลหะกับกรด",
+            hint=[text("Zn หนึ่งโมลใช้ HCl สองโมล ได้ H₂ หนึ่งโมลและ ZnCl₂ หนึ่งโมล")],
         )

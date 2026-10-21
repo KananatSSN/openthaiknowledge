@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาตรแก๊สและสมการการเผาไหม้",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hydrocarbon_combustion_gas_volume_ratios.procedure",
+      "kind": "procedure",
+      "title": "สูตรไฮโดรคาร์บอนจากปริมาตรการเผาไหม้",
+      "statement": "ที่อุณหภูมิและความดันเดียวกัน อัตราส่วนปริมาตรแก๊สเท่ากับอัตราส่วนโมล; CₓHᵧ ใช้ O₂ จำนวน x+y/4 และให้ CO₂ จำนวน x กับ H₂O จำนวน y/2",
+      "steps": [
+        "หา x จากอัตราส่วน CO₂ ต่อไฮโดรคาร์บอน",
+        "หา y จากอัตราส่วน O₂ แล้วคำนวณปริมาตรไอน้ำ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 49
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q49"
+      ],
+      "note": "Equal-condition gas volumes follow mole ratios: CO2/hydrocarbon=4 and O2/hydrocarbon=6.5, so C4H10."
+    }
+  ]
+}

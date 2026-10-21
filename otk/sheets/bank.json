@@ -3935,7 +3935,7 @@
    "items": 70,
    "sheet_id": "posn2560_chemistry",
    "stage": "converted",
-   "note": "PARTIAL 48/70: Part I q1–q48 have independent solvers and generators. MC11 has no correct printed choice and is repaired in its adaptation. MC20's covalent category is clarified in its adaptation. MC29 has no incorrect printed name and is repaired in its adaptation. MC43 has two correct printed choices and is repaired in its adaptation. 60 MC + 10 written questions extracted; other 22 pending visual review and solving. Written 9 . heading normalized for extraction. Do not mark the whole sheet green."
+   "note": "PARTIAL 51/70: Part I q1–q51 have independent solvers and generators. MC11 has no correct printed choice and is repaired in its adaptation. MC20's covalent category is clarified in its adaptation. MC29 has no incorrect printed name and is repaired in its adaptation. MC43 has two correct printed choices and is repaired in its adaptation. MC50 needs an exact-addition assumption and is clarified in its adaptation. 60 MC + 10 written questions extracted; other 19 pending visual review and solving. Written 9 . heading normalized for extraction. Do not mark the whole sheet green."
   },
   {
    "path": "สอวน_math/01-วิชาคณิตศาสตร์.pdf",

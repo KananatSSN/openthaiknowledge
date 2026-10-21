@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–48 are reviewed, solved and generated (48/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 22 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 48/48 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–51 are reviewed, solved and generated (51/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 19 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 51/51 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -629,6 +629,45 @@
       "answer": "('a', 'b', 'c')",
       "generator": "chem.posn2560_q48",
       "note": "Masses are 10.0 g, 2.55 g, and about 2.19 g respectively using N_A=6.02×10^23 and 22.4 L/mol at STP."
+    },
+    {
+      "number": 49,
+      "solver": "q49",
+      "title": "สูตรไฮโดรคาร์บอนจากปริมาตรการเผาไหม้",
+      "source": "Part I, question 49, p12: 20 cm3 hydrocarbon consumes 130 cm3 O2 and makes 80 cm3 CO2; x=4, y=10, water vapor=100 cm3, choice ง.",
+      "page": 12,
+      "figure": "Rendered p12/p13 visually checked reaction formulas, charges, units and choices.",
+      "figure_asset": "",
+      "topic": "ปริมาตรแก๊สและสมการการเผาไหม้",
+      "answer": "(4, 10, 100)",
+      "generator": "chem.posn2560_q49",
+      "note": "Equal-condition gas volumes follow mole ratios: CO2/hydrocarbon=4 and O2/hydrocarbon=6.5, so C4H10."
+    },
+    {
+      "number": 50,
+      "solver": "q50",
+      "title": "ปริมาณตะกอน BaSO₄ และไอออน Na⁺",
+      "source": "Part I, question 50, p12: with exact-equivalence BaCl2 addition, X=40 cm3 and BaSO4=2.33 g; Na+ is 0.92% w/v, not 4.6%; intended choice ค.",
+      "page": 12,
+      "figure": "Rendered p12/p13 visually checked reaction formulas, charges, units and choices.",
+      "figure_asset": "",
+      "topic": "ปริมาณสัมพันธ์ของการตกตะกอน",
+      "answer": "(0, 1)",
+      "generator": "chem.posn2560_q50",
+      "note": "SOURCE AMBIGUITY: the printed text says all sulfate precipitates, allowing excess BaCl2 and therefore X>=40 cm3; a need not be true. Adaptation explicitly requires stoichiometric BaCl2 and additive liquid volumes."
+    },
+    {
+      "number": 51,
+      "solver": "q51",
+      "title": "ตรวจปริมาณ H₂ ZnCl₂ และ HCl ที่เหลือ",
+      "source": "Part I, question 51, p13: 1.30 g Zn and 0.600 mol HCl give 0.448 L H2, 2.72% w/v ZnCl2; HCl consumed 0.040 mol and left 0.560 mol, choice ก.",
+      "page": 13,
+      "figure": "Rendered p12/p13 visually checked reaction formulas, charges, units and choices.",
+      "figure_asset": "",
+      "topic": "ปริมาณสัมพันธ์ของโลหะกับกรด",
+      "answer": "(0, 1)",
+      "generator": "chem.posn2560_q51",
+      "note": "Source equation is unbalanced; adaptation prints Zn+2HCl->ZnCl2+H2. Source c halves acid consumption; generated prompt specifies unchanged nominal solution volume for w/v calculation."
     }
   ]
 }
