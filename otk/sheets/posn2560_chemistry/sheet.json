@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–42 are reviewed, solved and generated (42/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 28 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 42/42 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–45 are reviewed, solved and generated (45/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 25 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 45/45 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -551,6 +551,45 @@
       "answer": "74.0",
       "generator": "chem.posn2560_q42",
       "note": "Uses Zn=65.0 and Cl=35.5; 2.72 g ZnCl2 is 0.020 mol, so zinc mass is 1.30 g and copper mass is 3.70 g."
+    },
+    {
+      "number": 43,
+      "solver": "q43",
+      "title": "ปริมาณสัมพันธ์ของเตาถลุงเหล็ก",
+      "source": "Part I, question 43, p11: producing 1.12 kg Fe makes both C 0.36 kg (ก) and CO2 672 dm3 (ง) true; printed single-choice question has two answers.",
+      "page": 11,
+      "figure": "Rendered p11/p12 visually checked equations, subscripts, values and choices.",
+      "figure_asset": "",
+      "topic": "ปริมาณสัมพันธ์ของปฏิกิริยาต่อเนื่อง",
+      "answer": "(0, 3)",
+      "generator": "chem.posn2560_q43",
+      "note": "SOURCE ERROR: two printed options are correct. The adaptation asks for the pair of true statements; source values use Fe=56, C=12 and 22.4 L/mol at STP."
+    },
+    {
+      "number": 44,
+      "solver": "q44",
+      "title": "ปริมาตร CO₂ สำหรับปฏิกิริยากับ LiOH",
+      "source": "Part I, question 44, p12: 240 g LiOH reacts with 5 mol CO2, needing about 205 L at 1 atm and 500 K, choice ค.",
+      "page": 12,
+      "figure": "Rendered p11/p12 visually checked equations, subscripts, values and choices.",
+      "figure_asset": "",
+      "topic": "ปริมาณสัมพันธ์และสมการแก๊สอุดมคติ",
+      "answer": "205",
+      "generator": "chem.posn2560_q44",
+      "note": "Uses 2LiOH + CO2 -> Li2CO3 + H2O, M(LiOH)=24 g/mol and R=0.082 L atm mol^-1 K^-1."
+    },
+    {
+      "number": 45,
+      "solver": "q45",
+      "title": "ระบุคาร์บอเนตจากกรดและ CO₂",
+      "source": "Part I, question 45, p12: 0.040 mol HCl and 448 cm3 CO2 imply 0.020 mol carbonate; 3.94 g corresponds to BaCO3, choice ง.",
+      "page": 12,
+      "figure": "Rendered p11/p12 visually checked equations, subscripts, values and choices.",
+      "figure_asset": "",
+      "topic": "การหาสูตรสารจากปริมาณสัมพันธ์",
+      "answer": "BaCO3",
+      "generator": "chem.posn2560_q45",
+      "note": "The HCl and CO2 data independently agree on carbonate amount. BaCO3 molar mass is 197 g/mol using Ba=137, C=12, O=16."
     }
   ]
 }

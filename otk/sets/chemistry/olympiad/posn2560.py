@@ -12,7 +12,7 @@ from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39, q40, q41, q42,
+    q37, q38, q39, q40, q41, q42, q43, q44, q45,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1512,4 +1512,106 @@ class CopperAlloyPercent(ChemistrySheet):
                 named("chem.treated_zinc_chloride_mass_as_zinc",
                       f"{zinc_only_percent:.1f}"),
             ],
+        )
+
+
+_FURNACE_CLAIMS = {
+    "carbon_kg": "ต้องใช้ C {value:g} kg",
+    "hematite_mol": "ต้องใช้ Fe₂O₃ {value:g} mol",
+    "oxygen_mol": "ต้องใช้ O₂ {value:g} mol",
+    "co2_l": "เกิด CO₂ {value:g} dm³ ที่ STP",
+}
+_FURNACE_OPTIONS = ((0, 3), (0, 1), (0, 2), (1, 2))
+_FURNACE_MISTAKES = (
+    "chem.miscounted_carbon_in_furnace",
+    "chem.miscounted_hematite_in_furnace",
+    "chem.miscounted_oxygen_in_furnace",
+    "chem.miscounted_co2_in_furnace",
+)
+
+
+@question_type(
+    "chem.posn2560_q43", display_name={"th": "ปริมาณสัมพันธ์ของเตาถลุงเหล็ก"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสัมพันธ์ของปฏิกิริยาต่อเนื่อง",
+)
+class BlastFurnaceClaims(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        values = rng.choice((q43.PARAMS, *q43.VARIANTS))
+        claims = values["claims"]
+        true_pair = q43.solve(**values)
+        labels = "abcd"
+        statements = "; ".join(
+            f"{labels[i]}. {_FURNACE_CLAIMS[kind].format(value=amount)}"
+            for i, (kind, amount) in enumerate(claims)
+        )
+        pair_text = lambda pair: f"{labels[pair[0]]} และ {labels[pair[1]]}"
+        return GeneratedQuestion(
+            stem=[text("เตาถลุงเหล็กมี 2C + O₂ → 2CO และ "
+                       "Fe₂O₃ + 3CO → 2Fe + 3CO₂ หากผลิต Fe "
+                       f"{values['iron_kg']:.2f} kg ข้อความใดถูกต้องทั้งสองข้อ: "
+                       + statements + " (ใช้ Fe=56, C=12 และแก๊สที่ STP 22.4 L/mol)")],
+            correct=[text(pair_text(true_pair))],
+            distractors=fixed(*[[text(named(_FURNACE_MISTAKES[next(
+                i for i in pair if i not in true_pair)], pair_text(pair)))]
+                                for pair in _FURNACE_OPTIONS if pair != true_pair]),
+            topic="ปริมาณสัมพันธ์ของปฏิกิริยาต่อเนื่อง",
+            hint=[text("ผลิต Fe 2 mol ใช้ Fe₂O₃ 1 mol และ CO 3 mol; "
+                       "สร้าง CO 3 mol ต้องใช้ C 3 mol และ O₂ 1.5 mol")],
+        )
+
+
+@question_type(
+    "chem.posn2560_q44", display_name={"th": "ปริมาตร CO₂ สำหรับปฏิกิริยากับ LiOH"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสัมพันธ์และสมการแก๊สอุดมคติ",
+)
+class LithiumHydroxideCarbonDioxide(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q44.PARAMS, *q44.VARIANTS))
+        mass, pressure, temperature = (values["lioh_g"], values["pressure_atm"],
+                                       values["temperature_k"])
+        co2_mol = mass / 48
+        answer = q44.solve(**values)
+        wrong = (
+            ("chem.forgot_two_lioh_per_co2", round(2 * co2_mol * 0.082 * temperature / pressure)),
+            ("chem.used_stp_volume_at_nonstp", round(co2_mol * 22.4)),
+            ("chem.used_celsius_in_lioh_gas_law",
+             round(co2_mol * 0.082 * (temperature - 273.15) / pressure)),
+        )
+        return MathDraw(
+            "", str(answer),
+            prompt=(f"LiOH {mass} g ทำปฏิกิริยาพอดีกับ CO₂ ตามสมการ "
+                    "2LiOH + CO₂ → Li₂CO₃ + H₂O "
+                    f"ที่ความดัน {pressure:.2f} atm และอุณหภูมิ {temperature} K "
+                    "ต้องใช้ CO₂ กี่ลิตร (LiOH=24 g/mol, R=0.082 L·atm/mol·K; ตอบจำนวนเต็ม)"),
+            hint="หาโมล CO₂ เป็นครึ่งหนึ่งของโมล LiOH แล้วใช้ PV=nRT",
+            distractors=[named(key, str(value)) for key, value in wrong],
+        )
+
+
+_CARBONATE_TEX = {
+    "Na2CO3": r"\mathrm{Na_2CO_3}", "MgCO3": r"\mathrm{MgCO_3}",
+    "CaCO3": r"\mathrm{CaCO_3}", "BaCO3": r"\mathrm{BaCO_3}",
+}
+
+
+@question_type(
+    "chem.posn2560_q45", display_name={"th": "ระบุคาร์บอเนตจากกรดและ CO₂"},
+    level=LEVEL, subject="เคมี", topic="การหาสูตรสารจากปริมาณสัมพันธ์",
+)
+class CarbonateFromAcidAndGas(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q45.PARAMS, *q45.VARIANTS))
+        answer = q45.solve(**values)
+        return MathDraw(
+            "", _CARBONATE_TEX[answer],
+            prompt=(f"สารประกอบคาร์บอเนตมวล {values['carbonate_g']:.2f} g "
+                    f"ทำปฏิกิริยาพอดีกับ HCl {values['acid_molar']:.1f} mol/L "
+                    f"ปริมาตร {values['acid_ml']} cm³ ได้ CO₂ {values['co2_ml']} cm³ "
+                    "ที่ STP สูตรของคาร์บอเนตคืออะไร (ปริมาตรโมลาร์ 22.4 L/mol)"),
+            hint="CO₂ หนึ่งโมลเกิดจากคาร์บอเนตหนึ่งโมล; หา M ของเกลือจากมวลตัวอย่าง",
+            distractors=[named("chem.chose_incorrect_carbonate_cation_" + formula.lower(), tex)
+                         for formula, tex in _CARBONATE_TEX.items() if formula != answer],
         )

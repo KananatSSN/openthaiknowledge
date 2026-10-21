@@ -37,6 +37,17 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.miscounted_carbon_in_furnace": {"th": "นับจำนวนคาร์บอนที่ต้องใช้ในเตาถลุงผิด", "en": "Miscounted carbon in the blast furnace"},
+    "chem.miscounted_hematite_in_furnace": {"th": "นับจำนวน Fe₂O₃ ต่อ Fe ผิด", "en": "Miscounted hematite per iron"},
+    "chem.miscounted_oxygen_in_furnace": {"th": "นับจำนวน O₂ ที่ใช้สร้าง CO ผิด", "en": "Miscounted oxygen for CO production"},
+    "chem.miscounted_co2_in_furnace": {"th": "นับปริมาตร CO₂ จาก Fe ผิด", "en": "Miscounted carbon dioxide from iron"},
+    "chem.forgot_two_lioh_per_co2": {"th": "ลืมว่า LiOH สองโมลใช้ CO₂ หนึ่งโมล", "en": "Forgot two LiOH per CO2"},
+    "chem.used_stp_volume_at_nonstp": {"th": "ใช้ปริมาตรโมลาร์ที่ STP กับภาวะอื่น", "en": "Used STP molar volume at other conditions"},
+    "chem.used_celsius_in_lioh_gas_law": {"th": "แทนอุณหภูมิเซลเซียสในสมการแก๊ส", "en": "Used Celsius in the gas law"},
+    "chem.chose_incorrect_carbonate_cation_na2co3": {"th": "เลือกโซเดียมแทนไอออนบวกที่ตรงกับมวลโมลาร์", "en": "Chose sodium instead of the mass-matched cation"},
+    "chem.chose_incorrect_carbonate_cation_mgco3": {"th": "เลือกแมกนีเซียมแทนไอออนบวกที่ตรงกับมวลโมลาร์", "en": "Chose magnesium instead of the mass-matched cation"},
+    "chem.chose_incorrect_carbonate_cation_caco3": {"th": "เลือกแคลเซียมแทนไอออนบวกที่ตรงกับมวลโมลาร์", "en": "Chose calcium instead of the mass-matched cation"},
+    "chem.chose_incorrect_carbonate_cation_baco3": {"th": "เลือกแบเรียมแทนไอออนบวกที่ตรงกับมวลโมลาร์", "en": "Chose barium instead of the mass-matched cation"},
     "chem.used_density_times_moles": {"th": "คูณความหนาแน่นด้วยจำนวนโมลโดยไม่แปลงเป็นปริมาตร", "en": "Multiplied density directly by moles"},
     "chem.reported_molar_mass_instead_of_sample_mass": {"th": "ตอบมวลโมลาร์แทนมวลของแก๊สทั้งหมด", "en": "Reported molar mass instead of sample mass"},
     "chem.used_twenty_liters_per_mole": {"th": "ใช้ 20 L/mol แทน 22.4 L/mol ที่ STP", "en": "Used 20 rather than 22.4 liters per mole"},

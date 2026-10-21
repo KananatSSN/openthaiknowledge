@@ -66,10 +66,10 @@ Phases in build order. Check an item only when its tests pass.
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–42 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **42/70 complete; 28 pending.**
+  1–45 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **45/70 complete; 25 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  forty-two reviewed items. Its `verify` result of 42/42 describes this batch, not the
+  forty-five reviewed items. Its `verify` result of 45/45 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -2150,3 +2150,10 @@ TOTAL         338   316     17     4   66      255      6     11
 - MC40 uses the printed STP convention 22.4 L/mol. MC41's equal-amount effusion times scale as sqrt(M). MC42 uses Zn=65.0 and Cl=35.5, giving 1.30 g Zn and 74.0% Cu.
 - Wave validation: 42/42 sheet solvers and 129 variant checks green; 813 knowledge units in 679 files with zero problems; source coverage 42/70; focused sheet/set checks passed (286). The full suite remains deferred until the entire sheet is digested.
 - Targeted registry, provenance, safety, golden and layout checks passed (16,379); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC43–45
+
+- Reviewed the p11–p12 reactions, units and choices; added independently checked solvers, three variants, generators and knowledge units for each item.
+- MC43 has two true printed answers: 0.36 kg C and 672 dm³ CO₂. Its adaptation asks for the pair of correct statements. MC44 gives 205 L CO₂ from 240 g LiOH at 500 K and 1 atm. MC45 identifies BaCO₃ from matching acid, gas and sample-mass data.
+- The paper remains partial at 45/70; the full suite remains deferred until all 70 questions are digested.
+- Wave validation: 45/45 sheet solvers and 138 variants green; 816 knowledge units in 682 files with zero validation problems; source coverage 45/70. Focused sheet/set checks passed (305), new-key provenance/safety/golden checks passed (12), curriculum/stage/layout/manifest checks passed (46), and Ruff and whitespace checks passed.
