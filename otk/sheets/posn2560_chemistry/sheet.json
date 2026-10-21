@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–51 are reviewed, solved and generated (51/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 19 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 51/51 solver checks as whole-paper completion.",
+  "note": "PARTIAL: source Part I questions 1–54 are reviewed, solved and generated (54/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 16 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 54/54 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -668,6 +668,45 @@
       "answer": "(0, 1)",
       "generator": "chem.posn2560_q51",
       "note": "Source equation is unbalanced; adaptation prints Zn+2HCl->ZnCl2+H2. Source c halves acid consumption; generated prompt specifies unchanged nominal solution volume for w/v calculation."
+    },
+    {
+      "number": 52,
+      "solver": "q52",
+      "title": "มวลโมลาร์ผลิตภัณฑ์จากสารกำหนดปริมาณ",
+      "source": "Part I, question 52, p13: A+5B->4C+2D; A 20.8 g, B 80.5 g, C 70.4 g, molar A=52 and B=32 imply molar C=44 g/mol, choice ข.",
+      "page": 13,
+      "figure": "Rendered p13 visually checked equations, numbers, hydrate dot and all choices.",
+      "figure_asset": "",
+      "topic": "สารกำหนดปริมาณและมวลโมลาร์",
+      "answer": "44.0",
+      "generator": "chem.posn2560_q52",
+      "note": "A has 0.40 mol and limits the reaction; 1.60 mol C is produced, giving 70.4/1.60=44 g/mol."
+    },
+    {
+      "number": 53,
+      "solver": "q53",
+      "title": "เศษส่วนโมล H₂ จากการสลาย NH₃",
+      "source": "Part I, question 53, p13: decomposed NH3 leaves 4.0 mole-percent NH3, so H2 mole fraction is 0.72, choice ค.",
+      "page": 13,
+      "figure": "Rendered p13 visually checked equations, numbers, hydrate dot and all choices.",
+      "figure_asset": "",
+      "topic": "เศษส่วนโมลและการสลายตัวของแก๊ส",
+      "answer": "0.72",
+      "generator": "chem.posn2560_q53",
+      "note": "N2:H2 product mole ratio is 1:3, so H2 occupies 3/4 of the 96% non-NH3 gas fraction."
+    },
+    {
+      "number": 54,
+      "solver": "q54",
+      "title": "เจือจางสารละลายจาก MgCl₂·6H₂O",
+      "source": "Part I, question 54, p13: 4.06 g MgCl2·6H2O in 250 cm3 makes 0.0800 M stock; 500 cm3 of 0.0100 M needs 62.5 cm3 stock, choice ข.",
+      "page": 13,
+      "figure": "Rendered p13 visually checked equations, numbers, hydrate dot and all choices.",
+      "figure_asset": "",
+      "topic": "สารละลายสต็อกจากเกลือไฮเดรต",
+      "answer": "62.5",
+      "generator": "chem.posn2560_q54",
+      "note": "MgCl2·6H2O molar mass is 203 g/mol; 4.06 g contains 0.0200 mol MgCl2, and target requires 0.00500 mol."
     }
   ]
 }

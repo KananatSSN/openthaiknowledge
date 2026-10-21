@@ -13,7 +13,7 @@ from otk.sheets.posn2560_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
-    q49, q50, q51,
+    q49, q50, q51, q52, q53, q54,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1828,4 +1828,117 @@ class ZincAcidClaims(QuestionType):
                                 for i in range(4) if i != index]),
             topic="ปริมาณสัมพันธ์ของโลหะกับกรด",
             hint=[text("Zn หนึ่งโมลใช้ HCl สองโมล ได้ H₂ หนึ่งโมลและ ZnCl₂ หนึ่งโมล")],
+        )
+
+
+@question_type(
+    "chem.posn2560_q52", display_name={"th": "มวลโมลาร์ผลิตภัณฑ์จากสารกำหนดปริมาณ"},
+    level=LEVEL, subject="เคมี", topic="สารกำหนดปริมาณและมวลโมลาร์",
+)
+class ProductMolarMassFromYield(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q52.PARAMS, *q52.VARIANTS))
+        a_g, b_g, c_g = values["a_g"], values["b_g"], values["c_g"]
+        a_mol = a_g / values["a_molar"]
+        b_extent = b_g / (5 * values["b_molar"])
+        extent = min(a_mol, b_extent)
+        answer = q52.solve(**values)
+        candidates = (
+            ("chem.assumed_excess_feed_limits_c", c_g / (4 * max(a_mol, b_extent))),
+            ("chem.omitted_four_c_coefficient", c_g / extent),
+            ("chem.used_total_feed_mass_for_c_molar_mass", (a_g + b_g) / (4 * extent)),
+            ("chem.assumed_a_always_limits_c", c_g / (4 * a_mol)),
+            ("chem.assumed_b_always_limits_c", c_g / (4 * b_extent)),
+            ("chem.used_a_feed_mass_as_c_mass", a_g / (4 * extent)),
+        )
+        seen = {f"{answer:.1f}"}
+        distractors = []
+        for key, value in candidates:
+            label = f"{value:.1f}"
+            if label not in seen:
+                distractors.append(named(key, label))
+                seen.add(label)
+            if len(distractors) == 3:
+                break
+        assert len(distractors) == 3
+        return MathDraw(
+            "", f"{answer:.1f}",
+            prompt=(f"A + 5B → 4C + 2D ถ้าใช้ A {a_g:.1f} g และ B {b_g:.1f} g "
+                    f"ได้ C {c_g:.1f} g โดย A มีมวลโมลาร์ {values['a_molar']} g/mol "
+                    f"และ B {values['b_molar']} g/mol มวลโมลาร์ C เป็นกี่ g/mol "
+                    "(ตอบหนึ่งตำแหน่ง)"),
+            hint="หาสารกำหนดปริมาณจาก A:5B แล้วใช้ 4 mol C ต่อหนึ่ง extent",
+            distractors=distractors,
+        )
+
+
+@question_type(
+    "chem.posn2560_q53", display_name={"th": "เศษส่วนโมล H₂ จากการสลาย NH₃"},
+    level=LEVEL, subject="เคมี", topic="เศษส่วนโมลและการสลายตัวของแก๊ส",
+)
+class AmmoniaDecompositionHydrogenFraction(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q53.PARAMS, *q53.VARIANTS))
+        ammonia = values["ammonia_fraction"]
+        answer = q53.solve(**values)
+        candidates = (
+            ("chem.treated_all_reacted_ammonia_as_hydrogen", 1 - ammonia),
+            ("chem.reported_nitrogen_fraction_as_hydrogen", 0.25 * (1 - ammonia)),
+            ("chem.reported_residual_ammonia_as_hydrogen", ammonia),
+            ("chem.assumed_equal_nitrogen_hydrogen_fractions", 0.5 * (1 - ammonia)),
+        )
+        seen = {f"{answer:.2f}"}
+        distractors = []
+        for key, value in candidates:
+            label = f"{value:.2f}"
+            if label not in seen:
+                distractors.append(named(key, label))
+                seen.add(label)
+            if len(distractors) == 3:
+                break
+        assert len(distractors) == 3
+        return MathDraw(
+            "", f"{answer:.2f}",
+            prompt=("2NH₃ → N₂ + 3H₂ เมื่อปฏิกิริยาสิ้นสุด แก๊สผสมมี NH₃ "
+                    f"{100 * ammonia:.1f}% โดยโมล เศษส่วนโมล H₂ เป็นเท่าใด "
+                    "(ตอบสองตำแหน่ง)"),
+            hint="ในส่วนที่ไม่ใช่ NH₃ ผลิตภัณฑ์ N₂:H₂ มีโมลเป็น 1:3",
+            distractors=distractors,
+        )
+
+
+@question_type(
+    "chem.posn2560_q54", display_name={"th": "เจือจางสารละลายจาก MgCl₂·6H₂O"},
+    level=LEVEL, subject="เคมี", topic="สารละลายสต็อกจากเกลือไฮเดรต",
+)
+class MagnesiumChlorideStockAliquot(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q54.PARAMS, *q54.VARIANTS))
+        hydrate_g, stock_ml = values["hydrate_g"], values["stock_ml"]
+        target_molar, target_ml = values["target_molar"], values["target_ml"]
+        answer = q54.solve(**values)
+        candidates = (
+            ("chem.used_anhydrous_mgcl2_mass_for_stock", answer * 95 / 203),
+            ("chem.used_all_stock_instead_of_aliquot", stock_ml),
+            ("chem.doubled_stock_aliquot", answer * 2),
+            ("chem.halved_stock_aliquot", answer / 2),
+        )
+        seen = {f"{answer:.1f}"}
+        distractors = []
+        for key, value in candidates:
+            label = f"{value:.1f}"
+            if label not in seen:
+                distractors.append(named(key, label))
+                seen.add(label)
+            if len(distractors) == 3:
+                break
+        assert len(distractors) == 3
+        return MathDraw(
+            "", f"{answer:.1f}",
+            prompt=(f"ละลาย MgCl₂·6H₂O {hydrate_g:.2f} g เป็นสารละลายสต็อก "
+                    f"{stock_ml} cm³ ต้องการ MgCl₂ {target_molar:.4f} mol/L "
+                    f"ปริมาตร {target_ml} cm³ ต้องใช้สต็อกกี่ cm³ "
+                    "(MgCl₂·6H₂O=203 g/mol; ตอบหนึ่งตำแหน่ง)"),
+            hint="ไฮเดรตหนึ่งโมลให้ MgCl₂ หนึ่งโมล แล้วใช้ C₁V₁=C₂V₂",
+            distractors=distractors,
         )

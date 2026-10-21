@@ -37,6 +37,20 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.assumed_excess_feed_limits_c": {"th": "ใช้สารตั้งต้นที่เหลือเกินกำหนดจำนวน C", "en": "Used the excess feed to determine C"},
+    "chem.omitted_four_c_coefficient": {"th": "ลืมสัมประสิทธิ์ 4 ของผลิตภัณฑ์ C", "en": "Omitted C's coefficient four"},
+    "chem.used_total_feed_mass_for_c_molar_mass": {"th": "ใช้มวลรวมสารตั้งต้นเป็นมวล C", "en": "Used all feed mass as C mass"},
+    "chem.assumed_a_always_limits_c": {"th": "คิดว่า A กำหนดปริมาณเสมอ", "en": "Assumed A always limits C"},
+    "chem.assumed_b_always_limits_c": {"th": "คิดว่า B กำหนดปริมาณเสมอ", "en": "Assumed B always limits C"},
+    "chem.used_a_feed_mass_as_c_mass": {"th": "ใช้มวล A ที่ใส่แทนมวลผลิตภัณฑ์ C", "en": "Used A feed mass as C mass"},
+    "chem.treated_all_reacted_ammonia_as_hydrogen": {"th": "คิดว่าแก๊สที่ไม่ใช่ NH₃ เป็น H₂ ทั้งหมด", "en": "Treated all non-ammonia gas as H2"},
+    "chem.reported_nitrogen_fraction_as_hydrogen": {"th": "ตอบเศษส่วนโมล N₂ แทน H₂", "en": "Reported N2 fraction instead of H2"},
+    "chem.reported_residual_ammonia_as_hydrogen": {"th": "ตอบเศษส่วนโมล NH₃ ที่เหลือแทน H₂", "en": "Reported remaining NH3 fraction as H2"},
+    "chem.assumed_equal_nitrogen_hydrogen_fractions": {"th": "คิดว่า N₂ และ H₂ มีจำนวนโมลเท่ากัน", "en": "Assumed equal N2 and H2 fractions"},
+    "chem.used_anhydrous_mgcl2_mass_for_stock": {"th": "ใช้มวลโมลาร์ MgCl₂ ไร้น้ำกับมวลไฮเดรต", "en": "Used anhydrous MgCl2 mass for hydrate stock"},
+    "chem.used_all_stock_instead_of_aliquot": {"th": "ใช้สารละลายสต็อกทั้งหมดแทนปริมาตรที่ต้องตวง", "en": "Used all stock instead of the aliquot"},
+    "chem.doubled_stock_aliquot": {"th": "ตวงสต็อกสองเท่าของปริมาตรที่ต้องใช้", "en": "Doubled the stock aliquot"},
+    "chem.halved_stock_aliquot": {"th": "ตวงสต็อกครึ่งหนึ่งของปริมาตรที่ต้องใช้", "en": "Halved the stock aliquot"},
     "chem.undercounted_hydrogen_from_oxygen_balance": {"th": "นับไฮโดรเจนจากสมดุลออกซิเจนน้อยเกินไป", "en": "Undercounted H from the oxygen balance"},
     "chem.halved_combustion_water_volume": {"th": "หารปริมาตรไอน้ำจากการเผาไหม้ด้วยสองซ้ำ", "en": "Halved combustion water volume again"},
     "chem.doubled_carbon_from_co2_volume": {"th": "นับคาร์บอนจากปริมาตร CO₂ เป็นสองเท่า", "en": "Doubled carbon count from CO2 volume"},

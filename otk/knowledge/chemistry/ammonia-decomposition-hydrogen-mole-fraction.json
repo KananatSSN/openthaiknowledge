@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เศษส่วนโมลและการสลายตัวของแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.ammonia_decomposition_hydrogen_mole_fraction.procedure",
+      "kind": "procedure",
+      "title": "เศษส่วนโมล H₂ จากการสลาย NH₃",
+      "statement": "เมื่อ 2NH₃→N₂+3H₂ ผลิตภัณฑ์ N₂ และ H₂ มีอัตราส่วนโมล 1:3; ดังนั้นเศษส่วนโมล H₂ เท่ากับสามในสี่ของส่วนที่ไม่ใช่ NH₃",
+      "steps": [
+        "หาส่วนโมลของผลิตภัณฑ์ทั้งหมดจากหนึ่งลบเศษส่วนโมล NH₃ ที่เหลือ",
+        "คูณสามในสี่เพื่อแยกส่วนโมล H₂"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 53
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q53"
+      ],
+      "note": "N2:H2 product mole ratio is 1:3, so H2 occupies 3/4 of the 96% non-NH3 gas fraction."
+    }
+  ]
+}

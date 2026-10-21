@@ -66,10 +66,10 @@ Phases in build order. Check an item only when its tests pass.
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–51 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **51/70 complete; 19 pending.**
+  1–54 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **54/70 complete; 16 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  fifty-one reviewed items. Its `verify` result of 51/51 describes this batch, not the
+  fifty-four reviewed items. Its `verify` result of 54/54 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -2170,4 +2170,11 @@ TOTAL         338   316     17     4   66      255      6     11
 - Reviewed p12–p13 hydrocarbon combustion, BaSO₄ precipitation, and Zn/HCl questions; added independent solvers, three variants, generators and knowledge units for each.
 - MC49 gives C₄H₁₀ and 100 cm³ water vapor. MC50's printed “all sulfate precipitates” permits excess BaCl₂, so X=40 cm³ needs the exact-addition condition stated in the adaptation; BaSO₄ is 2.33 g and Na⁺ is 0.92% w/v under that condition. MC51 balances Zn+2HCl, giving 0.040 mol HCl consumed and 0.560 mol left, so printed claim c is false.
 - Wave validation so far: 51/51 sheet solvers and 156 variants green; 822 knowledge units in 688 files with zero problems; source coverage 51/70; focused sheet/set checks passed (343). Full suite remains deferred until all 70 questions are digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC52–54
+
+- Reviewed p13 product-yield, ammonia-decomposition, and hydrate-dilution questions; added independent solvers, three variants, generators and knowledge units for each.
+- MC52 finds C's molar mass as 44 g/mol from the limiting reactant. MC53 gives a hydrogen mole fraction of 0.72. MC54 gives a 62.5 cm³ aliquot of MgCl₂ stock prepared from its hexahydrate.
+- Wave validation: 54/54 sheet solvers and 165 variant runs green; 825 knowledge units in 691 files with zero problems; source coverage 54/70; focused sheet/set checks passed (362). The full suite remains deferred until the entire sheet is digested.
 - New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
