@@ -6,17 +6,17 @@ from random import Random
 import pytest
 
 from otk.core import generate
-from otk.sheets.posn2561_chemistry import q01, q02, q03
+from otk.sheets.posn2561_chemistry import q01, q02, q03, q04, q05, q06
 
 
 def test_first_wave_solves_source_and_variants_independently():
-    for module in (q01, q02, q03):
+    for module in (q01, q02, q03, q04, q05, q06):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", (1, 2, 3))
+@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -42,10 +42,30 @@ def test_generated_answers_follow_the_stem(number):
             ).groups())
             atomic = electrons + charge
             assert answer == f"{atomic} และ {atomic + neutrons}"
-        else:
+        elif number == 3:
             a, b, c, d = map(int, re.search(
                 r"A=(\d+) nm, B=(\d+) nm, C=(\d+) nm และ D=(\d+) nm", stem,
             ).groups())
             assert a > b > c > d
             assert answer == "พลังงานของ C มากกว่า B"
+        elif number == 4:
+            x_min, x_max, offset = map(int, re.search(
+                r"เลขอะตอมตั้งแต่ (\d+) ถึง (\d+).*?มากกว่า X (\d+) ตัว", stem,
+            ).groups())
+            assert q04.check(x_min=x_min, x_max=x_max, offset=offset) == 1
+            assert answer == "ธาตุ Z มีอิเล็กตรอนในชั้นที่สองมากกว่า 6 เสมอ"
+        elif number == 5:
+            from otk.sets.chemistry.olympiad.posn2561 import _ELECTRON_CONFIGS
+            reverse = {configuration: z for z, configuration in _ELECTRON_CONFIGS.items()}
+            options = tuple(reverse[choice.content[0].text] for choice in question.choices)
+            assert reverse[answer] == q05.check(options=options)
+        else:
+            data = {label: float(value) for label, value in re.findall(
+                r"([LMQRT]): ([\d.]+)", stem,
+            )}
+            assert len(data) == 5
+            false = [f"IE₂({left}) < IE₂({right})"
+                     for left, right in zip("LMQR", "MQRT")
+                     if not data[left] < data[right]]
+            assert false == [answer]
         assert len(question.choices) == 4

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ชั้นอิเล็กตรอนและคาบของธาตุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.period_two_proton_offset_shells.procedure",
+      "kind": "procedure",
+      "title": "ข้อสรุปที่แน่นอนจากธาตุต่างกันหกโปรตอน",
+      "statement": "เมื่อ X อยู่คาบ 2 และ Z มีโปรตอนเพิ่มตามที่กำหนด ต้องตรวจทุกค่า X ที่เป็นไปได้; เลขมวลยังขึ้นกับนิวตรอนที่โจทย์ไม่ระบุ",
+      "steps": [
+        "ไล่เลขอะตอมของ X ทุกค่าที่โจทย์อนุญาต แล้วหาเลขอะตอม Z",
+        "ตรวจคาบ ชั้นอิเล็กตรอนที่สอง และเวเลนซ์ทุกกรณี แยกโปรตอนจากเลขมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q04"
+      ],
+      "note": "Source choice ข is true for every possible X: Z has at least seven electrons in the second shell. Other claims can fail across the range or depend on unspecified neutron counts. Adaptation says “always” explicitly."
+    }
+  ]
+}

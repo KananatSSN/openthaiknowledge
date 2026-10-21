@@ -37,6 +37,16 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.posn2561_assumed_same_period_after_proton_offset": {"th": "คิดว่าธาตุที่โปรตอนต่างกันยังอยู่คาบเดียวกันทุกกรณี", "en": "Assumed the proton offset always stays in one period"},
+    "chem.posn2561_confused_proton_and_nucleon_difference": {"th": "ใช้ผลต่างโปรตอนแทนผลต่างเลขมวล", "en": "Used the proton difference as the mass-number difference"},
+    "chem.posn2561_assumed_valence_tracks_atomic_offset": {"th": "คิดว่าเวเลนซ์อิเล็กตรอนเพิ่มเท่ากับเลขอะตอมเสมอ", "en": "Assumed valence count follows the atomic-number offset"},
+    "chem.posn2561_chose_lower_halogen_reactivity": {"th": "เลือกแฮโลเจนที่อยู่ต่ำกว่าในหมู่", "en": "Chose the lower halogen"},
+    "chem.posn2561_chose_reactive_metal_as_nonmetal": {"th": "เลือกโลหะไวต่อปฏิกิริยาเป็นอโลหะ", "en": "Chose a reactive metal as a nonmetal"},
+    "chem.posn2561_chose_nonhalogen_over_halogen": {"th": "เลือกอโลหะนอกหมู่แฮโลเจนแทนแฮโลเจน", "en": "Chose a nonhalogen over a halogen"},
+    "chem.posn2561_reversed_l_m_second_ie_comparison": {"th": "กลับลำดับ IE₂ ระหว่าง L กับ M", "en": "Reversed the L–M second-ionization comparison"},
+    "chem.posn2561_reversed_m_q_second_ie_comparison": {"th": "กลับลำดับ IE₂ ระหว่าง M กับ Q", "en": "Reversed the M–Q second-ionization comparison"},
+    "chem.posn2561_reversed_q_r_second_ie_comparison": {"th": "กลับลำดับ IE₂ ระหว่าง Q กับ R", "en": "Reversed the Q–R second-ionization comparison"},
+    "chem.posn2561_reversed_r_t_second_ie_comparison": {"th": "กลับลำดับ IE₂ ระหว่าง R กับ T", "en": "Reversed the R–T second-ionization comparison"},
     "chem.posn2561_confused_isotopes_with_electron_count": {"th": "คิดว่าไอโซโทปทำให้จำนวนอิเล็กตรอนต่างกัน", "en": "Confused isotope mass with electron count"},
     "chem.posn2561_ignored_opposite_ion_charges": {"th": "ไม่นับประจุไอออนที่มีเครื่องหมายตรงข้าม", "en": "Ignored opposite ion charges"},
     "chem.posn2561_counted_nuclear_particles_as_electrons": {"th": "นับอนุภาคในนิวเคลียสเป็นอิเล็กตรอน", "en": "Counted nuclear particles as electrons"},

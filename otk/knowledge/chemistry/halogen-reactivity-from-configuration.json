@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การจัดอิเล็กตรอนและความไวต่อปฏิกิริยา",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.halogen_reactivity_from_configuration.procedure",
+      "kind": "procedure",
+      "title": "อโลหะไวต่อปฏิกิริยาจากการจัดอิเล็กตรอน",
+      "statement": "แฮโลเจนมีการจัดอิเล็กตรอนชั้นนอก ns²np⁵; ในตัวเลือกที่กำหนด ความไวต่อปฏิกิริยาของแฮโลเจนลดลงเมื่อเลื่อนลงหมู่ F > Cl > Br",
+      "steps": [
+        "ระบุธาตุจากจำนวนอิเล็กตรอนในแต่ละการจัดเรียง",
+        "คัดอโลหะและเปรียบเทียบตำแหน่งแฮโลเจนในหมู่ 17"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q05"
+      ],
+      "note": "Source choice ข is fluorine (Z=9), above chlorine in group 17. Variant pools preserve a unique highest-reactivity halogen."
+    }
+  ]
+}
