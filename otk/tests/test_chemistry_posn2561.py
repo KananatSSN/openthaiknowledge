@@ -8,19 +8,20 @@ import pytest
 from otk.core import generate
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15, q16, q17, q18,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21,
 )
 
 
 def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
-                   q10, q11, q12, q13, q14, q15, q16, q17, q18):
+                   q10, q11, q12, q13, q14, q15, q16, q17, q18,
+                   q19, q20, q21):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 19))
+@pytest.mark.parametrize("number", range(1, 22))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -163,7 +164,7 @@ def test_generated_answers_follow_the_stem(number):
             assert set(choice.content[0].text for choice in question.choices) == set(
                 q17.REACTIONS
             )
-        else:
+        elif number == 18:
             assignments = dict((label, int(z)) for label, z in re.findall(
                 r"([ADLM])=(\d+)", stem,
             ))
@@ -172,6 +173,21 @@ def test_generated_answers_follow_the_stem(number):
             for choice in question.choices:
                 left, right = re.findall(r"[ADLM]", choice.content[0].text)
                 if {assignments[left], assignments[right]} == {20, 37}:
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+        elif number == 19:
+            assert "เลขอะตอม 19–36" in stem and "Cl₂ 3 mol" in stem
+            assert answer == "X อยู่ในหมู่ 15 (VA)"
+            assert set(choice.content[0].text for choice in question.choices) == set(q19.CLAIMS)
+        elif number == 20:
+            assert "เลขอะตอม 37" in stem
+            assert answer == "2M(s) + 2H₂O(l) → 2MOH(aq) + H₂(g)"
+            assert set(choice.content[0].text for choice in question.choices) == set(q20.CLAIMS)
+        else:
+            valid = []
+            for choice in question.choices:
+                counts = tuple(map(int, re.findall(r"\d+", choice.content[0].text)))
+                if counts == (1, 0, 2, 2):
                     valid.append(choice.content[0].text)
             assert valid == [answer]
         assert len(question.choices) == 4

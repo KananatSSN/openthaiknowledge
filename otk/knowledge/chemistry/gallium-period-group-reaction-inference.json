@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การระบุธาตุจากปฏิกิริยาและเลขออกซิเดชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.gallium_period_group_reaction_inference.procedure",
+      "kind": "procedure",
+      "title": "อนุมานหมู่ของแกลเลียมจากปฏิกิริยา",
+      "statement": "Ga มีเลขอะตอม 31 อยู่คาบ 4 หมู่ 13; 2Ga+3Cl₂ ให้ 2GaCl₃ และปฏิกิริยากับกรดให้ H₂ กับสารละลาย Ga³⁺ ไม่มีสี",
+      "steps": [
+        "ใช้อัตราส่วน X:Cl₂ = 2:3 อนุมานคลอไรด์ XCl₃ แล้วใช้ช่วงเลขอะตอมกับสมบัติน้ำและกรด",
+        "ระบุ Ga และตรวจข้อความเรื่องคาบ หมู่ และแก๊สจากกรด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q19"
+      ],
+      "note": "Source choice ก is false. X is Ga (Z=31), period 4 group 13, making GaCl3 and H2 with acid; Sc also forms a trichloride but reacts with water. https://periodic-table.rsc.org/element/31/Ga https://periodic-table.rsc.org/element/21/scandium-Scandium"
+    }
+  ]
+}

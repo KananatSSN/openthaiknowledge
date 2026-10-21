@@ -59,17 +59,18 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN 2561 bank — waves 1–6, 2026-10-21
+### Chemistry POSN 2561 bank — waves 1–7, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
-- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first eighteen were reviewed, independently solved, claimed by knowledge units, and linked to generators. **18/75 complete; 57 pending.**
+- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first twenty-one were reviewed, independently solved, claimed by knowledge units, and linked to generators. **21/75 complete; 54 pending.**
 - MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
 - MC4's only always-true claim is that Z has more than six electrons in its second shell; the adaptation says “always” explicitly. MC5 selects fluorine. MC6's false comparison is K < Ca for IE₂; the close Se < Br comparison was checked against NIST ionization data.
 - MC7's mixed atomic/ionic radius comparison depends on a radius convention; its adaptation supplies the specific table used. MC8's false order places Ca above As for IE₁; its adaptation supplies measured property values and specifies grey arsenic melting under pressure. MC9 pairs SO₃ with Na₂O to give an acid and a base in water.
 - MC10 identifies MgI₂ from the violet iodine extract and hot-water metal reaction. MC11 identifies P from its −3 to +5 oxidation-state range; only positive oxidation states in its oxides is true. MC12 selects dichromate and FeCl₃ as the colored pair. The original Cl₂O distractor has concentration-dependent solution color, so the adaptation uses NaCl.
 - MC13's table identifies Mg²⁺, K⁺ and Ba²⁺ from carbonate and sulfate precipitates. MC14 selects Cr(III) over Fe(II) among the actual complexes; MnO₂ is excluded because it is not a coordination complex. MC15 specifies β⁻ to distinguish it from positron emission.
 - MC16's four graphs are restated as mass values at zero, one and two half-lives; only the parent-decay curve has the expected 100%, 50%, 25% progression. MC17 is helium-3 plus deuterium fusion. MC18's basic-oxide pair is Ca and Rb.
-- The private bank digest contains paraphrased records for the eighteen reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 19.
+- MC19 identifies Ga from the 2:3 chlorine ratio, water inertness and colorless acid solution. MC20's printed intended water reaction is missing coefficients and therefore has no correct choice as written; the adaptation balances it. MC21's N≡C–C≡N structure has one single bond, two triple bonds and two lone pairs.
+- The private bank digest contains paraphrased records for the twenty-one reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 22.
 - Maintain the requested cadence: targeted tests each wave; the full suite only when all 75 items are digested.
 
 ### Chemistry POSN bank — waves 1–23, 2026-10-21
@@ -2253,3 +2254,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed p5's four decay/growth graphs and p6's nuclear equations and oxide question. The adaptation expresses the four graphs as numerical values, without source artwork. Added independent solvers, three variants, generators and knowledge claims for all three questions.
 - Wave validation: 18/18 sheet solvers and 54 variants green; 858 knowledge units in 724 files with zero validation problems; all eighteen reviewed source records are claimed. Focused sheet/set checks passed (48), sheet-pipeline checks passed (93), registry/provenance/safety/layout checks passed (575), and Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC19–21
+
+- Reviewed p6 and MC21's bond-count table. Added independent solvers, three variants, generators and knowledge claims. MC20's printed intended equation is unbalanced; the adaptation repairs the missing coefficients on M and H₂O so exactly one equation is correct.
+- Wave validation: 21/21 sheet solvers and 63 variants green; 861 knowledge units in 727 files with zero validation problems; all twenty-one reviewed source records are claimed. Focused sheet/set checks passed (74), sheet-pipeline checks passed (108), registry/provenance/safety/layout checks passed (587), and Ruff and whitespace checks passed. The full suite remains deferred until 75/75.

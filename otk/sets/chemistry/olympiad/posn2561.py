@@ -7,7 +7,7 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15, q16, q17, q18,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21,
 )
 
 
@@ -603,4 +603,94 @@ class BasicOxideElements(QuestionType):
                                 for i, claim in enumerate(claims) if i != answer)),
             topic="ออกไซด์โลหะและสารละลายเบส",
             hint=[text("จับเลขอะตอมเป็น N, S, Ca, Rb แล้วพิจารณาไฮดรอกไซด์จากออกไซด์โลหะ")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q19", display_name={"th": "อนุมานหมู่ของแกลเลียมจากปฏิกิริยา"},
+    level=LEVEL, subject="เคมี", topic="การระบุธาตุจากปฏิกิริยาและเลขออกซิเดชัน",
+)
+class GalliumIdentityInference(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q19.PARAMS, *q19.VARIANTS))
+        answer = q19.solve(**values)
+        options = values["options"]
+        claims = tuple(q19.CLAIMS[i] for i in options)
+        mistakes = (
+            "", "chem.posn2561_ignored_period_four_clue",
+            "chem.posn2561_misidentified_acid_gas",
+            "chem.posn2561_missed_gallium_aluminium_group",
+        )
+        return GeneratedQuestion(
+            stem=[text("ธาตุ X เป็นของแข็งที่ 20°C เลขอะตอม 19–36 ไม่ทำปฏิกิริยา"
+                       "กับน้ำ แต่กับกรดให้แก๊ส Y และสารละลายไม่มีสี "
+                       "X 2 mol รวมกับ Cl₂ 3 mol ได้คลอไรด์ ข้อสรุปใดผิด")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="การระบุธาตุจากปฏิกิริยาและเลขออกซิเดชัน",
+            hint=[text("อัตราส่วน X:Cl₂ = 2:3 ให้ XCl₃; ใช้ช่วงเลขอะตอมและสีสารละลายระบุธาตุ")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q20", display_name={"th": "สมการปฏิกิริยาของรูบิเดียม"},
+    level=LEVEL, subject="เคมี", topic="ปฏิกิริยาโลหะหมู่ 1 และกฎการละลาย",
+)
+class RubidiumReactionEquation(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q20.PARAMS, *q20.VARIANTS))
+        answer = q20.solve(**values)
+        options = values["options"]
+        claims = tuple(q20.CLAIMS[i] for i in options)
+        mistakes = (
+            "", "chem.posn2561_assumed_rubidium_dichloride",
+            "chem.posn2561_assumed_iodine_displaces_bromine",
+            "chem.posn2561_ignored_barium_sulfate_precipitate",
+        )
+        return GeneratedQuestion(
+            stem=[text("M มีเลขอะตอม 37 สมการใดถูกต้องทั้งผลิตภัณฑ์ "
+                       "และการดุลสมการ")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="ปฏิกิริยาโลหะหมู่ 1 และกฎการละลาย",
+            hint=[text("M คือ Rb ประจุ +1; ตรวจสมดุลอะตอม การแทนที่แฮโลเจน และ BaSO₄")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q21", display_name={"th": "พันธะและคู่โดดเดี่ยวของไซยาโนเจน"},
+    level=LEVEL, subject="เคมี", topic="สูตรลิวอิสและกฎออกเตต",
+)
+class CyanogenLewisCounts(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q21.PARAMS, *q21.VARIANTS))
+        answer = q21.solve(**values)
+        options = values["options"]
+        claims = tuple("พันธะเดี่ยว {}, พันธะคู่ {}, พันธะสาม {}, คู่โดดเดี่ยว {}".format(
+            *q21.OPTIONS[i]) for i in options)
+        mistakes = (
+            "chem.posn2561_counted_one_cyanogen_triple_bond",
+            "", "chem.posn2561_used_double_bonds_for_cyanogen",
+            "chem.posn2561_overcounted_cyanogen_bonds",
+        )
+        return GeneratedQuestion(
+            stem=[text("C₂N₂ เป็นโมเลกุลเป็นกลางที่ทุกอะตอมครบออกเตต "
+                       "สูตรลิวอิสมีพันธะเดี่ยว พันธะคู่ พันธะสาม "
+                       "และอิเล็กตรอนคู่โดดเดี่ยวกี่คู่ตามลำดับ")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="สูตรลิวอิสและกฎออกเตต",
+            hint=[text("วางโครง N–C–C–N แล้วเติมพันธะให้ C มีสี่และ N มีสามพันธะ")],
         )
