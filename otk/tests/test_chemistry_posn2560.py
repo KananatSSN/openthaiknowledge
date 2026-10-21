@@ -12,6 +12,7 @@ from otk.sheets.posn2560_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
     q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
+    q61, q62, q63,
 )
 
 
@@ -192,6 +193,13 @@ def test_chloride_dilution_mixed_solution_and_boiling_variants():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_written_ion_configs_oxidation_extremes_and_decay_variants():
+    for module in (q61, q62, q63):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -214,7 +222,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 61)))
+@pytest.mark.parametrize("number", tuple(range(1, 64)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -690,7 +698,7 @@ def test_generated_answers_follow_the_written_data(number):
                 r"([\d.]+) cm³", stem,
             ).groups()
             expected = f"{q59.check(first_molar=float(first_molar), first_ml=float(first_ml), second_molar=float(second_molar), second_ml=float(second_ml), final_ml=float(final_ml)):.1f}"
-        else:
+        elif number == 60:
             solution_freeze, benzene_freeze, benzene_kf, benzene_kb, sucrose_mol, water_kg, water_kb = re.search(
                 r"A ของตัวละลายไม่แตกตัวในเบนซีนแข็งตัวที่ ([\d.]+) °C \(เบนซีนบริสุทธิ์ "
                 r"([\d.]+) °C; Kf=([\d.]+), Kb=([\d.]+) °C/m\) "
@@ -698,5 +706,24 @@ def test_generated_answers_follow_the_written_data(number):
                 r"\(Kb น้ำ=([\d.]+) °C/m\)", stem,
             ).groups()
             expected = f"{q60.check(benzene_freeze=float(benzene_freeze), solution_freeze=float(solution_freeze), benzene_kf=float(benzene_kf), benzene_kb=float(benzene_kb), sucrose_mol=float(sucrose_mol), water_kg=float(water_kg), water_kb=float(water_kb)):.3f}"
+        elif number == 61:
+            d, offset = re.search(
+                r"X²⁺ จัดเรียงอิเล็กตรอนเป็น \[Ar\]3d(\d+) "
+                r"และ Y มีเลขอะตอมมากกว่า X (\d+)", stem,
+            ).groups()
+            x_config, y_config = q61.check(x2_d=int(d), y_offset=int(offset))
+            expected = f"{x_config}; {y_config}"
+        elif number == 62:
+            formulas = tuple(re.search(r"พิจารณา ([A-Za-z0-9, ]+) สารใด", stem)[1].split(", "))
+            high, high_ox, low, low_ox = q62.check(formulas=formulas)
+            expected = f"{high} ({high_ox:+d}); {low} ({low_ox:+d})"
+        else:
+            half_life, initial, decayed = re.search(
+                r"I-131 มีครึ่งชีวิต ([\d.]+) วัน เริ่มต้น ([\d.]+) g "
+                r"เมื่อสลายไป ([\d.]+)%", stem,
+            ).groups()
+            days, mass = q63.check(half_life_days=float(half_life),
+                                   initial_g=float(initial), decayed_percent=float(decayed))
+            expected = f"{days:.1f}, {mass:.1f}"
         assert answer == expected
         assert len(question.choices) == 4

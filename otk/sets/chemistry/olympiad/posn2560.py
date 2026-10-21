@@ -14,6 +14,7 @@ from otk.sheets.posn2560_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
     q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
+    q61, q62, q63,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -2099,5 +2100,91 @@ class BoilingElevationDifference(ChemistrySheet):
                 named("chem.added_both_boiling_elevations", f"{elevation_a + elevation_c:.3f}"),
                 named("chem.used_benzene_freezing_depression_as_boiling_elevation",
                       f"{depression_a - elevation_c:.3f}"),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q61", display_name={"th": "การจัดเรียงอิเล็กตรอนของธาตุข้างเคียง"},
+    level=LEVEL, subject="เคมี", topic="การจัดเรียงอิเล็กตรอนและการเกิดไอออน",
+)
+class NeighbouringTransitionElementConfigurations(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q61.PARAMS, *q61.VARIANTS))
+        d, offset = values["x2_d"], values["y_offset"]
+        y_atomic = 20 + d + offset
+        x_config, y_plus_config = q61.solve(**values)
+        x_ion = q61._format((d, 0, 0))
+        y_neutral = q61._format(q61._ground(y_atomic))
+        y_double = q61._format(q61._remove(q61._ground(y_atomic), 2))
+        fmt = lambda x, y: f"{x}; {y}"
+        return MathDraw(
+            "", fmt(x_config, y_plus_config),
+            prompt=(f"ไอออน X²⁺ จัดเรียงอิเล็กตรอนเป็น [Ar]3d{d} "
+                    f"และ Y มีเลขอะตอมมากกว่า X {offset} "
+                    "การจัดเรียงของอะตอม X และไอออน Y⁺ ตามลำดับคือข้อใด "
+                    "(เขียนแกน [Ar])"),
+            hint="นับอิเล็กตรอนของ X²⁺ แล้วเติมสองเพื่อหาเลขอะตอม X; ไอออนเสียอิเล็กตรอนชั้นนอกก่อน",
+            distractors=[
+                named("chem.kept_x_dication_configuration_for_atom",
+                      fmt(x_ion, y_plus_config)),
+                named("chem.kept_y_neutral_configuration_for_cation",
+                      fmt(x_config, y_neutral)),
+                named("chem.removed_two_electrons_from_y_instead_of_one",
+                      fmt(x_config, y_double)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q62", display_name={"th": "ออกซิเดชันสูงสุดและต่ำสุดของแฮโลเจน"},
+    level=LEVEL, subject="เคมี", topic="เลขออกซิเดชันของแฮโลเจน",
+)
+class HalogenOxidationExtremes(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q62.PARAMS, *q62.VARIANTS))
+        formulas = values["formulas"]
+        high, _, low, _ = q62.solve(**values)
+        ordered = sorted(formulas, key=lambda formula: q62.OXIDATION[formula])
+        fmt = lambda hi, lo: f"{hi} ({q62.OXIDATION[hi]:+d}); {lo} ({q62.OXIDATION[lo]:+d})"
+        return MathDraw(
+            "", fmt(high, low),
+            prompt=(f"พิจารณา {', '.join(formulas)} "
+                    "สารใดมีเลขออกซิเดชันของแฮโลเจนสูงสุดและต่ำสุด "
+                    "พร้อมค่าเลขออกซิเดชันตามลำดับ"),
+            hint="ให้ O เป็น −2 ยกเว้น OF2 ซึ่ง F เป็น −1 แล้วดุลผลรวมเลขออกซิเดชัน",
+            distractors=[
+                named("chem.swapped_halogen_oxidation_extremes", fmt(low, high)),
+                named("chem.chose_second_highest_halogen_oxidation", fmt(ordered[-2], low)),
+                named("chem.chose_second_lowest_halogen_oxidation", fmt(high, ordered[1])),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q63", display_name={"th": "เวลาและมวลที่เหลือจากครึ่งชีวิต"},
+    level=LEVEL, subject="เคมี", topic="ครึ่งชีวิตและการสลายกัมมันตรังสี",
+)
+class Iodine131DecayTimeAndMass(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q63.PARAMS, *q63.VARIANTS))
+        elapsed, remaining = q63.solve(**values)
+        half_life, initial = values["half_life_days"], values["initial_g"]
+        remaining_fraction = 1 - values["decayed_percent"] / 100
+        fmt = lambda days, mass: f"{days:.1f}, {mass:.1f}"
+        return MathDraw(
+            "", fmt(elapsed, remaining),
+            prompt=(f"I-131 มีครึ่งชีวิต {half_life:.1f} วัน เริ่มต้น {initial:.1f} g "
+                    f"เมื่อสลายไป {values['decayed_percent']:.2f}% "
+                    "เวลาที่ผ่านไป (วัน) และมวลที่เหลือ (g) เป็นเท่าใด "
+                    "(ตอบหนึ่งตำแหน่งตามลำดับ)"),
+            hint="แปลงร้อยละที่สลายเป็นเศษส่วนที่เหลือ แล้วนับจำนวนครั้งที่มวลลดลงครึ่งหนึ่ง",
+            distractors=[
+                named("chem.used_one_half_life_for_radioactive_decay",
+                      fmt(half_life, initial / 2)),
+                named("chem.reported_decayed_mass_as_remaining",
+                      fmt(elapsed, initial - remaining)),
+                named("chem.treated_decay_fraction_as_linear_time",
+                      fmt(half_life / remaining_fraction, remaining)),
             ],
         )

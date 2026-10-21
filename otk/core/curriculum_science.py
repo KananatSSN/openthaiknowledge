@@ -4152,6 +4152,7 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q52", "chem.posn2560_q53", "chem.posn2560_q54",
     "chem.posn2560_q55", "chem.posn2560_q56", "chem.posn2560_q57",
     "chem.posn2560_q58", "chem.posn2560_q59", "chem.posn2560_q60",
+    "chem.posn2560_q61", "chem.posn2560_q62", "chem.posn2560_q63",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4214,6 +4215,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q58": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สัดส่วนไอออนและการเจือจาง", "outside_scope"),
     "chem.posn2560_q59": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ความเข้มข้นสารละลายผสม", "outside_scope"),
     "chem.posn2560_q60": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สมบัติคอลลิเกทีฟของสารละลาย", "outside_scope"),
+    "chem.posn2560_q61": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การจัดเรียงอิเล็กตรอนและการเกิดไอออน", "outside_scope"),
+    "chem.posn2560_q62": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "เลขออกซิเดชันของแฮโลเจน", "outside_scope"),
+    "chem.posn2560_q63": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ครึ่งชีวิตและการสลายกัมมันตรังสี", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)

@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: source Part I questions 1–54 are reviewed, solved and generated (54/70). Source has 60 MC questions and 10 written questions with restarted numbering; written questions will be internal 61–70. Remaining 16 are pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 54/54 solver checks as whole-paper completion.",
+  "note": "PARTIAL: all 60 Part I questions and written questions 1–3 are reviewed, solved and generated (63/70). Written questions use internal numbers 61–70; written 4–10 remain pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 63/63 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -785,6 +785,45 @@
       "answer": "0.199",
       "generator": "chem.posn2560_q60",
       "note": "A has molality (5.50-5.01)/4.90=0.100 and boiling elevation 0.250 C; C's is 0.100*0.512=0.0512 C. Difference 0.1988 rounds to 0.199 C. The adaptation asks for this value directly."
+    },
+    {
+      "number": 61,
+      "solver": "q61",
+      "title": "การจัดเรียงอิเล็กตรอนของธาตุข้างเคียง",
+      "source": "Part II, written question 1, p16: X2+ is [Ar]3d8; Y has atomic number one higher. Neutral X is Ni [Ar]3d8 4s2; Y+ is Cu+ [Ar]3d10.",
+      "page": 16,
+      "figure": "Rendered p16 visually checked the ionic charges, orbital exponents, and both response blanks.",
+      "figure_asset": "",
+      "topic": "การจัดเรียงอิเล็กตรอนและการเกิดไอออน",
+      "answer": "('[Ar]3d8 4s2', '[Ar]3d10')",
+      "generator": "chem.posn2560_q61",
+      "note": "X2+ has 26 electrons so neutral X has Z=28 (Ni). Y has Z=29 (Cu), whose neutral [Ar]3d10 4s1 loses 4s1 to form Cu+."
+    },
+    {
+      "number": 62,
+      "solver": "q62",
+      "title": "ออกซิเดชันสูงสุดและต่ำสุดของแฮโลเจน",
+      "source": "Part II, written question 2, p16: among HBrO3, KClO2, NaIO4, Cl2O and OF2, the highest halogen oxidation number is I +7 in NaIO4 and lowest F -1 in OF2.",
+      "page": 16,
+      "figure": "Rendered p16 visually checked all five formulas and the two paired response blanks.",
+      "figure_asset": "",
+      "topic": "เลขออกซิเดชันของแฮโลเจน",
+      "answer": "('NaIO4', 7, 'OF2', -1)",
+      "generator": "chem.posn2560_q62",
+      "note": "Charge balance gives Br +5, Cl +3 in KClO2, I +7, Cl +1 in Cl2O, and F -1 in OF2."
+    },
+    {
+      "number": 63,
+      "solver": "q63",
+      "title": "เวลาและมวลที่เหลือจากครึ่งชีวิต",
+      "source": "Part II, written question 3, p16: I-131 has 8.1-day half-life; 75% of initial 50 g decays in 16.2 days and 12.5 g remains.",
+      "page": 16,
+      "figure": "Rendered p16 visually checked the isotope, 8.1 days, 50 g, 75% decayed and both answer units.",
+      "figure_asset": "",
+      "topic": "ครึ่งชีวิตและการสลายกัมมันตรังสี",
+      "answer": "(16.2, 12.5)",
+      "generator": "chem.posn2560_q63",
+      "note": "The remaining fraction is 0.25, which is two halvings; elapsed time is 2*8.1=16.2 days and mass is 50/4=12.5 g."
     }
   ]
 }

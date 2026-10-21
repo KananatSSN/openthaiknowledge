@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การจัดเรียงอิเล็กตรอนและการเกิดไอออน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.neighbouring_transition_element_ion_configurations.procedure",
+      "kind": "procedure",
+      "title": "การจัดเรียงอิเล็กตรอนของธาตุข้างเคียง",
+      "statement": "การจัดเรียงอิเล็กตรอนของไอออนบวกใช้จำนวนอิเล็กตรอนและเลขอะตอมระบุธาตุ แล้วเอาอิเล็กตรอนชั้นนอกออกเมื่อเกิดไอออน",
+      "steps": [
+        "นับอิเล็กตรอนของ X²⁺ แล้วบวกสองเพื่อหาเลขอะตอมของ X และใช้ความต่างเลขอะตอมหา Y",
+        "เขียนการจัดเรียงของอะตอม X และลบอิเล็กตรอนชั้นนอกหนึ่งตัวสำหรับ Y⁺"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 61
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q61"
+      ],
+      "note": "X2+ has 26 electrons so neutral X has Z=28 (Ni). Y has Z=29 (Cu), whose neutral [Ar]3d10 4s1 loses 4s1 to form Cu+."
+    }
+  ]
+}

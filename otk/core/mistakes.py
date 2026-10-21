@@ -37,6 +37,15 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.kept_x_dication_configuration_for_atom": {"th": "ใช้การจัดเรียงของ X²⁺ เป็นของอะตอม X", "en": "Used X2+ configuration for neutral X"},
+    "chem.kept_y_neutral_configuration_for_cation": {"th": "ใช้การจัดเรียงของอะตอม Y เป็นของ Y⁺", "en": "Used neutral Y configuration for Y+"},
+    "chem.removed_two_electrons_from_y_instead_of_one": {"th": "ดึงอิเล็กตรอนจาก Y สองตัวแทนหนึ่งตัว", "en": "Removed two electrons from Y instead of one"},
+    "chem.swapped_halogen_oxidation_extremes": {"th": "สลับสารที่มีเลขออกซิเดชันสูงสุดกับต่ำสุด", "en": "Swapped highest and lowest halogen oxidation states"},
+    "chem.chose_second_highest_halogen_oxidation": {"th": "เลือกเลขออกซิเดชันอันดับสองแทนค่าสูงสุด", "en": "Selected second-highest halogen oxidation state"},
+    "chem.chose_second_lowest_halogen_oxidation": {"th": "เลือกเลขออกซิเดชันอันดับสองแทนค่าต่ำสุด", "en": "Selected second-lowest halogen oxidation state"},
+    "chem.used_one_half_life_for_radioactive_decay": {"th": "นับการสลายเพียงหนึ่งครึ่งชีวิต", "en": "Counted only one half-life"},
+    "chem.reported_decayed_mass_as_remaining": {"th": "ตอบมวลที่สลายไปแทนมวลที่เหลือ", "en": "Reported decayed mass as remaining mass"},
+    "chem.treated_decay_fraction_as_linear_time": {"th": "คิดเวลาแปรผันตรงกับเศษส่วนการสลาย", "en": "Treated decay fraction as linear time"},
     "chem.reported_final_volume_as_added_water": {"th": "ตอบปริมาตรสุดท้ายแทนปริมาตรน้ำที่เติม", "en": "Reported final volume as water added"},
     "chem.ignored_two_chlorides_in_cdcl2": {"th": "นับ Cl⁻ เพียงหนึ่งโมลต่อ CdCl₂ หนึ่งโมล", "en": "Counted one chloride per CdCl2"},
     "chem.set_added_water_equal_to_stock": {"th": "คิดว่าน้ำที่เติมมีปริมาตรเท่ากับสต็อก", "en": "Set added water equal to stock volume"},
