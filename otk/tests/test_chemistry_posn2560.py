@@ -11,7 +11,7 @@ from otk.sheets.posn2560_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
-    q49, q50, q51, q52, q53, q54, q55, q56, q57,
+    q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
 )
 
 
@@ -185,6 +185,13 @@ def test_molality_hypochlorite_dilution_and_nitrate_masses_variants():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_chloride_dilution_mixed_solution_and_boiling_variants():
+    for module in (q58, q59, q60):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -207,7 +214,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 58)))
+@pytest.mark.parametrize("number", tuple(range(1, 61)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -660,12 +667,36 @@ def test_generated_answers_follow_the_written_data(number):
                 r"เติมน้ำจนได้ ([\d.]+) cm³", stem,
             ).groups()
             expected = f"{q56.check(percent_wv=float(percent), aliquot_ml=float(aliquot), final_ml=float(final)):.3f}"
-        else:
+        elif number == 57:
             volume, potassium, lead = re.search(
                 r"สารละลาย (\d+) cm³ ให้ KNO₃ ([\d.]+) mol/L และ Pb\(NO₃\)₂ "
                 r"([\d.]+) mol/L", stem,
             ).groups()
             k_mass, pb_mass = q57.check(volume_ml=int(volume), potassium_molar=float(potassium), lead_molar=float(lead))
             expected = f"{k_mass:.3f}, {pb_mass:.3f}"
+        elif number == 58:
+            stock_molar, chloride, target_molar = re.search(
+                r"CdCl₂ ([\d.]+) mol/L มี Cl⁻ (\d+) mmol .*?"
+                r"CdCl₂ ([\d.]+) mol/L", stem,
+            ).groups()
+            stock_ml, water_ml = q58.check(chloride_mmol=int(chloride),
+                                            stock_molar=float(stock_molar),
+                                            target_molar=float(target_molar))
+            expected = f"{stock_ml:.1f}, {water_ml:.1f}"
+        elif number == 59:
+            first_molar, first_ml, second_molar, second_ml, final_ml = re.search(
+                r"CaCl₂ ([\d.]+) mol/L ([\d.]+) cm³ กับ CaCl₂ "
+                r"([\d.]+) mol/L ([\d.]+) cm³ แล้วเติมน้ำจนเป็น "
+                r"([\d.]+) cm³", stem,
+            ).groups()
+            expected = f"{q59.check(first_molar=float(first_molar), first_ml=float(first_ml), second_molar=float(second_molar), second_ml=float(second_ml), final_ml=float(final_ml)):.1f}"
+        else:
+            solution_freeze, benzene_freeze, benzene_kf, benzene_kb, sucrose_mol, water_kg, water_kb = re.search(
+                r"A ของตัวละลายไม่แตกตัวในเบนซีนแข็งตัวที่ ([\d.]+) °C \(เบนซีนบริสุทธิ์ "
+                r"([\d.]+) °C; Kf=([\d.]+), Kb=([\d.]+) °C/m\) "
+                r"สารละลาย C มีซูโครส ([\d.]+) mol ในน้ำ ([\d.]+) kg "
+                r"\(Kb น้ำ=([\d.]+) °C/m\)", stem,
+            ).groups()
+            expected = f"{q60.check(benzene_freeze=float(benzene_freeze), solution_freeze=float(solution_freeze), benzene_kf=float(benzene_kf), benzene_kb=float(benzene_kb), sucrose_mol=float(sucrose_mol), water_kg=float(water_kg), water_kb=float(water_kb)):.3f}"
         assert answer == expected
         assert len(question.choices) == 4

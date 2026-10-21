@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความเข้มข้นสารละลายผสม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.mixed_calcium_chloride_mass_concentration.procedure",
+      "kind": "procedure",
+      "title": "มวลต่อปริมาตร CaCl₂ หลังผสมสารละลาย",
+      "statement": "การผสมสารละลาย CaCl₂ สองความเข้มข้นต้องรวมโมลจากแต่ละส่วนก่อนหารด้วยปริมาตรสุดท้าย; แปลงเป็น g/L ด้วยมวลโมลาร์",
+      "steps": [
+        "คำนวณโมล CaCl₂ ของแต่ละสารละลายแล้วบวกกัน",
+        "หารมวลรวมของ CaCl₂ ด้วยปริมาตรหลังเติมน้ำ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 59
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q59"
+      ],
+      "note": "Total CaCl2 is 0.020+0.012=0.032 mol in 0.100 L, giving 0.320 M or 35.52 g/L with molar mass 111. The other printed table claims do not match."
+    }
+  ]
+}

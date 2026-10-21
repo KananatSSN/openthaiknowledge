@@ -4151,6 +4151,7 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q49", "chem.posn2560_q50", "chem.posn2560_q51",
     "chem.posn2560_q52", "chem.posn2560_q53", "chem.posn2560_q54",
     "chem.posn2560_q55", "chem.posn2560_q56", "chem.posn2560_q57",
+    "chem.posn2560_q58", "chem.posn2560_q59", "chem.posn2560_q60",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4210,6 +4211,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q55": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "โมแลลและความหนาแน่นของสารละลาย", "outside_scope"),
     "chem.posn2560_q56": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ร้อยละมวลต่อปริมาตรและการเจือจาง", "outside_scope"),
     "chem.posn2560_q57": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "มวลสารสำหรับเตรียมสารละลายผสม", "outside_scope"),
+    "chem.posn2560_q58": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สัดส่วนไอออนและการเจือจาง", "outside_scope"),
+    "chem.posn2560_q59": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ความเข้มข้นสารละลายผสม", "outside_scope"),
+    "chem.posn2560_q60": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สมบัติคอลลิเกทีฟของสารละลาย", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)

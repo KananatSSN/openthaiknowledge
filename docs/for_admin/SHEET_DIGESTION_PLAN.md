@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–19, 2026-10-21
+### Chemistry POSN bank — waves 1–20, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–57 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **57/70 complete; 13 pending.**
+  1–60 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **60/70 complete; 10 written questions pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  fifty-seven reviewed items. Its `verify` result of 57/57 describes this batch, not the
+  sixty reviewed items. Its `verify` result of 60/60 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -2184,4 +2184,11 @@ TOTAL         338   316     17     4   66      255      6     11
 - Reviewed p13–p14 solution-concentration questions, including MC57's printed mass table; added independent solvers, three variants, generators and knowledge units for each.
 - MC55 converts 3.50 M H₂SO₄ at 1.20 g/cm³ to 4.08 mol/kg of water. MC56 gives 0.500 M NaClO after fourfold dilution. MC57 needs 0.505 g KNO₃ and 0.828 g Pb(NO₃)₂ for the specified mixed solution.
 - Wave validation: 57/57 sheet solvers and 174 variant runs green; 828 knowledge units in 694 files with zero problems; source coverage 57/70; focused sheet/set checks passed (381). The full suite remains deferred until the entire sheet is digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC58–60
+
+- Reviewed p14–p15 chloride-dilution, mixed CaCl₂ and colligative-property questions; added independently checked solvers, three variants, generators and knowledge units for each. This completes all 60 multiple-choice items; the ten written questions remain.
+- MC58 needs 6 cm³ CdCl₂ stock plus 12 cm³ added water. MC59's final CaCl₂ mass concentration is 35.5 g/L. MC60's true printed statement is that A's boiling-point elevation exceeds C's by 0.199 °C; the adaptation asks for that value directly.
+- Wave validation: 60/60 sheet solvers and 183 variant runs green; 831 knowledge units in 697 files with zero problems; source coverage 60/70; focused sheet/set checks passed (400). The full suite remains deferred until the ten written questions are digested.
 - New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.

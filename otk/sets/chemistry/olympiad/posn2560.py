@@ -13,7 +13,7 @@ from otk.sheets.posn2560_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
-    q49, q50, q51, q52, q53, q54, q55, q56, q57,
+    q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -2014,5 +2014,90 @@ class MixedNitratePreparationMasses(ChemistrySheet):
                 named("chem.halved_potassium_nitrate_mass", fmt(potassium / 2, lead)),
                 named("chem.halved_lead_nitrate_mass", fmt(potassium, lead / 2)),
                 named("chem.halved_both_nitrate_masses", fmt(potassium / 2, lead / 2)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q58", display_name={"th": "ปริมาตรสต็อก CdCl₂ และน้ำที่เติม"},
+    level=LEVEL, subject="เคมี", topic="สัดส่วนไอออนและการเจือจาง",
+)
+class CadmiumChlorideDilutionVolumes(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q58.PARAMS, *q58.VARIANTS))
+        stock_ml, water_ml = q58.solve(**values)
+        final_ml = stock_ml + water_ml
+        fmt = lambda x, y: f"{x:.1f}, {y:.1f}"
+        return MathDraw(
+            "", fmt(stock_ml, water_ml),
+            prompt=(f"สารละลาย CdCl₂ {values['stock_molar']:.1f} mol/L มี Cl⁻ "
+                    f"{values['chloride_mmol']} mmol ในปริมาตร X cm³ "
+                    f"เติมน้ำ Y cm³ แล้วได้ CdCl₂ {values['target_molar']:.1f} mol/L "
+                    "ค่า X และ Y ตามลำดับเป็นกี่ cm³ (ตอบหนึ่งตำแหน่ง)"),
+            hint="CdCl₂ หนึ่งโมลให้ Cl⁻ สองโมล; หา X ก่อน แล้วลบ X จากปริมาตรสุดท้าย",
+            distractors=[
+                named("chem.reported_final_volume_as_added_water", fmt(stock_ml, final_ml)),
+                named("chem.ignored_two_chlorides_in_cdcl2", fmt(2 * stock_ml, 2 * water_ml)),
+                named("chem.set_added_water_equal_to_stock", fmt(stock_ml, stock_ml)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q59", display_name={"th": "มวลต่อปริมาตร CaCl₂ หลังผสมสารละลาย"},
+    level=LEVEL, subject="เคมี", topic="ความเข้มข้นสารละลายผสม",
+)
+class MixedCalciumChlorideMassConcentration(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q59.PARAMS, *q59.VARIANTS))
+        answer = q59.solve(**values)
+        first = values["first_molar"] * values["first_ml"]
+        second = values["second_molar"] * values["second_ml"]
+        return MathDraw(
+            "", f"{answer:.1f}",
+            prompt=(f"ผสม CaCl₂ {values['first_molar']:.3f} mol/L "
+                    f"{values['first_ml']:.1f} cm³ กับ CaCl₂ "
+                    f"{values['second_molar']:.3f} mol/L "
+                    f"{values['second_ml']:.1f} cm³ แล้วเติมน้ำจนเป็น "
+                    f"{values['final_ml']:.1f} cm³ ความเข้มข้น CaCl₂ "
+                    "กี่ g/L (CaCl₂=111 g/mol; ตอบหนึ่งตำแหน่ง)"),
+            hint="รวมโมล CaCl₂ จากทั้งสองส่วน แล้วใช้ปริมาตรสุดท้าย",
+            distractors=[
+                named("chem.omitted_weaker_calcium_chloride_stock",
+                      f"{111 * first / values['final_ml']:.1f}"),
+                named("chem.used_premix_volume_for_calcium_chloride",
+                      f"{111 * (first + second) / (values['first_ml'] + values['second_ml']):.1f}"),
+                named("chem.omitted_second_chloride_in_molar_mass",
+                      f"{75.5 * (first + second) / values['final_ml']:.1f}"),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q60", display_name={"th": "เปรียบเทียบการเพิ่มจุดเดือดของสารละลาย"},
+    level=LEVEL, subject="เคมี", topic="สมบัติคอลลิเกทีฟของสารละลาย",
+)
+class BoilingElevationDifference(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q60.PARAMS, *q60.VARIANTS))
+        answer = q60.solve(**values)
+        depression_a = values["benzene_freeze"] - values["solution_freeze"]
+        elevation_a = depression_a * values["benzene_kb"] / values["benzene_kf"]
+        elevation_c = values["sucrose_mol"] * values["water_kb"] / values["water_kg"]
+        return MathDraw(
+            "", f"{answer:.3f}",
+            prompt=(f"สารละลาย A ของตัวละลายไม่แตกตัวในเบนซีนแข็งตัวที่ "
+                    f"{values['solution_freeze']:.3f} °C "
+                    f"(เบนซีนบริสุทธิ์ {values['benzene_freeze']:.3f} °C; "
+                    f"Kf={values['benzene_kf']:.2f}, Kb={values['benzene_kb']:.2f} °C/m) "
+                    f"สารละลาย C มีซูโครส {values['sucrose_mol']:.3f} mol "
+                    f"ในน้ำ {values['water_kg']:.2f} kg (Kb น้ำ={values['water_kb']:.3f} °C/m) "
+                    "ค่า ΔTb ของ A มากกว่าของ C กี่ °C (ตอบสามตำแหน่ง)"),
+            hint="ใช้ ΔTf ของ A หาโมแลล แล้วคำนวณ ΔTb ของ A และ C ก่อนหาผลต่าง",
+            distractors=[
+                named("chem.reported_only_benzene_boiling_elevation", f"{elevation_a:.3f}"),
+                named("chem.added_both_boiling_elevations", f"{elevation_a + elevation_c:.3f}"),
+                named("chem.used_benzene_freezing_depression_as_boiling_elevation",
+                      f"{depression_a - elevation_c:.3f}"),
             ],
         )

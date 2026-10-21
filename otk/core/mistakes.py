@@ -37,6 +37,15 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.reported_final_volume_as_added_water": {"th": "ตอบปริมาตรสุดท้ายแทนปริมาตรน้ำที่เติม", "en": "Reported final volume as water added"},
+    "chem.ignored_two_chlorides_in_cdcl2": {"th": "นับ Cl⁻ เพียงหนึ่งโมลต่อ CdCl₂ หนึ่งโมล", "en": "Counted one chloride per CdCl2"},
+    "chem.set_added_water_equal_to_stock": {"th": "คิดว่าน้ำที่เติมมีปริมาตรเท่ากับสต็อก", "en": "Set added water equal to stock volume"},
+    "chem.omitted_weaker_calcium_chloride_stock": {"th": "ไม่นับ CaCl₂ จากสารละลายที่เจือจางกว่า", "en": "Omitted CaCl2 from the weaker stock"},
+    "chem.used_premix_volume_for_calcium_chloride": {"th": "ใช้ปริมาตรก่อนเติมน้ำแทนปริมาตรสุดท้าย", "en": "Used premix rather than final volume"},
+    "chem.omitted_second_chloride_in_molar_mass": {"th": "คิดมวลโมลาร์ CaCl₂ ด้วยคลอรีนเพียงหนึ่งอะตอม", "en": "Omitted one chloride from CaCl2 molar mass"},
+    "chem.reported_only_benzene_boiling_elevation": {"th": "ตอบการเพิ่มจุดเดือดของ A โดยไม่ลบของ C", "en": "Reported A's boiling elevation without subtracting C's"},
+    "chem.added_both_boiling_elevations": {"th": "บวกการเพิ่มจุดเดือดทั้งสองแทนการหาผลต่าง", "en": "Added both boiling elevations"},
+    "chem.used_benzene_freezing_depression_as_boiling_elevation": {"th": "ใช้การลดจุดเยือกแข็งแทนการเพิ่มจุดเดือดของ A", "en": "Used A's freezing depression as its boiling elevation"},
     "chem.used_solution_mass_for_molality": {"th": "ใช้มวลสารละลายแทนมวลตัวทำละลาย", "en": "Used solution mass as solvent mass"},
     "chem.assumed_one_kg_solution": {"th": "คิดว่าสารละลายหนึ่งลิตรมีมวลหนึ่งกิโลกรัม", "en": "Assumed one litre of solution weighs one kilogram"},
     "chem.used_solute_mass_for_molality": {"th": "ใช้มวลตัวละลายแทนมวลตัวทำละลาย", "en": "Used solute mass as solvent mass"},
