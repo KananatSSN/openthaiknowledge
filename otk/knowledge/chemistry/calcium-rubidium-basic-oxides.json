@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ออกไซด์โลหะและสารละลายเบส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.calcium_rubidium_basic_oxides.procedure",
+      "kind": "procedure",
+      "title": "ออกไซด์ที่ให้สารละลายเบส",
+      "statement": "เลขอะตอม 7, 16, 20, 37 คือ N, S, Ca, Rb; CaO และ Rb₂O ทำปฏิกิริยากับน้ำให้ไฮดรอกไซด์ซึ่งทำให้ฟีนอลฟ์ทาลีนสีชมพู",
+      "steps": [
+        "ระบุธาตุจากเลขอะตอม แล้วแยกโลหะจากอโลหะ",
+        "พิจารณาผลิตภัณฑ์เมื่อออกไซด์ทำปฏิกิริยากับน้ำ และเลือกคู่ที่ให้เบสทั้งสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q18"
+      ],
+      "note": "Source choice ง is the pair Z=20 and 37: CaO and Rb2O give hydroxide-containing basic solutions; N and S oxides do not. https://chem.libretexts.org/Bookshelves/Inorganic_Chemistry/Supplemental_Modules_and_Websites_%28Inorganic_Chemistry%29/Descriptive_Chemistry/Main_Group_Reactions/Reactions_of_Main_Group_Elements_with_Oxygen/Main_Group_Oxides_Reactions"
+    }
+  ]
+}

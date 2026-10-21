@@ -7,7 +7,7 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15,
+    q13, q14, q15, q16, q17, q18,
 )
 
 
@@ -506,4 +506,101 @@ class AtomicNumberIncreaseRadiation(QuestionType):
                                 if i != answer)),
             topic="การสลายตัวแบบบีตาลบ",
             hint=[text("β⁻ เปลี่ยนนิวตรอนเป็นโปรตอน ส่วน β⁺ เปลี่ยนโปรตอนเป็นนิวตรอน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q16", display_name={"th": "กราฟมวลสารกัมมันตรังสีตามครึ่งชีวิต"},
+    level=LEVEL, subject="เคมี", topic="กฎการสลายตัวและครึ่งชีวิต",
+)
+class ParentMassDecayGraph(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q16.PARAMS, *q16.VARIANTS))
+        answer = q16.solve(**values)
+        initial, half_life = values["initial"], values["half_life"]
+        times = (0, half_life, 2 * half_life)
+        claims = tuple(
+            ", ".join(f"m({time})={mass}" for time, mass in zip(times, masses))
+            for masses in q16.graph_values(initial, half_life)
+        )
+        mistakes = (
+            "", "chem.posn2561_graphed_daughter_instead_of_parent",
+            "chem.posn2561_halved_at_half_the_stated_half_life",
+            "chem.posn2561_graphed_fast_daughter_growth",
+        )
+        return GeneratedQuestion(
+            stem=[text(f"ธาตุกัมมันตรังสี X เริ่มต้นมวล {initial} หน่วย "
+                       f"และมีครึ่งชีวิต {half_life} วินาที "
+                       "ข้อใดให้ค่ามวล X ตามเวลาอย่างถูกต้อง")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[i], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="กฎการสลายตัวและครึ่งชีวิต",
+            hint=[text("มวลของ X ต้องเริ่มที่มวลตั้งต้นและเหลือครึ่งหนึ่งทุกหนึ่งครึ่งชีวิต")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q17", display_name={"th": "จำแนกปฏิกิริยานิวเคลียร์ฟิวชัน"},
+    level=LEVEL, subject="เคมี", topic="ฟิวชันและปฏิกิริยานิวเคลียร์",
+)
+class IdentifyNuclearFusion(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q17.PARAMS, *q17.VARIANTS))
+        answer = q17.solve(**values)
+        options = values["options"]
+        claims = tuple(q17.REACTIONS[i] for i in options)
+        mistakes = (
+            "chem.posn2561_confused_beta_decay_with_fusion",
+            "chem.posn2561_confused_neutron_exchange_with_fusion",
+            "", "chem.posn2561_confused_fission_with_fusion",
+        )
+        return GeneratedQuestion(
+            stem=[text("สมการนิวเคลียร์ข้อใดแสดงปฏิกิริยาฟิวชัน")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="ฟิวชันและปฏิกิริยานิวเคลียร์",
+            hint=[text("ฟิวชันเริ่มจากนิวเคลียสเบาสองตัวรวมกันให้ผลิตภัณฑ์ที่หนักกว่า")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q18", display_name={"th": "ออกไซด์ที่ให้สารละลายเบส"},
+    level=LEVEL, subject="เคมี", topic="ออกไซด์โลหะและสารละลายเบส",
+)
+class BasicOxideElements(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q18.PARAMS, *q18.VARIANTS))
+        answer = q18.solve(**values)
+        options = values["options"]
+        labels = ("A", "D", "L", "M")
+        claims = tuple(f"ธาตุ {labels[q18.PAIRS[i][0]]} และ "
+                       f"{labels[q18.PAIRS[i][1]]}" for i in options)
+        mistakes = (
+            "chem.posn2561_treated_both_nonmetal_oxides_as_basic",
+            "chem.posn2561_treated_nitrogen_oxide_as_basic",
+            "chem.posn2561_treated_sulfur_oxide_as_basic",
+            "",
+        )
+        assignments = ", ".join(f"{label}={z}" for label, z in
+                                zip(labels, q18.ATOMIC_NUMBERS))
+        return GeneratedQuestion(
+            stem=[text(f"ธาตุสมมติมีเลขอะตอม {assignments} ตามลำดับ "
+                       "ออกไซด์ของธาตุคู่ใดทำปฏิกิริยากับน้ำให้สารละลาย "
+                       "ที่เปลี่ยนฟีนอลฟ์ทาลีนจากไม่มีสีเป็นสีชมพู")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="ออกไซด์โลหะและสารละลายเบส",
+            hint=[text("จับเลขอะตอมเป็น N, S, Ca, Rb แล้วพิจารณาไฮดรอกไซด์จากออกไซด์โลหะ")],
         )

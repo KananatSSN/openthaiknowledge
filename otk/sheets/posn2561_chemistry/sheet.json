@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 15/75: all 75 items extracted; Part I questions 1–15 reviewed, independently solved, claimed by knowledge units and linked to generators. MC13 table transcribed into words; MC14 distinguishes complexes from salts/oxides; MC15 clarifies β− versus β+. Remaining 60 await review.",
+  "note": "PARTIAL 18/75: all 75 items extracted; Part I questions 1–18 reviewed, independently solved, claimed by knowledge units and linked to generators. MC16 four graphs are represented by mass-time values without copying artwork. Remaining 57 await review.",
   "items": [
     {
       "number": 1,
@@ -200,6 +200,45 @@
       "answer": "1",
       "generator": "chem.posn2561_q15",
       "note": "Source choice ข is beta-minus emission. Because beta can refer to beta-minus or beta-plus, the adaptation labels the choices explicitly β− and β+. https://gnssn.iaea.org/main/bptc/BPTC%20Module%20Documents/Module01%20Nuclear%20physics%20and%20reactor%20theory.pdf"
+    },
+    {
+      "number": 16,
+      "solver": "q16",
+      "title": "กราฟมวลสารกัมมันตรังสีตามครึ่งชีวิต",
+      "source": "Part I, question 16, p5: choose the graph of parent mass against time for a 20-second half-life.",
+      "page": 5,
+      "figure": "Four source decay/growth graphs were visually reviewed.",
+      "figure_asset": "",
+      "topic": "กฎการสลายตัวและครึ่งชีวิต",
+      "answer": "0",
+      "generator": "chem.posn2561_q16",
+      "note": "Source graph ก starts at the full parent mass, falls to half at 20 s and a quarter at 40 s. Graph ข shows product growth, graph ค halves at 10 s, and graph ง grows at that faster rate. Adaptation states equivalent numerical graph points and does not copy the figure. https://gnssn.iaea.org/main/bptc/BPTC%20Module%20Documents/Module01%20Nuclear%20physics%20and%20reactor%20theory.pdf"
+    },
+    {
+      "number": 17,
+      "solver": "q17",
+      "title": "จำแนกปฏิกิริยานิวเคลียร์ฟิวชัน",
+      "source": "Part I, question 17, p6: choose fusion among beta decay, neutron exchange, light-nucleus combination and uranium fission.",
+      "page": 6,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ฟิวชันและปฏิกิริยานิวเคลียร์",
+      "answer": "2",
+      "generator": "chem.posn2561_q17",
+      "note": "Source choice ค combines helium-3 with deuterium to produce helium-4 and a proton. The other choices are beta-minus decay, neutron-induced exchange and fission."
+    },
+    {
+      "number": 18,
+      "solver": "q18",
+      "title": "ออกไซด์ที่ให้สารละลายเบส",
+      "source": "Part I, question 18, p6: four abstract elements have atomic numbers 7, 16, 20 and 37; choose the pair whose oxides make phenolphthalein pink in water.",
+      "page": 6,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ออกไซด์โลหะและสารละลายเบส",
+      "answer": "3",
+      "generator": "chem.posn2561_q18",
+      "note": "Source choice ง is the pair Z=20 and 37: CaO and Rb2O give hydroxide-containing basic solutions; N and S oxides do not. https://chem.libretexts.org/Bookshelves/Inorganic_Chemistry/Supplemental_Modules_and_Websites_%28Inorganic_Chemistry%29/Descriptive_Chemistry/Main_Group_Reactions/Reactions_of_Main_Group_Elements_with_Oxygen/Main_Group_Oxides_Reactions"
     }
   ]
 }

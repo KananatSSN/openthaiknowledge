@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ฟิวชันและปฏิกิริยานิวเคลียร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.identify_light_nuclei_fusion_reaction.procedure",
+      "kind": "procedure",
+      "title": "จำแนกปฏิกิริยานิวเคลียร์ฟิวชัน",
+      "statement": "ฟิวชันคือนิวเคลียสเบาสองตัวรวมเป็นนิวเคลียสหนักกว่า; ³He กับ ²H ให้ ⁴He และโปรตอน ส่วนการสลายบีตาและฟิชชันไม่ใช่ฟิวชัน",
+      "steps": [
+        "แยกชนิดอนุภาคตั้งต้นของแต่ละสมการนิวเคลียร์",
+        "เลือกสมการที่นิวเคลียสเบาสองตัวเข้าร่วมและได้นิวเคลียสหนักกว่า"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q17"
+      ],
+      "note": "Source choice ค combines helium-3 with deuterium to produce helium-4 and a proton. The other choices are beta-minus decay, neutron-induced exchange and fission."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎการสลายตัวและครึ่งชีวิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.parent_mass_exponential_half_life_graph.procedure",
+      "kind": "procedure",
+      "title": "กราฟมวลสารกัมมันตรังสีตามครึ่งชีวิต",
+      "statement": "มวลของสารกัมมันตรังสีตั้งต้นลดแบบยกกำลัง m(t)=m₀2^(−t/t½); ที่หนึ่งครึ่งชีวิตเหลือครึ่ง และสองครึ่งชีวิตเหลือหนึ่งในสี่",
+      "steps": [
+        "ดูว่ากราฟเริ่มจากมวลสารตั้งต้น ไม่ใช่เริ่มจากศูนย์เหมือนผลิตภัณฑ์",
+        "ตรวจมวลที่เวลา t½ และ 2t½ เพื่อตัดกราฟที่ชันผิด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q16"
+      ],
+      "note": "Source graph ก starts at the full parent mass, falls to half at 20 s and a quarter at 40 s. Graph ข shows product growth, graph ค halves at 10 s, and graph ง grows at that faster rate. Adaptation states equivalent numerical graph points and does not copy the figure. https://gnssn.iaea.org/main/bptc/BPTC%20Module%20Documents/Module01%20Nuclear%20physics%20and%20reactor%20theory.pdf"
+    }
+  ]
+}

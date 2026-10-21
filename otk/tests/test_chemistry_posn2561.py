@@ -8,19 +8,19 @@ import pytest
 from otk.core import generate
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15,
+    q13, q14, q15, q16, q17, q18,
 )
 
 
 def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
-                   q10, q11, q12, q13, q14, q15):
+                   q10, q11, q12, q13, q14, q15, q16, q17, q18):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 16))
+@pytest.mark.parametrize("number", range(1, 19))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -140,10 +140,38 @@ def test_generated_answers_follow_the_stem(number):
             eligible = [choice.content[0].text for choice in question.choices
                         if choice.content[0].text in oxidation]
             assert answer == max(eligible, key=lambda compound: oxidation[compound])
-        else:
+        elif number == 15:
             z, a, daughter = map(int, re.search(
                 r"เลขอะตอม (\d+) และเลขมวล (\d+).*?เลขอะตอม (\d+)", stem,
             ).groups())
             assert daughter == z + 1 and a > z
             assert answer == "β⁻"
+        elif number == 16:
+            initial, half_life = map(int, re.search(
+                r"เริ่มต้นมวล (\d+) หน่วย และมีครึ่งชีวิต (\d+)", stem,
+            ).groups())
+            valid = []
+            for choice in question.choices:
+                masses = [int(value) for value in re.findall(r"m\(\d+\)=(\d+)",
+                                                       choice.content[0].text)]
+                if masses == [initial, initial // 2, initial // 4]:
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+            assert f"m({half_life})=" in answer
+        elif number == 17:
+            assert answer == "³₂He + ²₁H → ⁴₂He + ¹₁H"
+            assert set(choice.content[0].text for choice in question.choices) == set(
+                q17.REACTIONS
+            )
+        else:
+            assignments = dict((label, int(z)) for label, z in re.findall(
+                r"([ADLM])=(\d+)", stem,
+            ))
+            assert assignments == {"A": 7, "D": 16, "L": 20, "M": 37}
+            valid = []
+            for choice in question.choices:
+                left, right = re.findall(r"[ADLM]", choice.content[0].text)
+                if {assignments[left], assignments[right]} == {20, 37}:
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
         assert len(question.choices) == 4
