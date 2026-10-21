@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "วัฏจักรบอร์น–ฮาเบอร์และพลังงานแลตทิซ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.born_haber_lattice_formation_enthalpy.procedure",
+      "kind": "procedure",
+      "title": "เอนทัลปีการเกิดผลึกจากวัฏจักรบอร์น–ฮาเบอร์",
+      "statement": "วัฏจักรบอร์น–ฮาเบอร์ให้เอนทัลปีการเกิดสารเป็นผลรวมการระเหิด ไอออไนเซชัน แตกพันธะ รับอิเล็กตรอน และการเกิดผลึกจากไอออนแก๊ส",
+      "steps": [
+        "รวมพลังงานทุกขั้นก่อนเกิดผลึกและนับ electron affinity สองครั้งสำหรับ G₂",
+        "ลบผลรวมนี้ออกจากเอนทัลปีการเกิดเพื่อหาเอนทัลปีแลตทิซแบบเกิดผลึก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 65
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q65"
+      ],
+      "note": "The printed final blank says MgF2 although the question uses abstract M/G and provides no identities; adaptation consistently uses MG2. Lattice energy is explicitly defined for gaseous ions forming the crystal, so its sign is negative; dissociation would be +2535."
+    }
+  ]
+}

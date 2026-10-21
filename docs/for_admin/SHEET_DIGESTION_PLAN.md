@@ -59,17 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–21, 2026-10-21
+### Chemistry POSN bank — waves 1–22, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–60 and written questions 1–3 have been reviewed, solved independently,
-  claimed by knowledge units, and linked to generators. **63/70 complete; 7 written questions pending.**
+  1–60 and written questions 1–6 have been reviewed, solved independently,
+  claimed by knowledge units, and linked to generators. **66/70 complete; 4 written questions pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  sixty-three reviewed items. Its `verify` result of 63/63 describes this batch, not the
+  sixty-six reviewed items. Its `verify` result of 66/66 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -2198,4 +2198,11 @@ TOTAL         338   316     17     4   66      255      6     11
 - Reviewed p16's three written prompts and answer blanks; added paired-answer solvers, independent checks, three variants, generators and knowledge units for each.
 - Written 1 gives neutral Ni as [Ar]3d8 4s2 and Cu⁺ as [Ar]3d10. Written 2 selects NaIO₄ with I at +7 and OF₂ with F at −1. Written 3 leaves 12.5 g I-131 after 16.2 days (two half-lives).
 - Wave validation: 63/63 sheet solvers and 192 variant runs green; 834 knowledge units in 700 files with zero problems; source coverage 63/70; focused sheet/set checks passed (419). The full suite remains deferred until the seven remaining written questions are digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, written 4–6 (internal 64–66)
+
+- Reviewed p17–p18 periodic-trend, Born–Haber and bond-energy questions; added independently checked solvers, three variants, generators and knowledge units for each.
+- Written 4 gives G<E<D<A and basic oxides A₂E/DE (Na₂O/MgO). Its adaptation asks explicitly for basic oxides. Written 5 gives lattice *formation* enthalpy −2535 kJ/mol; its final source blank says MgF₂ despite abstract M/G in the data, so the adaptation uses MG₂. Written 6 finds both reactions exothermic with a 190 kJ per-mole-product enthalpy difference.
+- Wave validation: 66/66 sheet solvers and 201 variant runs green; 837 knowledge units in 703 files with zero problems; source coverage 66/70; focused sheet/set checks passed (438). The full suite remains deferred until the four remaining written questions are digested.
 - New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.

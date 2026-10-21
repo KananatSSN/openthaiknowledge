@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: all 60 Part I questions and written questions 1–3 are reviewed, solved and generated (63/70). Written questions use internal numbers 61–70; written 4–10 remain pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 63/63 solver checks as whole-paper completion.",
+  "note": "PARTIAL: all 60 Part I questions and written questions 1–6 are reviewed, solved and generated (66/70). Written questions use internal numbers 61–70; written 7–10 remain pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 66/66 solver checks as whole-paper completion.",
   "items": [
     {
       "number": 1,
@@ -824,6 +824,45 @@
       "answer": "(16.2, 12.5)",
       "generator": "chem.posn2560_q63",
       "note": "The remaining fraction is 0.25, which is two halvings; elapsed time is 2*8.1=16.2 days and mass is 50/4=12.5 g."
+    },
+    {
+      "number": 64,
+      "solver": "q64",
+      "title": "แนวโน้มความเป็นโลหะและออกไซด์เบส",
+      "source": "Part II, written question 4, p17: A=group IA period 3 (Na), D=group IIA period 3 (Mg), E=group VIA period 2 (O), G=group VIIA period 2 (F). Metallic character grows G<E<D<A; basic oxides are A2E and DE.",
+      "page": 17,
+      "figure": "Rendered p17 visually checked all group/period rows, the ordering request and the compound blank.",
+      "figure_asset": "",
+      "topic": "แนวโน้มตารางธาตุและออกไซด์ของโลหะ",
+      "answer": "(('F', 'O', 'Mg', 'Na'), ('Na2O', 'MgO'))",
+      "generator": "chem.posn2560_q64",
+      "note": "The adaptation asks for real symbols and basic oxides, clarifying the source's broader 'basic compounds' wording. Na2O and MgO are the two metal oxides from the supplied elements; NaF and MgF2 are not counted as basic oxides."
+    },
+    {
+      "number": 65,
+      "solver": "q65",
+      "title": "เอนทัลปีการเกิดผลึกจากวัฏจักรบอร์น–ฮาเบอร์",
+      "source": "Part II, written question 5, p17: for M(s)+G2(g)->MG2(s), sublimation 150, IE1 750, IE2 1450, dissociation 245, EA(G) -350 (twice), formation -640 kJ/mol; lattice formation is -2535 kJ/mol.",
+      "page": 17,
+      "figure": "Rendered p17 visually checked all six energy rows, signs and the final answer label.",
+      "figure_asset": "",
+      "topic": "วัฏจักรบอร์น–ฮาเบอร์และพลังงานแลตทิซ",
+      "answer": "-2535",
+      "generator": "chem.posn2560_q65",
+      "note": "The printed final blank says MgF2 although the question uses abstract M/G and provides no identities; adaptation consistently uses MG2. Lattice energy is explicitly defined for gaseous ions forming the crystal, so its sign is negative; dissociation would be +2535."
+    },
+    {
+      "number": 66,
+      "solver": "q66",
+      "title": "ชนิดปฏิกิริยาและผลต่างพลังงานพันธะ",
+      "source": "Part II, written question 6, p18: H-H 435, O=O 500, O-H 460, N≡N 945, N-H 390 kJ/mol. Formation of one mole H2O has X=-235, NH3 has Y=-45; both exothermic and their enthalpies differ by 190 kJ.",
+      "page": 18,
+      "figure": "Rendered p18 visually checked bond-energy table, two unbalanced reactions and all response blanks.",
+      "figure_asset": "",
+      "topic": "พลังงานพันธะและเอนทัลปีปฏิกิริยา",
+      "answer": "('คายพลังงาน', 'คายพลังงาน', 190.0)",
+      "generator": "chem.posn2560_q66",
+      "note": "For each mole H2O, break H-H plus half O=O and form two O-H: -235 kJ. For each mole NH3, break half N≡N and 1.5 H-H, form three N-H: -45 kJ."
     }
   ]
 }

@@ -12,7 +12,7 @@ from otk.sheets.posn2560_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
     q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
-    q61, q62, q63,
+    q61, q62, q63, q64, q65, q66,
 )
 
 
@@ -200,6 +200,13 @@ def test_written_ion_configs_oxidation_extremes_and_decay_variants():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_written_metallicity_lattice_and_bond_energy_variants():
+    for module in (q64, q65, q66):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -222,7 +229,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 64)))
+@pytest.mark.parametrize("number", tuple(range(1, 67)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -717,7 +724,7 @@ def test_generated_answers_follow_the_written_data(number):
             formulas = tuple(re.search(r"พิจารณา ([A-Za-z0-9, ]+) สารใด", stem)[1].split(", "))
             high, high_ox, low, low_ox = q62.check(formulas=formulas)
             expected = f"{high} ({high_ox:+d}); {low} ({low_ox:+d})"
-        else:
+        elif number == 63:
             half_life, initial, decayed = re.search(
                 r"I-131 มีครึ่งชีวิต ([\d.]+) วัน เริ่มต้น ([\d.]+) g "
                 r"เมื่อสลายไป ([\d.]+)%", stem,
@@ -725,5 +732,25 @@ def test_generated_answers_follow_the_written_data(number):
             days, mass = q63.check(half_life_days=float(half_life),
                                    initial_g=float(initial), decayed_percent=float(decayed))
             expected = f"{days:.1f}, {mass:.1f}"
+        elif number == 64:
+            period = int(re.search(r"A อยู่หมู่ IA คาบ (\d+)", stem)[1])
+            order, oxides = q64.check(metal_period=period)
+            expected = f"{' < '.join(order)}; {', '.join(oxides)}"
+        elif number == 65:
+            sublimation, first_ie, second_ie, dissociation, affinity, formation = re.search(
+                r"M\(s\)→M\(g\)=(-?\d+), IE₁=(-?\d+), IE₂=(-?\d+), "
+                r"G₂→2G=(-?\d+), EA ของ G=(-?\d+), และ ΔHf\(MG₂\)=(-?\d+)", stem,
+            ).groups()
+            expected = str(q65.check(sublimation=int(sublimation), first_ie=int(first_ie),
+                                     second_ie=int(second_ie), dissociation=int(dissociation),
+                                     electron_affinity=int(affinity), formation=int(formation)))
+        else:
+            hh, oo, oh, nn, nh = re.search(
+                r"H–H=(\d+), O=O=(\d+), O–H=(\d+), N≡N=(\d+), N–H=(\d+)", stem,
+            ).groups()
+            water_type, ammonia_type, difference = q66.check(
+                hh=int(hh), oo=int(oo), oh=int(oh), nn=int(nn), nh=int(nh),
+            )
+            expected = f"{water_type}; {ammonia_type}; {difference:.1f} kJ"
         assert answer == expected
         assert len(question.choices) == 4

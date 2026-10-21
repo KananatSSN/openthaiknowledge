@@ -14,7 +14,7 @@ from otk.sheets.posn2560_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
     q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
-    q61, q62, q63,
+    q61, q62, q63, q64, q65, q66,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -2187,4 +2187,105 @@ class Iodine131DecayTimeAndMass(ChemistrySheet):
                 named("chem.treated_decay_fraction_as_linear_time",
                       fmt(half_life / remaining_fraction, remaining)),
             ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q64", display_name={"th": "แนวโน้มความเป็นโลหะและออกไซด์เบส"},
+    level=LEVEL, subject="เคมี", topic="แนวโน้มตารางธาตุและออกไซด์ของโลหะ",
+)
+class MetallicityAndBasicOxides(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q64.PARAMS, *q64.VARIANTS))
+        period = values["metal_period"]
+        alkali, alkaline = q64.PERIOD_PAIRS[period]
+        order, oxides = q64.solve(**values)
+        fmt = lambda sequence, pair: f"{' < '.join(sequence)}; {', '.join(pair)}"
+        return MathDraw(
+            "", fmt(order, oxides),
+            prompt=(f"ธาตุ A อยู่หมู่ IA คาบ {period}, D อยู่หมู่ IIA คาบ {period}, "
+                    "E อยู่หมู่ VIA คาบ 2 และ G อยู่หมู่ VIIA คาบ 2 "
+                    "เมื่อระบุธาตุจริงแล้ว ลำดับความเป็นโลหะจากน้อยไปมาก "
+                    "และสูตรออกไซด์ที่เป็นเบสของ A กับ D เป็นอย่างไร "
+                    "(ใช้สัญลักษณ์ธาตุจริง)"),
+            hint="ระบุ F, O และโลหะสองชนิด; ออกไซด์ของหมู่ IA มีสูตร M₂O ส่วน IIA เป็น MO",
+            distractors=[
+                named("chem.reversed_metallicity_order",
+                      fmt(tuple(reversed(order)), oxides)),
+                named("chem.swapped_alkali_alkaline_metallicity",
+                      fmt(("F", "O", alkali, alkaline), oxides)),
+                named("chem.swapped_oxide_charge_ratios",
+                      fmt(order, (f"{alkali}O", f"{alkaline}2O"))),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q65", display_name={"th": "เอนทัลปีการเกิดผลึกจากวัฏจักรบอร์น–ฮาเบอร์"},
+    level=LEVEL, subject="เคมี", topic="วัฏจักรบอร์น–ฮาเบอร์และพลังงานแลตทิซ",
+)
+class LatticeFormationEnthalpy(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q65.PARAMS, *q65.VARIANTS))
+        answer = q65.solve(**values)
+        no_affinity = values["formation"] - (
+            values["sublimation"] + values["first_ie"]
+            + values["second_ie"] + values["dissociation"]
+        )
+        one_affinity = no_affinity - values["electron_affinity"]
+        return MathDraw(
+            "", str(answer),
+            prompt=("สำหรับ M(s)+G₂(g)→MG₂(s) ให้ ΔH (kJ/mol) ของ "
+                    f"M(s)→M(g)={values['sublimation']}, "
+                    f"IE₁={values['first_ie']}, IE₂={values['second_ie']}, "
+                    f"G₂→2G={values['dissociation']}, "
+                    f"EA ของ G={values['electron_affinity']}, "
+                    f"และ ΔHf(MG₂)={values['formation']} "
+                    "เอนทัลปีแลตทิซสำหรับ M²⁺(g)+2G⁻(g)→MG₂(s) "
+                    "เป็นกี่ kJ/mol (ระบุเครื่องหมาย)"),
+            hint="ใช้วัฏจักรบอร์น–ฮาเบอร์และนับ electron affinity สองครั้ง",
+            distractors=[
+                named("chem.reversed_lattice_formation_sign", str(-answer)),
+                named("chem.omitted_both_halogen_electron_affinities", str(no_affinity)),
+                named("chem.counted_one_halogen_electron_affinity", str(one_affinity)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q66", display_name={"th": "ชนิดปฏิกิริยาและผลต่างพลังงานพันธะ"},
+    level=LEVEL, subject="เคมี", topic="พลังงานพันธะและเอนทัลปีปฏิกิริยา",
+)
+class WaterAndAmmoniaBondEnthalpies(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        values = rng.choice((q66.PARAMS, *q66.VARIANTS))
+        first, second, difference = q66.solve(**values)
+        fmt = lambda a, b, d: f"{a}; {b}; {d:.1f} kJ"
+        first_wrong = "ดูดพลังงาน" if first == "คายพลังงาน" else "คายพลังงาน"
+        second_wrong = "ดูดพลังงาน" if second == "คายพลังงาน" else "คายพลังงาน"
+        water = values["hh"] + values["oo"] / 2 - 2 * values["oh"]
+        ammonia = values["nn"] / 2 + 1.5 * values["hh"] - 3 * values["nh"]
+        prompt = (
+            f"พลังงานพันธะ (kJ/mol): H–H={values['hh']}, O=O={values['oo']}, "
+            f"O–H={values['oh']}, N≡N={values['nn']}, N–H={values['nh']}. "
+            "เมื่อเกิด H₂O(g) และ NH₃(g) อย่างละ 1 mol จากธาตุ "
+            "แต่ละปฏิกิริยาเป็นแบบคายหรือดูดพลังงาน และค่า ΔH ต่างกันกี่ kJ "
+            "(ตอบชนิดของ H₂O, ชนิดของ NH₃, ผลต่างตามลำดับ)"
+        )
+        return GeneratedQuestion(
+            stem=[text(prompt)],
+            correct=[text(fmt(first, second, difference))],
+            distractors=fixed(
+                [text(named("chem.reversed_water_reaction_type",
+                            fmt(first_wrong, second, difference)))],
+                [text(named("chem.reversed_ammonia_reaction_type",
+                            fmt(first, second_wrong, difference)))],
+                [text(named("chem.added_bond_enthalpy_magnitudes",
+                            fmt(first, second, abs(water) + abs(ammonia))))],
+            ),
+            topic="พลังงานพันธะและเอนทัลปีปฏิกิริยา",
+            hint=[text("ดุลสมการให้ได้ผลิตภัณฑ์หนึ่งโมล แล้วใช้พลังงานพันธะที่แตก−พลังงานพันธะที่เกิด")],
         )

@@ -37,6 +37,15 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.reversed_metallicity_order": {"th": "กลับลำดับความเป็นโลหะ", "en": "Reversed the metallicity order"},
+    "chem.swapped_alkali_alkaline_metallicity": {"th": "สลับความเป็นโลหะของหมู่ IA กับ IIA", "en": "Swapped alkali and alkaline-earth metallicity"},
+    "chem.swapped_oxide_charge_ratios": {"th": "สลับสัดส่วนประจุในสูตรออกไซด์ของโลหะ", "en": "Swapped charge ratios in metal oxide formulas"},
+    "chem.reversed_lattice_formation_sign": {"th": "สลับเครื่องหมายของการเกิดผลึกกับการแยกผลึก", "en": "Reversed lattice formation and dissociation signs"},
+    "chem.omitted_both_halogen_electron_affinities": {"th": "ไม่นับการรับอิเล็กตรอนของแฮโลเจนทั้งสองอะตอม", "en": "Omitted both halogen electron affinities"},
+    "chem.counted_one_halogen_electron_affinity": {"th": "นับการรับอิเล็กตรอนของแฮโลเจนเพียงอะตอมเดียว", "en": "Counted electron affinity for only one halogen atom"},
+    "chem.reversed_water_reaction_type": {"th": "อ่านเครื่องหมายเอนทัลปีการเกิดน้ำกลับกัน", "en": "Reversed the water reaction type"},
+    "chem.reversed_ammonia_reaction_type": {"th": "อ่านเครื่องหมายเอนทัลปีการเกิดแอมโมเนียกลับกัน", "en": "Reversed the ammonia reaction type"},
+    "chem.added_bond_enthalpy_magnitudes": {"th": "บวกขนาดเอนทัลปีแทนหาผลต่าง", "en": "Added enthalpy magnitudes instead of finding their difference"},
     "chem.kept_x_dication_configuration_for_atom": {"th": "ใช้การจัดเรียงของ X²⁺ เป็นของอะตอม X", "en": "Used X2+ configuration for neutral X"},
     "chem.kept_y_neutral_configuration_for_cation": {"th": "ใช้การจัดเรียงของอะตอม Y เป็นของ Y⁺", "en": "Used neutral Y configuration for Y+"},
     "chem.removed_two_electrons_from_y_instead_of_one": {"th": "ดึงอิเล็กตรอนจาก Y สองตัวแทนหนึ่งตัว", "en": "Removed two electrons from Y instead of one"},

@@ -3935,7 +3935,7 @@
    "items": 70,
    "sheet_id": "posn2560_chemistry",
    "stage": "converted",
-   "note": "PARTIAL 63/70: Part I q1–q60 and written questions 1–3 have independent solvers and generators. MC11 has no correct printed choice and is repaired in its adaptation. MC20's covalent category is clarified in its adaptation. MC29 has no incorrect printed name and is repaired in its adaptation. MC43 has two correct printed choices and is repaired in its adaptation. MC50 needs an exact-addition assumption and is clarified in its adaptation. 60 MC + 10 written questions extracted; written questions 4–10 remain pending visual review and solving. Written 9 . heading normalized for extraction. Do not mark the whole sheet green."
+   "note": "PARTIAL 66/70: Part I q1–q60 and written questions 1–6 have independent solvers and generators. MC11 has no correct printed choice and is repaired in its adaptation. MC20's covalent category is clarified in its adaptation. MC29 has no incorrect printed name and is repaired in its adaptation. MC43 has two correct printed choices and is repaired in its adaptation. MC50 needs an exact-addition assumption and is clarified in its adaptation. Written 4 is clarified to basic oxides; written 5's final MgF2 label conflicts with abstract M/G and is repaired. 60 MC + 10 written questions extracted; written questions 7–10 remain pending visual review and solving. Written 9 . heading normalized for extraction. Do not mark the whole sheet green."
   },
   {
    "path": "สอวน_math/01-วิชาคณิตศาสตร์.pdf",
