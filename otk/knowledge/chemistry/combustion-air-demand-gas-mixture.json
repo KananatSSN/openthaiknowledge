@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การเผาไหม้และสัดส่วนปริมาตรแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.combustion_air_demand_gas_mixture.procedure",
+      "kind": "procedure",
+      "title": "ปริมาตรอากาศสำหรับเผาไหม้แก๊สผสม",
+      "statement": "แก๊ส CO และ H₂ ใช้ O₂ อย่างละ 1/2 ปริมาตร, CH₄ ใช้ 2 และ C₂H₄ ใช้ 3; CO₂ กับ Ar ไม่ใช้ O₂; ปริมาตรอากาศขึ้นกับเศษส่วน O₂ ในอากาศ",
+      "steps": [
+        "คูณสัดส่วนปริมาตรของแก๊สที่เผาไหม้ได้ด้วยสัมประสิทธิ์ O₂ ของแต่ละชนิด",
+        "รวมความต้องการ O₂ แล้วหารด้วยเศษส่วน O₂ ในอากาศ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 35
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q35"
+      ],
+      "note": "Source choice ค is 180 m3 air: the mixture needs 18% of its own volume in O2, or 36 m3; air at 20% O2 supplies that in 180 m3. The adaptation varies mixture volume and air oxygen percentage."
+    }
+  ]
+}

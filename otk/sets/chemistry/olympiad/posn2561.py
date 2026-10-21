@@ -8,7 +8,7 @@ from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27, q28, q29, q30, q31, q32, q33,
+    q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
 )
 
 
@@ -1070,4 +1070,106 @@ class InitialHydrogenGasFraction(QuestionType):
             ),
             topic="สัดส่วนแก๊สและปริมาณสารสัมพันธ์",
             hint=[text("H₂ + Cl₂ → 2HCl; H₂ ที่ใช้เท่ากับครึ่งหนึ่งของ HCl ที่เกิด")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q34", display_name={"th": "ระบุโลหะจากตะกอนแบเรียมซัลเฟต"},
+    level=LEVEL, subject="เคมี", topic="มวลโมลและปฏิกิริยาตกตะกอน",
+)
+class MetalFromSulfatePrecipitate(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q34.PARAMS, *q34.VARIANTS))
+        answer = q34.solve(**values)
+        names = tuple(name for name, _ in q34.METALS)
+        mistakes = (
+            "chem.posn2561_chose_titanium_sulfate_mass",
+            "chem.posn2561_chose_copper_sulfate_mass",
+            "chem.posn2561_chose_zinc_sulfate_mass",
+            "chem.posn2561_chose_zirconium_sulfate_mass",
+        )
+        return GeneratedQuestion(
+            stem=[text(f"เกลือ ASO₄ {values['salt_centigrams'] / 100:.2f} g "
+                       "ทำปฏิกิริยากับ BaCl₂ มากเกินพอ ได้ตะกอน BaSO₄ "
+                       f"{values['precip_centigrams'] / 100:.2f} g "
+                       "กำหนดมวลโมล BaSO₄ = 233 และ SO₄ = 96 g/mol "
+                       "A เป็นธาตุใด")],
+            correct=[text(names[answer])],
+            distractors=fixed(*( [text(named(mistakes[i], name))]
+                                for i, name in enumerate(names) if i != answer)),
+            topic="มวลโมลและปฏิกิริยาตกตะกอน",
+            hint=[text("ASO₄ หนึ่งโมลให้ BaSO₄ หนึ่งโมล; หามวลโมล ASO₄ แล้วลบ 96")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q35", display_name={"th": "ปริมาตรอากาศสำหรับเผาไหม้แก๊สผสม"},
+    level=LEVEL, subject="เคมี", topic="การเผาไหม้และสัดส่วนปริมาตรแก๊ส",
+)
+class AirForGasMixtureCombustion(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q35.PARAMS, *q35.VARIANTS))
+        answer = q35.solve(**values)
+        oxygen_volume = answer * values["air_oxygen_percent"] // 100
+        air_if_quarter_oxygen = oxygen_volume * 4
+        mixture = ", ".join(f"{name} {amount / 10:g}%" for name, amount in
+                            zip(q35.GAS_NAMES, q35.GAS_TENTHS))
+        return GeneratedQuestion(
+            stem=[text(f"แก๊สผสม {mixture} โดยปริมาตร ปริมาตรรวม "
+                       f"{values['gas_volume_m3']} m³ เผาไหม้สมบูรณ์ที่อุณหภูมิ"
+                       "และความดันเดียวกัน ต้องใช้อากาศอย่างน้อยกี่ m³ "
+                       f"ถ้าอากาศมี O₂ {values['air_oxygen_percent']}% โดยปริมาตร")],
+            correct=[text(str(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_reported_oxygen_not_air_volume",
+                            str(oxygen_volume)))],
+                [text(named("chem.posn2561_assumed_air_quarter_oxygen",
+                            str(air_if_quarter_oxygen)))],
+                [text(named("chem.posn2561_halved_air_oxygen_fraction",
+                            str(answer * 2)))],
+            ),
+            topic="การเผาไหม้และสัดส่วนปริมาตรแก๊ส",
+            hint=[text("CO, H₂ ใช้ O₂ อย่างละ 1/2; CH₄ ใช้ 2; C₂H₄ ใช้ 3; "
+                       "CO₂ และ Ar ไม่ใช้")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q36", display_name={"th": "แมกนีเซียมสำหรับผลิตแอมโมเนีย"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสารสัมพันธ์และร้อยละผลได้",
+)
+class MagnesiumForAmmoniaYield(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q36.PARAMS, *q36.VARIANTS))
+        answer = q36.solve(**values)
+        ammonia_liters = values["target_ammonia_centiliters"] / 100
+        no_yield = answer * values["nitride_yield_percent"] / 100
+        one_to_one = answer * 2 / 3
+        fmt = lambda value: f"{float(value):g}"
+        return GeneratedQuestion(
+            stem=[text("เผา Mg กับ N₂ ให้ Mg₃N₂ ได้ผลได้ "
+                       f"{values['nitride_yield_percent']}% แล้วไฮโดรไลซ์จนได้ "
+                       f"NH₃ {ammonia_liters:g} L ที่ 0°C, 1 atm "
+                       "(22.4 L/mol) ต้องใช้ Mg อย่างน้อยกี่กรัม "
+                       "กำหนดมวลอะตอม Mg = 24")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_ignored_nitride_yield",
+                            fmt(no_yield)))],
+                [text(named("chem.posn2561_used_one_to_one_mg_nh3",
+                            fmt(one_to_one)))],
+                [text(named("chem.posn2561_halved_nitride_yield",
+                            fmt(answer * 2)))],
+            ),
+            topic="ปริมาณสารสัมพันธ์และร้อยละผลได้",
+            hint=[text("3Mg → Mg₃N₂ → 2NH₃; ปรับปริมาณ Mg ตามผลได้ของ Mg₃N₂")],
         )

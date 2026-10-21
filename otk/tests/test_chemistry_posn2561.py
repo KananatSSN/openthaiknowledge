@@ -1,6 +1,7 @@
 """Cross-check the 2561 chemistry pools and generated wording."""
 
 import re
+from fractions import Fraction
 from random import Random
 
 import pytest
@@ -10,6 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
+    q34, q35, q36,
 )
 
 
@@ -17,13 +19,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 34))
+@pytest.mark.parametrize("number", range(1, 37))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -246,7 +248,7 @@ def test_generated_answers_follow_the_stem(number):
             assert all(statement in stem for statement in q32.STATEMENTS)
             assert answer == q32.CLAIMS[1]
             assert set(choice.content[0].text for choice in question.choices) == set(q32.CLAIMS)
-        else:
+        elif number == 33:
             reduction = int(re.search(r"Cl₂ ลดลง (\d+)%", stem).group(1))
             chlorine, hydrogen, hcl = map(int, re.search(
                 r"Cl₂ (\d+)%, H₂ (\d+)%, HCl (\d+)%", stem,
@@ -259,5 +261,40 @@ def test_generated_answers_follow_the_stem(number):
             assert set(choice.content[0].text for choice in question.choices) == {
                 str(value) for value in (hydrogen, initial_chlorine,
                                          hydrogen + hcl, initial_hydrogen)
+            }
+        elif number == 34:
+            salt, precip = map(Fraction, re.search(
+                r"ASO₄ ([\d.]+) g.*?BaSO₄ ([\d.]+) g", stem,
+            ).groups())
+            candidate = [name for name, mass in q34.METALS
+                         if salt * 233 / (mass + 96) == precip]
+            assert candidate == [answer]
+            assert set(choice.content[0].text for choice in question.choices) == {
+                name for name, _ in q34.METALS
+            }
+        elif number == 35:
+            volume, air_percent = map(int, re.search(
+                r"ปริมาตรรวม (\d+) m³.*?อากาศมี O₂ (\d+)%", stem,
+            ).groups())
+            assert all(name in stem for name in q35.GAS_NAMES)
+            oxygen = Fraction(volume * 18, 100)
+            assert answer == str(int(oxygen * 100 / air_percent))
+            assert set(choice.content[0].text for choice in question.choices) == {
+                str(value) for value in (int(oxygen), int(oxygen * 4),
+                                         int(oxygen * 200 / air_percent),
+                                         int(oxygen * 100 / air_percent))
+            }
+        else:
+            yield_percent, liters = re.search(
+                r"ได้ผลได้ (\d+)%.*?NH₃ ([\d.]+) L", stem,
+            ).groups()
+            grams = Fraction(liters) / Fraction("22.4") * Fraction(3, 2)
+            grams *= Fraction(2400, int(yield_percent))
+            assert answer == f"{float(grams):g}"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                f"{float(value):g}" for value in (
+                    grams, grams * int(yield_percent) / 100,
+                    grams * Fraction(2, 3), grams * 2,
+                )
             }
         assert len(question.choices) == 4

@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 33/75: all 75 items extracted; Part I questions 1–33 reviewed, independently solved, claimed by knowledge units and linked to generators. MC33 has consistent stoichiometric variants. Remaining 42 await review.",
+  "note": "PARTIAL 36/75: all 75 items extracted; Part I questions 1–36 reviewed, independently solved, claimed by knowledge units and linked to generators. MC34–36 have numerical variants. Remaining 39 await review.",
   "items": [
     {
       "number": 1,
@@ -434,6 +434,45 @@
       "answer": "60",
       "generator": "chem.posn2561_q33",
       "note": "Source choice ค is 60% initial H2: H2 + Cl2 → 2HCl leaves total gas moles fixed; 20% HCl uses 10% H2, so initial H2 was 50%+10%=60%. Initial Cl2 was 40%, of which 10% reacted, matching the stated 25% decrease. Adaptation uses new consistent final mixtures."
+    },
+    {
+      "number": 34,
+      "solver": "q34",
+      "title": "ระบุโลหะจากมวลตะกอนแบเรียมซัลเฟต",
+      "source": "Part I, question 34, p9: ASO4 3.22 g gives BaSO4 4.66 g; choose the metal from Ti, Cu, Zn and Zr.",
+      "page": 9,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "มวลโมลและปฏิกิริยาตกตะกอน",
+      "answer": "2",
+      "generator": "chem.posn2561_q34",
+      "note": "Source choice ค is Zn: 4.66/233=0.020 mol BaSO4, hence ASO4 has molar mass 161 and A mass 65. The adaptation varies ASO4 mass so each candidate metal can be identified. https://periodic-table.rsc.org/element/30/"
+    },
+    {
+      "number": 35,
+      "solver": "q35",
+      "title": "ปริมาตรอากาศสำหรับเผาไหม้แก๊สผสม",
+      "source": "Part I, question 35, p9: completely burn 200 m3 of a stated CO2/CO/H2/CH4/C2H4/Ar mixture using air that is 20% O2.",
+      "page": 9,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การเผาไหม้และสัดส่วนปริมาตรแก๊ส",
+      "answer": "180",
+      "generator": "chem.posn2561_q35",
+      "note": "Source choice ค is 180 m3 air: the mixture needs 18% of its own volume in O2, or 36 m3; air at 20% O2 supplies that in 180 m3. The adaptation varies mixture volume and air oxygen percentage."
+    },
+    {
+      "number": 36,
+      "solver": "q36",
+      "title": "มวลแมกนีเซียมสำหรับผลิตแอมโมเนียตามผลได้",
+      "source": "Part I, question 36, p9: with 40% yield of Mg3N2 and excess water, find minimum Mg mass for 4.48 L NH3 at source STP.",
+      "page": 9,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ปริมาณสารสัมพันธ์และร้อยละผลได้",
+      "answer": "18",
+      "generator": "chem.posn2561_q36",
+      "note": "Source choice ข is 18 g Mg: 4.48 L/22.4=0.2 mol NH3, requiring 0.1 mol actual Mg3N2, 0.25 mol theoretical Mg3N2 at 40% yield, and 0.75 mol Mg. Adaptation explicitly specifies 0°C, 1 atm and 22.4 L/mol, and omits the source color description. https://chem.libretexts.org/Courses/CSU_San_Bernardino/CHEM_2200%3A_General_Chemistry_II_%28Mink%29/18%3A_Representative_Metals_Metalloids_and_Nonmetals/18.06%3A_Occurrence_Preparation_and_Compounds_of_Hydrogen"
     }
   ]
 }
