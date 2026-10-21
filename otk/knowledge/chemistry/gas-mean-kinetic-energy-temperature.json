@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ทฤษฎีจลน์ของแก๊สและอุณหภูมิ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.gas_mean_kinetic_energy_temperature.procedure",
+      "kind": "procedure",
+      "title": "พลังงานจลน์เฉลี่ยของแก๊ส",
+      "statement": "พลังงานจลน์เฉลี่ยของการเคลื่อนที่ของอนุภาคแก๊สอุดมคติเท่ากับ 3kT/2 และขึ้นกับอุณหภูมิเคลวิน ไม่ขึ้นกับมวลหรือชนิดแก๊ส",
+      "steps": [
+        "แยกข้อสมมติว่าปริมาตรอนุภาคน้อยจากการมีมวลเป็นศูนย์",
+        "ใช้ T(K) ตรวจพลังงานจลน์เฉลี่ยและความดันเมื่อปริมาตรคงที่"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 57
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q57"
+      ],
+      "note": "Mean translational kinetic energy depends on absolute temperature alone, so gases at the same temperature have equal average values. Cooling at fixed volume lowers pressure."
+    }
+  ]
+}

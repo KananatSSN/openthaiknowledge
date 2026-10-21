@@ -12,7 +12,7 @@ from otk.sheets.posn2561_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
     q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
-    q46, q47, q48, q49, q50, q51, q52, q53, q54,
+    q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57,
 )
 
 
@@ -20,13 +20,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 55))
+@pytest.mark.parametrize("number", range(1, 58))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -475,10 +475,33 @@ def test_generated_answers_follow_the_stem(number):
             assert any(answer.startswith(species) for species in q53.NETWORK)
             assert "แรงระหว่างขั้วถาวร" in answer
             assert sum("แรงระหว่างขั้วถาวร" in choice for choice in choices) == 1
-        else:
+        elif number == 54:
             a, b, c = map(int, re.search(
                 r"อุณหภูมิเดียวกัน (\d+), (\d+), (\d+) mmHg", stem,
             ).groups())
             assert a > b > c
             assert answer == "ข้อ 1 กับข้อ 3 ถูกต้อง"
+        elif number == 55:
+            for choice in question.choices:
+                values = re.findall(r"([ABC]): หลอม (-?[\d.]+)°C เดือด (-?[\d.]+)°C",
+                                    choice.content[0].text)
+                assert len(values) == 3
+                matches = all(
+                    (float(mp) < float(bp) < 25 if label == "A" else
+                     float(mp) < 25 < float(bp) if label == "B" else
+                     25 < float(mp) < float(bp))
+                    for label, mp, bp in values
+                )
+                assert matches == (choice.content[0].text == answer)
+        elif number == 56:
+            names = re.search(r"1\. (.*?) 2\. (.*?) 3\. (.*?) พื้นผิว", stem).groups()
+            lotus = names.index("ใบบัว") + 1
+            assert answer == f"ข้อ {lotus} เท่านั้น"
+            assert "ไม่เคลือบสารกันน้ำ" in stem
+        else:
+            assert "พลังงานจลน์เฉลี่ยต่ออนุภาคเท่ากัน" in answer
+            cooling = next(choice.content[0].text for choice in question.choices
+                           if "ปริมาตรคงที่เย็นจาก" in choice.content[0].text)
+            start, end = map(int, re.search(r"เย็นจาก (\d+)°C เป็น (\d+)°C", cooling).groups())
+            assert (end + 273.15) / (start + 273.15) < 1
         assert len(question.choices) == 4

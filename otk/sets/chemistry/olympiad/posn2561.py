@@ -12,7 +12,7 @@ from otk.sheets.posn2561_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51,
-    q52, q53, q54,
+    q52, q53, q54, q55, q56, q57,
 )
 
 
@@ -1808,4 +1808,107 @@ class VaporPressureRanking(QuestionType):
             ),
             topic="ความดันไอ จุดเดือด และแรงระหว่างโมเลกุล",
             hint=[text("ที่อุณหภูมิเดียวกัน ความดันไอสูงหมายถึงระเหยง่ายและแรงยึดเหนี่ยวอ่อน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q55", display_name={"th": "สถานะจากจุดหลอมเหลวและจุดเดือด"},
+    level=LEVEL, subject="เคมี", topic="จุดหลอมเหลว จุดเดือด และสถานะ",
+)
+class PhaseFromTransitionTemperatures(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q55.PARAMS, *q55.VARIANTS))
+        answer = q55.solve(**values)
+        rows = q55.rows(**values)
+
+        def describe(row):
+            return "; ".join(f"{label}: หลอม {mp:g}°C เดือด {bp:g}°C"
+                             for label, (mp, bp) in zip("ABC", row))
+
+        mistakes = (
+            "chem.posn2561_confused_liquid_and_solid_thresholds",
+            "chem.posn2561_ignored_gas_boiling_threshold",
+            "chem.posn2561_reversed_gas_solid_phases",
+        )
+        return GeneratedQuestion(
+            stem=[text("ที่ 25°C สาร A เป็นแก๊ส B เป็นของเหลว และ C เป็นของแข็ง "
+                       "ชุดจุดหลอมเหลวและจุดเดือดใดสอดคล้องกับสถานะนี้ "
+                       "กำหนดความดันคงที่และไม่มีการระเหิด")],
+            correct=[text(describe(rows[answer]))],
+            distractors=fixed(*(
+                [text(named(mistakes[i - 1], describe(row)))]
+                for i, row in enumerate(rows) if i != answer
+            )),
+            topic="จุดหลอมเหลว จุดเดือด และสถานะ",
+            hint=[text("แก๊ส: T สูงกว่าจุดเดือด; ของเหลว: จุดหลอมเหลว < T < จุดเดือด; ของแข็ง: T ต่ำกว่าจุดหลอมเหลว")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q56", display_name={"th": "แรงยึดเกาะของน้ำกับพื้นผิว"},
+    level=LEVEL, subject="เคมี", topic="แรงเชื่อมแน่น แรงยึดเกาะ และการเปียก",
+)
+class WaterWettingSurfaces(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q56.PARAMS, *q56.VARIANTS))
+        order = values["order"]
+        answer = q56.solve(**values)
+        labels = {1: "ข้อ 1 เท่านั้น", 2: "ข้อ 2 เท่านั้น",
+                  3: "ข้อ 3 เท่านั้น"}
+        tissue = order.index("tissue") + 1
+        glass = order.index("glass") + 1
+        paired = sorted((answer, glass))
+        return GeneratedQuestion(
+            stem=[text("หยดน้ำบนพื้นผิว 1. " + q56.SURFACES[order[0]] +
+                       " 2. " + q56.SURFACES[order[1]] +
+                       " 3. " + q56.SURFACES[order[2]] +
+                       " พื้นผิวใดทำให้น้ำเกาะอ่อนกว่าการยึดกันเอง "
+                       "จนหยดน้ำกลมไม่แผ่ออก")],
+            correct=[text(labels[answer])],
+            distractors=fixed(
+                [text(named("chem.posn2561_confused_paper_absorption_with_repulsion",
+                            labels[tissue]))],
+                [text(named("chem.posn2561_confused_clean_glass_wetting_with_repulsion",
+                            labels[glass]))],
+                [text(named("chem.posn2561_included_wetting_surface_with_lotus",
+                            f"ข้อ {paired[0]} และ {paired[1]}"))],
+            ),
+            topic="แรงเชื่อมแน่น แรงยึดเกาะ และการเปียก",
+            hint=[text("เปรียบเทียบการแผ่ของหยดน้ำ: พื้นผิวไม่ชอบน้ำทำให้หยดน้ำกลม")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q57", display_name={"th": "พลังงานจลน์เฉลี่ยของแก๊ส"},
+    level=LEVEL, subject="เคมี", topic="ทฤษฎีจลน์ของแก๊สและอุณหภูมิ",
+)
+class EqualGasMeanKineticEnergy(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q57.PARAMS, *q57.VARIANTS))
+        assert q57.solve(**values) == 1
+        a, b = values["gas_a"], values["gas_b"]
+        start, end = values["start_c"], values["end_c"]
+        return GeneratedQuestion(
+            stem=[text("ข้อใดถูกตามทฤษฎีจลน์ของแก๊สอุดมคติ")],
+            correct=[text(f"แก๊ส {a} และ {b} ที่อุณหภูมิเท่ากันมีพลังงานจลน์เฉลี่ยต่ออนุภาคเท่ากัน")],
+            distractors=fixed(
+                [text(named("chem.posn2561_assumed_ideal_particles_massless",
+                            "อนุภาคแก๊สอุดมคติมีมวลเป็นศูนย์เพราะปริมาตรอนุภาคเล็กมาก"))],
+                [text(named("chem.posn2561_reversed_ideal_gas_conditions",
+                            "แก๊สจริงใกล้เคียงแก๊สอุดมคติที่สุดเมื่อความดันสูงและอุณหภูมิต่ำ"))],
+                [text(named("chem.posn2561_doubled_pressure_when_cooling",
+                            f"แก๊สในภาชนะปริมาตรคงที่เย็นจาก {start}°C เป็น {end}°C "
+                            "จะมีความดันเพิ่มเป็นสองเท่า"))],
+            ),
+            topic="ทฤษฎีจลน์ของแก๊สและอุณหภูมิ",
+            hint=[text("พลังงานจลน์เฉลี่ยขึ้นกับอุณหภูมิเคลวิน; ที่ปริมาตรคงที่ P แปรตาม T(K)")],
         )

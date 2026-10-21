@@ -37,6 +37,16 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.posn2561_confused_liquid_and_solid_thresholds": {"th": "ใช้ช่วงอุณหภูมิของของเหลวแทนของแข็ง", "en": "Confused liquid and solid thresholds"},
+    "chem.posn2561_ignored_gas_boiling_threshold": {"th": "ไม่ตรวจว่าจุดเดือดของแก๊สต่ำกว่าอุณหภูมิ", "en": "Ignored the gas boiling threshold"},
+    "chem.posn2561_reversed_gas_solid_phases": {"th": "สลับเงื่อนไขสถานะแก๊สกับของแข็ง", "en": "Reversed gas and solid phases"},
+    "chem.posn2561_confused_paper_absorption_with_repulsion": {"th": "คิดว่ากระดาษดูดซับน้ำเพราะผลักน้ำ", "en": "Confused paper absorption with water repulsion"},
+    "chem.posn2561_confused_clean_glass_wetting_with_repulsion": {"th": "คิดว่ากระจกสะอาดผลักน้ำ", "en": "Confused clean glass wetting with repulsion"},
+    "chem.posn2561_included_wetting_surface_with_lotus": {"th": "รวมพื้นผิวที่น้ำเปียกกับใบบัว", "en": "Included a wetting surface with lotus"},
+    "chem.posn2561_assumed_ideal_particles_massless": {"th": "คิดว่าอนุภาคแก๊สอุดมคติไม่มีมวล", "en": "Assumed ideal-gas particles have no mass"},
+    "chem.posn2561_reversed_ideal_gas_conditions": {"th": "กลับเงื่อนไขที่แก๊สจริงคล้ายแก๊สอุดมคติ", "en": "Reversed ideal-gas conditions"},
+    "chem.posn2561_doubled_pressure_when_cooling": {"th": "คิดว่าลดอุณหภูมิแล้วความดันเพิ่มสองเท่า", "en": "Doubled pressure when cooling"},
+
     "chem.posn2561_mistook_ionic_attraction_for_falsehood": {"th": "คิดว่าแรงไฟฟ้าสถิตใน LiF ผิด", "en": "Mistook ionic attraction for a false claim"},
     "chem.posn2561_mistook_krypton_dispersion_for_falsehood": {"th": "คิดว่าแรงลอนดอนใน Kr ผิด", "en": "Mistook krypton dispersion for a false claim"},
     "chem.posn2561_mistook_metallic_electrons_for_falsehood": {"th": "คิดว่าอิเล็กตรอนอิสระใน Au ผิด", "en": "Mistook metallic electrons for a false claim"},

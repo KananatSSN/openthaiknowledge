@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 54/75: all 75 items extracted; Part I questions 1–54 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 21 await review.",
+  "note": "PARTIAL 57/75: all 75 items extracted; Part I questions 1–57 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 18 await review.",
   "items": [
     {
       "number": 1,
@@ -707,6 +707,45 @@
       "answer": "(1, 3)",
       "generator": "chem.posn2561_q54",
       "note": "The figure shows A>B>C at any common temperature. Hence boiling points A<B<C, A evaporates most readily and A has the weakest attractions. The adaptation uses numerical vapor pressures instead of source artwork."
+    },
+    {
+      "number": 55,
+      "solver": "q55",
+      "title": "สถานะจากจุดหลอมเหลวและจุดเดือด",
+      "source": "Part I, question 55, p13: select the melting and boiling point table that makes A gas, B liquid, C solid at 25°C.",
+      "page": 13,
+      "figure": "Four rows list melting and boiling points for A, B and C; only the first has A gas, B liquid and C solid at 25°C.",
+      "figure_asset": "",
+      "topic": "จุดหลอมเหลว จุดเดือด และสถานะ",
+      "answer": "0",
+      "generator": "chem.posn2561_q55",
+      "note": "The first row satisfies bp(A)<25, mp(B)<25<bp(B), and 25<mp(C). The adaptation states fixed pressure and omits sublimation."
+    },
+    {
+      "number": 56,
+      "solver": "q56",
+      "title": "แรงยึดเกาะของน้ำกับพื้นผิว",
+      "source": "Part I, question 56, p13: compare water beading on lotus leaf with wetting of paper and glass.",
+      "page": 13,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "แรงเชื่อมแน่น แรงยึดเกาะ และการเปียก",
+      "answer": "1",
+      "generator": "chem.posn2561_q56",
+      "note": "Water beads on the lotus leaf, while tissue absorbs water and clean untreated glass wets. The glass surface is explicitly untreated in the adaptation."
+    },
+    {
+      "number": 57,
+      "solver": "q57",
+      "title": "พลังงานจลน์เฉลี่ยของแก๊ส",
+      "source": "Part I, question 57, p13: select the true kinetic-theory statement among ideal-gas mass, equal-temperature kinetic energy, ideal conditions and cooling at fixed volume.",
+      "page": 13,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ทฤษฎีจลน์ของแก๊สและอุณหภูมิ",
+      "answer": "1",
+      "generator": "chem.posn2561_q57",
+      "note": "Mean translational kinetic energy depends on absolute temperature alone, so gases at the same temperature have equal average values. Cooling at fixed volume lowers pressure."
     }
   ]
 }

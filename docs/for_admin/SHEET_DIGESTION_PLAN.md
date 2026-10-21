@@ -2299,3 +2299,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed p12 solid-bonding and vapor-pressure questions. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC54 adapts the source graph as numerical vapor pressures, preserving A > B > C.
 - Wave validation: 54/54 sheet solvers and 162 variant runs green; 894 knowledge units in 760 files with zero validation problems; source coverage 54/54. Focused generator tests passed (55), catalog checks passed (3), registry/provenance/safety/layout checks passed (719), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC55–57
+
+- Reviewed p13 temperature/phase table, lotus-leaf wetting, and kinetic-gas statements. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC56 specifies untreated clean glass for an unambiguous surface comparison.
+- Wave validation: 57/57 sheet solvers and 171 variant runs green; 897 knowledge units in 763 files with zero validation problems; source coverage 57/57. Focused generator tests passed (58), catalog checks passed (3), registry/provenance/safety/layout checks passed (731), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
