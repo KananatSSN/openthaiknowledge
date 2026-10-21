@@ -4154,6 +4154,8 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q58", "chem.posn2560_q59", "chem.posn2560_q60",
     "chem.posn2560_q61", "chem.posn2560_q62", "chem.posn2560_q63",
     "chem.posn2560_q64", "chem.posn2560_q65", "chem.posn2560_q66",
+    "chem.posn2560_q67", "chem.posn2560_q68", "chem.posn2560_q69",
+    "chem.posn2560_q70",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4222,6 +4224,10 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q64": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "แนวโน้มตารางธาตุและออกไซด์ของโลหะ", "outside_scope"),
     "chem.posn2560_q65": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "วัฏจักรบอร์น–ฮาเบอร์และพลังงานแลตทิซ", "outside_scope"),
     "chem.posn2560_q66": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พลังงานพันธะและเอนทัลปีปฏิกิริยา", "outside_scope"),
+    "chem.posn2560_q67": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ปริมาณสัมพันธ์ของปฏิกิริยาต่อเนื่อง", "outside_scope"),
+    "chem.posn2560_q68": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สูตรเอมพิริคัลจากการเผาไหม้", "outside_scope"),
+    "chem.posn2560_q69": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ปริมาณสัมพันธ์หลายปฏิกิริยาของคลอรีน", "outside_scope"),
+    "chem.posn2560_q70": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การลดจุดเยือกแข็งและโมแลล", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)

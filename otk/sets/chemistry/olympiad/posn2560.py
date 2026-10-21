@@ -14,7 +14,7 @@ from otk.sheets.posn2560_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
     q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
-    q61, q62, q63, q64, q65, q66,
+    q61, q62, q63, q64, q65, q66, q67, q68, q69, q70,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -2288,4 +2288,124 @@ class WaterAndAmmoniaBondEnthalpies(QuestionType):
             ),
             topic="พลังงานพันธะและเอนทัลปีปฏิกิริยา",
             hint=[text("ดุลสมการให้ได้ผลิตภัณฑ์หนึ่งโมล แล้วใช้พลังงานพันธะที่แตก−พลังงานพันธะที่เกิด")],
+        )
+
+
+@question_type(
+    "chem.posn2560_q67", display_name={"th": "ผลผลิตจากปฏิกิริยาต่อเนื่องที่ไม่สมบูรณ์"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสัมพันธ์ของปฏิกิริยาต่อเนื่อง",
+)
+class IncompleteTwoStepProductMasses(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q67.PARAMS, *q67.VARIANTS))
+        d_g, e_g = q67.solve(**values)
+        no_first = q67.solve(**{**values, "a_reacted_percent": 100.0})
+        no_second = q67.solve(**{**values, "c_decomposed_percent": 100.0})
+        fmt = lambda d, e: f"{d:.1f}, {e:.1f}"
+        return MathDraw(
+            "", fmt(d_g, e_g),
+            prompt=("3A+B→2C และ 2C→4D+E เริ่ม A "
+                    f"{values['initial_a_mol']:.2f} mol (B มากเกิน) "
+                    f"A ทำปฏิกิริยา {values['a_reacted_percent']:.1f}% "
+                    f"และ C ที่เกิดสลาย {values['c_decomposed_percent']:.1f}% "
+                    f"ถ้า D={values['d_molar']} และ E={values['e_molar']} g/mol "
+                    "ได้ D และ E อย่างละกี่กรัมตามลำดับ (ตอบหนึ่งตำแหน่ง)"),
+            hint="คำนวณโมล A ที่ทำปฏิกิริยา แล้ว C ที่สลาย ก่อนแปลงเป็น D และ E",
+            distractors=[
+                named("chem.assumed_all_a_reacts_in_two_step_yield", fmt(*no_first)),
+                named("chem.assumed_all_c_decomposes_in_two_step_yield", fmt(*no_second)),
+                named("chem.used_one_d_instead_of_four", fmt(d_g / 4, e_g)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q68", display_name={"th": "สูตรเอมพิริคัลจากผลเผาไหม้"},
+    level=LEVEL, subject="เคมี", topic="สูตรเอมพิริคัลจากการเผาไหม้",
+)
+class CombustionEmpiricalFormula(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q68.PARAMS, *q68.VARIANTS))
+        answer = q68.solve(**values)
+        match = re.fullmatch(r"C(\d*)H(\d*)O(\d*)", answer)
+        assert match is not None
+        carbon, hydrogen, oxygen = (int(value or 1) for value in match.groups())
+        return MathDraw(
+            "", answer,
+            prompt=(f"สารอินทรีย์มีเพียง C, H, O มวล {values['sample_g']:.1f} g "
+                    f"เผากับ O₂ มากเกิน ได้ CO₂ {values['carbon_dioxide_g']:.1f} g "
+                    f"และ H₂O {values['water_g']:.1f} g สูตรเอมพิริคัลคืออะไร"),
+            hint="หาโมล C จาก CO₂, โมล H จากน้ำ และมวล O จากมวลตัวอย่างที่เหลือ",
+            distractors=[
+                named("chem.halved_hydrogen_from_combustion_water",
+                      q68._formula(carbon, hydrogen // 2, oxygen)),
+                named("chem.doubled_carbon_from_combustion_co2",
+                      q68._formula(2 * carbon, hydrogen, oxygen)),
+                named("chem.doubled_oxygen_from_combustion_balance",
+                      q68._formula(carbon, hydrogen, 2 * oxygen)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q69", display_name={"th": "ปริมาณ Cl₂ และ KCl ในการผลิต KClO₄"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสัมพันธ์หลายปฏิกิริยาของคลอรีน",
+)
+class PerchlorateChlorineAndChlorideMasses(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q69.PARAMS, *q69.VARIANTS))
+        chlorine_g, chloride_g = q69.solve(**values)
+        product_mol = values["perchlorate_g"] / 138.5
+        fmt = lambda chlorine, chloride: f"{chlorine:.1f}, {chloride:.1f}"
+        return MathDraw(
+            "", fmt(chlorine_g, chloride_g),
+            prompt=("ผลิต KClO₄ ตามสมการ Cl₂+2KOH→KCl+KClO+H₂O; "
+                    "3KClO→2KCl+KClO₃; 4KClO₃→3KClO₄+KCl "
+                    f"ถ้าต้องการ KClO₄ {values['perchlorate_g']:.1f} g "
+                    "ต้องใช้ Cl₂ และได้ KCl รวมอย่างละกี่กรัมตามลำดับ "
+                    "(KClO₄=138.5, Cl₂=71, KCl=74.5 g/mol; ตอบหนึ่งตำแหน่ง)"),
+            hint="ไล่ย้อนปฏิกิริยาจาก KClO₄ แล้วรวม KCl ที่เกิดจากทั้งสามขั้น",
+            distractors=[
+                named("chem.counted_only_first_step_potassium_chloride",
+                      fmt(chlorine_g, 4 * product_mol * 74.5)),
+                named("chem.omitted_final_step_potassium_chloride",
+                      fmt(chlorine_g, (7 - 1 / 3) * product_mol * 74.5)),
+                named("chem.used_one_chlorine_per_perchlorate",
+                      fmt(product_mol * 71, chloride_g)),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q70", display_name={"th": "มวลโมลาร์จากการลดจุดเยือกแข็ง"},
+    level=LEVEL, subject="เคมี", topic="การลดจุดเยือกแข็งและโมแลล",
+)
+class FreezingDepressionMolarMassAndMolality(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q70.PARAMS, *q70.VARIANTS))
+        molar_mass, molality = q70.solve(**values)
+        depression = values["pure_freeze_c"] - values["solution_freeze_c"]
+        fmt = lambda mass, concentration: f"{mass:.1f}, {concentration:.2f}"
+        wrong_molality = depression
+        wrong_mass = values["solute_g"] / (wrong_molality * values["water_g"] / 1000)
+        solution_kg = (values["water_g"] + values["solute_g"]) / 1000
+        return MathDraw(
+            "", fmt(molar_mass, molality),
+            prompt=(f"ละลายสารอินทรีย์ไม่แตกตัว {values['solute_g']:.1f} g "
+                    f"ในน้ำ {values['water_g']:.1f} g สารละลายแข็งตัวที่ "
+                    f"{values['solution_freeze_c']:.2f} °C "
+                    f"(น้ำบริสุทธิ์ {values['pure_freeze_c']:.2f} °C, "
+                    f"Kf={values['kf']:.2f} °C·kg/mol) "
+                    "มวลโมลาร์ (g/mol) และโมแลลเป็นเท่าใดตามลำดับ"),
+            hint="ใช้ ΔTf=Kf m หาโมแลล แล้วคูณด้วยกิโลกรัมน้ำเพื่อหาโมลตัวละลาย",
+            distractors=[
+                named("chem.used_solution_mass_for_freezing_molality",
+                      fmt(values["solute_g"] / (molality * solution_kg), molality)),
+                named("chem.treated_freezing_depression_as_molality",
+                      fmt(wrong_mass, wrong_molality)),
+                named("chem.reversed_freezing_constant_ratio",
+                      fmt(values["solute_g"] / ((values['kf'] / depression)
+                                               * values["water_g"] / 1000),
+                          values["kf"] / depression)),
+            ],
         )

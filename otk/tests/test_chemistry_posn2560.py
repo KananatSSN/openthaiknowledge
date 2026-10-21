@@ -12,7 +12,7 @@ from otk.sheets.posn2560_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
     q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60,
-    q61, q62, q63, q64, q65, q66,
+    q61, q62, q63, q64, q65, q66, q67, q68, q69, q70,
 )
 
 
@@ -207,6 +207,13 @@ def test_written_metallicity_lattice_and_bond_energy_variants():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_written_yields_combustion_perchlorate_and_freezing_variants():
+    for module in (q67, q68, q69, q70):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -229,7 +236,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 67)))
+@pytest.mark.parametrize("number", tuple(range(1, 71)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -744,7 +751,7 @@ def test_generated_answers_follow_the_written_data(number):
             expected = str(q65.check(sublimation=int(sublimation), first_ie=int(first_ie),
                                      second_ie=int(second_ie), dissociation=int(dissociation),
                                      electron_affinity=int(affinity), formation=int(formation)))
-        else:
+        elif number == 66:
             hh, oo, oh, nn, nh = re.search(
                 r"H–H=(\d+), O=O=(\d+), O–H=(\d+), N≡N=(\d+), N–H=(\d+)", stem,
             ).groups()
@@ -752,5 +759,39 @@ def test_generated_answers_follow_the_written_data(number):
                 hh=int(hh), oo=int(oo), oh=int(oh), nn=int(nn), nh=int(nh),
             )
             expected = f"{water_type}; {ammonia_type}; {difference:.1f} kJ"
+        elif number == 67:
+            a, reacted, decomposed, d_molar, e_molar = re.search(
+                r"เริ่ม A ([\d.]+) mol.*?ทำปฏิกิริยา ([\d.]+)% "
+                r"และ C ที่เกิดสลาย ([\d.]+)% ถ้า D=(\d+) และ E=(\d+)", stem,
+            ).groups()
+            d_g, e_g = q67.check(initial_a_mol=float(a),
+                                 a_reacted_percent=float(reacted),
+                                 c_decomposed_percent=float(decomposed),
+                                 d_molar=int(d_molar), e_molar=int(e_molar))
+            expected = f"{d_g:.1f}, {e_g:.1f}"
+        elif number == 68:
+            sample, carbon_dioxide, water = re.search(
+                r"มวล ([\d.]+) g เผากับ O₂ มากเกิน ได้ CO₂ ([\d.]+) g "
+                r"และ H₂O ([\d.]+) g", stem,
+            ).groups()
+            expected = q68.check(sample_g=float(sample),
+                                 carbon_dioxide_g=float(carbon_dioxide),
+                                 water_g=float(water))
+        elif number == 69:
+            perchlorate = float(re.search(r"KClO₄ ([\d.]+) g ต้องใช้", stem)[1])
+            chlorine, chloride = q69.check(perchlorate_g=perchlorate)
+            expected = f"{chlorine:.1f}, {chloride:.1f}"
+        else:
+            solute, water, freezing, pure, kf = re.search(
+                r"ไม่แตกตัว ([\d.]+) g ในน้ำ ([\d.]+) g สารละลายแข็งตัวที่ "
+                r"(-?[\d.]+) °C \(น้ำบริสุทธิ์ (-?[\d.]+) °C, "
+                r"Kf=([\d.]+) °C", stem,
+            ).groups()
+            molar_mass, molality = q70.check(solute_g=float(solute),
+                                             water_g=float(water),
+                                             solution_freeze_c=float(freezing),
+                                             pure_freeze_c=float(pure),
+                                             kf=float(kf))
+            expected = f"{molar_mass:.1f}, {molality:.2f}"
         assert answer == expected
         assert len(question.choices) == 4

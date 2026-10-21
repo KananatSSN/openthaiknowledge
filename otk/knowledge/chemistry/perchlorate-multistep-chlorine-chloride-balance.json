@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาณสัมพันธ์หลายปฏิกิริยาของคลอรีน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.perchlorate_multistep_chlorine_chloride_balance.procedure",
+      "kind": "procedure",
+      "title": "ปริมาณ Cl₂ และ KCl ในการผลิต KClO₄",
+      "statement": "ปริมาณสัมพันธ์ของหลายสมการเชื่อมผลิตภัณฑ์กับสารตั้งต้นย้อนหลัง และต้องรวมผลพลอยได้ที่เกิดในทุกขั้น",
+      "steps": [
+        "ย้อน KClO₄ ผ่าน KClO₃ และ KClO เพื่อหาโมล Cl₂ ที่ต้องใช้",
+        "รวม KCl ที่เกิดจากทั้งสามสมการ หรือใช้สมการสุทธิที่ดุลแล้ว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 69
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q69"
+      ],
+      "note": "SOURCE TYPO: text says four reactions, but only three are printed. They combine to 4Cl2+8KOH->KClO4+7KCl+4H2O. 277 g KClO4 is 2 mol, needing 8 mol Cl2 and producing 14 mol KCl."
+    }
+  ]
+}

@@ -59,20 +59,17 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN bank — waves 1–22, 2026-10-21
+### Chemistry POSN bank — waves 1–23, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
 - First source: `สอวน_chemistry/posn1-60-chemistry.pdf`, 19 pages,
   60 multiple-choice questions plus 10 written questions. Written questions
-  restart at 1 and will use internal numbers 61–70.
-- All 70 have text-layer extraction in the private bank. Part I questions
-  1–60 and written questions 1–6 have been reviewed, solved independently,
-  claimed by knowledge units, and linked to generators. **66/70 complete; 4 written questions pending.**
-- `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  sixty-six reviewed items. Its `verify` result of 66/66 describes this batch, not the
-  whole paper. Keep the bank entry `converted` until the remaining questions
-  are claimed; a future bank scan may infer `green` from the partial package,
-  so restore `converted` while the paper remains incomplete.
+  restart at 1 and use internal numbers 61–70.
+- All 70 were reviewed against the source, solved independently, claimed by
+  knowledge units, and linked to generators. **70/70 complete.**
+- `otk/sheets/posn2560_chemistry/sheet.json` contains the complete paper;
+  `sheetpipe verify` passed 70/70 solvers and 213 variant runs. Knowledge
+  coverage is 70/70 and the bank entry is `green`.
 - Source MC3's diagram maps 97 nm to n=4; the generator gives n explicitly
   and specifies an ensemble with all cascades. MC4 returns (Z,A)=(12,22).
   MC6 gives cobalt(III), [Ar]3d6. Figures are restated in words, with no static
@@ -81,9 +78,8 @@ Phases in build order. Check an item only when its tests pass.
   confirms 60+10, rather than silently losing written questions 9 and 10.
 - Maintainer test cadence: one targeted batch after each chemistry wave,
   including the changed keys, solver checks, provenance, safety, golden draws,
-  curriculum/stage/layout checks and Ruff. Run the full suite once all 70
-  questions are solved, generated and claimed. The first batch's full run is
-  historical; do not repeat it before 70/70 is complete.
+  curriculum/stage/layout checks and Ruff. The full suite is run after the
+  complete-sheet wave; the first batch's full run is historical.
 - MC1's diagram has the positive ray behind the cathode and electrons behind
   the anode. MC2's Ts oxidation states are model predictions, not measured
   properties. MC5's specified Mg²⁺ and P³⁻ differ in occupied shell count.
@@ -96,7 +92,7 @@ Phases in build order. Check an item only when its tests pass.
   empirical radius and O>P>As>Ga for first ionization energy. MC12 gives
   Ca and Cl for ions isoelectronic with Ar. The MC11 source discrepancy is
   documented in its sheet record and solver; no printed choice was adopted.
-- Next: review and digest Part I from question 13.
+- Next: choose the next chemistry sheet in the bank.
 
 ### Physics POSN bank — 2026-10-17
 
@@ -2206,3 +2202,10 @@ TOTAL         338   316     17     4   66      255      6     11
 - Written 4 gives G<E<D<A and basic oxides A₂E/DE (Na₂O/MgO). Its adaptation asks explicitly for basic oxides. Written 5 gives lattice *formation* enthalpy −2535 kJ/mol; its final source blank says MgF₂ despite abstract M/G in the data, so the adaptation uses MG₂. Written 6 finds both reactions exothermic with a 190 kJ per-mole-product enthalpy difference.
 - Wave validation: 66/66 sheet solvers and 201 variant runs green; 837 knowledge units in 703 files with zero problems; source coverage 66/70; focused sheet/set checks passed (438). The full suite remains deferred until the four remaining written questions are digested.
 - New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, written 7–10 (internal 67–70)
+
+- Reviewed p18–p19's final four written questions; added independently checked solvers, three variants, generators and knowledge units for each. This completes all 70 items.
+- Written 7 gives 12.0 g D and 4.5 g E; written 8 gives C₃H₆O; written 9 needs 568 g Cl₂ and produces 1043 g KCl; written 10 gives 118 g/mol and 1.50 mol/kg. Written 9 says “four reactions” but prints three, and the adaptation states the three printed equations.
+- Completion validation: 70/70 sheet solvers and 213 variant runs green; 841 knowledge units in 707 files with zero problems; source coverage 70/70. Focused sheet/set checks passed (201), bank checks passed (353), registry checks passed (588), and Ruff and whitespace checks passed. The bank entry is green.
+- Completed-sheet full suite: 39,883 passed, 13 skipped, two PDF explorer tests errored at setup because the workspace sandbox denied a local HTTP-server socket bind. Those exact two tests passed when rerun with loopback access; no test assertion failed.

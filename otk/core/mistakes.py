@@ -37,6 +37,18 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.assumed_all_a_reacts_in_two_step_yield": {"th": "คิดว่า A ทำปฏิกิริยาครบทั้งหมด", "en": "Assumed all A reacts"},
+    "chem.assumed_all_c_decomposes_in_two_step_yield": {"th": "คิดว่า C สลายครบทั้งหมด", "en": "Assumed all C decomposes"},
+    "chem.used_one_d_instead_of_four": {"th": "นับ D หนึ่งโมลแทนสี่โมลต่อขั้นที่สอง", "en": "Counted one D instead of four"},
+    "chem.halved_hydrogen_from_combustion_water": {"th": "นับ H จากน้ำเพียงครึ่งหนึ่ง", "en": "Halved hydrogen counted from water"},
+    "chem.doubled_carbon_from_combustion_co2": {"th": "นับ C จาก CO₂ เป็นสองเท่า", "en": "Doubled carbon counted from CO2"},
+    "chem.doubled_oxygen_from_combustion_balance": {"th": "นับ O ในตัวอย่างเป็นสองเท่า", "en": "Doubled oxygen in the sample"},
+    "chem.counted_only_first_step_potassium_chloride": {"th": "นับ KCl เฉพาะขั้นแรก", "en": "Counted KCl from only the first step"},
+    "chem.omitted_final_step_potassium_chloride": {"th": "ไม่นับ KCl จากขั้นสุดท้าย", "en": "Omitted KCl from the final step"},
+    "chem.used_one_chlorine_per_perchlorate": {"th": "คิดว่า Cl₂ หนึ่งโมลให้ KClO₄ หนึ่งโมล", "en": "Used one chlorine molecule per perchlorate"},
+    "chem.used_solution_mass_for_freezing_molality": {"th": "ใช้มวลสารละลายแทนมวลน้ำในการหาโมแลล", "en": "Used solution mass instead of water mass for molality"},
+    "chem.treated_freezing_depression_as_molality": {"th": "ใช้ค่า ΔTf เป็นค่าโมแลลโดยไม่หาร Kf", "en": "Treated freezing depression as molality"},
+    "chem.reversed_freezing_constant_ratio": {"th": "กลับอัตราส่วน ΔTf กับ Kf", "en": "Reversed the freezing depression and constant ratio"},
     "chem.reversed_metallicity_order": {"th": "กลับลำดับความเป็นโลหะ", "en": "Reversed the metallicity order"},
     "chem.swapped_alkali_alkaline_metallicity": {"th": "สลับความเป็นโลหะของหมู่ IA กับ IIA", "en": "Swapped alkali and alkaline-earth metallicity"},
     "chem.swapped_oxide_charge_ratios": {"th": "สลับสัดส่วนประจุในสูตรออกไซด์ของโลหะ", "en": "Swapped charge ratios in metal oxide formulas"},

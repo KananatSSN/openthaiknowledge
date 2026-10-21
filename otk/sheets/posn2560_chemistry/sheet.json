@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-60-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL: all 60 Part I questions and written questions 1–6 are reviewed, solved and generated (66/70). Written questions use internal numbers 61–70; written 7–10 remain pending. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Raw extraction stays in the private bank; unreviewed extraction is not a verified transcript. Do not interpret 66/66 solver checks as whole-paper completion.",
+  "note": "COMPLETE: all 60 Part I questions and ten Part II written questions are reviewed, solved independently, claimed by knowledge units and linked to generators (70/70). Written questions use internal numbers 61–70. MC11 has no correct printed choice; its adaptation asks the corrected rankings. MC43 has two correct printed choices; its adaptation asks for the pair. MC50 only implies sufficient BaCl2, not exact stoichiometry; its adaptation states exact addition. Written 4 clarifies basic oxides, written 5 corrects a MgF2 label, and written 9 corrects the stated count of printed reactions. Raw extraction stays in the private bank.",
   "items": [
     {
       "number": 1,
@@ -863,6 +863,58 @@
       "answer": "('คายพลังงาน', 'คายพลังงาน', 190.0)",
       "generator": "chem.posn2560_q66",
       "note": "For each mole H2O, break H-H plus half O=O and form two O-H: -235 kJ. For each mole NH3, break half N≡N and 1.5 H-H, form three N-H: -45 kJ."
+    },
+    {
+      "number": 67,
+      "solver": "q67",
+      "title": "ผลผลิตจากปฏิกิริยาต่อเนื่องที่ไม่สมบูรณ์",
+      "source": "Part II, written question 7, p18: 3A+B->2C, 2C->4D+E; from 0.25 mol A, 60% reacts and 75% of C decomposes. With M(D)=80, M(E)=120, D=12.0 g and E=4.5 g.",
+      "page": 18,
+      "figure": "Rendered p18 visually checked both equations, percentage yields, molar masses and answer blanks.",
+      "figure_asset": "",
+      "topic": "ปริมาณสัมพันธ์ของปฏิกิริยาต่อเนื่อง",
+      "answer": "(12.0, 4.5)",
+      "generator": "chem.posn2560_q67",
+      "note": "0.15 mol A reacts to make 0.10 mol C; 0.075 mol C decomposes, making 0.15 mol D and 0.0375 mol E."
+    },
+    {
+      "number": 68,
+      "solver": "q68",
+      "title": "สูตรเอมพิริคัลจากผลเผาไหม้",
+      "source": "Part II, written question 8, p19: burning 23.2 g CHO compound gives 52.8 g CO2 and 21.6 g H2O; empirical formula C3H6O.",
+      "page": 19,
+      "figure": "Rendered p19 visually checked the sample and product masses, excess oxygen and formula request.",
+      "figure_asset": "",
+      "topic": "สูตรเอมพิริคัลจากการเผาไหม้",
+      "answer": "C3H6O",
+      "generator": "chem.posn2560_q68",
+      "note": "Products give 1.20 mol C and 2.40 mol H; the sample has 6.4 g oxygen or 0.40 mol. Ratio C:H:O=3:6:1."
+    },
+    {
+      "number": 69,
+      "solver": "q69",
+      "title": "ปริมาณ Cl₂ และ KCl ในการผลิต KClO₄",
+      "source": "Part II, written question 9, p19: three printed reactions convert Cl2 through KClO and KClO3 to 277 g KClO4; require 568 g Cl2 and yield 1043 g total KCl.",
+      "page": 19,
+      "figure": "Rendered p19 visually checked all three printed equations, product mass and both answer blanks.",
+      "figure_asset": "",
+      "topic": "ปริมาณสัมพันธ์หลายปฏิกิริยาของคลอรีน",
+      "answer": "(568.0, 1043.0)",
+      "generator": "chem.posn2560_q69",
+      "note": "SOURCE TYPO: text says four reactions, but only three are printed. They combine to 4Cl2+8KOH->KClO4+7KCl+4H2O. 277 g KClO4 is 2 mol, needing 8 mol Cl2 and producing 14 mol KCl."
+    },
+    {
+      "number": 70,
+      "solver": "q70",
+      "title": "มวลโมลาร์จากการลดจุดเยือกแข็ง",
+      "source": "Part II, written question 10, p19: 17.7 g nondissociating organic solute in 100 g water freezes at -2.79 C; with Kf=1.86 C kg/mol, molar mass 118 g/mol and molality 1.50 mol/kg.",
+      "page": 19,
+      "figure": "Rendered p19 visually checked mass, solvent amount, freezing point, Kf and response units.",
+      "figure_asset": "",
+      "topic": "การลดจุดเยือกแข็งและโมแลล",
+      "answer": "(118.0, 1.5)",
+      "generator": "chem.posn2560_q70",
+      "note": "ΔTf=2.79 C gives molality 2.79/1.86=1.50; 0.100 kg water holds 0.150 mol solute, so 17.7/0.150=118 g/mol."
     }
   ]
 }
