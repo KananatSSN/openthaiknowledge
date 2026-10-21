@@ -37,6 +37,18 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.used_excess_reagent_as_limiting": {"th": "ใช้สารที่เหลือเกินกำหนดผลผลิต", "en": "Used the excess reagent to set the yield"},
+    "chem.assumed_all_reagent_mass_becomes_methanol": {"th": "คิดว่ามวลสารตั้งต้นทั้งหมดกลายเป็นเมทานอล", "en": "Assumed all reactant mass becomes methanol"},
+    "chem.made_two_methanol_per_co": {"th": "นับเมทานอลสองโมลต่อ CO หนึ่งโมล", "en": "Made two methanol molecules per CO"},
+    "chem.reported_co_mass_as_methanol": {"th": "ตอบมวล CO แทนมวลเมทานอล", "en": "Reported CO mass as methanol mass"},
+    "chem.halved_methanol_yield": {"th": "หารผลผลิตเมทานอลด้วยสอง", "en": "Halved the methanol yield"},
+    "chem.counted_water_molecules_instead_of_hydrogen_atoms": {"th": "นับโมเลกุลน้ำแทนอะตอมไฮโดรเจน", "en": "Counted water molecules instead of H atoms"},
+    "chem.treated_whole_hydrate_as_water": {"th": "คิดว่ามวลไฮเดรตทั้งหมดเป็นน้ำ", "en": "Treated the whole hydrate as water"},
+    "chem.omitted_hydration_number_in_hydrogen_count": {"th": "ลืมคูณจำนวนโมเลกุลน้ำต่อหน่วยสูตรไฮเดรต", "en": "Omitted the hydration number in H counting"},
+    "chem.misranked_mass_a_b_c": {"th": "จัดมวล a > b > c โดยแปลงโมลหรือมวลผิด", "en": "Misranked the sample masses as a>b>c"},
+    "chem.misranked_mass_b_c_a": {"th": "จัดมวล b > c > a โดยแปลงโมลหรือมวลผิด", "en": "Misranked the sample masses as b>c>a"},
+    "chem.misranked_mass_c_b_a": {"th": "จัดมวล c > b > a โดยแปลงโมลหรือมวลผิด", "en": "Misranked the sample masses as c>b>a"},
+    "chem.misranked_mass_a_c_b": {"th": "จัดมวล a > c > b โดยแปลงโมลหรือมวลผิด", "en": "Misranked the sample masses as a>c>b"},
     "chem.miscounted_carbon_in_furnace": {"th": "นับจำนวนคาร์บอนที่ต้องใช้ในเตาถลุงผิด", "en": "Miscounted carbon in the blast furnace"},
     "chem.miscounted_hematite_in_furnace": {"th": "นับจำนวน Fe₂O₃ ต่อ Fe ผิด", "en": "Miscounted hematite per iron"},
     "chem.miscounted_oxygen_in_furnace": {"th": "นับจำนวน O₂ ที่ใช้สร้าง CO ผิด", "en": "Miscounted oxygen for CO production"},

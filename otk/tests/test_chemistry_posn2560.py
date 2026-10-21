@@ -10,7 +10,7 @@ from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39, q40, q41, q42, q43, q44, q45,
+    q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
 )
 
 
@@ -155,6 +155,13 @@ def test_blast_furnace_lioh_and_carbonate_variants():
     assert q43.ANSWER == (0, 3)  # two source choices are true
 
 
+def test_methanol_hydrate_and_mass_rank_variants():
+    for module in (q46, q47, q48):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -177,7 +184,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 46)))
+@pytest.mark.parametrize("number", tuple(range(1, 49)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -543,7 +550,7 @@ def test_generated_answers_follow_the_written_data(number):
             ).groups()
             expected = str(q44.check(lioh_g=int(mass), pressure_atm=float(pressure),
                                      temperature_k=int(temperature)))
-        else:
+        elif number == 45:
             mass, acid, acid_ml, gas_ml = re.search(
                 r"คาร์บอเนตมวล ([\d.]+) g.*?HCl ([\d.]+) mol/L "
                 r"ปริมาตร (\d+) cm³ ได้ CO₂ (\d+) cm³", stem,
@@ -554,5 +561,20 @@ def test_generated_answers_follow_the_written_data(number):
                 "Na2CO3": r"\mathrm{Na_2CO_3}", "MgCO3": r"\mathrm{MgCO_3}",
                 "CaCO3": r"\mathrm{CaCO_3}", "BaCO3": r"\mathrm{BaCO_3}",
             }[carbonate]
+        elif number == 46:
+            co_g, hydrogen_g = re.search(r"CO (\d+) g ทำปฏิกิริยากับ H₂ ([\d.]+) g", stem).groups()
+            expected = f"{q46.check(co_g=int(co_g), hydrogen_g=float(hydrogen_g)):.1f}"
+        elif number == 47:
+            water, sample = re.search(r"มีน้ำ ([\d.]+)% โดยมวล สารตัวอย่าง ([\d.]+) g", stem).groups()
+            expected = f"{q47.check(water_percent=float(water), sample_g=float(sample)):.2f}"
+        else:
+            a, b, c, xmass = re.search(
+                r"a: H₂ ([\d.]+)×10²³ โมเลกุล; b: NH₃ ([\d.]+) L ที่ STP; "
+                r"c: สาร X ([\d.]+)×10²² โมเลกุล โดย X 0.25 mol มีมวล ([\d.]+) g",
+                stem,
+            ).groups()
+            order = q48.check(a_molecules=float(a) * 1e23, b_l=float(b),
+                              c_molecules=float(c) * 1e22, x_sample_g=float(xmass))
+            expected = " > ".join(order)
         assert answer == expected
         assert len(question.choices) == 4

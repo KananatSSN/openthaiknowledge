@@ -12,7 +12,7 @@ from otk.sheets.posn2560_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39, q40, q41, q42, q43, q44, q45,
+    q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1614,4 +1614,107 @@ class CarbonateFromAcidAndGas(ChemistrySheet):
             hint="CO₂ หนึ่งโมลเกิดจากคาร์บอเนตหนึ่งโมล; หา M ของเกลือจากมวลตัวอย่าง",
             distractors=[named("chem.chose_incorrect_carbonate_cation_" + formula.lower(), tex)
                          for formula, tex in _CARBONATE_TEX.items() if formula != answer],
+        )
+
+
+@question_type(
+    "chem.posn2560_q46", display_name={"th": "สารกำหนดปริมาณของการผลิตเมทานอล"},
+    level=LEVEL, subject="เคมี", topic="สารกำหนดปริมาณและมวลผลิตภัณฑ์",
+)
+class MethanolLimitingReagent(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q46.PARAMS, *q46.VARIANTS))
+        co_g, hydrogen_g = values["co_g"], values["hydrogen_g"]
+        answer = q46.solve(**values)
+        co_possible = co_g / 28 * 32
+        h2_possible = hydrogen_g / 4 * 32
+        candidates = (
+            ("chem.used_excess_reagent_as_limiting", max(co_possible, h2_possible)),
+            ("chem.assumed_all_reagent_mass_becomes_methanol", co_g + hydrogen_g),
+            ("chem.made_two_methanol_per_co", 2 * co_possible),
+            ("chem.reported_co_mass_as_methanol", co_g),
+            ("chem.halved_methanol_yield", answer / 2),
+        )
+        seen = {f"{answer:.1f}"}
+        distractors = []
+        for key, value in candidates:
+            label = f"{value:.1f}"
+            if label not in seen:
+                distractors.append(named(key, label))
+                seen.add(label)
+            if len(distractors) == 3:
+                break
+        assert len(distractors) == 3
+        return MathDraw(
+            "", f"{answer:.1f}",
+            prompt=(f"CO {co_g} g ทำปฏิกิริยากับ H₂ {hydrogen_g:.1f} g ตามสมการ "
+                    "CO + 2H₂ → CH₃OH จะได้เมทานอลมากที่สุดกี่กรัม "
+                    "(CO=28, H₂=2, CH₃OH=32 g/mol; ตอบหนึ่งตำแหน่ง)"),
+            hint="คำนวณผลผลิตที่เป็นไปได้จากสารตั้งต้นแต่ละชนิดแล้วเลือกค่าน้อยกว่า",
+            distractors=distractors,
+        )
+
+
+@question_type(
+    "chem.posn2560_q47", display_name={"th": "จำนวนอะตอม H ในเกลือไฮเดรต"},
+    level=LEVEL, subject="เคมี", topic="องค์ประกอบร้อยละและจำนวนอนุภาคของไฮเดรต",
+)
+class HydrateHydrogenAtoms(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q47.PARAMS, *q47.VARIANTS))
+        water_percent, sample_g = values["water_percent"], values["sample_g"]
+        answer = q47.solve(**values)
+        hydrate = round(142 * (water_percent / 100) /
+                        (18 * (1 - water_percent / 100)))
+        wrong = (
+            ("chem.counted_water_molecules_instead_of_hydrogen_atoms", answer / 2),
+            ("chem.treated_whole_hydrate_as_water", 2 * sample_g / 18 * 6.02e23 / 1e24),
+            ("chem.omitted_hydration_number_in_hydrogen_count",
+             2 * sample_g / (142 + 18 * hydrate) * 6.02e23 / 1e24),
+        )
+        return MathDraw(
+            "", f"{answer:.2f}",
+            prompt=(f"Na₂SO₄·xH₂O มีน้ำ {water_percent:.1f}% โดยมวล "
+                    f"สารตัวอย่าง {sample_g:.1f} g มีอะตอม H กี่ ×10²⁴ อะตอม "
+                    "(H₂O=18 g/mol, Nₐ=6.02×10²³; ตอบสัมประสิทธิ์สองตำแหน่ง)"),
+            hint="หามวลน้ำในตัวอย่าง แล้วคูณสองอะตอม H ต่อน้ำหนึ่งโมเลกุล",
+            distractors=[named(key, f"{value:.2f}") for key, value in wrong],
+        )
+
+
+_MASS_RANK_OPTIONS = (("a", "b", "c"), ("b", "c", "a"),
+                      ("c", "b", "a"), ("a", "c", "b"))
+_MASS_RANK_MISTAKES = {
+    ("a", "b", "c"): "chem.misranked_mass_a_b_c",
+    ("b", "c", "a"): "chem.misranked_mass_b_c_a",
+    ("c", "b", "a"): "chem.misranked_mass_c_b_a",
+    ("a", "c", "b"): "chem.misranked_mass_a_c_b",
+}
+
+
+@question_type(
+    "chem.posn2560_q48", display_name={"th": "เปรียบเทียบมวลจากโมเลกุลและปริมาตรแก๊ส"},
+    level=LEVEL, subject="เคมี", topic="โมล จำนวนอนุภาค และมวลแก๊ส",
+)
+class GasSampleMassRanking(QuestionType):
+    sheet_id = ChemistrySheet.sheet_id
+    sheet = ChemistrySheet.sheet
+
+    def build(self, rng, **params):
+        values = rng.choice((q48.PARAMS, *q48.VARIANTS))
+        answer = q48.solve(**values)
+        a_count = f"{values['a_molecules'] / 1e23:g}×10²³"
+        c_count = f"{values['c_molecules'] / 1e22:g}×10²²"
+        rank_text = lambda order: " > ".join(order)
+        return GeneratedQuestion(
+            stem=[text(f"เปรียบเทียบมวลของ a: H₂ {a_count} โมเลกุล; "
+                       f"b: NH₃ {values['b_l']:.2f} L ที่ STP; "
+                       f"c: สาร X {c_count} โมเลกุล โดย X 0.25 mol "
+                       f"มีมวล {values['x_sample_g']:.1f} g "
+                       "(Nₐ=6.02×10²³, ปริมาตรโมลาร์ 22.4 L/mol) เรียงมวลจากมากไปน้อย")],
+            correct=[text(rank_text(answer))],
+            distractors=fixed(*[[text(named(_MASS_RANK_MISTAKES[order], rank_text(order)))]
+                                for order in _MASS_RANK_OPTIONS if order != answer]),
+            topic="โมล จำนวนอนุภาค และมวลแก๊ส",
+            hint=[text("แปลงทั้งสามตัวอย่างเป็นโมล แล้วคูณด้วยมวลโมลาร์ของแต่ละชนิด")],
         )

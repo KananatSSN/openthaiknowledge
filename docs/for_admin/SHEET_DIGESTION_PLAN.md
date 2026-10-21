@@ -66,10 +66,10 @@ Phases in build order. Check an item only when its tests pass.
   60 multiple-choice questions plus 10 written questions. Written questions
   restart at 1 and will use internal numbers 61–70.
 - All 70 have text-layer extraction in the private bank. Part I questions
-  1–45 have been reviewed, solved independently, claimed by knowledge
-  units, and linked to generators. **45/70 complete; 25 pending.**
+  1–48 have been reviewed, solved independently, claimed by knowledge
+  units, and linked to generators. **48/70 complete; 22 pending.**
 - `otk/sheets/posn2560_chemistry/sheet.json` intentionally contains only those
-  forty-five reviewed items. Its `verify` result of 45/45 describes this batch, not the
+  forty-eight reviewed items. Its `verify` result of 48/48 describes this batch, not the
   whole paper. Keep the bank entry `converted` until the remaining questions
   are claimed; a future bank scan may infer `green` from the partial package,
   so restore `converted` while the paper remains incomplete.
@@ -2157,3 +2157,10 @@ TOTAL         338   316     17     4   66      255      6     11
 - MC43 has two true printed answers: 0.36 kg C and 672 dm³ CO₂. Its adaptation asks for the pair of correct statements. MC44 gives 205 L CO₂ from 240 g LiOH at 500 K and 1 atm. MC45 identifies BaCO₃ from matching acid, gas and sample-mass data.
 - The paper remains partial at 45/70; the full suite remains deferred until all 70 questions are digested.
 - Wave validation: 45/45 sheet solvers and 138 variants green; 816 knowledge units in 682 files with zero validation problems; source coverage 45/70. Focused sheet/set checks passed (305), new-key provenance/safety/golden checks passed (12), curriculum/stage/layout/manifest checks passed (46), and Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC46–48
+
+- Reviewed p12 methanol, hydrate and sample-mass questions; added independently checked solvers, three variants, generators and knowledge units for each.
+- MC46's CO is limiting and gives 400 g methanol. MC47 counts two H atoms per water molecule to get 1.57×10²⁴ H atoms. MC48 converts all three samples to grams, giving a > b > c.
+- Wave validation so far: 48/48 sheet solvers and 147 variants green; 819 knowledge units in 685 files with zero problems; source coverage 48/70; focused sheet/set checks passed (324). The full suite remains deferred until the entire sheet is digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.

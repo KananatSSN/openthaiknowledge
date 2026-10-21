@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "โมล จำนวนอนุภาค และมวลแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.rank_sample_masses_from_molecules_volume.procedure",
+      "kind": "procedure",
+      "title": "เปรียบเทียบมวลจากโมเลกุลและปริมาตรแก๊ส",
+      "statement": "เปรียบเทียบมวลตัวอย่างที่ให้เป็นจำนวนโมเลกุล ปริมาตรแก๊สที่ STP และมวลอ้างอิงของสาร X โดยแปลงทุกอย่างเป็นโมลก่อน",
+      "steps": [
+        "ใช้ Nₐ กับจำนวนโมเลกุล และ 22.4 L/mol กับแก๊สที่ STP",
+        "คำนวณมวลโมลาร์ X จาก 0.25 mol แล้วเทียบมวลสามตัวอย่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 48
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q48"
+      ],
+      "note": "Masses are 10.0 g, 2.55 g, and about 2.19 g respectively using N_A=6.02×10^23 and 22.4 L/mol at STP."
+    }
+  ]
+}
