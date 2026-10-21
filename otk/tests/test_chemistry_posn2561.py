@@ -12,7 +12,7 @@ from otk.sheets.posn2561_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
     q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
-    q46, q47, q48,
+    q46, q47, q48, q49, q50, q51,
 )
 
 
@@ -20,13 +20,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 49))
+@pytest.mark.parametrize("number", range(1, 52))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -424,7 +424,7 @@ def test_generated_answers_follow_the_stem(number):
             )
             assert answer == f"{rounded:.3f}"
             assert "ปริมาตรสารละลายไม่เปลี่ยน" in stem
-        else:
+        elif number == 48:
             target, final_ml, ppm, barium_density, barium_ml, sodium_percent, sodium_density = re.search(
                 r"\[OH⁻\]=([\d.]+) mol/L ปริมาตรสุดท้าย (\d+) mL.*?Ba\(OH\)₂ (\d+) ppm.*?ความหนาแน่น ([\d.]+) g/mL ปริมาตร (\d+) mL.*?NaOH ([\d.]+)%.*?ความหนาแน่น ([\d.]+) g/mL",
                 stem,
@@ -437,4 +437,32 @@ def test_generated_answers_follow_the_stem(number):
             sodium_ml = need_mmol / stock_mmol_per_ml
             assert answer == f"{float(sodium_ml):.2f}"
             assert "ppm โดยมวล" in stem
+        elif number == 49:
+            solute, benzene, rise, kb = re.search(
+                r"สาร X ([\d.]+) g ในเบนซีน ([\d.]+) g.*?สูงขึ้น ([\d.]+)°C.*?= ([\d.]+) °C/m",
+                stem,
+            ).groups()
+            implied_mass = Fraction(solute) * Fraction(kb) * 1000
+            implied_mass /= Fraction(rise) * Fraction(benzene)
+            nearest = int(implied_mass + Fraction(1, 2))
+            assert answer == f"{nearest:.1f}"
+            assert "ไม่แตกตัว" in stem
+        elif number == 50:
+            pure_a, solution_a, kf, pure_b, kb = re.search(
+                r"A บริสุทธิ์แข็งตัวที่ ([\d.]+)°C.*?สารละลาย A แข็งตัวที่ ([\d.]+)°C.*?Kf\(A\)=([\d.]+) °C/m.*?B บริสุทธิ์เดือดที่ ([\d.]+)°C.*?Kb\(B\)=([\d.]+) °C/m",
+                stem,
+            ).groups()
+            molality = (Fraction(pure_a) - Fraction(solution_a)) / Fraction(kf)
+            boiling = Fraction(pure_b) + Fraction(kb) * molality
+            assert answer == f"{float(boiling):.1f}"
+            assert "มวล M เท่ากัน" in stem and "มวลตัวทำละลายเท่ากัน" in stem
+        else:
+            molar_mass, water_ml, gap = re.search(
+                r"สาร X มวลโมล (\d+) g/mol ลงในน้ำ (\d+) mL.*?ต่างกัน ([\d.]+)°C",
+                stem,
+            ).groups()
+            molality = (Fraction(gap) - 100) / (Fraction("1.86") + Fraction("0.51"))
+            grams = molality * Fraction(int(water_ml), 1000) * int(molar_mass)
+            assert answer == f"{float(grams):.1f}"
+            assert "ไม่แตกตัว" in stem and "1.00 g/mL" in stem
         assert len(question.choices) == 4

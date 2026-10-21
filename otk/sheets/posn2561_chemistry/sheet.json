@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 48/75: all 75 items extracted; Part I questions 1–48 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 27 await review.",
+  "note": "PARTIAL 51/75: all 75 items extracted; Part I questions 1–51 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 24 await review.",
   "items": [
     {
       "number": 1,
@@ -629,6 +629,45 @@
       "answer": "20",
       "generator": "chem.posn2561_q48",
       "note": "Source choice ค is 20.0 mL: 200 g barium solution contains 0.0684 g Ba(OH)2=0.0004 mol, contributing 0.0008 mol OH−. Final target is 0.2008 mol OH−, leaving 0.2000 mol from NaOH. The stock is 10.0 M, hence 20.0 mL. Adaptation explicitly defines ppm by mass and varies target or ppm."
+    },
+    {
+      "number": 49,
+      "solver": "q49",
+      "title": "มวลโมลของตัวละลายจากการเพิ่มจุดเดือดของเบนซีน",
+      "source": "Part I, question 49, p11: dissolve 2.80 g X in 32.0 g benzene; boiling point rises 1.40°C with Kb=2.53°C/m; find molar mass.",
+      "page": 11,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การเพิ่มขึ้นของจุดเดือดและมวลโมล",
+      "answer": "158",
+      "generator": "chem.posn2561_q49",
+      "note": "Source choice ค is 158 g/mol: molality 1.40/2.53 and solvent mass 0.0320 kg give 0.0177 mol X; 2.80 g divided by this is 158.125 g/mol. The adaptation states X is nonvolatile and does not dissociate, an assumption implicit in the source answer."
+    },
+    {
+      "number": 50,
+      "solver": "q50",
+      "title": "จุดเดือดจากโมแลลิตีที่ได้จากจุดเยือกแข็ง",
+      "source": "Part I, question 50, p11: equal masses of nondissociating solute M in equal masses of solvents A and B; A freezes at 2.0°C versus 4.5°C pure with Kf=5.0, while pure B boils at 63.0°C with Kb=4.0; find B solution boiling point.",
+      "page": 11,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การลดจุดเยือกแข็งและเพิ่มจุดเดือด",
+      "answer": "65",
+      "generator": "chem.posn2561_q50",
+      "note": "Source choice ง is 65.0°C: A freezes 2.5°C lower, so both solutions are 0.5 molal; B boils 2.0°C above 63.0°C. Variants vary both solvent constants and temperatures."
+    },
+    {
+      "number": 51,
+      "solver": "q51",
+      "title": "มวลตัวละลายจากช่วงห่างจุดเดือดและจุดเยือกแข็ง",
+      "source": "Part I, question 51, p12: add X of molar mass 180 g/mol to 100 cm3 water until solution boiling-freezing gap is 109.48°C; water Kf=1.86 and Kb=0.51°C/m.",
+      "page": 12,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สมบัติคอลลิเกทีฟสองชนิดของสารละลาย",
+      "answer": "72",
+      "generator": "chem.posn2561_q51",
+      "note": "Source choice ข is 72.0 g: 109.48−100=(1.86+0.51)m gives 4 mol/kg; 100 mL water weighs 0.100 kg, so 0.400 mol X weighs 72 g. Adaptation states X is nonvolatile and does not dissociate, consistent with the source answer."
     }
   ]
 }

@@ -11,7 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
+    q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51,
 )
 
 
@@ -1606,4 +1606,117 @@ class SodiumHydroxideStockVolume(QuestionType):
             ),
             topic="พีพีเอ็ม ร้อยละมวล และความเข้มข้นไฮดรอกไซด์",
             hint=[text("แปลง ppm ของ Ba(OH)₂ เป็นมวล แล้วนับ OH⁻ สองโมลต่อโมล; หักจาก OH⁻ เป้าหมายก่อนคำนวณ NaOH")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q49", display_name={"th": "มวลโมลจากจุดเดือดเบนซีนที่สูงขึ้น"},
+    level=LEVEL, subject="เคมี", topic="การเพิ่มขึ้นของจุดเดือดและมวลโมล",
+)
+class MolarMassFromBenzeneBoilingRise(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q49.PARAMS, *q49.VARIANTS))
+        answer = q49.solve(**values)
+        raw_mass = (Fraction(values["solute_g"]) * Fraction(values["kb"]) * 1000
+                    / (Fraction(values["rise_c"]) * Fraction(values["benzene_g"])))
+        fmt = lambda value: f"{float(value):.1f}"
+        return GeneratedQuestion(
+            stem=[text(f"ละลายสาร X {values['solute_g']} g ในเบนซีน "
+                       f"{values['benzene_g']} g ทำให้จุดเดือดสูงขึ้น "
+                       f"{values['rise_c']}°C โดย Kb ของเบนซีน = "
+                       f"{values['kb']} °C/m ถ้า X ไม่ระเหยและไม่แตกตัว "
+                       "มวลโมลของ X ใกล้เคียงกี่ g/mol")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_used_solution_mass_as_solvent_mass",
+                            fmt(raw_mass * Fraction(values["benzene_g"])
+                                / (Fraction(values["benzene_g"])
+                                   + Fraction(values["solute_g"])))))],
+                [text(named("chem.posn2561_ignored_benzene_boiling_constant",
+                            fmt(raw_mass / Fraction(values["kb"]))))],
+                [text(named("chem.posn2561_doubled_solute_mass_in_molar_mass",
+                            fmt(raw_mass * 2)))],
+            ),
+            topic="การเพิ่มขึ้นของจุดเดือดและมวลโมล",
+            hint=[text("ΔTb=Kb·m; m คือโมลสาร X ต่อกิโลกรัมเบนซีน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q50", display_name={"th": "ย้ายโมแลลิตีจากจุดเยือกแข็งไปจุดเดือด"},
+    level=LEVEL, subject="เคมี", topic="การลดจุดเยือกแข็งและเพิ่มจุดเดือด",
+)
+class BoilingFromEqualMolalitySolutions(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q50.PARAMS, *q50.VARIANTS))
+        answer = q50.solve(**values)
+        depression = (Fraction(values["a_freeze_pure"])
+                      - Fraction(values["a_freeze_solution"]))
+        molality = depression / Fraction(values["a_kf"])
+        b_pure = Fraction(values["b_boiling_pure"])
+        rise = Fraction(values["b_kb"]) * molality
+        fmt = lambda value: f"{float(value):.1f}"
+        return GeneratedQuestion(
+            stem=[text("สาร M ไม่ระเหยและไม่แตกตัว ละลายในตัวทำละลาย A และ B "
+                       "โดยใช้มวล M เท่ากันและมวลตัวทำละลายเท่ากัน "
+                       f"A บริสุทธิ์แข็งตัวที่ {values['a_freeze_pure']}°C "
+                       f"สารละลาย A แข็งตัวที่ {values['a_freeze_solution']}°C "
+                       f"โดย Kf(A)={values['a_kf']} °C/m "
+                       f"B บริสุทธิ์เดือดที่ {values['b_boiling_pure']}°C "
+                       f"และ Kb(B)={values['b_kb']} °C/m "
+                       "สารละลาย B เดือดที่กี่ °C")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_used_freezing_depression_as_boiling_rise",
+                            fmt(b_pure + depression)))],
+                [text(named("chem.posn2561_subtracted_boiling_elevation",
+                            fmt(b_pure - rise)))],
+                [text(named("chem.posn2561_assumed_one_molal_in_second_solvent",
+                            fmt(b_pure + Fraction(values["b_kb"]))))],
+            ),
+            topic="การลดจุดเยือกแข็งและเพิ่มจุดเดือด",
+            hint=[text("ทั้งสองสารละลายมีโมแลลิตีเท่ากัน; หา m จาก ΔTf(A)/Kf(A) แล้วใช้ ΔTb(B)=Kb(B)·m")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q51", display_name={"th": "มวลสารจากช่วงห่างจุดเดือดและจุดเยือกแข็ง"},
+    level=LEVEL, subject="เคมี", topic="สมบัติคอลลิเกทีฟสองชนิดของสารละลาย",
+)
+class SoluteMassFromBoilingFreezingGap(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q51.PARAMS, *q51.VARIANTS))
+        answer = q51.solve(**values)
+        water_kg = Fraction(values["water_ml"], 1000)
+        extra_gap = Fraction(values["gap_c"]) - 100
+        mass_factor = water_kg * values["solute_molar_mass"]
+        fmt = lambda value: f"{float(value):.1f}"
+        return GeneratedQuestion(
+            stem=[text(f"เติมสาร X มวลโมล {values['solute_molar_mass']} g/mol "
+                       f"ลงในน้ำ {values['water_ml']} mL "
+                       "(ความหนาแน่น 1.00 g/mL) ให้จุดเดือดและจุดเยือกแข็ง "
+                       f"ของสารละลายต่างกัน {values['gap_c']}°C "
+                       "ถ้า X ไม่ระเหยและไม่แตกตัว ต้องใช้ X กี่กรัม "
+                       "กำหนดน้ำบริสุทธิ์เดือดที่ 100.00°C แข็งตัวที่ 0.00°C "
+                       "Kb=0.51 และ Kf=1.86 °C/m")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_ignored_water_freezing_shift",
+                            fmt(extra_gap / q51.KB * mass_factor)))],
+                [text(named("chem.posn2561_ignored_water_boiling_shift",
+                            fmt(extra_gap / q51.KF * mass_factor)))],
+                [text(named("chem.posn2561_used_one_kg_instead_of_water_mass",
+                            fmt(Fraction(answer) * 1000 / values["water_ml"])))],
+            ),
+            topic="สมบัติคอลลิเกทีฟสองชนิดของสารละลาย",
+            hint=[text("ช่วงห่าง = 100 + (Kb+Kf)·m; แปลงปริมาตรน้ำเป็นกิโลกรัมก่อนหามวล X")],
         )

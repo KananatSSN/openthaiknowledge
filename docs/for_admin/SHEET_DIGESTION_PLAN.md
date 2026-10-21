@@ -62,7 +62,7 @@ Phases in build order. Check an item only when its tests pass.
 ### Chemistry POSN 2561 bank — waves 1–12, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
-- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first forty-eight were reviewed, independently solved, claimed by knowledge units, and linked to generators. **48/75 complete; 27 pending.**
+- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first fifty-one were reviewed, independently solved, claimed by knowledge units, and linked to generators. **51/75 complete; 24 pending.**
 - MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
 - MC4's only always-true claim is that Z has more than six electrons in its second shell; the adaptation says “always” explicitly. MC5 selects fluorine. MC6's false comparison is K < Ca for IE₂; the close Se < Br comparison was checked against NIST ionization data.
 - MC7's mixed atomic/ionic radius comparison depends on a radius convention; its adaptation supplies the specific table used. MC8's false order places Ca above As for IE₁; its adaptation supplies measured property values and specifies grey arsenic melting under pressure. MC9 pairs SO₃ with Na₂O to give an acid and a base in water.
@@ -79,7 +79,8 @@ Phases in build order. Check an item only when its tests pass.
 - MC40 gives 0.450 mol NaBH₄ after balancing the diborane reaction and accounting for 70% yield. MC41 produces 8/5 mol N₂ per mol NaN₃ across two reactions: the source’s 49 g choice is closest to the 49.5 g calculation with its printed R. MC42 needs three H⁺ per formula unit of trona, or 48.0 mL of 0.125 M acid.
 - MC43 balances 4KO₂+2CO₂→2K₂CO₃+3O₂ and finds KO₂ limiting, yielding 168 cm³ O₂. MC44 uses mass per litre and molarity to identify H₃PO₄. MC45 counts 49 mmol Na⁺ in 70 mL, or 0.70 mol/L.
 - MC46 uses four HCl per Cl₂ and the 36.5% mass fraction to obtain 20.0 g of acid solution; its wording now distinguishes solution from pure HCl. MC47 leaves 0.708 M acetic acid after NaHCO₃ consumes 0.050 mol. MC48 counts 0.0008 mol OH⁻ from the Ba(OH)₂ stock before adding 20.0 mL of NaOH stock.
-- The private bank digest contains paraphrased records for the forty-eight reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 49.
+- MC49 gives about 158 g/mol from benzene boiling-point elevation. MC50 transfers 0.5 m molality from solvent A’s freezing depression to solvent B’s boiling rise, giving 65.0°C. MC51 uses both water constants to obtain 4 m and 72.0 g of X. The adaptations state the nondissociation assumption behind the source answers.
+- The private bank digest contains paraphrased records for the fifty-one reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 52.
 - Maintain the requested cadence: targeted tests each wave; the full suite only when all 75 items are digested.
 
 ### Chemistry POSN bank — waves 1–23, 2026-10-21
@@ -2288,3 +2289,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed p11 chlorine generation from concentrated hydrochloric acid, acetic acid left after bicarbonate reaction, and a target hydroxide concentration made from ppm Ba(OH)₂ plus concentrated NaOH. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC46 explicitly asks for the mass of HCl solution.
 - Wave validation: 48/48 sheet solvers and 144 variant runs green; 888 knowledge units in 754 files with zero validation problems; source coverage 48/48. Focused sheet/set checks passed (52), registry/provenance/safety/layout checks passed (695), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC49–51
+
+- Reviewed p11–12 colligative-property questions. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC49 and MC51 explicitly assume nonvolatile, nondissociating solutes; MC50 transfers equal molality between two solvents.
+- Wave validation: 51/51 sheet solvers and 153 variant runs green; 891 knowledge units in 757 files with zero validation problems; source coverage 51/51. Focused sheet/set checks passed (55), registry/provenance/safety/layout checks passed (707), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
