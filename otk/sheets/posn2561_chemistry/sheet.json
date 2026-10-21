@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 39/75: all 75 items extracted; Part I questions 1–39 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 36 await review.",
+  "note": "PARTIAL 42/75: all 75 items extracted; Part I questions 1–42 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 33 await review.",
   "items": [
     {
       "number": 1,
@@ -512,6 +512,45 @@
       "answer": "0.0515",
       "generator": "chem.posn2561_q39",
       "note": "Source choice ค is 0.0515 M Fe3+: initial Fe3+ is 0.090 mmol; permanganate oxidizes 3.00 mmol Fe2+; 3.090 mmol in 60.0 mL is 0.0515 M. Adaptation assumes additive volumes, retains acid excess and varies reagent concentrations."
+    },
+    {
+      "number": 40,
+      "solver": "q40",
+      "title": "โซเดียมโบโรไฮไดรด์สำหรับไดบอเรนตามร้อยละผลได้",
+      "source": "Part I, question 40, p10: balance NaBH4 with excess BF3 to form diborane; find NaBH4 needed for 0.210 mol B2H6 at 70% yield.",
+      "page": 10,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ดุลสมการและร้อยละผลได้",
+      "answer": "0.45",
+      "generator": "chem.posn2561_q40",
+      "note": "Source choice ง is 0.450 mol NaBH4: balanced 3NaBH4+4BF3→3NaBF4+2B2H6. Theoretical diborane needed is 0.300 mol; multiply by 3/2. Adaptation varies target amount and yield."
+    },
+    {
+      "number": 41,
+      "solver": "q41",
+      "title": "โซเดียมเอไซด์สำหรับแก๊สไนโตรเจนจากปฏิกิริยาต่อเนื่อง",
+      "source": "Part I, question 41, p10: NaN3 decomposes to N2 and Na; Na reacts with KNO3 to make additional N2; find azide mass for 31 L N2 at 37°C and 760 mmHg.",
+      "page": 10,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ปริมาณสารสัมพันธ์ของแก๊สและปฏิกิริยาต่อเนื่อง",
+      "answer": "49.5",
+      "generator": "chem.posn2561_q41",
+      "note": "Source choice ข is 49 g, the closest option to 49.54 g using the paper constant R=0.082 L atm mol−1 K−1. Each mol NaN3 yields 3/2 mol N2 directly and 1/10 mol via Na/KNO3, total 8/5. Adaptation requests one decimal place and varies gas state."
+    },
+    {
+      "number": 42,
+      "solver": "q42",
+      "title": "ปริมาตรกรดไฮโดรคลอริกสำหรับแร่โทรนา",
+      "source": "Part I, question 42, p10: find volume of 0.125 M HCl needed to fully acidify carbonate and bicarbonate in 0.452 g trona (formula mass 226).",
+      "page": 10,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สมมูลกรดของคาร์บอเนตและไบคาร์บอเนต",
+      "answer": "48",
+      "generator": "chem.posn2561_q42",
+      "note": "Source choice ค is 48.0 mL: 0.452/226=0.002 mol trona, each formula unit requires three H+ equivalents, and 0.006 mol/0.125 M is 0.048 L. Adaptation varies trona mass and acid concentration."
     }
   ]
 }

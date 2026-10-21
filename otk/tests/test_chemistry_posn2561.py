@@ -11,7 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
-    q34, q35, q36, q37, q38, q39,
+    q34, q35, q36, q37, q38, q39, q40, q41, q42,
 )
 
 
@@ -19,13 +19,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 40))
+@pytest.mark.parametrize("number", range(1, 43))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -327,7 +327,7 @@ def test_generated_answers_follow_the_stem(number):
                 Decimal("0.1"), rounding=ROUND_HALF_UP,
             )
             assert answer == f"{percent:.1f}" and "22.4 L/mol" in stem
-        else:
+        elif number == 39:
             matched = re.search(
                 r"สารละลายผสม (\d+) mL มี Fe\(NH₄\)₂\(SO₄\)₂ ([\d.]+) mol/L, Fe₂\(SO₄\)₃ ([\d.]+) mol/L.*?KMnO₄ ([\d.]+) mol/L (\d+) mL",
                 stem,
@@ -340,4 +340,33 @@ def test_generated_answers_follow_the_stem(number):
             ferric = 2 * Fraction(initial_iii) * v + oxidized
             assert answer == f"{float(ferric / (v + pv)):.4f}"
             assert "ปริมาตรรวม" in stem
+        elif number == 40:
+            target, yield_percent = re.search(
+                r"B₂H₆ ([\d.]+) mol ที่ผลได้ (\d+)%", stem,
+            ).groups()
+            needed = Fraction(target) * Fraction(3, 2) * 100 / int(yield_percent)
+            assert answer == f"{float(needed):.3f}"
+            assert "NaBH₄" in stem and "BF₃" in stem
+        elif number == 41:
+            volume, temperature, pressure = re.search(
+                r"N₂ ([\d.]+) L ที่ (\d+)°C และ (\d+) mmHg", stem,
+            ).groups()
+            nitrogen = Fraction(volume) * Fraction(int(pressure), 760)
+            nitrogen /= Fraction("0.082") * (int(temperature) + 273)
+            grams = nitrogen * Fraction(5, 8) * 65
+            from decimal import Decimal, ROUND_HALF_UP
+            rounded = (Decimal(grams.numerator) / Decimal(grams.denominator)).quantize(
+                Decimal("0.1"), rounding=ROUND_HALF_UP,
+            )
+            assert answer == f"{rounded:.1f}"
+            assert "2NaN₃ → 2Na + 3N₂" in stem and "10Na + 2KNO₃" in stem
+        else:
+            mass, concentration = re.search(
+                r"มวล ([\d.]+) g .*?HCl ([\d.]+) mol/L", stem,
+            ).groups()
+            formula_moles = Fraction(mass) / 226
+            acid_moles = 3 * formula_moles
+            volume_ml = 1000 * acid_moles / Fraction(concentration)
+            assert answer == f"{float(volume_ml):.1f}"
+            assert "Na₂CO₃·NaHCO₃·2H₂O" in stem
         assert len(question.choices) == 4

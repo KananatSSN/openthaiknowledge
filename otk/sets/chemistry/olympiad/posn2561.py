@@ -11,7 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39,
+    q37, q38, q39, q40, q41, q42,
 )
 
 
@@ -1284,4 +1284,108 @@ class FerricConcentrationAfterPermanganate(QuestionType):
             ),
             topic="รีดอกซ์และความเข้มข้นไอออนหลังผสม",
             hint=[text("Fe₂(SO₄)₃ เริ่มต้นให้ Fe³⁺ สองโมลต่อโมล; MnO₄⁻ หนึ่งโมลออกซิไดซ์ Fe²⁺ ห้าโมล")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q40", display_name={"th": "โซเดียมโบโรไฮไดรด์สำหรับไดบอเรน"},
+    level=LEVEL, subject="เคมี", topic="ดุลสมการและร้อยละผลได้",
+)
+class BorohydrideForDiboraneYield(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q40.PARAMS, *q40.VARIANTS))
+        target = Fraction(values["target_diborane_mol"])
+        yield_fraction = Fraction(values["yield_percent"], 100)
+        answer = q40.solve(**values)
+        fmt = lambda value: f"{float(value):.3f}"
+        return GeneratedQuestion(
+            stem=[text("NaBH₄ ทำปฏิกิริยากับ BF₃ มากเกินพอให้ NaBF₄ และ B₂H₆ "
+                       f"ถ้าต้องการ B₂H₆ {float(target):.3f} mol ที่ผลได้ "
+                       f"{values['yield_percent']}% ต้องใช้ NaBH₄ กี่ mol")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_ignored_diborane_yield",
+                            fmt(target * Fraction(3, 2))))],
+                [text(named("chem.posn2561_assumed_one_to_one_borohydride_diborane",
+                            fmt(target / yield_fraction)))],
+                [text(named("chem.posn2561_reversed_borohydride_diborane_ratio",
+                            fmt(target * Fraction(2, 3) / yield_fraction)))],
+            ),
+            topic="ดุลสมการและร้อยละผลได้",
+            hint=[text("ดุลได้ 3NaBH₄ + 4BF₃ → 3NaBF₄ + 2B₂H₆ แล้วปรับด้วยร้อยละผลได้")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q41", display_name={"th": "โซเดียมเอไซด์สำหรับแก๊สไนโตรเจน"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสารสัมพันธ์ของแก๊สและปฏิกิริยาต่อเนื่อง",
+)
+class AzideForNitrogenGas(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q41.PARAMS, *q41.VARIANTS))
+        answer = q41.solve(**values)
+        nitrogen = (Fraction(values["pressure_mmhg"], 760)
+                    * Fraction(values["nitrogen_l"])
+                    / (q41.R * (values["temperature_c"] + 273)))
+        fmt = lambda value: f"{float(value):.1f}"
+        return GeneratedQuestion(
+            stem=[text("NaN₃ สลายตัวให้ N₂ และ Na จากนั้น Na ทำปฏิกิริยากับ "
+                       "KNO₃ ให้ N₂ เพิ่มอีกตามสมการ "
+                       "2NaN₃ → 2Na + 3N₂; "
+                       "10Na + 2KNO₃ → K₂O + 5Na₂O + N₂ "
+                       f"ถ้าต้องการ N₂ {values['nitrogen_l']} L ที่ "
+                       f"{values['temperature_c']}°C และ {values['pressure_mmhg']} mmHg "
+                       "ต้องใช้ NaN₃ ประมาณกี่กรัม ตอบทศนิยมหนึ่งตำแหน่ง "
+                       "กำหนด R=0.082 L·atm/(mol·K), มวลโมล NaN₃=65 g/mol")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_ignored_nitrate_nitrogen",
+                            fmt(nitrogen * Fraction(2, 3) * 65)))],
+                [text(named("chem.posn2561_used_stp_volume_for_warm_nitrogen",
+                            fmt(Fraction(values["nitrogen_l"]) / Fraction("22.4")
+                                * Fraction(values["pressure_mmhg"], 760)
+                                * Fraction(5, 8) * 65)))],
+                [text(named("chem.posn2561_assumed_one_to_one_azide_nitrogen",
+                            fmt(nitrogen * 65)))],
+            ),
+            topic="ปริมาณสารสัมพันธ์ของแก๊สและปฏิกิริยาต่อเนื่อง",
+            hint=[text("NaN₃ หนึ่งโมลให้ N₂ รวม 3/2 + 1/10 = 8/5 mol; ใช้ PV=nRT")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q42", display_name={"th": "กรดสำหรับแร่โทรนา"},
+    level=LEVEL, subject="เคมี", topic="สมมูลกรดของคาร์บอเนตและไบคาร์บอเนต",
+)
+class HydrochloricAcidForTrona(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q42.PARAMS, *q42.VARIANTS))
+        answer = q42.solve(**values)
+        fmt = lambda value: f"{float(value):.1f}"
+        return GeneratedQuestion(
+            stem=[text("แร่โทรนา Na₂CO₃·NaHCO₃·2H₂O "
+                       f"มวล {values['trona_mg'] / 1000:.3f} g "
+                       f"(มวลสูตร 226 g/mol) ต้องใช้ HCl {values['acid_m']} mol/L "
+                       "กี่ mL จึงเปลี่ยนคาร์บอเนตและไบคาร์บอเนตทั้งหมด "
+                       "เป็น CO₂ และ H₂O")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_neutralized_only_carbonate_in_trona",
+                            fmt(Fraction(answer) * Fraction(2, 3))))],
+                [text(named("chem.posn2561_neutralized_only_bicarbonate_in_trona",
+                            fmt(answer / 3)))],
+                [text(named("chem.posn2561_counted_both_trona_anions_as_carbonate",
+                            fmt(Fraction(answer) * Fraction(4, 3))))],
+            ),
+            topic="สมมูลกรดของคาร์บอเนตและไบคาร์บอเนต",
+            hint=[text("โทรนาหนึ่งสูตรมี CO₃²⁻ หนึ่งตัวใช้ H⁺ สองตัว และ HCO₃⁻ หนึ่งตัวใช้อีกหนึ่งตัว")],
         )

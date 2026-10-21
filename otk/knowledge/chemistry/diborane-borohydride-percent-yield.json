@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ดุลสมการและร้อยละผลได้",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.diborane_borohydride_percent_yield.procedure",
+      "kind": "procedure",
+      "title": "โซเดียมโบโรไฮไดรด์สำหรับไดบอเรนตามร้อยละผลได้",
+      "statement": "ดุลสมการ 3NaBH₄+4BF₃→3NaBF₄+2B₂H₆ แล้วคำนวณย้อนจากผลได้จริงด้วยอัตราส่วน NaBH₄:B₂H₆ = 3:2",
+      "steps": [
+        "หารโมล B₂H₆ ที่ต้องการด้วยเศษส่วนผลได้เพื่อหาโมลตามทฤษฎี",
+        "คูณด้วย 3/2 เพื่อหาโมล NaBH₄ ที่ต้องใช้"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 40
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q40"
+      ],
+      "note": "Source choice ง is 0.450 mol NaBH4: balanced 3NaBH4+4BF3→3NaBF4+2B2H6. Theoretical diborane needed is 0.300 mol; multiply by 3/2. Adaptation varies target amount and yield."
+    }
+  ]
+}
