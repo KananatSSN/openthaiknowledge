@@ -37,6 +37,16 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.posn2561_mistook_ionic_attraction_for_falsehood": {"th": "คิดว่าแรงไฟฟ้าสถิตใน LiF ผิด", "en": "Mistook ionic attraction for a false claim"},
+    "chem.posn2561_mistook_krypton_dispersion_for_falsehood": {"th": "คิดว่าแรงลอนดอนใน Kr ผิด", "en": "Mistook krypton dispersion for a false claim"},
+    "chem.posn2561_mistook_metallic_electrons_for_falsehood": {"th": "คิดว่าอิเล็กตรอนอิสระใน Au ผิด", "en": "Mistook metallic electrons for a false claim"},
+    "chem.posn2561_mistook_tungsten_conduction_for_falsehood": {"th": "คิดว่า W ของแข็งไม่นำไฟฟ้า", "en": "Mistook solid tungsten conduction for a false claim"},
+    "chem.posn2561_mistook_acetylene_gas_for_falsehood": {"th": "คิดว่า C₂H₂ ไม่เป็นแก๊สที่อุณหภูมิห้อง", "en": "Mistook acetylene gas for a false claim"},
+    "chem.posn2561_mistook_dissolved_ions_for_falsehood": {"th": "คิดว่า CsI ที่ละลายน้ำไม่นำไฟฟ้า", "en": "Mistook dissolved ions for a false claim"},
+    "chem.posn2561_used_boiling_rank_only": {"th": "เลือกเฉพาะลำดับจุดเดือด", "en": "Used only the boiling-point ranking"},
+    "chem.posn2561_reversed_evaporation_rank": {"th": "คิดว่า C มีความดันไอต่ำสุดจึงระเหยง่ายที่สุด", "en": "Reversed the evaporation ranking"},
+    "chem.posn2561_used_attraction_rank_only": {"th": "เลือกเฉพาะลำดับแรงยึดเหนี่ยว", "en": "Used only the attraction ranking"},
+
     "chem.posn2561_assumed_same_period_after_proton_offset": {"th": "คิดว่าธาตุที่โปรตอนต่างกันยังอยู่คาบเดียวกันทุกกรณี", "en": "Assumed the proton offset always stays in one period"},
     "chem.posn2561_confused_proton_and_nucleon_difference": {"th": "ใช้ผลต่างโปรตอนแทนผลต่างเลขมวล", "en": "Used the proton difference as the mass-number difference"},
     "chem.posn2561_assumed_valence_tracks_atomic_offset": {"th": "คิดว่าเวเลนซ์อิเล็กตรอนเพิ่มเท่ากับเลขอะตอมเสมอ", "en": "Assumed valence count follows the atomic-number offset"},

@@ -12,7 +12,7 @@ from otk.sheets.posn2561_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
     q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
-    q46, q47, q48, q49, q50, q51,
+    q46, q47, q48, q49, q50, q51, q52, q53, q54,
 )
 
 
@@ -20,13 +20,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 52))
+@pytest.mark.parametrize("number", range(1, 55))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -456,7 +456,7 @@ def test_generated_answers_follow_the_stem(number):
             boiling = Fraction(pure_b) + Fraction(kb) * molality
             assert answer == f"{float(boiling):.1f}"
             assert "มวล M เท่ากัน" in stem and "มวลตัวทำละลายเท่ากัน" in stem
-        else:
+        elif number == 51:
             molar_mass, water_ml, gap = re.search(
                 r"สาร X มวลโมล (\d+) g/mol ลงในน้ำ (\d+) mL.*?ต่างกัน ([\d.]+)°C",
                 stem,
@@ -465,4 +465,20 @@ def test_generated_answers_follow_the_stem(number):
             grams = molality * Fraction(int(water_ml), 1000) * int(molar_mass)
             assert answer == f"{float(grams):.1f}"
             assert "ไม่แตกตัว" in stem and "1.00 g/mL" in stem
+        elif number == 52:
+            choices = [choice.content[0].text for choice in question.choices]
+            assert "แรงระหว่างขั้วถาวร" in answer
+            assert any(f"ผลึก {species}" in answer for species in q52.NONPOLAR)
+            assert sum("แรงระหว่างขั้วถาวร" in choice for choice in choices) == 1
+        elif number == 53:
+            choices = [choice.content[0].text for choice in question.choices]
+            assert any(answer.startswith(species) for species in q53.NETWORK)
+            assert "แรงระหว่างขั้วถาวร" in answer
+            assert sum("แรงระหว่างขั้วถาวร" in choice for choice in choices) == 1
+        else:
+            a, b, c = map(int, re.search(
+                r"อุณหภูมิเดียวกัน (\d+), (\d+), (\d+) mmHg", stem,
+            ).groups())
+            assert a > b > c
+            assert answer == "ข้อ 1 กับข้อ 3 ถูกต้อง"
         assert len(question.choices) == 4

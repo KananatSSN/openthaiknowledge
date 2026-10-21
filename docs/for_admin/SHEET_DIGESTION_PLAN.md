@@ -2294,3 +2294,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed p11–12 colligative-property questions. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC49 and MC51 explicitly assume nonvolatile, nondissociating solutes; MC50 transfers equal molality between two solvents.
 - Wave validation: 51/51 sheet solvers and 153 variant runs green; 891 knowledge units in 757 files with zero validation problems; source coverage 51/51. Focused sheet/set checks passed (55), registry/provenance/safety/layout checks passed (707), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC52–54
+
+- Reviewed p12 solid-bonding and vapor-pressure questions. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC54 adapts the source graph as numerical vapor pressures, preserving A > B > C.
+- Wave validation: 54/54 sheet solvers and 162 variant runs green; 894 knowledge units in 760 files with zero validation problems; source coverage 54/54. Focused generator tests passed (55), catalog checks passed (3), registry/provenance/safety/layout checks passed (719), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.

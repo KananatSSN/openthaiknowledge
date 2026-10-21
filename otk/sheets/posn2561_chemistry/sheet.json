@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 51/75: all 75 items extracted; Part I questions 1–51 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 24 await review.",
+  "note": "PARTIAL 54/75: all 75 items extracted; Part I questions 1–54 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 21 await review.",
   "items": [
     {
       "number": 1,
@@ -668,6 +668,45 @@
       "answer": "72",
       "generator": "chem.posn2561_q51",
       "note": "Source choice ข is 72.0 g: 109.48−100=(1.86+0.51)m gives 4 mol/kg; 100 mL water weighs 0.100 kg, so 0.400 mol X weighs 72 g. Adaptation states X is nonvolatile and does not dissociate, consistent with the source answer."
+    },
+    {
+      "number": 52,
+      "solver": "q52",
+      "title": "แรงยึดเหนี่ยวในผลึกของแข็ง",
+      "source": "Part I, question 52, p12: identify the false force description among dry ice, LiF, solid krypton and gold.",
+      "page": 12,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "แรงยึดเหนี่ยวและชนิดผลึก",
+      "answer": "0",
+      "generator": "chem.posn2561_q52",
+      "note": "CO₂ is nonpolar, so solid CO₂ has dispersion attractions rather than permanent dipole–dipole attraction. LiF is ionic, Kr dispersive and Au metallic."
+    },
+    {
+      "number": 53,
+      "solver": "q53",
+      "title": "โครงผลึกร่างตาข่ายกับจุดหลอมเหลว",
+      "source": "Part I, question 53, p12: identify the false statement about W, acetylene, CsI solution and silica.",
+      "page": 12,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ผลึกร่างตาข่ายและสมบัติของสาร",
+      "answer": "3",
+      "generator": "chem.posn2561_q53",
+      "note": "SiO₂ is a covalent network rather than discrete polar molecules; its high melting point does not come from molecular dipole forces."
+    },
+    {
+      "number": 54,
+      "solver": "q54",
+      "title": "ความดันไอ จุดเดือด และแรงยึดเหนี่ยว",
+      "source": "Part I, question 54, p12: three vapor-pressure curves rank A above B above C at equal temperature; evaluate boiling, evaporation and attraction claims.",
+      "page": 12,
+      "figure": "Three increasing vapor-pressure curves: A highest, B middle, C lowest at a shared temperature.",
+      "figure_asset": "",
+      "topic": "ความดันไอ จุดเดือด และแรงระหว่างโมเลกุล",
+      "answer": "(1, 3)",
+      "generator": "chem.posn2561_q54",
+      "note": "The figure shows A>B>C at any common temperature. Hence boiling points A<B<C, A evaporates most readily and A has the weakest attractions. The adaptation uses numerical vapor pressures instead of source artwork."
     }
   ]
 }

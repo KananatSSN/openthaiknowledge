@@ -12,6 +12,7 @@ from otk.sheets.posn2561_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51,
+    q52, q53, q54,
 )
 
 
@@ -1719,4 +1720,92 @@ class SoluteMassFromBoilingFreezingGap(QuestionType):
             ),
             topic="สมบัติคอลลิเกทีฟสองชนิดของสารละลาย",
             hint=[text("ช่วงห่าง = 100 + (Kb+Kf)·m; แปลงปริมาตรน้ำเป็นกิโลกรัมก่อนหามวล X")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q52", display_name={"th": "แรงยึดเหนี่ยวในผลึกของแข็ง"},
+    level=LEVEL, subject="เคมี", topic="แรงยึดเหนี่ยวและชนิดผลึก",
+)
+class SolidCrystalForces(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q52.PARAMS, *q52.VARIANTS))
+        molecule = values["molecule"]
+        assert q52.solve(**values) == 0
+        return GeneratedQuestion(
+            stem=[text("ข้อใดอธิบายแรงยึดเหนี่ยวในของแข็งผิด")],
+            correct=[text(f"ผลึก {molecule} ยึดโมเลกุลด้วยแรงระหว่างขั้วถาวร")],
+            distractors=fixed(
+                [text(named("chem.posn2561_mistook_ionic_attraction_for_falsehood",
+                            "ผลึก LiF ยึด Li⁺ กับ F⁻ ด้วยแรงไฟฟ้าสถิต"))],
+                [text(named("chem.posn2561_mistook_krypton_dispersion_for_falsehood",
+                            "ผลึก Kr ยึดอะตอมด้วยแรงลอนดอน"))],
+                [text(named("chem.posn2561_mistook_metallic_electrons_for_falsehood",
+                            "ผลึก Au ยึดไอออนบวกของโลหะกับอิเล็กตรอนที่เคลื่อนที่ได้"))],
+            ),
+            topic="แรงยึดเหนี่ยวและชนิดผลึก",
+            hint=[text("ดูว่าโมเลกุลมีขั้วถาวรหรือไม่ แล้วแยกผลึกไอออนิก อะตอม และโลหะ")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q53", display_name={"th": "พันธะในของแข็งโครงผลึกร่างตาข่าย"},
+    level=LEVEL, subject="เคมี", topic="ผลึกร่างตาข่ายและสมบัติของสาร",
+)
+class CovalentNetworkMelting(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q53.PARAMS, *q53.VARIANTS))
+        network = values["network"]
+        assert q53.solve(**values) == 3
+        return GeneratedQuestion(
+            stem=[text("ข้อใดอธิบายสมบัติของสารผิด")],
+            correct=[text(f"{network} มีจุดหลอมเหลวสูงเพราะแรงระหว่างขั้วถาวรของโมเลกุล")],
+            distractors=fixed(
+                [text(named("chem.posn2561_mistook_tungsten_conduction_for_falsehood",
+                            "W นำไฟฟ้าได้ในสถานะของแข็ง"))],
+                [text(named("chem.posn2561_mistook_acetylene_gas_for_falsehood",
+                            "C₂H₂ เป็นแก๊สที่อุณหภูมิห้อง"))],
+                [text(named("chem.posn2561_mistook_dissolved_ions_for_falsehood",
+                            "CsI ละลายน้ำแล้วสารละลายนำไฟฟ้าได้เพราะมีไอออนเคลื่อนที่"))],
+            ),
+            topic="ผลึกร่างตาข่ายและสมบัติของสาร",
+            hint=[text("สารที่เป็นโครงผลึกร่างตาข่ายไม่มีโมเลกุลแยกกันในผลึก")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q54", display_name={"th": "แรงยึดเหนี่ยวจากความดันไอ"},
+    level=LEVEL, subject="เคมี", topic="ความดันไอ จุดเดือด และแรงระหว่างโมเลกุล",
+)
+class VaporPressureRanking(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q54.PARAMS, *q54.VARIANTS))
+        claims = q54.solve(**values)
+        labels = {(): "ไม่มีข้อใดถูกต้อง", (1,): "ถูกต้องเฉพาะข้อที่ 1",
+                  (2,): "ถูกต้องเฉพาะข้อที่ 2", (3,): "ถูกต้องเฉพาะข้อที่ 3",
+                  (1, 3): "ข้อ 1 กับข้อ 3 ถูกต้อง"}
+        assert claims == (1, 3)
+        return GeneratedQuestion(
+            stem=[text(f"ของเหลว A, B, C มีความดันไอที่อุณหภูมิเดียวกัน "
+                       f"{values['a']}, {values['b']}, {values['c']} mmHg ตามลำดับ "
+                       "พิจารณา 1. จุดเดือด A < B < C "
+                       "2. C ระเหยง่ายที่สุด 3. A มีแรงยึดเหนี่ยวระหว่างโมเลกุลอ่อนที่สุด "
+                       "ข้อใดถูกต้อง")],
+            correct=[text(labels[claims])],
+            distractors=fixed(
+                [text(named("chem.posn2561_used_boiling_rank_only", labels[(1,)]))],
+                [text(named("chem.posn2561_reversed_evaporation_rank", labels[(2,)]))],
+                [text(named("chem.posn2561_used_attraction_rank_only", labels[(3,)]))],
+            ),
+            topic="ความดันไอ จุดเดือด และแรงระหว่างโมเลกุล",
+            hint=[text("ที่อุณหภูมิเดียวกัน ความดันไอสูงหมายถึงระเหยง่ายและแรงยึดเหนี่ยวอ่อน")],
         )
