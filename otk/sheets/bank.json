@@ -3938,6 +3938,19 @@
    "note": "COMPLETE 70/70: Part I q1–q60 and written questions 1–10 have independent solvers, generators and knowledge coverage. MC11, MC29 and MC43 have defective printed choices and are repaired in their adaptations. MC20 and MC50 require clarified assumptions. Written 4 clarifies basic oxides; written 5's MgF2 label is repaired; written 9 says four reactions but prints three, and the adaptation states those three. Written 9's heading was normalized for extraction."
   },
   {
+   "path": "สอวน_chemistry/posn1-61-chemistry.pdf",
+   "kind": "exam",
+   "sha256": "f0bc027c38827eae",
+   "size": 886122,
+   "pages": 18,
+   "text_chars": 30015,
+   "layout": "numbered",
+   "sheet_id": "posn2561_chemistry",
+   "items": 75,
+   "stage": "converted",
+   "note": "PARTIAL 3/75: Part I questions 1–3 reviewed with solvers, generators and knowledge claims. Source MC3 says five lines but labels four; adaptation says four. Remaining 72 questions pending visual review and solving. Do not mark entire sheet green."
+  },
+  {
    "path": "สอวน_math/01-วิชาคณิตศาสตร์.pdf",
    "kind": "exam",
    "sha256": "51893800608a42cb",

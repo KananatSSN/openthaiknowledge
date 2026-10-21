@@ -1,0 +1,49 @@
+{
+  "sheet_id": "posn2561_chemistry",
+  "title": "ข้อสอบคัดเลือกค่าย 1 สอวน. เคมี ปี 2561",
+  "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
+  "subject": "เคมี",
+  "level": "โอลิมปิก (สอวน.)",
+  "note": "PARTIAL 3/75: all 60 multiple-choice and 15 written questions extracted; only Part I questions 1–3 reviewed, independently solved, claimed by knowledge units, and linked to generators. Source MC3 says five spectral lines but lists four; the adaptation says four. Remaining questions await visual review and solving.",
+  "items": [
+    {
+      "number": 1,
+      "solver": "q01",
+      "title": "ไอออนที่มีจำนวนอิเล็กตรอนเท่ากัน",
+      "source": "Part I, question 1, p3: identify the one group of three atoms or ions with equal electron configurations.",
+      "page": 3,
+      "figure": "The isotope notation gives A=K (Z=19), D=Ca (Z=20), E=Cl (Z=17), G=Ar (Z=18). Mass numbers do not affect electron counts.",
+      "figure_asset": "",
+      "topic": "ไอออนและจำนวนอิเล็กตรอน",
+      "answer": "3",
+      "generator": "chem.posn2561_q01",
+      "note": "Source choice ง has E−, G and A+ with 18 electrons each. Adaptation states atomic numbers and uses the same four groups; isotope mass labels are omitted because they do not affect electrons."
+    },
+    {
+      "number": 2,
+      "solver": "q02",
+      "title": "เลขอะตอมและเลขมวลจากไอออน",
+      "source": "Part I, question 2, p3: X3+ has ten electrons and X has 14 neutrons; find Z and A.",
+      "page": 3,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ไอโซโทปและไอออน",
+      "answer": "(13, 27)",
+      "generator": "chem.posn2561_q02",
+      "note": "Z=10+3=13 and A=13+14=27 (source choice ค)."
+    },
+    {
+      "number": 3,
+      "solver": "q03",
+      "title": "พลังงานกับความยาวคลื่นของเส้นสเปกตรัม",
+      "source": "Part I, question 3, p3: A=656, B=486, C=434, D=410 nm; identify the true energy/frequency comparison.",
+      "page": 3,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "พลังงานและความยาวคลื่นของโฟตอน",
+      "answer": "1",
+      "generator": "chem.posn2561_q03",
+      "note": "Source choice ข is true: C at 434 nm has more energy than B at 486 nm. The source says five lines but lists four; the adaptation says four. Its incorrect energy-difference expression is replaced by a comparable false energy-order claim."
+    }
+  ]
+}

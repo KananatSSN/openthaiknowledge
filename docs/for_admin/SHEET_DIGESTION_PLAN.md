@@ -59,6 +59,14 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
+### Chemistry POSN 2561 bank — wave 1, 2026-10-21
+
+- Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
+- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first three on p3 were reviewed visually, independently solved, claimed by knowledge units, and linked to generators. **3/75 complete; 72 pending.**
+- MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
+- The private bank digest contains paraphrased records for the three reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 4.
+- Maintain the requested cadence: targeted tests each wave; the full suite only when all 75 items are digested.
+
 ### Chemistry POSN bank — waves 1–23, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
@@ -2209,3 +2217,9 @@ TOTAL         338   316     17     4   66      255      6     11
 - Written 7 gives 12.0 g D and 4.5 g E; written 8 gives C₃H₆O; written 9 needs 568 g Cl₂ and produces 1043 g KCl; written 10 gives 118 g/mol and 1.50 mol/kg. Written 9 says “four reactions” but prints three, and the adaptation states the three printed equations.
 - Completion validation: 70/70 sheet solvers and 213 variant runs green; 841 knowledge units in 707 files with zero problems; source coverage 70/70. Focused sheet/set checks passed (201), bank checks passed (353), registry checks passed (588), and Ruff and whitespace checks passed. The bank entry is green.
 - Completed-sheet full suite: 39,883 passed, 13 skipped, two PDF explorer tests errored at setup because the workspace sandbox denied a local HTTP-server socket bind. Those exact two tests passed when rerun with loopback access; no test assertion failed.
+
+### 2026-10-21 — POSN chemistry 2561, MC1–3
+
+- Created the next isolated worktree from the completed 2560 branch, fetched the 2561 paper, and extracted all 75 declared items. Visually reviewed p3 and implemented independently checked solvers, three variants, generators, and knowledge claims for the first three questions.
+- The private digest records only short descriptions of these reviewed questions. The source MC3's stated count of five lines conflicts with its four labels; its adaptation explicitly says four.
+- Wave validation: 3/3 sheet solvers and nine variants green; 843 knowledge units in 709 files with zero validation problems; the reviewed three source records are claimed. Focused generator/golden checks passed (46), sheet-pipeline checks passed (18), and registry/provenance/safety/layout checks passed (515). Ruff and whitespace checks passed. The full suite remains deferred until 75/75.

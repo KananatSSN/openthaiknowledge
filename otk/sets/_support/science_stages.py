@@ -532,6 +532,9 @@ CHEMISTRY_APPLICATION_KEYS = frozenset({
 })
 
 REVIEWED_CHEMISTRY_STAGES = {
+    "chem.posn2561_q01": 3,
+    "chem.posn2561_q02": 3,
+    "chem.posn2561_q03": 3,
     "chem.posn2560_q01": 3,
     "chem.posn2560_q02": 3,
     "chem.posn2560_q03": 3,

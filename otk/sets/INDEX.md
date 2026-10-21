@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,531 sets in 1,308 unit files. Each subject's `README.md` lists its units with their indicators.
+4,534 sets in 1,309 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -1090,6 +1090,7 @@
 | File | Unit | Sets |
 |---|---|---|
 | [`posn2560.py`](chemistry/olympiad/posn2560.py) | Reviewed waves of POSN camp-selection chemistry 2560. | `chem.posn2560_q01`, `chem.posn2560_q02`, `chem.posn2560_q03`, `chem.posn2560_q04`, `chem.posn2560_q05`, `chem.posn2560_q06`, `chem.posn2560_q07`, `chem.posn2560_q08`, `chem.posn2560_q09`, `chem.posn2560_q10`, `chem.posn2560_q11`, `chem.posn2560_q12`, `chem.posn2560_q13`, `chem.posn2560_q14`, `chem.posn2560_q15`, `chem.posn2560_q16`, `chem.posn2560_q17`, `chem.posn2560_q18`, `chem.posn2560_q19`, `chem.posn2560_q20`, `chem.posn2560_q21`, `chem.posn2560_q22`, `chem.posn2560_q23`, `chem.posn2560_q24`, `chem.posn2560_q25`, `chem.posn2560_q26`, `chem.posn2560_q27`, `chem.posn2560_q28`, `chem.posn2560_q29`, `chem.posn2560_q30`, `chem.posn2560_q31`, `chem.posn2560_q32`, `chem.posn2560_q33`, `chem.posn2560_q34`, `chem.posn2560_q35`, `chem.posn2560_q36`, `chem.posn2560_q37`, `chem.posn2560_q38`, `chem.posn2560_q39`, `chem.posn2560_q40`, `chem.posn2560_q41`, `chem.posn2560_q42`, `chem.posn2560_q43`, `chem.posn2560_q44`, `chem.posn2560_q45`, `chem.posn2560_q46`, `chem.posn2560_q47`, `chem.posn2560_q48`, `chem.posn2560_q49`, `chem.posn2560_q50`, `chem.posn2560_q51`, `chem.posn2560_q52`, `chem.posn2560_q53`, `chem.posn2560_q54`, `chem.posn2560_q55`, `chem.posn2560_q56`, `chem.posn2560_q57`, `chem.posn2560_q58`, `chem.posn2560_q59`, `chem.posn2560_q60`, `chem.posn2560_q61`, `chem.posn2560_q62`, `chem.posn2560_q63`, `chem.posn2560_q64`, `chem.posn2560_q65`, `chem.posn2560_q66`, `chem.posn2560_q67`, `chem.posn2560_q68`, `chem.posn2560_q69`, `chem.posn2560_q70` |
+| [`posn2561.py`](chemistry/olympiad/posn2561.py) | Reviewed waves of POSN camp-selection chemistry 2561. | `chem.posn2561_q01`, `chem.posn2561_q02`, `chem.posn2561_q03` |
 
 ## biology — ชีวะ
 

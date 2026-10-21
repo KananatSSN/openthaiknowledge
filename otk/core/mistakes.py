@@ -37,6 +37,16 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.posn2561_confused_isotopes_with_electron_count": {"th": "คิดว่าไอโซโทปทำให้จำนวนอิเล็กตรอนต่างกัน", "en": "Confused isotope mass with electron count"},
+    "chem.posn2561_ignored_opposite_ion_charges": {"th": "ไม่นับประจุไอออนที่มีเครื่องหมายตรงข้าม", "en": "Ignored opposite ion charges"},
+    "chem.posn2561_counted_nuclear_particles_as_electrons": {"th": "นับอนุภาคในนิวเคลียสเป็นอิเล็กตรอน", "en": "Counted nuclear particles as electrons"},
+    "chem.posn2561_ignored_positive_ion_charge": {"th": "ไม่นับการเสียอิเล็กตรอนของไอออนบวก", "en": "Ignored positive ion charge"},
+    "chem.posn2561_used_ion_electrons_as_protons": {"th": "ใช้จำนวนอิเล็กตรอนในไอออนเป็นจำนวนโปรตอน", "en": "Used ion electrons as protons"},
+    "chem.posn2561_used_neutrons_as_mass_number": {"th": "ใช้จำนวนนิวตรอนเป็นเลขมวล", "en": "Used neutron count as mass number"},
+    "chem.posn2561_swapped_atomic_and_mass_numbers": {"th": "สลับเลขอะตอมกับเลขมวล", "en": "Swapped atomic and mass numbers"},
+    "chem.posn2561_treated_frequency_as_wavelength": {"th": "คิดว่าความถี่เพิ่มตามความยาวคลื่น", "en": "Treated frequency as proportional to wavelength"},
+    "chem.posn2561_treated_energy_as_wavelength": {"th": "คิดว่าพลังงานโฟตอนเพิ่มตามความยาวคลื่น", "en": "Treated photon energy as proportional to wavelength"},
+    "chem.posn2561_shortest_wavelength_least_energy": {"th": "คิดว่าความยาวคลื่นสั้นที่สุดให้พลังงานต่ำสุด", "en": "Treated shortest wavelength as least energy"},
     "chem.assumed_all_a_reacts_in_two_step_yield": {"th": "คิดว่า A ทำปฏิกิริยาครบทั้งหมด", "en": "Assumed all A reacts"},
     "chem.assumed_all_c_decomposes_in_two_step_yield": {"th": "คิดว่า C สลายครบทั้งหมด", "en": "Assumed all C decomposes"},
     "chem.used_one_d_instead_of_four": {"th": "นับ D หนึ่งโมลแทนสี่โมลต่อขั้นที่สอง", "en": "Counted one D instead of four"},
