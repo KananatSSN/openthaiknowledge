@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารกำหนดปริมาณและร้อยละผลได้",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q47.procedure",
+      "kind": "procedure",
+      "title": "ร้อยละผลได้ของ NO",
+      "statement": "ดุล 4NH₃+5O₂→4NO+6H₂O; O₂ 3 mol จำกัด NO ทางทฤษฎี 2.4 mol หรือ 72 g จึงได้ร้อยละผลได้ 75",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 47
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q47"
+      ],
+      "note": "O2 limits theoretical NO to 72 g; actual 54 g is 75%."
+    }
+  ]
+}

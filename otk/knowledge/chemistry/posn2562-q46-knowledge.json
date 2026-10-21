@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สูตรเอมพิริคัลและดุลมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q46.procedure",
+      "kind": "procedure",
+      "title": "สูตรเอมพิริคัลจากไฮโดรลิซิส",
+      "statement": "H₃AO₄ 14.6 g ให้ A 0.1 mol และ HZ 27.3 g ให้ Z 0.3 mol; มวล X ที่เหลือคือ 6 g หรือ 0.1 mol จึงได้ AXZ₃",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 46
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q46"
+      ],
+      "note": "Product moles reveal A:Z=1:3; remaining mass is 0.1 mol X."
+    }
+  ]
+}

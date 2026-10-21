@@ -8,7 +8,8 @@ from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2562_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27, q28, q29, q30,
+    q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
+    q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -487,3 +488,569 @@ class ReviewedQuestion30(_Base):
                          tuple(choices[i] for i in order), q30.solve(**v),
                          'แรงระหว่างโมเลกุลและสมบัติสาร', 'เทียบความดันไอที่อุณหภูมิเดียวกันและความมีขั้วของ SF₄ กับ SF₆',
                          tuple(mistakes[i] for i in order))
+
+
+@question_type(
+    "chem.posn2562_q31",
+    display_name={"th": "สถานะและแรงยึดเหนี่ยว"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="แรงระหว่างโมเลกุลและผลึก",
+)
+class ReviewedQuestion31(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q31.PARAMS, *q31.VARIANTS))
+        base = ("I เท่านั้น", "II เท่านั้น", "III เท่านั้น", "I, II และ III")
+        errors = (
+            "correct",
+            "breaks_water_covalent_bond",
+            "breaks_graphite_sheet_bond",
+            "accepts_both_bond_breaks",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q31.solve(**v)
+        return _question(
+            31,
+            "พิจารณา I ใน CO₂ แข็งมีแรงยึดเหนี่ยวระหว่างโมเลกุลมากกว่า CO₂ แก๊ส; II น้ำระเหยเพราะพันธะ O–H ขาด; III เขียนด้วยแกรไฟต์เพราะพันธะ C–C ในชั้นขาด ข้อใดถูก",
+            choices,
+            answer,
+            "แรงระหว่างโมเลกุลและผลึก",
+            "การเปลี่ยนสถานะและการหลุดของชั้นแกรไฟต์ไม่ทำลายพันธะโคเวเลนต์ในหน่วย",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q32",
+    display_name={"th": "ตำแหน่งธาตุกับสูตรและขั้ว"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="ตารางธาตุและสมบัติสาร",
+)
+class ReviewedQuestion32(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q32.PARAMS, *q32.VARIANTS))
+        base = ("I เท่านั้น", "II เท่านั้น", "III เท่านั้น", "II และ III")
+        errors = (
+            "writes_mg_p_wrong_formula",
+            "correct",
+            "assumes_all_pcl_polar",
+            "ignores_nonpolar_pcl5",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q32.solve(**v)
+        return _question(
+            32,
+            "กำหนด A=(คาบ3 หมู่2), D=(คาบ3 หมู่15), E=(คาบ2 หมู่16), G=(คาบ3 หมู่17): I สาร A–D มีสูตร AD₃; II D กับ E มักเกิดแอนไอออน; III สาร G–D เป็นโมเลกุลมีขั้วทั้งหมด ข้อใดถูก",
+            choices,
+            answer,
+            "ตารางธาตุและสมบัติสาร",
+            "A=Mg, D=P, E=O, G=Cl; ตรวจ Mg₃P₂ และ PCl₅",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q33",
+    display_name={"th": "ผลึกโมเลกุลและการนำไฟฟ้า"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="ชนิดผลึกและการนำไฟฟ้า",
+)
+class ReviewedQuestion33(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q33.PARAMS, *q33.VARIANTS))
+        base = (
+            "NaCl แข็งนำไฟฟ้าได้ดีเพราะมีไอออน",
+            "น้ำแข็งกับน้ำแข็งแห้งเป็นผลึกโมเลกุลทั้งคู่",
+            "แกรไฟต์กับฟุลเลอรีนนำไฟฟ้าได้ดีเท่ากัน",
+            "กำมะถันรอมบิกกับมอนอคลินิกมีสูตรโมเลกุลต่างกัน",
+        )
+        errors = (
+            "assumes_fixed_ions_conduct",
+            "correct",
+            "equates_carbon_allotrope_conductivity",
+            "assumes_sulfur_formulas_differ",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q33.solve(**v)
+        return _question(
+            33,
+            "ข้อใดถูกเกี่ยวกับผลึกและการนำไฟฟ้า",
+            choices,
+            answer,
+            "ชนิดผลึกและการนำไฟฟ้า",
+            "ไอออนในผลึก NaCl เคลื่อนที่ไม่ได้; H₂O และ CO₂ แข็งเป็นผลึกโมเลกุล",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q34",
+    display_name={"th": "สมดุลไอและการระเหย"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="ความดันไอและการเปลี่ยนสถานะ",
+)
+class ReviewedQuestion34(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q34.PARAMS, *q34.VARIANTS))
+        base = ("I และ II", "I และ III", "II และ IV", "III และ IV")
+        errors = (
+            "correct",
+            "calls_evaporation_exothermic",
+            "ignores_altitude_pressure",
+            "accepts_both_heat_errors",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q34.solve(**v)
+        return _question(
+            34,
+            "ข้อใดถูก: I แอซีโตนจุดเดือด 56.5 °C ยังระเหยที่ 25 °C; II ความดันไอสมดุลเกิดเมื่ออัตราระเหยเท่าอัตราควบแน่น; III ระเหยเป็นการคายพลังงาน; IV น้ำเดือดที่ยอดดอยกับระดับทะเล 100 °C เท่ากัน",
+            choices,
+            answer,
+            "ความดันไอและการเปลี่ยนสถานะ",
+            "อุณหภูมิต่ำกว่าจุดเดือดก็ระเหยได้ และความดันบรรยากาศกำหนดจุดเดือด",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q35",
+    display_name={"th": "ความดันไอกับจุดเดือด"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="ความดันไอและจุดเดือด",
+)
+class ReviewedQuestion35(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q35.PARAMS, *q35.VARIANTS))
+        base = ("I เท่านั้น", "II เท่านั้น", "I และ II", "II และ III")
+        errors = ("reverses_vapor_strength", "omits_boiling_order", "accepts_stronger_x", "correct")
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q35.solve(**v)
+        return _question(
+            35,
+            f"ที่ 25 °C X และ Y เป็นของเหลว มีความดันไอ {v['x_vapor']} และ {v['y_vapor']} atm; Z เป็นของแข็ง มีความดันไอ {v['z_vapor']} atm; สมมติว่าเส้นความดันไอไม่ตัดกันจนถึง 1 atm: I X มีแรงระหว่างโมเลกุลมากกว่า Y; II Y มีจุดเยือกแข็งต่ำกว่า Z; III จุดเดือด Z > Y > X ข้อใดถูก",
+            choices,
+            answer,
+            "ความดันไอและจุดเดือด",
+            "ที่อุณหภูมิเดียวกันของเหลวที่ความดันไอสูงกว่ามักเดือดต่ำกว่า",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q36",
+    display_name={"th": "แรงเชื่อมแน่น แรงยึดติด และหยด"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="แรงเชื่อมแน่นและคะปิลลารี",
+)
+class ReviewedQuestion36(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q36.PARAMS, *q36.VARIANTS))
+        base = ("I เท่านั้น", "III เท่านั้น", "I และ II", "I และ III")
+        errors = (
+            "correct",
+            "reverses_float_behavior",
+            "misreads_density",
+            "misreads_both_interactions",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q36.solve(**v)
+        return _question(
+            36,
+            "จากภาพที่บรรยาย: A มีผิวเว้าและระดับในหลอดสูงขึ้น; B มีผิวนูนและระดับลดลง; หยด B เป็นทรงกลมจมใน A. I A มีแรงเชื่อมแน่นมากกว่าแรงยึดติดกับผนัง; II A เบากว่า B; III หยด A ใน B ลอยอยู่ด้านบน ข้อใดผิด",
+            choices,
+            answer,
+            "แรงเชื่อมแน่นและคะปิลลารี",
+            "ผิวเว้าและคะปิลลารีสูงขึ้นแปลว่าแรงยึดติดกับผนังเด่น",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q37",
+    display_name={"th": "แก๊สกับอุณหภูมิสัมบูรณ์"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="กฎชาร์ลและพลังงานจลน์",
+)
+class ReviewedQuestion37(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q37.PARAMS, *q37.VARIANTS))
+        base = ("I และ II", "I และ III", "II และ III", "I, II และ III")
+        errors = (
+            "correct",
+            "treats_ke_as_celsius_ratio",
+            "halves_density",
+            "rejects_rounded_ke_ratio",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q37.solve(**v)
+        return _question(
+            37,
+            f"แก๊สที่ความดันคงที่จาก {v['t1']} เป็น {v['t2']} °C: I ปริมาตรเพิ่มเป็นสองเท่า; II ความหนาแน่นเหลือครึ่ง; III พลังงานจลน์เฉลี่ยเพิ่มเป็น 1.1 เท่าเมื่อปัดหนึ่งตำแหน่ง ข้อใดผิด",
+            choices,
+            answer,
+            "กฎชาร์ลและพลังงานจลน์",
+            "แปลงองศาเซลเซียสเป็นเคลวินก่อนเทียบอัตราส่วน",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q38",
+    display_name={"th": "ความดันแก๊สในภาชนะปิด"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="กฎเกย์ลูสแซก",
+)
+class ReviewedQuestion38(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q38.PARAMS, *q38.VARIANTS))
+        ans = q38.solve(**v)
+        base = tuple(str(x) for x in (round(ans / 2, 2), round(ans / 4, 2), ans, round(ans * 6, 2)))
+        errors = (
+            "halves_absolute_temperature",
+            "quarters_pressure",
+            "correct",
+            "uses_celsius_ratio",
+        )
+        answer = 2
+        choices = base
+        mistakes = errors
+        return _question(
+            38,
+            f"แก๊สอุดมคติในภาชนะปิดแข็งมีความดัน {v['p1']} atm ที่ {v['t1']} °C; เพิ่มเป็น {v['t2']} °C ความดันสุดท้ายกี่ atm",
+            choices,
+            answer,
+            "กฎเกย์ลูสแซก",
+            "ที่ปริมาตรคงที่ P/T เป็นค่าคงที่เมื่อ T เป็นเคลวิน",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q39",
+    display_name={"th": "อัตราส่วนแก๊สก่อนและหลังปฏิกิริยา"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="แก๊สและสารกำหนดปริมาณ",
+)
+class ReviewedQuestion39(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q39.PARAMS, *q39.VARIANTS))
+        base = (
+            "NO₂ เพียงชนิดเดียว",
+            "NO กับ NO₂ โมลเท่ากัน",
+            "O₂ กับ NO₂ โมลเท่ากัน",
+            "NO₂ มีโมลเป็นสองเท่าของ O₂",
+        )
+        errors = (
+            "assumes_exact_stoichiometry",
+            "assumes_no_excess_oxygen",
+            "correct",
+            "doubles_product_ratio",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q39.solve(**v)
+        return _question(
+            39,
+            f"ภาชนะ NO ปริมาตร {v['no_volume']} หน่วยที่ความดัน {v['no_pressure']} หน่วย; ภาชนะ O₂ ปริมาตร {v['o2_volume']} หน่วยที่ความดัน {v['o2_pressure']} หน่วย อุณหภูมิเท่ากัน เปิดลิ้นแล้ว 2NO + O₂ → 2NO₂ จนจบ เหลือแก๊สใด",
+            choices,
+            answer,
+            "แก๊สและสารกำหนดปริมาณ",
+            "จำนวนโมลเริ่มต้นแปรผันกับ PV; NO เป็นสารกำหนดปริมาณ",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q40",
+    display_name={"th": "การแพร่และควบแน่นของแก๊ส"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="การแพร่และการควบแน่นแก๊ส",
+)
+class ReviewedQuestion40(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q40.PARAMS, *q40.VARIANTS))
+        base = ("I เท่านั้น", "II เท่านั้น", "III เท่านั้น", "II และ III")
+        errors = (
+            "reverses_graham_law",
+            "correct",
+            "assumes_identical_molecular_speeds",
+            "combines_speed_error",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q40.solve(**v)
+        return _question(
+            40,
+            "ที่ T และ P เท่ากัน: I SO₂ แพร่เร็วกว่า O₂; II SO₂ ทำเป็นของเหลวง่ายกว่า O₂; III โมเลกุล SO₂ ทุกตัวมีอัตราเร็วเท่ากัน ข้อใดถูก",
+            choices,
+            answer,
+            "การแพร่และการควบแน่นแก๊ส",
+            "กฎเกรแฮมให้ความเร็วแปรผกผันกับรากมวลโมลาร์",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q41",
+    display_name={"th": "จำนวนอะตอมกับมวลโมลาร์"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="โมลและจำนวนอนุภาค",
+)
+class ReviewedQuestion41(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q41.PARAMS, *q41.VARIANTS))
+        ans = q41.solve(**v)
+        base = ("y/2", "y/4", "y", "4y")
+        errors = ("halves_atom_count", "quarters_atom_count", "correct", "quadruples_atom_count")
+        answer = {0.5: 0, 0.25: 1, 1: 2, 4: 3}[ans]
+        choices = base
+        mistakes = errors
+        return _question(
+            41,
+            f"ธาตุ A มวลอะตอม {v['a_mass']} มีมวล x กรัมและ y อะตอม; ธาตุ D มวลอะตอม {v['d_mass']} มีมวล {v['d_sample_multiple']}x กรัม จำนวนอะตอมเป็นเท่าใด",
+            choices,
+            answer,
+            "โมลและจำนวนอนุภาค",
+            "จำนวนอะตอมแปรตามมวลตัวอย่างหารมวลอะตอม",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q42",
+    display_name={"th": "มวลอะตอมจากสารกำหนดปริมาณ"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="สารกำหนดปริมาณและมวลโมลาร์",
+)
+class ReviewedQuestion42(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q42.PARAMS, *q42.VARIANTS))
+        ans = q42.solve(**v)
+        base = tuple(str(x) for x in (ans - 10, ans, ans + 10, ans + 20))
+        errors = (
+            "subtracts_extra_mass",
+            "correct",
+            "adds_extra_mass",
+            "misreads_formula_subscript",
+        )
+        answer = 1
+        choices = base
+        mistakes = errors
+        return _question(
+            42,
+            f"A + D + E → AD₂E₃: มี A {v['a_g']} g, D {v['d_atoms']:.3e} อะตอม, E {v['e_mol']} mol ได้ผลิตภัณฑ์ {v['product_g']} g; มวลอะตอม A={v['a_mass']}, E={v['e_mass']}. มวลอะตอม D คือเท่าใด",
+            choices,
+            answer,
+            "สารกำหนดปริมาณและมวลโมลาร์",
+            "หาสารกำหนดปริมาณจากอัตราส่วน 1:2:3 ก่อนใช้มวลผลิตภัณฑ์",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q43",
+    display_name={"th": "มวลอะตอมจากการสลายเกลือ"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="อนุรักษ์มวลและปริมาตรแก๊ส",
+)
+class ReviewedQuestion43(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q43.PARAMS, *q43.VARIANTS))
+        ans = q43.solve(**v)
+        base = tuple(str(x) for x in (ans - 40, ans - 20, ans - 10, ans))
+        errors = ("uses_half_gas_mass", "incorrect_stp_volume", "forgets_diatomic_x2", "correct")
+        answer = 3
+        choices = base
+        mistakes = errors
+        return _question(
+            43,
+            f"2MX₂ → 2MX + X₂: เริ่ม MX₂ {v['initial']} g เหลือ MX {v['residue']} g และได้ X₂ {v['gas_cm3']} cm³ ที่ STP มวลอะตอม X เท่าใด",
+            choices,
+            answer,
+            "อนุรักษ์มวลและปริมาตรแก๊ส",
+            "มวลที่หายไปเป็น X₂; ที่ STP 1 mol มีปริมาตร 22,400 cm³",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q44",
+    display_name={"th": "ผลิตคลอรีนจาก MnO2"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="สโตอิชิโอเมทรีสองปฏิกิริยา",
+)
+class ReviewedQuestion44(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q44.PARAMS, *q44.VARIANTS))
+        ans = q44.solve(**v)
+        base = tuple(str(round(x, 1)) for x in (ans / 3, ans, ans * 2, ans * 4))
+        errors = (
+            "uses_one_third_chlorine",
+            "correct",
+            "doubles_chlorine_need",
+            "quadruples_chlorine_need",
+        )
+        answer = 1
+        choices = base
+        mistakes = errors
+        return _question(
+            44,
+            f"MnO₂ + HCl → MnCl₂ + H₂O + Cl₂; Cl₂ + NaOH(ร้อน) → NaCl + NaClO₃ + H₂O. ถ้าใช้ NaOH {v['naoh_mol']} mol ต้องใช้ MnO₂ กี่กรัม (M={v['mno2_molar']})",
+            choices,
+            answer,
+            "สโตอิชิโอเมทรีสองปฏิกิริยา",
+            "ดุลสมการ Cl₂ + NaOH(ร้อน) ก่อน: 3Cl₂ ต่อ 6NaOH",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q45",
+    display_name={"th": "สูตรผลิตภัณฑ์จากปริมาตรแก๊ส"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="สูตรโมเลกุลจากปริมาตรแก๊ส",
+)
+class ReviewedQuestion45(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q45.PARAMS, *q45.VARIANTS))
+        ans = q45.solve(**v)
+        base = ("XY", "XY₃", "X₂Y", "X₂Y₃")
+        errors = (
+            "drops_x_atom",
+            "assumes_three_y_per_product",
+            "correct",
+            "keeps_all_y_in_each_product",
+        )
+        answer = ((1, 1), (1, 3), (2, 1), (2, 3)).index(ans)
+        choices = base
+        mistakes = errors
+        return _question(
+            45,
+            f"ที่ T,P คงที่ X₂ {v['x2_volume']} cm³ กับ Y₃ {v['y3_volume']} cm³ ให้แก๊ส Z เพียงชนิดเดียว {v['product_volume']} cm³ สูตร Z คือข้อใด",
+            choices,
+            answer,
+            "สูตรโมเลกุลจากปริมาตรแก๊ส",
+            "ใช้ปริมาตรเป็นอัตราส่วนโมลแล้วดุลอะตอม X และ Y",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q46",
+    display_name={"th": "สูตรเอมพิริคัลจากไฮโดรลิซิส"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="สูตรเอมพิริคัลและดุลมวล",
+)
+class ReviewedQuestion46(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q46.PARAMS, *q46.VARIANTS))
+        ans = q46.solve(**v)
+        base = ("AXZ", "AXZ₂", "AXZ₃", "AXZ₅")
+        errors = ("underestimates_z_ratio", "misses_one_z", "correct", "overestimates_z_ratio")
+        answer = ((1, 1, 1), (1, 1, 2), (1, 1, 3), (1, 1, 5)).index(ans)
+        choices = base
+        mistakes = errors
+        return _question(
+            46,
+            f"สาร A,X,Z มวล {v['sample_g']} g ให้ H₃AO₄ {v['acid_g']} g และ HZ {v['hz_g']} g เมื่อไฮโดรลิซิส; มวลอะตอม A={v['a_mass']}, X={v['x_mass']}, Z={v['z_mass']}. สูตรเอมพิริคัลคือข้อใด",
+            choices,
+            answer,
+            "สูตรเอมพิริคัลและดุลมวล",
+            "หาโมล A จาก H₃AO₄ และโมล Z จาก HZ; X ได้จากมวลที่เหลือ",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q47",
+    display_name={"th": "ร้อยละผลได้ของ NO"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="สารกำหนดปริมาณและร้อยละผลได้",
+)
+class ReviewedQuestion47(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q47.PARAMS, *q47.VARIANTS))
+        ans = q47.solve(**v)
+        base = tuple(str(round(ans * f)) for f in (0.48, 0.64, 0.8, 1))
+        errors = (
+            "uses_wrong_nh3_ratio",
+            "miscomputes_limiting_o2",
+            "undercounts_theoretical_no",
+            "correct",
+        )
+        answer = 3
+        choices = base
+        mistakes = errors
+        return _question(
+            47,
+            f"4NH₃ + 5O₂ → 4NO + 6H₂O: ใช้ NH₃ {v['nh3_g']} g และ O₂ {v['o2_g']} g ได้ NO จริง {v['no_g']} g ร้อยละผลได้เท่าใด",
+            choices,
+            answer,
+            "สารกำหนดปริมาณและร้อยละผลได้",
+            "เทียบโมลสารตั้งต้นกับ 4:5 แล้วหารผลได้จริงด้วยผลได้ตามทฤษฎี",
+            mistakes,
+        )
+
+
+@question_type(
+    "chem.posn2562_q48",
+    display_name={"th": "องค์ประกอบกรดจากการเผาไหม้"},
+    level=LEVEL,
+    subject="เคมี",
+    topic="องค์ประกอบธาตุจากการเผาไหม้",
+)
+class ReviewedQuestion48(_Base):
+    def build(self, rng, **params):
+        v = rng.choice((q48.PARAMS, *q48.VARIANTS))
+        base = ("I และ II", "I และ III", "II และ III", "I, II และ III")
+        errors = (
+            "overstates_c_h_ratio",
+            "miscomputes_oxygen_fraction",
+            "correct",
+            "accepts_all_composition_claims",
+        )
+        order = v["order"]
+        choices = tuple(base[i] for i in order)
+        mistakes = tuple(errors[i] for i in order)
+        answer = q48.solve(**v)
+        return _question(
+            48,
+            f"เผากรด C,H,O {v['sample_mg']:.2f} mg ได้ CO₂ {v['co2_mg']:.2f} mg และ H₂O {v['h2o_mg']:.2f} mg: I ร้อยละ C มากกว่า H ราว 8 เท่า; II O เท่ากับ 53.3%; III มี C 1.6 mg ข้อใดถูก",
+            choices,
+            answer,
+            "องค์ประกอบธาตุจากการเผาไหม้",
+            "มวล C = 12/44 ของ CO₂; มวล H = 2/18 ของ H₂O",
+            mistakes,
+        )

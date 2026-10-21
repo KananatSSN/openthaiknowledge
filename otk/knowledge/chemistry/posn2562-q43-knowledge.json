@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "อนุรักษ์มวลและปริมาตรแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q43.procedure",
+      "kind": "procedure",
+      "title": "มวลอะตอมจากการสลายเกลือ",
+      "statement": "การสลาย MX₂ ให้ MX และ X₂; มวลที่ลดลงคือมวล X₂ และปริมาตรที่ STP แปลงเป็นโมลด้วย 22,400 cm³/mol",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 43
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q43"
+      ],
+      "note": "56 cm3 X2 at STP is 0.0025 mol; mass lost 0.40 g implies X=80."
+    }
+  ]
+}

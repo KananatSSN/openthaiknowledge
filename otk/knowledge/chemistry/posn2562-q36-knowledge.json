@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แรงเชื่อมแน่นและคะปิลลารี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q36.procedure",
+      "kind": "procedure",
+      "title": "แรงเชื่อมแน่น แรงยึดติด และหยด",
+      "statement": "A ผิวเว้าและขึ้นในหลอดคะปิลลารีจึงยึดติดผนังเด่น; B ผิวนูนและหยด B จมใน A จึงมีความหนาแน่นมากกว่า A",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 36
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q36"
+      ],
+      "note": "A adhesion to glass exceeds cohesion; B denser than A; reciprocal A droplets float in B."
+    }
+  ]
+}

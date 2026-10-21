@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การแพร่และการควบแน่นแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q40.procedure",
+      "kind": "procedure",
+      "title": "การแพร่และควบแน่นของแก๊ส",
+      "statement": "SO₂ มวลโมลาร์ 64 แพร่ช้ากว่า O₂ มวล 32 ตามกฎเกรแฮม; SO₂ เดือดสูงกว่าและทำให้เป็นของเหลวง่ายกว่า",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 40
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q40"
+      ],
+      "note": "SO2 has twice O2 molar mass and a much higher boiling point."
+    }
+  ]
+}
