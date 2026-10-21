@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "โมลาริตี ร้อยละมวล และความหนาแน่น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.acid_identity_from_molarity_density_mass_fraction.procedure",
+      "kind": "procedure",
+      "title": "ระบุกรดจากโมลาริตี ร้อยละมวล และความหนาแน่น",
+      "statement": "ความหนาแน่นกับร้อยละมวลให้มวลกรดต่อลิตร; หารด้วยโมลาริตีเพื่อหามวลโมลแล้วเทียบสูตรกรด",
+      "steps": [
+        "คูณความหนาแน่นด้วย 1000 mL และเศษส่วนมวลกรดเพื่อหากรัมกรดต่อลิตร",
+        "หารกรัมกรดด้วยโมลต่อลิตรและเปรียบเทียบมวลโมลของตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 44
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q44"
+      ],
+      "note": "Source choice ง is H3PO4: one litre of solution weighs 1570 g and contains 1177.5 g acid, implying 98.125 g/mol from 12.0 mol, closest to 98 g/mol. Variants identify the other three candidate acids."
+    }
+  ]
+}

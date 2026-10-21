@@ -11,7 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
-    q34, q35, q36, q37, q38, q39, q40, q41, q42,
+    q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
 )
 
 
@@ -19,13 +19,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 43))
+@pytest.mark.parametrize("number", range(1, 46))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -360,7 +360,7 @@ def test_generated_answers_follow_the_stem(number):
             )
             assert answer == f"{rounded:.1f}"
             assert "2NaN₃ → 2Na + 3N₂" in stem and "10Na + 2KNO₃" in stem
-        else:
+        elif number == 42:
             mass, concentration = re.search(
                 r"มวล ([\d.]+) g .*?HCl ([\d.]+) mol/L", stem,
             ).groups()
@@ -369,4 +369,35 @@ def test_generated_answers_follow_the_stem(number):
             volume_ml = 1000 * acid_moles / Fraction(concentration)
             assert answer == f"{float(volume_ml):.1f}"
             assert "Na₂CO₃·NaHCO₃·2H₂O" in stem
+        elif number == 43:
+            mass, gas = re.search(
+                r"KO₂ ([\d.]+) g กับ CO₂ (\d+) cm³", stem,
+            ).groups()
+            ko2_mmol = Fraction(mass) * 1000 / 71
+            co2_mmol = Fraction(gas) / Fraction("22.4")
+            oxygen_cm3 = min(Fraction(3, 4) * ko2_mmol,
+                             Fraction(3, 2) * co2_mmol) * Fraction("22.4")
+            assert answer == str(int(oxygen_cm3))
+            assert "22.4 L/mol" in stem
+        elif number == 44:
+            molarity, mass_percent, density = re.search(
+                r"เข้มข้น ([\d.]+) mol/L มี A ([\d.]+)%.*?ความหนาแน่น ([\d.]+) g/mL", stem,
+            ).groups()
+            implied = Fraction(density) * 1000 * Fraction(mass_percent) / 100
+            implied /= Fraction(molarity)
+            closest = min(q44.ACIDS, key=lambda pair: abs(pair[1] - implied))[0]
+            assert answer == closest
+            assert set(choice.content[0].text for choice in question.choices) == {
+                name for name, _ in q44.ACIDS
+            }
+        else:
+            sulfate_m, sulfate_ml, phosphate_m, phosphate_ml = re.search(
+                r"Na₂SO₄ ([\d.]+) mol/L (\d+) mL กับ Na₃PO₄ ([\d.]+) mol/L (\d+) mL", stem,
+            ).groups()
+            sulfate_ml, phosphate_ml = int(sulfate_ml), int(phosphate_ml)
+            sodium_mmol = (2 * Fraction(sulfate_m) * sulfate_ml
+                           + 3 * Fraction(phosphate_m) * phosphate_ml)
+            concentration = sodium_mmol / (sulfate_ml + phosphate_ml)
+            assert answer == f"{float(concentration):.4f}"
+            assert "ปริมาตรรวม" in stem
         assert len(question.choices) == 4

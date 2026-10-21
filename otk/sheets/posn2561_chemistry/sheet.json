@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 42/75: all 75 items extracted; Part I questions 1–42 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 33 await review.",
+  "note": "PARTIAL 45/75: all 75 items extracted; Part I questions 1–45 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 30 await review.",
   "items": [
     {
       "number": 1,
@@ -551,6 +551,45 @@
       "answer": "48",
       "generator": "chem.posn2561_q42",
       "note": "Source choice ค is 48.0 mL: 0.452/226=0.002 mol trona, each formula unit requires three H+ equivalents, and 0.006 mol/0.125 M is 0.048 L. Adaptation varies trona mass and acid concentration."
+    },
+    {
+      "number": 43,
+      "solver": "q43",
+      "title": "ออกซิเจนจากโพแทสเซียมซูเปอร์ออกไซด์และคาร์บอนไดออกไซด์",
+      "source": "Part I, question 43, p10: react 0.710 g KO2 with 336 cm3 CO2 at STP; find maximum O2 volume.",
+      "page": 10,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สารกำหนดปริมาณและสัดส่วนแก๊ส",
+      "answer": "168",
+      "generator": "chem.posn2561_q43",
+      "note": "Source choice ก is 168 cm3 O2: balance 4KO2+2CO2→2K2CO3+3O2. KO2 is 10 mmol and limits reaction; it yields 7.5 mmol O2 or 168 cm3 at 22.4 L/mol. Variants include a CO2-limited case."
+    },
+    {
+      "number": 44,
+      "solver": "q44",
+      "title": "ระบุกรดจากโมลาริตี ร้อยละมวล และความหนาแน่น",
+      "source": "Part I, question 44, p10: identify acid A from 12.0 M, 75.0% by mass and solution density 1.57 g/cm3.",
+      "page": 10,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "โมลาริตี ร้อยละมวล และความหนาแน่น",
+      "answer": "3",
+      "generator": "chem.posn2561_q44",
+      "note": "Source choice ง is H3PO4: one litre of solution weighs 1570 g and contains 1177.5 g acid, implying 98.125 g/mol from 12.0 mol, closest to 98 g/mol. Variants identify the other three candidate acids."
+    },
+    {
+      "number": 45,
+      "solver": "q45",
+      "title": "ความเข้มข้นโซเดียมไอออนหลังผสมเกลือ",
+      "source": "Part I, question 45, p10: mix 20 cm3 0.10 M Na2SO4 and 50 cm3 0.30 M Na3PO4; find final Na+ concentration.",
+      "page": 10,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ความเข้มข้นไอออนหลังผสมสารละลาย",
+      "answer": "0.7",
+      "generator": "chem.posn2561_q45",
+      "note": "Source choice ง is 0.70 M Na+: 2(0.10)(20)+3(0.30)(50)=49 mmol Na+ in 70 mL. Adaptation explicitly assumes additive volumes and varies both salt solutions."
     }
   ]
 }

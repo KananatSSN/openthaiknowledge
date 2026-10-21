@@ -62,7 +62,7 @@ Phases in build order. Check an item only when its tests pass.
 ### Chemistry POSN 2561 bank — waves 1–12, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
-- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first forty-two were reviewed, independently solved, claimed by knowledge units, and linked to generators. **42/75 complete; 33 pending.**
+- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first forty-five were reviewed, independently solved, claimed by knowledge units, and linked to generators. **45/75 complete; 30 pending.**
 - MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
 - MC4's only always-true claim is that Z has more than six electrons in its second shell; the adaptation says “always” explicitly. MC5 selects fluorine. MC6's false comparison is K < Ca for IE₂; the close Se < Br comparison was checked against NIST ionization data.
 - MC7's mixed atomic/ionic radius comparison depends on a radius convention; its adaptation supplies the specific table used. MC8's false order places Ca above As for IE₁; its adaptation supplies measured property values and specifies grey arsenic melting under pressure. MC9 pairs SO₃ with Na₂O to give an acid and a base in water.
@@ -77,7 +77,8 @@ Phases in build order. Check an item only when its tests pass.
 - MC34 gives Zn from 0.020 mol BaSO₄ and 161 g/mol ASO₄. MC35 requires 36 m³ O₂, hence 180 m³ air at 20% O₂. MC36 requires 18 g Mg for 4.48 L NH₃ at 40% nitride yield. Each of these has numerical variants checked by a second route.
 - MC37 leaves 3.50 mmol carbonate in 100 mL, or 0.0350 mol/L. MC38 solves the Al/Zn mass and H₂ balances for 24.9% Al. MC39 adds initial Fe³⁺ to oxidized Fe²⁺, yielding 0.0515 mol/L. Each has independently checked numerical variants.
 - MC40 gives 0.450 mol NaBH₄ after balancing the diborane reaction and accounting for 70% yield. MC41 produces 8/5 mol N₂ per mol NaN₃ across two reactions: the source’s 49 g choice is closest to the 49.5 g calculation with its printed R. MC42 needs three H⁺ per formula unit of trona, or 48.0 mL of 0.125 M acid.
-- The private bank digest contains paraphrased records for the forty-two reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 43.
+- MC43 balances 4KO₂+2CO₂→2K₂CO₃+3O₂ and finds KO₂ limiting, yielding 168 cm³ O₂. MC44 uses mass per litre and molarity to identify H₃PO₄. MC45 counts 49 mmol Na⁺ in 70 mL, or 0.70 mol/L.
+- The private bank digest contains paraphrased records for the forty-five reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 46.
 - Maintain the requested cadence: targeted tests each wave; the full suite only when all 75 items are digested.
 
 ### Chemistry POSN bank — waves 1–23, 2026-10-21
@@ -2276,3 +2277,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed p10 diborane yield, the two-stage azide/nitrate nitrogen production, and trona acid equivalents. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC41’s adaptation asks for one decimal because the printed R gives 49.54 g while the closest source choice is 49 g.
 - Wave validation: 42/42 sheet solvers and 126 variant runs green; 882 knowledge units in 748 files with zero validation problems; source coverage 42/42. Focused sheet/set checks passed (46), registry/provenance/safety/layout checks passed (671), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC43–45
+
+- Reviewed p10 superoxide oxygen production, acid identification from density and concentration, and sodium-ion concentration after mixing sulfate and phosphate. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC43 includes a CO₂-limited variant; MC44's variants identify all four candidate acids.
+- Wave validation: 45/45 sheet solvers and 135 variant runs green; 885 knowledge units in 751 files with zero validation problems; source coverage 45/45. Focused sheet/set checks passed (49). Registry/provenance/safety/layout checks passed (683 total, with one q44 safety-style correction and affected recheck); the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.

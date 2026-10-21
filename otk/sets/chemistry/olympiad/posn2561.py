@@ -11,7 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39, q40, q41, q42,
+    q37, q38, q39, q40, q41, q42, q43, q44, q45,
 )
 
 
@@ -1388,4 +1388,105 @@ class HydrochloricAcidForTrona(QuestionType):
             ),
             topic="สมมูลกรดของคาร์บอเนตและไบคาร์บอเนต",
             hint=[text("โทรนาหนึ่งสูตรมี CO₃²⁻ หนึ่งตัวใช้ H⁺ สองตัว และ HCO₃⁻ หนึ่งตัวใช้อีกหนึ่งตัว")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q43", display_name={"th": "ออกซิเจนจากโพแทสเซียมซูเปอร์ออกไซด์"},
+    level=LEVEL, subject="เคมี", topic="สารกำหนดปริมาณและสัดส่วนแก๊ส",
+)
+class OxygenFromPotassiumSuperoxide(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q43.PARAMS, *q43.VARIANTS))
+        ko2_mmol = Fraction(values["superoxide_mg"], 71)
+        ko2_potential = Fraction(3, 4) * ko2_mmol * Fraction(224, 10)
+        co2_potential = Fraction(3, 2) * values["carbon_dioxide_cm3"]
+        answer = q43.solve(**values)
+        other_limit = max(ko2_potential, co2_potential)
+        return GeneratedQuestion(
+            stem=[text("KO₂ ทำปฏิกิริยากับ CO₂ ให้ K₂CO₃ และ O₂ "
+                       f"ถ้าใช้ KO₂ {values['superoxide_mg'] / 1000:.3f} g "
+                       f"กับ CO₂ {values['carbon_dioxide_cm3']} cm³ "
+                       "ปริมาตร O₂ สูงสุดที่ได้เป็นกี่ cm³ ที่ 0°C, 1 atm "
+                       "(22.4 L/mol) กำหนดมวลโมล KO₂=71 g/mol")],
+            correct=[text(str(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_chose_excess_reagent_for_oxygen",
+                            str(int(other_limit))))],
+                [text(named("chem.posn2561_used_one_to_one_superoxide_oxygen",
+                            str(int(ko2_mmol * Fraction(224, 10)))))],
+                [text(named("chem.posn2561_used_one_to_one_carbon_dioxide_oxygen",
+                            str(values["carbon_dioxide_cm3"])))],
+            ),
+            topic="สารกำหนดปริมาณและสัดส่วนแก๊ส",
+            hint=[text("ดุล 4KO₂ + 2CO₂ → 2K₂CO₃ + 3O₂ แล้วเทียบ O₂ สูงสุดจากสารตั้งต้นแต่ละตัว")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q44", display_name={"th": "ระบุกรดจากโมลาริตี ร้อยละมวล และความหนาแน่น"},
+    level=LEVEL, subject="เคมี", topic="โมลาริตี ร้อยละมวล และความหนาแน่น",
+)
+class AcidFromSolutionConcentrations(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q44.PARAMS, *q44.VARIANTS))
+        answer = q44.solve(**values)
+        names = [name for name, _ in q44.ACIDS]
+        mistakes = (
+            "chem.posn2561_chose_hcl_from_concentration",
+            "chem.posn2561_chose_hbr_from_concentration",
+            "chem.posn2561_chose_acetic_acid_from_concentration",
+            "chem.posn2561_chose_phosphoric_acid_from_concentration",
+        )
+        return GeneratedQuestion(
+            stem=[text(f"สารละลายกรด A เข้มข้น {values['molarity']} mol/L "
+                       f"มี A {values['mass_percent']}% โดยมวล "
+                       f"และมีความหนาแน่น {values['density']} g/mL "
+                       "A เป็นกรดชนิดใด")],
+            correct=[text(names[answer])],
+            distractors=fixed(*([text(named(mistakes[i], name))]
+                                for i, name in enumerate(names) if i != answer)),
+            topic="โมลาริตี ร้อยละมวล และความหนาแน่น",
+            hint=[text("สารละลาย 1 L มีมวล 1000 เท่าของความหนาแน่น; หามวลกรดแล้วหารด้วยจำนวนโมล")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q45", display_name={"th": "โซเดียมไอออนหลังผสมเกลือสองชนิด"},
+    level=LEVEL, subject="เคมี", topic="ความเข้มข้นไอออนหลังผสมสารละลาย",
+)
+class SodiumAfterMixingSulfateAndPhosphate(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q45.PARAMS, *q45.VARIANTS))
+        answer = q45.solve(**values)
+        sv, pv = values["sulfate_ml"], values["phosphate_ml"]
+        sulfate = Fraction(values["sulfate_m"]) * sv
+        phosphate = Fraction(values["phosphate_m"]) * pv
+        sodium = 2 * sulfate + 3 * phosphate
+        fmt = lambda value: f"{float(value):.4f}"
+        return GeneratedQuestion(
+            stem=[text(f"ผสม Na₂SO₄ {values['sulfate_m']} mol/L {sv} mL "
+                       f"กับ Na₃PO₄ {values['phosphate_m']} mol/L {pv} mL "
+                       "สมมติปริมาตรรวมเป็นผลบวกของปริมาตรสารละลาย "
+                       "ความเข้มข้น Na⁺ สุดท้ายเป็นกี่ mol/L")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_counted_one_sodium_per_phosphate",
+                            fmt((2 * sulfate + phosphate) / (sv + pv))))],
+                [text(named("chem.posn2561_omitted_sulfate_sodium",
+                            fmt(3 * phosphate / (sv + pv))))],
+                [text(named("chem.posn2561_reported_sodium_moles_as_molarity",
+                            fmt(sodium / 1000)))],
+            ),
+            topic="ความเข้มข้นไอออนหลังผสมสารละลาย",
+            hint=[text("Na₂SO₄ ให้ Na⁺ สองโมล และ Na₃PO₄ ให้ Na⁺ สามโมลต่อโมลเกลือ; หารด้วยปริมาตรรวม")],
         )
