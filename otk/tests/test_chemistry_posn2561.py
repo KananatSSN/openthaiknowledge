@@ -6,17 +6,17 @@ from random import Random
 import pytest
 
 from otk.core import generate
-from otk.sheets.posn2561_chemistry import q01, q02, q03, q04, q05, q06
+from otk.sheets.posn2561_chemistry import q01, q02, q03, q04, q05, q06, q07, q08, q09
 
 
 def test_first_wave_solves_source_and_variants_independently():
-    for module in (q01, q02, q03, q04, q05, q06):
+    for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6))
+@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -59,7 +59,7 @@ def test_generated_answers_follow_the_stem(number):
             reverse = {configuration: z for z, configuration in _ELECTRON_CONFIGS.items()}
             options = tuple(reverse[choice.content[0].text] for choice in question.choices)
             assert reverse[answer] == q05.check(options=options)
-        else:
+        elif number == 6:
             data = {label: float(value) for label, value in re.findall(
                 r"([LMQRT]): ([\d.]+)", stem,
             )}
@@ -68,4 +68,38 @@ def test_generated_answers_follow_the_stem(number):
                      for left, right in zip("LMQR", "MQRT")
                      if not data[left] < data[right]]
             assert false == [answer]
+        elif number == 7:
+            radii = {species: int(value) for species, value in re.findall(
+                r"(Na⁺|Br⁻|Na|Cl|Ca|Br)=(\d+)", stem,
+            )}
+            assert len(radii) == 6
+            valid = [choice.content[0].text for choice in question.choices
+                     if all(radii[left] > radii[right]
+                            for left, right in zip(choice.content[0].text.split(" > "),
+                                                   choice.content[0].text.split(" > ")[1:]))]
+            assert valid == [answer]
+        elif number == 8:
+            labels = dict(re.findall(r"(P|Ca|As)=(P|Ca|As)", stem))
+            assert len(labels) == 3
+            reverse = {label: element for element, label in labels.items()}
+            valid = []
+            for choice in question.choices:
+                name, order = choice.content[0].text.split(": ")
+                property_name = {"IE₁": "ie", "EN": "en", "รัศมี": "radius",
+                                 "จุดหลอมเหลว": "melting"}[name]
+                values = [q08.PROPERTIES[property_name][reverse[label]]
+                          for label in order.split(" > ")]
+                if not values[0] > values[1] > values[2]:
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+        else:
+            products = {"BeO": None, "N₂O₅": "acid", "SiO₂": None,
+                        "CaO": "base", "Cl₂O₇": "acid", "Al₂O₃": None,
+                        "SO₃": "acid", "Na₂O": "base"}
+            valid = []
+            for choice in question.choices:
+                x, y = re.match(r"X=(.*), Y=(.*)", choice.content[0].text).groups()
+                if products[x] == "acid" and products[y] == "base":
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
         assert len(question.choices) == 4

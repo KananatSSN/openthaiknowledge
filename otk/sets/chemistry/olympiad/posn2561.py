@@ -5,7 +5,7 @@ from otk.core.distractors import fixed
 from otk.core.mistakes import named
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
-from otk.sheets.posn2561_chemistry import q01, q02, q03, q04, q05, q06
+from otk.sheets.posn2561_chemistry import q01, q02, q03, q04, q05, q06, q07, q08, q09
 
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -215,4 +215,110 @@ class SecondIonizationComparisons(QuestionType):
                                 for i, claim in enumerate(claims) if i != answer)),
             topic="พลังงานไอออไนเซชันลำดับที่สอง",
             hint=[text("IE₂ คือพลังงานดึงอิเล็กตรอนจากไอออนประจุ +1; เปรียบเทียบค่าทีละคู่")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q07", display_name={"th": "เปรียบเทียบรัศมีอะตอมและไอออน"},
+    level=LEVEL, subject="เคมี", topic="รัศมีอะตอมและไอออน",
+)
+class AtomicAndIonicRadii(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q07.PARAMS, *q07.VARIANTS))
+        answer = q07.solve(**values)
+        claims = ("Na > Na⁺ > Cl", "Ca > Cl > Na⁺",
+                  "Br⁻ > Br > Ca", "Br > Cl > Na")
+        mistakes = (
+            "", "chem.posn2561_overestimated_chlorine_vs_sodium_ion",
+            "chem.posn2561_overestimated_bromine_vs_calcium",
+            "chem.posn2561_reversed_sodium_period_trend",
+        )
+        data = ", ".join(f"{species}={radius}" for species, radius in
+                         zip(q07.SPECIES, values["radii"]))
+        return GeneratedQuestion(
+            stem=[text(f"ใช้ข้อมูลรัศมีที่กำหนด (pm): {data} "
+                       "การเปรียบเทียบข้อใดถูกต้อง")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[i], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="รัศมีอะตอมและไอออน",
+            hint=[text("เปรียบเทียบรัศมีทั้งสามตัวในแต่ละข้อความจากข้อมูลชุดเดียวกัน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q08", display_name={"th": "ตรวจลำดับสมบัติของ P Ca และ As"},
+    level=LEVEL, subject="เคมี", topic="สมบัติตามคาบและหมู่",
+)
+class PeriodicPropertyRanks(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q08.PARAMS, *q08.VARIANTS))
+        answer = q08.solve(**values)
+        labels = dict(zip(q08.ELEMENTS, values["labels"]))
+        claims = tuple(f"{name}: {' > '.join(order)}" for name, order in
+                       zip(("IE₁", "EN", "รัศมี", "จุดหลอมเหลว"),
+                           (order for _, order in q08.claims(values["labels"]))))
+        mistakes = (
+            "", "chem.posn2561_confused_p_as_electronegativity",
+            "chem.posn2561_reversed_periodic_size_trend",
+            "chem.posn2561_misranked_arsenic_melting_point",
+        )
+        assignments = ", ".join(f"{element}={labels[element]}" for element in q08.ELEMENTS)
+        data = "; ".join(
+            f"{name} ({unit}): " + ", ".join(
+                f"{labels[element]}={q08.PROPERTIES[property_name][element]:g}"
+                for element in q08.ELEMENTS
+            )
+            for property_name, name, unit in (
+                ("ie", "IE₁", "kJ/mol"), ("en", "EN", "Pauling"),
+                ("radius", "รัศมี", "pm"), ("melting", "จุดหลอมเหลว", "°C"),
+            )
+        )
+        return GeneratedQuestion(
+            stem=[text(f"ธาตุ P, Ca และ As แทนด้วยสัญลักษณ์ {assignments} "
+                       "ตามลำดับ สำหรับ As ใช้จุดหลอมเหลวของรูปสีเทาภายใต้ความดัน "
+                       f"ข้อมูลสมบัติมีดังนี้: {data} "
+                       "ข้อความเรียงค่าจากมากไปน้อยข้อใดผิด")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[i], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="สมบัติตามคาบและหมู่",
+            hint=[text("ตรวจ IE₁ และ EN แยกจากขนาดอะตอม; As สีเทาระเหิดที่ความดันปกติ")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q09", display_name={"th": "ออกไซด์กรดและเบสในน้ำ"},
+    level=LEVEL, subject="เคมี", topic="สมบัติกรดเบสของออกไซด์",
+)
+class OxidePairsInWater(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q09.PARAMS, *q09.VARIANTS))
+        answer = q09.solve(**values)
+        options = values["options"]
+        claims = tuple(f"X={q09.PAIRS[i][0]}, Y={q09.PAIRS[i][1]}" for i in options)
+        mistakes = (
+            "chem.posn2561_treated_beo_as_acidic_oxide",
+            "chem.posn2561_treated_sio2_as_water_soluble",
+            "chem.posn2561_treated_al2o3_as_basic_in_water",
+            "",
+        )
+        return GeneratedQuestion(
+            stem=[text("ออกไซด์ X เมื่อละลายน้ำให้สารละลายกรด "
+                       "และออกไซด์ Y เมื่อละลายน้ำให้สารละลายเบส "
+                       "คู่ใดสอดคล้องกับข้อมูล")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="สมบัติกรดเบสของออกไซด์",
+            hint=[text("ออกไซด์อโลหะบางชนิดให้กรดกับน้ำ; ตรวจว่าออกไซด์อีกตัวทำปฏิกิริยากับน้ำให้เบสจริง")],
         )

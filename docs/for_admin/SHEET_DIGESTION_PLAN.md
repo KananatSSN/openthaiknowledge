@@ -59,13 +59,14 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN 2561 bank — waves 1–2, 2026-10-21
+### Chemistry POSN 2561 bank — waves 1–3, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
-- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first six on p3 were reviewed visually, independently solved, claimed by knowledge units, and linked to generators. **6/75 complete; 69 pending.**
+- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first nine were reviewed, independently solved, claimed by knowledge units, and linked to generators. **9/75 complete; 66 pending.**
 - MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
 - MC4's only always-true claim is that Z has more than six electrons in its second shell; the adaptation says “always” explicitly. MC5 selects fluorine. MC6's false comparison is K < Ca for IE₂; the close Se < Br comparison was checked against NIST ionization data.
-- The private bank digest contains paraphrased records for the six reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 7.
+- MC7's mixed atomic/ionic radius comparison depends on a radius convention; its adaptation supplies the specific table used. MC8's false order places Ca above As for IE₁; its adaptation supplies measured property values and specifies grey arsenic melting under pressure. MC9 pairs SO₃ with Na₂O to give an acid and a base in water.
+- The private bank digest contains paraphrased records for the nine reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 10.
 - Maintain the requested cadence: targeted tests each wave; the full suite only when all 75 items are digested.
 
 ### Chemistry POSN bank — waves 1–23, 2026-10-21
@@ -2229,3 +2230,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed the remaining p3 questions and added independent solvers, three variants, generators, and knowledge units. MC4's guaranteed second-shell count is clarified as an “always” statement; MC5 identifies fluorine. MC6's IE₂ order was checked against [NIST ASD](https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=on&biblio=on&e_out=0&el_name_out=on&format=0&ion_charge_out=on&ion_conf_out=on&level_out=on&order=0&seq_out=on&shells_out=on&sp_name_out=on&spectra=H-Og+II&submit=Retrieve+Data&unc_out=on&units=1); K < Ca is false, while Se < Br is true.
 - Wave validation: 6/6 sheet solvers and 18 variants green; 846 knowledge units in 712 files with zero validation problems; all six reviewed source records are claimed. Focused sheet/set checks passed (31), sheet-pipeline checks passed (33), and registry checks passed 526 cases. One q05 safety-style issue was corrected, then its affected safety check, solver-pool test, sheet verification, Ruff, and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC7–9
+
+- Reviewed p4 and MC9's oxide-pair table. Added independent solvers, three variants, generators and knowledge claims for all three questions. MC7 gives the radius values explicitly because mixed atomic/ionic conventions vary. MC8 supplies empirical data and specifies grey As melting under pressure. MC9 pairs SO₃ and Na₂O.
+- Wave validation: 9/9 sheet solvers and 27 variants green; 849 knowledge units in 715 files with zero validation problems; all nine reviewed source records are claimed. Focused sheet/set checks passed (37), sheet-pipeline checks passed (48), registry/provenance/safety/layout checks passed (539), and Ruff and whitespace checks passed. The full suite remains deferred until 75/75.

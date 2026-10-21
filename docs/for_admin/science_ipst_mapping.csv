@@ -2863,3 +2863,6 @@ chem.posn2561_q03,เคมี,โอลิมปิก (สอวน.),พล�
 chem.posn2561_q04,เคมี,โอลิมปิก (สอวน.),ชั้นอิเล็กตรอนและคาบของธาตุ,supplemental,โอลิมปิก (สอวน.),,,,ชั้นอิเล็กตรอนและคาบของธาตุ,outside_scope,3,POSN chemistry 2561 second batch; reviewed solver variants; no school indicator claimed
 chem.posn2561_q05,เคมี,โอลิมปิก (สอวน.),การจัดอิเล็กตรอนและความไวต่อปฏิกิริยา,supplemental,โอลิมปิก (สอวน.),,,,การจัดอิเล็กตรอนและความไวต่อปฏิกิริยา,outside_scope,3,POSN chemistry 2561 second batch; reviewed solver variants; no school indicator claimed
 chem.posn2561_q06,เคมี,โอลิมปิก (สอวน.),พลังงานไอออไนเซชันลำดับที่สอง,supplemental,โอลิมปิก (สอวน.),,,,พลังงานไอออไนเซชันลำดับที่สอง,outside_scope,3,POSN chemistry 2561 second batch; NIST IE2 order checked; no school indicator claimed
+chem.posn2561_q07,เคมี,โอลิมปิก (สอวน.),รัศมีอะตอมและไอออน,supplemental,โอลิมปิก (สอวน.),,,,รัศมีอะตอมและไอออน,outside_scope,3,POSN chemistry 2561 reviewed adaptation; no school indicator claimed
+chem.posn2561_q08,เคมี,โอลิมปิก (สอวน.),สมบัติตามคาบและหมู่,supplemental,โอลิมปิก (สอวน.),,,,สมบัติตามคาบและหมู่,outside_scope,3,POSN chemistry 2561 reviewed adaptation; no school indicator claimed
+chem.posn2561_q09,เคมี,โอลิมปิก (สอวน.),สมบัติกรดเบสของออกไซด์,supplemental,โอลิมปิก (สอวน.),,,,สมบัติกรดเบสของออกไซด์,outside_scope,3,POSN chemistry 2561 reviewed adaptation; no school indicator claimed

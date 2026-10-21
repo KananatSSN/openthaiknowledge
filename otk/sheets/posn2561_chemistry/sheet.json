@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 6/75: all 60 multiple-choice and 15 written questions extracted; Part I questions 1–6 reviewed, independently solved, claimed by knowledge units, and linked to generators. Source MC3 says five spectral lines but lists four; the adaptation says four. MC4 is clarified to ask what is always true. MC6 second-ionization comparisons were checked against NIST data. Remaining questions await visual review and solving.",
+  "note": "PARTIAL 9/75: all 75 items extracted; Part I questions 1–9 reviewed, independently solved, claimed by knowledge units and linked to generators. MC3/MC4 wording clarified, MC6 checked against NIST, MC7 given explicit radii because conventions vary, and MC8 clarifies grey As melts under pressure. Remaining 66 await review.",
   "items": [
     {
       "number": 1,
@@ -83,6 +83,45 @@
       "answer": "0",
       "generator": "chem.posn2561_q06",
       "note": "Source choice ก is false: IE2(K)=31.625 eV exceeds IE2(Ca)=11.871719 eV. NIST ASD also confirms Se 21.196 < Br 21.591 < Rb 27.28954 eV. Adaptation supplies the IE2 data to make the close comparison explicit. https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=on&biblio=on&e_out=0&el_name_out=on&format=0&ion_charge_out=on&ion_conf_out=on&level_out=on&order=0&seq_out=on&shells_out=on&sp_name_out=on&spectra=H-Og+II&submit=Retrieve+Data&unc_out=on&units=1"
+    },
+    {
+      "number": 7,
+      "solver": "q07",
+      "title": "เปรียบเทียบรัศมีอะตอมและไอออน",
+      "source": "Part I, question 7, p4: identify the true radius order among Na, Na+, Cl, Ca, Br and Br-.",
+      "page": 4,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "รัศมีอะตอมและไอออน",
+      "answer": "0",
+      "generator": "chem.posn2561_q07",
+      "note": "Source choice ก compares Na > Na+ > Cl. Mixed atomic and ionic radii depend on convention; the adaptation supplies a single table with Na 186, Na+ 102 and Cl 99 pm to make the answer unambiguous. https://www.wiredchemist.com/chemistry/data/metallic-radii"
+    },
+    {
+      "number": 8,
+      "solver": "q08",
+      "title": "ตรวจลำดับสมบัติของ P Ca และ As",
+      "source": "Part I, question 8, p4: find the false ranking of IE1, EN, radius or melting point for P, Ca and As.",
+      "page": 4,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สมบัติตามคาบและหมู่",
+      "answer": "0",
+      "generator": "chem.posn2561_q08",
+      "note": "Source choice ก is false: IE1(P) > IE1(As) > IE1(Ca), whereas the choice places Ca above As. The adaptation clarifies grey As melting under pressure (817 C); at normal pressure it sublimes. https://periodic-table.rsc.org/element/33/arsenic"
+    },
+    {
+      "number": 9,
+      "solver": "q09",
+      "title": "จับคู่ออกไซด์กรดและเบสในน้ำ",
+      "source": "Part I, question 9, p4: choose the oxide pair whose aqueous products are acid and base, respectively.",
+      "page": 4,
+      "figure": "The source includes an oxide-pair table.",
+      "figure_asset": "",
+      "topic": "สมบัติกรดเบสของออกไซด์",
+      "answer": "3",
+      "generator": "chem.posn2561_q09",
+      "note": "Source choice ง is SO3 and Na2O: SO3 + H2O -> H2SO4; Na2O + H2O -> 2NaOH. Table figure was reviewed visually; no source artwork is copied."
     }
   ]
 }

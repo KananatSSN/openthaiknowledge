@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รัศมีอะตอมและไอออน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.atomic_ionic_radius_comparison.procedure",
+      "kind": "procedure",
+      "title": "เปรียบเทียบรัศมีอะตอมและไอออน",
+      "statement": "รัศมีอะตอมและไอออนเป็นคนละนิยาม; เมื่อต้องเปรียบเทียบข้ามชนิดควรใช้ข้อมูลรัศมีชุดเดียวกันที่กำหนดไว้ชัดเจน",
+      "steps": [
+        "อ่านตารางรัศมีของ Na, Na⁺, Cl, Ca, Br และ Br⁻ ในโจทย์",
+        "ตรวจอสมการทีละคู่ในแต่ละตัวเลือก แล้วเลือกสายที่จริงทั้งหมด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q07"
+      ],
+      "note": "Source choice ก compares Na > Na+ > Cl. Mixed atomic and ionic radii depend on convention; the adaptation supplies a single table with Na 186, Na+ 102 and Cl 99 pm to make the answer unambiguous. https://www.wiredchemist.com/chemistry/data/metallic-radii"
+    }
+  ]
+}

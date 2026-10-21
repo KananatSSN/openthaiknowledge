@@ -4134,6 +4134,7 @@ SCIENCE_PLACEMENTS.update({
 SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2561_q01", "chem.posn2561_q02", "chem.posn2561_q03",
     "chem.posn2561_q04", "chem.posn2561_q05", "chem.posn2561_q06",
+    "chem.posn2561_q07", "chem.posn2561_q08", "chem.posn2561_q09",
     "chem.posn2560_q01", "chem.posn2560_q02", "chem.posn2560_q03",
     "chem.posn2560_q04", "chem.posn2560_q05", "chem.posn2560_q06",
     "chem.posn2560_q07", "chem.posn2560_q08", "chem.posn2560_q09",
@@ -4166,6 +4167,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2561_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ชั้นอิเล็กตรอนและคาบของธาตุ", "outside_scope"),
     "chem.posn2561_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "การจัดอิเล็กตรอนและความไวต่อปฏิกิริยา", "outside_scope"),
     "chem.posn2561_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พลังงานไอออไนเซชันลำดับที่สอง", "outside_scope"),
+    "chem.posn2561_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รัศมีอะตอมและไอออน", "outside_scope"),
+    "chem.posn2561_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สมบัติตามคาบและหมู่", "outside_scope"),
+    "chem.posn2561_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สมบัติกรดเบสของออกไซด์", "outside_scope"),
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
     "chem.posn2560_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "หมู่ธาตุและเลขออกซิเดชัน", "outside_scope"),
     "chem.posn2560_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สเปกตรัมของอะตอม", "outside_scope"),
