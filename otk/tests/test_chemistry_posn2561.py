@@ -13,7 +13,7 @@ from otk.sheets.posn2561_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
     q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
     q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57,
-    q58, q59, q60, q61, q62, q63,
+    q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69,
 )
 
 
@@ -21,13 +21,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60, q61, q62, q63):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 64))
+@pytest.mark.parametrize("number", range(1, 70))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -541,7 +541,7 @@ def test_generated_answers_follow_the_stem(number):
             assert d_count in "⁵⁶⁷⁸"
             assert answer == "G; EG₂"
             assert "n=3" in stem
-        else:
+        elif number == 63:
             cl_light, cl_heavy, br_light, br_heavy = map(int, re.search(
                 r"³⁵Cl:³⁷Cl = (\d+):(\d+) และ ⁷⁹Br:⁸¹Br = (\d+):(\d+)",
                 stem,
@@ -549,4 +549,46 @@ def test_generated_answers_follow_the_stem(number):
             percent = (Fraction(cl_light, cl_light + cl_heavy) *
                        Fraction(br_light, br_light + br_heavy) * 100)
             assert answer == f"{float(percent):.1f}%"
+        elif number == 64:
+            assert answer == "CrO₃; [Ar]3d⁵4s²; Fe"
+            assert any(clue in stem for clue in q64.CLUES.values())
+        elif number == 65:
+            u_mass, n_mass, initial, minutes = re.search(
+                r"U-(\d+).*?N-(\d+).*?เริ่ม ([\d.]+) mg ผ่านไป (\d+) นาที", stem,
+            ).groups()
+            neutrons = int(u_mass) + int(n_mass) - 248
+            remaining = Fraction(initial) / 2 ** (int(minutes) // 25)
+            assert answer == f"{neutrons}n; {float(remaining):.3f} mg"
+        elif number == 66:
+            formation, sublimation, dissociation, affinity, lattice = map(int, re.search(
+                r"ΔHf=([+-]\d+) kJ/mol; M\(s\)→M\(g\)=([+-]\d+); "
+                r"X₂\(g\)→2X\(g\)=([+-]\d+); X\(g\)\+e⁻→X⁻\(g\)="
+                r"([+-]\d+); M⁺\(g\)\+X⁻\(g\)→MX\(s\)=([+-]\d+)", stem,
+            ).groups())
+            implied = (Fraction(formation) - sublimation - Fraction(dissociation, 2)
+                       - affinity - lattice)
+            assert answer == f"{implied} kJ/mol"
+        elif number == 67:
+            x, y = re.search(r"หมู่ 16 \((\w+)\) และฮาโลเจน \((\w+)\)", stem).groups()
+            assert answer.startswith(f"C{x}{y}2; {y}–C(={x})–{y};")
+            assert f"{x} มีคู่โดดเดี่ยว 2 คู่ {y} ตัวละ 3 คู่" in answer
+            assert answer.endswith("ขั้ว–ขั้ว")
+        elif number == 68:
+            flour, additive, alumina, pieces = re.search(
+                r"แป้ง (\d+) g.*?([\d.]+)% โดยมวล ซึ่งมี Al₂O₃ "
+                r"([\d.]+)% โดยมวล.*?(\d+) ชิ้น", stem,
+            ).groups()
+            al_mg = (Fraction(int(flour)) * Fraction(additive) / 100
+                     * Fraction(alumina) / 100 * Fraction(54, 102)
+                     * 1000 / int(pieces))
+            assert answer == f"{float(al_mg):.2f} mg"
+        else:
+            sample, ag_m, ag_ml, scn_m, scn_ml = re.search(
+                r"ปุ๋ย ([\d.]+) g.*?AgNO₃ ([\d.]+) mol/L ปริมาตร "
+                r"([\d.]+) mL.*?KSCN ([\d.]+) mol/L ปริมาตร ([\d.]+) mL", stem,
+            ).groups()
+            leftover = Fraction(scn_m) * Fraction(scn_ml) / 1000
+            initial = Fraction(ag_m) * Fraction(ag_ml) / 1000
+            percent = (initial - leftover) / 6 * 142 / Fraction(sample) * 100
+            assert answer == f"{q69._sci(leftover)}; {float(percent):.2f}%"
         assert len(question.choices) == 4

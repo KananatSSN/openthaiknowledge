@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 63/75: all 75 items extracted; Part I questions 1–60 and written questions 1–3 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 12 written items await review.",
+  "note": "PARTIAL 69/75: all 75 items extracted; Part I questions 1–60 and written questions 1–9 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining six written items await review.",
   "items": [
     {
       "number": 1,
@@ -824,6 +824,84 @@
       "answer": "37.5",
       "generator": "chem.posn2561_q63",
       "note": "Only ¹²CH₂⁷⁹Br³⁵Cl has nominal mass 128. Its fraction is (3/4)(1/2)=3/8=37.5%. The adaptation states ¹²C and ¹H only."
+    },
+    {
+      "number": 64,
+      "solver": "q64",
+      "title": "โครเมียม แมงกานีส และเหล็กจากธาตุเรียงกัน",
+      "source": "Part II, written question 4, p14: identify M,L,X among consecutive first-row transition metals ending at heme iron, then give highest Cr oxide and Mn configuration.",
+      "page": 14,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "เลขออกซิเดชันและธาตุแทรนซิชัน",
+      "answer": "('CrO3', '[Ar]3d5 4s2', 'Fe')",
+      "generator": "chem.posn2561_q64",
+      "note": "X=Fe, L=Mn and M=Cr. Cr(+6) oxide is CrO₃; Mn is [Ar]3d⁵4s²."
+    },
+    {
+      "number": 65,
+      "solver": "q65",
+      "title": "สมการสร้างไอน์สไตเนียมและมวลหลังสลาย",
+      "source": "Part II, written question 5, p14: bombard U-238 with N-14 to produce Es-248 and neutrons; from 10.0 mg and a 25-minute half-life find mass after 150 minutes.",
+      "page": 14,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ดุลปฏิกิริยานิวเคลียร์และครึ่งชีวิต",
+      "answer": "(4, Decimal('0.156'))",
+      "generator": "chem.posn2561_q65",
+      "note": "Mass and charge balance give four neutrons. Six half-lives leave 10/64=0.15625 mg, reported as 0.156 mg."
+    },
+    {
+      "number": 66,
+      "solver": "q66",
+      "title": "พลังงานไอออไนเซชันจากวัฏจักรบอร์น–ฮาเบอร์",
+      "source": "Part II, written question 6, p15: derive M first ionization energy from sublimation +150, X2 dissociation +160, X electron attachment -300, lattice formation -1100 and MX formation -600 kJ/mol.",
+      "page": 15,
+      "figure": "Five reaction-energy rows: sublimation +150, X2 dissociation +160, electron attachment -300, lattice formation -1100, and MX formation -600 kJ/mol.",
+      "figure_asset": "",
+      "topic": "วัฏจักรบอร์น–ฮาเบอร์และกฎของเฮสส์",
+      "answer": "570",
+      "generator": "chem.posn2561_q66",
+      "note": "The Born–Haber balance is -600=150+80+IE-300-1100, so IE=570 kJ/mol. Only half of X₂ dissociates per MX."
+    },
+    {
+      "number": 67,
+      "solver": "q67",
+      "title": "สูตร โครงสร้างลิวอิส และแรงระหว่างโมเลกุล",
+      "source": "Part II, written question 7, p15: second-period elements with 4,6,7 valence electrons form a compound with the 4-electron atom bonded to the other two, which do not bond to each other.",
+      "page": 15,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "โครงสร้างลิวอิสและแรงระหว่างโมเลกุล",
+      "answer": "('COF2', 'F–C(=O)–F', 'dipole-dipole')",
+      "generator": "chem.posn2561_q67",
+      "note": "A=C, X=O, Y=F; formula COF₂ has F–C(=O)–F skeleton, two O lone pairs and three per F. The molecule is polar, with dipole–dipole attraction in addition to dispersion."
+    },
+    {
+      "number": 68,
+      "solver": "q68",
+      "title": "อะลูมิเนียมต่อแพนเค้กจากสารกันจับก้อน",
+      "source": "Part II, written question 8, p15: 500 g flour contains 1.00% sodium aluminium silicate, which is 10.2% Al2O3 by mass; divide among 40 pancakes and find Al mg per piece.",
+      "page": 15,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ร้อยละมวลซ้อนและมวลธาตุต่อหน่วย",
+      "answer": "6.75",
+      "generator": "chem.posn2561_q68",
+      "note": "5.00 g additive includes 0.510 g Al₂O₃, or 0.270 g Al. Across 40 equal pieces this is 6.75 mg each. The stated 25 g piece mass does not affect the division."
+    },
+    {
+      "number": 69,
+      "solver": "q69",
+      "title": "ฟอสเฟตในปุ๋ยจากการไทเทรตกลับด้วยเงิน",
+      "source": "Part II, written question 9, pp15–16: 1.4200 g fertilizer uses 50.00 mL of 0.0840 M AgNO3 for phosphate precipitation; remaining Ag+ consumes 3.00 mL of 0.0600 M KSCN.",
+      "page": 15,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การไทเทรตกลับและร้อยละฟอสฟอรัส",
+      "answer": "('1.80×10⁻⁴ mol', '6.70%')",
+      "generator": "chem.posn2561_q69",
+      "note": "SCN⁻ measures 1.80×10⁻⁴ mol leftover Ag⁺. Of 0.00420 mol initially, 0.00402 mol precipitates phosphate; six Ag⁺ per P₂O₅ give 6.70% by mass."
     }
   ]
 }

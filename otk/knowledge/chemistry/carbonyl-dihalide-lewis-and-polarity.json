@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "โครงสร้างลิวอิสและแรงระหว่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.carbonyl_dihalide_lewis_and_polarity.procedure",
+      "kind": "procedure",
+      "title": "สูตร โครงสร้างลิวอิส และแรงระหว่างโมเลกุล",
+      "statement": "C ที่ผูกกับธาตุหมู่ 16 หนึ่งตัวและฮาโลเจนสองตัวมีโครง Y–C(=X)–Y; X มีคู่โดดเดี่ยวสองคู่ Y แต่ละตัวสามคู่ และโมเลกุลมีขั้ว",
+      "steps": [
+        "ใช้เวเลนซ์ C=4, X=6, Y=7 เพื่อดุลจำนวนพันธะและเขียนสูตร CXY₂",
+        "วาดพันธะคู่ C=X กับพันธะเดี่ยว C–Y สองเส้น แล้วระบุแรงระหว่างขั้ว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 67
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q67"
+      ],
+      "note": "A=C, X=O, Y=F; formula COF₂ has F–C(=O)–F skeleton, two O lone pairs and three per F. The molecule is polar, with dipole–dipole attraction in addition to dispersion."
+    }
+  ]
+}

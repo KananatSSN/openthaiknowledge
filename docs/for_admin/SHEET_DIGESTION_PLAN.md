@@ -2314,3 +2314,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed Zr ground-state configuration, periodic size/ionic formula from outer configurations, and the CH₂BrCl isotope fraction. Added independently checked solvers, three variants, generators, named misconceptions and knowledge claims. The Zr generator explicitly requests noble-gas shorthand; the symbolic question fixes n=3.
 - Wave validation: 63/63 sheet solvers and 189 variant runs green; 903 knowledge units in 769 files with zero validation problems; source coverage 63/63. Focused generator tests passed (64), catalog checks passed (3), registry/provenance/safety/layout checks passed (755), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, written 4–9 (items 64–69)
+
+- Reviewed six written questions covering Cr/Mn/Fe, Es synthesis and decay, a Born–Haber cycle, COF₂ Lewis structure, aluminium per pancake and phosphate back titration. Added independently checked solvers, three variants, generators, named misconceptions and knowledge claims. The COF₂ adaptation names dipole–dipole attraction as the strongest specific interaction while acknowledging dispersion.
+- Wave validation: 69/69 sheet solvers and 207 variant runs green; 909 knowledge units in 775 files with zero validation problems; source coverage 69/69. Focused generator tests passed (70), new-set choice checks passed (6), registry/provenance/safety/layout checks passed (779), and the partial-digest bank check passed (2). Ruff and whitespace checks passed. The full suite remains deferred until 75/75.

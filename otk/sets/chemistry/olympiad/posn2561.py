@@ -13,7 +13,7 @@ from otk.sheets.posn2561_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51,
     q52, q53, q54, q55, q56, q57, q58, q59, q60,
-    q61, q62, q63,
+    q61, q62, q63, q64, q65, q66, q67, q68, q69,
 )
 
 
@@ -2115,4 +2115,212 @@ class BromochloromethaneIsotopeFraction(QuestionType):
             ),
             topic="ไอโซโทปและความน่าจะเป็นของมวลโมเลกุล",
             hint=[text("128 = 12+2+79+35; คูณสัดส่วน ⁷⁹Br กับ ³⁵Cl")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q64", display_name={"th": "ระบุโครเมียม แมงกานีส และเหล็ก"},
+    level=LEVEL, subject="เคมี", topic="เลขออกซิเดชันและธาตุแทรนซิชัน",
+)
+class ConsecutiveTransitionMetals(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q64.PARAMS, *q64.VARIANTS))
+        assert q64.solve(**values) == q64.ANSWER
+        return GeneratedQuestion(
+            stem=[text("M, L, X เป็นธาตุแทรนซิชันแถวแรก เลขอะตอมเรียงติดกัน "
+                       "M และ L มีสถานะออกซิเดชันสูงสุดตามเลขหมู่ แต่ X ไม่มี "
+                       + q64.CLUES[values["clue"]] +
+                       " จงระบุออกไซด์ของ M ที่เลขออกซิเดชันสูงสุด, "
+                       "การจัดอิเล็กตรอนสถานะพื้นของ L และ X ตามลำดับ")],
+            correct=[text("CrO₃; [Ar]3d⁵4s²; Fe")],
+            distractors=fixed(
+                [text(named("chem.posn2561_shifted_transition_metal_trio",
+                            "MnO₄; [Ar]3d⁵4s²; Fe"))],
+                [text(named("chem.posn2561_used_iron_configuration_for_manganese",
+                            "CrO₃; [Ar]3d⁶4s²; Fe"))],
+                [text(named("chem.posn2561_misidentified_heme_metal",
+                            "CrO₃; [Ar]3d⁵4s²; Co"))],
+            ),
+            topic="เลขออกซิเดชันและธาตุแทรนซิชัน",
+            hint=[text("X คือ Fe จึงย้อนเลขอะตอมสองตำแหน่งหา M และ L")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q65", display_name={"th": "การสร้างไอน์สไตเนียมและครึ่งชีวิต"},
+    level=LEVEL, subject="เคมี", topic="ดุลปฏิกิริยานิวเคลียร์และครึ่งชีวิต",
+)
+class EinsteiniumSynthesisAndDecay(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q65.PARAMS, *q65.VARIANTS))
+        neutrons, remaining = q65.solve(**values)
+        initial = Fraction(values["initial_mg"])
+        fmt = lambda count, mass: f"{count}n; {float(mass):.3f} mg"
+        return GeneratedQuestion(
+            stem=[text(f"ยิง U-{values['u_mass']} (Z=92) ด้วย N-{values['n_mass']} (Z=7) "
+                       "ได้ Es-248 (Z=99) กับนิวตรอน กี่ตัว? "
+                       f"ถ้า Es-248 ครึ่งชีวิต 25 นาที เริ่ม {values['initial_mg']} mg "
+                       f"ผ่านไป {values['minutes']} นาทีจะเหลือกี่ mg "
+                       "ตอบจำนวนนิวตรอนและมวลสามตำแหน่งตามลำดับ")],
+            correct=[text(fmt(neutrons, remaining))],
+            distractors=fixed(
+                [text(named("chem.posn2561_missed_one_emitted_neutron",
+                            fmt(neutrons + 1, remaining)))],
+                [text(named("chem.posn2561_counted_one_fewer_half_life",
+                            fmt(neutrons, 2 * remaining)))],
+                [text(named("chem.posn2561_divided_by_half_life_count",
+                            fmt(neutrons, initial * 25 / values["minutes"])))],
+            ),
+            topic="ดุลปฏิกิริยานิวเคลียร์และครึ่งชีวิต",
+            hint=[text("ดุลเลขมวลเพื่อหาจำนวนนิวตรอน แล้วใช้ m=m₀(1/2)^(t/25)")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q66", display_name={"th": "พลังงานไอออไนเซชันจากวัฏจักรบอร์น–ฮาเบอร์"},
+    level=LEVEL, subject="เคมี", topic="วัฏจักรบอร์น–ฮาเบอร์และกฎของเฮสส์",
+)
+class BornHaberFirstIonization(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q66.PARAMS, *q66.VARIANTS))
+        answer = q66.solve(**values)
+        half_bond = Fraction(values["dissociation"], 2)
+        no_affinity = answer + values["electron_affinity"]
+        half_lattice = answer + Fraction(values["lattice_formation"], 2)
+        return GeneratedQuestion(
+            stem=[text("M(s)+½X₂(g)→MX(s) มี ΔHf="
+                       f"{values['formation']:+d} kJ/mol; M(s)→M(g)="
+                       f"{values['sublimation']:+d}; X₂(g)→2X(g)="
+                       f"{values['dissociation']:+d}; X(g)+e⁻→X⁻(g)="
+                       f"{values['electron_affinity']:+d}; "
+                       f"M⁺(g)+X⁻(g)→MX(s)={values['lattice_formation']:+d}. "
+                       "IE₁(M) กี่ kJ/mol")],
+            correct=[text(f"{answer} kJ/mol")],
+            distractors=fixed(
+                [text(named("chem.posn2561_used_full_halogen_dissociation",
+                            f"{answer - half_bond} kJ/mol"))],
+                [text(named("chem.posn2561_omitted_electron_affinity_step",
+                            f"{no_affinity} kJ/mol"))],
+                [text(named("chem.posn2561_halved_lattice_formation_step",
+                            f"{half_lattice} kJ/mol"))],
+            ),
+            topic="วัฏจักรบอร์น–ฮาเบอร์และกฎของเฮสส์",
+            hint=[text("ΔHf=ΔHระเหิด+½D(X₂)+IE₁+EA+ΔHผลึก")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q67", display_name={"th": "โครงสร้างลิวอิสของคาร์บอนิลไดแฮไลด์"},
+    level=LEVEL, subject="เคมี", topic="โครงสร้างลิวอิสและแรงระหว่างโมเลกุล",
+)
+class CarbonylDihalideLewisPolarity(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q67.PARAMS, *q67.VARIANTS))
+        x, y = values["x"], values["y"]
+        formula, skeleton, force = q67.solve(**values)
+        assert force == "dipole-dipole"
+        prelude = f"{formula}; {skeleton}; "
+        pairs = f"{x} มีคู่โดดเดี่ยว 2 คู่ {y} ตัวละ 3 คู่"
+        return GeneratedQuestion(
+            stem=[text(f"C เป็นอะตอมกลาง เกิดพันธะกับธาตุหมู่ 16 ({x}) "
+                       f"และฮาโลเจน ({y}) โดย {x} กับ {y} ไม่ผูกกัน "
+                       "จงเลือกสูตรโมเลกุล โครงสร้างลิวอิสแบบแสดงพันธะ "
+                       "และแรงระหว่างโมเลกุลจำเพาะที่เด่นที่สุด "
+                       "(แรงลอนดอนยังมีในทุกโมเลกุล)")],
+            correct=[text(prelude + pairs + "; ขั้ว–ขั้ว")],
+            distractors=fixed(
+                [text(named("chem.posn2561_used_single_carbon_chalcogen_bond",
+                            f"{formula}; {y}–C(–{x})–{y}; "
+                            + pairs + "; ขั้ว–ขั้ว"))],
+                [text(named("chem.posn2561_ignored_molecular_dipole_force",
+                            prelude + pairs + "; ลอนดอนอย่างเดียว"))],
+                [text(named("chem.posn2561_omitted_second_halogen_in_formula",
+                            f"C{x}{y}; {y}–C(={x}); "
+                            + pairs + "; ขั้ว–ขั้ว"))],
+            ),
+            topic="โครงสร้างลิวอิสและแรงระหว่างโมเลกุล",
+            hint=[text("C ใช้พันธะคู่กับธาตุหมู่ 16 และพันธะเดี่ยวกับฮาโลเจนสองตัว")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q68", display_name={"th": "อะลูมิเนียมต่อชิ้นจากสารเติมแต่ง"},
+    level=LEVEL, subject="เคมี", topic="ร้อยละมวลซ้อนและมวลธาตุต่อหน่วย",
+)
+class AluminumPerPancake(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q68.PARAMS, *q68.VARIANTS))
+        answer = q68.solve(**values)
+        additive_mg = (Fraction(values["flour_g"]) * Fraction(values["additive_pct"])
+                       / 100 * 1000 / values["pieces"])
+        alumina_mg = additive_mg * Fraction(values["alumina_pct"]) / 100
+        fmt = lambda value: f"{float(value):.2f} mg"
+        return GeneratedQuestion(
+            stem=[text(f"แป้ง {values['flour_g']} g มีสารกันจับก้อน "
+                       f"{values['additive_pct']}% โดยมวล ซึ่งมี Al₂O₃ "
+                       f"{values['alumina_pct']}% โดยมวล แบ่งเป็นแพนเค้ก "
+                       f"{values['pieces']} ชิ้นเท่ากัน ถ้า Al มาจากแป้งเท่านั้น "
+                       "หนึ่งชิ้นมี Al กี่ mg (M(Al₂O₃)=102, M(Al)=27)")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_reported_alumina_instead_of_aluminum",
+                            fmt(alumina_mg)))],
+                [text(named("chem.posn2561_reported_whole_additive_as_aluminum",
+                            fmt(additive_mg)))],
+                [text(named("chem.posn2561_counted_one_aluminum_per_alumina",
+                            fmt(Fraction(answer) / 2)))],
+            ),
+            topic="ร้อยละมวลซ้อนและมวลธาตุต่อหน่วย",
+            hint=[text("มวล Al = มวลแป้ง × เศษส่วนสารเติมแต่ง × เศษส่วน Al₂O₃ × 54/102")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q69", display_name={"th": "ฟอสเฟตจากการตกตะกอนและไทเทรตกลับ"},
+    level=LEVEL, subject="เคมี", topic="การไทเทรตกลับและร้อยละฟอสฟอรัส",
+)
+class PhosphateSilverBackTitration(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q69.PARAMS, *q69.VARIANTS))
+        leftover, percent = q69.solve(**values)
+        initial_ag = Fraction(values["ag_m"]) * Fraction(values["ag_ml"]) / 1000
+        residual_ag = Fraction(values["scn_m"]) * Fraction(values["scn_ml"]) / 1000
+        consumed_ag = initial_ag - residual_ag
+        fmt_percent = lambda silver_mol: f"{float(silver_mol / 6 * 142 / Fraction(values['sample_g']) * 100):.2f}%"
+        return GeneratedQuestion(
+            stem=[text(f"ปุ๋ย {values['sample_g']} g มี P₂O₅ ที่เปลี่ยนเป็น H₃PO₄ "
+                       f"เติม AgNO₃ {values['ag_m']} mol/L ปริมาตร "
+                       f"{values['ag_ml']} mL ให้ Ag₃PO₄; Ag⁺ ที่เหลือ "
+                       f"ใช้ KSCN {values['scn_m']} mol/L ปริมาตร "
+                       f"{values['scn_ml']} mL พอดี จงหาโมล Ag⁺ ที่เหลือ "
+                       "และร้อยละมวล P₂O₅ ตามลำดับ (M(P₂O₅)=142)")],
+            correct=[text(f"{leftover}; {percent}")],
+            distractors=fixed(
+                [text(named("chem.posn2561_used_initial_silver_as_residual",
+                            f"{q69._sci(initial_ag)}; {percent}"))],
+                [text(named("chem.posn2561_used_three_silver_per_diphosphorus_oxide",
+                            f"{leftover}; {fmt_percent(2 * consumed_ag)}"))],
+                [text(named("chem.posn2561_ignored_silver_back_titration",
+                            f"{leftover}; {fmt_percent(initial_ag)}"))],
+            ),
+            topic="การไทเทรตกลับและร้อยละฟอสฟอรัส",
+            hint=[text("Ag⁺ เหลือจาก SCN⁻ แบบ 1:1; Ag⁺ ที่ใช้ต่อ P₂O₅ หนึ่งโมลเท่ากับหกโมล")],
         )

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ร้อยละมวลซ้อนและมวลธาตุต่อหน่วย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.aluminum_per_pancake_nested_mass_fractions.procedure",
+      "kind": "procedure",
+      "title": "อะลูมิเนียมต่อแพนเค้กจากสารกันจับก้อน",
+      "statement": "มวล Al ต่อชิ้นเท่ากับมวลแป้งคูณเศษส่วนสารเติมแต่งคูณเศษส่วน Al₂O₃ คูณ 54/102 แล้วหารจำนวนชิ้น",
+      "steps": [
+        "คำนวณมวลสารเติมแต่งและ Al₂O₃ จากร้อยละมวลซ้อน",
+        "แปลง Al₂O₃ เป็น Al และหารจำนวนแพนเค้กก่อนแปลงเป็นมิลลิกรัม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 68
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q68"
+      ],
+      "note": "5.00 g additive includes 0.510 g Al₂O₃, or 0.270 g Al. Across 40 equal pieces this is 6.75 mg each. The stated 25 g piece mass does not affect the division."
+    }
+  ]
+}

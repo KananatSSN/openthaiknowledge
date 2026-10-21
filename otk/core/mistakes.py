@@ -37,6 +37,25 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.posn2561_shifted_transition_metal_trio": {"th": "เลื่อนลำดับธาตุแทรนซิชันหนึ่งตำแหน่ง", "en": "Shifted the transition-metal trio"},
+    "chem.posn2561_used_iron_configuration_for_manganese": {"th": "ใช้การจัดอิเล็กตรอนของเหล็กแทนแมงกานีส", "en": "Used iron configuration for manganese"},
+    "chem.posn2561_misidentified_heme_metal": {"th": "ระบุโลหะในฮีมผิด", "en": "Misidentified the heme metal"},
+    "chem.posn2561_missed_one_emitted_neutron": {"th": "ดุลนิวตรอนที่ปล่อยผิดไปหนึ่งตัว", "en": "Missed one emitted neutron"},
+    "chem.posn2561_counted_one_fewer_half_life": {"th": "นับครึ่งชีวิตน้อยกว่าหนึ่งช่วง", "en": "Counted one fewer half-life"},
+    "chem.posn2561_divided_by_half_life_count": {"th": "หารมวลด้วยจำนวนช่วงครึ่งชีวิต", "en": "Divided by number of half-lives"},
+    "chem.posn2561_used_full_halogen_dissociation": {"th": "ใช้พลังงานสลาย X₂ ทั้งโมลแทนครึ่งโมล", "en": "Used full halogen dissociation"},
+    "chem.posn2561_omitted_electron_affinity_step": {"th": "ลืมพลังงานการรับอิเล็กตรอน", "en": "Omitted electron-affinity step"},
+    "chem.posn2561_halved_lattice_formation_step": {"th": "ใช้พลังงานเกิดผลึกเพียงครึ่งหนึ่ง", "en": "Halved lattice-formation step"},
+    "chem.posn2561_used_single_carbon_chalcogen_bond": {"th": "ใช้พันธะเดี่ยว C–X แทนพันธะคู่", "en": "Used single carbon-chalcogen bond"},
+    "chem.posn2561_ignored_molecular_dipole_force": {"th": "ละเลยแรงระหว่างขั้วของโมเลกุล", "en": "Ignored molecular dipole force"},
+    "chem.posn2561_omitted_second_halogen_in_formula": {"th": "ลืมฮาโลเจนตัวที่สองในสูตร", "en": "Omitted second halogen"},
+    "chem.posn2561_reported_alumina_instead_of_aluminum": {"th": "ตอบมวล Al₂O₃ แทนมวล Al", "en": "Reported alumina rather than aluminum"},
+    "chem.posn2561_reported_whole_additive_as_aluminum": {"th": "นับสารเติมแต่งทั้งหมดเป็น Al", "en": "Reported whole additive as aluminum"},
+    "chem.posn2561_counted_one_aluminum_per_alumina": {"th": "นับ Al หนึ่งตัวใน Al₂O₃", "en": "Counted one aluminum per alumina"},
+    "chem.posn2561_used_initial_silver_as_residual": {"th": "ตอบโมลเงินเริ่มต้นเป็นเงินที่เหลือ", "en": "Used initial silver as residual"},
+    "chem.posn2561_used_three_silver_per_diphosphorus_oxide": {"th": "ใช้ Ag สามโมลต่อ P₂O₅ แทนหก", "en": "Used three silver per diphosphorus oxide"},
+    "chem.posn2561_ignored_silver_back_titration": {"th": "ไม่หัก Ag ที่เหลือจากการไทเทรตกลับ", "en": "Ignored silver back-titration"},
+
     "chem.posn2561_moved_s_electron_into_d": {"th": "ย้ายอิเล็กตรอน s ไปยัง d ในสถานะพื้น", "en": "Moved an s electron into d"},
     "chem.posn2561_omitted_one_d_electron": {"th": "ลืมอิเล็กตรอน d หนึ่งตัว", "en": "Omitted one d electron"},
     "chem.posn2561_added_one_d_electron": {"th": "เติมอิเล็กตรอน d เกินหนึ่งตัว", "en": "Added one d electron"},

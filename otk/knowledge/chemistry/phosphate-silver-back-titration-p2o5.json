@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การไทเทรตกลับและร้อยละฟอสฟอรัส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.phosphate_silver_back_titration_p2o5.procedure",
+      "kind": "procedure",
+      "title": "ฟอสเฟตในปุ๋ยจากการไทเทรตกลับด้วยเงิน",
+      "statement": "SCN⁻ วัด Ag⁺ เหลือแบบ 1:1; Ag₃PO₄ ใช้ Ag⁺ สามโมลต่อฟอสเฟต และ P₂O₅ หนึ่งโมลให้ฟอสเฟตสองโมล จึงใช้ Ag⁺ หกโมลต่อ P₂O₅",
+      "steps": [
+        "หาโมล Ag⁺ เริ่มต้นและที่เหลือจากการไทเทรต SCN⁻",
+        "หัก Ag⁺ เหลือ แปลง Ag⁺ ที่ใช้เป็น P₂O₅ และหารมวลตัวอย่างเพื่อหาร้อยละ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 69
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q69"
+      ],
+      "note": "SCN⁻ measures 1.80×10⁻⁴ mol leftover Ag⁺. Of 0.00420 mol initially, 0.00402 mol precipitates phosphate; six Ag⁺ per P₂O₅ give 6.70% by mass."
+    }
+  ]
+}

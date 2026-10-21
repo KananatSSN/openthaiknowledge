@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เลขออกซิเดชันและธาตุแทรนซิชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.consecutive_chromium_manganese_iron.procedure",
+      "kind": "procedure",
+      "title": "โครเมียม แมงกานีส และเหล็กจากธาตุเรียงกัน",
+      "statement": "เลขอะตอม Cr,Mn,Fe เท่ากับ 24,25,26; Cr มีออกไซด์ +6 เป็น CrO₃ และ Mn สถานะพื้น [Ar]3d⁵4s²",
+      "steps": [
+        "ระบุ Fe จากฮีมแล้วถอยหา Mn และ Cr",
+        "ดุล Cr(+6) กับ O(−2) และนับอิเล็กตรอนของ Mn"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 64
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q64"
+      ],
+      "note": "X=Fe, L=Mn and M=Cr. Cr(+6) oxide is CrO₃; Mn is [Ar]3d⁵4s²."
+    }
+  ]
+}
