@@ -4150,6 +4150,7 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q46", "chem.posn2560_q47", "chem.posn2560_q48",
     "chem.posn2560_q49", "chem.posn2560_q50", "chem.posn2560_q51",
     "chem.posn2560_q52", "chem.posn2560_q53", "chem.posn2560_q54",
+    "chem.posn2560_q55", "chem.posn2560_q56", "chem.posn2560_q57",
 })
 SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "รังสีแคโทดและรังสีบวก", "outside_scope"),
@@ -4206,6 +4207,9 @@ SCIENCE_PLACEMENTS.update({
     "chem.posn2560_q52": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สารกำหนดปริมาณและมวลโมลาร์", "outside_scope"),
     "chem.posn2560_q53": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "เศษส่วนโมลและการสลายตัวของแก๊ส", "outside_scope"),
     "chem.posn2560_q54": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สารละลายสต็อกจากเกลือไฮเดรต", "outside_scope"),
+    "chem.posn2560_q55": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "โมแลลและความหนาแน่นของสารละลาย", "outside_scope"),
+    "chem.posn2560_q56": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ร้อยละมวลต่อปริมาตรและการเจือจาง", "outside_scope"),
+    "chem.posn2560_q57": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "มวลสารสำหรับเตรียมสารละลายผสม", "outside_scope"),
 })
 
 SCIENCE_KEYS = frozenset(SCIENCE_PLACEMENTS)

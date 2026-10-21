@@ -37,6 +37,15 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.used_solution_mass_for_molality": {"th": "ใช้มวลสารละลายแทนมวลตัวทำละลาย", "en": "Used solution mass as solvent mass"},
+    "chem.assumed_one_kg_solution": {"th": "คิดว่าสารละลายหนึ่งลิตรมีมวลหนึ่งกิโลกรัม", "en": "Assumed one litre of solution weighs one kilogram"},
+    "chem.used_solute_mass_for_molality": {"th": "ใช้มวลตัวละลายแทนมวลตัวทำละลาย", "en": "Used solute mass as solvent mass"},
+    "chem.omitted_hypochlorite_dilution": {"th": "ตอบความเข้มข้นสต็อกก่อนเจือจาง", "en": "Reported stock concentration before dilution"},
+    "chem.reversed_hypochlorite_dilution": {"th": "กลับอัตราส่วนปริมาตรในการเจือจาง", "en": "Reversed dilution volume ratio"},
+    "chem.divided_hypochlorite_percent_twice": {"th": "หารร้อยละมวลต่อปริมาตรด้วยสิบซ้ำ", "en": "Divided weight-volume percent by ten again"},
+    "chem.halved_potassium_nitrate_mass": {"th": "ใช้มวล KNO₃ เพียงครึ่งหนึ่ง", "en": "Used half the needed KNO3 mass"},
+    "chem.halved_lead_nitrate_mass": {"th": "ใช้มวล Pb(NO₃)₂ เพียงครึ่งหนึ่ง", "en": "Used half the needed Pb(NO3)2 mass"},
+    "chem.halved_both_nitrate_masses": {"th": "ใช้มวลเกลือไนเตรตทั้งสองเพียงครึ่งหนึ่ง", "en": "Used half the needed mass of both nitrates"},
     "chem.assumed_excess_feed_limits_c": {"th": "ใช้สารตั้งต้นที่เหลือเกินกำหนดจำนวน C", "en": "Used the excess feed to determine C"},
     "chem.omitted_four_c_coefficient": {"th": "ลืมสัมประสิทธิ์ 4 ของผลิตภัณฑ์ C", "en": "Omitted C's coefficient four"},
     "chem.used_total_feed_mass_for_c_molar_mass": {"th": "ใช้มวลรวมสารตั้งต้นเป็นมวล C", "en": "Used all feed mass as C mass"},

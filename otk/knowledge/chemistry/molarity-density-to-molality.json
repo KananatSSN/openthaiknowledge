@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "โมแลลและความหนาแน่นของสารละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.molarity_density_to_molality.procedure",
+      "kind": "procedure",
+      "title": "โมแลลจากโมลาร์และความหนาแน่น",
+      "statement": "โมแลลคือโมลตัวละลายต่อกิโลกรัมตัวทำละลาย; ใช้โมลาร์และความหนาแน่นหามวลสารละลายหนึ่งลิตรแล้วหักมวลตัวละลาย",
+      "steps": [
+        "สารละลายหนึ่งลิตรหนัก 1000 เท่าของความหนาแน่นในหน่วย g/cm³",
+        "หักมวล H₂SO₄ จากมวลสารละลายก่อนหารโมลด้วยกิโลกรัมของน้ำ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 55
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q55"
+      ],
+      "note": "One litre weighs 1200 g and contains 343 g H2SO4, leaving 857 g water; 3.50/0.857=4.08 m."
+    }
+  ]
+}

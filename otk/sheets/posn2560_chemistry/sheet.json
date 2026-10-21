@@ -707,6 +707,45 @@
       "answer": "62.5",
       "generator": "chem.posn2560_q54",
       "note": "MgCl2·6H2O molar mass is 203 g/mol; 4.06 g contains 0.0200 mol MgCl2, and target requires 0.00500 mol."
+    },
+    {
+      "number": 55,
+      "solver": "q55",
+      "title": "โมแลลจากโมลาร์และความหนาแน่น",
+      "source": "Part I, question 55, p13: H2SO4 3.50 M, density 1.20 g/cm3; molality is 4.08 mol/kg, choice ค.",
+      "page": 13,
+      "figure": "Rendered p13 visually checked concentration, density, units and choices.",
+      "figure_asset": "",
+      "topic": "โมแลลและความหนาแน่นของสารละลาย",
+      "answer": "4.08",
+      "generator": "chem.posn2560_q55",
+      "note": "One litre weighs 1200 g and contains 343 g H2SO4, leaving 857 g water; 3.50/0.857=4.08 m."
+    },
+    {
+      "number": 56,
+      "solver": "q56",
+      "title": "ความเข้มข้น NaClO หลังเจือจาง",
+      "source": "Part I, question 56, p13: 14.9% w/v NaClO bleach; 2.50 cm3 diluted to 10.00 cm3 gives 0.500 M, choice ก.",
+      "page": 13,
+      "figure": "Rendered p13 visually checked NaClO/NaOCl formulas, percent convention, volumes and choices.",
+      "figure_asset": "",
+      "topic": "ร้อยละมวลต่อปริมาตรและการเจือจาง",
+      "answer": "0.5",
+      "generator": "chem.posn2560_q56",
+      "note": "NaClO and NaOCl are the same formula. 14.9 g/100 mL is 2.00 M at 74.5 g/mol; fourfold dilution gives 0.500 M."
+    },
+    {
+      "number": 57,
+      "solver": "q57",
+      "title": "มวลเกลือไนเตรตสองชนิดในสารละลาย",
+      "source": "Part I, question 57, p14: 100 cm3 solution at KNO3 0.0500 M and Pb(NO3)2 0.0250 M needs masses 0.505 g and 0.828 g, choice ง.",
+      "page": 14,
+      "figure": "Rendered p14 visually checked both salt names, concentration values and table choices.",
+      "figure_asset": "",
+      "topic": "มวลสารสำหรับเตรียมสารละลายผสม",
+      "answer": "(0.505, 0.828)",
+      "generator": "chem.posn2560_q57",
+      "note": "Using formula masses KNO3=101 and Pb(NO3)2=331 g/mol, 0.00500 and 0.00250 mol require 0.505 and 0.8275 g respectively."
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ร้อยละมวลต่อปริมาตรและการเจือจาง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hypochlorite_weight_volume_percent_dilution.procedure",
+      "kind": "procedure",
+      "title": "ความเข้มข้น NaClO หลังเจือจาง",
+      "statement": "ร้อยละมวลต่อปริมาตรคือกรัมตัวละลายในสารละลาย 100 cm³; หาโมลาร์สต็อกแล้วใช้การอนุรักษ์โมลเมื่อเจือจาง",
+      "steps": [
+        "แปลง 14.9% w/v NaClO เป็น 14.9 g ต่อ 100 cm³",
+        "ใช้โมล NaClO ในส่วนที่ตวงหารด้วยปริมาตรสุดท้าย"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 56
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q56"
+      ],
+      "note": "NaClO and NaOCl are the same formula. 14.9 g/100 mL is 2.00 M at 74.5 g/mol; fourfold dilution gives 0.500 M."
+    }
+  ]
+}

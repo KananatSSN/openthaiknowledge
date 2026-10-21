@@ -11,7 +11,7 @@ from otk.sheets.posn2560_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
-    q49, q50, q51, q52, q53, q54,
+    q49, q50, q51, q52, q53, q54, q55, q56, q57,
 )
 
 
@@ -178,6 +178,13 @@ def test_product_mass_ammonia_fraction_and_hydrate_dilution_variants():
             assert module.solve(**params) == module.check(**params)
 
 
+def test_molality_hypochlorite_dilution_and_nitrate_masses_variants():
+    for module in (q55, q56, q57):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
 def test_all_spectral_level_variants_have_distinct_energy_differences():
     for upper in range(2, 9):
         assert q03.solve(upper=upper) == q03.check(upper=upper)
@@ -200,7 +207,7 @@ def test_oxide_electroneutrality_and_orbital_removal():
             assert q06.solve(**params) == q06.check(**params)
 
 
-@pytest.mark.parametrize("number", tuple(range(1, 55)))
+@pytest.mark.parametrize("number", tuple(range(1, 58)))
 def test_generated_answers_follow_the_written_data(number):
     for seed in range(60):
         question = generate(f"chem.posn2560_q{number:02d}", rng=Random(seed))
@@ -636,11 +643,29 @@ def test_generated_answers_follow_the_written_data(number):
         elif number == 53:
             ammonia = float(re.search(r"มี NH₃ ([\d.]+)% โดยโมล", stem)[1]) / 100
             expected = f"{q53.check(ammonia_fraction=ammonia):.2f}"
-        else:
+        elif number == 54:
             mass, stock, target, final = re.search(
                 r"MgCl₂·6H₂O ([\d.]+) g เป็นสารละลายสต็อก (\d+) cm³ "
                 r"ต้องการ MgCl₂ ([\d.]+) mol/L ปริมาตร (\d+) cm³", stem,
             ).groups()
             expected = f"{q54.check(hydrate_g=float(mass), stock_ml=int(stock), target_molar=float(target), target_ml=int(final)):.1f}"
+        elif number == 55:
+            molar, density = re.search(
+                r"H₂SO₄ ([\d.]+) mol/L มีความหนาแน่น ([\d.]+) g/cm³", stem,
+            ).groups()
+            expected = f"{q55.check(molar=float(molar), density=float(density)):.2f}"
+        elif number == 56:
+            percent, aliquot, final = re.search(
+                r"NaClO ([\d.]+)% โดยมวลต่อปริมาตร ตวงมา ([\d.]+) cm³ "
+                r"เติมน้ำจนได้ ([\d.]+) cm³", stem,
+            ).groups()
+            expected = f"{q56.check(percent_wv=float(percent), aliquot_ml=float(aliquot), final_ml=float(final)):.3f}"
+        else:
+            volume, potassium, lead = re.search(
+                r"สารละลาย (\d+) cm³ ให้ KNO₃ ([\d.]+) mol/L และ Pb\(NO₃\)₂ "
+                r"([\d.]+) mol/L", stem,
+            ).groups()
+            k_mass, pb_mass = q57.check(volume_ml=int(volume), potassium_molar=float(potassium), lead_molar=float(lead))
+            expected = f"{k_mass:.3f}, {pb_mass:.3f}"
         assert answer == expected
         assert len(question.choices) == 4

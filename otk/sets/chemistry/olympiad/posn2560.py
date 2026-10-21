@@ -13,7 +13,7 @@ from otk.sheets.posn2560_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
-    q49, q50, q51, q52, q53, q54,
+    q49, q50, q51, q52, q53, q54, q55, q56, q57,
 )
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -1941,4 +1941,78 @@ class MagnesiumChlorideStockAliquot(ChemistrySheet):
                     "(MgCl₂·6H₂O=203 g/mol; ตอบหนึ่งตำแหน่ง)"),
             hint="ไฮเดรตหนึ่งโมลให้ MgCl₂ หนึ่งโมล แล้วใช้ C₁V₁=C₂V₂",
             distractors=distractors,
+        )
+
+
+@question_type(
+    "chem.posn2560_q55", display_name={"th": "โมแลลจากโมลาร์และความหนาแน่น"},
+    level=LEVEL, subject="เคมี", topic="โมแลลและความหนาแน่นของสารละลาย",
+)
+class SulfuricAcidMolality(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q55.PARAMS, *q55.VARIANTS))
+        molar, density = values["molar"], values["density"]
+        answer = q55.solve(**values)
+        return MathDraw(
+            "", f"{answer:.2f}",
+            prompt=(f"สารละลาย H₂SO₄ {molar:.2f} mol/L มีความหนาแน่น "
+                    f"{density:.2f} g/cm³ มีความเข้มข้นกี่ mol/kg ของตัวทำละลาย "
+                    "(H₂SO₄=98 g/mol; ตอบสองตำแหน่ง)"),
+            hint="คิดจากสารละลาย 1 L แล้วหักมวล H₂SO₄ ออกจากมวลสารละลาย",
+            distractors=[
+                named("chem.used_solution_mass_for_molality", f"{molar / density:.2f}"),
+                named("chem.assumed_one_kg_solution", f"{molar / (1 - 0.098 * molar):.2f}"),
+                named("chem.used_solute_mass_for_molality", f"{molar / (0.098 * molar):.2f}"),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q56", display_name={"th": "ความเข้มข้น NaClO หลังเจือจาง"},
+    level=LEVEL, subject="เคมี", topic="ร้อยละมวลต่อปริมาตรและการเจือจาง",
+)
+class HypochloriteDilutionMolarity(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q56.PARAMS, *q56.VARIANTS))
+        percent = values["percent_wv"]
+        aliquot, final = values["aliquot_ml"], values["final_ml"]
+        stock = (percent / 74.5) / 0.100
+        answer = q56.solve(**values)
+        return MathDraw(
+            "", f"{answer:.3f}",
+            prompt=(f"น้ำยาซักผ้ามี NaClO {percent:.2f}% โดยมวลต่อปริมาตร "
+                    f"ตวงมา {aliquot:.2f} cm³ เติมน้ำจนได้ {final:.2f} cm³ "
+                    "สารละลายใหม่มี NaClO กี่ mol/L "
+                    "(NaClO=74.5 g/mol; ตอบสามตำแหน่ง)"),
+            hint="ร้อยละ w/v คือกรัมต่อ 100 cm³; หาโมลาร์ของสต็อกก่อนเจือจาง",
+            distractors=[
+                named("chem.omitted_hypochlorite_dilution", f"{stock:.3f}"),
+                named("chem.reversed_hypochlorite_dilution", f"{stock * final / aliquot:.3f}"),
+                named("chem.divided_hypochlorite_percent_twice", f"{answer / 10:.3f}"),
+            ],
+        )
+
+
+@question_type(
+    "chem.posn2560_q57", display_name={"th": "มวลเกลือไนเตรตสองชนิดในสารละลาย"},
+    level=LEVEL, subject="เคมี", topic="มวลสารสำหรับเตรียมสารละลายผสม",
+)
+class MixedNitratePreparationMasses(ChemistrySheet):
+    def expr(self, rng):
+        values = rng.choice((q57.PARAMS, *q57.VARIANTS))
+        potassium, lead = q57.solve(**values)
+        fmt = lambda k, p: f"{k:.3f}, {p:.3f}"
+        return MathDraw(
+            "", fmt(potassium, lead),
+            prompt=(f"เตรียมสารละลาย {values['volume_ml']} cm³ ให้ KNO₃ "
+                    f"{values['potassium_molar']:.4f} mol/L และ Pb(NO₃)₂ "
+                    f"{values['lead_molar']:.4f} mol/L ต้องใช้ KNO₃ และ Pb(NO₃)₂ "
+                    "กี่กรัมตามลำดับ (KNO₃=101; Pb(NO₃)₂=331 g/mol; "
+                    "ตอบสามตำแหน่ง)"),
+            hint="คำนวณ n=CV แยกแต่ละเกลือ แล้วคูณมวลโมลาร์ของสูตรหน่วย",
+            distractors=[
+                named("chem.halved_potassium_nitrate_mass", fmt(potassium / 2, lead)),
+                named("chem.halved_lead_nitrate_mass", fmt(potassium, lead / 2)),
+                named("chem.halved_both_nitrate_masses", fmt(potassium / 2, lead / 2)),
+            ],
         )

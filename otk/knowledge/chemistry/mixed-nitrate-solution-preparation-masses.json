@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "มวลสารสำหรับเตรียมสารละลายผสม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.mixed_nitrate_solution_preparation_masses.procedure",
+      "kind": "procedure",
+      "title": "มวลเกลือไนเตรตสองชนิดในสารละลาย",
+      "statement": "สารละลายผสมที่กำหนดโมลาร์ของเกลือแต่ละชนิดต้องใช้มวลเกลือแต่ละชนิดเท่ากับความเข้มข้นคูณปริมาตรและมวลโมลาร์",
+      "steps": [
+        "หาโมลของ KNO₃ และ Pb(NO₃)₂ แยกกันด้วย n=CV",
+        "คูณด้วยมวลโมลาร์ของสูตรหน่วยแต่ละเกลือเพื่อได้มวลกรัม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
+          "item": 57
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q57"
+      ],
+      "note": "Using formula masses KNO3=101 and Pb(NO3)2=331 g/mol, 0.00500 and 0.00250 mol require 0.505 and 0.8275 g respectively."
+    }
+  ]
+}
