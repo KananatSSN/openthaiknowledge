@@ -16,10 +16,15 @@
         {
           "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
           "item": 3
+        },
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 2
         }
       ],
       "covered_by": [
-        "chem.posn2561_q03"
+        "chem.posn2561_q03",
+        "chem.posn2562_q02"
       ],
       "note": "Source choice ข is true: C at 434 nm has more energy than B at 486 nm. The source says five lines but lists four; the adaptation says four. Its incorrect energy-difference expression is replaced by a comparable false energy-order claim."
     }

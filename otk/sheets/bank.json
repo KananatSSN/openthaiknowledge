@@ -3951,6 +3951,19 @@
    "note": "COMPLETE 75/75: all Part I and written items reviewed with independent solvers, generators and knowledge claims; sheet verification and completed-sheet full suite passed."
   },
   {
+   "path": "สอวน_chemistry/posn1-62-chemistry.pdf",
+   "kind": "exam",
+   "sha256": "bfbfed6dd6f66f52",
+   "size": 609271,
+   "pages": 17,
+   "text_chars": 25420,
+   "layout": "numbered",
+   "items": 75,
+   "sheet_id": "posn2562_chemistry",
+   "stage": "converted",
+   "note": "PARTIAL 12/75: first twelve items independently solved, generated and claimed; remaining questions await review."
+  },
+  {
    "path": "สอวน_math/01-วิชาคณิตศาสตร์.pdf",
    "kind": "exam",
    "sha256": "51893800608a42cb",

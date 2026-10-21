@@ -59,6 +59,13 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
+### Chemistry POSN 2562 bank — opening wave, 2026-10-21
+
+- Branch/worktree: `codex/posn-chemistry-2562`, `.worktrees/posn-chemistry-2562/`.
+- Source: `สอวน_chemistry/posn1-62-chemistry.pdf`, 17 pages, 60 multiple-choice and 15 written questions. Extraction counted all 75. Its public mirror matched the bank LFS object's SHA-256 exactly when private Git LFS credentials were unavailable.
+- **12/75 reviewed:** Part I questions 1–12 have independent solvers, three variants each, generators, named mistakes, and knowledge claims. The private digest contains concise paraphrases of those twelve; public sheet metadata contains only reviewed items. The q12 reaction table was checked against its figure crop and restated in text.
+- Q3's source assumes adjacent electronic gaps shrink as n rises; the generated question states the hydrogen-like model explicitly. The bank entry remains `PARTIAL 12/75` at the converted stage. Targeted wave checks passed; the full suite is deferred until all 75 questions are digested.
+
 ### Chemistry POSN 2561 bank — complete, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
@@ -2324,3 +2331,9 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed the final six written questions: C/H/Br empirical and molecular formulas, solvent evaporation from boiling elevation, mole fraction and molarity after dilution, vapor-pressure order, a heated oxygen cylinder, and Graham-law effusion. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. The vapor-pressure adaptation specifies a common temperature where all four substances can be liquids; its order agrees with [NIST methane](https://webbook.nist.gov/cgi/cbook.cgi?ID=C74828&Type=TBOIL), [ethanol](https://webbook.nist.gov/cgi/cbook.cgi?ID=C64175&Type=TBOIL), [ethyl ether](https://webbook.nist.gov/cgi/cbook.cgi?ID=C60297&Type=TBOIL) and [silane](https://webbook.nist.gov/cgi/cbook.cgi?ID=C7803625&Mask=1E9F) phase data.
 - Final validation: 75/75 solvers and 225 variant runs green, 915 knowledge units in 781 topic files with zero validation problems, and source coverage 75/75. Focused generator tests passed (76), new-set choice checks passed (6), registry/provenance/safety/layout checks passed after the q73 style correction (803 including the corrected case), and golden/layout checks passed (4613). The completed-sheet full suite passed: 40,866 passed, 13 skipped. Two older sheet-answer strings were adjusted to match solver precision; the PDF explorer tests were rerun with loopback socket access after the default sandbox denied binding. Ruff and whitespace checks passed. The bank entry is `green`.
+
+### 2026-10-21 — POSN chemistry 2562, MC1–12
+
+- Began a separate worktree from the completed 2561 branch. The public 2562 PDF matched the bank LFS pointer exactly (SHA-256 `bfbfed6dd6f66f523a4baf10c3c9359f5273e64d2337423b0dbafd17bf647a18`). Extracted 75/75 questions from 17 pages; reviewed the first twelve, including q12's table crop.
+- Added twelve independent solvers, three variants each, twelve generators, named mistakes, knowledge claims and a private partial digest. Source q3's energy-level assumption is explicit in the generated version. Public metadata contains only reviewed paraphrases; unreviewed extracted text and stubs were removed.
+- Targeted validation: 12/12 solver contracts green, 12/12 knowledge claims, 924 knowledge units with zero validation problems, per-set and sheetpipe checks passed, catalog/stage/safety/provenance/golden/layout checks passed after correcting one choice-length cue and the new curriculum filing. Ruff passed. Full suite deferred to sheet completion.

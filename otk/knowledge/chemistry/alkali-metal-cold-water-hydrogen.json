@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "ปฏิกิริยาของโลหะกับน้ำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.alkali_metal_cold_water_hydrogen.procedure",
+      "kind": "procedure",
+      "title": "โลหะหมู่ 1 กับน้ำเย็น",
+      "statement": "Li Na K ทำปฏิกิริยากับน้ำเย็นให้ไฮโดรเจนตาม 2M+2H₂O→2MOH+H₂ แต่ Be และ Zn ไม่ให้ H₂ ภายใต้เงื่อนไขเดียวกัน",
+      "steps": [
+        "จำแนกโลหะหมู่ 1 จากตัวเลือก",
+        "เทียบเงื่อนไขปฏิกิริยาของธาตุอื่นกับน้ำ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q11"
+      ]
+    }
+  ]
+}

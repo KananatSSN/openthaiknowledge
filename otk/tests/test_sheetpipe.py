@@ -38,6 +38,7 @@ ITEMS = [(sid, item, mod)
 #: half-wired sheet the moment its first generator lands.
 KEY_PREFIX = {"posn2560_chemistry": "chem.posn2560_",
               "posn2561_chemistry": "chem.posn2561_",
+              "posn2562_chemistry": "chem.posn2562_",
               "tpho2559_physics": "phys.tpho2559_",
               "tpho2558_physics": "phys.tpho2558_",
               "tpho2557_physics": "phys.tpho2557_",

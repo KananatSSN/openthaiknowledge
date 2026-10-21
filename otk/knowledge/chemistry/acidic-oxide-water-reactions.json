@@ -16,10 +16,15 @@
         {
           "sheet": "สอวน_chemistry/posn1-60-chemistry.pdf",
           "item": 13
+        },
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 9
         }
       ],
       "covered_by": [
-        "chem.posn2560_q13"
+        "chem.posn2560_q13",
+        "chem.posn2562_q09"
       ],
       "note": "P4O10 + 6H2O -> 4H3PO4; Cl2O7 + H2O -> 2HClO4. Cr2O3 is practically insoluble in water; Na2O gives NaOH. The generator varies familiar acid/base/amphoteric oxides."
     }

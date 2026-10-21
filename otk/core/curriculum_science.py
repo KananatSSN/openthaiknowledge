@@ -4129,9 +4129,13 @@ SCIENCE_PLACEMENTS.update({
     "phys.tpho2559_q23": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), 'การสอบเทียบตัวต้านทานไวแสง', "outside_scope"),
 })
 # END TPhO 2559
-# Reviewed waves of the POSN 2560–2561 chemistry papers; school indicators
+# Reviewed waves of the POSN 2560–2562 chemistry papers; school indicators
 # are not claimed for these supplemental olympiad adaptations.
 SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
+    "chem.posn2562_q01", "chem.posn2562_q02", "chem.posn2562_q03",
+    "chem.posn2562_q04", "chem.posn2562_q05", "chem.posn2562_q06",
+    "chem.posn2562_q07", "chem.posn2562_q08", "chem.posn2562_q09",
+    "chem.posn2562_q10", "chem.posn2562_q11", "chem.posn2562_q12",
     "chem.posn2561_q01", "chem.posn2561_q02", "chem.posn2561_q03",
     "chem.posn2561_q04", "chem.posn2561_q05", "chem.posn2561_q06",
     "chem.posn2561_q07", "chem.posn2561_q08", "chem.posn2561_q09",
@@ -4183,6 +4187,18 @@ SCIENCE_POSN_CHEMISTRY_KEYS = frozenset({
     "chem.posn2560_q70",
 })
 SCIENCE_PLACEMENTS.update({
+    "chem.posn2562_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ไอโซโทปและไอออน", "outside_scope"),
+    "chem.posn2562_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พลังงานและความยาวคลื่นของโฟตอน", "outside_scope"),
+    "chem.posn2562_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ระดับพลังงานอิเล็กตรอน", "outside_scope"),
+    "chem.posn2562_q04": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ออร์บิทัลและการจัดอิเล็กตรอน", "outside_scope"),
+    "chem.posn2562_q05": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ออร์บิทัลและการจัดอิเล็กตรอน", "outside_scope"),
+    "chem.posn2562_q06": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ออร์บิทัลและการจัดอิเล็กตรอน", "outside_scope"),
+    "chem.posn2562_q07": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "สัมพรรคภาพอิเล็กตรอน", "outside_scope"),
+    "chem.posn2562_q08": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พลังงานไอออไนเซชัน", "outside_scope"),
+    "chem.posn2562_q09": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ออกไซด์กรดและออกไซด์เบส", "outside_scope"),
+    "chem.posn2562_q10": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พันธะโคเวเลนต์และไฮโดรลิซิส", "outside_scope"),
+    "chem.posn2562_q11": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ปฏิกิริยาของโลหะกับน้ำ", "outside_scope"),
+    "chem.posn2562_q12": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ปฏิกิริยาแทนที่ของแฮโลเจน", "outside_scope"),
     "chem.posn2561_q01": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ไอออนและจำนวนอิเล็กตรอน", "outside_scope"),
     "chem.posn2561_q02": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "ไอโซโทปและไอออน", "outside_scope"),
     "chem.posn2561_q03": SciencePlacementSpec(SUPPLEMENTAL, "โอลิมปิก (สอวน.)", "", "", (), "พลังงานและความยาวคลื่นของโฟตอน", "outside_scope"),

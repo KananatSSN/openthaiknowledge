@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "ระดับพลังงานอิเล็กตรอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.adjacent_level_photon_wavelength.procedure",
+      "kind": "procedure",
+      "title": "ความยาวคลื่นของการกระตุ้นระหว่างระดับติดกัน",
+      "statement": "ในอะตอมแบบไฮโดรเจน ΔE ระหว่างระดับ n−1 กับ n มากกว่า ΔE ระหว่าง n กับ n+1 จึงต้องใช้ λ สั้นกว่า",
+      "steps": [
+        "คำนวณผลต่างของ −1/n² สำหรับสองช่วง",
+        "ใช้ E=hc/λ เปรียบเทียบความยาวคลื่น"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q03"
+      ]
+    }
+  ]
+}

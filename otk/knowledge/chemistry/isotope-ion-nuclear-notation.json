@@ -20,11 +20,16 @@
         {
           "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
           "item": 2
+        },
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 1
         }
       ],
       "covered_by": [
         "chem.posn2560_q04",
-        "chem.posn2561_q02"
+        "chem.posn2561_q02",
+        "chem.posn2562_q01"
       ],
       "note": "Solver returns (atomic number, mass number). Signed charge is accepted; the generator uses cations as in the source."
     }
