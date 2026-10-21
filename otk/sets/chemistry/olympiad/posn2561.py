@@ -7,7 +7,7 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15, q16, q17, q18, q19, q20, q21,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
 )
 
 
@@ -693,4 +693,96 @@ class CyanogenLewisCounts(QuestionType):
                                 for i, claim in enumerate(claims) if i != answer)),
             topic="สูตรลิวอิสและกฎออกเตต",
             hint=[text("วางโครง N–C–C–N แล้วเติมพันธะให้ C มีสี่และ N มีสามพันธะ")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q22", display_name={"th": "เปรียบเทียบ CS₂ กับ SiO₂"},
+    level=LEVEL, subject="เคมี", topic="แรงยึดเหนี่ยวและโครงผลึกร่างตาข่าย",
+)
+class CarbonDisulfideSilicaProperties(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q22.PARAMS, *q22.VARIANTS))
+        answer = q22.solve(**values)
+        options = values["options"]
+        claims = tuple(q22.CLAIMS[i] for i in options)
+        mistakes = (
+            "chem.posn2561_assumed_cs2_has_dipole_forces",
+            "chem.posn2561_ranked_molecular_above_network_melting",
+            "",
+            "chem.posn2561_assumed_silica_dissolves_in_hexane",
+        )
+        return GeneratedQuestion(
+            stem=[text("A เกิดจากธาตุเลขอะตอม 6 และ 16 ส่วน B เกิดจากธาตุ "
+                       "เลขอะตอม 14 และ 8 ข้อใดถูกต้อง")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="แรงยึดเหนี่ยวและโครงผลึกร่างตาข่าย",
+            hint=[text("ระบุ CS₂ กับ SiO₂ แล้วแยกโมเลกุลสมมาตรออกจากผลึกร่างตาข่าย")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q23", display_name={"th": "รูปทรงและขั้วของโมเลกุล"},
+    level=LEVEL, subject="เคมี", topic="ทฤษฎี VSEPR และสภาพขั้ว",
+)
+class MolecularShapesAndPolarity(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q23.PARAMS, *q23.VARIANTS))
+        answer = q23.solve(**values)
+        options = values["options"]
+        claims = tuple(q23.CLAIMS[i] for i in options)
+        mistakes = (
+            "", "chem.posn2561_assumed_sih4_polar_ignored_tef6",
+            "chem.posn2561_assumed_sih4_polar_ignored_sbcl5",
+            "chem.posn2561_assumed_sih4_polar",
+        )
+        distractors = fixed(*( [text(named(mistakes[options[i]], claim))]
+                               for i, claim in enumerate(claims) if i != answer))
+        # The four authored combinations are exhaustive. A generic prose
+        # double-slip could invent an invalid repeated number such as "2 และ 2".
+        distractors.balanced = True
+        return GeneratedQuestion(
+            stem=[text("พิจารณาข้อความ: " + " ; ".join(
+                f"{i}. {statement}" for i, statement in enumerate(q23.STATEMENTS, 1)
+            ) + " ข้อใดถูกต้อง")],
+            correct=[text(claims[answer])],
+            distractors=distractors,
+            topic="ทฤษฎี VSEPR และสภาพขั้ว",
+            hint=[text("นับคู่พันธะและคู่โดดเดี่ยว แล้วตรวจว่าคู่ขั้วพันธะหักล้างกันหรือไม่")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q24", display_name={"th": "กลุ่มสารโคเวเลนต์ที่ละลายน้ำ"},
+    level=LEVEL, subject="เคมี", topic="สภาพขั้วและการละลายน้ำของสารโคเวเลนต์",
+)
+class CovalentWaterSolubilityGroup(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q24.PARAMS, *q24.VARIANTS))
+        answer = q24.solve(**values)
+        options = values["options"]
+        claims = tuple(" / ".join(q24.GROUPS[i]) for i in options)
+        mistakes = (
+            "chem.posn2561_assumed_benzene_water_soluble", "",
+            "chem.posn2561_assumed_ccl4_silica_water_soluble",
+            "chem.posn2561_assumed_cs2_water_soluble",
+        )
+        return GeneratedQuestion(
+            stem=[text("กลุ่มใดประกอบด้วยสารโคเวเลนต์ที่ละลายน้ำได้ดีทุกชนิด")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="สภาพขั้วและการละลายน้ำของสารโคเวเลนต์",
+            hint=[text("ตรวจทุกสารในแต่ละกลุ่ม รวมทั้งแยกสารไอออนิกออกจากโคเวเลนต์")],
         )

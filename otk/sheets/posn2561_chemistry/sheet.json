@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 21/75: all 75 items extracted; Part I questions 1–21 reviewed, independently solved, claimed by knowledge units and linked to generators. MC20 printed water reaction is unbalanced and is repaired in the adaptation. MC21 table was visually checked and restated as text. Remaining 54 await review.",
+  "note": "PARTIAL 24/75: all 75 items extracted; Part I questions 1–24 reviewed, independently solved, claimed by knowledge units and linked to generators. MC20 printed equation was balanced in adaptation; MC21 table was restated as text. Remaining 51 await review.",
   "items": [
     {
       "number": 1,
@@ -278,6 +278,45 @@
       "answer": "1",
       "generator": "chem.posn2561_q21",
       "note": "Source choice ข gives one single bond, zero doubles, two triples and two lone pairs in N≡C–C≡N. Table figure visually reviewed and restated as text. https://pubchem.ncbi.nlm.nih.gov/compound/cyanogen"
+    },
+    {
+      "number": 22,
+      "solver": "q22",
+      "title": "เปรียบเทียบสมบัติของ CS₂ และ SiO₂",
+      "source": "Part I, question 22, pp6–7: identify the true property comparison between compounds made from C and S versus Si and O.",
+      "page": 6,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "แรงยึดเหนี่ยวและโครงผลึกร่างตาข่าย",
+      "answer": "2",
+      "generator": "chem.posn2561_q22",
+      "note": "A is linear nonpolar CS2; B is covalent-network SiO2, insoluble in water with high melting and boiling temperatures. https://chem.libretexts.org/Courses/University_of_California_Davis/Chem_124A%3A_Fundamentals_of_Inorganic_Chemistry/07%3A_Solids/7.01%3A_Crystal_Lattices/7.1.02%3A_Lattice_Basics/7.1.2.01%3A_Covalent_Network_Solids"
+    },
+    {
+      "number": 23,
+      "solver": "q23",
+      "title": "รูปทรงและสภาพขั้วของ SbCl₅ SiH₄ และ TeF₆",
+      "source": "Part I, question 23, p7: select the true statements about polarity and VSEPR geometry of SbCl5, SiH4 and TeF6.",
+      "page": 7,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ทฤษฎี VSEPR และสภาพขั้ว",
+      "answer": "0",
+      "generator": "chem.posn2561_q23",
+      "note": "Statements 1 and 3 are true. Gaseous molecular SbCl5 has polar bonds that cancel in trigonal-bipyramidal geometry; SiH4 is tetrahedral but nonpolar; TeF6 is octahedral with no central lone pair. https://winter.group.shef.ac.uk/chemdex/chemical/te_11975"
+    },
+    {
+      "number": 24,
+      "solver": "q24",
+      "title": "กลุ่มสารโคเวเลนต์ที่ละลายน้ำได้ดี",
+      "source": "Part I, question 24, p7: find the group of three covalent substances that each dissolve well in water.",
+      "page": 7,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สภาพขั้วและการละลายน้ำของสารโคเวเลนต์",
+      "answer": "1",
+      "generator": "chem.posn2561_q24",
+      "note": "Ethanol, hydrogen fluoride and acetic acid dissolve well in water; every other group contains an insoluble substance, and ammonium chloride is ionic. https://pubchem.ncbi.nlm.nih.gov/compound/E260"
     }
   ]
 }

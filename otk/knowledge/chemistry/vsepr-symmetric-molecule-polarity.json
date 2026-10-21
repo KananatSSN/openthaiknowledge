@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ทฤษฎี VSEPR และสภาพขั้ว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.vsepr_symmetric_molecule_polarity.procedure",
+      "kind": "procedure",
+      "title": "รูปทรงและสภาพขั้วของ SbCl₅ SiH₄ และ TeF₆",
+      "statement": "SbCl₅ แบบโมเลกุลแก๊สมีรูปทรงพีระมิดคู่ฐานสามเหลี่ยมและไม่มีขั้ว; SiH₄ ทรงสี่หน้าไม่มีขั้ว; TeF₆ ทรงแปดหน้าไม่มีคู่โดดเดี่ยวบน Te",
+      "steps": [
+        "นับโดเมนอิเล็กตรอนรอบอะตอมกลางของสารแต่ละตัว",
+        "วาดรูปทรง VSEPR แล้วพิจารณาการหักล้างของขั้วพันธะ"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q23"
+      ],
+      "note": "Statements 1 and 3 are true. Gaseous molecular SbCl5 has polar bonds that cancel in trigonal-bipyramidal geometry; SiH4 is tetrahedral but nonpolar; TeF6 is octahedral with no central lone pair. https://winter.group.shef.ac.uk/chemdex/chemical/te_11975"
+    }
+  ]
+}

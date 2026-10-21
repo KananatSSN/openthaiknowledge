@@ -8,20 +8,20 @@ import pytest
 from otk.core import generate
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
-    q13, q14, q15, q16, q17, q18, q19, q20, q21,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
 )
 
 
 def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
-                   q19, q20, q21):
+                   q19, q20, q21, q22, q23, q24):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 22))
+@pytest.mark.parametrize("number", range(1, 25))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -183,11 +183,25 @@ def test_generated_answers_follow_the_stem(number):
             assert "เลขอะตอม 37" in stem
             assert answer == "2M(s) + 2H₂O(l) → 2MOH(aq) + H₂(g)"
             assert set(choice.content[0].text for choice in question.choices) == set(q20.CLAIMS)
-        else:
+        elif number == 21:
             valid = []
             for choice in question.choices:
                 counts = tuple(map(int, re.findall(r"\d+", choice.content[0].text)))
                 if counts == (1, 0, 2, 2):
                     valid.append(choice.content[0].text)
             assert valid == [answer]
+        elif number == 22:
+            assert "เลขอะตอม 6 และ 16" in stem
+            assert "เลขอะตอม 14 และ 8" in stem
+            assert answer == q22.CLAIMS[2]
+            assert set(choice.content[0].text for choice in question.choices) == set(q22.CLAIMS)
+        elif number == 23:
+            assert all(statement in stem for statement in q23.STATEMENTS)
+            assert answer == "1 และ 3 เท่านั้น"
+            assert set(choice.content[0].text for choice in question.choices) == set(q23.CLAIMS)
+        else:
+            assert answer == " / ".join(q24.GROUPS[1])
+            assert set(choice.content[0].text for choice in question.choices) == {
+                " / ".join(group) for group in q24.GROUPS
+            }
         assert len(question.choices) == 4
