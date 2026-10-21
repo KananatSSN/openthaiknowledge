@@ -6,17 +6,19 @@ from random import Random
 import pytest
 
 from otk.core import generate
-from otk.sheets.posn2561_chemistry import q01, q02, q03, q04, q05, q06, q07, q08, q09
+from otk.sheets.posn2561_chemistry import (
+    q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+)
 
 
 def test_first_wave_solves_source_and_variants_independently():
-    for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09):
+    for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", (1, 2, 3, 4, 5, 6, 7, 8, 9))
+@pytest.mark.parametrize("number", range(1, 13))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -92,7 +94,7 @@ def test_generated_answers_follow_the_stem(number):
                 if not values[0] > values[1] > values[2]:
                     valid.append(choice.content[0].text)
             assert valid == [answer]
-        else:
+        elif number == 9:
             products = {"BeO": None, "N₂O₅": "acid", "SiO₂": None,
                         "CaO": "base", "Cl₂O₇": "acid", "Al₂O₃": None,
                         "SO₃": "acid", "Na₂O": "base"}
@@ -100,6 +102,26 @@ def test_generated_answers_follow_the_stem(number):
             for choice in question.choices:
                 x, y = re.match(r"X=(.*), Y=(.*)", choice.content[0].text).groups()
                 if products[x] == "acid" and products[y] == "base":
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+        elif number == 10:
+            assert "ชั้นสีม่วง" in stem and "น้ำร้อน" in stem
+            assert answer == "สารประกอบ Y เป็น MgI₂ และละลายน้ำได้ดี"
+            assert set(choice.content[0].text for choice in question.choices) == set(q10.CLAIMS)
+        elif number == 11:
+            label = re.search(r"ธาตุ ([DQXT]) อยู่คาบ 3", stem).group(1)
+            assert answer == f"ธาตุ {label} มีเลขออกซิเดชันเป็นบวกในออกไซด์"
+            assert set(choice.content[0].text for choice in question.choices) == set(
+                q11.claims(label)
+            )
+        else:
+            color = {"K₂SO₄": False, "MnCl₂": True, "NaCl": False,
+                     "Co(NO₃)₂": True, "K₂Cr₂O₇": True, "FeCl₃": True,
+                     "[Ni(NH₃)₆]Cl₂": True, "RbCl": False}
+            valid = []
+            for choice in question.choices:
+                left, right = choice.content[0].text.split(" และ ")
+                if color[left] and color[right]:
                     valid.append(choice.content[0].text)
             assert valid == [answer]
         assert len(question.choices) == 4

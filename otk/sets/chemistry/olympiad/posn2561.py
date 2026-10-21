@@ -5,7 +5,9 @@ from otk.core.distractors import fixed
 from otk.core.mistakes import named
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
-from otk.sheets.posn2561_chemistry import q01, q02, q03, q04, q05, q06, q07, q08, q09
+from otk.sheets.posn2561_chemistry import (
+    q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+)
 
 
 LEVEL = {"th": "โอลิมปิก (สอวน.)"}
@@ -321,4 +323,94 @@ class OxidePairsInWater(QuestionType):
                                 for i, claim in enumerate(claims) if i != answer)),
             topic="สมบัติกรดเบสของออกไซด์",
             hint=[text("ออกไซด์อโลหะบางชนิดให้กรดกับน้ำ; ตรวจว่าออกไซด์อีกตัวทำปฏิกิริยากับน้ำให้เบสจริง")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q10", display_name={"th": "อนุมานแมกนีเซียมไอโอไดด์จากการทดลอง"},
+    level=LEVEL, subject="เคมี", topic="การระบุโลหะและแฮโลเจนจากปฏิกิริยา",
+)
+class IdentifyMagnesiumIodide(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q10.PARAMS, *q10.VARIANTS))
+        answer = q10.solve(**values)
+        options = values["options"]
+        claims = tuple(q10.CLAIMS[i] for i in options)
+        mistakes = (
+            "", "chem.posn2561_assumed_iodide_solution_colored",
+            "chem.posn2561_misranked_third_ionization",
+            "chem.posn2561_assumed_magnesium_sulfate_precipitates",
+        )
+        return GeneratedQuestion(
+            stem=[text("โลหะ M ทำปฏิกิริยากับธาตุ X ซึ่งเป็นของแข็งระเหิดง่าย "
+                       "ได้เกลือ Y ที่ละลายน้ำดี เติมน้ำคลอรีนแล้วสกัดด้วย CCl₄ "
+                       "ได้ชั้นสีม่วง M แทบไม่ทำปฏิกิริยากับน้ำเย็น "
+                       "แต่ในน้ำร้อนให้ H₂ สารละลายเบสและตะกอนขาว "
+                       "ข้อใดถูกต้อง")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="การระบุโลหะและแฮโลเจนจากปฏิกิริยา",
+            hint=[text("สีม่วงใน CCl₄ บ่งชี้ I₂; น้ำร้อนกับโลหะให้ไฮดรอกไซด์ขาว")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q11", display_name={"th": "เลขออกซิเดชันและสารประกอบของฟอสฟอรัส"},
+    level=LEVEL, subject="เคมี", topic="เลขออกซิเดชันและออกไซด์ของฟอสฟอรัส",
+)
+class PhosphorusOxidationStates(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q11.PARAMS, *q11.VARIANTS))
+        answer = q11.solve(**values)
+        options = values["options"]
+        claims = tuple(q11.claims(values["label"])[i] for i in options)
+        mistakes = (
+            "chem.posn2561_confused_phosphorus_diatomic_form",
+            "chem.posn2561_confused_phosphorus_room_state",
+            "", "chem.posn2561_assumed_all_phosphorus_chlorides_polar",
+        )
+        return GeneratedQuestion(
+            stem=[text(f"ธาตุ {values['label']} อยู่คาบ 3 และมีเลขออกซิเดชันตั้งแต่ "
+                       "−3 ถึง +5 ข้อใดถูกต้อง")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="เลขออกซิเดชันและออกไซด์ของฟอสฟอรัส",
+            hint=[text("ระบุธาตุจากคาบและช่วงเลขออกซิเดชัน แล้วตรวจ P₄, ออกไซด์ และ PCl₅")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q12", display_name={"th": "สารละลายที่มีสีทั้งคู่"},
+    level=LEVEL, subject="เคมี", topic="สีของสารละลายไอออน",
+)
+class ColoredSolutionPairs(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q12.PARAMS, *q12.VARIANTS))
+        answer = q12.solve(**values)
+        options = values["options"]
+        claims = tuple(f"{q12.PAIRS[i][0]} และ {q12.PAIRS[i][1]}" for i in options)
+        mistakes = (
+            "chem.posn2561_assumed_sulfate_solution_colored",
+            "chem.posn2561_assumed_sodium_chloride_solution_colored",
+            "", "chem.posn2561_assumed_rubidium_chloride_solution_colored",
+        )
+        return GeneratedQuestion(
+            stem=[text("ละลายสารแต่ละชนิดในน้ำให้สารละลายเจือจาง "
+                       "คู่ใดให้สารละลายมีสีทั้งสองชนิด")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="สีของสารละลายไอออน",
+            hint=[text("ไอออน Cr₂O₇²⁻ และ Fe³⁺ มีสี; ตรวจอีกสารในแต่ละคู่ด้วย")],
         )

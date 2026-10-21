@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การระบุโลหะและแฮโลเจนจากปฏิกิริยา",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.halogen_extraction_metal_water_identification.procedure",
+      "kind": "procedure",
+      "title": "อนุมานแมกนีเซียมไอโอไดด์จากการทดลอง",
+      "statement": "คลอรีนออกซิไดซ์ I⁻ เป็น I₂ ซึ่งมีสีม่วงใน CCl₄; Mg ทำปฏิกิริยากับน้ำร้อนให้ Mg(OH)₂ และ H₂ จึงได้เกลือ MgI₂",
+      "steps": [
+        "ใช้สีในชั้นตัวทำละลายอินทรีย์ระบุไอโอดีน แล้วใช้ปฏิกิริยากับน้ำร้อนระบุแมกนีเซียม",
+        "เขียนสูตรเกลือจาก Mg²⁺ และ I⁻ แล้วตรวจสี IE₃ และการละลายของซัลเฟต"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q10"
+      ],
+      "note": "Source choice ก is MgI2: violet iodine identifies I, and the hot-water/white-hydroxide observation identifies Mg. IE3(Mg)=80.1436 eV > IE3(I)=29.570 eV per NIST ASD; MgSO4 stays dissolved. https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=1&biblio=1&e_out=0&el_name_out=1&ion_charge_out=1&spectra=iodine&unc_out=1&units=1"
+    }
+  ]
+}

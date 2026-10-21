@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 9/75: all 75 items extracted; Part I questions 1–9 reviewed, independently solved, claimed by knowledge units and linked to generators. MC3/MC4 wording clarified, MC6 checked against NIST, MC7 given explicit radii because conventions vary, and MC8 clarifies grey As melts under pressure. Remaining 66 await review.",
+  "note": "PARTIAL 12/75: all 75 items extracted; Part I questions 1–12 reviewed, independently solved, claimed by knowledge units and linked to generators. MC7 gives explicit radii; MC8 clarifies grey As melting; MC12 replaces concentration-dependent Cl2O distractor with NaCl. Remaining 63 await review.",
   "items": [
     {
       "number": 1,
@@ -122,6 +122,45 @@
       "answer": "3",
       "generator": "chem.posn2561_q09",
       "note": "Source choice ง is SO3 and Na2O: SO3 + H2O -> H2SO4; Na2O + H2O -> 2NaOH. Table figure was reviewed visually; no source artwork is copied."
+    },
+    {
+      "number": 10,
+      "solver": "q10",
+      "title": "อนุมานแมกนีเซียมไอโอไดด์จากการทดลอง",
+      "source": "Part I, question 10, p4: a volatile solid halogen gives a violet CCl4 extract after chlorine; the metal reacts with hot water, giving gas and a white hydroxide.",
+      "page": 4,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การระบุโลหะและแฮโลเจนจากปฏิกิริยา",
+      "answer": "0",
+      "generator": "chem.posn2561_q10",
+      "note": "Source choice ก is MgI2: violet iodine identifies I, and the hot-water/white-hydroxide observation identifies Mg. IE3(Mg)=80.1436 eV > IE3(I)=29.570 eV per NIST ASD; MgSO4 stays dissolved. https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=1&biblio=1&e_out=0&el_name_out=1&ion_charge_out=1&spectra=iodine&unc_out=1&units=1"
+    },
+    {
+      "number": 11,
+      "solver": "q11",
+      "title": "เลขออกซิเดชันและออกไซด์ของฟอสฟอรัส",
+      "source": "Part I, question 11, p4: identify the true statement for a period-3 element with oxidation states from -3 to +5.",
+      "page": 4,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "เลขออกซิเดชันและออกไซด์ของฟอสฟอรัส",
+      "answer": "2",
+      "generator": "chem.posn2561_q11",
+      "note": "Source choice ค: the element is P and its oxides have positive P oxidation states. Normal P is solid; gaseous PCl5 is trigonal bipyramidal and nonpolar. https://periodic-table.rsc.org/element/15/phosphorus"
+    },
+    {
+      "number": 12,
+      "solver": "q12",
+      "title": "คู่สารละลายที่มีสีทั้งสองชนิด",
+      "source": "Part I, question 12, p4: among four compound pairs, identify the pair giving two colored aqueous solutions.",
+      "page": 4,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สีของสารละลายไอออน",
+      "answer": "2",
+      "generator": "chem.posn2561_q12",
+      "note": "Source choice ค is K2Cr2O7 and FeCl3, giving orange and yellow solutions. The source distractor Cl2O is concentration-dependent: literature describes orange-yellow aqueous HOCl at high concentration; adaptation replaces it with unambiguously colorless dilute NaCl. https://chem.libretexts.org/Bookshelves/Inorganic_Chemistry/Chemistry_of_the_Main_Group_Elements_%28Barron%29/10%3A_The_Halogens/10.03%3A_Compounds_of_Chlorine"
     }
   ]
 }

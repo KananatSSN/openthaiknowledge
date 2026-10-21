@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สีของสารละลายไอออน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.colored_aqueous_ion_pairs.procedure",
+      "kind": "procedure",
+      "title": "คู่สารละลายที่มีสีทั้งสองชนิด",
+      "statement": "ไดโครเมตในน้ำสีส้มและ Fe³⁺ สีเหลือง; เกลือ Na⁺, K⁺ และ Rb⁺ กับแอนไอออนทั่วไปไม่มีสีในสารละลายเจือจาง",
+      "steps": [
+        "ระบุไอออนที่อยู่ในสารละลายของสารแต่ละชนิด",
+        "ตรวจทั้งสองสารในแต่ละคู่ ไม่ตัดสินจากตัวที่มีสีเพียงตัวเดียว"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q12"
+      ],
+      "note": "Source choice ค is K2Cr2O7 and FeCl3, giving orange and yellow solutions. The source distractor Cl2O is concentration-dependent: literature describes orange-yellow aqueous HOCl at high concentration; adaptation replaces it with unambiguously colorless dilute NaCl. https://chem.libretexts.org/Bookshelves/Inorganic_Chemistry/Chemistry_of_the_Main_Group_Elements_%28Barron%29/10%3A_The_Halogens/10.03%3A_Compounds_of_Chlorine"
+    }
+  ]
+}

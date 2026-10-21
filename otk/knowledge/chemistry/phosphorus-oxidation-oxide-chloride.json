@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เลขออกซิเดชันและออกไซด์ของฟอสฟอรัส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.phosphorus_oxidation_oxide_chloride.procedure",
+      "kind": "procedure",
+      "title": "เลขออกซิเดชันและออกไซด์ของฟอสฟอรัส",
+      "statement": "ธาตุคาบ 3 ที่มีเลขออกซิเดชัน −3 ถึง +5 คือ P; ออกไซด์ของ P มี P เป็นบวก และ PCl₅ มีรูปทรงสมมาตรไม่เป็นขั้วในสถานะแก๊ส",
+      "steps": [
+        "ระบุ P จากคาบและช่วงเลขออกซิเดชัน",
+        "เทียบสถานะและโมเลกุลของ P กับเลขออกซิเดชันในออกไซด์และขั้วของคลอไรด์"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q11"
+      ],
+      "note": "Source choice ค: the element is P and its oxides have positive P oxidation states. Normal P is solid; gaseous PCl5 is trigonal bipyramidal and nonpolar. https://periodic-table.rsc.org/element/15/phosphorus"
+    }
+  ]
+}
