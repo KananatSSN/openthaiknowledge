@@ -70,7 +70,7 @@ def test_sheet_publication_manifest_is_frozen():
     expected = {
         "posn2560_chemistry": (70, 70, 70, 0),
         "posn2561_chemistry": (75, 75, 75, 0),
-        "posn2562_chemistry": (12, 12, 12, 0),
+        "posn2562_chemistry": (30, 30, 30, 0),
         "tpho2559_physics": (23, 23, 23, 0),
         "tpho2558_physics": (17, 17, 17, 0),
         "tpho2557_physics": (17, 17, 17, 0),
@@ -236,4 +236,4 @@ def test_sheet_publication_manifest_is_frozen():
     # the 2564 and 2565 papers 30 more each, 2566 28, 2567 16, 2568 25 and
     # 2569 30. The first national physics olympiad (TPhO 2545) adds 17.
     # POSN chemistry 2560 has seventy reviewed sets; 2561 has seventy-five.
-    assert len(REGISTRY) == 4618
+    assert len(REGISTRY) == 4636

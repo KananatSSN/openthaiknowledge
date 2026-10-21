@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รูปร่างโมเลกุลตาม VSEPR",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q27.procedure",
+      "kind": "procedure",
+      "title": "ผลของคู่โดดเดี่ยวต่อ XeF4",
+      "statement": "XeF₄ เป็น AX₄E₂ สี่เหลี่ยมแบนราบ; ถ้าลดคู่โดดเดี่ยวหนึ่งคู่เป็น AX₄E จะเป็น seesaw",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 27
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q27"
+      ],
+      "note": "AX4E2 square planar becomes AX4E seesaw."
+    }
+  ]
+}

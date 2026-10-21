@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ออกซิเจนและเปอร์ออกไซด์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q20.procedure",
+      "kind": "procedure",
+      "title": "ข้อเท็จจริงเกี่ยวกับออกซิเจน",
+      "statement": "โอโซนใกล้พื้นดินเป็นอันตราย; ซุปเปอร์ออกไซด์สัมพันธ์กับโลหะหมู่ 1 ขนาดใหญ่; H₂O₂ ฆ่าเชื้อได้",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 20
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q20"
+      ],
+      "note": "Original IV was overbroad; generated wording excludes O-F and O-O bonds."
+    }
+  ]
+}

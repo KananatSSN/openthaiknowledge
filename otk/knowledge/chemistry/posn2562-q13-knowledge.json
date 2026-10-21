@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติของไฮโดรเจน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q13.procedure",
+      "kind": "procedure",
+      "title": "ไฮโดรเจนกับสมบัติคล้ายแฮโลเจน",
+      "statement": "H₂ มีพันธะเดี่ยวและ H เป็น −1 ในโลหะไฮไดรด์ จึงคล้ายแฮโลเจนบางด้าน; H ในสารกับอโลหะมักเป็น +1",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q13"
+      ],
+      "note": "H2 is diatomic and metal hydrides give H oxidation state -1."
+    }
+  ]
+}

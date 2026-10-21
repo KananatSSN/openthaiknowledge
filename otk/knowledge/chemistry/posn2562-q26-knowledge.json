@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รูปร่างและสภาพขั้วโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q26.procedure",
+      "kind": "procedure",
+      "title": "รูปร่างเหมือนแต่ขั้วต่าง",
+      "statement": "POCl₃ และ XeO₄ ต่างเป็นทรงสี่หน้า แต่ POCl₃ มีขั้ว ส่วน XeO₄ สมมาตรและไม่มีขั้ว",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-62-chemistry.pdf",
+          "item": 26
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q26"
+      ],
+      "note": "POCl3 is polar tetrahedral and XeO4 symmetric nonpolar tetrahedral."
+    }
+  ]
+}
