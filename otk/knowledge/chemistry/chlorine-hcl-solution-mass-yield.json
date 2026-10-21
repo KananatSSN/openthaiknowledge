@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาณสารสัมพันธ์และร้อยละมวลสารละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.chlorine_hcl_solution_mass_yield.procedure",
+      "kind": "procedure",
+      "title": "มวลสารละลายกรดไฮโดรคลอริกสำหรับผลิตคลอรีน",
+      "statement": "MnO₂ หนึ่งโมลให้ Cl₂ หนึ่งโมลโดยใช้ HCl สี่โมล; มวลสารละลายกรดเท่ากับมวล HCl บริสุทธิ์หารด้วยเศษส่วนมวล",
+      "steps": [
+        "ดุลสมการและแปลงมวล Cl₂ เป็นโมลเพื่อหามวล HCl ที่ทำปฏิกิริยา",
+        "หารมวล HCl บริสุทธิ์ด้วยความเข้มข้นร้อยละโดยมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 46
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q46"
+      ],
+      "note": "Source choice ง is 20.0 g solution: MnO2+4HCl→MnCl2+Cl2+2H2O, so 0.050 mol Cl2 consumes 0.200 mol or 7.30 g pure HCl, equivalent to 20.0 g of 36.5% solution. The source wording is ambiguous about pure acid versus solution; adaptation explicitly asks for solution mass."
+    }
+  ]
+}

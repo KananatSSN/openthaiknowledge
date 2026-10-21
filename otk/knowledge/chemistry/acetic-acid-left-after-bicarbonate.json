@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความเข้มข้นกรดหลังปฏิกิริยาและสารกำหนดปริมาณ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.acetic_acid_left_after_bicarbonate.procedure",
+      "kind": "procedure",
+      "title": "ความเข้มข้นกรดแอซีติกหลังทำปฏิกิริยากับไบคาร์บอเนต",
+      "statement": "กรดแอซีติกกับ NaHCO₃ ทำปฏิกิริยา 1:1; ความเข้มข้นกรดที่เหลือหาได้จากโมลเริ่มต้นลบโมลไบคาร์บอเนตแล้วหารด้วยปริมาตร",
+      "steps": [
+        "ใช้ความหนาแน่นและร้อยละมวลหาโมลกรดแอซีติกในน้ำส้มสายชู",
+        "หักโมล NaHCO₃ จากโมลกรดแล้วหารด้วยปริมาตรสารละลายที่กำหนดให้คงที่"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 47
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q47"
+      ],
+      "note": "Source choice ข is 0.708 M: vinegar initially contains 11.5 g or 0.191667 mol CH3COOH; 4.200 g NaHCO3 consumes 0.050 mol, leaving 0.141667 mol in 0.200 L. Adaptation varies vinegar and bicarbonate quantities."
+    }
+  ]
+}

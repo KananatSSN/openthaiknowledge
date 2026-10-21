@@ -12,6 +12,7 @@ from otk.sheets.posn2561_chemistry import (
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
     q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
+    q46, q47, q48,
 )
 
 
@@ -19,13 +20,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 46))
+@pytest.mark.parametrize("number", range(1, 49))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -390,7 +391,7 @@ def test_generated_answers_follow_the_stem(number):
             assert set(choice.content[0].text for choice in question.choices) == {
                 name for name, _ in q44.ACIDS
             }
-        else:
+        elif number == 45:
             sulfate_m, sulfate_ml, phosphate_m, phosphate_ml = re.search(
                 r"Na₂SO₄ ([\d.]+) mol/L (\d+) mL กับ Na₃PO₄ ([\d.]+) mol/L (\d+) mL", stem,
             ).groups()
@@ -400,4 +401,40 @@ def test_generated_answers_follow_the_stem(number):
             concentration = sodium_mmol / (sulfate_ml + phosphate_ml)
             assert answer == f"{float(concentration):.4f}"
             assert "ปริมาตรรวม" in stem
+        elif number == 46:
+            percent, chlorine = re.search(
+                r"HCl ([\d.]+)% โดยมวล.*?Cl₂ ([\d.]+) g", stem,
+            ).groups()
+            pure_hcl = Fraction(chlorine) / 71 * 4 * Fraction("36.5")
+            solution = pure_hcl * 100 / Fraction(percent)
+            assert answer == f"{float(solution):.2f}"
+            assert "สารละลาย HCl กี่กรัม" in stem
+        elif number == 47:
+            volume, percent, density, bicarbonate = re.search(
+                r"น้ำส้มสายชู (\d+) mL มี CH₃COOH ([\d.]+)%.*?ความหนาแน่น ([\d.]+) g/mL.*?NaHCO₃ ([\d.]+) g", stem,
+            ).groups()
+            volume = int(volume)
+            acid_mol = Fraction(volume) * Fraction(density) * Fraction(percent) / 6000
+            residual = acid_mol - Fraction(bicarbonate) / 84
+            concentration = residual * 1000 / volume
+            from decimal import Decimal, ROUND_HALF_UP
+            rounded = (Decimal(concentration.numerator) /
+                       Decimal(concentration.denominator)).quantize(
+                Decimal("0.001"), rounding=ROUND_HALF_UP,
+            )
+            assert answer == f"{rounded:.3f}"
+            assert "ปริมาตรสารละลายไม่เปลี่ยน" in stem
+        else:
+            target, final_ml, ppm, barium_density, barium_ml, sodium_percent, sodium_density = re.search(
+                r"\[OH⁻\]=([\d.]+) mol/L ปริมาตรสุดท้าย (\d+) mL.*?Ba\(OH\)₂ (\d+) ppm.*?ความหนาแน่น ([\d.]+) g/mL ปริมาตร (\d+) mL.*?NaOH ([\d.]+)%.*?ความหนาแน่น ([\d.]+) g/mL",
+                stem,
+            ).groups()
+            ba_g = Fraction(barium_density) * int(barium_ml) * int(ppm) / 1_000_000
+            initial_oh_mmol = ba_g / 171 * 2 * 1000
+            need_mmol = Fraction(target) * int(final_ml) - initial_oh_mmol
+            stock_mmol_per_ml = (Fraction(sodium_density) * Fraction(sodium_percent)
+                                 / 100 / 40 * 1000)
+            sodium_ml = need_mmol / stock_mmol_per_ml
+            assert answer == f"{float(sodium_ml):.2f}"
+            assert "ppm โดยมวล" in stem
         assert len(question.choices) == 4

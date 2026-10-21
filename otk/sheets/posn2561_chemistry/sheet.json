@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 45/75: all 75 items extracted; Part I questions 1–45 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 30 await review.",
+  "note": "PARTIAL 48/75: all 75 items extracted; Part I questions 1–48 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 27 await review.",
   "items": [
     {
       "number": 1,
@@ -590,6 +590,45 @@
       "answer": "0.7",
       "generator": "chem.posn2561_q45",
       "note": "Source choice ง is 0.70 M Na+: 2(0.10)(20)+3(0.30)(50)=49 mmol Na+ in 70 mL. Adaptation explicitly assumes additive volumes and varies both salt solutions."
+    },
+    {
+      "number": 46,
+      "solver": "q46",
+      "title": "มวลสารละลายกรดไฮโดรคลอริกสำหรับผลิตคลอรีน",
+      "source": "Part I, question 46, p11: 3.55 g Cl2 is produced from MnO2 and excess 36.5%-by-mass HCl solution; find the acid solution mass consumed.",
+      "page": 11,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ปริมาณสารสัมพันธ์และร้อยละมวลสารละลาย",
+      "answer": "20",
+      "generator": "chem.posn2561_q46",
+      "note": "Source choice ง is 20.0 g solution: MnO2+4HCl→MnCl2+Cl2+2H2O, so 0.050 mol Cl2 consumes 0.200 mol or 7.30 g pure HCl, equivalent to 20.0 g of 36.5% solution. The source wording is ambiguous about pure acid versus solution; adaptation explicitly asks for solution mass."
+    },
+    {
+      "number": 47,
+      "solver": "q47",
+      "title": "ความเข้มข้นกรดแอซีติกหลังทำปฏิกิริยากับไบคาร์บอเนต",
+      "source": "Part I, question 47, p11: 200 cm3 vinegar at density 1.15 g/cm3 and 5.00% acetic acid reacts with 4.200 g NaHCO3; find residual acetic-acid molarity at unchanged volume.",
+      "page": 11,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ความเข้มข้นกรดหลังปฏิกิริยาและสารกำหนดปริมาณ",
+      "answer": "0.708",
+      "generator": "chem.posn2561_q47",
+      "note": "Source choice ข is 0.708 M: vinegar initially contains 11.5 g or 0.191667 mol CH3COOH; 4.200 g NaHCO3 consumes 0.050 mol, leaving 0.141667 mol in 0.200 L. Adaptation varies vinegar and bicarbonate quantities."
+    },
+    {
+      "number": 48,
+      "solver": "q48",
+      "title": "ปริมาตรสารละลายโซเดียมไฮดรอกไซด์เข้มข้น",
+      "source": "Part I, question 48, p11: prepare 500 cm3 at [OH−]=0.4016 M using 200 cm3 of 342 ppm Ba(OH)2 (density 1.00) and 32.0%-by-mass NaOH (density 1.25); find NaOH stock volume.",
+      "page": 11,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "พีพีเอ็ม ร้อยละมวล และความเข้มข้นไฮดรอกไซด์",
+      "answer": "20",
+      "generator": "chem.posn2561_q48",
+      "note": "Source choice ค is 20.0 mL: 200 g barium solution contains 0.0684 g Ba(OH)2=0.0004 mol, contributing 0.0008 mol OH−. Final target is 0.2008 mol OH−, leaving 0.2000 mol from NaOH. The stock is 10.0 M, hence 20.0 mL. Adaptation explicitly defines ppm by mass and varies target or ppm."
     }
   ]
 }

@@ -62,7 +62,7 @@ Phases in build order. Check an item only when its tests pass.
 ### Chemistry POSN 2561 bank — waves 1–12, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
-- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first forty-five were reviewed, independently solved, claimed by knowledge units, and linked to generators. **45/75 complete; 30 pending.**
+- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first forty-eight were reviewed, independently solved, claimed by knowledge units, and linked to generators. **48/75 complete; 27 pending.**
 - MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
 - MC4's only always-true claim is that Z has more than six electrons in its second shell; the adaptation says “always” explicitly. MC5 selects fluorine. MC6's false comparison is K < Ca for IE₂; the close Se < Br comparison was checked against NIST ionization data.
 - MC7's mixed atomic/ionic radius comparison depends on a radius convention; its adaptation supplies the specific table used. MC8's false order places Ca above As for IE₁; its adaptation supplies measured property values and specifies grey arsenic melting under pressure. MC9 pairs SO₃ with Na₂O to give an acid and a base in water.
@@ -78,7 +78,8 @@ Phases in build order. Check an item only when its tests pass.
 - MC37 leaves 3.50 mmol carbonate in 100 mL, or 0.0350 mol/L. MC38 solves the Al/Zn mass and H₂ balances for 24.9% Al. MC39 adds initial Fe³⁺ to oxidized Fe²⁺, yielding 0.0515 mol/L. Each has independently checked numerical variants.
 - MC40 gives 0.450 mol NaBH₄ after balancing the diborane reaction and accounting for 70% yield. MC41 produces 8/5 mol N₂ per mol NaN₃ across two reactions: the source’s 49 g choice is closest to the 49.5 g calculation with its printed R. MC42 needs three H⁺ per formula unit of trona, or 48.0 mL of 0.125 M acid.
 - MC43 balances 4KO₂+2CO₂→2K₂CO₃+3O₂ and finds KO₂ limiting, yielding 168 cm³ O₂. MC44 uses mass per litre and molarity to identify H₃PO₄. MC45 counts 49 mmol Na⁺ in 70 mL, or 0.70 mol/L.
-- The private bank digest contains paraphrased records for the forty-five reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 46.
+- MC46 uses four HCl per Cl₂ and the 36.5% mass fraction to obtain 20.0 g of acid solution; its wording now distinguishes solution from pure HCl. MC47 leaves 0.708 M acetic acid after NaHCO₃ consumes 0.050 mol. MC48 counts 0.0008 mol OH⁻ from the Ba(OH)₂ stock before adding 20.0 mL of NaOH stock.
+- The private bank digest contains paraphrased records for the forty-eight reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 49.
 - Maintain the requested cadence: targeted tests each wave; the full suite only when all 75 items are digested.
 
 ### Chemistry POSN bank — waves 1–23, 2026-10-21
@@ -2282,3 +2283,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed p10 superoxide oxygen production, acid identification from density and concentration, and sodium-ion concentration after mixing sulfate and phosphate. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC43 includes a CO₂-limited variant; MC44's variants identify all four candidate acids.
 - Wave validation: 45/45 sheet solvers and 135 variant runs green; 885 knowledge units in 751 files with zero validation problems; source coverage 45/45. Focused sheet/set checks passed (49). Registry/provenance/safety/layout checks passed (683 total, with one q44 safety-style correction and affected recheck); the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC46–48
+
+- Reviewed p11 chlorine generation from concentrated hydrochloric acid, acetic acid left after bicarbonate reaction, and a target hydroxide concentration made from ppm Ba(OH)₂ plus concentrated NaOH. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC46 explicitly asks for the mass of HCl solution.
+- Wave validation: 48/48 sheet solvers and 144 variant runs green; 888 knowledge units in 754 files with zero validation problems; source coverage 48/48. Focused sheet/set checks passed (52), registry/provenance/safety/layout checks passed (695), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.

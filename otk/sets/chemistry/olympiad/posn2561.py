@@ -11,7 +11,7 @@ from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
-    q37, q38, q39, q40, q41, q42, q43, q44, q45,
+    q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48,
 )
 
 
@@ -1489,4 +1489,121 @@ class SodiumAfterMixingSulfateAndPhosphate(QuestionType):
             ),
             topic="ความเข้มข้นไอออนหลังผสมสารละลาย",
             hint=[text("Na₂SO₄ ให้ Na⁺ สองโมล และ Na₃PO₄ ให้ Na⁺ สามโมลต่อโมลเกลือ; หารด้วยปริมาตรรวม")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q46", display_name={"th": "มวลสารละลายกรดสำหรับผลิตคลอรีน"},
+    level=LEVEL, subject="เคมี", topic="ปริมาณสารสัมพันธ์และร้อยละมวลสารละลาย",
+)
+class HydrochloricSolutionForChlorine(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q46.PARAMS, *q46.VARIANTS))
+        answer = Fraction(q46.solve(**values))
+        pure_hcl = answer * Fraction(values["acid_percent"]) / 100
+        fmt = lambda value: f"{float(value):.2f}"
+        return GeneratedQuestion(
+            stem=[text("MnO₂ ทำปฏิกิริยาสมบูรณ์กับสารละลาย HCl "
+                       f"{values['acid_percent']}% โดยมวลที่เติมมากเกินพอ "
+                       f"ถ้าต้องการ Cl₂ {values['chlorine_g']} g "
+                       "ต้องใช้สารละลาย HCl กี่กรัม "
+                       "กำหนดมวลโมล HCl=36.5 และ Cl₂=71 g/mol")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_reported_pure_hcl_instead_of_solution",
+                            fmt(pure_hcl)))],
+                [text(named("chem.posn2561_used_two_hcl_per_chlorine",
+                            fmt(answer / 2)))],
+                [text(named("chem.posn2561_used_three_hcl_per_chlorine",
+                            fmt(answer * Fraction(3, 4))))],
+            ),
+            topic="ปริมาณสารสัมพันธ์และร้อยละมวลสารละลาย",
+            hint=[text("ดุล MnO₂ + 4HCl → MnCl₂ + Cl₂ + 2H₂O; หามวล HCl บริสุทธิ์แล้วหารด้วยเศษส่วนมวล")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q47", display_name={"th": "กรดแอซีติกเหลือหลังทำปฏิกิริยากับเบคกิงโซดา"},
+    level=LEVEL, subject="เคมี", topic="ความเข้มข้นกรดหลังปฏิกิริยาและสารกำหนดปริมาณ",
+)
+class AceticAcidAfterBicarbonate(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q47.PARAMS, *q47.VARIANTS))
+        answer = q47.solve(**values)
+        volume = values["vinegar_ml"]
+        initial_acid = (Fraction(volume) * Fraction(values["density"])
+                        * Fraction(values["acid_percent"]) / 100 / 60)
+        bicarbonate = Fraction(values["bicarbonate_g"]) / 84
+        fmt = lambda value: f"{float(value):.3f}"
+        return GeneratedQuestion(
+            stem=[text(f"น้ำส้มสายชู {volume} mL มี CH₃COOH "
+                       f"{values['acid_percent']}% โดยมวล "
+                       f"และความหนาแน่น {values['density']} g/mL "
+                       f"ทำปฏิกิริยากับ NaHCO₃ {values['bicarbonate_g']} g "
+                       "ตามอัตราส่วนโมล 1:1 จน NaHCO₃ หมด "
+                       "สมมติปริมาตรสารละลายไม่เปลี่ยน "
+                       "ความเข้มข้น CH₃COOH ที่เหลือเป็นกี่ mol/L "
+                       "กำหนดมวลโมล CH₃COOH=60, NaHCO₃=84 g/mol")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_ignored_bicarbonate_consumption",
+                            fmt(initial_acid * 1000 / volume)))],
+                [text(named("chem.posn2561_ignored_vinegar_density",
+                            fmt((Fraction(volume) * Fraction(values["acid_percent"])
+                                 / 100 / 60 - bicarbonate) * 1000 / volume)))],
+                [text(named("chem.posn2561_halved_bicarbonate_consumption",
+                            fmt((initial_acid - bicarbonate / 2) * 1000 / volume)))],
+            ),
+            topic="ความเข้มข้นกรดหลังปฏิกิริยาและสารกำหนดปริมาณ",
+            hint=[text("แปลงปริมาตรและความหนาแน่นเป็นมวลน้ำส้มสายชู; หัก CH₃COOH ที่ NaHCO₃ ใช้แบบ 1:1")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q48", display_name={"th": "ปริมาตรโซดาไฟเข้มข้นเพื่อปรับไฮดรอกไซด์"},
+    level=LEVEL, subject="เคมี", topic="พีพีเอ็ม ร้อยละมวล และความเข้มข้นไฮดรอกไซด์",
+)
+class SodiumHydroxideStockVolume(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q48.PARAMS, *q48.VARIANTS))
+        answer = q48.solve(**values)
+        target_mmol = Fraction(values["target_oh_m"]) * values["final_ml"]
+        barium_g = (Fraction(values["barium_density"]) * values["barium_ml"]
+                    * values["barium_ppm"] / 1_000_000)
+        barium_oh_mmol = barium_g / 171 * 2 * 1000
+        needed = target_mmol - barium_oh_mmol
+        sodium_density = Fraction(values["sodium_density"])
+        sodium_fraction = Fraction(values["sodium_percent"]) / 100
+        fmt = lambda value: f"{float(value):.2f}"
+        return GeneratedQuestion(
+            stem=[text(f"ต้องการสารละลาย [OH⁻]={values['target_oh_m']} mol/L "
+                       f"ปริมาตรสุดท้าย {values['final_ml']} mL "
+                       f"โดยใช้ Ba(OH)₂ {values['barium_ppm']} ppm โดยมวล "
+                       f"ความหนาแน่น {values['barium_density']} g/mL "
+                       f"ปริมาตร {values['barium_ml']} mL ผสมกับ NaOH "
+                       f"{values['sodium_percent']}% โดยมวล "
+                       f"ความหนาแน่น {values['sodium_density']} g/mL "
+                       "ต้องใช้สารละลาย NaOH กี่ mL ก่อนปรับปริมาตร "
+                       "กำหนดมวลโมล Ba(OH)₂=171, NaOH=40 g/mol")],
+            correct=[text(fmt(answer))],
+            distractors=fixed(
+                [text(named("chem.posn2561_treated_naoh_solution_as_pure",
+                            fmt(needed / (sodium_density / 40 * 1000))))],
+                [text(named("chem.posn2561_ignored_naoh_stock_density",
+                            fmt(needed / (sodium_fraction / 40 * 1000))))],
+                [text(named("chem.posn2561_omitted_barium_hydroxide_oh",
+                            fmt(target_mmol / (sodium_density * sodium_fraction / 40
+                                               * 1000))))],
+            ),
+            topic="พีพีเอ็ม ร้อยละมวล และความเข้มข้นไฮดรอกไซด์",
+            hint=[text("แปลง ppm ของ Ba(OH)₂ เป็นมวล แล้วนับ OH⁻ สองโมลต่อโมล; หักจาก OH⁻ เป้าหมายก่อนคำนวณ NaOH")],
         )

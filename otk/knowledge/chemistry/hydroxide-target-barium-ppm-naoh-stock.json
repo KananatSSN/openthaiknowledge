@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พีพีเอ็ม ร้อยละมวล และความเข้มข้นไฮดรอกไซด์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hydroxide_target_barium_ppm_naoh_stock.procedure",
+      "kind": "procedure",
+      "title": "ปริมาตรสารละลายโซเดียมไฮดรอกไซด์เข้มข้น",
+      "statement": "แปลง ppm โดยมวลของ Ba(OH)₂ เป็นโมล OH⁻ สองเท่า แล้วเติมโมล OH⁻ ที่ขาดด้วย NaOH ร้อยละมวลและความหนาแน่นที่กำหนด",
+      "steps": [
+        "หามวลสารละลาย Ba(OH)₂ จากปริมาตรและความหนาแน่น แล้วแปลง ppm เป็นโมล OH⁻",
+        "หัก OH⁻ เดิมจากเป้าหมายและแปลงโมล NaOH เป็นปริมาตรสารละลายสต็อก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 48
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q48"
+      ],
+      "note": "Source choice ค is 20.0 mL: 200 g barium solution contains 0.0684 g Ba(OH)2=0.0004 mol, contributing 0.0008 mol OH−. Final target is 0.2008 mol OH−, leaving 0.2000 mol from NaOH. The stock is 10.0 M, hence 20.0 mL. Adaptation explicitly defines ppm by mass and varies target or ppm."
+    }
+  ]
+}
