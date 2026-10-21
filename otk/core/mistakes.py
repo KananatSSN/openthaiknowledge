@@ -37,6 +37,16 @@ T = TypeVar("T")
 # key -> learner-facing name. Written as what the learner did, not as a
 # judgement, so the stats page can say "You often: <name>".
 MISTAKES: dict[str, dict[str, str]] = {
+    "chem.posn2561_moved_s_electron_into_d": {"th": "ย้ายอิเล็กตรอน s ไปยัง d ในสถานะพื้น", "en": "Moved an s electron into d"},
+    "chem.posn2561_omitted_one_d_electron": {"th": "ลืมอิเล็กตรอน d หนึ่งตัว", "en": "Omitted one d electron"},
+    "chem.posn2561_added_one_d_electron": {"th": "เติมอิเล็กตรอน d เกินหนึ่งตัว", "en": "Added one d electron"},
+    "chem.posn2561_chose_alkali_as_smallest_atom": {"th": "เลือกโลหะอัลคาไลเป็นอะตอมเล็กสุด", "en": "Chose alkali metal as smallest atom"},
+    "chem.posn2561_reversed_ionic_formula_subscripts": {"th": "กลับเลขห้อยของสูตรไอออนิก", "en": "Reversed ionic formula subscripts"},
+    "chem.posn2561_chose_transition_metal_as_smallest_atom": {"th": "เลือกโลหะแทรนซิชันเป็นอะตอมเล็กสุด", "en": "Chose transition metal as smallest atom"},
+    "chem.posn2561_counted_chlorine_isotope_only": {"th": "นับเฉพาะสัดส่วนไอโซโทปคลอรีน", "en": "Counted chlorine isotope only"},
+    "chem.posn2561_counted_bromine_isotope_only": {"th": "นับเฉพาะสัดส่วนไอโซโทปโบรมีน", "en": "Counted bromine isotope only"},
+    "chem.posn2561_selected_heavy_chlorine_isotope": {"th": "เลือกไอโซโทปคลอรีนหนักแทนคลอรีนเบา", "en": "Selected heavy chlorine isotope"},
+
     "chem.posn2561_selected_heavier_diffuser": {"th": "เลือกสารมวลโมลมากเป็นสารแพร่เร็วสุด", "en": "Selected a heavier diffuser"},
     "chem.posn2561_misidentified_first_density_gas": {"th": "ระบุแก๊สความหนาแน่นผิดตัวแรก", "en": "Misidentified the first density gas"},
     "chem.posn2561_misidentified_second_density_gas": {"th": "ระบุแก๊สความหนาแน่นผิดตัวที่สอง", "en": "Misidentified the second density gas"},

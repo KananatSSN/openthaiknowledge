@@ -13,7 +13,7 @@ from otk.sheets.posn2561_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33,
     q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
     q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57,
-    q58, q59, q60,
+    q58, q59, q60, q61, q62, q63,
 )
 
 
@@ -21,13 +21,13 @@ def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
                    q19, q20, q21, q22, q23, q24, q25, q26, q27,
-                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60):
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60, q61, q62, q63):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 61))
+@pytest.mark.parametrize("number", range(1, 64))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -522,7 +522,7 @@ def test_generated_answers_follow_the_stem(number):
             ).groups())
             assert answer == f"{final / initial:.2f}:1"
             assert len({choice.content[0].text for choice in question.choices}) == 4
-        else:
+        elif number == 60:
             initial, bottom_p, bottom_c, surface_p, surface_c = re.search(
                 r"ปริมาตร ([\d.]+) cm³.*?ความดัน ([\d.]+) atm อุณหภูมิ "
                 r"(\d+)°C.*?ที่ ([\d.]+) atm และ (\d+)°C", stem,
@@ -531,4 +531,22 @@ def test_generated_answers_follow_the_stem(number):
                       (int(surface_c) + 273) / Fraction(surface_p) /
                       (int(bottom_c) + 273))
             assert answer == f"{float(volume):.1f}"
+        elif number == 61:
+            element, atomic = re.search(r"ธาตุ (\w+) มีเลขอะตอม (\d+)", stem).groups()
+            assert int(atomic) == q61.ELEMENTS[element][0]
+            assert answer == q61.check(element)
+            assert answer.startswith("[Kr]" if element == "Zr" else "[Ar]")
+        elif number == 62:
+            d_count = re.search(r"D=4s²3d([⁰¹²³⁴⁵⁶⁷⁸⁹])", stem).group(1)
+            assert d_count in "⁵⁶⁷⁸"
+            assert answer == "G; EG₂"
+            assert "n=3" in stem
+        else:
+            cl_light, cl_heavy, br_light, br_heavy = map(int, re.search(
+                r"³⁵Cl:³⁷Cl = (\d+):(\d+) และ ⁷⁹Br:⁸¹Br = (\d+):(\d+)",
+                stem,
+            ).groups())
+            percent = (Fraction(cl_light, cl_light + cl_heavy) *
+                       Fraction(br_light, br_light + br_heavy) * 100)
+            assert answer == f"{float(percent):.1f}%"
         assert len(question.choices) == 4

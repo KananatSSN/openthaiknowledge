@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 60/75: all 75 items extracted; Part I questions 1–60 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 15 written items await review.",
+  "note": "PARTIAL 63/75: all 75 items extracted; Part I questions 1–60 and written questions 1–3 reviewed, independently solved, claimed by knowledge units and linked to generators. Remaining 12 written items await review.",
   "items": [
     {
       "number": 1,
@@ -785,6 +785,45 @@
       "answer": "12.6",
       "generator": "chem.posn2561_q60",
       "note": "Combined gas law with T=283 and 300 K gives 12.6 cm3. The adaptation states fixed moles and ideal behavior."
+    },
+    {
+      "number": 61,
+      "solver": "q61",
+      "title": "การจัดอิเล็กตรอนของเซอร์โคเนียม",
+      "source": "Part II, written question 1, p14: write the ground-state orbital/sublevel configuration of neutral Zr.",
+      "page": 14,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การจัดอิเล็กตรอนในออร์บิทัล",
+      "answer": "[Kr] 4d² 5s²",
+      "generator": "chem.posn2561_q61",
+      "note": "Zr has Z=40 and ground state [Kr]4d²5s². The generated version explicitly requests noble-gas shorthand; it is equivalent to the full sublevel notation. Verified against NIST Atomic Data."
+    },
+    {
+      "number": 62,
+      "solver": "q62",
+      "title": "ขนาดอะตอมและสูตรอย่างง่ายจากการจัดอิเล็กตรอน",
+      "source": "Part II, written question 2, p14: from A=ns1, D=(n+1)s2 nd6, E=(n+1)s2 and G=ns2np5, identify smallest atom and formula from E plus G.",
+      "page": 14,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "แนวโน้มรัศมีอะตอมและสูตรไอออนิก",
+      "answer": "('G', 'EG2')",
+      "generator": "chem.posn2561_q62",
+      "note": "For n=3 the species are Na, Fe, Ca and Cl: G is smallest; E²⁺ and G⁻ give EG₂. The adaptation fixes n=3 to avoid ambiguous cross-period radii."
+    },
+    {
+      "number": 63,
+      "solver": "q63",
+      "title": "ร้อยละโมเลกุล CH₂BrCl ที่มีมวล 128",
+      "source": "Part II, written question 3, p14: chlorine isotopes 35:37 in a 3:1 ratio and bromine 79:81 in a 1:1 ratio; find the percentage of CH2BrCl molecules with mass 128.",
+      "page": 14,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "ไอโซโทปและความน่าจะเป็นของมวลโมเลกุล",
+      "answer": "37.5",
+      "generator": "chem.posn2561_q63",
+      "note": "Only ¹²CH₂⁷⁹Br³⁵Cl has nominal mass 128. Its fraction is (3/4)(1/2)=3/8=37.5%. The adaptation states ¹²C and ¹H only."
     }
   ]
 }

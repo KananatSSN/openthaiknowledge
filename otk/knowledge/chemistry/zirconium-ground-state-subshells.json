@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การจัดอิเล็กตรอนในออร์บิทัล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.zirconium_ground_state_subshells.procedure",
+      "kind": "procedure",
+      "title": "การจัดอิเล็กตรอนของเซอร์โคเนียม",
+      "statement": "Zr มีเลขอะตอม 40 จัดอิเล็กตรอนสถานะพื้นเป็น [Kr]4d²5s²; การเขียนแกนแก๊สมีตระกูลเทียบเท่าการขยายออร์บิทัลชั้นในทั้งหมด",
+      "steps": [
+        "เริ่มจากแกน [Kr] ที่มี 36 อิเล็กตรอน",
+        "กระจายสี่อิเล็กตรอนที่เหลือใน 5s² และ 4d² แล้วตรวจผลรวมเป็น 40"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 61
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q61"
+      ],
+      "note": "Zr has Z=40 and ground state [Kr]4d²5s². The generated version explicitly requests noble-gas shorthand; it is equivalent to the full sublevel notation. Verified against NIST Atomic Data."
+    }
+  ]
+}

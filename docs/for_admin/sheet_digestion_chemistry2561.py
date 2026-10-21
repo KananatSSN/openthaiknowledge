@@ -425,6 +425,27 @@ UNITS = {
         "แปลง T ทั้งสองตำแหน่งด้วย T(K)=t(°C)+273",
         "จัดรูปหา V₂=V₁(P₁/P₂)(T₂/T₁)",
     ),
+    61: (
+        "zirconium-ground-state-subshells",
+        "chem.zirconium_ground_state_subshells.procedure",
+        "Zr มีเลขอะตอม 40 จัดอิเล็กตรอนสถานะพื้นเป็น [Kr]4d²5s²; การเขียนแกนแก๊สมีตระกูลเทียบเท่าการขยายออร์บิทัลชั้นในทั้งหมด",
+        "เริ่มจากแกน [Kr] ที่มี 36 อิเล็กตรอน",
+        "กระจายสี่อิเล็กตรอนที่เหลือใน 5s² และ 4d² แล้วตรวจผลรวมเป็น 40",
+    ),
+    62: (
+        "outer-configuration-atomic-size-and-formula",
+        "chem.outer_configuration_atomic_size_and_formula.procedure",
+        "เมื่อ n=3, A=Na, D=Fe, E=Ca และ G=Cl; G เล็กสุด และไอออน E²⁺ กับ G⁻ ให้สูตร EG₂",
+        "แปลงรูปการจัดอิเล็กตรอนชั้นนอกเป็นคาบและหมู่",
+        "เทียบขนาดอะตอมและดุลประจุไอออนเพื่อเขียนสูตรอย่างง่าย",
+    ),
+    63: (
+        "bromochloromethane-isotopologue-fraction",
+        "chem.bromochloromethane_isotopologue_fraction.procedure",
+        "มวลโมเลกุล CH₂BrCl เท่ากับ 128 เมื่อใช้ ⁷⁹Br และ ³⁵Cl; ร้อยละไอโซโทโปล็อกเท่ากับผลคูณของความน่าจะเป็นสองไอโซโทป",
+        "แจกแจงมวลจาก C,H และไอโซโทป Cl,Br ที่เป็นไปได้",
+        "เลือกคู่ที่รวมเป็น 128 แล้วคูณสัดส่วนไอโซโทปก่อนแปลงเป็นร้อยละ",
+    ),
 }
 
 

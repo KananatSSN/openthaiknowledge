@@ -13,6 +13,7 @@ from otk.sheets.posn2561_chemistry import (
     q25, q26, q27, q28, q29, q30, q31, q32, q33, q34, q35, q36,
     q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51,
     q52, q53, q54, q55, q56, q57, q58, q59, q60,
+    q61, q62, q63,
 )
 
 
@@ -2018,4 +2019,100 @@ class RisingBubbleCombinedGasLaw(QuestionType):
             ),
             topic="กฎรวมแก๊สและอุณหภูมิสัมบูรณ์",
             hint=[text("ใช้ P₁V₁/T₁=P₂V₂/T₂ โดยเปลี่ยนเซลเซียสเป็นเคลวินก่อน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q61", display_name={"th": "การจัดอิเล็กตรอนของธาตุแทรนซิชัน"},
+    level=LEVEL, subject="เคมี", topic="การจัดอิเล็กตรอนในออร์บิทัล",
+)
+class TransitionMetalGroundConfiguration(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q61.PARAMS, *q61.VARIANTS))
+        element = values["element"]
+        atomic_number, core, core_electrons, d_orbital, s_orbital = q61.ELEMENTS[element]
+        d_count = atomic_number - core_electrons - 2
+        shown = lambda d, s: q61.format_config(core, d_orbital, d, s_orbital, s)
+        return GeneratedQuestion(
+            stem=[text(f"ธาตุ {element} มีเลขอะตอม {atomic_number} "
+                       "การจัดอิเล็กตรอนสถานะพื้นในระดับพลังงานย่อยข้อใดถูก "
+                       f"เขียนแบบแก๊สมีตระกูล [{core}]")],
+            correct=[text(q61.solve(**values))],
+            distractors=fixed(
+                [text(named("chem.posn2561_moved_s_electron_into_d",
+                            shown(d_count + 1, 1)))],
+                [text(named("chem.posn2561_omitted_one_d_electron",
+                            shown(d_count - 1, 2)))],
+                [text(named("chem.posn2561_added_one_d_electron",
+                            shown(d_count + 1, 2)))],
+            ),
+            topic="การจัดอิเล็กตรอนในออร์บิทัล",
+            hint=[text("นับอิเล็กตรอนหลังแกนแก๊สมีตระกูลแล้วเติม ns² และ (n−1)d")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q62", display_name={"th": "ขนาดอะตอมและสูตรสารประกอบ"},
+    level=LEVEL, subject="เคมี", topic="แนวโน้มรัศมีอะตอมและสูตรไอออนิก",
+)
+class SymbolicAtomicRadiusAndFormula(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q62.PARAMS, *q62.VARIANTS))
+        d_count = values["d_electrons"]
+        smallest, formula = q62.solve(**values)
+        assert (smallest, formula) == ("G", "EG2")
+        return GeneratedQuestion(
+            stem=[text("กำหนด n=3 และการจัดอิเล็กตรอนชั้นนอก "
+                       f"A=3s¹, D=4s²3d{str(d_count).translate(q61.SUPERSCRIPTS)}, "
+                       "E=4s², G=3s²3p⁵ "
+                       "ธาตุใดมีขนาดอะตอมเล็กสุด และสูตรอย่างง่ายของสารประกอบ "
+                       "จาก E กับ G คืออะไร ตามลำดับ")],
+            correct=[text("G; EG₂")],
+            distractors=fixed(
+                [text(named("chem.posn2561_chose_alkali_as_smallest_atom",
+                            "A; EG₂"))],
+                [text(named("chem.posn2561_reversed_ionic_formula_subscripts",
+                            "G; E₂G"))],
+                [text(named("chem.posn2561_chose_transition_metal_as_smallest_atom",
+                            "D; EG₂"))],
+            ),
+            topic="แนวโน้มรัศมีอะตอมและสูตรไอออนิก",
+            hint=[text("n=3 ทำให้ G เป็นฮาโลเจนคาบ 3 ส่วน E เป็นโลหะหมู่ 2 คาบ 4")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q63", display_name={"th": "ร้อยละไอโซโทโปล็อกตามมวลโมเลกุล"},
+    level=LEVEL, subject="เคมี", topic="ไอโซโทปและความน่าจะเป็นของมวลโมเลกุล",
+)
+class BromochloromethaneIsotopeFraction(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q63.PARAMS, *q63.VARIANTS))
+        cl_light = Fraction(values["cl_light"], values["cl_light"] + values["cl_heavy"])
+        br_light = Fraction(values["br_light"], values["br_light"] + values["br_heavy"])
+        fmt = lambda value: f"{float(value):.1f}%"
+        return GeneratedQuestion(
+            stem=[text(f"CH₂BrCl มี ³⁵Cl:³⁷Cl = {values['cl_light']}:{values['cl_heavy']} "
+                       f"และ ⁷⁹Br:⁸¹Br = {values['br_light']}:{values['br_heavy']} "
+                       "สมมติ ¹²C และ ¹H เท่านั้น สัดส่วนโมเลกุลที่มวล 128 เป็นกี่เปอร์เซ็นต์")],
+            correct=[text(fmt(q63.solve(**values)))],
+            distractors=fixed(
+                [text(named("chem.posn2561_counted_chlorine_isotope_only",
+                            fmt(100 * cl_light)))],
+                [text(named("chem.posn2561_counted_bromine_isotope_only",
+                            fmt(100 * br_light)))],
+                [text(named("chem.posn2561_selected_heavy_chlorine_isotope",
+                            fmt(100 * (1 - cl_light) * br_light)))],
+            ),
+            topic="ไอโซโทปและความน่าจะเป็นของมวลโมเลกุล",
+            hint=[text("128 = 12+2+79+35; คูณสัดส่วน ⁷⁹Br กับ ³⁵Cl")],
         )

@@ -2309,3 +2309,8 @@ TOTAL         338   316     17     4   66      255      6     11
 
 - Reviewed p13–14 gas density/diffusion, Boyle-law volume ratio and rising-bubble combined gas law. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC59 has two equivalent printed options; the adaptation normalizes all choices to x:1 and removes the duplicate. Part I is now complete; fifteen written items remain.
 - Wave validation: 60/60 sheet solvers and 180 variant runs green; 900 knowledge units in 766 files with zero validation problems; source coverage 60/60. Focused generator tests passed (61), catalog checks passed (3), registry/provenance/safety/layout checks passed (743), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, written 1–3 (items 61–63)
+
+- Reviewed Zr ground-state configuration, periodic size/ionic formula from outer configurations, and the CH₂BrCl isotope fraction. Added independently checked solvers, three variants, generators, named misconceptions and knowledge claims. The Zr generator explicitly requests noble-gas shorthand; the symbolic question fixes n=3.
+- Wave validation: 63/63 sheet solvers and 189 variant runs green; 903 knowledge units in 769 files with zero validation problems; source coverage 63/63. Focused generator tests passed (64), catalog checks passed (3), registry/provenance/safety/layout checks passed (755), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
