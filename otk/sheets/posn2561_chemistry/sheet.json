@@ -4,7 +4,7 @@
   "source_pdf": "openthaiknowledge-bank/สอวน_chemistry/posn1-61-chemistry.pdf",
   "subject": "เคมี",
   "level": "โอลิมปิก (สอวน.)",
-  "note": "PARTIAL 12/75: all 75 items extracted; Part I questions 1–12 reviewed, independently solved, claimed by knowledge units and linked to generators. MC7 gives explicit radii; MC8 clarifies grey As melting; MC12 replaces concentration-dependent Cl2O distractor with NaCl. Remaining 63 await review.",
+  "note": "PARTIAL 15/75: all 75 items extracted; Part I questions 1–15 reviewed, independently solved, claimed by knowledge units and linked to generators. MC13 table transcribed into words; MC14 distinguishes complexes from salts/oxides; MC15 clarifies β− versus β+. Remaining 60 await review.",
   "items": [
     {
       "number": 1,
@@ -161,6 +161,45 @@
       "answer": "2",
       "generator": "chem.posn2561_q12",
       "note": "Source choice ค is K2Cr2O7 and FeCl3, giving orange and yellow solutions. The source distractor Cl2O is concentration-dependent: literature describes orange-yellow aqueous HOCl at high concentration; adaptation replaces it with unambiguously colorless dilute NaCl. https://chem.libretexts.org/Bookshelves/Inorganic_Chemistry/Chemistry_of_the_Main_Group_Elements_%28Barron%29/10%3A_The_Halogens/10.03%3A_Compounds_of_Chlorine"
+    },
+    {
+      "number": 13,
+      "solver": "q13",
+      "title": "จำแนกไอออนจากตะกอนคาร์บอเนตและซัลเฟต",
+      "source": "Part I, question 13, p5: A precipitates with carbonate only, B with neither, C with carbonate and sulfate; select their salt formulas.",
+      "page": 5,
+      "figure": "The source has a precipitation-results table and a formula-choice table.",
+      "figure_asset": "",
+      "topic": "การตกตะกอนและกฎการละลาย",
+      "answer": "3",
+      "generator": "chem.posn2561_q13",
+      "note": "Source choice ง gives A=MgCl2, B=KCl, C=Ba(NO3)2. The printed precipitation table was reviewed visually and is restated in words; no source artwork is copied. Magnesium carbonate and barium carbonate/sulfate are the white precipitates."
+    },
+    {
+      "number": 14,
+      "solver": "q14",
+      "title": "เลขออกซิเดชันสูงสุดในสารเชิงซ้อน",
+      "source": "Part I, question 14, p5: among an oxide, sulfate salt and two coordination complexes, select the complex with the higher central-metal oxidation state.",
+      "page": 5,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "สารประกอบเชิงซ้อนและเลขออกซิเดชัน",
+      "answer": "3",
+      "generator": "chem.posn2561_q14",
+      "note": "Source choice ง: [Cr(NH3)6]Cl3 has Cr(+3), exceeding Fe(+2) in K4[Fe(CN)6]. MnO2 has Mn(+4) but is not a coordination complex."
+    },
+    {
+      "number": 15,
+      "solver": "q15",
+      "title": "รังสีที่ทำให้เลขอะตอมเพิ่มหนึ่ง",
+      "source": "Part I, question 15, p5: choose the radiation emission that raises daughter atomic number by one.",
+      "page": 5,
+      "figure": "",
+      "figure_asset": "",
+      "topic": "การสลายตัวแบบบีตาลบ",
+      "answer": "1",
+      "generator": "chem.posn2561_q15",
+      "note": "Source choice ข is beta-minus emission. Because beta can refer to beta-minus or beta-plus, the adaptation labels the choices explicitly β− and β+. https://gnssn.iaea.org/main/bptc/BPTC%20Module%20Documents/Module01%20Nuclear%20physics%20and%20reactor%20theory.pdf"
     }
   ]
 }

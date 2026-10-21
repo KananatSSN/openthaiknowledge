@@ -8,17 +8,19 @@ import pytest
 from otk.core import generate
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+    q13, q14, q15,
 )
 
 
 def test_first_wave_solves_source_and_variants_independently():
-    for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12):
+    for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
+                   q10, q11, q12, q13, q14, q15):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 13))
+@pytest.mark.parametrize("number", range(1, 16))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -114,7 +116,7 @@ def test_generated_answers_follow_the_stem(number):
             assert set(choice.content[0].text for choice in question.choices) == set(
                 q11.claims(label)
             )
-        else:
+        elif number == 12:
             color = {"K₂SO₄": False, "MnCl₂": True, "NaCl": False,
                      "Co(NO₃)₂": True, "K₂Cr₂O₇": True, "FeCl₃": True,
                      "[Ni(NH₃)₆]Cl₂": True, "RbCl": False}
@@ -124,4 +126,24 @@ def test_generated_answers_follow_the_stem(number):
                 if color[left] and color[right]:
                     valid.append(choice.content[0].text)
             assert valid == [answer]
+        elif number == 13:
+            assert "A ให้ตะกอนขาวเฉพาะกับ Na₂CO₃" in stem
+            expected_cations = ("Mg", "K", "Ba")
+            possible = []
+            for choice in question.choices:
+                formulas = re.findall(r"[ABC]=([^,]+)", choice.content[0].text)
+                if len(formulas) == 3 and tuple(q13.CATIONS[f] for f in formulas) == expected_cations:
+                    possible.append(choice.content[0].text)
+            assert possible == [answer]
+        elif number == 14:
+            oxidation = {"K₄[Fe(CN)₆]": 2, "[Cr(NH₃)₆]Cl₃": 3}
+            eligible = [choice.content[0].text for choice in question.choices
+                        if choice.content[0].text in oxidation]
+            assert answer == max(eligible, key=lambda compound: oxidation[compound])
+        else:
+            z, a, daughter = map(int, re.search(
+                r"เลขอะตอม (\d+) และเลขมวล (\d+).*?เลขอะตอม (\d+)", stem,
+            ).groups())
+            assert daughter == z + 1 and a > z
+            assert answer == "β⁻"
         assert len(question.choices) == 4

@@ -7,6 +7,7 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+    q13, q14, q15,
 )
 
 
@@ -413,4 +414,96 @@ class ColoredSolutionPairs(QuestionType):
                                 for i, claim in enumerate(claims) if i != answer)),
             topic="สีของสารละลายไอออน",
             hint=[text("ไอออน Cr₂O₇²⁻ และ Fe³⁺ มีสี; ตรวจอีกสารในแต่ละคู่ด้วย")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q13", display_name={"th": "จำแนกไอออนจากตะกอนคาร์บอเนตและซัลเฟต"},
+    level=LEVEL, subject="เคมี", topic="การตกตะกอนและกฎการละลาย",
+)
+class PrecipitationIdentification(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q13.PARAMS, *q13.VARIANTS))
+        answer = q13.solve(**values)
+        options = values["options"]
+        claims = tuple("A={}, B={}, C={}".format(*q13.OPTIONS[i]) for i in options)
+        mistakes = (
+            "chem.posn2561_misassigned_magnesium_to_no_precipitate",
+            "chem.posn2561_misassigned_barium_to_no_precipitate",
+            "chem.posn2561_swapped_barium_magnesium_precipitates",
+            "",
+        )
+        return GeneratedQuestion(
+            stem=[text("ทดสอบสารละลาย A, B, C แยกกันด้วย NaCl, Na₂CO₃, Na₂SO₄: "
+                       "A ให้ตะกอนขาวเฉพาะกับ Na₂CO₃; B ไม่ให้ตะกอน; "
+                       "C ให้ตะกอนขาวกับ Na₂CO₃ และ Na₂SO₄ "
+                       "ข้อใดอาจเป็นสูตรของ A, B, C ตามลำดับ")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="การตกตะกอนและกฎการละลาย",
+            hint=[text("คาร์บอเนตของ Mg และ Ba ตกตะกอน แต่ซัลเฟตของ Ba เท่านั้นที่ตกตะกอน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q14", display_name={"th": "เลขออกซิเดชันสูงสุดในสารเชิงซ้อน"},
+    level=LEVEL, subject="เคมี", topic="สารประกอบเชิงซ้อนและเลขออกซิเดชัน",
+)
+class HighestComplexOxidation(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q14.PARAMS, *q14.VARIANTS))
+        answer = q14.solve(**values)
+        options = values["options"]
+        claims = tuple(q14.COMPOUNDS[i] for i in options)
+        mistakes = (
+            "chem.posn2561_ignored_complex_requirement_for_manganese",
+            "chem.posn2561_treated_nickel_sulfate_as_complex",
+            "chem.posn2561_misranked_iron_chromium_oxidation",
+            "",
+        )
+        return GeneratedQuestion(
+            stem=[text("ข้อใดเป็นสารประกอบเชิงซ้อนที่โลหะแทรนซิชันกลาง "
+                       "มีเลขออกซิเดชันสูงที่สุดในบรรดาสารเชิงซ้อนที่ให้")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="สารประกอบเชิงซ้อนและเลขออกซิเดชัน",
+            hint=[text("คัดสารที่มีไอออนเชิงซ้อนในวงเล็บก่อน แล้วใช้ประจุลิแกนด์คำนวณเลขออกซิเดชัน")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q15", display_name={"th": "รังสีที่ทำให้เลขอะตอมเพิ่มหนึ่ง"},
+    level=LEVEL, subject="เคมี", topic="การสลายตัวแบบบีตาลบ",
+)
+class AtomicNumberIncreaseRadiation(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q15.PARAMS, *q15.VARIANTS))
+        answer = q15.solve(**values)
+        mistakes = (
+            "chem.posn2561_confused_alpha_atomic_number_change",
+            "", "chem.posn2561_assumed_gamma_changes_element",
+            "chem.posn2561_confused_positron_with_beta_minus",
+        )
+        return GeneratedQuestion(
+            stem=[text(f"นิวเคลียสเริ่มต้นมีเลขอะตอม {values['z']} และเลขมวล "
+                       f"{values['a']} หลังสลายตัวได้ธาตุใหม่เลขอะตอม "
+                       f"{values['z'] + 1} โดยเลขมวลคงเดิม "
+                       "แผ่รังสีชนิดใด")],
+            correct=[text(q15.RADIATIONS[answer])],
+            distractors=fixed(*( [text(named(mistakes[i], radiation))]
+                                for i, radiation in enumerate(q15.RADIATIONS)
+                                if i != answer)),
+            topic="การสลายตัวแบบบีตาลบ",
+            hint=[text("β⁻ เปลี่ยนนิวตรอนเป็นโปรตอน ส่วน β⁺ เปลี่ยนโปรตอนเป็นนิวตรอน")],
         )

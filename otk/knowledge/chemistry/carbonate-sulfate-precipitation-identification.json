@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การตกตะกอนและกฎการละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.carbonate_sulfate_precipitation_identification.procedure",
+      "kind": "procedure",
+      "title": "จำแนกไอออนจากตะกอนคาร์บอเนตและซัลเฟต",
+      "statement": "Mg²⁺ ให้ตะกอนคาร์บอเนตแต่ซัลเฟตละลายได้; K⁺ ไม่ให้ตะกอนในชุดทดสอบ; Ba²⁺ ให้ตะกอนทั้งคาร์บอเนตและซัลเฟต",
+      "steps": [
+        "แปลงผลตะกอนของ A, B, C เป็นรูปแบบสำหรับ Cl⁻, CO₃²⁻ และ SO₄²⁻",
+        "จับคู่รูปแบบกับ Mg²⁺, K⁺, Ba²⁺ แล้วตรวจสูตรเกลือในตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q13"
+      ],
+      "note": "Source choice ง gives A=MgCl2, B=KCl, C=Ba(NO3)2. The printed precipitation table was reviewed visually and is restated in words; no source artwork is copied. Magnesium carbonate and barium carbonate/sulfate are the white precipitates."
+    }
+  ]
+}
