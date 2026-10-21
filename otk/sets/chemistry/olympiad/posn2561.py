@@ -8,7 +8,7 @@ from otk.core.registry import QuestionType, question_type
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27,
+    q25, q26, q27, q28, q29, q30,
 )
 
 
@@ -887,4 +887,92 @@ class CentralAtomOctetPairs(QuestionType):
                                 for i, claim in enumerate(claims) if i != answer)),
             topic="กฎออกเตตและโครงสร้างลิวอิส",
             hint=[text("NO₂ เป็นอนุมูลอิสระอิเล็กตรอนคี่; XeF₄ มีคู่โดดเดี่ยวบน Xe สองคู่")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q28", display_name={"th": "พันธะในแอมโมเนียมไอออน"},
+    level=LEVEL, subject="เคมี", topic="พันธะโคเวเลนต์และโครงสร้างแอมโมเนียม",
+)
+class AmmoniumEquivalentBonds(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q28.PARAMS, *q28.VARIANTS))
+        answer = q28.solve(**values)
+        options = values["options"]
+        claims = tuple(q28.CLAIMS[i] for i in options)
+        mistakes = (
+            "chem.posn2561_misidentified_ammonium_shape",
+            "chem.posn2561_misidentified_nh_bond_polarity",
+            "chem.posn2561_assumed_ammonium_lone_pair",
+            "",
+        )
+        return GeneratedQuestion(
+            stem=[text("ข้อใดกล่าวผิดเกี่ยวกับ NH₄⁺ ที่เกิดจาก NH₃ รับ H⁺")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="พันธะโคเวเลนต์และโครงสร้างแอมโมเนียม",
+            hint=[text("หลังเกิดไอออนแล้ว H ทั้งสี่อยู่ในสภาพสมมูลกันในทรงสี่หน้า")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q29", display_name={"th": "โมเลกุลที่รูปร่างแตกต่าง"},
+    level=LEVEL, subject="เคมี", topic="ทฤษฎี VSEPR และรูปร่างโมเลกุล",
+)
+class BentVersusLinearMolecule(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q29.PARAMS, *q29.VARIANTS))
+        answer = q29.solve(**values)
+        options = values["options"]
+        claims = tuple(q29.MOLECULES[i] for i in options)
+        mistakes = (
+            "", "chem.posn2561_assumed_co2_bent",
+            "chem.posn2561_assumed_xef2_bent",
+            "chem.posn2561_assumed_becl2_bent",
+        )
+        return GeneratedQuestion(
+            stem=[text("เมื่อพิจารณาโมเลกุลเดี่ยวในสถานะแก๊ส "
+                       "สารใดมีรูปร่างโมเลกุลแตกต่างจากอีกสามชนิด")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="ทฤษฎี VSEPR และรูปร่างโมเลกุล",
+            hint=[text("SO₂ มีคู่โดดเดี่ยวบน S หนึ่งคู่; "
+                       "XeF₂ มีคู่โดดเดี่ยวสามคู่เรียงในระนาบเส้นศูนย์สูตร")],
+        )
+
+
+@question_type(
+    "chem.posn2561_q30", display_name={"th": "มุมพันธะที่เล็กที่สุด"},
+    level=LEVEL, subject="เคมี", topic="รูปทรงโมเลกุลและมุมพันธะ",
+)
+class SmallestMolecularBondAngle(QuestionType):
+    sheet_id = SHEET_ID
+    sheet = SHEET
+
+    def build(self, rng, **params):
+        values = rng.choice((q30.PARAMS, *q30.VARIANTS))
+        answer = q30.solve(**values)
+        options = values["options"]
+        claims = tuple(q30.MOLECULES[i] for i in options)
+        mistakes = (
+            "chem.posn2561_assumed_ncl3_angle_under_90",
+            "", "chem.posn2561_assumed_socl2_angle_under_90",
+            "chem.posn2561_assumed_ch2cl2_angle_under_90",
+        )
+        return GeneratedQuestion(
+            stem=[text("สำหรับโมเลกุลเดี่ยวในสถานะแก๊ส ถ้าพิจารณามุมระหว่าง "
+                       "พันธะที่เล็กที่สุดของแต่ละโมเลกุล สารใดมีค่าน้อยที่สุด")],
+            correct=[text(claims[answer])],
+            distractors=fixed(*( [text(named(mistakes[options[i]], claim))]
+                                for i, claim in enumerate(claims) if i != answer)),
+            topic="รูปทรงโมเลกุลและมุมพันธะ",
+            hint=[text("PCl₅ แบบพีระมิดคู่ฐานสามเหลี่ยมมีมุมระหว่างพันธะแนวแกนกับแนวระนาบ 90°")],
         )

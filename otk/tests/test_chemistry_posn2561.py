@@ -9,20 +9,21 @@ from otk.core import generate
 from otk.sheets.posn2561_chemistry import (
     q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
     q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
-    q25, q26, q27,
+    q25, q26, q27, q28, q29, q30,
 )
 
 
 def test_first_wave_solves_source_and_variants_independently():
     for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
                    q10, q11, q12, q13, q14, q15, q16, q17, q18,
-                   q19, q20, q21, q22, q23, q24, q25, q26, q27):
+                   q19, q20, q21, q22, q23, q24, q25, q26, q27,
+                   q28, q29, q30):
         assert module.solve(**module.PARAMS) == module.ANSWER
         for params in (module.PARAMS, *module.VARIANTS):
             assert module.solve(**params) == module.check(**params)
 
 
-@pytest.mark.parametrize("number", range(1, 28))
+@pytest.mark.parametrize("number", range(1, 31))
 def test_generated_answers_follow_the_stem(number):
     for seed in range(60):
         question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
@@ -218,10 +219,22 @@ def test_generated_answers_follow_the_stem(number):
             assert set(choice.content[0].text for choice in question.choices) == {
                 " → ".join(order) for order in q26.ORDERS
             }
-        else:
+        elif number == 27:
             assert all(species in stem for species in q27.CENTRAL_ELECTRONS)
             assert answer == "BF₄⁻ และ CO₃²⁻"
             assert set(choice.content[0].text for choice in question.choices) == {
                 " และ ".join(pair) for pair in q27.PAIRS
             }
+        elif number == 28:
+            assert "NH₄⁺" in stem and "NH₃ รับ H⁺" in stem
+            assert answer == q28.CLAIMS[3]
+            assert set(choice.content[0].text for choice in question.choices) == set(q28.CLAIMS)
+        elif number == 29:
+            assert "สถานะแก๊ส" in stem
+            assert answer == "SO₂"
+            assert set(choice.content[0].text for choice in question.choices) == set(q29.MOLECULES)
+        else:
+            assert "สถานะแก๊ส" in stem
+            assert answer == "PCl₅"
+            assert set(choice.content[0].text for choice in question.choices) == set(q30.MOLECULES)
         assert len(question.choices) == 4

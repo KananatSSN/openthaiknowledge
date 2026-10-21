@@ -59,10 +59,10 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
-### Chemistry POSN 2561 bank — waves 1–9, 2026-10-21
+### Chemistry POSN 2561 bank — waves 1–10, 2026-10-21
 
 - Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
-- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first twenty-seven were reviewed, independently solved, claimed by knowledge units, and linked to generators. **27/75 complete; 48 pending.**
+- Source: `สอวน_chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. The first thirty were reviewed, independently solved, claimed by knowledge units, and linked to generators. **30/75 complete; 45 pending.**
 - MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
 - MC4's only always-true claim is that Z has more than six electrons in its second shell; the adaptation says “always” explicitly. MC5 selects fluorine. MC6's false comparison is K < Ca for IE₂; the close Se < Br comparison was checked against NIST ionization data.
 - MC7's mixed atomic/ionic radius comparison depends on a radius convention; its adaptation supplies the specific table used. MC8's false order places Ca above As for IE₁; its adaptation supplies measured property values and specifies grey arsenic melting under pressure. MC9 pairs SO₃ with Na₂O to give an acid and a base in water.
@@ -72,7 +72,8 @@ Phases in build order. Check an item only when its tests pass.
 - MC19 identifies Ga from the 2:3 chlorine ratio, water inertness and colorless acid solution. MC20's printed intended water reaction is missing coefficients and therefore has no correct choice as written; the adaptation balances it. MC21's N≡C–C≡N structure has one single bond, two triple bonds and two lone pairs.
 - MC22 contrasts nonpolar CS₂ with network SiO₂; the silica property statement is true. MC23 has statements 1 and 3 true for gaseous SbCl₅, SiH₄ and TeF₆. MC24's fully water-soluble covalent group is ethanol, HF and acetic acid.
 - MC25's extraction table supports C being more polar than B; it does not establish exact functional groups or prove B is nonpolar, so the adaptation phrases conclusions as trends and possibilities. MC26's order is butane, ether, ethanol by increasing boiling point; the adaptation specifies a cooled liquid starting mixture. MC27's octet pair is BF₄⁻ and CO₃²⁻; NO₂ is an odd-electron radical and XeF₄ has an expanded octet.
-- The private bank digest contains paraphrased records for the twenty-seven reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 28.
+- MC28's fourth N–H bond in NH₄⁺ is equivalent to the other three once the ion forms. MC29 picks bent SO₂ against three linear gas-phase molecules. MC30 picks gaseous PCl₅ because its smallest axial-equatorial angle is 90°; NIST measured SOCl₂ at 96.1° and the other two have larger angles.
+- The private bank digest contains paraphrased records for the thirty reviewed questions only. The sheet and bank entry remain `converted` while the paper is incomplete. Continue with Part I question 31.
 - Maintain the requested cadence: targeted tests each wave; the full suite only when all 75 items are digested.
 
 ### Chemistry POSN bank — waves 1–23, 2026-10-21

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รูปทรงโมเลกุลและมุมพันธะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.smallest_bond_angle_comparison.procedure",
+      "kind": "procedure",
+      "title": "เปรียบเทียบมุมพันธะต่ำสุดของสี่โมเลกุล",
+      "statement": "PCl₅ แบบโมเลกุลแก๊สมีมุมระหว่างพันธะแกนกับพันธะระนาบ 90° ซึ่งน้อยกว่ามุมต่ำสุดของ NCl₃, SOCl₂ และ CH₂Cl₂",
+      "steps": [
+        "หารูปทรง VSEPR ของโมเลกุลแต่ละตัวและมุมที่เป็นไปได้ทั้งหมด",
+        "นำมุมที่เล็กที่สุดของแต่ละโมเลกุลมาเปรียบเทียบ โดยตรวจ SOCl₂ กับข้อมูลการวัด"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 30
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q30"
+      ],
+      "note": "Source choice ข is gaseous PCl5: axial-equatorial Cl-P-Cl is 90°. Measured smallest angles of alternatives exceed 90° (SOCl2 Cl-S-Cl 96.1°, NCl3 ~107°, CH2Cl2 >108°). https://cccbdb.nist.gov/expangle2x.asp?all=0&descript=aClSCl https://guweb2.gonzaga.edu/faculty/cronk/CHEM101pub/molecular_structure.html"
+    }
+  ]
+}

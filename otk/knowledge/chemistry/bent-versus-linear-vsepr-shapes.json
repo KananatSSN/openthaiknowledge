@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ทฤษฎี VSEPR และรูปร่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.bent_versus_linear_vsepr_shapes.procedure",
+      "kind": "procedure",
+      "title": "แยกรูปร่างงอออกจากโมเลกุลเส้นตรง",
+      "statement": "SO₂ มีรูปทรงงอเพราะ S มีคู่โดดเดี่ยว ส่วน CO₂, XeF₂ และ BeCl₂ โมเลกุลเดี่ยวในสถานะแก๊สมีรูปทรงเส้นตรง",
+      "steps": [
+        "นับโดเมนพันธะและคู่โดดเดี่ยวรอบอะตอมกลาง",
+        "เปรียบเทียบรูปทรงโมเลกุลตาม VSEPR แล้วเลือกชนิดที่ต่างจากอีกสาม"
+      ],
+      "sources": [
+        {
+          "sheet": "สอวน_chemistry/posn1-61-chemistry.pdf",
+          "item": 29
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q29"
+      ],
+      "note": "Source choice ก is SO2, bent; the others are linear as isolated gas-phase molecules. The adaptation says gas phase to avoid ambiguity with condensed BeCl2. https://chem.libretexts.org/Courses/UW-Whitewater/Chem_260%3A_Inorganic_Chemistry_%28Girard%29/02%3A_Molecular_Orbital_Theory/2.02%3A_The_Shapes_of_Molecules_%28VSEPR_Theory%29_and_Orbital_Hybridization"
+    }
+  ]
+}
