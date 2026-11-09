@@ -285,6 +285,11 @@ def _corrected_mean_data(rng: Random) -> tuple[int, int, int, int]:
     recorded_mean = rng.randint(40, 75)
     recorded_value = rng.randint(20, 60)
     shift = rng.choice((-1, 1)) * count * rng.randint(1, 3)
+    # The data are scores, items sold and visitors: a correction that would make
+    # the value zero or negative goes the other way. Drawing first and flipping
+    # after keeps every other seed's question as it was.
+    if recorded_value + shift < 1:
+        shift = -shift
     return count, recorded_mean, recorded_value, recorded_value + shift
 
 
