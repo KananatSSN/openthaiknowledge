@@ -61,3 +61,11 @@ def test_variety_and_application_placement(key):
     assert row["level"] == "ม.2"
     assert row["topic"] == "สถิติ"
     assert row["learning_stage"] == 3
+
+
+def test_corrected_value_is_a_possible_count():
+    """Scores, items sold and visitors are never zero or negative after correction."""
+    for seed in range(5000):
+        count, average, recorded, actual = _corrected_mean_data(Random(seed))
+        assert actual >= 1 and recorded >= 1, (seed, recorded, actual)
+        assert actual != recorded
