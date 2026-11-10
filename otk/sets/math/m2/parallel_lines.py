@@ -15,6 +15,7 @@ from otk.core.content import text
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
+from otk.kit import story as _story
 from otk.kit.concept_bank import Concept, ConceptBankType
 from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_diagrams import _img, _math_q
@@ -251,4 +252,29 @@ class ParallelReasonM2(ConceptBankType):
         Concept("เส้นตรง ℓ และ m ถูกตัดด้วยเส้นตัด t ถ้ามุมแย้งคู่หนึ่งมีขนาดเท่ากัน ข้อสรุปใดถูกต้อง",
                 "ℓ ขนานกับ m", ("ℓ ตั้งฉากกับ m", "ℓ และ m ตัดกันที่จุดหนึ่ง", "บอกไม่ได้ว่า ℓ และ m ขนานกันหรือไม่")),
     ]
+
+
+# The eight angles where EF (E above AB) cuts AB at G and CD at H, sorted into the two sizes they come in:
+# with ∠EGB = u, these four are u and the other four 180° − u.
+NAMED_EQUAL = ("∠EGB", "∠AGH", "∠GHD", "∠CHF")
+NAMED_SUPPLEMENT = ("∠AGE", "∠BGH", "∠CHG", "∠DHF")
+
+
+@question_type("math.parallel_named_angle_m2", display_name={"th": "หาขนาดของมุมจากชื่อมุมบนเส้นขนาน"},
+               level={"th": "ม.2"}, topic="เส้นขนาน")
+class ParallelNamedAngleM2(WordProblem):
+    """One angle at G given by name, another at H asked: equal or supplementary, often in two steps."""
+
+    def expr(self, rng: Random):
+        u = rng.choice([n for n in range(35, 146) if n != 90])
+        given = rng.choice(NAMED_EQUAL[:2] + NAMED_SUPPLEMENT[:2])
+        asked = rng.choice(NAMED_EQUAL[2:] + NAMED_SUPPLEMENT[2:])
+        v = u if given in NAMED_EQUAL else 180 - u
+        right = v if (given in NAMED_EQUAL) == (asked in NAMED_EQUAL) else 180 - v
+        prompt = (f"AB ขนานกับ CD มีเส้นตัด EF ตัด AB ที่ G และตัด CD ที่ H ถ้า {given} = {v}° "
+                  f"จงหาขนาดของ {asked} (องศา)")
+        # The other size; its difference from a right angle; the given angle doubled.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(180 - right, abs(90 - right), 2 * v, right + 10,
+                                                answer=right, lo=1, hi=179))
 

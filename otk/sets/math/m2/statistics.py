@@ -344,3 +344,58 @@ class MedianAfterNewValueM2(WordProblem):
                 str(new_value),
                 str(sorted(data)[3]),
             ])
+
+
+# ── More statistics (สสวท. ม.2 เล่ม 2 บทที่ 1): the three averages of a list, and a mean from a table ──
+
+
+@question_type("math.mean_median_mode_m2", display_name={"th": "ค่าเฉลี่ยเลขคณิต มัธยฐาน และฐานนิยม"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MeanMedianModeM2(WordProblem):
+    """Seven or nine values with one mode and a whole-number mean; one of the three averages is asked."""
+
+    def expr(self, rng: Random):
+        while True:
+            n = rng.choice((7, 9))
+            mode = rng.randint(3, 18)
+            others = rng.sample([v for v in range(1, 21) if v != mode], n - 3)
+            data = others + [mode] * 3
+            rng.shuffle(data)
+            if sum(data) % n == 0:
+                break
+        mean, median = sum(data) // n, sorted(data)[n // 2]
+        unsorted_middle = data[n // 2]
+        spread = max(data) - min(data)
+        values = ", ".join(str(v) for v in data)
+        ask = rng.randrange(3)
+        word, right = (("ค่าเฉลี่ยเลขคณิต", mean), ("มัธยฐาน", median), ("ฐานนิยม", mode))[ask]
+        # The other two averages, the middle of the list as written, and the range.
+        return MathDraw("", str(right), prompt=f"ข้อมูล {n} จำนวน ได้แก่ {values} จงหา{word}ของข้อมูลชุดนี้",
+                        distractors=_story.keep(*(v for v in (mean, median, mode) if v != right), unsorted_middle,
+                                                spread, right + 1, answer=right, lo=0))
+
+
+@question_type("math.mean_from_frequency_m2", display_name={"th": "ค่าเฉลี่ยเลขคณิตจากตารางแจกแจงความถี่"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MeanFromFrequencyM2(WordProblem):
+    """Σfx ÷ Σf: each score counted as often as it occurs."""
+
+    def expr(self, rng: Random):
+        while True:
+            start = rng.randint(3, 15)
+            scores = [start + i for i in range(4)]
+            freqs = [rng.randint(1, 8) for _ in scores]
+            total = sum(f * x for f, x in zip(freqs, scores))
+            if total % sum(freqs) == 0 and len(set(freqs)) > 1:
+                break
+        mean = total // sum(freqs)
+        listed = ", ".join(str(x) for x in scores[:-1]) + f" และ {scores[-1]}"
+        counts = ", ".join(str(f) for f in freqs[:-1]) + f" และ {freqs[-1]}"
+        prompt = (f"ผลการสอบย่อยของห้องหนึ่ง มีนักเรียนได้คะแนน {listed} จำนวน {counts} คน ตามลำดับ "
+                  f"ค่าเฉลี่ยเลขคณิตของคะแนนเป็นเท่าใด")
+        plain = sum(scores) / 4
+        # The scores averaged without their counts; the total over four; the most frequent score.
+        mode = scores[freqs.index(max(freqs))]
+        return MathDraw("", str(mean), prompt=prompt,
+                        distractors=_story.keep(int(plain) if plain == int(plain) else 0, total // 4, mode,
+                                                mean + 1, mean - 1, answer=mean, lo=1))

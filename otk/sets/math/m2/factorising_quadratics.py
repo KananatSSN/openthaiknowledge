@@ -14,7 +14,7 @@ from random import Random
 from otk.core.provenance import Provenance
 from otk.core.registry import question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem, binomial_tex
+from otk.kit.math_problems import MathDraw, WordProblem, binomial_tex, poly_tex
 from otk.sets._support.math_gaps_secondary import _distinct, _lin, _num, _nz, _quad
 
 PROVENANCE = Provenance("original")
@@ -94,3 +94,156 @@ class FactorApplyM2(WordProblem):
                         prompt="ใช้ผลต่างกำลังสองหาค่า",
                         distractors=[_num(int(v)) for v in
                                      _story.keep(n * n + d * d, n * n - d, (n - d) * n, answer=value)])
+
+
+# ── More factorising (สสวท. ม.2 เล่ม 2 บทที่ 2): the two special products both ways, a leading
+# coefficient other than 1, reading a product back as a sum, a missing term, a quick product of
+# numbers, and grouping ──
+
+def _prod(*factors: str) -> str:
+    return "".join(f"({f})" for f in factors)
+
+
+def _expand(p: int, q: int, r: int, s: int) -> tuple[int, int, int]:
+    """(px + q)(rx + s) = pr x² + (ps + qr) x + qs."""
+    return p * r, p * s + q * r, q * s
+
+
+@question_type("math.factor_difference_squares_m2", display_name={"th": "แยกตัวประกอบผลต่างของกำลังสอง"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorDifferenceSquaresM2(WordProblem):
+    """a² − b² = (a − b)(a + b), once with a coefficient on x and once after a common factor."""
+
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        a = rng.randint(2, 12)
+        if kind == 0:
+            expanded, right = _quad(1, 0, -a * a), _prod(_lin(1, -a), _lin(1, a))
+            # Read as a perfect square either way; the square root of the constant forgotten.
+            wrongs = [f"({_lin(1, -a)})^{{2}}", f"({_lin(1, a)})^{{2}}", _prod(_lin(1, -a * a), _lin(1, 1))]
+        elif kind == 1:
+            while True:
+                k, a = rng.randint(2, 5), rng.randint(1, 9)
+                if math.gcd(k, a) == 1:
+                    break
+            expanded, right = _quad(k * k, 0, -a * a), _prod(_lin(k, -a), _lin(k, a))
+            # The coefficient's square root not taken; read as a square; the signs alike.
+            wrongs = [_prod(_lin(k * k, -a), _lin(k * k, a)), f"({_lin(k, -a)})^{{2}}", _prod(_lin(k, a), _lin(k, a))]
+        else:
+            m, a = rng.randint(2, 5), rng.randint(2, 9)
+            expanded, right = _quad(m, 0, -m * a * a), f"{m}" + _prod(_lin(1, -a), _lin(1, a))
+            # The common factor left out; left inside one bracket; read as a square.
+            wrongs = [_prod(_lin(1, -a), _lin(1, a)), _prod(_lin(m, -a), _lin(1, a)), f"{m}({_lin(1, -a)})^{{2}}"]
+        return MathDraw(expanded, right, prompt="จงแยกตัวประกอบให้สมบูรณ์", distractors=_distinct(right, *wrongs))
+
+
+@question_type("math.factor_perfect_square_m2", display_name={"th": "แยกตัวประกอบกำลังสองสมบูรณ์"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorPerfectSquareM2(WordProblem):
+    """A² ± 2AB + B² = (A ± B)², with A = kx."""
+
+    def expr(self, rng: Random):
+        while True:
+            k, a = rng.choice((1, 1, 2, 3)), rng.randint(1, 9)
+            if math.gcd(k, a) == 1:
+                break
+        sign = rng.choice((1, -1))
+        expanded = _quad(k * k, sign * 2 * k * a, a * a)
+        right = f"({_lin(k, sign * a)})^{{2}}"
+        # The other sign; the difference of squares; the middle coefficient halved wrongly (kx ± 2a).
+        wrongs = [f"({_lin(k, -sign * a)})^{{2}}", _prod(_lin(k, -a), _lin(k, a)), f"({_lin(k, sign * 2 * a)})^{{2}}",
+                  f"({_lin(k, sign * a * a)})^{{2}}"]
+        return MathDraw(expanded, right, prompt="จงแยกตัวประกอบ", distractors=_distinct(right, *wrongs))
+
+
+@question_type("math.factor_leading_coeff_m2", display_name={"th": "แยกตัวประกอบ ax² + bx + c เมื่อ a ไม่เท่ากับ 1"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorLeadingCoeffM2(WordProblem):
+    """(px + q)(rx + s) with p or r above 1: the constants must pair with the right coefficients."""
+
+    def expr(self, rng: Random):
+        while True:
+            p, r = rng.choice((1, 2, 3)), rng.choice((2, 3, 5))
+            q, s = _nz(rng, -7, 7), _nz(rng, -7, 7)
+            a, b, c = _expand(p, q, r, s)
+            if math.gcd(p, abs(q)) == 1 and math.gcd(r, abs(s)) == 1 and b and (p, q) != (r, s):
+                break
+        right = _prod(_lin(p, q), _lin(r, s))
+        # The constants swapped between brackets; both signs flipped; one sign flipped. Only forms that
+        # really expand to something else are offered.
+        candidates = [(p, s, r, q), (p, -q, r, -s), (p, q, r, -s), (p, -q, r, s)]
+        wrongs = [_prod(_lin(w, x), _lin(y, z)) for w, x, y, z in candidates if _expand(w, x, y, z) != (a, b, c)]
+        return MathDraw(_quad(a, b, c), right, prompt="จงแยกตัวประกอบ", distractors=_distinct(right, *wrongs))
+
+
+@question_type("math.factor_identify_m2", display_name={"th": "ผลคูณของพหุนามดีกรีหนึ่งสองพหุนาม"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorIdentifyM2(WordProblem):
+    """The reverse direction: which trinomial does (x + p)(x + q) factorise?"""
+
+    def expr(self, rng: Random):
+        while True:
+            p, q = _nz(rng, -9, 9), _nz(rng, -9, 9)
+            if p != q and p + q and p * q != p + q:
+                break
+        right = _quad(1, p + q, p * q)
+        # The sum and the product swapped; the middle sign flipped; the constant added, not multiplied.
+        wrongs = [_quad(1, p * q, p + q), _quad(1, -(p + q), p * q), _quad(1, p + q, p + q), _quad(1, p * q, p * q)]
+        return MathDraw(_prod(_lin(1, p), _lin(1, q)), right, prompt="พหุนามในข้อใดเท่ากับผลคูณนี้",
+                        distractors=_distinct(right, *wrongs))
+
+
+@question_type("math.factor_missing_term_m2", display_name={"th": "หาพจน์ที่หายไปจากการแยกตัวประกอบ"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorMissingTermM2(WordProblem):
+    """x² + bx + c = (x + p)(x + q): the middle coefficient is p + q and the constant pq."""
+
+    def expr(self, rng: Random):
+        while True:
+            p, q = _nz(rng, -9, 9), _nz(rng, -9, 9)
+            if p != q and p + q:
+                break
+        b, c = p + q, p * q
+        if rng.random() < 0.5:
+            # Given the constant and one factor, find the middle coefficient.
+            prompt = (f"ถ้า x² + kx {'+' if c > 0 else '−'} {abs(c)} แยกตัวประกอบได้เป็น "
+                      f"({_plain(_lin(1, p))})(x + ?) แล้ว k มีค่าเท่าใด")
+            # The constant itself; the other factor's number; p − q.
+            return MathDraw("", str(b), prompt=prompt, distractors=[str(w) for w in dict.fromkeys((c, q, p - q)) if w != b])
+        prompt = (f"ถ้า x² {'+' if b > 0 else '−'} {abs(b)}x + k แยกตัวประกอบได้เป็น "
+                  f"({_plain(_lin(1, p))})(x + ?) แล้ว k มีค่าเท่าใด")
+        # The middle coefficient itself; p times b; the other factor's number.
+        return MathDraw("", str(c), prompt=prompt, distractors=[str(w) for w in dict.fromkeys((b, p * b, q)) if w != c])
+
+
+@question_type("math.factor_number_trick_m2", display_name={"th": "ใช้ผลต่างของกำลังสองคำนวณ"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorNumberTrickM2(WordProblem):
+    """a² − b² = (a − b)(a + b) turns two squares into one easy product."""
+
+    def expr(self, rng: Random):
+        total = rng.choice((100, 100, 200, 60, 80))
+        b = rng.randint(total // 2 - 19, total // 2 - 2)
+        a = total - b
+        value = a * a - b * b
+        # (a − b)² for a² − b²; b not squared; (a − b) times 10.
+        wrongs = [(a - b) ** 2, a * a - b, (a - b) * total + (a - b)]
+        return MathDraw(rf"{a}^{{2}} - {b}^{{2}}", _num(value), prompt="จงหาค่าโดยใช้การแยกตัวประกอบผลต่างของกำลังสอง",
+                        distractors=[_num(int(w)) for w in _story.keep(*wrongs, answer=value, lo=1)])
+
+
+@question_type("math.factor_grouping_m2", display_name={"th": "แยกตัวประกอบโดยดึงพหุนามร่วม"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorGroupingM2(WordProblem):
+    """x(y + p) + q(y + p) = (x + q)(y + p): the common factor is a whole bracket."""
+
+    def expr(self, rng: Random):
+        p, q = _nz(rng, -9, 9), _nz(rng, -9, 9)
+        bracket = poly_tex((1, "y"), (p, ""))
+        expanded = f"x({bracket}) {'+' if q > 0 else '-'} {abs(q)}({bracket})"
+        right = f"({_lin(1, q)})({bracket})"
+        # Multiplying the outside terms; the brackets added; the sign of q lost.
+        wrongs = [f"{abs(q)}x({bracket})" if q > 0 else f"-{abs(q)}x({bracket})",
+                  f"({_lin(1, q)}) + ({bracket})", f"({_lin(1, -q)})({bracket})"]
+        return MathDraw(expanded, right, prompt="จงแยกตัวประกอบ", distractors=_distinct(right, *wrongs))
+

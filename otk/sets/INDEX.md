@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,044 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,080 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -131,19 +131,19 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`congruence.py`](math/m2/congruence.py) | ความเท่ากันทุกประการ | `math.congruence_case`, `math.congruence_picture_m2`, `math.congruent_sides`, `math.congruent_angles` |
+| [`congruence.py`](math/m2/congruence.py) | ความเท่ากันทุกประการ | `math.congruence_case`, `math.congruence_picture_m2`, `math.congruent_sides`, `math.congruent_angles`, `math.congruence_correspondence_m2`, `math.congruence_missing_condition_m2`, `math.congruence_not_enough_m2`, `math.congruence_sides_algebra_m2`, `math.congruence_angles_algebra_m2`, `math.congruence_proof_reason_m2` |
 | [`exponents.py`](math/m2/exponents.py) | เลขยกกำลัง | `math.negative_exponent`, `math.power_of_product`, `math.power_of_quotient`, `math.negative_exponent_evaluate`, `math.hard_product_then_power`, `math.hard_quotient_then_power`, `math.hard_product_with_negative`, `math.hard_power_then_negative`, `math.negative_exponent_simplify`, `math.missing_exponent_m2`, `math.fractional_exponent`, `math.fractional_exponent_evaluate`, `math.radical_to_exponent` |
-| [`factorising_quadratics.py`](math/m2/factorising_quadratics.py) | การแยกตัวประกอบของพหุนามดีกรีสอง | `math.factor_common_m2`, `math.factor_trinomial_m2`, `math.factor_apply_m2` |
-| [`geometric_reasoning.py`](math/m2/geometric_reasoning.py) | การให้เหตุผลทางเรขาคณิต | `math.isosceles_triangle_angle_m2`, `math.construct_angle_m2`, `math.exterior_angle_m2`, `math.converse_statement_m2` |
-| [`geometric_transformations.py`](math/m2/geometric_transformations.py) | การแปลงทางเรขาคณิต | `math.reflect_point`, `math.translate_point`, `math.coordinate_transform`, `math.transformation_picture_m2`, `math.rotation_about_center_m2`, `math.translation_then_reflection_m2`, `math.inverse_transformation_m2` |
+| [`factorising_quadratics.py`](math/m2/factorising_quadratics.py) | การแยกตัวประกอบของพหุนามดีกรีสอง | `math.factor_common_m2`, `math.factor_trinomial_m2`, `math.factor_apply_m2`, `math.factor_difference_squares_m2`, `math.factor_perfect_square_m2`, `math.factor_leading_coeff_m2`, `math.factor_identify_m2`, `math.factor_missing_term_m2`, `math.factor_number_trick_m2`, `math.factor_grouping_m2` |
+| [`geometric_reasoning.py`](math/m2/geometric_reasoning.py) | การให้เหตุผลทางเรขาคณิต | `math.isosceles_triangle_angle_m2`, `math.construct_angle_m2`, `math.exterior_angle_m2`, `math.converse_statement_m2`, `math.triangle_angle_algebra_m2`, `math.polygon_exterior_m2`, `math.triangle_inequality_m2`, `math.vertical_angles_algebra_m2`, `math.angle_bisector_triangle_m2`, `math.isosceles_sides_m2` |
+| [`geometric_transformations.py`](math/m2/geometric_transformations.py) | การแปลงทางเรขาคณิต | `math.reflect_point`, `math.translate_point`, `math.coordinate_transform`, `math.transformation_picture_m2`, `math.rotation_about_center_m2`, `math.translation_then_reflection_m2`, `math.inverse_transformation_m2`, `math.reflect_line_m2`, `math.translation_vector_m2`, `math.transformation_property_m2` |
 | [`linear_functions.py`](math/m2/linear_functions.py) | ฟังก์ชันเชิงเส้น | `math.linear_function_graph_m2`, `math.linear_function`, `math.linear_function_from_table`, `math.linear_model_compare_m2` |
 | [`literal_equations.py`](math/m2/literal_equations.py) | แก้สมการหลายตัวแปร | `math.literal_equation`, `math.literal_equation_linear`, `math.literal_equation_area`, `math.formula_context_m2` |
 | [`monomials_and_polynomials.py`](math/m2/monomials_and_polynomials.py) | เอกนามและพหุนาม | `math.classify_monomial_polynomial`, `math.monomial_coefficient_degree`, `math.monomial_like_addsub`, `math.negate_polynomial`, `math.combine_like_terms`, `math.polynomial_addsub`, `math.polynomial_addsub_quadratic`, `math.monomial_product`, `math.monomial_times_polynomial`, `math.negative_monomial_times_polynomial`, `math.monomial_quotient`, `math.simplify_polynomial`, `math.polynomial_div_monomial`, `math.distribute_and_simplify`, `math.polynomial_area_m2` |
-| [`parallel_lines.py`](math/m2/parallel_lines.py) | เส้นขนาน | `math.cointerior_angle`, `math.transversal_picture_m2`, `math.polygon_angle_sum`, `math.transversal_angle_chain`, `math.parallel_bend_m2`, `math.parallel_triangle_m2`, `math.parallel_algebra_m2`, `math.parallel_test_m2`, `math.parallel_reason_m2` |
-| [`pythagoras.py`](math/m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | `math.pythagoras`, `math.pythagoras_figure_m2`, `math.pythagoras_diagonal`, `math.pythagoras_triple_check`, `math.pythagoras_word_problem_m2`, `math.pythagoras_grid_distance_m2` |
-| [`real_numbers.py`](math/m2/real_numbers.py) | จำนวนจริง | `math.classify_real_number`, `math.nth_root`, `math.roots_of_perfect_powers_m2`, `math.square_root_context_m2`, `math.sqrt_between_integers`, `math.pick_irrational`, `math.simplify_sqrt`, `math.sqrt_product`, `math.sqrt_measure_context_m2` |
-| [`statistics.py`](math/m2/statistics.py) | สถิติ | `math.central_tendency`, `math.dot_plot_m2`, `math.dot_plot_picture_m2`, `math.median_from_data`, `math.stem_and_leaf_m2`, `math.histogram_picture_m2`, `math.grouped_frequency_m2`, `math.missing_frequency_mean_m2`, `math.corrected_mean_m2`, `math.median_after_new_value_m2` |
-| [`surface_area_and_volume.py`](math/m2/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | `math.cylinder_volume`, `math.prism_surface_area_m2`, `math.cylinder_surface_area_m2`, `math.prism_cylinder_volume_word_m2` |
+| [`parallel_lines.py`](math/m2/parallel_lines.py) | เส้นขนาน | `math.cointerior_angle`, `math.transversal_picture_m2`, `math.polygon_angle_sum`, `math.transversal_angle_chain`, `math.parallel_bend_m2`, `math.parallel_triangle_m2`, `math.parallel_algebra_m2`, `math.parallel_test_m2`, `math.parallel_reason_m2`, `math.parallel_named_angle_m2` |
+| [`pythagoras.py`](math/m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | `math.pythagoras`, `math.pythagoras_figure_m2`, `math.pythagoras_diagonal`, `math.pythagoras_triple_check`, `math.pythagoras_word_problem_m2`, `math.pythagoras_grid_distance_m2`, `math.pythagoras_isosceles_m2`, `math.pythagoras_rectangle_m2`, `math.pythagoras_ladder_m2`, `math.pythagoras_box_diagonal_m2` |
+| [`real_numbers.py`](math/m2/real_numbers.py) | จำนวนจริง | `math.classify_real_number`, `math.nth_root`, `math.roots_of_perfect_powers_m2`, `math.square_root_context_m2`, `math.sqrt_between_integers`, `math.pick_irrational`, `math.simplify_sqrt`, `math.sqrt_product`, `math.sqrt_measure_context_m2`, `math.sqrt_estimate_m2` |
+| [`statistics.py`](math/m2/statistics.py) | สถิติ | `math.central_tendency`, `math.dot_plot_m2`, `math.dot_plot_picture_m2`, `math.median_from_data`, `math.stem_and_leaf_m2`, `math.histogram_picture_m2`, `math.grouped_frequency_m2`, `math.missing_frequency_mean_m2`, `math.corrected_mean_m2`, `math.median_after_new_value_m2`, `math.mean_median_mode_m2`, `math.mean_from_frequency_m2` |
+| [`surface_area_and_volume.py`](math/m2/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | `math.cylinder_volume`, `math.prism_surface_area_m2`, `math.cylinder_surface_area_m2`, `math.prism_cylinder_volume_word_m2`, `math.prism_volume_base_m2`, `math.cylinder_dimension_m2`, `math.volume_litres_m2`, `math.hollow_cylinder_m2`, `math.box_with_hole_m2`, `math.scale_volume_m2` |
 
 ### m3 — ม.3
 
