@@ -238,3 +238,36 @@ class SqrtMeasureContextM2(WordProblem):
                                 f"อยู่ระหว่างจำนวนเต็มใด"),
                         # one below, one above, and a quarter of the area (the perimeter slip)
                         distractors=[between(lo - 1), between(lo + 1), between(area // 4)])
+
+
+def _nearest_tenths(n: int) -> int:
+    """√n to the nearest tenth, as a count of tenths, without floats: the t with (t ± ½)/10 around √n."""
+    t = 0
+    while (t + 1) * (t + 1) <= 100 * n:
+        t += 1
+    return t + 1 if 400 * n >= (2 * t + 1) ** 2 else t
+
+
+@question_type("math.sqrt_estimate_m2", display_name={"th": "ประมาณค่ารากที่สอง"},
+               level=LEVEL, topic=_REAL_TOPIC)
+class SqrtEstimateM2(WordProblem):
+    """√n for n not a square: the nearest whole number, or the nearest tenth."""
+
+    def expr(self, rng: Random):
+        if rng.random() < 0.5:
+            n = rng.choice([v for v in range(5, 400) if round(v ** 0.5) ** 2 != v])
+            k = 0
+            while (k + 1) * (k + 1) <= n:
+                k += 1
+            near = k + 1 if n > k * k + k else k
+            # The other neighbour; half of n; a tenth of n.
+            return MathDraw(rf"\sqrt{{{n}}}", str(near), prompt="มีค่าใกล้เคียงกับจำนวนเต็มใดมากที่สุด",
+                            distractors=_story.keep(2 * k + 1 - near, n // 2, n // 10, near + 2, answer=near, lo=1))
+        n = rng.choice([v for v in range(2, 100) if round(v ** 0.5) ** 2 != v])
+        t = _nearest_tenths(n)
+
+        def tenths(v: int) -> str:
+            return f"{v // 10}.{v % 10}"
+
+        return MathDraw(rf"\sqrt{{{n}}}", tenths(t), prompt="มีค่าประมาณเป็นทศนิยมหนึ่งตำแหน่งเท่าใด",
+                        distractors=[tenths(v) for v in (t - 2, t + 2, t + 1, t - 1) if v > 0][:3])

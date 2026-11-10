@@ -15,6 +15,7 @@ from otk.core.mistakes import named
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
+from otk.kit.concept_bank import Concept, ConceptBankType
 from otk.kit.math_problems import MathDraw, MathType
 from otk.sets._support.math_diagrams import _img, _math_q, _text_q
 from otk.sets._support.math_diagrams_geo import TRANSFORMS
@@ -124,6 +125,7 @@ class TransformationPictureM2(QuestionType):
 
 
 _TRANSFORM_TOPIC = "การแปลงทางเรขาคณิต"
+LEVEL_M2 = {"th": "ม.2"}
 
 
 @question_type("math.rotation_about_center_m2",
@@ -208,3 +210,91 @@ class InverseTransformationM2(QuestionType):
         return _maths([text(f"จุด A ถูกสะท้อนข้ามแกน x แล้วเลื่อนขนานด้วยเวกเตอร์ {_pt((u, v))} "
                             f"ได้ภาพ A' = {_pt(image)} จุด A เดิมมีพิกัดใด")],
                       _pt((x, y)), wrongs, self.topic)
+
+
+# ── More transformations (สสวท. ม.2 เล่ม 1 บทที่ 5): reflection in other lines, finding a translation,
+# and what each transformation keeps ──
+
+
+@question_type("math.reflect_line_m2", display_name={"th": "สะท้อนจุดข้ามเส้นตรงที่กำหนด"},
+               level=LEVEL_M2, topic=_TRANSFORM_TOPIC)
+class ReflectLineM2(QuestionType):
+    """Reflection in x = k, y = k, y = x or y = −x."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        x, y = rng.choice([v for v in range(-8, 9) if v]), rng.choice([v for v in range(-8, 9) if v])
+        kind = rng.randrange(4)
+        if kind < 2:
+            k = rng.choice([v for v in range(-5, 6) if v and v != (x if kind == 0 else y)])
+            if kind == 0:
+                line, right = f"x = {k}", (2 * k - x, y)
+                # The y-axis used; k − x; the y changed instead.
+                wrongs = [(-x, y), (k - x, y), (x, 2 * k - y)]
+            else:
+                line, right = f"y = {k}", (x, 2 * k - y)
+                wrongs = [(x, -y), (x, k - y), (2 * k - x, y)]
+        elif kind == 2:
+            line, right = "y = x", (y, x)
+            wrongs = [(-y, -x), (x, -y), (-x, y)]
+        else:
+            line, right = "y = −x", (-y, -x)
+            wrongs = [(y, x), (-x, -y), (-x, y)]
+        # When two slips land on the same point, the point not moved and the other axis fill in.
+        wrongs = [w for w in dict.fromkeys([*wrongs, (x, y), (-x, -y), (x, -y), (-x, y)]) if w != right][:3]
+        return _maths([text(f"จุด A = {_pt((x, y))} ถูกสะท้อนข้ามเส้นตรง {line} ภาพของจุด A มีพิกัดใด")],
+                      _pt(right), [_pt(w) for w in wrongs], self.topic)
+
+
+@question_type("math.translation_vector_m2", display_name={"th": "หาการเลื่อนขนานจากจุดและภาพ"},
+               level=LEVEL_M2, topic=_TRANSFORM_TOPIC)
+class TranslationVectorM2(QuestionType):
+    """A and its image A′ fix the translation; the same move takes B to B′."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        a = (rng.randint(-6, 6), rng.randint(-6, 6))
+        u, v = rng.choice([n for n in range(-7, 8) if n]), rng.choice([n for n in range(-7, 8) if n])
+        image = (a[0] + u, a[1] + v)
+        if rng.random() < 0.5:
+            # Subtracted the wrong way; the image's own coordinates; the parts swapped.
+            # Then one part's sign slipped, or A's own coordinates, when two of those coincide.
+            wrongs = [(-u, -v), image, (v, u), (u, -v), (-u, v), a]
+            wrongs = [w for w in dict.fromkeys(wrongs) if w != (u, v)][:3]
+            return _maths([text(f"การเลื่อนขนานพาจุด A = {_pt(a)} ไปยังจุด A′ = {_pt(image)} "
+                                f"เป็นการเลื่อนขนานด้วยเวกเตอร์ใด")], _pt((u, v)), [_pt(w) for w in wrongs], self.topic)
+        b = (rng.randint(-6, 6), rng.randint(-6, 6))
+        right = (b[0] + u, b[1] + v)
+        wrongs = [(b[0] - u, b[1] - v), (b[0] + image[0], b[1] + image[1]), (b[0] + v, b[1] + u),
+                  (b[0] + u, b[1] - v), (b[0] - u, b[1] + v), b]
+        wrongs = [w for w in dict.fromkeys(wrongs) if w != right][:3]
+        return _maths([text(f"การเลื่อนขนานพาจุด A = {_pt(a)} ไปยังจุด A′ = {_pt(image)} "
+                            f"ถ้าเลื่อนขนานจุด B = {_pt(b)} แบบเดียวกัน ภาพของจุด B มีพิกัดใด")],
+                      _pt(right), [_pt(w) for w in wrongs], self.topic)
+
+
+_KINDS = ("การเลื่อนขนาน", "การสะท้อน", "การหมุน")
+
+
+@question_type("math.transformation_property_m2", display_name={"th": "สมบัติของการแปลงทางเรขาคณิต"},
+               level=LEVEL_M2, topic=_TRANSFORM_TOPIC)
+class TransformationPropertyM2(ConceptBankType):
+    """What each transformation keeps, moves and turns over."""
+
+    ITEMS = [
+        Concept("การแปลงใดที่ทุกจุดเคลื่อนที่ไปในทิศทางเดียวกันและเป็นระยะทางเท่ากัน", "การเลื่อนขนาน",
+                ("การสะท้อน", "การหมุน", "การย่อขยาย")),
+        Concept("การแปลงใดทำให้ภาพที่ได้กลับด้านจากรูปต้นแบบ เหมือนภาพในกระจกเงา", "การสะท้อน",
+                ("การเลื่อนขนาน", "การหมุน", "การย่อขยาย")),
+        Concept("การแปลงใดมีจุดหนึ่งจุดที่ไม่เปลี่ยนตำแหน่ง และจุดอื่นเคลื่อนที่เป็นมุมเท่ากันรอบจุดนั้น", "การหมุน",
+                ("การเลื่อนขนาน", "การสะท้อน", "การย่อขยาย")),
+        Concept("ในการสะท้อน ส่วนของเส้นตรงที่เชื่อมจุดกับภาพของจุดนั้นมีความสัมพันธ์กับเส้นสะท้อนอย่างไร",
+                "เส้นสะท้อนแบ่งครึ่งและตั้งฉากกับส่วนของเส้นตรงนั้น",
+                ("เส้นสะท้อนขนานกับส่วนของเส้นตรงนั้นเสมอ", "เส้นสะท้อนผ่านจุดนั้นแต่ไม่ผ่านภาพของจุดนั้น",
+                 "เส้นสะท้อนทำมุม 45 องศากับส่วนของเส้นตรงนั้น")),
+        Concept("ข้อใดถูกต้องเกี่ยวกับการเลื่อนขนาน การสะท้อน และการหมุน",
+                "ภาพที่ได้เท่ากันทุกประการกับรูปต้นแบบ",
+                ("ภาพที่ได้มีขนาดใหญ่กว่ารูปต้นแบบ", "ภาพที่ได้กลับด้านจากรูปต้นแบบทุกครั้ง",
+                 "ภาพที่ได้อยู่ตำแหน่งเดิมของรูปต้นแบบเสมอ")),
+        Concept("ในการหมุนรอบจุด O ข้อใดถูกต้อง", "ระยะจากจุด O ถึงจุดใด ๆ เท่ากับระยะจากจุด O ถึงภาพของจุดนั้น",
+                ("ทุกจุดเคลื่อนที่เป็นระยะทางเท่ากันในทิศทางเดียวกัน", "ภาพที่ได้กลับด้านจากรูปต้นแบบเหมือนภาพในกระจกเงา",
+                 "จุด O เคลื่อนที่ไปพร้อมกับรูปเป็นระยะทางเท่ากับจุดอื่น")),
+    ]

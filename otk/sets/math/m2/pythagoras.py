@@ -171,3 +171,98 @@ class PythagorasGridDistanceM2(MathType):
                         prompt="จุด A และ B อยู่ห่างกันกี่หน่วย",
                         # Adding the two legs, and the difference of the legs.
                         distractors=_story.keep(a + b, abs(b - a), c * c, c + 1, answer=c, lo=1))
+
+
+# ── More Pythagoras (สสวท. ม.2 เล่ม 1 บทที่ 1): the height of an isosceles triangle, a rectangle's side from
+# its diagonal, a ladder that slides, and the diagonal of a box ──
+
+
+def _legs(rng: Random, k_hi: int = 4) -> tuple[int, int, int]:
+    a, b, c = triple(rng, k_hi)
+    return (a, b, c) if rng.random() < 0.5 else (b, a, c)
+
+
+@question_type("math.pythagoras_isosceles_m2", display_name={"th": "ส่วนสูงของรูปสามเหลี่ยมหน้าจั่ว"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasIsoscelesM2(WordProblem):
+    """The height from the apex halves the base: (half base)² + height² = side²."""
+
+    def expr(self, rng: Random):
+        half, height, side = _legs(rng, 3)
+        lead = (f"รูปสามเหลี่ยมหน้าจั่ว ABC มี AB = AC = {side} เซนติเมตร และฐาน BC ยาว {2 * half} เซนติเมตร ")
+        if rng.random() < 0.5:
+            # The whole base used; side less half base; the side itself.
+            return MathDraw("", str(height), prompt=lead + "ส่วนสูงจากจุด A ถึงฐานยาวกี่เซนติเมตร",
+                            distractors=_story.keep(side - half, side + half, side, 2 * height, answer=height, lo=1))
+        area = half * height
+        # The half forgotten; the side used as the height; half of the half.
+        return MathDraw("", str(area), prompt=lead + "มีพื้นที่กี่ตารางเซนติเมตร",
+                        distractors=_story.keep(2 * area, half * side, area // 2 if area % 2 == 0 else 0,
+                                                2 * half * side, answer=area, lo=1))
+
+
+@question_type("math.pythagoras_rectangle_m2", display_name={"th": "ด้านและพื้นที่ของรูปสี่เหลี่ยมผืนผ้าจากเส้นทแยงมุม"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasRectangleM2(WordProblem):
+    """Given the diagonal and one side, the other side first, then the area or perimeter."""
+
+    def expr(self, rng: Random):
+        a, b, c = _legs(rng)
+        lead = f"รูปสี่เหลี่ยมผืนผ้ามีเส้นทแยงมุมยาว {c} เซนติเมตร และด้านหนึ่งยาว {a} เซนติเมตร "
+        kind = rng.randrange(3)
+        if kind == 0:
+            return MathDraw("", str(b), prompt=lead + "อีกด้านหนึ่งยาวกี่เซนติเมตร",
+                            distractors=_story.keep(c - a, c + a, c, answer=b, lo=1))
+        if kind == 1:
+            # The diagonal used as a side; the diagonal times the side halved.
+            return MathDraw("", str(a * b), prompt=lead + "มีพื้นที่กี่ตารางเซนติเมตร",
+                            distractors=_story.keep(a * c, a * (c - a), a * b // 2 if a * b % 2 == 0 else 0,
+                                                    answer=a * b, lo=1))
+        per = 2 * (a + b)
+        return MathDraw("", str(per), prompt=lead + "มีความยาวรอบรูปกี่เซนติเมตร",
+                        distractors=_story.keep(2 * (a + c), a + b, a + b + c, answer=per, lo=1))
+
+
+# A ladder of one length in two positions: (length, foot then, top then, foot after, top after).
+_LADDERS = ((25, 7, 24, 15, 20), (50, 14, 48, 30, 40), (65, 25, 60, 39, 52), (65, 16, 63, 33, 56),
+            (65, 33, 56, 39, 52), (75, 21, 72, 45, 60))
+
+
+@question_type("math.pythagoras_ladder_m2", display_name={"th": "บันไดพิงกำแพงเลื่อนลง"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasLadderM2(WordProblem):
+    """Two right triangles with the same hypotenuse: how far the top slides down."""
+
+    def expr(self, rng: Random):
+        length, foot, top, foot2, top2 = rng.choice(_LADDERS)
+        lead = f"บันไดยาว {length} เดซิเมตร พิงกำแพงตั้งตรง ปลายล่างของบันไดห่างจากกำแพง {foot} เดซิเมตร "
+        if rng.random() < 0.4:
+            # The length less the gap; the two added; the length itself.
+            return MathDraw("", str(top), prompt=lead + "ปลายบนของบันไดอยู่สูงจากพื้นกี่เดซิเมตร",
+                            distractors=_story.keep(length - foot, length + foot, length, answer=top, lo=1))
+        slide = top - top2
+        prompt = lead + f"ถ้าเลื่อนปลายล่างออกห่างจากกำแพงอีก {foot2 - foot} เดซิเมตร ปลายบนจะเลื่อนลงกี่เดซิเมตร"
+        # The same distance as the foot; the new height; the old height.
+        return MathDraw("", str(slide), prompt=prompt,
+                        distractors=_story.keep(foot2 - foot, top2, top, slide + 2, answer=slide, lo=1))
+
+
+# Boxes whose space diagonal is a whole number: (width, length, height, diagonal).
+_BOXES = ((1, 2, 2, 3), (2, 3, 6, 7), (1, 4, 8, 9), (4, 4, 7, 9), (2, 6, 9, 11), (6, 6, 7, 11),
+          (3, 4, 12, 13), (2, 10, 11, 15), (8, 9, 12, 17), (4, 5, 20, 21))
+
+
+@question_type("math.pythagoras_box_diagonal_m2", display_name={"th": "เส้นทแยงมุมของทรงสี่เหลี่ยมมุมฉาก"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasBoxDiagonalM2(WordProblem):
+    """Pythagoras twice: across the floor, then up to the far top corner."""
+
+    def expr(self, rng: Random):
+        w, d, h, diag = rng.choice(_BOXES)
+        k = rng.randint(1, 3)
+        w, d, h, diag = w * k, d * k, h * k, diag * k
+        prompt = (f"กล่องทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {d} ซม. สูง {h} ซม. ระยะจากมุมล่างมุมหนึ่ง"
+                  f"ไปยังมุมบนที่อยู่ตรงข้ามกันยาวกี่เซนติเมตร")
+        # The three edges added; one past; the longest edge.
+        return MathDraw("", str(diag), prompt=prompt,
+                        distractors=_story.keep(w + d + h, diag + k, diag - k, d + h, answer=diag, lo=1))
