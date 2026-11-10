@@ -209,4 +209,5 @@ def test_sheet_publication_manifest_is_frozen():
     # The national สอวน. maths papers 2547–2557 and 2562 add 204 more, one per
     # question; the 2563–2567 papers reuse sets that were already registered.
     # The สอวน. physics camp-selection papers 2560–2562 add 86, one per question.
-    assert len(REGISTRY) == 4039
+    # Five more ม.2 parallel-line sets: a bend, a triangle, angles in x, the converse and the reasons.
+    assert len(REGISTRY) == 4044

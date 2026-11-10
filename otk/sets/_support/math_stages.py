@@ -517,9 +517,9 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("congruent_angles",),
     ),
     (B, "ม.2", "เส้นขนาน"): (
-        ("cointerior_angle",),
-        ("transversal_picture_m2", "polygon_angle_sum"),
-        ("transversal_angle_chain",),
+        ("cointerior_angle", "parallel_reason_m2"),
+        ("transversal_picture_m2", "polygon_angle_sum", "parallel_algebra_m2", "parallel_test_m2"),
+        ("transversal_angle_chain", "parallel_bend_m2", "parallel_triangle_m2"),
     ),
     (B, "ม.2", "การให้เหตุผลทางเรขาคณิต"): (
         ("construct_angle_m2", "isosceles_triangle_angle_m2"),
