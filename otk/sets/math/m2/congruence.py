@@ -81,6 +81,14 @@ class CongruentSides(WordProblem):
 
     def expr(self, rng: Random, lo: int = 4, hi: int = 25):
         ab, bc, ca = (rng.randint(lo, hi) for _ in range(3))
+        # Three lengths make a triangle only when the longest is shorter than the other two together.
+        # Otherwise shorten the longest to one less than their sum: still in range, no extra draw.
+        sides = [ab, bc, ca]
+        longest = max(range(3), key=lambda i: sides[i])
+        rest = sum(sides) - sides[longest]
+        if sides[longest] >= rest:
+            sides[longest] = rest - 1
+        ab, bc, ca = sides
         which = rng.choice([("DE", ab), ("EF", bc), ("FD", ca)])
         name, value = which
         return MathDraw(
