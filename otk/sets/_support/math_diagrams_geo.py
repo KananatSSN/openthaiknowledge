@@ -75,6 +75,58 @@ def parallel_alt(p: ParallelCut) -> str:
     return "เส้นตรงสองเส้นที่ขนานกันถูกตัดด้วยเส้นตัด " + " ".join(parts)
 
 
+# ── A bend between two parallel lines (ม.2) ──
+# A point P sits between the lines; PA meets the upper line at A, PB the lower at B. With the angle a at A
+# and b at B (each between the line and the segment, on P's side), the angle APB is a + b: the parallel
+# through P splits it into two alternate angles.
+
+class ParallelBend(NamedTuple):
+    a: int    # the angle at A, on the upper line
+    b: int    # the angle at B, on the lower line
+    ask: str  # "x": the bend APB is x; "a": the angle at A is x and the bend is given
+
+    @property
+    def asset_id(self) -> str:
+        return f"mbend_{self.a}_{self.b}_{self.ask}"
+
+
+_BENDS = ((35, 40), (42, 55), (30, 65), (50, 48), (25, 70), (60, 45), (38, 52), (55, 35))
+PARALLEL_BENDS = tuple(ParallelBend(a, b, ask) for a, b in _BENDS for ask in ("x", "a"))
+
+
+def bend_alt(s: ParallelBend) -> str:
+    at_a = "x" if s.ask == "a" else f"{s.a} องศา"
+    at_p = "x" if s.ask == "x" else f"{s.a + s.b} องศา"
+    return (f"เส้นตรงสองเส้นที่ขนานกัน มีจุดหนึ่งอยู่ระหว่างเส้นทั้งสอง ลากส่วนของเส้นตรงไปพบเส้นบนและเส้นล่าง "
+            f"มุมที่เส้นบนกำกับ {at_a} มุมที่เส้นล่างกำกับ {s.b} องศา มุมที่จุดหักกำกับ {at_p}")
+
+
+# ── A triangle between two parallel lines (ม.2) ──
+# A is on the upper line, B and C on the lower. p and q are the angles the upper line makes with AB (left)
+# and AC (right), outside the triangle; they are alternate to the base angles B and C.
+
+class ParallelTriangle(NamedTuple):
+    p: int
+    q: int
+    ask: str  # "apex": p and q given, ∠BAC = x; "base": p and ∠BAC given, ∠ACB = x
+
+    @property
+    def asset_id(self) -> str:
+        return f"mptri_{self.p}_{self.q}_{self.ask}"
+
+
+_PTRI = ((50, 60), (45, 70), (55, 65), (40, 75), (62, 48), (35, 80), (58, 52), (70, 45))
+PARALLEL_TRIANGLES = tuple(ParallelTriangle(p, q, ask) for p, q in _PTRI for ask in ("apex", "base"))
+
+
+def parallel_triangle_alt(t: ParallelTriangle) -> str:
+    if t.ask == "apex":
+        return (f"เส้นตรงสองเส้นที่ขนานกัน รูปสามเหลี่ยม ABC มีจุดยอด A บนเส้นบน B และ C บนเส้นล่าง "
+                f"มุมที่เส้นบนทำกับ AB กำกับ {t.p} องศา มุมที่เส้นบนทำกับ AC กำกับ {t.q} องศา มุม BAC กำกับ x")
+    return (f"เส้นตรงสองเส้นที่ขนานกัน รูปสามเหลี่ยม ABC มีจุดยอด A บนเส้นบน B และ C บนเส้นล่าง "
+            f"มุมที่เส้นบนทำกับ AB กำกับ {t.p} องศา มุม BAC กำกับ {180 - t.p - t.q} องศา มุม ACB กำกับ x")
+
+
 # ══ Triangles with angles or sides marked (ป.6) ══════════════════════════════
 
 class MarkedTriangle(NamedTuple):
@@ -277,7 +329,8 @@ RIGHT_TRIANGLES = tuple(RightTriangle(o, a, h, s)
                         for s in ("oa", "oh", "ah"))
 
 
-ALL_GEO_DIAGRAMS = (LINE_FIGURES + PARALLEL_FIND + PARALLEL_NAME + PARALLEL_TWO + TRI_ANGLES + TRI_SIDES
+ALL_GEO_DIAGRAMS = (LINE_FIGURES + PARALLEL_FIND + PARALLEL_NAME + PARALLEL_TWO + PARALLEL_BENDS + PARALLEL_TRIANGLES
+                    + TRI_ANGLES + TRI_SIDES
                     + PIE_CHARTS + TRANSFORMS + CIRCLE_ANGLES + SIMILAR_PAIRS + SYMMETRY_SHAPES + TANGENTS
                     + CONIC_GRAPHS + RIGHT_TRIANGLES)
 

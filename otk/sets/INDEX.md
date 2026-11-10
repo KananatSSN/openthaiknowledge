@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,039 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,044 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -139,7 +139,7 @@
 | [`linear_functions.py`](math/m2/linear_functions.py) | ฟังก์ชันเชิงเส้น | `math.linear_function_graph_m2`, `math.linear_function`, `math.linear_function_from_table`, `math.linear_model_compare_m2` |
 | [`literal_equations.py`](math/m2/literal_equations.py) | แก้สมการหลายตัวแปร | `math.literal_equation`, `math.literal_equation_linear`, `math.literal_equation_area`, `math.formula_context_m2` |
 | [`monomials_and_polynomials.py`](math/m2/monomials_and_polynomials.py) | เอกนามและพหุนาม | `math.classify_monomial_polynomial`, `math.monomial_coefficient_degree`, `math.monomial_like_addsub`, `math.negate_polynomial`, `math.combine_like_terms`, `math.polynomial_addsub`, `math.polynomial_addsub_quadratic`, `math.monomial_product`, `math.monomial_times_polynomial`, `math.negative_monomial_times_polynomial`, `math.monomial_quotient`, `math.simplify_polynomial`, `math.polynomial_div_monomial`, `math.distribute_and_simplify`, `math.polynomial_area_m2` |
-| [`parallel_lines.py`](math/m2/parallel_lines.py) | เส้นขนาน | `math.cointerior_angle`, `math.transversal_picture_m2`, `math.polygon_angle_sum`, `math.transversal_angle_chain` |
+| [`parallel_lines.py`](math/m2/parallel_lines.py) | เส้นขนาน | `math.cointerior_angle`, `math.transversal_picture_m2`, `math.polygon_angle_sum`, `math.transversal_angle_chain`, `math.parallel_bend_m2`, `math.parallel_triangle_m2`, `math.parallel_algebra_m2`, `math.parallel_test_m2`, `math.parallel_reason_m2` |
 | [`pythagoras.py`](math/m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | `math.pythagoras`, `math.pythagoras_figure_m2`, `math.pythagoras_diagonal`, `math.pythagoras_triple_check`, `math.pythagoras_word_problem_m2`, `math.pythagoras_grid_distance_m2` |
 | [`real_numbers.py`](math/m2/real_numbers.py) | จำนวนจริง | `math.classify_real_number`, `math.nth_root`, `math.roots_of_perfect_powers_m2`, `math.square_root_context_m2`, `math.sqrt_between_integers`, `math.pick_irrational`, `math.simplify_sqrt`, `math.sqrt_product`, `math.sqrt_measure_context_m2` |
 | [`statistics.py`](math/m2/statistics.py) | สถิติ | `math.central_tendency`, `math.dot_plot_m2`, `math.dot_plot_picture_m2`, `math.median_from_data`, `math.stem_and_leaf_m2`, `math.histogram_picture_m2`, `math.grouped_frequency_m2`, `math.missing_frequency_mean_m2`, `math.corrected_mean_m2`, `math.median_after_new_value_m2` |

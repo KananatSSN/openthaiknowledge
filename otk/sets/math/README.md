@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,539 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,544 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -137,7 +137,7 @@
 | [`linear_functions`](m2/linear_functions.py) | ฟังก์ชันเชิงเส้น | — | 4 |
 | [`literal_equations`](m2/literal_equations.py) | แก้สมการหลายตัวแปร | — | 4 |
 | [`monomials_and_polynomials`](m2/monomials_and_polynomials.py) | เอกนามและพหุนาม | ค 1.2 ม.2/1 | 15 |
-| [`parallel_lines`](m2/parallel_lines.py) | เส้นขนาน | ค 2.2 ม.2/* | 4 |
+| [`parallel_lines`](m2/parallel_lines.py) | เส้นขนาน | ค 2.2 ม.2/* | 9 |
 | [`pythagoras`](m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | ค 2.2 ม.2/5 | 6 |
 | [`real_numbers`](m2/real_numbers.py) | จำนวนจริง | ค 1.1 ม.2/* | 9 |
 | [`statistics`](m2/statistics.py) | สถิติ | ค 3.1 ม.2/* | 10 |
