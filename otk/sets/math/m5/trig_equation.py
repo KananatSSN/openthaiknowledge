@@ -137,7 +137,9 @@ class TrigEquationCountM5(QuestionType):
         lt, approx, lam = rng.choice(LAMBDAS)
         m = rng.randint(1, 3)
         right = tan_shift_count(lam, m)
-        stem = [text("จำนวนคำตอบของสมการ"), content_math(rf"\tan({lt}x) = \tan({lt}\pi)"), text("สำหรับ"),
+        # A bare command such as \pi needs a space before x: \pix is an unknown command, not πx.
+        lx = lt + " " if lt.startswith("\\") and lt[1:].isalpha() else lt
+        stem = [text("จำนวนคำตอบของสมการ"), content_math(rf"\tan({lx}x) = \tan({lt}\pi)"), text("สำหรับ"),
                 content_math(rf"x \in \left[0, {pi_tex(Fraction(m))}\right]"), text("เมื่อ"), content_math(lt),
                 text("มีค่าประมาณ"), content_math(approx), text("มีทั้งหมดกี่คำตอบ")]
         # Only the solutions after π; only the one obvious solution plus one each side; one more.
