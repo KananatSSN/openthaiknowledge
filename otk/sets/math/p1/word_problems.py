@@ -214,3 +214,100 @@ class MissingPartWordProblem(WordProblem):
         return MathDraw("", str(answer), prompt=prompt,
                         distractors=_story.keep(flipped, answer + 1, answer - 1,
                                                 answer + 10, answer=answer, lo=1))
+
+
+# ── More word problems (2026-11): money left, how many more are needed, ages, bundles of ten, and a place
+# in a line ──
+
+
+@question_type("math.money_left_p1", display_name={"th": "โจทย์ปัญหาเงินที่เหลือ"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class MoneyLeftP1(WordProblem):
+    def expr(self, rng: Random):
+        p = rng.choice(_story.NAMES)
+        have = rng.choice((20, 50, 100))
+        cost = rng.randint(5, have - 3)
+        right = have - cost
+        snack = rng.choice(_story.SNACKS)
+        prompt = f"{p}มีเงิน {have} บาท ซื้อ{snack}ราคา {cost} บาท {p}เหลือเงินกี่บาท"
+        # Added instead; the digits taken smaller from larger; one off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(have + cost, _no_borrow_diff(have, cost), right + 1, right - 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.more_needed_p1", display_name={"th": "โจทย์ปัญหาต้องหามาเพิ่มอีกเท่าใด"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class MoreNeededP1(WordProblem):
+    def expr(self, rng: Random):
+        p = rng.choice(_story.NAMES)
+        t = rng.choice(_story.THINGS)
+        want = rng.randint(12, 60)
+        have = rng.randint(3, want - 2)
+        right = want - have
+        prompt = (f"{p}ต้องการ{t.noun} {want} {t.cl} ตอนนี้มีอยู่ {have} {t.cl} "
+                  f"{p}ต้องหามาเพิ่มอีกกี่{t.cl}")
+        # Added instead; what is already there; one off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(want + have, have, right + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.age_word_p1", display_name={"th": "โจทย์ปัญหาเรื่องอายุ"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class AgeWordP1(WordProblem):
+    def expr(self, rng: Random):
+        p, q = _story.names(rng)
+        age = rng.randint(5, 9)
+        gap = rng.randint(2, 6)
+        kind = rng.randrange(3)
+        if kind == 0:
+            right = age + gap
+            prompt = f"ปีนี้{p}อายุ {age} ปี อีก {gap} ปี {p}จะอายุกี่ปี"
+            wrong = age - gap
+        elif kind == 1:
+            right = age + gap
+            prompt = f"{p}อายุ {age} ปี {q}อายุมากกว่า{p} {gap} ปี {q}อายุกี่ปี"
+            wrong = age - gap
+        else:
+            right = age - gap if age > gap else age + gap
+            if age > gap:
+                prompt = f"{p}อายุ {age} ปี {q}อายุน้อยกว่า{p} {gap} ปี {q}อายุกี่ปี"
+                wrong = age + gap
+            else:
+                prompt = f"{p}อายุ {age} ปี {q}อายุมากกว่า{p} {gap} ปี {q}อายุกี่ปี"
+                wrong = age - gap
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(wrong, age, gap, right + 1, answer=right, lo=1))
+
+
+@question_type("math.tens_bundles_word_p1", display_name={"th": "โจทย์ปัญหากล่องละสิบ"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class TensBundlesWordP1(WordProblem):
+    def expr(self, rng: Random):
+        p = rng.choice(_story.NAMES)
+        thing, box, cl = rng.choice((("ดินสอ", "กล่อง", "แท่ง"), ("ไข่ไก่", "แผง", "ฟอง"),
+                                     ("ลูกอม", "ถุง", "เม็ด"), ("สีเทียน", "กล่อง", "แท่ง")))
+        tens = rng.randint(2, 9)
+        ones = rng.randint(1, 9)
+        right = 10 * tens + ones
+        prompt = (f"{p}มี{thing} {tens} {box} {box}ละ 10 {cl} และมีอีก {ones} {cl} "
+                  f"{p}มี{thing}ทั้งหมดกี่{cl}")
+        # The counts added as they stand; tens and ones swapped; the boxes only.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(tens + ones, 10 * ones + tens, 10 * tens, tens + 10 + ones,
+                                                answer=right, lo=1))
+
+
+@question_type("math.line_position_p1", display_name={"th": "โจทย์ปัญหาลำดับที่ในแถว"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class LinePositionP1(WordProblem):
+    def expr(self, rng: Random):
+        p = rng.choice(_story.NAMES)
+        place = rng.randint(2, 9)
+        behind = rng.randint(2, 9)
+        right = place + behind
+        prompt = (f"นักเรียนเข้าแถวตอนเรียงหนึ่ง {p}อยู่ลำดับที่ {place} นับจากหัวแถว "
+                  f"ข้างหลัง{p}มีนักเรียนอีก {behind} คน แถวนี้มีนักเรียนทั้งหมดกี่คน")
+        # Forgetting the child counted; counting them twice; only those behind.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right - 1, right + 1, behind, place, answer=right, lo=1))

@@ -199,3 +199,77 @@ class WeightKgKhitP1(WordProblem):
                         prompt=(f"ชั่ง{x}ใส่ตะกร้าได้ {a} {unit} ตะกร้าเปล่าหนัก {b} {unit} "
                                 f"{x}หนักกี่{unit}"),
                         distractors=_story.keep(a + b, a, a - b + 1, answer=a - b))
+
+
+# ── More measuring (2026-11): how much longer, two lengths joined, kilograms compared, and choosing the
+# unit ──
+
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+
+_LONG_THINGS = (("ดินสอ", "แท่ง"), ("ไม้บรรทัด", "อัน"), ("ยางลบ", "ก้อน"), ("ริบบิ้น", "เส้น"),
+                ("เชือก", "เส้น"), ("หลอดดูดน้ำ", "หลอด"))
+_HEAVY_THINGS = ("แตงโม", "ฟักทอง", "ถุงข้าวสาร", "ถุงส้ม", "กล่องหนังสือ", "สุนัข")
+
+
+@question_type("math.length_difference_p1", display_name={"th": "ยาวกว่ากันกี่เซนติเมตร"},
+               level=LEVEL, topic="การวัด")
+class LengthDifferenceP1(WordProblem):
+    def expr(self, rng: Random):
+        (x, _), (y, _) = rng.sample(_LONG_THINGS, 2)
+        a = rng.randint(8, 30)
+        b = rng.randint(2, a - 2)
+        right = a - b
+        prompt = f"{x}ยาว {a} เซนติเมตร {y}ยาว {b} เซนติเมตร {x}ยาวกว่า{y}กี่เซนติเมตร"
+        # Added instead; one of the lengths; one off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b, a, b, right + 1, answer=right, lo=1))
+
+
+@question_type("math.join_lengths_p1", display_name={"th": "ต่อความยาวสองชิ้น"},
+               level=LEVEL, topic="การวัด")
+class JoinLengthsP1(WordProblem):
+    def expr(self, rng: Random):
+        unit = rng.choice(("เซนติเมตร", "เมตร"))
+        a, b = rng.randint(3, 40), rng.randint(3, 40)
+        right = a + b
+        thing = rng.choice(("ริบบิ้น", "เชือก", "สายไฟ"))
+        prompt = f"นำ{thing}ยาว {a} {unit} มาต่อกับ{thing}ยาว {b} {unit} จะได้{thing}ยาวกี่{unit}"
+        # Subtracted; tens added without the ones carried; one off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(abs(a - b), _no_carry_sum(a, b), right + 1, right - 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.weight_compare_kg_p1", display_name={"th": "เปรียบเทียบน้ำหนักเป็นกิโลกรัม"},
+               level=LEVEL, topic="การวัด")
+class WeightCompareKgP1(WordProblem):
+    def expr(self, rng: Random):
+        x, y = rng.sample(_HEAVY_THINGS, 2)
+        a = rng.randint(5, 20)
+        b = rng.randint(1, a - 1)
+        heavier = rng.random() < 0.5
+        if heavier:
+            right = a - b
+            prompt = f"{x}หนัก {a} กิโลกรัม {y}หนัก {b} กิโลกรัม {x}หนักกว่า{y}กี่กิโลกรัม"
+            wrong = a + b
+        else:
+            right = a + b
+            prompt = f"{x}หนัก {a} กิโลกรัม {y}หนัก {b} กิโลกรัม รวมกันหนักกี่กิโลกรัม"
+            wrong = a - b
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(wrong, a, right + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.choose_unit_p1", display_name={"th": "เลือกหน่วยวัดให้เหมาะสม"},
+               level=LEVEL, topic="การวัด")
+class ChooseUnitP1(ConceptBankType):
+    ITEMS = [
+        Concept("วัดความยาวของดินสอควรใช้หน่วยใด", "เซนติเมตร", ("เมตร", "กิโลกรัม", "ขีด")),
+        Concept("วัดความยาวของห้องเรียนควรใช้หน่วยใด", "เมตร", ("เซนติเมตร", "กิโลกรัม", "ขีด")),
+        Concept("ชั่งน้ำหนักของถุงข้าวสารควรใช้หน่วยใด", "กิโลกรัม", ("เมตร", "เซนติเมตร", "ลิตร")),
+        Concept("ชั่งน้ำหนักของขนมหนึ่งถุงเล็ก ๆ ควรใช้หน่วยใด", "ขีด", ("เมตร", "เซนติเมตร", "กิโลกรัม")),
+        Concept("วัดความสูงของต้นไม้ใหญ่ควรใช้หน่วยใด", "เมตร", ("เซนติเมตร", "ขีด", "กิโลกรัม")),
+        Concept("วัดความยาวของยางลบควรใช้หน่วยใด", "เซนติเมตร", ("เมตร", "กิโลกรัม", "ขีด")),
+        Concept("ชั่งน้ำหนักของตัวเราควรใช้หน่วยใด", "กิโลกรัม", ("ขีด", "เมตร", "เซนติเมตร")),
+        Concept("วัดความยาวของสนามฟุตบอลควรใช้หน่วยใด", "เมตร", ("เซนติเมตร", "ขีด", "กิโลกรัม")),
+    ]

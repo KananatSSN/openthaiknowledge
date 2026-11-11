@@ -128,3 +128,85 @@ class CompareWhoMostP1(ChoiceType):
         stem = (f"{p}มี{t.noun} {a} {t.cl} {q}มี {b} {t.cl} {r}มี {c} {t.cl} "
                 f"ใครมี{t.noun}{'มากที่สุด' if most else 'น้อยที่สุด'}")
         return stem, pick, [n for n in amounts if n != pick] + ["มีเท่ากันทั้งสามคน"]
+
+
+# ── More comparing (2026-11): one or ten more or less, a number between two, a place after sorting, the
+# largest or smallest number from two digits, how many numbers lie between two ──
+
+from otk.kit.math_problems import WordProblem  # noqa: E402
+
+
+@question_type("math.more_less_than_p1", display_name={"th": "จำนวนที่มากกว่าหรือน้อยกว่าอยู่ 1 หรือ 10"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class MoreLessThanP1(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice((1, 10))
+        more = rng.random() < 0.5
+        n = rng.randint(11, 89)
+        right = n + step if more else n - step
+        other = 11 - step                       # the other step: 10 when step is 1, 1 when step is 10
+        return MathDraw("", str(right),
+                        prompt=f"จำนวนที่{'มากกว่า' if more else 'น้อยกว่า'} {n} อยู่ {step} คือจำนวนใด",
+                        # The other direction; the other step both ways.
+                        distractors=_story.keep(n - step if more else n + step, n + other, n - other,
+                                                answer=right, lo=0, hi=100))
+
+
+@question_type("math.number_between_p1", display_name={"th": "จำนวนที่อยู่ระหว่างสองจำนวน"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class NumberBetweenP1(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(5, 90)
+        b = a + rng.randint(2, 4)
+        right = rng.randint(a + 1, b - 1)
+        return MathDraw("", str(right), prompt=f"จำนวนใดอยู่ระหว่าง {a} กับ {b}",
+                        # The ends themselves, and the numbers just outside.
+                        distractors=_story.keep(a, b, a - 1, b + 1, answer=right, lo=0))
+
+
+@question_type("math.sorted_position_p1", display_name={"th": "เรียงจำนวนแล้วบอกจำนวนในลำดับที่กำหนด"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class SortedPositionP1(WordProblem):
+    _ORDINALS = ("แรก", "ที่สอง", "ที่สาม", "ที่สี่")
+
+    def expr(self, rng: Random):
+        nums = rng.sample(range(1, 100), 4)
+        up = rng.random() < 0.5
+        place = rng.randrange(4)
+        ordered = sorted(nums, reverse=not up)
+        right = ordered[place]
+        shown = ", ".join(str(v) for v in nums)
+        prompt = (f"เรียงจำนวน {shown} จาก{'น้อยไปมาก' if up else 'มากไปน้อย'} "
+                  f"จำนวนใดอยู่ลำดับ{self._ORDINALS[place]}")
+        # The same place counted from the other end; the place as listed; a neighbour in the order.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(ordered[3 - place], nums[place], *ordered, answer=right))
+
+
+@question_type("math.two_digit_from_digits_p1", display_name={"th": "สร้างจำนวนสองหลักที่มากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class TwoDigitFromDigitsP1(WordProblem):
+    def expr(self, rng: Random):
+        a, b = sorted(rng.sample(range(1, 10), 2))
+        most = rng.random() < 0.5
+        right = 10 * b + a if most else 10 * a + b
+        other = 10 * a + b if most else 10 * b + a
+        prompt = (f"ใช้เลขโดด {a} และ {b} อย่างละหนึ่งครั้ง สร้างจำนวนสองหลักที่"
+                  f"{'มากที่สุด' if most else 'น้อยที่สุด'} ได้จำนวนใด")
+        # The other order; the two digits added; a digit used twice.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(other, a + b, 11 * (b if most else a), 11 * (a if most else b),
+                                                answer=right, lo=1))
+
+
+@question_type("math.count_between_p1", display_name={"th": "นับจำนวนที่อยู่ระหว่างสองจำนวน"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class CountBetweenP1(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 80)
+        b = a + rng.randint(3, 12)
+        right = b - a - 1
+        return MathDraw("", str(right),
+                        prompt=f"จำนวนที่มากกว่า {a} แต่น้อยกว่า {b} มีทั้งหมดกี่จำนวน",
+                        # Counting one end or both ends.
+                        distractors=_story.keep(b - a, b - a + 1, right - 1, answer=right, lo=1))
