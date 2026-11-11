@@ -303,3 +303,107 @@ class BetterBuyM1(WordProblem):
         wrongs = [max(t1, t2), 10 * min(p1, p2), right // 10 if right % 10 == 0 and right >= 20 else right + 5]
         return MathDraw("", baht(right), prompt=prompt,
                         distractors=[w for w in dict.fromkeys(baht(v) for v in wrongs) if w != baht(right)])
+
+
+# ── To fifteen (2026-11): a percentage of an amount, discounts, speed, map distances, and equivalent ratios ──
+
+from otk.sets._support.math_p2 import _texts  # noqa: E402
+
+
+@question_type("math.percent_of_m1", display_name={"th": "ร้อยละของจำนวน"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class PercentOfM1(WordProblem):
+    def expr(self, rng: Random):
+        pct = rng.choice((5, 10, 12, 15, 20, 25, 30, 40, 45, 60, 75))
+        base = rng.choice((40, 60, 80, 120, 200, 240, 300, 400, 500, 800))
+        while pct * base % 100:
+            base += 20
+        part = pct * base // 100
+        if rng.random() < 0.5:
+            # The percent as the answer; the base over the percent; the rest.
+            return MathDraw("", str(part), prompt=f"ร้อยละ {pct} ของ {base} เท่ากับเท่าใด",
+                            distractors=_story.keep(pct, base // pct if base % pct == 0 else part + 10, base - part,
+                                                    part * 10, answer=part, lo=1))
+        return MathDraw("", str(pct), prompt=f"{part} เป็นร้อยละเท่าใดของ {base}",
+                        distractors=_story.keep(part, 100 - pct, base * 100 // part if base * 100 % part == 0 else pct + 5,
+                                                pct + 10, answer=pct, lo=1))
+
+
+@question_type("math.discount_m1", display_name={"th": "ส่วนลดและราคาขาย"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class DiscountM1(WordProblem):
+    def expr(self, rng: Random):
+        pct = rng.choice((10, 15, 20, 25, 30, 40, 50))
+        price = rng.choice(range(100, 2001, 20))
+        while price * pct % 100:
+            price += 20
+        off = price * pct // 100
+        if rng.random() < 0.5:
+            # The discount instead of the price paid; the percent taken off as baht.
+            return MathDraw("", grouped(price - off), prompt=f"สินค้าราคา {grouped(price)} บาท ลดราคา {pct}% ต้องจ่ายเงินกี่บาท",
+                            distractors=[grouped(v) for v in (off, price - pct, price + off) if v != price - off])
+        sale = price - off
+        prompt = f"สินค้าลดราคา {pct}% แล้วขาย {grouped(sale)} บาท ราคาเดิมเป็นกี่บาท"
+        # The percent added to the sale price; the discount on the sale price added back.
+        return MathDraw("", grouped(price), prompt=prompt,
+                        distractors=[grouped(v) for v in dict.fromkeys((sale + pct, sale + sale * pct // 100, sale + off * 2))
+                                     if v != price])
+
+
+@question_type("math.speed_distance_time_m1", display_name={"th": "อัตราเร็ว ระยะทาง และเวลา"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class SpeedDistanceTimeM1(WordProblem):
+    def expr(self, rng: Random):
+        speed, hours = rng.choice((40, 45, 50, 60, 72, 80, 90)), rng.randint(2, 6)
+        distance = speed * hours
+        kind = rng.randrange(3)
+        if kind == 0:
+            return MathDraw("", str(distance), prompt=f"รถแล่นด้วยอัตราเร็ว {speed} กิโลเมตรต่อชั่วโมง เป็นเวลา {hours} ชั่วโมง ได้ระยะทางกี่กิโลเมตร",
+                            distractors=_story.keep(speed + hours, speed * (hours + 1), distance // 2, answer=distance, lo=1))
+        if kind == 1:
+            return MathDraw("", str(hours), prompt=f"รถแล่นระยะทาง {distance} กิโลเมตร ด้วยอัตราเร็ว {speed} กิโลเมตรต่อชั่วโมง ใช้เวลากี่ชั่วโมง",
+                            distractors=_story.keep(hours + 1, hours - 1, distance - speed, answer=hours, lo=1))
+        return MathDraw("", str(speed), prompt=f"รถแล่นระยะทาง {distance} กิโลเมตร ใช้เวลา {hours} ชั่วโมง มีอัตราเร็วกี่กิโลเมตรต่อชั่วโมง",
+                        distractors=_story.keep(distance - hours, speed + 10, speed - 10, answer=speed, lo=1))
+
+
+@question_type("math.map_distance_m1", display_name={"th": "ระยะทางจริงจากมาตราส่วน"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class MapDistanceM1(QuestionType):
+    """1 : 50,000 means 1 cm on the map is 50,000 cm = 0.5 km on the ground. Fixed choices per unit asked."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        scale = rng.choice((10_000, 20_000, 25_000, 50_000, 100_000, 200_000))
+        cm = rng.randint(2, 12)
+        metres = cm * scale // 100
+        lead = f"แผนที่มาตราส่วน 1 : {grouped(scale)} ระยะบนแผนที่ {cm} ซม. เป็นระยะจริงกี่"
+
+        def km(m: int) -> str:
+            whole, rest = divmod(m, 1000)
+            digits = str(rest).rjust(3, "0").rstrip("0")
+            return f"{whole}.{digits}" if digits else str(whole)
+
+        if rng.random() < 0.5:
+            # Metres given as kilometres; a factor of ten either way.
+            wrongs = [grouped(metres), km(metres * 10), km(metres // 10)]
+            return _texts([text(lead + "กิโลเมตร")], km(metres), [w for w in dict.fromkeys(wrongs) if w != km(metres)],
+                          self.topic)
+        wrongs = [grouped(metres * 10), grouped(metres // 10), grouped(cm * scale)]
+        return _texts([text(lead + "เมตร")], grouped(metres), wrongs, self.topic)
+
+
+@question_type("math.equivalent_ratio_m1", display_name={"th": "อัตราส่วนที่เท่ากัน"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class EquivalentRatioM1(QuestionType):
+    """a : b = ka : kb; adding the same number to both terms does not keep the ratio."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            a, b = rng.sample(range(2, 10), 2)
+            if math.gcd(a, b) == 1:
+                break
+        k, m = rng.sample(range(2, 7), 2)
+        right = f"{k * a} : {k * b}"
+        # The same number added; the terms swapped; different multipliers.
+        wrongs = [f"{a + k} : {b + k}", f"{k * b} : {k * a}", f"{k * a} : {m * b}"]
+        return _texts([text(f"อัตราส่วนในข้อใดเท่ากับ {a} : {b}")], right, wrongs, self.topic)

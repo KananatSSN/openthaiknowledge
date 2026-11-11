@@ -8,6 +8,7 @@ Sets moved here from: math, math_algebra, math_apply_stage.
 
 from __future__ import annotations
 
+import math
 from random import Random
 
 from otk.core.content import math as content_math
@@ -237,3 +238,89 @@ class FormulaSubstitutionM1(WordProblem):
         v = u + a * t
         return MathDraw("", str(v), prompt=f"ใช้สูตร v = u + at เมื่อ u = {u}, a = {a} และ t = {t} จงหาค่า v",
                         distractors=_story.keep((u + a) * t, u * a + t, a * t, answer=v, lo=0))
+
+
+# ── To fifteen (2026-11): taking out a common number, a square with a negative, which expression is equal,
+# like terms in two letters, and subtracting a bracket ──
+
+
+@question_type("math.factor_out_number_m1", display_name={"th": "ดึงตัวร่วมที่เป็นจำนวนออกนอกวงเล็บ"},
+               level=LEVEL, topic=_EXPR_TOPIC)
+class FactorOutNumberM1(QuestionType):
+    """6x + 9 = 3(2x + 3): the distributive property read backwards."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            g, a, b = rng.randint(2, 9), rng.randint(1, 7), rng.choice([v for v in range(-9, 10) if v])
+            if math.gcd(a, abs(b)) == 1 and (a, abs(b)) != (1, 1):
+                break
+        expanded = poly_tex((g * a, "x"), (g * b, ""))
+        right = f"{g}({poly_tex((a, 'x'), (b, ''))})"
+        # Only the first term divided; the sign of the constant lost; a smaller common number.
+        wrongs = [f"{g}({poly_tex((a, 'x'), (g * b, ''))})", f"{g}({poly_tex((a, 'x'), (-b, ''))})",
+                  f"{g * a}({poly_tex((1, 'x'), (b, ''))})" if a > 1 else f"x({poly_tex((g, ''), (g * b, 'x'))})"]
+        return _maths([text("จงเขียนในรูปผลคูณโดยดึงตัวร่วมออก"), content_math(expanded)], right,
+                      [w for w in dict.fromkeys(wrongs) if w != right], self.topic)
+
+
+@question_type("math.evaluate_square_m1", display_name={"th": "แทนค่าจำนวนลบในนิพจน์ที่มีกำลังสอง"},
+               level=LEVEL, topic=_EXPR_TOPIC)
+class EvaluateSquareM1(WordProblem):
+    def expr(self, rng: Random):
+        a, b, c = rng.randint(1, 4), rng.choice([v for v in range(-6, 7) if v]), rng.randint(-9, 9)
+        x0 = -rng.randint(1, 6)
+        tex = poly_tex((a, "x^{2}"), (b, "x"), (c, ""))
+        right = a * x0 * x0 + b * x0 + c
+        # x² read as −x²; x² read as 2x; the sign of bx lost.
+        wrongs = (-a * x0 * x0 + b * x0 + c, 2 * a * x0 + b * x0 + c, a * x0 * x0 - b * x0 + c)
+        return MathDraw(tex, str(right), prompt=f"เมื่อ x = {x0} นิพจน์นี้มีค่าเท่าใด".replace("-", "−"),
+                        distractors=[str(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.equal_expressions_m1", display_name={"th": "นิพจน์ใดเท่ากับนิพจน์ที่กำหนด"},
+               level=LEVEL, topic=_EXPR_TOPIC)
+class EqualExpressionsM1(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        a, b, c = rng.randint(2, 6), rng.randint(1, 9), rng.randint(1, 5)
+        tex = rf"{a}(x - {b}) + {c}x"
+        right = poly_tex((a + c, "x"), (-a * b, ""))
+        # Only the first term multiplied; the sign of b lost; c added to the number.
+        wrongs = [poly_tex((a + c, "x"), (-b, "")), poly_tex((a + c, "x"), (a * b, "")),
+                  poly_tex((a, "x"), (-a * b + c, "")) if c != a * b else poly_tex((a * c, "x"), (-a * b, ""))]
+        return _maths([text("นิพจน์ในข้อใดเท่ากับ"), content_math(tex)], right,
+                      [w for w in dict.fromkeys(wrongs) if w != right], self.topic)
+
+
+@question_type("math.like_terms_two_letters_m1", display_name={"th": "รวมพจน์ที่คล้ายกันที่มีตัวแปรสองตัว"},
+               level=LEVEL, topic=_EXPR_TOPIC)
+class LikeTermsTwoLettersM1(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            a, b, c, d = (rng.choice([v for v in range(-9, 10) if v]) for _ in range(4))
+            if a + c and b + d:
+                break
+        tex = poly_tex((a, "x"), (b, "y"), (c, "x"), (d, "y"))
+        right = poly_tex((a + c, "x"), (b + d, "y"))
+        # x and y combined into one; the second x's sign lost; everything added into xy.
+        wrongs = [poly_tex((a + b + c + d, "xy")) if a + b + c + d else poly_tex((a + c, "x"), (b - d, "y")),
+                  poly_tex((a - c, "x"), (b + d, "y")) if a - c else poly_tex((-(a + c), "x"), (b + d, "y")),
+                  poly_tex((a + c, "x"), (b - d, "y")) if b - d else poly_tex((a + c + 1, "x"), (b + d, "y"))]
+        return _maths([text("จงรวมพจน์ที่คล้ายกัน"), content_math(tex)], right,
+                      [w for w in dict.fromkeys(wrongs) if w != right], self.topic)
+
+
+@question_type("math.subtract_bracket_m1", display_name={"th": "ลบนิพจน์ที่อยู่ในวงเล็บ"},
+               level=LEVEL, topic=_EXPR_TOPIC)
+class SubtractBracketM1(QuestionType):
+    """(5x + 3) − (2x − 4): the minus changes every sign in the second bracket."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        a, b = rng.randint(3, 9), rng.randint(1, 9)
+        c, d = rng.randint(1, a - 1), rng.choice([v for v in range(-9, 10) if v])
+        tex = rf"({poly_tex((a, 'x'), (b, ''))}) - ({poly_tex((c, 'x'), (d, ''))})"
+        right = poly_tex((a - c, "x"), (b - d, ""))
+        # Only the first term's sign changed; no signs changed; the x-terms added.
+        wrongs = [poly_tex((a - c, "x"), (b + d, "")), poly_tex((a + c, "x"), (b - d, "")),
+                  poly_tex((a + c, "x"), (b + d, ""))]
+        return _maths([text("จงทำให้อยู่ในรูปอย่างง่าย"), content_math(tex)], right,
+                      [w for w in dict.fromkeys(wrongs) if w != right], self.topic)

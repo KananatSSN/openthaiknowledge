@@ -8,6 +8,7 @@ Sets moved here from: math, math_apply_basic, math_number, math_pictures_hi.
 
 from __future__ import annotations
 
+import math
 from fractions import Fraction
 from random import Random
 
@@ -264,4 +265,123 @@ class FractionPowerM1(WordProblem):
         # The sign kept positive; only the top raised; multiplied by the exponent.
         wrongs = [abs(right), Fraction((sign * n) ** e, d), base * e]
         return MathDraw(tex, frac_tex(right), prompt="จงหาค่าของ",
+                        distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+# ── To fifteen (2026-11): absolute values of fractions, how many portions, mixed numbers both ways, the nearest
+# integer, and adding mixed numbers ──
+
+
+def _mixed(f: Fraction) -> str:
+    """−13/5 → −2 3/5 as sentence text."""
+    sign = "−" if f < 0 else ""
+    whole, rem = divmod(abs(f.numerator), f.denominator)
+    return f"{sign}{whole} {rem}/{f.denominator}" if whole else f"{sign}{rem}/{f.denominator}"
+
+
+@question_type("math.rational_absolute_m1", display_name={"th": "ค่าสัมบูรณ์ของจำนวนตรรกยะ"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class RationalAbsoluteM1(WordProblem):
+    def expr(self, rng: Random):
+        a = Fraction(-rng.randint(1, 7), rng.choice((2, 3, 4, 5, 6)))
+        b = Fraction(rng.randint(1, 7), rng.choice((2, 3, 4, 6)))
+        while a.denominator == 1 or b.denominator == 1:
+            a, b = a - Fraction(1, 2), b + Fraction(1, 3)
+        if rng.random() < 0.5:
+            tex, right = rf"\left|{frac_tex(a)}\right| + \left|{frac_tex(b)}\right|", abs(a) + abs(b)
+            wrongs = [a + b, -(abs(a) + abs(b)), abs(a + b)]
+        else:
+            tex, right = rf"\left|{frac_tex(a)} + {frac_tex(b)}\right|", abs(a + b)
+            wrongs = [abs(a) + abs(b), a + b if a + b < 0 else -(a + b), abs(a) - abs(b)]
+        return MathDraw(tex, frac_tex(right), prompt="จงหาค่าของ",
+                        distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.portions_m1", display_name={"th": "แบ่งเป็นส่วนละเท่า ๆ กันได้กี่ส่วน"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class PortionsM1(WordProblem):
+    """How many 3/4-litre bottles from 6 litres: divide by the fraction."""
+
+    def expr(self, rng: Random):
+        p, q = rng.choice(((1, 2), (1, 3), (2, 3), (1, 4), (3, 4), (2, 5), (3, 5), (1, 5)))
+        count = rng.randint(4, 24)
+        while count * p % q:
+            count += 1
+        total = Fraction(count * p, q)
+        prompt = (f"มีน้ำผลไม้ {_mixed(total) if total.denominator > 1 else total} ลิตร เทใส่ขวดขวดละ {p}/{q} ลิตร "
+                  f"ได้กี่ขวด")
+        # Multiplied instead; divided by the denominator only; the numerator ignored.
+        wrongs = [total * Fraction(p, q), total * q, total / Fraction(1, q) if p > 1 else count + 2]
+        return MathDraw("", str(count), prompt=prompt,
+                        distractors=[str(int(w)) if w.denominator == 1 else frac_tex(w) for w in dict.fromkeys(wrongs)
+                                     if w != count])
+
+
+def _mixed_tex(sign: int, whole: int, rem: int, den: int) -> str:
+    return ("-" if sign < 0 else "") + (str(whole) if whole else "") + rf"\frac{{{rem}}}{{{den}}}"
+
+
+@question_type("math.mixed_number_m1", display_name={"th": "จำนวนคละและเศษเกิน"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class MixedNumberM1(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            whole, d = rng.randint(1, 6), rng.randint(2, 9)
+            r = rng.randint(1, d - 1)
+            if math.gcd(r, d) == 1:
+                break
+        sign = rng.choice((1, -1))
+        f = sign * Fraction(whole * d + r, d)
+        if rng.random() < 0.5:
+            # Whole × denominator not added; the remainder subtracted; whole × remainder on top.
+            wrongs = [sign * Fraction(whole + r, d), sign * Fraction(whole * d - r, d), sign * Fraction(whole * r + d, d)]
+            return MathDraw(_mixed_tex(sign, whole, r, d), frac_tex(f), prompt="เขียนเป็นเศษเกินได้เท่าใด",
+                            distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != f])
+        right = _mixed_tex(sign, whole, r, d)
+        # One whole too many; the remainder counted from the other end.
+        wrongs = [_mixed_tex(sign, whole + 1, r, d), _mixed_tex(sign, whole, d - r, d) if d - r != r else
+                  _mixed_tex(sign, whole - 1, r, d) if whole > 1 else _mixed_tex(sign, whole + 2, r, d),
+                  _mixed_tex(-sign, whole, r, d)]
+        return MathDraw(frac_tex(f), right, prompt="เขียนเป็นจำนวนคละได้เท่าใด",
+                        distractors=[w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.nearest_integer_m1", display_name={"th": "จำนวนเต็มที่ใกล้ที่สุด"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class NearestIntegerM1(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            d = rng.choice((3, 4, 5, 6, 7, 8))
+            num = rng.choice([v for v in range(-40, 41) if v % d])
+            f = Fraction(num, d)
+            lo = math.floor(f)
+            if f - lo != Fraction(1, 2):
+                break
+        right = lo if f - lo < Fraction(1, 2) else lo + 1
+        other = lo + 1 if right == lo else lo
+        # The other neighbour; the sign dropped; the numerator over ten.
+        return MathDraw(frac_tex(f), str(right), prompt="ใกล้เคียงกับจำนวนเต็มใดมากที่สุด",
+                        distractors=[str(w) for w in dict.fromkeys((other, -right, right + (1 if right >= 0 else -1) * 2))
+                                     if w != right])
+
+
+@question_type("math.mixed_number_sum_m1", display_name={"th": "บวกลบจำนวนคละในสถานการณ์"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class MixedNumberSumM1(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((2, 4, 8, 3, 6))
+        a = Fraction(rng.randint(1, 5) * d + rng.randint(1, d - 1), d)
+        b = Fraction(rng.randint(1, 4) * d + rng.randint(1, d - 1), d)
+        if rng.random() < 0.5:
+            right = a + b
+            prompt = f"วันแรกเดินได้ {_mixed(a)} กิโลเมตร วันที่สองเดินได้ {_mixed(b)} กิโลเมตร รวมเดินได้กี่กิโลเมตร"
+            wrongs = [a - b if a > b else b - a, Fraction(int(a) + int(b)), a + b + 1]
+        else:
+            a, b = max(a, b), min(a, b)
+            if a == b:
+                a = a + 1
+            right = a - b
+            prompt = f"มีเชือกยาว {_mixed(a)} เมตร ตัดไปใช้ {_mixed(b)} เมตร เหลือเชือกกี่เมตร"
+            wrongs = [a + b, Fraction(int(a) - int(b)), right + Fraction(1, d)]
+        return MathDraw("", frac_tex(right), prompt=prompt,
                         distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != right])

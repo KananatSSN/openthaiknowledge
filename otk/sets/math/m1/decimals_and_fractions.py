@@ -265,3 +265,106 @@ class OrderFractionsDecimalsM1(QuestionType):
         i = values.index(max(values) if largest else min(values))
         return _maths([text(f"จำนวนในข้อใด{'มากที่สุด' if largest else 'น้อยที่สุด'}")], shown[i],
                       [s for n, s in enumerate(shown) if n != i], self.topic)
+
+
+# ── To fifteen (2026-11): multiplying and dividing decimals, place value, measurements, and fractions as
+# percentages ──
+
+
+@question_type("math.decimal_multiply_m1", display_name={"th": "คูณทศนิยม"},
+               level=LEVEL, topic=_DF_TOPIC)
+class DecimalMultiplyM1(WordProblem):
+    """Multiply as whole numbers; the answer has as many decimal places as the two factors together."""
+
+    def expr(self, rng: Random):
+        a, b = rng.randint(2, 99), rng.randint(2, 9)
+        pa, pb = rng.choice((1, 2)), rng.choice((1, 2))
+        while a % 10 == 0:
+            a += 1
+        right = _dec(a * b, pa + pb)
+        tex = rf"{_dec(a, pa)} \times {_dec(b, pb)}"
+        places = pa + pb
+        # One place too few or too many; the places of one factor only.
+        wrongs = [_dec(a * b, places - 1), _dec(a * b, places + 1), _dec(a * b, max(pa, pb))]
+        return MathDraw(tex, right, prompt="จงหาผลคูณ", distractors=[w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.decimal_divide_m1", display_name={"th": "หารทศนิยม"},
+               level=LEVEL, topic=_DF_TOPIC)
+class DecimalDivideM1(WordProblem):
+    """Move the point in both numbers until the divisor is whole."""
+
+    def expr(self, rng: Random):
+        q = rng.randint(2, 60)
+        d = rng.randint(2, 9)
+        dp = rng.choice((1, 2))
+        dividend = q * d                      # in units of 10^-dp: dividend/10^dp ÷ d/10^dp = q
+        tex = rf"{_dec(dividend, dp)} \div {_dec(d, dp)}"
+        # The point moved in one number only (either way); the quotient read in tenths.
+        wrongs = [_dec(q, dp), str(q * 10 ** dp), _dec(q, 1) if dp == 2 else str(q * 100)]
+        return MathDraw(tex, str(q), prompt="จงหาผลหาร", distractors=[w for w in dict.fromkeys(wrongs) if w != str(q)])
+
+
+_PLACES = ("หลักส่วนสิบ", "หลักส่วนร้อย", "หลักส่วนพัน")
+
+
+@question_type("math.decimal_place_value_m1", display_name={"th": "ค่าประจำหลักของทศนิยม"},
+               level=LEVEL, topic=_DF_TOPIC)
+class DecimalPlaceValueM1(QuestionType):
+    """Two questions in one set, each with its own fixed choices."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        digits = rng.sample(range(1, 10), 4)
+        whole = digits[0]
+        shown = _dec(whole * 1000 + digits[1] * 100 + digits[2] * 10 + digits[3], 3)
+        i = rng.randrange(3)
+        digit = digits[i + 1]
+        if rng.random() < 0.5:
+            # A neighbouring place's digit; the whole-number digit.
+            wrongs = [str(digits[k + 1]) for k in range(3) if k != i] + [str(whole)]
+            return _maths([text(f"ใน {shown} เลขโดดใดอยู่ใน{_PLACES[i]}")], str(digit), wrongs[:3], self.topic)
+        right = _dec(digit * 10 ** (2 - i), 3)
+        # The digit itself; one place too big; one place too small.
+        wrongs = [str(digit), _dec(digit * 10 ** (3 - i), 3), _dec(digit * 10 ** (2 - i), 4)]
+        return _maths([text(f"ใน {shown} เลขโดด {digit} มีค่าเท่าใด")], right,
+                      [w for w in dict.fromkeys(wrongs) if w != right], self.topic)
+
+
+@question_type("math.decimal_measure_m1", display_name={"th": "โจทย์ปัญหาทศนิยมเกี่ยวกับการวัด"},
+               level=LEVEL, topic=_DF_TOPIC)
+class DecimalMeasureM1(WordProblem):
+    def expr(self, rng: Random):
+        a, b = rng.randint(105, 950), rng.randint(105, 950)       # in centimetres, shown in metres
+        if rng.random() < 0.5:
+            right = a + b
+            prompt = f"ผ้าผืนแรกยาว {_dec(a, 2)} เมตร ผืนที่สองยาว {_dec(b, 2)} เมตร รวมยาวกี่เมตร"
+            wrongs = [abs(a - b), a + b + 100, a + b - 10]
+        else:
+            a, b = max(a, b), min(a, b)
+            if a == b:
+                a += 25
+            right = a - b
+            prompt = f"ไม้ยาว {_dec(a, 2)} เมตร ตัดออก {_dec(b, 2)} เมตร เหลือไม้ยาวกี่เมตร"
+            wrongs = [a + b, right + 100, abs(right - 10)]
+        return MathDraw("", _dec(right, 2), prompt=prompt,
+                        distractors=[_dec(w, 2) for w in dict.fromkeys(wrongs) if w != right and w > 0])
+
+
+@question_type("math.fraction_percent_m1", display_name={"th": "เศษส่วน ทศนิยม และร้อยละ"},
+               level=LEVEL, topic=_DF_TOPIC)
+class FractionPercentM1(WordProblem):
+    def expr(self, rng: Random):
+        n, d = rng.choice([t for t in _TERMINATING if t[0] < t[1]])
+        tenths_of_percent = n * 1000 // d                 # percent × 10
+        pct = _dec(tenths_of_percent, 1)
+        if rng.random() < 0.5:
+            # The decimal not multiplied by 100; the digits of the fraction; the percent ten times too big.
+            wrongs = [_dec(n * 1000 // d, 3), f"{n}{d}", _dec(tenths_of_percent * 10, 1)]
+            return MathDraw(frac_tex(Fraction(n, d)), pct, prompt="คิดเป็นร้อยละเท่าใด",
+                            distractors=[w for w in dict.fromkeys(wrongs) if w != pct])
+        right = frac_tex(Fraction(n, d))
+        # Over 10 instead of 100; not reduced; upside down.
+        wrongs = [frac_tex(Fraction(tenths_of_percent, 100)) if tenths_of_percent % 10 == 0 else rf"\frac{{{tenths_of_percent}}}{{100}}",
+                  rf"\frac{{{tenths_of_percent}}}{{1000}}", frac_tex(Fraction(d, n))]
+        return MathDraw("", right, prompt=f"ร้อยละ {pct} เขียนเป็นเศษส่วนอย่างต่ำได้เท่าใด",
+                        distractors=[w for w in dict.fromkeys(wrongs) if w != right])
