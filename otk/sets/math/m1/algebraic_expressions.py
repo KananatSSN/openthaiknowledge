@@ -305,8 +305,10 @@ class LikeTermsTwoLettersM1(QuestionType):
         wrongs = [poly_tex((a + b + c + d, "xy")) if a + b + c + d else poly_tex((a + c, "x"), (b - d, "y")),
                   poly_tex((a - c, "x"), (b + d, "y")) if a - c else poly_tex((-(a + c), "x"), (b + d, "y")),
                   poly_tex((a + c, "x"), (b - d, "y")) if b - d else poly_tex((a + c + 1, "x"), (b + d, "y"))]
+        # When fallbacks coincide: a sign slipped on the y-term, then on both.
+        wrongs += [poly_tex((a + c, "x"), (-(b + d), "y")), poly_tex((-(a + c), "x"), (-(b + d), "y"))]
         return _maths([text("จงรวมพจน์ที่คล้ายกัน"), content_math(tex)], right,
-                      [w for w in dict.fromkeys(wrongs) if w != right], self.topic)
+                      [w for w in dict.fromkeys(wrongs) if w != right][:3], self.topic)
 
 
 @question_type("math.subtract_bracket_m1", display_name={"th": "ลบนิพจน์ที่อยู่ในวงเล็บ"},
