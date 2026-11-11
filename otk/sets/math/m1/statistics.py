@@ -174,3 +174,125 @@ class MeanMissingValueM1(WordProblem):
                         distractors=_story.keep(round(sum(data) / (n - 1)), mean,
                                                 n * mean - sum(data[:-1]), missing + n,
                                                 answer=missing, lo=0))
+
+
+# ── More statistics (2026-11): pie charts, a line of values over time, statistical questions, kinds of data
+# and the chart that suits them, and pictographs ──
+
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+
+
+@question_type("math.pie_chart_m1", display_name={"th": "แผนภูมิวงกลม"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class PieChartM1(WordProblem):
+    """A share p% of the whole is p% of 360° and p% of the total."""
+
+    def expr(self, rng: Random):
+        pct = rng.choice((5, 10, 15, 20, 25, 30, 35, 40, 45, 50))
+        kind = rng.randrange(3)
+        if kind == 0:
+            right = pct * 360 // 100
+            return MathDraw("", str(right), prompt=(f"ในแผนภูมิวงกลม นักเรียนที่ชอบกีฬาฟุตบอลคิดเป็นร้อยละ {pct} "
+                                                   f"ส่วนนี้มีมุมที่จุดศูนย์กลางกี่องศา"),
+                            distractors=_story.keep(pct, 360 - right, pct * 180 // 100, right + 10, answer=right, lo=1))
+        if kind == 1:
+            angle = pct * 360 // 100
+            return MathDraw("", str(pct), prompt=(f"ในแผนภูมิวงกลม ส่วนที่แทนนักเรียนที่ชอบว่ายน้ำมีมุมที่จุดศูนย์กลาง "
+                                                 f"{angle} องศา คิดเป็นร้อยละเท่าใด"),
+                            distractors=_story.keep(angle, 100 - pct, angle // 2, pct + 5, answer=pct, lo=1, hi=100))
+        total = rng.choice((200, 400, 500, 600, 800, 1000))
+        right = total * pct // 100
+        return MathDraw("", str(right), prompt=(f"นักเรียน {total} คน ในแผนภูมิวงกลมส่วนที่ชอบวิชาคณิตศาสตร์คิดเป็น"
+                                               f"ร้อยละ {pct} มีนักเรียนที่ชอบวิชาคณิตศาสตร์กี่คน"),
+                        distractors=_story.keep(pct, total - right, total * pct // 360 if total * pct % 360 == 0 else right + 10,
+                                                right * 2, answer=right, lo=1))
+
+
+@question_type("math.monthly_values_m1", display_name={"th": "อ่านข้อมูลที่เปลี่ยนแปลงตามเวลา"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MonthlyValuesM1(WordProblem):
+    """Changes between neighbouring months, as a line graph shows them."""
+
+    _MONTHS = ("ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.")
+
+    def expr(self, rng: Random):
+        while True:
+            values = [rng.randint(10, 60) for _ in range(5)]
+            changes = [b - a for a, b in zip(values, values[1:])]
+            if len(set(changes)) == 4 and max(changes) > 0:
+                break
+        listed = ", ".join(f"{m} {v}" for m, v in zip(self._MONTHS, values))
+        if rng.random() < 0.5:
+            right = max(changes)
+            prompt = f"ยอดขายรายเดือน (ชิ้น): {listed} ยอดขายเพิ่มขึ้นมากที่สุดระหว่างสองเดือนติดกันกี่ชิ้น"
+            # The whole spread; the largest value; the biggest drop.
+            return MathDraw("", str(right), prompt=prompt,
+                            distractors=_story.keep(max(values) - min(values), max(values), abs(min(changes)),
+                                                    right + 2, answer=right, lo=1))
+        a, b = sorted(rng.sample(range(5), 2))
+        while values[a] == values[b]:
+            a, b = sorted(rng.sample(range(5), 2))
+        right = abs(values[b] - values[a])
+        more = "มากกว่า" if values[b] > values[a] else "น้อยกว่า"
+        prompt = (f"ยอดขายรายเดือน (ชิ้น): {listed} ยอดขายเดือน {self._MONTHS[b]}{more}เดือน "
+                  f"{self._MONTHS[a]} กี่ชิ้น")
+        # The two added; one month's value; the change from the month before.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(values[a] + values[b], values[b], abs(changes[b - 1]), right + 5,
+                                                answer=right, lo=1))
+
+
+@question_type("math.statistical_question_m1", display_name={"th": "คำถามทางสถิติ"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class StatisticalQuestionM1(ConceptBankType):
+    """A statistical question expects answers that vary, so data must be collected."""
+
+    ITEMS = [
+        Concept("ข้อใดเป็นคำถามทางสถิติ", "นักเรียนห้อง ม.1/1 แต่ละคนสูงเท่าใด",
+                ("ตอนนี้ฉันสูงกี่เซนติเมตรเมื่อวัดด้วยตลับเมตร", "โรงเรียนของเราตั้งอยู่ที่จังหวัดใดของประเทศไทย",
+                 "วันนี้เป็นวันที่เท่าใดของเดือนพฤศจิกายน")),
+        Concept("คำถามใดต่อไปนี้ต้องเก็บข้อมูลจากหลายคนจึงจะตอบได้", "นักเรียนในโรงเรียนใช้เวลาเดินทางมาโรงเรียนกี่นาที",
+                ("ครูประจำชั้นของห้อง ม.1/1 ชื่ออะไรและสอนวิชาใด", "ห้องเรียนของเรามีประตูและหน้าต่างอย่างละกี่บาน",
+                 "เมื่อวานนี้ที่โรงเรียนของเรามีฝนตกหรือไม่")),
+        Concept("ข้อใดไม่เป็นคำถามทางสถิติ", "พ่อของฉันอายุเท่าใดในปีนี้",
+                ("ผู้ปกครองของนักเรียนในห้องอายุเท่าใดบ้าง", "นักเรียนแต่ละคนชอบผลไม้ชนิดใด",
+                 "แต่ละครอบครัวในหมู่บ้านมีสมาชิกกี่คน")),
+        Concept("คำถามทางสถิติแตกต่างจากคำถามทั่วไปอย่างไร", "คาดว่าคำตอบจะแตกต่างกันจึงต้องเก็บรวบรวมข้อมูล",
+                ("มีคำตอบที่ถูกต้องเพียงคำตอบเดียวเสมอไม่ว่าจะถามใคร", "ต้องถามเป็นตัวเลขเท่านั้นและห้ามถามเป็นข้อความ",
+                 "ตอบได้ทันทีจากความรู้ของตนเองโดยไม่ต้องเก็บข้อมูล")),
+    ]
+
+
+@question_type("math.data_display_m1", display_name={"th": "ชนิดของข้อมูลและการนำเสนอที่เหมาะสม"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class DataDisplayM1(ConceptBankType):
+    ITEMS = [
+        Concept("ข้อมูลอุณหภูมิในแต่ละวันตลอดหนึ่งเดือน ควรนำเสนอด้วยวิธีใด", "กราฟเส้น",
+                ("แผนภูมิวงกลม", "แผนภูมิรูปภาพ", "ตารางคำศัพท์")),
+        Concept("ข้อมูลร้อยละของค่าใช้จ่ายแต่ละประเภทในหนึ่งเดือน ควรนำเสนอด้วยวิธีใด", "แผนภูมิวงกลม",
+                ("กราฟเส้น", "แผนภาพจุด", "แผนภาพต้น-ใบ")),
+        Concept("ข้อมูลจำนวนนักเรียนชายและหญิงของแต่ละห้อง ควรนำเสนอด้วยวิธีใด", "แผนภูมิแท่งเปรียบเทียบ",
+                ("กราฟเส้น", "แผนภูมิวงกลม", "แผนภาพจุด")),
+        Concept("ข้อมูลใดเป็นข้อมูลเชิงคุณภาพ", "สีที่นักเรียนชอบ",
+                ("ความสูงของนักเรียน", "จำนวนพี่น้องของนักเรียน", "คะแนนสอบของนักเรียน")),
+        Concept("ข้อมูลใดเป็นข้อมูลเชิงปริมาณ", "น้ำหนักของนักเรียน",
+                ("กรุ๊ปเลือดของนักเรียน", "กีฬาที่นักเรียนชอบ", "จังหวัดที่นักเรียนเกิด")),
+    ]
+
+
+@question_type("math.pictograph_m1", display_name={"th": "แผนภูมิรูปภาพ"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class PictographM1(WordProblem):
+    """One picture stands for k; half a picture for k/2."""
+
+    def expr(self, rng: Random):
+        k = rng.choice((2, 4, 6, 10, 20, 50))  # even, so half a picture is a whole number of people
+        whole = rng.randint(2, 9)
+        half = rng.random() < 0.5
+        right = whole * k + (k // 2 if half else 0)
+        pictures = f"{whole} รูปครึ่ง" if half else f"{whole} รูป"
+        prompt = (f"ในแผนภูมิรูปภาพ รูป 1 รูปแทนนักเรียน {k} คน ถ้าห้อง ก มีรูปทั้งหมด {pictures} "
+                  f"ห้อง ก มีนักเรียนกี่คน")
+        # The pictures counted as people; the half counted as a whole; the half left out.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(whole, (whole + 1) * k, whole * k, right + k, answer=right, lo=1))

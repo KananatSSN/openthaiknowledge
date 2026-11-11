@@ -346,3 +346,32 @@ class LinearTransferM1(WordProblem):
                 named("operation.reversed", frac_tex(Fraction(second + transferred, multiplier) - transferred)),
                 named("operation.reversed", frac_tex(Fraction(second - transferred, multiplier) + transferred)),
             ])
+
+
+# ── One more (2026-11): equations with fractions ──
+
+
+@question_type("math.linear_equation_fractions_m1", display_name={"th": "สมการเชิงเส้นที่มีเศษส่วน"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class LinearEquationFractionsM1(WordProblem):
+    """x/a + b = c: take b away, then multiply by a; or (x + b)/a = c."""
+
+    def expr(self, rng: Random):
+        a, x = rng.randint(2, 9), rng.randint(-12, 15)
+        if rng.random() < 0.5:
+            while x % a:
+                x += 1
+            b = rng.randint(1, 12)
+            c = x // a + b
+            tex = rf"\frac{{x}}{{{a}}} + {b} = {c}"
+            # Divided instead of multiplied; b added; a and b both left out.
+            wrongs = [Fraction(c - b, a), (c + b) * a, c * a - b]
+        else:
+            b = rng.randint(1, 12)
+            while (x + b) % a:
+                x += 1
+            c = (x + b) // a
+            tex = rf"\frac{{x + {b}}}{{{a}}} = {c}"
+            wrongs = [Fraction(c * a + b), Fraction(c - b, 1) * a, Fraction(c, a) - b]
+        return MathDraw(tex, str(x), prompt="จงแก้สมการ",
+                        distractors=[frac_tex(Fraction(w)) for w in dict.fromkeys(wrongs) if Fraction(w) != x])

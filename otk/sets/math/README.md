@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,627 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,675 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -112,18 +112,18 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`algebraic_expressions`](m1/algebraic_expressions.py) | นิพจน์พีชคณิต | ค 1.1 ม.1/* | 4 |
-| [`decimals_and_fractions`](m1/decimals_and_fractions.py) | ทศนิยมและเศษส่วน | ค 1.1 ม.1/* | 3 |
+| [`algebraic_expressions`](m1/algebraic_expressions.py) | นิพจน์พีชคณิต | ค 1.1 ม.1/* | 10 |
+| [`decimals_and_fractions`](m1/decimals_and_fractions.py) | ทศนิยมและเศษส่วน | ค 1.1 ม.1/* | 10 |
 | [`exponents`](m1/exponents.py) | เลขยกกำลัง | ค 1.1 ม.1/* | 10 |
-| [`geometric_constructions`](m1/geometric_constructions.py) | การสร้างทางเรขาคณิต | ค 2.2 ม.1/* | 4 |
-| [`integers`](m1/integers.py) | จำนวนเต็ม | ค 1.1 ม.1/* | 6 |
-| [`linear_equations`](m1/linear_equations.py) | สมการเชิงเส้น | ค 1.3 ม.1/* | 9 |
-| [`linear_graphs`](m1/linear_graphs.py) | กราฟความสัมพันธ์เชิงเส้น | ค 1.3 ม.1/2, ค 1.3 ม.1/3 | 4 |
+| [`geometric_constructions`](m1/geometric_constructions.py) | การสร้างทางเรขาคณิต | ค 2.2 ม.1/* | 10 |
+| [`integers`](m1/integers.py) | จำนวนเต็ม | ค 1.1 ม.1/* | 10 |
+| [`linear_equations`](m1/linear_equations.py) | สมการเชิงเส้น | ค 1.3 ม.1/* | 10 |
+| [`linear_graphs`](m1/linear_graphs.py) | กราฟความสัมพันธ์เชิงเส้น | ค 1.3 ม.1/2, ค 1.3 ม.1/3 | 10 |
 | [`prime_factorisation`](m1/prime_factorisation.py) | แยกตัวประกอบเฉพาะ | — | 5 |
-| [`ratio_and_proportion`](m1/ratio_and_proportion.py) | อัตราส่วนและสัดส่วน | ค 1.1 ม.1/3 | 8 |
-| [`rational_numbers`](m1/rational_numbers.py) | จำนวนตรรกยะ | ค 1.1 ม.1/* | 5 |
-| [`spatial_relationships`](m1/spatial_relationships.py) | มิติสัมพันธ์ของรูปเรขาคณิต | ค 2.2 ม.1/* | 4 |
-| [`statistics`](m1/statistics.py) | สถิติ | ค 3.1 ม.1/1 | 5 |
+| [`ratio_and_proportion`](m1/ratio_and_proportion.py) | อัตราส่วนและสัดส่วน | ค 1.1 ม.1/3 | 10 |
+| [`rational_numbers`](m1/rational_numbers.py) | จำนวนตรรกยะ | ค 1.1 ม.1/* | 10 |
+| [`spatial_relationships`](m1/spatial_relationships.py) | มิติสัมพันธ์ของรูปเรขาคณิต | ค 2.2 ม.1/* | 10 |
+| [`statistics`](m1/statistics.py) | สถิติ | ค 3.1 ม.1/1 | 10 |
 
 ## m2 — ม.2
 

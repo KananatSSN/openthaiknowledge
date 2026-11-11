@@ -109,3 +109,155 @@ class PerpendicularBisector(WordProblem):
         return MathDraw(
             "", str(length // 2), prompt=prompt,
             distractors=[str(length), str(length * 2), "90"])
+
+
+# ── More constructions (2026-11): the first steps, the tools, a segment built from others, which three lengths
+# make a triangle, angles built from 60° and 90°, and halving a segment twice ──
+
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+_CON_TOPIC = "การสร้างทางเรขาคณิต"
+_M1 = {"th": "ม.1"}
+
+
+@question_type("math.construction_first_step_m1", display_name={"th": "ขั้นตอนการสร้างพื้นฐาน"},
+               level=_M1, topic=_CON_TOPIC)
+class ConstructionFirstStepM1(ConceptBankType):
+    ITEMS = [
+        Concept("การสร้างเส้นแบ่งครึ่งส่วนของเส้นตรง AB เริ่มต้นอย่างไร",
+                "กางวงเวียนเกินครึ่งหนึ่งของ AB เขียนส่วนโค้งจาก A และจาก B ให้ตัดกันสองจุด",
+                ("กางวงเวียนยาวเท่ากับ AB แล้วเขียนวงกลมรอบจุดกึ่งกลางที่วัดด้วยไม้บรรทัด",
+                 "ใช้ไม้โปรแทรกเตอร์วัดมุม 90 องศาที่จุด A แล้วลากเส้นตั้งฉากขึ้นไป",
+                 "กางวงเวียนน้อยกว่าครึ่งหนึ่งของ AB เขียนส่วนโค้งจาก A เพียงจุดเดียว")),
+        Concept("การแบ่งครึ่งมุม ABC เริ่มต้นอย่างไร",
+                "ใช้ B เป็นจุดศูนย์กลาง เขียนส่วนโค้งตัดแขนทั้งสองของมุม",
+                ("ใช้ A เป็นจุดศูนย์กลาง เขียนส่วนโค้งตัดแขนทั้งสองของมุม",
+                 "วัดขนาดมุมด้วยไม้โปรแทรกเตอร์แล้วหารด้วยสอง",
+                 "ลากส่วนของเส้นตรง AC แล้วหาจุดกึ่งกลางด้วยไม้บรรทัด")),
+        Concept("การสร้างส่วนของเส้นตรงให้ยาวเท่ากับ AB ทำอย่างไร",
+                "กางวงเวียนยาวเท่ากับ AB แล้วนำไปเขียนส่วนโค้งตัดเส้นตรงที่ลากไว้",
+                ("วัดความยาว AB ด้วยวงเวียนแล้วจดตัวเลขไว้เพื่อลากใหม่",
+                 "ลากเส้นตรงใหม่ให้ขนานกับ AB โดยใช้สันตรงเพียงอย่างเดียว",
+                 "พับกระดาษให้ A ทับ B แล้วใช้รอยพับเป็นความยาวใหม่")),
+        Concept("การสร้างเส้นตั้งฉากที่จุด P บนเส้นตรง เริ่มต้นอย่างไร",
+                "ใช้ P เป็นจุดศูนย์กลาง เขียนส่วนโค้งตัดเส้นตรงสองจุดที่ห่างจาก P เท่ากัน",
+                ("ใช้ P เป็นจุดศูนย์กลาง เขียนวงกลมรัศมีเท่าใดก็ได้โดยไม่ตัดเส้นตรง",
+                 "วางไม้โปรแทรกเตอร์ที่ P แล้วทำเครื่องหมายที่ 90 องศา",
+                 "ลากเส้นจาก P ไปยังจุดใดก็ได้นอกเส้นตรงแล้วแบ่งครึ่ง")),
+    ]
+
+
+@question_type("math.construction_tools_m1", display_name={"th": "วงเวียนและสันตรงใช้ทำอะไร"},
+               level=_M1, topic=_CON_TOPIC)
+class ConstructionToolsM1(ConceptBankType):
+    ITEMS = [
+        Concept("ในการสร้างทางเรขาคณิต สันตรงใช้ทำอะไร", "ลากส่วนของเส้นตรงหรือเส้นตรงผ่านจุดสองจุด",
+                ("วัดความยาวของส่วนของเส้นตรงเป็นเซนติเมตรให้ได้ค่าที่แน่นอน", "วัดขนาดของมุมเป็นองศาก่อนลากแขนของมุม",
+                 "เขียนส่วนโค้งและวงกลมที่มีรัศมีตามต้องการ")),
+        Concept("ในการสร้างทางเรขาคณิต วงเวียนใช้ทำอะไร", "เขียนส่วนโค้งหรือวงกลมและถ่ายความยาว",
+                ("วัดขนาดของมุมเป็นองศาแล้วจดค่าที่วัดได้ไว้", "ลากเส้นตรงผ่านจุดสองจุดที่กำหนดให้",
+                 "วัดความยาวเป็นเซนติเมตรด้วยสเกลบนวงเวียน")),
+        Concept("เครื่องมือใดไม่ใช้ในการสร้างทางเรขาคณิตตามแบบของหนังสือเรียน", "ไม้โปรแทรกเตอร์",
+                ("วงเวียน", "สันตรง", "ดินสอดำ")),
+    ]
+
+
+@question_type("math.construct_segment_length_m1", display_name={"th": "สร้างส่วนของเส้นตรงจากความยาวที่กำหนด"},
+               level=_M1, topic=_CON_TOPIC)
+class ConstructSegmentLengthM1(WordProblem):
+    """Laying copies of AB and CD end to end (or back over each other)."""
+
+    def expr(self, rng: Random):
+        ab, cd = rng.randint(4, 12), rng.randint(2, 6)
+        p, q = rng.randint(1, 3), rng.randint(1, 2)
+        sign = rng.choice((1, -1))
+        right = p * ab + sign * q * cd
+        if right <= 0:
+            sign, right = 1, p * ab + q * cd
+        op = "+" if sign > 0 else "−"
+        expr = (f"{p if p > 1 else ''}AB {op} {q if q > 1 else ''}CD").strip()
+        prompt = (f"กำหนดให้ AB ยาว {ab} ซม. และ CD ยาว {cd} ซม. ถ้าสร้างส่วนของเส้นตรงยาว {expr} "
+                  f"ด้วยวงเวียนและสันตรง จะได้ส่วนของเส้นตรงยาวกี่เซนติเมตร")
+        # The other sign; the multiples dropped; one length used twice.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(p * ab - sign * q * cd, ab + sign * cd, p * ab, right + 2,
+                                                answer=right, lo=1))
+
+
+@question_type("math.triangle_from_sides_m1", display_name={"th": "สร้างรูปสามเหลี่ยมจากความยาวด้านได้หรือไม่"},
+               level=_M1, topic=_CON_TOPIC)
+class TriangleFromSidesM1(ChoiceType):
+    """Three lengths make a triangle only when the two shorter add to more than the longest."""
+
+    def compose(self, rng: Random):
+        def valid():
+            while True:
+                a, b, c = sorted(rng.sample(range(2, 15), 3))
+                if a + b > c:
+                    return a, b, c
+
+        def invalid():
+            while True:
+                a, b = sorted(rng.sample(range(2, 10), 2))
+                c = a + b + rng.randint(0, 3)
+                if c <= 20:
+                    return a, b, c
+
+        cannot = rng.random() < 0.5
+        right = invalid() if cannot else valid()
+        others = []
+        while len(others) < 3:
+            t = valid() if cannot else invalid()
+            if t not in others and t != right:
+                others.append(t)
+        show = lambda t: f"{t[0]}, {t[1]} และ {t[2]} ซม."
+        ask = "สร้างรูปสามเหลี่ยมไม่ได้" if cannot else "สร้างรูปสามเหลี่ยมได้"
+        return f"ด้านสามด้านในข้อใด{ask}", show(right), [show(t) for t in others]
+
+
+@question_type("math.construct_angle_steps_m1", display_name={"th": "มุมที่ได้จากการสร้างมุมต่อกัน"},
+               level=_M1, topic=_CON_TOPIC)
+class ConstructAngleStepsM1(WordProblem):
+    """Every constructible angle here comes from 60° and 90°, halved and added."""
+
+    _STEPS = (
+        ("สร้างมุม 60 องศา แล้วแบ่งครึ่งสองครั้ง", 15),
+        ("สร้างมุม 90 องศา แล้วแบ่งครึ่งสองครั้ง", 22.5),
+        ("สร้างมุม 90 องศา แล้วสร้างมุม 30 องศาต่อจากแขนข้างหนึ่งออกไปด้านนอก", 120),
+        ("สร้างมุม 90 องศา แล้วสร้างมุม 45 องศาต่อจากแขนข้างหนึ่งออกไปด้านนอก", 135),
+        ("สร้างมุม 60 องศา แล้วสร้างมุม 45 องศาต่อจากแขนข้างหนึ่งออกไปด้านนอก", 105),
+        ("สร้างมุม 90 องศา แล้วสร้างมุม 60 องศาต่อจากแขนข้างหนึ่งออกไปด้านนอก", 150),
+        ("สร้างมุม 60 องศาบนเส้นตรง แล้วใช้มุมที่เหลือบนเส้นตรงเดียวกัน", 120),
+        ("สร้างมุม 45 องศาบนเส้นตรง แล้วใช้มุมที่เหลือบนเส้นตรงเดียวกัน", 135),
+        ("สร้างมุม 90 องศา แล้วสร้างมุม 15 องศาต่อจากแขนข้างหนึ่งออกไปด้านนอก", 105),
+        ("สร้างมุม 60 องศา แล้วสร้างมุม 15 องศาต่อจากแขนข้างหนึ่งออกไปด้านนอก", 75),
+    )
+
+    def expr(self, rng: Random):
+        desc, angle = rng.choice(self._STEPS)
+        show = lambda v: str(int(v)) if v == int(v) else f"{v:.1f}"
+        others = sorted({a for _, a in self._STEPS if a != angle} | {30, 45, 60, 90})
+        rng.shuffle(others)
+        return MathDraw("", show(angle), prompt=f"“{desc}” จะได้มุมขนาดกี่องศา",
+                        distractors=[show(v) for v in others[:3]])
+
+
+@question_type("math.segment_halving_m1", display_name={"th": "แบ่งครึ่งส่วนของเส้นตรงซ้ำ"},
+               level=_M1, topic=_CON_TOPIC)
+class SegmentHalvingM1(WordProblem):
+    def expr(self, rng: Random):
+        length = 8 * rng.randint(2, 12)
+        lead = (f"AB ยาว {length} ซม. สร้างเส้นแบ่งครึ่ง AB ได้จุดกึ่งกลาง M แล้วสร้างเส้นแบ่งครึ่ง AM "
+                f"ได้จุดกึ่งกลาง N ")
+        kind = rng.randrange(3)
+        if kind == 0:
+            right, asked = length // 4, "AN"
+        elif kind == 1:
+            right, asked = length // 4, "NM"
+        else:
+            right, asked = 3 * length // 4, "NB"
+        return MathDraw("", str(right), prompt=lead + f"{asked} ยาวกี่เซนติเมตร",
+                        distractors=_story.keep(length // 2, length // 8, length // 4 if right != length // 4 else 3 * length // 4,
+                                                length - right // 2, answer=right, lo=1))
