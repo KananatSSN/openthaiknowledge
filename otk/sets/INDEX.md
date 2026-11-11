@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,230 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,282 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -10,17 +10,17 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`add_sub_mixed.py`](math/p1/add_sub_mixed.py) | การบวกลบระคน | `math.add_sub_mixed`, `math.add_sub_mixed_missing`, `math.add_sub_mixed_word_problem` |
-| [`addition.py`](math/p1/addition.py) | การบวก | `math.one_digit_plus_no_carry`, `math.add_pictures_p1`, `math.one_digit_plus_with_carry`, `math.part_whole_p1`, `math.two_digit_plus`, `math.missing_addend`, `math.add_word_p1` |
-| [`comparing_numbers.py`](math/p1/comparing_numbers.py) | การเปรียบเทียบ | `math.min_max_of_four`, `math.compare_groups_p1`, `math.order_numbers`, `math.true_comparison_p1`, `math.compare_who_most_p1` |
+| [`add_sub_mixed.py`](math/p1/add_sub_mixed.py) | การบวกลบระคน | `math.add_sub_mixed`, `math.add_sub_mixed_missing`, `math.add_sub_mixed_word_problem`, `math.mixed_true_sentence_p1`, `math.mixed_number_line_p1`, `math.mixed_largest_p1`, `math.mixed_give_compare_p1`, `math.mixed_four_terms_p1`, `math.mixed_start_amount_p1`, `math.mixed_change_p1` |
+| [`addition.py`](math/p1/addition.py) | การบวก | `math.one_digit_plus_no_carry`, `math.add_pictures_p1`, `math.one_digit_plus_with_carry`, `math.part_whole_p1`, `math.two_digit_plus`, `math.missing_addend`, `math.add_word_p1`, `math.add_three_numbers_p1`, `math.add_tens_p1`, `math.add_commutative_p1` |
+| [`comparing_numbers.py`](math/p1/comparing_numbers.py) | การเปรียบเทียบ | `math.min_max_of_four`, `math.compare_groups_p1`, `math.order_numbers`, `math.true_comparison_p1`, `math.compare_who_most_p1`, `math.more_less_than_p1`, `math.number_between_p1`, `math.sorted_position_p1`, `math.two_digit_from_digits_p1`, `math.count_between_p1` |
 | [`counting.py`](math/p1/counting.py) | การนับ | `math.count_objects_p1`, `math.count_objects_20_p1`, `math.count_kind_p1`, `math.next_number`, `math.previous_number`, `math.number_words_p1`, `math.ordinal_position_p1`, `math.count_bundles_p1`, `math.missing_number_in_sequence`, `math.thai_numerals_p1`, `math.tens_and_ones_p1` |
-| [`measurement.py`](math/p1/measurement.py) | การวัด | `math.count_units_nonstandard`, `math.compare_nonstandard_length`, `math.compare_nonstandard_weight`, `math.ruler_picture_p1`, `math.length_cm_m_p1`, `math.weight_kg_khit_p1` |
-| [`patterns.py`](math/p1/patterns.py) | แบบรูป | `math.repeating_pattern_p1`, `math.number_pattern_p1`, `math.pattern_word_p1`, `math.pattern_rule_p1` |
-| [`pictograph.py`](math/p1/pictograph.py) | แผนภูมิรูปภาพ | `math.pictograph_picture_p1`, `math.pictograph_read_p1`, `math.pictograph_compare_p1`, `math.pictograph_most_p1` |
-| [`plane_shapes.py`](math/p1/plane_shapes.py) | เรขาคณิต 2 มิติ | `math.shape_2d_picture_p1`, `math.classify_2d_shape`, `math.polygon_sides` |
-| [`solids.py`](math/p1/solids.py) | เรขาคณิต 3 มิติ | `math.classify_3d_solid`, `math.solid_count_p1`, `math.solid_objects_p1`, `math.solid_picture_p1` |
-| [`subtraction.py`](math/p1/subtraction.py) | การลบ | `math.one_digit_subtraction`, `math.subtract_pictures_p1`, `math.two_digit_subtraction_no_borrow`, `math.subtract_within_20_p1`, `math.two_digit_subtraction_with_borrow`, `math.missing_subtrahend`, `math.subtract_word_p1` |
-| [`word_problems.py`](math/p1/word_problems.py) | โจทย์ปัญหา | `math.add_word_problem`, `math.sub_word_problem`, `math.compare_word_problem`, `math.word_problem_number_sentence`, `math.missing_part_word_problem` |
+| [`measurement.py`](math/p1/measurement.py) | การวัด | `math.count_units_nonstandard`, `math.compare_nonstandard_length`, `math.compare_nonstandard_weight`, `math.ruler_picture_p1`, `math.length_cm_m_p1`, `math.weight_kg_khit_p1`, `math.length_difference_p1`, `math.join_lengths_p1`, `math.weight_compare_kg_p1`, `math.choose_unit_p1` |
+| [`patterns.py`](math/p1/patterns.py) | แบบรูป | `math.repeating_pattern_p1`, `math.number_pattern_p1`, `math.pattern_word_p1`, `math.pattern_rule_p1`, `math.pattern_next_term_p1`, `math.pattern_nth_shape_p1`, `math.pattern_growing_p1`, `math.count_down_tens_p1`, `math.pattern_colours_p1`, `math.pattern_shape_count_p1` |
+| [`pictograph.py`](math/p1/pictograph.py) | แผนภูมิรูปภาพ | `math.pictograph_picture_p1`, `math.pictograph_read_p1`, `math.pictograph_compare_p1`, `math.pictograph_most_p1`, `math.pictograph_range_p1`, `math.pictograph_add_more_p1`, `math.pictograph_order_p1`, `math.pictograph_count_above_p1`, `math.pictograph_true_statement_p1`, `math.pictograph_two_rows_p1` |
+| [`plane_shapes.py`](math/p1/plane_shapes.py) | เรขาคณิต 2 มิติ | `math.shape_2d_picture_p1`, `math.classify_2d_shape`, `math.polygon_sides`, `math.shape_corners_p1`, `math.shape_total_sides_p1`, `math.shape_odd_one_p1`, `math.shape_description_p1`, `math.shape_objects_p1`, `math.fold_cut_shape_p1`, `math.shape_sides_compare_p1` |
+| [`solids.py`](math/p1/solids.py) | เรขาคณิต 3 มิติ | `math.classify_3d_solid`, `math.solid_count_p1`, `math.solid_objects_p1`, `math.solid_picture_p1`, `math.solid_roll_stack_p1`, `math.solid_face_shape_p1`, `math.solid_trace_p1`, `math.solid_sum_p1`, `math.solid_odd_one_p1`, `math.solid_which_object_p1` |
+| [`subtraction.py`](math/p1/subtraction.py) | การลบ | `math.one_digit_subtraction`, `math.subtract_pictures_p1`, `math.two_digit_subtraction_no_borrow`, `math.subtract_within_20_p1`, `math.two_digit_subtraction_with_borrow`, `math.missing_subtrahend`, `math.subtract_word_p1`, `math.subtract_tens_p1`, `math.add_sub_inverse_p1`, `math.number_line_back_p1` |
+| [`word_problems.py`](math/p1/word_problems.py) | โจทย์ปัญหา | `math.add_word_problem`, `math.sub_word_problem`, `math.compare_word_problem`, `math.word_problem_number_sentence`, `math.missing_part_word_problem`, `math.money_left_p1`, `math.more_needed_p1`, `math.age_word_p1`, `math.tens_bundles_word_p1`, `math.line_position_p1` |
 
 ### p2 — ป.2
 
