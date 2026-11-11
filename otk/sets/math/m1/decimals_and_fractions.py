@@ -325,7 +325,8 @@ class DecimalPlaceValueM1(QuestionType):
             return _maths([text(f"ใน {shown} เลขโดดใดอยู่ใน{_PLACES[i]}")], str(digit), wrongs[:3], self.topic)
         right = _dec(digit * 10 ** (2 - i), 3)
         # The digit itself; one place too big; one place too small.
-        wrongs = [str(digit), _dec(digit * 10 ** (3 - i), 3), _dec(digit * 10 ** (2 - i), 4)]
+        bigger = _dec(digit * 10 ** (3 - i), 3) if i else str(digit * 10)
+        wrongs = [str(digit), bigger, _dec(digit * 10 ** (2 - i), 4)]
         return _maths([text(f"ใน {shown} เลขโดด {digit} มีค่าเท่าใด")], right,
                       [w for w in dict.fromkeys(wrongs) if w != right], self.topic)
 

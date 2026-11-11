@@ -341,11 +341,13 @@ class WriteAsPowerM1(QuestionType):
 
     def build(self, rng: Random) -> GeneratedQuestion:
         a, n = rng.randint(2, 9), rng.randint(3, 6)
+        if a == n:                    # aⁿ with a = n: the swapped power would print as the answer
+            a += 1
         if rng.random() < 0.5:
             # An even power, so −aⁿ (the negative of aⁿ) really is a different number.
             n += n % 2
-            if a == 2 and n == 4:     # 2⁴ = 4²: the swapped choice would be right too
-                a = 3
+            if (a == 2 and n == 4) or a == n:   # 2⁴ = 4², or a = n again after rounding n up
+                a += 1
             product = r" \times ".join([f"(-{a})"] * n)
             right = rf"(-{a})^{{{n}}}"
             wrongs = [rf"-{a}^{{{n}}}", rf"(-{n})^{{{a}}}", rf"-{a} \times {n}"]
