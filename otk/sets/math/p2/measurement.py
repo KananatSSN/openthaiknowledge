@@ -214,3 +214,70 @@ class WeightWordProblemP2(WordProblem):
                                 f"เหลือแป้งกี่กรัม"),
                         distractors=_story.keep(100 * bag - used if 100 * bag > used else used - bag,
                                                 1000 * bag + used, ans + 100, answer=ans, lo=1))
+
+
+# ── More measuring (2026-11): centimetres as metres and centimetres, the longest of lengths written two ways,
+# kilograms and grams as grams, and how much longer across the two units ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+
+def _m_cm(cm: int) -> str:
+    m, r = divmod(cm, 100)
+    return f"{m} เมตร {r} เซนติเมตร" if r else f"{m} เมตร"
+
+
+@question_type("math.cm_to_m_cm_p2", display_name={"th": "เขียนเซนติเมตรเป็นเมตรและเซนติเมตร"},
+               level=LEVEL, topic="การวัด")
+class CmToMCmP2(ChoiceType):
+    def compose(self, rng: Random):
+        m = rng.randint(1, 9)
+        r = rng.choice([v for v in range(11, 100) if v % 10 and v % 10 != v // 10])
+        cm = 100 * m + r
+        right = f"{m} เมตร {r} เซนติเมตร"
+        # Split one place off; the centimetres' digits swapped; all of it called metres.
+        wrongs = [f"{cm // 10} เมตร {cm % 10} เซนติเมตร", f"{m} เมตร {r % 10}{r // 10} เซนติเมตร", f"{cm} เมตร"]
+        return f"{cm} เซนติเมตร เท่ากับเท่าใด", right, wrongs
+
+
+@question_type("math.longest_mixed_units_p2", display_name={"th": "ความยาวใดยาวที่สุดหรือสั้นที่สุด"},
+               level=LEVEL, topic="การวัด")
+class LongestMixedUnitsP2(ChoiceType):
+    def compose(self, rng: Random):
+        values = rng.sample(range(105, 300), 4)
+        texts = []
+        for v in values:
+            texts.append(_m_cm(v) if rng.random() < 0.5 else f"{v} เซนติเมตร")
+        most = rng.random() < 0.5
+        pick = (max if most else min)(range(4), key=lambda i: values[i])
+        return (f"ความยาวใด{'ยาวที่สุด' if most else 'สั้นที่สุด'}", texts[pick],
+                [t for i, t in enumerate(texts) if i != pick])
+
+
+@question_type("math.kg_g_to_g_p2", display_name={"th": "เปลี่ยนกิโลกรัมและกรัมเป็นกรัม"},
+               level=LEVEL, topic="การวัด")
+class KgGToGP2(WordProblem):
+    def expr(self, rng: Random):
+        kg = rng.randint(1, 9)
+        g = rng.choice((50, 100, 200, 250, 300, 400, 500, 600, 750, 800))
+        right = 1000 * kg + g
+        # A kilogram taken as 100 grams; the numbers side by side as hundreds; the grams left out.
+        return MathDraw("", str(right), prompt=f"{kg} กิโลกรัม {g} กรัม เท่ากับกี่กรัม",
+                        distractors=_story.keep(100 * kg + g, kg + g, 1000 * kg, 10 * kg + g, answer=right, lo=1))
+
+
+@question_type("math.length_compare_mixed_p2", display_name={"th": "ยาวกว่ากันกี่เซนติเมตร (เมตรและเซนติเมตร)"},
+               level=LEVEL, topic="การวัด")
+class LengthCompareMixedP2(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(150, 400)
+        b = rng.randint(100, a - 10)
+        right = a - b
+        x, y = rng.sample(("ริบบิ้น", "เชือก", "ไม้ไผ่", "ผ้า"), 2)
+        prompt = (f"{x}ยาว {_m_cm(a)} {y}ยาว {b} เซนติเมตร {x}ยาวกว่า{y}กี่เซนติเมตร")
+        # The metres taken as ten centimetres; added; the metres ignored.
+        m, r = divmod(a, 100)
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(abs(10 * m + r - b), a + b, abs(r - b), right + 10,
+                                                answer=right, lo=1))

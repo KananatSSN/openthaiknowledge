@@ -73,3 +73,106 @@ class PatternWordP2(QuestionType):
 class PatternRuleP2(PatternRuleType):
     STEPS = (2, 5, 10, 100)
     HI = 1000
+
+
+# ── More patterns (2026-11): the next number, two numbers missing, a far term, a three-shape repeat at a far
+# place, growing dots, and counting back ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+_P2_STEPS = (2, 5, 10, 100)
+_P2_SHAPES = ("○", "△", "□", "☆", "◇", "♡")
+
+
+@question_type("math.pattern_next_p2", display_name={"th": "จำนวนถัดไปในแบบรูป (ทีละ 2, 5, 10, 100)"},
+               level=LEVEL, topic="แบบรูป")
+class PatternNextP2(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice(_P2_STEPS)
+        down = rng.random() < 0.5
+        low = rng.randint(0, 1000 - 5 * step)
+        seq = [low + step * i for i in range(6)]
+        if down:
+            seq.reverse()
+        terms, right = seq[:5], seq[5]
+        d = right - terms[-1]
+        others = [s for s in _P2_STEPS if s != step]
+        # Stepping the wrong way; another step size the same way; one step too far.
+        return MathDraw("", str(right), prompt=f"{', '.join(map(str, terms))}, ... จำนวนถัดไปคือจำนวนใด",
+                        distractors=_story.keep(terms[-1] - d, *[terms[-1] + (-s if down else s) for s in others],
+                                                right + d, answer=right, lo=0, hi=1000))
+
+
+@question_type("math.pattern_two_missing_p2", display_name={"th": "หาจำนวนที่หายไปสองจำนวนในแบบรูป"},
+               level=LEVEL, topic="แบบรูป")
+class PatternTwoMissingP2(ChoiceType):
+    def compose(self, rng: Random):
+        step = rng.choice(_P2_STEPS)
+        start = rng.randint(1, (1000 - 5 * step) // step) * step
+        terms = [start + step * i for i in range(6)]
+        i = rng.randrange(1, 4)
+        shown = ", ".join("□" if j in (i, i + 2) else str(t) for j, t in enumerate(terms))
+        a, b = terms[i], terms[i + 2]
+        right = f"{a} และ {b}"
+        # Each gap filled by one step only; the gaps swapped; both filled with the neighbour.
+        wrongs = [f"{a + 1} และ {b + 1}", f"{b} และ {a}", f"{a} และ {b + step}"]
+        return f"จำนวนใดเติมใน □ ตามลำดับ: {shown}", right, wrongs
+
+
+@question_type("math.pattern_nth_term_p2", display_name={"th": "จำนวนในลำดับที่กำหนดของแบบรูป"},
+               level=LEVEL, topic="แบบรูป")
+class PatternNthTermP2(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice((2, 5, 10))
+        start = rng.randint(1, 30)
+        n = rng.randint(6, 12)
+        right = start + step * (n - 1)
+        prompt = f"นับเพิ่มทีละ {step} เริ่มจาก {start} จำนวนที่ {n} ที่นับได้คือจำนวนใด"
+        # One step too many; the step times n; one step short.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right + step, step * n, right - step, start + n,
+                                                answer=right, lo=1))
+
+
+@question_type("math.pattern_three_nth_p2", display_name={"th": "รูปในลำดับที่กำหนดของแบบรูปซ้ำ (ชุดละ 3 รูป)"},
+               level=LEVEL, topic="แบบรูป")
+class PatternThreeNthP2(ChoiceType):
+    def compose(self, rng: Random):
+        unit = rng.sample(_P2_SHAPES, 3)
+        k = rng.randint(10, 24)
+        right = unit[(k - 1) % 3]
+        others = [s for s in _P2_SHAPES if s not in unit]
+        shown = "  ".join(unit * 2)
+        return (f"แบบรูป {shown}  ... รูปที่ {k} คือรูปใด", right,
+                [s for s in unit if s != right] + [rng.choice(others)])
+
+
+@question_type("math.pattern_growing_dots_p2", display_name={"th": "แบบรูปที่เพิ่มขึ้นทีละเท่ากัน"},
+               level=LEVEL, topic="แบบรูป")
+class PatternGrowingDotsP2(WordProblem):
+    def expr(self, rng: Random):
+        first = rng.randint(1, 9)
+        step = rng.choice((2, 3, 4, 5))
+        n = rng.randint(5, 9)
+        right = first + step * (n - 1)
+        prompt = (f"รูปที่ 1 มีจุด {first} จุด รูปถัดไปแต่ละรูปมีจุดเพิ่มขึ้นรูปละ {step} จุด "
+                  f"รูปที่ {n} มีจุดกี่จุด")
+        # Counting one step too many; the step times the figure number; one step too few.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right + step, step * n, right - step, first * n, answer=right, lo=1))
+
+
+@question_type("math.pattern_count_back_p2", display_name={"th": "นับลดทีละ 2, 5, 10 หรือ 100"},
+               level=LEVEL, topic="แบบรูป")
+class PatternCountBackP2(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice(_P2_STEPS)
+        k = rng.randint(4, 7)
+        start = rng.randint(k - 1, 10) * 100 if step == 100 else rng.randint(step * (k - 1), 900)
+        right = start - step * (k - 1)
+        prompt = f"นับลดทีละ {step} เริ่มจาก {start} จำนวนที่ {k} ที่นับได้คือจำนวนใด"
+        # One count too many or too few; counted down by one instead.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right - step, right + step, start - (k - 1), start - step * k,
+                                                answer=right, lo=0))

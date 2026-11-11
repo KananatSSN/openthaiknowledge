@@ -191,3 +191,55 @@ class OrderNumbersP2(QuestionType):
                        content_math(fmt(nums))],
                       fmt(right), [w for w in dict.fromkeys(wrongs) if w != fmt(right)],
                       self.topic)
+
+
+# ── More numbers to 1,000 (2026-11): an even number, a number from its hundreds, tens and ones, and one,
+# ten or a hundred more or less ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+
+@question_type("math.even_number_p2", display_name={"th": "จำนวนคู่และจำนวนคี่"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class EvenNumberP2(WordProblem):
+    def expr(self, rng: Random):
+        even = rng.random() < 0.5
+        base = rng.randint(10, 499)
+        right = 2 * base + (0 if even else 1)
+        # Three of the other kind near it.
+        wrongs = [right + 1, right - 1, right + 3, right - 3]
+        return MathDraw("", str(right), prompt=f"จำนวนใดเป็นจำนวน{'คู่' if even else 'คี่'}",
+                        distractors=_story.keep(*wrongs, answer=right, lo=1, hi=1000))
+
+
+@question_type("math.hundreds_tens_ones_p2", display_name={"th": "จำนวนจากหลักร้อย หลักสิบ และหลักหน่วย"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class HundredsTensOnesP2(WordProblem):
+    def expr(self, rng: Random):
+        h = rng.randint(1, 9)
+        t = rng.randint(0, 9)
+        o = rng.randint(0, 9)
+        right = 100 * h + 10 * t + o
+        prompt = f"{h} ร้อย {t} สิบ {o} หน่วย คือจำนวนใด"
+        # The tens and ones swapped; the hundreds and tens swapped; the digits added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(100 * h + 10 * o + t, 100 * t + 10 * h + o, h + t + o,
+                                                100 * h + t + 10 * o + 1, answer=right, lo=1))
+
+
+@question_type("math.more_less_100_p2", display_name={"th": "มากกว่าหรือน้อยกว่าอยู่ 1, 10 หรือ 100"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class MoreLess100P2(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice((1, 10, 100))
+        more = rng.random() < 0.5
+        n = rng.randint(120, 880)
+        right = n + step if more else n - step
+        others = [s for s in (1, 10, 100) if s != step]
+        prompt = f"จำนวนที่{'มากกว่า' if more else 'น้อยกว่า'} {n} อยู่ {step} คือจำนวนใด"
+        # The other direction; the other two steps the asked way.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(n - step if more else n + step,
+                                                *[n + s if more else n - s for s in others],
+                                                answer=right, lo=0, hi=1000))
