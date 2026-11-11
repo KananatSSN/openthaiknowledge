@@ -161,3 +161,107 @@ class SignedNumberContextM1(WordProblem):
                         prompt=(f"ระดับน้ำในอ่างเก็บน้ำอยู่สูงกว่าระดับปกติ {start} เมตร ลดลงวันละ {per.numerator}/{per.denominator} เมตร "
                                 f"เป็นเวลา {days} วัน ระดับน้ำเทียบกับระดับปกติเป็นกี่เมตร (ต่ำกว่าระดับปกติให้ตอบเป็นจำนวนลบ)"),
                         distractors=[_signed(start + per * days), _signed(per * days), _signed(-end) if end else "1"])
+
+
+# ── More rational numbers (2026-11): a number between two, mixed operations, opposites and reciprocals,
+# fractions of an amount, and powers of fractions ──
+
+from otk.kit import story as _story  # noqa: E402
+from otk.sets._support.math_m1 import LEVEL  # noqa: E402
+
+_RAT_TOPIC = "จำนวนตรรกยะ"
+
+
+@question_type("math.rational_between_m1", display_name={"th": "จำนวนตรรกยะที่อยู่ระหว่างสองจำนวน"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class RationalBetweenM1(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            b, d = rng.randint(2, 9), rng.randint(2, 9)
+            p, q = Fraction(rng.randint(-9, 9), b), Fraction(rng.randint(-9, 9), d)
+            lo, hi = min(p, q), max(p, q)
+            if hi - lo >= Fraction(1, 4) and lo.denominator > 1 and hi.denominator > 1:
+                break
+        mid = (lo + hi) / 2
+        # Outside on either side, and one end itself.
+        wrongs = [lo - Fraction(1, 2), hi + Fraction(1, 2), lo if lo != mid else hi + 1]
+        return MathDraw("", frac_tex(mid),
+                        prompt=f"จำนวนในข้อใดอยู่ระหว่าง {_plain_frac(lo)} และ {_plain_frac(hi)}",
+                        distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != mid])
+
+
+def _plain_frac(f: Fraction) -> str:
+    return str(f.numerator).replace("-", "−") + (f"/{f.denominator}" if f.denominator > 1 else "")
+
+
+@question_type("math.rational_mixed_ops_m1", display_name={"th": "บวก ลบ คูณ หารจำนวนตรรกยะหลายขั้น"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class RationalMixedOpsM1(WordProblem):
+    def expr(self, rng: Random):
+        a = Fraction(rng.choice([-1, 1]) * rng.randint(1, 5), rng.choice((2, 3, 4)))
+        b = Fraction(rng.choice([-1, 1]) * rng.randint(1, 5), rng.choice((2, 4, 6)))
+        k = rng.choice((-6, -4, -3, 2, 3, 4, 6))
+        right = (a + b) * k
+        k_tex = f"({k})" if k < 0 else str(k)
+        b_tex = rf"\left({frac_tex(b)}\right)" if b < 0 else frac_tex(b)
+        tex = rf"\left({frac_tex(a)} + {b_tex}\right) \times {k_tex}"
+        # Only b multiplied; the sign of k dropped; the fractions added by tops and bottoms.
+        tops = Fraction(a.numerator + b.numerator, a.denominator + b.denominator) * k
+        wrongs = [a + b * k, (a + b) * abs(k) if k < 0 else -(a + b) * k, tops]
+        return MathDraw(tex, frac_tex(right), prompt="จงหาค่าของ",
+                        distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.rational_inverse_m1", display_name={"th": "ตัวผกผันการบวกและการคูณของจำนวนตรรกยะ"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class RationalInverseM1(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            q = Fraction(rng.choice([-1, 1]) * rng.randint(1, 9), rng.randint(2, 9))
+            if q.denominator > 1 and abs(q.numerator) > 1:
+                break
+        if rng.random() < 0.5:
+            right = 1 / q
+            # The opposite instead; the sign flipped too; the number itself.
+            return MathDraw("", frac_tex(right), prompt=f"ตัวผกผันการคูณของ {_plain_frac(q)} คือข้อใด",
+                            distractors=[frac_tex(w) for w in (-q, -right, q)])
+        right = -q
+        return MathDraw("", frac_tex(right), prompt=f"ตัวผกผันการบวกของ {_plain_frac(q)} คือข้อใด",
+                        distractors=[frac_tex(w) for w in (1 / q, -1 / q, q)])
+
+
+@question_type("math.fraction_of_amount_m1", display_name={"th": "โจทย์ปัญหาเศษส่วนของปริมาณ"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class FractionOfAmountM1(WordProblem):
+    """Used a fraction, then a fraction of what was left."""
+
+    def expr(self, rng: Random):
+        a, b = rng.choice(((1, 4), (1, 3), (2, 5), (1, 2), (3, 8))), rng.choice(((1, 3), (1, 2), (2, 3), (1, 4)))
+        first, second = Fraction(*a), Fraction(*b)
+        unit = (first.denominator * second.denominator)
+        total = unit * rng.randint(2, 8)
+        left = total * (1 - first) * (1 - second)
+        prompt = (f"มีเงิน {total} บาท ใช้ไป {a[0]}/{a[1]} ของเงินทั้งหมด แล้วใช้อีก {b[0]}/{b[1]} ของเงินที่เหลือ "
+                  f"เหลือเงินกี่บาท")
+        # The second fraction taken of the whole; the fractions added first; only the first step.
+        wrongs = [total * (1 - first - second), total * (1 - first) * second, total * (1 - first)]
+        return MathDraw("", str(int(left)), prompt=prompt,
+                        distractors=_story.keep(*[int(w) for w in wrongs if w == int(w)], answer=int(left), lo=1))
+
+
+@question_type("math.fraction_power_m1", display_name={"th": "เลขยกกำลังของเศษส่วน"},
+               level=LEVEL, topic=_RAT_TOPIC)
+class FractionPowerM1(WordProblem):
+    def expr(self, rng: Random):
+        n, d = rng.randint(1, 5), rng.randint(2, 6)
+        while n == d or Fraction(n, d).denominator == 1:
+            n, d = rng.randint(1, 5), rng.randint(2, 6)
+        sign = rng.choice((1, -1))
+        e = rng.choice((2, 3))
+        base = Fraction(sign * n, d)
+        right = base ** e
+        tex = rf"\left({frac_tex(base)}\right)^{{{e}}}"
+        # The sign kept positive; only the top raised; multiplied by the exponent.
+        wrongs = [abs(right), Fraction((sign * n) ** e, d), base * e]
+        return MathDraw(tex, frac_tex(right), prompt="จงหาค่าของ",
+                        distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != right])

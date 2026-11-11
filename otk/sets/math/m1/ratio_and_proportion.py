@@ -255,3 +255,51 @@ class RatioAfterAddingM1(QuestionType):
                             f"แล้วเติมน้ำสีแดงอีก {added} ลิตร "
                             "น้ำสีแดงคิดเป็นส่วนเท่าใดของน้ำสีทั้งหมดหลังเติม")],
                       frac_tex(answer), wrongs, self.topic)
+
+
+# ── Two more (2026-11): sharing in a ratio, and the better buy ──
+
+
+@question_type("math.ratio_difference_m1", display_name={"th": "อัตราส่วนเมื่อทราบผลต่าง"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class RatioDifferenceM1(WordProblem):
+    """a : b with a − b known: one part is the difference over (a − b)."""
+
+    def expr(self, rng: Random):
+        a, b = sorted(rng.sample(range(1, 10), 2), reverse=True)
+        unit = rng.randint(3, 30)
+        diff = (a - b) * unit
+        ask_big = rng.random() < 0.5
+        right = (a if ask_big else b) * unit
+        prompt = (f"จำนวนนักเรียนชายต่อนักเรียนหญิงเป็น {a} : {b} ถ้านักเรียนชายมากกว่านักเรียนหญิง {diff} คน "
+                  f"มีนักเรียน{'ชาย' if ask_big else 'หญิง'}กี่คน")
+        # The difference as the count; the difference shared by the whole ratio; the other group.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(diff, (b if ask_big else a) * unit, (a + b) * unit, unit,
+                                                answer=right, lo=1))
+
+
+@question_type("math.better_buy_m1", display_name={"th": "เปรียบเทียบราคาต่อหน่วย"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class BetterBuyM1(WordProblem):
+    """Compare the price of 100 mL; the bigger pack is not always cheaper."""
+
+    def expr(self, rng: Random):
+        while True:
+            q1, q2 = rng.sample((200, 250, 400, 500, 1000), 2)
+            p1, p2 = rng.randint(10, 80), rng.randint(10, 80)
+            # Prices per 100 mL in tenths of a baht, whole and different.
+            if p1 * 1000 % q1 == 0 and p2 * 1000 % q2 == 0 and p1 * q2 != p2 * q1:
+                break
+        t1, t2 = p1 * 1000 // q1, p2 * 1000 // q2
+
+        def baht(tenths: int) -> str:
+            return str(tenths // 10) if tenths % 10 == 0 else f"{tenths // 10}.{tenths % 10}"
+
+        right = min(t1, t2)
+        prompt = (f"นมกล่อง ก ขนาด {q1} มล. ราคา {p1} บาท นมกล่อง ข ขนาด {q2} มล. ราคา {p2} บาท "
+                  f"กล่องที่คุ้มกว่าคิดเป็นราคา 100 มล. ละกี่บาท")
+        # The dearer pack's rate; the cheaper pack's whole price; the rate per 10 mL.
+        wrongs = [max(t1, t2), 10 * min(p1, p2), right // 10 if right % 10 == 0 and right >= 20 else right + 5]
+        return MathDraw("", baht(right), prompt=prompt,
+                        distractors=[w for w in dict.fromkeys(baht(v) for v in wrongs) if w != baht(right)])

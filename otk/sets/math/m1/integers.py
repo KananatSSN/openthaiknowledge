@@ -158,3 +158,90 @@ class IntegerWordProblemM1(WordProblem):
                                 f"อุณหภูมิของสองช่องต่างกันกี่องศาเซลเซียส"),
                         distractors=_story.keep(abs(a + b), a + b, higher, answer=abs(a - b),
                                                 lo=-99))
+
+
+# ── More integers (2026-11): ordering, absolute value, the order of operations with negatives, and the
+# properties of addition and multiplication ──
+
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.sets._support.math_p2 import _maths  # noqa: E402
+
+
+@question_type("math.integer_order_m1", display_name={"th": "เปรียบเทียบและเรียงลำดับจำนวนเต็ม"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerOrderM1(QuestionType):
+    """On the number line the further left, the smaller: −12 < −3. The four choices are the four numbers."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        values = rng.sample([v for v in range(-20, 21) if v], 4)
+        if not any(v < 0 for v in values):
+            values[0] = -values[0]
+        smallest = rng.random() < 0.5
+        right = min(values) if smallest else max(values)
+        return _maths([text(f"จำนวนในข้อใด{'น้อยที่สุด' if smallest else 'มากที่สุด'}")], str(right),
+                      [str(v) for v in values if v != right], self.topic)
+
+
+@question_type("math.absolute_value_m1", display_name={"th": "ค่าสัมบูรณ์"},
+               level=LEVEL, topic=_INT_TOPIC)
+class AbsoluteValueM1(WordProblem):
+    """|a| is a's distance from 0: never negative."""
+
+    def expr(self, rng: Random):
+        a, b = rng.randint(2, 20), rng.randint(2, 20)
+        kind = rng.randrange(4)
+        if kind == 0:
+            tex, right = rf"|-{a}| + |{b}|", a + b
+            wrongs = (b - a, -a + b, -(a + b))
+        elif kind == 1:
+            tex, right = rf"|{b} - {a + b + 3}|", a + 3
+            wrongs = (-(a + 3), b + a + b + 3, a)
+        elif kind == 2:
+            tex, right = rf"-|-{a}|", -a
+            wrongs = (a, 0, -a - 1)
+        else:
+            tex, right = rf"|-{a}| \times |-{b}|", a * b
+            wrongs = (-a * b, a + b, -(a + b))
+        return MathDraw(tex, str(right), prompt="จงหาค่าของ",
+                        distractors=[str(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.integer_order_of_operations_m1", display_name={"th": "ลำดับการดำเนินการของจำนวนเต็ม"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerOrderOfOperationsM1(WordProblem):
+    """Brackets and powers first, then × and ÷, then + and −; and −3² is −(3²)."""
+
+    def expr(self, rng: Random):
+        a, b, c = rng.randint(2, 9), rng.randint(2, 9), rng.randint(2, 9)
+        kind = rng.randrange(4)
+        if kind == 0:
+            tex, right, wrongs = rf"-{a} + {b} \times (-{c})", -a - b * c, ((-a + b) * -c, -a + b * c, a - b * c)
+        elif kind == 1:
+            tex, right, wrongs = rf"-{a}^{{2}}", -a * a, (a * a, -2 * a, 2 * a)
+        elif kind == 2:
+            tex, right, wrongs = rf"(-{a})^{{2}} - {b}", a * a - b, (-a * a - b, a * a + b, -2 * a - b)
+        else:
+            tex, right, wrongs = (rf"{a * b} \div (-{b}) - {c}", -a - c, (a - c, -a + c, a * b // (b + c) if b + c else 0))
+        return MathDraw(tex, str(right), prompt="จงหาค่าของ",
+                        distractors=[str(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+_PROPS = ("สมบัติการสลับที่การบวก", "สมบัติการเปลี่ยนหมู่การคูณ", "สมบัติการแจกแจง",
+          "สมบัติการมีตัวผกผันการบวก", "สมบัติการมีเอกลักษณ์การคูณ", "สมบัติการมีเอกลักษณ์การบวก")
+
+
+def _prop(stem: str, right: int, *wrong: int) -> Concept:
+    return Concept(f"{stem} ใช้สมบัติใด", _PROPS[right], tuple(_PROPS[w] for w in wrong))
+
+
+@question_type("math.integer_properties_m1", display_name={"th": "สมบัติของการบวกและการคูณจำนวนเต็ม"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerPropertiesM1(ConceptBankType):
+    ITEMS = [
+        _prop("(−3) + 5 = 5 + (−3)", 0, 1, 2, 5),
+        _prop("[2 × (−3)] × 4 = 2 × [(−3) × 4]", 1, 0, 2, 4),
+        _prop("(−4) × (2 + 5) = (−4) × 2 + (−4) × 5", 2, 1, 0, 3),
+        _prop("(−7) + 7 = 0", 3, 5, 0, 4),
+        _prop("(−9) × 1 = −9", 4, 5, 3, 1),
+        _prop("0 + (−6) = −6", 5, 4, 3, 0),
+    ]
