@@ -278,3 +278,105 @@ class ParallelNamedAngleM2(WordProblem):
                         distractors=_story.keep(180 - right, abs(90 - right), 2 * v, right + 10,
                                                 answer=right, lo=1, hi=179))
 
+
+# ── To fifteen (2026-11): interior angles in a ratio or with a difference, naming a pair, the bisectors of
+# two interior angles, and two unknown angles ──
+
+_LINES = "AB ขนานกับ CD มีเส้นตัด EF ตัด AB ที่ G และตัด CD ที่ H "
+
+
+@question_type("math.parallel_ratio_m2", display_name={"th": "มุมภายในบนข้างเดียวกันเป็นอัตราส่วน"},
+               level={"th": "ม.2"}, topic="เส้นขนาน")
+class ParallelRatioM2(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            p, q = rng.sample(range(1, 10), 2)
+            if 180 % (p + q) == 0:
+                break
+        unit = 180 // (p + q)
+        right = p * unit
+        prompt = _LINES + f"ถ้า ∠BGH : ∠GHD = {p} : {q} จงหาขนาดของ ∠BGH (องศา)"
+        # The other angle; one part; the parts read as 360°.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(q * unit, unit, 2 * right, 90, answer=right, lo=1, hi=179))
+
+
+@question_type("math.parallel_difference_m2", display_name={"th": "มุมภายในบนข้างเดียวกันต่างกันกี่องศา"},
+               level={"th": "ม.2"}, topic="เส้นขนาน")
+class ParallelDifferenceM2(WordProblem):
+    def expr(self, rng: Random):
+        d = 2 * rng.randint(5, 40)
+        bigger, smaller = (180 + d) // 2, (180 - d) // 2
+        ask_big = rng.random() < 0.5
+        right = bigger if ask_big else smaller
+        prompt = (_LINES + f"ถ้า ∠BGH มีขนาดมากกว่า ∠GHD อยู่ {d} องศา จงหาขนาดของ "
+                  f"{'∠BGH' if ask_big else '∠GHD'} (องศา)")
+        # The other angle; 180° less the difference; the difference itself.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(smaller if ask_big else bigger, 180 - d, d, 90 + d, answer=right,
+                                                lo=1, hi=179))
+
+
+# (first, second, relation): the pairs a ม.2 book names.
+_NAMED_PAIRS = (
+    ("∠AGH", "∠GHD", 0), ("∠BGH", "∠CHG", 0),
+    ("∠EGB", "∠GHD", 1), ("∠AGE", "∠CHG", 1),
+    ("∠BGH", "∠GHD", 2), ("∠AGH", "∠CHG", 2),
+    ("∠AGE", "∠BGH", 3), ("∠GHD", "∠CHF", 3),
+    ("∠AGE", "∠EGB", 4), ("∠CHG", "∠GHD", 4),
+)
+_PAIR_NAMES = ("มุมแย้ง", "มุมภายนอกและมุมภายในที่อยู่ตรงข้ามบนข้างเดียวกันของเส้นตัด",
+               "มุมภายในที่อยู่บนข้างเดียวกันของเส้นตัด", "มุมตรงข้าม", "มุมประกอบกันเป็นมุมตรง")
+
+
+@question_type("math.parallel_name_pair_m2", display_name={"th": "บอกชื่อคู่มุมที่เกิดจากเส้นตัด"},
+               level={"th": "ม.2"}, topic="เส้นขนาน")
+class ParallelNamePairM2(ChoiceType):
+    def compose(self, rng: Random):
+        first, second, kind = rng.choice(_NAMED_PAIRS)
+        if rng.random() < 0.5:
+            first, second = second, first
+        return (_LINES + f"{first} และ {second} เป็นมุมคู่ใด", _PAIR_NAMES[kind],
+                [n for i, n in enumerate(_PAIR_NAMES) if i != kind])
+
+
+@question_type("math.parallel_bisectors_m2", display_name={"th": "เส้นแบ่งครึ่งมุมภายในบนข้างเดียวกันของเส้นตัด"},
+               level={"th": "ม.2"}, topic="เส้นขนาน")
+class ParallelBisectorsM2(WordProblem):
+    """GP and HP halve ∠BGH and ∠GHD, which add to 180°, so ∠GPH = 90°."""
+
+    def expr(self, rng: Random):
+        u = 2 * rng.randint(20, 70)
+        lead = (_LINES + f"ลาก GP แบ่งครึ่ง ∠BGH และลาก HP แบ่งครึ่ง ∠GHD ให้ GP และ HP พบกันที่จุด P "
+                f"ถ้า ∠BGH = {u}° ")
+        kind = rng.randrange(3)
+        if kind == 0:
+            right = u // 2
+            asked = "∠PGH"
+            wrongs = (u, 90 - right, 180 - u, right + 10)
+        elif kind == 1:
+            right = (180 - u) // 2
+            asked = "∠PHG"
+            wrongs = (180 - u, u // 2, u, right + 10)
+        else:
+            right = 90
+            asked = "∠GPH"
+            wrongs = (u, 180 - u, u // 2, 180 - u // 2)
+        return MathDraw("", str(right), prompt=lead + f"จงหาขนาดของ {asked} (องศา)",
+                        distractors=_story.keep(*wrongs, answer=right, lo=1, hi=179))
+
+
+@question_type("math.parallel_two_unknowns_m2", display_name={"th": "หาผลต่างของมุมสองมุมบนเส้นขนาน"},
+               level={"th": "ม.2"}, topic="เส้นขนาน")
+class ParallelTwoUnknownsM2(WordProblem):
+    """∠GHD and ∠DHF from one angle at G: one equals ∠EGB, the other its supplement."""
+
+    def expr(self, rng: Random):
+        a = rng.choice([n for n in range(25, 156) if n != 90])
+        x, y = 180 - a, a      # ∠GHD = ∠EGB = 180° − ∠AGE, ∠DHF = ∠AGE
+        names = ("∠GHD", "∠DHF") if x > y else ("∠DHF", "∠GHD")
+        right = abs(x - y)
+        prompt = (_LINES + f"ถ้า ∠AGE = {a}° ให้ {names[0]} = x และ {names[1]} = y จงหาค่าของ x − y")
+        # The angles taken equal (0), their sum, one of them.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(180, max(x, y), min(x, y), right + 10, answer=right, lo=1))

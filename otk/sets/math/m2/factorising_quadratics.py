@@ -247,3 +247,94 @@ class FactorGroupingM2(WordProblem):
                   f"({_lin(1, q)}) + ({bracket})", f"({_lin(1, -q)})({bracket})"]
         return MathDraw(expanded, right, prompt="จงแยกตัวประกอบ", distractors=_distinct(right, *wrongs))
 
+
+# ── Factorising to fifteen (2026-11): four terms in pairs, a square less a square of a binomial, spotting a
+# perfect square, completing one, and a common factor in two letters ──
+
+
+@question_type("math.factor_four_terms_m2", display_name={"th": "แยกตัวประกอบพหุนามสี่พจน์โดยจัดกลุ่ม"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorFourTermsM2(WordProblem):
+    """xy + qx + py + pq = x(y + q) + p(y + q) = (x + p)(y + q)."""
+
+    def expr(self, rng: Random):
+        while True:
+            p, q = _nz(rng, -9, 9), _nz(rng, -9, 9)
+            if abs(p) != abs(q):
+                break
+        expanded = poly_tex((1, "xy"), (q, "x"), (p, "y"), (p * q, ""))
+        ybr = poly_tex((1, "y"), (q, ""))
+        right = f"({_lin(1, p)})({ybr})"
+        # The numbers paired with the wrong letters; both signs flipped; the product put in one bracket.
+        wrongs = [f"({_lin(1, q)})({poly_tex((1, 'y'), (p, ''))})", f"({_lin(1, -p)})({poly_tex((1, 'y'), (-q, ''))})",
+                  f"({_lin(1, p * q)})({poly_tex((1, 'y'), (1, ''))})"]
+        return MathDraw(expanded, right, prompt="จงแยกตัวประกอบ", distractors=_distinct(right, *wrongs))
+
+
+@question_type("math.factor_square_minus_square_m2", display_name={"th": "ผลต่างของกำลังสองที่มีพหุนามในวงเล็บ"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorSquareMinusSquareM2(WordProblem):
+    """(x + a)² − b² = (x + a − b)(x + a + b)."""
+
+    def expr(self, rng: Random):
+        while True:
+            a, b = _nz(rng, -9, 9), rng.randint(2, 9)
+            if abs(a) != b:
+                break
+        problem = f"({_lin(1, a)})^{{2}} - {b * b}"
+        right = f"({_lin(1, a - b)})({_lin(1, a + b)})"
+        # b² not square-rooted; a dropped; a squared bracket.
+        wrongs = [f"({_lin(1, a - b * b)})({_lin(1, a + b * b)})", f"({_lin(1, -b)})({_lin(1, b)})",
+                  f"({_lin(1, a - b)})^{{2}}", f"({_lin(1, -a - b)})({_lin(1, -a + b)})"]
+        return MathDraw(problem, right, prompt="จงแยกตัวประกอบ", distractors=_distinct(right, *wrongs))
+
+
+@question_type("math.factor_perfect_square_check_m2", display_name={"th": "พหุนามใดเป็นกำลังสองสมบูรณ์"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorPerfectSquareCheckM2(WordProblem):
+    """x² ± 2kx + k² is a perfect square; kx in the middle, 2k as the constant, or −k² are not."""
+
+    def expr(self, rng: Random):
+        k, s = rng.randint(3, 9), rng.choice((1, -1))  # from 3: at 2, 2k = k² and a wrong choice is right
+        right = _quad(1, s * 2 * k, k * k)
+        wrongs = [_quad(1, s * k, k * k), _quad(1, s * 2 * k, 2 * k), _quad(1, s * 2 * k, -k * k)]
+        return MathDraw("", right, prompt="พหุนามในข้อใดเป็นกำลังสองสมบูรณ์", distractors=_distinct(right, *wrongs))
+
+
+@question_type("math.factor_perfect_square_k_m2", display_name={"th": "หาค่าคงตัวที่ทำให้เป็นกำลังสองสมบูรณ์"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorPerfectSquareKM2(WordProblem):
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        c = rng.randint(2, 12)
+        if kind == 0:
+            # x² + kx + c² with k > 0: k = 2c.
+            return MathDraw("", str(2 * c), prompt=f"ถ้า x² + kx + {c * c} เป็นกำลังสองสมบูรณ์ และ k > 0 แล้ว k มีค่าเท่าใด",
+                            distractors=_story.keep(c, c * c, 4 * c, 2 * c * c, answer=2 * c, lo=1))
+        if kind == 1:
+            # x² + 2cx + k: k = c².
+            return MathDraw("", str(c * c), prompt=f"ถ้า x² + {2 * c}x + k เป็นกำลังสองสมบูรณ์ แล้ว k มีค่าเท่าใด",
+                            distractors=_story.keep(2 * c, 4 * c * c, c, (2 * c) ** 2, answer=c * c, lo=1))
+        a = rng.randint(2, 5)
+        c = rng.choice([v for v in range(1, 10) if math.gcd(a, v) == 1])
+        return MathDraw("", str(2 * a * c), prompt=(f"ถ้า {a * a}x² + kx + {c * c} เป็นกำลังสองสมบูรณ์ และ k > 0 "
+                                                   f"แล้ว k มีค่าเท่าใด"),
+                        distractors=_story.keep(a * c, 2 * c, 2 * a * a * c, a * a + c * c, answer=2 * a * c, lo=1))
+
+
+@question_type("math.factor_two_variable_m2", display_name={"th": "ดึงตัวประกอบร่วมที่มีตัวแปรสองตัว"},
+               level={"th": "ม.2"}, topic=_M2_TOPIC)
+class FactorTwoVariableM2(WordProblem):
+    """gax²y ± gbxy² = gxy(ax ± by)."""
+
+    def expr(self, rng: Random):
+        while True:
+            g, a, b = rng.randint(2, 9), rng.randint(1, 7), rng.randint(1, 7)
+            if a != b and math.gcd(a, b) == 1:
+                break
+        s = rng.choice((1, -1))
+        expanded = poly_tex((g * a, "x^{2}y"), (s * g * b, "xy^{2}"))
+        right = f"{g}xy({poly_tex((a, 'x'), (s * b, 'y'))})"
+        wrongs = [f"{g}({poly_tex((a, 'x^{2}y'), (s * b, 'xy^{2}'))})", f"xy({poly_tex((g * a, 'x'), (s * g * b, 'y'))})",
+                  f"{g}xy({poly_tex((a, 'x'), (-s * b, 'y'))})", f"{g}x({poly_tex((a, 'xy'), (s * b, 'y^{2}'))})"]
+        return MathDraw(expanded, right, prompt="จงแยกตัวประกอบให้สมบูรณ์", distractors=_distinct(right, *wrongs))

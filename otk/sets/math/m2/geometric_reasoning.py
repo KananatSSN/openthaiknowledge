@@ -15,7 +15,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_chapters import NL, _deg, _distinct
 from otk.sets._support.math_gaps_shape_data import _choices
 from otk.sets._support.math_p2 import _texts
@@ -356,3 +356,110 @@ class IsoscelesSidesM2(WordProblem):
                         distractors=_story.keep(side + 2 * base, side + base, 2 * x + base, perimeter + 2,
                                                 answer=perimeter, lo=1))
 
+
+# ── To fifteen (2026-11): the acute angles of a right triangle in x, the exterior angles of a triangle, a point
+# on a perpendicular bisector, the largest angle opposite the longest side, and an angle and its complement
+# or supplement ──
+
+
+@question_type("math.right_triangle_acute_m2", display_name={"th": "มุมแหลมของรูปสามเหลี่ยมมุมฉากกับตัวแปร"},
+               level=M2, topic=_REASON_TOPIC)
+class RightTriangleAcuteM2(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            x = rng.randint(4, 20)
+            m1, m2 = rng.randint(1, 4), rng.randint(1, 4)
+            c1 = rng.randrange(-10, 21, 5)
+            c2 = 90 - (m1 + m2) * x - c1
+            a, b = m1 * x + c1, m2 * x + c2
+            if -20 <= c2 <= 40 and 10 <= a <= 80 and 10 <= b <= 80:
+                break
+        lead = f"รูปสามเหลี่ยม ABC มี ∠C = 90°, ∠A = {_deg_x(m1, c1)} และ ∠B = {_deg_x(m2, c2)} "
+        if rng.random() < 0.5:
+            # The angles set to 180°; one angle taken as x.
+            wrong = (180 - c1 - c2) // (m1 + m2)
+            return MathDraw("", str(x), prompt=lead + "จงหาค่า x",
+                            distractors=_story.keep(wrong, a, x + 2, x - 2, answer=x, lo=1))
+        return MathDraw("", str(a), prompt=lead + "จงหาขนาดของ ∠A (องศา)",
+                        distractors=_story.keep(b, 90 + a if a < 90 else 0, x, 180 - a, answer=a, lo=1, hi=179))
+
+
+@question_type("math.triangle_exterior_sum_m2", display_name={"th": "ผลบวกของมุมภายนอกของรูปสามเหลี่ยม"},
+               level=M2, topic=_REASON_TOPIC)
+class TriangleExteriorSumM2(WordProblem):
+    """One exterior angle at each corner: they add to 360°."""
+
+    def expr(self, rng: Random):
+        a, b = rng.randint(30, 80), rng.randint(30, 80)
+        c = 180 - a - b
+        ea, eb, ec = 180 - a, 180 - b, 180 - c
+        lead = (f"ต่อด้านของรูปสามเหลี่ยม ABC ออกไปให้เกิดมุมภายนอกที่จุดยอดละหนึ่งมุม "
+                f"ถ้ามุมภายนอกที่จุด A และ B มีขนาด {ea}° และ {eb}° ")
+        if rng.random() < 0.5:
+            # 180° used for the sum; the interior angle at C.
+            return MathDraw("", str(ec), prompt=lead + "มุมภายนอกที่จุด C มีขนาดกี่องศา",
+                            distractors=_story.keep(c, 360 - ea, ea + eb - 180, ec + 10, answer=ec, lo=1, hi=359))
+        return MathDraw("", str(c), prompt=lead + "มุมภายในที่จุด C มีขนาดกี่องศา",
+                        distractors=_story.keep(ec, 180 - ea, c + 10, abs(ea - eb), answer=c, lo=1, hi=179))
+
+
+@question_type("math.perpendicular_bisector_m2", display_name={"th": "จุดบนเส้นแบ่งครึ่งและตั้งฉาก"},
+               level=M2, topic=_REASON_TOPIC)
+class PerpendicularBisectorM2(WordProblem):
+    """A point on the perpendicular bisector of AB is as far from A as from B."""
+
+    def expr(self, rng: Random):
+        x = rng.randint(2, 9)
+        while True:
+            m1, m2 = rng.sample(range(1, 6), 2)
+            d = rng.randint(10, 40)
+            c1, c2 = d - m1 * x, d - m2 * x
+            if c1 and c2 and abs(c1) <= 40 and abs(c2) <= 40:
+                break
+        lead = (f"จุด P อยู่บนเส้นตรงที่แบ่งครึ่งและตั้งฉากกับ AB ถ้า PA = {_x(m1, c1)} เซนติเมตร "
+                f"และ PB = {_x(m2, c2)} เซนติเมตร ")
+        if rng.random() < 0.5:
+            other = (c2 - c1) // (m1 + m2) if (c2 - c1) % (m1 + m2) == 0 else 0
+            return MathDraw("", str(x), prompt=lead + "จงหาค่า x",
+                            distractors=_story.keep(other, d, x + 1, x - 1, x + 3, answer=x, lo=1))
+        return MathDraw("", str(d), prompt=lead + "PA ยาวกี่เซนติเมตร",
+                        distractors=_story.keep(x, 2 * d, m1 * x, d + m1, answer=d, lo=1))
+
+
+@question_type("math.largest_angle_side_m2", display_name={"th": "มุมที่ใหญ่ที่สุดอยู่ตรงข้ามด้านที่ยาวที่สุด"},
+               level=M2, topic=_REASON_TOPIC)
+class LargestAngleSideM2(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            ab, bc, ca = rng.randint(3, 15), rng.randint(3, 15), rng.randint(3, 15)
+            if len({ab, bc, ca}) == 3 and ab + bc > ca and bc + ca > ab and ab + ca > bc:
+                break
+        opposite = {"∠C": ab, "∠A": bc, "∠B": ca}
+        largest = rng.random() < 0.5
+        pick = max(opposite, key=opposite.get) if largest else min(opposite, key=opposite.get)
+        word = "ใหญ่ที่สุด" if largest else "เล็กที่สุด"
+        return (f"รูปสามเหลี่ยม ABC มี AB = {ab}, BC = {bc} และ CA = {ca} หน่วย มุมใด{word}", pick,
+                [n for n in opposite if n != pick] + ["บอกไม่ได้ ต้องวัดมุมก่อน"])
+
+
+@question_type("math.complement_supplement_algebra_m2", display_name={"th": "มุมกับมุมประกอบมุมฉากและมุมประกอบมุมตรง"},
+               level=M2, topic=_REASON_TOPIC)
+class ComplementSupplementAlgebraM2(WordProblem):
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        if kind == 0:
+            k = rng.choice((2, 4, 5, 8, 9, 14))
+            right = 90 * k // (k + 1)
+            prompt = f"มุมมุมหนึ่งมีขนาดเป็น {k} เท่าของมุมประกอบมุมฉากของมันเอง มุมนั้นมีขนาดกี่องศา"
+            wrongs = (90 - right, 180 * k // (k + 1), 90 // k if 90 % k == 0 else 0, right + 5)
+        elif kind == 1:
+            k = rng.choice((2, 3, 4, 5, 8, 9, 11))
+            right = 180 * k // (k + 1)
+            prompt = f"มุมมุมหนึ่งมีขนาดเป็น {k} เท่าของมุมประกอบมุมตรงของมันเอง มุมนั้นมีขนาดกี่องศา"
+            wrongs = (180 - right, 90 * k // (k + 1), right - 10, right + 5)
+        else:
+            d = 2 * rng.randint(5, 60)
+            right = (180 + d) // 2
+            prompt = f"มุมมุมหนึ่งมีขนาดมากกว่ามุมประกอบมุมตรงของมันเองอยู่ {d} องศา มุมนั้นมีขนาดกี่องศา"
+            wrongs = (180 - right, 180 - d, (90 + d) // 2 if d < 90 else 0, d)
+        return MathDraw("", str(right), prompt=prompt, distractors=_story.keep(*wrongs, answer=right, lo=1, hi=179))

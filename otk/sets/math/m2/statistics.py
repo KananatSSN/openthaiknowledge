@@ -399,3 +399,112 @@ class MeanFromFrequencyM2(WordProblem):
         return MathDraw("", str(mean), prompt=prompt,
                         distractors=_story.keep(int(plain) if plain == int(plain) else 0, total // 4, mode,
                                                 mean + 1, mean - 1, answer=mean, lo=1))
+
+
+# ── To fifteen (2026-11): a missing value from the mean, the median of an even count, class intervals,
+# the mean of two groups, and a frequency as a percentage ──
+
+
+@question_type("math.mean_missing_value_m2", display_name={"th": "หาข้อมูลที่หายไปจากค่าเฉลี่ย"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MeanMissingValueM2(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            n, mean = rng.randint(5, 8), rng.randint(6, 18)
+            known = [rng.randint(1, 25) for _ in range(n - 1)]
+            x = n * mean - sum(known)
+            if 1 <= x <= 30:
+                break
+        listed = ", ".join(str(v) for v in known)
+        prompt = f"ข้อมูล {n} จำนวน ได้แก่ {listed} และ x ถ้าค่าเฉลี่ยเลขคณิตเท่ากับ {mean} แล้ว x มีค่าเท่าใด"
+        # The mean itself; n − 1 used for n; the sum of the known values less the mean.
+        wrong = (n - 1) * mean - sum(known)
+        return MathDraw("", str(x), prompt=prompt,
+                        distractors=_story.keep(mean, wrong, x + mean, x + 1, x - 1, answer=x, lo=1))
+
+
+@question_type("math.median_even_m2", display_name={"th": "มัธยฐานเมื่อมีข้อมูลเป็นจำนวนคู่"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MedianEvenM2(WordProblem):
+    """Sort, then average the two middle values."""
+
+    def expr(self, rng: Random):
+        n = rng.choice((6, 8))
+        data = rng.sample(range(1, 40), n)
+        s = sorted(data)
+        med = Fraction(s[n // 2 - 1] + s[n // 2], 2)
+        unsorted = Fraction(data[n // 2 - 1] + data[n // 2], 2)
+        values = ", ".join(str(v) for v in data)
+        # One middle value only; the middle of the list as written; the mean.
+        wrongs = [Fraction(s[n // 2 - 1]), Fraction(s[n // 2]), unsorted, Fraction(sum(data), n)]
+        return MathDraw("", _num(med), prompt=f"ข้อมูล {n} จำนวน ได้แก่ {values} มัธยฐานของข้อมูลชุดนี้เท่ากับเท่าใด",
+                        distractors=[w for w in dict.fromkeys(_num(v) for v in wrongs if v.denominator in (1, 2))
+                                     if w != _num(med)][:3])
+
+
+@question_type("math.class_interval_m2", display_name={"th": "ความกว้างและจุดกึ่งกลางของอันตรภาคชั้น"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class ClassIntervalM2(WordProblem):
+    def expr(self, rng: Random):
+        width = rng.choice((5, 10))
+        start = width * rng.randint(2, 8)
+        classes = [(start + i * width, start + (i + 1) * width - 1) for i in range(4)]
+        listed = ", ".join(f"{lo}–{hi}" for lo, hi in classes)
+        lead = f"ตารางแจกแจงความถี่มีอันตรภาคชั้น {listed} "
+        kind = rng.randrange(3)
+        if kind == 0:
+            # The difference of a class's own limits; the number of classes.
+            return MathDraw("", str(width), prompt=lead + "อันตรภาคชั้นกว้างเท่าใด",
+                            distractors=_story.keep(width - 1, width + 1, 4, 2 * width, answer=width, lo=1))
+        lo, hi = rng.choice(classes)
+        mid = Fraction(lo + hi, 2)
+        if kind == 1:
+            # The limits added without the half; the lower limit; the upper limit.
+            wrongs = [Fraction(lo + hi + 1, 2), Fraction(lo), Fraction(hi)]
+            return MathDraw("", _num(mid), prompt=lead + f"จุดกึ่งกลางของชั้น {lo}–{hi} เท่ากับเท่าใด",
+                            distractors=[w for w in dict.fromkeys(_num(v) for v in wrongs) if w != _num(mid)][:3])
+        upper = Fraction(2 * hi + 1, 2)
+        wrongs = [Fraction(hi), Fraction(hi + 1), Fraction(2 * lo - 1, 2)]
+        return MathDraw("", _num(upper), prompt=lead + f"ขอบบนของชั้น {lo}–{hi} เท่ากับเท่าใด",
+                        distractors=[w for w in dict.fromkeys(_num(v) for v in wrongs) if w != _num(upper)])
+
+
+@question_type("math.combined_mean_m2", display_name={"th": "ค่าเฉลี่ยรวมของสองกลุ่ม"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class CombinedMeanM2(WordProblem):
+    """Totals add, counts add: (n₁x̄₁ + n₂x̄₂) ÷ (n₁ + n₂), not the average of the two means."""
+
+    def expr(self, rng: Random):
+        while True:
+            n1, n2 = rng.randint(10, 40), rng.randint(10, 40)
+            m1, m2 = rng.randint(40, 90), rng.randint(40, 90)
+            total = n1 * m1 + n2 * m2
+            if n1 != n2 and m1 != m2 and total % (n1 + n2) == 0 and (m1 + m2) % 2 == 0:
+                break
+        mean = total // (n1 + n2)
+        prompt = (f"ห้อง ก มีนักเรียน {n1} คน ได้คะแนนเฉลี่ย {m1} คะแนน ห้อง ข มีนักเรียน {n2} คน ได้คะแนนเฉลี่ย "
+                  f"{m2} คะแนน คะแนนเฉลี่ยของนักเรียนทั้งสองห้องรวมกันเป็นเท่าใด")
+        # The two means averaged; the counts swapped; the total over two.
+        swapped = n2 * m1 + n1 * m2
+        return MathDraw("", str(mean), prompt=prompt,
+                        distractors=_story.keep((m1 + m2) // 2, swapped // (n1 + n2) if swapped % (n1 + n2) == 0 else 0,
+                                                mean + 1, mean - 1, answer=mean, lo=1))
+
+
+@question_type("math.frequency_percent_m2", display_name={"th": "ความถี่เป็นร้อยละ"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class FrequencyPercentM2(WordProblem):
+    def expr(self, rng: Random):
+        total = rng.choice((20, 25, 40, 50))
+        f = rng.randint(2, total // 2)
+        while f * 100 % total:
+            f += 1
+        pct = f * 100 // total
+        if rng.random() < 0.5:
+            prompt = f"นักเรียน {total} คน มี {f} คนได้คะแนนในชั้น 70–79 คิดเป็นร้อยละเท่าใดของนักเรียนทั้งหมด"
+            # The count itself; the count over the total as a decimal × 10; 100 less it.
+            return MathDraw("", str(pct), prompt=prompt,
+                            distractors=_story.keep(f, 100 - pct, total - f, pct + 5, answer=pct, lo=1, hi=100))
+        prompt = f"นักเรียน {total} คน มีร้อยละ {pct} ที่ได้คะแนนในชั้น 70–79 นักเรียนกลุ่มนี้มีกี่คน"
+        return MathDraw("", str(f), prompt=prompt,
+                        distractors=_story.keep(pct, total - f, f + 2, f - 2, answer=f, lo=1))

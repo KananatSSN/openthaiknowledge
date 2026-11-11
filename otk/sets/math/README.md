@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,580 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,627 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -129,19 +129,19 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`congruence`](m2/congruence.py) | ความเท่ากันทุกประการ | ค 2.2 ม.2/* | 10 |
-| [`exponents`](m2/exponents.py) | เลขยกกำลัง | ค 1.1 ม.2/* | 13 |
-| [`factorising_quadratics`](m2/factorising_quadratics.py) | การแยกตัวประกอบของพหุนามดีกรีสอง | ค 1.2 ม.2/2 | 10 |
-| [`geometric_reasoning`](m2/geometric_reasoning.py) | การให้เหตุผลทางเรขาคณิต | ค 2.2 ม.2/* | 10 |
-| [`geometric_transformations`](m2/geometric_transformations.py) | การแปลงทางเรขาคณิต | ค 2.2 ม.2/* | 10 |
+| [`congruence`](m2/congruence.py) | ความเท่ากันทุกประการ | ค 2.2 ม.2/* | 15 |
+| [`exponents`](m2/exponents.py) | เลขยกกำลัง | ค 1.1 ม.2/* | 15 |
+| [`factorising_quadratics`](m2/factorising_quadratics.py) | การแยกตัวประกอบของพหุนามดีกรีสอง | ค 1.2 ม.2/2 | 15 |
+| [`geometric_reasoning`](m2/geometric_reasoning.py) | การให้เหตุผลทางเรขาคณิต | ค 2.2 ม.2/* | 15 |
+| [`geometric_transformations`](m2/geometric_transformations.py) | การแปลงทางเรขาคณิต | ค 2.2 ม.2/* | 15 |
 | [`linear_functions`](m2/linear_functions.py) | ฟังก์ชันเชิงเส้น | — | 4 |
 | [`literal_equations`](m2/literal_equations.py) | แก้สมการหลายตัวแปร | — | 4 |
 | [`monomials_and_polynomials`](m2/monomials_and_polynomials.py) | เอกนามและพหุนาม | ค 1.2 ม.2/1 | 15 |
-| [`parallel_lines`](m2/parallel_lines.py) | เส้นขนาน | ค 2.2 ม.2/* | 10 |
-| [`pythagoras`](m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | ค 2.2 ม.2/5 | 10 |
-| [`real_numbers`](m2/real_numbers.py) | จำนวนจริง | ค 1.1 ม.2/* | 10 |
-| [`statistics`](m2/statistics.py) | สถิติ | ค 3.1 ม.2/* | 12 |
-| [`surface_area_and_volume`](m2/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.2/* | 10 |
+| [`parallel_lines`](m2/parallel_lines.py) | เส้นขนาน | ค 2.2 ม.2/* | 15 |
+| [`pythagoras`](m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | ค 2.2 ม.2/5 | 15 |
+| [`real_numbers`](m2/real_numbers.py) | จำนวนจริง | ค 1.1 ม.2/* | 15 |
+| [`statistics`](m2/statistics.py) | สถิติ | ค 3.1 ม.2/* | 17 |
+| [`surface_area_and_volume`](m2/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.2/* | 15 |
 
 ## m3 — ม.3
 

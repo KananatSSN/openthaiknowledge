@@ -212,4 +212,5 @@ def test_sheet_publication_manifest_is_frozen():
     # Five more ม.2 parallel-line sets: a bend, a triangle, angles in x, the converse and the reasons.
     # 36 more ม.2 sets so every unit has at least ten: factorising, congruence, reasoning, volume, Pythagoras,
     # real numbers, statistics, transformations and one more parallel-line set.
-    assert len(REGISTRY) == 4080
+    # 47 more so every ม.2 unit has at least fifteen.
+    assert len(REGISTRY) == 4127
