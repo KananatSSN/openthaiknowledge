@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,282 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,337 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -26,17 +26,17 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`addition_and_subtraction.py`](math/p2/addition_and_subtraction.py) | การบวกและการลบ | `math.add_columns`, `math.sub_columns`, `math.missing_digit_p2`, `math.missing_addsub_p2` |
-| [`division.py`](math/p2/division.py) | การหาร | `math.division_facts_p2`, `math.division_picture_p2`, `math.division_remainder_p2`, `math.multiply_divide_relation_p2`, `math.division_word_problem_p2` |
-| [`measurement.py`](math/p2/measurement.py) | การวัด | `math.convert_length_p2`, `math.scale_picture_p2`, `math.convert_weight_p2`, `math.capacity_litre_p2`, `math.length_word_problem_p2`, `math.weight_word_problem_p2` |
-| [`mixed_operations.py`](math/p2/mixed_operations.py) | บวก ลบ คูณ หารระคน | `math.mixed_ops_p2`, `math.two_step_word_problem`, `math.mixed_ops_sentence_p2`, `math.mixed_ops_word_problem_p2`, `math.two_step_add_sub_p2` |
-| [`money.py`](math/p2/money.py) | เงิน | `math.money_picture_p2`, `math.money_count_p2`, `math.money_exchange_p2`, `math.money_word_p2`, `math.baht_satang_p2` |
-| [`multiplication.py`](math/p2/multiplication.py) | การคูณ | `math.repeated_addition`, `math.multiplication_picture_p2`, `math.multiply_1x2_p2`, `math.multiplication_properties_p2`, `math.multiplication_word_problem_p2` |
-| [`numbers_to_1000.py`](math/p2/numbers_to_1000.py) | จำนวนนับไม่เกิน 1,000 | `math.skip_counting`, `math.number_reading_p2`, `math.base_ten_blocks_p2`, `math.place_value_digit`, `math.expanded_form_p2`, `math.compare_sign`, `math.order_numbers_p2` |
-| [`patterns.py`](math/p2/patterns.py) | แบบรูป | `math.repeating_pattern_p2`, `math.number_pattern_p2`, `math.pattern_word_p2`, `math.pattern_rule_p2` |
-| [`pictograph.py`](math/p2/pictograph.py) | แผนภูมิรูปภาพ | `math.pictograph`, `math.pictograph_key_picture_p2`, `math.pictograph_compare_p2`, `math.pictograph_symbols_p2` |
-| [`shapes.py`](math/p2/shapes.py) | รูปเรขาคณิต | `math.shape_properties_p2`, `math.shape_sides_picture_p2`, `math.solid_shapes_p2`, `math.shape_count_p2` |
-| [`time.py`](math/p2/time.py) | เวลา | `math.clock_read_p2`, `math.time_notation_p2`, `math.calendar_weekday`, `math.hours_minutes_p2`, `math.time_to_hour`, `math.time_elapsed` |
+| [`addition_and_subtraction.py`](math/p2/addition_and_subtraction.py) | การบวกและการลบ | `math.add_columns`, `math.sub_columns`, `math.missing_digit_p2`, `math.missing_addsub_p2`, `math.add_word_three_digit_p2`, `math.sub_word_three_digit_p2`, `math.check_with_inverse_p2`, `math.add_three_two_digit_p2`, `math.largest_sum_p2`, `math.how_many_more_p2` |
+| [`division.py`](math/p2/division.py) | การหาร | `math.division_facts_p2`, `math.division_picture_p2`, `math.division_remainder_p2`, `math.multiply_divide_relation_p2`, `math.division_word_problem_p2`, `math.division_check_p2`, `math.division_leftover_word_p2`, `math.missing_dividend_p2`, `math.fact_family_p2`, `math.largest_quotient_p2` |
+| [`measurement.py`](math/p2/measurement.py) | การวัด | `math.convert_length_p2`, `math.scale_picture_p2`, `math.convert_weight_p2`, `math.capacity_litre_p2`, `math.length_word_problem_p2`, `math.weight_word_problem_p2`, `math.cm_to_m_cm_p2`, `math.longest_mixed_units_p2`, `math.kg_g_to_g_p2`, `math.length_compare_mixed_p2` |
+| [`mixed_operations.py`](math/p2/mixed_operations.py) | บวก ลบ คูณ หารระคน | `math.mixed_ops_p2`, `math.two_step_word_problem`, `math.mixed_ops_sentence_p2`, `math.mixed_ops_word_problem_p2`, `math.two_step_add_sub_p2`, `math.mixed_true_sentence_p2`, `math.legs_count_p2`, `math.wheels_count_p2`, `math.compare_two_buys_p2`, `math.fill_bags_left_p2` |
+| [`money.py`](math/p2/money.py) | เงิน | `math.money_picture_p2`, `math.money_count_p2`, `math.money_exchange_p2`, `math.money_word_p2`, `math.baht_satang_p2`, `math.change_from_note_p2`, `math.total_three_items_p2`, `math.coins_make_amount_p2`, `math.fifty_satang_p2`, `math.cheaper_by_p2` |
+| [`multiplication.py`](math/p2/multiplication.py) | การคูณ | `math.repeated_addition`, `math.multiplication_picture_p2`, `math.multiply_1x2_p2`, `math.multiplication_properties_p2`, `math.multiplication_word_problem_p2`, `math.times_table_p2`, `math.multiply_by_ten_p2`, `math.largest_product_p2`, `math.array_rows_p2`, `math.multiply_zero_one_p2` |
+| [`numbers_to_1000.py`](math/p2/numbers_to_1000.py) | จำนวนนับไม่เกิน 1,000 | `math.skip_counting`, `math.number_reading_p2`, `math.base_ten_blocks_p2`, `math.place_value_digit`, `math.expanded_form_p2`, `math.compare_sign`, `math.order_numbers_p2`, `math.even_number_p2`, `math.hundreds_tens_ones_p2`, `math.more_less_100_p2` |
+| [`patterns.py`](math/p2/patterns.py) | แบบรูป | `math.repeating_pattern_p2`, `math.number_pattern_p2`, `math.pattern_word_p2`, `math.pattern_rule_p2`, `math.pattern_next_p2`, `math.pattern_two_missing_p2`, `math.pattern_nth_term_p2`, `math.pattern_three_nth_p2`, `math.pattern_growing_dots_p2`, `math.pattern_count_back_p2` |
+| [`pictograph.py`](math/p2/pictograph.py) | แผนภูมิรูปภาพ | `math.pictograph`, `math.pictograph_key_picture_p2`, `math.pictograph_compare_p2`, `math.pictograph_symbols_p2`, `math.pictograph_total_p2`, `math.pictograph_range_p2`, `math.pictograph_add_symbols_p2`, `math.pictograph_order_p2`, `math.pictograph_true_statement_p2`, `math.pictograph_two_rows_p2` |
+| [`shapes.py`](math/p2/shapes.py) | รูปเรขาคณิต | `math.shape_properties_p2`, `math.shape_sides_picture_p2`, `math.solid_shapes_p2`, `math.shape_count_p2`, `math.curved_straight_p2`, `math.line_kinds_p2`, `math.solid_faces_count_p2`, `math.total_corners_p2`, `math.circle_ellipse_p2`, `math.count_shapes_list_p2` |
+| [`time.py`](math/p2/time.py) | เวลา | `math.clock_read_p2`, `math.time_notation_p2`, `math.calendar_weekday`, `math.hours_minutes_p2`, `math.time_to_hour`, `math.time_elapsed`, `math.time_after_p2`, `math.time_before_p2`, `math.months_p2`, `math.weeks_days_p2` |
 
 ### p3 — ป.3
 

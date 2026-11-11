@@ -217,3 +217,91 @@ class BahtSatangP2(QuestionType):
                            _baht((whole + sum(sat.values())) * 100),
                            _baht(total - 25), _baht(total + 50), _baht(total - 50))
         return _texts([text(f"{listed} รวมเป็นเงินเท่าใด")], right, wrongs[:3], self.topic)
+
+
+# ── More money (2026-11): change from a note, the total of three things, coins that make an amount,
+# fifty-satang coins, and how much cheaper ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+_GOODS_P2 = ("สมุด", "ปากกา", "ยางลบ", "ไม้บรรทัด", "กล่องดินสอ", "หนังสือนิทาน", "ลูกบอล", "ตุ๊กตา")
+
+
+@question_type("math.change_from_note_p2", display_name={"th": "เงินทอนจากธนบัตร"},
+               level=LEVEL, topic="เงิน")
+class ChangeFromNoteP2(WordProblem):
+    def expr(self, rng: Random):
+        note = rng.choice((100, 500, 1000))
+        price = rng.randint(note // 5, note - 5)
+        right = note - price
+        item = rng.choice(_GOODS_P2)
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}ซื้อ{item}ราคา {price} บาท จ่ายด้วยธนบัตรใบละ {note} บาท จะได้เงินทอนกี่บาท"
+        # Added instead; ten off; the price itself.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(note + price, right + 10, right - 10, price, answer=right, lo=1))
+
+
+@question_type("math.total_three_items_p2", display_name={"th": "ราคารวมของสามอย่าง"},
+               level=LEVEL, topic="เงิน")
+class TotalThreeItemsP2(WordProblem):
+    def expr(self, rng: Random):
+        x, y, z = rng.sample(_GOODS_P2, 3)
+        a, b, c = rng.randint(5, 150), rng.randint(5, 150), rng.randint(5, 150)
+        right = a + b + c
+        prompt = f"ซื้อ{x}ราคา {a} บาท {y}ราคา {b} บาท และ{z}ราคา {c} บาท ต้องจ่ายเงินทั้งหมดกี่บาท"
+        # Only two items; ten off either way.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b, b + c, right + 10, right - 10, answer=right, lo=1))
+
+
+@question_type("math.coins_make_amount_p2", display_name={"th": "เหรียญและธนบัตรชุดใดรวมได้ตามจำนวน"},
+               level=LEVEL, topic="เงิน")
+class CoinsMakeAmountP2(ChoiceType):
+    _UNITS = (100, 50, 20, 10, 5, 2, 1)
+
+    def compose(self, rng: Random):
+        while True:
+            picks = sorted(rng.sample(self._UNITS, 3), reverse=True)
+            counts = [rng.randint(1, 3) for _ in picks]
+            total = sum(u * c for u, c in zip(picks, counts))
+            if total <= 300:
+                break
+
+        def say(us, cs):
+            return " ".join(f"{'ธนบัตร' if u >= 20 else 'เหรียญ'} {u} บาท {c} {'ใบ' if u >= 20 else 'เหรียญ'}"
+                            for u, c in zip(us, cs))
+        right = say(picks, counts)
+        # One piece more; one piece fewer; the two largest swapped in count.
+        wrongs = [say(picks, [counts[0], counts[1], counts[2] + 1]),
+                  say(picks, [counts[0], counts[1] + 1, counts[2]]),
+                  say(picks, [counts[0] + 1, counts[1], counts[2]])]
+        return f"เงินชุดใดรวมกันได้ {total} บาท", right, wrongs
+
+
+@question_type("math.fifty_satang_p2", display_name={"th": "เหรียญ 50 สตางค์และ 25 สตางค์"},
+               level=LEVEL, topic="เงิน")
+class FiftySatangP2(WordProblem):
+    def expr(self, rng: Random):
+        coin = rng.choice((50, 25))
+        per_baht = 100 // coin
+        baht = rng.randint(2, 9)
+        n = per_baht * baht
+        prompt = f"เหรียญ {coin} สตางค์ {n} เหรียญ รวมเป็นเงินกี่บาท"
+        # Each coin taken as a baht; the coins' satang as baht; half as many.
+        return MathDraw("", str(baht), prompt=prompt,
+                        distractors=_story.keep(n, n * coin // 10, baht * 2, baht + 1, answer=baht, lo=1))
+
+
+@question_type("math.cheaper_by_p2", display_name={"th": "ราคาถูกกว่ากันกี่บาท"},
+               level=LEVEL, topic="เงิน")
+class CheaperByP2(WordProblem):
+    def expr(self, rng: Random):
+        item = rng.choice(_GOODS_P2)
+        a = rng.randint(30, 300)
+        b = rng.randint(10, a - 5)
+        right = a - b
+        prompt = f"{item}ที่ร้านแรกราคา {a} บาท ที่ร้านที่สองราคา {b} บาท ร้านที่สองถูกกว่ากี่บาท"
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b, right + 10, right - 1, b, answer=right, lo=1))
