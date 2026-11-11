@@ -261,3 +261,108 @@ class SegmentHalvingM1(WordProblem):
         return MathDraw("", str(right), prompt=lead + f"{asked} ยาวกี่เซนติเมตร",
                         distractors=_story.keep(length // 2, length // 8, length // 4 if right != length // 4 else 3 * length // 4,
                                                 length - right // 2, answer=right, lo=1))
+
+
+# ── To fifteen (2026-11): angles copied and combined, the bisectors of two angles on a line, what a
+# construction makes, a line through a point, and which facts fix a triangle ──
+
+
+@question_type("math.copied_angles_m1", display_name={"th": "สร้างมุมจากมุมที่กำหนดให้"},
+               level=_M1, topic=_CON_TOPIC)
+class CopiedAnglesM1(WordProblem):
+    """Copying angles side by side adds them; copying inside subtracts."""
+
+    def expr(self, rng: Random):
+        a, b = rng.randint(20, 70), rng.randint(15, 60)
+        kind = rng.randrange(3)
+        if kind == 0:
+            words, right = "∠A + ∠B", a + b
+        elif kind == 1:
+            words, right = "2∠A", 2 * a
+        else:
+            a, b = max(a, b + 5), min(a, b)
+            words, right = "∠A − ∠B", a - b
+        prompt = (f"กำหนด ∠A = {a}° และ ∠B = {b}° ถ้าใช้วงเวียนและสันตรงสร้างมุมที่มีขนาดเท่ากับ "
+                  f"{words} จะได้มุมขนาดกี่องศา")
+        # Another of the three; the two angles averaged.
+        others = (a + b, 2 * a, abs(a - b), (a + b) // 2)
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(*others, right + 10, answer=right, lo=1, hi=359))
+
+
+@question_type("math.bisectors_on_line_m1", display_name={"th": "เส้นแบ่งครึ่งมุมสองมุมที่ประกอบกันเป็นมุมตรง"},
+               level=_M1, topic=_CON_TOPIC)
+class BisectorsOnLineM1(WordProblem):
+    """∠AOB + ∠BOC = 180°: halves add to 90°, so the two bisectors are perpendicular."""
+
+    def expr(self, rng: Random):
+        a = 2 * rng.randint(15, 75)
+        lead = (f"จุด A, O และ C อยู่บนเส้นตรงเดียวกัน ∠AOB = {a}° สร้าง OP แบ่งครึ่ง ∠AOB "
+                f"และ OQ แบ่งครึ่ง ∠BOC ")
+        kind = rng.randrange(3)
+        if kind == 0:
+            right, asked, wrongs = 90, "∠POQ", (a // 2, 180 - a, 180 - a // 2)
+        elif kind == 1:
+            right, asked, wrongs = (180 - a) // 2, "∠BOQ", (180 - a, a // 2, 90 - a // 4)
+        else:
+            right, asked, wrongs = 180 - a // 2, "∠POC", (a // 2, 90 + a, 180 - a)
+        return MathDraw("", str(right), prompt=lead + f"{asked} มีขนาดกี่องศา",
+                        distractors=_story.keep(*wrongs, right + 10, answer=right, lo=1, hi=179))
+
+
+@question_type("math.construction_result_m1", display_name={"th": "ขั้นตอนนี้สร้างอะไร"},
+               level=_M1, topic=_CON_TOPIC)
+class ConstructionResultM1(ConceptBankType):
+    ITEMS = [
+        Concept("เขียนส่วนโค้งจาก A และ B รัศมีเท่ากันเกินครึ่งหนึ่งของ AB ตัดกันสองจุด แล้วลากเส้นผ่านสองจุดนั้น "
+                "ได้เส้นใด", "เส้นแบ่งครึ่งและตั้งฉากกับ AB",
+                ("เส้นที่ขนานกับ AB", "เส้นแบ่งครึ่งมุมที่จุด A", "เส้นที่ผ่าน A และทำมุม 60 องศากับ AB")),
+        Concept("ใช้จุดยอดของมุมเป็นจุดศูนย์กลางเขียนส่วนโค้งตัดแขนทั้งสอง แล้วเขียนส่วนโค้งรัศมีเท่ากันจากจุดตัดทั้งสอง "
+                "ให้ตัดกัน ลากเส้นจากจุดยอดผ่านจุดตัดนั้น ได้เส้นใด", "เส้นแบ่งครึ่งมุม",
+                ("เส้นตั้งฉากกับแขนของมุม", "เส้นที่ขนานกับแขนของมุม", "เส้นแบ่งครึ่งและตั้งฉากกับแขนของมุม")),
+        Concept("เขียนส่วนโค้งจาก A และ B รัศมีเท่ากับ AB ตัดกันที่จุด C แล้วลากส่วนของเส้นตรง CA และ CB ได้รูปใด",
+                "รูปสามเหลี่ยมด้านเท่า", ("รูปสามเหลี่ยมมุมฉาก", "รูปสี่เหลี่ยมจัตุรัส", "รูปสามเหลี่ยมหน้าจั่วที่มีมุมยอด 90 องศา")),
+        Concept("จากจุด P นอกเส้นตรง เขียนส่วนโค้งตัดเส้นตรงสองจุด แล้วสร้างเส้นแบ่งครึ่งระหว่างสองจุดนั้น ได้เส้นใด",
+                "เส้นตั้งฉากกับเส้นตรงที่ผ่านจุด P", ("เส้นที่ขนานกับเส้นตรงที่ผ่านจุด P", "เส้นแบ่งครึ่งมุมที่จุด P",
+                                                     "เส้นที่ทำมุม 45 องศากับเส้นตรง")),
+    ]
+
+
+@question_type("math.parallel_construction_m1", display_name={"th": "สร้างเส้นขนานผ่านจุดที่กำหนด"},
+               level=_M1, topic=_CON_TOPIC)
+class ParallelConstructionM1(ConceptBankType):
+    ITEMS = [
+        Concept("การสร้างเส้นตรงผ่านจุด P ให้ขนานกับเส้นตรง ℓ ด้วยวงเวียนและสันตรง อาศัยสมบัติใด",
+                "ถ้ามุมแย้งหรือมุมที่สมนัยกันมีขนาดเท่ากัน เส้นตรงสองเส้นนั้นขนานกัน",
+                ("ถ้าเส้นตรงสองเส้นยาวเท่ากัน เส้นตรงสองเส้นนั้นขนานกัน",
+                 "ถ้าเส้นตรงสองเส้นตั้งฉากกับเส้นตรงต่างเส้นกัน เส้นตรงสองเส้นนั้นขนานกัน",
+                 "ถ้ามุมภายในบนข้างเดียวกันมีขนาดเท่ากัน เส้นตรงสองเส้นนั้นขนานกันเสมอ")),
+        Concept("ขั้นแรกของการสร้างเส้นตรงผ่านจุด P ให้ขนานกับเส้นตรง ℓ คือข้อใด",
+                "ลากเส้นผ่าน P ตัดเส้นตรง ℓ เพื่อให้เกิดมุมที่จุดตัด",
+                ("วัดระยะจาก P ถึง ℓ ด้วยไม้บรรทัดแล้วลากเส้นห่างเท่ากัน", "ใช้ไม้โปรแทรกเตอร์วัดมุม 90 องศาที่จุด P",
+                 "เขียนวงกลมรอบ P ให้สัมผัสเส้นตรง ℓ แล้วลากเส้นผ่านจุดสัมผัส")),
+        Concept("หลังจากลากเส้นผ่าน P ตัดเส้นตรง ℓ แล้ว ขั้นต่อไปในการสร้างเส้นขนานคือข้อใด",
+                "สร้างมุมที่ P ให้เท่ากับมุมที่จุดตัดในตำแหน่งที่สมนัยกัน",
+                ("แบ่งครึ่งมุมที่จุดตัดแล้วลากเส้นผ่าน P", "สร้างเส้นตั้งฉากกับ ℓ ที่จุดตัด",
+                 "แบ่งครึ่งส่วนของเส้นตรงจาก P ถึงจุดตัด")),
+    ]
+
+
+_TRIANGLE_DATA = (
+    ("ความยาวของด้านทั้งสามด้าน", True), ("ความยาวของด้านสองด้านและขนาดของมุมระหว่างด้านทั้งสอง", True),
+    ("ขนาดของมุมสองมุมและความยาวของด้านระหว่างมุมทั้งสอง", True),
+    ("ขนาดของมุมทั้งสามมุม", False), ("ความยาวของด้านสองด้านเท่านั้น", False),
+    ("ขนาดของมุมหนึ่งมุมและความยาวของด้านหนึ่งด้านเท่านั้น", False),
+)
+
+
+@question_type("math.triangle_data_m1", display_name={"th": "ข้อมูลที่ใช้สร้างรูปสามเหลี่ยมได้เพียงรูปเดียว"},
+               level=_M1, topic=_CON_TOPIC)
+class TriangleDataM1(ChoiceType):
+    def compose(self, rng: Random):
+        unique = rng.random() < 0.5
+        right = rng.choice([d for d, ok in _TRIANGLE_DATA if ok == unique])
+        wrongs = [d for d, ok in _TRIANGLE_DATA if ok != unique]
+        ask = ("ข้อมูลในข้อใดเพียงพอที่จะสร้างรูปสามเหลี่ยมได้เพียงรูปเดียว" if unique
+               else "ข้อมูลในข้อใดไม่เพียงพอที่จะสร้างรูปสามเหลี่ยมให้ได้เพียงรูปเดียว")
+        return ask, right, wrongs

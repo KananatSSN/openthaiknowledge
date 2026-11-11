@@ -214,4 +214,5 @@ def test_sheet_publication_manifest_is_frozen():
     # real numbers, statistics, transformations and one more parallel-line set.
     # 47 more so every ม.2 unit has at least fifteen.
     # 48 more ม.1 sets so every ม.1 unit has at least ten.
-    assert len(REGISTRY) == 4175
+    # 55 more ม.1 sets so every ม.1 unit has at least fifteen.
+    assert len(REGISTRY) == 4230

@@ -296,3 +296,85 @@ class PictographM1(WordProblem):
         # The pictures counted as people; the half counted as a whole; the half left out.
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(whole, (whole + 1) * k, whole * k, right + k, answer=right, lo=1))
+
+
+# ── To fifteen (2026-11): the median, the mean after one more value, the mode from a table, a total from the
+# mean, and how data are collected ──
+
+
+@question_type("math.median_m1", display_name={"th": "มัธยฐาน"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MedianM1(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice((5, 7, 9))
+        data = rng.sample(range(1, 50), n)
+        right = sorted(data)[n // 2]
+        values = ", ".join(str(v) for v in data)
+        # The middle of the list as written; the mean (rounded down); the largest less the smallest.
+        return MathDraw("", str(right), prompt=f"ข้อมูล {values} มีมัธยฐานเท่าใด",
+                        distractors=_story.keep(data[n // 2], sum(data) // n, max(data) - min(data),
+                                                sorted(data)[n // 2 + 1], answer=right, lo=1))
+
+
+@question_type("math.mean_new_value_m1", display_name={"th": "ค่าเฉลี่ยเมื่อเพิ่มข้อมูล"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MeanNewValueM1(WordProblem):
+    """The old total plus the new value, over one more value."""
+
+    def expr(self, rng: Random):
+        while True:
+            n, mean = rng.randint(4, 9), rng.randint(10, 40)
+            new = rng.randint(1, 60)
+            if (n * mean + new) % (n + 1) == 0 and new != mean:
+                break
+        right = (n * mean + new) // (n + 1)
+        prompt = (f"ข้อมูล {n} จำนวนมีค่าเฉลี่ยเลขคณิต {mean} ถ้าเพิ่มข้อมูลอีกหนึ่งจำนวนคือ {new} "
+                  f"ค่าเฉลี่ยเลขคณิตใหม่เท่ากับเท่าใด")
+        # The two numbers averaged; the count not increased; the total.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep((mean + new) // 2, (n * mean + new) // n, mean, right + 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.mode_from_table_m1", display_name={"th": "ฐานนิยมจากตารางความถี่"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class ModeFromTableM1(WordProblem):
+    """The mode is the value with the largest frequency, not the largest frequency itself."""
+
+    def expr(self, rng: Random):
+        start = rng.randint(1, 15)
+        values = [start + i for i in range(5)]
+        freqs = rng.sample(range(1, 13), 5)
+        mode = values[freqs.index(max(freqs))]
+        listed = ", ".join(f"{v} ({f} ครั้ง)" for v, f in zip(values, freqs))
+        prompt = f"ผลการทอยลูกบอลลงห่วง: คะแนน {listed} ฐานนิยมของคะแนนคือเท่าใด"
+        # The largest frequency; the largest score; the middle score.
+        return MathDraw("", str(mode), prompt=prompt,
+                        distractors=_story.keep(max(freqs), max(values), values[2], answer=mode, lo=1))
+
+
+@question_type("math.total_from_mean_m1", display_name={"th": "ผลรวมของข้อมูลจากค่าเฉลี่ย"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class TotalFromMeanM1(WordProblem):
+    def expr(self, rng: Random):
+        n, mean = rng.randint(5, 40), rng.randint(12, 95)
+        total = n * mean
+        prompt = f"นักเรียน {n} คน มีน้ำหนักเฉลี่ย {mean} กิโลกรัม น้ำหนักรวมของนักเรียนทั้งหมดเป็นกี่กิโลกรัม"
+        # Added instead of multiplied; the mean over the count; one fewer person.
+        return MathDraw("", str(total), prompt=prompt,
+                        distractors=_story.keep(n + mean, (n - 1) * mean, total + mean, answer=total, lo=1))
+
+
+@question_type("math.data_collection_m1", display_name={"th": "วิธีเก็บรวบรวมข้อมูล"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class DataCollectionM1(ConceptBankType):
+    ITEMS = [
+        Concept("ต้องการทราบว่านักเรียนในโรงเรียนชอบกีฬาชนิดใด ควรเก็บข้อมูลด้วยวิธีใด", "การสำรวจโดยใช้แบบสอบถาม",
+                ("การทดลองในห้องปฏิบัติการ", "การสังเกตสภาพอากาศรอบโรงเรียน", "การค้นหาคำตอบในพจนานุกรม")),
+        Concept("ต้องการทราบว่าต้นถั่วที่ได้รับแสงต่างกันเติบโตต่างกันอย่างไร ควรเก็บข้อมูลด้วยวิธีใด", "การทดลองปลูกโดยให้แสงต่างกัน",
+                ("การสำรวจด้วยแบบสอบถามนักเรียน", "การสัมภาษณ์ผู้ปกครองของนักเรียน", "การนับจำนวนนักเรียนในห้องเรียน")),
+        Concept("ต้องการทราบจำนวนรถที่ผ่านหน้าโรงเรียนในช่วงเช้า ควรเก็บข้อมูลด้วยวิธีใด", "การสังเกตและนับจำนวนรถที่ผ่าน",
+                ("การทดลองในห้องปฏิบัติการวิทยาศาสตร์", "การสัมภาษณ์ครูประจำชั้นทุกห้อง", "การเดาจากประสบการณ์ของตนเอง")),
+        Concept("ข้อมูลที่ผู้เก็บรวบรวมเองโดยตรง เช่น จากการสำรวจ เรียกว่าข้อมูลประเภทใด", "ข้อมูลปฐมภูมิ (เก็บเองโดยตรง)",
+                ("ข้อมูลทุติยภูมิ (นำมาจากผู้อื่น)", "ข้อมูลเชิงคุณภาพเสมอทุกกรณี", "ข้อมูลที่ไม่น่าเชื่อถือเสมอ")),
+    ]

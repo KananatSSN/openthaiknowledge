@@ -141,6 +141,7 @@ class CubeStackM1(WordProblem):
 # solids from a description, the faces of a net, and a wire frame ──
 
 from otk.kit.math_problems import ChoiceType  # noqa: E402
+from otk.sets._support.math_p2 import _maths  # noqa: E402
 
 _POLY_NAMES = {3: "สามเหลี่ยม", 4: "สี่เหลี่ยม", 5: "ห้าเหลี่ยม", 6: "หกเหลี่ยม", 8: "แปดเหลี่ยม"}
 
@@ -261,3 +262,96 @@ class WireFrameM1(WordProblem):
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(total // 6, total // 4, total // 8 if total % 8 == 0 else right + 1,
                                                 right + 2, answer=right, lo=1))
+
+
+# ── To fifteen (2026-11): rectangles on a prism, a staircase of cubes, a row of glued cubes, a die's opposite
+# faces, and the net of a cylinder ──
+
+
+@question_type("math.prism_rectangles_m1", display_name={"th": "จำนวนหน้าแต่ละแบบของปริซึมและพีระมิด"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class PrismRectanglesM1(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice((5, 6, 8))
+        prism = rng.random() < 0.5
+        if prism:
+            prompt = f"ปริซึมฐาน{_POLY_NAMES[n]}มีหน้าที่เป็นรูปสี่เหลี่ยมผืนผ้ากี่หน้า"
+            right, wrongs = n, (n + 2, 2, 2 * n)
+        else:
+            prompt = f"พีระมิดฐาน{_POLY_NAMES[n]}มีหน้าที่เป็นรูปสามเหลี่ยมกี่หน้า"
+            right, wrongs = n, (n + 1, 2 * n, 1)
+        return MathDraw("", str(right), prompt=prompt, distractors=_story.keep(*wrongs, answer=right, lo=1))
+
+
+@question_type("math.cube_staircase_m1", display_name={"th": "บันไดที่ต่อจากลูกบาศก์"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class CubeStaircaseM1(WordProblem):
+    """Steps 1, 2, …, n cubes high and w cubes deep: w × n(n + 1)/2 cubes."""
+
+    def expr(self, rng: Random):
+        n, w = rng.randint(3, 8), rng.randint(1, 4)
+        right = w * n * (n + 1) // 2
+        prompt = (f"ต่อลูกบาศก์ขนาดเท่ากันเป็นบันได {n} ขั้น ขั้นที่ 1 สูง 1 ลูก ขั้นที่ 2 สูง 2 ลูก ไปเรื่อย ๆ "
+                  f"แต่ละขั้นลึก {w} ลูก ใช้ลูกบาศก์ทั้งหมดกี่ลูก")
+        # A full block; the top step only; the steps without depth.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(w * n * n, n * n, n * (n + 1) // 2 if w > 1 else w * n * (n - 1) // 2,
+                                                right + w, answer=right, lo=1))
+
+
+@question_type("math.glued_cubes_m1", display_name={"th": "หน้าที่มองเห็นของลูกบาศก์ที่ต่อกันเป็นแถว"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class GluedCubesM1(WordProblem):
+    """k cubes in a row: each glued pair hides two faces, so 6k − 2(k − 1) = 4k + 2 faces show."""
+
+    def expr(self, rng: Random):
+        k = rng.randint(2, 12)
+        right = 4 * k + 2
+        prompt = f"นำลูกบาศก์ {k} ลูกมาต่อกันเป็นแถวตรง (ติดกันหน้าต่อหน้า) ทรงที่ได้มีหน้าของลูกบาศก์ที่มองเห็นได้กี่หน้า (รวมด้านล่าง)"
+        # Every face of every cube; one face lost per join; only the long sides.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(6 * k, 6 * k - (k - 1), 4 * k, right + 2, answer=right, lo=1))
+
+
+@question_type("math.die_faces_m1", display_name={"th": "หน้าตรงข้ามของลูกเต๋า"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class DieFacesM1(QuestionType):
+    """On a standard die opposite faces add to 7, and all six faces to 21."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        top = rng.randint(1, 6)
+        if rng.random() < 0.5:
+            right = 7 - top
+            # The face itself; one off the rule (6 or 8); then any other face.
+            cands = [top, 8 - top, 6 - top, 1, 2, 3, 4, 5, 6]
+            wrongs = [str(c) for c in dict.fromkeys(cands) if 1 <= c <= 6 and c != right][:3]
+            return _maths([text(f"ลูกเต๋ามาตรฐานมีจุดบนหน้าตรงข้ามรวมกันได้ 7 ถ้าหน้าบนมี {top} จุด หน้าล่างมีกี่จุด")],
+                          str(right), wrongs, self.topic)
+        hidden = 21 - top
+        # All 21; the bottom face only; the four sides only.
+        cands = [21, 7 - top, 21 - top - (7 - top), hidden + 1, hidden - 1]
+        wrongs = [str(c) for c in dict.fromkeys(cands) if c != hidden][:3]
+        return _maths([text(f"วางลูกเต๋ามาตรฐานบนโต๊ะ มองเห็นหน้าบนเป็น {top} จุด ผลรวมจุดบนหน้าที่เหลือทั้งห้าหน้า"
+                            f"เป็นเท่าใด (ลูกเต๋ามีจุด 1 ถึง 6 รวม 21 จุด)")], str(hidden), wrongs, self.topic)
+
+
+@question_type("math.cylinder_net_m1", display_name={"th": "รูปคลี่ของทรงกระบอก"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class CylinderNetM1(WordProblem):
+    """The side of a cylinder unrolls into a rectangle as long as the circle round the base (π ≈ 22/7)."""
+
+    def expr(self, rng: Random):
+        r = rng.choice((7, 14, 21))
+        h = rng.randint(5, 30)
+        length = 2 * 22 * r // 7
+        if rng.random() < 0.5:
+            prompt = (f"รูปคลี่ของทรงกระบอกรัศมี {r} ซม. สูง {h} ซม. มีรูปสี่เหลี่ยมผืนผ้าที่ยาวเท่ากับความยาวรอบฐาน "
+                      f"รูปสี่เหลี่ยมผืนผ้านั้นยาวกี่เซนติเมตร (π ≈ 22/7)")
+            # The radius used for the diameter; the diameter only; the height.
+            return MathDraw("", str(length), prompt=prompt,
+                            distractors=_story.keep(22 * r // 7, 2 * r, 4 * 22 * r // 7, h, answer=length, lo=1))
+        area = length * h
+        prompt = (f"รูปคลี่ของทรงกระบอกรัศมี {r} ซม. สูง {h} ซม. ส่วนที่เป็นรูปสี่เหลี่ยมผืนผ้ามีพื้นที่กี่ตารางเซนติเมตร "
+                  f"(π ≈ 22/7)")
+        return MathDraw("", str(area), prompt=prompt,
+                        distractors=_story.keep(22 * r * h // 7, 2 * r * h, 22 * r * r // 7, area + h, answer=area, lo=1))
