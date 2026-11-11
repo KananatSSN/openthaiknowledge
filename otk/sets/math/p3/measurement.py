@@ -239,3 +239,53 @@ class WeightWordProblemP3(WordProblem):
                                 f"ผลแรกหนักกว่าผลที่สองกี่กรัม"),
                         distractors=_story.keep(a + b, abs(ka * 100 + ga - b), a - b + 1000,
                                                 answer=a - b, lo=1))
+
+
+# ── More measuring (2026-11): kilometres and metres as metres, centimetres and millimetres as millimetres,
+# and a two-leg route ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+
+@question_type("math.km_m_to_m_p3", display_name={"th": "เปลี่ยนกิโลเมตรและเมตรเป็นเมตร"},
+               level=LEVEL, topic="การวัด")
+class KmMToMP3(WordProblem):
+    def expr(self, rng: Random):
+        km, m = rng.randint(1, 9), rng.randint(5, 995)
+        right = 1000 * km + m
+        # A kilometre taken as 100 metres; the metres left out; the numbers added.
+        return MathDraw("", str(right), prompt=f"{km} กิโลเมตร {m} เมตร เท่ากับกี่เมตร",
+                        distractors=_story.keep(100 * km + m, 1000 * km, km + m, 10 * km + m, answer=right, lo=1))
+
+
+@question_type("math.cm_mm_to_mm_p3", display_name={"th": "เปลี่ยนเซนติเมตรและมิลลิเมตรเป็นมิลลิเมตร"},
+               level=LEVEL, topic="การวัด")
+class CmMmToMmP3(WordProblem):
+    def expr(self, rng: Random):
+        cm, mm = rng.randint(2, 40), rng.randint(1, 9)
+        right = 10 * cm + mm
+        # A centimetre taken as 100 millimetres; the millimetres left out; the numbers added.
+        return MathDraw("", str(right), prompt=f"{cm} เซนติเมตร {mm} มิลลิเมตร เท่ากับกี่มิลลิเมตร",
+                        distractors=_story.keep(100 * cm + mm, 10 * cm, cm + mm, right + 10, answer=right, lo=1))
+
+
+@question_type("math.route_distance_p3", display_name={"th": "ระยะทางสองช่วง"},
+               level=LEVEL, topic="การวัด")
+class RouteDistanceP3(WordProblem):
+    def expr(self, rng: Random):
+        a, b = rng.randint(350, 1800), rng.randint(350, 1800)
+        x, y, z = rng.sample(("บ้าน", "โรงเรียน", "ตลาด", "วัด", "สวนสาธารณะ"), 3)
+        if rng.random() < 0.5:
+            right = a + b
+            prompt = f"จาก{x}ถึง{y}ไกล {a} เมตร จาก{y}ถึง{z}ไกล {b} เมตร เดินจาก{x}ผ่าน{y}ไปถึง{z}ไกลกี่เมตร"
+            wrong = abs(a - b)
+        else:
+            if a == b:
+                b = a - 50
+            right = abs(a - b)
+            prompt = (f"จาก{x}ถึง{y}ไกล {a} เมตร จาก{x}ถึง{z}ไกล {b} เมตร "
+                      f"{'ไป' + y + 'ไกลกว่าไป' + z if a > b else 'ไป' + z + 'ไกลกว่าไป' + y}กี่เมตร")
+            wrong = a + b
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(wrong, right + 100, right - 10, max(a, b), answer=right, lo=1))

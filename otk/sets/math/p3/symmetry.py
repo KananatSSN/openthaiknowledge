@@ -119,3 +119,87 @@ class SymmetryRegularPolygon(WordProblem):
             prompt = f"รูปหลายเหลี่ยมด้านเท่ามุมเท่ารูปหนึ่งมีแกนสมมาตร {n} แกน รูปนี้มีกี่ด้าน"
         return MathDraw("", str(n), prompt=prompt,
                         distractors=[str(n - 1), str(n + 1), str(n * 2)])
+
+
+# ── More symmetry (2026-11): which shape is symmetric, folding along the axis, which way the axes run, the
+# axes of two shapes together, and the shape with the most axes ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+_AXES = {"รูปสี่เหลี่ยมจัตุรัส": 4, "รูปสี่เหลี่ยมผืนผ้า": 2, "รูปสามเหลี่ยมด้านเท่า": 3,
+         "รูปสามเหลี่ยมหน้าจั่ว": 1, "รูปหกเหลี่ยมด้านเท่า": 6, "รูปห้าเหลี่ยมด้านเท่า": 5,
+         "รูปสี่เหลี่ยมขนมเปียกปูน": 2}
+
+
+@question_type("math.symmetric_shape_p3", display_name={"th": "รูปใดเป็นรูปสมมาตร"},
+               level=LEVEL, topic="รูปสมมาตร")
+class SymmetricShapeP3(ConceptBankType):
+    ITEMS = [
+        Concept("รูปใดไม่เป็นรูปสมมาตร", "รูปสี่เหลี่ยมด้านขนานที่ด้านยาวไม่เท่าด้านกว้างและมุมไม่เป็นมุมฉาก",
+                ("รูปสี่เหลี่ยมจัตุรัส", "รูปวงกลม", "รูปหัวใจ")),
+        Concept("รูปใดเป็นรูปสมมาตร", "รูปผีเสื้อที่กางปีกสองข้างเท่ากัน",
+                ("รูปเลข 7", "รูปตัว F", "รูปมือข้างเดียวที่กำนิ้วไม่เท่ากัน")),
+        Concept("รูปใดเป็นรูปสมมาตร", "รูปสามเหลี่ยมหน้าจั่ว",
+                ("รูปสามเหลี่ยมด้านไม่เท่า", "รูปเลข 4", "รูปตัว G")),
+        Concept("รูปใดไม่เป็นรูปสมมาตร", "รูปสามเหลี่ยมด้านไม่เท่า",
+                ("รูปสามเหลี่ยมด้านเท่า", "รูปสี่เหลี่ยมผืนผ้า", "รูปวงกลม")),
+    ]
+
+
+@question_type("math.symmetry_fold_p3", display_name={"th": "พับรูปตามแกนสมมาตร"},
+               level=LEVEL, topic="รูปสมมาตร")
+class SymmetryFoldP3(ConceptBankType):
+    ITEMS = [
+        Concept("พับรูปสมมาตรตามแกนสมมาตร รูปสองข้างของแกนจะเป็นอย่างไร", "ทับกันสนิทพอดี",
+                ("ข้างหนึ่งใหญ่กว่า", "ไม่ทับกันเลย", "ทับกันเพียงครึ่งเดียว")),
+        Concept("เส้นที่แบ่งรูปเป็นสองข้างที่พับแล้วทับกันสนิทเรียกว่าอะไร", "แกนสมมาตร",
+                ("เส้นทแยงมุม", "เส้นขนาน", "เส้นรอบรูป")),
+        Concept("พับครึ่งกระดาษแล้วตัดเป็นรูปใดก็ตาม เมื่อคลี่ออกจะได้รูปแบบใด", "รูปสมมาตรที่มีรอยพับเป็นแกน",
+                ("รูปที่ไม่สมมาตร", "รูปสองรูปแยกกัน", "รูปที่มีขนาดเท่าเดิม")),
+        Concept("รูปสมมาตรต้องมีแกนสมมาตรอย่างน้อยกี่แกน", "1 แกน", ("0 แกน", "2 แกน", "4 แกน")),
+    ]
+
+
+@question_type("math.symmetry_axis_direction_p3", display_name={"th": "แกนสมมาตรอยู่ในแนวใด"},
+               level=LEVEL, topic="รูปสมมาตร")
+class SymmetryAxisDirectionP3(ConceptBankType):
+    ITEMS = [
+        Concept("รูปสี่เหลี่ยมผืนผ้าที่วางด้านยาวในแนวนอน มีแกนสมมาตรในแนวใด", "แนวตั้งและแนวนอน",
+                ("แนวตั้งเท่านั้น", "แนวนอนเท่านั้น", "แนวทแยงมุม")),
+        Concept("รูปสามเหลี่ยมหน้าจั่วที่ยอดชี้ขึ้นด้านบน มีแกนสมมาตรในแนวใด", "แนวตั้ง",
+                ("แนวนอน", "แนวทแยง", "ไม่มีแกนสมมาตร")),
+        Concept("รูปหัวใจที่วางตั้งตรง มีแกนสมมาตรในแนวใด", "แนวตั้ง", ("แนวนอน", "แนวทแยง", "ทุกแนว")),
+        Concept("รูปสี่เหลี่ยมจัตุรัสมีแกนสมมาตรในแนวใดบ้าง", "แนวตั้ง แนวนอน และแนวเส้นทแยงมุมทั้งสอง",
+                ("แนวตั้งเท่านั้น", "แนวทแยงมุมเท่านั้น", "แนวตั้งและแนวนอนเท่านั้น")),
+    ]
+
+
+@question_type("math.symmetry_total_axes_p3", display_name={"th": "แกนสมมาตรของรูปสองรูปรวมกัน"},
+               level=LEVEL, topic="รูปสมมาตร")
+class SymmetryTotalAxesP3(WordProblem):
+    def expr(self, rng: Random):
+        x, y = rng.sample(tuple(_AXES), 2)
+        a, b = _AXES[x], _AXES[y]
+        right = a + b
+        prompt = f"{x}และ{y} มีแกนสมมาตรรวมกันกี่แกน"
+        # One shape only; the difference; one off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(max(a, b), abs(a - b), right + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.most_axes_p3", display_name={"th": "รูปใดมีแกนสมมาตรมากที่สุด"},
+               level=LEVEL, topic="รูปสมมาตร")
+class MostAxesP3(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            names = rng.sample(tuple(_AXES), 4)
+            counts = [_AXES[n] for n in names]
+            if len(set(counts)) == 4:
+                break
+        most = rng.random() < 0.5
+        pick = (max if most else min)(range(4), key=lambda i: counts[i])
+        return (f"รูปใดมีแกนสมมาตร{'มากที่สุด' if most else 'น้อยที่สุด'}", names[pick],
+                [n for i, n in enumerate(names) if i != pick])

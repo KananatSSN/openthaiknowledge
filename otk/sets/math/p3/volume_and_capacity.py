@@ -130,3 +130,94 @@ class CapacityWordProblemP3(WordProblem):
         return MathDraw("", str(n),
                         prompt=f"น้ำผลไม้ {said} แบ่งใส่ขวด ขวดละ {bottle} มิลลิลิตร ได้กี่ขวด",
                         distractors=_story.keep(n + 1, n * 2, n - 1, length, answer=n, lo=1))
+
+
+# ── More volume and capacity (2026-11): bottles together, litres and millilitres as millilitres, pours to
+# fill a tank, the largest capacity, what is left after pouring, and choosing the unit ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+
+def _l_ml(ml: int) -> str:
+    litres, rest = divmod(ml, 1000)
+    if litres and rest:
+        return f"{litres} ลิตร {rest} มิลลิลิตร"
+    return f"{litres} ลิตร" if litres else f"{rest} มิลลิลิตร"
+
+
+@question_type("math.bottles_total_ml_p3", display_name={"th": "ปริมาตรรวมของน้ำหลายขวด"},
+               level=LEVEL, topic="ปริมาตรและความจุ")
+class BottlesTotalMlP3(WordProblem):
+    def expr(self, rng: Random):
+        n, each = rng.randint(2, 9), rng.choice((150, 200, 250, 300, 350, 500, 600, 750))
+        right = n * each
+        drink = rng.choice(("น้ำดื่ม", "นม", "น้ำผลไม้"))
+        prompt = f"{drink} {n} ขวด ขวดละ {each} มิลลิลิตร รวมกันกี่มิลลิลิตร"
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(n + each, (n + 1) * each, (n - 1) * each, right + 100, answer=right, lo=1))
+
+
+@question_type("math.l_ml_to_ml_p3", display_name={"th": "เปลี่ยนลิตรและมิลลิลิตรเป็นมิลลิลิตร"},
+               level=LEVEL, topic="ปริมาตรและความจุ")
+class LMlToMlP3(WordProblem):
+    def expr(self, rng: Random):
+        litres, ml = rng.randint(1, 9), rng.choice((50, 100, 150, 250, 300, 400, 500, 750, 900))
+        right = 1000 * litres + ml
+        return MathDraw("", str(right), prompt=f"{litres} ลิตร {ml} มิลลิลิตร เท่ากับกี่มิลลิลิตร",
+                        distractors=_story.keep(100 * litres + ml, 1000 * litres, litres + ml, 10 * litres + ml,
+                                                answer=right, lo=1))
+
+
+@question_type("math.pours_to_fill_p3", display_name={"th": "ต้องเทกี่ครั้งจึงเต็ม"},
+               level=LEVEL, topic="ปริมาตรและความจุ")
+class PoursToFillP3(WordProblem):
+    def expr(self, rng: Random):
+        jug = rng.choice((2, 3, 4, 5))
+        times = rng.randint(3, 12)
+        tank = jug * times
+        prompt = f"ถังใบหนึ่งจุน้ำ {tank} ลิตร ใช้เหยือกขนาด {jug} ลิตรตักน้ำเทใส่ จะต้องเทกี่ครั้งน้ำจึงเต็มถัง"
+        # Multiplied instead; one pour too many or too few.
+        return MathDraw("", str(times), prompt=prompt,
+                        distractors=_story.keep(tank * jug, times + 1, times - 1, tank - jug, answer=times, lo=1))
+
+
+@question_type("math.largest_capacity_p3", display_name={"th": "ภาชนะใดจุได้มากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="ปริมาตรและความจุ")
+class LargestCapacityP3(ChoiceType):
+    def compose(self, rng: Random):
+        values = rng.sample(range(5, 60), 4)
+        texts = [(_l_ml(v * 100) if rng.random() < 0.5 else f"{v * 100} มิลลิลิตร") for v in values]
+        most = rng.random() < 0.5
+        pick = (max if most else min)(range(4), key=lambda i: values[i])
+        return (f"ความจุใด{'มากที่สุด' if most else 'น้อยที่สุด'}", texts[pick],
+                [t for i, t in enumerate(texts) if i != pick])
+
+
+@question_type("math.pour_left_p3", display_name={"th": "เทน้ำใส่แก้วแล้วเหลือเท่าใด"},
+               level=LEVEL, topic="ปริมาตรและความจุ")
+class PourLeftP3(WordProblem):
+    def expr(self, rng: Random):
+        litres = rng.randint(1, 3)
+        cup = rng.choice((150, 200, 250, 300))
+        cups = rng.randint(2, 1000 * litres // cup - 1)
+        right = 1000 * litres - cups * cup
+        prompt = (f"เหยือกมีน้ำ {litres} ลิตร เทใส่แก้ว {cups} ใบ ใบละ {cup} มิลลิลิตร "
+                  f"เหยือกเหลือน้ำกี่มิลลิลิตร")
+        # A litre taken as 100 millilitres; one cup more or fewer; the water poured.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(abs(100 * litres - cups * cup), right - cup, right + cup, cups * cup,
+                                                answer=right, lo=1))
+
+
+@question_type("math.capacity_unit_p3", display_name={"th": "เลือกหน่วยปริมาตรให้เหมาะสม"},
+               level=LEVEL, topic="ปริมาตรและความจุ")
+class CapacityUnitP3(ConceptBankType):
+    ITEMS = [
+        Concept("น้ำในถังน้ำใบใหญ่ควรบอกเป็นหน่วยใด", "ลิตร", ("มิลลิลิตร", "ช้อนชา", "กิโลกรัม")),
+        Concept("ยาน้ำหนึ่งช้อนควรบอกเป็นหน่วยใด", "มิลลิลิตร", ("ลิตร", "กิโลกรัม", "เมตร")),
+        Concept("น้ำมันในถังรถยนต์ควรบอกเป็นหน่วยใด", "ลิตร", ("มิลลิลิตร", "กรัม", "เซนติเมตร")),
+        Concept("นมหนึ่งกล่องเล็กควรบอกเป็นหน่วยใด", "มิลลิลิตร", ("ลิตร", "กิโลกรัม", "เมตร")),
+        Concept("น้ำในสระว่ายน้ำควรบอกเป็นหน่วยใด", "ลิตร", ("มิลลิลิตร", "ช้อนโต๊ะ", "กรัม")),
+    ]
