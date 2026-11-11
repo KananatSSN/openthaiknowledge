@@ -19,6 +19,7 @@ from otk.kit.concept_bank import Concept, ConceptBankType
 from otk.kit import story as _story
 from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_diagrams import _text_q
+from otk.sets._support.math_m2 import triple
 
 PROVENANCE = Provenance("original")
 
@@ -333,3 +334,118 @@ class CongruenceProofReasonM2(ConceptBankType):
                6, 2, 5, 3),
     ]
 
+
+# ── To fifteen (2026-11): a side or the perimeter through a correspondence, naming the case from three
+# facts, right triangles (ฉ.ด.ด.), diagonals that bisect each other, and an isosceles triangle's median ──
+
+
+def _triangle_sides(rng: Random) -> tuple[int, int, int]:
+    while True:
+        a, b, c = rng.randint(4, 20), rng.randint(4, 20), rng.randint(4, 20)
+        if a + b > c and b + c > a and a + c > b and len({a, b, c}) == 3:
+            return a, b, c
+
+
+@question_type("math.congruence_perimeter_m2", display_name={"th": "ความยาวด้านและความยาวรอบรูปจากรูปที่เท่ากันทุกประการ"},
+               level={"th": "ม.2"}, topic=_TOPIC)
+class CongruencePerimeterM2(WordProblem):
+    def expr(self, rng: Random):
+        first, second = _named(rng)
+        ab, bc, ca = _triangle_sides(rng)
+        lead = f"△{first} ≅ △{second} ถ้า AB = {ab} ซม., BC = {bc} ซม. และ CA = {ca} ซม. "
+        if rng.random() < 0.5:
+            i, j = sorted(rng.sample(range(3), 2))
+            value = {(0, 1): ab, (1, 2): bc, (0, 2): ca}[(i, j)]
+            # The side of the same letters' places in the alphabet; the other sides.
+            others = [v for v in (ab, bc, ca) if v != value]
+            return MathDraw("", str(value), prompt=lead + f"แล้ว {second[i]}{second[j]} ยาวกี่เซนติเมตร",
+                            distractors=_story.keep(*others, ab + bc + ca, answer=value, lo=1))
+        per = ab + bc + ca
+        return MathDraw("", str(per), prompt=lead + f"แล้ว △{second} มีความยาวรอบรูปกี่เซนติเมตร",
+                        distractors=_story.keep(2 * per, ab + bc, per - ca, per + ab, answer=per, lo=1))
+
+
+_CASE_PARTS = {
+    "ด.ด.ด.": lambda v, a, b: [("s", v, a), ("s", a, b), ("s", v, b)],
+    "ด.ม.ด.": lambda v, a, b: [("s", v, a), ("a", v, v), ("s", v, b)],
+    "ม.ด.ม.": lambda v, a, b: [("a", v, v), ("s", v, a), ("a", a, a)],
+    "ม.ม.ด.": lambda v, a, b: [("a", v, v), ("a", a, a), ("s", a, b)],
+}
+
+
+@question_type("math.congruence_name_case_m2", display_name={"th": "บอกกรณีความเท่ากันทุกประการจากเงื่อนไขที่กำหนด"},
+               level={"th": "ม.2"}, topic=_TOPIC)
+class CongruenceNameCaseM2(ChoiceType):
+    def compose(self, rng: Random):
+        second = rng.choice(("DEF", "PQR", "XYZ"))
+        v = rng.randrange(3)
+        a, b = (v + 1) % 3, (v + 2) % 3
+        case = rng.choice(tuple(_CASE_PARTS) + ("ฉ.ด.ด.",))
+        if case == "ฉ.ด.ด.":
+            stated = (f"∠{'ABC'[v]} = ∠{second[v]} = 90°, {_element('s', a, b, 'ABC', second)}, "
+                      f"{_element('s', v, a, 'ABC', second)}")
+        else:
+            parts = _CASE_PARTS[case](v, a, b)
+            rng.shuffle(parts)
+            stated = ", ".join(_element(*p, "ABC", second) for p in parts)
+        names = ["ด.ด.ด.", "ด.ม.ด.", "ม.ด.ม.", "ม.ม.ด.", "ฉ.ด.ด."]
+        return (f"รูปสามเหลี่ยม ABC และ {second} มี {stated} สรุปได้ว่า △ABC ≅ △{second} ด้วยกรณีใด", case,
+                [n for n in names if n != case])
+
+
+@question_type("math.congruence_right_triangle_m2", display_name={"th": "รูปสามเหลี่ยมมุมฉากที่เท่ากันทุกประการ (ฉ.ด.ด.)"},
+               level={"th": "ม.2"}, topic=_TOPIC)
+class CongruenceRightTriangleM2(WordProblem):
+    """ฉ.ด.ด.: the hypotenuse and a leg; then Pythagoras gives the third side, which is also equal."""
+
+    def expr(self, rng: Random):
+        a, b, c = triple(rng, 3)
+        if rng.random() < 0.5:
+            a, b = b, a
+        lead = (f"รูปสามเหลี่ยม ABC และ DEF มี ∠B = ∠E = 90°, AC = DF = {c} ซม. และ AB = DE = {a} ซม. ")
+        if rng.random() < 0.5:
+            # The hypotenuse less the leg; the given leg; their sum.
+            return MathDraw("", str(b), prompt=lead + "EF ยาวกี่เซนติเมตร",
+                            distractors=_story.keep(c - a, a, c, a + b, answer=b, lo=1))
+        area = a * b // 2
+        return MathDraw("", str(area), prompt=lead + "△DEF มีพื้นที่กี่ตารางเซนติเมตร",
+                        distractors=_story.keep(a * b, a * c // 2 if a * c % 2 == 0 else a * c, area + a, b * c // 2 if b * c % 2 == 0 else b * c,
+                                                answer=area, lo=1))
+
+
+@question_type("math.congruence_bisecting_diagonals_m2", display_name={"th": "เส้นทแยงมุมแบ่งครึ่งซึ่งกันและกัน"},
+               level={"th": "ม.2"}, topic=_TOPIC)
+class CongruenceBisectingDiagonalsM2(WordProblem):
+    """AC and BD bisect each other at O, so △AOB ≅ △COD (ด.ม.ด.): ∠OCD = ∠OAB and ∠ODC = ∠OBA."""
+
+    def expr(self, rng: Random):
+        p, q = rng.randint(25, 80), rng.randint(25, 80)
+        lead = (f"AC และ BD ตัดกันที่จุด O โดย AO = OC และ BO = OD ถ้า ∠OAB = {p}° และ ∠OBA = {q}° ")
+        kind = rng.randrange(3)
+        if kind == 0:
+            right, asked, wrongs = p, "∠OCD", (q, 180 - p - q, 180 - p, 90 - p)
+        elif kind == 1:
+            right, asked, wrongs = q, "∠ODC", (p, 180 - p - q, 180 - q, 90 - q)
+        else:
+            right, asked, wrongs = 180 - p - q, "∠COD", (p + q, 180 - p, p, q)
+        return MathDraw("", str(right), prompt=lead + f"จงหาขนาดของ {asked} (องศา)",
+                        distractors=_story.keep(*wrongs, right + 10, answer=right, lo=1, hi=179))
+
+
+@question_type("math.congruence_isosceles_median_m2", display_name={"th": "เส้นมัธยฐานของรูปสามเหลี่ยมหน้าจั่ว"},
+               level={"th": "ม.2"}, topic=_TOPIC)
+class CongruenceIsoscelesMedianM2(WordProblem):
+    """AB = AC and M the midpoint of BC: △ABM ≅ △ACM (ด.ด.ด.), so AM halves ∠A and meets BC at 90°."""
+
+    def expr(self, rng: Random):
+        apex = 2 * rng.randint(15, 70)
+        lead = f"รูปสามเหลี่ยม ABC มี AB = AC และ M เป็นจุดกึ่งกลางของ BC ถ้า ∠BAC = {apex}° "
+        kind = rng.randrange(3)
+        if kind == 0:
+            right, asked, wrongs = apex // 2, "∠BAM", (apex, 90 - apex // 2, 180 - apex)
+        elif kind == 1:
+            right, asked, wrongs = (180 - apex) // 2, "∠ABM", (apex // 2, 180 - apex, apex)
+        else:
+            right, asked, wrongs = 90, "∠AMB", (apex, 180 - apex, apex // 2)
+        return MathDraw("", str(right), prompt=lead + f"จงหาขนาดของ {asked} (องศา)",
+                        distractors=_story.keep(*wrongs, right + 10, answer=right, lo=1, hi=179))

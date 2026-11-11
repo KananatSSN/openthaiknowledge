@@ -8,6 +8,8 @@ Sets moved here from: math, math_diagrams, math_geometry, math_m2.
 
 from __future__ import annotations
 
+import math
+
 from random import Random
 
 from otk.core.content import text
@@ -266,3 +268,115 @@ class PythagorasBoxDiagonalM2(WordProblem):
         # The three edges added; one past; the longest edge.
         return MathDraw("", str(diag), prompt=prompt,
                         distractors=_story.keep(w + d + h, diag + k, diag - k, d + h, answer=diag, lo=1))
+
+
+# ── To fifteen (2026-11): squares on the sides, a rhombus, perimeter and area of a right triangle, an
+# isosceles trapezoid, and two right triangles sharing a leg ──
+
+
+@question_type("math.pythagoras_square_areas_m2", display_name={"th": "พื้นที่ของรูปสี่เหลี่ยมจัตุรัสบนด้านของรูปสามเหลี่ยมมุมฉาก"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasSquareAreasM2(WordProblem):
+    """The square on the hypotenuse has the area of the other two together."""
+
+    def expr(self, rng: Random):
+        a, b, c = _legs(rng, 3)
+        lead = "สร้างรูปสี่เหลี่ยมจัตุรัสบนด้านทั้งสามของรูปสามเหลี่ยมมุมฉาก "
+        kind = rng.randrange(3)
+        if kind == 0:
+            return MathDraw("", str(c * c), prompt=lead + (f"ถ้ารูปบนด้านประกอบมุมฉากมีพื้นที่ {a * a} และ {b * b} ตารางหน่วย "
+                                                          f"รูปบนด้านตรงข้ามมุมฉากมีพื้นที่กี่ตารางหน่วย"),
+                            distractors=_story.keep(a + b, (a + b) ** 2, c, abs(a * a - b * b), answer=c * c, lo=1))
+        if kind == 1:
+            return MathDraw("", str(b * b), prompt=lead + (f"ถ้ารูปบนด้านตรงข้ามมุมฉากมีพื้นที่ {c * c} ตารางหน่วย และรูปบนด้าน"
+                                                          f"ประกอบมุมฉากด้านหนึ่งมีพื้นที่ {a * a} ตารางหน่วย อีกรูปหนึ่งมีพื้นที่กี่ตารางหน่วย"),
+                            distractors=_story.keep(c * c + a * a, b, c - a, (c - a) ** 2, answer=b * b, lo=1))
+        return MathDraw("", str(c), prompt=lead + (f"ถ้ารูปบนด้านประกอบมุมฉากมีพื้นที่ {a * a} และ {b * b} ตารางหน่วย "
+                                                  f"ด้านตรงข้ามมุมฉากยาวกี่หน่วย"),
+                        distractors=_story.keep(c * c, a + b, c + 1, b + 1, answer=c, lo=1))
+
+
+@question_type("math.pythagoras_rhombus_m2", display_name={"th": "ด้านและเส้นทแยงมุมของรูปสี่เหลี่ยมขนมเปียกปูน"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasRhombusM2(WordProblem):
+    """The diagonals bisect each other at right angles: half of each and a side make a right triangle."""
+
+    def expr(self, rng: Random):
+        a, b, c = _legs(rng, 3)
+        kind = rng.randrange(3)
+        if kind == 0:
+            return MathDraw("", str(c), prompt=(f"รูปสี่เหลี่ยมขนมเปียกปูนมีเส้นทแยงมุมยาว {2 * a} และ {2 * b} เซนติเมตร "
+                                               f"ด้านยาวด้านละกี่เซนติเมตร"),
+                            # The full diagonals used; their halves added; their sum halved.
+                            distractors=_story.keep(2 * c, a + b, c + 1, c - 1, answer=c, lo=1))
+        if kind == 1:
+            return MathDraw("", str(2 * b), prompt=(f"รูปสี่เหลี่ยมขนมเปียกปูนยาวด้านละ {c} เซนติเมตร และมีเส้นทแยงมุมเส้นหนึ่ง"
+                                                   f"ยาว {2 * a} เซนติเมตร เส้นทแยงมุมอีกเส้นยาวกี่เซนติเมตร"),
+                            distractors=_story.keep(b, 2 * c - 2 * a, c, 2 * b + 2, answer=2 * b, lo=1))
+        area = 2 * a * b
+        return MathDraw("", str(area), prompt=(f"รูปสี่เหลี่ยมขนมเปียกปูนยาวด้านละ {c} เซนติเมตร และมีเส้นทแยงมุมเส้นหนึ่ง"
+                                              f"ยาว {2 * a} เซนติเมตร มีพื้นที่กี่ตารางเซนติเมตร"),
+                        # The half forgotten; the side times the diagonal; half the diagonals' halves.
+                        distractors=_story.keep(4 * a * b, 2 * a * c, a * b, c * c, answer=area, lo=1))
+
+
+@question_type("math.pythagoras_triangle_perimeter_m2", display_name={"th": "ความยาวรอบรูปและพื้นที่ของรูปสามเหลี่ยมมุมฉาก"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasTrianglePerimeterM2(WordProblem):
+    def expr(self, rng: Random):
+        a, b, c = _legs(rng)
+        if rng.random() < 0.5:
+            per = a + b + c
+            return MathDraw("", str(per), prompt=(f"รูปสามเหลี่ยมมุมฉากมีด้านประกอบมุมฉากยาว {a} และ {b} เซนติเมตร "
+                                                 f"มีความยาวรอบรูปกี่เซนติเมตร"),
+                            # The two legs only; the hypotenuse doubled; the legs' squares added.
+                            distractors=_story.keep(a + b, a + b + a + b, 2 * c + a, per + 1, answer=per, lo=1))
+        area = a * b // 2
+        return MathDraw("", str(area), prompt=(f"รูปสามเหลี่ยมมุมฉากมีด้านตรงข้ามมุมฉากยาว {c} เซนติเมตร และด้านประกอบมุมฉาก"
+                                              f"ด้านหนึ่งยาว {a} เซนติเมตร มีพื้นที่กี่ตารางเซนติเมตร"),
+                        # The hypotenuse used as the height; the half forgotten.
+                        distractors=_story.keep(a * c // 2 if a * c % 2 == 0 else a * c, a * b, a * c, area + a,
+                                                answer=area, lo=1))
+
+
+@question_type("math.pythagoras_trapezoid_m2", display_name={"th": "ส่วนสูงและพื้นที่ของรูปสี่เหลี่ยมคางหมูหน้าจั่ว"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasTrapezoidM2(WordProblem):
+    """Drop heights from the short base: each end cuts off (B − b)/2, the leg is the hypotenuse."""
+
+    def expr(self, rng: Random):
+        a, h, c = _legs(rng, 3)
+        b = rng.randint(2, 12)
+        big = b + 2 * a
+        lead = (f"รูปสี่เหลี่ยมคางหมูหน้าจั่วมีด้านคู่ขนานยาว {b} และ {big} เซนติเมตร "
+                f"และด้านที่ไม่ขนานยาวด้านละ {c} เซนติเมตร ")
+        if rng.random() < 0.5:
+            # The whole difference of the bases used; the leg itself.
+            wrong = math.isqrt(c * c - (big - b) ** 2) if c > big - b else 0
+            return MathDraw("", str(h), prompt=lead + "สูงกี่เซนติเมตร",
+                            distractors=_story.keep(wrong, c, c - a, h + 1, h + 2, answer=h, lo=1))
+        area = (b + big) * h // 2
+        return MathDraw("", str(area), prompt=lead + "มีพื้นที่กี่ตารางเซนติเมตร",
+                        distractors=_story.keep((b + big) * h, (b + big) * c // 2 if (b + big) * c % 2 == 0 else 0,
+                                                big * h, b * h, answer=area, lo=1))
+
+
+# Right triangles sharing a leg L: (L, the other legs, their hypotenuses).
+_SHARED = ((12, ((5, 13), (9, 15), (16, 20), (35, 37))), (24, ((7, 25), (10, 26), (18, 30), (32, 40))),
+           (15, ((8, 17), (20, 25), (36, 39))), (20, ((15, 25), (21, 29), (48, 52))))
+
+
+@question_type("math.pythagoras_two_step_m2", display_name={"th": "ใช้ทฤษฎีบทพีทาโกรัสสองครั้ง"},
+               level=LEVEL, topic=_PY_TOPIC)
+class PythagorasTwoStepM2(WordProblem):
+    """C and D on one leg's line: BC and BD from two triangles with the leg AB in common, then CD."""
+
+    def expr(self, rng: Random):
+        leg, options = rng.choice(_SHARED)
+        (m1, h1), (m2, h2) = sorted(rng.sample(options, 2))
+        prompt = (f"รูปสามเหลี่ยม ABD มีมุม B เป็นมุมฉาก จุด C อยู่บน BD ถ้า AB = {leg} ซม. AC = {h1} ซม. "
+                  f"และ AD = {h2} ซม. แล้ว CD ยาวกี่เซนติเมตร")
+        right = m2 - m1
+        # The hypotenuses subtracted; BD or BC alone; the two added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(h2 - h1, m2, m1, m1 + m2, answer=right, lo=1))
