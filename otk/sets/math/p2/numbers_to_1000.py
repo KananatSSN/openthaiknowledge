@@ -200,17 +200,23 @@ from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
 from otk.sets._support.math_p2 import LEVEL  # noqa: E402
 
 
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType as _QT  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
 @question_type("math.even_number_p2", display_name={"th": "จำนวนคู่และจำนวนคี่"},
                level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
-class EvenNumberP2(WordProblem):
-    def expr(self, rng: Random):
+class EvenNumberP2(_QT):
+    """Fixed choices: a number from another draw could be even (or odd) too."""
+
+    def build(self, rng: Random):
         even = rng.random() < 0.5
         base = rng.randint(10, 499)
         right = 2 * base + (0 if even else 1)
         # Three of the other kind near it.
-        wrongs = [right + 1, right - 1, right + 3, right - 3]
-        return MathDraw("", str(right), prompt=f"จำนวนใดเป็นจำนวน{'คู่' if even else 'คี่'}",
-                        distractors=_story.keep(*wrongs, answer=right, lo=1, hi=1000))
+        wrongs = _story.keep(right + 1, right - 1, right + 3, right - 3, answer=right, lo=1, hi=1000)
+        return _fixed_maths([_text_block(f"จำนวนใดเป็นจำนวน{'คู่' if even else 'คี่'}")], str(right), wrongs, self.topic)
 
 
 @question_type("math.hundreds_tens_ones_p2", display_name={"th": "จำนวนจากหลักร้อย หลักสิบ และหลักหน่วย"},

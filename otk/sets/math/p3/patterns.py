@@ -83,3 +83,108 @@ class GrowingPatternP3(WordProblem):
                         # Stepping k times instead of k − 1, and k × step alone.
                         distractors=_story.keep(first + step * k, step * k, ans - step,
                                                 first * k, answer=ans, lo=1))
+
+
+# ── More patterns (2026-11): the next term, a far term, two missing, a four-shape repeat at a far place,
+# money spent day by day, and which number belongs to a pattern ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+_P3_STEPS = (3, 4, 6, 7, 8, 9, 25, 50, 100, 1000)
+_P3_SHAPES = ("○", "△", "□", "☆", "◇", "♡", "▲", "■")
+
+
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType as _QT  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+@question_type("math.pattern_next_p3", display_name={"th": "จำนวนถัดไปในแบบรูป (ทีละเท่า ๆ กัน)"},
+               level=LEVEL, topic="แบบรูป")
+class PatternNextP3(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice(_P3_STEPS)
+        down = rng.random() < 0.5
+        low = rng.randint(1, 20) * (step if step >= 25 else 1) + (0 if step >= 25 else rng.randint(0, 50))
+        seq = [low + step * i for i in range(6)]
+        if down:
+            seq.reverse()
+        terms, right = seq[:5], seq[5]
+        d = right - terms[-1]
+        # The wrong way; one step too far; a step one larger.
+        return MathDraw("", str(right), prompt=f"{', '.join(map(str, terms))}, ... จำนวนถัดไปคือจำนวนใด",
+                        distractors=_story.keep(terms[-1] - d, right + d, terms[-1] + d + (1 if d > 0 else -1),
+                                                right + (10 if d > 0 else -10), answer=right, lo=0))
+
+
+@question_type("math.pattern_far_term_p3", display_name={"th": "จำนวนในลำดับที่กำหนดของแบบรูป (ทีละเท่า ๆ กัน)"},
+               level=LEVEL, topic="แบบรูป")
+class PatternFarTermP3(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice((3, 4, 6, 7, 8, 9, 25))
+        start = rng.randint(1, 50)
+        n = rng.randint(8, 20)
+        right = start + step * (n - 1)
+        terms = ", ".join(str(start + step * i) for i in range(4))
+        prompt = f"แบบรูป {terms}, ... จำนวนที่ {n} คือจำนวนใด"
+        # n steps instead of n − 1; the step times n; one step short.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right + step, step * n, right - step, start + n, answer=right, lo=1))
+
+
+@question_type("math.pattern_two_missing_p3", display_name={"th": "หาจำนวนที่หายไปสองจำนวนในแบบรูป (ทีละเท่า ๆ กัน)"},
+               level=LEVEL, topic="แบบรูป")
+class PatternTwoMissingP3(ChoiceType):
+    def compose(self, rng: Random):
+        step = rng.choice((3, 4, 6, 7, 8, 9, 25, 50))
+        start = rng.randint(1, 100)
+        terms = [start + step * i for i in range(6)]
+        i = rng.randrange(1, 4)
+        shown = ", ".join("□" if j in (i, i + 2) else str(t) for j, t in enumerate(terms))
+        a, b = terms[i], terms[i + 2]
+        return (f"จำนวนใดเติมใน □ ตามลำดับ: {shown}", f"{a} และ {b}",
+                [f"{a + 1} และ {b + 1}", f"{b} และ {a}", f"{a} และ {b + step}"])
+
+
+@question_type("math.pattern_four_shapes_p3", display_name={"th": "รูปในลำดับที่กำหนดของแบบรูปซ้ำ (ชุดละ 4 รูป)"},
+               level=LEVEL, topic="แบบรูป")
+class PatternFourShapesP3(ChoiceType):
+    def compose(self, rng: Random):
+        unit = rng.sample(_P3_SHAPES, 4)
+        k = rng.randint(13, 40)
+        right = unit[(k - 1) % 4]
+        others = [s for s in _P3_SHAPES if s not in unit]
+        return (f"แบบรูป {'  '.join(unit * 2)}  ... รูปที่ {k} คือรูปใด", right,
+                [s for s in unit if s != right][:2] + [rng.choice(others)])
+
+
+@question_type("math.pattern_spending_p3", display_name={"th": "แบบรูปที่ลดลงในชีวิตประจำวัน"},
+               level=LEVEL, topic="แบบรูป")
+class PatternSpendingP3(WordProblem):
+    def expr(self, rng: Random):
+        per = rng.choice((15, 20, 25, 30, 40, 50))
+        days = rng.randint(4, 9)
+        have = per * days + rng.randint(1, 10) * 10
+        right = have - per * days
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}มีเงิน {have} บาท ใช้วันละ {per} บาท เมื่อผ่านไป {days} วัน {p}เหลือเงินกี่บาท"
+        # One day more or fewer; only one day spent.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right - per, right + per, have - per, per * days, answer=right, lo=0))
+
+
+@question_type("math.pattern_member_p3", display_name={"th": "จำนวนใดอยู่ในแบบรูป"},
+               level=LEVEL, topic="แบบรูป")
+class PatternMemberP3(_QT):
+    """Fixed choices: a number from another draw could also belong to the pattern."""
+
+    def build(self, rng: Random):
+        step = rng.choice((3, 4, 6, 7, 8, 9))
+        start = rng.randint(1, 9)
+        k = rng.randint(8, 20)
+        right = start + step * k
+        terms = ", ".join(str(start + step * i) for i in range(4))
+        # Numbers one or two off the pattern, never on it (step ≥ 3).
+        wrongs = _story.keep(right + 1, right - 1, right + step + 1, right - 2, answer=right, lo=1)
+        return _fixed_maths([_text_block(f"แบบรูป {terms}, ... จำนวนใดอยู่ในแบบรูปนี้")], str(right), wrongs, self.topic)

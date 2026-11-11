@@ -162,3 +162,84 @@ class TableSum(WordProblem):
             # Leaving out the last row, then a ten gained or lost in carrying.
             distractors=_story.keep(total - values[-1], total + 10, total - 10,
                                     max(values), answer=total, lo=1))
+
+
+# ── More one-way tables (2026-11): most minus least, the order of the rows, rows above a number, two rows
+# against a third, and a true statement ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+
+def _row(tb, r: str) -> str:
+    return tb.table.label.format(r=r)
+
+
+@question_type("math.table_range_p3", display_name={"th": "ตารางทางเดียว: มากที่สุดมากกว่าน้อยที่สุดเท่าใด"},
+               level=LEVEL, topic="ตารางทางเดียว")
+class TableRangeP3(WordProblem):
+    def expr(self, rng: Random):
+        tb = _story.one_way_table(rng)
+        a, b = max(tb.data.values()), min(tb.data.values())
+        right = a - b
+        unit = tb.table.unit
+        return MathDraw("", str(right), prompt=f"{tb.text}\nรายการที่มากที่สุดมากกว่ารายการที่น้อยที่สุดกี่{unit}",
+                        distractors=_story.keep(a + b, a, b, right + 10, answer=right, lo=1))
+
+
+@question_type("math.table_order_p3", display_name={"th": "ตารางทางเดียว: เรียงลำดับ"},
+               level=LEVEL, topic="ตารางทางเดียว")
+class TableOrderP3(ChoiceType):
+    def compose(self, rng: Random):
+        tb = _story.one_way_table(rng)
+        up = rng.random() < 0.5
+        ordered = sorted(tb.data, key=tb.data.get, reverse=not up)
+        place = rng.choice((1, 2))
+        right = ordered[place]
+        stem = (f"{tb.text}\nเมื่อเรียงจาก{'น้อยไปมาก' if up else 'มากไปน้อย'} "
+                f"รายการใดอยู่ลำดับที่{'สอง' if place == 1 else 'สาม'}")
+        return stem, right, [r for r in ordered if r != right]
+
+
+@question_type("math.table_count_above_p3", display_name={"th": "ตารางทางเดียว: นับรายการที่มากกว่าจำนวนที่กำหนด"},
+               level=LEVEL, topic="ตารางทางเดียว")
+class TableCountAboveP3(WordProblem):
+    def expr(self, rng: Random):
+        tb = _story.one_way_table(rng)
+        values = sorted(tb.data.values())
+        k = rng.randint(values[0], values[-1] - 1)
+        right = sum(v > k for v in values)
+        return MathDraw("", str(right), prompt=f"{tb.text}\nมีกี่รายการที่มากกว่า {k} {tb.table.unit}",
+                        distractors=_story.keep(sum(v >= k for v in values), len(values) - right, len(values),
+                                                right - 1, right + 1, answer=right, lo=0, hi=len(values)))
+
+
+@question_type("math.table_two_rows_p3", display_name={"th": "ตารางทางเดียว: สองรายการรวมกันเทียบกับอีกรายการ"},
+               level=LEVEL, topic="ตารางทางเดียว")
+class TableTwoRowsP3(WordProblem):
+    def expr(self, rng: Random):
+        tb = _story.one_way_table(rng)
+        ordered = sorted(tb.data, key=tb.data.get)
+        z = ordered[0]
+        x, y = rng.sample(ordered[1:], 2)
+        a, b, c = tb.data[x], tb.data[y], tb.data[z]
+        right = a + b - c
+        prompt = (f"{tb.text}\n{_row(tb, x)}และ{_row(tb, y)}รวมกัน มากกว่า{_row(tb, z)}กี่{tb.table.unit}")
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b, a - c, b - c, a + b + c, answer=right, lo=1))
+
+
+@question_type("math.table_true_statement_p3", display_name={"th": "ตารางทางเดียว: ข้อความใดถูกต้อง"},
+               level=LEVEL, topic="ตารางทางเดียว")
+class TableTrueStatementP3(ChoiceType):
+    def compose(self, rng: Random):
+        tb = _story.one_way_table(rng)
+        x, y = rng.sample(list(tb.data), 2)
+        if tb.data[x] < tb.data[y]:
+            x, y = y, x
+        a, b, unit = tb.data[x], tb.data[y], tb.table.unit
+        lx, ly = _row(tb, x), _row(tb, y)
+        right = f"{lx}มากกว่า{ly} {a - b} {unit}"
+        wrongs = [f"{ly}มากกว่า{lx} {a - b} {unit}", f"{lx}มากกว่า{ly} {a + b} {unit}",
+                  f"{lx}มากกว่า{ly} {a - b + 10} {unit}"]
+        return f"{tb.text}\nข้อความใดถูกต้อง", right, wrongs

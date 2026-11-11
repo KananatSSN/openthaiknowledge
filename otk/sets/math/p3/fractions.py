@@ -211,3 +211,52 @@ class FractionWordProblemP3(QuestionType):
         wrongs = [w for w in dict.fromkeys(wrongs)
                   if w != right and val(w) > 0 and val(w) != value]
         return _maths(stem, right, wrongs, self.topic)
+
+
+# ── More fractions (2026-11): a unit fraction of a number, what is left, and who has more ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+
+@question_type("math.unit_fraction_of_p3", display_name={"th": "เศษหนึ่งส่วนของจำนวน"},
+               level=LEVEL, topic="เศษส่วน")
+class UnitFractionOfP3(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((2, 3, 4, 5, 6, 8, 10))
+        right = rng.randint(2, 12)
+        n = d * right
+        thing, cl = rng.choice((("ส้ม", "ผล"), ("ลูกอม", "เม็ด"), ("ดินสอ", "แท่ง"), ("นักเรียน", "คน")))
+        prompt = f"มี{thing} {n} {cl} หนึ่งในส่วน {d} ({'1/' + str(d)}) ของจำนวนนี้คือกี่{cl}"
+        # Multiplied instead; subtracted; the whole less one part.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(n * d, n - d, n - right, right + 1, answer=right, lo=1))
+
+
+@question_type("math.fraction_left_p3", display_name={"th": "เศษส่วนที่เหลือ"},
+               level=LEVEL, topic="เศษส่วน")
+class FractionLeftP3(ChoiceType):
+    def compose(self, rng: Random):
+        d = rng.randint(4, 12)
+        a = rng.randint(1, d - 2)
+        left = d - a
+        what = rng.choice(("เค้ก", "พิซซ่า", "ขนมปัง"))
+        # The eaten part; the parts counted as a whole number; the fraction upside down.
+        right = f"{left}/{d}"
+        # Spares cover a half eaten, where the eaten part reads the same as the answer.
+        wrongs = [f"{a}/{d}", f"{d}/{left}", f"{left}/{a}", f"{left + 1}/{d}", f"{left - 1}/{d}"]
+        return (f"แบ่ง{what}เป็น {d} ส่วนเท่า ๆ กัน กินไป {a}/{d} เหลือ{what}กี่ส่วนของทั้งหมด", right,
+                [w for w in dict.fromkeys(wrongs) if w != right][:3])
+
+
+@question_type("math.fraction_who_more_p3", display_name={"th": "ใครได้เศษส่วนมากกว่า"},
+               level=LEVEL, topic="เศษส่วน")
+class FractionWhoMoreP3(ChoiceType):
+    def compose(self, rng: Random):
+        p, q = _story.names(rng)
+        d = rng.randint(5, 12)
+        a, b = rng.sample(range(1, d), 2)
+        right = p if a > b else q
+        what = rng.choice(("เค้ก", "พิซซ่า", "แตงโม"))
+        stem = f"{p}กิน{what} {a}/{d} ของลูก {q}กิน {b}/{d} ของลูกขนาดเท่ากัน ใครกิน{what}มากกว่า"
+        return stem, right, [q if right == p else p, "กินเท่ากัน", "บอกไม่ได้"]

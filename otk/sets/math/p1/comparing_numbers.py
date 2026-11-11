@@ -136,6 +136,11 @@ class CompareWhoMostP1(ChoiceType):
 from otk.kit.math_problems import WordProblem  # noqa: E402
 
 
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType as _QT  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
 @question_type("math.more_less_than_p1", display_name={"th": "จำนวนที่มากกว่าหรือน้อยกว่าอยู่ 1 หรือ 10"},
                level=LEVEL, topic="การเปรียบเทียบ")
 class MoreLessThanP1(WordProblem):
@@ -154,14 +159,16 @@ class MoreLessThanP1(WordProblem):
 
 @question_type("math.number_between_p1", display_name={"th": "จำนวนที่อยู่ระหว่างสองจำนวน"},
                level=LEVEL, topic="การเปรียบเทียบ")
-class NumberBetweenP1(WordProblem):
-    def expr(self, rng: Random):
+class NumberBetweenP1(_QT):
+    """Fixed choices: a number from another draw could also lie between the two."""
+
+    def build(self, rng: Random):
         a = rng.randint(5, 90)
         b = a + rng.randint(2, 4)
         right = rng.randint(a + 1, b - 1)
-        return MathDraw("", str(right), prompt=f"จำนวนใดอยู่ระหว่าง {a} กับ {b}",
-                        # The ends themselves, and the numbers just outside.
-                        distractors=_story.keep(a, b, a - 1, b + 1, answer=right, lo=0))
+        # The ends themselves, and the numbers just outside.
+        wrongs = _story.keep(a, b, a - 1, b + 1, answer=right, lo=0)
+        return _fixed_maths([_text_block(f"จำนวนใดอยู่ระหว่าง {a} กับ {b}")], str(right), wrongs, self.topic)
 
 
 @question_type("math.sorted_position_p1", display_name={"th": "เรียงจำนวนแล้วบอกจำนวนในลำดับที่กำหนด"},

@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,337 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,402 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -42,19 +42,19 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`addition_and_subtraction.py`](math/p3/addition_and_subtraction.py) | การบวกและการลบ | `math.add_sub_large_p3`, `math.missing_addsub_large_p3`, `math.addsub_word_large_p3` |
-| [`division.py`](math/p3/division.py) | การหาร | `math.division_remainder`, `math.division_long`, `math.division_check_p3`, `math.division_word_problem_p3` |
-| [`fractions.py`](math/p3/fractions.py) | เศษส่วน | `math.read_fraction`, `math.fraction_picture_p3`, `math.like_fractions_addsub`, `math.compare_fractions_p3`, `math.fraction_of_group_p3`, `math.equivalent_fraction`, `math.fraction_word_problem_p3` |
-| [`measurement.py`](math/p3/measurement.py) | การวัด | `math.convert_length_p3`, `math.estimate_measure_p3`, `math.measuring_tool_p3`, `math.convert_weight_p3`, `math.metric_ton_p3`, `math.length_word_problem_p3`, `math.weight_word_problem_p3` |
-| [`money.py`](math/p3/money.py) | เงิน | `math.money_total`, `math.baht_satang_p3`, `math.income_expense_record_p3`, `math.change_picture_p3`, `math.make_change`, `math.money_change_left` |
-| [`multi_step_word_problems.py`](math/p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | `math.mixed_ops_p3`, `math.two_step_sentence_p3`, `math.two_step_word_problem_p3` |
-| [`multiplication.py`](math/p3/multiplication.py) | การคูณ | `math.times_table`, `math.multiplication`, `math.multiply_2x1`, `math.one_digit_multiply`, `math.area_model_p3`, `math.multiply_4x1_p3`, `math.multiply_3x1_p3`, `math.multiplication_word_problem_p3` |
-| [`one_way_tables.py`](math/p3/one_way_tables.py) | ตารางทางเดียว | `math.table_most_p3`, `math.tally_to_table_p3`, `math.pictograph_make_p3`, `math.table_read_p3`, `math.table_sum` |
-| [`patterns.py`](math/p3/patterns.py) | แบบรูป | `math.number_pattern_p3`, `math.pattern_rule_p3`, `math.growing_pattern_picture_p3`, `math.growing_pattern_p3` |
-| [`place_value.py`](math/p3/place_value.py) | ค่าประจำหลัก | `math.number_reading_p3`, `math.place_value_expanded`, `math.place_value_compose`, `math.place_value_word_p3`, `math.order_numbers_p3` |
-| [`symmetry.py`](math/p3/symmetry.py) | รูปสมมาตร | `math.symmetry_axes`, `math.symmetry_picture_p3`, `math.symmetry_letter`, `math.symmetry_word_p3`, `math.symmetry_regular_polygon` |
-| [`time.py`](math/p3/time.py) | เวลา | `math.clock_24h_p3`, `math.clock_duration_p3`, `math.duration_p3`, `math.time_word_problem_p3` |
-| [`volume_and_capacity.py`](math/p3/volume_and_capacity.py) | ปริมาตรและความจุ | `math.convert_volume_p3`, `math.jug_picture_p3`, `math.kitchen_measures_p3`, `math.capacity_word_problem_p3` |
+| [`addition_and_subtraction.py`](math/p3/addition_and_subtraction.py) | การบวกและการลบ | `math.add_sub_large_p3`, `math.missing_addsub_large_p3`, `math.addsub_word_large_p3`, `math.add_three_four_digit_p3`, `math.check_addsub_p3`, `math.how_many_more_p3`, `math.missing_digit_add_p3`, `math.largest_result_p3`, `math.money_left_two_buys_p3`, `math.compare_two_sums_p3` |
+| [`division.py`](math/p3/division.py) | การหาร | `math.division_remainder`, `math.division_long`, `math.division_check_p3`, `math.division_word_problem_p3`, `math.divide_by_ten_p3`, `math.missing_divisor_p3`, `math.share_equally_p3`, `math.divides_evenly_p3`, `math.largest_quotient_p3`, `math.half_of_p3` |
+| [`fractions.py`](math/p3/fractions.py) | เศษส่วน | `math.read_fraction`, `math.fraction_picture_p3`, `math.like_fractions_addsub`, `math.compare_fractions_p3`, `math.fraction_of_group_p3`, `math.equivalent_fraction`, `math.fraction_word_problem_p3`, `math.unit_fraction_of_p3`, `math.fraction_left_p3`, `math.fraction_who_more_p3` |
+| [`measurement.py`](math/p3/measurement.py) | การวัด | `math.convert_length_p3`, `math.estimate_measure_p3`, `math.measuring_tool_p3`, `math.convert_weight_p3`, `math.metric_ton_p3`, `math.length_word_problem_p3`, `math.weight_word_problem_p3`, `math.km_m_to_m_p3`, `math.cm_mm_to_mm_p3`, `math.route_distance_p3` |
+| [`money.py`](math/p3/money.py) | เงิน | `math.money_total`, `math.baht_satang_p3`, `math.income_expense_record_p3`, `math.change_picture_p3`, `math.make_change`, `math.money_change_left`, `math.unit_price_p3`, `math.buy_several_p3`, `math.daily_saving_p3`, `math.baht_satang_add_p3` |
+| [`multi_step_word_problems.py`](math/p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | `math.mixed_ops_p3`, `math.two_step_sentence_p3`, `math.two_step_word_problem_p3`, `math.buy_two_kinds_p3`, `math.buy_then_share_p3`, `math.save_then_spend_p3`, `math.empty_seats_p3`, `math.loads_delivered_p3`, `math.two_rooms_compare_p3`, `math.pages_left_p3` |
+| [`multiplication.py`](math/p3/multiplication.py) | การคูณ | `math.times_table`, `math.multiplication`, `math.multiply_2x1`, `math.one_digit_multiply`, `math.area_model_p3`, `math.multiply_4x1_p3`, `math.multiply_3x1_p3`, `math.multiplication_word_problem_p3`, `math.multiply_by_tens_p3`, `math.largest_product_p3` |
+| [`one_way_tables.py`](math/p3/one_way_tables.py) | ตารางทางเดียว | `math.table_most_p3`, `math.tally_to_table_p3`, `math.pictograph_make_p3`, `math.table_read_p3`, `math.table_sum`, `math.table_range_p3`, `math.table_order_p3`, `math.table_count_above_p3`, `math.table_two_rows_p3`, `math.table_true_statement_p3` |
+| [`patterns.py`](math/p3/patterns.py) | แบบรูป | `math.number_pattern_p3`, `math.pattern_rule_p3`, `math.growing_pattern_picture_p3`, `math.growing_pattern_p3`, `math.pattern_next_p3`, `math.pattern_far_term_p3`, `math.pattern_two_missing_p3`, `math.pattern_four_shapes_p3`, `math.pattern_spending_p3`, `math.pattern_member_p3` |
+| [`place_value.py`](math/p3/place_value.py) | ค่าประจำหลัก | `math.number_reading_p3`, `math.place_value_expanded`, `math.place_value_compose`, `math.place_value_word_p3`, `math.order_numbers_p3`, `math.more_less_thousand_p3`, `math.number_from_digits_p3`, `math.number_between_p3`, `math.digit_place_p3`, `math.zeros_in_number_p3` |
+| [`symmetry.py`](math/p3/symmetry.py) | รูปสมมาตร | `math.symmetry_axes`, `math.symmetry_picture_p3`, `math.symmetry_letter`, `math.symmetry_word_p3`, `math.symmetry_regular_polygon`, `math.symmetric_shape_p3`, `math.symmetry_fold_p3`, `math.symmetry_axis_direction_p3`, `math.symmetry_total_axes_p3`, `math.most_axes_p3` |
+| [`time.py`](math/p3/time.py) | เวลา | `math.clock_24h_p3`, `math.clock_duration_p3`, `math.duration_p3`, `math.time_word_problem_p3`, `math.minutes_to_hours_p3`, `math.hours_to_minutes_p3`, `math.days_to_hours_p3`, `math.year_facts_p3`, `math.longest_activity_p3`, `math.calendar_date_weekday_p3` |
+| [`volume_and_capacity.py`](math/p3/volume_and_capacity.py) | ปริมาตรและความจุ | `math.convert_volume_p3`, `math.jug_picture_p3`, `math.kitchen_measures_p3`, `math.capacity_word_problem_p3`, `math.bottles_total_ml_p3`, `math.l_ml_to_ml_p3`, `math.pours_to_fill_p3`, `math.largest_capacity_p3`, `math.pour_left_p3`, `math.capacity_unit_p3` |
 
 ### p4 — ป.4
 

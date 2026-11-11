@@ -96,3 +96,107 @@ class OrderNumbersP3(QuestionType):
         return _maths([text(f"จำนวนใด{'มากที่สุด' if most else 'น้อยที่สุด'}")],
                       str(pick), [str(w) for w in dict.fromkeys(wrongs) if w != pick],
                       self.topic)
+
+
+# ── More place value (2026-11): a thousand or ten thousand more or less, the largest or smallest number from
+# five digits, a number between two, the place a digit stands in, and zeros in a number read aloud ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+_P3_PLACES = ("หลักหน่วย", "หลักสิบ", "หลักร้อย", "หลักพัน", "หลักหมื่น")
+
+
+def _join(ds) -> int:
+    return int("".join(map(str, ds)))
+
+
+def _swap(ds, i: int, j: int) -> int:
+    out = list(ds)
+    out[i], out[j] = out[j], out[i]
+    return _join(out)
+
+
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType as _QT  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+@question_type("math.more_less_thousand_p3", display_name={"th": "มากกว่าหรือน้อยกว่าอยู่ 1,000 หรือ 10,000"},
+               level=LEVEL, topic="ค่าประจำหลัก")
+class MoreLessThousandP3(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice((1000, 10000))
+        more = rng.random() < 0.5
+        n = rng.randint(12000, 88000)
+        right = n + step if more else n - step
+        other = 11000 - step
+        prompt = f"จำนวนที่{'มากกว่า' if more else 'น้อยกว่า'} {n} อยู่ {step} คือจำนวนใด"
+        # The other direction; the other step; a hundred instead.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(n - step if more else n + step, n + other if more else n - other,
+                                                n + 100 if more else n - 100, answer=right, lo=0))
+
+
+@question_type("math.number_from_digits_p3", display_name={"th": "สร้างจำนวนห้าหลักที่มากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="ค่าประจำหลัก")
+class NumberFromDigitsP3(WordProblem):
+    def expr(self, rng: Random):
+        digits = rng.sample(range(10), 5)
+        most = rng.random() < 0.5
+        big = sorted(digits, reverse=True)
+        small = sorted(digits)
+        if small[0] == 0:
+            small[0], small[1] = small[1], small[0]
+        if most:
+            right = _join(big)
+            # The smallest instead; the two leading digits swapped; the two last swapped.
+            wrongs = [_join(small), _swap(big, 0, 1), _swap(big, 3, 4)]
+        else:
+            right = _join(small)
+            wrongs = [_join(big), _swap(small, 3, 4), _swap(small, 2, 3)]
+        prompt = (f"ใช้เลขโดด {', '.join(map(str, digits))} หลักละหนึ่งตัว สร้างจำนวนห้าหลักที่"
+                  f"{'มากที่สุด' if most else 'น้อยที่สุด'} ได้จำนวนใด")
+        return MathDraw("", str(right), prompt=prompt, distractors=_story.keep(*wrongs, answer=right, lo=10000))
+
+
+@question_type("math.number_between_p3", display_name={"th": "จำนวนที่อยู่ระหว่างสองจำนวน (ไม่เกิน 100,000)"},
+               level=LEVEL, topic="ค่าประจำหลัก")
+class NumberBetweenP3(_QT):
+    """Fixed choices: a number from another draw could also lie between the two."""
+
+    def build(self, rng: Random):
+        a = rng.randint(10000, 90000)
+        b = a + rng.randint(100, 900)
+        right = rng.randint(a + 1, b - 1)
+        below, above = a - rng.randint(1, 99), b + rng.randint(1, 99)
+        # Numbers just outside each end, and one a thousand past.
+        wrongs = _story.keep(below, above, b + 1000, answer=right)
+        return _fixed_maths([_text_block(f"จำนวนใดอยู่ระหว่าง {a} กับ {b}")], str(right), wrongs, self.topic)
+
+
+@question_type("math.digit_place_p3", display_name={"th": "เลขโดดอยู่ในหลักใด"},
+               level=LEVEL, topic="ค่าประจำหลัก")
+class DigitPlaceP3(ChoiceType):
+    def compose(self, rng: Random):
+        digits = rng.sample(range(1, 10), 5)
+        pos = rng.randrange(5)
+        right = _P3_PLACES[4 - pos]
+        return (f"ในจำนวน {_join(digits)} เลขโดด {digits[pos]} อยู่ในหลักใด", right,
+                [p for p in _P3_PLACES if p != right])
+
+
+@question_type("math.zeros_in_number_p3", display_name={"th": "เขียนจำนวนจากคำอ่านแล้วนับเลข 0"},
+               level=LEVEL, topic="ค่าประจำหลัก")
+class ZerosInNumberP3(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            digits = [rng.randint(1, 9)] + [rng.choice((0, 0, rng.randint(1, 9))) for _ in range(4)]
+            if 1 <= digits.count(0) <= 3:
+                break
+        right = digits.count(0)
+        prompt = f"จำนวน{_story.thai_words(_join(digits))} เขียนเป็นตัวเลขฮินดูอารบิกจะมีเลข 0 กี่ตัว"
+        # One more or fewer; the other digits counted.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right + 1, right - 1, 5 - right, right + 2, answer=right, lo=0, hi=5))
