@@ -104,3 +104,110 @@ class DivisionContextP4(WordProblem):
                         prompt=(f"มี{thing.noun} {n} {thing.cl} แบ่งให้เด็ก {d} คน คนละเท่า ๆ กันให้ได้มากที่สุด "
                                 f"จะเหลือ{thing.noun}กี่{thing.cl}"),
                         distractors=_story.keep(q, d - r, r + 1, answer=r, lo=0))
+
+
+# ── More dividing (2026-11): by whole hundreds, the missing dividend, the dividend from the quotient and
+# remainder, sharing a large amount, the largest quotient, a number that divides evenly, and the remainder ──
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import LEVEL  # noqa: E402
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+@question_type("math.divide_by_hundreds_p4", display_name={"th": "หารด้วยพหุคูณของร้อย"},
+               level=LEVEL, topic="การหาร")
+class DivideByHundredsP4(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 9) * 100
+        q = rng.randint(12, 250)
+        n = q * k
+        return MathDraw(rf"{_g(n)} \div {k}", str(q), prompt="จงหาผลหาร",
+                        distractors=_story.keep(q * 10, q // 10, q + 1, n // 100, answer=q, lo=1))
+
+
+@question_type("math.missing_dividend_p4", display_name={"th": "หาตัวตั้งในประโยคการหาร (ตัวหารสองหลัก)"},
+               level=LEVEL, topic="การหาร")
+class MissingDividendP4(MathType):
+    def expr(self, rng: Random):
+        b, q = rng.randint(11, 40), rng.randint(12, 60)
+        right = b * q
+        return MathDraw(rf"\square \div {b} = {q}", _g(right), prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_gk(b + q, b * (q + 1), (b - 1) * q, q, answer=right, lo=1))
+
+
+@question_type("math.dividend_from_remainder_p4", display_name={"th": "หาตัวตั้งจากตัวหาร ผลหาร และเศษ"},
+               level=LEVEL, topic="การหาร")
+class DividendFromRemainderP4(WordProblem):
+    def expr(self, rng: Random):
+        b, q = rng.randint(11, 30), rng.randint(12, 90)
+        r = rng.randint(1, b - 1)
+        right = b * q + r
+        prompt = f"การหารครั้งหนึ่งมีตัวหาร {b} ผลหาร {q} และเศษ {r} ตัวตั้งคือจำนวนใด"
+        # The remainder taken away; left out; added to the quotient.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(b * q - r, b * q, b * (q + r), right + b, answer=right, lo=1))
+
+
+@question_type("math.share_large_p4", display_name={"th": "โจทย์ปัญหาแบ่งเท่า ๆ กัน (จำนวนมาก)"},
+               level=LEVEL, topic="การหาร")
+class ShareLargeP4(WordProblem):
+    def expr(self, rng: Random):
+        b = rng.randint(12, 48)
+        q = rng.randint(150, 2500)
+        n = b * q
+        prompt = f"มูลนิธิมีเงินบริจาค {n:,} บาท แบ่งให้โรงเรียน {b} แห่งเท่า ๆ กัน ได้โรงเรียนละกี่บาท"
+        return MathDraw("", _g(q), prompt=prompt,
+                        distractors=_gk(q * 10, q // 10, q + b, n - b, answer=q, lo=1))
+
+
+@question_type("math.largest_quotient_p4", display_name={"th": "ผลหารใดมากที่สุดหรือน้อยที่สุด (ตัวหารสองหลัก)"},
+               level=LEVEL, topic="การหาร")
+class LargestQuotientP4(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            exprs = {}
+            for _ in range(4):
+                b, q = rng.randint(11, 40), rng.randint(11, 99)
+                exprs[f"{b * q:,} ÷ {b}"] = q
+            if len(exprs) == 4 and len(set(exprs.values())) == 4:
+                break
+        most = rng.random() < 0.5
+        right = (max if most else min)(exprs, key=exprs.get)
+        return f"ข้อใดมีผลหาร{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]
+
+
+@question_type("math.divides_evenly_p4", display_name={"th": "จำนวนใดหารด้วยจำนวนสองหลักลงตัว"},
+               level=LEVEL, topic="การหาร")
+class DividesEvenlyP4(QuestionType):
+    """Fixed choices: a number from another draw could also divide evenly."""
+
+    def build(self, rng: Random):
+        b = rng.randint(11, 25)
+        right = b * rng.randint(20, 99)
+        return _fixed_maths([_text_block(f"จำนวนใดหารด้วย {b} ลงตัว")], _g(right),
+                            _gk(right + 1, right - 1, right + b + 1, right + 2, answer=right, lo=1), self.topic)
+
+
+@question_type("math.remainder_only_p4", display_name={"th": "หาเศษจากการหาร"},
+               level=LEVEL, topic="การหาร")
+class RemainderOnlyP4(WordProblem):
+    def expr(self, rng: Random):
+        b, q = rng.randint(11, 30), rng.randint(12, 90)
+        r = rng.randint(1, b - 1)
+        n = b * q + r
+        prompt = f"{n:,} ÷ {b} ได้เศษเท่าใด"
+        # The quotient; what the divisor still lacks; one off.
+        return MathDraw("", str(r), prompt=prompt,
+                        distractors=_story.keep(q, b - r, r + 1, r - 1, answer=r, lo=0))

@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,902 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,971 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -58,19 +58,19 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`addition_and_subtraction`](p4/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.4/8 | 3 |
-| [`bar_chart`](p4/bar_chart.py) | แผนภูมิแท่ง | ค 3.1 ป.4/1 | 4 |
-| [`data_presentation`](p4/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.4/1 | 3 |
-| [`decimals`](p4/decimals.py) | ทศนิยม | ค 1.1 ป.4/* | 7 |
-| [`division`](p4/division.py) | การหาร | ค 1.1 ป.4/9 | 3 |
-| [`estimation`](p4/estimation.py) | การประมาณค่า | ค 1.1 ป.4/7 | 4 |
-| [`fractions`](p4/fractions.py) | เศษส่วน | ค 1.1 ป.4/* | 6 |
+| [`addition_and_subtraction`](p4/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.4/8 | 10 |
+| [`bar_chart`](p4/bar_chart.py) | แผนภูมิแท่ง | ค 3.1 ป.4/1 | 10 |
+| [`data_presentation`](p4/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.4/1 | 10 |
+| [`decimals`](p4/decimals.py) | ทศนิยม | ค 1.1 ป.4/* | 10 |
+| [`division`](p4/division.py) | การหาร | ค 1.1 ป.4/9 | 10 |
+| [`estimation`](p4/estimation.py) | การประมาณค่า | ค 1.1 ป.4/7 | 10 |
+| [`fractions`](p4/fractions.py) | เศษส่วน | ค 1.1 ป.4/* | 10 |
 | [`lines_and_angles`](p4/lines_and_angles.py) | เส้นตรงและมุม | ค 2.2 ป.4/*, ค 2.1 ป.4/2 | 10 |
-| [`multi_step_word_problems`](p4/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.4/* | 4 |
-| [`multiply`](p4/multiply.py) | การคูณยาว | ค 1.1 ป.4/9 | 5 |
-| [`place_value`](p4/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.4/* | 4 |
-| [`rectangles`](p4/rectangles.py) | สี่เหลี่ยมมุมฉาก | ค 2.2 ป.4/* | 5 |
-| [`time`](p4/time.py) | เวลา | ค 2.1 ป.4/* | 3 |
+| [`multi_step_word_problems`](p4/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.4/* | 10 |
+| [`multiply`](p4/multiply.py) | การคูณยาว | ค 1.1 ป.4/9 | 10 |
+| [`place_value`](p4/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.4/* | 10 |
+| [`rectangles`](p4/rectangles.py) | สี่เหลี่ยมมุมฉาก | ค 2.2 ป.4/* | 10 |
+| [`time`](p4/time.py) | เวลา | ค 2.1 ป.4/* | 10 |
 
 ## p5 — ป.5
 

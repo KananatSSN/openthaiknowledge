@@ -259,3 +259,66 @@ class DecimalWordProblemP4(WordProblem):
                         distractors=[str(w) for w in dict.fromkeys(
                             [slip, a + b, ans + Decimal("0.1"), ans + 1])
                             if w is not None and w != ans and w > 0])
+
+
+# ── More decimals (2026-11): a decimal as tenths or hundredths, rounding to a whole number, and a decimal
+# between two ──
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import LEVEL  # noqa: E402
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+@question_type("math.decimal_as_fraction_p4", display_name={"th": "เขียนทศนิยมเป็นเศษส่วนที่มีตัวส่วนเป็น 10 หรือ 100"},
+               level=LEVEL, topic="ทศนิยม")
+class DecimalAsFractionP4(ChoiceType):
+    def compose(self, rng: Random):
+        if rng.random() < 0.5:
+            n = rng.randint(1, 9)
+            dec, right = f"0.{n}", f"{n}/10"
+            wrongs = [f"{n}/100", f"1/{n}" if n > 1 else "10/1", f"{n}/1", f"{n + 1}/10"]
+        else:
+            n = rng.choice([v for v in range(11, 100) if v % 10])
+            dec, right = f"0.{n:02d}", f"{n}/100"
+            wrongs = [f"{n}/10", f"{n}/1000", f"{n % 10}{n // 10}/100", f"{n + 1}/100"]
+        return f"{dec} เขียนเป็นเศษส่วนได้อย่างไร", right, [w for w in dict.fromkeys(wrongs) if w != right][:3]
+
+
+@question_type("math.round_decimal_whole_p4", display_name={"th": "ปัดทศนิยมเป็นจำนวนเต็ม"},
+               level=LEVEL, topic="ทศนิยม")
+class RoundDecimalWholeP4(WordProblem):
+    def expr(self, rng: Random):
+        whole = rng.randint(1, 98)
+        tenth = rng.choice((1, 2, 3, 4, 6, 7, 8, 9))
+        right = whole + (1 if tenth >= 5 else 0)
+        # Always down; always up; the tenths digit as the answer.
+        return MathDraw("", str(right), prompt=f"ปัด {whole}.{tenth} เป็นจำนวนเต็ม ได้เท่าใด",
+                        distractors=_story.keep(whole, whole + 1, whole - 1, tenth, answer=right, lo=0))
+
+
+@question_type("math.decimal_between_p4", display_name={"th": "ทศนิยมที่อยู่ระหว่างสองจำนวน"},
+               level=LEVEL, topic="ทศนิยม")
+class DecimalBetweenP4(QuestionType):
+    """Fixed choices: a decimal from another draw could also lie between the two."""
+
+    def build(self, rng: Random):
+        whole = rng.randint(1, 20)
+        t = rng.randint(1, 6)
+        lo, hi = f"{whole}.{t}", f"{whole}.{t + 2}"
+        right = f"{whole}.{t + 1}"
+        # Just outside each end, and the hundredths read as tenths.
+        wrongs = [f"{whole}.{t - 1}" if t > 1 else f"{whole - 1}.9" if whole > 1 else f"{whole}.0{t}",
+                  f"{whole}.{t + 3}", f"{whole + 1}.{t + 1}"]
+        return _fixed_maths([_text_block(f"ทศนิยมใดอยู่ระหว่าง {lo} กับ {hi}")], right, wrongs, self.topic)

@@ -116,3 +116,130 @@ class TravelTimeP4(QuestionType):
         return _texts([text(f"{kind}ออกจาก{a}เวลา {clock(h1, m1)} ถึง{b}เวลา {clock(h2, m2)} "
                             f"ของวันรุ่งขึ้น ใช้เวลาเดินทางเท่าใด")], right,
                       [w for w in dict.fromkeys(wrongs) if w != right], self.topic)
+
+
+# ── More time (2026-11): days as weeks and days, decades and centuries, the longest duration, race times in
+# seconds, a stopwatch difference, days between two dates, and leap years ──
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+@question_type("math.days_to_weeks_p4", display_name={"th": "เปลี่ยนวันเป็นสัปดาห์และวัน"},
+               level=LEVEL, topic="เวลา")
+class DaysToWeeksP4(ChoiceType):
+    def compose(self, rng: Random):
+        w, d = rng.randint(2, 15), rng.randint(1, 6)
+        total = 7 * w + d
+        right = f"{w} สัปดาห์ {d} วัน"
+        wrongs = [f"{total // 10} สัปดาห์ {total % 10} วัน", f"{w + 1} สัปดาห์ {d} วัน", f"{w} สัปดาห์ {d + 1} วัน",
+                  f"{w - 1} สัปดาห์ {d} วัน"]
+        return f"{total} วัน เท่ากับเท่าใด", right, [x for x in dict.fromkeys(wrongs) if x != right][:3]
+
+
+@question_type("math.decade_century_p4", display_name={"th": "ทศวรรษ ศตวรรษ และสหัสวรรษ"},
+               level=LEVEL, topic="เวลา")
+class DecadeCenturyP4(ConceptBankType):
+    ITEMS = [
+        Concept("1 ทศวรรษมีกี่ปี", "10 ปี", ("100 ปี", "12 ปี", "1,000 ปี")),
+        Concept("1 ศตวรรษมีกี่ปี", "100 ปี", ("10 ปี", "1,000 ปี", "50 ปี")),
+        Concept("1 สหัสวรรษมีกี่ปี", "1,000 ปี", ("100 ปี", "10 ปี", "10,000 ปี")),
+        Concept("3 ทศวรรษเท่ากับกี่ปี", "30 ปี", ("300 ปี", "3 ปี", "36 ปี")),
+        Concept("2 ศตวรรษเท่ากับกี่ปี", "200 ปี", ("20 ปี", "2,000 ปี", "120 ปี")),
+    ]
+
+
+@question_type("math.longest_duration_p4", display_name={"th": "ระยะเวลาใดนานที่สุดหรือสั้นที่สุด"},
+               level=LEVEL, topic="เวลา")
+class LongestDurationP4(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            minutes = rng.sample(range(70, 300, 5), 4)
+            if len({m // 60 for m in minutes}) >= 2:
+                break
+        texts = [(f"{m // 60} ชั่วโมง {m % 60} นาที" if m % 60 else f"{m // 60} ชั่วโมง") if rng.random() < 0.5
+                 else f"{m} นาที" for m in minutes]
+        most = rng.random() < 0.5
+        pick = (max if most else min)(range(4), key=lambda i: minutes[i])
+        return (f"ระยะเวลาใด{'นานที่สุด' if most else 'สั้นที่สุด'}", texts[pick],
+                [t for i, t in enumerate(texts) if i != pick])
+
+
+_MONTH_DAYS_P4 = {"มกราคม": 31, "กุมภาพันธ์": 28, "มีนาคม": 31, "เมษายน": 30, "พฤษภาคม": 31, "มิถุนายน": 30,
+                  "กรกฎาคม": 31, "สิงหาคม": 31, "กันยายน": 30, "ตุลาคม": 31, "พฤศจิกายน": 30, "ธันวาคม": 31}
+
+
+def _min_sec(t: int) -> str:
+    m, s = divmod(t, 60)
+    return f"{m} นาที {s} วินาที" if m else f"{s} วินาที"
+
+
+@question_type("math.race_times_p4", display_name={"th": "รวมเวลาเป็นวินาที"},
+               level=LEVEL, topic="เวลา")
+class RaceTimesP4(WordProblem):
+    def expr(self, rng: Random):
+        a, b = rng.randint(65, 299), rng.randint(40, 299)
+        right = a + b
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}วิ่งรอบแรกใช้เวลา {_min_sec(a)} รอบที่สองใช้เวลา {_min_sec(b)} รวมสองรอบใช้เวลากี่วินาที"
+        # A minute taken as 100 seconds; the minutes left out; the numbers added as written.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(100 * (a // 60) + a % 60 + 100 * (b // 60) + b % 60, a % 60 + b % 60,
+                                                right + 60, right - 10, answer=right, lo=1))
+
+
+@question_type("math.stopwatch_difference_p4", display_name={"th": "เวลาต่างกันกี่วินาที"},
+               level=LEVEL, topic="เวลา")
+class StopwatchDifferenceP4(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(130, 400)
+        b = rng.randint(60, a - 5)
+        right = a - b
+        x, y = rng.sample(("ทีมแดง", "ทีมฟ้า", "ทีมเขียว", "ทีมเหลือง"), 2)
+        prompt = (f"{x}ทำภารกิจเสร็จในเวลา {_min_sec(a)} {y}ทำเสร็จในเวลา {_min_sec(b)} "
+                  f"{y}เร็วกว่า{x}กี่วินาที")
+        # A minute taken as 100 seconds; added instead; a minute off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(abs(100 * (a // 60) + a % 60 - 100 * (b // 60) - b % 60), a + b,
+                                                right + 60, abs(right - 60), answer=right, lo=1))
+
+
+@question_type("math.days_between_dates_p4", display_name={"th": "นับจำนวนวันระหว่างวันที่สองวัน"},
+               level=LEVEL, topic="เวลา")
+class DaysBetweenDatesP4(WordProblem):
+    def expr(self, rng: Random):
+        months = list(_MONTH_DAYS_P4)
+        i = rng.randrange(11)
+        m1, m2 = months[i], months[i + 1]
+        d1 = rng.randint(1, _MONTH_DAYS_P4[m1] - 1)
+        d2 = rng.randint(1, 28)
+        right = (_MONTH_DAYS_P4[m1] - d1) + d2
+        prompt = f"นับจากวันที่ {d1} {m1} ถึงวันที่ {d2} {m2} ของปีเดียวกัน (ปีปกติ) เป็นเวลากี่วัน"
+        # Every month taken as 30 days; the dates subtracted; a day off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep((30 - d1) + d2, abs(d2 - d1), right + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.leap_year_p4", display_name={"th": "ปีปกติและปีอธิกสุรทิน"},
+               level=LEVEL, topic="เวลา")
+class LeapYearP4(ConceptBankType):
+    ITEMS = [
+        Concept("ในปีอธิกสุรทิน เดือนกุมภาพันธ์มีกี่วัน", "29 วัน", ("28 วัน", "30 วัน", "31 วัน")),
+        Concept("ในปีปกติ เดือนกุมภาพันธ์มีกี่วัน", "28 วัน", ("29 วัน", "30 วัน", "31 วัน")),
+        Concept("ปีอธิกสุรทินมีกี่วัน", "366 วัน", ("365 วัน", "364 วัน", "360 วัน")),
+        Concept("ปีอธิกสุรทินมีทุก ๆ กี่ปี (โดยทั่วไป)", "4 ปี", ("2 ปี", "10 ปี", "12 ปี")),
+        Concept("ปีปกติมีกี่สัปดาห์กับอีกกี่วัน", "52 สัปดาห์ กับอีก 1 วัน",
+                ("52 สัปดาห์พอดี", "50 สัปดาห์ กับอีก 15 วัน", "53 สัปดาห์พอดี")),
+    ]

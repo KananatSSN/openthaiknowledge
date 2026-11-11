@@ -172,3 +172,106 @@ class TwoStepWordProblemP4(WordProblem):
         story, _, v, wrongs = mixed_story_p4(rng)
         return MathDraw("", str(v), prompt=story,
                         distractors=_story.keep(*_whole(wrongs), v + 100, answer=v, lo=0))
+
+
+# ── More multi-step word problems (2026-11): two kinds bought, ticket money, a shared bill, a year's saving,
+# full trays, and trips there and back ──
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+@question_type("math.ticket_income_p4", display_name={"th": "รายได้จากการขายบัตรสองประเภท"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class TicketIncomeP4(WordProblem):
+    def expr(self, rng: Random):
+        adult, child = rng.choice((80, 100, 120, 150)), rng.choice((30, 40, 50, 60))
+        a, c = rng.randint(50, 400), rng.randint(50, 400)
+        right = adult * a + child * c
+        prompt = (f"สวนสัตว์ขายบัตรผู้ใหญ่ใบละ {adult} บาท ได้ {a} ใบ และบัตรเด็กใบละ {child} บาท ได้ {c} ใบ "
+                  f"ได้เงินทั้งหมดกี่บาท")
+        # The prices crossed; every ticket at the adult price; only adults.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(adult * c + child * a, adult * (a + c), adult * a, right + 100, answer=right, lo=1))
+
+
+@question_type("math.buy_two_kinds_p4", display_name={"th": "ซื้อของสองชนิดจำนวนมาก"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class BuyTwoKindsP4(WordProblem):
+    def expr(self, rng: Random):
+        m, a, n, b = rng.randint(12, 60), rng.randint(15, 120), rng.randint(12, 60), rng.randint(15, 120)
+        right = m * a + n * b
+        x, y = rng.sample(("สมุด", "ปากกา", "ลูกฟุตบอล", "เสื้อกีฬา", "ถุงเท้า"), 2)
+        prompt = f"โรงเรียนซื้อ{x} {m} ชิ้น ชิ้นละ {a} บาท และ{y} {n} ชิ้น ชิ้นละ {b} บาท จ่ายเงินทั้งหมดกี่บาท"
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(m * b + n * a, (m + n) * a, m * a, right + 100, answer=right, lo=1))
+
+
+@question_type("math.cost_per_person_p4", display_name={"th": "ค่าใช้จ่ายรวมแล้วหารเฉลี่ยคนละเท่ากัน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class CostPerPersonP4(WordProblem):
+    def expr(self, rng: Random):
+        vans = rng.randint(2, 6)
+        k = rng.randint(10, 80)
+        people = rng.randint(10, 40)
+        right = vans * k
+        rent = people * k
+        total = vans * rent
+        prompt = (f"กลุ่มเพื่อน {people} คนเช่ารถตู้ {vans} คัน คันละ {rent:,} บาท แบ่งจ่ายค่าเช่าคนละเท่า ๆ กัน "
+                  f"ต้องจ่ายคนละกี่บาท")
+        # One van shared; the total not shared; split by the vans.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(k, total, rent, right + 10, answer=right, lo=1))
+
+
+@question_type("math.yearly_saving_p4", display_name={"th": "ออมเงินทุกเดือนตลอดปี"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class YearlySavingP4(WordProblem):
+    def expr(self, rng: Random):
+        per = rng.randint(3, 40) * 50
+        spend = rng.randint(1, per * 12 // 500) * 500
+        right = per * 12 - spend
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}ฝากเงินเดือนละ {per:,} บาท ครบ 1 ปี แล้วถอนไปซื้อของ {spend:,} บาท {p}เหลือเงินฝากกี่บาท"
+        # A year taken as 10 months; nothing taken out; one month short.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(per * 10 - spend, per * 12, per * 11 - spend, right + per, answer=right, lo=0))
+
+
+@question_type("math.full_trays_p4", display_name={"th": "บรรจุได้กี่ชุดเต็ม"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class FullTraysP4(WordProblem):
+    def expr(self, rng: Random):
+        per = rng.choice((12, 24, 30))
+        trays = rng.randint(20, 200)
+        extra = rng.randint(1, per - 1)
+        n = per * trays + extra
+        thing, box = rng.choice((("ไข่ไก่", "แผง"), ("ขวดน้ำ", "ลัง"), ("ขนม", "กล่อง")))
+        prompt = f"มี{thing} {n:,} ชิ้น บรรจุ{box}ละ {per} ชิ้น ได้กี่{box}เต็ม"
+        # Counting the part-filled one; the left-over; one fewer.
+        return MathDraw("", str(trays), prompt=prompt,
+                        distractors=_story.keep(trays + 1, extra, trays - 1, n // 10, answer=trays, lo=1))
+
+
+@question_type("math.round_trips_p4", display_name={"th": "ระยะทางไปกลับหลายวัน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class RoundTripsP4(WordProblem):
+    def expr(self, rng: Random):
+        km, days = rng.randint(3, 45), rng.randint(5, 26)
+        right = 2 * km * days
+        p = rng.choice(_story.NAMES)
+        prompt = f"บ้านของ{p}อยู่ห่างจากที่ทำงาน {km} กิโลเมตร {p}ขับรถไปกลับทุกวันเป็นเวลา {days} วัน รวมระยะทางกี่กิโลเมตร"
+        # One way only; one day only; the numbers added.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(km * days, 2 * km, km + days, 2 * km * (days - 1), answer=right, lo=1))
