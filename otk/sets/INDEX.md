@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,402 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,471 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -60,19 +60,19 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`addition_and_subtraction.py`](math/p4/addition_and_subtraction.py) | การบวกและการลบ | `math.add_sub_large_p4`, `math.missing_addsub_large_p4`, `math.addsub_word_large_p4` |
-| [`bar_chart.py`](math/p4/bar_chart.py) | แผนภูมิแท่ง | `math.bar_chart_picture_p4`, `math.bar_chart_read_p4`, `math.bar_chart_diff`, `math.bar_chart_compare_p4` |
-| [`data_presentation.py`](math/p4/data_presentation.py) | การนำเสนอข้อมูล | `math.two_way_table_read_p5`, `math.two_way_table_total_p5`, `math.two_way_table_compare_p5` |
-| [`decimals.py`](math/p4/decimals.py) | ทศนิยม | `math.decimal_place_value`, `math.decimal_reading_p4`, `math.decimal_grid_p4`, `math.decimal_compare_p4`, `math.decimal_addsub_p4`, `math.decimal_two_step_word_p4`, `math.decimal_word_problem_p4` |
-| [`division.py`](math/p4/division.py) | การหาร | `math.division`, `math.division_2digit`, `math.division_context_p4` |
-| [`estimation.py`](math/p4/estimation.py) | การประมาณค่า | `math.rounding`, `math.estimate_sum`, `math.estimate_product`, `math.estimate_word_problem_p4` |
-| [`fractions.py`](math/p4/fractions.py) | เศษส่วน | `math.fraction_kinds_p4`, `math.improper_mixed_p4`, `math.fraction_bars_p4`, `math.compare_fractions_multiple_p4`, `math.fraction_addsub_multiple_p4`, `math.fraction_word_problem_p4` |
+| [`addition_and_subtraction.py`](math/p4/addition_and_subtraction.py) | การบวกและการลบ | `math.add_sub_large_p4`, `math.missing_addsub_large_p4`, `math.addsub_word_large_p4`, `math.add_three_large_p4`, `math.check_addsub_p4`, `math.how_many_more_p4`, `math.missing_digit_add_p4`, `math.largest_result_p4`, `math.budget_left_p4`, `math.compare_two_sums_p4` |
+| [`bar_chart.py`](math/p4/bar_chart.py) | แผนภูมิแท่ง | `math.bar_chart_picture_p4`, `math.bar_chart_read_p4`, `math.bar_chart_diff`, `math.bar_chart_compare_p4`, `math.bar_range_p4`, `math.bar_total_p4`, `math.bar_order_p4`, `math.bar_count_above_p4`, `math.bar_true_statement_p4`, `math.bar_two_rows_p4` |
+| [`data_presentation.py`](math/p4/data_presentation.py) | การนำเสนอข้อมูล | `math.two_way_table_read_p5`, `math.two_way_table_total_p5`, `math.two_way_table_compare_p5`, `math.two_way_grand_total_p4`, `math.two_way_column_diff_p4`, `math.two_way_row_most_p4`, `math.two_way_cell_diff_p4`, `math.two_way_two_rows_p4`, `math.two_way_true_statement_p4`, `math.two_way_missing_cell_p4` |
+| [`decimals.py`](math/p4/decimals.py) | ทศนิยม | `math.decimal_place_value`, `math.decimal_reading_p4`, `math.decimal_grid_p4`, `math.decimal_compare_p4`, `math.decimal_addsub_p4`, `math.decimal_two_step_word_p4`, `math.decimal_word_problem_p4`, `math.decimal_as_fraction_p4`, `math.round_decimal_whole_p4`, `math.decimal_between_p4` |
+| [`division.py`](math/p4/division.py) | การหาร | `math.division`, `math.division_2digit`, `math.division_context_p4`, `math.divide_by_hundreds_p4`, `math.missing_dividend_p4`, `math.dividend_from_remainder_p4`, `math.share_large_p4`, `math.largest_quotient_p4`, `math.divides_evenly_p4`, `math.remainder_only_p4` |
+| [`estimation.py`](math/p4/estimation.py) | การประมาณค่า | `math.rounding`, `math.estimate_sum`, `math.estimate_product`, `math.estimate_word_problem_p4`, `math.estimate_difference_p4`, `math.estimate_quotient_p4`, `math.rounds_to_p4`, `math.largest_rounding_to_p4`, `math.smallest_rounding_to_p4`, `math.estimate_bill_p4` |
+| [`fractions.py`](math/p4/fractions.py) | เศษส่วน | `math.fraction_kinds_p4`, `math.improper_mixed_p4`, `math.fraction_bars_p4`, `math.compare_fractions_multiple_p4`, `math.fraction_addsub_multiple_p4`, `math.fraction_word_problem_p4`, `math.fraction_of_amount_p4`, `math.equivalent_missing_p4`, `math.amount_left_fraction_p4`, `math.make_one_whole_p4` |
 | [`lines_and_angles.py`](math/p4/lines_and_angles.py) | เส้นตรงและมุม | `math.classify_angle`, `math.classify_line`, `math.angle_kind_picture_p4`, `math.line_ray_picture_p4`, `math.name_angle_p4`, `math.protractor_read_p4`, `math.construct_angle_protractor_p4`, `math.angle_complement_supplement`, `math.clock_angle_p4`, `math.angles_around_point_p4` |
-| [`multi_step_word_problems.py`](math/p4/multi_step_word_problems.py) | โจทย์ปัญหาระคน | `math.mixed_ops_p4`, `math.story_for_sentence_p4`, `math.two_step_sentence_p4`, `math.two_step_word_problem_p4` |
-| [`multiply.py`](math/p4/multiply.py) | การคูณยาว | `math.multiply_by_tens`, `math.multiply_partial_products_p4`, `math.multiply_3x1`, `math.multiply_2x2`, `math.multiply_multistep_p4` |
-| [`place_value.py`](math/p4/place_value.py) | ค่าประจำหลัก | `math.number_reading_p4`, `math.place_value_millions_p4`, `math.place_value_word_p4`, `math.compare_large_numbers_p4` |
-| [`rectangles.py`](math/p4/rectangles.py) | สี่เหลี่ยมมุมฉาก | `math.rectangle_area_perimeter`, `math.rectangle_figure_p4`, `math.construct_rectangle_p4`, `math.rectangle_missing_side_p4`, `math.rectangle_word_problem_p4` |
-| [`time.py`](math/p4/time.py) | เวลา | `math.time_units_p4`, `math.calendar_word_problem_p4`, `math.travel_time_p4` |
+| [`multi_step_word_problems.py`](math/p4/multi_step_word_problems.py) | โจทย์ปัญหาระคน | `math.mixed_ops_p4`, `math.story_for_sentence_p4`, `math.two_step_sentence_p4`, `math.two_step_word_problem_p4`, `math.ticket_income_p4`, `math.buy_two_kinds_p4`, `math.cost_per_person_p4`, `math.yearly_saving_p4`, `math.full_trays_p4`, `math.round_trips_p4` |
+| [`multiply.py`](math/p4/multiply.py) | การคูณยาว | `math.multiply_by_tens`, `math.multiply_partial_products_p4`, `math.multiply_3x1`, `math.multiply_2x2`, `math.multiply_multistep_p4`, `math.multiply_3x2_p4`, `math.largest_product_p4`, `math.missing_factor_p4`, `math.boxes_total_p4`, `math.multiply_by_hundreds_p4` |
+| [`place_value.py`](math/p4/place_value.py) | ค่าประจำหลัก | `math.number_reading_p4`, `math.place_value_millions_p4`, `math.place_value_word_p4`, `math.compare_large_numbers_p4`, `math.more_less_large_p4`, `math.number_from_digits_p4`, `math.number_between_p4`, `math.zeros_in_number_p4`, `math.expanded_to_number_p4`, `math.digit_count_p4` |
+| [`rectangles.py`](math/p4/rectangles.py) | สี่เหลี่ยมมุมฉาก | `math.rectangle_area_perimeter`, `math.rectangle_figure_p4`, `math.construct_rectangle_p4`, `math.rectangle_missing_side_p4`, `math.rectangle_word_problem_p4`, `math.largest_area_p4`, `math.largest_perimeter_p4`, `math.same_perimeter_area_p4`, `math.area_when_doubled_p4`, `math.l_shape_area_p4` |
+| [`time.py`](math/p4/time.py) | เวลา | `math.time_units_p4`, `math.calendar_word_problem_p4`, `math.travel_time_p4`, `math.days_to_weeks_p4`, `math.decade_century_p4`, `math.longest_duration_p4`, `math.race_times_p4`, `math.stopwatch_difference_p4`, `math.days_between_dates_p4`, `math.leap_year_p4` |
 
 ### p5 — ป.5
 
