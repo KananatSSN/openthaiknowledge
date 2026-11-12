@@ -188,3 +188,126 @@ class GcdLcmRelationP6(WordProblem):
                                 f"(ผลคูณของสองจำนวนเท่ากับผลคูณของ ห.ร.ม. และ ค.ร.น.)"),
                         distractors=_story.keep(lcm // x if lcm % x == 0 and lcm // x != y else y + g,
                                                 lcm - x, g * lcm, lcm // g, answer=y, lo=1))
+
+from fractions import Fraction  # noqa: E402
+from math import gcd  # noqa: E402
+
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More ห.ร.ม. and ค.ร.น. (2026-11): how many common factors, a common multiple, the smallest square of
+# tiles, and buses leaving together ──
+
+
+@question_type("math.common_factors_count_p6", display_name={"th": "นับตัวประกอบร่วม"},
+               level=LEVEL, topic="ห.ร.ม. และ ค.ร.น.")
+class CommonFactorsCountP6(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            g = rng.choice((4, 6, 8, 9, 10, 12, 15, 16, 18, 20, 24))
+            a, b = g * rng.randint(1, 6), g * rng.randint(1, 6)
+            if a != b and gcd(a, b) == g:
+                break
+        right = sum(1 for k in range(1, g + 1) if g % k == 0)
+        prompt = f"{a} และ {b} มีตัวประกอบร่วมทั้งหมดกี่จำนวน"
+        # The ห.ร.ม. itself; one left out (1 or itself); the prime factors of the ห.ร.ม. only.
+        primes = sum(1 for p in range(2, g + 1) if g % p == 0 and all(p % q for q in range(2, p)))
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(g, right - 1, primes, right + 1, answer=right, lo=1))
+
+
+@question_type("math.common_multiple_p6", display_name={"th": "จำนวนใดเป็นพหุคูณร่วม"},
+               level=LEVEL, topic="ห.ร.ม. และ ค.ร.น.")
+class CommonMultipleP6(QuestionType):
+    """Fixed choices: a number from another draw could also be a common multiple."""
+
+    def build(self, rng: Random, **params):
+        while True:
+            a, b = rng.sample((2, 3, 4, 5, 6, 8, 9, 10, 12), 2)
+            if a % b and b % a:
+                break
+        lcm = a * b // gcd(a, b)
+        right = lcm * rng.randint(1, 4)
+        # A multiple of one only, the product's neighbour, and a multiple of one near the answer.
+        only_a = next(v for v in range(right + a, right + 50 * a, a) if v % b)
+        only_b = next(v for v in range(right + b, right + 50 * b, b) if v % a)
+        wrongs = [only_a, only_b, right + 1 if (right + 1) % a or (right + 1) % b else right + 2]
+        return _fixed_maths([_text_block(f"จำนวนใดเป็นพหุคูณร่วมของ {a} และ {b}")], str(right),
+                            [str(w) for w in dict.fromkeys(wrongs) if w != right], self.topic)
+
+
+@question_type("math.tiles_to_square_p6", display_name={"th": "เรียงกระเบื้องเป็นรูปสี่เหลี่ยมจัตุรัสที่เล็กที่สุด"},
+               level=LEVEL, topic="ห.ร.ม. และ ค.ร.น.")
+class TilesToSquareP6(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            a, b = rng.sample(range(2, 13), 2)
+            if a * b // gcd(a, b) <= 60:
+                break
+        side = a * b // gcd(a, b)
+        right = (side // a) * (side // b)
+        prompt = (f"นำกระเบื้องรูปสี่เหลี่ยมผืนผ้ากว้าง {a} ซม. ยาว {b} ซม. มาเรียงให้เป็นรูปสี่เหลี่ยมจัตุรัส"
+                  "ที่เล็กที่สุดโดยไม่ตัดกระเบื้อง ต้องใช้กระเบื้องกี่แผ่น")
+        # The side of the square; the tiles along one side; the product of the sides as the side.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(side, side // a, side // b + side // a, a * b,
+                                                answer=right, lo=1))
+
+
+@question_type("math.buses_together_p6", display_name={"th": "รถออกพร้อมกันอีกครั้งเวลาใด"},
+               level=LEVEL, topic="ห.ร.ม. และ ค.ร.น.")
+class BusesTogetherP6(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            a, b = rng.sample((6, 8, 9, 10, 12, 15, 18, 20, 24, 30), 2)
+            lcm = a * b // gcd(a, b)
+            if 30 <= lcm <= 120 and lcm not in (a, b):
+                break
+        start = rng.randint(6, 9)
+
+        def at(minutes: int) -> str:
+            h, m = divmod(start * 60 + minutes, 60)
+            return f"{h}.{m:02d} น."
+
+        right = at(lcm)
+        wrongs = [at(a * b) if a * b != lcm else at(lcm + a), at(a + b), at(lcm - gcd(a, b)), at(lcm + gcd(a, b))]
+        stem = (f"รถสายแรกออกทุก {a} นาที รถสายที่สองออกทุก {b} นาที ถ้าออกพร้อมกันเวลา {start}.00 น. "
+                "จะออกพร้อมกันอีกครั้งเวลาใด")
+        return stem, right, [w for w in dict.fromkeys(wrongs) if w != right][:3]

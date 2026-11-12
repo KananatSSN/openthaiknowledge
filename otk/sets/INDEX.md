@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,536 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,613 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -95,20 +95,20 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`circles.py`](math/p6/circles.py) | วงกลม | `math.circle_parts`, `math.circle_area_circumference`, `math.circle_radius_from_circumference`, `math.circle_word_problem_p6` |
-| [`decimals.py`](math/p6/decimals.py) | ทศนิยม | `math.fraction_to_decimal`, `math.decimal_to_fraction`, `math.divide_decimal_by_decimal_p6`, `math.decimal_ops`, `math.decimal_word_problem_p6`, `math.decimal_three_step_word_p6` |
-| [`fractions_and_mixed_numbers.py`](math/p6/fractions_and_mixed_numbers.py) | เศษส่วนและจำนวนคละ | `math.order_mixed_numbers_p6`, `math.mixed_number_ops_p6`, `math.fraction_multistep_word_p6` |
-| [`gcd_and_lcm.py`](math/p6/gcd_and_lcm.py) | ห.ร.ม. และ ค.ร.น. | `math.gcd`, `math.lcm`, `math.lcm_word`, `math.gcd_word_problem_p6`, `math.gcd_lcm_three_p6`, `math.gcd_lcm_relation_p6` |
-| [`order_of_ops.py`](math/p6/order_of_ops.py) | ลำดับการดำเนินการ | `math.order_of_ops_integers`, `math.order_of_ops_powers`, `math.order_of_ops`, `math.order_of_ops_word_p6` |
-| [`patterns.py`](math/p6/patterns.py) | แบบรูป | `math.pattern_nth_term_p6`, `math.pattern_rule_expression_p6`, `math.matchstick_pattern_p6` |
-| [`percentages.py`](math/p6/percentages.py) | ร้อยละ | `math.ratio_to_percent`, `math.percent_to_ratio`, `math.simple_interest`, `math.profit_loss_p6`, `math.percent_change_p6` |
-| [`pie_chart.py`](math/p6/pie_chart.py) | แผนภูมิรูปวงกลม | `math.pie_chart`, `math.pie_chart_picture_p6`, `math.pie_chart_amount_p6`, `math.pie_chart_missing_p6` |
-| [`prime_numbers.py`](math/p6/prime_numbers.py) | จำนวนเฉพาะ | `math.prime_or_composite`, `math.factors_p6`, `math.pick_prime`, `math.prime_word_p6`, `math.smallest_prime_factor` |
-| [`ratio_and_scale.py`](math/p6/ratio_and_scale.py) | อัตราส่วนและมาตราส่วน | `math.write_ratio_p6`, `math.equivalent_ratio_p6`, `math.map_scale`, `math.ratio_word_problem_p6`, `math.ratio_share_p6` |
-| [`solids.py`](math/p6/solids.py) | รูปเรขาคณิต 3 มิติ | `math.solid_counts_picture_p6`, `math.solid_faces_edges_vertices`, `math.net_to_solid_p6`, `math.euler_formula` |
-| [`triangle_area.py`](math/p6/triangle_area.py) | พื้นที่รูปสามเหลี่ยม | `math.triangle_area`, `math.triangle_area_figure_p6`, `math.triangle_missing_side_p6`, `math.composite_area_p6`, `math.triangle_area_word_p6`, `math.composite_area_figure_p6` |
-| [`types_of_triangles.py`](math/p6/types_of_triangles.py) | ชนิดของรูปสามเหลี่ยม | `math.triangle_type_picture_p6`, `math.classify_triangle_by_angle`, `math.construct_triangle_p6`, `math.triangle_missing_angle` |
-| [`volume_and_surface_area.py`](math/p6/volume_and_surface_area.py) | ปริมาตรและพื้นที่ผิว | `math.prism_volume`, `math.cube_surface_area`, `math.composite_box_volume_p6`, `math.water_level_p6` |
+| [`circles.py`](math/p6/circles.py) | วงกลม | `math.circle_parts`, `math.circle_area_circumference`, `math.circle_radius_from_circumference`, `math.circle_word_problem_p6`, `math.radius_diameter_p6`, `math.circumference_from_diameter_p6`, `math.semicircle_area_p6`, `math.semicircle_perimeter_p6`, `math.wheel_turns_p6`, `math.ring_area_p6` |
+| [`decimals.py`](math/p6/decimals.py) | ทศนิยม | `math.fraction_to_decimal`, `math.decimal_to_fraction`, `math.divide_decimal_by_decimal_p6`, `math.decimal_ops`, `math.decimal_word_problem_p6`, `math.decimal_three_step_word_p6`, `math.decimal_missing_factor_p6`, `math.round_quotient_p6`, `math.price_per_kilo_p6`, `math.decimal_rectangle_area_p6` |
+| [`fractions_and_mixed_numbers.py`](math/p6/fractions_and_mixed_numbers.py) | เศษส่วนและจำนวนคละ | `math.order_mixed_numbers_p6`, `math.mixed_number_ops_p6`, `math.fraction_multistep_word_p6`, `math.mixed_times_whole_p6`, `math.mixed_divide_whole_p6`, `math.part_of_part_p6`, `math.largest_fraction_p6`, `math.reciprocal_p6`, `math.fraction_missing_factor_p6`, `math.mixed_to_improper_p6` |
+| [`gcd_and_lcm.py`](math/p6/gcd_and_lcm.py) | ห.ร.ม. และ ค.ร.น. | `math.gcd`, `math.lcm`, `math.lcm_word`, `math.gcd_word_problem_p6`, `math.gcd_lcm_three_p6`, `math.gcd_lcm_relation_p6`, `math.common_factors_count_p6`, `math.common_multiple_p6`, `math.tiles_to_square_p6`, `math.buses_together_p6` |
+| [`order_of_ops.py`](math/p6/order_of_ops.py) | ลำดับการดำเนินการ | `math.order_of_ops_integers`, `math.order_of_ops_powers`, `math.order_of_ops`, `math.order_of_ops_word_p6`, `math.ooo_decimal_p6`, `math.ooo_division_first_p6`, `math.ooo_nested_p6`, `math.ooo_true_statement_p6`, `math.ooo_missing_number_p6`, `math.change_after_shopping_p6` |
+| [`patterns.py`](math/p6/patterns.py) | แบบรูป | `math.pattern_nth_term_p6`, `math.pattern_rule_expression_p6`, `math.matchstick_pattern_p6`, `math.pattern_next_term_p6`, `math.pattern_missing_middle_p6`, `math.pattern_multiply_p6`, `math.pattern_which_term_p6`, `math.square_numbers_p6`, `math.growing_difference_p6`, `math.repeating_colour_p6` |
+| [`percentages.py`](math/p6/percentages.py) | ร้อยละ | `math.ratio_to_percent`, `math.percent_to_ratio`, `math.simple_interest`, `math.profit_loss_p6`, `math.percent_change_p6`, `math.whole_from_percent_p6`, `math.vat_p6`, `math.discount_percent_p6`, `math.cost_from_profit_p6`, `math.compare_offers_p6` |
+| [`pie_chart.py`](math/p6/pie_chart.py) | แผนภูมิรูปวงกลม | `math.pie_chart`, `math.pie_chart_picture_p6`, `math.pie_chart_amount_p6`, `math.pie_chart_missing_p6`, `math.pie_angle_from_percent_p6`, `math.pie_percent_from_angle_p6`, `math.pie_total_from_part_p6`, `math.pie_missing_percent_p6`, `math.pie_largest_part_p6`, `math.pie_two_parts_p6` |
+| [`prime_numbers.py`](math/p6/prime_numbers.py) | จำนวนเฉพาะ | `math.prime_or_composite`, `math.factors_p6`, `math.pick_prime`, `math.prime_word_p6`, `math.smallest_prime_factor`, `math.prime_factorisation_p6`, `math.largest_prime_factor_p6`, `math.sum_of_primes_p6`, `math.next_prime_p6`, `math.count_factors_p6` |
+| [`ratio_and_scale.py`](math/p6/ratio_and_scale.py) | อัตราส่วนและมาตราส่วน | `math.write_ratio_p6`, `math.equivalent_ratio_p6`, `math.map_scale`, `math.ratio_word_problem_p6`, `math.ratio_share_p6`, `math.scale_to_km_p6`, `math.scale_to_map_p6`, `math.ratio_lowest_terms_p6`, `math.ratio_other_part_p6`, `math.share_three_ways_p6` |
+| [`solids.py`](math/p6/solids.py) | รูปเรขาคณิต 3 มิติ | `math.solid_counts_picture_p6`, `math.solid_faces_edges_vertices`, `math.net_to_solid_p6`, `math.euler_formula`, `math.solid_from_description_p6`, `math.pyramid_counts_p6`, `math.curved_surface_p6`, `math.euler_missing_count_p6`, `math.objects_as_solids_p6`, `math.cross_section_p6` |
+| [`triangle_area.py`](math/p6/triangle_area.py) | พื้นที่รูปสามเหลี่ยม | `math.triangle_area`, `math.triangle_area_figure_p6`, `math.triangle_missing_side_p6`, `math.composite_area_p6`, `math.triangle_area_word_p6`, `math.composite_area_figure_p6`, `math.right_triangle_area_p6`, `math.largest_triangle_area_p6`, `math.rectangle_minus_triangle_p6`, `math.two_triangles_one_base_p6` |
+| [`types_of_triangles.py`](math/p6/types_of_triangles.py) | ชนิดของรูปสามเหลี่ยม | `math.triangle_type_picture_p6`, `math.classify_triangle_by_angle`, `math.construct_triangle_p6`, `math.triangle_missing_angle`, `math.classify_by_sides_p6`, `math.isosceles_base_angle_p6`, `math.isosceles_top_angle_p6`, `math.right_triangle_other_angle_p6`, `math.triangle_facts_p6`, `math.isosceles_side_from_perimeter_p6` |
+| [`volume_and_surface_area.py`](math/p6/volume_and_surface_area.py) | ปริมาตรและพื้นที่ผิว | `math.prism_volume`, `math.cube_surface_area`, `math.composite_box_volume_p6`, `math.water_level_p6`, `math.box_surface_area_p6`, `math.cube_edge_from_volume_p6`, `math.open_box_surface_p6`, `math.box_doubled_p6`, `math.height_from_base_area_p6`, `math.cube_edge_from_surface_p6` |
 
 ### m1 — ม.1
 
