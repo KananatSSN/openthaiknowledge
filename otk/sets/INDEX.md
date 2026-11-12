@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,613 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,678 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -149,19 +149,19 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`basic_probability.py`](math/m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | `math.probability_die_coin_m3`, `math.probability_bag_m3`, `math.spinner_probability_m3`, `math.probability_two_events_m3`, `math.probability_number_card_or_m3`, `math.probability_two_colours_without_replacement_m3`, `math.probability_add_balls_m3` |
-| [`binomial_expansion.py`](math/m3/binomial_expansion.py) | กระจายทวินาม | `math.expand_binomials`, `math.expand_formula`, `math.expand_three_terms` |
-| [`box_plots.py`](math/m3/box_plots.py) | สถิติ (แผนภาพกล่อง) | `math.box_plot_picture_m2`, `math.boxplot_iqr`, `math.box_plot_summary_m3`, `math.box_plot_compare_m2` |
-| [`circles.py`](math/m3/circles.py) | วงกลม | `math.central_inscribed_angle`, `math.inscribed_angle_semicircle`, `math.circle_angle_picture_m3`, `math.cyclic_quadrilateral`, `math.tangent_picture_m3`, `math.tangent_length_m3` |
-| [`completing_the_square.py`](math/m3/completing_the_square.py) | กำลังสองสมบูรณ์ | `math.complete_square_constant`, `math.quadratic_vertex`, `math.vertex_form_convert`, `math.vertex_context_m3` |
-| [`factorising.py`](math/m3/factorising.py) | แยกตัวประกอบ | `math.factor_special`, `math.factor_quadratic`, `math.factor_cubic_common_m3`, `math.factor_common_then_quadratic`, `math.factor_cubic_grouping_m3` |
-| [`inequality.py`](math/m3/inequality.py) | อสมการเชิงเส้น | `math.inequality`, `math.inequality_negative_coefficient`, `math.inequality_setup_m3`, `math.inequality_compound`, `math.inequality_order_properties_m3`, `math.inequality_word_problem_m3` |
-| [`parabola.py`](math/m3/parabola.py) | กราฟของฟังก์ชันกำลังสอง | `math.parabola_graph_m3`, `math.parabola_vertex`, `math.parabola_axis_intercept` |
-| [`quadratic.py`](math/m3/quadratic.py) | สมการกำลังสอง | `math.quadratic_equation`, `math.quadratic_sum_product_roots`, `math.quadratic_formula_roots`, `math.quadratic_discriminant_m3`, `math.quadratic_word_problem_m3` |
-| [`similarity.py`](math/m3/similarity.py) | ความคล้าย | `math.similar_triangle`, `math.similar_triangle_picture_m3`, `math.similar_shadow`, `math.similar_figures_ratio_m3`, `math.similar_ratio_area`, `math.similar_parallel_segment_m3`, `math.similar_remaining_area_m3`, `math.similar_side_from_areas_m3` |
-| [`surface_area_and_volume.py`](math/m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | `math.cone_volume`, `math.pyramid_volume_m3`, `math.sphere_volume`, `math.cone_sphere_surface_area_m3`, `math.solid_word_problem_m3` |
-| [`systems_of_equations.py`](math/m3/systems_of_equations.py) | ระบบสมการ | `math.simultaneous_2var`, `math.system_substitution`, `math.system_setup_m3`, `math.system_word_problem` |
-| [`trigonometric_ratios.py`](math/m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | `math.trig_ratio_from_triple`, `math.trig_special_values_m3`, `math.trig_application_height`, `math.special_triangle_picture_m3`, `math.trig_word_problem_m3` |
+| [`basic_probability.py`](math/m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | `math.probability_die_coin_m3`, `math.probability_bag_m3`, `math.spinner_probability_m3`, `math.probability_two_events_m3`, `math.probability_number_card_or_m3`, `math.probability_two_colours_without_replacement_m3`, `math.probability_add_balls_m3`, `math.probability_complement_m3`, `math.two_dice_sum_m3`, `math.expected_count_m3` |
+| [`binomial_expansion.py`](math/m3/binomial_expansion.py) | กระจายทวินาม | `math.expand_binomials`, `math.expand_formula`, `math.expand_three_terms`, `math.binomial_x_coefficient_m3`, `math.square_of_ax_plus_b_m3`, `math.difference_of_squares_ax_m3`, `math.expand_two_variables_m3`, `math.product_minus_square_m3`, `math.mental_square_m3`, `math.mental_product_m3` |
+| [`box_plots.py`](math/m3/box_plots.py) | สถิติ (แผนภาพกล่อง) | `math.box_plot_picture_m2`, `math.boxplot_iqr`, `math.box_plot_summary_m3`, `math.box_plot_compare_m2`, `math.box_plot_range_m3`, `math.box_plot_whisker_m3`, `math.box_plot_middle_half_m3`, `math.box_plot_parts_m3`, `math.box_plot_two_medians_m3`, `math.five_number_summary_m3` |
+| [`circles.py`](math/m3/circles.py) | วงกลม | `math.central_inscribed_angle`, `math.inscribed_angle_semicircle`, `math.circle_angle_picture_m3`, `math.cyclic_quadrilateral`, `math.tangent_picture_m3`, `math.tangent_length_m3`, `math.inscribed_from_central_m3`, `math.two_tangents_m3`, `math.chord_from_distance_m3`, `math.angles_same_arc_m3` |
+| [`completing_the_square.py`](math/m3/completing_the_square.py) | กำลังสองสมบูรณ์ | `math.complete_square_constant`, `math.quadratic_vertex`, `math.vertex_form_convert`, `math.vertex_context_m3`, `math.vertex_from_completed_m3`, `math.least_value_m3`, `math.solve_by_square_root_m3`, `math.completed_square_numbers_m3`, `math.greatest_value_m3`, `math.which_perfect_square_m3` |
+| [`factorising.py`](math/m3/factorising.py) | แยกตัวประกอบ | `math.factor_special`, `math.factor_quadratic`, `math.factor_cubic_common_m3`, `math.factor_common_then_quadratic`, `math.factor_cubic_grouping_m3`, `math.factor_difference_of_squares_m3`, `math.factor_perfect_square_m3`, `math.factor_leading_two_m3`, `math.factor_two_variables_m3`, `math.which_factor_m3` |
+| [`inequality.py`](math/m3/inequality.py) | อสมการเชิงเส้น | `math.inequality`, `math.inequality_negative_coefficient`, `math.inequality_setup_m3`, `math.inequality_compound`, `math.inequality_order_properties_m3`, `math.inequality_word_problem_m3`, `math.inequality_count_integers_m3`, `math.inequality_largest_integer_m3`, `math.inequality_fraction_m3`, `math.inequality_both_sides_m3` |
+| [`parabola.py`](math/m3/parabola.py) | กราฟของฟังก์ชันกำลังสอง | `math.parabola_graph_m3`, `math.parabola_vertex`, `math.parabola_axis_intercept`, `math.parabola_opens_m3`, `math.parabola_y_intercept_m3`, `math.parabola_x_intercepts_m3`, `math.parabola_vertex_standard_m3`, `math.parabola_extreme_value_m3`, `math.point_on_parabola_m3`, `math.parabola_shift_m3` |
+| [`quadratic.py`](math/m3/quadratic.py) | สมการกำลังสอง | `math.quadratic_equation`, `math.quadratic_sum_product_roots`, `math.quadratic_formula_roots`, `math.quadratic_discriminant_m3`, `math.quadratic_word_problem_m3`, `math.quadratic_root_count_m3`, `math.quadratic_sum_of_roots_m3`, `math.rectangle_width_from_area_m3`, `math.consecutive_product_m3`, `math.which_root_m3` |
+| [`similarity.py`](math/m3/similarity.py) | ความคล้าย | `math.similar_triangle`, `math.similar_triangle_picture_m3`, `math.similar_shadow`, `math.similar_figures_ratio_m3`, `math.similar_ratio_area`, `math.similar_parallel_segment_m3`, `math.similar_remaining_area_m3`, `math.similar_side_from_areas_m3`, `math.similar_scale_ratio_m3`, `math.similar_corresponding_angle_m3` |
+| [`surface_area_and_volume.py`](math/m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | `math.cone_volume`, `math.pyramid_volume_m3`, `math.sphere_volume`, `math.cone_sphere_surface_area_m3`, `math.solid_word_problem_m3`, `math.cylinder_volume_m3`, `math.cylinder_surface_m3`, `math.cone_curved_from_height_m3`, `math.hemisphere_volume_m3`, `math.square_pyramid_volume_m3` |
+| [`systems_of_equations.py`](math/m3/systems_of_equations.py) | ระบบสมการ | `math.simultaneous_2var`, `math.system_substitution`, `math.system_setup_m3`, `math.system_word_problem`, `math.system_sum_difference_m3`, `math.system_x_plus_y_m3`, `math.system_coins_m3`, `math.system_ages_m3`, `math.system_which_pair_m3`, `math.system_two_prices_m3` |
+| [`trigonometric_ratios.py`](math/m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | `math.trig_ratio_from_triple`, `math.trig_special_values_m3`, `math.trig_application_height`, `math.special_triangle_picture_m3`, `math.trig_word_problem_m3`, `math.cos_from_sin_m3`, `math.side_from_ratio_m3`, `math.special_angle_expression_m3`, `math.angle_from_ratio_m3`, `math.complementary_ratio_m3` |
 
 ### m4 — ม.4
 

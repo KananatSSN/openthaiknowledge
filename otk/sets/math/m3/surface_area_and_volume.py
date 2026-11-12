@@ -179,3 +179,113 @@ class SolidWordProblemM3(WordProblem):
                         # A whole sphere on top, and the cone alone.
                         distractors=_story.keep(cone + 2 * hemi, cone, hemi + 3 * cone,
                                                 answer=total))
+
+
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More surface area and volume (2026-11): a cylinder's volume and surface, a cone's curved surface from its
+# height, a hemisphere in terms of π, and a square pyramid's volume ──
+
+
+@question_type("math.cylinder_volume_m3", display_name={"th": "ปริมาตรทรงกระบอก"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class CylinderVolumeM3(WordProblem):
+    def expr(self, rng: Random):
+        r = 7 * rng.randint(1, 3)
+        h = rng.randint(2, 20)
+        right = 22 * r * r * h // 7
+        prompt = f"ทรงกระบอกมีรัศมีฐาน {r} ซม. สูง {h} ซม. มีปริมาตรกี่ลูกบาศก์เซนติเมตร (π ≈ 22/7)"
+        # The diameter used; the radius not squared; a third as for a cone.
+        return MathDraw("", _g3(right), prompt=prompt,
+                        distractors=_gk3(22 * 4 * r * r * h // 7, 22 * r * h // 7, 22 * r * r * h // 21 if (22 * r * r * h) % 21 == 0 else right // 3,
+                                         right + 22 * r, answer=right, lo=1))
+
+
+@question_type("math.cylinder_surface_m3", display_name={"th": "พื้นที่ผิวทั้งหมดของทรงกระบอก"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class CylinderSurfaceM3(WordProblem):
+    def expr(self, rng: Random):
+        r = 7 * rng.randint(1, 3)
+        h = rng.randint(2, 20)
+        side = 44 * r * h // 7
+        ends = 44 * r * r // 7
+        right = side + ends
+        prompt = f"ทรงกระบอกมีรัศมีฐาน {r} ซม. สูง {h} ซม. มีพื้นที่ผิวทั้งหมดกี่ตารางเซนติเมตร (π ≈ 22/7)"
+        # The curved side only; one end only; the volume.
+        return MathDraw("", _g3(right), prompt=prompt,
+                        distractors=_gk3(side, side + ends // 2, 22 * r * r * h // 7, right + 44, answer=right, lo=1))
+
+
+@question_type("math.cone_curved_from_height_m3", display_name={"th": "พื้นที่ผิวข้างของกรวยเมื่อรู้ความสูง"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class ConeCurvedFromHeightM3(WordProblem):
+    def expr(self, rng: Random):
+        k = rng.randint(1, 2)
+        r, h, slant = 7 * k, 24 * k, 25 * k
+        right = 22 * r * slant // 7
+        prompt = f"กรวยมีรัศมีฐาน {r} ซม. สูง {h} ซม. มีพื้นที่ผิวข้าง (ผิวโค้ง) กี่ตารางเซนติเมตร (π ≈ 22/7)"
+        # The height used as the slant; the base added; the radius and height added.
+        return MathDraw("", _g3(right), prompt=prompt,
+                        distractors=_gk3(22 * r * h // 7, right + 22 * r * r // 7, 22 * r * (r + h) // 7, right + 22,
+                                         answer=right, lo=1))
+
+
+@question_type("math.hemisphere_volume_m3", display_name={"th": "ปริมาตรครึ่งทรงกลม (ตอบในรูป π)"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class HemisphereVolumeM3(MathType):
+    def expr(self, rng: Random):
+        r = 3 * rng.randint(1, 4)
+        right = 2 * r ** 3 // 3
+        # The whole sphere; the area of a great circle; r cubed.
+        return MathDraw("", rf"{right}\pi", prompt=f"ครึ่งทรงกลมมีรัศมี {r} ซม. มีปริมาตรกี่ลูกบาศก์เซนติเมตร (ตอบในรูป π)",
+                        distractors=_tk3(rf"{4 * r ** 3 // 3}\pi", rf"{r * r}\pi", rf"{r ** 3}\pi", rf"{2 * r * r}\pi",
+                                         answer=rf"{right}\pi"))
+
+
+@question_type("math.square_pyramid_volume_m3", display_name={"th": "ปริมาตรพีระมิดฐานสี่เหลี่ยมจัตุรัส"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class SquarePyramidVolumeM3(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 15)
+        h = 3 * rng.randint(1, 8)
+        right = a * a * h // 3
+        prompt = f"พีระมิดฐานสี่เหลี่ยมจัตุรัสยาวด้านละ {a} ซม. สูง {h} ซม. มีปริมาตรกี่ลูกบาศก์เซนติเมตร"
+        # Not divided by three; halved; the side not squared.
+        return MathDraw("", _g3(right), prompt=prompt,
+                        distractors=_gk3(a * a * h, a * a * h // 2, a * h // 3 if a * h % 3 == 0 else a * h, right + a * a,
+                                         answer=right, lo=1))

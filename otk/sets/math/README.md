@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,113 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,178 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -147,19 +147,19 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`basic_probability`](m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | ค 3.2 ม.3/1 | 7 |
-| [`binomial_expansion`](m3/binomial_expansion.py) | กระจายทวินาม | ค 1.2 ม.3/* | 3 |
-| [`box_plots`](m3/box_plots.py) | สถิติ (แผนภาพกล่อง) | ค 3.1 ม.3/1 | 4 |
-| [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 6 |
-| [`completing_the_square`](m3/completing_the_square.py) | กำลังสองสมบูรณ์ | ค 1.2 ม.3/* | 4 |
-| [`factorising`](m3/factorising.py) | แยกตัวประกอบ | ค 1.2 ม.3/* | 5 |
-| [`inequality`](m3/inequality.py) | อสมการเชิงเส้น | ค 1.3 ม.3/1 | 6 |
-| [`parabola`](m3/parabola.py) | กราฟของฟังก์ชันกำลังสอง | ค 1.2 ม.3/2 | 3 |
-| [`quadratic`](m3/quadratic.py) | สมการกำลังสอง | ค 1.3 ม.3/2 | 5 |
-| [`similarity`](m3/similarity.py) | ความคล้าย | ค 2.2 ม.3/1 | 8 |
-| [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 5 |
-| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 4 |
-| [`trigonometric_ratios`](m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค 2.2 ม.3/2 | 5 |
+| [`basic_probability`](m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | ค 3.2 ม.3/1 | 10 |
+| [`binomial_expansion`](m3/binomial_expansion.py) | กระจายทวินาม | ค 1.2 ม.3/* | 10 |
+| [`box_plots`](m3/box_plots.py) | สถิติ (แผนภาพกล่อง) | ค 3.1 ม.3/1 | 10 |
+| [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 10 |
+| [`completing_the_square`](m3/completing_the_square.py) | กำลังสองสมบูรณ์ | ค 1.2 ม.3/* | 10 |
+| [`factorising`](m3/factorising.py) | แยกตัวประกอบ | ค 1.2 ม.3/* | 10 |
+| [`inequality`](m3/inequality.py) | อสมการเชิงเส้น | ค 1.3 ม.3/1 | 10 |
+| [`parabola`](m3/parabola.py) | กราฟของฟังก์ชันกำลังสอง | ค 1.2 ม.3/2 | 10 |
+| [`quadratic`](m3/quadratic.py) | สมการกำลังสอง | ค 1.3 ม.3/2 | 10 |
+| [`similarity`](m3/similarity.py) | ความคล้าย | ค 2.2 ม.3/1 | 10 |
+| [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 10 |
+| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 10 |
+| [`trigonometric_ratios`](m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค 2.2 ม.3/2 | 10 |
 
 ## m4 — ม.4
 

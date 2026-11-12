@@ -204,3 +204,115 @@ class InequalityWordProblemM3(WordProblem):
         return MathDraw("", str(ans), prompt=story,
                         distractors=_story.keep(ans + 1, ans - 1, ans + 2, ans * 2, answer=ans, lo=1))
 InequalityWordProblemM3.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More inequalities (2026-11): how many integers fit, the largest integer, a fraction of x, and x on both
+# sides ──
+
+
+@question_type("math.inequality_count_integers_m3", display_name={"th": "นับจำนวนเต็มที่เป็นคำตอบของอสมการ"},
+               level=LEVEL, topic="อสมการเชิงเส้น")
+class InequalityCountIntegersM3(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 5)
+        b = rng.randint(-9, 9)
+        lo_x, hi_x = sorted(rng.sample(range(-8, 12), 2))
+        lo, hi = k * lo_x + b, k * hi_x + b
+        right = hi_x - lo_x
+        # Both ends counted; neither end; the values of kx + b counted.
+        return MathDraw(rf"{lo} < {poly_tex((k, 'x'), (b, ''))} \le {hi}", str(right),
+                        prompt="มีจำนวนเต็ม x กี่จำนวนที่สอดคล้องกับอสมการนี้",
+                        distractors=_tk3(str(right + 1), str(right - 1), str(hi - lo), str(hi - lo + 1), answer=str(right)))
+
+
+@question_type("math.inequality_largest_integer_m3", display_name={"th": "จำนวนเต็มที่มากที่สุดที่เป็นคำตอบ"},
+               level=LEVEL, topic="อสมการเชิงเส้น")
+class InequalityLargestIntegerM3(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 9)
+        bound = rng.randint(-6, 15)
+        b = rng.randint(-20, 20)
+        rhs = k * bound + b
+        right = bound - 1
+        # The bound itself; the bound before dividing; one less again.
+        return MathDraw(rf"{poly_tex((k, 'x'), (b, ''))} < {rhs}", str(right),
+                        prompt="จำนวนเต็มที่มากที่สุดที่สอดคล้องกับอสมการนี้คือจำนวนใด",
+                        distractors=_tk3(str(bound), str(rhs - b), str(right - 1), str(bound + 1), answer=str(right)))
+
+
+@question_type("math.inequality_fraction_m3", display_name={"th": "อสมการที่มีเศษส่วนของ x"},
+               level=LEVEL, topic="อสมการเชิงเส้น")
+class InequalityFractionM3(MathType):
+    def expr(self, rng: Random):
+        d = rng.randint(2, 6)
+        b = rng.randint(1, 12)
+        c = rng.randint(-10, 15)
+        while c == b:
+            c = rng.randint(-10, 15)
+        bound = d * (c - b)
+        sign, other = rng.choice(((">", "<"), ("<", ">")))
+        right = f"x {sign} {bound}"
+        # Not multiplied by d; the constant added; the sign turned.
+        wrongs = [f"x {sign} {c - b}", f"x {sign} {d * (c + b)}", f"x {other} {bound}"]
+        return MathDraw(rf"\frac{{x}}{{{d}}} + {b} {sign} {c}", right, prompt="จงหาคำตอบของอสมการ",
+                        distractors=_tk3(*wrongs, answer=right))
+
+
+@question_type("math.inequality_both_sides_m3", display_name={"th": "อสมการที่มีตัวแปรทั้งสองข้าง"},
+               level=LEVEL, topic="อสมการเชิงเส้น")
+class InequalityBothSidesM3(MathType):
+    def expr(self, rng: Random):
+        p = rng.randint(4, 9)
+        q = rng.randint(1, p - 1)
+        x0 = rng.randint(-8, 12)
+        b = rng.randint(-15, 15)
+        d = (p - q) * x0 + b
+        right = rf"x \ge {x0}"
+        # The x terms added; the constants not moved across; the sign turned.
+        wrongs = [rf"x \ge {(d - b) // (p + q)}" if (d - b) % (p + q) == 0 else rf"x \ge {x0 + 1}",
+                  rf"x \ge {(d + b) // (p - q)}" if (d + b) % (p - q) == 0 else rf"x \ge {x0 - 1}", rf"x \le {x0}"]
+        return MathDraw(rf"{poly_tex((p, 'x'), (b, ''))} \ge {poly_tex((q, 'x'), (d, ''))}", right,
+                        prompt="จงหาคำตอบของอสมการ", distractors=_tk3(*wrongs, answer=right))
+
+
+InequalityCountIntegersM3.PROVENANCE = Provenance("original")
+InequalityLargestIntegerM3.PROVENANCE = Provenance("original")
+InequalityFractionM3.PROVENANCE = Provenance("original")
+InequalityBothSidesM3.PROVENANCE = Provenance("original")

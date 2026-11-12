@@ -210,3 +210,116 @@ class TrigWordProblemM3(WordProblem):
                         prompt=(f"จากยอดประภาคารสูง {h} เมตร มองเห็นเรือเป็นมุมก้ม 30 องศา เรืออยู่ห่างจาก"
                                 f"ฐานประภาคารกี่เมตร"),
                         distractors=[rf"\frac{{{h}\sqrt{{3}}}}{{3}}", str(2 * h), rf"\frac{{{h}}}{{2}}"])
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More trigonometric ratios (2026-11): cos from sin, a side from a ratio, values of expressions in special
+# angles, an angle from its ratio, and complementary angles ──
+
+_TRIPLES3T = ((3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25), (20, 21, 29), (9, 40, 41))
+
+
+@question_type("math.cos_from_sin_m3", display_name={"th": "หา cos A เมื่อรู้ sin A"},
+               level=LEVEL, topic="อัตราส่วนตรีโกณมิติ")
+class CosFromSinM3(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_TRIPLES3T)
+        if rng.random() < 0.5:
+            a, b = b, a
+        right = frac_tex(Fraction(b, c))
+        # The same fraction; flipped; the legs' ratio.
+        return MathDraw(rf"\sin A = \frac{{{a}}}{{{c}}}", right,
+                        prompt="ถ้า A เป็นมุมแหลมในรูปสามเหลี่ยมมุมฉาก จงหาค่าของ cos A",
+                        distractors=_tk3(frac_tex(Fraction(a, c)), frac_tex(Fraction(c, b)), frac_tex(Fraction(a, b)),
+                                         frac_tex(Fraction(b, a)), answer=right))
+
+
+@question_type("math.side_from_ratio_m3", display_name={"th": "หาความยาวด้านจากอัตราส่วนตรีโกณมิติ"},
+               level=LEVEL, topic="อัตราส่วนตรีโกณมิติ")
+class SideFromRatioM3(WordProblem):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_TRIPLES3T)
+        k = rng.randint(1, 4)
+        hyp = c * k
+        right = a * k
+        prompt = (f"รูปสามเหลี่ยมมุมฉาก ABC มีมุม C เป็นมุมฉาก ด้าน AB ยาว {hyp} หน่วย "
+                  f"ถ้า sin A = {a}/{c} ด้าน BC ยาวกี่หน่วย")
+        # The other leg; the ratio's top; the hypotenuse times the ratio's bottom.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(b * k, a, hyp - right, right + k, answer=right, lo=1))
+
+
+@question_type("math.special_angle_expression_m3", display_name={"th": "ค่าของนิพจน์ตรีโกณมิติของมุมพิเศษ"},
+               level=LEVEL, topic="อัตราส่วนตรีโกณมิติ")
+class SpecialAngleExpressionM3(ConceptBankType):
+    ITEMS = [
+        Concept("sin 30° + cos 60° มีค่าเท่าใด", "1", ("1/2", "√3", "2")),
+        Concept("tan 45° + sin 90° มีค่าเท่าใด", "2", ("1", "0", "√2")),
+        Concept("sin² 30° + cos² 30° มีค่าเท่าใด", "1", ("1/2", "3/4", "0")),
+        Concept("2 sin 30° cos 30° มีค่าเท่าใด", "√3/2", ("1/2", "1", "√3")),
+        Concept("cos 60° × tan 45° มีค่าเท่าใด", "1/2", ("1", "√3/2", "2")),
+    ]
+
+
+@question_type("math.angle_from_ratio_m3", display_name={"th": "หาขนาดของมุมจากอัตราส่วนตรีโกณมิติ"},
+               level=LEVEL, topic="อัตราส่วนตรีโกณมิติ")
+class AngleFromRatioM3(ConceptBankType):
+    ITEMS = [
+        Concept("ถ้า sin A = 1/2 และ A เป็นมุมแหลม มุม A มีขนาดเท่าใด", "30°", ("45°", "60°", "90°")),
+        Concept("ถ้า cos A = 1/2 และ A เป็นมุมแหลม มุม A มีขนาดเท่าใด", "60°", ("30°", "45°", "90°")),
+        Concept("ถ้า tan A = 1 และ A เป็นมุมแหลม มุม A มีขนาดเท่าใด", "45°", ("30°", "60°", "90°")),
+        Concept("ถ้า tan A = √3 และ A เป็นมุมแหลม มุม A มีขนาดเท่าใด", "60°", ("30°", "45°", "90°")),
+        Concept("ถ้า sin A = √2/2 และ A เป็นมุมแหลม มุม A มีขนาดเท่าใด", "45°", ("30°", "60°", "90°")),
+    ]
+
+
+@question_type("math.complementary_ratio_m3", display_name={"th": "อัตราส่วนตรีโกณมิติของมุมที่รวมกันได้ 90°"},
+               level=LEVEL, topic="อัตราส่วนตรีโกณมิติ")
+class ComplementaryRatioM3(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_TRIPLES3T)
+        if rng.random() < 0.5:
+            a, b = b, a
+        given = frac_tex(Fraction(a, c))
+        right = given
+        # The other ratio; flipped; one less.
+        return MathDraw(rf"\sin A = {given}", right, prompt="ถ้า A เป็นมุมแหลม จงหาค่าของ cos (90° − A)",
+                        distractors=_tk3(frac_tex(Fraction(b, c)), frac_tex(Fraction(c, a)), frac_tex(Fraction(a, b)),
+                                         answer=right))

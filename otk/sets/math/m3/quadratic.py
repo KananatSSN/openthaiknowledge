@@ -180,3 +180,138 @@ class QuadraticWordProblemM3(WordProblem):
                         # Taking the path off once instead of on both sides.
                         distractors=_story.keep(s + path, s + 2 * path, s - path, answer=s, lo=1))
 QuadraticWordProblemM3.PROVENANCE = Provenance("original")
+
+
+from otk.core.content import math as _math_block  # noqa: E402
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+from otk.sets._support.math_p2 import _texts as _fixed_texts  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More quadratic equations (2026-11): how many real roots, the sum of the roots, a rectangle's width from
+# its area, consecutive numbers, and which number is a root ──
+
+
+@question_type("math.quadratic_root_count_m3", display_name={"th": "สมการกำลังสองมีคำตอบที่เป็นจำนวนจริงกี่คำตอบ"},
+               level=LEVEL, topic="สมการกำลังสอง")
+class QuadraticRootCountM3(QuestionType):
+    _OPTIONS = ("มี 2 คำตอบที่ต่างกัน", "มี 1 คำตอบ (คำตอบซ้ำ)", "ไม่มีคำตอบที่เป็นจำนวนจริง", "มีคำตอบมากกว่า 2 คำตอบ")
+
+    def build(self, rng: Random, **params):
+        kind = rng.randrange(3)
+        a = rng.randint(1, 3)
+        if kind == 0:
+            b = rng.choice((1, -1)) * rng.randint(5, 12)
+            c = rng.randint(1, b * b // (4 * a) - 1)
+        elif kind == 1:
+            h = rng.choice((1, -1)) * rng.randint(1, 6)
+            a, b, c = 1, -2 * h, h * h
+        else:
+            b = rng.randint(-4, 4)
+            c = rng.randint(b * b // (4 * a) + 1, b * b // (4 * a) + 10)
+        right = self._OPTIONS[kind]
+        stem = [_text_block("สมการนี้มีคำตอบที่เป็นจำนวนจริงกี่คำตอบ"),
+                _math_block(f"{poly_tex((a, 'x^{2}'), (b, 'x'), (c, ''))} = 0")]
+        return _fixed_texts(stem, right, [o for o in self._OPTIONS if o != right], self.topic)
+
+
+@question_type("math.quadratic_sum_of_roots_m3", display_name={"th": "ผลบวกของคำตอบของสมการกำลังสอง"},
+               level=LEVEL, topic="สมการกำลังสอง")
+class QuadraticSumOfRootsM3(MathType):
+    def expr(self, rng: Random):
+        while True:
+            p, q = rng.choice((1, -1)) * rng.randint(1, 9), rng.choice((1, -1)) * rng.randint(1, 9)
+            if p + q != 0 and p != q:
+                break
+        right = p + q
+        # The sign kept from b; the product; one root.
+        return MathDraw(f"{poly_tex((1, 'x^{2}'), (-(p + q), 'x'), (p * q, ''))} = 0", str(right),
+                        prompt="ผลบวกของคำตอบทั้งสองของสมการนี้เท่ากับเท่าใด",
+                        distractors=_tk3(str(-right), str(p * q), str(max(p, q)), str(right + 1), answer=str(right)))
+
+
+@question_type("math.rectangle_width_from_area_m3", display_name={"th": "หาความกว้างจากพื้นที่ (สมการกำลังสอง)"},
+               level=LEVEL, topic="สมการกำลังสอง")
+class RectangleWidthFromAreaM3(WordProblem):
+    def expr(self, rng: Random):
+        w = rng.randint(3, 20)
+        d = rng.randint(1, 12)
+        area = w * (w + d)
+        prompt = f"รูปสี่เหลี่ยมผืนผ้ามีด้านยาวมากกว่าด้านกว้าง {d} เมตร และมีพื้นที่ {area} ตารางเมตร ด้านกว้างยาวกี่เมตร"
+        # The length; the area over the difference; the other root's size.
+        return MathDraw("", str(w), prompt=prompt,
+                        distractors=_story.keep(w + d, area // d if area // d != w else w + 2, w + d + d, w - 1,
+                                                answer=w, lo=1))
+
+
+@question_type("math.consecutive_product_m3", display_name={"th": "จำนวนนับสองจำนวนที่เรียงติดกันเมื่อรู้ผลคูณ"},
+               level=LEVEL, topic="สมการกำลังสอง")
+class ConsecutiveProductM3(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.randint(4, 30)
+        step = rng.choice((1, 2))
+        prod = n * (n + step)
+        kind = "จำนวนนับสองจำนวนที่เรียงติดกัน" if step == 1 else "จำนวนคู่สองจำนวนที่เรียงติดกัน" if n % 2 == 0 else "จำนวนคี่สองจำนวนที่เรียงติดกัน"
+        prompt = f"{kind}มีผลคูณเท่ากับ {prod} จำนวนที่น้อยกว่าคือจำนวนใด"
+        # The larger number; half the product; one off.
+        return MathDraw("", str(n), prompt=prompt,
+                        distractors=_story.keep(n + step, prod // 2, n - step, n + 2 * step, answer=n, lo=1))
+
+
+@question_type("math.which_root_m3", display_name={"th": "จำนวนใดเป็นคำตอบของสมการกำลังสอง"},
+               level=LEVEL, topic="สมการกำลังสอง")
+class WhichRootM3(QuestionType):
+    """Fixed choices: a number from another draw could also be a root."""
+
+    def build(self, rng: Random, **params):
+        while True:
+            p, q = rng.choice((1, -1)) * rng.randint(1, 9), rng.choice((1, -1)) * rng.randint(1, 9)
+            if p != q and p != -q:
+                break
+        poly = poly_tex((1, "x^{2}"), (-(p + q), "x"), (p * q, ""))
+        right = str(p)
+        # The roots' signs flipped; the constant.
+        wrongs = [str(-p), str(-q), str(p * q) if p * q not in (p, q) else str(p + q + 10)]
+        return _fixed_maths([_text_block("จำนวนใดเป็นคำตอบของสมการ"), _math_block(f"{poly} = 0")], right,
+                            _tk3(*wrongs, answer=right), self.topic)
+
+
+QuadraticRootCountM3.PROVENANCE = Provenance("original")
+QuadraticSumOfRootsM3.PROVENANCE = Provenance("original")
+RectangleWidthFromAreaM3.PROVENANCE = Provenance("original")
+ConsecutiveProductM3.PROVENANCE = Provenance("original")
+WhichRootM3.PROVENANCE = Provenance("original")
