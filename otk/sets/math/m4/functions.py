@@ -219,3 +219,118 @@ class GraphShiftM4(QuestionType):
                        text(_moves(h, k).removeprefix("เลื่อน") + " จะได้กราฟของฟังก์ชันใด")],
                       eq, wrongs, self.topic)
 GraphShiftM4.PROVENANCE = Provenance("original")
+
+
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType  # noqa: E402
+from otk.kit.math_problems import binomial_tex, poly_tex  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More functions (2026-11): a point on the inverse, the inverse of (x + a)/b, which function is even, a
+# reflected point, a stretched point, and an inverse of x³ + c ──
+
+
+@question_type("math.inverse_point_m4", display_name={"th": "จุดบนกราฟของฟังก์ชันผกผัน"}, level=LEVEL, topic="ฟังก์ชัน")
+class InversePointM4(ChoiceType):
+    def compose(self, rng: Random):
+        a, b = _nz4(rng, 1, 9), _nz4(rng, 1, 9)
+        while abs(a) == abs(b):
+            b = _nz4(rng, 1, 9)
+        stem = f"ถ้าจุด ({a}, {b}) อยู่บนกราฟของ y = f(x) จุดใดอยู่บนกราฟของ y = f⁻¹(x)"
+        return stem, f"({b}, {a})", [f"({a}, {b})", f"({-a}, {-b})", f"({-b}, {-a})"]
+
+
+@question_type("math.inverse_scaled_shift_m4", display_name={"th": "ฟังก์ชันผกผันของ (x + a)/b"}, level=LEVEL, topic="ฟังก์ชัน")
+class InverseScaledShiftM4(MathType):
+    def expr(self, rng: Random):
+        a, b = _nz4(rng, 1, 9), rng.randint(2, 9)
+        right = f"f^{{-1}}(x) = {poly_tex((b, 'x'), (-a, ''))}"
+        wrongs = [f"f^{{-1}}(x) = {poly_tex((b, 'x'), (a, ''))}", rf"f^{{-1}}(x) = \frac{{x {'-' if a > 0 else '+'} {abs(a)}}}{{{b}}}",
+                  f"f^{{-1}}(x) = {poly_tex((1, 'x'), (-a * b, ''))}"]
+        return MathDraw(rf"f(x) = \frac{{{poly_tex((1, 'x'), (a, ''))}}}{{{b}}}", right, prompt="จงหาฟังก์ชันผกผัน",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.even_function_m4", display_name={"th": "ฟังก์ชันใดเป็นฟังก์ชันคู่"}, level=LEVEL, topic="ฟังก์ชัน")
+class EvenFunctionM4(QuestionType):
+    """Fixed choices: a function from another draw could also be even."""
+
+    def build(self, rng: Random, **params):
+        a, c = _nz4(rng, 1, 5), rng.randint(-9, 9)
+        b = _nz4(rng, 1, 5)
+        right = f"f(x) = {poly_tex((a, 'x^{4}'), (b, 'x^{2}'), (c, ''))}"
+        wrongs = [f"f(x) = {poly_tex((a, 'x^{3}'), (b, 'x'))}", f"f(x) = {poly_tex((a, 'x^{2}'), (b, 'x'), (c, ''))}",
+                  f"f(x) = {binomial_tex(c if c else 1)}^{{2}}"]
+        return _fixed_maths([_text_block("ฟังก์ชันใดเป็นฟังก์ชันคู่ (f(−x) = f(x) ทุก x)")], right,
+                            _tk4(*wrongs, answer=right), self.topic)
+
+
+@question_type("math.reflected_point_m4", display_name={"th": "จุดบนกราฟที่สะท้อนแล้ว"}, level=LEVEL, topic="ฟังก์ชัน")
+class ReflectedPointM4(ChoiceType):
+    def compose(self, rng: Random):
+        a, b = _nz4(rng, 1, 9), _nz4(rng, 1, 9)
+        while abs(a) == abs(b):
+            b = _nz4(rng, 1, 9)
+        outside = rng.random() < 0.5
+        graph = "y = −f(x)" if outside else "y = f(−x)"
+        right = f"({a}, {-b})" if outside else f"({-a}, {b})"
+        options = [f"({a}, {-b})", f"({-a}, {b})", f"({-a}, {-b})", f"({b}, {a})"]
+        stem = f"ถ้าจุด ({a}, {b}) อยู่บนกราฟของ y = f(x) จุดใดอยู่บนกราฟของ {graph}"
+        return stem, right, [o for o in options if o != right]
+
+
+@question_type("math.stretched_point_m4", display_name={"th": "จุดบนกราฟที่ยืดแนวตั้ง"}, level=LEVEL, topic="ฟังก์ชัน")
+class StretchedPointM4(ChoiceType):
+    def compose(self, rng: Random):
+        a, b = _nz4(rng, 1, 9), _nz4(rng, 1, 9)
+        k = rng.randint(2, 5)
+        right = f"({a}, {k * b})"
+        stem = f"ถ้าจุด ({a}, {b}) อยู่บนกราฟของ y = f(x) จุดใดอยู่บนกราฟของ y = {k}f(x)"
+        wrongs = [f"({k * a}, {b})", f"({a}, {b + k})", f"({k * a}, {k * b})", f"({a}, {-k * b})"]
+        return stem, right, _tk4(*wrongs, answer=right)[:3]
+
+
+@question_type("math.inverse_cubic_value_m4", display_name={"th": "ค่าของฟังก์ชันผกผันของ x³ + c"}, level=LEVEL,
+               topic="ฟังก์ชัน")
+class InverseCubicValueM4(MathType):
+    def expr(self, rng: Random):
+        x = _nz4(rng, 1, 5)
+        c = rng.randint(-20, 20)
+        y = x ** 3 + c
+        # The sign of x flipped; one either side; the value itself.
+        return MathDraw(rf"f(x) = {poly_tex((1, 'x^{3}'), (c, ''))}", str(x), prompt=f"จงหาค่าของ f⁻¹({y})",
+                        distractors=_nk4(-x, x + 1, x - 1, y, answer=x))
+
+
+InversePointM4.PROVENANCE = Provenance("original")
+InverseScaledShiftM4.PROVENANCE = Provenance("original")
+EvenFunctionM4.PROVENANCE = Provenance("original")
+ReflectedPointM4.PROVENANCE = Provenance("original")
+StretchedPointM4.PROVENANCE = Provenance("original")
+InverseCubicValueM4.PROVENANCE = Provenance("original")

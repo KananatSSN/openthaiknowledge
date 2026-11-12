@@ -252,3 +252,78 @@ class RadicalDenestM4(QuestionType):
                   else f"{_root_tex(2 * m)} + {_root_tex(n)}"]
         return _tex_q(stem, right, wrongs, self.topic)
 RadicalDenestM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/5 เลขยกกำลัง',))
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.kit.math_problems import frac_tex, sqrt_tex  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More radicals (2026-11): pulling out a square, a product of roots, and a conjugate pair ──
+
+
+@question_type("math.simplify_root_m4", display_name={"th": "ถอดรากที่สองให้อยู่ในรูปอย่างง่าย"}, level=LEVEL,
+               topic="จัดรูปกรณฑ์")
+class SimplifyRootM4(MathType):
+    def expr(self, rng: Random):
+        m = rng.choice((2, 3, 5, 6, 7, 10, 11))
+        k = rng.randint(2, 9)
+        right = sqrt_tex(k * k * m)
+        # The square left inside; the root of k only; k squared outside.
+        wrongs = [rf"{k}\sqrt{{{k * m}}}", rf"{k * k}\sqrt{{{m}}}", rf"\sqrt{{{k}}}\sqrt{{{m}}}", rf"{k + 1}\sqrt{{{m}}}"]
+        return MathDraw(rf"\sqrt{{{k * k * m}}}", right, prompt="จงทำให้อยู่ในรูปอย่างง่าย",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.root_product_m4", display_name={"th": "ผลคูณของรากที่สอง"}, level=LEVEL, topic="จัดรูปกรณฑ์")
+class RootProductM4(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.sample((2, 3, 5, 6, 8, 10, 12, 15, 18), 2)
+        right = sqrt_tex(a * b)
+        # Added under one root; the roots added; the product not simplified.
+        wrongs = [rf"\sqrt{{{a + b}}}", rf"{a * b}", rf"\sqrt{{{a * b}}}" if right != rf"\sqrt{{{a * b}}}" else rf"{a}\sqrt{{{b}}}",
+                  rf"2\sqrt{{{a * b}}}"]
+        return MathDraw(rf"\sqrt{{{a}}} \times \sqrt{{{b}}}", right, prompt="จงทำให้อยู่ในรูปอย่างง่าย",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.conjugate_product_m4", display_name={"th": "ผลคูณของสังยุคที่มีกรณฑ์"}, level=LEVEL,
+               topic="จัดรูปกรณฑ์")
+class ConjugateProductM4(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 9)
+        b = rng.choice((2, 3, 5, 6, 7, 10, 11, 13))
+        right = a * a - b
+        # b squared; a not squared; the cross terms kept.
+        return MathDraw(rf"({a} + \sqrt{{{b}}})({a} - \sqrt{{{b}}})", str(right), prompt="จงหาค่า",
+                        distractors=_nk4(a * a - b * b, a - b, a * a + b, a * a - b + 2 * a, answer=right))
+
+
+SimplifyRootM4.PROVENANCE = Provenance("original")
+RootProductM4.PROVENANCE = Provenance("original")
+ConjugateProductM4.PROVENANCE = Provenance("original")

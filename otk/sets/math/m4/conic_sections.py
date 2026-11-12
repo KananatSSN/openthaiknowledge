@@ -311,3 +311,102 @@ class HyperbolaM4(QuestionType):
                        rf"y = \pm {frac_tex(Fraction(c, a))}x", rf"y = \pm {frac_tex(Fraction(b * b, a * a) + 1)}x"],
                       self.topic)
 HyperbolaM4.PROVENANCE = Provenance("original")
+
+
+from otk.core.content import math as _math_block  # noqa: E402
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathDraw, MathType  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+from otk.sets._support.math_p2 import _texts as _fixed_texts  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More conic sections (2026-11): a parabola's focus, an ellipse's major axis, a hyperbola's asymptotes, and
+# which conic an equation draws ──
+
+
+@question_type("math.parabola_focus_m4", display_name={"th": "โฟกัสของพาราโบลาที่มีจุดยอดที่จุดกำเนิด"}, level=LEVEL,
+               topic="ภาคตัดกรวย")
+class ParabolaFocusM4(MathType):
+    def expr(self, rng: Random):
+        p = _nz4(rng, 1, 6)
+        horizontal = rng.random() < 0.5
+        eq = f"y^{{2}} = {4 * p}x" if horizontal else f"x^{{2}} = {4 * p}y"
+        right = _pt4(p, 0) if horizontal else _pt4(0, p)
+        # The axes swapped; 4p kept; the sign lost.
+        wrongs = [_pt4(0, p) if horizontal else _pt4(p, 0), _pt4(4 * p, 0) if horizontal else _pt4(0, 4 * p),
+                  _pt4(-p, 0) if horizontal else _pt4(0, -p)]
+        return MathDraw(eq, right, prompt="โฟกัสของพาราโบลานี้คือจุดใด", distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.ellipse_major_axis_m4", display_name={"th": "ความยาวแกนเอกของวงรี"}, level=LEVEL, topic="ภาคตัดกรวย")
+class EllipseMajorAxisM4(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.sample(range(2, 13), 2)
+        big = max(a, b)
+        right = 2 * big
+        # Half the axis; the minor axis; the squares added.
+        return MathDraw(rf"\frac{{x^{{2}}}}{{{a * a}}} + \frac{{y^{{2}}}}{{{b * b}}} = 1", str(right), prompt="แกนเอกของวงรีนี้ยาวกี่หน่วย",
+                        distractors=_nk4(big, 2 * min(a, b), big * big, a + b, answer=right, lo=1))
+
+
+@question_type("math.hyperbola_asymptote_m4", display_name={"th": "ความชันของเส้นกำกับของไฮเพอร์โบลา"}, level=LEVEL,
+               topic="ภาคตัดกรวย")
+class HyperbolaAsymptoteM4(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.sample(range(2, 10), 2)
+        right = rf"y = \pm {frac_tex(Fraction(b, a))}x"
+        wrongs = [rf"y = \pm {frac_tex(Fraction(a, b))}x", rf"y = \pm {frac_tex(Fraction(b * b, a * a))}x",
+                  rf"y = {frac_tex(Fraction(b, a))}x"]
+        return MathDraw(rf"\frac{{x^{{2}}}}{{{a * a}}} - \frac{{y^{{2}}}}{{{b * b}}} = 1", right, prompt="เส้นกำกับของไฮเพอร์โบลานี้คือข้อใด",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.conic_type_m4", display_name={"th": "สมการนี้เป็นกราฟของภาคตัดกรวยชนิดใด"}, level=LEVEL, topic="ภาคตัดกรวย")
+class ConicTypeM4(QuestionType):
+    _OPTIONS = ("วงกลม", "วงรี", "พาราโบลา", "ไฮเพอร์โบลา")
+
+    def build(self, rng: Random, **params):
+        kind = rng.randrange(4)
+        a, b = rng.sample(range(2, 10), 2)
+        c = rng.randint(1, 9)
+        if kind == 0:
+            eq = f"{a}x^{{2}} + {a}y^{{2}} = {a * c * c}"
+        elif kind == 1:
+            eq = f"{a}x^{{2}} + {b}y^{{2}} = {a * b}"
+        elif kind == 2:
+            eq = f"y = {a}x^{{2}} + {c}" if rng.random() < 0.5 else f"x = {a}y^{{2}} - {c}"
+        else:
+            eq = f"{a}x^{{2}} - {b}y^{{2}} = {a * b}"
+        right = self._OPTIONS[kind]
+        return _fixed_texts([_text_block("สมการนี้เป็นกราฟของภาคตัดกรวยชนิดใด"), _math_block(eq)], right,
+                            [o for o in self._OPTIONS if o != right], self.topic)
+
+
+ParabolaFocusM4.PROVENANCE = Provenance("original")
+EllipseMajorAxisM4.PROVENANCE = Provenance("original")
+HyperbolaAsymptoteM4.PROVENANCE = Provenance("original")
+ConicTypeM4.PROVENANCE = Provenance("original")

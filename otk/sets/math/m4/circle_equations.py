@@ -190,3 +190,124 @@ class CircleFromCentrePoint(MathType):
             prompt="วงกลมมีจุดศูนย์กลาง C และผ่านจุด P จงหารัศมี",
             distractors=[str((c * k) ** 2), str(a * k + b * k), str(c * k * 2)])
 CircleFromCentrePoint.PROVENANCE = Provenance("original")
+
+from math import isqrt  # noqa: E402
+
+from otk.core.content import math as _math_block  # noqa: E402
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.kit.math_problems import poly_tex, sqrt_tex  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+from otk.sets._support.math_p2 import _texts as _fixed_texts  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More circle equations (2026-11): the centre from the general form, the radius from the general form, a
+# point inside or outside, a circle from a diameter's ends, and a circle touching the x-axis ──
+
+
+def _sq4(sym: str, h: int) -> str:
+    return f"({sym} {'-' if h > 0 else '+'} {abs(h)})^{{2}}" if h else f"{sym}^{{2}}"
+
+
+def _general4(h: int, k: int, r2: int) -> str:
+    return f"{poly_tex((1, 'x^{2}'), (1, 'y^{2}'), (-2 * h, 'x'), (-2 * k, 'y'), (h * h + k * k - r2, ''))} = 0"
+
+
+@question_type("math.circle_centre_general_m4", display_name={"th": "จุดศูนย์กลางจากสมการวงกลมรูปทั่วไป"}, level=LEVEL,
+               topic="สมการวงกลม")
+class CircleCentreGeneralM4(MathType):
+    def expr(self, rng: Random):
+        h, k = _nz4(rng, 1, 8), _nz4(rng, 1, 8)
+        r = rng.randint(1, 9)
+        right = _pt4(h, k)
+        wrongs = [_pt4(-h, -k), _pt4(2 * h, 2 * k), _pt4(-2 * h, -2 * k), _pt4(k, h)]
+        return MathDraw(_general4(h, k, r * r), right, prompt="วงกลมนี้มีจุดศูนย์กลางที่จุดใด", distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.circle_radius_general_m4", display_name={"th": "รัศมีจากสมการวงกลมรูปทั่วไป"}, level=LEVEL,
+               topic="สมการวงกลม")
+class CircleRadiusGeneralM4(MathType):
+    def expr(self, rng: Random):
+        h, k = _nz4(rng, 1, 8), _nz4(rng, 1, 8)
+        r = rng.randint(1, 9)
+        f = h * h + k * k - r * r
+        # The constant read as r²; r² not rooted; h + k.
+        wrongs = [sqrt_tex(abs(f)) if f else "1", str(r * r), str(abs(h) + abs(k)), str(r + 1)]
+        return MathDraw(_general4(h, k, r * r), str(r), prompt="วงกลมนี้มีรัศมียาวกี่หน่วย", distractors=_tk4(*wrongs, answer=str(r)))
+
+
+@question_type("math.point_vs_circle_m4", display_name={"th": "จุดอยู่ภายใน บน หรือภายนอกวงกลม"}, level=LEVEL,
+               topic="สมการวงกลม")
+class PointVsCircleM4(QuestionType):
+    _OPTIONS = ("อยู่ภายในวงกลม", "อยู่บนวงกลม", "อยู่ภายนอกวงกลม", "บอกไม่ได้")
+
+    def build(self, rng: Random, **params):
+        h, k = rng.randint(-5, 5), rng.randint(-5, 5)
+        r = rng.randint(3, 8)
+        kind = rng.randrange(3)
+        dx = rng.randint(0, r - 1) if kind == 0 else r if kind == 1 else r + rng.randint(1, 3)
+        x, y = h + dx, k
+        if kind == 1 and rng.random() < 0.5:
+            x, y = h, k + r
+        stem = [_text_block(f"จุด ({x}, {y}) อยู่ที่ใดเมื่อเทียบกับวงกลม"), _math_block(f"{_sq4('x', h)} + {_sq4('y', k)} = {r * r}")]
+        right = self._OPTIONS[kind]
+        return _fixed_texts(stem, right, [o for o in self._OPTIONS if o != right], self.topic)
+
+
+@question_type("math.circle_from_diameter_m4", display_name={"th": "สมการวงกลมจากปลายเส้นผ่านศูนย์กลาง"}, level=LEVEL,
+               topic="สมการวงกลม")
+class CircleFromDiameterM4(MathType):
+    def expr(self, rng: Random):
+        h, k = rng.randint(-6, 6), rng.randint(-6, 6)
+        a, b = rng.choice(((3, 4), (4, 3), (5, 12), (12, 5), (6, 8), (8, 6), (0, 5), (5, 0)))
+        r2 = a * a + b * b
+        p, q = (h - a, k - b), (h + a, k + b)
+        right = f"{_sq4('x', h)} + {_sq4('y', k)} = {r2}"
+        # The diameter squared; the centre's signs flipped; the radius not squared.
+        wrongs = [f"{_sq4('x', h)} + {_sq4('y', k)} = {4 * r2}", f"{_sq4('x', -h)} + {_sq4('y', -k)} = {r2}",
+                  f"{_sq4('x', h)} + {_sq4('y', k)} = {isqrt(r2)}"]
+        return MathDraw(rf"A{_pt4(*p)}, \; B{_pt4(*q)}", right, prompt="AB เป็นเส้นผ่านศูนย์กลางของวงกลม สมการวงกลมคือข้อใด",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.circle_touching_x_axis_m4", display_name={"th": "วงกลมที่สัมผัสแกน x"}, level=LEVEL, topic="สมการวงกลม")
+class CircleTouchingXAxisM4(MathType):
+    def expr(self, rng: Random):
+        h, k = rng.randint(-8, 8), _nz4(rng, 1, 8)
+        right = f"{_sq4('x', h)} + {_sq4('y', k)} = {k * k}"
+        # The radius from h; the radius not squared; h² + k².
+        wrongs = [f"{_sq4('x', h)} + {_sq4('y', k)} = {h * h if h else 1}", f"{_sq4('x', h)} + {_sq4('y', k)} = {abs(k)}",
+                  f"{_sq4('x', h)} + {_sq4('y', k)} = {h * h + k * k}"]
+        return MathDraw(rf"C({h}, {k})", right, prompt="วงกลมมีจุดศูนย์กลางที่ C และสัมผัสแกน x สมการวงกลมคือข้อใด",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+CircleCentreGeneralM4.PROVENANCE = Provenance("original")
+CircleRadiusGeneralM4.PROVENANCE = Provenance("original")
+PointVsCircleM4.PROVENANCE = Provenance("original")
+CircleFromDiameterM4.PROVENANCE = Provenance("original")
+CircleTouchingXAxisM4.PROVENANCE = Provenance("original")
