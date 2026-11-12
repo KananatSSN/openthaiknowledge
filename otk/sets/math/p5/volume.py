@@ -135,3 +135,137 @@ class VolumeCapacityP5(WordProblem):
                                                 named("steps.missed_a_step", vol // length),
                                                 named("operation.reversed", vol - w * length),
                                                 h * 10, answer=h, lo=1))
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p5 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _dec(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_dec(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More volume (2026-11): a cube's volume, a stone from the water's rise, small cubes in a box, litres and
+# cubic centimetres, the largest box, and how long to fill a tank ──
+
+
+@question_type("math.cube_volume_p5", display_name={"th": "ปริมาตรของลูกบาศก์"},
+               level=LEVEL, topic="ปริมาตร")
+class CubeVolumeP5(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 15)
+        right = a ** 3
+        prompt = f"ลูกบาศก์มีสันยาว {a} เซนติเมตร มีปริมาตรกี่ลูกบาศก์เซนติเมตร"
+        # The area of one face; the edge times three; all the edges.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(a * a, 3 * a, 12 * a, 6 * a * a, answer=right, lo=1))
+
+
+@question_type("math.water_rise_volume_p5", display_name={"th": "หาปริมาตรสิ่งของจากระดับน้ำที่สูงขึ้น"},
+               level=LEVEL, topic="ปริมาตร")
+class WaterRiseVolumeP5(WordProblem):
+    def expr(self, rng: Random):
+        w, length = rng.randint(10, 40), rng.randint(15, 50)
+        rise = rng.randint(1, 6)
+        water = rng.randint(10, 30)
+        right = w * length * rise
+        prompt = (f"ตู้ปลาทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {length} ซม. มีน้ำสูง {water} ซม. "
+                  f"เมื่อใส่ก้อนหินลงไป น้ำสูงขึ้นเป็น {water + rise} ซม. ก้อนหินมีปริมาตรกี่ลูกบาศก์เซนติเมตร")
+        # The water after, or before; the base area alone.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(w * length * (water + rise), w * length * water, w * length,
+                                        right + w * length, answer=right, lo=1))
+
+
+@question_type("math.cubes_in_box_p5", display_name={"th": "บรรจุลูกบาศก์ลงในกล่องได้กี่ลูก"},
+               level=LEVEL, topic="ปริมาตร")
+class CubesInBoxP5(WordProblem):
+    def expr(self, rng: Random):
+        e = rng.choice((2, 3, 5))
+        a, b, c = rng.randint(2, 8), rng.randint(2, 8), rng.randint(1, 6)
+        right = a * b * c
+        prompt = (f"กล่องทรงสี่เหลี่ยมมุมฉากกว้าง {a * e} ซม. ยาว {b * e} ซม. สูง {c * e} ซม. "
+                  f"บรรจุลูกบาศก์ที่มีสันยาว {e} ซม. ได้เต็มพอดีกี่ลูก")
+        # The box's volume; divided by the edge only once; one layer fewer.
+        vol = a * b * c * e ** 3
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(vol, vol // e, a * b * (c - 1) if c > 1 else a * b + 1, right + a * b,
+                                        answer=right, lo=1))
+
+
+@question_type("math.litres_cubic_cm_p5", display_name={"th": "ลิตร มิลลิลิตร และลูกบาศก์เซนติเมตร"},
+               level=LEVEL, topic="ปริมาตร")
+class LitresCubicCmP5(WordProblem):
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        if kind == 0:
+            v = rng.randint(11, 99) * 100
+            right = v
+            prompt = f"{_dec(v, 3)} ลิตร เท่ากับกี่ลูกบาศก์เซนติเมตร"
+            return MathDraw("", _g(right), prompt=prompt,
+                            distractors=_gk(right // 10, right * 10, v // 100, right + 100, answer=right, lo=1))
+        if kind == 1:
+            v = rng.randint(11, 99) * 100
+            prompt = f"{v:,} มิลลิลิตร เท่ากับกี่ลิตร"
+            right = _dec(v, 3)
+            wrongs = [_dec(v, 2), _dec(v, 4), _dec(v + 100, 3)]
+            return MathDraw("", right, prompt=prompt, distractors=[w for w in dict.fromkeys(wrongs) if w != right])
+        v = rng.randint(2, 900)
+        prompt = f"{v} ลูกบาศก์เซนติเมตร เท่ากับกี่มิลลิลิตร"
+        return MathDraw("", str(v), prompt=prompt,
+                        distractors=_story.keep(v * 1000, v * 10, v * 100, v + 10, answer=v, lo=1))
+
+
+@question_type("math.largest_box_volume_p5", display_name={"th": "กล่องใดมีปริมาตรมากที่สุด"},
+               level=LEVEL, topic="ปริมาตร")
+class LargestBoxVolumeP5(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            dims = [(rng.randint(2, 12), rng.randint(2, 12), rng.randint(2, 12)) for _ in range(4)]
+            vols = [a * b * c for a, b, c in dims]
+            if len(set(vols)) == 4:
+                break
+        texts = [f"กว้าง {a} ซม. ยาว {b} ซม. สูง {c} ซม." for a, b, c in dims]
+        most = rng.random() < 0.5
+        pick = vols.index(max(vols) if most else min(vols))
+        return (f"กล่องทรงสี่เหลี่ยมมุมฉากใดมีปริมาตร{'มากที่สุด' if most else 'น้อยที่สุด'}", texts[pick],
+                [t for i, t in enumerate(texts) if i != pick])
+
+
+@question_type("math.fill_tank_time_p5", display_name={"th": "เปิดน้ำใส่ถังกี่นาทีจึงเต็ม"},
+               level=LEVEL, topic="ปริมาตร")
+class FillTankTimeP5(WordProblem):
+    def expr(self, rng: Random):
+        rate = rng.choice((2, 4, 5, 10))
+        while True:
+            w, length, h = rng.randint(2, 10) * 10, rng.randint(2, 12) * 10, rng.randint(2, 8) * 10
+            litres = w * length * h // 1000
+            if litres % rate == 0:
+                break
+        right = litres // rate
+        prompt = (f"ถังน้ำทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {length} ซม. สูง {h} ซม. "
+                  f"เปิดน้ำไหลลงถังนาทีละ {rate} ลิตร กี่นาทีน้ำจึงเต็มถัง")
+        # The litres; the cubic centimetres divided by the rate; times instead of divided.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(litres, w * length * h // rate, litres * rate, right + 1,
+                                        answer=right, lo=1))

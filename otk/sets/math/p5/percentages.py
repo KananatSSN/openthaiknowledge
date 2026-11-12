@@ -191,3 +191,92 @@ class PercentTwoStepP5(WordProblem):
                                                 named("part.complement", price * n * pct // 100),
                                                 named("operation.reversed", after + n),
                                                 ans + after, answer=ans, lo=1))
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p5 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _dec(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_dec(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More percentages (2026-11): a percent as a fraction, a percent as a decimal, a price raised by a percent,
+# and the part left over ──
+
+
+@question_type("math.percent_to_fraction_p5", display_name={"th": "เขียนร้อยละเป็นเศษส่วนอย่างต่ำ"},
+               level=LEVEL, topic="ร้อยละ")
+class PercentToFractionP5(ChoiceType):
+    _PAIRS = ((50, 1, 2), (25, 1, 4), (75, 3, 4), (20, 1, 5), (40, 2, 5), (60, 3, 5), (80, 4, 5),
+              (10, 1, 10), (30, 3, 10), (70, 7, 10), (90, 9, 10), (5, 1, 20), (35, 7, 20), (45, 9, 20))
+
+    def compose(self, rng: Random):
+        pct, a, b = rng.choice(self._PAIRS)
+        right = f"{a}/{b}"
+        wrongs = [f"{pct}/10", f"1/{pct}", f"{b}/{a}" if a != 1 else f"{pct}/1000", f"{a}/{b + 1}"]
+        wrongs = [w for w in dict.fromkeys(wrongs) if w != right]
+        return f"ร้อยละ {pct} เขียนเป็นเศษส่วนอย่างต่ำได้อย่างไร", right, wrongs[:3]
+
+
+@question_type("math.percent_to_decimal_p5", display_name={"th": "เขียนร้อยละเป็นทศนิยม"},
+               level=LEVEL, topic="ร้อยละ")
+class PercentToDecimalP5(WordProblem):
+    def expr(self, rng: Random):
+        pct = rng.choice([p for p in range(1, 100) if p % 10] + [10, 30, 50, 70, 90])
+        right = _dec(pct, 2)
+        prompt = f"{pct}% เขียนในรูปทศนิยมได้เท่าใด"
+        # A place too far either way; the percent itself.
+        wrongs = list(dict.fromkeys([_dec(pct, 1), _dec(pct, 3), str(pct)]))
+        return MathDraw("", right, prompt=prompt, distractors=[w for w in wrongs if w != right])
+
+
+@question_type("math.percent_increase_price_p5", display_name={"th": "ราคาเพิ่มขึ้นเป็นร้อยละ"},
+               level=LEVEL, topic="ร้อยละ")
+class PercentIncreasePriceP5(WordProblem):
+    def expr(self, rng: Random):
+        r = rng.choice((5, 10, 15, 20, 25, 30, 40, 50))
+        old = rng.randint(2, 60) * 20
+        rise = old * r // 100
+        right = old + rise
+        what = rng.choice(("ค่าเช่าบ้าน", "ราคาจักรยาน", "ค่าเรียนพิเศษ"))
+        prompt = f"{what}เดิม {old:,} บาท ปีนี้เพิ่มขึ้นร้อยละ {r} ปีนี้{what}เป็นกี่บาท"
+        # Only the rise; the rate added as baht; a decrease instead.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(rise, old + r, old - rise, right + 10 * r, answer=right, lo=1))
+
+
+@question_type("math.percent_left_over_p5", display_name={"th": "ส่วนที่เหลือคิดเป็นจำนวนเท่าใด"},
+               level=LEVEL, topic="ร้อยละ")
+class PercentLeftOverP5(WordProblem):
+    def expr(self, rng: Random):
+        r = rng.choice((80, 85, 90, 95, 75, 60))
+        total = rng.choice((20, 40, 60, 80, 100, 120, 200))
+        while total * r % 100:
+            total += 20
+        came = total * r // 100
+        right = total - came
+        prompt = f"นักเรียนชั้นหนึ่งมี {total} คน มาเรียนร้อยละ {r} ขาดเรียนกี่คน"
+        # Those who came; the percent left as a count; the percent itself.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(came, 100 - r, r, right + 2, answer=right, lo=1))

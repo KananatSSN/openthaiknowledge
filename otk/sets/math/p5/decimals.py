@@ -213,3 +213,103 @@ class DecimalWordProblemP5(WordProblem):
                         distractors=_labelled(
                             [(each * 10, "decimal.point_misplaced"), (each / 10, "decimal.point_misplaced"),
                              (total * n, "operation.reversed"), (each + 1, None)], dstr, each))
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p5 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _dec(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_dec(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More decimals (2026-11): rounding to one or two places, the largest or smallest of four, the value of a
+# digit, and estimating a product ──
+
+
+@question_type("math.round_decimal_p5", display_name={"th": "ปัดทศนิยมเป็นทศนิยมหนึ่งหรือสองตำแหน่ง"},
+               level=LEVEL, topic="ทศนิยม")
+class RoundDecimalP5(WordProblem):
+    def expr(self, rng: Random):
+        v = rng.randint(1001, 99999)
+        while v % 10 == 0:
+            v += 1
+        places = rng.choice((1, 2))
+        step = 10 ** (3 - places)
+        right = (v + step // 2) // step
+        cut = v // step
+        names = {1: "หนึ่งตำแหน่ง", 2: "สองตำแหน่ง"}
+        prompt = f"ปัด {_dec(v, 3)} เป็นทศนิยม{names[places]} ได้เท่าใด"
+
+        def fixed(x: int) -> str:
+            return f"{x // 10 ** places}.{x % 10 ** places:0{places}d}"
+
+        # Cut off instead of rounding; one step either side.
+        return MathDraw("", fixed(right), prompt=prompt,
+                        distractors=[fixed(int(x)) for x in _story.keep(cut, cut + 1, right + 1, right - 1,
+                                                                   answer=right, lo=1)])
+
+
+@question_type("math.decimal_order_p5", display_name={"th": "ทศนิยมที่มากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="ทศนิยม")
+class DecimalOrderP5(ChoiceType):
+    def compose(self, rng: Random):
+        whole = rng.randint(0, 9)
+        d1, d2, d3 = rng.sample(range(1, 10), 3)
+        # Same digits in different places, so place value decides, not length.
+        values = [whole * 1000 + d1 * 100 + d2 * 10 + d3, whole * 1000 + d1 * 100 + d3 * 10,
+                  whole * 1000 + d2 * 100 + d1, whole * 1000 + d3 * 100 + d2 * 10 + d1]
+        most = rng.random() < 0.5
+        right = max(values) if most else min(values)
+        texts = [_dec(v, 3) for v in values]
+        return (f"ทศนิยมใด{'มากที่สุด' if most else 'น้อยที่สุด'}", _dec(right, 3),
+                [t for v, t in zip(values, texts) if v != right])
+
+
+@question_type("math.decimal_digit_value_p5", display_name={"th": "ค่าของเลขโดดในทศนิยม"},
+               level=LEVEL, topic="ทศนิยม")
+class DecimalDigitValueP5(ChoiceType):
+    def compose(self, rng: Random):
+        digits = rng.sample(range(1, 10), 4)
+        number = f"{digits[0]}.{digits[1]}{digits[2]}{digits[3]}"
+        pos = rng.randint(1, 3)
+        d = digits[pos]
+        values = [f"{d}", f"0.{d}", f"0.0{d}", f"0.00{d}"]
+        right = values[pos]
+        return f"ในจำนวน {number} เลขโดด {d} มีค่าเท่าใด", right, [v for v in values if v != right]
+
+
+@question_type("math.estimate_decimal_product_p5", display_name={"th": "ประมาณผลคูณของทศนิยม"},
+               level=LEVEL, topic="ทศนิยม")
+class EstimateDecimalProductP5(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 9)
+        b = rng.randint(2, 9)
+        x = a * 10 + rng.choice((-4, -3, -2, -1, 1, 2, 3, 4))
+        y = b * 10 + rng.choice((-4, -3, -2, -1, 1, 2, 3, 4))
+        right = a * b
+        prompt = f"ประมาณผลคูณของ {_dec(x, 1)} × {_dec(y, 1)} โดยปัดแต่ละจำนวนเป็นจำนวนเต็มก่อน"
+        # Cutting off instead of rounding; a place too far; one factor rounded only.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep((x // 10) * (y // 10), right * 10, a * (y // 10) + 1,
+                                                right + a, answer=right, lo=1))

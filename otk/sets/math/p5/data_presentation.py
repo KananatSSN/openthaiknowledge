@@ -171,3 +171,136 @@ class LineGraphProblemP5(QuestionType):
         return GeneratedQuestion(stem=stem, correct=[content_math(str(spread))],
                                  distractors=fixed(*[[content_math(w)] for w in wrongs]),
                                  topic=self.topic)
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p5 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _dec(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_dec(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More line graphs (2026-11): the total, how many gaps rise or fall, the highest point, how many points pass a value,
+# the next point of a steady change, and the true statement ──
+
+_LINE_SERIES = (
+    ("ความสูงของต้นถั่ว", tuple(f"สัปดาห์ที่ {i}" for i in range(1, 6)), "เซนติเมตร", (2, 60)),
+    ("อุณหภูมิตอนเที่ยง", ("จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์"), "องศาเซลเซียส", (24, 40)),
+    ("จำนวนผู้เข้าห้องสมุด", tuple(f"วันที่ {i}" for i in range(1, 6)), "คน", (20, 90)),
+)
+
+
+def _line_text(title: str, unit: str, points, values) -> str:
+    rows = "\n".join(f"{x}: {v}" for x, v in zip(points, values))
+    return f"กราฟเส้นแสดง{title} ({unit}) อ่านค่าจากกราฟได้ดังนี้\n{rows}"
+
+
+def _line(rng: Random):
+    title, points, unit, (lo, hi) = rng.choice(_LINE_SERIES)
+    values = rng.sample(range(lo, hi + 1), len(points))
+    return _line_text(title, unit, points, values), points, unit, values
+
+
+@question_type("math.line_graph_total_p5", display_name={"th": "อ่านกราฟเส้น (ผลรวมทุกจุด)"},
+               level=LEVEL, topic="การนำเสนอข้อมูล")
+class LineGraphTotalP5(WordProblem):
+    def expr(self, rng: Random):
+        tt, points, unit, values = _line(rng)
+        right = sum(values)
+        # The first and last points only; one point left out; the highest point five times.
+        return MathDraw("", str(right), prompt=f"{tt}\nรวมทุกจุดเป็นกี่{unit}",
+                        distractors=_story.keep(values[0] + values[-1], right - values[2], 5 * max(values),
+                                                right + 10, answer=right, lo=1))
+
+
+@question_type("math.line_graph_count_rises_p5", display_name={"th": "อ่านกราฟเส้น (นับช่วงที่เพิ่มขึ้น)"},
+               level=LEVEL, topic="การนำเสนอข้อมูล")
+class LineGraphCountRisesP5(WordProblem):
+    def expr(self, rng: Random):
+        tt, points, unit, values = _line(rng)
+        rises = sum(b > a for a, b in zip(values, values[1:]))
+        falls = len(values) - 1 - rises
+        rising = rng.random() < 0.5
+        right = rises if rising else falls
+        # The other kind of change; the points instead of the gaps; one off.
+        return MathDraw("", str(right), prompt=f"{tt}\nมีกี่ช่วงที่ค่า{'เพิ่มขึ้น' if rising else 'ลดลง'}จากจุดก่อนหน้า",
+                        distractors=_story.keep(falls if rising else rises, len(values), right + 1, right - 1,
+                                                answer=right, lo=0, hi=len(values)))
+
+
+@question_type("math.line_graph_highest_p5", display_name={"th": "อ่านกราฟเส้น (จุดสูงสุดหรือต่ำสุด)"},
+               level=LEVEL, topic="การนำเสนอข้อมูล")
+class LineGraphHighestP5(ChoiceType):
+    def compose(self, rng: Random):
+        tt, points, unit, values = _line(rng)
+        most = rng.random() < 0.5
+        pick = values.index(max(values) if most else min(values))
+        return (f"{tt}\nจุดใดมีค่า{'มากที่สุด' if most else 'น้อยที่สุด'}", points[pick],
+                [x for i, x in enumerate(points) if i != pick])
+
+
+@question_type("math.line_graph_count_above_p5", display_name={"th": "อ่านกราฟเส้น (นับจุดที่เกินค่าที่กำหนด)"},
+               level=LEVEL, topic="การนำเสนอข้อมูล")
+class LineGraphCountAboveP5(WordProblem):
+    def expr(self, rng: Random):
+        tt, points, unit, values = _line(rng)
+        k = rng.randint(min(values), max(values) - 1)
+        right = sum(v > k for v in values)
+        # Counting a point equal to the value; the points at or below; all of them.
+        return MathDraw("", str(right), prompt=f"{tt}\nมีกี่จุดที่มีค่ามากกว่า {k} {unit}",
+                        distractors=_story.keep(sum(v >= k for v in values), len(values) - right, len(values),
+                                                right + 1, right - 1, answer=right, lo=0, hi=len(values)))
+
+
+@question_type("math.line_graph_next_p5", display_name={"th": "อ่านกราฟเส้น (คาดคะเนจุดถัดไป)"},
+               level=LEVEL, topic="การนำเสนอข้อมูล")
+class LineGraphNextP5(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.randint(2, 9)
+        start = rng.randint(5, 40)
+        values = [start + step * i for i in range(5)]
+        points = tuple(f"สัปดาห์ที่ {i}" for i in range(1, 6))
+        tt = _line_text("ความสูงของต้นไม้", "เซนติเมตร", points, values)
+        right = values[-1] + step
+        # The last point repeated; twice the step; the first point added.
+        return MathDraw("", str(right),
+                        prompt=f"{tt}\nถ้าต้นไม้สูงขึ้นในอัตราเดิม สัปดาห์ที่ 6 จะสูงกี่เซนติเมตร",
+                        distractors=_story.keep(values[-1], values[-1] + 2 * step, values[-1] + start,
+                                                right + 1, answer=right, lo=1))
+
+
+@question_type("math.line_graph_true_p5", display_name={"th": "อ่านกราฟเส้น (ข้อความที่ถูกต้อง)"},
+               level=LEVEL, topic="การนำเสนอข้อมูล")
+class LineGraphTrueP5(ChoiceType):
+    def compose(self, rng: Random):
+        tt, points, unit, values = _line(rng)
+        i = rng.randrange(len(points) - 1)
+        a, b = values[i], values[i + 1]
+        way, other = ("เพิ่มขึ้น", "ลดลง") if b > a else ("ลดลง", "เพิ่มขึ้น")
+        d = abs(b - a)
+        x, y = points[i], points[i + 1]
+        right = f"จาก{x}ถึง{y} {way} {d} {unit}"
+        wrongs = [f"จาก{x}ถึง{y} {other} {d} {unit}", f"จาก{x}ถึง{y} {way} {a + b} {unit}",
+                  f"จาก{x}ถึง{y} {way} {d + 2} {unit}"]
+        return f"{tt}\nข้อความใดถูกต้อง", right, wrongs
