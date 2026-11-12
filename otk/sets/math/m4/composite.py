@@ -217,3 +217,80 @@ class CompositeRecoverInnerM4(QuestionType):
                                     rf"(f\circ g)(x)={composed}"),
                        text("ถ้า g เป็นฟังก์ชันเชิงเส้น แล้ว g(x) เท่ากับข้อใด")],
                       answer, wrongs, self.topic)
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More composite functions (2026-11): a quadratic after a linear, f after itself, and values from two
+# tables ──
+
+
+@question_type("math.composite_quadratic_value_m4", display_name={"th": "ค่าของฟังก์ชันประกอบที่มีฟังก์ชันกำลังสอง"},
+               level=LEVEL, topic="ฟังก์ชันประกอบ")
+class CompositeQuadraticValueM4(MathType):
+    def expr(self, rng: Random):
+        c = rng.randint(-9, 9)
+        a, b = _nz4(rng, 1, 4), rng.randint(-6, 6)
+        k = _nz4(rng, 1, 4)
+        inner = a * k + b
+        right = inner * inner + c
+        # The other order; g alone; f at k.
+        other = a * (k * k + c) + b
+        return MathDraw(rf"f(x) = {poly_tex((1, 'x^{2}'), (c, ''))}, \quad g(x) = {poly_tex((a, 'x'), (b, ''))}", str(right),
+                        prompt=f"จงหาค่าของ (f ∘ g)({k})", distractors=_nk4(other, inner, k * k + c, right + 1, answer=right))
+
+
+@question_type("math.self_composite_m4", display_name={"th": "ฟังก์ชันประกอบของฟังก์ชันกับตัวเอง"}, level=LEVEL,
+               topic="ฟังก์ชันประกอบ")
+class SelfCompositeM4(MathType):
+    def expr(self, rng: Random):
+        a, b = _nz4(rng, 2, 6), _nz4(rng, 1, 9)
+        right = f"(f ∘ f)(x) = {poly_tex((a * a, 'x'), (a * b + b, ''))}"
+        # f squared; the b not multiplied through; the multiplier doubled instead of squared.
+        wrongs = [f"(f ∘ f)(x) = {poly_tex((a * a, 'x^{2}'), (b * b, ''))}", f"(f ∘ f)(x) = {poly_tex((a * a, 'x'), (2 * b, ''))}",
+                  f"(f ∘ f)(x) = {poly_tex((2 * a, 'x'), (2 * b, ''))}"]
+        return MathDraw(rf"f(x) = {poly_tex((a, 'x'), (b, ''))}", right, prompt="จงหา (f ∘ f)(x)",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.composite_from_tables_m4", display_name={"th": "ฟังก์ชันประกอบจากตารางค่า"}, level=LEVEL,
+               topic="ฟังก์ชันประกอบ")
+class CompositeFromTablesM4(WordProblem):
+    def expr(self, rng: Random):
+        xs = [1, 2, 3, 4]
+        f = dict(zip(xs, rng.sample(range(1, 5), 4)))
+        g = dict(zip(xs, rng.sample(range(1, 5), 4)))
+        k = rng.choice(xs)
+        right = f[g[k]]
+        table = ("x | 1 | 2 | 3 | 4\n" + "f(x) | " + " | ".join(str(f[x]) for x in xs) + "\n"
+                 + "g(x) | " + " | ".join(str(g[x]) for x in xs))
+        prompt = f"ตารางแสดงค่าของ f และ g\n{table}\nจงหาค่าของ f(g({k}))"
+        # The other order; g alone; f alone.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk4(g[f[k]], g[k], f[k], (right % 4) + 1, answer=right))

@@ -419,3 +419,49 @@ class CostRevenueFunctionM4(WordProblem):
                                               f"ต้องขายอย่างน้อยกี่ชิ้นจึงจะไม่ขาดทุน",
                         distractors=_story.keep(q - 1, q + 1, fixed, answer=q, lo=1))
 CostRevenueFunctionM4.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More relations and functions (2026-11): the value of a quadratic function ──
+
+
+@question_type("math.quadratic_function_value_m4", display_name={"th": "หาค่าของฟังก์ชันกำลังสอง"}, level=LEVEL,
+               topic="ความสัมพันธ์และฟังก์ชัน")
+class QuadraticFunctionValueM4(MathType):
+    def expr(self, rng: Random):
+        a, b, c = _nz4(rng, 1, 4), rng.randint(-9, 9), rng.randint(-9, 9)
+        k = _nz4(rng, 1, 5)
+        right = a * k * k + b * k + c
+        # The square's sign lost; k not squared; c left out.
+        return MathDraw(rf"f(x) = {poly_tex((a, 'x^{2}'), (b, 'x'), (c, ''))}", str(right), prompt=f"จงหาค่าของ f({k})",
+                        distractors=_nk4(-a * k * k + b * k + c, a * k + b * k + c, a * k * k + b * k, right + 1, answer=right))
+
+
+QuadraticFunctionValueM4.PROVENANCE = Provenance("original")

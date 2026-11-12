@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,178 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,284 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -165,30 +165,30 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`absolute_value`](m4/absolute_value.py) | ค่าสัมบูรณ์ | ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.4/3, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/3 | 7 |
-| [`analytic_geometry`](m4/analytic_geometry.py) | เรขาคณิตวิเคราะห์ | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 4 |
-| [`basic_counting_principles`](m4/basic_counting_principles.py) | หลักการนับเบื้องต้น | ค 3.2 ม.4/1 | 3 |
-| [`circle_equations`](m4/circle_equations.py) | สมการวงกลม | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 5 |
-| [`composite`](m4/composite.py) | ฟังก์ชันประกอบ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/1 | 7 |
-| [`conic_sections`](m4/conic_sections.py) | ภาคตัดกรวย | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 6 |
-| [`discriminant`](m4/discriminant.py) | ดิสคริมิแนนต์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 3 |
-| [`distance`](m4/distance.py) | ระยะทาง | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 3 |
-| [`equations_of_lines`](m4/equations_of_lines.py) | สมการเส้นตรง | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 5 |
-| [`exponential`](m4/exponential.py) | สมการเลขชี้กำลัง | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/4 | 4 |
-| [`factorising`](m4/factorising.py) | แยกตัวประกอบ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 3 |
-| [`finding_parabolas`](m4/finding_parabolas.py) | หาสมการพาราโบลา | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 3 |
-| [`functions`](m4/functions.py) | ฟังก์ชัน | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 4 |
+| [`absolute_value`](m4/absolute_value.py) | ค่าสัมบูรณ์ | ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.4/3, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/3 | 10 |
+| [`analytic_geometry`](m4/analytic_geometry.py) | เรขาคณิตวิเคราะห์ | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
+| [`basic_counting_principles`](m4/basic_counting_principles.py) | หลักการนับเบื้องต้น | ค 3.2 ม.4/1 | 10 |
+| [`circle_equations`](m4/circle_equations.py) | สมการวงกลม | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
+| [`composite`](m4/composite.py) | ฟังก์ชันประกอบ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/1 | 10 |
+| [`conic_sections`](m4/conic_sections.py) | ภาคตัดกรวย | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
+| [`discriminant`](m4/discriminant.py) | ดิสคริมิแนนต์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
+| [`distance`](m4/distance.py) | ระยะทาง | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
+| [`equations_of_lines`](m4/equations_of_lines.py) | สมการเส้นตรง | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
+| [`exponential`](m4/exponential.py) | สมการเลขชี้กำลัง | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/4 | 10 |
+| [`factorising`](m4/factorising.py) | แยกตัวประกอบ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
+| [`finding_parabolas`](m4/finding_parabolas.py) | หาสมการพาราโบลา | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
+| [`functions`](m4/functions.py) | ฟังก์ชัน | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 10 |
 | [`logarithms`](m4/logarithms.py) | ลอการิทึม | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/3, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/4 | 10 |
 | [`logic`](m4/logic.py) | ตรรกศาสตร์ | ค 1.1 ม.4/1, ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.4/2 | 12 |
-| [`polynomial_division`](m4/polynomial_division.py) | การหารพหุนาม | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 8 |
-| [`probability_of_events`](m4/probability_of_events.py) | ความน่าจะเป็นของเหตุการณ์ | ค 3.2 ม.4/2 | 3 |
-| [`quadratic`](m4/quadratic.py) | เรนจ์ของฟังก์ชันกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 6 |
-| [`quadratic_inequalities`](m4/quadratic_inequalities.py) | อสมการกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 7 |
-| [`rational_equations_and_inequalities`](m4/rational_equations_and_inequalities.py) | สมการและอสมการเศษส่วน | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/2 | 4 |
-| [`relations_and_functions`](m4/relations_and_functions.py) | ความสัมพันธ์และฟังก์ชัน | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 9 |
-| [`roots_and_coefficients`](m4/roots_and_coefficients.py) | ความสัมพันธ์ราก-สัมประสิทธิ์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 3 |
+| [`polynomial_division`](m4/polynomial_division.py) | การหารพหุนาม | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
+| [`probability_of_events`](m4/probability_of_events.py) | ความน่าจะเป็นของเหตุการณ์ | ค 3.2 ม.4/2 | 10 |
+| [`quadratic`](m4/quadratic.py) | เรนจ์ของฟังก์ชันกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 10 |
+| [`quadratic_inequalities`](m4/quadratic_inequalities.py) | อสมการกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
+| [`rational_equations_and_inequalities`](m4/rational_equations_and_inequalities.py) | สมการและอสมการเศษส่วน | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/2 | 10 |
+| [`relations_and_functions`](m4/relations_and_functions.py) | ความสัมพันธ์และฟังก์ชัน | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 10 |
+| [`roots_and_coefficients`](m4/roots_and_coefficients.py) | ความสัมพันธ์ราก-สัมประสิทธิ์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
 | [`sets`](m4/sets.py) | เซต | ค 1.1 ม.4/1, ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.4/1 | 13 |
-| [`simplifying_radicals`](m4/simplifying_radicals.py) | จัดรูปกรณฑ์ | ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.4/3 | 7 |
+| [`simplifying_radicals`](m4/simplifying_radicals.py) | จัดรูปกรณฑ์ | ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.4/3 | 10 |
 
 ## m5 — ม.5
 

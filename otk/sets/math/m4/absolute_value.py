@@ -349,3 +349,79 @@ class AbsoluteValuePropertiesM4(QuestionType):
         stem.append(text("ข้อใดเป็นจริงเสมอ" if ask_true else "ข้อใดไม่จำเป็นต้องเป็นจริง"))
         return _q(stem, right, pool_wrong[:3], self.topic)
 AbsoluteValuePropertiesM4.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More absolute value (2026-11): a distance on the number line, how many integers fit |x − a| ≤ b, and
+# a sum of absolute values ──
+
+
+@question_type("math.abs_distance_m4", display_name={"th": "ระยะห่างบนเส้นจำนวนด้วยค่าสัมบูรณ์"}, level=LEVEL,
+               topic="ค่าสัมบูรณ์")
+class AbsDistanceM4(MathType):
+    def expr(self, rng: Random):
+        a, b = _nz4(rng, 1, 20), _nz4(rng, 1, 20)
+        while a == b:
+            b = _nz4(rng, 1, 20)
+        right = abs(a - b)
+        # The values added; their sizes subtracted; the signed difference.
+        return MathDraw(rf"\left|{a} - ({b})\right|", str(right), prompt="จงหาค่า (ระยะห่างระหว่างสองจำนวนบนเส้นจำนวน)",
+                        distractors=_nk4(abs(a + b), abs(abs(a) - abs(b)), a - b if a - b < 0 else b - a, right + 1,
+                                         answer=right))
+
+
+@question_type("math.abs_integers_within_m4", display_name={"th": "นับจำนวนเต็มที่สอดคล้องกับ |x − a| ≤ b"},
+               level=LEVEL, topic="ค่าสัมบูรณ์")
+class AbsIntegersWithinM4(MathType):
+    def expr(self, rng: Random):
+        a = _nz4(rng, 1, 12)
+        b = rng.randint(1, 12)
+        right = 2 * b + 1
+        sign = "-" if a > 0 else "+"
+        # The ends left out; one end only; b itself.
+        return MathDraw(rf"|x {sign} {abs(a)}| \le {b}", str(right), prompt="มีจำนวนเต็ม x กี่จำนวนที่สอดคล้องกับอสมการนี้",
+                        distractors=_nk4(2 * b - 1, 2 * b, b, b + 1, answer=right, lo=1))
+
+
+@question_type("math.abs_sum_value_m4", display_name={"th": "ค่าของนิพจน์ที่มีค่าสัมบูรณ์หลายตัว"}, level=LEVEL,
+               topic="ค่าสัมบูรณ์")
+class AbsSumValueM4(MathType):
+    def expr(self, rng: Random):
+        a, b, c = _nz4(rng, 1, 15), _nz4(rng, 1, 15), _nz4(rng, 1, 15)
+        right = abs(a) - abs(b) + abs(c)
+        # The bars ignored; every sign made plus; the middle bar ignored.
+        return MathDraw(rf"|{a}| - |{b}| + |{c}|", str(right), prompt="จงหาค่า",
+                        distractors=_nk4(a - b + c, abs(a) + abs(b) + abs(c), abs(a) - b + abs(c), right + 2, answer=right))
+
+
+AbsDistanceM4.PROVENANCE = Provenance("original")
+AbsIntegersWithinM4.PROVENANCE = Provenance("original")
+AbsSumValueM4.PROVENANCE = Provenance("original")
