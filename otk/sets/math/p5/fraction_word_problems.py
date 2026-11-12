@@ -177,3 +177,175 @@ class FractionWordMulDivP5(QuestionType):
                       as_mixed(value + Fraction(2, 5))]
         answer = as_mixed(value)
         return _maths(stem, answer, _not_equal(value, wrongs, answer), self.topic)
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathDraw, WordProblem  # noqa: E402
+from otk.sets._support.math_p5 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _dec(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_dec(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More fraction word problems (2026-11): the whole from a part, pieces cut from a length, sharing among
+# people, an increase by a fraction, two shares compared, part of an hour, and who ran further ──
+
+
+def _plain(value: Fraction) -> str:
+    """A fraction for Thai prompt text, outside TeX: 2 1/3, 3/4, or 5."""
+    whole, rem = divmod(value.numerator, value.denominator)
+    if not rem:
+        return str(whole)
+    return f"{whole} {rem}/{value.denominator}" if whole else f"{rem}/{value.denominator}"
+
+
+def _fk(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+@question_type("math.whole_from_part_p5", display_name={"th": "หาจำนวนทั้งหมดจากส่วนที่เป็นเศษส่วน"},
+               level=LEVEL, topic="โจทย์ปัญหาเศษส่วน")
+class WholeFromPartP5(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((3, 4, 5, 6, 8))
+        k = rng.randint(1, d - 1)
+        unit = rng.randint(5, 60)
+        part = k * unit
+        right = d * unit
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}ใช้เงินไป {k}/{d} ของเงินที่มี คิดเป็นเงิน {part} บาท เดิม{p}มีเงินกี่บาท"
+        # The part itself; the part times the bottom; one part; the money left instead.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(part, part * d, unit, right - part, answer=right, lo=1))
+
+
+@question_type("math.pieces_from_length_p5", display_name={"th": "ตัดเป็นท่อนยาวเท่ากันได้กี่ท่อน"},
+               level=LEVEL, topic="โจทย์ปัญหาเศษส่วน")
+class PiecesFromLengthP5(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((2, 3, 4, 5))
+        k = rng.randint(1, d - 1)
+        times = rng.randint(2, 12)
+        total = k * times
+        right = d * times
+        thing = rng.choice(("เชือก", "ริบบิ้น", "ผ้า"))
+        prompt = f"{thing}ยาว {total} เมตร ตัดเป็นท่อนละ {k}/{d} เมตร ได้กี่ท่อน"
+        # Divided by the bottom only; the length times the top; the length; one piece more.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(total * d, total * k, total, right + d, right - 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.share_among_people_p5", display_name={"th": "แบ่งของให้หลายคนเท่า ๆ กันได้คนละเท่าใด"},
+               level=LEVEL, topic="โจทย์ปัญหาเศษส่วน")
+class ShareAmongPeopleP5(WordProblem):
+    def expr(self, rng: Random):
+        people = rng.randint(3, 9)
+        items = rng.randint(1, 2 * people)
+        while items % people == 0:
+            items += 1
+        right = Fraction(items, people)
+        what = rng.choice(("พิซซ่า", "เค้ก", "ขนมปัง"))
+        prompt = f"แบ่ง{what} {items} ถาดให้เด็ก {people} คนเท่า ๆ กัน ได้คนละกี่ถาด"
+        # The fraction upside down; one tray fewer or more; one child more.
+        return MathDraw("", as_mixed(right), prompt=prompt,
+                        distractors=_fk(Fraction(people, items), Fraction(items - 1, people),
+                                        Fraction(items + 1, people), Fraction(items, people + 1), answer=right))
+
+
+@question_type("math.increase_by_fraction_p5", display_name={"th": "เพิ่มขึ้นเป็นเศษส่วนของจำนวนเดิม"},
+               level=LEVEL, topic="โจทย์ปัญหาเศษส่วน")
+class IncreaseByFractionP5(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((2, 3, 4, 5, 10))
+        k = rng.randint(1, d - 1)
+        unit = rng.randint(4, 60)
+        old = d * unit
+        right = old + k * unit
+        what, cl = rng.choice((("ราคาสินค้า", "บาท"), ("จำนวนนักเรียน", "คน"), ("ค่าเช่าห้อง", "บาท")))
+        prompt = f"{what}เดิม {old} {cl} ต่อมาเพิ่มขึ้น {k}/{d} ของ{what}เดิม {what}ใหม่เป็นกี่{cl}"
+        # Only the increase; a decrease instead; the fraction's top added; one part added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(k * unit, old - k * unit, old + k, old + unit, answer=right, lo=1))
+
+
+@question_type("math.two_shares_compare_p5", display_name={"th": "เปรียบเทียบส่วนแบ่งที่เป็นเศษส่วนของจำนวนเดียวกัน"},
+               level=LEVEL, topic="โจทย์ปัญหาเศษส่วน")
+class TwoSharesCompareP5(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            d1, d2 = rng.sample((2, 3, 4, 5, 6), 2)
+            k1, k2 = rng.randint(1, d1 - 1), rng.randint(1, d2 - 1)
+            if Fraction(k1, d1) + Fraction(k2, d2) <= 1 and Fraction(k1, d1) != Fraction(k2, d2):
+                break
+        if Fraction(k1, d1) < Fraction(k2, d2):
+            k1, d1, k2, d2 = k2, d2, k1, d1
+        total = d1 * d2 * rng.randint(2, 20)
+        a, b = total * k1 // d1, total * k2 // d2
+        right = a - b
+        p, q = _story.names(rng)
+        prompt = (f"แบ่งเงิน {total} บาท {p}ได้ {k1}/{d1} ของเงินทั้งหมด {q}ได้ {k2}/{d2} ของเงินทั้งหมด "
+                  f"{p}ได้มากกว่า{q}กี่บาท")
+        # The two shares added; either share alone; what is left of the money.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b, a, b, total - a - b, right + 10, answer=right, lo=1))
+
+
+@question_type("math.part_of_hour_p5", display_name={"th": "เศษส่วนของชั่วโมงเป็นนาที"},
+               level=LEVEL, topic="โจทย์ปัญหาเศษส่วน")
+class PartOfHourP5(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((2, 3, 4, 5, 6, 10, 12))
+        k = rng.randint(1, d - 1)
+        right = 60 * k // d
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}อ่านหนังสือ {k}/{d} ชั่วโมง คิดเป็นกี่นาที"
+        # An hour taken as 100 minutes; one part only; the minutes left in the hour.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(100 * k // d, 60 // d, 60 - right, right + 5, answer=right, lo=1))
+
+
+@question_type("math.who_further_p5", display_name={"th": "วิ่งได้ไกลกว่ากันกี่กิโลเมตร"},
+               level=LEVEL, topic="โจทย์ปัญหาเศษส่วน")
+class WhoFurtherP5(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            d1, d2 = rng.sample((2, 3, 4, 5, 6, 8), 2)
+            a = Fraction(rng.randint(1, 3 * d1 - 1), d1)
+            b = Fraction(rng.randint(1, 3 * d2 - 1), d2)
+            if a != b and a.denominator > 1 and b.denominator > 1:
+                break
+        if a < b:
+            a, b = b, a
+        right = a - b
+        p, q = _story.names(rng)
+        prompt = f"{p}วิ่งได้ {_plain(a)} กิโลเมตร {q}วิ่งได้ {_plain(b)} กิโลเมตร {p}วิ่งได้ไกลกว่า{q}กี่กิโลเมตร"
+        # Added instead; tops subtracted over the larger bottom; the further distance; one step off.
+        wrong_tops = Fraction(abs(a.numerator - b.numerator) or 1, max(a.denominator, b.denominator))
+        return MathDraw("", as_mixed(right), prompt=prompt,
+                        distractors=_fk(a + b, wrong_tops, a, right + Fraction(1, max(d1, d2)), answer=right))

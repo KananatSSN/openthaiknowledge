@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,471 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
+4,536 sets in 1,286 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -78,18 +78,18 @@
 
 | File | Unit | Sets |
 |---|---|---|
-| [`data_presentation.py`](math/p5/data_presentation.py) | การนำเสนอข้อมูล | `math.line_graph_picture_p5`, `math.line_graph_change`, `math.bar_chart_make_p5`, `math.line_graph_problem_p5` |
-| [`decimals.py`](math/p5/decimals.py) | ทศนิยม | `math.compare_decimals`, `math.decimal_times_power_of_ten`, `math.decimal_multiply_p5`, `math.fraction_to_decimal_p5`, `math.decimal_divide_p5`, `math.decimal_word_problem_p5` |
-| [`fraction_word_problems.py`](math/p5/fraction_word_problems.py) | โจทย์ปัญหาเศษส่วน | `math.fraction_of_amount_p5`, `math.fraction_word_addsub_p5`, `math.fraction_word_muldiv_p5` |
+| [`data_presentation.py`](math/p5/data_presentation.py) | การนำเสนอข้อมูล | `math.line_graph_picture_p5`, `math.line_graph_change`, `math.bar_chart_make_p5`, `math.line_graph_problem_p5`, `math.line_graph_total_p5`, `math.line_graph_count_rises_p5`, `math.line_graph_highest_p5`, `math.line_graph_count_above_p5`, `math.line_graph_next_p5`, `math.line_graph_true_p5` |
+| [`decimals.py`](math/p5/decimals.py) | ทศนิยม | `math.compare_decimals`, `math.decimal_times_power_of_ten`, `math.decimal_multiply_p5`, `math.fraction_to_decimal_p5`, `math.decimal_divide_p5`, `math.decimal_word_problem_p5`, `math.round_decimal_p5`, `math.decimal_order_p5`, `math.decimal_digit_value_p5`, `math.estimate_decimal_product_p5` |
+| [`fraction_word_problems.py`](math/p5/fraction_word_problems.py) | โจทย์ปัญหาเศษส่วน | `math.fraction_of_amount_p5`, `math.fraction_word_addsub_p5`, `math.fraction_word_muldiv_p5`, `math.whole_from_part_p5`, `math.pieces_from_length_p5`, `math.share_among_people_p5`, `math.increase_by_fraction_p5`, `math.two_shares_compare_p5`, `math.part_of_hour_p5`, `math.who_further_p5` |
 | [`fractions.py`](math/p5/fractions.py) | เศษส่วน | `math.reduce_fraction`, `math.order_fractions`, `math.improper_to_mixed`, `math.add_fractions`, `math.sub_fractions`, `math.add_mixed_numbers`, `math.mul_fractions`, `math.div_fractions`, `math.mixed_fractions`, `math.fraction_remaining_p5` |
-| [`length_and_weight.py`](math/p5/length_and_weight.py) | ความยาวและน้ำหนัก | `math.length_decimal_p5`, `math.weight_decimal_p5`, `math.measure_decimal_word_p5` |
-| [`parallel_lines.py`](math/p5/parallel_lines.py) | เส้นขนาน | `math.parallel_pair_picture_p5`, `math.parallel_angle_picture_p5`, `math.parallel_angles` |
-| [`percentages.py`](math/p5/percentages.py) | ร้อยละ | `math.percent_of_number`, `math.percent_grid_p5`, `math.percent_of_quantity_p5`, `math.find_percent_p5`, `math.discount`, `math.percent_two_step_p5` |
-| [`prism.py`](math/p5/prism.py) | ปริซึม | `math.prism_parts_p5`, `math.prism_name_p5`, `math.prism_counts_p5` |
-| [`quadrilateral_area.py`](math/p5/quadrilateral_area.py) | พื้นที่รูปสี่เหลี่ยม | `math.parallelogram_area`, `math.parallelogram_perimeter_p5`, `math.quadrilateral_area_figure_p5`, `math.trapezoid_area`, `math.rhombus_kite_area_p5` |
-| [`types_of_quadrilaterals.py`](math/p5/types_of_quadrilaterals.py) | ชนิดของรูปสี่เหลี่ยม | `math.classify_quadrilateral`, `math.quadrilateral_picture_p5`, `math.construct_quadrilateral_p5`, `math.parallelogram_properties`, `math.quadrilateral_angle` |
-| [`unitary_method.py`](math/p5/unitary_method.py) | บัญญัติไตรยางศ์ | `math.unit_price_p5`, `math.rate_word_problem_p5`, `math.recipe_scaling_p5` |
-| [`volume.py`](math/p5/volume.py) | ปริมาตร | `math.rectangular_prism_volume`, `math.unit_cubes_p5`, `math.cube_units_p5`, `math.volume_capacity_p5` |
+| [`length_and_weight.py`](math/p5/length_and_weight.py) | ความยาวและน้ำหนัก | `math.length_decimal_p5`, `math.weight_decimal_p5`, `math.measure_decimal_word_p5`, `math.decimal_to_smaller_unit_p5`, `math.add_across_units_p5`, `math.heaviest_of_four_p5`, `math.weight_difference_grams_p5`, `math.ribbon_left_p5`, `math.add_mixed_units_p5`, `math.suitable_unit_p5` |
+| [`parallel_lines.py`](math/p5/parallel_lines.py) | เส้นขนาน | `math.parallel_pair_picture_p5`, `math.parallel_angle_picture_p5`, `math.parallel_angles`, `math.corresponding_angle_p5`, `math.is_parallel_check_p5`, `math.co_interior_from_difference_p5`, `math.parallel_concepts_p5`, `math.vertical_angle_p5`, `math.parallel_daily_life_p5`, `math.alternate_from_sum_p5` |
+| [`percentages.py`](math/p5/percentages.py) | ร้อยละ | `math.percent_of_number`, `math.percent_grid_p5`, `math.percent_of_quantity_p5`, `math.find_percent_p5`, `math.discount`, `math.percent_two_step_p5`, `math.percent_to_fraction_p5`, `math.percent_to_decimal_p5`, `math.percent_increase_price_p5`, `math.percent_left_over_p5` |
+| [`prism.py`](math/p5/prism.py) | ปริซึม | `math.prism_parts_p5`, `math.prism_name_p5`, `math.prism_counts_p5`, `math.prism_or_not_p5`, `math.prism_objects_p5`, `math.prism_net_rectangles_p5`, `math.box_edges_total_p5`, `math.cube_from_wire_p5`, `math.prism_faces_plus_corners_p5`, `math.prism_base_from_faces_p5` |
+| [`quadrilateral_area.py`](math/p5/quadrilateral_area.py) | พื้นที่รูปสี่เหลี่ยม | `math.parallelogram_area`, `math.parallelogram_perimeter_p5`, `math.quadrilateral_area_figure_p5`, `math.trapezoid_area`, `math.rhombus_kite_area_p5`, `math.parallelogram_height_p5`, `math.trapezoid_missing_side_p5`, `math.rhombus_from_diagonals_p5`, `math.largest_quadrilateral_area_p5`, `math.tiling_cost_p5` |
+| [`types_of_quadrilaterals.py`](math/p5/types_of_quadrilaterals.py) | ชนิดของรูปสี่เหลี่ยม | `math.classify_quadrilateral`, `math.quadrilateral_picture_p5`, `math.construct_quadrilateral_p5`, `math.parallelogram_properties`, `math.quadrilateral_angle`, `math.quadrilateral_diagonals_p5`, `math.parallelogram_angle_p5`, `math.trapezoid_angle_p5`, `math.quadrilateral_missing_side_p5`, `math.diagonal_length_p5` |
+| [`unitary_method.py`](math/p5/unitary_method.py) | บัญญัติไตรยางศ์ | `math.unit_price_p5`, `math.rate_word_problem_p5`, `math.recipe_scaling_p5`, `math.better_buy_p5`, `math.workers_days_p5`, `math.fuel_for_trip_p5`, `math.days_to_earn_p5`, `math.how_many_for_money_p5`, `math.exchange_money_p5`, `math.printing_time_p5` |
+| [`volume.py`](math/p5/volume.py) | ปริมาตร | `math.rectangular_prism_volume`, `math.unit_cubes_p5`, `math.cube_units_p5`, `math.volume_capacity_p5`, `math.cube_volume_p5`, `math.water_rise_volume_p5`, `math.cubes_in_box_p5`, `math.litres_cubic_cm_p5`, `math.largest_box_volume_p5`, `math.fill_tank_time_p5` |
 
 ### p6 — ป.6
 

@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-1,971 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,036 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -76,18 +76,18 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`data_presentation`](p5/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.5/1, ค 3.1 ป.5/2 | 4 |
-| [`decimals`](p5/decimals.py) | ทศนิยม | ค 1.1 ป.5/* | 6 |
-| [`fraction_word_problems`](p5/fraction_word_problems.py) | โจทย์ปัญหาเศษส่วน | ค 1.1 ป.5/* | 3 |
+| [`data_presentation`](p5/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.5/1, ค 3.1 ป.5/2 | 10 |
+| [`decimals`](p5/decimals.py) | ทศนิยม | ค 1.1 ป.5/* | 10 |
+| [`fraction_word_problems`](p5/fraction_word_problems.py) | โจทย์ปัญหาเศษส่วน | ค 1.1 ป.5/* | 10 |
 | [`fractions`](p5/fractions.py) | เศษส่วน | ค 1.1 ป.5/* | 10 |
-| [`length_and_weight`](p5/length_and_weight.py) | ความยาวและน้ำหนัก | ค 2.1 ป.5/1, ค 2.1 ป.5/2 | 3 |
-| [`parallel_lines`](p5/parallel_lines.py) | เส้นขนาน | ค 2.2 ป.5/1 | 3 |
-| [`percentages`](p5/percentages.py) | ร้อยละ | ค 1.1 ป.5/* | 6 |
-| [`prism`](p5/prism.py) | ปริซึม | ค 2.2 ป.5/4 | 3 |
-| [`quadrilateral_area`](p5/quadrilateral_area.py) | พื้นที่รูปสี่เหลี่ยม | ค 2.1 ป.5/* | 5 |
-| [`types_of_quadrilaterals`](p5/types_of_quadrilaterals.py) | ชนิดของรูปสี่เหลี่ยม | ค 2.2 ป.5/* | 5 |
-| [`unitary_method`](p5/unitary_method.py) | บัญญัติไตรยางศ์ | ค 1.1 ป.5/* | 3 |
-| [`volume`](p5/volume.py) | ปริมาตร | ค 2.1 ป.5/* | 4 |
+| [`length_and_weight`](p5/length_and_weight.py) | ความยาวและน้ำหนัก | ค 2.1 ป.5/1, ค 2.1 ป.5/2 | 10 |
+| [`parallel_lines`](p5/parallel_lines.py) | เส้นขนาน | ค 2.2 ป.5/1 | 10 |
+| [`percentages`](p5/percentages.py) | ร้อยละ | ค 1.1 ป.5/* | 10 |
+| [`prism`](p5/prism.py) | ปริซึม | ค 2.2 ป.5/4 | 10 |
+| [`quadrilateral_area`](p5/quadrilateral_area.py) | พื้นที่รูปสี่เหลี่ยม | ค 2.1 ป.5/* | 10 |
+| [`types_of_quadrilaterals`](p5/types_of_quadrilaterals.py) | ชนิดของรูปสี่เหลี่ยม | ค 2.2 ป.5/* | 10 |
+| [`unitary_method`](p5/unitary_method.py) | บัญญัติไตรยางศ์ | ค 1.1 ป.5/* | 10 |
+| [`volume`](p5/volume.py) | ปริมาตร | ค 2.1 ป.5/* | 10 |
 
 ## p6 — ป.6
 
