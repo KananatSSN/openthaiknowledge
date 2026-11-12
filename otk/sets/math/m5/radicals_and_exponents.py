@@ -255,3 +255,93 @@ class PowerLawsRationalM5(WordProblem):
         return MathDraw(tex, _xpow(value), prompt="จงเขียนในรูปเลขยกกำลังของ x (x > 0)",
                         distractors=[_xpow(w) for w in dict.fromkeys(wrongs) if w != value])
 PowerLawsRationalM5.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import sqrt_tex  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More radicals and exponents (2026-11): x from x^(2/3), a sum of like surds, and an exponent from mixed
+# powers of two ──
+
+
+@question_type("math.rational_exponent_equation_m5", display_name={"th": "แก้สมการเลขชี้กำลังที่เป็นเศษส่วน"}, level=LEVEL,
+               topic="จำนวนจริงในรูปกรณฑ์และเลขยกกำลัง")
+class RationalExponentEquationM5(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 6)
+        right = k ** 3
+        # Squared instead of cubed; the right side itself; k alone.
+        return MathDraw(rf"x^{{\frac{{2}}{{3}}}} = {k * k}", str(right), prompt="จงหาค่า x (x > 0)",
+                        distractors=_nk5(k * k * k * k, k * k, k, (k * k) ** 3, answer=right, lo=1))
+
+
+@question_type("math.like_surds_sum_m5", display_name={"th": "บวกลบกรณฑ์ที่จัดรูปแล้วเป็นพจน์เดียวกัน"}, level=LEVEL,
+               topic="จำนวนจริงในรูปกรณฑ์และเลขยกกำลัง")
+class LikeSurdsSumM5(MathType):
+    def expr(self, rng: Random):
+        m = rng.choice((2, 3, 5))
+        a, b, c = rng.sample(range(1, 6), 3)
+        right_k = a + b - c
+        right = sqrt_tex(m) if right_k == 1 else rf"{right_k}\sqrt{{{m}}}" if right_k else "0"
+        if right_k < 0:
+            right = rf"-{-right_k}\sqrt{{{m}}}" if right_k != -1 else rf"-\sqrt{{{m}}}"
+        # The numbers under the roots added; the signs all plus; the square factors left inside.
+        wrongs = [rf"\sqrt{{{a * a * m + b * b * m - c * c * m}}}" if a * a + b * b > c * c else rf"{a + b}\sqrt{{{m}}}",
+                  rf"{a + b + c}\sqrt{{{m}}}", rf"{right_k + 1}\sqrt{{{m}}}", rf"{right_k * m}"]
+        return MathDraw(rf"\sqrt{{{a * a * m}}} + \sqrt{{{b * b * m}}} - \sqrt{{{c * c * m}}}", right, prompt="จงทำให้อยู่ในรูปอย่างง่าย",
+                        distractors=_tk5(*wrongs, answer=right))
+
+
+@question_type("math.powers_of_two_exponent_m5", display_name={"th": "เขียนผลคูณผลหารเป็นเลขยกกำลังฐานสอง"}, level=LEVEL,
+               topic="จำนวนจริงในรูปกรณฑ์และเลขยกกำลัง")
+class PowersOfTwoExponentM5(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.randint(1, 6), rng.randint(1, 5), rng.randint(1, 4)
+        right = a + 2 * b - 3 * c
+        # The bases not rewritten; the powers multiplied; the division ignored.
+        return MathDraw(rf"\frac{{2^{{{a}}} \cdot 4^{{{b}}}}}{{8^{{{c}}}}} = 2^{{\square}}", str(right), prompt="จำนวนใดเติมใน □ ได้",
+                        distractors=_nk5(a + b - c, a * 2 * b // max(c, 1), a + 2 * b + 3 * c, right + 1, answer=right))
+
+
+RationalExponentEquationM5.PROVENANCE = Provenance("original")
+LikeSurdsSumM5.PROVENANCE = Provenance("original")
+PowersOfTwoExponentM5.PROVENANCE = Provenance("original")

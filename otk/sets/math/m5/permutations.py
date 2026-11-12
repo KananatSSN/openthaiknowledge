@@ -219,3 +219,94 @@ class PermutationConditionsM5(WordProblem):
                                 f"จัดได้กี่วิธี"),
                         distractors=_story.keep(f(n - 2), f(n), 2 * f(n - 1), answer=ans))
 PermutationConditionsM5.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More permutations (2026-11): a word with distinct letters, three officers in order, and two people kept
+# apart ──
+
+
+@question_type("math.distinct_letters_word_m5", display_name={"th": "เรียงตัวอักษรที่ไม่ซ้ำกัน"}, level=LEVEL, topic="การเรียงสับเปลี่ยน")
+class DistinctLettersWordM5(WordProblem):
+    _WORDS = ("MATH", "TABLE", "PLANET", "CHAIR", "SOUTH", "NUMBER", "GARDEN")
+
+    def expr(self, rng: Random):
+        word = rng.choice(self._WORDS)
+        n = len(word)
+        right = factorial(n)
+        prompt = f"นำตัวอักษรของคำว่า {word} มาเรียงสับเปลี่ยนทั้งหมด ได้กี่แบบ"
+        # n squared; one letter fixed; n times n − 1.
+        return MathDraw("", _g5(right), prompt=prompt,
+                        distractors=_gk5(n * n, factorial(n - 1), n * (n - 1), 2 ** n, answer=right))
+
+
+@question_type("math.three_officers_m5", display_name={"th": "เลือกประธาน รองประธาน และเลขานุการ"}, level=LEVEL,
+               topic="การเรียงสับเปลี่ยน")
+class ThreeOfficersM5(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.randint(5, 15)
+        right = n * (n - 1) * (n - 2)
+        prompt = f"เลือกประธาน รองประธาน และเลขานุการจากนักเรียน {n} คน (คนละหนึ่งตำแหน่ง) ได้กี่วิธี"
+        # Order ignored; repeats allowed; n times three.
+        return MathDraw("", _g5(right), prompt=prompt,
+                        distractors=_gk5(comb(n, 3), n ** 3, 3 * n, (n - 1) * (n - 2) * (n - 3), answer=right))
+
+
+@question_type("math.kept_apart_m5", display_name={"th": "จัดแถวโดยสองคนไม่ยืนติดกัน"}, level=LEVEL, topic="การเรียงสับเปลี่ยน")
+class KeptApartM5(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.randint(4, 7)
+        together = 2 * factorial(n - 1)
+        right = factorial(n) - together
+        p, q = _story.names(rng)
+        prompt = f"คน {n} คนรวมทั้ง{p}และ{q} ยืนเรียงแถว โดย{p}กับ{q}ไม่ยืนติดกัน จัดได้กี่แบบ"
+        # Together instead; everyone; the pair taken away once.
+        return MathDraw("", _g5(right), prompt=prompt,
+                        distractors=_gk5(together, factorial(n), factorial(n) - factorial(n - 1), factorial(n - 2), answer=right))
+
+
+DistinctLettersWordM5.PROVENANCE = Provenance("original")
+ThreeOfficersM5.PROVENANCE = Provenance("original")
+KeptApartM5.PROVENANCE = Provenance("original")

@@ -215,4 +215,4 @@ def test_sheet_publication_manifest_is_frozen():
     # 47 more so every ม.2 unit has at least fifteen.
     # 48 more ม.1 sets so every ม.1 unit has at least ten.
     # 55 more ม.1 sets so every ม.1 unit has at least fifteen.
-    assert len(REGISTRY) == 4784
+    assert len(REGISTRY) == 4847

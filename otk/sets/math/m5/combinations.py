@@ -221,3 +221,107 @@ class CombinationCommittee(WordProblem):
                     f"เลือกได้กี่วิธี"),
             distractors=[str(_math.comb(n, k)), str(_math.comb(n - 1, k)), str(_math.perm(n - 1, k - 1))])
 CombinationCommittee.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More combinations (2026-11): at least one girl, lines and triangles from points, a polygon's diagonals,
+# and Pascal's rule ──
+
+
+@question_type("math.at_least_one_girl_m5", display_name={"th": "เลือกคณะกรรมการที่มีหญิงอย่างน้อยหนึ่งคน"}, level=LEVEL,
+               topic="การจัดหมู่")
+class AtLeastOneGirlM5(WordProblem):
+    def expr(self, rng: Random):
+        b, g, k = rng.randint(3, 7), rng.randint(2, 6), rng.randint(2, 3)
+        right = comb(b + g, k) - comb(b, k)
+        prompt = f"มีนักเรียนชาย {b} คน หญิง {g} คน เลือกกรรมการ {k} คน โดยมีหญิงอย่างน้อยหนึ่งคน ได้กี่วิธี"
+        # Everyone; all-boy teams only; exactly one girl.
+        exactly_one = g * comb(b, k - 1)
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk5(comb(b + g, k), comb(b, k), exactly_one, right + 1, answer=right, lo=1))
+
+
+@question_type("math.lines_and_triangles_m5", display_name={"th": "นับเส้นตรงหรือรูปสามเหลี่ยมจากจุด"}, level=LEVEL,
+               topic="การจัดหมู่")
+class LinesAndTrianglesM5(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.randint(5, 12)
+        lines = rng.random() < 0.5
+        right = comb(n, 2) if lines else comb(n, 3)
+        what = "ส่วนของเส้นตรง" if lines else "รูปสามเหลี่ยม"
+        prompt = f"มีจุด {n} จุดบนระนาบ ไม่มีสามจุดใดอยู่บนเส้นตรงเดียวกัน ลากเชื่อมจุดเป็น{what}ได้ทั้งหมดกี่{what if lines else 'รูป'}"
+        other = comb(n, 3) if lines else comb(n, 2)
+        # The other shape; ordered; n times the corners.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk5(other, right * (2 if lines else 6), n * (2 if lines else 3), right + n, answer=right, lo=1))
+
+
+@question_type("math.polygon_diagonals_m5", display_name={"th": "จำนวนเส้นทแยงมุมของรูปหลายเหลี่ยม"}, level=LEVEL,
+               topic="การจัดหมู่")
+class PolygonDiagonalsM5(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.randint(5, 15)
+        right = n * (n - 3) // 2
+        prompt = f"รูป {n} เหลี่ยมมีเส้นทแยงมุมทั้งหมดกี่เส้น"
+        # Every pair of corners; not halved; one less per corner.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk5(comb(n, 2), n * (n - 3), n * (n - 2) // 2, right + 1, answer=right, lo=1))
+
+
+@question_type("math.pascal_rule_m5", display_name={"th": "สมบัติของสามเหลี่ยมปาสคาล"}, level=LEVEL, topic="การจัดหมู่")
+class PascalRuleM5(MathType):
+    def expr(self, rng: Random):
+        n = rng.randint(5, 12)
+        r = rng.randint(1, n - 2)
+        right = rf"\binom{{{n + 1}}}{{{r + 1}}}"
+        wrongs = [rf"\binom{{{n}}}{{{r + 1}}}", rf"\binom{{{n + 1}}}{{{r}}}" if n != 2 * r else rf"\binom{{{n - 1}}}{{{r}}}", rf"\binom{{{2 * n}}}{{{2 * r + 1}}}", rf"\binom{{{n + 2}}}{{{r + 1}}}"]
+        return MathDraw(rf"\binom{{{n}}}{{{r}}} + \binom{{{n}}}{{{r + 1}}}", right, prompt="ข้อใดมีค่าเท่ากับนิพจน์นี้",
+                        distractors=_tk5(*wrongs, answer=right))
+
+
+AtLeastOneGirlM5.PROVENANCE = Provenance("original")
+LinesAndTrianglesM5.PROVENANCE = Provenance("original")
+PolygonDiagonalsM5.PROVENANCE = Provenance("original")
+PascalRuleM5.PROVENANCE = Provenance("original")

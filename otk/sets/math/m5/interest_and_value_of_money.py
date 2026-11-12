@@ -207,3 +207,85 @@ class RegularPaymentPresentValueM5(QuestionType):
                             f"ถ้าใช้อัตราคิดลดร้อยละ {rate} ต่อปี "
                             "เงินรับทั้งหมดมีมูลค่าปัจจุบันประมาณกี่บาท "
                             "(ปัดเป็นบาทที่ใกล้ที่สุด)")], str(answer), wrongs, self.topic)
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More interest (2026-11): the rate from simple interest, the principal from simple interest, and two years
+# of compound interest at 10% ──
+
+
+@question_type("math.simple_interest_rate_m5", display_name={"th": "หาอัตราดอกเบี้ยคงต้น"}, level=LEVEL,
+               topic="ดอกเบี้ยและมูลค่าของเงิน")
+class SimpleInterestRateM5(WordProblem):
+    def expr(self, rng: Random):
+        p, r, t = rng.randint(2, 50) * 1000, rng.randint(1, 8), rng.randint(2, 6)
+        interest = p * r * t // 100
+        prompt = f"ฝากเงิน {p:,} บาท ได้ดอกเบี้ยคงต้นรวม {interest:,} บาท ในเวลา {t} ปี อัตราดอกเบี้ยร้อยละเท่าใดต่อปี"
+        # The years not divided out; the whole time's rate; one off.
+        return MathDraw("", str(r), prompt=prompt, distractors=_nk5(r * t, r + t, r + 1, r * 2 if r > 1 else 3, answer=r, lo=1))
+
+
+@question_type("math.simple_interest_principal_m5", display_name={"th": "หาเงินต้นจากดอกเบี้ยคงต้น"}, level=LEVEL,
+               topic="ดอกเบี้ยและมูลค่าของเงิน")
+class SimpleInterestPrincipalM5(WordProblem):
+    def expr(self, rng: Random):
+        p, r, t = rng.randint(2, 50) * 1000, rng.choice((2, 4, 5)), rng.randint(2, 5)
+        interest = p * r * t // 100
+        prompt = f"ฝากเงินได้ดอกเบี้ยคงต้นร้อยละ {r} ต่อปี เมื่อครบ {t} ปี ได้ดอกเบี้ย {interest:,} บาท เงินต้นกี่บาท"
+        # One year only; the interest times a hundred; the total with interest.
+        return MathDraw("", _g5(p), prompt=prompt,
+                        distractors=_gk5(p * t, interest * 100 // r, p + interest, p // 2, answer=p))
+
+
+@question_type("math.compound_ten_percent_m5", display_name={"th": "ดอกเบี้ยทบต้นร้อยละ 10 สองปี"}, level=LEVEL,
+               topic="ดอกเบี้ยและมูลค่าของเงิน")
+class CompoundTenPercentM5(WordProblem):
+    def expr(self, rng: Random):
+        p = rng.randint(1, 30) * 1000
+        t = rng.choice((2, 3))
+        right = p * 11 ** t // 10 ** t
+        prompt = f"ฝากเงิน {p:,} บาท ได้ดอกเบี้ยทบต้นร้อยละ 10 ต่อปี เมื่อครบ {t} ปี จะมีเงินรวมกี่บาท"
+        # Simple interest instead; one year short; the interest alone.
+        return MathDraw("", _g5(right), prompt=prompt,
+                        distractors=_gk5(p + p * t // 10, p * 11 ** (t - 1) // 10 ** (t - 1), right - p, right + p // 10, answer=right))

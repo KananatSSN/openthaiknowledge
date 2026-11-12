@@ -349,3 +349,88 @@ class RegularSavingM5(WordProblem):
             # The deposits alone, and the whole sum compounded as one lump.
             distractors=[money_math_m5(dep * n), money_math_m5(dep * n * g), money_math_m5(dep * g)])
 RegularSavingM5.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More sequences and series (2026-11): an arithmetic sum, a geometric term, and a common difference ──
+
+
+@question_type("math.arithmetic_sum_m5", display_name={"th": "ผลบวก n พจน์แรกของอนุกรมเลขคณิต"}, level=LEVEL,
+               topic="ลำดับและอนุกรม")
+class ArithmeticSumM5(MathType):
+    def expr(self, rng: Random):
+        a, d, n = rng.randint(1, 20), rng.randint(2, 9), rng.randint(5, 30)
+        right = n * (2 * a + (n - 1) * d) // 2
+        last = a + (n - 1) * d
+        # The last term; n times the first; the d not reduced by one term.
+        return MathDraw(rf"{a} + {a + d} + {a + 2 * d} + \cdots", _g5(right), prompt=f"จงหาผลบวก {n} พจน์แรกของอนุกรมนี้",
+                        distractors=_gk5(last, n * a, n * (2 * a + n * d) // 2, right + d, answer=right))
+
+
+@question_type("math.geometric_term_m5", display_name={"th": "พจน์ที่ n ของลำดับเรขาคณิต"}, level=LEVEL, topic="ลำดับและอนุกรม")
+class GeometricTermM5(MathType):
+    def expr(self, rng: Random):
+        a, r, n = rng.randint(1, 5), rng.choice((2, 3)), rng.randint(4, 8)
+        right = a * r ** (n - 1)
+        # One power too many; the ratio times n; added instead.
+        return MathDraw(f"{a}, {a * r}, {a * r * r}, \\ldots", _g5(right), prompt=f"พจน์ที่ {n} ของลำดับนี้คือจำนวนใด",
+                        distractors=_gk5(a * r ** n, a * r * n, a + (n - 1) * r, a * r ** (n - 2), answer=right))
+
+
+@question_type("math.common_difference_m5", display_name={"th": "หาผลต่างร่วมของลำดับเลขคณิต"}, level=LEVEL, topic="ลำดับและอนุกรม")
+class CommonDifferenceM5(WordProblem):
+    def expr(self, rng: Random):
+        a, d, n = rng.randint(-10, 20), _nz5(rng, 2, 9), rng.randint(5, 25)
+        an = a + (n - 1) * d
+        prompt = f"ลำดับเลขคณิตมีพจน์แรกเท่ากับ {a} และพจน์ที่ {n} เท่ากับ {an} ผลต่างร่วมเท่ากับเท่าใด"
+        # Divided by n not n − 1; the total change; the sign lost.
+        wrong_n = Fraction(an - a, n)
+        return MathDraw("", str(d), prompt=prompt,
+                        distractors=_tk5(frac_tex(wrong_n), str(an - a), str(-d), str(d + 1), answer=str(d)))
+
+
+ArithmeticSumM5.PROVENANCE = Provenance("original")
+GeometricTermM5.PROVENANCE = Provenance("original")
+CommonDifferenceM5.PROVENANCE = Provenance("original")
