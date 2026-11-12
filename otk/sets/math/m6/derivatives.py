@@ -229,3 +229,95 @@ class MotionDerivativeM6(MathType):
         return MathDraw(s, str(acc), prompt=f"วัตถุเคลื่อนที่ตามตำแหน่ง s(t) (เมตร) จงหาความเร่งที่เวลา t = {t} วินาที",
                         distractors=_story.keep(v, 6 * a + 2 * b, 3 * a * t * t, answer=acc, lo=-9999))
 MotionDerivativeM6.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More derivatives (2026-11): a product at a point, a quotient at zero, and a square root at a square ──
+
+
+@question_type("math.product_rule_value_m6", display_name={"th": "อนุพันธ์ของผลคูณที่จุดหนึ่ง"}, level=LEVEL, topic="อนุพันธ์")
+class ProductRuleValueM6(MathType):
+    def expr(self, rng: Random):
+        a, b, c, d = _nz6(rng, 1, 5), rng.randint(-9, 9), _nz6(rng, 1, 5), rng.randint(-9, 9)
+        k = rng.randint(-3, 3)
+        right = a * (c * k + d) + c * (a * k + b)
+        # The derivatives multiplied; one part only; the function's value.
+        return MathDraw(rf"f(x) = ({poly_tex((a, 'x'), (b, ''))})({poly_tex((c, 'x'), (d, ''))})", str(right), prompt=f"จงหาค่า f′({k})",
+                        distractors=_nk6(a * c, a * (c * k + d), (a * k + b) * (c * k + d), right + 1, answer=right))
+
+
+@question_type("math.quotient_rule_value_m6", display_name={"th": "อนุพันธ์ของผลหารที่ x = 0"}, level=LEVEL, topic="อนุพันธ์")
+class QuotientRuleValueM6(MathType):
+    def expr(self, rng: Random):
+        a, b = _nz6(rng, 1, 9), _nz6(rng, 1, 9)
+        while a == b:
+            b = _nz6(rng, 1, 9)
+        right = Fraction(b - a, b * b)
+        # The numerator's sign swapped; not squared; the derivatives divided.
+        return MathDraw(rf"f(x) = \frac{{{poly_tex((1, 'x'), (a, ''))}}}{{{poly_tex((1, 'x'), (b, ''))}}}", frac_tex(right), prompt="จงหาค่า f′(0)",
+                        distractors=_fk6(Fraction(a - b, b * b), Fraction(b - a, b), 1, Fraction(a, b), answer=right))
+
+
+@question_type("math.root_derivative_value_m6", display_name={"th": "อนุพันธ์ของรากที่สอง"}, level=LEVEL, topic="อนุพันธ์")
+class RootDerivativeValueM6(MathType):
+    def expr(self, rng: Random):
+        k, c = rng.randint(1, 9), rng.randint(1, 6)
+        right = Fraction(c, 2 * k)
+        return MathDraw(rf"f(x) = {c if c > 1 else ''}\sqrt{{x}}", frac_tex(right), prompt=f"จงหาค่า f′({k * k})",
+                        distractors=_fk6(Fraction(c, k), Fraction(c * k, 2), Fraction(c, 2 * k * k), Fraction(1, 2 * k) if c > 1 else Fraction(2, k),
+                                         answer=right))
+
+
+ProductRuleValueM6.PROVENANCE = Provenance("original")
+QuotientRuleValueM6.PROVENANCE = Provenance("original")
+RootDerivativeValueM6.PROVENANCE = Provenance("original")

@@ -208,3 +208,120 @@ class GeometricSeriesFinite(MathType):
             distractors=[str(a1 * r ** n), str(a1 * (r ** n - 1)),
                          str(a1 * r ** (n - 1))])
 GeometricSeriesFinite.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More geometric sequences (2026-11): the ratio from two terms, a term from two others, a sum with ratio 3,
+# a geometric mean, and which term has a value ──
+
+
+@question_type("math.ratio_from_terms_m6", display_name={"th": "หาอัตราส่วนร่วมจากสองพจน์"}, level=LEVEL, topic="ลำดับเรขาคณิต")
+class RatioFromTermsM6(WordProblem):
+    def expr(self, rng: Random):
+        a, r = rng.randint(1, 5), rng.choice((2, 3, -2, -3))
+        a2, a5 = a * r, a * r ** 4
+        prompt = f"ลำดับเรขาคณิตมี a_2 = {a2} และ a_5 = {a5} อัตราส่วนร่วมเท่ากับเท่าใด"
+        # The ratio of the terms; the gap over three; the sign lost.
+        return MathDraw("", str(r), prompt=prompt, distractors=_nk6(a5 // a2, (a5 - a2) // 3, -r, r * r, answer=r))
+
+
+@question_type("math.geo_term_from_two_m6", display_name={"th": "หาพจน์ของลำดับเรขาคณิตจากสองพจน์"}, level=LEVEL, topic="ลำดับเรขาคณิต")
+class GeoTermFromTwoM6(WordProblem):
+    def expr(self, rng: Random):
+        a, r = rng.randint(1, 6), rng.choice((2, 3))
+        a1, a3, right = a, a * r * r, a * r ** 4
+        prompt = f"ลำดับเรขาคณิตที่ทุกพจน์เป็นบวก มี a_1 = {a1} และ a_3 = {a3} พจน์ที่ 5 เท่ากับเท่าใด"
+        # Arithmetic instead; one ratio short; the ratio squared once.
+        return MathDraw("", str(right), prompt=prompt, distractors=_nk6(2 * a3 - a1, a * r ** 3, a3 * r, a3 + a1, answer=right, lo=1))
+
+
+@question_type("math.geo_sum_ratio_three_m6", display_name={"th": "ผลบวก n พจน์แรกของอนุกรมเรขาคณิต"}, level=LEVEL, topic="ลำดับเรขาคณิต")
+class GeoSumRatioThreeM6(MathType):
+    def expr(self, rng: Random):
+        a, r, n = rng.randint(1, 5), rng.choice((2, 3)), rng.randint(4, 7)
+        right = a * (r ** n - 1) // (r - 1)
+        # The last term; one term short; r to the n.
+        return MathDraw(f"{a} + {a * r} + {a * r * r} + \\cdots", f"{right:,}".replace(",", "{,}"), prompt=f"จงหาผลบวก {n} พจน์แรก",
+                        distractors=[f"{v:,}".replace(",", "{,}") for v in dict.fromkeys(
+                            (a * r ** (n - 1), a * (r ** (n - 1) - 1) // (r - 1), a * r ** n, right + a)) if v != right])
+
+
+@question_type("math.geometric_mean_m6", display_name={"th": "ค่าเฉลี่ยเรขาคณิตของสองจำนวน"}, level=LEVEL, topic="ลำดับเรขาคณิต")
+class GeometricMeanM6(WordProblem):
+    def expr(self, rng: Random):
+        m, r = rng.randint(1, 8), rng.randint(2, 6)
+        a, b = m, m * r * r
+        right = m * r
+        prompt = f"ค่าเฉลี่ยเรขาคณิตของ {a} และ {b} (ค่าบวก) เท่ากับเท่าใด"
+        # The arithmetic mean; the product; half the larger.
+        return MathDraw("", str(right), prompt=prompt, distractors=_tk6(_num6(Fraction(a + b, 2)), str(a * b), _num6(Fraction(b, 2)), str(right + 1),
+                                                                         answer=str(right)))
+
+
+@question_type("math.geo_which_term_m6", display_name={"th": "จำนวนนี้เป็นพจน์ที่เท่าใดของลำดับเรขาคณิต"}, level=LEVEL,
+               topic="ลำดับเรขาคณิต")
+class GeoWhichTermM6(WordProblem):
+    def expr(self, rng: Random):
+        a, r, n = rng.randint(1, 5), rng.choice((2, 3)), rng.randint(4, 9)
+        value = a * r ** (n - 1)
+        prompt = f"ลำดับ {a}, {a * r}, {a * r * r}, ... จำนวน {value:,} เป็นพจน์ที่เท่าใด"
+        # The power of r; one more; the value over the ratio.
+        return MathDraw("", str(n), prompt=prompt, distractors=_nk6(n - 1, n + 1, 2 * n, value // r if value // r < 40 else n + 2, answer=n, lo=1))
+
+
+RatioFromTermsM6.PROVENANCE = Provenance("original")
+GeoTermFromTwoM6.PROVENANCE = Provenance("original")
+GeoSumRatioThreeM6.PROVENANCE = Provenance("original")
+GeometricMeanM6.PROVENANCE = Provenance("original")
+GeoWhichTermM6.PROVENANCE = Provenance("original")

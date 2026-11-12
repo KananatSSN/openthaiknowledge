@@ -396,3 +396,92 @@ class NormalDistributionM6(QuestionType):
                       [str(int(pct)), str(n - int(count)), str(int(count) // 2), str(int(count) * 2)
                        if int(count) * 2 <= n else str(int(count) + 10)], self.topic)
 NormalDistributionM6.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More probability distributions (2026-11): the mean of a binomial, and a missing probability in a table ──
+
+
+@question_type("math.binomial_mean_m6", display_name={"th": "ค่าคาดหมายของการแจกแจงทวินาม"}, level=LEVEL, topic="การแจกแจงความน่าจะเป็น")
+class BinomialMeanM6(MathType):
+    def expr(self, rng: Random):
+        n = rng.choice((10, 20, 25, 40, 50, 100))
+        p = Fraction(rng.randint(1, 9), 10)
+        right = n * p
+        return MathDraw(rf"X \sim B({n},\ {frac_tex(p)})", _num6(right), prompt="ค่าคาดหมาย E(X) เท่ากับเท่าใด",
+                        distractors=_dk6(n * p * (1 - p), n * (1 - p), p, right + 1, answer=right))
+
+
+@question_type("math.missing_probability_m6", display_name={"th": "ความน่าจะเป็นที่หายไปในตารางการแจกแจง"}, level=LEVEL,
+               topic="การแจกแจงความน่าจะเป็น")
+class MissingProbabilityM6(MathType):
+    def expr(self, rng: Random):
+        while True:
+            parts = [rng.randint(1, 5) for _ in range(4)]
+            d = sum(parts)
+            if d in (8, 10, 12, 16, 20):
+                break
+        i = rng.randrange(4)
+        probs = [Fraction(v, d) for v in parts]
+        right = probs[i]
+        cells = " & ".join("k" if j == i else frac_tex(q) for j, q in enumerate(probs))
+        table = rf"\begin{{array}}{{c|cccc}} x & 1 & 2 & 3 & 4 \\ \hline P(X = x) & {cells} \end{{array}}"
+        known = 1 - right
+        return MathDraw(table, frac_tex(right), prompt="ตารางนี้เป็นการแจกแจงความน่าจะเป็นของ X ค่าของ k เท่ากับเท่าใด",
+                        distractors=_fk6(known, Fraction(1, 4), right + Fraction(1, d), 1 - 2 * right if right < Fraction(1, 2) else Fraction(1, d),
+                                         answer=right))
+
+
+BinomialMeanM6.PROVENANCE = Provenance("original")
+MissingProbabilityM6.PROVENANCE = Provenance("original")
