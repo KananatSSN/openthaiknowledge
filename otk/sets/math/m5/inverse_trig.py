@@ -234,3 +234,128 @@ class InverseTrigNegative(MathType):
                         prompt="จงหาค่าหลักของฟังก์ชันผกผันนี้ (เป็นองศา)",
                         distractors=[rf"{w}^\circ" for w in wrong])
 InverseTrigNegative.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More inverse trigonometric functions (2026-11): arccos of special values, arcsin of negatives, sin of an
+# arccos, tan of an arcsin, a function after its inverse, and the principal ranges ──
+
+_TRIPLES5I = ((3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25), (20, 21, 29))
+
+
+@question_type("math.arccos_special_m5", display_name={"th": "ค่าหลักของ arccos ที่มุมพิเศษ"}, level=LEVEL,
+               topic="ตัวผกผันของฟังก์ชันตรีโกณมิติ")
+class ArccosSpecialM5(ConceptBankType):
+    ITEMS = [
+        Concept("arccos(1/2) เท่ากับกี่องศา", "60°", ("30°", "120°", "−60°")),
+        Concept("arccos(−1/2) เท่ากับกี่องศา", "120°", ("−60°", "60°", "240°")),
+        Concept("arccos(0) เท่ากับกี่องศา", "90°", ("0°", "180°", "−90°")),
+        Concept("arccos(√3/2) เท่ากับกี่องศา", "30°", ("60°", "150°", "−30°")),
+        Concept("arccos(−√2/2) เท่ากับกี่องศา", "135°", ("−45°", "45°", "225°")),
+    ]
+
+
+@question_type("math.arcsin_negative_m5", display_name={"th": "ค่าหลักของ arcsin ของจำนวนลบ"}, level=LEVEL,
+               topic="ตัวผกผันของฟังก์ชันตรีโกณมิติ")
+class ArcsinNegativeM5(ConceptBankType):
+    ITEMS = [
+        Concept("arcsin(−1/2) เท่ากับกี่องศา", "−30°", ("210°", "330°", "150°")),
+        Concept("arcsin(−√3/2) เท่ากับกี่องศา", "−60°", ("240°", "300°", "120°")),
+        Concept("arcsin(−1) เท่ากับกี่องศา", "−90°", ("270°", "180°", "90°")),
+        Concept("arcsin(−√2/2) เท่ากับกี่องศา", "−45°", ("225°", "315°", "135°")),
+    ]
+
+
+@question_type("math.sin_of_arccos_m5", display_name={"th": "ค่าของ sin(arccos x)"}, level=LEVEL,
+               topic="ตัวผกผันของฟังก์ชันตรีโกณมิติ")
+class SinOfArccosM5(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_TRIPLES5I)
+        if rng.random() < 0.5:
+            a, b = b, a
+        right = frac_tex(Fraction(b, c))
+        return MathDraw(rf"\sin\left(\arccos \frac{{{a}}}{{{c}}}\right)", right, prompt="จงหาค่า",
+                        distractors=_tk5(frac_tex(Fraction(a, c)), frac_tex(Fraction(b, a)), frac_tex(Fraction(c, b)), answer=right))
+
+
+@question_type("math.tan_of_arcsin_m5", display_name={"th": "ค่าของ tan(arcsin x)"}, level=LEVEL,
+               topic="ตัวผกผันของฟังก์ชันตรีโกณมิติ")
+class TanOfArcsinM5(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_TRIPLES5I)
+        if rng.random() < 0.5:
+            a, b = b, a
+        right = frac_tex(Fraction(a, b))
+        return MathDraw(rf"\tan\left(\arcsin \frac{{{a}}}{{{c}}}\right)", right, prompt="จงหาค่า",
+                        distractors=_tk5(frac_tex(Fraction(b, a)), frac_tex(Fraction(b, c)), frac_tex(Fraction(a, c)), answer=right))
+
+
+@question_type("math.function_after_inverse_m5", display_name={"th": "ฟังก์ชันตรีโกณมิติกับตัวผกผัน"}, level=LEVEL,
+               topic="ตัวผกผันของฟังก์ชันตรีโกณมิติ")
+class FunctionAfterInverseM5(ConceptBankType):
+    ITEMS = [
+        Concept("arcsin(sin 150°) เท่ากับกี่องศา", "30°", ("150°", "−30°", "60°")),
+        Concept("arccos(cos 300°) เท่ากับกี่องศา", "60°", ("300°", "−60°", "120°")),
+        Concept("arctan(tan 135°) เท่ากับกี่องศา", "−45°", ("135°", "45°", "−135°")),
+        Concept("sin(arcsin 0.3) เท่ากับเท่าใด", "0.3", ("0.7", "−0.3", "หาค่าไม่ได้")),
+    ]
+
+
+@question_type("math.inverse_trig_principal_range_m5", display_name={"th": "เรนจ์ของฟังก์ชันตรีโกณมิติผกผัน"}, level=LEVEL,
+               topic="ตัวผกผันของฟังก์ชันตรีโกณมิติ")
+class InverseTrigPrincipalRangeM5(ConceptBankType):
+    ITEMS = [
+        Concept("เรนจ์ของ y = arcsin x คือช่วงใด", "[−90°, 90°]", ("[0°, 180°]", "(−90°, 90°)", "[0°, 360°)")),
+        Concept("เรนจ์ของ y = arccos x คือช่วงใด", "[0°, 180°]", ("[−90°, 90°]", "(0°, 180°)", "[0°, 360°)")),
+        Concept("เรนจ์ของ y = arctan x คือช่วงใด", "(−90°, 90°)", ("[−90°, 90°]", "[0°, 180°]", "(0°, 180°)")),
+        Concept("โดเมนของ y = arcsin x คือช่วงใด", "[−1, 1]", ("(−1, 1)", "[0, 1]", "จำนวนจริงทั้งหมด")),
+    ]
+
+
+ArccosSpecialM5.PROVENANCE = Provenance("original")
+ArcsinNegativeM5.PROVENANCE = Provenance("original")
+SinOfArccosM5.PROVENANCE = Provenance("original")
+TanOfArcsinM5.PROVENANCE = Provenance("original")
+FunctionAfterInverseM5.PROVENANCE = Provenance("original")
+InverseTrigPrincipalRangeM5.PROVENANCE = Provenance("original")

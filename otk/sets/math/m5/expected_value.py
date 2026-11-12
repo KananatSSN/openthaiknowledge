@@ -134,3 +134,127 @@ class ExpectedValueTable(MathType):
             distractors=[frac_tex(Fraction(sum(values), 3)),
                          str(max(values)),
                          frac_tex(expectation + 1)])
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More expected value (2026-11): a win-or-lose game, a spinner, a raffle ticket, the expected number of
+# heads, an insurer's expected profit, and a die game ──
+
+
+@question_type("math.win_or_lose_m5", display_name={"th": "ค่าคาดหมายของเกมได้หรือเสีย"}, level=LEVEL, topic="ค่าคาดหมาย")
+class WinOrLoseM5(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((4, 5, 6, 8, 10))
+        k = rng.randint(1, d - 1)
+        win, lose = rng.randint(2, 20) * 5, rng.randint(1, 10) * 5
+        right = Fraction(k * win - (d - k) * lose, d)
+        prompt = (f"เกมหนึ่งมีโอกาสชนะ {k}/{d} ถ้าชนะได้ {win} บาท ถ้าแพ้เสีย {lose} บาท "
+                  "ค่าคาดหมายของเงินที่ได้ต่อการเล่นหนึ่งครั้งเป็นกี่บาท")
+        # The loss forgotten; the loss added; the chances read as even.
+        return MathDraw("", frac_tex(right), prompt=prompt,
+                        distractors=_fk5(Fraction(k * win, d), Fraction(k * win + (d - k) * lose, d), Fraction(win - lose, 2),
+                                         right + 5, answer=right))
+
+
+@question_type("math.spinner_expected_m5", display_name={"th": "ค่าคาดหมายของวงล้อ"}, level=LEVEL, topic="ค่าคาดหมาย")
+class SpinnerExpectedM5(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice((4, 5, 6, 8))
+        values = [rng.randint(0, 20) * 5 for _ in range(n)]
+        right = Fraction(sum(values), n)
+        shown = ", ".join(str(v) for v in values)
+        prompt = f"วงล้อแบ่งเป็น {n} ช่องเท่ากัน มีรางวัล {shown} บาท ค่าคาดหมายของรางวัลต่อการหมุนหนึ่งครั้งเป็นกี่บาท"
+        # The total; the middle value; the biggest prize.
+        return MathDraw("", frac_tex(right), prompt=prompt,
+                        distractors=_fk5(sum(values), sorted(values)[n // 2], max(values), right + 5, answer=right))
+
+
+@question_type("math.raffle_ticket_m5", display_name={"th": "ค่าคาดหมายของสลากหนึ่งใบ"}, level=LEVEL, topic="ค่าคาดหมาย")
+class RaffleTicketM5(WordProblem):
+    def expr(self, rng: Random):
+        tickets = rng.choice((100, 200, 500, 1000))
+        first, second = rng.randint(1, 10) * 1000, rng.randint(1, 5) * 100
+        seconds = rng.randint(2, 10)
+        right = Fraction(first + seconds * second, tickets)
+        prompt = (f"สลาก {tickets} ใบ มีรางวัลที่ 1 หนึ่งรางวัล {first:,} บาท และรางวัลที่ 2 จำนวน {seconds} รางวัล รางวัลละ {second} บาท "
+                  "ค่าคาดหมายของรางวัลต่อสลากหนึ่งใบเป็นกี่บาท")
+        # One second prize only; the first prize only; every prize added.
+        return MathDraw("", frac_tex(right), prompt=prompt,
+                        distractors=_fk5(Fraction(first + second, tickets), Fraction(first, tickets), first + seconds * second,
+                                         right * 2, answer=right))
+
+
+@question_type("math.expected_heads_m5", display_name={"th": "จำนวนหัวที่คาดว่าจะได้"}, level=LEVEL, topic="ค่าคาดหมาย")
+class ExpectedHeadsM5(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.randint(2, 40)
+        right = Fraction(n, 2)
+        prompt = f"โยนเหรียญเที่ยงตรง {n} ครั้ง ค่าคาดหมายของจำนวนครั้งที่ออกหัวเท่ากับเท่าใด"
+        return MathDraw("", frac_tex(right), prompt=prompt,
+                        distractors=_fk5(n, Fraction(n, 4), Fraction(1, 2), right + 1, answer=right))
+
+
+@question_type("math.insurance_profit_m5", display_name={"th": "กำไรที่คาดหมายของบริษัทประกัน"}, level=LEVEL, topic="ค่าคาดหมาย")
+class InsuranceProfitM5(WordProblem):
+    def expr(self, rng: Random):
+        premium = rng.randint(5, 40) * 100
+        payout = rng.randint(1, 20) * 10_000
+        d = rng.choice((50, 100, 200))
+        right = Fraction(premium * d - payout, d)
+        prompt = (f"บริษัทประกันขายกรมธรรม์ราคา {premium:,} บาท ถ้าเกิดเหตุจะจ่าย {payout:,} บาท "
+                  f"โอกาสเกิดเหตุเท่ากับ 1/{d} กำไรที่คาดหมายของบริษัทต่อกรมธรรม์หนึ่งฉบับเป็นกี่บาท")
+        # The premium alone; the payout added; the payout shared without the premium.
+        return MathDraw("", frac_tex(right), prompt=prompt,
+                        distractors=_fk5(premium, Fraction(premium * d + payout, d), Fraction(payout, d), premium - payout,
+                                         answer=right))
+
+
+@question_type("math.die_game_m5", display_name={"th": "ค่าคาดหมายของเกมทอดลูกเต๋า"}, level=LEVEL, topic="ค่าคาดหมาย")
+class DieGameM5(WordProblem):
+    def expr(self, rng: Random):
+        pay = rng.randint(1, 6)
+        right = Fraction(2 + 4 + 6 - 3 * pay, 6)
+        prompt = f"ทอดลูกเต๋าหนึ่งลูก ถ้าขึ้นแต้มคู่ได้เงินเท่ากับแต้มที่ขึ้น ถ้าขึ้นแต้มคี่เสียเงิน {pay} บาท ค่าคาดหมายของเงินที่ได้เป็นกี่บาท"
+        # The loss ignored; every face paid; the loss counted once.
+        return MathDraw("", frac_tex(right), prompt=prompt,
+                        distractors=_fk5(Fraction(12, 6), Fraction(21, 6), Fraction(12 - pay, 6), right + 1, answer=right))

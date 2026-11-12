@@ -167,3 +167,134 @@ class TrigEquationTangent(MathType):
             right, prompt="จงหาคำตอบทั้งหมดของสมการ",
             distractors=[w for w in dict.fromkeys(wrongs) if w != right][:3])
 TrigEquationTangent.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More trigonometric equations (2026-11): sin x = 1/2, cos x = −1/2, tan x = −1, how many solutions of
+# sin²x = 1/4, 2cos x + √3 = 0, and the sum of two solutions ──
+
+
+@question_type("math.sin_equals_value_m5", display_name={"th": "แก้สมการ sin x = ค่าพิเศษ"}, level=LEVEL, topic="สมการตรีโกณมิติ")
+class SinEqualsValueM5(MathType):
+    _CASES = ((r"\frac{1}{2}", 30), (r"\frac{\sqrt{3}}{2}", 60), (r"\frac{\sqrt{2}}{2}", 45),
+              (r"-\frac{1}{2}", -30), (r"-\frac{\sqrt{3}}{2}", -60))
+
+    def expr(self, rng: Random):
+        value, a = rng.choice(self._CASES)
+        sols = sorted({(a) % 360, (180 - a) % 360})
+        right = _deg5(*sols)
+        wrongs = [_deg5(*sorted({abs(a), 360 - abs(a)})), _deg5(sols[0]), _deg5(*sorted({(90 - a) % 360, (90 + a) % 360})),
+                  _deg5(*sorted({(a + 180) % 360, (360 - a) % 360}))]
+        return MathDraw(rf"\sin x = {value} \quad (0^{{\circ}} \le x < 360^{{\circ}})", right, prompt="จงแก้สมการ",
+                        distractors=_tk5(*wrongs, answer=right)[:3])
+
+
+@question_type("math.cos_equals_value_m5", display_name={"th": "แก้สมการ cos x = ค่าพิเศษ"}, level=LEVEL, topic="สมการตรีโกณมิติ")
+class CosEqualsValueM5(MathType):
+    _CASES = ((r"-\frac{1}{2}", 120), (r"\frac{1}{2}", 60), (r"-\frac{\sqrt{3}}{2}", 150), (r"\frac{\sqrt{2}}{2}", 45),
+              (r"-\frac{\sqrt{2}}{2}", 135))
+
+    def expr(self, rng: Random):
+        value, a = rng.choice(self._CASES)
+        right = _deg5(a, 360 - a)
+        wrongs = [_deg5(a, 180 - a) if a != 90 else _deg5(a), _deg5(a), _deg5(180 - a, 180 + a)]
+        return MathDraw(rf"\cos x = {value} \quad (0^{{\circ}} \le x < 360^{{\circ}})", right, prompt="จงแก้สมการ",
+                        distractors=_tk5(*wrongs, _deg5(360 - a), answer=right)[:3])
+
+
+@question_type("math.tan_equals_value_m5", display_name={"th": "แก้สมการ tan x = ค่าพิเศษ"}, level=LEVEL, topic="สมการตรีโกณมิติ")
+class TanEqualsValueM5(MathType):
+    _CASES = (("-1", 135), ("1", 45), (r"\sqrt{3}", 60), (r"-\sqrt{3}", 120), (r"\frac{\sqrt{3}}{3}", 30))
+
+    def expr(self, rng: Random):
+        value, a = rng.choice(self._CASES)
+        right = _deg5(a, a + 180)
+        wrongs = [_deg5(a, 360 - a), _deg5(a), _deg5(a, 180 - a)]
+        return MathDraw(rf"\tan x = {value} \quad (0^{{\circ}} \le x < 360^{{\circ}})", right, prompt="จงแก้สมการ",
+                        distractors=_tk5(*wrongs, answer=right))
+
+
+@question_type("math.sin_squared_count_m5", display_name={"th": "นับคำตอบของสมการ sin²x = k"}, level=LEVEL, topic="สมการตรีโกณมิติ")
+class SinSquaredCountM5(MathType):
+    _CASES = ((r"\frac{1}{4}", 4), (r"\frac{3}{4}", 4), (r"\frac{1}{2}", 4), ("1", 2), ("0", 2))
+
+    def expr(self, rng: Random):
+        value, right = rng.choice(self._CASES)
+        fn = rng.choice(("sin", "cos"))
+        # Only the positive roots; twice too many; one.
+        return MathDraw(rf"\{fn}^{{2}} x = {value} \quad (0^{{\circ}} \le x < 360^{{\circ}})", str(right),
+                        prompt="สมการนี้มีคำตอบกี่คำตอบ", distractors=_nk5(right // 2, right * 2, 1, 3, answer=right, lo=1))
+
+
+@question_type("math.two_cos_plus_root3_m5", display_name={"th": "แก้สมการ a cos x + b = 0"}, level=LEVEL, topic="สมการตรีโกณมิติ")
+class TwoCosPlusRoot3M5(MathType):
+    _CASES = ((r"2\cos x + \sqrt{3} = 0", (150, 210)), (r"2\cos x - 1 = 0", (60, 300)),
+              (r"2\sin x - \sqrt{3} = 0", (60, 120)), (r"2\sin x + 1 = 0", (210, 330)), (r"\sqrt{2}\cos x - 1 = 0", (45, 315)))
+
+    def expr(self, rng: Random):
+        eq, sols = rng.choice(self._CASES)
+        right = _deg5(*sols)
+        a, b = sols
+        wrongs = [_deg5(180 - a, 180 + a) if 180 - a >= 0 else _deg5(a + 90, b + 90), _deg5(a), _deg5((a + 180) % 360, (b + 180) % 360)]
+        return MathDraw(rf"{eq} \quad (0^{{\circ}} \le x < 360^{{\circ}})", right, prompt="จงแก้สมการ",
+                        distractors=_tk5(*wrongs, _deg5(a, b + 10), answer=right)[:3])
+
+
+@question_type("math.sum_of_two_solutions_m5", display_name={"th": "ผลบวกของคำตอบของสมการตรีโกณมิติ"}, level=LEVEL,
+               topic="สมการตรีโกณมิติ")
+class SumOfTwoSolutionsM5(MathType):
+    def expr(self, rng: Random):
+        fn = rng.choice(("sin", "cos"))
+        k = rng.choice((r"\frac{1}{3}", r"\frac{2}{5}", r"\frac{3}{4}", "0.6"))
+        right = 180 if fn == "sin" else 360
+        return MathDraw(rf"\{fn} x = {k} \quad (0^{{\circ}} \le x < 360^{{\circ}})", f"{right}^{{\\circ}}",
+                        prompt="ผลบวกของคำตอบทั้งหมดของสมการนี้เท่ากับกี่องศา",
+                        distractors=_tk5(f"{540 - right}^{{\\circ}}", "90^{\\circ}", "720^{\\circ}", answer=f"{right}^{{\\circ}}"))
+
+
+SinEqualsValueM5.PROVENANCE = Provenance("original")
+CosEqualsValueM5.PROVENANCE = Provenance("original")
+TanEqualsValueM5.PROVENANCE = Provenance("original")
+SinSquaredCountM5.PROVENANCE = Provenance("original")
+TwoCosPlusRoot3M5.PROVENANCE = Provenance("original")
+SumOfTwoSolutionsM5.PROVENANCE = Provenance("original")

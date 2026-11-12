@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,284 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,347 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -194,24 +194,24 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`binomial`](m5/binomial.py) | ทฤษฎีบททวินาม | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 4 |
-| [`combinations`](m5/combinations.py) | การจัดหมู่ | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 6 |
+| [`binomial`](m5/binomial.py) | ทฤษฎีบททวินาม | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 10 |
+| [`combinations`](m5/combinations.py) | การจัดหมู่ | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 10 |
 | [`complex_numbers`](m5/complex_numbers.py) | จำนวนเชิงซ้อน | ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.5/1, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/6, ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.5/2 | 10 |
-| [`counting_principles`](m5/counting_principles.py) | หลักการนับ | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 6 |
-| [`expected_value`](m5/expected_value.py) | ค่าคาดหมาย | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/2 | 4 |
-| [`function`](m5/function.py) | ฟังก์ชันในชีวิตจริง | ค 1.2 ม.5/1 | 3 |
-| [`interest_and_value_of_money`](m5/interest_and_value_of_money.py) | ดอกเบี้ยและมูลค่าของเงิน | ค 1.3 ม.5/1 | 7 |
-| [`inverse_trig`](m5/inverse_trig.py) | ตัวผกผันของฟังก์ชันตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 4 |
-| [`law_of_cosines`](m5/law_of_cosines.py) | กฎของโคไซน์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/2 | 6 |
-| [`law_of_sines`](m5/law_of_sines.py) | กฎของไซน์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/2 | 6 |
+| [`counting_principles`](m5/counting_principles.py) | หลักการนับ | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 10 |
+| [`expected_value`](m5/expected_value.py) | ค่าคาดหมาย | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/2 | 10 |
+| [`function`](m5/function.py) | ฟังก์ชันในชีวิตจริง | ค 1.2 ม.5/1 | 10 |
+| [`interest_and_value_of_money`](m5/interest_and_value_of_money.py) | ดอกเบี้ยและมูลค่าของเงิน | ค 1.3 ม.5/1 | 10 |
+| [`inverse_trig`](m5/inverse_trig.py) | ตัวผกผันของฟังก์ชันตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 10 |
+| [`law_of_cosines`](m5/law_of_cosines.py) | กฎของโคไซน์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/2 | 10 |
+| [`law_of_sines`](m5/law_of_sines.py) | กฎของไซน์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/2 | 10 |
 | [`matrices`](m5/matrices.py) | เมทริกซ์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/3, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/5, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/4 | 13 |
-| [`permutations`](m5/permutations.py) | การเรียงสับเปลี่ยน | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 7 |
+| [`permutations`](m5/permutations.py) | การเรียงสับเปลี่ยน | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 10 |
 | [`probability`](m5/probability.py) | ความน่าจะเป็น | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/2 | 13 |
-| [`radicals_and_exponents`](m5/radicals_and_exponents.py) | จำนวนจริงในรูปกรณฑ์และเลขยกกำลัง | ค 1.1 ม.5/1 | 7 |
-| [`sequences_and_series`](m5/sequences_and_series.py) | ลำดับและอนุกรม | ค 1.2 ม.5/* | 7 |
-| [`trig_equation`](m5/trig_equation.py) | สมการตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/1 | 4 |
+| [`radicals_and_exponents`](m5/radicals_and_exponents.py) | จำนวนจริงในรูปกรณฑ์และเลขยกกำลัง | ค 1.1 ม.5/1 | 10 |
+| [`sequences_and_series`](m5/sequences_and_series.py) | ลำดับและอนุกรม | ค 1.2 ม.5/* | 10 |
+| [`trig_equation`](m5/trig_equation.py) | สมการตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/1 | 10 |
 | [`trigonometric_functions`](m5/trigonometric_functions.py) | ฟังก์ชันตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 11 |
-| [`trigonometric_ratios`](m5/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 6 |
+| [`trigonometric_ratios`](m5/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 10 |
 | [`vectors`](m5/vectors.py) | เวกเตอร์ | ค เพิ่มเติม การวัดและเรขาคณิต 2 ม.5/1, ค เพิ่มเติม การวัดและเรขาคณิต 2 ม.5/2 | 10 |
 
 ## m6 — ม.6
