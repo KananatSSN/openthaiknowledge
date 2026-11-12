@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,036 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,113 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -93,20 +93,20 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`circles`](p6/circles.py) | วงกลม | ค 2.1 ป.6/3 | 4 |
-| [`decimals`](p6/decimals.py) | ทศนิยม | ค 1.1 ป.6/* | 6 |
-| [`fractions_and_mixed_numbers`](p6/fractions_and_mixed_numbers.py) | เศษส่วนและจำนวนคละ | ค 1.1 ป.6/1, ค 1.1 ป.6/7, ค 1.1 ป.6/8 | 3 |
-| [`gcd_and_lcm`](p6/gcd_and_lcm.py) | ห.ร.ม. และ ค.ร.น. | ค 1.1 ป.6/* | 6 |
-| [`order_of_ops`](p6/order_of_ops.py) | ลำดับการดำเนินการ | ค 1.1 ป.6/* | 4 |
-| [`patterns`](p6/patterns.py) | แบบรูป | ค 1.2 ป.6/1 | 3 |
-| [`percentages`](p6/percentages.py) | ร้อยละ | ค 1.1 ป.6/* | 5 |
-| [`pie_chart`](p6/pie_chart.py) | แผนภูมิรูปวงกลม | ค 3.1 ป.6/1 | 4 |
-| [`prime_numbers`](p6/prime_numbers.py) | จำนวนเฉพาะ | ค 1.1 ป.6/* | 5 |
-| [`ratio_and_scale`](p6/ratio_and_scale.py) | อัตราส่วนและมาตราส่วน | ค 1.1 ป.6/* | 5 |
-| [`solids`](p6/solids.py) | รูปเรขาคณิต 3 มิติ | ค 2.2 ป.6/* | 4 |
-| [`triangle_area`](p6/triangle_area.py) | พื้นที่รูปสามเหลี่ยม | ค 2.1 ป.6/* | 6 |
-| [`types_of_triangles`](p6/types_of_triangles.py) | ชนิดของรูปสามเหลี่ยม | ค 2.2 ป.6/* | 4 |
-| [`volume_and_surface_area`](p6/volume_and_surface_area.py) | ปริมาตรและพื้นที่ผิว | ค 2.1 ป.6/* | 4 |
+| [`circles`](p6/circles.py) | วงกลม | ค 2.1 ป.6/3 | 10 |
+| [`decimals`](p6/decimals.py) | ทศนิยม | ค 1.1 ป.6/* | 10 |
+| [`fractions_and_mixed_numbers`](p6/fractions_and_mixed_numbers.py) | เศษส่วนและจำนวนคละ | ค 1.1 ป.6/1, ค 1.1 ป.6/7, ค 1.1 ป.6/8 | 10 |
+| [`gcd_and_lcm`](p6/gcd_and_lcm.py) | ห.ร.ม. และ ค.ร.น. | ค 1.1 ป.6/* | 10 |
+| [`order_of_ops`](p6/order_of_ops.py) | ลำดับการดำเนินการ | ค 1.1 ป.6/* | 10 |
+| [`patterns`](p6/patterns.py) | แบบรูป | ค 1.2 ป.6/1 | 10 |
+| [`percentages`](p6/percentages.py) | ร้อยละ | ค 1.1 ป.6/* | 10 |
+| [`pie_chart`](p6/pie_chart.py) | แผนภูมิรูปวงกลม | ค 3.1 ป.6/1 | 10 |
+| [`prime_numbers`](p6/prime_numbers.py) | จำนวนเฉพาะ | ค 1.1 ป.6/* | 10 |
+| [`ratio_and_scale`](p6/ratio_and_scale.py) | อัตราส่วนและมาตราส่วน | ค 1.1 ป.6/* | 10 |
+| [`solids`](p6/solids.py) | รูปเรขาคณิต 3 มิติ | ค 2.2 ป.6/* | 10 |
+| [`triangle_area`](p6/triangle_area.py) | พื้นที่รูปสามเหลี่ยม | ค 2.1 ป.6/* | 10 |
+| [`types_of_triangles`](p6/types_of_triangles.py) | ชนิดของรูปสามเหลี่ยม | ค 2.2 ป.6/* | 10 |
+| [`volume_and_surface_area`](p6/volume_and_surface_area.py) | ปริมาตรและพื้นที่ผิว | ค 2.1 ป.6/* | 10 |
 
 ## m1 — ม.1
 

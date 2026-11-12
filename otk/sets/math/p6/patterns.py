@@ -103,3 +103,152 @@ class MatchstickPatternP6(WordProblem):
                         # Counting every shape's sticks separately.
                         distractors=_story.keep(first * n, step * n, ans + step, ans - 1,
                                                 answer=ans, lo=1))
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More patterns (2026-11): the next term, a missing middle term, multiplying patterns, which term has a
+# value, square numbers, growing differences, and a repeating colour ──
+
+
+def _seq6(values) -> str:
+    return ", ".join(str(v) for v in values)
+
+
+@question_type("math.pattern_next_term_p6", display_name={"th": "จำนวนถัดไปในแบบรูป"},
+               level=LEVEL, topic="แบบรูป")
+class PatternNextTermP6(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice((-9, -8, -7, -6, -5, -4, -3, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15))
+        start = rng.randint(60, 120) if step < 0 else rng.randint(1, 40)
+        values = [start + step * i for i in range(5)]
+        right = values[-1] + step
+        # The step the wrong way; two steps; the last term repeated.
+        return MathDraw("", str(right), prompt=f"{_seq6(values)}, ... จำนวนถัดไปคือจำนวนใด",
+                        distractors=_story.keep(values[-1] - step, values[-1] + 2 * step, values[-1], right + 1,
+                                                answer=right, lo=0))
+
+
+@question_type("math.pattern_missing_middle_p6", display_name={"th": "จำนวนที่หายไปในแบบรูป"},
+               level=LEVEL, topic="แบบรูป")
+class PatternMissingMiddleP6(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.randint(3, 15)
+        start = rng.randint(1, 50)
+        values = [start + step * i for i in range(6)]
+        gap = rng.randint(1, 4)
+        right = values[gap]
+        shown = ["□" if i == gap else str(v) for i, v in enumerate(values)]
+        # The term before or after; the step itself.
+        return MathDraw("", str(right), prompt=f"{', '.join(shown)} จำนวนใน □ คือจำนวนใด",
+                        distractors=_story.keep(values[gap - 1], values[gap + 1], right + 1, step,
+                                                answer=right, lo=0))
+
+
+@question_type("math.pattern_multiply_p6", display_name={"th": "แบบรูปที่เพิ่มขึ้นเป็นเท่า"},
+               level=LEVEL, topic="แบบรูป")
+class PatternMultiplyP6(WordProblem):
+    def expr(self, rng: Random):
+        r = rng.choice((2, 3, 4, 5))
+        start = rng.randint(1, 5)
+        values = [start * r ** i for i in range(4)]
+        right = values[-1] * r
+        # The last difference added again; the ratio added; doubled.
+        return MathDraw("", _g6(right), prompt=f"{_seq6(values)}, ... จำนวนถัดไปคือจำนวนใด",
+                        distractors=_gk6(values[-1] + (values[-1] - values[-2]), values[-1] + r, values[-1] * 2,
+                                         right + start, answer=right, lo=1))
+
+
+@question_type("math.pattern_which_term_p6", display_name={"th": "จำนวนนี้เป็นพจน์ที่เท่าใด"},
+               level=LEVEL, topic="แบบรูป")
+class PatternWhichTermP6(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.randint(2, 9)
+        start = rng.randint(1, 20)
+        right = rng.randint(8, 40)
+        value = start + step * (right - 1)
+        values = [start + step * i for i in range(4)]
+        # Divided by the step without the first term; one off either way.
+        return MathDraw("", str(right), prompt=f"{_seq6(values)}, ... จำนวน {value} เป็นพจน์ที่เท่าใด",
+                        distractors=_story.keep(value // step, right - 1, right + 1, (value - start) // step,
+                                                answer=right, lo=1))
+
+
+@question_type("math.square_numbers_p6", display_name={"th": "แบบรูปจำนวนกำลังสอง"},
+               level=LEVEL, topic="แบบรูป")
+class SquareNumbersP6(WordProblem):
+    def expr(self, rng: Random):
+        k = rng.randint(6, 20)
+        right = k * k
+        # The next odd step mistaken; twice k; one term off.
+        return MathDraw("", str(right), prompt=f"1, 4, 9, 16, 25, ... พจน์ที่ {k} คือจำนวนใด",
+                        distractors=_story.keep(2 * k, (k - 1) ** 2, (k + 1) ** 2, k * k + k, answer=right, lo=1))
+
+
+@question_type("math.growing_difference_p6", display_name={"th": "แบบรูปที่ผลต่างเพิ่มขึ้นทีละหนึ่ง"},
+               level=LEVEL, topic="แบบรูป")
+class GrowingDifferenceP6(WordProblem):
+    def expr(self, rng: Random):
+        start = rng.randint(1, 20)
+        d0 = rng.randint(1, 5)
+        values = [start]
+        for i in range(5):
+            values.append(values[-1] + d0 + i)
+        right = values[-1] + d0 + 5
+        # The last difference reused; the first difference; two more.
+        return MathDraw("", str(right), prompt=f"{_seq6(values)}, ... จำนวนถัดไปคือจำนวนใด",
+                        distractors=_story.keep(values[-1] + d0 + 4, values[-1] + d0, right + 1, right + 2,
+                                                answer=right, lo=1))
+
+
+@question_type("math.repeating_colour_p6", display_name={"th": "แบบรูปซ้ำ ลำดับที่เท่าใดเป็นสีใด"},
+               level=LEVEL, topic="แบบรูป")
+class RepeatingColourP6(ChoiceType):
+    _COLOURS = ("แดง", "เขียว", "ฟ้า", "เหลือง", "ม่วง")
+
+    def compose(self, rng: Random):
+        k = rng.randint(3, 5)
+        cycle = rng.sample(self._COLOURS, k)
+        n = rng.randint(20, 99)
+        right = cycle[(n - 1) % k]
+        shown = ", ".join(cycle * 2)
+        stem = f"ลูกปัดเรียงสีเป็นแบบรูปซ้ำ {shown}, ... ลูกปัดลูกที่ {n} เป็นสีใด"
+        wrongs = [c for c in cycle if c != right] + [c for c in self._COLOURS if c not in cycle]
+        return stem, right, wrongs[:3]
