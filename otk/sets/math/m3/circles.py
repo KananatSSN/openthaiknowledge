@@ -153,3 +153,106 @@ class TangentLengthM3(WordProblem):
                         prompt=(f"เส้นตรง PT สัมผัสวงกลมที่มีจุดศูนย์กลาง O ที่จุด T ถ้า OT ยาว {r} ซม. "
                                 f"และ PT ยาว {t} ซม. มุม OTP มีขนาดกี่องศา"),
                         distractors=["45", "60", "180"])
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More circles (2026-11): an inscribed angle from the central one, two tangents from a point, a chord from
+# its distance to the centre, and inscribed angles on one arc ──
+
+_TRIPLES3 = ((3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25), (6, 8, 10), (9, 12, 15), (12, 16, 20))
+
+
+@question_type("math.inscribed_from_central_m3", display_name={"th": "มุมในส่วนโค้งจากมุมที่จุดศูนย์กลาง"},
+               level=LEVEL, topic="วงกลม")
+class InscribedFromCentralM3(WordProblem):
+    def expr(self, rng: Random):
+        central = 2 * rng.randint(15, 85)
+        right = central // 2
+        prompt = (f"มุมที่จุดศูนย์กลางของวงกลมมีขนาด {central} องศา "
+                  "มุมในส่วนโค้งที่รองรับด้วยส่วนโค้งเดียวกันมีขนาดกี่องศา")
+        # Doubled instead; the same; what is left of a straight angle.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(2 * central, central, 180 - central, 90 - right, answer=right, lo=1))
+
+
+@question_type("math.two_tangents_m3", display_name={"th": "เส้นสัมผัสสองเส้นจากจุดภายนอก"},
+               level=LEVEL, topic="วงกลม")
+class TwoTangentsM3(WordProblem):
+    def expr(self, rng: Random):
+        if rng.random() < 0.5:
+            length = rng.randint(5, 30)
+            prompt = (f"PA และ PB เป็นเส้นสัมผัสวงกลมที่จุด A และ B จากจุด P ภายนอกวงกลม "
+                      f"ถ้า PA ยาว {length} เซนติเมตร PB ยาวกี่เซนติเมตร")
+            return MathDraw("", str(length), prompt=prompt,
+                            distractors=_story.keep(2 * length, length // 2 if length > 9 else length + 4, length + 1,
+                                                    answer=length, lo=1))
+        apb = rng.randint(20, 140)
+        right = 180 - apb
+        prompt = (f"PA และ PB เป็นเส้นสัมผัสวงกลมที่มีจุดศูนย์กลาง O ที่จุด A และ B ถ้ามุม APB มีขนาด {apb} องศา "
+                  "มุม AOB มีขนาดกี่องศา")
+        # The same angle; a full turn less it; a right angle less it.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(apb, 360 - apb, abs(90 - apb), right + 10, answer=right, lo=1))
+
+
+@question_type("math.chord_from_distance_m3", display_name={"th": "ความยาวคอร์ดจากระยะห่างถึงจุดศูนย์กลาง"},
+               level=LEVEL, topic="วงกลม")
+class ChordFromDistanceM3(WordProblem):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_TRIPLES3)
+        d, half = rng.sample((a, b), 2)
+        right = 2 * half
+        prompt = (f"วงกลมรัศมี {c} เซนติเมตร คอร์ดเส้นหนึ่งอยู่ห่างจากจุดศูนย์กลาง {d} เซนติเมตร "
+                  "คอร์ดเส้นนี้ยาวกี่เซนติเมตร")
+        # Half the chord; the radius less the distance; the diameter.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(half, 2 * (c - d), 2 * c, c + d, answer=right, lo=1))
+
+
+@question_type("math.angles_same_arc_m3", display_name={"th": "มุมในส่วนโค้งที่รองรับด้วยส่วนโค้งเดียวกัน"},
+               level=LEVEL, topic="วงกลม")
+class AnglesSameArcM3(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(20, 80)
+        prompt = (f"จุด A, B, C และ D อยู่บนวงกลมเดียวกัน โดย C และ D อยู่ด้านเดียวกันของคอร์ด AB "
+                  f"ถ้ามุม ACB มีขนาด {a} องศา มุม ADB มีขนาดกี่องศา")
+        # Doubled as if central; the supplement; half.
+        return MathDraw("", str(a), prompt=prompt,
+                        distractors=_story.keep(2 * a, 180 - a, a // 2, 90 - a if a != 45 else a + 10, answer=a, lo=1))
