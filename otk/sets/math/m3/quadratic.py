@@ -305,9 +305,9 @@ class WhichRootM3(QuestionType):
         poly = poly_tex((1, "x^{2}"), (-(p + q), "x"), (p * q, ""))
         right = str(p)
         # The roots' signs flipped; the constant.
-        wrongs = [str(-p), str(-q), str(p * q) if p * q not in (p, q) else str(p + q + 10)]
+        wrongs = [str(w) for w in (-p, -q, p * q, p + q + 10, p + q + 11) if w not in (p, q)]
         return _fixed_maths([_text_block("จำนวนใดเป็นคำตอบของสมการ"), _math_block(f"{poly} = 0")], right,
-                            _tk3(*wrongs, answer=right), self.topic)
+                            _tk3(*wrongs, answer=right)[:3], self.topic)
 
 
 QuadraticRootCountM3.PROVENANCE = Provenance("original")
