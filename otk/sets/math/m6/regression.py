@@ -146,3 +146,124 @@ class RegressionSlope(MathType):
         return MathDraw(
             rows, str(m), prompt=prompt,
             distractors=[str(-m), str(b), str(m + 1)])
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More regression (2026-11): the intercept through the means, the x needed for a forecast, what r tells,
+# what the slope means, and a residual ──
+
+
+@question_type("math.regression_intercept_m6", display_name={"th": "หาค่าคงตัวของสมการถดถอยจากค่าเฉลี่ย"}, level=LEVEL,
+               topic="การวิเคราะห์การถดถอย")
+class RegressionInterceptM6(WordProblem):
+    def expr(self, rng: Random):
+        b = rng.randint(2, 9)
+        xbar, ybar = rng.randint(3, 20), rng.randint(40, 120)
+        right = ybar - b * xbar
+        prompt = (f"เส้นถดถอย ŷ = a + {b}x ผ่านจุด (x̄, ȳ) เมื่อ x̄ = {xbar} และ ȳ = {ybar} ค่าของ a เท่ากับเท่าใด")
+        # The product added; x and y swapped; the slope ignored.
+        return MathDraw("", str(right), prompt=prompt, distractors=_nk6(ybar + b * xbar, xbar - b * ybar, ybar - xbar, right + b, answer=right))
+
+
+@question_type("math.regression_x_needed_m6", display_name={"th": "หาค่า x ที่ทำให้ได้ค่าพยากรณ์ตามต้องการ"}, level=LEVEL,
+               topic="การวิเคราะห์การถดถอย")
+class RegressionXNeededM6(WordProblem):
+    def expr(self, rng: Random):
+        a, b = rng.randint(5, 50), rng.randint(2, 9)
+        x = rng.randint(2, 30)
+        y = a + b * x
+        prompt = f"สมการถดถอยคือ ŷ = {a} + {b}x ถ้าต้องการให้ค่าพยากรณ์ ŷ เท่ากับ {y} ต้องให้ x เท่ากับเท่าใด"
+        # The y put in for x; not taking off a first; divided only.
+        return MathDraw("", str(x), prompt=prompt, distractors=_nk6(a + b * y if y < 30 else y - a, y // b, x + 1, y - a, answer=x, lo=1))
+
+
+@question_type("math.correlation_meaning_m6", display_name={"th": "ความหมายของสัมประสิทธิ์สหสัมพันธ์"}, level=LEVEL,
+               topic="การวิเคราะห์การถดถอย")
+class CorrelationMeaningM6(ConceptBankType):
+    ITEMS = [
+        Concept("ถ้า r = 0.95 หมายความว่าอย่างไร", "สัมพันธ์เชิงเส้นในทิศทางเดียวกันอย่างมาก",
+                ("สัมพันธ์เชิงเส้นในทิศทางตรงข้ามอย่างมาก", "ไม่มีความสัมพันธ์เชิงเส้น", "ตัวแปรหนึ่งเป็นสาเหตุของอีกตัวแปร")),
+        Concept("ถ้า r = −0.9 หมายความว่าอย่างไร", "สัมพันธ์เชิงเส้นในทิศทางตรงข้ามอย่างมาก",
+                ("สัมพันธ์เชิงเส้นในทิศทางเดียวกันอย่างมาก", "ไม่มีความสัมพันธ์เชิงเส้น", "ความสัมพันธ์อ่อนมาก")),
+        Concept("ถ้า r ใกล้เคียง 0 หมายความว่าอย่างไร", "แทบไม่มีความสัมพันธ์เชิงเส้น",
+                ("สัมพันธ์เชิงเส้นอย่างสมบูรณ์", "สัมพันธ์ในทิศทางเดียวกันอย่างมาก", "สัมพันธ์ในทิศทางตรงข้ามอย่างมาก")),
+        Concept("ค่าสัมประสิทธิ์สหสัมพันธ์ r มีค่าได้ในช่วงใด", "ตั้งแต่ −1 ถึง 1", ("ตั้งแต่ 0 ถึง 1", "ตั้งแต่ 0 ถึง 100", "จำนวนจริงใด ๆ")),
+    ]
+
+
+@question_type("math.slope_meaning_m6", display_name={"th": "ความหมายของความชันของเส้นถดถอย"}, level=LEVEL,
+               topic="การวิเคราะห์การถดถอย")
+class SlopeMeaningM6(ChoiceType):
+    def compose(self, rng: Random):
+        a, b = rng.randint(10, 60), rng.choice((2, 3, 4, 5, -2, -3))
+        stem = f"สมการถดถอยของคะแนนสอบ (y) กับจำนวนชั่วโมงที่อ่านหนังสือ (x) คือ ŷ = {a} + ({b})x ข้อความใดถูกต้อง"
+        way = "เพิ่มขึ้น" if b > 0 else "ลดลง"
+        other = "ลดลง" if b > 0 else "เพิ่มขึ้น"
+        right = f"อ่านเพิ่ม 1 ชั่วโมง คะแนนคาดว่าจะ{way} {abs(b)} คะแนน"
+        wrongs = [f"อ่านเพิ่ม 1 ชั่วโมง คะแนนคาดว่าจะ{other} {abs(b)} คะแนน", f"อ่านเพิ่ม 1 ชั่วโมง คะแนนคาดว่าจะ{way} {a} คะแนน",
+                  f"อ่านเพิ่ม {abs(b)} ชั่วโมง คะแนนคาดว่าจะ{way} 1 คะแนน"]
+        return stem, right, wrongs
+
+
+@question_type("math.residual_m6", display_name={"th": "ค่าคลาดเคลื่อนจากการพยากรณ์"}, level=LEVEL, topic="การวิเคราะห์การถดถอย")
+class ResidualM6(WordProblem):
+    def expr(self, rng: Random):
+        a, b = rng.randint(10, 40), rng.randint(2, 6)
+        x = rng.randint(2, 15)
+        e = _nz6(rng, 1, 9)
+        y = a + b * x + e
+        prompt = f"จากสมการถดถอย ŷ = {a} + {b}x เมื่อ x = {x} ค่าจริงของ y คือ {y} ค่าคลาดเคลื่อน (y − ŷ) เท่ากับเท่าใด"
+        # The sign flipped; the forecast itself; the actual value.
+        return MathDraw("", str(e), prompt=prompt, distractors=_nk6(-e, a + b * x, y - a, e + 1, answer=e))

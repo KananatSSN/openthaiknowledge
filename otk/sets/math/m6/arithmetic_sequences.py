@@ -411,3 +411,98 @@ class ArithmeticSeriesSum(MathType):
             hint=r"S_n = \frac{n}{2}(a_1 + a_n)",
             distractors=[str(n * (a1 + last)), str(last), str(n * a1)])
 ArithmeticSeriesSum.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More arithmetic sequences (2026-11): a term from two others, how many terms, and a sum of multiples ──
+
+
+@question_type("math.term_from_two_terms_m6", display_name={"th": "หาพจน์จากพจน์อื่นสองพจน์"}, level=LEVEL, topic="ลำดับเลขคณิต")
+class TermFromTwoTermsM6(WordProblem):
+    def expr(self, rng: Random):
+        a, d = rng.randint(-20, 30), _nz6(rng, 2, 9)
+        m, n = sorted(rng.sample(range(2, 20), 2))
+        k = rng.randint(20, 50)
+        am, an, right = a + (m - 1) * d, a + (n - 1) * d, a + (k - 1) * d
+        prompt = f"ลำดับเลขคณิตมี a_{m} = {am} และ a_{n} = {an} พจน์ที่ {k} เท่ากับเท่าใด"
+        # One step short; the first term; the difference not divided out.
+        return MathDraw("", str(right), prompt=prompt, distractors=_nk6(right - d, a, an + (k - n) * (an - am), right + d, answer=right))
+
+
+@question_type("math.count_terms_m6", display_name={"th": "ลำดับเลขคณิตนี้มีกี่พจน์"}, level=LEVEL, topic="ลำดับเลขคณิต")
+class CountTermsM6(WordProblem):
+    def expr(self, rng: Random):
+        a, d, n = rng.randint(-10, 30), rng.randint(2, 9), rng.randint(10, 60)
+        last = a + (n - 1) * d
+        prompt = f"ลำดับเลขคณิต {a}, {a + d}, {a + 2 * d}, ..., {last} มีทั้งหมดกี่พจน์"
+        # The one forgotten; the span over d; the span itself.
+        return MathDraw("", str(n), prompt=prompt, distractors=_nk6(n - 1, n + 1, last - a, (last - a) // d + 2, answer=n, lo=1))
+
+
+@question_type("math.sum_of_multiples_m6", display_name={"th": "ผลบวกของพหุคูณในช่วงที่กำหนด"}, level=LEVEL, topic="ลำดับเลขคณิต")
+class SumOfMultiplesM6(WordProblem):
+    def expr(self, rng: Random):
+        k, top = rng.randint(3, 9), rng.choice((50, 100, 200))
+        n = top // k
+        right = k * n * (n + 1) // 2
+        prompt = f"ผลบวกของจำนวนนับตั้งแต่ 1 ถึง {top} ที่หารด้วย {k} ลงตัวเท่ากับเท่าใด"
+        # The count; every number up to the limit; one term short.
+        return MathDraw("", f"{right:,}".replace(",", "{,}"), prompt=prompt,
+                        distractors=[f"{v:,}".replace(",", "{,}") for v in dict.fromkeys((n, top * (top + 1) // 2, k * n * (n - 1) // 2, right + k))
+                                     if v != right])
+
+
+TermFromTwoTermsM6.PROVENANCE = Provenance("original")
+CountTermsM6.PROVENANCE = Provenance("original")
+SumOfMultiplesM6.PROVENANCE = Provenance("original")

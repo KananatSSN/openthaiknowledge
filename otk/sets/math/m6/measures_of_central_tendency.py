@@ -319,3 +319,123 @@ class MedianModeFrequencyM6(QuestionType):
         return _maths([text("ตารางแจกแจงความถี่" + NL + table), text("มัธยฐานของข้อมูลนี้เท่ากับเท่าใด")],
                       _dec(med), wrongs, self.topic)
 MedianModeFrequencyM6.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathDraw, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More central tendency (2026-11): a mean, a median of an even list, a mode, and two groups' combined mean ──
+
+
+@question_type("math.mean_of_list_m6", display_name={"th": "ค่าเฉลี่ยเลขคณิตของข้อมูล"}, level=LEVEL, topic="ค่ากลางของข้อมูล")
+class MeanOfListM6(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            n = rng.randint(5, 9)
+            data = [rng.randint(10, 99) for _ in range(n)]
+            if sum(data) % n == 0:
+                break
+        right = sum(data) // n
+        prompt = f"ข้อมูลชุดหนึ่งคือ {', '.join(map(str, data))} ค่าเฉลี่ยเลขคณิตเท่ากับเท่าใด"
+        # The total; the median; one off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk6(sum(data), sorted(data)[n // 2], right + 1, right - 2, answer=right, lo=1))
+
+
+@question_type("math.median_even_list_m6", display_name={"th": "มัธยฐานของข้อมูลจำนวนคู่"}, level=LEVEL, topic="ค่ากลางของข้อมูล")
+class MedianEvenListM6(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice((6, 8, 10))
+        data = rng.sample(range(10, 100), n)
+        s = sorted(data)
+        right = Fraction(s[n // 2 - 1] + s[n // 2], 2)
+        prompt = f"ข้อมูลชุดหนึ่งคือ {', '.join(map(str, data))} มัธยฐานเท่ากับเท่าใด"
+        # The middle of the list as written; one middle value only; the mean.
+        unsorted = Fraction(data[n // 2 - 1] + data[n // 2], 2)
+        return MathDraw("", _num6(right), prompt=prompt,
+                        distractors=_dk6(unsorted, s[n // 2], s[n // 2 - 1], Fraction(sum(data), n), answer=right))
+
+
+@question_type("math.mode_of_list_m6", display_name={"th": "ฐานนิยมของข้อมูล"}, level=LEVEL, topic="ค่ากลางของข้อมูล")
+class ModeOfListM6(WordProblem):
+    def expr(self, rng: Random):
+        values = rng.sample(range(1, 30), 5)
+        mode = values[0]
+        data = values + [mode, mode] + [values[1]]
+        rng.shuffle(data)
+        prompt = f"ข้อมูลชุดหนึ่งคือ {', '.join(map(str, data))} ฐานนิยมเท่ากับเท่าใด"
+        # The value seen twice; the largest; how often the mode appears.
+        return MathDraw("", str(mode), prompt=prompt,
+                        distractors=_nk6(values[1], max(data), 3, sorted(data)[len(data) // 2], answer=mode, lo=1))
+
+
+@question_type("math.combined_mean_m6", display_name={"th": "ค่าเฉลี่ยรวมของสองกลุ่ม"}, level=LEVEL, topic="ค่ากลางของข้อมูล")
+class CombinedMeanM6(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            n1, n2 = rng.randint(10, 40), rng.randint(10, 40)
+            m1, m2 = rng.randint(40, 90), rng.randint(40, 90)
+            if (n1 * m1 + n2 * m2) * 10 % (n1 + n2) == 0 and m1 != m2:
+                break
+        right = Fraction(n1 * m1 + n2 * m2, n1 + n2)
+        prompt = (f"ห้องแรกมีนักเรียน {n1} คน คะแนนเฉลี่ย {m1} ห้องที่สองมี {n2} คน คะแนนเฉลี่ย {m2} "
+                  "คะแนนเฉลี่ยของนักเรียนทั้งสองห้องรวมกันเท่ากับเท่าใด")
+        # The two means averaged; weighted the wrong way round; the total.
+        return MathDraw("", _num6(right), prompt=prompt,
+                        distractors=_dk6(Fraction(m1 + m2, 2), Fraction(n2 * m1 + n1 * m2, n1 + n2), right + 1, max(m1, m2),
+                                         answer=right))
+
+
+MeanOfListM6.PROVENANCE = Provenance("original")
+MedianEvenListM6.PROVENANCE = Provenance("original")
+ModeOfListM6.PROVENANCE = Provenance("original")
+CombinedMeanM6.PROVENANCE = Provenance("original")

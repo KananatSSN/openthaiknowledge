@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,347 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,446 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -218,26 +218,26 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`applied_statistics`](m6/applied_statistics.py) | สถิติประยุกต์ | ค 3.1 ม.6/1 | 3 |
-| [`area_between_curves`](m6/area_between_curves.py) | พื้นที่ระหว่างเส้นโค้ง | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 7 |
-| [`area_under_curves`](m6/area_under_curves.py) | พื้นที่ | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 4 |
-| [`arithmetic_sequences`](m6/arithmetic_sequences.py) | ลำดับเลขคณิต | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/2, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/4 | 7 |
-| [`definite_integrals`](m6/definite_integrals.py) | อินทิกรัลจำกัดเขต | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 4 |
-| [`derivatives`](m6/derivatives.py) | อนุพันธ์ | ค เพิ่มเติม แคลคูลัส 1 ม.6/2 | 7 |
-| [`geometric`](m6/geometric.py) | ลำดับเรขาคณิต | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/2, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/4 | 5 |
-| [`integration_by_parts`](m6/integration_by_parts.py) | อินทิเกรตทีละส่วน | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 3 |
-| [`integration_by_substitution`](m6/integration_by_substitution.py) | อินทิเกรตโดยการแทนค่า | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 3 |
-| [`limits`](m6/limits.py) | ลิมิต | ค เพิ่มเติม แคลคูลัส 1 ม.6/1, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/1 | 4 |
-| [`measures_of_central_tendency`](m6/measures_of_central_tendency.py) | ค่ากลางของข้อมูล | ค 3.1 ม.6/* | 6 |
-| [`measures_of_dispersion`](m6/measures_of_dispersion.py) | การวัดการกระจาย | ค 3.1 ม.6/1 | 5 |
-| [`measures_of_position`](m6/measures_of_position.py) | การวัดตำแหน่งข้อมูล | ค 3.1 ม.6/1 | 4 |
-| [`probability_distributions`](m6/probability_distributions.py) | การแจกแจงความน่าจะเป็น | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.6/1 | 8 |
-| [`quantitative_data_presentation`](m6/quantitative_data_presentation.py) | การนำเสนอข้อมูลเชิงปริมาณ | ค 3.1 ม.6/1 | 3 |
-| [`regression`](m6/regression.py) | การวิเคราะห์การถดถอย | ค 3.1 ม.6/1 | 5 |
-| [`relative_extrema`](m6/relative_extrema.py) | ค่าสูงสุด-ต่ำสุดสัมพัทธ์ | ค เพิ่มเติม แคลคูลัส 1 ม.6/2 | 6 |
-| [`series`](m6/series.py) | อนุกรม | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/1, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/3 | 9 |
-| [`tangent_lines`](m6/tangent_lines.py) | เส้นสัมผัส | ค เพิ่มเติม แคลคูลัส 1 ม.6/2 | 4 |
-| [`z_scores`](m6/z_scores.py) | ค่ามาตรฐาน | ค 3.1 ม.6/1 | 4 |
+| [`applied_statistics`](m6/applied_statistics.py) | สถิติประยุกต์ | ค 3.1 ม.6/1 | 10 |
+| [`area_between_curves`](m6/area_between_curves.py) | พื้นที่ระหว่างเส้นโค้ง | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 10 |
+| [`area_under_curves`](m6/area_under_curves.py) | พื้นที่ | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 10 |
+| [`arithmetic_sequences`](m6/arithmetic_sequences.py) | ลำดับเลขคณิต | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/2, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/4 | 10 |
+| [`definite_integrals`](m6/definite_integrals.py) | อินทิกรัลจำกัดเขต | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 10 |
+| [`derivatives`](m6/derivatives.py) | อนุพันธ์ | ค เพิ่มเติม แคลคูลัส 1 ม.6/2 | 10 |
+| [`geometric`](m6/geometric.py) | ลำดับเรขาคณิต | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/2, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/4 | 10 |
+| [`integration_by_parts`](m6/integration_by_parts.py) | อินทิเกรตทีละส่วน | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 10 |
+| [`integration_by_substitution`](m6/integration_by_substitution.py) | อินทิเกรตโดยการแทนค่า | ค เพิ่มเติม แคลคูลัส 1 ม.6/3 | 10 |
+| [`limits`](m6/limits.py) | ลิมิต | ค เพิ่มเติม แคลคูลัส 1 ม.6/1, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/1 | 10 |
+| [`measures_of_central_tendency`](m6/measures_of_central_tendency.py) | ค่ากลางของข้อมูล | ค 3.1 ม.6/* | 10 |
+| [`measures_of_dispersion`](m6/measures_of_dispersion.py) | การวัดการกระจาย | ค 3.1 ม.6/1 | 10 |
+| [`measures_of_position`](m6/measures_of_position.py) | การวัดตำแหน่งข้อมูล | ค 3.1 ม.6/1 | 10 |
+| [`probability_distributions`](m6/probability_distributions.py) | การแจกแจงความน่าจะเป็น | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.6/1 | 10 |
+| [`quantitative_data_presentation`](m6/quantitative_data_presentation.py) | การนำเสนอข้อมูลเชิงปริมาณ | ค 3.1 ม.6/1 | 10 |
+| [`regression`](m6/regression.py) | การวิเคราะห์การถดถอย | ค 3.1 ม.6/1 | 10 |
+| [`relative_extrema`](m6/relative_extrema.py) | ค่าสูงสุด-ต่ำสุดสัมพัทธ์ | ค เพิ่มเติม แคลคูลัส 1 ม.6/2 | 10 |
+| [`series`](m6/series.py) | อนุกรม | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/1, ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.6/3 | 10 |
+| [`tangent_lines`](m6/tangent_lines.py) | เส้นสัมผัส | ค เพิ่มเติม แคลคูลัส 1 ม.6/2 | 10 |
+| [`z_scores`](m6/z_scores.py) | ค่ามาตรฐาน | ค 3.1 ม.6/1 | 10 |
 
 ## calculus1 — แคลคูลัส 1
 

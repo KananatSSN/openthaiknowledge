@@ -226,3 +226,133 @@ class CoefficientOfVariationM6(QuestionType):
                             f"ส่วนเบี่ยงเบนมาตรฐาน {s2} ข้อมูลของใครมีการกระจายสัมพัทธ์มากกว่า")],
                       more, [other, "เท่ากัน", "เปรียบเทียบไม่ได้"], self.topic)
 CoefficientOfVariationM6.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More dispersion (2026-11): variance from the sums, standard deviation from variance, the mean absolute
+# deviation, a scaled-and-shifted standard deviation, and the interquartile range ──
+
+
+@question_type("math.variance_from_sums_m6", display_name={"th": "ความแปรปรวนจากผลบวกและผลบวกกำลังสอง"}, level=LEVEL,
+               topic="การวัดการกระจาย")
+class VarianceFromSumsM6(MathType):
+    def expr(self, rng: Random):
+        n, mean = rng.choice((5, 10, 20, 25)), rng.randint(5, 30)
+        var = rng.randint(1, 30)
+        sx, sx2 = n * mean, n * (var + mean * mean)
+        right = var
+        # The mean squared not taken away; divided by n − 1; the mean.
+        grouped = f"{sx2:,}".replace(",", "{,}")
+        return MathDraw(rf"N = {n}, \quad \sum x_i = {sx}, \quad \sum x_i^{{2}} = {grouped}", str(right),
+                        prompt="จงหาความแปรปรวนของประชากรชุดนี้",
+                        distractors=_tk6(str(sx2 // n), frac_tex(Fraction(sx2 - n * mean * mean, n - 1)), str(mean), str(var + mean),
+                                         answer=str(right)))
+
+
+@question_type("math.sd_from_variance_m6", display_name={"th": "ส่วนเบี่ยงเบนมาตรฐานจากความแปรปรวน"}, level=LEVEL,
+               topic="การวัดการกระจาย")
+class SdFromVarianceM6(WordProblem):
+    def expr(self, rng: Random):
+        sd = rng.randint(2, 15)
+        prompt = f"ข้อมูลชุดหนึ่งมีความแปรปรวนเท่ากับ {sd * sd} ส่วนเบี่ยงเบนมาตรฐานเท่ากับเท่าใด"
+        return MathDraw("", str(sd), prompt=prompt, distractors=_nk6(sd * sd // 2, sd * sd, 2 * sd, sd + 1, answer=sd, lo=1))
+
+
+@question_type("math.mean_absolute_deviation_m6", display_name={"th": "ส่วนเบี่ยงเบนเฉลี่ย"}, level=LEVEL, topic="การวัดการกระจาย")
+class MeanAbsoluteDeviationM6(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            data = [rng.randint(1, 30) for _ in range(5)]
+            if sum(data) % 5 == 0:
+                break
+        mean = sum(data) // 5
+        right = Fraction(sum(abs(x - mean) for x in data), 5)
+        prompt = f"ข้อมูลชุดหนึ่งคือ {', '.join(map(str, data))} ส่วนเบี่ยงเบนเฉลี่ยเท่ากับเท่าใด"
+        # The deviations not averaged; signed deviations; the range.
+        return MathDraw("", _num6(right), prompt=prompt,
+                        distractors=_dk6(sum(abs(x - mean) for x in data), max(data) - min(data), right + 1, mean, answer=right))
+
+
+@question_type("math.scaled_sd_m6", display_name={"th": "ส่วนเบี่ยงเบนมาตรฐานเมื่อแปลงข้อมูล"}, level=LEVEL, topic="การวัดการกระจาย")
+class ScaledSdM6(WordProblem):
+    def expr(self, rng: Random):
+        sd, k, c = rng.randint(2, 12), rng.choice((2, 3, 4, 5, -2, -3)), rng.randint(1, 20)
+        right = abs(k) * sd
+        prompt = (f"ข้อมูลชุดหนึ่งมีส่วนเบี่ยงเบนมาตรฐานเท่ากับ {sd} ถ้านำข้อมูลทุกค่าคูณด้วย {k} แล้วบวก {c} "
+                  "ส่วนเบี่ยงเบนมาตรฐานของข้อมูลชุดใหม่เท่ากับเท่าใด")
+        # The constant added on; the sign kept; squared as for variance.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk6(abs(k) * sd + c, k * sd, k * k * sd, sd, answer=right))
+
+
+@question_type("math.iqr_from_data_m6", display_name={"th": "พิสัยระหว่างควอร์ไทล์จากข้อมูล"}, level=LEVEL, topic="การวัดการกระจาย")
+class IqrFromDataM6(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice((7, 11))
+        data = sorted(rng.sample(range(10, 100), n))
+        q1, q3 = data[(n + 1) // 4 - 1], data[3 * (n + 1) // 4 - 1]
+        right = q3 - q1
+        shown = data[:]
+        rng.shuffle(shown)
+        prompt = f"ข้อมูลชุดหนึ่งคือ {', '.join(map(str, shown))} พิสัยระหว่างควอร์ไทล์ (Q₃ − Q₁) เท่ากับเท่าใด"
+        # The range; the upper half's spread; the quartiles added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk6(data[-1] - data[0], data[-1] - q3 + q3 - data[n // 2], q3 + q1, right + 1, answer=right, lo=1))
+
+
+VarianceFromSumsM6.PROVENANCE = Provenance("original")
+SdFromVarianceM6.PROVENANCE = Provenance("original")
+MeanAbsoluteDeviationM6.PROVENANCE = Provenance("original")
+ScaledSdM6.PROVENANCE = Provenance("original")
+IqrFromDataM6.PROVENANCE = Provenance("original")

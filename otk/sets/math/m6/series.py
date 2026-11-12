@@ -333,3 +333,71 @@ class WeightedGeometricInfiniteM6(QuestionType):
                        content_math(rf"\sum_{{n=1}}^{{\infty}} {a}n\left(\frac{{{p}}}{{{q}}}\right)^{{n-1}}")],
                       frac_tex(answer), wrongs, self.topic)
 WeightedGeometricInfiniteM6.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More series (2026-11): the sum of the first n squares ──
+
+
+@question_type("math.sum_of_squares_m6", display_name={"th": "ผลบวกของกำลังสองของจำนวนนับ"}, level=LEVEL, topic="อนุกรม")
+class SumOfSquaresM6(MathType):
+    def expr(self, rng: Random):
+        n = rng.randint(5, 30)
+        right = n * (n + 1) * (2 * n + 1) // 6
+        # The plain sum; the square of the sum; one term short.
+        return MathDraw(rf"\sum_{{k=1}}^{{{n}}} k^{{2}}", f"{right:,}".replace(",", "{,}"), prompt="จงหาค่า",
+                        distractors=[f"{v:,}".replace(",", "{,}") for v in dict.fromkeys(
+                            (n * (n + 1) // 2, (n * (n + 1) // 2) ** 2, right - n * n, right + (n + 1) ** 2)) if v != right])
+
+
+SumOfSquaresM6.PROVENANCE = Provenance("original")
