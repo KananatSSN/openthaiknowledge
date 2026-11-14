@@ -174,3 +174,207 @@ class MeanMissingValueM1(WordProblem):
                         distractors=_story.keep(round(sum(data) / (n - 1)), mean,
                                                 n * mean - sum(data[:-1]), missing + n,
                                                 answer=missing, lo=0))
+
+
+# ── More statistics (2026-11): pie charts, a line of values over time, statistical questions, kinds of data
+# and the chart that suits them, and pictographs ──
+
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+
+
+@question_type("math.pie_chart_m1", display_name={"th": "แผนภูมิวงกลม"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class PieChartM1(WordProblem):
+    """A share p% of the whole is p% of 360° and p% of the total."""
+
+    def expr(self, rng: Random):
+        pct = rng.choice((5, 10, 15, 20, 25, 30, 35, 40, 45, 50))
+        kind = rng.randrange(3)
+        if kind == 0:
+            right = pct * 360 // 100
+            return MathDraw("", str(right), prompt=(f"ในแผนภูมิวงกลม นักเรียนที่ชอบกีฬาฟุตบอลคิดเป็นร้อยละ {pct} "
+                                                   f"ส่วนนี้มีมุมที่จุดศูนย์กลางกี่องศา"),
+                            distractors=_story.keep(pct, 360 - right, pct * 180 // 100, right + 10, answer=right, lo=1))
+        if kind == 1:
+            angle = pct * 360 // 100
+            return MathDraw("", str(pct), prompt=(f"ในแผนภูมิวงกลม ส่วนที่แทนนักเรียนที่ชอบว่ายน้ำมีมุมที่จุดศูนย์กลาง "
+                                                 f"{angle} องศา คิดเป็นร้อยละเท่าใด"),
+                            distractors=_story.keep(angle, 100 - pct, angle // 2, pct + 5, answer=pct, lo=1, hi=100))
+        total = rng.choice((200, 400, 500, 600, 800, 1000))
+        right = total * pct // 100
+        return MathDraw("", str(right), prompt=(f"นักเรียน {total} คน ในแผนภูมิวงกลมส่วนที่ชอบวิชาคณิตศาสตร์คิดเป็น"
+                                               f"ร้อยละ {pct} มีนักเรียนที่ชอบวิชาคณิตศาสตร์กี่คน"),
+                        distractors=_story.keep(pct, total - right, total * pct // 360 if total * pct % 360 == 0 else right + 10,
+                                                right * 2, answer=right, lo=1))
+
+
+@question_type("math.monthly_values_m1", display_name={"th": "อ่านข้อมูลที่เปลี่ยนแปลงตามเวลา"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MonthlyValuesM1(WordProblem):
+    """Changes between neighbouring months, as a line graph shows them."""
+
+    _MONTHS = ("ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.")
+
+    def expr(self, rng: Random):
+        while True:
+            values = [rng.randint(10, 60) for _ in range(5)]
+            changes = [b - a for a, b in zip(values, values[1:])]
+            if len(set(changes)) == 4 and max(changes) > 0:
+                break
+        listed = ", ".join(f"{m} {v}" for m, v in zip(self._MONTHS, values))
+        if rng.random() < 0.5:
+            right = max(changes)
+            prompt = f"ยอดขายรายเดือน (ชิ้น): {listed} ยอดขายเพิ่มขึ้นมากที่สุดระหว่างสองเดือนติดกันกี่ชิ้น"
+            # The whole spread; the largest value; the biggest drop.
+            return MathDraw("", str(right), prompt=prompt,
+                            distractors=_story.keep(max(values) - min(values), max(values), abs(min(changes)),
+                                                    right + 2, answer=right, lo=1))
+        a, b = sorted(rng.sample(range(5), 2))
+        while values[a] == values[b]:
+            a, b = sorted(rng.sample(range(5), 2))
+        right = abs(values[b] - values[a])
+        more = "มากกว่า" if values[b] > values[a] else "น้อยกว่า"
+        prompt = (f"ยอดขายรายเดือน (ชิ้น): {listed} ยอดขายเดือน {self._MONTHS[b]}{more}เดือน "
+                  f"{self._MONTHS[a]} กี่ชิ้น")
+        # The two added; one month's value; the change from the month before.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(values[a] + values[b], values[b], abs(changes[b - 1]), right + 5,
+                                                answer=right, lo=1))
+
+
+@question_type("math.statistical_question_m1", display_name={"th": "คำถามทางสถิติ"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class StatisticalQuestionM1(ConceptBankType):
+    """A statistical question expects answers that vary, so data must be collected."""
+
+    ITEMS = [
+        Concept("ข้อใดเป็นคำถามทางสถิติ", "นักเรียนห้อง ม.1/1 แต่ละคนสูงเท่าใด",
+                ("ตอนนี้ฉันสูงกี่เซนติเมตรเมื่อวัดด้วยตลับเมตร", "โรงเรียนของเราตั้งอยู่ที่จังหวัดใดของประเทศไทย",
+                 "วันนี้เป็นวันที่เท่าใดของเดือนพฤศจิกายน")),
+        Concept("คำถามใดต่อไปนี้ต้องเก็บข้อมูลจากหลายคนจึงจะตอบได้", "นักเรียนในโรงเรียนใช้เวลาเดินทางมาโรงเรียนกี่นาที",
+                ("ครูประจำชั้นของห้อง ม.1/1 ชื่ออะไรและสอนวิชาใด", "ห้องเรียนของเรามีประตูและหน้าต่างอย่างละกี่บาน",
+                 "เมื่อวานนี้ที่โรงเรียนของเรามีฝนตกหรือไม่")),
+        Concept("ข้อใดไม่เป็นคำถามทางสถิติ", "พ่อของฉันอายุเท่าใดในปีนี้",
+                ("ผู้ปกครองของนักเรียนในห้องอายุเท่าใดบ้าง", "นักเรียนแต่ละคนชอบผลไม้ชนิดใด",
+                 "แต่ละครอบครัวในหมู่บ้านมีสมาชิกกี่คน")),
+        Concept("คำถามทางสถิติแตกต่างจากคำถามทั่วไปอย่างไร", "คาดว่าคำตอบจะแตกต่างกันจึงต้องเก็บรวบรวมข้อมูล",
+                ("มีคำตอบที่ถูกต้องเพียงคำตอบเดียวเสมอไม่ว่าจะถามใคร", "ต้องถามเป็นตัวเลขเท่านั้นและห้ามถามเป็นข้อความ",
+                 "ตอบได้ทันทีจากความรู้ของตนเองโดยไม่ต้องเก็บข้อมูล")),
+    ]
+
+
+@question_type("math.data_display_m1", display_name={"th": "ชนิดของข้อมูลและการนำเสนอที่เหมาะสม"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class DataDisplayM1(ConceptBankType):
+    ITEMS = [
+        Concept("ข้อมูลอุณหภูมิในแต่ละวันตลอดหนึ่งเดือน ควรนำเสนอด้วยวิธีใด", "กราฟเส้น",
+                ("แผนภูมิวงกลม", "แผนภูมิรูปภาพ", "ตารางคำศัพท์")),
+        Concept("ข้อมูลร้อยละของค่าใช้จ่ายแต่ละประเภทในหนึ่งเดือน ควรนำเสนอด้วยวิธีใด", "แผนภูมิวงกลม",
+                ("กราฟเส้น", "แผนภาพจุด", "แผนภาพต้น-ใบ")),
+        Concept("ข้อมูลจำนวนนักเรียนชายและหญิงของแต่ละห้อง ควรนำเสนอด้วยวิธีใด", "แผนภูมิแท่งเปรียบเทียบ",
+                ("กราฟเส้น", "แผนภูมิวงกลม", "แผนภาพจุด")),
+        Concept("ข้อมูลใดเป็นข้อมูลเชิงคุณภาพ", "สีที่นักเรียนชอบ",
+                ("ความสูงของนักเรียน", "จำนวนพี่น้องของนักเรียน", "คะแนนสอบของนักเรียน")),
+        Concept("ข้อมูลใดเป็นข้อมูลเชิงปริมาณ", "น้ำหนักของนักเรียน",
+                ("กรุ๊ปเลือดของนักเรียน", "กีฬาที่นักเรียนชอบ", "จังหวัดที่นักเรียนเกิด")),
+    ]
+
+
+@question_type("math.pictograph_m1", display_name={"th": "แผนภูมิรูปภาพ"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class PictographM1(WordProblem):
+    """One picture stands for k; half a picture for k/2."""
+
+    def expr(self, rng: Random):
+        k = rng.choice((2, 4, 6, 10, 20, 50))  # even, so half a picture is a whole number of people
+        whole = rng.randint(2, 9)
+        half = rng.random() < 0.5
+        right = whole * k + (k // 2 if half else 0)
+        pictures = f"{whole} รูปครึ่ง" if half else f"{whole} รูป"
+        prompt = (f"ในแผนภูมิรูปภาพ รูป 1 รูปแทนนักเรียน {k} คน ถ้าห้อง ก มีรูปทั้งหมด {pictures} "
+                  f"ห้อง ก มีนักเรียนกี่คน")
+        # The pictures counted as people; the half counted as a whole; the half left out.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(whole, (whole + 1) * k, whole * k, right + k, answer=right, lo=1))
+
+
+# ── To fifteen (2026-11): the median, the mean after one more value, the mode from a table, a total from the
+# mean, and how data are collected ──
+
+
+@question_type("math.median_m1", display_name={"th": "มัธยฐาน"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MedianM1(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice((5, 7, 9))
+        data = rng.sample(range(1, 50), n)
+        right = sorted(data)[n // 2]
+        values = ", ".join(str(v) for v in data)
+        # The middle of the list as written; the mean (rounded down); the largest less the smallest.
+        return MathDraw("", str(right), prompt=f"ข้อมูล {values} มีมัธยฐานเท่าใด",
+                        distractors=_story.keep(data[n // 2], sum(data) // n, max(data) - min(data),
+                                                sorted(data)[n // 2 + 1], answer=right, lo=1))
+
+
+@question_type("math.mean_new_value_m1", display_name={"th": "ค่าเฉลี่ยเมื่อเพิ่มข้อมูล"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class MeanNewValueM1(WordProblem):
+    """The old total plus the new value, over one more value."""
+
+    def expr(self, rng: Random):
+        while True:
+            n, mean = rng.randint(4, 9), rng.randint(10, 40)
+            new = rng.randint(1, 60)
+            if (n * mean + new) % (n + 1) == 0 and new != mean:
+                break
+        right = (n * mean + new) // (n + 1)
+        prompt = (f"ข้อมูล {n} จำนวนมีค่าเฉลี่ยเลขคณิต {mean} ถ้าเพิ่มข้อมูลอีกหนึ่งจำนวนคือ {new} "
+                  f"ค่าเฉลี่ยเลขคณิตใหม่เท่ากับเท่าใด")
+        # The two numbers averaged; the count not increased; the total.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep((mean + new) // 2, (n * mean + new) // n, mean, right + 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.mode_from_table_m1", display_name={"th": "ฐานนิยมจากตารางความถี่"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class ModeFromTableM1(WordProblem):
+    """The mode is the value with the largest frequency, not the largest frequency itself."""
+
+    def expr(self, rng: Random):
+        start = rng.randint(1, 15)
+        values = [start + i for i in range(5)]
+        freqs = rng.sample(range(1, 13), 5)
+        mode = values[freqs.index(max(freqs))]
+        listed = ", ".join(f"{v} ({f} ครั้ง)" for v, f in zip(values, freqs))
+        prompt = f"ผลการทอยลูกบอลลงห่วง: คะแนน {listed} ฐานนิยมของคะแนนคือเท่าใด"
+        # The largest frequency; the largest score; the middle score.
+        return MathDraw("", str(mode), prompt=prompt,
+                        distractors=_story.keep(max(freqs), max(values), values[2], answer=mode, lo=1))
+
+
+@question_type("math.total_from_mean_m1", display_name={"th": "ผลรวมของข้อมูลจากค่าเฉลี่ย"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class TotalFromMeanM1(WordProblem):
+    def expr(self, rng: Random):
+        n, mean = rng.randint(5, 40), rng.randint(12, 95)
+        total = n * mean
+        prompt = f"นักเรียน {n} คน มีน้ำหนักเฉลี่ย {mean} กิโลกรัม น้ำหนักรวมของนักเรียนทั้งหมดเป็นกี่กิโลกรัม"
+        # Added instead of multiplied; the mean over the count; one fewer person.
+        return MathDraw("", str(total), prompt=prompt,
+                        distractors=_story.keep(n + mean, (n - 1) * mean, total + mean, answer=total, lo=1))
+
+
+@question_type("math.data_collection_m1", display_name={"th": "วิธีเก็บรวบรวมข้อมูล"},
+               level=LEVEL, topic=_STAT_TOPIC)
+class DataCollectionM1(ConceptBankType):
+    ITEMS = [
+        Concept("ต้องการทราบว่านักเรียนในโรงเรียนชอบกีฬาชนิดใด ควรเก็บข้อมูลด้วยวิธีใด", "การสำรวจโดยใช้แบบสอบถาม",
+                ("การทดลองในห้องปฏิบัติการ", "การสังเกตสภาพอากาศรอบโรงเรียน", "การค้นหาคำตอบในพจนานุกรม")),
+        Concept("ต้องการทราบว่าต้นถั่วที่ได้รับแสงต่างกันเติบโตต่างกันอย่างไร ควรเก็บข้อมูลด้วยวิธีใด", "การทดลองปลูกโดยให้แสงต่างกัน",
+                ("การสำรวจด้วยแบบสอบถามนักเรียน", "การสัมภาษณ์ผู้ปกครองของนักเรียน", "การนับจำนวนนักเรียนในห้องเรียน")),
+        Concept("ต้องการทราบจำนวนรถที่ผ่านหน้าโรงเรียนในช่วงเช้า ควรเก็บข้อมูลด้วยวิธีใด", "การสังเกตและนับจำนวนรถที่ผ่าน",
+                ("การทดลองในห้องปฏิบัติการวิทยาศาสตร์", "การสัมภาษณ์ครูประจำชั้นทุกห้อง", "การเดาจากประสบการณ์ของตนเอง")),
+        Concept("ข้อมูลที่ผู้เก็บรวบรวมเองโดยตรง เช่น จากการสำรวจ เรียกว่าข้อมูลประเภทใด", "ข้อมูลปฐมภูมิ (เก็บเองโดยตรง)",
+                ("ข้อมูลทุติยภูมิ (นำมาจากผู้อื่น)", "ข้อมูลเชิงคุณภาพเสมอทุกกรณี", "ข้อมูลที่ไม่น่าเชื่อถือเสมอ")),
+    ]

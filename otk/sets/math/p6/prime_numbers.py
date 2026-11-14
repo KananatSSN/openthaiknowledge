@@ -138,3 +138,139 @@ class SmallestPrimeFactor(MathType):
         return MathDraw(str(n), str(smallest),
                         prompt="ตัวประกอบเฉพาะที่น้อยที่สุดของจำนวนนี้คือเท่าใด",
                         distractors=[str(n // smallest), str(n), "2"])
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More prime numbers (2026-11): a prime factorisation, the largest prime factor, the sum of primes in a
+# range, the next prime, and how many factors ──
+
+
+def _is_prime6(n: int) -> bool:
+    return n > 1 and all(n % k for k in range(2, int(n ** 0.5) + 1))
+
+
+def _prime_factors6(n: int) -> list[int]:
+    out, k = [], 2
+    while n > 1:
+        while n % k == 0:
+            out.append(k)
+            n //= k
+        k += 1
+    return out
+
+
+@question_type("math.prime_factorisation_p6", display_name={"th": "แยกตัวประกอบ"},
+               level=LEVEL, topic="จำนวนเฉพาะ")
+class PrimeFactorisationP6(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            n = rng.randint(24, 200)
+            fs = _prime_factors6(n)
+            if len(fs) >= 3 and len(set(fs)) >= 2:
+                break
+        right = " × ".join(str(f) for f in fs)
+        # A composite factor kept; one prime left out; one prime doubled.
+        merged = [fs[0] * fs[1], *fs[2:]]
+        wrongs = [" × ".join(str(f) for f in merged), " × ".join(str(f) for f in fs[1:]),
+                  " × ".join(str(f) for f in [*fs, fs[-1]])]
+        return f"ข้อใดเป็นการแยกตัวประกอบของ {n}", right, [w for w in dict.fromkeys(wrongs) if w != right]
+
+
+@question_type("math.largest_prime_factor_p6", display_name={"th": "ตัวประกอบเฉพาะที่มากที่สุด"},
+               level=LEVEL, topic="จำนวนเฉพาะ")
+class LargestPrimeFactorP6(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            n = rng.randint(30, 300)
+            fs = _prime_factors6(n)
+            if len(set(fs)) >= 2 and not _is_prime6(n):
+                break
+        right = max(fs)
+        # The smallest; the number halved; the largest factor that is not prime.
+        return MathDraw("", str(right), prompt=f"ตัวประกอบเฉพาะที่มากที่สุดของ {n} คือจำนวนใด",
+                        distractors=_story.keep(min(fs), n // min(fs), sorted(set(fs))[-2], right + 2,
+                                                answer=right, lo=2))
+
+
+@question_type("math.sum_of_primes_p6", display_name={"th": "ผลบวกของจำนวนเฉพาะในช่วงที่กำหนด"},
+               level=LEVEL, topic="จำนวนเฉพาะ")
+class SumOfPrimesP6(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 40)
+        b = a + rng.randint(8, 16)
+        primes = [k for k in range(a, b + 1) if _is_prime6(k)]
+        while len(primes) < 2:
+            b += 3
+            primes = [k for k in range(a, b + 1) if _is_prime6(k)]
+        right = sum(primes)
+        odd = sum(k for k in range(a, b + 1) if k % 2 and k > 1)
+        prompt = f"ผลบวกของจำนวนเฉพาะทุกจำนวนตั้งแต่ {a} ถึง {b} เท่ากับเท่าใด"
+        # Every odd number; one prime left out; the count instead of the sum.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(odd, right - primes[-1], right - primes[0], right + 9,
+                                                answer=right, lo=1))
+
+
+@question_type("math.next_prime_p6", display_name={"th": "จำนวนเฉพาะที่อยู่ถัดไป"},
+               level=LEVEL, topic="จำนวนเฉพาะ")
+class NextPrimeP6(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.randint(10, 120)
+        right = next(k for k in range(n + 1, n + 100) if _is_prime6(k))
+        odd = next(k for k in range(n + 1, n + 100) if k % 2 and not _is_prime6(k))
+        prompt = f"จำนวนเฉพาะที่น้อยที่สุดที่มากกว่า {n} คือจำนวนใด"
+        # The next odd number that is not prime; the prime after; one more.
+        after = next(k for k in range(right + 1, right + 100) if _is_prime6(k))
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(odd, after, n + 1, right + 1, answer=right, lo=2))
+
+
+@question_type("math.count_factors_p6", display_name={"th": "นับตัวประกอบทั้งหมด"},
+               level=LEVEL, topic="จำนวนเฉพาะ")
+class CountFactorsP6(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice((12, 16, 18, 20, 24, 28, 30, 32, 36, 40, 42, 45, 48, 50, 54, 60, 64, 72, 80, 84, 90, 96, 100))
+        right = sum(1 for k in range(1, n + 1) if n % k == 0)
+        # 1 and the number left out; only the prime factors; one off.
+        return MathDraw("", str(right), prompt=f"{n} มีตัวประกอบทั้งหมดกี่จำนวน",
+                        distractors=_story.keep(right - 2, len(set(_prime_factors6(n))), right + 1, right - 1,
+                                                answer=right, lo=1))

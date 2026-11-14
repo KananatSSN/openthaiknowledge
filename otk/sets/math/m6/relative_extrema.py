@@ -295,3 +295,113 @@ class OptimizationWordM6(WordProblem):
                         # The time of the peak instead of its height.
                         distractors=_story.keep(t, c, top + a, b * t + c, answer=top))
 OptimizationWordM6.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More relative extrema (2026-11): the critical point of a quadratic, the relative maximum of a cubic, where
+# a quadratic increases, and the second-derivative test ──
+
+
+@question_type("math.quadratic_critical_point_m6", display_name={"th": "จุดวิกฤตของฟังก์ชันกำลังสอง"}, level=LEVEL,
+               topic="ค่าสูงสุด-ต่ำสุดสัมพัทธ์")
+class QuadraticCriticalPointM6(MathType):
+    def expr(self, rng: Random):
+        a = _nz6(rng, 1, 5)
+        h = _nz6(rng, 1, 8)
+        c = rng.randint(-15, 15)
+        b = -2 * a * h
+        return MathDraw(rf"f(x) = {poly_tex((a, 'x^{2}'), (b, 'x'), (c, ''))}", f"x = {h}", prompt="จงหาค่า x ที่ f′(x) = 0",
+                        distractors=_tk6(f"x = {-h}", f"x = {b}", f"x = {frac_tex(Fraction(-c, b))}", f"x = {2 * h}", answer=f"x = {h}"))
+
+
+@question_type("math.cubic_relative_max_m6", display_name={"th": "ค่าสูงสุดสัมพัทธ์ของฟังก์ชันกำลังสาม"}, level=LEVEL,
+               topic="ค่าสูงสุด-ต่ำสุดสัมพัทธ์")
+class CubicRelativeMaxM6(MathType):
+    def expr(self, rng: Random):
+        p, c = rng.randint(1, 4), rng.randint(-10, 10)
+        right = 2 * p ** 3 + c
+        # The minimum instead; the value at p; the constant.
+        return MathDraw(rf"f(x) = {poly_tex((1, 'x^{3}'), (-3 * p * p, 'x'), (c, ''))}", str(right), prompt="ค่าสูงสุดสัมพัทธ์ของ f เท่ากับเท่าใด",
+                        distractors=_nk6(-2 * p ** 3 + c, c, p ** 3 + c, right + p, answer=right))
+
+
+@question_type("math.increasing_interval_m6", display_name={"th": "ช่วงที่ฟังก์ชันเป็นฟังก์ชันเพิ่ม"}, level=LEVEL,
+               topic="ค่าสูงสุด-ต่ำสุดสัมพัทธ์")
+class IncreasingIntervalM6(MathType):
+    def expr(self, rng: Random):
+        h = _nz6(rng, 1, 9)
+        c = rng.randint(-9, 9)
+        up = rng.random() < 0.5
+        a = 1 if up else -1
+        right = f"x > {h}" if up else f"x < {h}"
+        wrongs = [f"x < {h}" if up else f"x > {h}", f"x > {-h}" if up else f"x < {-h}", f"x > {2 * h}" if up else f"x < {2 * h}"]
+        return MathDraw(rf"f(x) = {poly_tex((a, 'x^{2}'), (-2 * a * h, 'x'), (c, ''))}", right, prompt="f เป็นฟังก์ชันเพิ่มในช่วงใด",
+                        distractors=_tk6(*wrongs, answer=right))
+
+
+@question_type("math.second_derivative_test_m6", display_name={"th": "การทดสอบด้วยอนุพันธ์อันดับสอง"}, level=LEVEL,
+               topic="ค่าสูงสุด-ต่ำสุดสัมพัทธ์")
+class SecondDerivativeTestM6(ConceptBankType):
+    ITEMS = [
+        Concept("ถ้า f′(c) = 0 และ f″(c) > 0 แล้ว f มีค่าอะไรที่ x = c", "ค่าต่ำสุดสัมพัทธ์", ("ค่าสูงสุดสัมพัทธ์", "จุดเปลี่ยนเว้า", "สรุปไม่ได้เสมอ")),
+        Concept("ถ้า f′(c) = 0 และ f″(c) < 0 แล้ว f มีค่าอะไรที่ x = c", "ค่าสูงสุดสัมพัทธ์", ("ค่าต่ำสุดสัมพัทธ์", "จุดเปลี่ยนเว้า", "สรุปไม่ได้เสมอ")),
+        Concept("ถ้า f′(x) > 0 ทุกค่า x ในช่วงหนึ่ง แล้ว f เป็นอย่างไรในช่วงนั้น", "เป็นฟังก์ชันเพิ่ม", ("เป็นฟังก์ชันลด", "เป็นฟังก์ชันคงตัว", "มีค่าสูงสุดสัมพัทธ์")),
+        Concept("ถ้า f′(x) < 0 ทุกค่า x ในช่วงหนึ่ง แล้ว f เป็นอย่างไรในช่วงนั้น", "เป็นฟังก์ชันลด", ("เป็นฟังก์ชันเพิ่ม", "เป็นฟังก์ชันคงตัว", "มีค่าต่ำสุดสัมพัทธ์")),
+    ]
+
+
+QuadraticCriticalPointM6.PROVENANCE = Provenance("original")
+CubicRelativeMaxM6.PROVENANCE = Provenance("original")
+IncreasingIntervalM6.PROVENANCE = Provenance("original")
+SecondDerivativeTestM6.PROVENANCE = Provenance("original")

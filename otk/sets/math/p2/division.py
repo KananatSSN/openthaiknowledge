@@ -135,3 +135,75 @@ class DivisionWordProblemP2(WordProblem):
                         # Subtracting or multiplying instead of dividing.
                         distractors=_story.keep(total - per, total * per if total * per <= 999
                                                 else q + 2, q + 1, q - 1, answer=q, lo=1))
+
+
+# ── More dividing (2026-11): checking with multiplication, what is left over in a story, the missing
+# dividend, the fact family, and the largest quotient ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+
+@question_type("math.division_check_p2", display_name={"th": "ตรวจคำตอบการหารด้วยการคูณ"},
+               level=LEVEL, topic="การหาร")
+class DivisionCheckP2(ChoiceType):
+    def compose(self, rng: Random):
+        b, q = rng.randint(2, 9), rng.randint(2, 9)
+        n = b * q
+        right = f"{q} × {b} = {n}"
+        # Sums of the same numbers, a product of the dividend, and a product with the wrong total.
+        wrongs = [f"{n} × {b} = {n * b}", f"{q} + {b} = {q + b}", f"{q} × {b} = {n + b}"]
+        return f"ข้อใดใช้ตรวจคำตอบของ {n} ÷ {b} = {q}", right, wrongs
+
+
+@question_type("math.division_leftover_word_p2", display_name={"th": "โจทย์ปัญหาการหาร: เหลือเศษเท่าใด"},
+               level=LEVEL, topic="การหาร")
+class DivisionLeftoverWordP2(WordProblem):
+    def expr(self, rng: Random):
+        b = rng.randint(3, 9)
+        q = rng.randint(2, 9)
+        r = rng.randint(1, b - 1)
+        n = b * q + r
+        thing, cl = rng.choice((("ส้ม", "ผล"), ("ลูกอม", "เม็ด"), ("ดินสอ", "แท่ง"), ("ไข่ไก่", "ฟอง")))
+        prompt = f"มี{thing} {n} {cl} จัดใส่ถุง ถุงละ {b} {cl} จะเหลือ{thing}ที่ไม่ได้ใส่ถุงกี่{cl}"
+        # The number of bags instead; the bag size; what a full bag still needs.
+        return MathDraw("", str(r), prompt=prompt,
+                        distractors=_story.keep(q, b, b - r, r + 1, answer=r, lo=0))
+
+
+@question_type("math.missing_dividend_p2", display_name={"th": "หาตัวตั้งในประโยคการหาร"},
+               level=LEVEL, topic="การหาร")
+class MissingDividendP2(MathType):
+    def expr(self, rng: Random):
+        b, q = rng.randint(2, 9), rng.randint(2, 9)
+        right = b * q
+        # Divided instead of multiplied (rounded); added; one table off.
+        return MathDraw(rf"\square \div {b} = {q}", str(right), prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(b + q, b * (q + 1), (b - 1) * q, q, answer=right, lo=1))
+
+
+@question_type("math.fact_family_p2", display_name={"th": "ความสัมพันธ์ของการคูณและการหาร: ข้อใดไม่อยู่ในกลุ่ม"},
+               level=LEVEL, topic="การหาร")
+class FactFamilyP2(ChoiceType):
+    def compose(self, rng: Random):
+        a, b = rng.sample(range(2, 10), 2)
+        n = a * b
+        family = [f"{a} × {b} = {n}", f"{b} × {a} = {n}", f"{n} ÷ {a} = {b}", f"{n} ÷ {b} = {a}"]
+        odd = rng.choice((f"{n} ÷ {a + b} = {a}", f"{a} ÷ {n} = {b}", f"{a} + {b} = {n}"))
+        return f"ข้อใดไม่ได้อยู่ในกลุ่มความสัมพันธ์เดียวกับ {a}, {b} และ {n}", odd, rng.sample(family, 3)
+
+
+@question_type("math.largest_quotient_p2", display_name={"th": "ผลหารใดมากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="การหาร")
+class LargestQuotientP2(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            exprs = {}
+            for _ in range(4):
+                b, q = rng.randint(2, 9), rng.randint(2, 9)
+                exprs[f"{b * q} ÷ {b}"] = q
+            if len(exprs) == 4 and len(set(exprs.values())) == 4:
+                break
+        most = rng.random() < 0.5
+        right = (max if most else min)(exprs, key=exprs.get)
+        return f"ข้อใดมีผลหาร{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]

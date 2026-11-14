@@ -174,3 +174,69 @@ class MoneyChangeLeft(WordProblem):
             prompt=(f"มีเงิน {note} บาท ซื้อ{name} {qty} ชิ้น ชิ้นละ {price} บาท "
                     "จะเหลือเงินกี่บาท"),
             distractors=[str(spent), str(note + spent), str(note - price)])
+
+
+# ── More money (2026-11): the price of one, buying several, saving day by day, and adding baht and satang ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+_GOODS_P3 = ("สมุด", "ปากกา", "กล่องดินสอ", "หนังสือนิทาน", "ลูกบอล", "ขวดน้ำ", "หมวก", "ถุงเท้า")
+
+
+@question_type("math.unit_price_p3", display_name={"th": "ราคาต่อชิ้น"},
+               level=LEVEL, topic="เงิน")
+class UnitPriceP3(WordProblem):
+    def expr(self, rng: Random):
+        n, each = rng.randint(2, 9), rng.randint(5, 120)
+        total = n * each
+        item = rng.choice(_GOODS_P3)
+        prompt = f"ซื้อ{item} {n} ชิ้น ราคารวม {total} บาท {item}ราคาชิ้นละกี่บาท"
+        # Multiplied instead; subtracted; one off.
+        return MathDraw("", str(each), prompt=prompt,
+                        distractors=_story.keep(total * n, total - n, each + 1, each - 1, answer=each, lo=1))
+
+
+@question_type("math.buy_several_p3", display_name={"th": "ซื้อของหลายชิ้นต้องจ่ายเท่าใด"},
+               level=LEVEL, topic="เงิน")
+class BuySeveralP3(WordProblem):
+    def expr(self, rng: Random):
+        n, each = rng.randint(2, 9), rng.randint(15, 499)
+        right = n * each
+        item = rng.choice(_GOODS_P3)
+        prompt = f"ซื้อ{item} {n} ชิ้น ชิ้นละ {each} บาท ต้องจ่ายเงินกี่บาท"
+        # Added instead; one item more or fewer.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(n + each, (n + 1) * each, (n - 1) * each, right + 10, answer=right, lo=1))
+
+
+@question_type("math.daily_saving_p3", display_name={"th": "ออมเงินทุกวัน"},
+               level=LEVEL, topic="เงิน")
+class DailySavingP3(WordProblem):
+    def expr(self, rng: Random):
+        per, days = rng.choice((5, 10, 15, 20, 25)), rng.randint(7, 31)
+        right = per * days
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}ออมเงินวันละ {per} บาท ทุกวันเป็นเวลา {days} วัน {p}มีเงินออมกี่บาท"
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(per + days, per * (days - 1), per * (days + 1), right + 10,
+                                                answer=right, lo=1))
+
+
+@question_type("math.baht_satang_add_p3", display_name={"th": "บวกจำนวนเงินที่มีบาทและสตางค์"},
+               level=LEVEL, topic="เงิน")
+class BahtSatangAddP3(ChoiceType):
+    def compose(self, rng: Random):
+        a = rng.randint(5, 80) * 100 + rng.choice((25, 50, 75))
+        b = rng.randint(5, 80) * 100 + rng.choice((25, 50, 75))
+        total = a + b
+
+        def say(s: int) -> str:
+            baht, st = divmod(s, 100)
+            return f"{baht} บาท {st} สตางค์" if st else f"{baht} บาท"
+        x, y = rng.sample(("ขนม", "นม", "ผลไม้", "ขนมปัง", "ไอศกรีม"), 2)
+        # Satang not carried into baht; a baht off; the satang added as baht.
+        no_carry = f"{a // 100 + b // 100} บาท {(a % 100 + b % 100)} สตางค์"
+        wrongs = [no_carry, say(total + 100), say(total - 100), say(total + 50)]
+        return f"ซื้อ{x} {say(a)} และ{y} {say(b)} รวมเป็นเงินเท่าใด", say(total), \
+            [w for w in dict.fromkeys(wrongs) if w != say(total)]

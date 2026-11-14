@@ -191,3 +191,123 @@ class ExponentialEquationAdvancedM4(QuestionType):
             wrongs = [other, r"(1, \infty)", r"(-\infty, -1)"]
         return _tex_q(stem, right, wrongs, self.topic)
 ExponentialEquationAdvancedM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/5 เลขยกกำลัง',))
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More exponential equations (2026-11): equal powers of two, an exponent from the laws, doubling, an
+# exponential inequality, a coefficient in front, and a sum of equal powers ──
+
+
+@question_type("math.exp_equal_exponents_m4", display_name={"th": "สมการเลขชี้กำลังฐานเดียวกัน"}, level=LEVEL,
+               topic="สมการเลขชี้กำลัง")
+class ExpEqualExponentsM4(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 4)
+        x = rng.randint(-5, 8)
+        b = rng.randint(-6, 6)
+        c = a * x + b
+        base = rng.choice((2, 3, 5))
+        right = f"x = {x}"
+        wrongs = [f"x = {c}", f"x = {frac_tex(Fraction(c + b, a))}", f"x = {frac_tex(Fraction(c, a))}", f"x = {x + 1}"]
+        return MathDraw(f"{base}^{{{poly_tex((a, 'x'), (b, ''))}}} = {base}^{{{c}}}", right, prompt="จงแก้สมการ",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.exponent_from_laws_m4", display_name={"th": "หาเลขชี้กำลังด้วยสมบัติเลขยกกำลัง"}, level=LEVEL,
+               topic="สมการเลขชี้กำลัง")
+class ExponentFromLawsM4(MathType):
+    def expr(self, rng: Random):
+        m, n, k = rng.randint(2, 6), rng.randint(2, 5), rng.randint(1, 9)
+        right = m * n - k
+        # The powers added; divided instead of subtracted; m + n − k.
+        return MathDraw(rf"\frac{{(a^{{{m}}})^{{{n}}}}}{{a^{{{k}}}}} = a^{{\square}}", str(right),
+                        prompt="จำนวนใดเติมใน □ ได้ (a ≠ 0)", distractors=_nk4(m + n - k, m * n + k, m ** n - k, m * n, answer=right))
+
+
+@question_type("math.doubling_growth_m4", display_name={"th": "การเพิ่มขึ้นเป็นสองเท่าทุกช่วงเวลา"}, level=LEVEL,
+               topic="สมการเลขชี้กำลัง")
+class DoublingGrowthM4(WordProblem):
+    def expr(self, rng: Random):
+        start = rng.choice((50, 100, 200, 300, 500))
+        h = rng.randint(2, 6)
+        k = rng.randint(2, 6)
+        right = start * 2 ** k
+        prompt = f"แบคทีเรียมี {start} ตัว และเพิ่มเป็นสองเท่าทุก {h} ชั่วโมง เมื่อผ่านไป {h * k} ชั่วโมงจะมีกี่ตัว"
+        # Doubled every hour; added instead of doubled; one doubling short.
+        return MathDraw("", f"{right:,}".replace(",", "{,}"), prompt=prompt,
+                        distractors=[f"{v:,}".replace(",", "{,}") for v in dict.fromkeys(
+                            (start * 2 * k, start * (k + 1), start * 2 ** (k - 1), start * 2 ** (k + 1))) if v != right])
+
+
+@question_type("math.exp_inequality_m4", display_name={"th": "อสมการเลขชี้กำลัง"}, level=LEVEL, topic="สมการเลขชี้กำลัง")
+class ExpInequalityM4(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 6)
+        half = rng.random() < 0.5
+        if half:
+            lhs, rhs, right = r"\left(\frac{1}{2}\right)^{x}", rf"\frac{{1}}{{{2 ** k}}}", f"x < {k}"
+            wrongs = [f"x > {k}", f"x < {-k}", f"x > {-k}"]
+        else:
+            lhs, rhs, right = "2^{x}", str(2 ** k), f"x > {k}"
+            wrongs = [f"x < {k}", f"x > {2 ** k // 2}", f"x > {-k}"]
+        return MathDraw(f"{lhs} > {rhs}", right, prompt="จงหาคำตอบของอสมการ", distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.exp_with_coefficient_m4", display_name={"th": "สมการเลขชี้กำลังที่มีสัมประสิทธิ์"}, level=LEVEL,
+               topic="สมการเลขชี้กำลัง")
+class ExpWithCoefficientM4(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 7)
+        base = rng.choice((2, 3))
+        x = rng.randint(1, 6)
+        right = f"x = {x}"
+        wrongs = [f"x = {x + 1}", f"x = {a * x}", f"x = {x - 1}", f"x = {frac_tex(Fraction(a * base ** x, base))}"]
+        return MathDraw(rf"{a} \cdot {base}^{{x}} = {a * base ** x}", right, prompt="จงแก้สมการ",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.sum_of_equal_powers_m4", display_name={"th": "ผลบวกของเลขยกกำลังที่เท่ากัน"}, level=LEVEL,
+               topic="สมการเลขชี้กำลัง")
+class SumOfEqualPowersM4(MathType):
+    def expr(self, rng: Random):
+        base = rng.choice((2, 3))
+        k = rng.randint(3, 9)
+        terms = " + ".join([f"{base}^{{x}}"] * base)
+        right = f"x = {k - 1}"
+        wrongs = [f"x = {k}", f"x = {frac_tex(Fraction(k, base))}", f"x = {k + 1}", f"x = {k - base}"]
+        return MathDraw(f"{terms} = {base}^{{{k}}}", right, prompt="จงแก้สมการ", distractors=_tk4(*wrongs, answer=right))
+
+
+ExpEqualExponentsM4.PROVENANCE = Provenance("original")
+ExponentFromLawsM4.PROVENANCE = Provenance("original")
+DoublingGrowthM4.PROVENANCE = Provenance("original")
+ExpInequalityM4.PROVENANCE = Provenance("original")
+ExpWithCoefficientM4.PROVENANCE = Provenance("original")
+SumOfEqualPowersM4.PROVENANCE = Provenance("original")

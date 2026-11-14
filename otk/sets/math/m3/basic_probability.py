@@ -277,3 +277,89 @@ class ProbabilityAddBallsM3(QuestionType):
             f"ต้องเพิ่มลูกบอลสีแดงอีกกี่ลูก เพื่อให้ความน่าจะเป็นที่สุ่มหยิบ 1 ลูกแล้วได้สีแดง"
             f"เท่ากับ {target.numerator}/{target.denominator}"
         )], str(added), wrongs, self.topic)
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathDraw, WordProblem  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More probability (2026-11): the complement, the sum of two dice, and the expected count ──
+
+
+@question_type("math.probability_complement_m3", display_name={"th": "ความน่าจะเป็นที่เหตุการณ์จะไม่เกิดขึ้น"},
+               level=LEVEL, topic="ความน่าจะเป็นเบื้องต้น")
+class ProbabilityComplementM3(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.randint(3, 12)
+        k = rng.randint(1, d - 1)
+        p = Fraction(k, d)
+        right = 1 - p
+        what = rng.choice(("ฝนจะตก", "ทีมเหย้าจะชนะ", "รถไฟจะมาตรงเวลา", "สุ่มได้บัตรรางวัล"))
+        prompt = f"ความน่าจะเป็นที่{what}เท่ากับ {p.numerator}/{p.denominator} ความน่าจะเป็นที่จะไม่เป็นเช่นนั้นเท่ากับเท่าใด"
+        # The same chance; one part; one part short; the top over the top and bottom.
+        return MathDraw("", frac_tex(right), prompt=prompt,
+                        distractors=_fk3(p, Fraction(1, p.denominator), right - Fraction(1, p.denominator),
+                                         Fraction(k, d + k), answer=right, lo=Fraction(1, 100)))
+
+
+@question_type("math.two_dice_sum_m3", display_name={"th": "ความน่าจะเป็นของผลรวมแต้มลูกเต๋าสองลูก"},
+               level=LEVEL, topic="ความน่าจะเป็นเบื้องต้น")
+class TwoDiceSumM3(WordProblem):
+    def expr(self, rng: Random):
+        s = rng.randint(3, 11)
+        ways = sum(1 for a in range(1, 7) for b in range(1, 7) if a + b == s)
+        right = Fraction(ways, 36)
+        prompt = f"ทอดลูกเต๋าสองลูกพร้อมกัน 1 ครั้ง ความน่าจะเป็นที่ผลรวมของแต้มเท่ากับ {s} เท่ากับเท่าใด"
+        # Out of 12 (the sums), out of 11 (the possible totals), or the unordered pairs out of 21.
+        pairs = sum(1 for a in range(1, 7) for b in range(a, 7) if a + b == s)
+        return MathDraw("", frac_tex(right), prompt=prompt,
+                        distractors=_fk3(Fraction(ways, 12), Fraction(1, 11), Fraction(pairs, 21), Fraction(ways + 1, 36),
+                                         answer=right, lo=Fraction(0)))
+
+
+@question_type("math.expected_count_m3", display_name={"th": "คาดว่าจะเกิดเหตุการณ์ประมาณกี่ครั้ง"},
+               level=LEVEL, topic="ความน่าจะเป็นเบื้องต้น")
+class ExpectedCountM3(WordProblem):
+    def expr(self, rng: Random):
+        red, blue = rng.randint(1, 6), rng.randint(1, 6)
+        total = red + blue
+        trials = total * rng.randint(4, 30)
+        right = trials * red // total
+        prompt = (f"ถุงใบหนึ่งมีลูกบอลสีแดง {red} ลูก สีฟ้า {blue} ลูก สุ่มหยิบ 1 ลูกแล้วใส่คืน ทำซ้ำ {trials} ครั้ง "
+                  "คาดว่าจะได้สีแดงประมาณกี่ครั้ง")
+        # The blue count; half the trials; the trials over red.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(trials - right, trials // 2, trials // red if red > 1 else trials // 3,
+                                                right + total, answer=right, lo=1))

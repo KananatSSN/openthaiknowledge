@@ -276,3 +276,79 @@ class InequalityParametersM4(QuestionType):
         wrongs = [2 * k, -k, k]
         return _num_maths(stem, str(right), [str(w) for w in wrongs if w != right], self.topic)
 InequalityParametersM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More quadratic inequalities (2026-11): between the roots, how many integers fit, and k so the quadratic
+# is always positive ──
+
+
+@question_type("math.qineq_between_roots_m4", display_name={"th": "อสมการกำลังสองแบบน้อยกว่าหรือเท่ากับศูนย์"},
+               level=LEVEL, topic="อสมการกำลังสอง")
+class QineqBetweenRootsM4(MathType):
+    def expr(self, rng: Random):
+        a, b = sorted(rng.sample(range(-9, 10), 2))
+        right = rf"{a} \le x \le {b}"
+        # Outside the roots; the signs of the roots flipped; the ends left open.
+        wrongs = [rf"x \le {a} \lor x \ge {b}", rf"{-b} \le x \le {-a}", rf"{a} < x < {b}"]
+        return MathDraw(f"{poly_tex((1, 'x^{2}'), (-(a + b), 'x'), (a * b, ''))} \\le 0", right, prompt="จงหาคำตอบของอสมการ",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.qineq_integer_count_m4", display_name={"th": "นับจำนวนเต็มที่สอดคล้องกับอสมการกำลังสอง"},
+               level=LEVEL, topic="อสมการกำลังสอง")
+class QineqIntegerCountM4(MathType):
+    def expr(self, rng: Random):
+        a, b = sorted(rng.sample(range(-9, 10), 2))
+        while b - a < 2:
+            a, b = sorted(rng.sample(range(-9, 10), 2))
+        right = b - a - 1
+        # The ends counted; one end counted; the gap itself.
+        return MathDraw(f"{binomial_tex(-a)}{binomial_tex(-b)} < 0", str(right),
+                        prompt="มีจำนวนเต็ม x กี่จำนวนที่สอดคล้องกับอสมการนี้",
+                        distractors=_nk4(b - a + 1, b - a, abs(a) + abs(b), right - 1 if right > 1 else right + 2, answer=right, lo=0))
+
+
+@question_type("math.qineq_always_positive_m4", display_name={"th": "ค่า k ที่ทำให้พหุนามกำลังสองเป็นบวกเสมอ"},
+               level=LEVEL, topic="อสมการกำลังสอง")
+class QineqAlwaysPositiveM4(MathType):
+    def expr(self, rng: Random):
+        p = _nz4(rng, 1, 8)
+        bound = p * p
+        right = f"k > {bound}"
+        wrongs = [f"k < {bound}", f"k \\ge {bound}", f"k > {abs(p)}", f"k > {4 * bound}"]
+        return MathDraw(f"x^{{2}} {'+' if p > 0 else '-'} {2 * abs(p)}x + k > 0", right,
+                        prompt="อสมการนี้เป็นจริงสำหรับทุกจำนวนจริง x เมื่อ k มีค่าเท่าใด", distractors=_tk4(*wrongs, answer=right))
+
+
+QineqBetweenRootsM4.PROVENANCE = Provenance("original")
+QineqIntegerCountM4.PROVENANCE = Provenance("original")
+QineqAlwaysPositiveM4.PROVENANCE = Provenance("original")

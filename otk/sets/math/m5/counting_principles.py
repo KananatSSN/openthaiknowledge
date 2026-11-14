@@ -238,3 +238,110 @@ class CountingWithRestriction(WordProblem):
             distractors=[str(_math.perm(pool, length) // 2), str(_math.perm(pool, length)),
                          str(evens * pool ** (length - 1))])
 CountingWithRestriction.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+from math import factorial, gcd  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More counting (2026-11): divisible by one or the other, grid paths, number plates, and functions between
+# sets ──
+
+
+@question_type("math.divisible_by_either_m5", display_name={"th": "นับจำนวนที่หารด้วยจำนวนหนึ่งหรืออีกจำนวนหนึ่งลงตัว"},
+               level=LEVEL, topic="หลักการนับ")
+class DivisibleByEitherM5(WordProblem):
+    def expr(self, rng: Random):
+        a, b = rng.sample((2, 3, 4, 5, 6, 7), 2)
+        top = rng.choice((50, 60, 100, 120, 200))
+        lcm = a * b // gcd(a, b)
+        right = top // a + top // b - top // lcm
+        prompt = f"จำนวนนับตั้งแต่ 1 ถึง {top} ที่หารด้วย {a} หรือ {b} ลงตัวมีกี่จำนวน"
+        # Both lists added without taking off the overlap; the overlap only; the product as the overlap.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk5(top // a + top // b, top // lcm, top // a + top // b - top // (a * b), right + 1, answer=right, lo=1))
+
+
+@question_type("math.grid_paths_m5", display_name={"th": "นับเส้นทางที่สั้นที่สุดบนตาราง"}, level=LEVEL, topic="หลักการนับ")
+class GridPathsM5(WordProblem):
+    def expr(self, rng: Random):
+        m, k = rng.randint(2, 6), rng.randint(2, 5)
+        right = comb(m + k, m)
+        prompt = f"เดินบนตารางจากมุมล่างซ้ายไปมุมบนขวา โดยเดินไปทางขวา {m} ช่อง และขึ้น {k} ช่อง (เดินได้แค่ขวาหรือขึ้น) มีเส้นทางกี่แบบ"
+        # The moves multiplied; the moves added; ordered moves.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk5(m * k, m + k, factorial(m + k) // factorial(m), 2 ** (m + k), answer=right, lo=1))
+
+
+@question_type("math.number_plates_m5", display_name={"th": "นับป้ายทะเบียน"}, level=LEVEL, topic="หลักการนับ")
+class NumberPlatesM5(WordProblem):
+    def expr(self, rng: Random):
+        letters, digits = rng.choice((1, 2)), rng.randint(2, 4)
+        right = 26 ** letters * 10 ** digits
+        prompt = (f"ป้ายทะเบียนประกอบด้วยตัวอักษรภาษาอังกฤษ {letters} ตัว ตามด้วยเลขโดด {digits} ตัว "
+                  "(ใช้ซ้ำได้) สร้างป้ายได้ทั้งหมดกี่แบบ")
+        # No repeats; added instead; the letters forgotten.
+        no_repeat = factorial(26) // factorial(26 - letters) * factorial(10) // factorial(10 - digits)
+        return MathDraw("", _g5(right), prompt=prompt,
+                        distractors=_gk5(no_repeat, 26 * letters + 10 * digits, 10 ** digits, 26 ** letters * 9 ** digits, answer=right))
+
+
+@question_type("math.functions_between_sets_m5", display_name={"th": "นับฟังก์ชันจากเซตหนึ่งไปอีกเซตหนึ่ง"}, level=LEVEL,
+               topic="หลักการนับ")
+class FunctionsBetweenSetsM5(WordProblem):
+    def expr(self, rng: Random):
+        m = rng.randint(2, 4)
+        k = rng.randint(max(3, m), 6)
+        one_to_one = rng.random() < 0.5
+        right = factorial(k) // factorial(k - m) if one_to_one else k ** m
+        kind = "ฟังก์ชันหนึ่งต่อหนึ่ง" if one_to_one else "ฟังก์ชัน"
+        prompt = f"A มีสมาชิก {m} ตัว B มีสมาชิก {k} ตัว มี{kind}จาก A ไป B ทั้งหมดกี่ฟังก์ชัน"
+        other = k ** m if one_to_one else factorial(k) // factorial(k - m)
+        # The other kind; the base and power swapped; the sizes multiplied.
+        return MathDraw("", str(right), prompt=prompt, distractors=_nk5(other, m ** k, m * k, right + 1, answer=right, lo=1))
+
+
+DivisibleByEitherM5.PROVENANCE = Provenance("original")
+GridPathsM5.PROVENANCE = Provenance("original")
+NumberPlatesM5.PROVENANCE = Provenance("original")
+FunctionsBetweenSetsM5.PROVENANCE = Provenance("original")

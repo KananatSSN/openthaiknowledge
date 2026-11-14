@@ -216,3 +216,110 @@ class CosineRuleAngle(MathType):
             hint=r"c^2 = a^2 + b^2 - 2ab\cos C",
             distractors=[rf"{180 - angle}^\circ", r"90^\circ", r"45^\circ"])
 CosineRuleAngle.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More law of cosines (2026-11): cos C from three sides, a side with a 120° angle, a side with a 60° angle,
+# and a parallelogram's long diagonal ──
+
+_COS120 = ((3, 5, 7), (7, 8, 13), (5, 16, 19), (6, 10, 14), (9, 15, 21), (5, 3, 7), (8, 7, 13))
+_COS60 = ((5, 8, 7), (3, 8, 7), (7, 15, 13), (5, 21, 19), (8, 15, 13), (8, 5, 7), (8, 3, 7))
+
+
+@question_type("math.cos_from_three_sides_m5", display_name={"th": "หาค่า cos ของมุมจากความยาวด้านทั้งสาม"}, level=LEVEL,
+               topic="กฎของโคไซน์")
+class CosFromThreeSidesM5(MathType):
+    def expr(self, rng: Random):
+        while True:
+            a, b, c = rng.randint(3, 12), rng.randint(3, 12), rng.randint(3, 12)
+            if a + b > c and a + c > b and b + c > a and a * a + b * b != c * c:
+                break
+        right = Fraction(a * a + b * b - c * c, 2 * a * b)
+        return MathDraw(rf"a = {a}, \quad b = {b}, \quad c = {c}", frac_tex(right), prompt="จงหาค่าของ cos C (C อยู่ตรงข้ามด้าน c)",
+                        distractors=_fk5(Fraction(a * a + b * b + c * c, 2 * a * b), Fraction(a * a + b * b - c * c, a * b),
+                                         -right, right + Fraction(1, 2 * a * b), answer=right))
+
+
+@question_type("math.side_with_120_m5", display_name={"th": "หาด้านที่สามเมื่อมุมระหว่างเป็น 120°"}, level=LEVEL, topic="กฎของโคไซน์")
+class SideWith120M5(WordProblem):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_COS120)
+        k = rng.randint(1, 3)
+        a, b, c = a * k, b * k, c * k
+        prompt = f"รูปสามเหลี่ยมมีด้านยาว {a} และ {b} หน่วย มุมระหว่างสองด้านนี้ 120 องศา ด้านที่สามยาวกี่หน่วย"
+        # Taken as 60°; the sides added; Pythagoras.
+        sixty = a * a + b * b - a * b
+        return MathDraw("", str(c), prompt=prompt,
+                        distractors=_tk5(sqrt_tex(sixty), str(a + b), sqrt_tex(a * a + b * b), str(c + 1), answer=str(c)))
+
+
+@question_type("math.side_with_60_m5", display_name={"th": "หาด้านที่สามเมื่อมุมระหว่างเป็น 60°"}, level=LEVEL, topic="กฎของโคไซน์")
+class SideWith60M5(WordProblem):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_COS60)
+        k = rng.randint(1, 3)
+        a, b, c = a * k, b * k, c * k
+        prompt = f"รูปสามเหลี่ยมมีด้านยาว {a} และ {b} หน่วย มุมระหว่างสองด้านนี้ 60 องศา ด้านที่สามยาวกี่หน่วย"
+        wide = a * a + b * b + a * b
+        return MathDraw("", str(c), prompt=prompt,
+                        distractors=_tk5(sqrt_tex(wide), str(abs(a - b)), sqrt_tex(a * a + b * b), str(c + 1), answer=str(c)))
+
+
+@question_type("math.parallelogram_long_diagonal_m5", display_name={"th": "เส้นทแยงมุมยาวของรูปสี่เหลี่ยมด้านขนาน"}, level=LEVEL,
+               topic="กฎของโคไซน์")
+class ParallelogramLongDiagonalM5(WordProblem):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_COS120)
+        k = rng.randint(1, 3)
+        a, b, c = a * k, b * k, c * k
+        prompt = f"รูปสี่เหลี่ยมด้านขนานมีด้านยาว {a} และ {b} เซนติเมตร มุมแหลมขนาด 60 องศา เส้นทแยงมุมเส้นที่ยาวกว่ายาวกี่เซนติเมตร"
+        short = a * a + b * b - a * b
+        return MathDraw("", str(c), prompt=prompt,
+                        distractors=_tk5(sqrt_tex(short), str(a + b), sqrt_tex(a * a + b * b), str(2 * max(a, b)), answer=str(c)))
+
+
+CosFromThreeSidesM5.PROVENANCE = Provenance("original")
+SideWith120M5.PROVENANCE = Provenance("original")
+SideWith60M5.PROVENANCE = Provenance("original")
+ParallelogramLongDiagonalM5.PROVENANCE = Provenance("original")

@@ -172,3 +172,144 @@ class NormalLine(MathType):
             distractors=[str(slope), frac_tex(Fraction(1, slope)),
                          str(-slope)])
 NormalLine.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More tangent lines (2026-11): where the tangent to y = x² + c meets the y-axis, the point with a given
+# slope, the tangent to y = x³, a tangent perpendicular to a line, where the tangent meets the x-axis, and
+# where the normal meets the y-axis ──
+
+
+def _line6(m, k) -> str:
+    m, k = Fraction(m), Fraction(k)
+    if not m:
+        return f"y = {frac_tex(k)}"
+    mt = "" if m == 1 else "-" if m == -1 else frac_tex(m)
+    head = f"y = {mt}x"
+    return head if not k else f"{head} {'+' if k > 0 else '-'} {frac_tex(abs(k))}"
+
+
+@question_type("math.tangent_y_intercept_m6", display_name={"th": "จุดตัดแกน y ของเส้นสัมผัส"}, level=LEVEL, topic="เส้นสัมผัส")
+class TangentYInterceptM6(MathType):
+    def expr(self, rng: Random):
+        a, c = _nz6(rng, 1, 6), rng.randint(-9, 9)
+        right = c - a * a
+        # The curve's own intercept; the square added; the slope.
+        return MathDraw(rf"y = {poly_tex((1, 'x^{2}'), (c, ''))}, \quad x = {a}", str(right),
+                        prompt="เส้นสัมผัสเส้นโค้งที่ค่า x ที่กำหนด ตัดแกน y ที่ y เท่ากับเท่าใด",
+                        distractors=_nk6(c, c + a * a, 2 * a, right - 1, answer=right))
+
+
+@question_type("math.point_with_slope_m6", display_name={"th": "จุดบนเส้นโค้งที่เส้นสัมผัสมีความชันตามที่กำหนด"}, level=LEVEL,
+               topic="เส้นสัมผัส")
+class PointWithSlopeM6(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.randint(1, 3), rng.randint(-9, 9), rng.randint(-9, 9)
+        x0 = rng.randint(-4, 4)
+        m = 2 * a * x0 + b
+        right = _pt6(x0, a * x0 * x0 + b * x0 + c)
+        # The slope as x; the sign of x flipped; the derivative's value as y.
+        wrongs = [_pt6(m, a * m * m + b * m + c), _pt6(-x0, a * x0 * x0 - b * x0 + c), _pt6(x0, m), _pt6(x0 + 1, a * (x0 + 1) ** 2 + b * (x0 + 1) + c)]
+        return MathDraw(rf"y = {poly_tex((a, 'x^{2}'), (b, 'x'), (c, ''))}", right, prompt=f"เส้นสัมผัสที่จุดใดบนเส้นโค้งนี้มีความชันเท่ากับ {m}",
+                        distractors=_tk6(*wrongs, answer=right))
+
+
+@question_type("math.tangent_to_cubic_m6", display_name={"th": "สมการเส้นสัมผัส y = x³"}, level=LEVEL, topic="เส้นสัมผัส")
+class TangentToCubicM6(MathType):
+    def expr(self, rng: Random):
+        a = _nz6(rng, 1, 3)
+        right = _line6(3 * a * a, -2 * a ** 3)
+        wrongs = [_line6(3 * a * a, a ** 3), _line6(a ** 3, 0), _line6(3 * a, -2 * a ** 3), _line6(3 * a * a, 2 * a ** 3)]
+        return MathDraw(rf"y = x^{{3}}, \quad x = {a}", right, prompt="จงหาสมการเส้นสัมผัสเส้นโค้งที่ค่า x ที่กำหนด",
+                        distractors=_tk6(*wrongs, answer=right))
+
+
+@question_type("math.tangent_perpendicular_m6", display_name={"th": "จุดที่เส้นสัมผัสตั้งฉากกับเส้นตรงที่กำหนด"}, level=LEVEL,
+               topic="เส้นสัมผัส")
+class TangentPerpendicularM6(MathType):
+    def expr(self, rng: Random):
+        k = rng.choice((1, -1, 2, -2, Fraction(1, 2), Fraction(-1, 2)))
+        k = Fraction(k)
+        slope = -1 / k
+        x0 = slope / 2
+        right = frac_tex(x0)
+        # The given slope used; not negated; not halved.
+        return MathDraw(rf"y = x^{{2}}, \quad {_line6(k, 3)}", right, prompt="เส้นสัมผัสเส้นโค้ง y = x² ที่ x เท่าใดจึงตั้งฉากกับเส้นตรงที่กำหนด",
+                        distractors=_fk6(k / 2, -slope / 2, slope, 1 / k, answer=x0))
+
+
+@question_type("math.tangent_x_intercept_m6", display_name={"th": "จุดตัดแกน x ของเส้นสัมผัส y = x²"}, level=LEVEL, topic="เส้นสัมผัส")
+class TangentXInterceptM6(MathType):
+    def expr(self, rng: Random):
+        a = _nz6(rng, 1, 9)
+        right = Fraction(a, 2)
+        return MathDraw(rf"y = x^{{2}}, \quad x = {a}", frac_tex(right), prompt="เส้นสัมผัสเส้นโค้งที่ค่า x ที่กำหนด ตัดแกน x ที่ x เท่ากับเท่าใด",
+                        distractors=_fk6(a, 2 * a, -Fraction(a, 2), Fraction(a, 4), answer=right))
+
+
+@question_type("math.normal_y_intercept_m6", display_name={"th": "จุดตัดแกน y ของเส้นตั้งฉากกับเส้นโค้ง"}, level=LEVEL, topic="เส้นสัมผัส")
+class NormalYInterceptM6(MathType):
+    def expr(self, rng: Random):
+        a = _nz6(rng, 1, 6)
+        right = Fraction(a * a) + Fraction(1, 2)
+        # The tangent's intercept; the half left out; minus a half.
+        return MathDraw(rf"y = x^{{2}}, \quad x = {a}", frac_tex(right), prompt="เส้นตั้งฉากกับเส้นโค้งที่ค่า x ที่กำหนด ตัดแกน y ที่ y เท่ากับเท่าใด",
+                        distractors=_fk6(-a * a, a * a, Fraction(a * a) - Fraction(1, 2), Fraction(a * a + 1), answer=right))
+
+
+TangentYInterceptM6.PROVENANCE = Provenance("original")
+PointWithSlopeM6.PROVENANCE = Provenance("original")
+TangentToCubicM6.PROVENANCE = Provenance("original")
+TangentPerpendicularM6.PROVENANCE = Provenance("original")
+TangentXInterceptM6.PROVENANCE = Provenance("original")
+NormalYInterceptM6.PROVENANCE = Provenance("original")

@@ -123,3 +123,47 @@ class SubtractWordP1(QuestionType):
         left = a - b
         return maths([text(stem)], str(left), _nums(left, a + b, left + 10, left - 10, left + 1, lo=1),
                      self.topic)
+
+
+# ── More subtraction (2026-11): whole tens, subtraction that undoes an addition, hopping back on a
+# number line ──
+
+from otk.kit.math_problems import WordProblem  # noqa: E402
+
+
+@question_type("math.subtract_tens_p1", display_name={"th": "ลบจำนวนเต็มสิบ"},
+               level=LEVEL, topic="การลบ")
+class SubtractTensP1(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 9)
+        b = rng.randint(1, a - 1)
+        right = 10 * (a - b)
+        # The tens digits alone; added instead; ten off.
+        return MathDraw(f"{10 * a} - {10 * b}", str(right), prompt="จงหาผลลบ",
+                        distractors=_story.keep(a - b, 10 * (a + b), right + 10, right - 10,
+                                                answer=right, lo=1, hi=100))
+
+
+@question_type("math.add_sub_inverse_p1", display_name={"th": "ความสัมพันธ์ของการบวกและการลบ"},
+               level=LEVEL, topic="การลบ")
+class AddSubInverseP1(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.sample(range(2, 30), 2)
+        s = a + b
+        # The number taken away; the total; the total plus.
+        return MathDraw(rf"{s} - {b} = \square", str(a),
+                        prompt=f"ถ้า {a} + {b} = {s} จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(b, s, s + b, a + 1, answer=a, lo=0))
+
+
+@question_type("math.number_line_back_p1", display_name={"th": "นับถอยหลังบนเส้นจำนวน"},
+               level=LEVEL, topic="การลบ")
+class NumberLineBackP1(WordProblem):
+    def expr(self, rng: Random):
+        start = rng.randint(8, 30)
+        hop = rng.randint(2, 9)
+        right = start - hop
+        prompt = f"บนเส้นจำนวน เริ่มที่ {start} แล้วนับถอยหลังไป {hop} ช่อง จะอยู่ที่จำนวนใด"
+        # Counted forward instead; one hop short or long.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(start + hop, right + 1, right - 1, hop, answer=right, lo=0))

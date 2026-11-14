@@ -178,3 +178,126 @@ class RatioShareP6(WordProblem):
             wrongs = [a * unit, b * unit, abs(a - b), total - abs(a - b)]
         return MathDraw("", str(ans), prompt=prompt,
                         distractors=_story.keep(*wrongs, ans + unit, answer=ans, lo=1))
+
+from fractions import Fraction  # noqa: E402
+from math import gcd  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More ratio and scale (2026-11): a real distance in kilometres, a map distance, a ratio in lowest terms,
+# the other part from a ratio, and sharing in three parts ──
+
+
+@question_type("math.scale_to_km_p6", display_name={"th": "มาตราส่วน (ระยะจริงเป็นกิโลเมตร)"},
+               level=LEVEL, topic="อัตราส่วนและมาตราส่วน")
+class ScaleToKmP6(WordProblem):
+    def expr(self, rng: Random):
+        km_per_cm = rng.choice((1, 2, 5, 10, 20))
+        scale = km_per_cm * 100_000
+        cm = rng.randint(2, 25)
+        right = cm * km_per_cm
+        prompt = f"แผนที่ใช้มาตราส่วน 1 : {scale:,} ระยะในแผนที่ {cm} เซนติเมตร คิดเป็นระยะจริงกี่กิโลเมตร"
+        # Metres instead of kilometres; ten times off; the centimetres themselves.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(right * 1000, right * 10, cm, right + km_per_cm, answer=right, lo=1))
+
+
+@question_type("math.scale_to_map_p6", display_name={"th": "มาตราส่วน (ระยะในแผนที่)"},
+               level=LEVEL, topic="อัตราส่วนและมาตราส่วน")
+class ScaleToMapP6(WordProblem):
+    def expr(self, rng: Random):
+        m_per_cm = rng.choice((10, 20, 50, 100, 200, 500))
+        scale = m_per_cm * 100
+        right = rng.randint(2, 20)
+        metres = right * m_per_cm
+        prompt = f"แบบแปลนใช้มาตราส่วน 1 : {scale:,} ระยะจริง {metres:,} เมตร ในแบบแปลนยาวกี่เซนติเมตร"
+        # The scale in metres not centimetres; multiplied instead.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right * 100, right * 10, metres // 10 if metres >= 100 else right + 5,
+                                                right + 1, answer=right, lo=1))
+
+
+@question_type("math.ratio_lowest_terms_p6", display_name={"th": "อัตราส่วนอย่างต่ำ"},
+               level=LEVEL, topic="อัตราส่วนและมาตราส่วน")
+class RatioLowestTermsP6(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            a, b = rng.sample(range(1, 10), 2)
+            if gcd(a, b) == 1:
+                break
+        k = rng.randint(2, 9)
+        right = f"{a} : {b}"
+        # Not reduced all the way; the parts swapped; one part reduced only.
+        half = f"{a * k // 2} : {b * k // 2}" if k % 2 == 0 and k > 2 else f"{a * k} : {b}"
+        wrongs = [half, f"{b} : {a}", f"{a + 1} : {b + 1}"]
+        return f"อัตราส่วน {a * k} : {b * k} เขียนเป็นอัตราส่วนอย่างต่ำได้อย่างไร", right, wrongs
+
+
+@question_type("math.ratio_other_part_p6", display_name={"th": "หาอีกส่วนจากอัตราส่วน"},
+               level=LEVEL, topic="อัตราส่วนและมาตราส่วน")
+class RatioOtherPartP6(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            a, b = rng.sample(range(1, 10), 2)
+            if gcd(a, b) == 1:
+                break
+        k = rng.randint(2, 12)
+        boys, right = a * k, b * k
+        prompt = f"อัตราส่วนของนักเรียนชายต่อนักเรียนหญิงเป็น {a} : {b} ถ้ามีนักเรียนชาย {boys} คน มีนักเรียนหญิงกี่คน"
+        # Everyone; the boys and the step added; the ratio read upside down.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(boys + right, boys + (b - a), boys * a // b if boys * a % b == 0 else boys + b,
+                                                right + k, answer=right, lo=1))
+
+
+@question_type("math.share_three_ways_p6", display_name={"th": "แบ่งตามอัตราส่วนสามส่วน"},
+               level=LEVEL, topic="อัตราส่วนและมาตราส่วน")
+class ShareThreeWaysP6(WordProblem):
+    def expr(self, rng: Random):
+        parts = rng.sample(range(1, 8), 3)
+        unit = rng.randint(5, 80) * 10
+        total = sum(parts) * unit
+        i = rng.randrange(3)
+        right = parts[i] * unit
+        names = _story.names(rng, 3)
+        ratio = " : ".join(str(p) for p in parts)
+        prompt = f"แบ่งเงิน {total:,} บาท ให้{names[0]} {names[1]} และ{names[2]}ในอัตราส่วน {ratio} {names[i]}ได้เงินกี่บาท"
+        # One part's worth; split three ways evenly; the part times the total over ten.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(unit, total // 3, total - right, right + unit, answer=right, lo=1))

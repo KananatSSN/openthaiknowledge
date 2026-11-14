@@ -147,3 +147,125 @@ class AreaBetweenCurveAndLine(MathType):
             distractors=[frac_tex(-area), frac_tex(Fraction((q - p) ** 3, 3)),
                          frac_tex(Fraction((q - p) ** 2, 2))])
 AreaBetweenCurveAndLine.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.kit.math_problems import binomial_tex  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More areas (2026-11): under a line, under x³, inside a downward parabola, under √x, under x² + c, and
+# between y = x² − a² and the x-axis ──
+
+
+@question_type("math.area_under_line_m6", display_name={"th": "พื้นที่ใต้เส้นตรง"}, level=LEVEL, topic="พื้นที่")
+class AreaUnderLineM6(MathType):
+    def expr(self, rng: Random):
+        m, c = rng.randint(1, 5), rng.randint(1, 9)
+        a, b = sorted(rng.sample(range(0, 7), 2))
+        right = Fraction(m, 2) * (b * b - a * a) + c * (b - a)
+        return MathDraw(rf"y = {poly_tex((m, 'x'), (c, ''))}, \quad {a} \le x \le {b}",
+                        frac_tex(right), prompt="จงหาพื้นที่ใต้เส้นตรงนี้เหนือแกน X ในช่วงที่กำหนด",
+                        distractors=_fk6(m * (b * b - a * a) + c * (b - a), (m * b + c) * (b - a), Fraction(m, 2) * (b * b - a * a),
+                                         right + 1, answer=right))
+
+
+@question_type("math.area_under_cubic_m6", display_name={"th": "พื้นที่ใต้เส้นโค้ง y = x³"}, level=LEVEL, topic="พื้นที่")
+class AreaUnderCubicM6(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 6)
+        right = Fraction(a ** 4, 4)
+        return MathDraw(rf"y = x^{{3}}, \quad 0 \le x \le {a}", frac_tex(right), prompt="จงหาพื้นที่ใต้เส้นโค้งเหนือแกน X ในช่วงที่กำหนด",
+                        distractors=_fk6(Fraction(a ** 4, 3), a ** 3, 3 * a * a, Fraction(a ** 3, 4), answer=right))
+
+
+@question_type("math.area_inside_parabola_m6", display_name={"th": "พื้นที่ระหว่างพาราโบลาคว่ำกับแกน X"}, level=LEVEL, topic="พื้นที่")
+class AreaInsideParabolaM6(MathType):
+    def expr(self, rng: Random):
+        p, q = sorted(rng.sample(range(-5, 6), 2))
+        right = Fraction((q - p) ** 3, 6)
+        return MathDraw(rf"y = -{binomial_tex(-p)}{binomial_tex(-q)}", frac_tex(right), prompt="จงหาพื้นที่ที่ปิดล้อมด้วยเส้นโค้งนี้กับแกน X",
+                        distractors=_fk6(Fraction((q - p) ** 3, 3), Fraction((q - p) ** 2, 4) * (q - p), (q - p) ** 2, Fraction((q - p) ** 3, 12),
+                                         answer=right))
+
+
+@question_type("math.area_under_root_m6", display_name={"th": "พื้นที่ใต้เส้นโค้ง y = √x"}, level=LEVEL, topic="พื้นที่")
+class AreaUnderRootM6(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(1, 5)
+        right = Fraction(2 * k ** 3, 3)
+        return MathDraw(rf"y = \sqrt{{x}}, \quad 0 \le x \le {k * k}", frac_tex(right), prompt="จงหาพื้นที่ใต้เส้นโค้งเหนือแกน X ในช่วงที่กำหนด",
+                        distractors=_fk6(Fraction(k ** 3, 3), k ** 3, Fraction(3 * k ** 3, 2), Fraction(2 * k * k, 3), answer=right))
+
+
+@question_type("math.area_under_shifted_square_m6", display_name={"th": "พื้นที่ใต้เส้นโค้ง y = x² + c"}, level=LEVEL, topic="พื้นที่")
+class AreaUnderShiftedSquareM6(MathType):
+    def expr(self, rng: Random):
+        a, c = rng.randint(1, 6), rng.randint(1, 9)
+        right = Fraction(a ** 3, 3) + c * a
+        return MathDraw(rf"y = x^{{2}} + {c}, \quad 0 \le x \le {a}", frac_tex(right), prompt="จงหาพื้นที่ใต้เส้นโค้งเหนือแกน X ในช่วงที่กำหนด",
+                        distractors=_fk6(Fraction(a ** 3, 3), Fraction(a ** 3, 3) + c, a ** 3 + c * a, right + a, answer=right))
+
+
+@question_type("math.area_below_axis_m6", display_name={"th": "พื้นที่ใต้แกน X ของพาราโบลา"}, level=LEVEL, topic="พื้นที่")
+class AreaBelowAxisM6(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 6)
+        right = Fraction(4 * a ** 3, 3)
+        return MathDraw(rf"y = x^{{2}} - {a * a}", frac_tex(right), prompt="จงหาพื้นที่ที่ปิดล้อมด้วยเส้นโค้งนี้กับแกน X",
+                        distractors=_fk6(-right, Fraction(2 * a ** 3, 3), Fraction(8 * a ** 3, 3), 2 * a ** 3, answer=right))
+
+
+AreaUnderLineM6.PROVENANCE = Provenance("original")
+AreaUnderCubicM6.PROVENANCE = Provenance("original")
+AreaInsideParabolaM6.PROVENANCE = Provenance("original")
+AreaUnderRootM6.PROVENANCE = Provenance("original")
+AreaUnderShiftedSquareM6.PROVENANCE = Provenance("original")
+AreaBelowAxisM6.PROVENANCE = Provenance("original")

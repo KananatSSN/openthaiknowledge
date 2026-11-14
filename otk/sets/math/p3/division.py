@@ -111,3 +111,92 @@ class DivisionWordProblemP3(WordProblem):
                         prompt=(f"แบ่งเงิน {exact} บาท ให้ลูก {per} คน คนละเท่า ๆ กัน "
                                 f"ลูกแต่ละคนได้เงินกี่บาท"),
                         distractors=_story.keep(exact - per, q + 10, q - 1, answer=q))
+
+
+# ── More dividing (2026-11): by 10 and 100, the missing divisor, sharing equally, a number that divides
+# evenly, the largest quotient, and half of a number ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType as _QT  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+@question_type("math.divide_by_ten_p3", display_name={"th": "หารด้วย 10 และ 100"},
+               level=LEVEL, topic="การหาร")
+class DivideByTenP3(MathType):
+    def expr(self, rng: Random):
+        k = rng.choice((10, 100))
+        q = rng.randint(12, 999)
+        n = q * k
+        # One zero too many or too few dropped; multiplied instead.
+        return MathDraw(rf"{n} \div {k}", str(q), prompt="จงหาผลหาร",
+                        distractors=_story.keep(q * 10, q // 10, n * k, q + 1, answer=q, lo=1))
+
+
+@question_type("math.missing_divisor_p3", display_name={"th": "หาตัวหารในประโยคการหาร"},
+               level=LEVEL, topic="การหาร")
+class MissingDivisorP3(MathType):
+    def expr(self, rng: Random):
+        b, q = rng.randint(2, 9), rng.randint(3, 12)
+        n = b * q
+        # The quotient; the dividend; one off.
+        return MathDraw(rf"{n} \div \square = {q}", str(b), prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(q, n - q, b + 1, b - 1, answer=b, lo=1))
+
+
+@question_type("math.share_equally_p3", display_name={"th": "โจทย์ปัญหาแบ่งเท่า ๆ กัน (ตัวตั้งหลายหลัก)"},
+               level=LEVEL, topic="การหาร")
+class ShareEquallyP3(WordProblem):
+    def expr(self, rng: Random):
+        b = rng.randint(2, 9)
+        q = rng.randint(100, 2000)
+        n = b * q
+        what, unit = rng.choice((("เงิน", "บาท"), ("ข้าวสาร", "กิโลกรัม"), ("สมุด", "เล่ม")))
+        prompt = f"แบ่ง{what} {n} {unit} ให้ {b} ครอบครัวเท่า ๆ กัน ได้ครอบครัวละกี่{unit}"
+        # Multiplied instead; a place lost; one off.
+        return MathDraw("", str(q), prompt=prompt,
+                        distractors=_story.keep(n * b, q // 10, q + 1, n - b, answer=q, lo=1))
+
+
+@question_type("math.divides_evenly_p3", display_name={"th": "จำนวนใดหารด้วยจำนวนที่กำหนดลงตัว"},
+               level=LEVEL, topic="การหาร")
+class DividesEvenlyP3(_QT):
+    """Fixed choices: a number from another draw could also divide evenly."""
+
+    def build(self, rng: Random):
+        b = rng.randint(3, 9)
+        right = b * rng.randint(11, 99)
+        # Neighbours of the answer leave a remainder.
+        wrongs = _story.keep(right + 1, right - 1, right + b + 1, right + 2, answer=right, lo=1)
+        return _fixed_maths([_text_block(f"จำนวนใดหารด้วย {b} ลงตัว")], str(right), wrongs, self.topic)
+
+
+@question_type("math.largest_quotient_p3", display_name={"th": "ผลหารใดมากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="การหาร")
+class LargestQuotientP3(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            exprs = {}
+            for _ in range(4):
+                b, q = rng.randint(2, 9), rng.randint(11, 99)
+                exprs[f"{b * q} ÷ {b}"] = q
+            if len(exprs) == 4 and len(set(exprs.values())) == 4:
+                break
+        most = rng.random() < 0.5
+        right = (max if most else min)(exprs, key=exprs.get)
+        return f"ข้อใดมีผลหาร{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]
+
+
+@question_type("math.half_of_p3", display_name={"th": "ครึ่งหนึ่งของจำนวน"},
+               level=LEVEL, topic="การหาร")
+class HalfOfP3(WordProblem):
+    def expr(self, rng: Random):
+        right = rng.randint(51, 4999)
+        n = 2 * right
+        # Doubled instead; each digit halved and the carry lost; one off.
+        return MathDraw("", str(right), prompt=f"ครึ่งหนึ่งของ {n} คือจำนวนใด",
+                        distractors=_story.keep(n * 2, n - 2, right + 10, right - 1, answer=right, lo=1))

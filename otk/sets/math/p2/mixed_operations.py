@@ -181,3 +181,85 @@ class TwoStepAddSubP2(WordProblem):
         return MathDraw("", str(ans), prompt=story,
                         distractors=_story.keep(first, same, ans + 10, ans - 10,
                                                 answer=ans, lo=0))
+
+
+# ── More mixed operations (2026-11): the true number sentence, legs, wheels, two purchases compared, and
+# what is left after filling bags ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+_WHEELS = (("จักรยาน", 2), ("รถสามล้อ", 3), ("รถยนต์", 4))
+
+
+@question_type("math.mixed_true_sentence_p2", display_name={"th": "ประโยคสัญลักษณ์ระคนใดถูกต้อง"},
+               level=LEVEL, topic="บวก ลบ คูณ หารระคน")
+class MixedTrueSentenceP2(ChoiceType):
+    def compose(self, rng: Random):
+        a, b, c = rng.randint(2, 9), rng.randint(2, 9), rng.randint(1, 30)
+        r = a * b + c
+        left = f"{a} × {b} + {c}"
+        # Added first then multiplied; one off; the product alone; spares where two of those coincide.
+        values = [v for v in dict.fromkeys((a * (b + c), r + 1, a * b, r - 1, r + 2)) if v != r][:3]
+        return "ประโยคสัญลักษณ์ใดถูกต้อง", f"{left} = {r}", [f"{left} = {v}" for v in values]
+
+
+@question_type("math.legs_count_p2", display_name={"th": "โจทย์ปัญหานับขาของสัตว์"},
+               level=LEVEL, topic="บวก ลบ คูณ หารระคน")
+class LegsCountP2(WordProblem):
+    _LEGS = (("ไก่", 2), ("เป็ด", 2), ("สุนัข", 4), ("วัว", 4), ("แมว", 4))
+
+    def expr(self, rng: Random):
+        (x, lx), (y, ly) = rng.sample(self._LEGS, 2)
+        a, b = rng.randint(2, 9), rng.randint(2, 9)
+        right = a * lx + b * ly
+        prompt = f"ในฟาร์มมี{x} {a} ตัว และ{y} {b} ตัว สัตว์ทั้งหมดมีขารวมกันกี่ขา"
+        # Animals counted instead of legs; every animal given the first's legs; the legs swapped.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b, (a + b) * lx, a * ly + b * lx, right + 2, answer=right, lo=1))
+
+
+@question_type("math.wheels_count_p2", display_name={"th": "โจทย์ปัญหานับล้อของรถ"},
+               level=LEVEL, topic="บวก ลบ คูณ หารระคน")
+class WheelsCountP2(WordProblem):
+    def expr(self, rng: Random):
+        (x, wx), (y, wy) = rng.sample(_WHEELS, 2)
+        a, b = rng.randint(2, 9), rng.randint(2, 9)
+        right = a * wx + b * wy
+        prompt = f"ลานจอดรถมี{x} {a} คัน และ{y} {b} คัน มีล้อรวมกันกี่ล้อ"
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b, (a + b) * wx, a * wy + b * wx, right + 1, answer=right, lo=1))
+
+
+@question_type("math.compare_two_buys_p2", display_name={"th": "ซื้อของสองอย่าง อย่างใดจ่ายมากกว่ากี่บาท"},
+               level=LEVEL, topic="บวก ลบ คูณ หารระคน")
+class CompareTwoBuysP2(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            a, p, b, q = rng.randint(2, 9), rng.randint(3, 12), rng.randint(2, 9), rng.randint(3, 12)
+            if a * p != b * q:
+                break
+        if a * p < b * q:
+            a, p, b, q = b, q, a, p
+        right = a * p - b * q
+        prompt = (f"ซื้อดินสอ {a} แท่ง แท่งละ {p} บาท และซื้อยางลบ {b} ก้อน ก้อนละ {q} บาท "
+                  f"ค่าดินสอมากกว่าค่ายางลบกี่บาท")
+        # The prices compared alone; the counts compared alone; the totals added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(abs(p - q), abs(a - b), a * p + b * q, right + 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.fill_bags_left_p2", display_name={"th": "ใส่ถุงแล้วเหลือเท่าใด"},
+               level=LEVEL, topic="บวก ลบ คูณ หารระคน")
+class FillBagsLeftP2(WordProblem):
+    def expr(self, rng: Random):
+        bags, per = rng.randint(2, 8), rng.randint(3, 9)
+        extra = rng.randint(1, 30)
+        total = bags * per + extra
+        thing, cl = rng.choice((("ส้ม", "ผล"), ("ลูกอม", "เม็ด"), ("มะนาว", "ลูก")))
+        prompt = f"มี{thing} {total} {cl} ใส่ถุง {bags} ถุง ถุงละ {per} {cl} เหลือ{thing}กี่{cl}"
+        # Bags and size added and taken away; only one bag taken away; the amount in the bags.
+        return MathDraw("", str(extra), prompt=prompt,
+                        distractors=_story.keep(total - bags - per, total - per, bags * per, extra + per,
+                                                answer=extra, lo=0))

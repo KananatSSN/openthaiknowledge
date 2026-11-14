@@ -346,3 +346,126 @@ class LinearTransferM1(WordProblem):
                 named("operation.reversed", frac_tex(Fraction(second + transferred, multiplier) - transferred)),
                 named("operation.reversed", frac_tex(Fraction(second - transferred, multiplier) + transferred)),
             ])
+
+
+# ── One more (2026-11): equations with fractions ──
+
+
+@question_type("math.linear_equation_fractions_m1", display_name={"th": "สมการเชิงเส้นที่มีเศษส่วน"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class LinearEquationFractionsM1(WordProblem):
+    """x/a + b = c: take b away, then multiply by a; or (x + b)/a = c."""
+
+    def expr(self, rng: Random):
+        a, x = rng.randint(2, 9), rng.randint(-12, 15)
+        if rng.random() < 0.5:
+            while x % a:
+                x += 1
+            b = rng.randint(1, 12)
+            c = x // a + b
+            tex = rf"\frac{{x}}{{{a}}} + {b} = {c}"
+            # Divided instead of multiplied; b added; a and b both left out.
+            wrongs = [Fraction(c - b, a), (c + b) * a, c * a - b]
+        else:
+            b = rng.randint(1, 12)
+            while (x + b) % a:
+                x += 1
+            c = (x + b) // a
+            tex = rf"\frac{{x + {b}}}{{{a}}} = {c}"
+            wrongs = [Fraction(c * a + b), Fraction(c - b, 1) * a, Fraction(c, a) - b]
+        return MathDraw(tex, str(x), prompt="จงแก้สมการ",
+                        distractors=[frac_tex(Fraction(w)) for w in dict.fromkeys(wrongs) if Fraction(w) != x])
+
+
+from otk.core.content import math as content_math  # noqa: E402
+
+# ── To fifteen (2026-11): checking a solution, decimals, consecutive numbers, ages, and a rectangle's sides ──
+
+
+@question_type("math.check_solution_m1", display_name={"th": "จำนวนใดเป็นคำตอบของสมการ"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class CheckSolutionM1(QuestionType):
+    """Substitute each choice; only the solution makes both sides equal."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        x = rng.randint(-8, 10)
+        a, c = rng.sample(range(2, 8), 2)
+        b = rng.randint(-10, 10)
+        d = (a - c) * x + b
+        tex = rf"{poly_tex((a, 'x'), (b, ''))} = {poly_tex((c, 'x'), (d, ''))}"
+        wrongs = [w for w in dict.fromkeys((-x, x + 1, x - 2, x + 3)) if w != x][:3]
+        return _maths([text("จำนวนในข้อใดเป็นคำตอบของสมการ"), content_math(tex)], str(x), [str(w) for w in wrongs],
+                      self.topic)
+
+
+@question_type("math.decimal_equation_m1", display_name={"th": "สมการเชิงเส้นที่มีทศนิยม"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class DecimalEquationM1(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.choice((2, 4, 5, 8))       # a/10 as the coefficient
+        x = rng.randint(1, 20)
+        b = rng.randint(1, 50)             # b/10
+        c = a * x + b                      # c/10
+        tex = rf"{a / 10:g}x + {b / 10:g} = {c / 10:g}"
+        # b added; c not divided by the coefficient; the decimal point ignored in the coefficient.
+        wrongs = [Fraction(c + b, a), Fraction(c - b, 10), Fraction(c - b, a * 10)]
+        return MathDraw(tex, str(x), prompt="จงแก้สมการ",
+                        distractors=[frac_tex(w) if w.denominator > 1 else str(w.numerator)
+                                     for w in dict.fromkeys(wrongs) if w != x])
+
+
+@question_type("math.consecutive_numbers_m1", display_name={"th": "จำนวนนับที่เรียงติดกัน"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class ConsecutiveNumbersM1(WordProblem):
+    """n + (n + 1) + (n + 2) = 3n + 3; consecutive even or odd numbers step by 2."""
+
+    def expr(self, rng: Random):
+        count = rng.choice((3, 4))
+        step = rng.choice((1, 2))
+        n = rng.randint(5, 60)
+        if step == 2 and n % 2:
+            n += 1
+        total = sum(n + step * i for i in range(count))
+        kind = "จำนวนนับ" if step == 1 else "จำนวนคู่"
+        ask_small = rng.random() < 0.5
+        right = n if ask_small else n + step * (count - 1)
+        prompt = (f"{kind}ที่เรียงติดกัน {count} จำนวนมีผลบวกเท่ากับ {total} จำนวนที่"
+                  f"{'น้อยที่สุด' if ask_small else 'มากที่สุด'}คือจำนวนใด")
+        # The average; the other end; one step off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(total // count, n + step * (count - 1) if ask_small else n,
+                                                right + step, right - step, answer=right, lo=1))
+
+
+@question_type("math.age_problem_m1", display_name={"th": "โจทย์ปัญหาอายุ"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class AgeProblemM1(WordProblem):
+    def expr(self, rng: Random):
+        child, k, t = rng.randint(4, 14), rng.randint(2, 4), rng.randint(2, 10)
+        parent = k * child
+        total = parent + child + 2 * t
+        prompt = (f"ปัจจุบันพ่ออายุเป็น {k} เท่าของอายุลูก อีก {t} ปีข้างหน้า อายุของพ่อและลูกรวมกันเป็น "
+                  f"{total} ปี ปัจจุบันลูกอายุกี่ปี")
+        # The t years added once; the sum split by k; the father's age.
+        wrong = Fraction(total - t, k + 1)
+        return MathDraw("", str(child), prompt=prompt,
+                        distractors=_story.keep(int(wrong) if wrong.denominator == 1 else 0, total // (k + 1),
+                                                parent, child + t, answer=child, lo=1))
+
+
+@question_type("math.rectangle_equation_m1", display_name={"th": "สมการจากความยาวรอบรูป"},
+               level=LEVEL, topic=_EQ_TOPIC)
+class RectangleEquationM1(WordProblem):
+    def expr(self, rng: Random):
+        w, d = rng.randint(3, 25), rng.randint(2, 15)
+        length = w + d
+        per = 2 * (w + length)
+        if rng.random() < 0.5:
+            prompt = f"รูปสี่เหลี่ยมผืนผ้ายาวกว่ากว้าง {d} ซม. มีความยาวรอบรูป {per} ซม. กว้างกี่เซนติเมตร"
+            right = w
+        else:
+            prompt = f"รูปสี่เหลี่ยมผืนผ้ายาวกว่ากว้าง {d} ซม. มีความยาวรอบรูป {per} ซม. ยาวกี่เซนติเมตร"
+            right = length
+        # Half the perimeter; the perimeter over 4; the difference not taken away.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(per // 2, per // 4, (per // 2 - d), right + d, answer=right, lo=1))

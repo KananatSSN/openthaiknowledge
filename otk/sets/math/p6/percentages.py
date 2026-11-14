@@ -146,3 +146,119 @@ class PercentChangeP6(WordProblem):
                                 f"{'เพิ่มขึ้น' if up else 'ลดลง'}ร้อยละเท่าใด"),
                         distractors=_story.keep(change, change * 100 // after, pct + 10,
                                                 answer=pct, lo=1))
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More percentages (2026-11): the whole from a part, VAT, the discount as a percent, the cost from a
+# profit, and comparing two offers ──
+
+
+@question_type("math.whole_from_percent_p6", display_name={"th": "หาจำนวนทั้งหมดจากร้อยละ"},
+               level=LEVEL, topic="ร้อยละ")
+class WholeFromPercentP6(WordProblem):
+    def expr(self, rng: Random):
+        r = rng.choice((10, 20, 25, 30, 40, 50, 60, 75, 80))
+        total = rng.randint(2, 30) * 20
+        part = total * r // 100
+        prompt = f"นักเรียนที่ชอบกีฬาฟุตบอลมี {part} คน คิดเป็นร้อยละ {r} ของนักเรียนทั้งหมด นักเรียนทั้งหมดมีกี่คน"
+        # The percent of the part; the part plus the rate; the rest of the students.
+        return MathDraw("", str(total), prompt=prompt,
+                        distractors=_story.keep(part * r // 100 if part * r % 100 == 0 else part + r, part + r,
+                                                total - part, total + 20, answer=total, lo=1))
+
+
+@question_type("math.vat_p6", display_name={"th": "ราคารวมภาษีมูลค่าเพิ่ม"},
+               level=LEVEL, topic="ร้อยละ")
+class VatP6(WordProblem):
+    def expr(self, rng: Random):
+        price = rng.randint(2, 90) * 100
+        vat = price * 7 // 100
+        right = price + vat
+        what = rng.choice(("โทรศัพท์", "พัดลม", "โต๊ะ", "จักรยาน"))
+        prompt = f"{what}ราคา {price:,} บาท ยังไม่รวมภาษีมูลค่าเพิ่มร้อยละ 7 ต้องจ่ายเงินทั้งหมดกี่บาท"
+        # The tax alone; the price; seven baht added.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(vat, price, price + 7, price - vat, answer=right, lo=1))
+
+
+@question_type("math.discount_percent_p6", display_name={"th": "ลดราคาไปร้อยละเท่าใด"},
+               level=LEVEL, topic="ร้อยละ")
+class DiscountPercentP6(WordProblem):
+    def expr(self, rng: Random):
+        r = rng.choice((5, 10, 15, 20, 25, 30, 40, 50))
+        price = rng.randint(2, 40) * 100
+        sale = price * (100 - r) // 100
+        prompt = f"เสื้อราคา {price:,} บาท ลดราคาเหลือ {sale:,} บาท ลดราคาไปร้อยละเท่าใด"
+        # The percent paid; the discount in baht over a hundred; double.
+        return MathDraw("", str(r), prompt=prompt,
+                        distractors=_story.keep(100 - r, (price - sale) // 10, 2 * r, r + 5, answer=r, lo=1, hi=99))
+
+
+@question_type("math.cost_from_profit_p6", display_name={"th": "หาราคาทุนจากราคาขายและกำไร"},
+               level=LEVEL, topic="ร้อยละ")
+class CostFromProfitP6(WordProblem):
+    def expr(self, rng: Random):
+        r = rng.choice((10, 20, 25, 50))
+        cost = rng.randint(2, 40) * 20
+        sale = cost * (100 + r) // 100
+        prompt = f"แม่ค้าขายกระเป๋าใบหนึ่งราคา {sale:,} บาท ได้กำไรร้อยละ {r} ของราคาทุน ราคาทุนเป็นกี่บาท"
+        # The profit taken off the sale price; the profit itself; the sale price.
+        return MathDraw("", _g6(cost), prompt=prompt,
+                        distractors=_gk6(sale - sale * r // 100, sale - cost, sale, cost + 20, answer=cost, lo=1))
+
+
+@question_type("math.compare_offers_p6", display_name={"th": "ร้านใดขายถูกกว่า"},
+               level=LEVEL, topic="ร้อยละ")
+class CompareOffersP6(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            price = rng.randint(4, 30) * 100
+            r = rng.choice((10, 15, 20, 25, 30))
+            off = rng.randint(2, 12) * 50
+            a, b = price * (100 - r) // 100, price - off
+            if a != b:
+                break
+        stem = (f"สินค้าราคา {price:,} บาท ร้านแรกลดราคาร้อยละ {r} ร้านที่สองลดราคา {off} บาท "
+                "ซื้อที่ร้านใดถูกกว่า")
+        first, second = f"ร้านแรก จ่าย {a:,} บาท", f"ร้านที่สอง จ่าย {b:,} บาท"
+        right = first if a < b else second
+        wrongs = [second if a < b else first, f"ร้านแรก จ่าย {price - r:,} บาท", "สองร้านราคาเท่ากัน"]
+        return stem, right, wrongs

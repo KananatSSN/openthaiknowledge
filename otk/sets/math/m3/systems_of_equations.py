@@ -156,3 +156,147 @@ class SystemWordProblem(WordProblem):
         return MathDraw("", str(x), prompt=prompt,
                         distractors=[str(v) for v in dict.fromkeys((y, x + y, abs(x - y) or x + 1,
                                                                     x + 1)) if v != x])
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.content import math as _math_block  # noqa: E402
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More systems of equations (2026-11): a sum and a difference, x + y straight from the equations, coins,
+# ages, which pair solves the system, and two prices ──
+
+
+@question_type("math.system_sum_difference_m3", display_name={"th": "สองจำนวนเมื่อรู้ผลบวกและผลต่าง"},
+               level=LEVEL, topic="ระบบสมการ")
+class SystemSumDifferenceM3(WordProblem):
+    def expr(self, rng: Random):
+        y = rng.randint(2, 40)
+        x = y + rng.randint(1, 30)
+        s, d = x + y, x - y
+        bigger = rng.random() < 0.5
+        right = x if bigger else y
+        prompt = (f"จำนวนสองจำนวนรวมกันได้ {s} และผลต่างของสองจำนวนนั้นเท่ากับ {d} "
+                  f"จำนวนที่{'มากกว่า' if bigger else 'น้อยกว่า'}คือจำนวนใด")
+        # The other number; the sum halved; the difference.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(y if bigger else x, s // 2 if s // 2 != right else s // 2 + 1, d,
+                                                right + 1, answer=right, lo=1))
+
+
+@question_type("math.system_x_plus_y_m3", display_name={"th": "หาค่า x + y จากระบบสมการ"},
+               level=LEVEL, topic="ระบบสมการ")
+class SystemXPlusYM3(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.sample(range(1, 8), 2)
+        x, y = rng.randint(-8, 10), rng.randint(-8, 10)
+        e1, e2 = a * x + b * y, b * x + a * y
+        right = x + y
+        # The sum of the right sides; x alone; y alone.
+        return MathDraw(rf"{poly_tex((a, 'x'), (b, 'y'))} = {e1}, \;\; {poly_tex((b, 'x'), (a, 'y'))} = {e2}", str(right),
+                        prompt="จากระบบสมการ ค่าของ x + y เท่ากับเท่าใด",
+                        distractors=_tk3(str(e1 + e2), str(x), str(y), str(right + 1), answer=str(right)))
+
+
+@question_type("math.system_coins_m3", display_name={"th": "นับเหรียญสองชนิด"},
+               level=LEVEL, topic="ระบบสมการ")
+class SystemCoinsM3(WordProblem):
+    def expr(self, rng: Random):
+        small, big = rng.choice(((1, 5), (2, 10), (5, 10), (1, 10)))
+        m, k = rng.randint(2, 30), rng.randint(2, 30)
+        count, total = m + k, small * m + big * k
+        p = rng.choice(_story.NAMES)
+        prompt = (f"{p}มีเหรียญ {small} บาท และเหรียญ {big} บาท รวม {count} เหรียญ คิดเป็นเงิน {total} บาท "
+                  f"{p}มีเหรียญ {big} บาทกี่เหรียญ")
+        # The other coin; the money over the larger coin; half the coins.
+        return MathDraw("", str(k), prompt=prompt,
+                        distractors=_story.keep(m, total // big, count // 2 if count // 2 != k else count // 2 + 1, k + 1,
+                                                answer=k, lo=1))
+
+
+@question_type("math.system_ages_m3", display_name={"th": "อายุพ่อและลูก"},
+               level=LEVEL, topic="ระบบสมการ")
+class SystemAgesM3(WordProblem):
+    def expr(self, rng: Random):
+        child = rng.randint(5, 15)
+        times = rng.randint(3, 5)
+        parent = times * child
+        prompt = f"ปัจจุบันพ่ออายุเป็น {times} เท่าของอายุลูก และอายุรวมกันเท่ากับ {parent + child} ปี พ่ออายุกี่ปี"
+        # The child's age; the total over the multiple; the total less the multiple.
+        return MathDraw("", str(parent), prompt=prompt,
+                        distractors=_story.keep(child, (parent + child) // times, parent + child - times, parent - child,
+                                                answer=parent, lo=1))
+
+
+@question_type("math.system_which_pair_m3", display_name={"th": "คู่อันดับใดเป็นคำตอบของระบบสมการ"},
+               level=LEVEL, topic="ระบบสมการ")
+class SystemWhichPairM3(QuestionType):
+    """Fixed choices: a pair from another draw could also solve this system."""
+
+    def build(self, rng: Random, **params):
+        x, y = rng.randint(-6, 9), rng.randint(-6, 9)
+        while x == y:
+            y = rng.randint(-6, 9)
+        a, b = rng.randint(1, 5), rng.randint(1, 5)
+        s, d = a * x + b * y, x - y
+        right = f"({x}, {y})"
+        # The coordinates swapped; one satisfying the first only; one satisfying the second only.
+        first_only = next(f"({x + b * t}, {y - a * t})" for t in (1, 2, 3) if (x + b * t) - (y - a * t) != d)
+        second_only = f"({x + 1}, {y + 1})"
+        wrongs = [f"({y}, {x})", first_only, second_only]
+        system = rf"\begin{{cases}} {poly_tex((a, 'x'), (b, 'y'))} = {s} \\ x - y = {d} \end{{cases}}"
+        return _fixed_maths([_text_block("คู่อันดับ (x, y) ใดเป็นคำตอบของระบบสมการ"), _math_block(system)], right,
+                            _tk3(*wrongs, answer=right), self.topic)
+
+
+@question_type("math.system_two_prices_m3", display_name={"th": "หาราคาสินค้าจากการซื้อสองครั้ง"},
+               level=LEVEL, topic="ระบบสมการ")
+class SystemTwoPricesM3(WordProblem):
+    def expr(self, rng: Random):
+        pen, book = rng.randint(5, 30), rng.randint(20, 90)
+        n1, m1 = rng.randint(2, 6), rng.randint(1, 4)
+        n2 = rng.randint(1, n1 - 1)
+        m2 = m1
+        a, b = n1 * pen + m1 * book, n2 * pen + m2 * book
+        prompt = (f"ซื้อปากกา {n1} ด้าม และสมุด {m1} เล่ม จ่าย {a} บาท ซื้อปากกา {n2} ด้าม และสมุด {m2} เล่ม จ่าย {b} บาท "
+                  "ปากการาคาด้ามละกี่บาท")
+        # The difference in money not divided; the price of a book; the first bill over the pens.
+        return MathDraw("", str(pen), prompt=prompt,
+                        distractors=_story.keep(a - b, book, a // n1, pen + 5, answer=pen, lo=1))

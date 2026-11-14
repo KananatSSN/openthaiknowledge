@@ -146,3 +146,79 @@ class MultiplicationWordProblemP2(WordProblem):
         return MathDraw("", str(ans), prompt=_groups_story(rng, groups, each),
                         distractors=_story.keep(groups + each, ans + each, ans - each,
                                                 ans + 10, answer=ans, lo=1))
+
+
+# ── More multiplying (2026-11): the times tables, by ten and a hundred, the largest product, rows and
+# columns, and multiplying by 0 and 1 ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+
+@question_type("math.times_table_p2", display_name={"th": "สูตรคูณแม่ 2 ถึงแม่ 9"},
+               level=LEVEL, topic="การคูณ")
+class TimesTableP2(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.randint(2, 9), rng.randint(2, 9)
+        right = a * b
+        # The next row of the table; the row before; added instead.
+        return MathDraw(rf"{a} \times {b}", str(right), prompt="จงหาผลคูณ",
+                        distractors=_story.keep(a * (b + 1), a * (b - 1), a + b, (a + 1) * b, answer=right, lo=1))
+
+
+@question_type("math.multiply_by_ten_p2", display_name={"th": "คูณด้วย 10 และ 100"},
+               level=LEVEL, topic="การคูณ")
+class MultiplyByTenP2(MathType):
+    def expr(self, rng: Random):
+        if rng.random() < 0.5:
+            a, k = rng.randint(2, 99), 10
+        else:
+            a, k = rng.randint(2, 9), 100
+        right = a * k
+        # One zero too many or too few; the ten added.
+        return MathDraw(rf"{a} \times {k}", str(right), prompt="จงหาผลคูณ",
+                        distractors=_story.keep(right * 10, a * k // 10, a + k, right + k, answer=right, lo=1))
+
+
+@question_type("math.largest_product_p2", display_name={"th": "ผลคูณใดมากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="การคูณ")
+class LargestProductP2(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            exprs = {}
+            for _ in range(4):
+                a, b = rng.randint(2, 9), rng.randint(2, 9)
+                exprs[f"{a} × {b}"] = a * b
+            if len(exprs) == 4 and len(set(exprs.values())) == 4:
+                break
+        most = rng.random() < 0.5
+        right = (max if most else min)(exprs, key=exprs.get)
+        return f"ข้อใดมีผลคูณ{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]
+
+
+@question_type("math.array_rows_p2", display_name={"th": "โจทย์ปัญหาการคูณ: จัดเป็นแถว"},
+               level=LEVEL, topic="การคูณ")
+class ArrayRowsP2(WordProblem):
+    def expr(self, rng: Random):
+        rows, cols = rng.randint(2, 9), rng.randint(3, 9)
+        what, unit, verb = rng.choice((("ต้นมะม่วง", "ต้น", "ปลูก"), ("เก้าอี้", "ตัว", "จัด"),
+                                       ("นักเรียน", "คน", "ให้ยืนเข้าแถว"), ("กระถางดอกไม้", "กระถาง", "วาง")))
+        right = rows * cols
+        prompt = f"{verb}{what} {rows} แถว แถวละ {cols} {unit} มี{what}ทั้งหมดกี่{unit}"
+        # Added instead; one row more or fewer.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(rows + cols, (rows + 1) * cols, (rows - 1) * cols, right + 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.multiply_zero_one_p2", display_name={"th": "การคูณด้วย 0 และ 1"},
+               level=LEVEL, topic="การคูณ")
+class MultiplyZeroOneP2(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 99)
+        k = rng.choice((0, 1))
+        tex = rf"{a} \times {k}" if rng.random() < 0.5 else rf"{k} \times {a}"
+        right = a * k
+        # The other rule; the number plus one; one.
+        return MathDraw(tex, str(right), prompt="จงหาผลคูณ",
+                        distractors=_story.keep(a if k == 0 else 0, a + 1, 1, 10 * a, answer=right, lo=0))

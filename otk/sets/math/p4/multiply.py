@@ -133,3 +133,84 @@ class MultiplyMultistepP4(WordProblem):
                         prompt=(f"โรงเรียนพานักเรียน {b} คน และครู {a} คน ไปสวนสัตว์ ค่าเข้าชมครูคนละ {adult} บาท "
                                 f"นักเรียนคนละ {child} บาท ต้องจ่ายค่าเข้าชมทั้งหมดกี่บาท"),
                         distractors=[_c((a + b) * adult), _c((a + b) * child), _c(a * child + b * adult)])
+
+
+# ── More long multiplication (2026-11): three digits by two, the largest product, the missing factor,
+# boxes of the same size, and by whole hundreds ──
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+@question_type("math.multiply_3x2_p4", display_name={"th": "คูณยาว (สามหลัก × สองหลัก)"},
+               level=LEVEL, topic="การคูณยาว")
+class Multiply3x2P4(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.randint(101, 999), rng.randint(11, 99)
+        right = a * b
+        # The tens' partial product not shifted; only the ones' product; one row off.
+        tens, ones = divmod(b, 10)
+        return MathDraw(rf"{a} \times {b}", _g(right), prompt="จงหาผลคูณ",
+                        distractors=_gk(a * tens + a * ones, a * ones, a * (b + 1), a * (b - 1), answer=right, lo=1))
+
+
+@question_type("math.largest_product_p4", display_name={"th": "ผลคูณใดมากที่สุดหรือน้อยที่สุด (สองหลักคูณสองหลัก)"},
+               level=LEVEL, topic="การคูณยาว")
+class LargestProductP4(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            exprs = {}
+            for _ in range(4):
+                a, b = rng.randint(11, 99), rng.randint(11, 99)
+                exprs[f"{a} × {b}"] = a * b
+            if len(exprs) == 4 and len(set(exprs.values())) == 4:
+                break
+        most = rng.random() < 0.5
+        right = (max if most else min)(exprs, key=exprs.get)
+        return f"ข้อใดมีผลคูณ{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]
+
+
+@question_type("math.missing_factor_p4", display_name={"th": "หาตัวไม่ทราบค่าในประโยคการคูณ"},
+               level=LEVEL, topic="การคูณยาว")
+class MissingFactorP4(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.randint(12, 99), rng.randint(11, 60)
+        p = a * b
+        # Subtracted instead of divided; one off; the product's tens.
+        return MathDraw(rf"\square \times {b} = {_g(p)}", str(a), prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(p - b, a + 1, a - 1, a + 10, answer=a, lo=1))
+
+
+@question_type("math.boxes_total_p4", display_name={"th": "โจทย์ปัญหาการคูณ: กล่องละเท่ากัน"},
+               level=LEVEL, topic="การคูณยาว")
+class BoxesTotalP4(WordProblem):
+    def expr(self, rng: Random):
+        per, boxes = rng.randint(24, 250), rng.randint(12, 60)
+        right = per * boxes
+        thing, cl = rng.choice((("ดินสอ", "แท่ง"), ("ขวดน้ำ", "ขวด"), ("ไข่ไก่", "ฟอง"), ("สบู่", "ก้อน")))
+        prompt = f"โรงงานบรรจุ{thing}กล่องละ {per} {cl} ทั้งหมด {boxes} กล่อง มี{thing}ทั้งหมดกี่{cl}"
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(per + boxes, per * (boxes - 1), per * (boxes + 1), right + 100, answer=right, lo=1))
+
+
+@question_type("math.multiply_by_hundreds_p4", display_name={"th": "คูณด้วยพหุคูณของร้อยและพัน"},
+               level=LEVEL, topic="การคูณยาว")
+class MultiplyByHundredsP4(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(12, 99)
+        k = rng.randint(2, 9) * rng.choice((100, 1000))
+        right = a * k
+        # One zero too many or too few; the leading digits only.
+        return MathDraw(rf"{a} \times {_g(k)}", _g(right), prompt="จงหาผลคูณ",
+                        distractors=_gk(right * 10, right // 10, a * int(str(k)[0]), right + k, answer=right, lo=1))

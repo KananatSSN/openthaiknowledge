@@ -135,3 +135,223 @@ class CubeStackM1(WordProblem):
         return MathDraw("", str(two), prompt=f"{stem} มีลูกบาศก์เล็กที่ถูกทาสี 2 ด้านพอดีกี่ลูก",
                         distractors=_story.keep(one, 4 * (a + b + c), two + 8, 12,
                                                 answer=two, lo=0))
+
+
+# ── More spatial relationships (2026-11): faces, edges and vertices, Euler's formula, a painted cube cut up,
+# solids from a description, the faces of a net, and a wire frame ──
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+from otk.sets._support.math_p2 import _maths  # noqa: E402
+
+_POLY_NAMES = {3: "สามเหลี่ยม", 4: "สี่เหลี่ยม", 5: "ห้าเหลี่ยม", 6: "หกเหลี่ยม", 8: "แปดเหลี่ยม"}
+
+
+@question_type("math.solid_parts_m1", display_name={"th": "จำนวนหน้า ขอบ และจุดยอดของปริซึมและพีระมิด"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class SolidPartsM1(WordProblem):
+    """An n-gon prism: n + 2 faces, 3n edges, 2n vertices; an n-gon pyramid: n + 1, 2n, n + 1."""
+
+    def expr(self, rng: Random):
+        n = rng.choice(tuple(_POLY_NAMES))
+        prism = rng.random() < 0.5
+        what = rng.randrange(3)
+        counts = (n + 2, 3 * n, 2 * n) if prism else (n + 1, 2 * n, n + 1)
+        right = counts[what]
+        solid = f"{'ปริซึม' if prism else 'พีระมิด'}ฐาน{_POLY_NAMES[n]}"
+        word, unit = (("หน้า", "หน้า"), ("ขอบ", "เส้น"), ("จุดยอด", "จุด"))[what]
+        # The other solid's count; the other two counts; n itself.
+        other = (n + 1, 2 * n, n + 1) if prism else (n + 2, 3 * n, 2 * n)
+        return MathDraw("", str(right), prompt=f"{solid}มี{word}ทั้งหมดกี่{unit}",
+                        distractors=_story.keep(other[what], *[c for i, c in enumerate(counts) if i != what], n,
+                                                answer=right, lo=1))
+
+
+@question_type("math.euler_formula_m1", display_name={"th": "ความสัมพันธ์ของหน้า ขอบ และจุดยอด"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class EulerFormulaM1(WordProblem):
+    """Faces + vertices − edges = 2 for a prism or pyramid."""
+
+    def expr(self, rng: Random):
+        n = rng.randint(3, 12)
+        prism = rng.random() < 0.5
+        f, e, v = (n + 2, 3 * n, 2 * n) if prism else (n + 1, 2 * n, n + 1)
+        ask = rng.randrange(3)
+        given = [("หน้า", f, "หน้า"), ("ขอบ", e, "เส้น"), ("จุดยอด", v, "จุด")]
+        word, right, unit = given[ask]
+        known = [g for i, g in enumerate(given) if i != ask]
+        prompt = (f"รูปเรขาคณิตสามมิติรูปหนึ่งมี{known[0][0]} {known[0][1]} {known[0][2]} และ{known[1][0]} "
+                  f"{known[1][1]} {known[1][2]} มี{word}กี่{unit} (ใช้ หน้า + จุดยอด − ขอบ = 2)")
+        # The 2 added on the wrong side; the two known added.
+        wrong = {"หน้า": e - v - 2, "ขอบ": f + v + 2, "จุดยอด": e - f - 2}[word]
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(wrong, known[0][1] + known[1][1], right + 2, right - 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.painted_cube_m1", display_name={"th": "ลูกบาศก์ทาสีแล้วตัดเป็นลูกบาศก์เล็ก"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class PaintedCubeM1(WordProblem):
+    """An n × n × n cube painted outside: 8 corners with three painted faces, 12(n − 2) with two,
+    6(n − 2)² with one, (n − 2)³ with none."""
+
+    def expr(self, rng: Random):
+        n = rng.randint(3, 6)
+        faces = rng.randrange(4)
+        counts = (8, 12 * (n - 2), 6 * (n - 2) ** 2, (n - 2) ** 3)
+        right = counts[3 - faces]
+        prompt = (f"ทาสีรอบนอกลูกบาศก์ขนาด {n} × {n} × {n} หน่วย แล้วตัดเป็นลูกบาศก์เล็กขนาด 1 หน่วย "
+                  + ("มีลูกบาศก์เล็กที่ไม่ถูกทาสีเลยกี่ลูก" if faces == 0 else f"มีลูกบาศก์เล็กที่ถูกทาสี {faces} หน้ากี่ลูก"))
+        # The other counts, and n² (one face's worth).
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(*[c for c in counts if c != right], n * n, n ** 3, answer=right, lo=0))
+
+
+@question_type("math.solid_description_m1", display_name={"th": "ระบุรูปเรขาคณิตสามมิติจากคำบรรยาย"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class SolidDescriptionM1(ConceptBankType):
+    ITEMS = [
+        Concept("รูปเรขาคณิตสามมิติที่มีฐานเป็นวงกลมหนึ่งฐานและมียอดแหลม คือรูปใด", "กรวย",
+                ("ทรงกระบอก", "พีระมิดฐานสี่เหลี่ยม", "ทรงกลม")),
+        Concept("รูปเรขาคณิตสามมิติที่มีฐานเป็นวงกลมสองฐานที่เท่ากันและขนานกัน คือรูปใด", "ทรงกระบอก",
+                ("กรวย", "ทรงกลม", "ปริซึมสี่เหลี่ยม")),
+        Concept("รูปเรขาคณิตสามมิติที่มีหน้าเป็นรูปสี่เหลี่ยมจัตุรัสทั้งหกหน้า คือรูปใด", "ลูกบาศก์",
+                ("ทรงสี่เหลี่ยมมุมฉาก", "พีระมิดฐานสี่เหลี่ยม", "ปริซึมสามเหลี่ยม")),
+        Concept("รูปเรขาคณิตสามมิติที่มีฐานเป็นรูปหลายเหลี่ยมและหน้าข้างเป็นรูปสามเหลี่ยมที่มีจุดยอดร่วมกัน คือรูปใด",
+                "พีระมิด", ("ปริซึม", "ทรงกระบอก", "กรวย")),
+        Concept("รูปเรขาคณิตสามมิติที่ทุกจุดบนผิวอยู่ห่างจากจุดศูนย์กลางเท่ากัน คือรูปใด", "ทรงกลม",
+                ("ทรงกระบอก", "กรวย", "ลูกบาศก์")),
+        Concept("รูปเรขาคณิตสามมิติที่มีฐานสองฐานเป็นรูปหลายเหลี่ยมที่เท่ากันทุกประการและขนานกัน คือรูปใด", "ปริซึม",
+                ("พีระมิด", "กรวย", "ทรงกลม")),
+    ]
+
+
+@question_type("math.net_faces_m1", display_name={"th": "รูปคลี่ของปริซึมและพีระมิดประกอบด้วยรูปใด"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class NetFacesM1(ChoiceType):
+    def compose(self, rng: Random):
+        n = rng.choice(tuple(_POLY_NAMES))
+        poly = f"รูป{_POLY_NAMES[n]}"
+        if rng.random() < 0.5:
+            right = f"{poly} 2 รูป และรูปสี่เหลี่ยมผืนผ้า {n} รูป"
+            wrongs = [f"{poly} 1 รูป และรูปสามเหลี่ยม {n} รูป", f"{poly} 2 รูป และรูปสี่เหลี่ยมผืนผ้า {n + 2} รูป",
+                      f"{poly} 1 รูป และรูปสี่เหลี่ยมผืนผ้า {n} รูป"]
+            return f"รูปคลี่ของปริซึมฐาน{_POLY_NAMES[n]}ประกอบด้วยรูปใด", right, wrongs
+        right = f"{poly} 1 รูป และรูปสามเหลี่ยม {n} รูป"
+        wrongs = [f"{poly} 2 รูป และรูปสี่เหลี่ยมผืนผ้า {n} รูป", f"{poly} 1 รูป และรูปสามเหลี่ยม {n + 1} รูป",
+                  f"{poly} 2 รูป และรูปสามเหลี่ยม {n} รูป"]
+        return f"รูปคลี่ของพีระมิดฐาน{_POLY_NAMES[n]}ประกอบด้วยรูปใด", right, wrongs
+
+
+@question_type("math.wire_frame_m1", display_name={"th": "ความยาวลวดที่ใช้ทำโครงรูปทรง"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class WireFrameM1(WordProblem):
+    """A box has 4 edges of each size: 4(w + d + h); a cube 12 equal edges."""
+
+    def expr(self, rng: Random):
+        if rng.random() < 0.5:
+            w, d, h = rng.randint(3, 20), rng.randint(3, 20), rng.randint(3, 20)
+            right = 4 * (w + d + h)
+            prompt = f"ใช้ลวดทำโครงทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {d} ซม. สูง {h} ซม. ต้องใช้ลวดยาวกี่เซนติเมตร"
+            # Each size once; twice; the volume.
+            return MathDraw("", str(right), prompt=prompt,
+                            distractors=_story.keep(w + d + h, 2 * (w + d + h), 2 * (w * d + d * h + w * h),
+                                                    answer=right, lo=1))
+        total = 12 * rng.randint(3, 15)
+        right = total // 12
+        prompt = f"ใช้ลวดยาว {total} ซม. ทำโครงลูกบาศก์พอดี ลูกบาศก์ยาวด้านละกี่เซนติเมตร"
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(total // 6, total // 4, total // 8 if total % 8 == 0 else right + 1,
+                                                right + 2, answer=right, lo=1))
+
+
+# ── To fifteen (2026-11): rectangles on a prism, a staircase of cubes, a row of glued cubes, a die's opposite
+# faces, and the net of a cylinder ──
+
+
+@question_type("math.prism_rectangles_m1", display_name={"th": "จำนวนหน้าแต่ละแบบของปริซึมและพีระมิด"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class PrismRectanglesM1(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice((5, 6, 8))
+        prism = rng.random() < 0.5
+        if prism:
+            prompt = f"ปริซึมฐาน{_POLY_NAMES[n]}มีหน้าที่เป็นรูปสี่เหลี่ยมผืนผ้ากี่หน้า"
+            right, wrongs = n, (n + 2, 2, 2 * n)
+        else:
+            prompt = f"พีระมิดฐาน{_POLY_NAMES[n]}มีหน้าที่เป็นรูปสามเหลี่ยมกี่หน้า"
+            right, wrongs = n, (n + 1, 2 * n, 1)
+        return MathDraw("", str(right), prompt=prompt, distractors=_story.keep(*wrongs, answer=right, lo=1))
+
+
+@question_type("math.cube_staircase_m1", display_name={"th": "บันไดที่ต่อจากลูกบาศก์"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class CubeStaircaseM1(WordProblem):
+    """Steps 1, 2, …, n cubes high and w cubes deep: w × n(n + 1)/2 cubes."""
+
+    def expr(self, rng: Random):
+        n, w = rng.randint(3, 8), rng.randint(1, 4)
+        right = w * n * (n + 1) // 2
+        prompt = (f"ต่อลูกบาศก์ขนาดเท่ากันเป็นบันได {n} ขั้น ขั้นที่ 1 สูง 1 ลูก ขั้นที่ 2 สูง 2 ลูก ไปเรื่อย ๆ "
+                  f"แต่ละขั้นลึก {w} ลูก ใช้ลูกบาศก์ทั้งหมดกี่ลูก")
+        # A full block; the top step only; the steps without depth.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(w * n * n, n * n, n * (n + 1) // 2 if w > 1 else w * n * (n - 1) // 2,
+                                                right + w, answer=right, lo=1))
+
+
+@question_type("math.glued_cubes_m1", display_name={"th": "หน้าที่มองเห็นของลูกบาศก์ที่ต่อกันเป็นแถว"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class GluedCubesM1(WordProblem):
+    """k cubes in a row: each glued pair hides two faces, so 6k − 2(k − 1) = 4k + 2 faces show."""
+
+    def expr(self, rng: Random):
+        k = rng.randint(2, 12)
+        right = 4 * k + 2
+        prompt = f"นำลูกบาศก์ {k} ลูกมาต่อกันเป็นแถวตรง (ติดกันหน้าต่อหน้า) ทรงที่ได้มีหน้าของลูกบาศก์ที่มองเห็นได้กี่หน้า (รวมด้านล่าง)"
+        # Every face of every cube; one face lost per join; only the long sides.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(6 * k, 6 * k - (k - 1), 4 * k, right + 2, answer=right, lo=1))
+
+
+@question_type("math.die_faces_m1", display_name={"th": "หน้าตรงข้ามของลูกเต๋า"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class DieFacesM1(QuestionType):
+    """On a standard die opposite faces add to 7, and all six faces to 21."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        top = rng.randint(1, 6)
+        if rng.random() < 0.5:
+            right = 7 - top
+            # The face itself; one off the rule (6 or 8); then any other face.
+            cands = [top, 8 - top, 6 - top, 1, 2, 3, 4, 5, 6]
+            wrongs = [str(c) for c in dict.fromkeys(cands) if 1 <= c <= 6 and c != right][:3]
+            return _maths([text(f"ลูกเต๋ามาตรฐานมีจุดบนหน้าตรงข้ามรวมกันได้ 7 ถ้าหน้าบนมี {top} จุด หน้าล่างมีกี่จุด")],
+                          str(right), wrongs, self.topic)
+        hidden = 21 - top
+        # All 21; the bottom face only; the four sides only.
+        cands = [21, 7 - top, 21 - top - (7 - top), hidden + 1, hidden - 1]
+        wrongs = [str(c) for c in dict.fromkeys(cands) if c != hidden][:3]
+        return _maths([text(f"วางลูกเต๋ามาตรฐานบนโต๊ะ มองเห็นหน้าบนเป็น {top} จุด ผลรวมจุดบนหน้าที่เหลือทั้งห้าหน้า"
+                            f"เป็นเท่าใด (ลูกเต๋ามีจุด 1 ถึง 6 รวม 21 จุด)")], str(hidden), wrongs, self.topic)
+
+
+@question_type("math.cylinder_net_m1", display_name={"th": "รูปคลี่ของทรงกระบอก"},
+               level=LEVEL, topic=_SPACE_TOPIC)
+class CylinderNetM1(WordProblem):
+    """The side of a cylinder unrolls into a rectangle as long as the circle round the base (π ≈ 22/7)."""
+
+    def expr(self, rng: Random):
+        r = rng.choice((7, 14, 21))
+        h = rng.randint(5, 30)
+        length = 2 * 22 * r // 7
+        if rng.random() < 0.5:
+            prompt = (f"รูปคลี่ของทรงกระบอกรัศมี {r} ซม. สูง {h} ซม. มีรูปสี่เหลี่ยมผืนผ้าที่ยาวเท่ากับความยาวรอบฐาน "
+                      f"รูปสี่เหลี่ยมผืนผ้านั้นยาวกี่เซนติเมตร (π ≈ 22/7)")
+            # The radius used for the diameter; the diameter only; the height.
+            return MathDraw("", str(length), prompt=prompt,
+                            distractors=_story.keep(22 * r // 7, 2 * r, 4 * 22 * r // 7, h, answer=length, lo=1))
+        area = length * h
+        prompt = (f"รูปคลี่ของทรงกระบอกรัศมี {r} ซม. สูง {h} ซม. ส่วนที่เป็นรูปสี่เหลี่ยมผืนผ้ามีพื้นที่กี่ตารางเซนติเมตร "
+                  f"(π ≈ 22/7)")
+        return MathDraw("", str(area), prompt=prompt,
+                        distractors=_story.keep(22 * r * h // 7, 2 * r * h, 22 * r * r // 7, area + h, answer=area, lo=1))

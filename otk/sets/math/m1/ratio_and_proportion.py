@@ -255,3 +255,155 @@ class RatioAfterAddingM1(QuestionType):
                             f"แล้วเติมน้ำสีแดงอีก {added} ลิตร "
                             "น้ำสีแดงคิดเป็นส่วนเท่าใดของน้ำสีทั้งหมดหลังเติม")],
                       frac_tex(answer), wrongs, self.topic)
+
+
+# ── Two more (2026-11): sharing in a ratio, and the better buy ──
+
+
+@question_type("math.ratio_difference_m1", display_name={"th": "อัตราส่วนเมื่อทราบผลต่าง"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class RatioDifferenceM1(WordProblem):
+    """a : b with a − b known: one part is the difference over (a − b)."""
+
+    def expr(self, rng: Random):
+        a, b = sorted(rng.sample(range(1, 10), 2), reverse=True)
+        unit = rng.randint(3, 30)
+        diff = (a - b) * unit
+        ask_big = rng.random() < 0.5
+        right = (a if ask_big else b) * unit
+        prompt = (f"จำนวนนักเรียนชายต่อนักเรียนหญิงเป็น {a} : {b} ถ้านักเรียนชายมากกว่านักเรียนหญิง {diff} คน "
+                  f"มีนักเรียน{'ชาย' if ask_big else 'หญิง'}กี่คน")
+        # The difference as the count; the difference shared by the whole ratio; the other group.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(diff, (b if ask_big else a) * unit, (a + b) * unit, unit,
+                                                answer=right, lo=1))
+
+
+@question_type("math.better_buy_m1", display_name={"th": "เปรียบเทียบราคาต่อหน่วย"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class BetterBuyM1(WordProblem):
+    """Compare the price of 100 mL; the bigger pack is not always cheaper."""
+
+    def expr(self, rng: Random):
+        while True:
+            q1, q2 = rng.sample((200, 250, 400, 500, 1000), 2)
+            p1, p2 = rng.randint(10, 80), rng.randint(10, 80)
+            # Prices per 100 mL in tenths of a baht, whole and different.
+            if p1 * 1000 % q1 == 0 and p2 * 1000 % q2 == 0 and p1 * q2 != p2 * q1:
+                break
+        t1, t2 = p1 * 1000 // q1, p2 * 1000 // q2
+
+        def baht(tenths: int) -> str:
+            return str(tenths // 10) if tenths % 10 == 0 else f"{tenths // 10}.{tenths % 10}"
+
+        right = min(t1, t2)
+        prompt = (f"นมกล่อง ก ขนาด {q1} มล. ราคา {p1} บาท นมกล่อง ข ขนาด {q2} มล. ราคา {p2} บาท "
+                  f"กล่องที่คุ้มกว่าคิดเป็นราคา 100 มล. ละกี่บาท")
+        # The dearer pack's rate; the cheaper pack's whole price; the rate per 10 mL.
+        wrongs = [max(t1, t2), 10 * min(p1, p2), right // 10 if right % 10 == 0 and right >= 20 else right + 5]
+        return MathDraw("", baht(right), prompt=prompt,
+                        distractors=[w for w in dict.fromkeys(baht(v) for v in wrongs) if w != baht(right)])
+
+
+# ── To fifteen (2026-11): a percentage of an amount, discounts, speed, map distances, and equivalent ratios ──
+
+from otk.sets._support.math_p2 import _texts  # noqa: E402
+
+
+@question_type("math.percent_of_m1", display_name={"th": "ร้อยละของจำนวน"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class PercentOfM1(WordProblem):
+    def expr(self, rng: Random):
+        pct = rng.choice((5, 10, 12, 15, 20, 25, 30, 40, 45, 60, 75))
+        base = rng.choice((40, 60, 80, 120, 200, 240, 300, 400, 500, 800))
+        while pct * base % 100:
+            base += 20
+        part = pct * base // 100
+        if rng.random() < 0.5:
+            # The percent as the answer; the base over the percent; the rest.
+            return MathDraw("", str(part), prompt=f"ร้อยละ {pct} ของ {base} เท่ากับเท่าใด",
+                            distractors=_story.keep(pct, base // pct if base % pct == 0 else part + 10, base - part,
+                                                    part * 10, answer=part, lo=1))
+        return MathDraw("", str(pct), prompt=f"{part} เป็นร้อยละเท่าใดของ {base}",
+                        distractors=_story.keep(part, 100 - pct, base * 100 // part if base * 100 % part == 0 else pct + 5,
+                                                pct + 10, answer=pct, lo=1))
+
+
+@question_type("math.discount_m1", display_name={"th": "ส่วนลดและราคาขาย"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class DiscountM1(WordProblem):
+    def expr(self, rng: Random):
+        pct = rng.choice((10, 15, 20, 25, 30, 40, 50))
+        price = rng.choice(range(100, 2001, 20))
+        while price * pct % 100:
+            price += 20
+        off = price * pct // 100
+        if rng.random() < 0.5:
+            # The discount instead of the price paid; the percent taken off as baht.
+            return MathDraw("", grouped(price - off), prompt=f"สินค้าราคา {grouped(price)} บาท ลดราคา {pct}% ต้องจ่ายเงินกี่บาท",
+                            distractors=[grouped(v) for v in (off, price - pct, price + off) if v != price - off])
+        sale = price - off
+        prompt = f"สินค้าลดราคา {pct}% แล้วขาย {grouped(sale)} บาท ราคาเดิมเป็นกี่บาท"
+        # The percent added to the sale price; the discount on the sale price added back.
+        return MathDraw("", grouped(price), prompt=prompt,
+                        distractors=[grouped(v) for v in dict.fromkeys((sale + pct, sale + sale * pct // 100, sale + off * 2))
+                                     if v != price])
+
+
+@question_type("math.speed_distance_time_m1", display_name={"th": "อัตราเร็ว ระยะทาง และเวลา"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class SpeedDistanceTimeM1(WordProblem):
+    def expr(self, rng: Random):
+        speed, hours = rng.choice((40, 45, 50, 60, 72, 80, 90)), rng.randint(2, 6)
+        distance = speed * hours
+        kind = rng.randrange(3)
+        if kind == 0:
+            return MathDraw("", str(distance), prompt=f"รถแล่นด้วยอัตราเร็ว {speed} กิโลเมตรต่อชั่วโมง เป็นเวลา {hours} ชั่วโมง ได้ระยะทางกี่กิโลเมตร",
+                            distractors=_story.keep(speed + hours, speed * (hours + 1), distance // 2, answer=distance, lo=1))
+        if kind == 1:
+            return MathDraw("", str(hours), prompt=f"รถแล่นระยะทาง {distance} กิโลเมตร ด้วยอัตราเร็ว {speed} กิโลเมตรต่อชั่วโมง ใช้เวลากี่ชั่วโมง",
+                            distractors=_story.keep(hours + 1, hours - 1, distance - speed, answer=hours, lo=1))
+        return MathDraw("", str(speed), prompt=f"รถแล่นระยะทาง {distance} กิโลเมตร ใช้เวลา {hours} ชั่วโมง มีอัตราเร็วกี่กิโลเมตรต่อชั่วโมง",
+                        distractors=_story.keep(distance - hours, speed + 10, speed - 10, answer=speed, lo=1))
+
+
+@question_type("math.map_distance_m1", display_name={"th": "ระยะทางจริงจากมาตราส่วน"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class MapDistanceM1(QuestionType):
+    """1 : 50,000 means 1 cm on the map is 50,000 cm = 0.5 km on the ground. Fixed choices per unit asked."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        scale = rng.choice((10_000, 20_000, 25_000, 50_000, 100_000, 200_000))
+        cm = rng.randint(2, 12)
+        metres = cm * scale // 100
+        lead = f"แผนที่มาตราส่วน 1 : {grouped(scale)} ระยะบนแผนที่ {cm} ซม. เป็นระยะจริงกี่"
+
+        def km(m: int) -> str:
+            whole, rest = divmod(m, 1000)
+            digits = str(rest).rjust(3, "0").rstrip("0")
+            return f"{whole}.{digits}" if digits else str(whole)
+
+        if rng.random() < 0.5:
+            # Metres given as kilometres; a factor of ten either way.
+            wrongs = [grouped(metres), km(metres * 10), km(metres // 10)]
+            return _texts([text(lead + "กิโลเมตร")], km(metres), [w for w in dict.fromkeys(wrongs) if w != km(metres)],
+                          self.topic)
+        wrongs = [grouped(metres * 10), grouped(metres // 10), grouped(cm * scale)]
+        return _texts([text(lead + "เมตร")], grouped(metres), wrongs, self.topic)
+
+
+@question_type("math.equivalent_ratio_m1", display_name={"th": "อัตราส่วนที่เท่ากัน"},
+               level=LEVEL, topic=_RATIO_TOPIC)
+class EquivalentRatioM1(QuestionType):
+    """a : b = ka : kb; adding the same number to both terms does not keep the ratio."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            a, b = rng.sample(range(2, 10), 2)
+            if math.gcd(a, b) == 1:
+                break
+        k, m = rng.sample(range(2, 7), 2)
+        right = f"{k * a} : {k * b}"
+        # The same number added; the terms swapped; different multipliers.
+        wrongs = [f"{a + k} : {b + k}", f"{k * b} : {k * a}", f"{k * a} : {m * b}"]
+        return _texts([text(f"อัตราส่วนในข้อใดเท่ากับ {a} : {b}")], right, wrongs, self.topic)

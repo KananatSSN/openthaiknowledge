@@ -168,3 +168,84 @@ class TimeElapsed(WordProblem):
             # Reading the clock difference as a decimal is the classic error.
             distractors=[str((end_h - start_h) * 100 + (end_m - start_m)),
                          str(span + 60), str(abs(span - 60) or 5)])
+
+
+# ── More time (2026-11): the time after some minutes, the time before, the months, and weeks as days ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+_MONTHS = ("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+           "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม")
+_MONTH_DAYS = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+
+
+def _clock_p2(total: int) -> str:
+    h, m = divmod(total % (24 * 60), 60)
+    return f"{h}.{m:02d} น."
+
+
+@question_type("math.time_after_p2", display_name={"th": "เวลาหลังจากผ่านไปกี่นาที"},
+               level=LEVEL, topic="เวลา")
+class TimeAfterP2(ChoiceType):
+    def compose(self, rng: Random):
+        start = rng.randint(7, 16) * 60 + rng.choice((0, 5, 10, 15, 20, 30, 40, 45))
+        add = rng.choice((15, 20, 25, 30, 35, 40, 45, 50))
+        right = _clock_p2(start + add)
+        # The hour not carried (or an hour added when none is due); minutes taken away; ten minutes off
+        # either way (the spare covers a 30-minute draw, where the first two coincide).
+        h, m = divmod(start, 60)
+        no_carry = f"{h}.{(m + add) % 60:02d} น." if m + add >= 60 else _clock_p2(start + add + 60)
+        wrongs = [no_carry, _clock_p2(start - add), _clock_p2(start + add + 10), _clock_p2(start + add - 10)]
+        task = rng.choice(("ทำการบ้าน", "อ่านหนังสือ", "เล่นฟุตบอล", "ช่วยแม่ทำกับข้าว"))
+        return (f"ต้นกล้าเริ่ม{task}เวลา {_clock_p2(start)} ใช้เวลา {add} นาที ทำเสร็จเวลาใด",
+                right, [w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.time_before_p2", display_name={"th": "เวลาก่อนหน้ากี่นาที"},
+               level=LEVEL, topic="เวลา")
+class TimeBeforeP2(ChoiceType):
+    def compose(self, rng: Random):
+        end = rng.randint(8, 17) * 60 + rng.choice((0, 10, 15, 20, 30, 45))
+        back = rng.choice((10, 15, 20, 25, 30, 40, 45))
+        right = _clock_p2(end - back)
+        wrongs = [_clock_p2(end + back), _clock_p2(end - back - 60), _clock_p2(end - back + 10)]
+        event = rng.choice(("รถโรงเรียนออก", "ภาพยนตร์เริ่ม", "ร้านค้าเปิด", "การแข่งขันเริ่ม"))
+        return (f"{event}เวลา {_clock_p2(end)} ต้องไปถึงก่อน {back} นาที ต้องไปถึงเวลาใด",
+                right, [w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.months_p2", display_name={"th": "เดือนในหนึ่งปี"},
+               level=LEVEL, topic="เวลา")
+class MonthsP2(ChoiceType):
+    def compose(self, rng: Random):
+        i = rng.randrange(12)
+        kind = rng.randrange(3)
+        if kind == 0:
+            right = _MONTHS[(i + 1) % 12]
+            stem = f"เดือนที่อยู่ถัดจากเดือน{_MONTHS[i]}คือเดือนใด"
+            wrongs = [_MONTHS[(i - 1) % 12], _MONTHS[(i + 2) % 12], _MONTHS[i]]
+        elif kind == 1:
+            right = _MONTHS[(i - 1) % 12]
+            stem = f"เดือนที่อยู่ก่อนเดือน{_MONTHS[i]}คือเดือนใด"
+            wrongs = [_MONTHS[(i + 1) % 12], _MONTHS[(i - 2) % 12], _MONTHS[i]]
+        else:
+            days = _MONTH_DAYS[i]
+            right = _MONTHS[i]
+            others = [m for m, d in zip(_MONTHS, _MONTH_DAYS) if d != days]
+            stem = ("เดือนใดมี 28 หรือ 29 วัน" if days == 28 else f"เดือนใดมี {days} วัน")
+            wrongs = rng.sample(others, 3)
+        return stem, right, wrongs
+
+
+@question_type("math.weeks_days_p2", display_name={"th": "สัปดาห์และวัน"},
+               level=LEVEL, topic="เวลา")
+class WeeksDaysP2(WordProblem):
+    def expr(self, rng: Random):
+        w = rng.randint(1, 8)
+        d = rng.randint(0, 6)
+        right = 7 * w + d
+        prompt = f"{w} สัปดาห์{f' {d} วัน' if d else ''} เท่ากับกี่วัน"
+        # A week taken as 5 school days; as 10 days; the numbers added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(5 * w + d, 10 * w + d, w + d, right + 7, answer=right, lo=1))

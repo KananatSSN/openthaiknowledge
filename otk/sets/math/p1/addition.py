@@ -113,3 +113,40 @@ class AddWordP1(QuestionType):
         # Taking away, off by one ten, and off by one.
         return maths([text(stem)], str(total), _nums(total, a - b, total + 10, total - 10, total + 1, lo=1),
                      self.topic)
+
+
+# ── More addition (2026-11): three numbers, whole tens, and swapping the order ──
+
+
+@question_type("math.add_three_numbers_p1", display_name={"th": "บวกจำนวนสามจำนวน"},
+               level=LEVEL, topic="การบวก")
+class AddThreeNumbersP1(MathType):
+    def expr(self, rng: Random):
+        a, b, c = (rng.randint(1, 9) for _ in range(3))
+        right = a + b + c
+        # Only the first two added; the last two; one off.
+        return MathDraw(f"{a} + {b} + {c}", str(right), prompt="จงหาผลบวก",
+                        distractors=_story.keep(a + b, b + c, right + 1, right - 1, answer=right))
+
+
+@question_type("math.add_tens_p1", display_name={"th": "บวกจำนวนเต็มสิบ"},
+               level=LEVEL, topic="การบวก")
+class AddTensP1(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 8)
+        b = rng.randint(1, 9 - a)
+        right = 10 * (a + b)
+        # The tens digits added alone; ten more or less; the numbers written side by side.
+        return MathDraw(f"{10 * a} + {10 * b}", str(right), prompt="จงหาผลบวก",
+                        distractors=_story.keep(a + b, right + 10, right - 10, 10 * a + b,
+                                                answer=right, lo=1, hi=100))
+
+
+@question_type("math.add_commutative_p1", display_name={"th": "การสลับที่การบวก"},
+               level=LEVEL, topic="การบวก")
+class AddCommutativeP1(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.sample(range(2, 20), 2)
+        # The number already on that side; the total; one off.
+        return MathDraw(rf"{a} + {b} = {b} + \square", str(a), prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(b, a + b, a + 1, a - 1, answer=a, lo=0))

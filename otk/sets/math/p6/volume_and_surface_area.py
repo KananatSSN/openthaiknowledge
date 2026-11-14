@@ -114,3 +114,125 @@ class WaterLevelP6(WordProblem):
                                 f"น้ำจะสูงกี่เซนติเมตร (1 ลิตร = 1,000 ลูกบาศก์เซนติเมตร)"),
                         distractors=_story.keep(litres * 100 // (w * length) or h + 1, vol // w,
                                                 h * 10, h + 1, answer=h, lo=1))
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More volume and surface area (2026-11): a box's surface, a cube's edge from its volume, a box with no
+# lid, every edge doubled, a height from the base area, and a cube's edge from its surface ──
+
+
+@question_type("math.box_surface_area_p6", display_name={"th": "พื้นที่ผิวของทรงสี่เหลี่ยมมุมฉาก"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class BoxSurfaceAreaP6(WordProblem):
+    def expr(self, rng: Random):
+        w, length, h = rng.randint(2, 15), rng.randint(3, 20), rng.randint(2, 15)
+        right = 2 * (w * length + w * h + length * h)
+        prompt = f"กล่องทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {length} ซม. สูง {h} ซม. มีพื้นที่ผิวทั้งหมดกี่ตารางเซนติเมตร"
+        # Each face once; the volume; the edges.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(w * length + w * h + length * h, w * length * h, 4 * (w + length + h),
+                                         right + 2 * w, answer=right, lo=1))
+
+
+@question_type("math.cube_edge_from_volume_p6", display_name={"th": "หาความยาวสันของลูกบาศก์จากปริมาตร"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class CubeEdgeFromVolumeP6(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 15)
+        v = a ** 3
+        prompt = f"ลูกบาศก์มีปริมาตร {v:,} ลูกบาศก์เซนติเมตร สันยาวสันละกี่เซนติเมตร"
+        # Divided by three; by six; one off.
+        return MathDraw("", str(a), prompt=prompt,
+                        distractors=_story.keep(v // 3, v // 6, a + 1, a * a, answer=a, lo=1))
+
+
+@question_type("math.open_box_surface_p6", display_name={"th": "พื้นที่ผิวของกล่องที่ไม่มีฝา"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class OpenBoxSurfaceP6(WordProblem):
+    def expr(self, rng: Random):
+        w, length, h = rng.randint(2, 15), rng.randint(3, 20), rng.randint(2, 15)
+        right = w * length + 2 * (w * h + length * h)
+        closed = right + w * length
+        prompt = (f"กล่องทรงสี่เหลี่ยมมุมฉากไม่มีฝา กว้าง {w} ซม. ยาว {length} ซม. สูง {h} ซม. "
+                  "ใช้กระดาษทำกล่องกี่ตารางเซนติเมตร")
+        # With the lid; without the bottom too; each side once.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(closed, right - w * length, w * length + w * h + length * h, right + h,
+                                         answer=right, lo=1))
+
+
+@question_type("math.box_doubled_p6", display_name={"th": "ขยายทุกด้านเป็นสองเท่า ปริมาตรเป็นเท่าใด"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class BoxDoubledP6(WordProblem):
+    def expr(self, rng: Random):
+        w, length, h = rng.randint(2, 10), rng.randint(2, 12), rng.randint(2, 10)
+        v = w * length * h
+        right = 8 * v
+        prompt = (f"กล่องทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {length} ซม. สูง {h} ซม. ถ้าขยายทั้งกว้าง ยาว "
+                  "และสูงเป็นสองเท่า กล่องใหม่มีปริมาตรกี่ลูกบาศก์เซนติเมตร")
+        # Doubled once; four times; three times.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(2 * v, 4 * v, 6 * v, v, answer=right, lo=1))
+
+
+@question_type("math.height_from_base_area_p6", display_name={"th": "หาความสูงจากปริมาตรและพื้นที่ฐาน"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class HeightFromBaseAreaP6(WordProblem):
+    def expr(self, rng: Random):
+        base = rng.randint(4, 60) * 5
+        right = rng.randint(2, 30)
+        v = base * right
+        prompt = f"ภาชนะทรงสี่เหลี่ยมมุมฉากมีพื้นที่ฐาน {base} ตารางเซนติเมตร และปริมาตร {v:,} ลูกบาศก์เซนติเมตร สูงกี่เซนติเมตร"
+        # The volume less the base; multiplied; a tenth.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(v - base, right * 10, v // 10, right + 1, answer=right, lo=1))
+
+
+@question_type("math.cube_edge_from_surface_p6", display_name={"th": "หาความยาวสันของลูกบาศก์จากพื้นที่ผิว"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class CubeEdgeFromSurfaceP6(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 20)
+        s = 6 * a * a
+        prompt = f"ลูกบาศก์มีพื้นที่ผิวทั้งหมด {s:,} ตารางเซนติเมตร สันยาวสันละกี่เซนติเมตร"
+        # One face's area; divided by six; by four.
+        return MathDraw("", str(a), prompt=prompt,
+                        distractors=_story.keep(a * a, s // 6 // 2, s // 4, a + 1, answer=a, lo=1))

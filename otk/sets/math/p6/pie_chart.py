@@ -151,3 +151,152 @@ class PieChartMissingP6(WordProblem):
                         # A percent read straight as degrees, or taken of 180.
                         distractors=_story.keep(data[hidden], 180 * data[hidden] // 100,
                                                 ans + 18, answer=ans, lo=1))
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More pie charts (2026-11): a percent as an angle, an angle as a percent, the whole from a part, a missing
+# percent, the largest part, and two parts together ──
+
+_PIE6 = ("ฟุตบอล", "ว่ายน้ำ", "แบดมินตัน", "วิ่ง", "บาสเกตบอล")
+
+
+def _pie_percents6(rng: Random, k: int = 4) -> list[int]:
+    """k percents, multiples of five, all different, adding to 100."""
+    while True:
+        cuts = sorted(rng.sample(range(1, 20), k - 1))
+        parts = [5 * (b - a) for a, b in zip([0, *cuts], [*cuts, 20])]
+        if len(set(parts)) == k:
+            return parts
+
+
+def _pie_text6(names, parts, unit: str = "ร้อยละ") -> str:
+    rows = "\n".join(f"{x}: {unit} {p}" if unit == "ร้อยละ" else f"{x}: {p} องศา" for x, p in zip(names, parts))
+    return f"แผนภูมิรูปวงกลมแสดงกีฬาที่นักเรียนชอบ\n{rows}"
+
+
+@question_type("math.pie_angle_from_percent_p6", display_name={"th": "แผนภูมิรูปวงกลม (ร้อยละเป็นมุม)"},
+               level=LEVEL, topic="แผนภูมิรูปวงกลม")
+class PieAngleFromPercentP6(WordProblem):
+    def expr(self, rng: Random):
+        p = 5 * rng.randint(1, 15)
+        right = p * 36 // 10
+        what = rng.choice(_PIE6)
+        prompt = f"ในแผนภูมิรูปวงกลม ส่วนของ{what}คิดเป็นร้อยละ {p} ส่วนนี้ทำมุมที่จุดศูนย์กลางกี่องศา"
+        # The percent read as degrees; a circle taken as 180 or 100 degrees.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(p, p * 18 // 10, 360 - right, right + 18, answer=right, lo=1))
+
+
+@question_type("math.pie_percent_from_angle_p6", display_name={"th": "แผนภูมิรูปวงกลม (มุมเป็นร้อยละ)"},
+               level=LEVEL, topic="แผนภูมิรูปวงกลม")
+class PiePercentFromAngleP6(WordProblem):
+    def expr(self, rng: Random):
+        right = 5 * rng.randint(1, 15)
+        angle = right * 36 // 10
+        what = rng.choice(_PIE6)
+        prompt = f"ในแผนภูมิรูปวงกลม ส่วนของ{what}ทำมุมที่จุดศูนย์กลาง {angle} องศา คิดเป็นร้อยละเท่าใด"
+        # The angle itself; the rest of the circle; a half circle used.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(angle, 100 - right, angle * 10 // 18 if angle * 10 % 18 == 0 else right + 10,
+                                                right + 5, answer=right, lo=1, hi=99))
+
+
+@question_type("math.pie_total_from_part_p6", display_name={"th": "แผนภูมิรูปวงกลม (หาจำนวนทั้งหมด)"},
+               level=LEVEL, topic="แผนภูมิรูปวงกลม")
+class PieTotalFromPartP6(WordProblem):
+    def expr(self, rng: Random):
+        names = rng.sample(_PIE6, 4)
+        parts = _pie_percents6(rng)
+        i = rng.randrange(4)
+        total = 20 * rng.randint(2, 30)
+        count = total * parts[i] // 100
+        prompt = f"{_pie_text6(names, parts)}\nถ้านักเรียนที่ชอบ{names[i]}มี {count} คน นักเรียนทั้งหมดมีกี่คน"
+        # The count plus the percent; the others' count; the percent as the count.
+        return MathDraw("", str(total), prompt=prompt,
+                        distractors=_story.keep(count + parts[i], total - count, count * parts[i] // 10 or count + 1,
+                                                total + 20, answer=total, lo=1))
+
+
+@question_type("math.pie_missing_percent_p6", display_name={"th": "แผนภูมิรูปวงกลม (ร้อยละที่หายไป)"},
+               level=LEVEL, topic="แผนภูมิรูปวงกลม")
+class PieMissingPercentP6(WordProblem):
+    def expr(self, rng: Random):
+        names = rng.sample(_PIE6, 4)
+        parts = _pie_percents6(rng)
+        i = rng.randrange(4)
+        shown = [("?" if j == i else p) for j, p in enumerate(parts)]
+        right = parts[i]
+        tt = _pie_text6(names, shown)
+        known = sum(p for j, p in enumerate(parts) if j != i)
+        # The known parts added; a circle taken as 360; one known part.
+        return MathDraw("", str(right), prompt=f"{tt}\nส่วนของ{names[i]}คิดเป็นร้อยละเท่าใด",
+                        distractors=_story.keep(known, 360 - known, parts[(i + 1) % 4], right + 5,
+                                                answer=right, lo=1, hi=99))
+
+
+@question_type("math.pie_largest_part_p6", display_name={"th": "แผนภูมิรูปวงกลม (ส่วนที่มากหรือน้อยที่สุด)"},
+               level=LEVEL, topic="แผนภูมิรูปวงกลม")
+class PieLargestPartP6(ChoiceType):
+    def compose(self, rng: Random):
+        names = rng.sample(_PIE6, 4)
+        parts = _pie_percents6(rng)
+        angles = [p * 36 // 10 for p in parts]
+        most = rng.random() < 0.5
+        pick = angles.index(max(angles) if most else min(angles))
+        stem = f"{_pie_text6(names, angles, unit='องศา')}\nกีฬาใดมีนักเรียนชอบ{'มากที่สุด' if most else 'น้อยที่สุด'}"
+        return stem, names[pick], [x for j, x in enumerate(names) if j != pick]
+
+
+@question_type("math.pie_two_parts_p6", display_name={"th": "แผนภูมิรูปวงกลม (สองส่วนรวมกัน)"},
+               level=LEVEL, topic="แผนภูมิรูปวงกลม")
+class PieTwoPartsP6(WordProblem):
+    def expr(self, rng: Random):
+        names = rng.sample(_PIE6, 4)
+        parts = _pie_percents6(rng)
+        i, j = rng.sample(range(4), 2)
+        total = 20 * rng.randint(2, 30)
+        right = total * (parts[i] + parts[j]) // 100
+        prompt = (f"{_pie_text6(names, parts)}\nถ้ามีนักเรียนทั้งหมด {total} คน "
+                  f"นักเรียนที่ชอบ{names[i]}และ{names[j]}รวมกันมีกี่คน")
+        # The percents added as people; one sport only; everyone else.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(parts[i] + parts[j], total * parts[i] // 100, total - right,
+                                                right + 10, answer=right, lo=1))

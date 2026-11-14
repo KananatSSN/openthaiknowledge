@@ -287,3 +287,107 @@ class AngleOfElevationM5(WordProblem):
                                 f"ปลายบันไดอยู่สูงจากพื้นกี่เมตร"),
                         distractors=wrongs[:3])
 AngleOfElevationM5.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More trigonometric ratios (2026-11): tan from two sides, a shadow, an angle of depression, and tan from
+# sin ──
+
+_TRIPLES5 = ((3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25), (20, 21, 29), (9, 40, 41))
+
+
+@question_type("math.tan_from_sides_m5", display_name={"th": "หาค่า tan จากความยาวด้าน"}, level=LEVEL, topic="อัตราส่วนตรีโกณมิติ")
+class TanFromSidesM5(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_TRIPLES5)
+        if rng.random() < 0.5:
+            a, b = b, a
+        right = frac_tex(Fraction(a, b))
+        # Flipped; over the hypotenuse; the other leg over the hypotenuse.
+        return MathDraw(rf"BC = {a}, \quad AC = {b}, \quad AB = {c}", right,
+                        prompt="รูปสามเหลี่ยม ABC มีมุม C เป็นมุมฉาก จงหาค่าของ tan A",
+                        distractors=_tk5(frac_tex(Fraction(b, a)), frac_tex(Fraction(a, c)), frac_tex(Fraction(b, c)), answer=right))
+
+
+@question_type("math.shadow_length_m5", display_name={"th": "ความยาวของเงาจากมุมเงยของดวงอาทิตย์"}, level=LEVEL,
+               topic="อัตราส่วนตรีโกณมิติ")
+class ShadowLengthM5(WordProblem):
+    def expr(self, rng: Random):
+        h = rng.randint(2, 30)
+        angle = rng.choice((30, 45))
+        right = rf"{h}\sqrt{{3}}" if angle == 30 else str(h)
+        prompt = f"เสาสูง {h} เมตร ขณะที่แสงแดดทำมุมเงย {angle} องศากับพื้น เงาของเสายาวกี่เมตร"
+        other = str(h) if angle == 30 else rf"{h}\sqrt{{3}}"
+        # The other special angle; halved; over root three.
+        return MathDraw("", right, prompt=prompt,
+                        distractors=_tk5(other, rf"\frac{{{h}\sqrt{{3}}}}{{3}}", str(2 * h), rf"{h}\sqrt{{2}}", answer=right))
+
+
+@question_type("math.angle_of_depression_m5", display_name={"th": "มุมก้ม"}, level=LEVEL, topic="อัตราส่วนตรีโกณมิติ")
+class AngleOfDepressionM5(WordProblem):
+    def expr(self, rng: Random):
+        h = rng.randint(10, 90)
+        angle = rng.choice((30, 45, 60))
+        right = {30: rf"{h}\sqrt{{3}}", 45: str(h), 60: rf"\frac{{{h}\sqrt{{3}}}}{{3}}"}[angle]
+        prompt = (f"ชายคนหนึ่งยืนบนยอดหอคอยสูง {h} เมตร มองเห็นรถคันหนึ่งบนพื้นเป็นมุมก้ม {angle} องศา "
+                  "รถอยู่ห่างจากฐานหอคอยกี่เมตร")
+        options = [rf"{h}\sqrt{{3}}", str(h), rf"\frac{{{h}\sqrt{{3}}}}{{3}}", str(2 * h)]
+        return MathDraw("", right, prompt=prompt, distractors=_tk5(*options, answer=right))
+
+
+@question_type("math.tan_from_sin_m5", display_name={"th": "หาค่า tan จากค่า sin"}, level=LEVEL, topic="อัตราส่วนตรีโกณมิติ")
+class TanFromSinM5(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.choice(_TRIPLES5)
+        if rng.random() < 0.5:
+            a, b = b, a
+        right = frac_tex(Fraction(a, b))
+        return MathDraw(rf"\sin\theta = \frac{{{a}}}{{{c}}}", right, prompt="ถ้า θ เป็นมุมแหลม จงหาค่าของ tan θ",
+                        distractors=_tk5(frac_tex(Fraction(b, a)), frac_tex(Fraction(b, c)), frac_tex(Fraction(c, b)), answer=right))
+
+
+TanFromSidesM5.PROVENANCE = Provenance("original")
+ShadowLengthM5.PROVENANCE = Provenance("original")
+AngleOfDepressionM5.PROVENANCE = Provenance("original")
+TanFromSinM5.PROVENANCE = Provenance("original")
