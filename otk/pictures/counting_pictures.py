@@ -6,7 +6,13 @@ Run::
 
 Each object is a few flat matplotlib patches in a unit cell centred on (0, 0),
 so a scene is only a list of (object, x, y). Nothing Thai is drawn: the stem
-names the objects. Like the other diagrams the PNGs are quantised, because
+names the objects.
+
+``GENERATOR_OBJECT_SPRITES`` may name a folder of painted PNG sprites (apple.png,
+balloon_red.png, stick.png, bundle.png ...) to draw instead of the flat shapes.
+Pictures with sprites are drawn at 1.5 times the resolution. Without it, nothing
+changes. Use a separate ``GENERATOR_DIAGRAM_DIR`` for each, since both write the
+same asset ids. Like the other diagrams the PNGs are quantised, because
 several hundred of them ship in the repository.
 """
 
@@ -14,12 +20,14 @@ from __future__ import annotations
 
 import io
 import math
+import os
 from pathlib import Path
 
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.patches import Circle, Ellipse, FancyBboxPatch, Polygon, Rectangle, Wedge
 from PIL import Image
 
@@ -34,13 +42,45 @@ LINE = 1.2
 _CELL = 1.0          # one object occupies a 1 x 1 cell; it is drawn within radius 0.42
 
 
+# Pictures with painted sprites: sharper than the flat ones, at about 12 KB each.
+_PAINTED_DPI = 150
+_PAINTED_COLOURS = 128
+
+
 def _save(fig, asset_id: str) -> Path:
+    painted = getattr(fig, "_otk_sprites", False)
     buf = io.BytesIO()
-    fig.savefig(buf, dpi=100, facecolor="white", format="png")
+    fig.savefig(buf, dpi=_PAINTED_DPI if painted else 100, facecolor="white", format="png")
     plt.close(fig)
     buf.seek(0)
-    img = Image.open(buf).convert("RGB").quantize(colors=64, method=Image.Quantize.MEDIANCUT)
+    img = Image.open(buf).convert("RGB").quantize(colors=_PAINTED_COLOURS if painted else 64, method=Image.Quantize.MEDIANCUT)
     return save_image(img, asset_id)
+
+
+# ── optional painted sprites ─────────────────────────────────────────────────
+
+_SPRITES = os.environ.get("GENERATOR_OBJECT_SPRITES")
+_sprite_cache: dict[str, np.ndarray] = {}
+
+
+def _sprite(name: str) -> np.ndarray:
+    if name not in _sprite_cache:
+        img = Image.open(Path(_SPRITES) / f"{name}.png").convert("RGBA")
+        img = img.resize((img.width // 2, img.height // 2), Image.Resampling.LANCZOS)
+        _sprite_cache[name] = np.asarray(img)
+    return _sprite_cache[name]
+
+
+def _paste(ax, name: str, x: float, y: float, w: float, h: float) -> None:
+    """Draw sprite ``name`` on a w x h canvas centred on (x, y): above plates and boxes, below crosses."""
+    ax.imshow(_sprite(name), extent=(x - w / 2, x + w / 2, y - h / 2, y + h / 2),
+              zorder=1.5, interpolation="antialiased")
+    ax.figure._otk_sprites = True
+
+
+# A sprite's object fills 80% of its canvas, so a 1.05 canvas draws it about as
+# big as the flat shapes (radius 0.42).
+_SPRITE_SIZE = 1.05
 
 
 def _canvas(cols: float, rows: float, scale: float = 0.62):
@@ -56,6 +96,8 @@ def _canvas(cols: float, rows: float, scale: float = 0.62):
 # ── the objects ──────────────────────────────────────────────────────────────
 
 def _apple(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "apple", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     ax.add_patch(Circle((x - 0.13, y - 0.04), 0.28, fc="#e53935", ec=INK, lw=LINE))
     ax.add_patch(Circle((x + 0.13, y - 0.04), 0.28, fc="#e53935", ec=INK, lw=LINE))
     ax.add_patch(Ellipse((x, y - 0.06), 0.46, 0.5, fc="#e53935", ec="none"))
@@ -65,6 +107,8 @@ def _apple(ax, x, y):
 
 
 def _orange(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "orange", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     ax.add_patch(Circle((x, y - 0.03), 0.36, fc="#fb8c00", ec=INK, lw=LINE))
     for dx, dy in ((-0.12, 0.05), (0.1, -0.12), (0.14, 0.1), (-0.05, -0.18)):
         ax.add_patch(Circle((x + dx, y + dy), 0.018, fc="#ef6c00", ec="none"))
@@ -72,6 +116,8 @@ def _orange(ax, x, y):
 
 
 def _banana(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "banana", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     outer = [(x + 0.42 * math.cos(t), y + 0.2 + 0.55 * math.sin(t))
              for t in [math.radians(a) for a in range(200, 341, 10)]]
     inner = [(x + 0.32 * math.cos(t), y + 0.3 + 0.42 * math.sin(t))
@@ -82,6 +128,8 @@ def _banana(ax, x, y):
 
 
 def _fish(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "fish", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     ax.add_patch(Polygon([(x + 0.18, y), (x + 0.42, y + 0.2), (x + 0.42, y - 0.2)],
                          fc="#29b6f6", ec=INK, lw=LINE))
     ax.add_patch(Ellipse((x - 0.06, y), 0.58, 0.36, fc="#29b6f6", ec=INK, lw=LINE))
@@ -90,6 +138,8 @@ def _fish(ax, x, y):
 
 
 def _flower(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "flower", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     for k in range(5):
         a = math.radians(90 + 72 * k)
         ax.add_patch(Circle((x + 0.2 * math.cos(a), y + 0.2 * math.sin(a)), 0.16,
@@ -98,6 +148,9 @@ def _flower(ax, x, y):
 
 
 def _balloon(ax, x, y, fc="#7e57c2", shine="#d1c4e9"):
+    if _SPRITES:
+        name = "balloon_red" if fc == "#e53935" else "balloon_blue"
+        return _paste(ax, name, x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     ax.plot([x, x - 0.03, x + 0.03, x], [y - 0.18, y - 0.3, y - 0.38, y - 0.46],
             color=INK, lw=0.9)
     ax.add_patch(Polygon([(x - 0.05, y - 0.2), (x + 0.05, y - 0.2), (x, y - 0.14)],
@@ -107,6 +160,8 @@ def _balloon(ax, x, y, fc="#7e57c2", shine="#d1c4e9"):
 
 
 def _star(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "star", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     pts = []
     for k in range(10):
         r = 0.42 if k % 2 == 0 else 0.18
@@ -116,6 +171,8 @@ def _star(ax, x, y):
 
 
 def _ball(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "ball", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     # A beach ball: six coloured panels.
     for k, colour in enumerate(("#e53935", "white", "#1e88e5", "white", "#fdd835", "white")):
         ax.add_patch(Wedge((x, y), 0.36, 90 + 60 * k, 150 + 60 * k, fc=colour, ec=INK, lw=0.8))
@@ -150,10 +207,15 @@ def _box(ax, x0, y0, w, h, label: str = ""):
 
 
 def _stick(ax, x, y, h=0.9, colour="#f2c14e"):
+    if _SPRITES:
+        # The loose stick is drawn narrower than its canvas so it matches the sticks of a bundle.
+        return _paste(ax, "stick", x, y, h / 0.8 / 4 * 0.6, h / 0.8)
     ax.add_patch(Rectangle((x - 0.035, y - h / 2), 0.07, h, fc=colour, ec=INK, lw=0.6))
 
 
 def _bundle(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "bundle", x, y, 1.0, 1.0)
     for k in range(10):
         _stick(ax, x - 0.27 + 0.06 * k, y)
     ax.add_patch(Rectangle((x - 0.33, y - 0.06), 0.66, 0.12, fc="#c62828", ec=INK, lw=0.8))
