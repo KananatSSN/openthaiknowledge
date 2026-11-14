@@ -3,7 +3,7 @@
 คณิตศาสตร์ · ม.1 · สสวท. พื้นฐาน
 Indicators: ค 1.3 ม.1/2, ค 1.3 ม.1/3
 
-Sets moved here from: math, math_diagrams, math_m1.
+Sets moved here from: math, math_diagrams, math_m1, m2 linear_functions and literal_equations (2026-11-14).
 """
 
 from __future__ import annotations
@@ -17,7 +17,8 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem, poly_tex
+from otk.kit.math_problems import MathDraw, MathType, WordProblem, poly_tex
+from otk.sets._support.math_algebra import _nonzero
 from otk.sets._support.math_diagrams import LINE_FN_ALT, LINE_FNS, _img, _math_q, _nums
 from otk.sets._support.math_m1 import LEVEL, NL
 from otk.sets._support.math_p2 import _maths, _texts
@@ -338,3 +339,105 @@ class InterceptTriangleM1(WordProblem):
         show = lambda v: str(v) if isinstance(v, int) else (str(v.numerator) if v.denominator == 1 else f"{float(v):g}")
         return MathDraw("", right, prompt=prompt,
                         distractors=[w for w in dict.fromkeys(show(v) for v in wrongs) if w != right])
+
+
+@question_type("math.literal_equation",
+               display_name={"th": "แก้สมการหลายตัวแปร (หา y)"}, level={"th": "ม.1"},
+               topic="กราฟความสัมพันธ์เชิงเส้น")
+class LiteralEquation(MathType):
+    def expr(self, rng: Random):
+        b = rng.randint(2, 5)
+        k = rng.choice([1, -1]) * rng.randint(1, 4)
+        m = rng.choice([1, -1]) * rng.randint(1, 9)
+        lhs = poly_tex((b * k, "x"), (b, "y"))
+        return MathDraw(rf"{lhs} = {b * m}",
+                        rf"y = {poly_tex((-k, 'x'), (m, ''))}", prompt="จงแก้หา y")
+
+
+@question_type("math.literal_equation_linear",
+               display_name={"th": "แก้สมการหลายตัวแปร (เชิงเส้น)"},
+               level={"th": "ม.1"}, topic="กราฟความสัมพันธ์เชิงเส้น")
+class LiteralEquationLinear(MathType):
+    break_convergence = True  # one-part slips cluster round the answer
+    def expr(self, rng: Random, coef_hi: int = 9):
+        a = rng.randint(2, coef_hi)
+        b = rng.randint(2, coef_hi)
+        c = rng.randint(2, coef_hi)
+        return MathDraw(
+            rf"{a}x + {b}y = {c}", rf"y = \frac{{{c} - {a}x}}{{{b}}}",
+            prompt="จงเขียน y ในรูปของ x",
+            distractors=[rf"y = \frac{{{c} + {a}x}}{{{b}}}",
+                         rf"y = \frac{{{a}x - {c}}}{{{b}}}",
+                         rf"y = {c} - \frac{{{a}x}}{{{b}}}",
+                         # Two slips at once.
+                         rf"y = {c} + \frac{{{a}x}}{{{b}}}",
+                         *([rf"y = \frac{{{c} - {b}x}}{{{a}}}"] if a != b else [])])
+
+
+@question_type("math.linear_function_from_table",
+               display_name={"th": "หาสมการเส้นตรงจากตารางค่า"},
+               level={"th": "ม.1"}, topic="กราฟความสัมพันธ์เชิงเส้น")
+class LinearFunctionFromTable(MathType):
+    break_convergence = True  # one-part slips cluster round the answer
+    def expr(self, rng: Random, slope_hi: int = 6, intercept_hi: int = 10):
+        m = _nonzero(rng, -slope_hi, slope_hi)
+        b = rng.randint(-intercept_hi, intercept_hi)
+        xs = sorted(rng.sample(range(-5, 6), 3))
+        rows = r",\quad ".join(f"({x}, {m * x + b})" for x in xs)
+        return MathDraw(
+            rows, f"y = {poly_tex((m, 'x'), (b, ''))}",
+            prompt="จุดเหล่านี้อยู่บนเส้นตรงเดียวกัน จงหาสมการของเส้นตรง",
+            distractors=[f"y = {poly_tex((-m, 'x'), (b, ''))}",
+                         f"y = {poly_tex((m, 'x'), (-b, ''))}",
+                         f"y = {poly_tex((b, 'x'), (m, ''))}"])
+
+
+@question_type("math.linear_model_compare_m2",
+               display_name={"th": "เปรียบเทียบสองแบบจำลองเชิงเส้น (โปรโมชัน ค่าโดยสาร)"},
+               level={"th": "ม.1"}, topic="กราฟความสัมพันธ์เชิงเส้น")
+class LinearModelCompareM2(WordProblem):
+    def expr(self, rng: Random):
+        kind = rng.randrange(5)
+        if kind == 0:
+            r1, r2 = rng.choice(((1, 3), (2, 4), (1, 2), (2, 5), (1, 4)))
+            n = rng.randint(20, 80)
+            a = rng.randint(1, 9) * 10
+            b = a + (r2 - r1) * n
+            return MathDraw("", str(n),
+                            prompt=(f"โปรโมชันโทรศัพท์แบบ A ค่าบริการรายเดือน {b} บาท บวกนาทีละ {r1} บาท "
+                                    f"แบบ B ค่าบริการรายเดือน {a} บาท บวกนาทีละ {r2} บาท "
+                                    f"โทรกี่นาทีต่อเดือนค่าใช้จ่ายทั้งสองแบบจะเท่ากัน"),
+                            distractors=_story.keep((b - a) // r2, (a + b) // (r1 + r2), n + 10, answer=n, lo=1))
+        if kind == 1:
+            start, per = rng.choice((35, 40)), rng.choice((5, 6, 7, 8))
+            km = rng.randint(4, 20)
+            fare = start + per * (km - 1)
+            return MathDraw("", str(km),
+                            prompt=(f"ค่าแท็กซี่กิโลเมตรแรก {start} บาท กิโลเมตรต่อไปกิโลเมตรละ {per} บาท "
+                                    f"ถ้าจ่ายค่าโดยสาร {fare} บาท เดินทางไปกี่กิโลเมตร"),
+                            distractors=_story.keep(km - 1, (fare - start) // per + 2, fare // per, answer=km, lo=1))
+        if kind == 2:
+            h0, rate = rng.randint(20, 40), rng.choice((2, 3, 4))
+            t = rng.randint(2, h0 // rate - 1)
+            left = h0 - rate * t
+            return MathDraw("", str(t),
+                            prompt=(f"เทียนเล่มหนึ่งสูง {h0} เซนติเมตร เมื่อจุดแล้วสั้นลงชั่วโมงละ {rate} เซนติเมตร "
+                                    f"ผ่านไปกี่ชั่วโมงเทียนจะเหลือสูง {left} เซนติเมตร"),
+                            distractors=_story.keep(left // rate, h0 // rate, t + 1, answer=t, lo=1))
+        if kind == 3:
+            member, per_member, walk_in = rng.choice((300, 500, 600, 800)), rng.choice((20, 30, 40)), rng.choice((80, 100, 120))
+            n = member // (walk_in - per_member) + 1
+            return MathDraw("", str(n),
+                            prompt=(f"ฟิตเนสมีสองแบบ แบบสมาชิกจ่ายค่าสมัคร {member} บาท แล้วจ่ายครั้งละ {per_member} บาท "
+                                    f"แบบไม่เป็นสมาชิกจ่ายครั้งละ {walk_in} บาท ต้องไปอย่างน้อยกี่ครั้ง "
+                                    f"แบบสมาชิกจึงจะถูกกว่า"),
+                            distractors=_story.keep(n - 1, member // walk_in, member // per_member, answer=n, lo=1))
+        a0, a_in, b_out = rng.randint(50, 200), rng.choice((5, 10, 15)), rng.choice((5, 10, 20))
+        t = rng.randint(5, 20)
+        b0 = a0 + (a_in + b_out) * t
+        return MathDraw("", str(t),
+                        prompt=(f"ถัง A มีน้ำ {a0} ลิตร เติมน้ำเข้านาทีละ {a_in} ลิตร ถัง B มีน้ำ {b0} ลิตร "
+                                f"ปล่อยน้ำออกนาทีละ {b_out} ลิตร ผ่านไปกี่นาทีน้ำในสองถังจะเท่ากัน"),
+                        distractors=_story.keep((b0 - a0) // a_in if (b0 - a0) % a_in == 0 else t + 5,
+                                                (b0 - a0) // b_out if (b0 - a0) % b_out == 0 else t + 2,
+                                                t - 1, answer=t, lo=1))

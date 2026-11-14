@@ -506,7 +506,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "decimal_equation_m1"),
         ("linear_equation_setup_m1", "linear_word_problem_m1",
          "linear_fee_comparison_m1", "linear_remaining_fraction_m1", "linear_transfer_m1",
-         "consecutive_numbers_m1", "age_problem_m1", "rectangle_equation_m1"),
+         "consecutive_numbers_m1", "age_problem_m1", "rectangle_equation_m1",
+         "literal_equation_area", "formula_context_m2"),
     ),
     (B, "ม.1", "อัตราส่วนและสัดส่วน"): (
         ("simplify_ratio", "solve_proportion",
@@ -522,13 +523,14 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ม.1", "กราฟความสัมพันธ์เชิงเส้น"): (
         ("linear_graph_read_m1", "linear_graph_point",
          "quadrant_m1", "point_on_line_m1",
-         "rising_line_m1", "table_fits_rule_m1"),
+         "rising_line_m1", "table_fits_rule_m1", "literal_equation"),
         ("linear_relation_context_m1",
          "axis_intercepts_m1", "table_from_equation_m1", "grid_distance_m1",
-         "cost_backwards_m1", "point_on_axis_m1"),
-        ("table_to_linear_equation_m1",
+         "cost_backwards_m1", "point_on_axis_m1",
+         "literal_equation_linear"),
+        ("table_to_linear_equation_m1", "linear_function_from_table",
          "rate_of_change_m1",
-         "intercept_triangle_m1"),
+         "intercept_triangle_m1", "linear_model_compare_m2"),
     ),
     (B, "ม.1", "การสร้างทางเรขาคณิต"): (
         ("angle_bisector",
@@ -598,16 +600,6 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "factor_square_minus_square_m2", "factor_perfect_square_k_m2"),
         ("factor_apply_m2", "factor_leading_coeff_m2", "factor_number_trick_m2",
          "factor_four_terms_m2"),
-    ),
-    (B, "ม.2", "แก้สมการหลายตัวแปร"): (
-        ("literal_equation",),
-        ("literal_equation_linear",),
-        ("literal_equation_area", "formula_context_m2"),
-    ),
-    (B, "ม.2", "ฟังก์ชันเชิงเส้น"): (
-        ("linear_function_graph_m2",),
-        ("linear_function",),
-        ("linear_function_from_table", "linear_model_compare_m2"),
     ),
     (B, "ม.2", "ทฤษฎีบทพีทาโกรัส"): (
         ("pythagoras", "pythagoras_figure_m2",
@@ -942,8 +934,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("triangle_area_coordinates_m4", "parallelogram_area_coords_m4"),
     ),
     (A, "ม.4", "สมการเส้นตรง"): (
-        ("line_intercepts", "line_equation", "slope_intercept_form_m4"),
-        ("line_from_two_points_intercept", "parallel_through_point_m4", "lines_meet_m4",
+        ("linear_function_graph_m2", "line_intercepts", "line_equation", "slope_intercept_form_m4"),
+        ("linear_function", "line_from_two_points_intercept", "parallel_through_point_m4", "lines_meet_m4",
          "x_intercept_point_slope_m4"),
         ("point_line_distance_m4", "line_closest_point_m4", "perpendicular_through_point_m4"),
     ),

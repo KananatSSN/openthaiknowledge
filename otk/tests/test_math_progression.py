@@ -44,8 +44,10 @@ def test_every_ipst_topic_has_a_complete_three_stage_path():
     # ป.5 ปริซึม, ป.6 เศษส่วนและจำนวนคละ and ป.4 การนำเสนอข้อมูล, where the
     # two-way tables moved (168). math_gaps_secondary opened ม.2 การแยกตัว
     # ประกอบของพหุนามดีกรีสอง, the core ม.4 counting and probability topics,
-    # three core ม.5 topics and ม.4 สมการและอสมการเศษส่วน (175).
-    assert len(groups) == 175
+    # three core ม.5 topics and ม.4 สมการและอสมการเศษส่วน (175). ม.2
+    # ฟังก์ชันเชิงเส้น and แก้สมการหลายตัวแปร, which had no indicator, moved
+    # into ม.1 and ม.4 units (173).
+    assert len(groups) == 173
     assert min(map(len, groups.values())) >= 3
     assert all({row["learning_stage"] for row in rows} == {1, 2, 3}
                for rows in groups.values())

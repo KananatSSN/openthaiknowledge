@@ -3,7 +3,7 @@
 คณิตศาสตร์ · ม.4 · สสวท. เพิ่มเติม
 Indicators: ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1
 
-Sets moved here from: math, math_bank_conics, math_geometry, math_m4.
+Sets moved here from: math, math_bank_conics, math_geometry, math_m4, m2 linear_functions (2026-11-14).
 """
 
 from __future__ import annotations
@@ -19,6 +19,7 @@ from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
 from otk.kit.math_problems import MathDraw, MathType, poly_tex
+from otk.sets._support.math_diagrams import LINE_FN_ALT, LINE_FNS, _img, _math_q
 from otk.sets._support.math_bank_conics import M4, _tex_q, line_tex, pt
 from otk.sets._support.math_m4 import _TRIPLES, M5, _sgn
 
@@ -239,3 +240,46 @@ ParallelThroughPointM4.PROVENANCE = Provenance("original")
 PerpendicularThroughPointM4.PROVENANCE = Provenance("original")
 LinesMeetM4.PROVENANCE = Provenance("original")
 XInterceptPointSlopeM4.PROVENANCE = Provenance("original")
+
+
+def _line_tex(m: int, c: int) -> str:
+    mx = "x" if m == 1 else "-x" if m == -1 else f"{m}x"
+    return f"y = {mx}" + (f" + {c}" if c > 0 else f" - {-c}" if c < 0 else "")
+
+
+@question_type("math.linear_function_graph_m2", display_name={"th": "หาสมการของเส้นตรงจากกราฟ"},
+               level={"th": "ม.4"}, topic="สมการเส้นตรง")
+class LinearFunctionGraphM2(QuestionType):
+    break_convergence = True  # one-part slips cluster round the answer
+    def build(self, rng: Random) -> GeneratedQuestion:
+        fn = rng.choice(LINE_FNS)
+        img = _img(fn.asset_id, LINE_FN_ALT)
+        m, c = fn.m, fn.c
+        if rng.random() < 0.5:
+            # Slope and intercept swapped, the slope's sign lost, rise over run inverted.
+            wrongs = [_line_tex(c, m) if c else _line_tex(m, 1), _line_tex(-m, c),
+                      _line_tex(m, -c) if c else _line_tex(m, 2), _line_tex(m + 1, c),
+                      _line_tex(m, c + 1), _line_tex(m - 1, c) if m != 1 else _line_tex(2, c)]
+            return _math_q([text("สมการของเส้นตรงในกราฟคือข้อใด"), img], _line_tex(m, c), wrongs,
+                           self.topic)
+        inv = frac_tex(Fraction(1, m))
+        return _math_q([text("เส้นตรงในกราฟมีความชันเท่าใด"), img], str(m),
+                       [str(-m), inv, str(c) if c != m else str(m + 1), str(m + 1)], self.topic)
+
+
+@question_type("math.linear_function",
+               display_name={"th": "หาสมการเส้นตรงจากสองจุด"}, level={"th": "ม.4"},
+               topic="สมการเส้นตรง")
+class LinearFunction(MathType):
+    def expr(self, rng: Random):
+        m = rng.choice([1, -1]) * rng.randint(1, 4)
+        c = rng.randint(-9, 9)
+        x1, x2 = rng.sample(range(-5, 6), 2)
+        return MathDraw(
+            rf"({x1}, {m * x1 + c}), \;\; ({x2}, {m * x2 + c})",
+            rf"y = {poly_tex((m, 'x'), (c, ''))}",
+            hint=r"m = \frac{y_2 - y_1}{x_2 - x_1}",
+            prompt="จงหาสมการเส้นตรงที่ผ่านจุดทั้งสอง")
+
+LinearFunctionGraphM2.PROVENANCE = Provenance("original")
+LinearFunction.PROVENANCE = Provenance("original")
