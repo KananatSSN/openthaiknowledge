@@ -356,7 +356,7 @@ def make_figure(f) -> Path:
         _label(ax, ax_ + (0.32 if at else -0.32), Hh / 2, f"{h} {u}")
     elif f.kind == "lshape":
         w, h, cw, ch = f.dims
-        k = 2.3 / max(w, h)
+        k = 2.1 / max(w, h)                      # room above for the top side's length
         W, H, CW, CH = w * k, h * k, cw * k, ch * k
         pts = [(0, 0), (W, 0), (W, H - CH), (W - CW, H - CH), (W - CW, H), (0, H)]
         _poly(ax, pts)
@@ -371,7 +371,8 @@ def make_figure(f) -> Path:
         _poly(ax, [(0, 0), (B, 0), (0, A)])
         _right_mark(ax, (0, 0), (1, 0), (0, 1), s=0.14)
         show = {k: ("x" if k == f.unknown else str(v)) for k, v in (("a", a), ("b", b), ("c", c))}
-        _label(ax, -0.3, A / 2, f"{show['a']} {u}" if show["a"] != "x" else "x", rotation=90)
+        _label(ax, -0.3, A / 2, f"{show['a']} {u}" if show["a"] != "x" else "x",
+               rotation=90 if show["a"] != "x" else 0)    # a lone x reads better upright
         _label(ax, B / 2, -0.2, f"{show['b']} {u}" if show["b"] != "x" else "x")
         _label(ax, B / 2 + 0.3, A / 2 + 0.2, f"{show['c']} {u}" if show["c"] != "x" else "x",
                rotation=-math.degrees(math.atan2(A, B)))
@@ -733,7 +734,8 @@ def _tag(ax, x, y, lab):
 
 
 def make_marked_triangle(t) -> Path:
-    fig, ax = _blank(3.2, 2.6, (-0.5, 3.2), (-0.5, 2.9))
+    # The top vertex can sit at 2.6 with its letter 0.25 above: show up to 3.15.
+    fig, ax = _blank(3.2, 2.6, (-0.5, 3.2), (-0.5, 3.15))
     pts = _fit_pts(_tri_from_sides(*t.sides) if t.sides else _tri_from_angles(*t.angles[:2]))
     _poly(ax, pts)
     g = _centroid(pts)
