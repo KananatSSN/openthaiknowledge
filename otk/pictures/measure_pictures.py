@@ -63,7 +63,9 @@ def make_ruler(r: mm.Ruler) -> Path:
 
 def make_pictograph(p: mm.Pictograph) -> Path:
     rows = len(p.rows)
-    width = 1.4 + 9
+    # Up to nine icons a row, the last centred at 1.4 + 8 = 9.4 with radius 0.42: the
+    # card must reach 9.9, or the ninth icon is cut and the row reads one short.
+    width = 1.4 + 9.4
     fig, ax = _axes(width * 0.5, (rows + 0.4) * 0.5 * 1.1,
                     (-0.9, width - 0.9), (-(rows - 0.5) * 1.1 - 0.3, 0.8), scale=1.0)
     for i, (kind, n) in enumerate(p.rows):
@@ -73,7 +75,7 @@ def make_pictograph(p: mm.Pictograph) -> Path:
         for j in range(n):
             DRAW[kind](ax, 1.4 + j, y)
         if i < rows - 1:
-            ax.plot([-0.6, 10.6], [y - 0.55, y - 0.55], color="#cbd5e1", lw=0.8)
+            ax.plot([-0.6, 9.8], [y - 0.55, y - 0.55], color="#cbd5e1", lw=0.8)
     # The key (1 icon = n) is stated in the stem, where it can be in Thai.
     return _save(fig, p.asset_id)
 

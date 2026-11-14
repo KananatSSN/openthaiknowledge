@@ -162,11 +162,17 @@ def _bundle(ax, x, y):
 # ── scenes ───────────────────────────────────────────────────────────────────
 
 def make_scene(s: mp.Scene) -> Path:
-    cols = max(x for _, x, _ in s.items) + 1
-    rows = max(y for _, _, y in s.items) + 1
-    fig, ax = _canvas(max(cols, 3), rows)
+    # A scatter over a 5 x 3 grid leaves whole rows and columns empty (two fish in
+    # one corner of a wide card). Close those gaps so the things stay scattered but
+    # sit together, centred on a card no wider than they need.
+    col_at = {c: i for i, c in enumerate(sorted({x for _, x, _ in s.items}))}
+    row_at = {r: i for i, r in enumerate(sorted({y for _, _, y in s.items}))}
+    cols, rows = len(col_at), len(row_at)
+    width = max(cols, 3)
+    fig, ax = _canvas(width, rows)
+    shift = (width - cols) / 2
     for kind, x, y in s.items:
-        DRAW[kind](ax, x, -y)
+        DRAW[kind](ax, col_at[x] + shift, -row_at[y])
     return _save(fig, s.asset_id)
 
 
@@ -196,7 +202,7 @@ def make_joined(s: mp.Joined) -> Path:
 def make_hidden(s: mp.Hidden) -> Path:
     shown = s.total - s.inside
     fig, ax = _canvas(shown + 2.6, 1.3)
-    _box(ax, -0.3, -0.58, 1.8, 1.1, "?")
+    _box(ax, -0.3, -0.7, 1.8, 1.1, "?")      # inside the card: it shows y from -0.8 to 0.5
     for i in range(shown):
         DRAW[s.kind](ax, 2.4 + i, -0.05)
     return _save(fig, s.asset_id)
@@ -213,11 +219,15 @@ def make_two_rows(s: mp.TwoRows) -> Path:
 
 
 def make_bundles(s: mp.Bundles) -> Path:
-    width = s.tens * 0.85 + (s.ones * 0.2 + 0.5 if s.ones else 0)
+    x0 = 0.1 + 0.85 * s.tens + 0.15
+    # The card shows x from -0.5 to width - 0.5: make it reach past the last loose
+    # straw (or the last bundle), with the same margin as on the left. A narrower
+    # card used to cut loose straws off, so the picture showed fewer than the answer.
+    right = x0 + 0.2 * (s.ones - 1) + 0.035 if s.ones else 0.1 + 0.85 * (s.tens - 1) + 0.33
+    width = right + 0.5 + 0.27
     fig, ax = _canvas(max(width, 2.2), 1.2, scale=0.75)
     for k in range(s.tens):
         _bundle(ax, 0.1 + 0.85 * k, -0.1)
-    x0 = 0.1 + 0.85 * s.tens + 0.15
     for k in range(s.ones):
         _stick(ax, x0 + 0.2 * k, -0.1)
     return _save(fig, s.asset_id)
@@ -292,7 +302,9 @@ def make_money(s: mp2.Money) -> Path:
     notes = [v for v, n in s.pieces for _ in range(n) if v in mp2.NOTES]
     coins = [v for v, n in s.pieces for _ in range(n) if v in mp2.COINS]
     rows = (1 if notes else 0) + (len(coins) + 5) // 6
-    width = max(len(notes) * 1.8, min(len(coins), 6) * 0.85, 3)
+    # A row of k coins runs from about -0.36 to 0.85 (k - 1) + 0.36; the card shows -0.5 to width - 0.5.
+    coins_w = (min(len(coins), 6) - 1) * 0.85 + 1.0 if coins else 0
+    width = max(len(notes) * 1.8, coins_w, 3)
     fig, ax = _canvas(width, rows, scale=0.7)
     ax.set_xlim(-0.5, width - 0.5)
     for i, v in enumerate(notes):
