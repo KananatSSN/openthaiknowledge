@@ -8,11 +8,10 @@ from __future__ import annotations
 
 import re
 from fractions import Fraction
-from math import comb, factorial, gcd, isqrt
+from math import comb, factorial, isqrt
 from random import Random
 
 from otk.core import generate
-from otk.kit.math_problems import frac_tex
 
 SEEDS = range(300)
 POINTS = [(Fraction(v), Fraction(w)) for v, w in ((2, 3), (-3, 5), (7, -2), (Fraction(1, 2), 4), (11, 13))]
