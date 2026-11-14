@@ -3,8 +3,6 @@ from . import exponents  # noqa: F401
 from . import factorising_quadratics  # noqa: F401
 from . import geometric_reasoning  # noqa: F401
 from . import geometric_transformations  # noqa: F401
-from . import linear_functions  # noqa: F401
-from . import literal_equations  # noqa: F401
 from . import monomials_and_polynomials  # noqa: F401
 from . import parallel_lines  # noqa: F401
 from . import pythagoras  # noqa: F401
