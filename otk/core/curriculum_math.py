@@ -263,13 +263,12 @@ def _contains(topic: str, terms: tuple[str, ...]) -> bool:
 # Topics whose words mislead the keyword rules below, checked against the
 # 2560 indicator book: order of operations is not a ลำดับ (sequence); prime
 # factorisation is number work (ค 1.1), not polynomial factorising; graphs,
-# linear relations and linear functions are ค 1.3 (ม.1/2-3), not ค 1.2;
+# linear relations are ค 1.3 (ม.1/2-3), not ค 1.2;
 # completing the square serves the quadratic function (ค 1.2 ม.3/2).
 _STANDARD_BY_TOPIC = {
     "ลำดับการดำเนินการ": ("ค 1", "ค 1.1"),
     "แยกตัวประกอบเฉพาะ": ("ค 1", "ค 1.1"),
     "กราฟความสัมพันธ์เชิงเส้น": ("ค 1", "ค 1.3"),
-    "ฟังก์ชันเชิงเส้น": ("ค 1", "ค 1.3"),
     "กำลังสองสมบูรณ์": ("ค 1", "ค 1.2"),
     "ความยาวและน้ำหนัก": ("ค 2", "ค 2.1"),
     "ปริซึม": ("ค 2", "ค 2.2"),
@@ -384,8 +383,6 @@ _ALSO_ADDITIONAL: dict[tuple[str, str], tuple[str, ...]] = {
 _NO_INDICATOR = {
     ("ป.2", "แบบรูป"),
     ("ม.1", "แยกตัวประกอบเฉพาะ"),
-    ("ม.2", "ฟังก์ชันเชิงเส้น"),
-    ("ม.2", "แก้สมการหลายตัวแปร"),
 }
 
 

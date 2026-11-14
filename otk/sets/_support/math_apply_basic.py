@@ -35,7 +35,7 @@ from __future__ import annotations
 # ── ม.3 กำลังสองสมบูรณ์: the largest and the smallest ─────────────────────────
 
 
-# ── ม.2 ฟังก์ชันเชิงเส้น: compare two linear models ───────────────────────────
+# ── ม.1 กราฟความสัมพันธ์เชิงเส้น: compare two linear models ───────────────────────────
 
 
 # ── ม.4 ฟังก์ชันประกอบ: one step after another ───────────────────────────────

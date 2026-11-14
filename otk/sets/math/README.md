@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,446 sets in 501 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,446 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -117,8 +117,8 @@
 | [`exponents`](m1/exponents.py) | เลขยกกำลัง | ค 1.1 ม.1/* | 15 |
 | [`geometric_constructions`](m1/geometric_constructions.py) | การสร้างทางเรขาคณิต | ค 2.2 ม.1/* | 15 |
 | [`integers`](m1/integers.py) | จำนวนเต็ม | ค 1.1 ม.1/* | 15 |
-| [`linear_equations`](m1/linear_equations.py) | สมการเชิงเส้น | ค 1.3 ม.1/* | 15 |
-| [`linear_graphs`](m1/linear_graphs.py) | กราฟความสัมพันธ์เชิงเส้น | ค 1.3 ม.1/2, ค 1.3 ม.1/3 | 15 |
+| [`linear_equations`](m1/linear_equations.py) | สมการเชิงเส้น | ค 1.3 ม.1/* | 17 |
+| [`linear_graphs`](m1/linear_graphs.py) | กราฟความสัมพันธ์เชิงเส้น | ค 1.3 ม.1/2, ค 1.3 ม.1/3 | 19 |
 | [`prime_factorisation`](m1/prime_factorisation.py) | แยกตัวประกอบเฉพาะ | — | 5 |
 | [`ratio_and_proportion`](m1/ratio_and_proportion.py) | อัตราส่วนและสัดส่วน | ค 1.1 ม.1/3 | 15 |
 | [`rational_numbers`](m1/rational_numbers.py) | จำนวนตรรกยะ | ค 1.1 ม.1/* | 15 |
@@ -134,8 +134,6 @@
 | [`factorising_quadratics`](m2/factorising_quadratics.py) | การแยกตัวประกอบของพหุนามดีกรีสอง | ค 1.2 ม.2/2 | 15 |
 | [`geometric_reasoning`](m2/geometric_reasoning.py) | การให้เหตุผลทางเรขาคณิต | ค 2.2 ม.2/* | 15 |
 | [`geometric_transformations`](m2/geometric_transformations.py) | การแปลงทางเรขาคณิต | ค 2.2 ม.2/* | 15 |
-| [`linear_functions`](m2/linear_functions.py) | ฟังก์ชันเชิงเส้น | — | 4 |
-| [`literal_equations`](m2/literal_equations.py) | แก้สมการหลายตัวแปร | — | 4 |
 | [`monomials_and_polynomials`](m2/monomials_and_polynomials.py) | เอกนามและพหุนาม | ค 1.2 ม.2/1 | 15 |
 | [`parallel_lines`](m2/parallel_lines.py) | เส้นขนาน | ค 2.2 ม.2/* | 15 |
 | [`pythagoras`](m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | ค 2.2 ม.2/5 | 15 |
@@ -173,7 +171,7 @@
 | [`conic_sections`](m4/conic_sections.py) | ภาคตัดกรวย | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
 | [`discriminant`](m4/discriminant.py) | ดิสคริมิแนนต์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
 | [`distance`](m4/distance.py) | ระยะทาง | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
-| [`equations_of_lines`](m4/equations_of_lines.py) | สมการเส้นตรง | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
+| [`equations_of_lines`](m4/equations_of_lines.py) | สมการเส้นตรง | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 12 |
 | [`exponential`](m4/exponential.py) | สมการเลขชี้กำลัง | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/4 | 10 |
 | [`factorising`](m4/factorising.py) | แยกตัวประกอบ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
 | [`finding_parabolas`](m4/finding_parabolas.py) | หาสมการพาราโบลา | ค เพิ่มเติม การวัดและเรขาคณิต 1 ม.4/1 | 10 |
