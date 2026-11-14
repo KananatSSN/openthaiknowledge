@@ -145,7 +145,7 @@ class TrigEquationCountM5(QuestionType):
         # Only the solutions after π; only the one obvious solution plus one each side; one more.
         return _int_q(stem, right, [math.floor((m - 1) * lam) + 1, right - 1, math.floor(m * lam), right + 1],
                       self.topic)
-TrigEquationCountM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/8 ตรีโกณมิติ',))
+TrigEquationCountM5.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/8-trigonometry',))
 
 
 @question_type("math.trig_equation_tangent",

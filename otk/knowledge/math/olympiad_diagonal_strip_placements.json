@@ -13,7 +13,7 @@
     "นับคู่ที่ช่วงแถวไม่ทับกันและช่วงหลักไม่ทับกัน",
     "หารจำนวนคู่ที่ผ่านเงื่อนไขด้วยจำนวนวิธีวางทั้งหมด แล้วลดเศษส่วน"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 30}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 30}],
    "covered_by": ["math.diagonal_strip_placements_olympiad"]
   }
  ]

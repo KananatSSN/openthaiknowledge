@@ -14,7 +14,7 @@
     "ปรับสเกลด้วย f(0) ได้คาแรกเตอร์ของกลุ่มบวกบนระนาบ ซึ่งต้องเป็นบวกเพราะทุกจุดแบ่งครึ่งได้; สมการเดิมบังคับให้ค่าคาร์แรคเตอร์เป็นรากจริงของหนึ่ง จึงเท่ากับหนึ่ง"
    ],
    "sources": [
-    {"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 5}
+    {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 5}
    ],
    "covered_by": ["math.barycentric_functional_olympiad"]
   }

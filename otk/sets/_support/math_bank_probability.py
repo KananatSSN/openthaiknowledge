@@ -2,7 +2,7 @@
 
 ``sheetpipe plan`` found six units of ``otk/knowledge/math/probability.json``
 that no problem set practised. Each is exercised by real exam questions in
-``openthaiknowledge-bank/rathcenter/13 ความน่าจะเป็น`` (A-level, กสพท, O-NET). One set
+``openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/13-probability`` (A-level, กสพท, O-NET). One set
 per unit:
 
 ======================================  ==========================================

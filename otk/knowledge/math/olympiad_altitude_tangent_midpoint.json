@@ -13,7 +13,7 @@
         "Derive tangent lines at D from the two circle equations",
         "Intersect EF with AD and compare the two heights"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 4}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 4}],
       "covered_by": ["math.altitude_tangent_midpoint_olympiad"]
     }
   ]

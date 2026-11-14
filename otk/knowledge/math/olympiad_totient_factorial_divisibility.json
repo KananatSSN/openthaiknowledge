@@ -13,7 +13,7 @@
         "Count phi(n) generators per subgroup",
         "Relate phi(2n) to phi(n) by parity"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 1}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 1}],
       "covered_by": ["math.totient_factorial_divisibility_olympiad"]
     }
   ]

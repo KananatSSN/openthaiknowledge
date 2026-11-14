@@ -66,7 +66,7 @@ def test_text_before_an_item_is_an_error():
 @needs_bank
 def test_a_numbered_section_source_names_one_exercise_with_its_subs():
     from otk.tools.sheetpipe import knowledge as kn
-    sheet = "rathcenter/3 จำนวนจริง/(สสวท) ท้ายบท จำนวนจริง🍒.pdf"
+    sheet = "mathematics/level/upper-secondary/rathcenter/3-real-numbers/(สสวท) ท้ายบท จำนวนจริง🍒.pdf"
     assert len(kn.resolve({"sheet": sheet, "section": "แบบฝึกหัดท้ายบท", "number": 9})) == 10
     assert len(kn.resolve({"sheet": sheet, "section": "แบบฝึกหัดท้ายบท", "number": 2})) == 1
     assert len(kn.resolve({"sheet": sheet, "section": "แบบฝึกหัดท้ายบท"})) == 112
@@ -80,23 +80,23 @@ def test_todo_lists_picture_layouts_without_a_transcript():
     for e in tr.todo(bank):
         assert e.layout in tr.PICTURE_LAYOUTS and not tr.path_for(e.path).is_file()
     # The bank itself is fully transcribed, so check the rule on synthetic entries.
-    done = bank["rathcenter/9 เมทริกซ์/(สสวท) 1 ดีเทอร์มิแนนต์🥑.pdf"]
-    fresh = replace(done, path="rathcenter/0 test/(สสวท) missing.pdf", stage="new")
-    late = replace(fresh, path="rathcenter/0 test/(สสวท) generated.pdf", stage="generated")
-    text = replace(fresh, path="rathcenter/0 test/(สสวท) text.pdf", layout="choice-block")
+    done = bank["mathematics/level/upper-secondary/rathcenter/9-matrices/(สสวท) 1 ดีเทอร์มิแนนต์🥑.pdf"]
+    fresh = replace(done, path="mathematics/level/upper-secondary/rathcenter/0 test/(สสวท) missing.pdf", stage="new")
+    late = replace(fresh, path="mathematics/level/upper-secondary/rathcenter/0 test/(สสวท) generated.pdf", stage="generated")
+    text = replace(fresh, path="mathematics/level/upper-secondary/rathcenter/0 test/(สสวท) text.pdf", layout="choice-block")
     todo = tr.todo({e.path: e for e in (done, fresh, late, text)})
     assert [e.path for e in todo] == [fresh.path]
 
 
 @needs_bank
 def test_check_counts_a_committed_transcript():
-    n, answered = tr.check("rathcenter/9 เมทริกซ์/(สสวท) 1 ดีเทอร์มิแนนต์🥑.pdf")
+    n, answered = tr.check("mathematics/level/upper-secondary/rathcenter/9-matrices/(สสวท) 1 ดีเทอร์มิแนนต์🥑.pdf")
     assert (n, answered) == (11, 11)
 
 
 def test_page_kinds_and_render(tmp_path):
     from otk.tools.sheetpipe import bank as bk
-    pdf = bk.default_root() / "rathcenter/9 เมทริกซ์/(สสวท) 2 อินเวอร์สการคูณ🥑.pdf"
+    pdf = bk.default_root() / "mathematics/level/upper-secondary/rathcenter/9-matrices/(สสวท) 2 อินเวอร์สการคูณ🥑.pdf"
     if not bk.present(pdf):
         pytest.skip("bank PDF not fetched (Git LFS)")
     assert tr.page_kinds(pdf) == [True, False]          # photo exercise page, text answer page

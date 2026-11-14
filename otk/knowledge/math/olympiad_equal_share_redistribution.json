@@ -13,7 +13,7 @@
     "ตั้งสมการ ck=(c+b)(k-d_2) จากการเพิ่มภาชนะครั้งที่สอง",
     "แก้สมการพร้อมกันและตรวจว่าคำตอบเป็นจำนวนเต็มบวก แล้วคูณ c กับ k"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 28}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 28}],
    "covered_by": ["math.equal_share_redistribution_olympiad"]
   }
  ]

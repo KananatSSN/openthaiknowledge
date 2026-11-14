@@ -2,7 +2,7 @@
 
 ``sheetpipe plan`` found three units of ``otk/knowledge/math/logarithms.json``,
 exercised by กสพท and A-level questions in
-``openthaiknowledge-bank/rathcenter/6 เอกโพเนนเชียล และ ลอการิทึม``, that no problem set
+``openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/6-exponentials-and-logarithms``, that no problem set
 practised:
 
 =====================================  ==========================================

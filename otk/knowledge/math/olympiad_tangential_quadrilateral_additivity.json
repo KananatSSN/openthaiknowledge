@@ -13,7 +13,7 @@
         "Derive midpoint Jensen and f(2t)=2f(t)",
         "Use additivity to evaluate positive rational arguments"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 3}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 3}],
       "covered_by": ["math.tangential_quadrilateral_additivity_olympiad"]
     }
   ]

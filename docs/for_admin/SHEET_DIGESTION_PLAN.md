@@ -61,9 +61,9 @@ Phases in build order. Check an item only when its tests pass.
 
 ### Physics POSN bank — 2026-10-17
 
-- Scope: `สอวน_physics/MANIFEST.json` lists 33 papers (135 PDF components,
+- Scope: `physics/level/upper-secondary/posn-physics/MANIFEST.json` lists 33 papers (135 PDF components,
   including national theory/practical papers and answer files).
-- `สอวน_physics/posn1-60-physics.pdf`: all 30 questions transcribed,
+- `physics/level/upper-secondary/posn-physics/posn1-60-physics.pdf`: all 30 questions transcribed,
   independently solved, mapped to knowledge, and linked to 30 generators in
   `otk/sets/physics/olympiad/posn2560.py`. Part 2 restarts at 1 in the
   source; it is numbered 21–30 in the solver package.
@@ -74,16 +74,16 @@ Phases in build order. Check an item only when its tests pass.
   full suite only when a sheet is completely digested. Waves here cover
   6, 10, and 14 items. The final batch exposed a shortest-choice cue in
   item 8, corrected before the completed-sheet full run.
-- `สอวน_physics/posn1-61-physics.pdf`: all 30 questions transcribed,
+- `physics/level/upper-secondary/posn-physics/posn1-61-physics.pdf`: all 30 questions transcribed,
   independently solved, claimed by 29 knowledge units, and linked to 30
   generators in `otk/sets/physics/olympiad/posn2561.py`. Internal items 21–30
   preserve the ten restarted Part 2 numbers in their provenance. The single
   completed-sheet full run passed: 29,421 passed, 2 skipped (24m57s).
-- `สอวน_physics/posn1-62-physics.pdf`: all 26 questions (15 MC, 10 short
+- `physics/level/upper-secondary/posn-physics/posn1-62-physics.pdf`: all 26 questions (15 MC, 10 short
   answers, one worked problem) are transcribed, independently solved, and
   linked to 26 generators and knowledge units. The equal-source circuit reuses
   the existing signed three-branch circuit unit; 25 units are new.
-- Next source: `สอวน_physics/posn1-64-physics.pdf` (the manifest has no 2563
+- Next source: `physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf` (the manifest has no 2563
   camp-selection paper). Three of 33 papers are digested; 30 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
@@ -97,7 +97,7 @@ Phases in build order. Check an item only when its tests pass.
 ```bash
 python -m otk.tools.sheetpipe bank scan                   # needs `git lfs pull` first
 python -m otk.tools.sheetpipe bank status                 # summary table
-python -m otk.tools.sheetpipe bank status "rathcenter/1 *"   # records matching a glob
+python -m otk.tools.sheetpipe bank status "mathematics/level/upper-secondary/rathcenter/1-*"   # records matching a glob
 python -m otk.tools.sheetpipe bank set "<path|glob>" --stage converted --sheet-id x --note "…"
 ```
 A first scan of the full bank takes ~3 min (PDF probing); rescans only
@@ -124,7 +124,7 @@ itself; it refreshes the mechanical fields without marking anything stale.
   - Tests: `test_sheetpipe_answerkey.py`.
 - [ ] **Numbered splitter + OCR** for the 74 `numbered` `(สสวท)` files. Their exercise pages are photos, and their answer pages are teacher's-manual text full of equation-editor debris (`114\n8 114\n7`) plus Latin-1 consonant damage. OCR can't read the maths on the photos, so these are transcribed by eye instead (below) rather than split.
 - [ ] Sectioned splitter: numbering that restarts per part (Faii's five ตอน), with inline answer keys
-- [x] **`book` layout, the 23 `🍰` lecture books** (session 1). Each book is notes, then `แบบฝึกหัด` blocks, then its answer key bound at the back. `sheetpipe bank set "rathcenter/*/🍰*" --answer-key self` marks this, and `answerkey.split` reads the key region after the last exercise block. A key title counts only if it also heads a section of the notes.
+- [x] **`book` layout, the 23 `🍰` lecture books** (session 1). Each book is notes, then `แบบฝึกหัด` blocks, then its answer key bound at the back. `sheetpipe bank set "mathematics/level/upper-secondary/rathcenter/*/🍰*" --answer-key self` marks this, and `answerkey.split` reads the key region after the last exercise block. A key title counts only if it also heads a section of the notes.
   - The trig book is the nine `(rath)` notes bound together, so it is marked `ignored` rather than digested twice.
   - Structure is decided by `align`, a small DP that labels numbered lines item / sub-item / choice / noise to best match the key. It replaced a greedy Thai-text rule, which answered only 70% of book items.
   - **Result: 22 books, 2,267 questions, 2,153 answered (95%).** The conic book is the weakest (47/78): worked-example sidebars with their own numbered Thai steps, and a section split across two `แบบฝึกหัด` headings.
@@ -143,7 +143,7 @@ itself; it refreshes the mechanical fields without marking anything stale.
 
 **Convert usage**
 ```bash
-python -m otk.tools.sheetpipe convert "rathcenter/*"
+python -m otk.tools.sheetpipe convert "mathematics/level/upper-secondary/rathcenter/*"
 ```
 It takes ~3 min for all of rathcenter. Files that are not `new`/`converted` are
 skipped unless `--force` is passed. Other layouts are reported as skipped,
@@ -158,7 +158,7 @@ with the reason.
 - Tests: `test_sheetpipe_knowledge.py`.
 
 **How to author a topic** (the loop for the next topics):
-1. `sheetpipe knowledge coverage "rathcenter/<n> *"` lists the unmapped questions.
+1. `sheetpipe knowledge coverage "mathematics/level/upper-secondary/rathcenter/<n> *"` lists the unmapped questions.
 2. Read the `.md` digests. Write units in `otk/knowledge/math/<topic>.json`, one per distinct skill, with sources by tag. Use the registry's topic string.
 3. Set `covered_by` only after sampling the candidate type (`generate(key)`) and confirming it practises the unit. A same-topic type often drills something narrower.
 4. `knowledge validate` → 0 problems; `knowledge coverage … --mark`.
@@ -340,15 +340,15 @@ TOTAL         338   316     17     4   66      255      6     11
 - **rathcenter: 5,360 questions converted and claimed.** What remains: about
   50 `(สสวท)` files of chapters 11–17 (hand transcription, chapter 11 in
   progress) and 3 stray `(1)` files.
-- **no-text**: `Faii/ข้อสอบแรง.pdf` (hand-digested) and
-  `สอวน_math/posn1-64-math.pdf` (27/30 solvers verified).
+- **no-text**: `physics/level/unspecified-level/Faii/ข้อสอบแรง.pdf` (hand-digested) and
+  `mathematics/level/upper-secondary/posn-math/posn1-64-math.pdf` (27/30 solvers verified).
 - **notes/topics/** (6 topic notes, formerly `new_sheet/`) are not yet
   digested. `กระบวนการเปลี่ยนแปลงของหิน` has no matching types at all; the
   others are partly covered.
 - **outputs/** (`teaching_plan/`, `review_sheet/`) is marked `ignored`: these
   are written *from* existing sets, not sources.
 - The root copy of the 2568 สอวน. paper was a byte-identical duplicate and was
-  removed; `posn2568_math` now points at `สอวน_math/01-วิชาคณิตศาสตร์.pdf`.
+  removed; `posn2568_math` now points at `mathematics/level/upper-secondary/posn-math/01-วิชาคณิตศาสตร์.pdf`.
 
 ## 5. Traps already found
 
@@ -360,7 +360,7 @@ TOTAL         338   316     17     4   66      255      6     11
   - A clone therefore holds pointer files for the PDFs. `bank scan` skips them
     as absent, and `convert` says what to fetch.
   - Fetch only what a stage needs: `python -m otk.tools.sheetpipe bank fetch
-    "rathcenter/13 *"`. That wraps `git lfs pull --include … --exclude ""`.
+    "mathematics/level/upper-secondary/rathcenter/13-*"`. That wraps `git lfs pull --include … --exclude ""`.
   - The pipeline mostly works from the committed digests, so most sessions
     fetch nothing.
   - If the bank outgrows the LFS quota, or several people pull it, move LFS storage to
@@ -378,7 +378,7 @@ TOTAL         338   316     17     4   66      255      6     11
 - **Stacked math in choices.** `1.` alone on a line, then `1` / `5` = 1/5.
   The JSON keeps the lines; the Markdown shows `1/5`.
 - **สอวน. equations are vector art.** Text extraction drops exponents and
-  variables (see `openthaiknowledge-bank/สอวน_math/HANDOFF.md`). Transcribe from page
+  variables (see `openthaiknowledge-bank/mathematics/level/upper-secondary/posn-math/HANDOFF.md`). Transcribe from page
   renders.
 - **Glyph damage is per document, not per font name.** Each PDF embeds its
   own Cordia New subset with its own broken ToUnicode map. Only `Cordia New` /
@@ -391,7 +391,7 @@ TOTAL         338   316     17     4   66      255      6     11
     two distinct improving words before it is mapped.
   - `ตอบ`-style Thai+digit hits like `คณิต1` are not damage.
 - **Answer-key files live in the bank.** For example
-  `rathcenter/8 ตรีโกณมิติ/(rath) เฉลย.pdf`. Stage 2 should pair them with
+  `mathematics/level/upper-secondary/rathcenter/8-trigonometry/(rath) เฉลย.pdf`. Stage 2 should pair them with
   their question file rather than treat them as sheets.
 - **`new_sheet/`, `review_sheet/`, `teaching_plan/` moved into the bank.**
   The user decided this in session 1. The tracked `.md` files moved with
@@ -1285,3 +1285,65 @@ TOTAL         338   316     17     4   66      255      6     11
 - The full suite ran once, after all 26 items were digested: **29,796 passed,
   2 skipped in 20m08s**. Ruff is clean; full source text and the verified
   transcript remain in the private bank.
+
+
+### 2026-11-15 — Entire bank organization and duplicate audit
+
+- Organized source collections under `สนามสอบ/<venue>/` or `ระดับ/<level>/`,
+  retaining source filenames and relative collection structure. Compatibility
+  directory symlinks preserve old source and pipeline artifact paths.
+- Updated bank index, sheet package source paths, knowledge claims, provenance,
+  transcripts, digests, documentation and applicable tests. Existing 8,168 index
+  records retained their stages, sheet IDs, item counts and stale flags.
+- Audited all 8,734 source PDFs: 7,793 local files hashed with full SHA-256,
+  plus 941 LFS placeholders compared using their content OIDs. Found 91 duplicate
+  groups with 92 additional copies; retained all copies and marked duplicate_of.
+- Added 609 missing index entries for LFS PDFs; probing awaits content download.
+  Three generated output PDFs remain indexed as outputs.
+- Validation: 39 targeted bank/transcript/answer-key tests passed, 2 skipped;
+  all indexed PDF paths exist, sheet-package source references resolve,
+  and all 7,668 Roonpii manifest paths match index entries.
+- Detailed duplicate audit: private bank `_notes/BANK_DUPLICATES.json`.
+
+
+### 2026-11-15 — Subject-first bank layout
+
+- Applied the requested `[subject]/[exam venue or level]/` hierarchy to all
+  8,734 source PDFs. Kept source collection subfolders and filenames where useful.
+- Updated index paths, package sources, knowledge claims, provenance and mirrored
+  transcript/digest/extraction locations, retaining compatibility aliases.
+- Preserved every existing stage, sheet ID, item count and stale flag. Verified
+  all indexed PDFs, answer-key and duplicate links, package references, and all
+  7,668 Roonpii manifest paths. Scanner excludes file aliases.
+- Targeted bank, transcript and answer-key tests: 40 passed, 2 skipped.
+- Private migration map: `_notes/SUBJECT_ORGANIZATION.json`.
+
+
+### 2026-11-15 — English folder names
+
+Renamed subject, venue, level and collection folders to English and updated index and references. Preserved all 8,777 records and their digestion progress. All indexed source PDF folder names are free of Thai characters. Targeted tests: 40 passed, 2 skipped; Ruff and diff checks passed.
+
+
+### 2026-11-15 — Consolidate duplicate sheets
+
+- Verified full content hashes (or LFS OIDs) for 92 duplicate entries and consolidated them into canonical copies, preserving compatibility links and updating active path references. Kept removed records in the private deduplication audit.
+- Retained all stages and question counts; 8,642 unique source PDFs remain: 8,308 new, 305 generated, 27 green, 2 ignored.
+- Preserved local availability by populating 40 canonical LFS placeholders from the matching original download URLs, verifying full SHA-256 checksums. All 7,668 imported download records still resolve to local PDFs.
+- Validation: no duplicate content hashes remain among source-PDF index entries; all aliases, indexed files and package references resolve. Targeted bank/transcript/answer-key tests: 40 passed, 2 skipped.
+
+
+### 2026-11-15 — Migration review before publication
+
+- Reviewed source-code changes: generator computations are unchanged; updated
+  source paths and added alias-aware bank selection/fetching. Regression tests
+  cover skipping aliases during scans and fetching canonical LFS content from
+  legacy filenames and folder globs.
+- Verified a clean bank checkout: every indexed path and import catalog path
+  resolves; no broken aliases; all 8,645 regular PDF files are valid LFS pointers.
+- Knowledge validation: 545 units in 411 topic files, zero problems.
+- Full regression run: 36,794 passed, 9 skipped; one stale probability-folder
+  prefix failed and two localhost tests were blocked by the sandbox. Corrected
+  the prefix and remaining terminal directory references. Focused reruns:
+  9,931 passed (bank, knowledge, provenance, golden draws); both server tests
+  passed with localhost permission. Ruff and main-repository diff checks pass.
+- Private bank commit: `2ec4942`, branch `chore/organize-sheet-bank`.

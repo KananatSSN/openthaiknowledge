@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = "สอวน_physics/posn1-60-physics.pdf"
+SOURCE = "physics/level/upper-secondary/posn-physics/posn1-60-physics.pdf"
 # slug, knowledge statement, two actual solution steps (not question wording).
 UNITS = {
     1: (

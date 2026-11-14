@@ -13,7 +13,7 @@
     "เมื่อ n≥3 ใช้ P(x)=x^(n−3)(x³−x)+2 ซึ่งเป็นโมนิก และทุกค่าเท่ากับ 2 โมดูลัส 3 แต่ผลคูณของสองค่าเท่ากับ 1 โมดูลัส 3"
    ],
    "sources": [
-    {"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 4}
+    {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 4}
    ],
    "covered_by": ["math.polynomial_product_avoidance_olympiad"]
   }

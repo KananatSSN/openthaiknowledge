@@ -60,7 +60,7 @@ without re-deriving anything.
 ## Stage 1 — `extract`
 
 ```bash
-python -m otk.tools.sheetpipe extract "openthaiknowledge-bank/สอวน_math/01-วิชาคณิตศาสตร์.pdf" posn2568_math
+python -m otk.tools.sheetpipe extract "openthaiknowledge-bank/mathematics/level/upper-secondary/posn-math/01-วิชาคณิตศาสตร์.pdf" posn2568_math
 ```
 
 Writes `otk/sheets/<sheet_id>/extract/`:

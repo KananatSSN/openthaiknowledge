@@ -14,7 +14,7 @@
         "Compare quadratic characters and check the sum for the middle run"
       ],
       "sources": [
-        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 1}
+        {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 1}
       ],
       "covered_by": ["math.wilson_consecutive_product_olympiad"]
     }

@@ -41,7 +41,7 @@ def test_reference_topic_accounts_for_every_question():
     # folder is claimed by some unit.
     files = kn.load_all()
     _, by_pos = kn.question_index()
-    sheets = {p for p, _ in by_pos if p.startswith("rathcenter/13 ")}
+    sheets = {p for p, _ in by_pos if p.startswith("mathematics/level/upper-secondary/rathcenter/13-probability/")}
     assert sheets
     for s in sheets:
         mapped, total, missing = kn.sheet_coverage(s, files)

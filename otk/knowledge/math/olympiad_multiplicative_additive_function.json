@@ -13,7 +13,7 @@
         "Use x=1 to make f constant on (1,∞)",
         "Determine the constant and extend it below 1 using a large input"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 7}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 7}],
       "covered_by": ["math.multiplicative_additive_function_olympiad"]
     }
   ]

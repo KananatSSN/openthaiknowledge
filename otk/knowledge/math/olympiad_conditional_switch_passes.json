@@ -13,7 +13,7 @@
     "ลบพหุคูณของตัวหารรอบแรก เพิ่มพหุคูณของรอบที่สอง แล้วลบรอบสุดท้าย",
     "นับพหุคูณในแต่ละช่วงและหักส่วนที่ซ้ำด้วย ค.ร.น."
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 29}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 29}],
    "covered_by": ["math.conditional_switch_passes_olympiad"]
   }
  ]

@@ -13,7 +13,7 @@
         "Count crossing chords using one endpoint on each side",
         "Apply pigeonhole first to flowerpot types, then to path materials"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 4}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 4}],
       "covered_by": ["math.circular_gate_crossings_olympiad"]
     }
   ]
