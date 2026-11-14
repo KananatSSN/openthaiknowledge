@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import re
 from fractions import Fraction
-from math import comb, factorial, gcd, isqrt
+from math import comb, factorial, isqrt
 from random import Random
 
 from otk.core import generate
@@ -475,7 +475,7 @@ def test_analytic_geometry():
         _, a, _, b, d = _ints(stem.split("เท่าใด")[1].replace("k", ""))
         assert int(right) == a + (b - a) * d
         stem, right, _ = _q("parallelogram_area_coords_m4", seed)
-        a, ab, c = _pos(stem)[2], _pos(stem)[4], _pos(stem)[5]
+        a, c = _pos(stem)[2], _pos(stem)[5]
         assert int(right) == a * c
         stem, right, _ = _q("slope_from_intercepts_m4", seed)
         a, b = _ints(stem.split("เท่าใด")[1])[0], _ints(stem.split("เท่าใด")[1])[3]
