@@ -188,23 +188,35 @@ def make_crossed(s: mp.Crossed) -> Path:
     return _save(fig, s.asset_id)
 
 
+def _group_cols(n: int) -> int:
+    """Columns for a small group drawn as a block: 1, 2 up to four, then 3 (nine is 3 x 3)."""
+    return 1 if n == 1 else 2 if n <= 4 else 3
+
+
 def make_joined(s: mp.Joined) -> Path:
-    width = s.a + 1 + s.b
-    fig, ax = _canvas(width, 1)
+    # Each group is a compact block, not one long row: 9 + 1 in a row was eleven
+    # cells wide, so on a phone each apple came out a third of its size.
+    ca, cb = _group_cols(s.a), _group_cols(s.b)
+    ra, rb = -(-s.a // ca), -(-s.b // cb)
+    rows = max(ra, rb)
+    fig, ax = _canvas(ca + 1 + cb, rows)
     for i in range(s.a):
-        DRAW[s.kind](ax, i, 0)
-    _plus(ax, s.a, 0)
+        DRAW[s.kind](ax, i % ca, -(i // ca) - (rows - ra) / 2)
+    _plus(ax, ca, -(rows - 1) / 2)
     for i in range(s.b):
-        DRAW[s.kind](ax, s.a + 1 + i, 0)
+        DRAW[s.kind](ax, ca + 1 + i % cb, -(i // cb) - (rows - rb) / 2)
     return _save(fig, s.asset_id)
 
 
 def make_hidden(s: mp.Hidden) -> Path:
     shown = s.total - s.inside
-    fig, ax = _canvas(shown + 2.6, 1.3)
-    _box(ax, -0.3, -0.7, 1.8, 1.1, "?")      # inside the card: it shows y from -0.8 to 0.5
+    cols, rows = min(shown, 5), -(-shown // 5)          # the things left out, in rows of five
+    height = max(rows, 1.3)
+    fig, ax = _canvas(cols + 2.6, height)
+    mid = 0.5 - height / 2                              # the card shows y from 0.5 - height to 0.5
+    _box(ax, -0.3, mid - 0.55, 1.8, 1.1, "?")
     for i in range(shown):
-        DRAW[s.kind](ax, 2.4 + i, -0.05)
+        DRAW[s.kind](ax, 2.4 + i % 5, mid + (rows - 1) / 2 - i // 5)
     return _save(fig, s.asset_id)
 
 
@@ -219,17 +231,21 @@ def make_two_rows(s: mp.TwoRows) -> Path:
 
 
 def make_bundles(s: mp.Bundles) -> Path:
-    x0 = 0.1 + 0.85 * s.tens + 0.15
+    # Bundles in rows of five, the loose straws beside them. One long row of nine
+    # bundles was too wide for a phone, which shrank the straws past counting.
+    per_row = 5
+    cols, rows = min(s.tens, per_row), -(-s.tens // per_row)
+    x0 = 0.1 + 0.85 * cols + 0.15
     # The card shows x from -0.5 to width - 0.5: make it reach past the last loose
     # straw (or the last bundle), with the same margin as on the left. A narrower
     # card used to cut loose straws off, so the picture showed fewer than the answer.
-    right = x0 + 0.2 * (s.ones - 1) + 0.035 if s.ones else 0.1 + 0.85 * (s.tens - 1) + 0.33
+    right = x0 + 0.2 * (s.ones - 1) + 0.035 if s.ones else 0.1 + 0.85 * (cols - 1) + 0.33
     width = right + 0.5 + 0.27
-    fig, ax = _canvas(max(width, 2.2), 1.2, scale=0.75)
+    fig, ax = _canvas(max(width, 2.2), 1.2 + 1.1 * (rows - 1), scale=0.75)
     for k in range(s.tens):
-        _bundle(ax, 0.1 + 0.85 * k, -0.1)
+        _bundle(ax, 0.1 + 0.85 * (k % per_row), -0.1 - 1.1 * (k // per_row))
     for k in range(s.ones):
-        _stick(ax, x0 + 0.2 * k, -0.1)
+        _stick(ax, x0 + 0.2 * k, -0.1 - 1.1 * (rows - 1) / 2)
     return _save(fig, s.asset_id)
 
 
