@@ -67,7 +67,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("count_units_nonstandard", "compare_nonstandard_length", "choose_unit_p1"),
         ("ruler_picture_p1", "compare_nonstandard_weight", "length_difference_p1", "join_lengths_p1"),
         ("length_cm_m_p1", "weight_kg_khit_p1", "weight_compare_kg_p1",
-         "length_comparison_statement_p1"),
+         "length_comparison_statement_p1", "measuring_tool_p1",
+         "weight_difference_pairs_p1", "scale_kg_khit_p1"),
     ),
     (B, "ป.1", "เรขาคณิต 2 มิติ"): (
         ("shape_2d_picture_p1", "shape_corners_p1", "shape_objects_p1", "shape_description_p1"),

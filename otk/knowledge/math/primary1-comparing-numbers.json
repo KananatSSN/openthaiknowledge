@@ -46,12 +46,21 @@
     {
      "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
      "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 18
     }
    ],
    "covered_by": [
     "math.true_comparison_p1",
     "math.compare_groups_p1",
-    "math.equivalent_number_forms_p1"
+    "math.equivalent_number_forms_p1",
+    "math.compare_sums_p1"
    ]
   },
   {
@@ -92,6 +101,14 @@
     {
      "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
      "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 14
     }
    ],
    "covered_by": [

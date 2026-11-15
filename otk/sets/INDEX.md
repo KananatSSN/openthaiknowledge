@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,985 sets in 1,284 unit files. Each subject's `README.md` lists its units with their indicators.
+4,988 sets in 1,284 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -14,7 +14,7 @@
 | [`addition.py`](math/p1/addition.py) | การบวก | `math.one_digit_plus_no_carry`, `math.add_pictures_p1`, `math.one_digit_plus_with_carry`, `math.part_whole_p1`, `math.two_digit_plus`, `math.missing_addend`, `math.add_word_p1`, `math.add_three_numbers_p1`, `math.add_tens_p1`, `math.add_commutative_p1` |
 | [`comparing_numbers.py`](math/p1/comparing_numbers.py) | การเปรียบเทียบ | `math.min_max_of_four`, `math.compare_groups_p1`, `math.order_numbers`, `math.true_comparison_p1`, `math.compare_who_most_p1`, `math.more_less_than_p1`, `math.number_between_p1`, `math.sorted_position_p1`, `math.two_digit_from_digits_p1`, `math.count_between_p1`, `math.compare_sums_p1` |
 | [`counting.py`](math/p1/counting.py) | การนับ | `math.count_objects_p1`, `math.count_objects_20_p1`, `math.count_kind_p1`, `math.next_number`, `math.previous_number`, `math.number_words_p1`, `math.ordinal_position_p1`, `math.count_bundles_p1`, `math.missing_number_in_sequence`, `math.thai_numerals_p1`, `math.tens_and_ones_p1`, `math.equivalent_number_forms_p1` |
-| [`measurement.py`](math/p1/measurement.py) | การวัด | `math.count_units_nonstandard`, `math.compare_nonstandard_length`, `math.compare_nonstandard_weight`, `math.ruler_picture_p1`, `math.length_cm_m_p1`, `math.weight_kg_khit_p1`, `math.length_difference_p1`, `math.join_lengths_p1`, `math.weight_compare_kg_p1`, `math.choose_unit_p1`, `math.length_comparison_statement_p1` |
+| [`measurement.py`](math/p1/measurement.py) | การวัด | `math.count_units_nonstandard`, `math.compare_nonstandard_length`, `math.compare_nonstandard_weight`, `math.ruler_picture_p1`, `math.length_cm_m_p1`, `math.weight_kg_khit_p1`, `math.length_difference_p1`, `math.join_lengths_p1`, `math.weight_compare_kg_p1`, `math.choose_unit_p1`, `math.length_comparison_statement_p1`, `math.measuring_tool_p1`, `math.weight_difference_pairs_p1`, `math.scale_kg_khit_p1` |
 | [`patterns.py`](math/p1/patterns.py) | แบบรูป | `math.repeating_pattern_p1`, `math.number_pattern_p1`, `math.pattern_word_p1`, `math.pattern_rule_p1`, `math.pattern_next_term_p1`, `math.pattern_nth_shape_p1`, `math.pattern_growing_p1`, `math.count_down_tens_p1`, `math.pattern_colours_p1`, `math.pattern_shape_count_p1` |
 | [`pictograph.py`](math/p1/pictograph.py) | แผนภูมิรูปภาพ | `math.pictograph_picture_p1`, `math.pictograph_read_p1`, `math.pictograph_compare_p1`, `math.pictograph_most_p1`, `math.pictograph_range_p1`, `math.pictograph_add_more_p1`, `math.pictograph_order_p1`, `math.pictograph_count_above_p1`, `math.pictograph_true_statement_p1`, `math.pictograph_two_rows_p1` |
 | [`plane_shapes.py`](math/p1/plane_shapes.py) | เรขาคณิต 2 มิติ | `math.shape_2d_picture_p1`, `math.classify_2d_shape`, `math.polygon_sides`, `math.shape_corners_p1`, `math.shape_total_sides_p1`, `math.shape_odd_one_p1`, `math.shape_description_p1`, `math.shape_objects_p1`, `math.fold_cut_shape_p1`, `math.shape_sides_compare_p1` |

@@ -291,3 +291,71 @@ class LengthComparisonStatementP1(ChoiceType):
                 [f"{shorter}ยาวกว่า{longer} {gap} เซนติเมตร",
                  f"{longer}ยาวกว่า{shorter} {a + b} เซนติเมตร",
                  f"{longer}ยาวกว่า{shorter} {gap + 1} เซนติเมตร"])
+
+
+@question_type("math.measuring_tool_p1", display_name={"th": "เลือกเครื่องมือวัดความยาวให้เหมาะกับงาน"},
+               level=LEVEL, topic="การวัด")
+class MeasuringToolP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4018-1-2567-2-2.pdf, ข้อ 5–6",))
+
+    def compose(self, rng: Random):
+        tools = ("ไม้บรรทัดแข็งยาว 30 เซนติเมตร", "ไม้เมตรแข็งยาว 100 เซนติเมตร",
+                 "สายวัดผ้าอ่อนยาว 150 เซนติเมตร", "เครื่องชั่งน้ำหนัก")
+        kind = rng.randrange(3)
+        if kind == 2:
+            obj = rng.choice(("รอบเอว", "รอบศีรษะ", "รอบแขน"))
+            length = rng.randint(25, 80)
+            stem = (f"ต้องการวัด{obj}ประมาณ {length} เซนติเมตร โดยให้เครื่องมือโค้งแนบตามรอบได้ "
+                    "ควรใช้เครื่องมือใด")
+        else:
+            length = rng.randint(8, 28) if kind == 0 else rng.randint(40, 95)
+            obj = rng.choice(("แถบกระดาษ", "แผ่นไม้", "ริบบิ้นที่วางเหยียดตรง"))
+            stem = (f"ต้องการวัดความยาว{obj}ประมาณ {length} เซนติเมตร "
+                    "โดยใช้เครื่องมือแข็งที่สั้นที่สุดที่ทาบครั้งเดียวได้ ควรใช้เครื่องมือใด")
+        # Wrong tools fail the needed length, flexibility, or measured quantity.
+        return stem, tools[kind], [tool for i, tool in enumerate(tools) if i != kind]
+
+
+@question_type("math.weight_difference_pairs_p1", display_name={"th": "เปรียบเทียบผลต่างน้ำหนักต่างหน่วย"},
+               level=LEVEL, topic="การวัด")
+class WeightDifferencePairsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4018-1-2567-2-2.pdf, ข้อ 11",))
+
+    def compose(self, rng: Random):
+        # All four pairs have a distinct gap in ขีด. Bound the search space
+        # directly rather than retrying a draw until one maximum exists.
+        gaps = rng.sample(range(1, 10), 4)
+        pairs = []
+        for gap in gaps:
+            kg = rng.randint(1, 4)
+            khit = 10 * kg + rng.choice((-gap, gap))
+            pairs.append((kg, khit))
+        labels = [f"{kg} กิโลกรัม กับ {khit} ขีด" for kg, khit in pairs]
+        right = max(range(4), key=lambda i: abs(10 * pairs[i][0] - pairs[i][1]))
+        # The other actual pairs are distractors: compare the displayed
+        # numerals without normalizing units, or rank weights instead of gaps.
+        return ("กำหนดให้ 1 กิโลกรัม เท่ากับ 10 ขีด คู่ใดมีน้ำหนักต่างกันมากที่สุด",
+                labels[right], [label for i, label in enumerate(labels) if i != right])
+
+
+@question_type("math.scale_kg_khit_p1", display_name={"th": "อ่านขีดแบ่งบนเครื่องชั่ง"},
+               level=LEVEL, topic="การวัด")
+class ScaleKgKhitP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4018-1-2567-2-2.pdf, ข้อ 7, 12",))
+
+    def compose(self, rng: Random):
+        kg, ticks = rng.randint(1, 5), rng.randint(1, 9)
+        readings = [(kg, ticks), (kg, 10 - ticks), (kg + 1, ticks), (kg, ticks - 1), (kg, ticks + 1)]
+        def label(k, t):
+            k, t = k + t // 10, t % 10
+            return f"{k} กิโลกรัม {t} ขีด"
+        answer = label(kg, ticks)
+        # Counting backwards, reading the next kilogram, or being off by one
+        # tick. Remove the complement collision at the midpoint (5 ขีด).
+        wrong = list(dict.fromkeys(label(k, t) for k, t in readings if label(k, t) != answer))
+        return (f"เครื่องชั่งแบ่งช่วงระหว่างเลขกิโลกรัมติดกันเป็น 10 ช่วงเท่ากัน ช่วงละ 1 ขีด "
+                f"เข็มอยู่เลยขีด {kg} กิโลกรัม ไปทาง {kg + 1} กิโลกรัม {ticks} ช่วงเล็ก "
+                "อ่านน้ำหนักได้เท่าไร", answer, wrong)

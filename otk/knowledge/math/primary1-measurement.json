@@ -22,6 +22,172 @@
    "covered_by": [
     "math.length_comparison_statement_p1"
    ]
+  },
+  {
+   "id": "math.primary1.count-length-units",
+   "kind": "procedure",
+   "title": "นับหน่วยที่วางเทียบความยาว",
+   "statement": "นับหน่วยที่มีขนาดเท่ากันซึ่งวางต่อกันตั้งแต่ต้นจนถึงปลายของสิ่งที่วัด โดยไม่เว้นช่องหรือซ้อนทับ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "นับหน่วยที่มีขนาดเท่ากันซึ่งวางต่อกันตั้งแต่ต้นจนถึงปลายของสิ่งที่วัด โดยไม่เว้นช่องหรือซ้อนทับ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.count_objects_p1",
+    "math.count_objects_20_p1",
+    "math.count_units_nonstandard"
+   ]
+  },
+  {
+   "id": "math.primary1.order-measured-lengths",
+   "kind": "procedure",
+   "title": "เรียงลำดับความยาวจากภาพ",
+   "statement": "พิจารณาจุดเริ่มต้นร่วมกันแล้วเปรียบเทียบปลายของสิ่งของ เรียงตามทิศทางที่โจทย์กำหนด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "พิจารณาจุดเริ่มต้นร่วมกันแล้วเปรียบเทียบปลายของสิ่งของ เรียงตามทิศทางที่โจทย์กำหนด",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.order_numbers",
+    "math.length_comparison_statement_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.measuring-tool",
+   "kind": "procedure",
+   "title": "เลือกเครื่องมือให้เหมาะกับงานวัด",
+   "statement": "เลือกเครื่องมือที่วัดปริมาณถูกชนิด มีความยาวพอ และมีความแข็งหรือโค้งงอเหมาะกับสิ่งที่วัด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เลือกเครื่องมือที่วัดปริมาณถูกชนิด มีความยาวพอ และมีความแข็งหรือโค้งงอเหมาะกับสิ่งที่วัด",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.measuring_tool_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.read-scale-kg-khit",
+   "kind": "procedure",
+   "title": "อ่านหน้าปัดเครื่องชั่งเป็นกิโลกรัมและขีด",
+   "statement": "ระบุเลขกิโลกรัมก่อนตำแหน่งเข็ม แล้วนับช่วงย่อยโดยสิบขีดเท่ากับหนึ่งกิโลกรัม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ระบุเลขกิโลกรัมก่อนตำแหน่งเข็ม แล้วนับช่วงย่อยโดยสิบขีดเท่ากับหนึ่งกิโลกรัม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.scale_picture_p2",
+    "math.scale_kg_khit_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.balance-unit-weight",
+   "kind": "procedure",
+   "title": "อ่านน้ำหนักจากหน่วยบนตาชั่งสมดุล",
+   "statement": "เมื่อตาชั่งสมดุล น้ำหนักของวัตถุเท่ากับจำนวนหน่วยน้ำหนักที่เท่ากันบนอีกข้าง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เมื่อตาชั่งสมดุล น้ำหนักของวัตถุเท่ากับจำนวนหน่วยน้ำหนักที่เท่ากันบนอีกข้าง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.count_objects_p1",
+    "math.compare_nonstandard_weight"
+   ]
+  },
+  {
+   "id": "math.primary1.balance-weight-comparison",
+   "kind": "procedure",
+   "title": "เปรียบเทียบน้ำหนักจากตาชั่ง",
+   "statement": "ข้างที่ต่ำกว่าหนักกว่า หรือถ้าตาชั่งสมดุลให้นับหน่วยน้ำหนักของแต่ละวัตถุแล้วเปรียบเทียบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ข้างที่ต่ำกว่าหนักกว่า หรือถ้าตาชั่งสมดุลให้นับหน่วยน้ำหนักของแต่ละวัตถุแล้วเปรียบเทียบ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.compare_nonstandard_weight",
+    "math.weight_compare_kg_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.weight-pair-gap",
+   "kind": "procedure",
+   "title": "เปรียบเทียบผลต่างน้ำหนักต่างหน่วย",
+   "statement": "แปลงกิโลกรัมและขีดให้เป็นหน่วยเดียวกันก่อนหาผลต่างของแต่ละคู่ แล้วเลือกคู่ที่มีผลต่างมากที่สุด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "แปลงกิโลกรัมและขีดให้เป็นหน่วยเดียวกันก่อนหาผลต่างของแต่ละคู่ แล้วเลือกคู่ที่มีผลต่างมากที่สุด",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.weight_difference_pairs_p1"
+   ]
   }
  ]
 }

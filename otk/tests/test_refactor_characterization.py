@@ -220,4 +220,5 @@ def test_sheet_publication_manifest_is_frozen():
     # Four more Primary 1 gaps from the next four bank papers.
     # Nine Primary 2 division, mixed-operation and chart applications.
     # Ten Primary 5 applications from geometry and percentage papers.
-    assert len(REGISTRY) == 4985
+    # Three Primary 1 measurement applications from a comprehension paper.
+    assert len(REGISTRY) == 4988
