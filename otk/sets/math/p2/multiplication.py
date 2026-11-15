@@ -222,3 +222,52 @@ class MultiplyZeroOneP2(MathType):
         # The other rule; the number plus one; one.
         return MathDraw(tex, str(right), prompt="จงหาผลคูณ",
                         distractors=_story.keep(a if k == 0 else 0, a + 1, 1, 10 * a, answer=right, lo=0))
+
+
+@question_type("math.half_dozen_packs_p2", display_name={"th": "จำนวนสิ่งของเมื่อบรรจุครึ่งโหล"},
+               level=LEVEL, topic="การคูณ")
+class HalfDozenPacksP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4157-2-2564-1-3.pdf, ตอนที่ 1 ข้อ 14",))
+
+    def expr(self, rng: Random):
+        packs = rng.randint(2, 9)
+        right = packs * (12 // 2)
+        return MathDraw("", str(right),
+                        prompt=f"ซื้อดินสอ {packs} กล่อง กล่องละครึ่งโหล มีดินสอทั้งหมดกี่แท่ง",
+                        # A full dozen; half of the group count; add instead of multiply.
+                        distractors=[str(packs * 12), str(packs * 3), str(packs + 6)],
+                        hint=rf"12 \div 2 = 6,\quad {packs} \times 6 = {right}")
+
+
+@question_type("math.daily_total_weeks_p2", display_name={"th": "จำนวนสะสมรายวันในหนึ่งสัปดาห์"},
+               level=LEVEL, topic="การคูณ")
+class DailyTotalWeeksP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4157-2-2564-1-3.pdf, ตอนที่ 1 ข้อ 16",))
+
+    def expr(self, rng: Random):
+        daily = rng.randint(2, 12)
+        right = 7 * daily
+        return MathDraw("", str(right),
+                        prompt=f"ออมเงินวันละ {daily} บาททุกวัน เป็นเวลา 1 สัปดาห์ ออมเงินได้ทั้งหมดกี่บาท",
+                        # Count only weekdays; omit a day; add seven to the daily amount.
+                        distractors=[str(5 * daily), str(6 * daily), str(daily + 7)],
+                        hint=rf"{daily} \times 7 = {right}")
+
+
+@question_type("math.pack_price_irrelevant_p2", display_name={"th": "เลือกราคาต่อแพ็คโดยไม่ใช้ข้อมูลที่ไม่เกี่ยวข้อง"},
+               level=LEVEL, topic="การคูณ")
+class PackPriceIrrelevantP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4178-2-2567-2-3.pdf, ข้อ 4",))
+
+    def expr(self, rng: Random):
+        colours, price, packs = rng.choice((12, 18, 24, 36)), rng.randint(101, 199), rng.randint(2, 4)
+        right = price * packs
+        return MathDraw("", str(right),
+                        prompt=(f"สีไม้ 1 แพ็ค มี {colours} สี ราคาแพ็คละ {price} บาท "
+                                f"ซื้อ {packs} แพ็ค ต้องจ่ายเงินทั้งหมดกี่บาท"),
+                        # Add colour count; count colours rather than cost; add packs to price.
+                        distractors=[str(right + colours), str(colours * packs), str(price + packs)],
+                        hint=rf"{price} \times {packs} = {right}")

@@ -305,3 +305,60 @@ class CheaperByP2(WordProblem):
         prompt = f"{item}ที่ร้านแรกราคา {a} บาท ที่ร้านที่สองราคา {b} บาท ร้านที่สองถูกกว่ากี่บาท"
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(a + b, right + 10, right - 1, b, answer=right, lo=1))
+
+
+@question_type("math.payment_from_change_p2", display_name={"th": "หาเงินที่จ่ายจากราคาและเงินทอน"},
+               level=LEVEL, topic="เงิน")
+class PaymentFromChangeP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4178-2-2567-2-3.pdf, ข้อ 8",))
+
+    def expr(self, rng: Random):
+        price, change = rng.randint(101, 449), rng.randint(51, 499)
+        right = price + change
+        return MathDraw("", str(right),
+                        prompt=f"ซื้อหนังสือราคา {price} บาท ได้รับเงินทอน {change} บาท จ่ายเงินไปกี่บาท",
+                        # Reverse change equation; ignore change; count change twice.
+                        distractors=[str(abs(price - change)), str(price), str(price + 2 * change)],
+                        hint=rf"{price} + {change} = {right}")
+
+
+@question_type("math.purchase_from_change_p2", display_name={"th": "หาสินค้าที่ซื้อจากเงินที่เหลือ"},
+               level=LEVEL, topic="เงิน")
+class PurchaseFromChangeP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4178-2-2567-2-3.pdf, ข้อ 19",))
+
+    def compose(self, rng: Random):
+        goods = rng.sample(list(_GOODS_P2), 4)
+        prices = rng.sample(range(101, 450), 4)
+        have = rng.randint(max(prices) + 50, 999)
+        chosen = rng.randrange(4)
+        left = have - prices[chosen]
+        listed = " ".join(f"{g}ราคา {p} บาท" for g, p in zip(goods, prices))
+        return (f"มีเงิน {have} บาท {listed} ซื้อสินค้าเพียง 1 อย่างแล้วเหลือเงิน {left} บาท ซื้อสินค้าใด",
+                goods[chosen],
+                # Each distractor is a different purchase with a different balance.
+                [g for i, g in enumerate(goods) if i != chosen])
+
+
+@question_type("math.compare_sale_prices_p2", display_name={"th": "เปรียบเทียบราคาหลังหักส่วนลด"},
+               level=LEVEL, topic="เงิน")
+class CompareSalePricesP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4178-2-2567-2-3.pdf, ข้อ 20",))
+
+    def compose(self, rng: Random):
+        net_a, gap = rng.randint(201, 650), rng.randint(1, 40)
+        net_b = net_a + rng.choice((-1, 1)) * gap
+        discount_a, discount_b = rng.randint(51, 199), rng.randint(51, 199)
+        price_a, price_b = net_a + discount_a, net_b + discount_b
+        cheap, dear = ("ก", "ข") if net_a < net_b else ("ข", "ก")
+        return (f"ร้าน ก ขายกระเป๋าราคา {price_a} บาท ลด {discount_a} บาท "
+                f"ร้าน ข ขายกระเป๋ารุ่นเดียวกันราคา {price_b} บาท ลด {discount_b} บาท "
+                "หลังลดราคา ร้านใดถูกกว่า และถูกกว่ากี่บาท",
+                f"ร้าน {cheap} ถูกกว่า {gap} บาท",
+                # Reverse comparison; add the two discounts; add net prices.
+                [f"ร้าน {dear} ถูกกว่า {gap} บาท",
+                 f"ร้าน {cheap} ถูกกว่า {discount_a + discount_b} บาท",
+                 f"ร้าน {cheap} ถูกกว่า {net_a + net_b} บาท"])

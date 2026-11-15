@@ -1364,3 +1364,13 @@ Renamed subject, venue, level and collection folders to English and updated inde
   Validation: 9,953 tests passed, 2 skipped; Ruff and main diff checks passed.
 - Historical alias mappings remain in the private `_notes/ALIAS_REMOVAL.json`.
   Old source aliases are intentionally no longer supported; use canonical paths.
+
+### 2026-11-16 — Primary 2 mathematics, text-layer-first batch
+
+- Prioritized the thinnest school maths grade: ป.2 had 110 generators (ป.1 had 111). Selected two usable text PDFs: `mathematics/level/primary-2/4157-2-2564-1-3.pdf` and `mathematics/level/primary-2/4178-2-2567-2-3.pdf`.
+- Extracted from their text layers, reviewed every exercise page and the answer tables visually, and used the existing transcript interchange route to convert 21 + 20 questions. No OCR, source PDF changes, or general splitter changes. Private extraction, independent SymPy checks for every answer, and review notes are under `_notes/primary-2-text-first/`.
+- Idempotent public mapping: `docs/for_admin/sheet_digestion_primary2.py`. Eighteen Primary 2 knowledge units claim all 41 questions; existing generators are reused for covered skills. Nine contextual gaps add generators in existing addition/subtraction, multiplication, division, money and time unit files, all in application stage 3 with adapted provenance.
+- New keys: `comparison_amount_p2`, `half_dozen_packs_p2`, `daily_total_weeks_p2`, `pack_price_irrelevant_p2`, `equal_packs_p2`, `payment_from_change_p2`, `purchase_from_change_p2`, `compare_sale_prices_p2`, `sum_durations_p2` (all `math.`).
+- The two bank records progress `new → converted → extracted → generated`; 41/41 questions are claimed and every unit has a generator. This batch does not mark them green. Other bank entries and source paths stay unchanged.
+- ป.2 maths now has 119 generators; ป.1 with 111 is the next thinnest school grade. Continue choosing usable text-layer sheets before scans within the priority grade.
+- Validation: 21,909 passed, 9 skipped across the skill's integration checks, independent bank-maths solvers, safety/provenance, registry-wide golden draws, science filing, layout/count contracts and existing Primary 2 tests. The nine new sets also pass catalog checks on 300 seeds each. Every original golden record remains identical; only nine new keys are added. Ruff and whitespace checks pass. Existing PDF smoke-test warnings concern unavailable Thai glyphs in the test environment.

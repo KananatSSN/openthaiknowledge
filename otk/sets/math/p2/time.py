@@ -249,3 +249,25 @@ class WeeksDaysP2(WordProblem):
         # A week taken as 5 school days; as 10 days; the numbers added.
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(5 * w + d, 10 * w + d, w + d, right + 7, answer=right, lo=1))
+
+
+@question_type("math.sum_durations_p2", display_name={"th": "รวมระยะเวลาเป็นชั่วโมงและนาที"},
+               level=LEVEL, topic="เวลา")
+class SumDurationsP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4157-2-2564-1-3.pdf, ตอนที่ 1 ข้อ 19",))
+
+    def compose(self, rng: Random):
+        first, second = rng.randint(25, 59), rng.randint(25, 59)
+        total = first + second
+        h, m = divmod(total, 60)
+        right = f"{h} ชั่วโมง {m} นาที"
+        return (f"อ่านหนังสือ {first} นาที แล้วทำการบ้าน {second} นาที "
+                "ใช้เวลารวมกี่ชั่วโมง กี่นาที",
+                right,
+                # Carry at 100 instead of 60; subtract instead; lose the remainder;
+                # carry an extra hour; add an extra ten minutes.
+                list(dict.fromkeys([f"{total // 100} ชั่วโมง {total % 100} นาที",
+                                    f"0 ชั่วโมง {abs(first - second)} นาที",
+                                    f"{h} ชั่วโมง 0 นาที", f"{h + 1} ชั่วโมง {m} นาที",
+                                    f"{(total + 10) // 60} ชั่วโมง {(total + 10) % 60} นาที"])))

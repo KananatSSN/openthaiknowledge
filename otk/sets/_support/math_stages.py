@@ -91,18 +91,19 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("add_columns", "add_three_two_digit_p2"),
         ("sub_columns", "check_with_inverse_p2", "largest_sum_p2"),
         ("missing_addsub_p2", "missing_digit_p2", "add_word_three_digit_p2", "sub_word_three_digit_p2",
-         "how_many_more_p2"),
+         "how_many_more_p2", "comparison_amount_p2"),
     ),
     (B, "ป.2", "การคูณ"): (
         ("multiplication_picture_p2", "repeated_addition", "times_table_p2", "multiply_zero_one_p2"),
         ("multiplication_properties_p2", "multiply_1x2_p2", "multiply_by_ten_p2", "largest_product_p2"),
-        ("multiplication_word_problem_p2", "array_rows_p2"),
+        ("multiplication_word_problem_p2", "array_rows_p2", "half_dozen_packs_p2",
+         "daily_total_weeks_p2", "pack_price_irrelevant_p2"),
     ),
     (B, "ป.2", "การหาร"): (
         ("division_picture_p2", "division_facts_p2", "division_check_p2"),
         ("multiply_divide_relation_p2", "division_remainder_p2", "missing_dividend_p2",
          "fact_family_p2", "largest_quotient_p2"),
-        ("division_word_problem_p2", "division_leftover_word_p2"),
+        ("division_word_problem_p2", "division_leftover_word_p2", "equal_packs_p2"),
     ),
     (B, "ป.2", "บวก ลบ คูณ หารระคน"): (
         ("mixed_ops_p2",),
@@ -130,12 +131,13 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.2", "เงิน"): (
         ("money_picture_p2", "fifty_satang_p2"),
         ("money_count_p2", "money_exchange_p2", "coins_make_amount_p2", "total_three_items_p2"),
-        ("baht_satang_p2", "money_word_p2", "change_from_note_p2", "cheaper_by_p2"),
+        ("baht_satang_p2", "money_word_p2", "change_from_note_p2", "cheaper_by_p2",
+         "payment_from_change_p2", "purchase_from_change_p2", "compare_sale_prices_p2"),
     ),
     (B, "ป.2", "เวลา"): (
         ("clock_read_p2", "time_notation_p2", "months_p2", "weeks_days_p2"),
         ("calendar_weekday", "hours_minutes_p2", "time_after_p2", "time_before_p2"),
-        ("time_to_hour", "time_elapsed"),
+        ("time_to_hour", "time_elapsed", "sum_durations_p2"),
     ),
     (B, "ป.2", "แผนภูมิรูปภาพ"): (
         ("pictograph_key_picture_p2", "pictograph", "pictograph_add_symbols_p2"),

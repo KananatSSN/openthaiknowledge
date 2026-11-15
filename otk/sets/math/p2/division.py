@@ -207,3 +207,20 @@ class LargestQuotientP2(ChoiceType):
         most = rng.random() < 0.5
         right = (max if most else min)(exprs, key=exprs.get)
         return f"ข้อใดมีผลหาร{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]
+
+
+@question_type("math.equal_packs_p2", display_name={"th": "หาจำนวนแพ็คจากจำนวนสิ่งของทั้งหมด"},
+               level=LEVEL, topic="การหาร")
+class EqualPacksP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4178-2-2567-2-3.pdf, ข้อ 6",))
+
+    def expr(self, rng: Random):
+        each, packs = rng.randint(101, 199), rng.randint(2, 5)
+        total = each * packs
+        right = total // each
+        return MathDraw("", str(right),
+                        prompt=f"ถุงกระดาษ 1 แพ็ค มี {each} ใบ ต้องการใช้ {total} ใบ ต้องซื้อกี่แพ็คจึงจะได้จำนวนพอดี",
+                        # Subtract just one pack; give objects per pack; give total objects.
+                        distractors=[str(total - each), str(each), str(total)],
+                        hint=rf"{total} \div {each} = {right}")
