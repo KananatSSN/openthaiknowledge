@@ -261,3 +261,86 @@ class BuySeveralSatangP3(ChoiceType):
                   say(price * (count - 1)), say(total + 100), say(price * (count + 1))]
         return (f"ซื้อชุดกีฬา {count} ชุด ราคาชุดละ {say(price)} ต้องจ่ายเงินทั้งหมดเท่าไร",
                 say(total), list(dict.fromkeys(wrongs)))
+
+
+@question_type("math.money_purse_comparison_p3", display_name={"th": "รวมและเปรียบเทียบเงินจากธนบัตรและเหรียญ"},
+               level=LEVEL, topic="เงิน")
+class MoneyPurseComparisonP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4358-3-2567-2-2.pdf, ข้อ 4–5",))
+
+    def compose(self, rng: Random):
+        names = ("มาย", "มิ้น", "แมน", "แนน")
+        data, totals = [], {}
+        for name, quarters in zip(names, rng.sample(range(1, 41), 4)):
+            note = rng.choice((20, 50, 100))
+            whole, small = divmod(quarters, 4)
+            count = 100 // note
+            totals[name] = note * count * 100 + whole * 100 + small * 25
+            data.append(f"{name}: ธนบัตร {note} บาท {count} ฉบับ เหรียญ 1 บาท {whole} เหรียญ "
+                        f"เหรียญ 25 สตางค์ {small} เหรียญ")
+        if rng.randrange(3) == 0:
+            target = rng.choice(names)
+            cents = totals[target]
+            def amount(value):
+                return f"{value // 100}.{value % 100:02d} บาท"
+            # Omit the small coins, confuse satang with baht, or add a baht.
+            return (" ; ".join(data) + f" {target}มีเงินรวมกี่บาท", amount(cents),
+                    [amount(cents - 25), amount(cents + 100), amount(cents + 2500)])
+        most = rng.choice((False, True))
+        right = (max if most else min)(names, key=totals.get)
+        return (" ; ".join(data) + f" ใครมีเงิน{'มาก' if most else 'น้อย'}ที่สุด", right,
+                [name for name in names if name != right])
+
+
+@question_type("math.money_odd_purse_p3", display_name={"th": "หากลุ่มเหรียญที่มีค่าต่างจากกลุ่มอื่น"},
+               level=LEVEL, topic="เงิน")
+class MoneyOddPurseP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4358-3-2567-2-2.pdf, ข้อ 3",))
+
+    def compose(self, rng: Random):
+        whole, small = 20 * rng.randint(5, 15), rng.randint(1, 3)
+        odd, delta = rng.randrange(4), rng.choice((-1, 1))
+        labels, values = [], []
+        for i, coin in enumerate((1, 2, 5, 10)):
+            exchange = rng.randrange(3)
+            count = whole // coin - exchange
+            quarters = small + 4 * coin * exchange + (delta if i == odd else 0)
+            labels.append(f"เหรียญ {coin} บาท {count} เหรียญ และเหรียญ 25 สตางค์ {quarters} เหรียญ")
+            values.append(coin * count * 100 + quarters * 25)
+        right = next(label for label, value in zip(labels, values) if values.count(value) == 1)
+        return "กลุ่มเหรียญข้อใดมีค่าต่างจากอีกสามกลุ่ม", right, [x for x in labels if x != right]
+
+
+@question_type("math.satang_ledger_query_p3", display_name={"th": "วิเคราะห์บัญชีรายรับรายจ่ายที่มีสตางค์"},
+               level=LEVEL, topic="เงิน")
+class SatangLedgerQueryP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4358-3-2567-2-2.pdf, ข้อ 6–9",))
+
+    @staticmethod
+    def money(cents):
+        return f"{cents // 100}.{cents % 100:02d}"
+
+    def compose(self, rng: Random):
+        a, b, c = (100 * rng.randint(100, 300) for _ in range(3))
+        e = [25 * rng.randint(20, 120) for _ in range(5)]
+        rows = [(1, "แม่ให้เงิน", "รับ", a), (1, "ซื้อนม", "จ่าย", e[0]),
+                (2, "แม่ให้เงิน", "รับ", b), (2, "ซื้อขนม", "จ่าย", e[1]),
+                (2, "ซื้อกล่องดินสอ", "จ่าย", e[2]), (3, "พ่อให้เงิน", "รับ", c),
+                (3, "ซื้อไอศกรีม", "จ่าย", e[3]), (3, "ซื้อขนม", "จ่าย", e[4])]
+        income, expense = a + b + c, sum(e)
+        day2, net, difference = e[1] + e[2], income - expense, abs(a + b - c)
+        questions = [("วันที่ 2 มีรายจ่ายรวมกี่บาท", day2),
+                     ("เมื่อครบ 3 วัน มีเงินคงเหลือกี่บาท", net),
+                     ("แม่กับพ่อให้เงินรวมต่างกันกี่บาท", difference),
+                     ("ตลอด 3 วัน มีรายรับรวมกี่บาท", income)]
+        question, answer = rng.choice(questions)
+        # Misread a single row, omit a day, or confuse income, expense and balance.
+        pool = [e[0], a, a + b, income, expense, day2, net, difference, a - e[0], b, c]
+        wrongs = [v for v in dict.fromkeys(pool) if v != answer]
+        data = " ; ".join(f"{day} | {name} | {kind} | {self.money(value)}"
+                          for day, name, kind, value in rows)
+        return ("เริ่มต้นมีเงิน 0 บาท บัญชี (วัน | รายการ | รับหรือจ่าย | จำนวนบาท): " + data + " " + question,
+                self.money(answer) + " บาท", [self.money(v) + " บาท" for v in wrongs])

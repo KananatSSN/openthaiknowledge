@@ -286,3 +286,100 @@ class DaysToWeeksP2(WordProblem):
                         # Five days per week; multiply instead of divide; use the conversion factor.
                         distractors=_story.keep(days // 5, days * 7, 7, days, weeks + 1, answer=weeks, lo=1),
                         hint=rf"{days} \div 7 = {weeks}")
+
+
+@question_type("math.colloquial_clock_p2", display_name={"th": "อ่านเวลาเป็นภาษาพูดตามช่วงวัน"},
+               level=LEVEL, topic="เวลา")
+class ColloquialClockP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 2, 6, 8",))
+
+    @staticmethod
+    def spoken(h, m):
+        if h <= 5:
+            prefix = f"ตี{h}"
+        elif h <= 11:
+            prefix = f"{h} โมง"
+        elif h <= 17:
+            prefix = f"บ่าย {h - 12} โมง"
+        else:
+            prefix = f"{h - 18} ทุ่ม"
+        return prefix + (f" {m} นาที" if m else "ตรง")
+
+    def compose(self, rng: Random):
+        hours = (*range(1, 6), *range(7, 12), *range(19, 24))
+        h, m = rng.choice(hours), rng.choice(range(0, 60, 5))
+        right = self.spoken(h, m)
+        # Confuse the time period, the hour, or the minute-hand mark.
+        opposite = h + 12 if h < 12 else h - 12
+        wrongs = [self.spoken(opposite, m), self.spoken(h, (m + 5) % 60),
+                  self.spoken(h, m // 5 if m else 30)]
+        return f"เวลา {h:02d}.{m:02d} น. อ่านเป็นภาษาพูดได้อย่างไร", right, wrongs
+
+
+@question_type("math.clock_hands_from_hour_p2", display_name={"th": "ตำแหน่งเข็มนาฬิกาเมื่อบอกชั่วโมงตรง"},
+               level=LEVEL, topic="เวลา")
+class ClockHandsFromHourP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 3–5",))
+
+    def compose(self, rng: Random):
+        h = rng.randrange(24)
+        mark = h % 12 or 12
+        def label(a, b):
+            return f"เข็มสั้นชี้เลข {a} เข็มยาวชี้เลข {b}"
+        right = label(mark, 12)
+        wrongs = [label(mark % 12 + 1, 12), label(mark, 3), label(mark, 6)]
+        return f"เวลา {h:02d}.00 น. เข็มสั้นและเข็มยาวชี้เลขใด", right, wrongs
+
+
+@question_type("math.clock_period_to_24h_p2", display_name={"th": "ใช้ช่วงวันแปลงหน้าปัดเป็นเวลา 24 ชั่วโมง"},
+               level=LEVEL, topic="เวลา")
+class ClockPeriodTo24hP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 1, 7",))
+
+    def compose(self, rng: Random):
+        h, m, after = rng.randint(1, 11), rng.choice(range(0, 60, 5)), rng.choice((False, True))
+        hour = h + 12 * after
+        when = "หลังเที่ยงวันและก่อนเที่ยงคืน" if after else "หลังเที่ยงคืนและก่อนเที่ยงวัน"
+        hand = f"อยู่ระหว่างเลข {h} กับ {h + 1}" if m else f"ชี้เลข {h}"
+        right = f"{hour:02d}.{m:02d} น."
+        wrongs = [f"{(hour + 12) % 24:02d}.{m:02d} น.", f"{(hour + 1) % 24:02d}.{m:02d} น.",
+                  f"{hour:02d}.{m // 5 if m else 30:02d} น."]
+        return (f"นาฬิกาเข็มสั้น{hand} เข็มยาวชี้เลข {m // 5 or 12} "
+                f"ขณะนี้อยู่ในช่วง{when} เขียนเวลาแบบ 24 ชั่วโมงได้อย่างไร", right, wrongs)
+
+
+@question_type("math.calendar_event_month_p2", display_name={"th": "อ่านเดือนของกิจกรรมจากปฏิทินนัดหมาย"},
+               level=LEVEL, topic="เวลา")
+class CalendarEventMonthP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 9, 11",))
+    MONTHS = ("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+              "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม")
+
+    def compose(self, rng: Random):
+        events = [("สงกรานต์", 13, 4), ("สิ้นปี", 31, 12),
+                  ("กีฬาสี", rng.randint(1, 28), rng.randint(1, 12)),
+                  ("ทัศนศึกษา", rng.randint(1, 28), rng.randint(1, 12))]
+        target, _, month = rng.choice(events)
+        data = " · ".join(f"{name} {day}/{m}" for name, day, m in events)
+        right = self.MONTHS[month - 1]
+        return (f"ปฏิทินกิจกรรม (วัน/เดือน): {data} กิจกรรม{target}อยู่ในเดือนใด",
+                right, rng.sample([x for x in self.MONTHS if x != right], 3))
+
+
+@question_type("math.daily_schedule_activity_p2", display_name={"th": "อ่านกิจกรรมจากตารางเวลาประจำวัน"},
+               level=LEVEL, topic="เวลา")
+class DailyScheduleActivityP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 10",))
+
+    def compose(self, rng: Random):
+        activities = ("รับประทานอาหารเช้า", "เคารพธงชาติ", "รับประทานอาหารกลางวัน", "เข้านอน")
+        times = (rng.choice((6, 7)), 8, 12, rng.choice((20, 21)))
+        target = rng.randrange(4)
+        data = " · ".join(f"{h:02d}.00 น. {activity}" for h, activity in zip(times, activities))
+        return (f"ตารางเวลาวันนี้: {data} ตามตาราง เวลา {times[target]:02d}.00 น. มีกิจกรรมใด",
+                activities[target], [x for i, x in enumerate(activities) if i != target])

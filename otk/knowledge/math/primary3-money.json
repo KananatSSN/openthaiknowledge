@@ -104,6 +104,107 @@
    "covered_by": [
     "math.buy_several_satang_p3"
    ]
+  },
+  {
+   "id": "math.primary3.denomination-total",
+   "kind": "procedure",
+   "title": "รวมเงินจากธนบัตรและเหรียญ",
+   "statement": "คูณมูลค่าต่อใบหรือเหรียญด้วยจำนวน แล้วรวมเป็นบาทและสตางค์โดยร้อยสตางค์เท่ากับหนึ่งบาท",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คูณมูลค่าต่อใบหรือเหรียญด้วยจำนวน แล้วรวมเป็นบาทและสตางค์โดยร้อยสตางค์เท่ากับหนึ่งบาท",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.money_purse_comparison_p3",
+    "math.baht_satang_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.odd-purse",
+   "kind": "procedure",
+   "title": "หากลุ่มเงินที่มีค่าต่างจากกลุ่มอื่น",
+   "statement": "คำนวณค่าเงินทุกกลุ่มเป็นหน่วยเดียวกัน แล้วหากลุ่มที่ไม่เท่ากับอีกสามกลุ่ม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คำนวณค่าเงินทุกกลุ่มเป็นหน่วยเดียวกัน แล้วหากลุ่มที่ไม่เท่ากับอีกสามกลุ่ม",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 3
+    }
+   ],
+   "covered_by": [
+    "math.money_odd_purse_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.purse-comparison",
+   "kind": "procedure",
+   "title": "เปรียบเทียบจำนวนเงินหลายรูปแบบ",
+   "statement": "รวมมูลค่าธนบัตรและเหรียญให้ครบทุกชนิดก่อนเรียงลำดับหรือเลือกเงินมากที่สุดหรือน้อยที่สุด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "รวมมูลค่าธนบัตรและเหรียญให้ครบทุกชนิดก่อนเรียงลำดับหรือเลือกเงินมากที่สุดหรือน้อยที่สุด",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 5
+    }
+   ],
+   "covered_by": [
+    "math.money_purse_comparison_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.satang-ledger-query",
+   "kind": "procedure",
+   "title": "วิเคราะห์รายรับรายจ่ายที่มีสตางค์",
+   "statement": "จำแนกรายรับรายจ่ายตามวันและผู้ให้เงิน รวมเฉพาะแถวที่ถาม แล้วหาผลต่างหรือเงินคงเหลือตามโจทย์",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "จำแนกรายรับรายจ่ายตามวันและผู้ให้เงิน รวมเฉพาะแถวที่ถาม แล้วหาผลต่างหรือเงินคงเหลือตามโจทย์",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.satang_ledger_query_p3"
+   ]
   }
  ]
 }

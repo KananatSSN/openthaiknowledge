@@ -58,11 +58,16 @@
     {
      "sheet": "mathematics/level/primary-3/4357-3-2567-2-3.pdf",
      "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 20
     }
    ],
    "covered_by": [
     "math.money_change_left",
-    "math.two_step_word_problem_p3"
+    "math.two_step_word_problem_p3",
+    "math.two_step_sentence_p3"
    ]
   },
   {
@@ -167,6 +172,30 @@
     "math.buy_then_share_p3",
     "math.division_word_problem_p3",
     "math.two_step_sentence_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.purchase-sentence-models",
+   "kind": "procedure",
+   "title": "เลือกประโยคสัญลักษณ์รวมการซื้อหรือแบ่งยอดคงเหลือ",
+   "statement": "จับคู่ราคากับจำนวนของแต่ละชนิดก่อนรวมผลคูณ หรือหักเงินจ่ายแล้วออกจากราคาแล้วหารจำนวนงวด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "จับคู่ราคากับจำนวนของแต่ละชนิดก่อนรวมผลคูณ หรือหักเงินจ่ายแล้วออกจากราคาแล้วหารจำนวนงวด",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.purchase_sentence_models_p3"
    ]
   }
  ]

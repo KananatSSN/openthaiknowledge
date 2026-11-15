@@ -27,7 +27,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("ordinal_position_p1", "next_number", "previous_number", "number_words_p1",
          "count_bundles_p1"),
         ("thai_numerals_p1", "tens_and_ones_p1", "missing_number_in_sequence",
-         "equivalent_number_forms_p1"),
+         "equivalent_number_forms_p1", "expanded_form_judgement_p1", "place_value_statement_p1"),
     ),
     (B, "ป.1", "การบวก"): (
         ("add_pictures_p1", "one_digit_plus_no_carry", "add_tens_p1", "add_commutative_p1"),
@@ -71,7 +71,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("ruler_picture_p1", "compare_nonstandard_weight", "length_difference_p1", "join_lengths_p1"),
         ("length_cm_m_p1", "weight_kg_khit_p1", "weight_compare_kg_p1",
          "length_comparison_statement_p1", "measuring_tool_p1",
-         "weight_difference_pairs_p1", "scale_kg_khit_p1", "closest_weight_pair_p1"),
+         "weight_difference_pairs_p1", "scale_kg_khit_p1", "closest_weight_pair_p1", "length_order_names_p1"),
     ),
     (B, "ป.1", "เรขาคณิต 2 มิติ"): (
         ("shape_2d_picture_p1", "shape_corners_p1", "shape_objects_p1", "shape_description_p1"),
@@ -126,7 +126,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.2", "แบบรูป"): (
         ("repeating_pattern_p2", "pattern_next_p2", "pattern_three_nth_p2"),
         ("number_pattern_p2", "pattern_two_missing_p2", "pattern_count_back_p2", "pattern_nth_term_p2"),
-        ("pattern_rule_p2", "pattern_word_p2", "pattern_growing_dots_p2"),
+        ("pattern_rule_p2", "pattern_word_p2", "pattern_growing_dots_p2", "pattern_changing_attribute_p2"),
     ),
     (B, "ป.2", "การวัด"): (
         ("convert_length_p2", "scale_picture_p2", "cm_to_m_cm_p2"),
@@ -149,7 +149,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.2", "เวลา"): (
         ("clock_read_p2", "time_notation_p2", "months_p2", "weeks_days_p2"),
         ("calendar_weekday", "hours_minutes_p2", "time_after_p2", "time_before_p2"),
-        ("time_to_hour", "time_elapsed", "sum_durations_p2", "days_to_weeks_p2"),
+        ("time_to_hour", "time_elapsed", "sum_durations_p2", "days_to_weeks_p2",
+         "colloquial_clock_p2", "clock_hands_from_hour_p2", "clock_period_to_24h_p2", "calendar_event_month_p2", "daily_schedule_activity_p2"),
     ),
     (B, "ป.2", "แผนภูมิรูปภาพ"): (
         ("pictograph_key_picture_p2", "pictograph", "pictograph_add_symbols_p2"),
@@ -190,7 +191,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("two_step_sentence_p3", "buy_two_kinds_p3", "two_rooms_compare_p3"),
         ("two_step_word_problem_p3", "buy_then_share_p3", "save_then_spend_p3", "empty_seats_p3",
          "loads_delivered_p3", "pages_left_p3", "half_then_daily_budget_p3",
-         "resale_profit_unit_price_p3", "unit_price_from_balance_p3"),
+         "resale_profit_unit_price_p3", "unit_price_from_balance_p3", "purchase_sentence_models_p3"),
     ),
     (B, "ป.3", "การบวกและการลบ"): (
         ("add_sub_large_p3", "add_three_four_digit_p3"),
@@ -215,7 +216,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.3", "เงิน"): (
         ("baht_satang_p3", "money_total", "buy_several_p3"),
         ("change_picture_p3", "income_expense_record_p3", "unit_price_p3", "baht_satang_add_p3"),
-        ("make_change", "money_change_left", "daily_saving_p3", "buy_several_satang_p3"),
+        ("make_change", "money_change_left", "daily_saving_p3", "buy_several_satang_p3",
+         "money_purse_comparison_p3", "money_odd_purse_p3", "satang_ledger_query_p3"),
     ),
     (B, "ป.3", "เวลา"): (
         ("clock_24h_p3", "year_facts_p3", "hours_to_minutes_p3"),

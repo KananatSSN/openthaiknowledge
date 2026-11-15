@@ -87,6 +87,159 @@
    "covered_by": [
     "math.days_to_weeks_p2"
    ]
+  },
+  {
+   "id": "math.primary2.clock-period-24h",
+   "kind": "procedure",
+   "title": "ใช้ช่วงวันอ่านเวลาแบบยี่สิบสี่ชั่วโมง",
+   "statement": "อ่านเข็มชั่วโมงและนาที แล้วใช้ช่วงก่อนหรือหลังเที่ยงวันกำหนดชั่วโมงในระบบยี่สิบสี่ชั่วโมง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "อ่านเข็มชั่วโมงและนาที แล้วใช้ช่วงก่อนหรือหลังเที่ยงวันกำหนดชั่วโมงในระบบยี่สิบสี่ชั่วโมง",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 7
+    }
+   ],
+   "covered_by": [
+    "math.clock_period_to_24h_p2",
+    "math.clock_read_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.colloquial-clock",
+   "kind": "procedure",
+   "title": "บอกเวลาเป็นภาษาพูด",
+   "statement": "อ่านตำแหน่งเข็มและช่วงวัน แปลงชั่วโมงเป็นคำบอกเวลาตี โมง หรือทุ่ม แล้วอ่านนาทีให้ถูกต้อง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "อ่านตำแหน่งเข็มและช่วงวัน แปลงชั่วโมงเป็นคำบอกเวลาตี โมง หรือทุ่ม แล้วอ่านนาทีให้ถูกต้อง",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.colloquial_clock_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.clock-hands-from-hour",
+   "kind": "procedure",
+   "title": "ระบุตำแหน่งเข็มจากชั่วโมงตรง",
+   "statement": "เมื่อเป็นชั่วโมงตรงเข็มยาวชี้สิบสอง เข็มสั้นชี้ชั่วโมงบนหน้าปัดสิบสองชั่วโมง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เมื่อเป็นชั่วโมงตรงเข็มยาวชี้สิบสอง เข็มสั้นชี้ชั่วโมงบนหน้าปัดสิบสองชั่วโมง",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 5
+    }
+   ],
+   "covered_by": [
+    "math.clock_hands_from_hour_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.calendar-event-month",
+   "kind": "procedure",
+   "title": "ระบุเดือนของกิจกรรมในปฏิทิน",
+   "statement": "หาวันที่ของกิจกรรมแล้วแปลงเลขเดือนเป็นชื่อเดือน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาวันที่ของกิจกรรมแล้วแปลงเลขเดือนเป็นชื่อเดือน",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.calendar_event_month_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.daily-schedule-activity",
+   "kind": "procedure",
+   "title": "เลือกกิจกรรมตามช่วงเวลาในวัน",
+   "statement": "อ่านเวลาและเลือกกิจกรรมที่สอดคล้องกับเวลาตามตารางหรือบริบทชีวิตประจำวัน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "อ่านเวลาและเลือกกิจกรรมที่สอดคล้องกับเวลาตามตารางหรือบริบทชีวิตประจำวัน",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.daily_schedule_activity_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.calendar-month-order",
+   "kind": "procedure",
+   "title": "อ่านลำดับเดือนในหนึ่งปี",
+   "statement": "เรียงเดือนตั้งแต่มกราคมถึงธันวาคม ระบุลำดับหรือเดือนที่อยู่ระหว่างเดือนที่กำหนด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เรียงเดือนตั้งแต่มกราคมถึงธันวาคม ระบุลำดับหรือเดือนที่อยู่ระหว่างเดือนที่กำหนด",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.months_p2"
+   ]
   }
  ]
 }

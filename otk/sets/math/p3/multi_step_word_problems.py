@@ -317,3 +317,29 @@ class UnitPriceFromBalanceP3(WordProblem):
                         # treat the number of items as another cash amount.
                         distractors=_story.keep(spent, start // count, left // count,
                                                 spent - count, each + 1, answer=answer, lo=0))
+
+
+@question_type("math.purchase_sentence_models_p3", display_name={"th": "สร้างประโยคสัญลักษณ์ซื้อสองชนิดและแบ่งผ่อน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class PurchaseSentenceModelsP3(QuestionType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4358-3-2567-2-2.pdf, ข้อ 18–19",))
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        if rng.choice((False, True)):
+            a, c = rng.sample(range(2, 10), 2)
+            b, d = rng.sample(range(5, 100), 2)
+            prompt = (f"ซื้อสมุด {a} เล่ม เล่มละ {b} บาท และปากกา {c} ด้าม ด้ามละ {d} บาท "
+                      "ต้องจ่ายทั้งหมดกี่บาท เลือกประโยคสัญลักษณ์")
+            correct = rf"({a}\times {b})+({c}\times {d})"
+            wrongs = [rf"({a}+{c})\times({b}+{d})", rf"({a}\times {d})+({c}\times {b})",
+                      rf"({a}+{b})+({c}+{d})"]
+        else:
+            months, each, paid = rng.randint(3, 24), rng.randint(10, 500), rng.randint(100, 5000)
+            total = paid + months * each
+            prompt = (f"โทรศัพท์ราคา {total} บาท จ่ายล่วงหน้า {paid} บาท ส่วนที่เหลือแบ่งจ่าย "
+                      f"{months} เดือนเท่า ๆ กัน เดือนละกี่บาท เลือกประโยคสัญลักษณ์")
+            correct = rf"({total}-{paid})\div {months}"
+            wrongs = [rf"{total}-({paid}\div {months})", rf"({total}-{paid})-{months}",
+                      rf"({total}-{paid})\times {months}"]
+        return _maths([text(prompt)], correct + r"=\square", [w + r"=\square" for w in wrongs], self.topic)

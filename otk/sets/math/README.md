@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,523 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,536 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -11,8 +11,8 @@
 | [`add_sub_mixed`](p1/add_sub_mixed.py) | การบวกลบระคน | ค 1.1 ป.1/4, ค 1.1 ป.1/5 | 10 |
 | [`addition`](p1/addition.py) | การบวก | ค 1.1 ป.1/4 | 12 |
 | [`comparing_numbers`](p1/comparing_numbers.py) | การเปรียบเทียบ | ค 1.1 ป.1/2, ค 1.1 ป.1/3 | 12 |
-| [`counting`](p1/counting.py) | การนับ | ค 1.1 ป.1/1 | 12 |
-| [`measurement`](p1/measurement.py) | การวัด | ค 2.1 ป.1/* | 15 |
+| [`counting`](p1/counting.py) | การนับ | ค 1.1 ป.1/1 | 14 |
+| [`measurement`](p1/measurement.py) | การวัด | ค 2.1 ป.1/* | 16 |
 | [`patterns`](p1/patterns.py) | แบบรูป | ค 1.2 ป.1/1 | 10 |
 | [`pictograph`](p1/pictograph.py) | แผนภูมิรูปภาพ | ค 3.1 ป.1/1 | 10 |
 | [`plane_shapes`](p1/plane_shapes.py) | เรขาคณิต 2 มิติ | ค 2.2 ป.1/* | 10 |
@@ -31,10 +31,10 @@
 | [`money`](p2/money.py) | เงิน | ค 2.1 ป.2/* | 13 |
 | [`multiplication`](p2/multiplication.py) | การคูณ | ค 1.1 ป.2/5 | 13 |
 | [`numbers_to_1000`](p2/numbers_to_1000.py) | จำนวนนับไม่เกิน 1,000 | ค 1.1 ป.2/1, ค 1.1 ป.2/2, ค 1.1 ป.2/3 | 12 |
-| [`patterns`](p2/patterns.py) | แบบรูป | — | 10 |
+| [`patterns`](p2/patterns.py) | แบบรูป | — | 11 |
 | [`pictograph`](p2/pictograph.py) | แผนภูมิรูปภาพ | ค 3.1 ป.2/1 | 12 |
 | [`shapes`](p2/shapes.py) | รูปเรขาคณิต | ค 2.2 ป.2/* | 10 |
-| [`time`](p2/time.py) | เวลา | ค 2.1 ป.2/* | 12 |
+| [`time`](p2/time.py) | เวลา | ค 2.1 ป.2/* | 17 |
 
 ## p3 — ป.3
 
@@ -44,8 +44,8 @@
 | [`division`](p3/division.py) | การหาร | ค 1.1 ป.3/7 | 10 |
 | [`fractions`](p3/fractions.py) | เศษส่วน | ค 1.1 ป.3/* | 10 |
 | [`measurement`](p3/measurement.py) | การวัด | ค 2.1 ป.3/* | 10 |
-| [`money`](p3/money.py) | เงิน | ค 2.1 ป.3/* | 11 |
-| [`multi_step_word_problems`](p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.3/* | 13 |
+| [`money`](p3/money.py) | เงิน | ค 2.1 ป.3/* | 14 |
+| [`multi_step_word_problems`](p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.3/* | 14 |
 | [`multiplication`](p3/multiplication.py) | การคูณ | ค 1.1 ป.3/6 | 10 |
 | [`one_way_tables`](p3/one_way_tables.py) | ตารางทางเดียว | ค 3.1 ป.3/* | 10 |
 | [`patterns`](p3/patterns.py) | แบบรูป | ค 1.2 ป.3/1 | 10 |

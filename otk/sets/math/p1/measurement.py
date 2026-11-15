@@ -380,3 +380,21 @@ class ClosestWeightPairP1(ChoiceType):
         # largest gap instead of the smallest after normalizing units.
         return ("กำหนดให้ 1 กิโลกรัม เท่ากับ 10 ขีด คู่ใดมีน้ำหนักใกล้เคียงกันมากที่สุด",
                 labels[right], [label for i, label in enumerate(labels) if i != right])
+
+
+@question_type("math.length_order_names_p1", display_name={"th": "เรียงชื่อสิ่งของตามความยาว"},
+               level=LEVEL, topic="การวัด")
+class LengthOrderNamesP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3994-1-2564-2-2.pdf, ข้อ 3–4",))
+
+    def compose(self, rng: Random):
+        names = ("สีแดง", "สีฟ้า", "สีเขียว", "สีเหลือง")
+        lengths = dict(zip(names, rng.sample(range(5, 81), 4)))
+        reverse = rng.choice((False, True))
+        ordered = sorted(names, key=lengths.get, reverse=reverse)
+        wrongs = [ordered[::-1], [ordered[1], ordered[0], *ordered[2:]],
+                  [ordered[0], ordered[2], ordered[1], ordered[3]]]
+        data = " · ".join(f"{name}ยาว {lengths[name]} เซนติเมตร" for name in names)
+        return (f"ริบบิ้น {data} เรียงชื่อริบบิ้นจาก{'ยาวไปสั้น' if reverse else 'สั้นไปยาว'}ได้อย่างไร",
+                " → ".join(ordered), [" → ".join(w) for w in wrongs])

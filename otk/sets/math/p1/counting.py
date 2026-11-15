@@ -282,3 +282,39 @@ class EquivalentNumberFormsP1(ChoiceType):
                   f"{n}, {_story.thai_numeral(n)}, {_story.thai_words(other)}",
                   f"{other}, {_story.thai_numeral(n)}, {_story.thai_words(n)}"]
         return "ข้อใดมีตัวเลขฮินดูอารบิก ตัวเลขไทย และคำอ่านแทนจำนวนเดียวกันทั้งหมด", right, wrongs
+
+
+@question_type("math.expanded_form_judgement_p1", display_name={"th": "ตรวจรูปกระจายตามหลักสิบและหลักหน่วย"},
+               level=LEVEL, topic="การนับ")
+class ExpandedFormJudgementP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3994-1-2564-2-2.pdf, ข้อ 15",))
+
+    def compose(self, rng: Random):
+        numbers = rng.sample(range(10, 100), 4)
+        terms = [(n, n // 10 * 10, n % 10) for n in numbers]
+        n, tens, ones = terms[0]
+        terms[0] = (n, tens - 1, ones + 1)
+        labels = [f"{n} = {a} + {b}" for n, a, b in terms]
+        bad = [i for i, (n, a, b) in enumerate(terms) if (a, b) != (n // 10 * 10, n % 10)]
+        right = labels[bad[0]]
+        return ("ทุกข้อมีผลบวกถูกต้อง ข้อใดไม่ใช่รูปกระจายตามหลักสิบและหลักหน่วย "
+                "(เขียนค่าหลักสิบก่อนค่าหลักหน่วย)", right, [x for x in labels if x != right])
+
+
+@question_type("math.place_value_statement_p1", display_name={"th": "ตรวจข้อความบอกหลักและค่าเลขโดด"},
+               level=LEVEL, topic="การนับ")
+class PlaceValueStatementP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3994-1-2564-2-2.pdf, ข้อ 16",))
+
+    def compose(self, rng: Random):
+        tens, ones = rng.sample(range(1, 10), 2)
+        n = tens * 10 + ones
+        claims = [(tens, "สิบ", tens * 10), (ones, "หน่วย", ones),
+                  (tens, "หน่วย", tens), (ones, "สิบ", ones * 10),
+                  (tens, "สิบ", tens), (ones, "หน่วย", ones * 10)]
+        labels = [f"เลข {digit} ในจำนวน {n} อยู่หลัก{place} มีค่า {value}"
+                  for digit, place, value in claims]
+        right = labels[rng.randrange(2)]
+        return "ข้อใดบอกหลักและค่าของเลขโดดได้ถูกต้อง", right, rng.sample(labels[2:], 3)

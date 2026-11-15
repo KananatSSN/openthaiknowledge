@@ -58,6 +58,10 @@
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
      "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 18
     }
    ],
    "covered_by": [
@@ -121,6 +125,14 @@
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
      "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 14
     }
    ],
    "covered_by": [
@@ -141,6 +153,10 @@
    "sources": [
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
      "item": 17
     }
    ],

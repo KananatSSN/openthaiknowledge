@@ -176,3 +176,22 @@ class PatternCountBackP2(WordProblem):
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(right - step, right + step, start - (k - 1), start - step * k,
                                                 answer=right, lo=0))
+
+
+@question_type("math.pattern_changing_attribute_p2", display_name={"th": "จำแนกลักษณะที่เปลี่ยนในแบบรูป"},
+               level=LEVEL, topic="แบบรูป")
+class PatternChangingAttributeP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 17",))
+
+    def compose(self, rng: Random):
+        attributes = {"ขนาด": ("เล็ก", "ใหญ่"), "สี": ("สีแดง", "สีฟ้า"),
+                      "รูปร่าง": ("วงกลม", "สามเหลี่ยม")}
+        changing = rng.choice(tuple(attributes))
+        fixed = {k: rng.choice(v) for k, v in attributes.items()}
+        items = []
+        for i in (0, 0, 1, 0, 0, 1):
+            fields = {**fixed, changing: attributes[changing][i]}
+            items.append(" ".join(fields.values()))
+        return ("แบบรูป: " + " → ".join(items) + " ลักษณะใดเปลี่ยนไปในแบบรูปนี้ โดยอีกสองลักษณะคงเดิม",
+                changing, [x for x in (*attributes, "ไม่มีลักษณะใดเปลี่ยน") if x != changing])

@@ -82,11 +82,16 @@
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
      "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 16
     }
    ],
    "covered_by": [
     "math.tens_and_ones_p1",
-    "math.place_value_digit"
+    "math.place_value_digit",
+    "math.place_value_statement_p1"
    ]
   },
   {
@@ -112,6 +117,26 @@
    "covered_by": [
     "math.expanded_form_p2",
     "math.hundreds_tens_ones_p2"
+   ]
+  },
+  {
+   "id": "math.primary1.expanded-form-judgement",
+   "kind": "procedure",
+   "title": "ตรวจรูปกระจายตามหลักสิบและหลักหน่วย",
+   "statement": "ตรวจว่าพจน์แรกเป็นค่าหลักสิบและพจน์ที่สองเป็นค่าหลักหน่วย แม้การแยกผลบวกแบบอื่นจะให้จำนวนเดียวกัน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ตรวจว่าพจน์แรกเป็นค่าหลักสิบและพจน์ที่สองเป็นค่าหลักหน่วย แม้การแยกผลบวกแบบอื่นจะให้จำนวนเดียวกัน",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.expanded_form_judgement_p1"
    ]
   }
  ]

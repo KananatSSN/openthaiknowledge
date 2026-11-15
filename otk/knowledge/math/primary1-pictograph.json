@@ -66,6 +66,31 @@
    "covered_by": [
     "math.pictograph_compare_p1"
    ]
+  },
+  {
+   "id": "math.primary1.pictograph-read",
+   "kind": "procedure",
+   "title": "อ่านจำนวนรายการจากแผนภูมิรูปภาพ",
+   "statement": "นับรูปในรายการที่ถามแล้วคูณค่าต่อรูปที่กำหนด โดยนับเฉพาะรายการนั้น",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "นับรูปในรายการที่ถามแล้วคูณค่าต่อรูปที่กำหนด โดยนับเฉพาะรายการนั้น",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.pictograph",
+    "math.count_objects_p1"
+   ]
   }
  ]
 }

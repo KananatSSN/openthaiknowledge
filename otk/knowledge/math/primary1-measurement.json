@@ -17,10 +17,20 @@
     {
      "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
      "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 2
     }
    ],
    "covered_by": [
-    "math.length_comparison_statement_p1"
+    "math.length_comparison_statement_p1",
+    "math.length_order_names_p1",
+    "math.min_max_of_four"
    ]
   },
   {
@@ -83,11 +93,20 @@
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
      "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 4
     }
    ],
    "covered_by": [
     "math.order_numbers",
-    "math.length_comparison_statement_p1"
+    "math.length_comparison_statement_p1",
+    "math.length_order_names_p1"
    ]
   },
   {
@@ -115,6 +134,14 @@
     },
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
      "item": 6
     }
    ],
@@ -148,6 +175,14 @@
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
      "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 12
     }
    ],
    "covered_by": [
@@ -172,6 +207,14 @@
     },
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
      "item": 8
     }
    ],
@@ -205,6 +248,14 @@
     },
     {
      "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
      "item": 10
     }
    ],
