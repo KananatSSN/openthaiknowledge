@@ -224,4 +224,5 @@ def test_sheet_publication_manifest_is_frozen():
     # Four Primary 1 arithmetic equivalence applications from a skills paper.
     # Two Primary 2 place-value and ordering applications from a bank paper.
     # Two Primary 1 closest-weight and negative-comparison applications.
-    assert len(REGISTRY) == 4996
+    # Four Primary 3 money and multi-step applications from a bank paper.
+    assert len(REGISTRY) == 5000

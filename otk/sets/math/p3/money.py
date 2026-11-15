@@ -240,3 +240,24 @@ class BahtSatangAddP3(ChoiceType):
         wrongs = [no_carry, say(total + 100), say(total - 100), say(total + 50)]
         return f"ซื้อ{x} {say(a)} และ{y} {say(b)} รวมเป็นเงินเท่าใด", say(total), \
             [w for w in dict.fromkeys(wrongs) if w != say(total)]
+
+
+@question_type("math.buy_several_satang_p3", display_name={"th": "ซื้อหลายชิ้นในราคาที่มีบาทและสตางค์"},
+               level=LEVEL, topic="เงิน")
+class BuySeveralSatangP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4357-3-2567-2-3.pdf, ข้อ 15",))
+
+    def compose(self, rng: Random):
+        count = rng.randint(2, 9)
+        price = rng.randint(20, 490) * 100 + rng.choice((25, 50, 75))
+        total = price * count
+        def say(cents):
+            baht, satang = divmod(cents, 100)
+            return f"{baht} บาท {satang} สตางค์"
+        # Multiply the baht but keep only one item's satang; buy one too few;
+        # an extra baht. All options use normalized units and the same format.
+        wrongs = [say((price // 100) * count * 100 + price % 100),
+                  say(price * (count - 1)), say(total + 100), say(price * (count + 1))]
+        return (f"ซื้อชุดกีฬา {count} ชุด ราคาชุดละ {say(price)} ต้องจ่ายเงินทั้งหมดเท่าไร",
+                say(total), list(dict.fromkeys(wrongs)))

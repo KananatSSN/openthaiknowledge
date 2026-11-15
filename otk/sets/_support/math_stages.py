@@ -189,7 +189,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("mixed_ops_p3",),
         ("two_step_sentence_p3", "buy_two_kinds_p3", "two_rooms_compare_p3"),
         ("two_step_word_problem_p3", "buy_then_share_p3", "save_then_spend_p3", "empty_seats_p3",
-         "loads_delivered_p3", "pages_left_p3"),
+         "loads_delivered_p3", "pages_left_p3", "half_then_daily_budget_p3",
+         "resale_profit_unit_price_p3", "unit_price_from_balance_p3"),
     ),
     (B, "ป.3", "การบวกและการลบ"): (
         ("add_sub_large_p3", "add_three_four_digit_p3"),
@@ -214,7 +215,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.3", "เงิน"): (
         ("baht_satang_p3", "money_total", "buy_several_p3"),
         ("change_picture_p3", "income_expense_record_p3", "unit_price_p3", "baht_satang_add_p3"),
-        ("make_change", "money_change_left", "daily_saving_p3"),
+        ("make_change", "money_change_left", "daily_saving_p3", "buy_several_satang_p3"),
     ),
     (B, "ป.3", "เวลา"): (
         ("clock_24h_p3", "year_facts_p3", "hours_to_minutes_p3"),

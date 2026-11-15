@@ -2,7 +2,7 @@
 
 # Problem sets by unit
 
-4,996 sets in 1,284 unit files. Each subject's `README.md` lists its units with their indicators.
+5,000 sets in 1,284 unit files. Each subject's `README.md` lists its units with their indicators.
 
 ## math — คณิตศาสตร์
 
@@ -46,8 +46,8 @@
 | [`division.py`](math/p3/division.py) | การหาร | `math.division_remainder`, `math.division_long`, `math.division_check_p3`, `math.division_word_problem_p3`, `math.divide_by_ten_p3`, `math.missing_divisor_p3`, `math.share_equally_p3`, `math.divides_evenly_p3`, `math.largest_quotient_p3`, `math.half_of_p3` |
 | [`fractions.py`](math/p3/fractions.py) | เศษส่วน | `math.read_fraction`, `math.fraction_picture_p3`, `math.like_fractions_addsub`, `math.compare_fractions_p3`, `math.fraction_of_group_p3`, `math.equivalent_fraction`, `math.fraction_word_problem_p3`, `math.unit_fraction_of_p3`, `math.fraction_left_p3`, `math.fraction_who_more_p3` |
 | [`measurement.py`](math/p3/measurement.py) | การวัด | `math.convert_length_p3`, `math.estimate_measure_p3`, `math.measuring_tool_p3`, `math.convert_weight_p3`, `math.metric_ton_p3`, `math.length_word_problem_p3`, `math.weight_word_problem_p3`, `math.km_m_to_m_p3`, `math.cm_mm_to_mm_p3`, `math.route_distance_p3` |
-| [`money.py`](math/p3/money.py) | เงิน | `math.money_total`, `math.baht_satang_p3`, `math.income_expense_record_p3`, `math.change_picture_p3`, `math.make_change`, `math.money_change_left`, `math.unit_price_p3`, `math.buy_several_p3`, `math.daily_saving_p3`, `math.baht_satang_add_p3` |
-| [`multi_step_word_problems.py`](math/p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | `math.mixed_ops_p3`, `math.two_step_sentence_p3`, `math.two_step_word_problem_p3`, `math.buy_two_kinds_p3`, `math.buy_then_share_p3`, `math.save_then_spend_p3`, `math.empty_seats_p3`, `math.loads_delivered_p3`, `math.two_rooms_compare_p3`, `math.pages_left_p3` |
+| [`money.py`](math/p3/money.py) | เงิน | `math.money_total`, `math.baht_satang_p3`, `math.income_expense_record_p3`, `math.change_picture_p3`, `math.make_change`, `math.money_change_left`, `math.unit_price_p3`, `math.buy_several_p3`, `math.daily_saving_p3`, `math.baht_satang_add_p3`, `math.buy_several_satang_p3` |
+| [`multi_step_word_problems.py`](math/p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | `math.mixed_ops_p3`, `math.two_step_sentence_p3`, `math.two_step_word_problem_p3`, `math.buy_two_kinds_p3`, `math.buy_then_share_p3`, `math.save_then_spend_p3`, `math.empty_seats_p3`, `math.loads_delivered_p3`, `math.two_rooms_compare_p3`, `math.pages_left_p3`, `math.half_then_daily_budget_p3`, `math.resale_profit_unit_price_p3`, `math.unit_price_from_balance_p3` |
 | [`multiplication.py`](math/p3/multiplication.py) | การคูณ | `math.times_table`, `math.multiplication`, `math.multiply_2x1`, `math.one_digit_multiply`, `math.area_model_p3`, `math.multiply_4x1_p3`, `math.multiply_3x1_p3`, `math.multiplication_word_problem_p3`, `math.multiply_by_tens_p3`, `math.largest_product_p3` |
 | [`one_way_tables.py`](math/p3/one_way_tables.py) | ตารางทางเดียว | `math.table_most_p3`, `math.tally_to_table_p3`, `math.pictograph_make_p3`, `math.table_read_p3`, `math.table_sum`, `math.table_range_p3`, `math.table_order_p3`, `math.table_count_above_p3`, `math.table_two_rows_p3`, `math.table_true_statement_p3` |
 | [`patterns.py`](math/p3/patterns.py) | แบบรูป | `math.number_pattern_p3`, `math.pattern_rule_p3`, `math.growing_pattern_picture_p3`, `math.growing_pattern_p3`, `math.pattern_next_p3`, `math.pattern_far_term_p3`, `math.pattern_two_missing_p3`, `math.pattern_four_shapes_p3`, `math.pattern_spending_p3`, `math.pattern_member_p3` |

@@ -253,3 +253,67 @@ class PagesLeftP3(WordProblem):
         prompt = f"หนังสือเล่มหนึ่งมี {total} หน้า {p}อ่านวันละ {per} หน้า เป็นเวลา {days} วัน เหลืออีกกี่หน้า"
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(read, total - per, right - per, total - per - days, answer=right, lo=1))
+
+
+@question_type("math.half_then_daily_budget_p3", display_name={"th": "แบ่งเงินครึ่งหนึ่งแล้วเฉลี่ยใช้รายวัน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class HalfThenDailyBudgetP3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4357-3-2567-2-3.pdf, ข้อ 10",))
+
+    def expr(self, rng: Random):
+        days, per_day = rng.randint(3, 14), rng.randint(15, 450)
+        total = 2 * days * per_day
+        answer = (total // 2) // days
+        return MathDraw("", str(answer),
+                        prompt=(f"มีเงิน {total} บาท แบ่งให้น้องครึ่งหนึ่ง "
+                                f"นำเงินที่เหลือไปใช้ {days} วัน วันละเท่า ๆ กัน ใช้เงินได้วันละกี่บาท"),
+                        # Forget to halve; stop after halving; subtract days.
+                        distractors=_story.keep(total // days, total // 2, total // 2 - days,
+                                                total - days, answer=answer, lo=0))
+
+
+@question_type("math.resale_profit_unit_price_p3", display_name={"th": "ตั้งราคาขายต่อชิ้นให้ได้กำไรรวมที่กำหนด"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class ResaleProfitUnitPriceP3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4357-3-2567-2-3.pdf, ข้อ 18",))
+
+    def expr(self, rng: Random):
+        count, price = rng.randint(2, 9), rng.randint(100, 999)
+        # The two inputs need not separately divide by count; add them
+        # before dividing, as in the source (2167 + 500) / 3.
+        profit = rng.randint(10, (price * count) // 2)
+        cost = count * price - profit
+        revenue = cost + profit
+        answer = revenue // count
+        return MathDraw("", str(answer),
+                        prompt=(f"ซื้อของเล่น {count} ชิ้น เป็นเงินรวม {cost} บาท "
+                                f"ต้องการขายของเล่นทั้งหมดให้ได้กำไรรวม {profit} บาท "
+                                "โดยขายชิ้นละเท่า ๆ กัน ต้องตั้งราคาขายชิ้นละกี่บาท"),
+                        # Divide cost only; subtract the profit; stop at revenue;
+                        # add the whole profit to each item's cost.
+                        distractors=_story.keep(cost // count, (cost - profit) // count,
+                                                revenue, cost // count + profit,
+                                                cost // count + profit // count,
+                                                answer=answer, lo=0))
+
+
+@question_type("math.unit_price_from_balance_p3", display_name={"th": "หาราคาต่อชิ้นจากเงินก่อนซื้อและเงินเหลือ"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class UnitPriceFromBalanceP3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4357-3-2567-2-3.pdf, ข้อ 20",))
+
+    def expr(self, rng: Random):
+        count, each, left = rng.randint(2, 9), rng.randint(20, 490), rng.randint(100, 3000)
+        start = count * each + left
+        spent = start - left
+        answer = spent // count
+        return MathDraw("", str(answer),
+                        prompt=(f"มีเงิน {start} บาท ซื้อสมุด {count} เล่ม ราคาเล่มละเท่า ๆ กัน "
+                                f"เหลือเงิน {left} บาท สมุดราคาเล่มละกี่บาท"),
+                        # Total spending; divide original cash or balance alone;
+                        # treat the number of items as another cash amount.
+                        distractors=_story.keep(spent, start // count, left // count,
+                                                spent - count, each + 1, answer=answer, lo=0))
