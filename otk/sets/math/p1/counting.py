@@ -318,3 +318,30 @@ class PlaceValueStatementP1(ChoiceType):
                   for digit, place, value in claims]
         right = labels[rng.randrange(2)]
         return "ข้อใดบอกหลักและค่าของเลขโดดได้ถูกต้อง", right, rng.sample(labels[2:], 3)
+
+
+@question_type("math.digit_clues_p1", display_name={"th": "หาจำนวนจากเงื่อนไขเลขโดด"}, level={"th": "ป.1"}, topic="การนับ")
+class DigitCluesP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 20, 26",))
+
+    def compose(self, rng: Random):
+        if rng.choice((False,True)):
+            ones = rng.randint(0,5)
+            dh, dt = rng.randint(1,9-ones), rng.randint(1,9-ones)
+            total = 3*ones+dh+dt
+            numbers = [n for n in range(100,1000) if n//100-n%10 == dh
+                       and n//10%10-n%10 == dt and sum(map(int,str(n))) == total]
+            answer = numbers[0]
+            prompt = (f"จำนวนสามหลัก หลักร้อยมากกว่าหลักหน่วย {dh} หลักสิบมากกว่าหลักหน่วย {dt} "
+                      f"ผลรวมเลขโดดเท่ากับ {total} จำนวนนี้คือจำนวนใด")
+            # Swapped places, a changed unit, or a missed hundred.
+            pool = [100*(ones+dt)+10*(ones+dh)+ones, answer+1, answer-1, answer+100, answer-100]
+        else:
+            total = rng.randint(2,17)
+            largest = rng.choice((False,True))
+            numbers = [n for n in range(10,100) if n//10+n%10 == total]
+            answer = (max if largest else min)(numbers)
+            prompt = (f"จำนวนสองหลักที่ผลรวมเลขโดดเท่ากับ {total} "
+                      f"จำนวนที่{'มาก' if largest else 'น้อย'}ที่สุดคือจำนวนใด")
+            pool = [n for n in numbers if n != answer]+[answer+1,answer-1]
+        return prompt, str(answer), [str(x) for x in dict.fromkeys(pool) if x != answer and x > 0]

@@ -27,7 +27,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("ordinal_position_p1", "next_number", "previous_number", "number_words_p1",
          "count_bundles_p1"),
         ("thai_numerals_p1", "tens_and_ones_p1", "missing_number_in_sequence",
-         "equivalent_number_forms_p1", "expanded_form_judgement_p1", "place_value_statement_p1"),
+         "equivalent_number_forms_p1", "expanded_form_judgement_p1", "place_value_statement_p1", "digit_clues_p1"),
     ),
     (B, "ป.1", "การบวก"): (
         ("add_pictures_p1", "one_digit_plus_no_carry", "add_tens_p1", "add_commutative_p1"),
@@ -51,12 +51,12 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("compare_groups_p1", "min_max_of_four", "more_less_than_p1", "number_between_p1"),
         ("true_comparison_p1", "order_numbers", "two_digit_from_digits_p1", "count_between_p1"),
         ("compare_who_most_p1", "sorted_position_p1", "compare_sums_p1",
-         "false_sum_comparison_p1"),
+         "false_sum_comparison_p1", "race_constraints_p1"),
     ),
     (B, "ป.1", "แบบรูป"): (
         ("repeating_pattern_p1", "pattern_colours_p1", "pattern_next_term_p1"),
         ("number_pattern_p1", "pattern_nth_shape_p1", "count_down_tens_p1", "pattern_shape_count_p1"),
-        ("pattern_rule_p1", "pattern_word_p1", "pattern_growing_p1"),
+        ("pattern_rule_p1", "pattern_word_p1", "pattern_growing_p1", "block_rotation_p1"),
     ),
     (B, "ป.1", "โจทย์ปัญหา"): (
         ("add_word_problem", "sub_word_problem", "money_left_p1", "tens_bundles_word_p1"),
@@ -64,7 +64,9 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("missing_part_word_problem", "line_position_p1", "dozen_change_p1",
          "equal_amount_total_p1", "calendar_date_shift_p1", "compare_spending_totals_p1",
          "purchase_from_balance_p1", "budget_conclusion_p1", "multi_dozen_total_p1",
-         "story_matches_sentence_p1"),
+         "story_matches_sentence_p1", "ordered_sharing_p1", "grid_relative_position_p1",
+         "pair_absence_p1", "balance_ball_swaps_p1", "overlap_circle_sums_p1",
+         "knockout_matches_p1", "reverse_double_balance_p1"),
     ),
     (B, "ป.1", "การวัด"): (
         ("count_units_nonstandard", "compare_nonstandard_length", "choose_unit_p1"),
@@ -76,7 +78,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.1", "เรขาคณิต 2 มิติ"): (
         ("shape_2d_picture_p1", "shape_corners_p1", "shape_objects_p1", "shape_description_p1"),
         ("classify_2d_shape", "shape_total_sides_p1", "shape_sides_compare_p1", "shape_odd_one_p1"),
-        ("polygon_sides", "fold_cut_shape_p1"),
+        ("polygon_sides", "fold_cut_shape_p1", "seven_segment_removal_p1", "grid_path_check_p1"),
     ),
     (B, "ป.1", "เรขาคณิต 3 มิติ"): (
         ("classify_3d_solid", "solid_which_object_p1", "solid_face_shape_p1"),

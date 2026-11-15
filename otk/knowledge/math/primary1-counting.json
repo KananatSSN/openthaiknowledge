@@ -138,6 +138,30 @@
    "covered_by": [
     "math.expanded_form_judgement_p1"
    ]
+  },
+  {
+   "id": "math.primary1.digit-clues",
+   "kind": "procedure",
+   "title": "หาจำนวนตามเงื่อนไขเลขโดด",
+   "statement": "ตรวจผลต่างและผลรวมเลขโดดทุกหลัก หรือแจกแจงจำนวนสองหลักตามผลรวมแล้วเลือกมากหรือน้อยที่สุด",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "ตรวจผลต่างและผลรวมเลขโดดทุกหลัก หรือแจกแจงจำนวนสองหลักตามผลรวมแล้วเลือกมากหรือน้อยที่สุด",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 26
+    }
+   ],
+   "covered_by": [
+    "math.digit_clues_p1"
+   ]
   }
  ]
 }

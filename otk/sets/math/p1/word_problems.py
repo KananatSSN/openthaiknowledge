@@ -476,3 +476,118 @@ class StoryMatchesSentenceP1(ChoiceType):
                 right,
                 # Wrong operation; wrong change; both operation and change wrong.
                 [story(not adding, b), story(adding, b + 1), story(not adding, b + 1)])
+
+
+@question_type("math.ordered_sharing_p1", display_name={"th": "นับวิธีแบ่งของโดยผู้โตกว่าได้มากกว่า"}, level={"th": "ป.1"}, topic="โจทย์ปัญหา")
+class OrderedSharingP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 6",))
+
+    def compose(self, rng: Random):
+        total = rng.randint(7, 24)
+        ways = [(a, b, total-a-b) for a in range(1,total) for b in range(a+1,total)
+                if b < total-a-b]
+        answer = len(ways)
+        # Include a zero share, forget ordering, or miss a valid case.
+        zero = sum(1 for a in range(total) for b in range(a+1,total) if b < total-a-b)
+        pool = [zero, answer * 6, answer - 1, answer + 1, total]
+        wrongs = [str(x) for x in dict.fromkeys(pool) if x >= 0 and x != answer]
+        return (f"แบ่งขนม {total} ห่อทั้งหมดให้เด็ก 3 คนที่อายุไม่เท่ากัน ทุกคนต้องได้อย่างน้อย 1 ห่อ "
+                "คนที่โตกว่าต้องได้มากกว่าเสมอ แบ่งได้กี่แบบ", str(answer), wrongs)
+
+
+@question_type("math.grid_relative_position_p1", display_name={"th": "หาตำแหน่งในแถวจากจำนวนคนรอบตัว"}, level={"th": "ป.1"}, topic="โจทย์ปัญหา")
+class GridRelativePositionP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 7",))
+
+    def compose(self, rng: Random):
+        rows, cols = rng.choice((4,5)), rng.choice((4,5))
+        front_more, left_more = rng.choice((False,True)), rng.choice((False,True))
+        positions = [(r,c) for r in range(2,rows) for c in range(2,cols)
+                     if ((r-1 > rows-r) if front_more else (r-1 < rows-r))
+                     and ((c-1 > cols-c) if left_more else (c-1 < cols-c))]
+        row,col = positions[0]
+        answer = (row-1)*cols+col
+        # Reverse front/back, left/right, or both.
+        wrongs = [(rows-row)*cols+col, (row-1)*cols+cols-col+1,
+                  (rows-row)*cols+cols-col+1]
+        return (f"นักเรียนยืน {rows} แถว แถวละ {cols} คน ทุกคนหันหน้าไปด้านบนของผัง "
+                "ใส่หมายเลขจากซ้ายไปขวา เริ่มแถวหน้าสุด แล้วต่อแถวถัดไป "
+                "มีคนอยู่ทั้งสี่ด้านในแนวเดียวกัน "
+                f"คนด้านหน้ามี{'มาก' if front_more else 'น้อย'}กว่าด้านหลัง "
+                f"และคนด้านซ้ายมี{'มาก' if left_more else 'น้อย'}กว่าด้านขวา "
+                "นักเรียนคนนั้นมีหมายเลขใด", str(answer), [str(n) for n in wrongs])
+
+
+@question_type("math.pair_absence_p1", display_name={"th": "หาจำนวนคนมาเรียนเมื่อคู่ต่างกลุ่มไม่ครบ"}, level={"th": "ป.1"}, topic="โจทย์ปัญหา")
+class PairAbsenceP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 8",))
+
+    def compose(self, rng: Random):
+        each = rng.randint(5, 20)
+        absent = 2 * rng.randint(1,(each-1)//2)
+        answer = each-absent
+        return (f"ห้องเรียนมีนักเรียน {each*2} คน ชายหญิงเท่ากัน ปกติจับคู่ชายกับหญิงได้ครบ "
+                f"วันนี้ผู้หญิงมาครบแต่ผู้ชายบางคนขาด ทำให้ผู้หญิง {absent} คนต้องจับคู่กันเอง "
+                "วันนี้มีผู้ชายมาเรียนกี่คน", str(answer),
+                [str(each), str(each-absent//2), str(each*2-absent)])
+
+
+@question_type("math.balance_ball_swaps_p1", display_name={"th": "แลกลูกบอลให้น้ำหนักผลรวมเท่ากัน"}, level={"th": "ป.1"}, topic="โจทย์ปัญหา")
+class BalanceBallSwapsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 9",))
+
+    def compose(self, rng: Random):
+        n = rng.randint(5, 12)
+        low = rng.randint(0,n-2)
+        high = rng.choice(list(range(low+2,n+1,2)))
+        first = [1]*(n-low)+[2]*low
+        second = [1]*(n-high)+[2]*high
+        gap = sum(second)-sum(first)
+        answer = gap//2
+        return (f"ถุง ก มีลูกบอลหมายเลข 1 จำนวน {n-low} ลูก หมายเลข 2 จำนวน {low} ลูก "
+                f"ถุง ข มีลูกบอลหมายเลข 1 จำนวน {n-high} ลูก หมายเลข 2 จำนวน {high} ลูก "
+                "แต่ละครั้งแลกลูกบอลจากแต่ละถุงถุงละหนึ่งลูก ต้องแลกอย่างน้อยกี่ครั้งจึงมีผลรวมหมายเลขเท่ากัน",
+                str(answer), [str(x) for x in dict.fromkeys((gap, answer+1, 0, n)) if x != answer])
+
+
+@question_type("math.overlap_circle_sums_p1", display_name={"th": "หาผลรวมส่วนไม่ซ้อนของวงกลมสามวง"}, level={"th": "ป.1"}, topic="โจทย์ปัญหา")
+class OverlapCircleSumsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 10",))
+
+    def compose(self, rng: Random):
+        left, right = rng.sample(range(1, 6), 2)
+        total = left+right+rng.randint(1, 8)
+        a,b,c = total-left, total-left-right, total-right
+        answer = a+b+c
+        values = [3*total-left-right, 3*total, total-left-right, answer+left+right]
+        return (f"วงกลมสามวงเรียงซ้าย กลาง ขวา ซ้อนเฉพาะวงติดกัน "
+                f"ส่วนซ้ายอย่างเดียวใส่ A ส่วนซ้ายกับกลางใส่ {left} ส่วนกลางอย่างเดียวใส่ B "
+                f"ส่วนกลางกับขวาใส่ {right} ส่วนขวาอย่างเดียวใส่ C แต่ละวงรวมได้ {total} "
+                "A + B + C เท่ากับเท่าใด", str(answer),
+                [str(x) for x in dict.fromkeys(values) if x != answer])
+
+
+@question_type("math.knockout_matches_p1", display_name={"th": "นับการแข่งขันแพ้คัดออก"}, level={"th": "ป.1"}, topic="โจทย์ปัญหา")
+class KnockoutMatchesP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 21",))
+
+    def compose(self, rng: Random):
+        players = rng.randint(5,40)
+        answer = players-1
+        return (f"มีผู้เล่น {players} คน แข่งขันแบบแพ้คัดออกจนเหลือผู้ชนะคนเดียว "
+                "แต่ละคู่แข่งจนมีผู้แพ้หนึ่งคน การเสมอไม่นับเป็นอีกคู่ ต้องมีคู่แข่งขันทั้งหมดกี่คู่",
+                str(answer), [str(players),str(players//2),str(players+1)])
+
+
+@question_type("math.reverse_double_balance_p1", display_name={"th": "ย้อนหาเงินเดิมเมื่อเงินที่เหลือเพิ่มเป็นสองเท่า"}, level={"th": "ป.1"}, topic="โจทย์ปัญหา")
+class ReverseDoubleBalanceP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 29",))
+
+    def compose(self, rng: Random):
+        first, after_first = rng.randint(5,40), rng.randint(10,40)
+        last = rng.randint(5,2*after_first-1)
+        final = 2*after_first-last
+        answer = first+after_first
+        return (f"มีเงินจำนวนหนึ่ง ซื้อของเล่น {first} บาท พ่อให้เงินเพิ่มเท่ากับเงินที่เหลือขณะนั้น "
+                f"จากนั้นซื้อขนม {last} บาท สุดท้ายเหลือ {final} บาท เดิมมีเงินกี่บาท",
+                str(answer), [str(x) for x in dict.fromkeys((final+last+first,final+last,after_first,answer+last)) if x != answer])

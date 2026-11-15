@@ -794,6 +794,415 @@
     "math.word_problem_number_sentence",
     "math.compare_word_problem"
    ]
+  },
+  {
+   "id": "math.primary1.purchase-from-change-total",
+   "kind": "procedure",
+   "title": "รวมราคาหลายชิ้นจากเงินทอนชิ้นเดียว",
+   "statement": "ลบเงินทอนจากเงินจ่ายเพื่อหาราคาหนึ่งชิ้น แล้วคูณจำนวนชิ้นที่ต้องการ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "ลบเงินทอนจากเงินจ่ายเพื่อหาราคาหนึ่งชิ้น แล้วคูณจำนวนชิ้นที่ต้องการ",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 1
+    }
+   ],
+   "covered_by": [
+    "math.purchase_from_balance_p1",
+    "math.buy_several_p3"
+   ]
+  },
+  {
+   "id": "math.primary1.multiple-of-related-ages",
+   "kind": "procedure",
+   "title": "หาหลายเท่าของผลรวมอายุที่สัมพันธ์กัน",
+   "statement": "หาบุคคลที่อายุมากกว่าจากผลต่าง รวมอายุที่โจทย์ระบุ แล้วคูณจำนวนเท่า",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "หาบุคคลที่อายุมากกว่าจากผลต่าง รวมอายุที่โจทย์ระบุ แล้วคูณจำนวนเท่า",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.age_word_p1",
+    "math.multiplication_word_problem_p2"
+   ]
+  },
+  {
+   "id": "math.primary1.weekday-weekend-total",
+   "kind": "procedure",
+   "title": "รวมจำนวนรายวันที่มีสองอัตรา",
+   "statement": "คูณอัตราวันจันทร์ถึงศุกร์ด้วยห้าและอัตราเสาร์อาทิตย์ด้วยสอง แล้วรวมผลคูณ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "คูณอัตราวันจันทร์ถึงศุกร์ด้วยห้าและอัตราเสาร์อาทิตย์ด้วยสอง แล้วรวมผลคูณ",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 3
+    }
+   ],
+   "covered_by": [
+    "math.two_purchase_total_p2",
+    "math.daily_total_weeks_p2"
+   ]
+  },
+  {
+   "id": "math.primary1.ordered-sharing",
+   "kind": "procedure",
+   "title": "นับวิธีแบ่งของแบบจำนวนเพิ่มตามอายุ",
+   "statement": "แจกแจงจำนวนเต็มบวกสามจำนวนที่เรียงเพิ่มและรวมได้ทั้งหมด โดยห้ามนับสลับคนซ้ำ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "แจกแจงจำนวนเต็มบวกสามจำนวนที่เรียงเพิ่มและรวมได้ทั้งหมด โดยห้ามนับสลับคนซ้ำ",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.ordered_sharing_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.grid-relative-position",
+   "kind": "procedure",
+   "title": "หาหมายเลขในตารางจากตำแหน่งรอบตัว",
+   "statement": "เปรียบเทียบจำนวนคนด้านหน้ากับหลังและซ้ายกับขวา โดยทุกด้านต้องมีคน เพื่อหาแถวคอลัมน์แล้วอ่านหมายเลข",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "เปรียบเทียบจำนวนคนด้านหน้ากับหลังและซ้ายกับขวา โดยทุกด้านต้องมีคน เพื่อหาแถวคอลัมน์แล้วอ่านหมายเลข",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 7
+    }
+   ],
+   "covered_by": [
+    "math.grid_relative_position_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.pair-absence",
+   "kind": "procedure",
+   "title": "หาจำนวนสมาชิกกลุ่มที่มาไม่ครบ",
+   "statement": "กลุ่มสองกลุ่มเริ่มเท่ากัน เมื่อกลุ่มหนึ่งมาครบ จำนวนที่ไม่มีคู่ต่างกลุ่มเท่ากับจำนวนที่ขาดของอีกกลุ่ม",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "กลุ่มสองกลุ่มเริ่มเท่ากัน เมื่อกลุ่มหนึ่งมาครบ จำนวนที่ไม่มีคู่ต่างกลุ่มเท่ากับจำนวนที่ขาดของอีกกลุ่ม",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.pair_absence_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.balance-ball-swaps",
+   "kind": "procedure",
+   "title": "หาจำนวนแลกขั้นต่ำให้ผลรวมสองถุงเท่ากัน",
+   "statement": "แต่ละครั้งแลกหนึ่งลูกจากแต่ละถุง ตรวจการเปลี่ยนผลรวมทั้งสองถุงพร้อมกันและหาจำนวนครั้งต่ำสุด",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "แต่ละครั้งแลกหนึ่งลูกจากแต่ละถุง ตรวจการเปลี่ยนผลรวมทั้งสองถุงพร้อมกันและหาจำนวนครั้งต่ำสุด",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.balance_ball_swaps_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.overlap-circle-sums",
+   "kind": "procedure",
+   "title": "รวมค่าของช่องไม่ซ้อนจากวงกลมสามวง",
+   "statement": "ลบค่าช่องซ้อนจากผลรวมแต่ละวงให้ครบก่อนรวมค่าของสามช่องที่ไม่ซ้อน",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "ลบค่าช่องซ้อนจากผลรวมแต่ละวงให้ครบก่อนรวมค่าของสามช่องที่ไม่ซ้อน",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.overlap_circle_sums_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.pack-price-and-change",
+   "kind": "procedure",
+   "title": "หาราคาหลายแพ็กและเงินทอน",
+   "statement": "หาจำนวนแพ็กจากจำนวนชิ้นที่ซื้อ คูณราคาแพ็กแล้วลบออกจากเงินที่จ่าย",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "หาจำนวนแพ็กจากจำนวนชิ้นที่ซื้อ คูณราคาแพ็กแล้วลบออกจากเงินที่จ่าย",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.pack_price_irrelevant_p2",
+    "math.money_change_left"
+   ]
+  },
+  {
+   "id": "math.primary1.daily-combined-saving",
+   "kind": "procedure",
+   "title": "หาจำนวนวันที่ออมจากสองเงินสมทบต่อวัน",
+   "statement": "รวมเงินออมของตนและเงินสมทบต่อวันก่อนหารยอดรวม โดยนับเฉพาะวันที่ออม",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "รวมเงินออมของตนและเงินสมทบต่อวันก่อนหารยอดรวม โดยนับเฉพาะวันที่ออม",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.add_word_problem",
+    "math.division_word_problem_p2"
+   ]
+  },
+  {
+   "id": "math.primary1.change-removal-target",
+   "kind": "procedure",
+   "title": "เปลี่ยนจำนวนที่หยิบออกให้ได้ยอดคงเหลือใหม่",
+   "statement": "บวกจำนวนที่หยิบออกเดิมกับยอดคงเหลือเดิมหาเงินหรือของเริ่มต้น แล้วลบยอดคงเหลือที่ต้องการ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "บวกจำนวนที่หยิบออกเดิมกับยอดคงเหลือเดิมหาเงินหรือของเริ่มต้น แล้วลบยอดคงเหลือที่ต้องการ",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.mixed_start_amount_p1",
+    "math.missing_part_word_problem"
+   ]
+  },
+  {
+   "id": "math.primary1.out-and-back-shorter",
+   "kind": "procedure",
+   "title": "รวมเวลาไปกลับเมื่อขากลับสั้นกว่า",
+   "statement": "หาขากลับด้วยการลบส่วนต่างจากขาไป แล้วรวมเวลาสองขา",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "หาขากลับด้วยการลบส่วนต่างจากขาไป แล้วรวมเวลาสองขา",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.add_sub_mixed_word_problem",
+    "math.two_step_word_problem"
+   ]
+  },
+  {
+   "id": "math.primary1.inverse-add-sub-machine",
+   "kind": "procedure",
+   "title": "ย้อนหาค่าเริ่มต้นจากเครื่องบวกลบ",
+   "statement": "ย้อนจากผลลัพธ์ด้วยการดำเนินการตรงข้ามตามลำดับย้อนกลับ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "ย้อนจากผลลัพธ์ด้วยการดำเนินการตรงข้ามตามลำดับย้อนกลับ",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 16
+    }
+   ],
+   "covered_by": [
+    "math.mixed_start_amount_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.knockout-matches",
+   "kind": "procedure",
+   "title": "นับคู่แข่งขันจนเหลือผู้ชนะหนึ่งคน",
+   "statement": "แต่ละคู่คัดผู้เล่นออกหนึ่งคน ไม่นับเกมเสมอเป็นคู่ใหม่ จึงนับจำนวนที่ต้องคัดออกจนเหลือหนึ่ง",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "แต่ละคู่คัดผู้เล่นออกหนึ่งคน ไม่นับเกมเสมอเป็นคู่ใหม่ จึงนับจำนวนที่ต้องคัดออกจนเหลือหนึ่ง",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 21
+    }
+   ],
+   "covered_by": [
+    "math.knockout_matches_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.heads-and-legs-total",
+   "kind": "procedure",
+   "title": "รวมจำนวนหัวและขาของสัตว์สองชนิด",
+   "statement": "คูณจำนวนสัตว์แต่ละชนิดด้วยจำนวนหัวและขาต่อตัว แล้วรวมทุกชนิด",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "คูณจำนวนสัตว์แต่ละชนิดด้วยจำนวนหัวและขาต่อตัว แล้วรวมทุกชนิด",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 23
+    }
+   ],
+   "covered_by": [
+    "math.multiplication_word_problem_p2",
+    "math.add_word_problem"
+   ]
+  },
+  {
+   "id": "math.primary1.forward-add-sub-chain",
+   "kind": "procedure",
+   "title": "คำนวณลำดับบวกและลบตามลูกศร",
+   "statement": "เริ่มจากจำนวนต้นทางแล้วบวกหรือลบแต่ละขั้นตามลำดับ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "เริ่มจากจำนวนต้นทางแล้วบวกหรือลบแต่ละขั้นตามลำดับ",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 24
+    }
+   ],
+   "covered_by": [
+    "math.add_sub_mixed"
+   ]
+  },
+  {
+   "id": "math.primary1.whole-pack-price",
+   "kind": "procedure",
+   "title": "หาราคาตามจำนวนแพ็กเต็ม",
+   "statement": "หารจำนวนชิ้นที่ต้องการด้วยจำนวนชิ้นต่อแพ็กแล้วคูณราคาแพ็ก",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "หารจำนวนชิ้นที่ต้องการด้วยจำนวนชิ้นต่อแพ็กแล้วคูณราคาแพ็ก",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 25
+    }
+   ],
+   "covered_by": [
+    "math.pack_price_irrelevant_p2"
+   ]
+  },
+  {
+   "id": "math.primary1.related-amount-total",
+   "kind": "procedure",
+   "title": "รวมสองจำนวนเมื่อจำนวนหนึ่งน้อยกว่าอีกจำนวน",
+   "statement": "ลบส่วนต่างจากจำนวนที่ทราบเพื่อหาอีกจำนวน แล้วรวมสองจำนวน",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "ลบส่วนต่างจากจำนวนที่ทราบเพื่อหาอีกจำนวน แล้วรวมสองจำนวน",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 27
+    }
+   ],
+   "covered_by": [
+    "math.add_sub_mixed_word_problem"
+   ]
+  },
+  {
+   "id": "math.primary1.supply-shortfall",
+   "kind": "procedure",
+   "title": "หาจำนวนของที่ขาดเพื่อแจกครบ",
+   "statement": "คูณจำนวนผู้รับด้วยจำนวนต่อคน แล้วลบของที่มีอยู่",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "คูณจำนวนผู้รับด้วยจำนวนต่อคน แล้วลบของที่มีอยู่",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 28
+    }
+   ],
+   "covered_by": [
+    "math.multiplication_word_problem_p2",
+    "math.more_needed_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.reverse-double-balance",
+   "kind": "procedure",
+   "title": "ย้อนหาเงินก่อนเพิ่มเท่าตัว",
+   "statement": "บวกเงินที่ใช้ครั้งสุดท้ายกลับก่อน หารสองเพื่อย้อนการได้เงินเพิ่มเท่าที่เหลือ แล้วบวกเงินที่ใช้ครั้งแรก",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "บวกเงินที่ใช้ครั้งสุดท้ายกลับก่อน หารสองเพื่อย้อนการได้เงินเพิ่มเท่าที่เหลือ แล้วบวกเงินที่ใช้ครั้งแรก",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 29
+    }
+   ],
+   "covered_by": [
+    "math.reverse_double_balance_p1"
+   ]
   }
  ]
 }

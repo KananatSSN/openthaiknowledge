@@ -169,3 +169,23 @@ class PatternShapeCountP1(WordProblem):
         # The other shape's count; all the shapes; half rounded the other way.
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(total - right, total, right + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.block_rotation_p1", display_name={"th": "ย้ายบล็อกด้านหน้าไปท้ายจนกลับเหมือนเดิม"}, level={"th": "ป.1"}, topic="แบบรูป")
+class BlockRotationP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 5",))
+
+    def compose(self, rng: Random):
+        n = rng.randint(4, 10)
+        step = rng.randint(1, n - 1)
+        order = list(range(n))
+        moved = order[step:] + order[:step]
+        turns = 1
+        while moved != order:
+            moved = moved[step:] + moved[:step]
+            turns += 1
+        wrongs = [n, step, turns - 1, turns + 1, n + step, n - step]
+        wrongs = [str(x) for x in dict.fromkeys(wrongs) if x > 0 and x != turns]
+        return (f"บล็อก {n} อันมีชื่อแตกต่างกันทั้งหมด เรียงเป็นแถว แต่ละครั้งย้าย {step} อันแรกไปต่อท้าย "
+                "โดยคงลำดับในกลุ่มเดิม ต้องย้ายอย่างน้อยกี่ครั้งจึงกลับเป็นลำดับเริ่มต้น (ไม่นับครั้งที่ยังไม่ย้าย)",
+                str(turns), wrongs)

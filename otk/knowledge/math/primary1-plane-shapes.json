@@ -23,6 +23,109 @@
     "math.classify_2d_shape",
     "math.shape_corners_p1"
    ]
+  },
+  {
+   "id": "math.primary1.constant-radius-region",
+   "kind": "procedure",
+   "title": "จำแนกบริเวณที่เคลื่อนรอบจุดยึดได้",
+   "statement": "เมื่อไม่มีสิ่งกีดขวาง จุดที่อยู่ไม่เกินระยะเชือกจากจุดยึดเป็นบริเวณวงกลม",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "เมื่อไม่มีสิ่งกีดขวาง จุดที่อยู่ไม่เกินระยะเชือกจากจุดยึดเป็นบริเวณวงกลม",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.classify_2d_shape"
+   ]
+  },
+  {
+   "id": "math.primary1.equal-cell-count-comparison",
+   "kind": "procedure",
+   "title": "เปรียบเทียบจำนวนช่องที่ระบายสี",
+   "statement": "แบ่งรูปเป็นช่องเท่ากัน นับแต่ละช่องครั้งเดียว แล้วเลือกจำนวนที่ต่างจากจำนวนอ้างอิง",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "แบ่งรูปเป็นช่องเท่ากัน นับแต่ละช่องครั้งเดียว แล้วเลือกจำนวนที่ต่างจากจำนวนอ้างอิง",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 13
+    }
+   ],
+   "covered_by": [
+    "math.count_units_nonstandard",
+    "math.count_objects_20_p1",
+    "math.compare_groups_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.seven-segment-removal",
+   "kind": "procedure",
+   "title": "ตรวจการหยิบก้านจากเลขแปด",
+   "statement": "เมื่อห้ามย้ายก้านที่เหลือ ให้นับก้านที่หายไปจากเจ็ดส่วนเพื่อหาตัวเลขที่สร้างได้ตามจำนวนที่หยิบ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "เมื่อห้ามย้ายก้านที่เหลือ ให้นับก้านที่หายไปจากเจ็ดส่วนเพื่อหาตัวเลขที่สร้างได้ตามจำนวนที่หยิบ",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.seven_segment_removal_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.grid-path-check",
+   "kind": "procedure",
+   "title": "ตรวจเส้นทางลูกศรไปยังจุดปลาย",
+   "statement": "นับการเดินแนวขวาและแนวขึ้นแยกกันแล้วเทียบระยะทั้งสองแนวกับจุดปลาย",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "นับการเดินแนวขวาและแนวขึ้นแยกกันแล้วเทียบระยะทั้งสองแนวกับจุดปลาย",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.grid_path_check_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.equal-cell-value",
+   "kind": "procedure",
+   "title": "รวมค่าคงที่ของช่องเท่ากัน",
+   "statement": "ระบุกติกาว่าแต่ละช่องมีค่าเท่ากัน แล้วนับช่องและคูณค่าต่อช่อง ไม่รวมขอบร่วมเป็นก้านเดียว",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "ระบุกติกาว่าแต่ละช่องมีค่าเท่ากัน แล้วนับช่องและคูณค่าต่อช่อง ไม่รวมขอบร่วมเป็นก้านเดียว",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 22
+    }
+   ],
+   "covered_by": [
+    "math.count_units_nonstandard",
+    "math.multiplication_word_problem_p2"
+   ]
   }
  ]
 }

@@ -8,6 +8,7 @@ Sets moved here from: math, math_p1, math_pictures.
 
 from __future__ import annotations
 
+from itertools import permutations
 from random import Random
 
 from otk.core.content import math as content_math
@@ -261,3 +262,19 @@ class FalseSumComparisonP1(ChoiceType):
         # every distractor is a separately computed true statement.
         return ("ข้อใดใช้เครื่องหมายเปรียบเทียบไม่ถูกต้อง", statements[false_index],
                 [statement for i, statement in enumerate(statements) if i != false_index])
+
+
+@question_type("math.race_constraints_p1", display_name={"th": "เลือกอันดับที่สอดคล้องกับเงื่อนไขการแข่งขัน"}, level={"th": "ป.1"}, topic="การเปรียบเทียบ")
+class RaceConstraintsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 17",))
+
+    def compose(self, rng: Random):
+        a,b,c,d = rng.sample(list("ABCD"),4)
+        orders = list(permutations((a,b,c,d)))
+        def fits(order):
+            return order[0] != a and order.index(b) < order.index(c) and order.index(a) < order.index(d)
+        valid = [o for o in orders if fits(o)]
+        invalid = [o for o in orders if not fits(o)]
+        return (f"A B C D แข่งขัน ไม่มีอันดับร่วม {a} ไม่ได้อันดับแรก {b} เข้าเส้นชัยก่อน {c} "
+                f"และ {d} เข้าเส้นชัยหลัง {a} ข้อใดเรียงอันดับหนึ่งถึงสี่ได้สอดคล้องกับทุกเงื่อนไข",
+                " → ".join(rng.choice(valid)), [" → ".join(o) for o in rng.sample(invalid,3)])

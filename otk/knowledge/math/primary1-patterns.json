@@ -1,0 +1,49 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "แบบรูป",
+ "level": "ป.1",
+ "units": [
+  {
+   "id": "math.primary1.block-rotation",
+   "kind": "procedure",
+   "title": "นับรอบย้ายบล็อกหน้าสุดไปท้าย",
+   "statement": "จำลองการย้ายโดยรักษาลำดับภายในกลุ่มจนกลับเหมือนเดิม แล้วนับครั้งที่น้อยที่สุด",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "จำลองการย้ายโดยรักษาลำดับภายในกลุ่มจนกลับเหมือนเดิม แล้วนับครั้งที่น้อยที่สุด",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 5
+    }
+   ],
+   "covered_by": [
+    "math.block_rotation_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.combined-difference-patterns",
+   "kind": "procedure",
+   "title": "รวมพจน์ถัดไปของแบบรูปหลายแถว",
+   "statement": "หาผลต่างของแต่ละแถว แยกผลต่างคงที่และผลต่างที่เพิ่มคงที่ก่อนหาพจน์ถัดไปแล้วรวมคำตอบ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "หาผลต่างของแต่ละแถว แยกผลต่างคงที่และผลต่างที่เพิ่มคงที่ก่อนหาพจน์ถัดไปแล้วรวมคำตอบ",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 30
+    }
+   ],
+   "covered_by": [
+    "math.number_pattern_p1",
+    "math.sequence_patterns_m6",
+    "math.add_three_numbers_p1"
+   ]
+  }
+ ]
+}
