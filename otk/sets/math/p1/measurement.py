@@ -273,3 +273,21 @@ class ChooseUnitP1(ConceptBankType):
         Concept("ชั่งน้ำหนักของตัวเราควรใช้หน่วยใด", "กิโลกรัม", ("ขีด", "เมตร", "เซนติเมตร")),
         Concept("วัดความยาวของสนามฟุตบอลควรใช้หน่วยใด", "เมตร", ("เซนติเมตร", "ขีด", "กิโลกรัม")),
     ]
+
+
+@question_type("math.length_comparison_statement_p1", display_name={"th": "เลือกข้อความเปรียบเทียบความยาวที่ถูกต้อง"},
+               level=LEVEL, topic="การวัด")
+class LengthComparisonStatementP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4017-1-2567-2-3.pdf, ตอนที่ 1 ข้อ 19",))
+
+    def compose(self, rng: Random):
+        a, b = rng.sample(range(5, 50), 2)
+        longer, shorter = ("ริบบิ้นสีแดง", "ริบบิ้นสีฟ้า") if a > b else ("ริบบิ้นสีฟ้า", "ริบบิ้นสีแดง")
+        gap = abs(a - b)
+        return (f"ริบบิ้นสีแดงยาว {a} เซนติเมตร ริบบิ้นสีฟ้ายาว {b} เซนติเมตร ข้อใดถูกต้อง",
+                f"{longer}ยาวกว่า{shorter} {gap} เซนติเมตร",
+                # Reverse the subjects; sum instead of difference; mis-subtract one.
+                [f"{shorter}ยาวกว่า{longer} {gap} เซนติเมตร",
+                 f"{longer}ยาวกว่า{shorter} {a + b} เซนติเมตร",
+                 f"{longer}ยาวกว่า{shorter} {gap + 1} เซนติเมตร"])

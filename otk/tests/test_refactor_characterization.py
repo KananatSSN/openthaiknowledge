@@ -216,4 +216,5 @@ def test_sheet_publication_manifest_is_frozen():
     # 48 more ม.1 sets so every ม.1 unit has at least ten.
     # 55 more ม.1 sets so every ม.1 unit has at least fifteen.
     # Nine Primary 2 sets from the first text-layer school-paper batch.
-    assert len(REGISTRY) == 4955
+    # Seven Primary 1 applications from the next text-layer batch.
+    assert len(REGISTRY) == 4962

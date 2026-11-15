@@ -17,7 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem, _add_story, _no_carry_sum, _sub_story
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem, _add_story, _no_carry_sum, _sub_story
 from otk.sets._support.math_p1 import LEVEL
 
 PROVENANCE = Provenance("original")
@@ -311,3 +311,127 @@ class LinePositionP1(WordProblem):
         # Forgetting the child counted; counting them twice; only those behind.
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(right - 1, right + 1, behind, place, answer=right, lo=1))
+
+
+@question_type("math.dozen_change_p1", display_name={"th": "โจทย์ปัญหาหนึ่งโหล: เพิ่มหรือใช้ไป"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class DozenChangeP1(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3999-1-2564-1-3.pdf, ตอนที่ 1 ข้อ 2, 15",))
+
+    def expr(self, rng: Random):
+        change = rng.randint(1, 11)
+        what, unit = rng.choice((("ดินสอ", "แท่ง"), ("ปากกา", "ด้าม"), ("ไข่ไก่", "ฟอง")))
+        adding = rng.choice((True, False))
+        right = 12 + change if adding else 12 - change
+        action = f"ได้มาเพิ่ม {change} {unit}" if adding else f"ใช้ไป {change} {unit}"
+        ask = "มีทั้งหมด" if adding else "เหลือ"
+        wrong_operation = 12 - change if adding else 12 + change
+        return MathDraw("", str(right),
+                        prompt=f"มี{what}หนึ่งโหล {action} {ask}กี่{unit}",
+                        # A dozen treated as ten; reverse operation; report only the change.
+                        distractors=_story.keep(10 + change if adding else abs(10 - change),
+                                                wrong_operation, change, 12, right + 1, answer=right, lo=0),
+                        hint=rf"12 {'+' if adding else '-'} {change} = {right}")
+
+
+@question_type("math.equal_amount_total_p1", display_name={"th": "รวมจำนวนสองกลุ่มที่เท่ากัน"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class EqualAmountTotalP1(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3999-1-2564-1-3.pdf, ตอนที่ 1 ข้อ 4",
+        "openthaiknowledge-bank/mathematics/level/primary-1/4017-1-2567-2-3.pdf, ตอนที่ 1 ข้อ 7",
+        "openthaiknowledge-bank/mathematics/level/primary-1/4020-1-2567-2-3.pdf, ตอนที่ 1 ข้อ 8"))
+
+    def expr(self, rng: Random):
+        amount = rng.randint(3, 49)
+        right = amount + amount
+        if rng.choice((True, False)):
+            prompt = f"กล่อง ก มีลูกแก้ว {amount} ลูก กล่อง ข มีลูกแก้วเท่ากับกล่อง ก รวมทั้งสองกล่องมีลูกแก้วกี่ลูก"
+        else:
+            prompt = f"สมุดราคาเล่มละ {amount} บาท ซื้อสมุด 2 เล่ม ต้องจ่ายเงินกี่บาท"
+        return MathDraw("", str(right), prompt=prompt,
+                        # One group only; add group count; count a third group.
+                        distractors=[str(amount), str(amount + 2), str(3 * amount)],
+                        hint=rf"{amount} + {amount} = {right}")
+
+
+@question_type("math.calendar_date_shift_p1", display_name={"th": "หาวันที่จากจำนวนวันที่ผ่านไป"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class CalendarDateShiftP1(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4020-1-2567-2-3.pdf, ตอนที่ 1 ข้อ 9",))
+
+    def expr(self, rng: Random):
+        day, elapsed = rng.randint(3, 20), rng.randint(1, 7)
+        later = day + elapsed
+        if rng.choice((True, False)):
+            right = later
+            prompt = f"เมื่อ {elapsed} วันที่แล้วเป็นวันที่ {day} วันนี้เป็นวันที่เท่าไร (ยังอยู่ในเดือนเดียวกัน)"
+            wrong = abs(day - elapsed)
+        else:
+            right = day
+            prompt = f"อีก {elapsed} วันจะเป็นวันที่ {later} วันนี้เป็นวันที่เท่าไร (ยังอยู่ในเดือนเดียวกัน)"
+            wrong = later + elapsed
+        return MathDraw("", str(right), prompt=prompt,
+                        # Reverse time direction; count the starting date as a passed day.
+                        distractors=_story.keep(wrong, right - 1, right + 1, elapsed, answer=right, lo=1))
+
+
+@question_type("math.compare_spending_totals_p1", display_name={"th": "เปรียบเทียบค่าใช้จ่ายรวมของแต่ละคน"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class CompareSpendingTotalsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4020-1-2567-2-3.pdf, ตอนที่ 1 ข้อ 10",))
+
+    def compose(self, rng: Random):
+        totals = rng.sample(range(5, 20), 4)
+        people = ("ก", "ข", "ค", "ง")
+        rows = []
+        for name, total in zip(people, totals):
+            first = rng.randint(1, total - 1)
+            rows.append(f"คน {name} ซื้อขนม {first} บาท และซื้อน้ำ {total - first} บาท")
+        least = people[totals.index(min(totals))]
+        return ("\n".join(rows) + "\nใครจ่ายเงินรวมสองอย่างน้อยที่สุด",
+                f"คน {least}",
+                # Every other person has a strictly larger combined spend;
+                # choosing by just one item's price can select a wrong person.
+                [f"คน {name}" for name in people if name != least])
+
+
+@question_type("math.purchase_from_balance_p1", display_name={"th": "หาของที่ซื้อจากเงินที่เหลือ"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class PurchaseFromBalanceP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4020-1-2567-2-3.pdf, ตอนที่ 1 ข้อ 20",))
+
+    def compose(self, rng: Random):
+        goods = rng.sample(("ดินสอ", "สมุด", "ยางลบ", "ไม้บรรทัด", "กาว", "สีเทียน"), 4)
+        prices = rng.sample(range(2, 20), 4)
+        have = rng.randint(max(prices) + 1, 50)
+        chosen = rng.randrange(4)
+        left = have - prices[chosen]
+        listed = " ".join(f"{g}ราคา {price} บาท" for g, price in zip(goods, prices))
+        return (f"มีเงิน {have} บาท {listed} ซื้อของเพียง 1 อย่างแล้วเหลือเงิน {left} บาท ซื้ออะไร",
+                goods[chosen], [g for i, g in enumerate(goods) if i != chosen])
+
+
+@question_type("math.budget_conclusion_p1", display_name={"th": "สรุปว่าเงินพอ ขาด หรือเหลือ"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class BudgetConclusionP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4017-1-2567-2-3.pdf, ตอนที่ 1 ข้อ 20",))
+
+    def compose(self, rng: Random):
+        price = rng.randint(10, 79)
+        gap = rng.randint(1, 9)
+        kind = rng.randrange(3)
+        have = price + (-gap, 0, gap)[kind]
+        labels = [f"เงินไม่พอ ต้องหาเพิ่ม {gap} บาท", "เงินพอดี ซื้อแล้วไม่เหลือเงิน",
+                  f"เงินพอ ซื้อแล้วเหลือ {gap} บาท"]
+        right = labels[kind]
+        # Reverse shortage/surplus; assume exact payment; be off by one baht.
+        wrong_gap = (f"เงินไม่พอ ต้องหาเพิ่ม {gap + 1} บาท" if kind == 0
+                     else f"เงินพอ ซื้อแล้วเหลือ {gap + 1} บาท")
+        return (f"มีเงิน {have} บาท ต้องการซื้อสมุดราคา {price} บาท ข้อใดสรุปได้ถูกต้อง",
+                right, [label for label in labels if label != right] + [wrong_gap])

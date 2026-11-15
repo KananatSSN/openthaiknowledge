@@ -1,0 +1,447 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "โจทย์ปัญหา",
+ "level": "ป.1",
+ "units": [
+  {
+   "id": "math.primary1.combine",
+   "kind": "procedure",
+   "title": "รวมจำนวนหรือเพิ่มจำนวน",
+   "statement": "บวกจำนวนที่นำมารวมกันหรือจำนวนที่เพิ่มมา เขียนประโยคสัญลักษณ์และวิธีทำเมื่อโจทย์ต้องการ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "บวกจำนวนที่นำมารวมกันหรือจำนวนที่เพิ่มมา เขียนประโยคสัญลักษณ์และวิธีทำเมื่อโจทย์ต้องการ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 21
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.add_word_problem",
+    "math.word_problem_number_sentence"
+   ]
+  },
+  {
+   "id": "math.primary1.dozen-change",
+   "kind": "procedure",
+   "title": "ใช้จำนวนหนึ่งโหลก่อนเพิ่มหรือลด",
+   "statement": "หนึ่งโหลมี 12 ชิ้น แทนจำนวนด้วย 12 ก่อนบวกจำนวนที่ได้เพิ่มหรือลบจำนวนที่ใช้ไป",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หนึ่งโหลมี 12 ชิ้น แทนจำนวนด้วย 12 ก่อนบวกจำนวนที่ได้เพิ่มหรือลบจำนวนที่ใช้ไป",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.dozen_change_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.equal-total",
+   "kind": "procedure",
+   "title": "รวมสองกลุ่มที่มีจำนวนเท่ากัน",
+   "statement": "เมื่อสองกลุ่มมีเท่ากัน ใช้จำนวนที่ทราบแทนอีกกลุ่มแล้วบวกสองจำนวนนั้น",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เมื่อสองกลุ่มมีเท่ากัน ใช้จำนวนที่ทราบแทนอีกกลุ่มแล้วบวกสองจำนวนนั้น",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.equal_amount_total_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.comparison-amount",
+   "kind": "procedure",
+   "title": "หาจำนวนจากความสัมพันธ์มากกว่าน้อยกว่า",
+   "statement": "ระบุจำนวนมากและจำนวนน้อยก่อน ใช้ จำนวนมาก = จำนวนน้อย + ส่วนต่าง หาจำนวนที่โจทย์ถาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ระบุจำนวนมากและจำนวนน้อยก่อน ใช้ จำนวนมาก = จำนวนน้อย + ส่วนต่าง หาจำนวนที่โจทย์ถาม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 16
+    }
+   ],
+   "covered_by": [
+    "math.compare_word_problem",
+    "math.age_word_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.remaining",
+   "kind": "procedure",
+   "title": "จำนวนที่เหลือหลังใช้ไป",
+   "statement": "ลบจำนวนที่ใช้ แจก ขาย หรือหายไปออกจากจำนวนเริ่มต้น",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบจำนวนที่ใช้ แจก ขาย หรือหายไปออกจากจำนวนเริ่มต้น",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.sub_word_problem"
+   ]
+  },
+  {
+   "id": "math.primary1.missing-part",
+   "kind": "procedure",
+   "title": "หาจำนวนเริ่มต้นหรือส่วนที่ไม่ทราบ",
+   "statement": "เขียนความสัมพันธ์ระหว่างจำนวนทั้งหมดกับส่วนต่าง ๆ แล้วใช้การบวกหรือลบหาจำนวนที่ขาด พร้อมเขียนประโยคสัญลักษณ์เมื่อโจทย์ต้องการ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เขียนความสัมพันธ์ระหว่างจำนวนทั้งหมดกับส่วนต่าง ๆ แล้วใช้การบวกหรือลบหาจำนวนที่ขาด พร้อมเขียนประโยคสัญลักษณ์เมื่อโจทย์ต้องการ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 21
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.missing_part_word_problem",
+    "math.word_problem_number_sentence"
+   ]
+  },
+  {
+   "id": "math.primary1.difference",
+   "kind": "procedure",
+   "title": "หาส่วนต่างของสองจำนวน",
+   "statement": "ลบจำนวนน้อยออกจากจำนวนมากเพื่อหาผลต่างหรือจำนวนที่ยังต้องเพิ่ม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบจำนวนน้อยออกจากจำนวนมากเพื่อหาผลต่างหรือจำนวนที่ยังต้องเพิ่ม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3999-1-2564-1-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.compare_word_problem"
+   ]
+  },
+  {
+   "id": "math.primary1.more-needed",
+   "kind": "procedure",
+   "title": "หาเงินที่ยังขาด",
+   "statement": "ลบเงินที่มีออกจากราคาของที่ต้องการซื้อ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบเงินที่มีออกจากราคาของที่ต้องการซื้อ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.more_needed_p1",
+    "math.missing_part_word_problem"
+   ]
+  },
+  {
+   "id": "math.primary1.purchase-balance",
+   "kind": "procedure",
+   "title": "หาสินค้าจากเงินที่เหลือ",
+   "statement": "ลบเงินที่เหลือออกจากเงินเริ่มต้น แล้วเทียบกับราคาสินค้าเพื่อหาของที่ซื้อ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบเงินที่เหลือออกจากเงินเริ่มต้น แล้วเทียบกับราคาสินค้าเพื่อหาของที่ซื้อ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.purchase_from_balance_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.budget-conclusion",
+   "kind": "procedure",
+   "title": "สรุปเงินพอ ขาด หรือเหลือ",
+   "statement": "เปรียบเทียบเงินที่มีกับราคา แล้วเลือกข้อความที่บอกว่าเงินพอดี ขาด หรือเหลือ พร้อมจำนวนเงินที่ถูกต้อง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปรียบเทียบเงินที่มีกับราคา แล้วเลือกข้อความที่บอกว่าเงินพอดี ขาด หรือเหลือ พร้อมจำนวนเงินที่ถูกต้อง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4017-1-2567-2-3.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.budget_conclusion_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.spending-comparison",
+   "kind": "procedure",
+   "title": "เปรียบเทียบค่าใช้จ่ายรวม",
+   "statement": "บวกราคาของสองอย่างที่แต่ละคนซื้อก่อน แล้วเปรียบเทียบผลรวมของทุกคน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "บวกราคาของสองอย่างที่แต่ละคนซื้อก่อน แล้วเปรียบเทียบผลรวมของทุกคน",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.compare_spending_totals_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.calendar-date",
+   "kind": "procedure",
+   "title": "นับวันที่ภายในเดือนเดียวกัน",
+   "statement": "หาว่าต้องนับวันไปข้างหน้าหรือย้อนกลับ แล้วบวกหรือลบจำนวนวันที่ผ่านไป โดยไม่รวมวันเริ่มต้นเป็นวันที่ผ่านไป",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาว่าต้องนับวันไปข้างหน้าหรือย้อนกลับ แล้วบวกหรือลบจำนวนวันที่ผ่านไป โดยไม่รวมวันเริ่มต้นเป็นวันที่ผ่านไป",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.calendar_date_shift_p1"
+   ]
+  }
+ ]
+}

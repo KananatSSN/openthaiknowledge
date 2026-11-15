@@ -57,12 +57,15 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.1", "โจทย์ปัญหา"): (
         ("add_word_problem", "sub_word_problem", "money_left_p1", "tens_bundles_word_p1"),
         ("word_problem_number_sentence", "compare_word_problem", "more_needed_p1", "age_word_p1"),
-        ("missing_part_word_problem", "line_position_p1"),
+        ("missing_part_word_problem", "line_position_p1", "dozen_change_p1",
+         "equal_amount_total_p1", "calendar_date_shift_p1", "compare_spending_totals_p1",
+         "purchase_from_balance_p1", "budget_conclusion_p1"),
     ),
     (B, "ป.1", "การวัด"): (
         ("count_units_nonstandard", "compare_nonstandard_length", "choose_unit_p1"),
         ("ruler_picture_p1", "compare_nonstandard_weight", "length_difference_p1", "join_lengths_p1"),
-        ("length_cm_m_p1", "weight_kg_khit_p1", "weight_compare_kg_p1"),
+        ("length_cm_m_p1", "weight_kg_khit_p1", "weight_compare_kg_p1",
+         "length_comparison_statement_p1"),
     ),
     (B, "ป.1", "เรขาคณิต 2 มิติ"): (
         ("shape_2d_picture_p1", "shape_corners_p1", "shape_objects_p1", "shape_description_p1"),
