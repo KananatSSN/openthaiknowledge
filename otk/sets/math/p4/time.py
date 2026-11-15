@@ -243,3 +243,77 @@ class LeapYearP4(ConceptBankType):
         Concept("ปีปกติมีกี่สัปดาห์กับอีกกี่วัน", "52 สัปดาห์ กับอีก 1 วัน",
                 ("52 สัปดาห์พอดี", "50 สัปดาห์ กับอีก 15 วัน", "53 สัปดาห์พอดี")),
     ]
+
+
+@question_type("math.age_year_month_difference_p4", display_name={"th": "หาผลต่างอายุเป็นปีและเดือน"},
+               level=LEVEL, topic="เวลา")
+class AgeYearMonthDifferenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 2, 10",))
+
+    def compose(self, rng: Random):
+        ay, am = rng.randint(20, 60), rng.randint(0, 11)
+        by, bm = rng.randint(1, ay - 2), rng.randint(0, 11)
+        a, b = 12 * ay + am, 12 * by + bm
+        def say(months):
+            y, m = divmod(months, 12)
+            return f"{y} ปี {m} เดือน"
+        if rng.randrange(2):
+            stem = f"พี่อายุ {say(a)} น้องอายุ {say(b)} พี่อายุมากกว่าน้องเท่าไร"
+        else:
+            stem = f"พี่อายุ {say(a)} น้องอายุน้อยกว่าพี่ {say(b)} น้องอายุเท่าไร"
+        answer = a - b
+        # Borrow ten instead of twelve months; a year off; add ages.
+        return stem, say(answer), [say(answer - 2), say(answer + 12), say(a + b)]
+
+
+@question_type("math.monthly_reading_duration_p4", display_name={"th": "รวมเวลาอ่านหนังสือทุกวันตลอดเดือน"},
+               level=LEVEL, topic="เวลา")
+class MonthlyReadingDurationP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 3",))
+
+    def compose(self, rng: Random):
+        month, days = rng.choice(_MONTHS)
+        per = rng.randint(15, 75)
+        total = days * per
+        def say(minutes):
+            h, m = divmod(minutes, 60)
+            return f"{h} ชั่วโมง {m} นาที"
+        return (f"ในเดือน{month}ของปีปกติ อ่านหนังสือทุกวัน วันละ {per} นาที "
+                "ใช้เวลาอ่านทั้งเดือนเท่าไร", say(total),
+                [say(per), say(total - per), say(total + 60)])
+
+
+@question_type("math.average_task_duration_p4", display_name={"th": "เฉลี่ยเวลาทำงานทีละชิ้น"},
+               level=LEVEL, topic="เวลา")
+class AverageTaskDurationP4(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 4",))
+
+    def expr(self, rng: Random):
+        count, each = rng.randint(2, 9), rng.randint(15, 120)
+        total = count * each
+        h, m = divmod(total, 60)
+        return MathDraw("", str(total // count),
+                        prompt=(f"ชาร์จไฟฉาย {count} กระบอก โดยชาร์จทีละกระบอก ใช้เวลารวม "
+                                f"{h} ชั่วโมง {m} นาที เฉลี่ยกระบอกละกี่นาที"),
+                        distractors=_story.keep(total, (100 * h + m) // count,
+                                                total - count, each + 1, answer=each, lo=0))
+
+
+@question_type("math.repeated_seconds_duration_p4", display_name={"th": "รวมเวลาจากจำนวนงานและวินาทีต่องาน"},
+               level=LEVEL, topic="เวลา")
+class RepeatedSecondsDurationP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 7",))
+
+    def compose(self, rng: Random):
+        count, seconds = rng.randint(20, 50), rng.randint(40, 100)
+        total = count * seconds
+        def say(s):
+            m, s = divmod(s, 60)
+            return f"{m} นาที {s} วินาที"
+        wrong = [seconds, count + seconds, (total // 100) * 60 + total % 100, total + 60]
+        return (f"ทำแบบฝึกหัด {count} ข้อ ใช้เวลาเฉลี่ยข้อละ {seconds} วินาที "
+                "ใช้เวลารวมเท่าไร", say(total), list(dict.fromkeys(say(s) for s in wrong)))

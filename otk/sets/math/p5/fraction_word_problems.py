@@ -349,3 +349,23 @@ class WhoFurtherP5(WordProblem):
         wrong_tops = Fraction(abs(a.numerator - b.numerator) or 1, max(a.denominator, b.denominator))
         return MathDraw("", as_mixed(right), prompt=prompt,
                         distractors=_fk(a + b, wrong_tops, a, right + Fraction(1, max(d1, d2)), answer=right))
+
+
+@question_type("math.reserve_fraction_daily_budget_p5", display_name={"th": "เก็บเงินเป็นเศษส่วนแล้วเฉลี่ยใช้รายวัน"},
+               level=LEVEL, topic="โจทย์ปัญหาเศษส่วน")
+class ReserveFractionDailyBudgetP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4724-5-2567-2-3.pdf, ข้อ 12",))
+
+    def expr(self, rng: Random):
+        d = rng.randint(2, 12)
+        k, days, base = rng.randint(1, d - 1), rng.randint(5, 30), rng.randint(10, 150)
+        total = d * days * base
+        remaining = total - total * k // d
+        answer = remaining // days
+        return MathDraw("", str(answer),
+                        prompt=(f"ได้รับเงิน {total} บาท เก็บไว้ {k}/{d} ของเงินทั้งหมด "
+                                f"นำเงินที่เหลือไปใช้ {days} วัน วันละเท่า ๆ กัน ใช้เงินได้วันละกี่บาท"),
+                        distractors=_story.keep(total // days, total * k // d // days,
+                                                remaining, total // days - k,
+                                                answer + 1, answer=answer, lo=0))

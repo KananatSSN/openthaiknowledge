@@ -1,0 +1,198 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "เวลา",
+ "level": "ป.4",
+ "units": [
+  {
+   "id": "math.primary4.add-durations",
+   "kind": "procedure",
+   "title": "รวมเวลาหลายช่วง",
+   "statement": "เปลี่ยนแต่ละช่วงเป็นนาทีก่อนรวม แล้วเปลี่ยนกลับเป็นชั่วโมงและนาที",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนแต่ละช่วงเป็นนาทีก่อนรวม แล้วเปลี่ยนกลับเป็นชั่วโมงและนาที",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 1
+    }
+   ],
+   "covered_by": [
+    "math.sum_durations_p2"
+   ]
+  },
+  {
+   "id": "math.primary4.age-year-month-difference",
+   "kind": "procedure",
+   "title": "ลบอายุที่มีปีและเดือน",
+   "statement": "เปลี่ยนปีและเดือนเป็นเดือนก่อนหาผลต่าง แล้วเปลี่ยนกลับโดยหนึ่งปีมีสิบสองเดือน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนปีและเดือนเป็นเดือนก่อนหาผลต่าง แล้วเปลี่ยนกลับโดยหนึ่งปีมีสิบสองเดือน",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.age_year_month_difference_p4"
+   ]
+  },
+  {
+   "id": "math.primary4.monthly-reading-duration",
+   "kind": "procedure",
+   "title": "รวมเวลาของกิจกรรมรายวันตลอดเดือน",
+   "statement": "หาจำนวนวันของเดือนในปีที่กำหนด คูณเวลาต่อวัน แล้วเปลี่ยนหน่วยเวลา",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาจำนวนวันของเดือนในปีที่กำหนด คูณเวลาต่อวัน แล้วเปลี่ยนหน่วยเวลา",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 3
+    }
+   ],
+   "covered_by": [
+    "math.monthly_reading_duration_p4"
+   ]
+  },
+  {
+   "id": "math.primary4.average-task-duration",
+   "kind": "procedure",
+   "title": "เฉลี่ยระยะเวลาทำงานทีละชิ้น",
+   "statement": "เปลี่ยนเวลารวมเป็นนาที แล้วหารด้วยจำนวนชิ้นที่ทำตามลำดับ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนเวลารวมเป็นนาที แล้วหารด้วยจำนวนชิ้นที่ทำตามลำดับ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.average_task_duration_p4"
+   ]
+  },
+  {
+   "id": "math.primary4.date-after-weeks",
+   "kind": "procedure",
+   "title": "หาวันที่หลังจำนวนสัปดาห์",
+   "statement": "เปลี่ยนสัปดาห์เป็นวันแล้วเลื่อนวันที่ไปข้างหน้าโดยนับจากวันเริ่มต้น",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนสัปดาห์เป็นวันแล้วเลื่อนวันที่ไปข้างหน้าโดยนับจากวันเริ่มต้น",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 5
+    }
+   ],
+   "covered_by": [
+    "math.calendar_date_shift_p1",
+    "math.calendar_word_problem_p4"
+   ]
+  },
+  {
+   "id": "math.primary4.elapsed-clock-time",
+   "kind": "procedure",
+   "title": "หาระยะเวลาจากเวลาเริ่มและสิ้นสุด",
+   "statement": "เปลี่ยนเวลาเป็นนาทีตามนาฬิกาแล้วหาผลต่าง ก่อนแปลงเป็นชั่วโมงและนาที",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนเวลาเป็นนาทีตามนาฬิกาแล้วหาผลต่าง ก่อนแปลงเป็นชั่วโมงและนาที",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 21
+    }
+   ],
+   "covered_by": [
+    "math.travel_time_p4",
+    "math.time_elapsed"
+   ]
+  },
+  {
+   "id": "math.primary4.repeated-seconds-duration",
+   "kind": "procedure",
+   "title": "รวมวินาทีของงานหลายข้อ",
+   "statement": "คูณจำนวนข้อกับวินาทีต่อข้อ แล้วหารด้วยหกสิบเพื่อเขียนเป็นนาทีและวินาที",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คูณจำนวนข้อกับวินาทีต่อข้อ แล้วหารด้วยหกสิบเพื่อเขียนเป็นนาทีและวินาที",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 7
+    }
+   ],
+   "covered_by": [
+    "math.repeated_seconds_duration_p4"
+   ]
+  },
+  {
+   "id": "math.primary4.months-to-years",
+   "kind": "procedure",
+   "title": "เปลี่ยนเดือนเป็นปีและเดือน",
+   "statement": "จัดสิบสองเดือนเป็นหนึ่งปีและเก็บจำนวนเดือนที่เหลือ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "จัดสิบสองเดือนเป็นหนึ่งปีและเก็บจำนวนเดือนที่เหลือ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.time_units_p4"
+   ]
+  },
+  {
+   "id": "math.primary4.successive-travel-time",
+   "kind": "procedure",
+   "title": "หาเวลาถึงหลังเดินทางหลายช่วง",
+   "statement": "รวมเวลาของทุกช่วงแล้วบวกกับเวลาเริ่ม โดยทดนาทีเป็นชั่วโมง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "รวมเวลาของทุกช่วงแล้วบวกกับเวลาเริ่ม โดยทดนาทีเป็นชั่วโมง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4539-4-2567-2-3.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.time_after_p2",
+    "math.sum_durations_p2"
+   ]
+  }
+ ]
+}

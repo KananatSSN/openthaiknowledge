@@ -262,7 +262,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("mixed_ops_p4",),
         ("two_step_sentence_p4", "story_for_sentence_p4", "round_trips_p4", "full_trays_p4"),
         ("two_step_word_problem_p4", "ticket_income_p4", "buy_two_kinds_p4", "cost_per_person_p4",
-         "yearly_saving_p4"),
+         "yearly_saving_p4", "reserve_half_remaining_p4", "organizer_shared_cost_p4"),
     ),
     (B, "ป.4", "เศษส่วน"): (
         ("fraction_bars_p4", "fraction_kinds_p4", "improper_mixed_p4", "equivalent_missing_p4"),
@@ -278,7 +278,9 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.4", "เวลา"): (
         ("time_units_p4", "decade_century_p4", "leap_year_p4"),
         ("calendar_word_problem_p4", "days_to_weeks_p4", "longest_duration_p4", "race_times_p4"),
-        ("travel_time_p4", "stopwatch_difference_p4", "days_between_dates_p4"),
+        ("travel_time_p4", "stopwatch_difference_p4", "days_between_dates_p4",
+         "age_year_month_difference_p4", "monthly_reading_duration_p4",
+         "average_task_duration_p4", "repeated_seconds_duration_p4"),
     ),
     (B, "ป.4", "เส้นตรงและมุม"): (
         ("classify_line", "line_ray_picture_p4", "classify_angle", "angle_kind_picture_p4", "name_angle_p4"),
@@ -312,7 +314,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("fraction_of_amount_p5", "part_of_hour_p5"),
         ("fraction_word_addsub_p5", "whole_from_part_p5", "pieces_from_length_p5",
          "share_among_people_p5", "increase_by_fraction_p5"),
-        ("fraction_word_muldiv_p5", "two_shares_compare_p5", "who_further_p5"),
+        ("fraction_word_muldiv_p5", "two_shares_compare_p5", "who_further_p5",
+         "reserve_fraction_daily_budget_p5"),
     ),
     (B, "ป.5", "ทศนิยม"): (
         ("compare_decimals", "decimal_times_power_of_ten", "decimal_digit_value_p5"),
@@ -375,7 +378,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("length_decimal_p5", "decimal_to_smaller_unit_p5", "suitable_unit_p5"),
         ("weight_decimal_p5", "add_across_units_p5", "heaviest_of_four_p5",
          "weight_difference_grams_p5", "add_mixed_units_p5"),
-        ("measure_decimal_word_p5", "ribbon_left_p5"),
+        ("measure_decimal_word_p5", "ribbon_left_p5", "equal_pieces_cm_to_mm_p5", "two_cuts_metres_to_cm_p5",
+         "mixed_weight_remaining_kg_p5", "price_per_khit_from_grams_p5"),
     ),
     # ── ป.6 ──────────────────────────────────────────────────────────────
     (B, "ป.6", "จำนวนเฉพาะ"): (

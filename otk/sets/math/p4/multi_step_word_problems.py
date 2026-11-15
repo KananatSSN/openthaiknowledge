@@ -275,3 +275,38 @@ class RoundTripsP4(WordProblem):
         # One way only; one day only; the numbers added.
         return MathDraw("", _g(right), prompt=prompt,
                         distractors=_gk(km * days, 2 * km, km + days, 2 * km * (days - 1), answer=right, lo=1))
+
+
+@question_type("math.reserve_half_remaining_p4", display_name={"th": "ขายไปก่อนแล้วสำรองครึ่งหนึ่งของที่เหลือ"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class ReserveHalfRemainingP4(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 17",))
+
+    def expr(self, rng: Random):
+        export, sold = rng.randint(2000, 1200000), rng.randint(1000, 400000)
+        total = 2 * export + sold
+        answer = (total - sold) // 2
+        return MathDraw("", str(answer),
+                        prompt=(f"โรงสีมีข้าว {total} กิโลกรัม ขายไป {sold} กิโลกรัม "
+                                "เก็บสำรองครึ่งหนึ่งของข้าวที่เหลือ จะมีข้าวสำหรับส่งออกอีกกี่กิโลกรัม"),
+                        distractors=_story.keep(total - sold, total // 2, total // 2 - sold,
+                                                answer + 1, answer=answer, lo=0))
+
+
+@question_type("math.organizer_shared_cost_p4", display_name={"th": "เฉลี่ยค่าใช้จ่ายโดยนับผู้จัดรวมกับเพื่อน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class OrganizerSharedCostP4(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 19 (เฉลยแก้จากการคำนวณ)",))
+
+    def expr(self, rng: Random):
+        friends, each = rng.randint(4, 29), rng.randint(100, 4000)
+        total = (friends + 1) * each
+        room = rng.randint(50, total - 50)
+        food = total - room
+        return MathDraw("", str(total // (friends + 1)),
+                        prompt=(f"กานดาและเพื่อนอีก {friends} คนไปงานเลี้ยง จ่ายค่าเช่าห้อง {room} บาท "
+                                f"และค่าอาหาร {food} บาท ทุกคนรวมกานดาแบ่งจ่ายเท่า ๆ กัน ต้องจ่ายคนละกี่บาท"),
+                        distractors=_story.keep(total // friends, total // (friends + 2),
+                                                total, each + 1, answer=each, lo=0))
