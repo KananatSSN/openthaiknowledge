@@ -4,9 +4,10 @@ Run from the repository root with python docs/for_admin/sheet_digestion_primary2
 Private source text and answer checks stay in the separate sheet bank.
 """
 from pathlib import Path
-import json
+import runpy
 
 ROOT = Path(__file__).resolve().parents[2]
+write_topic = runpy.run_path(str(Path(__file__).with_name('sheet_digestion_primary1.py')))['write_topic']
 S1 = 'mathematics/level/primary-2/4157-2-2564-1-3.pdf'
 S2 = 'mathematics/level/primary-2/4178-2-2567-2-3.pdf'
 
@@ -73,7 +74,7 @@ def main():
     }
     for slug, (topic, units) in files.items():
         path = ROOT / f'otk/knowledge/math/primary2-{slug}.json'
-        path.write_text(json.dumps(dict(subject='คณิตศาสตร์', topic=topic, level='ป.2', units=units), ensure_ascii=False, indent=1) + '\n')
+        write_topic(path, topic, units, level='ป.2')
 
 
 if __name__ == '__main__':

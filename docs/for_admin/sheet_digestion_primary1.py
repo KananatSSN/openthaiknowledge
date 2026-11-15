@@ -16,10 +16,10 @@ def unit(key, title, statement, sources, covered):
 
 
 
-def write_topic(path, topic, units):
+def write_topic(path, topic, units, level='ป.1'):
     """Upsert this batch while preserving later units and additional coverage."""
     raw = json.loads(path.read_text()) if path.exists() else {}
-    if raw and (raw['subject'], raw['topic'], raw['level']) != ('คณิตศาสตร์', topic, 'ป.1'):
+    if raw and (raw['subject'], raw['topic'], raw['level']) != ('คณิตศาสตร์', topic, level):
         raise ValueError(f'Conflicting topic metadata: {path}')
     known = {u['id']: u for u in raw.get('units', [])}
     for u in units:
@@ -32,7 +32,7 @@ def write_topic(path, topic, units):
                     values.append(value)
             merged[field] = values
         known[u['id']] = merged
-    raw.update(subject='คณิตศาสตร์', topic=topic, level='ป.1', units=list(known.values()))
+    raw.update(subject='คณิตศาสตร์', topic=topic, level=level, units=list(known.values()))
     path.write_text(json.dumps(raw, ensure_ascii=False, indent=1) + '\n')
 
 

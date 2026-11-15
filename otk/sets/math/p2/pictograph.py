@@ -187,3 +187,52 @@ class PictographTwoRowsP2(WordProblem):
         prompt = f"{pg.text}\n{pg.label(x)}และ{pg.label(y)}รวมกัน มากกว่า{pg.label(z)}กี่{pg.chart.unit}"
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(right // key, a + b, a - c, right + key, answer=right, lo=1))
+
+
+_BANK_DAYS_P2 = ("วันจันทร์", "วันอังคาร", "วันพุธ", "วันพฤหัสบดี", "วันศุกร์")
+
+
+def _bank_week_chart_p2(counts, scale):
+    rows = ["แผนภูมิรูปภาพแสดงจำนวนขนมที่ขายได้"]
+    rows += [f"{day}: " + " ".join(["●"] * n) for day, n in zip(_BANK_DAYS_P2, counts)]
+    return "\n".join(rows + [f"กำหนดให้ ● แทนขนม {scale} ชิ้น"])
+
+
+@question_type("math.pictograph_selected_total_p2", display_name={"th": "รวมเฉพาะรายการที่ถามจากแผนภูมิรูปภาพ"},
+               level=LEVEL, topic="แผนภูมิรูปภาพ")
+class PictographSelectedTotalP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4175-2-2567-2-3.pdf, ตอนที่ 2 ข้อ 1",))
+
+    def expr(self, rng: Random):
+        scale = rng.choice((2, 5, 10))
+        counts = [rng.randint(1, 9) for _ in _BANK_DAYS_P2]
+        chosen = sorted(rng.sample(range(5), 3))
+        symbols = sum(counts[i] for i in chosen)
+        answer = symbols * scale
+        named_days = " และ ".join(_BANK_DAYS_P2[i] for i in chosen)
+        prompt = f"{_bank_week_chart_p2(counts, scale)}\nเฉพาะ{named_days} ขายขนมรวมกี่ชิ้น"
+        return MathDraw("", str(answer), prompt=prompt,
+                        # Include unasked rows; count icons only; omit a requested row.
+                        distractors=_story.keep(sum(counts) * scale, symbols,
+                                                sum(counts[i] for i in chosen[:2]) * scale,
+                                                answer + scale, answer=answer, lo=1))
+
+
+@question_type("math.pictograph_matching_rows_p2", display_name={"th": "หาทุกรายการที่มีจำนวนตรงกับค่าที่กำหนด"},
+               level=LEVEL, topic="แผนภูมิรูปภาพ")
+class PictographMatchingRowsP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4163-2-2565-2-3.pdf, ตอนที่ 2 ข้อ 1.2",))
+
+    def compose(self, rng: Random):
+        scale, target = rng.choice((2, 5, 10)), rng.randint(2, 8)
+        matches = sorted(rng.sample(range(5), 2))
+        others = [i for i in range(5) if i not in matches]
+        counts = [target if i in matches else rng.choice([n for n in range(1, 10) if n != target])
+                  for i in range(5)]
+        label = lambda pair: " และ ".join(_BANK_DAYS_P2[i] for i in sorted(pair))
+        wrongs = [label((matches[0], others[0])), label((matches[1], others[1])),
+                  label((others[0], others[2]))]
+        return (f"{_bank_week_chart_p2(counts, scale)}\nวันใดบ้างขายขนมได้ {target * scale} ชิ้น",
+                label(matches), wrongs)

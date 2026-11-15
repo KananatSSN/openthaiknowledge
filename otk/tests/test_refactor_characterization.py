@@ -218,4 +218,5 @@ def test_sheet_publication_manifest_is_frozen():
     # Nine Primary 2 sets from the first text-layer school-paper batch.
     # Seven Primary 1 applications from the next text-layer batch.
     # Four more Primary 1 gaps from the next four bank papers.
-    assert len(REGISTRY) == 4966
+    # Nine Primary 2 division, mixed-operation and chart applications.
+    assert len(REGISTRY) == 4975

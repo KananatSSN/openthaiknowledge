@@ -271,3 +271,18 @@ class SumDurationsP2(ChoiceType):
                                     f"0 ชั่วโมง {abs(first - second)} นาที",
                                     f"{h} ชั่วโมง 0 นาที", f"{h + 1} ชั่วโมง {m} นาที",
                                     f"{(total + 10) // 60} ชั่วโมง {(total + 10) % 60} นาที"])))
+
+
+@question_type("math.days_to_weeks_p2", display_name={"th": "เปลี่ยนจำนวนวันเป็นสัปดาห์"},
+               level=LEVEL, topic="เวลา")
+class DaysToWeeksP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4163-2-2565-2-3.pdf, ตอนที่ 1 ข้อ 1",))
+
+    def expr(self, rng: Random):
+        days = 7 * rng.randint(1, 12)
+        weeks = days // 7
+        return MathDraw("", str(weeks), prompt=f"{days} วัน คิดเป็นกี่สัปดาห์",
+                        # Five days per week; multiply instead of divide; use the conversion factor.
+                        distractors=_story.keep(days // 5, days * 7, 7, days, weeks + 1, answer=weeks, lo=1),
+                        hint=rf"{days} \div 7 = {weeks}")

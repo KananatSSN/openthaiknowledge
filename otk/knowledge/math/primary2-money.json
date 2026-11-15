@@ -82,6 +82,26 @@
    "covered_by": [
     "math.compare_sale_prices_p2"
    ]
+  },
+  {
+   "id": "math.primary2.three-prices",
+   "kind": "procedure",
+   "title": "รวมราคาของสามอย่าง",
+   "statement": "บวกราคาของสินค้าทั้งสามอย่างเพื่อหาจำนวนเงินที่ต้องจ่าย",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "บวกราคาของสินค้าทั้งสามอย่างเพื่อหาจำนวนเงินที่ต้องจ่าย",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.total_three_items_p2"
+   ]
   }
  ]
 }

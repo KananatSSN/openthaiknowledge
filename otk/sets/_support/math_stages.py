@@ -108,13 +108,15 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("division_picture_p2", "division_facts_p2", "division_check_p2"),
         ("multiply_divide_relation_p2", "division_remainder_p2", "missing_dividend_p2",
          "fact_family_p2", "largest_quotient_p2"),
-        ("division_word_problem_p2", "division_leftover_word_p2", "equal_packs_p2"),
+        ("division_word_problem_p2", "division_leftover_word_p2", "equal_packs_p2",
+         "unit_price_p2", "quotient_remainder_story_p2", "least_remainder_p2"),
     ),
     (B, "ป.2", "บวก ลบ คูณ หารระคน"): (
         ("mixed_ops_p2",),
         ("mixed_ops_sentence_p2", "two_step_word_problem", "mixed_true_sentence_p2"),
         ("two_step_add_sub_p2", "mixed_ops_word_problem_p2", "legs_count_p2", "wheels_count_p2",
-         "compare_two_buys_p2", "fill_bags_left_p2"),
+         "compare_two_buys_p2", "fill_bags_left_p2", "remaining_two_step_p2", "grouped_sales_p2",
+         "two_purchase_total_p2"),
     ),
     (B, "ป.2", "แบบรูป"): (
         ("repeating_pattern_p2", "pattern_next_p2", "pattern_three_nth_p2"),
@@ -142,12 +144,13 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.2", "เวลา"): (
         ("clock_read_p2", "time_notation_p2", "months_p2", "weeks_days_p2"),
         ("calendar_weekday", "hours_minutes_p2", "time_after_p2", "time_before_p2"),
-        ("time_to_hour", "time_elapsed", "sum_durations_p2"),
+        ("time_to_hour", "time_elapsed", "sum_durations_p2", "days_to_weeks_p2"),
     ),
     (B, "ป.2", "แผนภูมิรูปภาพ"): (
         ("pictograph_key_picture_p2", "pictograph", "pictograph_add_symbols_p2"),
         ("pictograph_compare_p2", "pictograph_total_p2", "pictograph_range_p2", "pictograph_order_p2"),
-        ("pictograph_symbols_p2", "pictograph_true_statement_p2", "pictograph_two_rows_p2"),
+        ("pictograph_symbols_p2", "pictograph_true_statement_p2", "pictograph_two_rows_p2",
+         "pictograph_selected_total_p2", "pictograph_matching_rows_p2"),
     ),
     # ── ป.3 ──────────────────────────────────────────────────────────────
     (B, "ป.3", "ค่าประจำหลัก"): (
