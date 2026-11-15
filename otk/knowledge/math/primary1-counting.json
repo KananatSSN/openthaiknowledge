@@ -78,6 +78,10 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 15
     }
    ],
    "covered_by": [
@@ -99,10 +103,15 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 16
     }
    ],
    "covered_by": [
-    "math.expanded_form_p2"
+    "math.expanded_form_p2",
+    "math.hundreds_tens_ones_p2"
    ]
   }
  ]

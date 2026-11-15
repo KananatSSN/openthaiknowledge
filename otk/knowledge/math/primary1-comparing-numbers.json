@@ -54,6 +54,10 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 18
     }
    ],
    "covered_by": [
@@ -109,11 +113,39 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 14
     }
    ],
    "covered_by": [
     "math.order_numbers",
     "math.number_between_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.false-sum-comparison",
+   "kind": "procedure",
+   "title": "เลือกข้อความเปรียบเทียบที่ไม่ถูกต้อง",
+   "statement": "คำนวณค่าของแต่ละข้างก่อนตรวจเครื่องหมายทุกตัวเลือก แล้วเลือกข้อความเท็จตามคำสั่งไม่ถูกต้อง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คำนวณค่าของแต่ละข้างก่อนตรวจเครื่องหมายทุกตัวเลือก แล้วเลือกข้อความเท็จตามคำสั่งไม่ถูกต้อง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.false_sum_comparison_p1"
    ]
   }
  ]

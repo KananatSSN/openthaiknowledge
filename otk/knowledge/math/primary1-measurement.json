@@ -41,6 +41,14 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 2
     }
    ],
    "covered_by": [
@@ -67,6 +75,14 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 4
     }
    ],
    "covered_by": [
@@ -92,6 +108,14 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 6
     }
    ],
    "covered_by": [
@@ -116,6 +140,14 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 12
     }
    ],
    "covered_by": [
@@ -136,6 +168,10 @@
    "sources": [
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
      "item": 8
     }
    ],
@@ -162,6 +198,14 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 10
     }
    ],
    "covered_by": [
@@ -187,6 +231,26 @@
    ],
    "covered_by": [
     "math.weight_difference_pairs_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.closest-weight-pair",
+   "kind": "procedure",
+   "title": "หาคู่น้ำหนักที่ใกล้เคียงกันที่สุด",
+   "statement": "แปลงน้ำหนักเป็นหน่วยเดียวกันก่อนหาผลต่างสัมบูรณ์ของแต่ละคู่ แล้วเลือกผลต่างที่น้อยที่สุด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "แปลงน้ำหนักเป็นหน่วยเดียวกันก่อนหาผลต่างสัมบูรณ์ของแต่ละคู่ แล้วเลือกผลต่างที่น้อยที่สุด",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.closest_weight_pair_p1"
    ]
   }
  ]

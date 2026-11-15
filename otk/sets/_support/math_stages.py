@@ -50,7 +50,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.1", "การเปรียบเทียบ"): (
         ("compare_groups_p1", "min_max_of_four", "more_less_than_p1", "number_between_p1"),
         ("true_comparison_p1", "order_numbers", "two_digit_from_digits_p1", "count_between_p1"),
-        ("compare_who_most_p1", "sorted_position_p1", "compare_sums_p1"),
+        ("compare_who_most_p1", "sorted_position_p1", "compare_sums_p1",
+         "false_sum_comparison_p1"),
     ),
     (B, "ป.1", "แบบรูป"): (
         ("repeating_pattern_p1", "pattern_colours_p1", "pattern_next_term_p1"),
@@ -70,7 +71,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("ruler_picture_p1", "compare_nonstandard_weight", "length_difference_p1", "join_lengths_p1"),
         ("length_cm_m_p1", "weight_kg_khit_p1", "weight_compare_kg_p1",
          "length_comparison_statement_p1", "measuring_tool_p1",
-         "weight_difference_pairs_p1", "scale_kg_khit_p1"),
+         "weight_difference_pairs_p1", "scale_kg_khit_p1", "closest_weight_pair_p1"),
     ),
     (B, "ป.1", "เรขาคณิต 2 มิติ"): (
         ("shape_2d_picture_p1", "shape_corners_p1", "shape_objects_p1", "shape_description_p1"),

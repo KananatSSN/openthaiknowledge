@@ -234,3 +234,30 @@ class CompareSumsP1(ChoiceType):
                 answer,
                 # Reverse the relation; assume equality; ignore both added parts.
                 [label for label in labels if label != answer] + [f"ทั้งสองข้างมีผลบวกเท่ากับ {a}"])
+
+
+@question_type("math.false_sum_comparison_p1", display_name={"th": "หาข้อความเปรียบเทียบผลบวกที่ไม่ถูกต้อง"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class FalseSumComparisonP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4006-1-2565-2-2.pdf, ข้อ 17–18",))
+
+    def compose(self, rng: Random):
+        false_index = rng.randrange(4)
+        statements = []
+        for i in range(4):
+            a, b = rng.randint(1, 45), rng.randint(1, 45)
+            total = a + b
+            if i == 0:
+                sign, other = "=", total + (i == false_index)
+            elif i == 1:
+                sign, other = ("<" if i == false_index else ">"), total - 1
+            elif i == 2:
+                sign, other = (">" if i == false_index else "<"), total + 1
+            else:
+                sign, other = "≠", total if i == false_index else total + 1
+            statements.append(f"{a} + {b} {sign} {other}")
+        # The one false statement confuses equality, direction, or inequality;
+        # every distractor is a separately computed true statement.
+        return ("ข้อใดใช้เครื่องหมายเปรียบเทียบไม่ถูกต้อง", statements[false_index],
+                [statement for i, statement in enumerate(statements) if i != false_index])

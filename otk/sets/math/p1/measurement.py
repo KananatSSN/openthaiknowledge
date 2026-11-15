@@ -359,3 +359,24 @@ class ScaleKgKhitP1(ChoiceType):
         return (f"เครื่องชั่งแบ่งช่วงระหว่างเลขกิโลกรัมติดกันเป็น 10 ช่วงเท่ากัน ช่วงละ 1 ขีด "
                 f"เข็มอยู่เลยขีด {kg} กิโลกรัม ไปทาง {kg + 1} กิโลกรัม {ticks} ช่วงเล็ก "
                 "อ่านน้ำหนักได้เท่าไร", answer, wrong)
+
+
+@question_type("math.closest_weight_pair_p1", display_name={"th": "เลือกคู่น้ำหนักที่ใกล้เคียงกันที่สุด"},
+               level=LEVEL, topic="การวัด")
+class ClosestWeightPairP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4006-1-2565-2-2.pdf, ข้อ 11",))
+
+    def compose(self, rng: Random):
+        gaps = rng.sample(range(1, 10), 4)
+        pairs = []
+        for gap in gaps:
+            kg = rng.randint(1, 4)
+            khit = kg * 10 + rng.choice((-gap, gap))
+            pairs.append((kg, khit))
+        right = min(range(4), key=lambda i: abs(10 * pairs[i][0] - pairs[i][1]))
+        labels = [f"{kg} กิโลกรัม กับ {khit} ขีด" for kg, khit in pairs]
+        # Other real pairs represent ranking the raw numerals or choosing the
+        # largest gap instead of the smallest after normalizing units.
+        return ("กำหนดให้ 1 กิโลกรัม เท่ากับ 10 ขีด คู่ใดมีน้ำหนักใกล้เคียงกันมากที่สุด",
+                labels[right], [label for i, label in enumerate(labels) if i != right])

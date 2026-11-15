@@ -37,6 +37,30 @@
     {
      "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
      "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.pictograph_compare_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.pictograph-total",
+   "kind": "procedure",
+   "title": "รวมทุกแถวในแผนภูมิรูปภาพ",
+   "statement": "อ่านค่าของสัญลักษณ์แล้วหาจำนวนของทุกแถว บวกทุกแถวโดยไม่ตกหล่นเพื่อหาจำนวนรวม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "อ่านค่าของสัญลักษณ์แล้วหาจำนวนของทุกแถว บวกทุกแถวโดยไม่ตกหล่นเพื่อหาจำนวนรวม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 19
     }
    ],
    "covered_by": [
