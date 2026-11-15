@@ -190,7 +190,7 @@ class ExponentialEquationAdvancedM4(QuestionType):
         if t == 0:
             wrongs = [other, r"(1, \infty)", r"(-\infty, -1)"]
         return _tex_q(stem, right, wrongs, self.topic)
-ExponentialEquationAdvancedM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/5 เลขยกกำลัง',))
+ExponentialEquationAdvancedM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/5-exponents',))
 
 
 from otk.core.provenance import Provenance  # noqa: E402

@@ -15,7 +15,7 @@ All commands run from the repository root (the directory holding
 ## Input
 
 The caller gives you a **bank path** such as
-`rathcenter/11 จำนวนเชิงซ้อน/(สสวท) 5 รูปเชิงขั้ว🌶️.pdf` (relative to
+`mathematics/level/upper-secondary/rathcenter/11-complex-numbers/(สสวท) 5 รูปเชิงขั้ว🌶️.pdf` (relative to
 `openthaiknowledge-bank/`), and sometimes notes about the file.
 
 Your output is `openthaiknowledge-bank/_transcribed/<bank path with .md instead of .pdf>`.
@@ -39,7 +39,7 @@ If it already exists, stop and report that instead of overwriting it.
    Thai consonants may be garbled.
 4. **Write the transcript** in the format of `otk/tools/sheetpipe/transcript.py`
    (read its docstring first) and in the style of the finished examples in
-   `openthaiknowledge-bank/_transcribed/rathcenter/9 เมทริกซ์/` and `.../10 เวกเตอร์/`:
+   `openthaiknowledge-bank/_transcribed/mathematics/level/upper-secondary/rathcenter/9-matrices/` and `.../10-vectors/`:
    - First line: a `<!-- -->` comment naming the exercise pages and answer
      pages (with book page numbers), items that are proofs or drawings, and
      anything left out and why.

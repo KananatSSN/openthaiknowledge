@@ -111,6 +111,20 @@ def test_fetch_legacy_alias_requests_canonical_lfs_path(tmp_path, monkeypatch):
                       {"cwd": tmp_path})]
 
 
+@needs_bank
+def test_private_bank_uses_canonical_paths_without_legacy_links():
+    root = bk.DEFAULT_ROOT
+    assert not any(p.is_symlink() for p in root.rglob("*"))
+    bank = bk.load_bank()
+    for entry in bank.values():
+        assert (root / entry.path).is_file(), entry.path
+        if entry.kind == "exam" and not entry.path.startswith("outputs/"):
+            assert entry.path.split("/")[1] in {"level", "exam-venue"}, entry.path
+    assert "roonpii/MANIFEST.json" not in bank
+    manifest = bank["_notes/roonpii/MANIFEST.json"]
+    assert manifest.stage == "ignored"
+
+
 def test_reprobe_refreshes_without_staling(tmp_path):
     root = make_bank(tmp_path)
     bank, _ = bk.scan(root, probe=fake_probe)

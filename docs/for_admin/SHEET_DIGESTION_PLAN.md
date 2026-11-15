@@ -1347,3 +1347,20 @@ Renamed subject, venue, level and collection folders to English and updated inde
   9,931 passed (bank, knowledge, provenance, golden draws); both server tests
   passed with localhost permission. Ruff and main-repository diff checks pass.
 - Private bank commit: `2ec4942`, branch `chore/organize-sheet-bank`.
+
+
+### 2026-11-15 — Remove legacy bank aliases
+
+- Removed all 9,429 compatibility symlinks and empty intermediate folders.
+  The bank root now exposes canonical subject folders plus supporting folders.
+- Moved the import catalog to `_notes/roonpii/MANIFEST.json` and re-keyed its
+  ignored metadata entry. Updated sheet notes, active manifests, skill examples,
+  an administration helper and remaining abbreviated directory citations.
+- Verified every indexed file, all 7,668 successful import records, all 27 sheet
+  package sources, all digest sources and manifest-relative PDF filenames.
+  Preserved every stage, sheet ID, item count and stale flag. All 19 distinct
+  declared bank citations resolve. No duplicate PDFs or symlinks remain.
+- Added an integration regression for canonical layout and metadata placement.
+  Validation: 9,953 tests passed, 2 skipped; Ruff and main diff checks passed.
+- Historical alias mappings remain in the private `_notes/ALIAS_REMOVAL.json`.
+  Old source aliases are intentionally no longer supported; use canonical paths.
