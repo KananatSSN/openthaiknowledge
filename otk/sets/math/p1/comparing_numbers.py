@@ -217,3 +217,20 @@ class CountBetweenP1(WordProblem):
                         prompt=f"จำนวนที่มากกว่า {a} แต่น้อยกว่า {b} มีทั้งหมดกี่จำนวน",
                         # Counting one end or both ends.
                         distractors=_story.keep(b - a, b - a + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.compare_sums_p1", display_name={"th": "เปรียบเทียบผลบวกสองข้าง"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class CompareSumsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4021-1-2567-2-2.pdf, ข้อ 4",))
+
+    def compose(self, rng: Random):
+        a, b, c = (rng.randint(1, 30) for _ in range(3))
+        left, right = a + b, a + c
+        labels = ["ผลบวกทางซ้ายน้อยกว่าทางขวา", "ผลบวกทางซ้ายเท่ากับทางขวา", "ผลบวกทางซ้ายมากกว่าทางขวา"]
+        answer = labels[0 if left < right else 1 if left == right else 2]
+        return (f"เปรียบเทียบ {a} + {b} ทางซ้าย กับ {a} + {c} ทางขวา ข้อใดถูกต้อง",
+                answer,
+                # Reverse the relation; assume equality; ignore both added parts.
+                [label for label in labels if label != answer] + [f"ทั้งสองข้างมีผลบวกเท่ากับ {a}"])

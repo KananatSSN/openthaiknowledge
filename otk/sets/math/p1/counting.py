@@ -17,7 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem
 from otk.sets._support.math_diagrams import _math_q, _text_q
 from otk.sets._support.math_p1 import LEVEL, _texts
 from otk.sets._support.math_pictures import (
@@ -265,3 +265,20 @@ class TensAndOnesP1(WordProblem):
                         prompt="เขียนในรูปกระจายได้อย่างไร",
                         distractors=[rf"{tens} + {ones}", rf"{ones * 10} + {tens}",
                                      rf"{tens * 10} + {ones * 10}"])
+
+
+@question_type("math.equivalent_number_forms_p1", display_name={"th": "จับคู่ตัวเลขและคำอ่านที่แทนจำนวนเดียวกัน"},
+               level=LEVEL, topic="การนับ")
+class EquivalentNumberFormsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4021-1-2567-2-2.pdf, ข้อ 6",))
+
+    def compose(self, rng: Random):
+        n = rng.randint(0, 99)
+        other = (n + 1) % 100
+        right = f"{n}, {_story.thai_numeral(n)}, {_story.thai_words(n)}"
+        # Exactly one of the three representations refers to the next number.
+        wrongs = [f"{n}, {_story.thai_numeral(other)}, {_story.thai_words(n)}",
+                  f"{n}, {_story.thai_numeral(n)}, {_story.thai_words(other)}",
+                  f"{other}, {_story.thai_numeral(n)}, {_story.thai_words(n)}"]
+        return "ข้อใดมีตัวเลขฮินดูอารบิก ตัวเลขไทย และคำอ่านแทนจำนวนเดียวกันทั้งหมด", right, wrongs

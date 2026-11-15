@@ -26,7 +26,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("count_objects_p1", "count_kind_p1", "count_objects_20_p1"),
         ("ordinal_position_p1", "next_number", "previous_number", "number_words_p1",
          "count_bundles_p1"),
-        ("thai_numerals_p1", "tens_and_ones_p1", "missing_number_in_sequence"),
+        ("thai_numerals_p1", "tens_and_ones_p1", "missing_number_in_sequence",
+         "equivalent_number_forms_p1"),
     ),
     (B, "ป.1", "การบวก"): (
         ("add_pictures_p1", "one_digit_plus_no_carry", "add_tens_p1", "add_commutative_p1"),
@@ -47,7 +48,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.1", "การเปรียบเทียบ"): (
         ("compare_groups_p1", "min_max_of_four", "more_less_than_p1", "number_between_p1"),
         ("true_comparison_p1", "order_numbers", "two_digit_from_digits_p1", "count_between_p1"),
-        ("compare_who_most_p1", "sorted_position_p1"),
+        ("compare_who_most_p1", "sorted_position_p1", "compare_sums_p1"),
     ),
     (B, "ป.1", "แบบรูป"): (
         ("repeating_pattern_p1", "pattern_colours_p1", "pattern_next_term_p1"),
@@ -59,7 +60,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("word_problem_number_sentence", "compare_word_problem", "more_needed_p1", "age_word_p1"),
         ("missing_part_word_problem", "line_position_p1", "dozen_change_p1",
          "equal_amount_total_p1", "calendar_date_shift_p1", "compare_spending_totals_p1",
-         "purchase_from_balance_p1", "budget_conclusion_p1"),
+         "purchase_from_balance_p1", "budget_conclusion_p1", "multi_dozen_total_p1",
+         "story_matches_sentence_p1"),
     ),
     (B, "ป.1", "การวัด"): (
         ("count_units_nonstandard", "compare_nonstandard_length", "choose_unit_p1"),

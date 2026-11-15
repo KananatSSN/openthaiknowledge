@@ -435,3 +435,44 @@ class BudgetConclusionP1(ChoiceType):
                      else f"เงินพอ ซื้อแล้วเหลือ {gap + 1} บาท")
         return (f"มีเงิน {have} บาท ต้องการซื้อสมุดราคา {price} บาท ข้อใดสรุปได้ถูกต้อง",
                 right, [label for label in labels if label != right] + [wrong_gap])
+
+
+@question_type("math.multi_dozen_total_p1", display_name={"th": "รวมของหลายโหลกับของที่เพิ่มมา"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class MultiDozenTotalP1(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3993-1-2564-2-3.pdf, ตอนที่ 1 ข้อ 2",))
+
+    def expr(self, rng: Random):
+        dozens, loose = rng.randint(2, 6), rng.randint(1, 11)
+        total = sum([12] * dozens) + loose
+        what, unit = rng.choice((("ดินสอ", "แท่ง"), ("ไข่ไก่", "ฟอง"), ("ขวดน้ำ", "ขวด")))
+        return MathDraw("", str(total),
+                        prompt=f"มี{what} {dozens} โหล ได้มาเพิ่มอีก {loose} {unit} มี{what}ทั้งหมดกี่{unit}",
+                        # Treat each dozen as ten; use just one dozen; add group count.
+                        distractors=_story.keep(dozens * 10 + loose, 12 + loose, dozens + loose,
+                                                total - loose, answer=total, lo=1),
+                        hint=" + ".join(["12"] * dozens + [str(loose)]) + f" = {total}")
+
+
+@question_type("math.story_matches_sentence_p1", display_name={"th": "เลือกโจทย์ปัญหาที่ตรงกับประโยคสัญลักษณ์"},
+               level=LEVEL, topic="โจทย์ปัญหา")
+class StoryMatchesSentenceP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4021-1-2567-2-2.pdf, ข้อ 11, 12, 15, 16",))
+
+    def compose(self, rng: Random):
+        a = rng.randint(5, 49)
+        b = rng.randint(2, a - 2)
+        adding = rng.choice((True, False))
+
+        def story(add, change):
+            if add:
+                return f"มีสมุด {a} เล่ม ได้เพิ่ม {change} เล่ม ตอนนี้มีสมุดทั้งหมดกี่เล่ม"
+            return f"มีสมุด {a} เล่ม แจกไป {change} เล่ม ตอนนี้เหลือสมุดกี่เล่ม"
+
+        right = story(adding, b)
+        return (f"โจทย์ปัญหาข้อใดตรงกับ {a} {'+' if adding else '−'} {b} = □",
+                right,
+                # Wrong operation; wrong change; both operation and change wrong.
+                [story(not adding, b), story(adding, b + 1), story(not adding, b + 1)])

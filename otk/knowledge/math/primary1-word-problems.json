@@ -73,6 +73,102 @@
     {
      "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
      "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 21
     }
    ],
    "covered_by": [
@@ -178,6 +274,22 @@
     {
      "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
      "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 8
     }
    ],
    "covered_by": [
@@ -239,10 +351,91 @@
     {
      "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
      "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 21
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 20
     }
    ],
    "covered_by": [
-    "math.sub_word_problem"
+    "math.sub_word_problem",
+    "math.word_problem_number_sentence"
    ]
   },
   {
@@ -295,6 +488,34 @@
     {
      "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
      "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4011-1-2565-1-3.pdf",
+     "item": 19
     }
    ],
    "covered_by": [
@@ -332,10 +553,35 @@
     {
      "sheet": "mathematics/level/primary-1/4020-1-2567-2-3.pdf",
      "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 21
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 12
     }
    ],
    "covered_by": [
-    "math.compare_word_problem"
+    "math.compare_word_problem",
+    "math.word_problem_number_sentence"
    ]
   },
   {
@@ -441,6 +687,112 @@
    ],
    "covered_by": [
     "math.calendar_date_shift_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.multi-dozen",
+   "kind": "procedure",
+   "title": "รวมของหลายโหลและของที่เพิ่ม",
+   "statement": "แทนแต่ละโหลด้วย 12 แล้วบวกจำนวนของทุกโหลและของที่เพิ่มเข้ามา",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "แทนแต่ละโหลด้วย 12 แล้วบวกจำนวนของทุกโหลและของที่เพิ่มเข้ามา",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/3993-1-2564-2-3.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.multi_dozen_total_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.dozen-comparison",
+   "kind": "procedure",
+   "title": "ใช้หนึ่งโหลเป็นผลต่างของสองจำนวน",
+   "statement": "แปลงส่วนต่างหนึ่งโหลเป็น 12 แล้วใช้ความสัมพันธ์จำนวนมากกับจำนวนน้อยหาจำนวนที่ไม่ทราบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "แปลงส่วนต่างหนึ่งโหลเป็น 12 แล้วใช้ความสัมพันธ์จำนวนมากกับจำนวนน้อยหาจำนวนที่ไม่ทราบ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4005-1-2565-2-3.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.dozen_change_p1",
+    "math.compare_word_problem"
+   ]
+  },
+  {
+   "id": "math.primary1.sentence-to-story",
+   "kind": "procedure",
+   "title": "เลือกเรื่องราวจากประโยคสัญลักษณ์",
+   "statement": "อ่านจำนวนและเครื่องหมายในประโยคสัญลักษณ์ แล้วเลือกเรื่องที่มีจำนวนและความสัมพันธ์ตรงกัน โดยดูสิ่งที่โจทย์ถามด้วย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "อ่านจำนวนและเครื่องหมายในประโยคสัญลักษณ์ แล้วเลือกเรื่องที่มีจำนวนและความสัมพันธ์ตรงกัน โดยดูสิ่งที่โจทย์ถามด้วย",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 16
+    }
+   ],
+   "covered_by": [
+    "math.story_matches_sentence_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.story-to-sentence",
+   "kind": "procedure",
+   "title": "เลือกประโยคสัญลักษณ์จากเรื่องราว",
+   "statement": "ระบุจำนวนที่ทราบและสิ่งที่ต้องการหา แล้วเลือกประโยคสัญลักษณ์ที่แทนความสัมพันธ์นั้นได้",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ระบุจำนวนที่ทราบและสิ่งที่ต้องการหา แล้วเลือกประโยคสัญลักษณ์ที่แทนความสัมพันธ์นั้นได้",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.word_problem_number_sentence",
+    "math.compare_word_problem"
    ]
   }
  ]

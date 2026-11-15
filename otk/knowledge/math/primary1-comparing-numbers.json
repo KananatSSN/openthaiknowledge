@@ -1,0 +1,103 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การเปรียบเทียบ",
+ "level": "ป.1",
+ "units": [
+  {
+   "id": "math.primary1.rank-by-score",
+   "kind": "procedure",
+   "title": "จัดอันดับตามจำนวน",
+   "statement": "เรียงค่าจากมากไปน้อยก่อน แล้วหาชื่อหรือตัวเลขที่อยู่ในลำดับที่ถาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เรียงค่าจากมากไปน้อยก่อน แล้วหาชื่อหรือตัวเลขที่อยู่ในลำดับที่ถาม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.sorted_position_p1",
+    "math.compare_who_most_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.numeric-comparison",
+   "kind": "procedure",
+   "title": "ตรวจการเปรียบเทียบจำนวนหลายรูปแบบ",
+   "statement": "แปลงภาพ ตัวเลขไทย หรือคำอ่านเป็นจำนวน แล้วตรวจความสัมพันธ์ มากกว่า น้อยกว่า เท่ากับ หรือไม่เท่ากับ ตามคำถาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "แปลงภาพ ตัวเลขไทย หรือคำอ่านเป็นจำนวน แล้วตรวจความสัมพันธ์ มากกว่า น้อยกว่า เท่ากับ หรือไม่เท่ากับ ตามคำถาม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.true_comparison_p1",
+    "math.compare_groups_p1",
+    "math.equivalent_number_forms_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.compare-sums",
+   "kind": "procedure",
+   "title": "เปรียบเทียบผลบวกสองข้าง",
+   "statement": "หาค่าของผลบวกแต่ละข้างก่อน แล้วจึงเปรียบเทียบผลลัพธ์ ไม่เปรียบเทียบเฉพาะจำนวนตัวแรก",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาค่าของผลบวกแต่ละข้างก่อน แล้วจึงเปรียบเทียบผลลัพธ์ ไม่เปรียบเทียบเฉพาะจำนวนตัวแรก",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.compare_sums_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.ordering",
+   "kind": "procedure",
+   "title": "ตรวจลำดับและหาจำนวนระหว่างกลาง",
+   "statement": "เรียงจำนวนตามทิศทางที่โจทย์กำหนด และตรวจว่าจำนวนทุกตำแหน่งอยู่ในลำดับนั้น",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เรียงจำนวนตามทิศทางที่โจทย์กำหนด และตรวจว่าจำนวนทุกตำแหน่งอยู่ในลำดับนั้น",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.order_numbers",
+    "math.number_between_p1"
+   ]
+  }
+ ]
+}

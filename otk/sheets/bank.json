@@ -20366,6 +20366,8 @@
    "text_chars": 4001,
    "layout": "numbered",
    "glyph_damage": 1,
+   "items": 21,
+   "stage": "generated",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -20500,6 +20502,8 @@
    "text_chars": 3677,
    "layout": "numbered",
    "scan_pages": 2,
+   "items": 21,
+   "stage": "generated",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -20566,6 +20570,8 @@
    "text_chars": 3450,
    "layout": "numbered",
    "scan_pages": 2,
+   "items": 21,
+   "stage": "generated",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -20678,6 +20684,8 @@
    "pages": 5,
    "text_chars": 3665,
    "layout": "numbered",
+   "items": 20,
+   "stage": "generated",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
