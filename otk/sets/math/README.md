@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,511 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,523 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -26,7 +26,7 @@
 |---|---|---|---:|
 | [`addition_and_subtraction`](p2/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.2/4 | 11 |
 | [`division`](p2/division.py) | การหาร | ค 1.1 ป.2/* | 14 |
-| [`measurement`](p2/measurement.py) | การวัด | ค 2.1 ป.2/* | 10 |
+| [`measurement`](p2/measurement.py) | การวัด | ค 2.1 ป.2/* | 12 |
 | [`mixed_operations`](p2/mixed_operations.py) | บวก ลบ คูณ หารระคน | ค 1.1 ป.2/* | 13 |
 | [`money`](p2/money.py) | เงิน | ค 2.1 ป.2/* | 13 |
 | [`multiplication`](p2/multiplication.py) | การคูณ | ค 1.1 ป.2/5 | 13 |
@@ -148,15 +148,15 @@
 | [`basic_probability`](m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | ค 3.2 ม.3/1 | 10 |
 | [`binomial_expansion`](m3/binomial_expansion.py) | กระจายทวินาม | ค 1.2 ม.3/* | 10 |
 | [`box_plots`](m3/box_plots.py) | สถิติ (แผนภาพกล่อง) | ค 3.1 ม.3/1 | 10 |
-| [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 10 |
+| [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 11 |
 | [`completing_the_square`](m3/completing_the_square.py) | กำลังสองสมบูรณ์ | ค 1.2 ม.3/* | 10 |
 | [`factorising`](m3/factorising.py) | แยกตัวประกอบ | ค 1.2 ม.3/* | 10 |
 | [`inequality`](m3/inequality.py) | อสมการเชิงเส้น | ค 1.3 ม.3/1 | 10 |
 | [`parabola`](m3/parabola.py) | กราฟของฟังก์ชันกำลังสอง | ค 1.2 ม.3/2 | 10 |
 | [`quadratic`](m3/quadratic.py) | สมการกำลังสอง | ค 1.3 ม.3/2 | 10 |
 | [`similarity`](m3/similarity.py) | ความคล้าย | ค 2.2 ม.3/1 | 10 |
-| [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 10 |
-| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 10 |
+| [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 16 |
+| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 13 |
 | [`trigonometric_ratios`](m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค 2.2 ม.3/2 | 10 |
 
 ## m4 — ม.4

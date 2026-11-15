@@ -8,7 +8,9 @@ Sets moved here from: math, math_m3.
 
 from __future__ import annotations
 
+from decimal import Decimal, ROUND_HALF_UP
 from fractions import Fraction
+from math import isqrt
 from random import Random
 
 from otk.core.provenance import Provenance
@@ -289,3 +291,127 @@ class SquarePyramidVolumeM3(WordProblem):
         return MathDraw("", _g3(right), prompt=prompt,
                         distractors=_gk3(a * a * h, a * a * h // 2, a * h // 3 if a * h % 3 == 0 else a * h, right + a * a,
                                          answer=right, lo=1))
+
+
+@question_type("math.pyramid_surface_from_edge_m3", display_name={"th": "หาพื้นที่ผิวพีระมิดจากสันและด้านฐาน"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class PyramidSurfaceFromEdgeM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 29–30",))
+
+    def expr(self, rng: Random):
+        n = rng.choice((4, 5))
+        triples = ((5, 12, 13), (8, 15, 17), (7, 24, 25))
+        if n == 4:
+            triples += ((3, 4, 5),)
+        half, _, edge = rng.choice(triples)
+        k = rng.randint(1, 4)
+        half, edge = half * k, edge * k
+        side = 2 * half
+        slant = isqrt(edge * edge - half * half)
+        lateral = n * side * slant // 2
+        answer = lateral + (side * side if n == 4 else 0)
+        base = "สี่เหลี่ยมจัตุรัส" if n == 4 else "ห้าเหลี่ยมด้านเท่ามุมเท่า"
+        asked = "พื้นที่ผิวทั้งหมด" if n == 4 else "ผลรวมพื้นที่หน้าด้านข้าง"
+        return MathDraw("", str(answer),
+                        prompt=(f"พีระมิดตรงฐาน{base} มีด้านฐานยาว {side} เซนติเมตร "
+                                f"สันจากยอดถึงจุดยอดฐานยาว {edge} เซนติเมตร {asked}กี่ตารางเซนติเมตร"),
+                        distractors=_story.keep(lateral if n == 4 else lateral + side * side,
+                                                n * side * edge // 2 + (side * side if n == 4 else 0),
+                                                lateral * 2 + (side * side if n == 4 else 0),
+                                                answer + side, answer=answer, lo=1))
+
+
+def _two_decimal_solid_m3(value: Fraction) -> str:
+    exact = Decimal(value.numerator) / Decimal(value.denominator)
+    return str(exact.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
+
+
+@question_type("math.cone_volume_from_slant_m3", display_name={"th": "หาปริมาตรกรวยจากเส้นผ่านศูนย์กลางและสูงเอียง"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class ConeVolumeFromSlantM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 36",))
+
+    def expr(self, rng: Random):
+        r, _, slant = rng.choice(((3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25)))
+        k = rng.randint(1, 3)
+        r, slant = r * k, slant * k
+        h = isqrt(slant * slant - r * r)
+        volume = Fraction(314, 100) * r * r * h / 3
+        wrong = [volume * 3, volume * 4, Fraction(314, 100) * r * r * slant]
+        return MathDraw("", _two_decimal_solid_m3(volume),
+                        prompt=(f"กรวยมีสูงเอียง {slant} เซนติเมตร เส้นผ่านศูนย์กลางฐาน {2*r} เซนติเมตร "
+                                "ปริมาตรกี่ลูกบาศก์เซนติเมตร (ใช้ π = 3.14 ตอบทศนิยมสองตำแหน่ง)"),
+                        distractors=[_two_decimal_solid_m3(v) for v in wrong])
+
+
+@question_type("math.hemisphere_from_sphere_area_m3", display_name={"th": "หาความจุครึ่งทรงกลมจากพื้นที่ผิวทรงกลมเดิม"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class HemisphereFromSphereAreaM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 37",))
+
+    def expr(self, rng: Random):
+        original_r = rng.randint(2, 12)
+        area = 4 * original_r * original_r
+        r = isqrt(area // 4)
+        volume = Fraction(2, 3) * Fraction(314, 100) * r ** 3
+        return MathDraw("", _two_decimal_solid_m3(volume),
+                        prompt=(f"ลูกบอลทรงกลมมีพื้นที่ผิว {area}π ตารางเซนติเมตร ผ่าครึ่งเป็นภาชนะครึ่งทรงกลม "
+                                "จุน้ำได้กี่ลูกบาศก์เซนติเมตร (ใช้ π = 3.14 ปัดเป็นทศนิยมสองตำแหน่ง)"),
+                        distractors=[_two_decimal_solid_m3(v) for v in (volume * 2, volume / 2, volume * Fraction(3, 2))])
+
+
+@question_type("math.hemisphere_radius_from_volume_m3", display_name={"th": "หารัศมีจากปริมาตรครึ่งทรงกลม"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class HemisphereRadiusFromVolumeM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 38",))
+
+    def expr(self, rng: Random):
+        radius = 3 * rng.randint(1, 5)
+        coefficient = 2 * radius ** 3 // 3
+        answer = next(n for n in range(1, 31) if 2 * n ** 3 == 3 * coefficient)
+        return MathDraw("", str(answer),
+                        prompt=f"ภาชนะครึ่งทรงกลมมีปริมาตร {coefficient}π ลูกบาศก์เซนติเมตร มีรัศมีกี่เซนติเมตร",
+                        distractors=_story.keep(radius * radius, 2 * radius, radius + 1,
+                                                coefficient, answer=answer, lo=1))
+
+
+@question_type("math.square_pyramid_volume_from_slant_m3", display_name={"th": "หาปริมาตรพีระมิดสี่เหลี่ยมจากสูงเอียง"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class SquarePyramidVolumeFromSlantM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 39",))
+
+    def expr(self, rng: Random):
+        half, _, slant = rng.choice(((3, 4, 5), (5, 12, 13), (8, 15, 17), (7, 24, 25)))
+        k = rng.randint(1, 3)
+        half, slant = half * k, slant * k
+        side = 2 * half
+        h = isqrt(slant * slant - half * half)
+        volume = side * side * h // 3
+        return MathDraw("", str(volume),
+                        prompt=(f"พีระมิดตรงฐานสี่เหลี่ยมจัตุรัสมีด้านฐาน {side} เซนติเมตร "
+                                f"สูงเอียงจากยอดถึงจุดกึ่งกลางด้านฐาน {slant} เซนติเมตร มีปริมาตรกี่ลูกบาศก์เซนติเมตร"),
+                        distractors=_story.keep(side * side * slant, volume * 3, volume // 4,
+                                                volume + side, answer=volume, lo=1))
+
+
+@question_type("math.equilateral_pyramid_base_from_volume_m3", display_name={"th": "หาด้านฐานสามเหลี่ยมด้านเท่าจากปริมาตรพีระมิด"},
+               level=LEVEL, topic="พื้นที่ผิวและปริมาตร")
+class EquilateralPyramidBaseFromVolumeM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 40",))
+
+    def expr(self, rng: Random):
+        side, h = 2 * rng.randint(2, 8), 3 * rng.randint(1, 8)
+        coefficient = side * side * h // 12
+        square = 12 * coefficient // h
+        answer = isqrt(square)
+        return MathDraw("", str(answer),
+                        prompt=(f"พีระมิดฐานสามเหลี่ยมด้านเท่าสูง {h} เซนติเมตร มีปริมาตร {coefficient}√3 "
+                                "ลูกบาศก์เซนติเมตร ด้านฐานยาวกี่เซนติเมตร"),
+                        distractors=_story.keep(square, answer // 2, 2 * answer,
+                                                answer + 1, answer=answer, lo=1))

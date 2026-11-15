@@ -15,7 +15,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_diagrams import _text_q
 from otk.sets._support.math_measure_pictures import SCALES
 from otk.sets._support.math_p2 import LEVEL
@@ -219,7 +219,7 @@ class WeightWordProblemP2(WordProblem):
 # ── More measuring (2026-11): centimetres as metres and centimetres, the longest of lengths written two ways,
 # kilograms and grams as grams, and how much longer across the two units ──
 from otk.core.registry import question_type  # noqa: E402
-from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.kit.math_problems import WordProblem  # noqa: E402
 from otk.sets._support.math_p2 import LEVEL  # noqa: E402
 
 
@@ -281,3 +281,37 @@ class LengthCompareMixedP2(WordProblem):
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(abs(10 * m + r - b), a + b, abs(r - b), right + 10,
                                                 answer=right, lo=1))
+
+
+@question_type("math.mixed_length_statement_p2", display_name={"th": "เลือกข้อความเปรียบเทียบความยาวต่างหน่วย"},
+               level=LEVEL, topic="การวัด")
+class MixedLengthStatementP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4176-2-2567-2-2.pdf, ข้อ 2, 4, 7, 10",))
+
+    def compose(self, rng: Random):
+        a, b = rng.sample(range(101, 501), 2)
+        m, cm = divmod(a, 100)
+        x, y = ("ริบบิ้นสีแดง", "ริบบิ้นสีฟ้า") if a > b else ("ริบบิ้นสีฟ้า", "ริบบิ้นสีแดง")
+        gap = abs(a - b)
+        return (f"ริบบิ้นสีแดงยาว {m} เมตร {cm} เซนติเมตร ริบบิ้นสีฟ้ายาว {b} เซนติเมตร ข้อใดถูกต้อง",
+                f"{x}ยาวกว่า{y} {gap} เซนติเมตร",
+                [f"{y}ยาวกว่า{x} {gap} เซนติเมตร", f"{x}ยาวกว่า{y} {a + b} เซนติเมตร",
+                 f"{x}ยาวกว่า{y} {gap + 100} เซนติเมตร"])
+
+
+@question_type("math.capacity_litre_ml_comparison_p2", display_name={"th": "เปรียบเทียบความจุลิตรกับมิลลิลิตร"},
+               level=LEVEL, topic="การวัด")
+class CapacityLitreMlComparisonP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4176-2-2567-2-2.pdf, ข้อ 15",))
+
+    def compose(self, rng: Random):
+        litres = rng.randint(1, 9)
+        ml = 1000 * litres + rng.choice((-500, 0, 500))
+        delta = ml - 1000 * litres
+        labels = ["ขวดสีแดงจุได้มากกว่า", "ขวดสีฟ้าจุได้มากกว่า", "ทั้งสองขวดจุได้เท่ากัน", "ยังเปรียบเทียบไม่ได้แม้ทราบหน่วย"]
+        index = 0 if delta < 0 else 1 if delta > 0 else 2
+        return (f"ขวดสีแดงจุ {litres} ลิตร ขวดสีฟ้าจุ {ml} มิลลิลิตร ข้อใดถูกต้อง "
+                "(1 ลิตร เท่ากับ 1000 มิลลิลิตร)", labels[index],
+                [label for i, label in enumerate(labels) if i != index])

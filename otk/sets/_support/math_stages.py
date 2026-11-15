@@ -132,7 +132,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("convert_length_p2", "scale_picture_p2", "cm_to_m_cm_p2"),
         ("convert_weight_p2", "capacity_litre_p2", "length_word_problem_p2", "kg_g_to_g_p2",
          "longest_mixed_units_p2"),
-        ("weight_word_problem_p2", "length_compare_mixed_p2"),
+        ("weight_word_problem_p2", "length_compare_mixed_p2", "mixed_length_statement_p2", "capacity_litre_ml_comparison_p2"),
     ),
     (B, "ป.2", "รูปเรขาคณิต"): (
         ("shape_sides_picture_p2", "shape_properties_p2", "curved_straight_p2", "line_kinds_p2",
@@ -726,7 +726,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ม.3", "ระบบสมการ"): (
         ("simultaneous_2var", "system_substitution", "system_sum_difference_m3", "system_which_pair_m3"),
         ("system_setup_m3", "system_x_plus_y_m3", "system_coins_m3", "system_ages_m3"),
-        ("system_word_problem", "system_two_prices_m3"),
+        ("system_word_problem", "system_two_prices_m3", "system_solution_count_m3",
+         "system_basket_target_m3", "two_rate_allocation_m3"),
     ),
     (B, "ม.3", "ความคล้าย"): (
         ("similar_triangle_picture_m3", "similar_triangle", "similar_corresponding_angle_m3"),
@@ -745,12 +746,15 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("central_inscribed_angle", "inscribed_angle_semicircle", "inscribed_from_central_m3",
          "angles_same_arc_m3"),
         ("cyclic_quadrilateral", "circle_angle_picture_m3", "two_tangents_m3"),
-        ("tangent_picture_m3", "tangent_length_m3", "chord_from_distance_m3"),
+        ("tangent_picture_m3", "tangent_length_m3", "chord_from_distance_m3", "tangent_chord_angle_m3"),
     ),
     (B, "ม.3", "พื้นที่ผิวและปริมาตร"): (
         ("pyramid_volume_m3", "cone_volume", "square_pyramid_volume_m3"),
         ("sphere_volume", "cone_sphere_surface_area_m3", "cylinder_volume_m3", "hemisphere_volume_m3"),
-        ("solid_word_problem_m3", "cylinder_surface_m3", "cone_curved_from_height_m3"),
+        ("solid_word_problem_m3", "cylinder_surface_m3", "cone_curved_from_height_m3",
+         "pyramid_surface_from_edge_m3", "cone_volume_from_slant_m3",
+         "hemisphere_from_sphere_area_m3", "hemisphere_radius_from_volume_m3",
+         "square_pyramid_volume_from_slant_m3", "equilateral_pyramid_base_from_volume_m3"),
     ),
     (B, "ม.3", "สถิติ (แผนภาพกล่อง)"): (
         ("box_plot_picture_m2", "box_plot_range_m3", "box_plot_parts_m3"),

@@ -256,3 +256,18 @@ class AnglesSameArcM3(WordProblem):
         # Doubled as if central; the supplement; half.
         return MathDraw("", str(a), prompt=prompt,
                         distractors=_story.keep(2 * a, 180 - a, a // 2, 90 - a if a != 45 else a + 10, answer=a, lo=1))
+
+
+@question_type("math.tangent_chord_angle_m3", display_name={"th": "มุมระหว่างเส้นสัมผัสกับคอร์ด"},
+               level=LEVEL, topic="วงกลม")
+class TangentChordAngleM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 19, 21, 25",))
+
+    def expr(self, rng: Random):
+        angle = rng.randint(15, 80)
+        return MathDraw("", str(angle),
+                        prompt=(f"AB เป็นคอร์ดของวงกลม มุมแหลมระหว่างเส้นสัมผัสที่ A กับคอร์ด AB เท่ากับ {angle} องศา "
+                                "จุด C อยู่บนส่วนโค้งใหญ่ AB มุม ACB มีขนาดกี่องศา"),
+                        distractors=_story.keep(2 * angle, 180 - angle, 90 - angle,
+                                                180 - 2 * angle, angle + 1, answer=angle, lo=1))

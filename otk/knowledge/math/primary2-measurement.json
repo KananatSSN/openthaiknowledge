@@ -1,0 +1,232 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การวัด",
+ "level": "ป.2",
+ "units": [
+  {
+   "id": "math.primary2.convert-length",
+   "kind": "procedure",
+   "title": "เปลี่ยนเมตรและเซนติเมตรเป็นเซนติเมตร",
+   "statement": "คูณจำนวนเมตรด้วยหนึ่งร้อยแล้วบวกจำนวนเซนติเมตร",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คูณจำนวนเมตรด้วยหนึ่งร้อยแล้วบวกจำนวนเซนติเมตร",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.convert_length_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.mixed-length-statement",
+   "kind": "procedure",
+   "title": "เลือกข้อความเปรียบเทียบความยาวต่างหน่วย",
+   "statement": "เปลี่ยนความยาวเป็นหน่วยเดียวกัน หาผลต่าง แล้วระบุทิศทางยาวกว่าสั้นกว่าให้ถูกต้อง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนความยาวเป็นหน่วยเดียวกัน หาผลต่าง แล้วระบุทิศทางยาวกว่าสั้นกว่าให้ถูกต้อง",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.mixed_length_statement_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.repeated-length",
+   "kind": "procedure",
+   "title": "รวมความยาวชิ้นที่เท่ากันและเขียนสองหน่วย",
+   "statement": "คูณความยาวต่อชิ้นด้วยจำนวนชิ้น แล้วเปลี่ยนเซนติเมตรเป็นเมตรและเซนติเมตร",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คูณความยาวต่อชิ้นด้วยจำนวนชิ้น แล้วเปลี่ยนเซนติเมตรเป็นเมตรและเซนติเมตร",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 3
+    }
+   ],
+   "covered_by": [
+    "math.length_word_problem_p2",
+    "math.cm_to_m_cm_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.length-cut",
+   "kind": "procedure",
+   "title": "หาความยาวหลังตัดส่วนหนึ่งออก",
+   "statement": "เปลี่ยนเป็นหน่วยเดียวกันก่อนลบส่วนที่ตัดจากความยาวทั้งหมด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนเป็นหน่วยเดียวกันก่อนลบส่วนที่ตัดจากความยาวทั้งหมด",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 5
+    }
+   ],
+   "covered_by": [
+    "math.length_word_problem_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.out-and-back-length",
+   "kind": "procedure",
+   "title": "หาระยะทางไปและกลับ",
+   "statement": "ระยะทางไปและกลับรวมสองเที่ยว คูณความยาวหนึ่งเที่ยวด้วยสอง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ระยะทางไปและกลับรวมสองเที่ยว คูณความยาวหนึ่งเที่ยวด้วยสอง",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.length_word_problem_p2",
+    "math.daily_total_weeks_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.mixed-length-difference",
+   "kind": "procedure",
+   "title": "หาผลต่างความยาวแล้วเขียนสองหน่วย",
+   "statement": "หาผลต่างหลังแปลงเป็นเซนติเมตร แล้วแบ่งหนึ่งร้อยเซนติเมตรเป็นหนึ่งเมตร",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาผลต่างหลังแปลงเป็นเซนติเมตร แล้วแบ่งหนึ่งร้อยเซนติเมตรเป็นหนึ่งเมตร",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.length_compare_mixed_p2",
+    "math.cm_to_m_cm_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.capacity-tool",
+   "kind": "procedure",
+   "title": "เลือกหน่วยและภาชนะตวงตามขนาด",
+   "statement": "เลือกหน่วยและเครื่องตวงให้เหมาะกับปริมาณและลักษณะของสิ่งที่ตวง โดยไม่สับสนเครื่องมือกับหน่วย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เลือกหน่วยและเครื่องตวงให้เหมาะกับปริมาณและลักษณะของสิ่งที่ตวง โดยไม่สับสนเครื่องมือกับหน่วย",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.kitchen_measures_p3",
+    "math.capacity_unit_p3"
+   ]
+  },
+  {
+   "id": "math.primary2.capacity-difference",
+   "kind": "procedure",
+   "title": "หาผลต่างความจุหน่วยเดียวกัน",
+   "statement": "ลบความจุน้อยจากความจุมากแล้วแปลเป็นข้อความเปรียบเทียบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบความจุน้อยจากความจุมากแล้วแปลเป็นข้อความเปรียบเทียบ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 13
+    }
+   ],
+   "covered_by": [
+    "math.capacity_litre_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.capacity-unit-picture",
+   "kind": "procedure",
+   "title": "นับหน่วยตวงจากภาพ",
+   "statement": "เมื่อปริมาณในเหยือกเท่ากับแก้วขนาดเดียวกันที่แสดง ให้นับจำนวนแก้วครบทุกใบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เมื่อปริมาณในเหยือกเท่ากับแก้วขนาดเดียวกันที่แสดง ให้นับจำนวนแก้วครบทุกใบ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.count_objects_p1",
+    "math.capacity_litre_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.capacity-litre-ml-comparison",
+   "kind": "procedure",
+   "title": "เปรียบเทียบลิตรกับมิลลิลิตร",
+   "statement": "เปลี่ยนลิตรเป็นมิลลิลิตรด้วยอัตราหนึ่งพันก่อนเลือกมากกว่าน้อยกว่าหรือเท่ากับ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนลิตรเป็นมิลลิลิตรด้วยอัตราหนึ่งพันก่อนเลือกมากกว่าน้อยกว่าหรือเท่ากับ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.capacity_litre_ml_comparison_p2"
+   ]
+  }
+ ]
+}

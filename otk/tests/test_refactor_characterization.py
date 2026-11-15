@@ -226,4 +226,5 @@ def test_sheet_publication_manifest_is_frozen():
     # Two Primary 1 closest-weight and negative-comparison applications.
     # Four Primary 3 money and multi-step applications from a bank paper.
     # Eleven Primary 4/5 time, budget and measurement applications.
-    assert len(REGISTRY) == 5011
+    # Twelve Primary 2 / Secondary 3 measurement, systems and solid applications.
+    assert len(REGISTRY) == 5023

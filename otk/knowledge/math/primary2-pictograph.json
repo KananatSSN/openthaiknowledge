@@ -17,6 +17,10 @@
     {
      "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
      "item": 21
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 16
     }
    ],
    "covered_by": [
@@ -61,6 +65,10 @@
     {
      "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
      "item": 24
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 19
     }
    ],
    "covered_by": [
@@ -105,6 +113,67 @@
    ],
    "covered_by": [
     "math.pictograph_selected_total_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.pictograph-read",
+   "kind": "procedure",
+   "title": "อ่านจำนวนจริงจากแผนภูมิรูปภาพ",
+   "statement": "นับจำนวนรูปแล้วคูณค่าของรูปตามคำอธิบาย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "นับจำนวนรูปแล้วคูณค่าของรูปตามคำอธิบาย",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.pictograph"
+   ]
+  },
+  {
+   "id": "math.primary2.pictograph-truth",
+   "kind": "procedure",
+   "title": "ตรวจข้อความจากแผนภูมิรูปภาพ",
+   "statement": "แปลงจำนวนรูปเป็นค่าจริงก่อนตรวจความเท่ากันและการเปรียบเทียบทุกข้อความ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "แปลงจำนวนรูปเป็นค่าจริงก่อนตรวจความเท่ากันและการเปรียบเทียบทุกข้อความ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.pictograph_true_statement_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.pictograph-minimum-value",
+   "kind": "procedure",
+   "title": "หาค่าของรายการที่น้อยที่สุด",
+   "statement": "เปรียบเทียบทุกแถวเพื่อหารายการน้อยที่สุด แล้วคูณจำนวนรูปกับค่าต่อรูป",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปรียบเทียบทุกแถวเพื่อหารายการน้อยที่สุด แล้วคูณจำนวนรูปกับค่าต่อรูป",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4176-2-2567-2-2.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.pictograph_order_p2",
+    "math.pictograph"
    ]
   }
  ]

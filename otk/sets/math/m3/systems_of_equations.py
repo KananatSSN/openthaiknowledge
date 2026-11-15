@@ -8,13 +8,14 @@ Sets moved here from: math, math_algebra, math_m3.
 
 from __future__ import annotations
 
+from fractions import Fraction
 from random import Random
 
 from otk.core.content import text
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
-from otk.kit.math_problems import MathDraw, MathType, WordProblem, poly_tex
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem, poly_tex
 from otk.sets._support.math_algebra import _nonzero
 from otk.sets._support.math_m3 import LEGACY
 from otk.sets._support.math_p2 import _maths
@@ -157,7 +158,6 @@ class SystemWordProblem(WordProblem):
                         distractors=[str(v) for v in dict.fromkeys((y, x + y, abs(x - y) or x + 1,
                                                                     x + 1)) if v != x])
 
-from fractions import Fraction  # noqa: E402
 
 from otk.core.content import math as _math_block  # noqa: E402
 from otk.core.content import text as _text_block  # noqa: E402
@@ -300,3 +300,74 @@ class SystemTwoPricesM3(WordProblem):
         # The difference in money not divided; the price of a book; the first bill over the pens.
         return MathDraw("", str(pen), prompt=prompt,
                         distractors=_story.keep(a - b, book, a // n1, pen + 5, answer=pen, lo=1))
+
+
+@question_type("math.system_solution_count_m3", display_name={"th": "จำแนกจำนวนคำตอบของระบบสมการเชิงเส้น"},
+               level=LEVEL, topic="ระบบสมการ")
+class SystemSolutionCountM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 2, 8, 10",))
+
+    def compose(self, rng: Random):
+        a, b = rng.randint(1, 7), rng.randint(1, 7)
+        x, y = rng.randint(-6, 6), rng.randint(-6, 6)
+        c = a * x + b * y
+        kind = rng.randrange(3)
+        if kind == 0:
+            d, e = a + 1, b
+            f = d * x + e * y
+        else:
+            scale = rng.randint(2, 5)
+            d, e = scale * a, scale * b
+            f = scale * c + (rng.randint(1, 7) if kind == 2 else 0)
+        det = a * e - b * d
+        answer = "มีคำตอบเดียว" if det else ("มีคำตอบไม่จำกัด" if a * f == c * d and b * f == c * e else "ไม่มีคำตอบ")
+        labels = ["ไม่มีคำตอบ", "มีคำตอบเดียว", "มีคำตอบไม่จำกัด", "มีคำตอบสองคู่พอดี"]
+        return (f"ระบบสมการ {a}x + {b}y = {c} และ {d}x + {e}y = {f} มีจำนวนคำตอบในจำนวนจริงอย่างไร",
+                answer, [label for label in labels if label != answer])
+
+
+@question_type("math.system_basket_target_m3", display_name={"th": "ใช้ราคาจากสองใบเสร็จคิดราคาตะกร้าใหม่"},
+               level=LEVEL, topic="ระบบสมการ")
+class SystemBasketTargetM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 12",))
+
+    def expr(self, rng: Random):
+        pen = rng.randint(3, 30)
+        pencil = rng.randint(1, pen - 1)
+        a, b = rng.sample(range(2, 9), 2)
+        c, d = a + 1, b + 1
+        first, second = a * pen + b * pencil, c * pen + d * pencil
+        u, v = rng.choice([(u, v) for u in range(1, 9) for v in range(1, 9)
+                           if u * b != v * a and u * d != v * c])
+        det = a * d - b * c
+        x = Fraction(first * d - second * b, det)
+        y = Fraction(a * second - c * first, det)
+        answer = u * x + v * y
+        return MathDraw("", str(int(answer)),
+                        prompt=(f"ซื้อปากกา {a} ด้ามและดินสอ {b} แท่ง จ่าย {first} บาท "
+                                f"ซื้อปากกา {c} ด้ามและดินสอ {d} แท่ง จ่าย {second} บาท "
+                                f"ถ้าซื้อปากกา {u} ด้ามและดินสอ {v} แท่ง ต้องจ่ายกี่บาท"),
+                        distractors=_story.keep(pen, pencil, pen + pencil, first,
+                                                int(answer) + 1, answer=int(answer), lo=0))
+
+
+@question_type("math.two_rate_allocation_m3", display_name={"th": "หาส่วนลงทุนจากผลตอบแทนสองอัตรา"},
+               level=LEVEL, topic="ระบบสมการ")
+class TwoRateAllocationM3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/secondary-3/5202-3-2567-2.pdf, ข้อ 14",))
+
+    def expr(self, rng: Random):
+        x, y = 100 * rng.randint(1, 100), 100 * rng.randint(1, 100)
+        p = rng.randint(1, 8)
+        q = p + rng.randint(1, 7)
+        total = x + y
+        income = (p * x + q * y) // 100
+        answer = (100 * income - q * total) // (p - q)
+        return MathDraw("", str(answer),
+                        prompt=(f"แบ่งเงิน {total} บาท ลงทุน A และ B สิ้นปี A ให้ผลตอบแทน {p}% "
+                                f"และ B ให้ {q}% ของเงินที่ลงแต่ละแห่ง ได้ผลตอบแทนรวม {income} บาท ลงทุนใน A กี่บาท"),
+                        distractors=_story.keep(y, total // 2, income, total,
+                                                answer + 100, answer=answer, lo=0))

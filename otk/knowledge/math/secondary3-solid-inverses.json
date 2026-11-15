@@ -1,0 +1,262 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "พื้นที่ผิวและปริมาตร",
+ "level": "ม.3",
+ "units": [
+  {
+   "id": "math.secondary3.pyramid-lateral-area",
+   "kind": "procedure",
+   "title": "รวมพื้นที่หน้าด้านข้างพีระมิด",
+   "statement": "หาพื้นที่สามเหลี่ยมหน้าด้านข้างแล้วรวมทุกหน้า โดยระบุสมมติฐานฐานและความเท่ากันของหน้าตามรูปให้ครบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาพื้นที่สามเหลี่ยมหน้าด้านข้างแล้วรวมทุกหน้า โดยระบุสมมติฐานฐานและความเท่ากันของหน้าตามรูปให้ครบ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 26
+    }
+   ],
+   "covered_by": [
+    "math.pyramid_surface_from_edge_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.cone-total-area",
+   "kind": "procedure",
+   "title": "หาพื้นที่ผิวรวมกรวย",
+   "statement": "รวมพื้นที่ฐานวงกลมกับพื้นที่ผิวข้าง และใช้พีทาโกรัสหาสูงเอียงเมื่อให้ความสูงตั้งฉาก",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "รวมพื้นที่ฐานวงกลมกับพื้นที่ผิวข้าง และใช้พีทาโกรัสหาสูงเอียงเมื่อให้ความสูงตั้งฉาก",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 27
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 32
+    }
+   ],
+   "covered_by": [
+    "math.cone_sphere_surface_area_m3",
+    "math.cone_curved_from_height_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.sphere-surface",
+   "kind": "procedure",
+   "title": "หาพื้นที่ผิวทรงกลมและรวมหลายลูก",
+   "statement": "เปลี่ยนเส้นผ่านศูนย์กลางเป็นรัศมีก่อนใช้สี่พายอาร์กำลังสอง แล้วรวมทุกลูกและระบุค่าพายที่ใช้",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนเส้นผ่านศูนย์กลางเป็นรัศมีก่อนใช้สี่พายอาร์กำลังสอง แล้วรวมทุกลูกและระบุค่าพายที่ใช้",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 28
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 31
+    }
+   ],
+   "covered_by": [
+    "math.cone_sphere_surface_area_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.pyramid-surface-from-edge",
+   "kind": "procedure",
+   "title": "หาพื้นที่ผิวพีระมิดจากสันถึงจุดยอดฐาน",
+   "statement": "ใช้พีทาโกรัสในหน้าสามเหลี่ยมหาสูงเอียงจากสันและครึ่งด้านฐาน รวมพื้นที่หน้าด้านข้างและฐานตามที่โจทย์ถาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ใช้พีทาโกรัสในหน้าสามเหลี่ยมหาสูงเอียงจากสันและครึ่งด้านฐาน รวมพื้นที่หน้าด้านข้างและฐานตามที่โจทย์ถาม",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 29
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 30
+    }
+   ],
+   "covered_by": [
+    "math.pyramid_surface_from_edge_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.hemisphere-litres",
+   "kind": "procedure",
+   "title": "แปลงปริมาตรครึ่งทรงกลมเป็นลิตร",
+   "statement": "ใช้รัศมีคำนวณสองในสามพายอาร์กำลังสาม แล้วเปลี่ยนลูกบาศก์เซนติเมตรเป็นลิตรและปัดตามโจทย์",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ใช้รัศมีคำนวณสองในสามพายอาร์กำลังสาม แล้วเปลี่ยนลูกบาศก์เซนติเมตรเป็นลิตรและปัดตามโจทย์",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 33
+    }
+   ],
+   "covered_by": [
+    "math.hemisphere_volume_m3",
+    "math.volume_capacity_p5"
+   ]
+  },
+  {
+   "id": "math.secondary3.rectangular-pyramid-volume",
+   "kind": "procedure",
+   "title": "หาปริมาตรพีระมิดฐานสี่เหลี่ยมผืนผ้า",
+   "statement": "คูณพื้นที่ฐานกับความสูงตั้งฉาก แล้วหารสาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คูณพื้นที่ฐานกับความสูงตั้งฉาก แล้วหารสาม",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 34
+    }
+   ],
+   "covered_by": [
+    "math.pyramid_volume_m3",
+    "math.rectangle_area_perimeter"
+   ]
+  },
+  {
+   "id": "math.secondary3.cone-from-base-area",
+   "kind": "procedure",
+   "title": "หาปริมาตรกรวยจากพื้นที่ฐานโดยตรง",
+   "statement": "คูณพื้นที่ฐานที่กำหนดกับความสูงตั้งฉากแล้วหารสาม ไม่ต้องหารัศมีซ้ำ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คูณพื้นที่ฐานที่กำหนดกับความสูงตั้งฉากแล้วหารสาม ไม่ต้องหารัศมีซ้ำ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 35
+    }
+   ],
+   "covered_by": [
+    "math.cone_volume"
+   ]
+  },
+  {
+   "id": "math.secondary3.cone-volume-from-slant",
+   "kind": "procedure",
+   "title": "หาปริมาตรกรวยจากสูงเอียง",
+   "statement": "หารเส้นผ่านศูนย์กลางด้วยสอง หาความสูงตั้งฉากด้วยพีทาโกรัส แล้วคำนวณปริมาตรกรวย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หารเส้นผ่านศูนย์กลางด้วยสอง หาความสูงตั้งฉากด้วยพีทาโกรัส แล้วคำนวณปริมาตรกรวย",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 36
+    }
+   ],
+   "covered_by": [
+    "math.cone_volume_from_slant_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.hemisphere-from-sphere-area",
+   "kind": "procedure",
+   "title": "หาความจุครึ่งทรงกลมจากพื้นที่ผิวเดิม",
+   "statement": "ใช้พื้นที่ผิวทรงกลมหารัศมี แล้วคำนวณปริมาตรครึ่งทรงกลมพร้อมค่าพายและการปัดเศษที่กำหนด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ใช้พื้นที่ผิวทรงกลมหารัศมี แล้วคำนวณปริมาตรครึ่งทรงกลมพร้อมค่าพายและการปัดเศษที่กำหนด",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 37
+    }
+   ],
+   "covered_by": [
+    "math.hemisphere_from_sphere_area_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.hemisphere-radius",
+   "kind": "procedure",
+   "title": "หารัศมีจากปริมาตรครึ่งทรงกลม",
+   "statement": "จัดสูตรให้ได้รัศมียกกำลังสาม แล้วหารากที่สามบวก",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "จัดสูตรให้ได้รัศมียกกำลังสาม แล้วหารากที่สามบวก",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 38
+    }
+   ],
+   "covered_by": [
+    "math.hemisphere_radius_from_volume_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.square-pyramid-slant-volume",
+   "kind": "procedure",
+   "title": "หาปริมาตรพีระมิดสี่เหลี่ยมจากสูงเอียง",
+   "statement": "ใช้สูงเอียงกับครึ่งด้านฐานหาความสูงตั้งฉาก แล้วคูณพื้นที่ฐานและหารสาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ใช้สูงเอียงกับครึ่งด้านฐานหาความสูงตั้งฉาก แล้วคูณพื้นที่ฐานและหารสาม",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 39
+    }
+   ],
+   "covered_by": [
+    "math.square_pyramid_volume_from_slant_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.equilateral-pyramid-base",
+   "kind": "procedure",
+   "title": "หาด้านฐานสามเหลี่ยมด้านเท่าจากปริมาตร",
+   "statement": "ย้อนจากปริมาตรและความสูงเพื่อหาพื้นที่ฐาน ใช้สูตรพื้นที่สามเหลี่ยมด้านเท่าแล้วถอดรากบวก",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ย้อนจากปริมาตรและความสูงเพื่อหาพื้นที่ฐาน ใช้สูตรพื้นที่สามเหลี่ยมด้านเท่าแล้วถอดรากบวก",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 40
+    }
+   ],
+   "covered_by": [
+    "math.equilateral_pyramid_base_from_volume_m3"
+   ]
+  }
+ ]
+}
