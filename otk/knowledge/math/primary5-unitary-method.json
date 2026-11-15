@@ -1,0 +1,82 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "บัญญัติไตรยางศ์",
+ "level": "ป.5",
+ "units": [
+  {
+   "id": "math.primary5.direct-proportion",
+   "kind": "procedure",
+   "title": "ปรับจำนวนตามอัตราคงที่",
+   "statement": "ตั้งอัตราส่วนของจำนวนที่สัมพันธ์กัน คำนวณค่าต่อหนึ่งหน่วยหรือคูณสัดส่วน แล้วหาจำนวนใหม่ตามอัตราเดิม",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "ตั้งอัตราส่วนของจำนวนที่สัมพันธ์กัน คำนวณค่าต่อหนึ่งหน่วยหรือคูณสัดส่วน แล้วหาจำนวนใหม่ตามอัตราเดิม",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.rate_word_problem_p5",
+    "math.recipe_scaling_p5",
+    "math.printing_time_p5",
+    "math.unit_price_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.fractional-unit-price",
+   "kind": "procedure",
+   "title": "คำนวณราคาตามสัดส่วนโดยไม่ปัดก่อน",
+   "statement": "เก็บราคาต่อหน่วยเป็นเศษส่วนที่แน่นอน หรือย่อสัดส่วนก่อนคูณ แปลงเป็นทศนิยมเมื่อได้ราคาสุดท้าย",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "เก็บราคาต่อหน่วยเป็นเศษส่วนที่แน่นอน หรือย่อสัดส่วนก่อนคูณ แปลงเป็นทศนิยมเมื่อได้ราคาสุดท้าย",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.fractional_unit_price_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.proportional-reward-difference",
+   "kind": "procedure",
+   "title": "หาส่วนต่างหลังปรับตามสัดส่วน",
+   "statement": "หาจำนวนรางวัลที่อีกคนได้รับตามอัตราเดิมก่อน แล้วลบจากจำนวนรางวัลของคนแรก",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หาจำนวนรางวัลที่อีกคนได้รับตามอัตราเดิมก่อน แล้วลบจากจำนวนรางวัลของคนแรก",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.proportional_reward_difference_p5"
+   ]
+  }
+ ]
+}

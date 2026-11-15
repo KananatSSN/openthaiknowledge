@@ -317,13 +317,15 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("unit_price_p5", "exchange_money_p5"),
         ("rate_word_problem_p5", "fuel_for_trip_p5", "days_to_earn_p5", "how_many_for_money_p5",
          "printing_time_p5", "better_buy_p5"),
-        ("recipe_scaling_p5", "workers_days_p5"),
+        ("recipe_scaling_p5", "workers_days_p5", "fractional_unit_price_p5",
+         "proportional_reward_difference_p5"),
     ),
     (B, "ป.5", "ร้อยละ"): (
         ("percent_grid_p5", "percent_of_number", "percent_to_decimal_p5"),
         ("find_percent_p5", "percent_of_quantity_p5", "percent_to_fraction_p5",
          "percent_increase_price_p5"),
-        ("discount", "percent_two_step_p5", "percent_left_over_p5"),
+        ("discount", "percent_two_step_p5", "percent_left_over_p5", "percent_pass_table_p5",
+         "monthly_savings_bonus_p5", "percent_share_difference_p5", "percent_remainder_share_p5"),
     ),
     (B, "ป.5", "เส้นขนาน"): (
         ("parallel_pair_picture_p5", "parallel_concepts_p5", "parallel_daily_life_p5",
@@ -342,7 +344,9 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("parallelogram_area", "parallelogram_perimeter_p5", "rhombus_from_diagonals_p5"),
         ("quadrilateral_area_figure_p5", "trapezoid_area", "parallelogram_height_p5",
          "largest_quadrilateral_area_p5"),
-        ("rhombus_kite_area_p5", "trapezoid_missing_side_p5", "tiling_cost_p5"),
+        ("rhombus_kite_area_p5", "trapezoid_missing_side_p5", "tiling_cost_p5",
+         "quadrilateral_repetition_p5", "related_quad_dimensions_p5", "parallelogram_land_area_p5",
+         "square_area_from_perimeter_p5"),
     ),
     (B, "ป.5", "ปริมาตร"): (
         ("unit_cubes_p5", "rectangular_prism_volume", "cube_volume_p5", "litres_cubic_cm_p5"),

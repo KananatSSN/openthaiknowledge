@@ -8,6 +8,7 @@ Sets moved here from: math, math_p5, math_pictures_extra.
 
 from __future__ import annotations
 
+from decimal import Decimal
 from random import Random
 
 from otk.core.content import image, text
@@ -19,7 +20,7 @@ from otk.kit import story as _story
 from otk.kit.math_problems import MathDraw, WordProblem
 from otk.sets._support.math_diagrams import _math_q
 from otk.sets._support.math_p4 import grouped
-from otk.sets._support.math_p5 import LEVEL
+from otk.sets._support.math_p5 import LEVEL, dstr
 from otk.sets._support.math_pictures import _near
 from otk.sets._support.math_pictures_extra import GRID_ALT, GRIDS
 
@@ -280,3 +281,93 @@ class PercentLeftOverP5(WordProblem):
         # Those who came; the percent left as a count; the percent itself.
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(came, 100 - r, r, right + 2, answer=right, lo=1))
+
+
+@question_type("math.percent_pass_table_p5", display_name={"th": "เลือกผู้ผ่านเกณฑ์ร้อยละจากตารางคะแนน"},
+               level=LEVEL, topic="ร้อยละ")
+class PercentPassTableP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4721-5-2567-2-3.pdf, ข้อ 3",))
+
+    def compose(self, rng: Random):
+        while True:
+            full, percent = rng.choice((20, 40, 50, 80, 100)), rng.choice((50, 60, 75, 80, 90))
+            if full * percent % 100 == 0:
+                break
+        threshold = full * percent // 100
+        names = ("ก", "ข", "ค", "ง", "จ")
+        scores = [threshold - 1, threshold, threshold + 1, rng.randint(0, full), rng.randint(0, full)]
+        rng.shuffle(scores)
+        passed = [i for i, score in enumerate(scores) if 100 * score >= full * percent]
+        strict = [i for i, score in enumerate(scores) if 100 * score > full * percent]
+        failed = [i for i in range(5) if i not in passed]
+        say = lambda indices: " และ ".join(names[i] for i in sorted(indices))
+        table = "\n".join(f"{name}: {score} คะแนน" for name, score in zip(names, scores))
+        return (f"คะแนนเต็ม {full} คะแนน ผ่านเมื่อได้คะแนนไม่ต่ำกว่าร้อยละ {percent}\n{table}\nใครบ้างสอบผ่าน",
+                say(passed),
+                # Exclude equality; reverse the cutoff; admit one failing student.
+                [say(strict), say(failed), say(passed + [failed[0]])])
+
+
+@question_type("math.monthly_savings_bonus_p5", display_name={"th": "ออมรายเดือนแล้วรับเงินเพิ่มตามร้อยละของยอดรวม"},
+               level=LEVEL, topic="ร้อยละ")
+class MonthlySavingsBonusP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4721-5-2567-2-3.pdf, ข้อ 4",))
+
+    def expr(self, rng: Random):
+        monthly = 10 * rng.randint(5, 50)
+        tenths_percent = rng.choice((25, 45, 50, 75, 100))
+        total = monthly * 12
+        # Hold money in satang; all selected rates terminate exactly.
+        answer = total * (1000 + tenths_percent) // 10
+        show = lambda cents: dstr(Decimal(int(cents)) / 100)
+        percent = dstr(Decimal(tenths_percent) / 10)
+        wrongs = [total * 100, total * tenths_percent // 10,
+                  monthly * (1000 + tenths_percent) // 10, total * 100 + tenths_percent * 10]
+        return MathDraw("", show(answer),
+                        prompt=(f"ออมเงินเดือนละ {monthly} บาท ครบ 12 เดือน "
+                                f"เมื่อสิ้นปีได้รับเงินรางวัลเพิ่มร้อยละ {percent} ของยอดที่ออมตลอดปี "
+                                "รวมเงินออมและรางวัลเป็นกี่บาท"),
+                        distractors=[show(v) for v in _story.keep(*wrongs, answer=answer, lo=1)])
+
+
+@question_type("math.percent_share_difference_p5", display_name={"th": "ส่วนแบ่งสองส่วนตามร้อยละต่างกันเท่าไร"},
+               level=LEVEL, topic="ร้อยละ")
+class PercentShareDifferenceP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4721-5-2567-2-3.pdf, ข้อ 6 และตอนที่ 2 ข้อ 1",))
+
+    def expr(self, rng: Random):
+        total = 20 * rng.randint(3, 50)
+        first = rng.randrange(20, 75, 5)
+        second = rng.choice(list(range(5, min(first - 5, 100 - first) + 1, 5)))
+        a, b = total * first // 100, total * second // 100
+        answer = a - b
+        return MathDraw("", str(answer),
+                        prompt=(f"มีหนังสือ {total} เล่ม เป็นนิยายร้อยละ {first} "
+                                f"เป็นสารคดีร้อยละ {second} นิยายมีมากกว่าสารคดีกี่เล่ม"),
+                        distractors=_story.keep(named("operation.reversed", a + b),
+                                                named("steps.missed_a_step", a),
+                                                named("percent.answered_the_percent", first - second),
+                                                answer + 1, answer=answer, lo=1))
+
+
+@question_type("math.percent_remainder_share_p5", display_name={"th": "กันไว้ตามร้อยละแล้วแบ่งส่วนที่เหลือเท่า ๆ กัน"},
+               level=LEVEL, topic="ร้อยละ")
+class PercentRemainderShareP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4721-5-2567-2-3.pdf, ข้อ 7",))
+
+    def expr(self, rng: Random):
+        groups, unit = rng.randint(2, 25), rng.randint(10, 200)
+        total, percent = 100 * groups * unit, rng.randrange(10, 85, 5)
+        remaining = total * (100 - percent) // 100
+        answer = remaining // groups
+        return MathDraw("", str(answer),
+                        prompt=(f"มีเงินกิจกรรม {total} บาท กันไว้ร้อยละ {percent} "
+                                f"ที่เหลือแบ่งให้ห้องเรียน {groups} ห้องเท่า ๆ กัน แต่ละห้องได้เงินกี่บาท"),
+                        distractors=_story.keep(named("part.complement", total * percent // 100 // groups),
+                                                named("steps.missed_a_step", remaining),
+                                                named("percent.subtracted_the_number", (total - percent) // groups),
+                                                remaining - groups, answer + 1, answer=answer, lo=1))

@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,475 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,485 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -82,11 +82,11 @@
 | [`fractions`](p5/fractions.py) | เศษส่วน | ค 1.1 ป.5/* | 10 |
 | [`length_and_weight`](p5/length_and_weight.py) | ความยาวและน้ำหนัก | ค 2.1 ป.5/1, ค 2.1 ป.5/2 | 10 |
 | [`parallel_lines`](p5/parallel_lines.py) | เส้นขนาน | ค 2.2 ป.5/1 | 10 |
-| [`percentages`](p5/percentages.py) | ร้อยละ | ค 1.1 ป.5/* | 10 |
+| [`percentages`](p5/percentages.py) | ร้อยละ | ค 1.1 ป.5/* | 14 |
 | [`prism`](p5/prism.py) | ปริซึม | ค 2.2 ป.5/4 | 10 |
-| [`quadrilateral_area`](p5/quadrilateral_area.py) | พื้นที่รูปสี่เหลี่ยม | ค 2.1 ป.5/* | 10 |
+| [`quadrilateral_area`](p5/quadrilateral_area.py) | พื้นที่รูปสี่เหลี่ยม | ค 2.1 ป.5/* | 14 |
 | [`types_of_quadrilaterals`](p5/types_of_quadrilaterals.py) | ชนิดของรูปสี่เหลี่ยม | ค 2.2 ป.5/* | 10 |
-| [`unitary_method`](p5/unitary_method.py) | บัญญัติไตรยางศ์ | ค 1.1 ป.5/* | 10 |
+| [`unitary_method`](p5/unitary_method.py) | บัญญัติไตรยางศ์ | ค 1.1 ป.5/* | 12 |
 | [`volume`](p5/volume.py) | ปริมาตร | ค 2.1 ป.5/* | 10 |
 
 ## p6 — ป.6
