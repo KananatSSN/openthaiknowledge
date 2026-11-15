@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,492 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,494 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -30,7 +30,7 @@
 | [`mixed_operations`](p2/mixed_operations.py) | บวก ลบ คูณ หารระคน | ค 1.1 ป.2/* | 13 |
 | [`money`](p2/money.py) | เงิน | ค 2.1 ป.2/* | 13 |
 | [`multiplication`](p2/multiplication.py) | การคูณ | ค 1.1 ป.2/5 | 13 |
-| [`numbers_to_1000`](p2/numbers_to_1000.py) | จำนวนนับไม่เกิน 1,000 | ค 1.1 ป.2/1, ค 1.1 ป.2/2, ค 1.1 ป.2/3 | 10 |
+| [`numbers_to_1000`](p2/numbers_to_1000.py) | จำนวนนับไม่เกิน 1,000 | ค 1.1 ป.2/1, ค 1.1 ป.2/2, ค 1.1 ป.2/3 | 12 |
 | [`patterns`](p2/patterns.py) | แบบรูป | — | 10 |
 | [`pictograph`](p2/pictograph.py) | แผนภูมิรูปภาพ | ค 3.1 ป.2/1 | 12 |
 | [`shapes`](p2/shapes.py) | รูปเรขาคณิต | ค 2.2 ป.2/* | 10 |

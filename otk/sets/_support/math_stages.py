@@ -93,7 +93,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("base_ten_blocks_p2", "skip_counting", "number_reading_p2", "even_number_p2",
          "hundreds_tens_ones_p2"),
         ("place_value_digit", "expanded_form_p2", "more_less_100_p2"),
-        ("compare_sign", "order_numbers_p2"),
+        ("compare_sign", "order_numbers_p2", "digit_value_difference_p2",
+         "number_between_bounds_p2"),
     ),
     (B, "ป.2", "การบวกและการลบ"): (
         ("add_columns", "add_three_two_digit_p2"),

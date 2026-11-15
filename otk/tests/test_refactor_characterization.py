@@ -222,4 +222,5 @@ def test_sheet_publication_manifest_is_frozen():
     # Ten Primary 5 applications from geometry and percentage papers.
     # Three Primary 1 measurement applications from a comprehension paper.
     # Four Primary 1 arithmetic equivalence applications from a skills paper.
-    assert len(REGISTRY) == 4992
+    # Two Primary 2 place-value and ordering applications from a bank paper.
+    assert len(REGISTRY) == 4994

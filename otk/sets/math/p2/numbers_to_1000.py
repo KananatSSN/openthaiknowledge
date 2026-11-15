@@ -17,7 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem
 from otk.sets._support.math_diagrams import _math_q
 from otk.sets._support.math_p2 import LEVEL, NumberReadingType, _maths
 from otk.sets._support.math_pictures import _near
@@ -249,3 +249,51 @@ class MoreLess100P2(WordProblem):
                         distractors=_story.keep(n - step if more else n + step,
                                                 *[n + s if more else n - s for s in others],
                                                 answer=right, lo=0, hi=1000))
+
+
+@question_type("math.digit_value_difference_p2", display_name={"th": "ผลต่างของค่าของเลขโดดต่างหลัก"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class DigitValueDifferenceP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4179-2-2567-2-2.pdf, ข้อ 7–8",))
+
+    def expr(self, rng: Random):
+        places = (("ร้อย", 100), ("สิบ", 10), ("หน่วย", 1))
+        if rng.randrange(2):
+            digit, tens = rng.randint(1, 9), rng.randint(0, 9)
+            n = digit * 100 + tens * 10 + digit
+            (p, scale_p), (q, scale_q) = places[0], places[2]
+        else:
+            n = rng.randint(100, 999)
+            (p, scale_p), (q, scale_q) = rng.sample(places, 2)
+        d_p, d_q = (n // scale_p) % 10, (n // scale_q) % 10
+        value_p, value_q = d_p * scale_p, d_q * scale_q
+        answer = abs(value_p - value_q)
+        return MathDraw("", str(answer),
+                        prompt=f"ในจำนวน {n} ค่าของเลขโดดในหลัก{p}กับหลัก{q}ต่างกันเท่าใด",
+                        # Ignore the places; add the values; copy a digit; miss
+                        # one unit or one ten in the subtraction.
+                        distractors=_story.keep(abs(d_p - d_q), value_p + value_q, d_p,
+                                                n, answer + 1, answer + 10,
+                                                answer=answer, lo=0))
+
+
+@question_type("math.number_between_bounds_p2", display_name={"th": "เลือกจำนวนสามหลักที่อยู่ระหว่างขอบเขต"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class NumberBetweenBoundsP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4179-2-2567-2-2.pdf, ข้อ 14",))
+
+    def compose(self, rng: Random):
+        lower = rng.randint(101, 960)
+        upper = lower + rng.randint(2, 30)
+        answer = rng.randint(lower + 1, upper - 1)
+        ascending = bool(rng.randrange(2))
+        first, last = (lower, upper) if ascending else (upper, lower)
+        # Endpoints confuse strict order with equality; outside neighbors
+        # reverse one of the two comparisons.
+        # Keep the explicit candidate pool: numeric-neighbor distractors can
+        # themselves be valid interior numbers in this question family.
+        return (f"จำนวนใดเติมใน □ แล้วเรียงจาก{'น้อยไปมาก' if ascending else 'มากไปน้อย'}โดยไม่ซ้ำกัน: "
+                f"{first}, □, {last}", str(answer),
+                [str(lower), str(upper), str(lower - 1), str(upper + 1)])
