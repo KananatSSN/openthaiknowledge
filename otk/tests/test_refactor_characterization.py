@@ -221,4 +221,5 @@ def test_sheet_publication_manifest_is_frozen():
     # Nine Primary 2 division, mixed-operation and chart applications.
     # Ten Primary 5 applications from geometry and percentage papers.
     # Three Primary 1 measurement applications from a comprehension paper.
-    assert len(REGISTRY) == 4988
+    # Four Primary 1 arithmetic equivalence applications from a skills paper.
+    assert len(REGISTRY) == 4992

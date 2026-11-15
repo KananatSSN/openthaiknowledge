@@ -32,12 +32,14 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.1", "การบวก"): (
         ("add_pictures_p1", "one_digit_plus_no_carry", "add_tens_p1", "add_commutative_p1"),
         ("part_whole_p1", "one_digit_plus_with_carry", "add_three_numbers_p1"),
-        ("two_digit_plus", "missing_addend", "add_word_p1"),
+        ("two_digit_plus", "missing_addend", "add_word_p1",
+         "equal_sums_missing_p1", "match_sum_expression_p1"),
     ),
     (B, "ป.1", "การลบ"): (
         ("subtract_pictures_p1", "one_digit_subtraction", "subtract_tens_p1", "number_line_back_p1"),
         ("subtract_within_20_p1", "two_digit_subtraction_no_borrow", "add_sub_inverse_p1"),
-        ("two_digit_subtraction_with_borrow", "missing_subtrahend", "subtract_word_p1"),
+        ("two_digit_subtraction_with_borrow", "missing_subtrahend", "subtract_word_p1",
+         "missing_minuend_p1", "match_difference_expression_p1"),
     ),
     (B, "ป.1", "การบวกลบระคน"): (
         ("add_sub_mixed", "mixed_number_line_p1"),
