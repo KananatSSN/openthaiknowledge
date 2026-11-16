@@ -13,6 +13,7 @@ from random import Random
 from otk.core.provenance import Provenance
 from otk.core.registry import question_type
 from otk.kit.math_problems import (
+    ChoiceType,
     MathDraw,
     MathType,
     WordProblem,
@@ -257,3 +258,34 @@ class WhichFactorM3(QuestionType):
         return _fixed_maths([_text_block("ข้อใดเป็นตัวประกอบของ"), _math_block(poly)], right,
                             _tk3(*wrongs, answer=right), self.topic)
 
+
+
+@question_type("math.factor_cube_identity_m3", display_name={"th": "แยกผลบวกหรือผลต่างกำลังสามรวมพจน์เลื่อน"}, level={"th": "ม.3"}, topic="แยกตัวประกอบ")
+class FactorCubeIdentityM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 16–17,19–20",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            a,b=rng.randint(2,5),rng.randint(2,8)
+            u,v=f"{a}×x",f"{b}×y"
+        else:
+            shift,b=rng.randint(2,7),rng.randint(2,8)
+            u,v=f"x + {shift}",str(b)
+        sign=rng.choice(("+","−"))
+        opposite="−" if sign=="+" else "+"
+        def model(outer,middle,last):
+            return f"(({u}) {outer} ({v})) × (({u})² {middle} ({u})×({v}) {last} ({v})²)"
+        return (f"แยกตัวประกอบ ({u})³ {sign} ({v})³",model(sign,opposite,"+"),
+                [model(sign,sign,"+"),model(opposite,sign,"+"),model(sign,opposite,"−")])
+
+
+@question_type("math.factor_fourth_power_m3", display_name={"th": "แยกผลต่างกำลังสี่หลังดึงตัวร่วม"}, level={"th": "ม.3"}, topic="แยกตัวประกอบ")
+class FactorFourthPowerM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 18",))
+
+    def compose(self,rng: Random):
+        common,b=rng.randint(2,9),rng.randint(2,9)
+        def model(qsign,l1,l2):
+            return f"{common} × (x² {qsign} {b*b}) × (x {l1} {b}) × (x {l2} {b})"
+        return (f"แยกตัวประกอบ {common}×x⁴ − {common*b**4}",model("+","+","−"),
+                [model("−","+","−"),model("+","+","+"),model("+","−","−")])

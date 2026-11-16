@@ -1,0 +1,59 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "แยกตัวประกอบ",
+ "level": "ม.3",
+ "units": [
+  {
+   "id": "math.secondary3.cube-identity-substitution",
+   "kind": "procedure",
+   "title": "ระบุพจน์กำลังสามรวมทั้งพจน์เลื่อน แล้วใช้สูตรผลบวกหรือผลต่างกำลังสามพร้อมตรวจด้วยการกระจาย",
+   "statement": "ระบุพจน์กำลังสามรวมทั้งพจน์เลื่อน แล้วใช้สูตรผลบวกหรือผลต่างกำลังสามพร้อมตรวจด้วยการกระจาย",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "ระบุพจน์กำลังสามรวมทั้งพจน์เลื่อน แล้วใช้สูตรผลบวกหรือผลต่างกำลังสามพร้อมตรวจด้วยการกระจาย",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.factor_cube_identity_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.common-fourth-difference",
+   "kind": "procedure",
+   "title": "ดึงตัวร่วมแล้วแยกผลต่างกำลังสี่เป็นผลต่างกำลังสองสองชั้น",
+   "statement": "ดึงตัวร่วมแล้วแยกผลต่างกำลังสี่เป็นผลต่างกำลังสองสองชั้น",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "ดึงตัวร่วมแล้วแยกผลต่างกำลังสี่เป็นผลต่างกำลังสองสองชั้น",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.factor_fourth_power_m3"
+   ]
+  }
+ ]
+}

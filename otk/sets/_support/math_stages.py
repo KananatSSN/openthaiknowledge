@@ -706,7 +706,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("inequality_negative_coefficient", "inequality_setup_m3", "inequality_fraction_m3",
          "inequality_both_sides_m3"),
         ("inequality_compound", "inequality_word_problem_m3", "inequality_order_properties_m3",
-         "inequality_count_integers_m3"),
+         "inequality_count_integers_m3", "inequality_representation_m3", "age_constraint_m3", "rectangle_area_bound_m3"),
     ),
     (B, "ม.3", "กระจายทวินาม"): (
         ("expand_binomials", "difference_of_squares_ax_m3", "mental_product_m3"),
@@ -718,7 +718,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("factor_special", "factor_perfect_square_m3"),
         ("factor_quadratic", "factor_cubic_common_m3", "factor_difference_of_squares_m3",
          "which_factor_m3", "factor_two_variables_m3"),
-        ("factor_common_then_quadratic", "factor_cubic_grouping_m3", "factor_leading_two_m3"),
+        ("factor_common_then_quadratic", "factor_cubic_grouping_m3", "factor_leading_two_m3",
+         "factor_cube_identity_m3", "factor_fourth_power_m3"),
     ),
     (B, "ม.3", "กำลังสองสมบูรณ์"): (
         ("complete_square_constant", "vertex_from_completed_m3", "which_perfect_square_m3"),
@@ -729,7 +730,9 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("quadratic_equation", "which_root_m3"),
         ("quadratic_formula_roots", "quadratic_sum_product_roots", "quadratic_discriminant_m3",
          "quadratic_root_count_m3", "quadratic_sum_of_roots_m3", "consecutive_product_m3"),
-        ("quadratic_word_problem_m3", "rectangle_width_from_area_m3"),
+        ("quadratic_word_problem_m3", "rectangle_width_from_area_m3", "quadratic_standard_form_m3",
+         "quadratic_dimension_m3", "quadratic_past_age_m3", "quadratic_number_relation_m3",
+         "quadratic_root_relation_m3", "perpendicular_travel_m3"),
     ),
     (B, "ม.3", "กราฟของฟังก์ชันกำลังสอง"): (
         ("parabola_graph_m3", "parabola_opens_m3", "parabola_y_intercept_m3"),
