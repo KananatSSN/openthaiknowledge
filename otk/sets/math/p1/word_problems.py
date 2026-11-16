@@ -8,6 +8,7 @@ Sets moved here from: math, math_p1.
 
 from __future__ import annotations
 
+from itertools import permutations
 from random import Random
 
 from otk.core.content import math as content_math
@@ -591,3 +592,113 @@ class ReverseDoubleBalanceP1(ChoiceType):
         return (f"มีเงินจำนวนหนึ่ง ซื้อของเล่น {first} บาท พ่อให้เงินเพิ่มเท่ากับเงินที่เหลือขณะนั้น "
                 f"จากนั้นซื้อขนม {last} บาท สุดท้ายเหลือ {final} บาท เดิมมีเงินกี่บาท",
                 str(answer), [str(x) for x in dict.fromkeys((final+last+first,final+last,after_first,answer+last)) if x != answer])
+
+
+@question_type("math.post_interval_distance_p1", display_name={"th": "หาระยะระหว่างเสาที่มีช่องห่างเท่ากัน"}, level=LEVEL, topic="โจทย์ปัญหา")
+class PostIntervalDistanceP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 3',))
+
+    def compose(self, rng: Random):
+        first = rng.randint(1, 7)
+        last = first + rng.randint(2, 10)
+        gap = rng.randint(2, 5)
+        total = (last - first) * gap
+        return (f"เสาเรียงแนวตรงจากต้นที่ 1 แต่ละคู่ที่ติดกันห่าง {gap} เมตร "
+                f"เสาต้นที่ {first} ถึงต้นที่ {last} ห่างกี่เมตร", str(total),
+                [str(n) for n in dict.fromkeys(((last - first + 1) * gap, (last - first - 1) * gap, last * gap, (last + 1) * gap)) if n != total])
+
+
+@question_type("math.rank_both_ends_p1", display_name={"th": "หาจำนวนคนจากอันดับซ้ายและขวาของคนเดียวกัน"}, level=LEVEL, topic="โจทย์ปัญหา")
+class RankBothEndsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 7',))
+
+    def compose(self, rng: Random):
+        left, right = rng.randint(2, 12), rng.randint(2, 12)
+        total = left + right - 1
+        return (f"เด็กยืนเรียงแถวเดียว นิดอยู่ลำดับที่ {left} จากซ้าย และลำดับที่ {right} จากขวา "
+                "แถวนี้มีเด็กทั้งหมดกี่คน", str(total),
+                [str(left + right), str(left + right + 1), str(left + right - 2)])
+
+
+@question_type("math.possible_nth_weekday_p1", display_name={"th": "หาวันที่เป็นไปได้ของวันในสัปดาห์ครั้งที่กำหนด"}, level=LEVEL, topic="โจทย์ปัญหา")
+class PossibleNthWeekdayP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 9',))
+
+    def compose(self, rng: Random):
+        nth = rng.randint(1, 4)
+        weekday = rng.choice(("จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์", "อาทิตย์"))
+        lo, hi = 7 * (nth - 1) + 1, 7 * nth
+        day = rng.randint(lo, hi)
+        wrongs = rng.sample([d for d in range(1, 29) if not lo <= d <= hi], 3)
+        return (f"ยังไม่ทราบว่าวันที่ 1 ของเดือนตรงกับวันใด วันที่ใดอาจเป็นวัน{weekday}ครั้งที่ {nth} ของเดือน", str(day),
+                [str(d) for d in wrongs])
+
+
+@question_type("math.minimum_coins_p1", display_name={"th": "หาเหรียญน้อยที่สุดเพื่อรวมเงินได้พอดี"}, level=LEVEL, topic="โจทย์ปัญหา")
+class MinimumCoinsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 12',))
+
+    def compose(self, rng: Random):
+        coins = sorted([1] + rng.sample((2, 5, 10), rng.randint(1, 3)))
+        amount = rng.randint(20, 100)
+        best = [0] + [amount + 1] * amount
+        for n in range(1, amount + 1):
+            best[n] = 1 + min(best[n - c] for c in coins if c <= n)
+        answer = best[amount]
+        # Round the count down, use an extra coin, or pay entirely in one-baht coins.
+        pool = (amount // coins[-1], answer - 1, answer + 1, amount, answer + 2)
+        return (f"มีเหรียญชนิดราคา {', '.join(map(str, coins))} บาท แต่ละชนิดมีไม่จำกัด "
+                f"ไม่จำเป็นต้องใช้ครบทุกชนิด ต้องรวมให้ได้ {amount} บาทพอดี ใช้เหรียญน้อยที่สุดกี่เหรียญ", str(answer),
+                [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.minimum_bags_p1", display_name={"th": "หาจำนวนถุงน้อยที่สุดเมื่อถุงสุดท้ายใส่ไม่เต็มได้"}, level=LEVEL, topic="โจทย์ปัญหา")
+class MinimumBagsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 16',))
+
+    def compose(self, rng: Random):
+        capacity = rng.randint(3, 9)
+        full = rng.randint(2, 9)
+        remainder = rng.randrange(capacity)
+        total = capacity * full + remainder
+        answer = (total + capacity - 1) // capacity
+        pool = (full, answer - 1, answer + 1, total, remainder, answer + 2)
+        return (f"ถุงแต่ละใบใส่ขนมได้มากที่สุด {capacity} ห่อ มีขนม {total} ห่อ "
+                "ต้องใส่ขนมทั้งหมด ถุงสุดท้ายใส่ไม่เต็มได้ ใช้ถุงอย่างน้อยกี่ใบ", str(answer),
+                [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.distinct_fruit_assignment_p1", display_name={"th": "ใช้เงื่อนไขตัดตัวเลือกเมื่อแต่ละคนเลือกผลไม้ต่างกัน"}, level=LEVEL, topic="โจทย์ปัญหา")
+class DistinctFruitAssignmentP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 21',))
+
+    def compose(self, rng: Random):
+        people = rng.sample(("เอ", "บี", "ซี", "ดี"), 4)
+        fruits = rng.sample(("ส้ม", "มะม่วง", "องุ่น", "เงาะ"), 4)
+        a, b, c, d = people
+        f, g, h, j = fruits
+        clues = (f"{a}ไม่เลือก{f}และ{g}", f"{b}ไม่เลือก{f} {h} และ{j}", f"{c}ไม่เลือก{f} {g} และ{j}")
+        target = rng.choice(people)
+        allocations = [dict(zip(people, p)) for p in permutations(fruits)]
+        valid = [p for p in allocations if p[a] not in (f, g) and p[b] not in (f, h, j) and p[c] not in (f, g, j)]
+        answer = valid[0][target]
+        return (f"{', '.join(people)} เลือกผลไม้คนละหนึ่งชนิด ไม่ซ้ำกันจาก {', '.join(fruits)} "
+                + ' · '.join(clues) + f" {target}เลือกผลไม้ชนิดใด", answer, [x for x in fruits if x != answer])
+
+
+@question_type("math.equalize_piles_p1", display_name={"th": "ย้ายสิ่งของน้อยที่สุดให้ทุกกองเท่ากัน"}, level=LEVEL, topic="โจทย์ปัญหา")
+class EqualizePilesP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 22',))
+
+    def compose(self, rng: Random):
+        mean = rng.randint(8, 12)
+        a, b = rng.randint(1, 4), rng.randint(1, 4)
+        c = rng.randint(1, a + b - 1)
+        counts = [mean + a, mean + b, mean - c, mean - (a + b - c)]
+        rng.shuffle(counts)
+        target = sum(counts) // len(counts)
+        answer = sum(n - target for n in counts if n > target)
+        pool = (2 * answer, max(counts) - min(counts), max(counts) - target, answer + 1, sum(counts))
+        return (f"ขนมในจานที่ 1 ถึง 4 มีจำนวน {', '.join(map(str, counts))} ชิ้นตามลำดับ "
+                "หนึ่งครั้งย้ายขนมหนึ่งชิ้นจากจานหนึ่งไปอีกจาน ต้องย้ายน้อยที่สุดกี่ครั้งจึงเท่ากันทุกจาน", str(answer),
+                [str(n) for n in dict.fromkeys(pool) if n != answer])

@@ -278,3 +278,19 @@ class RaceConstraintsP1(ChoiceType):
         return (f"A B C D แข่งขัน ไม่มีอันดับร่วม {a} ไม่ได้อันดับแรก {b} เข้าเส้นชัยก่อน {c} "
                 f"และ {d} เข้าเส้นชัยหลัง {a} ข้อใดเรียงอันดับหนึ่งถึงสี่ได้สอดคล้องกับทุกเงื่อนไข",
                 " → ".join(rng.choice(valid)), [" → ".join(o) for o in rng.sample(invalid,3)])
+
+
+@question_type("math.equal_pieces_size_rank_p1", display_name={"th": "จัดอันดับขนาดชิ้นจากจำนวนชิ้นที่แบ่งแผ่นเท่ากัน"}, level=LEVEL, topic="การเปรียบเทียบ")
+class EqualPiecesSizeRankP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 10',))
+
+    def compose(self, rng: Random):
+        counts = rng.sample((4, 9, 16, 25, 36, 49), 4)
+        names = ("เอ", "บี", "ซี", "ดี")
+        rank, large = rng.choice((2, 3)), rng.choice((False, True))
+        order = sorted(range(4), key=lambda i: counts[i], reverse=not large)
+        pick = order[rank - 1]
+        data = " · ".join(f"{name}แบ่ง {n} ชิ้น" for name, n in zip(names, counts))
+        return (f"ทั้งสี่คนมีแผ่นกระดาษขนาดเท่ากัน แต่ละคนแบ่งแผ่นของตนหมดเป็นจัตุรัสที่มีขนาดเท่ากันทุกชิ้นของตน "
+                f"{data} ชิ้นของใครมีขนาด{'ใหญ่' if large else 'เล็ก'}เป็นอันดับที่ {rank}", names[pick],
+                [name for i, name in enumerate(names) if i != pick])

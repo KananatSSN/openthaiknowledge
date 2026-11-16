@@ -345,3 +345,38 @@ class DigitCluesP1(ChoiceType):
                       f"จำนวนที่{'มาก' if largest else 'น้อย'}ที่สุดคือจำนวนใด")
             pool = [n for n in numbers if n != answer]+[answer+1,answer-1]
         return prompt, str(answer), [str(x) for x in dict.fromkeys(pool) if x != answer and x > 0]
+
+
+@question_type("math.latin_missing_sum_p1", display_name={"th": "หาผลรวมช่องว่างของตารางหนึ่งถึงสี่"}, level=LEVEL, topic="การนับ")
+class LatinMissingSumP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 14',))
+
+    def compose(self, rng: Random):
+        rows, cols, symbols = rng.sample(range(4), 4), rng.sample(range(4), 4), rng.sample(range(1, 5), 4)
+        grid = [[symbols[(r + c) % 4] for c in cols] for r in rows]
+        holes = set(rng.sample(range(16), rng.randint(4, 8)))
+        shown = " / ".join(" ".join("□" if 4 * r + c in holes else str(grid[r][c]) for c in range(4)) for r in range(4))
+        answer = sum(grid[n // 4][n % 4] for n in holes)
+        given = sum(map(sum, grid)) - answer
+        pool = (given, 40, len(holes), answer - 1, answer + 1)
+        return (f"เติมเลข 1 ถึง 4 ให้ทุกแถวและทุกคอลัมน์มีครบโดยไม่ซ้ำ ตาราง 4 แถว (คั่นแถวด้วย /): {shown} "
+                "ผลรวมของเลขที่ต้องเติมในช่องว่างทุกช่องเท่ากับเท่าใด", str(answer),
+                [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.digit_inequality_count_p1", display_name={"th": "นับเลขโดดที่แทนช่องว่างแล้วทำให้อสมการจริง"}, level=LEVEL, topic="การนับ")
+class DigitInequalityCountP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 27',))
+
+    def compose(self, rng: Random):
+        boundary = rng.randint(2, 9)
+        a = rng.randint(boundary + 2, 20)
+        b = a - boundary
+        sign = rng.choice((">", "≥", "<", "≤"))
+        def holds(d):
+            value = a - d
+            return {">": value > b, "≥": value >= b, "<": value < b, "≤": value <= b}[sign]
+        answer = sum(holds(d) for d in range(10))
+        pool = (answer + 1, abs(answer - 1), 10 - answer, boundary, boundary + 1, 10, 9)
+        return (f"กำหนดให้ □ เป็นเลขโดดตั้งแต่ 0 ถึง 9 มีเลขโดดกี่ตัวที่ทำให้ {a} − □ {sign} {b} เป็นจริง", str(answer),
+                [str(n) for n in dict.fromkeys(pool) if n != answer])

@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,649 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,659 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -10,15 +10,15 @@
 |---|---|---|---:|
 | [`add_sub_mixed`](p1/add_sub_mixed.py) | การบวกลบระคน | ค 1.1 ป.1/4, ค 1.1 ป.1/5 | 10 |
 | [`addition`](p1/addition.py) | การบวก | ค 1.1 ป.1/4 | 12 |
-| [`comparing_numbers`](p1/comparing_numbers.py) | การเปรียบเทียบ | ค 1.1 ป.1/2, ค 1.1 ป.1/3 | 13 |
-| [`counting`](p1/counting.py) | การนับ | ค 1.1 ป.1/1 | 15 |
+| [`comparing_numbers`](p1/comparing_numbers.py) | การเปรียบเทียบ | ค 1.1 ป.1/2, ค 1.1 ป.1/3 | 14 |
+| [`counting`](p1/counting.py) | การนับ | ค 1.1 ป.1/1 | 17 |
 | [`measurement`](p1/measurement.py) | การวัด | ค 2.1 ป.1/* | 16 |
 | [`patterns`](p1/patterns.py) | แบบรูป | ค 1.2 ป.1/1 | 13 |
 | [`pictograph`](p1/pictograph.py) | แผนภูมิรูปภาพ | ค 3.1 ป.1/1 | 10 |
 | [`plane_shapes`](p1/plane_shapes.py) | เรขาคณิต 2 มิติ | ค 2.2 ป.1/* | 12 |
 | [`solids`](p1/solids.py) | เรขาคณิต 3 มิติ | ค 2.2 ป.1/* | 10 |
 | [`subtraction`](p1/subtraction.py) | การลบ | ค 1.1 ป.1/4 | 12 |
-| [`word_problems`](p1/word_problems.py) | โจทย์ปัญหา | ค 1.1 ป.1/5 | 25 |
+| [`word_problems`](p1/word_problems.py) | โจทย์ปัญหา | ค 1.1 ป.1/5 | 32 |
 
 ## p2 — ป.2
 
