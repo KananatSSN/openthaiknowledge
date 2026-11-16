@@ -290,3 +290,24 @@ class ProportionalRewardDifferenceP5(WordProblem):
                         distractors=_story.keep(named("steps.missed_a_step", other_prizes),
                                                 points - other_points, prizes + other_prizes,
                                                 answer + 1, answer=answer, lo=1))
+
+
+@question_type("math.proportion_sentence_p5", display_name={"th": "เลือกวิธีตั้งบัญญัติไตรยางศ์"}, level={"th": "ป.5"}, topic="บัญญัติไตรยางศ์")
+class ProportionSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 1–4",))
+
+    def compose(self, rng: Random):
+        n,m = rng.sample(range(3,25),2)
+        rate = rng.randint(5,90)
+        total,target = n*rate,m*rate
+        if rng.choice((False,True)):
+            prompt = (f"สมุด {n} เล่ม ราคา {total} บาท สมุดทุกเล่มราคาเท่ากัน "
+                      f"ซื้อ {m} เล่ม ต้องจ่ายกี่บาท เลือกวิธีคำนวณ")
+            right = f"({total} ÷ {n}) × {m}"
+            wrongs = [f"({n} ÷ {total}) × {m}",f"({total} ÷ {m}) × {n}",f"({total} ÷ {n}) + {m}"]
+        else:
+            prompt = (f"ช่าง {n} คน ทำขนมได้ {total} ชิ้นในหนึ่งวัน ทุกคนทำได้เท่ากัน "
+                      f"ต้องการ {target} ชิ้นในหนึ่งวัน ต้องใช้ช่างกี่คน เลือกวิธีคำนวณ")
+            right = f"({n} ÷ {total}) × {target}"
+            wrongs = [f"({total} ÷ {n}) × {target}",f"({n} ÷ {target}) × {total}",f"({n} ÷ {total}) + {target}"]
+        return prompt,right,wrongs

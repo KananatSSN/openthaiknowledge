@@ -29,13 +29,30 @@
     {
      "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
      "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 4
     }
    ],
    "covered_by": [
     "math.rate_word_problem_p5",
     "math.recipe_scaling_p5",
     "math.printing_time_p5",
-    "math.unit_price_p5"
+    "math.unit_price_p5",
+    "math.proportion_sentence_p5"
    ]
   },
   {

@@ -331,14 +331,17 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("rate_word_problem_p5", "fuel_for_trip_p5", "days_to_earn_p5", "how_many_for_money_p5",
          "printing_time_p5", "better_buy_p5"),
         ("recipe_scaling_p5", "workers_days_p5", "fractional_unit_price_p5",
-         "proportional_reward_difference_p5"),
+         "proportional_reward_difference_p5", "proportion_sentence_p5"),
     ),
     (B, "ป.5", "ร้อยละ"): (
         ("percent_grid_p5", "percent_of_number", "percent_to_decimal_p5"),
         ("find_percent_p5", "percent_of_quantity_p5", "percent_to_fraction_p5",
          "percent_increase_price_p5"),
         ("discount", "percent_two_step_p5", "percent_left_over_p5", "percent_pass_table_p5",
-         "monthly_savings_bonus_p5", "percent_share_difference_p5", "percent_remainder_share_p5"),
+         "monthly_savings_bonus_p5", "percent_share_difference_p5", "percent_remainder_share_p5",
+         "fraction_decimal_to_percent_p5", "percent_expression_comparison_p5", "percent_part_sentence_p5",
+         "percent_remainder_sentence_p5", "profit_sale_sentence_p5", "profit_rate_sentence_p5",
+         "original_from_discount_sentence_p5", "cost_from_loss_sentence_p5"),
     ),
     (B, "ป.5", "เส้นขนาน"): (
         ("parallel_pair_picture_p5", "parallel_concepts_p5", "parallel_daily_life_p5",
@@ -370,7 +373,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("line_graph_picture_p5", "line_graph_total_p5", "line_graph_highest_p5"),
         ("line_graph_change", "bar_chart_make_p5", "line_graph_count_rises_p5",
          "line_graph_count_above_p5", "line_graph_true_p5"),
-        ("line_graph_problem_p5", "line_graph_next_p5"),
+        ("line_graph_problem_p5", "line_graph_next_p5", "double_bar_summary_p5"),
     ),
     (B, "ป.5", "ปริซึม"): (
         ("prism_parts_p5", "prism_or_not_p5", "prism_objects_p5", "prism_net_rectangles_p5"),

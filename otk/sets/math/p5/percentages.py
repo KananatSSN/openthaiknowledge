@@ -371,3 +371,125 @@ class PercentRemainderShareP5(WordProblem):
                                                 named("steps.missed_a_step", remaining),
                                                 named("percent.subtracted_the_number", (total - percent) // groups),
                                                 remaining - groups, answer + 1, answer=answer, lo=1))
+
+
+@question_type("math.fraction_decimal_to_percent_p5", display_name={"th": "เปลี่ยนเศษส่วนหรือทศนิยมเป็นร้อยละ"}, level={"th": "ป.5"}, topic="ร้อยละ")
+class FractionDecimalToPercentP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 5–6",))
+
+    def compose(self, rng: Random):
+        if rng.choice((False,True)):
+            denominator = rng.choice((4,5,10,20,25,50,100))
+            numerator = rng.randint(1,denominator-1)
+            percent = 100*numerator//denominator
+            prompt = f"เศษส่วน {numerator}/{denominator} เขียนเป็นร้อยละได้เท่าใด"
+        else:
+            percent = rng.randint(1,99)
+            prompt = f"ทศนิยม 0.{percent:02d} เขียนเป็นร้อยละได้เท่าใด"
+        def label(value):
+            return f"{value:.2f}%"
+        p = Decimal(percent)
+        return prompt,label(p),[label(p/10),label(p*10),label(p/100)]
+
+
+@question_type("math.percent_expression_comparison_p5", display_name={"th": "เปรียบเทียบค่าร้อยละที่มีฐานต่างกัน"}, level={"th": "ป.5"}, topic="ร้อยละ")
+class PercentExpressionComparisonP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 8",))
+
+    def compose(self, rng: Random):
+        pairs=[]
+        while len(pairs)<4:
+            p,n = rng.randrange(5,100,5),20*rng.randint(5,100)
+            if all(p*n != a*b for a,b in pairs):
+                pairs.append((p,n))
+        most = rng.choice((False,True))
+        chosen = (max if most else min)(pairs,key=lambda pair:pair[0]*pair[1])
+        labels = [f"{p}% ของ {n}" for p,n in pairs]
+        right = f"{chosen[0]}% ของ {chosen[1]}"
+        return f"ผลลัพธ์ข้อใดมีค่า{'มาก' if most else 'น้อย'}ที่สุด",right,[x for x in labels if x != right]
+
+
+@question_type("math.percent_part_sentence_p5", display_name={"th": "เลือกวิธีหาร้อยละของจำนวนหรือส่วนลด"}, level={"th": "ป.5"}, topic="ร้อยละ")
+class PercentPartSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 7, 10",))
+
+    def compose(self, rng: Random):
+        p,total = rng.randrange(5,50,5),rng.randint(2,90)*100
+        if rng.choice((False,True)):
+            prompt = f"ร้อยละ {p} ของ {total} คำนวณด้วยวิธีใด"
+        else:
+            prompt = f"สินค้าเดิมราคา {total} บาท ลดราคา {p}% ส่วนลดกี่บาท คำนวณด้วยวิธีใด"
+        return (prompt,f"({p} ÷ 100) × {total}",
+                [f"(100 ÷ {p}) × {total}",f"({p} ÷ 10) × {total}",f"((100 − {p}) ÷ 100) × {total}"])
+
+
+@question_type("math.percent_remainder_sentence_p5", display_name={"th": "เลือกวิธีคำนวณส่วนที่เหลือเป็นจำนวนหรือร้อยละ"}, level={"th": "ป.5"}, topic="ร้อยละ")
+class PercentRemainderSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 11, 14",))
+
+    def compose(self, rng: Random):
+        if rng.choice((False,True)):
+            whole = rng.randint(20,150)
+            part = rng.choice([n for n in range(1,whole) if 2*n != whole])
+            prompt = (f"ผลไม้ทั้งหมด {whole} ลูก เป็นแอปเปิล {part} ลูก ที่เหลือเป็นส้ม "
+                      "ส้มคิดเป็นกี่เปอร์เซ็นต์ของผลไม้ทั้งหมด เลือกวิธีคำนวณ")
+            right = f"(({whole} − {part}) ÷ {whole}) × 100"
+            wrongs = [f"({part} ÷ {whole}) × 100",f"({whole} ÷ ({whole} − {part})) × 100",f"({whole} ÷ {part}) × 100"]
+        else:
+            whole,p = 100*rng.randint(2,90),rng.randrange(5,50,5)
+            prompt = (f"ที่ดินทั้งหมด {whole} ไร่ ปลูกมะม่วง {p}% ที่เหลือปลูกข้าว "
+                      "ปลูกข้าวกี่ไร่ เลือกวิธีคำนวณ")
+            right = f"((100 − {p}) ÷ 100) × {whole}"
+            # Increase instead of decrease, invert the base conversion, or subtract
+            # the rate from the quantity before dividing by a hundred.
+            wrongs = [f"((100 + {p}) ÷ 100) × {whole}",f"((100 − {p}) ÷ {whole}) × 100",
+                      f"(({whole} − {p}) ÷ 100) × {whole}"]
+        return prompt,right,wrongs
+
+
+@question_type("math.profit_sale_sentence_p5", display_name={"th": "เลือกวิธีหาราคาขายเมื่อกำไรเป็นร้อยละของทุน"}, level={"th": "ป.5"}, topic="ร้อยละ")
+class ProfitSaleSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 12",))
+
+    def compose(self, rng: Random):
+        cost,p = 100*rng.randint(2,90),rng.randrange(5,50,5)
+        prompt = (f"ซื้อสินค้ามาราคา {cost} บาท ต้องการขายให้ได้กำไร {p}% ของราคาทุน "
+                  "ราคาขายกี่บาท เลือกวิธีคำนวณ")
+        return (prompt,f"{cost} + (({p} ÷ 100) × {cost})",
+                [f"{cost} − (({p} ÷ 100) × {cost})",f"({p} ÷ 100) × {cost}",f"{cost} + {p}"])
+
+
+@question_type("math.profit_rate_sentence_p5", display_name={"th": "เลือกฐานคำนวณร้อยละกำไร"}, level={"th": "ป.5"}, topic="ร้อยละ")
+class ProfitRateSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 13",))
+
+    def compose(self, rng: Random):
+        cost = 100*rng.randint(2,90)
+        sale = cost+rng.randint(1,cost//2)
+        return (f"ลงทุนทำขนม {cost} บาท ขายหมดได้เงิน {sale} บาท กำไรคิดเป็นกี่เปอร์เซ็นต์ของราคาทุน เลือกวิธีคำนวณ",
+                f"(({sale} − {cost}) ÷ {cost}) × 100",
+                [f"(({sale} − {cost}) ÷ {sale}) × 100",f"({sale} ÷ {cost}) × 100",f"({cost} ÷ {sale}) × 100"])
+
+
+@question_type("math.original_from_discount_sentence_p5", display_name={"th": "ย้อนหาราคาเดิมจากจำนวนเงินส่วนลด"}, level={"th": "ป.5"}, topic="ร้อยละ")
+class OriginalFromDiscountSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 15",))
+
+    def compose(self, rng: Random):
+        p = rng.randrange(5,50,5)
+        discount = p*rng.randint(2,100)
+        return (f"ลดราคาสินค้า {discount} บาท คิดเป็น {p}% ของราคาเดิม ราคาเดิมกี่บาท เลือกวิธีคำนวณ",
+                f"(100 ÷ {p}) × {discount}",
+                [f"({p} ÷ 100) × {discount}",f"({100-p} ÷ 100) × {discount}",f"(100 ÷ {100-p}) × {discount}"])
+
+
+@question_type("math.cost_from_loss_sentence_p5", display_name={"th": "ย้อนหาราคาทุนจากราคาขายและร้อยละขาดทุน"}, level={"th": "ป.5"}, topic="ร้อยละ")
+class CostFromLossSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 16",))
+
+    def compose(self, rng: Random):
+        p = rng.randrange(5,50,5)
+        sale = (100-p)*rng.randint(2,100)
+        return (f"ขายสินค้าราคา {sale} บาท ขาดทุน {p}% ของราคาทุน ราคาทุนกี่บาท เลือกวิธีคำนวณ",
+                f"(100 ÷ (100 − {p})) × {sale}",
+                [f"((100 − {p}) ÷ 100) × {sale}",f"((100 + {p}) ÷ 100) × {sale}",f"(100 ÷ (100 + {p})) × {sale}"])
