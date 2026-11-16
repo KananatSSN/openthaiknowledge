@@ -385,3 +385,15 @@ class RelatedStoryForSentenceP4(ChoiceType):
                    prefix+f"แบ่งให้ {groups} คนเท่า ๆ กัน แล้วแต่ละคนจ่าย {gift} บาท"+tail,
                    prefix+f"แบ่งให้ {groups} คนเท่า ๆ กัน แล้วแต่ละคนได้เพิ่ม {gift} บาท"+tail]
         return f"เรื่องใดใช้ ({total} − {gift}) ÷ {groups} หาคำตอบได้",options[0],options[1:]
+
+
+@question_type("math.discount_fee_sentence_p4", display_name={"th": "เลือกวิธีหักส่วนลดแล้วรวมค่าธรรมเนียม"}, level={"th": "ป.4"}, topic="โจทย์ปัญหาระคน")
+class DiscountFeeSentenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 8",))
+
+    def compose(self,rng: Random):
+        price=rng.randint(1000000,5000000)
+        discount,fee=rng.sample(range(1000,50001,1000),2)
+        return (f"รถราคา {price} บาท ได้ส่วนลด {discount} บาท และจ่ายค่าประกันเพิ่ม {fee} บาท "
+                "เงินที่จ่ายทั้งหมดหาได้ด้วยนิพจน์ใด",f"({price} − {discount}) + {fee}",
+                [f"({price} + {discount}) − {fee}",f"({price} + {discount}) + {fee}",f"({price} − {discount}) − {fee}"])

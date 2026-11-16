@@ -23620,6 +23620,8 @@
    "text_chars": 4500,
    "layout": "numbered",
    "scan_pages": 1,
+   "items": 20,
+   "stage": "generated",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -23686,6 +23688,8 @@
    "pages": 6,
    "text_chars": 4799,
    "layout": "numbered",
+   "items": 20,
+   "stage": "generated",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {

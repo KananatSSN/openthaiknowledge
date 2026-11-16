@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,629 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,640 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -58,18 +58,18 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`addition_and_subtraction`](p4/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.4/8 | 10 |
-| [`bar_chart`](p4/bar_chart.py) | แผนภูมิแท่ง | ค 3.1 ป.4/1 | 10 |
-| [`data_presentation`](p4/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.4/1 | 10 |
+| [`addition_and_subtraction`](p4/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.4/8 | 11 |
+| [`bar_chart`](p4/bar_chart.py) | แผนภูมิแท่ง | ค 3.1 ป.4/1 | 11 |
+| [`data_presentation`](p4/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.4/1 | 11 |
 | [`decimals`](p4/decimals.py) | ทศนิยม | ค 1.1 ป.4/* | 10 |
 | [`division`](p4/division.py) | การหาร | ค 1.1 ป.4/9 | 10 |
-| [`estimation`](p4/estimation.py) | การประมาณค่า | ค 1.1 ป.4/7 | 10 |
+| [`estimation`](p4/estimation.py) | การประมาณค่า | ค 1.1 ป.4/7 | 11 |
 | [`fractions`](p4/fractions.py) | เศษส่วน | ค 1.1 ป.4/* | 10 |
-| [`lines_and_angles`](p4/lines_and_angles.py) | เส้นตรงและมุม | ค 2.2 ป.4/*, ค 2.1 ป.4/2 | 10 |
-| [`multi_step_word_problems`](p4/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.4/* | 17 |
-| [`multiply`](p4/multiply.py) | การคูณยาว | ค 1.1 ป.4/9 | 10 |
-| [`place_value`](p4/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.4/* | 10 |
-| [`rectangles`](p4/rectangles.py) | สี่เหลี่ยมมุมฉาก | ค 2.2 ป.4/* | 10 |
+| [`lines_and_angles`](p4/lines_and_angles.py) | เส้นตรงและมุม | ค 2.2 ป.4/*, ค 2.1 ป.4/2 | 12 |
+| [`multi_step_word_problems`](p4/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.4/* | 18 |
+| [`multiply`](p4/multiply.py) | การคูณยาว | ค 1.1 ป.4/9 | 11 |
+| [`place_value`](p4/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.4/* | 11 |
+| [`rectangles`](p4/rectangles.py) | สี่เหลี่ยมมุมฉาก | ค 2.2 ป.4/* | 12 |
 | [`time`](p4/time.py) | เวลา | ค 2.1 ป.4/* | 20 |
 
 ## p5 — ป.5

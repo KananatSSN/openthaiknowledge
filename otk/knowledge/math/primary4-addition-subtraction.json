@@ -1,0 +1,43 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การบวกและการลบ",
+ "level": "ป.4",
+ "units": [
+  {
+   "id": "math.primary4.large-addsub-sentence",
+   "kind": "procedure",
+   "title": "เลือกการรวม การหาส่วนที่ขาดหรือส่วนต่าง และการหาคงเหลือตามความหมายของเรื่องจำนวนมาก",
+   "statement": "เลือกการรวม การหาส่วนที่ขาดหรือส่วนต่าง และการหาคงเหลือตามความหมายของเรื่องจำนวนมาก",
+   "steps": [
+    "อ่านข้อมูล ชื่อจุด หน่วย และคำสั่ง",
+    "เลือกการรวม การหาส่วนที่ขาดหรือส่วนต่าง และการหาคงเหลือตามความหมายของเรื่องจำนวนมาก",
+    "ตรวจทุกตัวเลือกกับข้อมูลที่กำหนด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-4/4537-4-2565-1-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-4/4537-4-2565-1-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-4/4537-4-2565-1-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-4/4543-4-2567-2-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-4/4543-4-2567-2-2.pdf",
+     "item": 7
+    }
+   ],
+   "covered_by": [
+    "math.large_addsub_sentence_p4"
+   ]
+  }
+ ]
+}

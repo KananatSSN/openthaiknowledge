@@ -214,3 +214,15 @@ class MultiplyByHundredsP4(MathType):
         # One zero too many or too few; the leading digits only.
         return MathDraw(rf"{a} \times {_g(k)}", _g(right), prompt="จงหาผลคูณ",
                         distractors=_gk(right * 10, right // 10, a * int(str(k)[0]), right + k, answer=right, lo=1))
+
+
+@question_type("math.product_model_statement_p4", display_name={"th": "เลือกทั้งประโยคคูณและผลลัพธ์ให้ถูกต้อง"}, level={"th": "ป.4"}, topic="การคูณยาว")
+class ProductModelStatementP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4537-4-2565-1-2.pdf, ข้อ 9–10","openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 9–10",))
+
+    def compose(self,rng: Random):
+        groups,each=rng.randint(101,999),rng.randint(11,99)
+        product=groups*each
+        return (f"ซื้อมะม่วง {groups} เข่ง หนักเข่งละ {each} กิโลกรัม ข้อใดใช้วิธีคำนวณและผลลัพธ์ถูกต้อง",
+                f"{groups} × {each} = {product}",
+                [f"{groups} + {each} = {groups+each}",f"{groups} − {each} = {groups-each}",f"{groups} × {each} = {product+10}"])

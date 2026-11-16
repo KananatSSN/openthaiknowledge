@@ -242,13 +242,13 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.4", "ค่าประจำหลัก"): (
         ("number_reading_p4", "more_less_large_p4", "digit_count_p4"),
         ("place_value_millions_p4", "expanded_to_number_p4", "number_between_p4", "zeros_in_number_p4"),
-        ("compare_large_numbers_p4", "place_value_word_p4", "number_from_digits_p4"),
+        ("compare_large_numbers_p4", "place_value_word_p4", "number_from_digits_p4", "canonical_expansion_millions_p4"),
     ),
     (B, "ป.4", "การคูณยาว"): (
         ("multiply_by_tens", "multiply_by_hundreds_p4"),
         ("multiply_3x1", "multiply_partial_products_p4", "multiply_3x2_p4", "missing_factor_p4",
          "largest_product_p4"),
-        ("multiply_2x2", "multiply_multistep_p4", "boxes_total_p4"),
+        ("multiply_2x2", "multiply_multistep_p4", "boxes_total_p4", "product_model_statement_p4"),
     ),
     (B, "ป.4", "การหาร"): (
         ("division", "divide_by_hundreds_p4"),
@@ -260,12 +260,12 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("rounding", "rounds_to_p4"),
         ("estimate_sum", "estimate_product", "largest_rounding_to_p4", "smallest_rounding_to_p4",
          "estimate_difference_p4", "estimate_quotient_p4"),
-        ("estimate_word_problem_p4", "estimate_bill_p4"),
+        ("estimate_word_problem_p4", "estimate_bill_p4", "rounding_statement_p4"),
     ),
     (B, "ป.4", "การบวกและการลบ"): (
         ("add_sub_large_p4", "add_three_large_p4"),
         ("missing_addsub_large_p4", "check_addsub_p4", "missing_digit_add_p4", "largest_result_p4"),
-        ("addsub_word_large_p4", "how_many_more_p4", "budget_left_p4", "compare_two_sums_p4"),
+        ("addsub_word_large_p4", "how_many_more_p4", "budget_left_p4", "compare_two_sums_p4", "large_addsub_sentence_p4"),
     ),
     (B, "ป.4", "โจทย์ปัญหาระคน"): (
         ("mixed_ops_p4",),
@@ -273,7 +273,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("two_step_word_problem_p4", "ticket_income_p4", "buy_two_kinds_p4", "cost_per_person_p4",
          "yearly_saving_p4", "reserve_half_remaining_p4", "organizer_shared_cost_p4",
          "add_sub_sentence_p4", "remaining_share_sentence_p4", "quotient_then_add_sentence_p4",
-         "pack_unit_price_sentence_p4", "related_story_for_sentence_p4"),
+         "pack_unit_price_sentence_p4", "related_story_for_sentence_p4", "discount_fee_sentence_p4"),
     ),
     (B, "ป.4", "เศษส่วน"): (
         ("fraction_bars_p4", "fraction_kinds_p4", "improper_mixed_p4", "equivalent_missing_p4"),
@@ -298,24 +298,24 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.4", "เส้นตรงและมุม"): (
         ("classify_line", "line_ray_picture_p4", "classify_angle", "angle_kind_picture_p4", "name_angle_p4"),
         ("protractor_read_p4", "construct_angle_protractor_p4", "angle_complement_supplement"),
-        ("angles_around_point_p4", "clock_angle_p4"),
+        ("angles_around_point_p4", "clock_angle_p4", "line_notation_p4", "plane_surface_model_p4"),
     ),
     (B, "ป.4", "สี่เหลี่ยมมุมฉาก"): (
         ("rectangle_figure_p4", "rectangle_area_perimeter", "largest_area_p4", "largest_perimeter_p4"),
         ("rectangle_missing_side_p4", "construct_rectangle_p4", "area_when_doubled_p4",
          "l_shape_area_p4"),
-        ("rectangle_word_problem_p4", "same_perimeter_area_p4"),
+        ("rectangle_word_problem_p4", "same_perimeter_area_p4", "rectangle_property_statement_p4", "square_summary_statement_p4"),
     ),
     (B, "ป.4", "การนำเสนอข้อมูล"): (
         ("two_way_table_read_p5", "two_way_grand_total_p4"),
         ("two_way_table_total_p5", "two_way_column_diff_p4", "two_way_row_most_p4",
          "two_way_cell_diff_p4", "two_way_two_rows_p4"),
-        ("two_way_table_compare_p5", "two_way_true_statement_p4", "two_way_missing_cell_p4"),
+        ("two_way_table_compare_p5", "two_way_true_statement_p4", "two_way_missing_cell_p4", "selected_columns_row_max_p4"),
     ),
     (B, "ป.4", "แผนภูมิแท่ง"): (
         ("bar_chart_picture_p4", "bar_chart_read_p4", "bar_total_p4"),
         ("bar_chart_diff", "bar_range_p4", "bar_order_p4", "bar_count_above_p4"),
-        ("bar_chart_compare_p4", "bar_true_statement_p4", "bar_two_rows_p4"),
+        ("bar_chart_compare_p4", "bar_true_statement_p4", "bar_two_rows_p4", "three_series_chart_summary_p4"),
     ),
     # ── ป.5 ──────────────────────────────────────────────────────────────
     (B, "ป.5", "เศษส่วน"): (

@@ -277,3 +277,32 @@ class LShapeAreaP4(WordProblem):
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(big_w * big_l, big_w * big_l + cut_w * cut_l, cut_w * cut_l,
                                                 right + cut_w, answer=right, lo=1))
+
+
+@question_type("math.rectangle_property_statement_p4", display_name={"th": "ตรวจสมบัติสี่เหลี่ยมผืนผ้าที่ไม่ใช่จัตุรัส"}, level={"th": "ป.4"}, topic="สี่เหลี่ยมมุมฉาก")
+class RectanglePropertyStatementP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 17","openthaiknowledge-bank/mathematics/level/primary-4/4537-4-2565-1-2.pdf, ข้อ 17",))
+
+    def compose(self,rng: Random):
+        width,length=sorted(rng.sample(range(3,25),2))
+        true=("มีด้านตรงข้ามขนานกันสองคู่","มุมภายในทุกมุมเป็นมุมฉาก","เส้นทแยงมุมมีความยาวเท่ากัน",
+              "เส้นทแยงมุมแบ่งครึ่งซึ่งกันและกัน","ด้านตรงข้ามมีความยาวเท่ากัน")
+        false=("มีด้านตรงข้ามขนานกันเพียงหนึ่งคู่","มุมภายในทุกมุมเป็นมุมแหลม",
+               "เส้นทแยงมุมตัดกันเป็นมุมฉาก","ด้านประชิดทุกคู่มีความยาวเท่ากัน")
+        return (f"สี่เหลี่ยมผืนผ้ากว้าง {width} เซนติเมตร ยาว {length} เซนติเมตร ข้อใดไม่ถูกต้อง",
+                rng.choice(false),rng.sample(true,3))
+
+
+@question_type("math.square_summary_statement_p4", display_name={"th": "ตรวจข้อความสรุปมุมพื้นที่และเส้นรอบรูปจัตุรัส"}, level={"th": "ป.4"}, topic="สี่เหลี่ยมมุมฉาก")
+class SquareSummaryStatementP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 18",))
+
+    def compose(self,rng: Random):
+        side=rng.choice([n for n in range(3,21) if n!=4])
+        values=[360,side*side,4*side,4]
+        slips=[90,4*side,side*side,2]
+        bad=rng.randrange(4)
+        values[bad]=slips[bad]
+        rows=[f"มุมภายในทั้งสี่รวมกัน {values[0]} องศา",f"พื้นที่เท่ากับ {values[1]} ตารางเซนติเมตร",
+              f"เส้นรอบรูปยาว {values[2]} เซนติเมตร",f"มีด้านยาวเท่ากันทั้งหมด {values[3]} ด้าน"]
+        return f"สี่เหลี่ยมจัตุรัสมีด้านยาวด้านละ {side} เซนติเมตร ข้อใดสรุปไม่ถูกต้อง",rows[bad],[v for i,v in enumerate(rows) if i!=bad]
