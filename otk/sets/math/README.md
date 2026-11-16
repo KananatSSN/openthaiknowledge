@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,569 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,579 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -24,7 +24,7 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`addition_and_subtraction`](p2/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.2/4 | 11 |
+| [`addition_and_subtraction`](p2/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.2/4 | 15 |
 | [`division`](p2/division.py) | การหาร | ค 1.1 ป.2/* | 14 |
 | [`measurement`](p2/measurement.py) | การวัด | ค 2.1 ป.2/* | 12 |
 | [`mixed_operations`](p2/mixed_operations.py) | บวก ลบ คูณ หารระคน | ค 1.1 ป.2/* | 13 |
@@ -43,7 +43,7 @@
 | [`addition_and_subtraction`](p3/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.3/5 | 10 |
 | [`division`](p3/division.py) | การหาร | ค 1.1 ป.3/7 | 10 |
 | [`fractions`](p3/fractions.py) | เศษส่วน | ค 1.1 ป.3/* | 10 |
-| [`measurement`](p3/measurement.py) | การวัด | ค 2.1 ป.3/* | 10 |
+| [`measurement`](p3/measurement.py) | การวัด | ค 2.1 ป.3/* | 12 |
 | [`money`](p3/money.py) | เงิน | ค 2.1 ป.3/* | 14 |
 | [`multi_step_word_problems`](p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.3/* | 14 |
 | [`multiplication`](p3/multiplication.py) | การคูณ | ค 1.1 ป.3/6 | 10 |
@@ -51,8 +51,8 @@
 | [`patterns`](p3/patterns.py) | แบบรูป | ค 1.2 ป.3/1 | 10 |
 | [`place_value`](p3/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.3/1, ค 1.1 ป.3/2 | 10 |
 | [`symmetry`](p3/symmetry.py) | รูปสมมาตร | ค 2.2 ป.3/* | 10 |
-| [`time`](p3/time.py) | เวลา | ค 2.1 ป.3/* | 10 |
-| [`volume_and_capacity`](p3/volume_and_capacity.py) | ปริมาตรและความจุ | ค 2.1 ป.3/* | 10 |
+| [`time`](p3/time.py) | เวลา | ค 2.1 ป.3/* | 11 |
+| [`volume_and_capacity`](p3/volume_and_capacity.py) | ปริมาตรและความจุ | ค 2.1 ป.3/* | 13 |
 
 ## p4 — ป.4
 

@@ -103,7 +103,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("add_columns", "add_three_two_digit_p2"),
         ("sub_columns", "check_with_inverse_p2", "largest_sum_p2"),
         ("missing_addsub_p2", "missing_digit_p2", "add_word_three_digit_p2", "sub_word_three_digit_p2",
-         "how_many_more_p2", "comparison_amount_p2"),
+         "how_many_more_p2", "comparison_amount_p2", "match_three_digit_sum_p2",
+         "balance_three_digit_sums_p2", "match_three_digit_difference_p2", "balance_three_digit_differences_p2"),
     ),
     (B, "ป.2", "การคูณ"): (
         ("multiplication_picture_p2", "repeated_addition", "times_table_p2", "multiply_zero_one_p2"),
@@ -203,12 +204,13 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.3", "การวัด"): (
         ("measuring_tool_p3", "estimate_measure_p3", "convert_length_p3", "km_m_to_m_p3"),
         ("convert_weight_p3", "metric_ton_p3", "length_word_problem_p3", "cm_mm_to_mm_p3"),
-        ("weight_word_problem_p3", "route_distance_p3"),
+        ("weight_word_problem_p3", "route_distance_p3", "weight_comparison_statement_p3", "weight_estimation_error_p3"),
     ),
     (B, "ป.3", "ปริมาตรและความจุ"): (
         ("jug_picture_p3", "convert_volume_p3", "capacity_unit_p3", "l_ml_to_ml_p3"),
         ("kitchen_measures_p3", "bottles_total_ml_p3", "largest_capacity_p3"),
-        ("capacity_word_problem_p3", "pours_to_fill_p3", "pour_left_p3"),
+        ("capacity_word_problem_p3", "pours_to_fill_p3", "pour_left_p3",
+         "capacity_comparison_statement_p3", "capacity_estimation_error_p3", "share_decimal_litres_p3"),
     ),
     (B, "ป.3", "รูปสมมาตร"): (
         ("symmetry_picture_p3", "symmetry_axes", "symmetric_shape_p3", "symmetry_fold_p3"),
@@ -225,7 +227,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("clock_24h_p3", "year_facts_p3", "hours_to_minutes_p3"),
         ("duration_p3", "clock_duration_p3", "minutes_to_hours_p3", "days_to_hours_p3",
          "calendar_date_weekday_p3"),
-        ("time_word_problem_p3", "longest_activity_p3"),
+        ("time_word_problem_p3", "longest_activity_p3", "activity_time_lookup_p3"),
     ),
     (B, "ป.3", "ตารางทางเดียว"): (
         ("table_most_p3", "table_range_p3"),

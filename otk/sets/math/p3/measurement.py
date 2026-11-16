@@ -15,7 +15,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_gaps_primary import _c, _choices, _cs
 from otk.sets._support.math_p3 import LEVEL
 
@@ -289,3 +289,36 @@ class RouteDistanceP3(WordProblem):
             wrong = a + b
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(wrong, right + 100, right - 10, max(a, b), answer=right, lo=1))
+
+
+@question_type("math.weight_comparison_statement_p3", display_name={"th": "เปรียบเทียบน้ำหนักกิโลกรัมขีดกับกรัมเป็นข้อความ"}, level={"th": "ป.3"}, topic="การวัด")
+class WeightComparisonStatementP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4352-3-2565-1-2.pdf, ข้อ 12",))
+
+    def compose(self, rng: Random):
+        a,b=rng.sample(range(5,101),2)
+        first,second=a*100,b*100
+        kg,khit=divmod(a,10)
+        large,small=("เป็ด","ปลา") if first>second else ("ปลา","เป็ด")
+        gap=abs(first-second)
+        right=f"{large}หนักกว่า{small} {gap} กรัม"
+        return (f"เป็ดหนัก {kg} กิโลกรัม {khit} ขีด ปลาหนัก {second} กรัม ข้อใดสรุปได้ถูกต้อง",right,
+                [f"{small}หนักกว่า{large} {gap} กรัม",f"{large}หนักกว่า{small} {gap+100} กรัม",
+                 f"{small}หนักกว่า{large} {gap+100} กรัม"])
+
+
+@question_type("math.weight_estimation_error_p3", display_name={"th": "หาความคลาดเคลื่อนของน้ำหนักที่คาดคะเน"}, level={"th": "ป.3"}, topic="การวัด")
+class WeightEstimationErrorP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4352-3-2565-1-2.pdf, ข้อ 14–15",))
+
+    def compose(self, rng: Random):
+        estimated,actual=(100*n for n in rng.sample(range(5,901),2))
+        kg,q=divmod(estimated//100,10)
+        ak,ag=divmod(actual,1000)
+        gap=abs(estimated-actual)
+        grams=rng.choice((False,True))
+        def label(value):
+            return f"{value} กรัม" if grams else f"{value//1000} กิโลกรัม {value%1000} กรัม"
+        return (f"คาดคะเนน้ำหนักลังเป็น {kg} กิโลกรัม {q} ขีด แต่ชั่งจริงได้ {ak} กิโลกรัม {ag} กรัม "
+                "คาดคะเนคลาดเคลื่อนไปเท่าใด",label(gap),
+                [label(estimated+actual),label(gap+100),label(gap-100)])

@@ -180,6 +180,198 @@
    "covered_by": [
     "math.add_columns"
    ]
+  },
+  {
+   "id": "math.primary2.add-three-digits",
+   "kind": "procedure",
+   "title": "บวกจำนวนสามหลักตามค่าประจำหลัก",
+   "statement": "บวกหน่วย สิบ ร้อยตามหลักและทดเมื่อครบสิบ โดยคงค่าหลักที่มีศูนย์",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "บวกหน่วย สิบ ร้อยตามหลักและทดเมื่อครบสิบ โดยคงค่าหลักที่มีศูนย์",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.add_columns"
+   ]
+  },
+  {
+   "id": "math.primary2.missing-add-sub",
+   "kind": "procedure",
+   "title": "หาจำนวนที่ขาดในประโยคบวกลบ",
+   "statement": "ใช้การดำเนินการย้อนกลับตามตำแหน่งตัวไม่ทราบค่า แล้วแทนกลับตรวจทั้งประโยค",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "ใช้การดำเนินการย้อนกลับตามตำแหน่งตัวไม่ทราบค่า แล้วแทนกลับตรวจทั้งประโยค",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.missing_addsub_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.match-three-digit-sum",
+   "kind": "procedure",
+   "title": "เลือกนิพจน์สามหลักที่มีผลบวกตามเป้าหมาย",
+   "statement": "คำนวณผลบวกแต่ละตัวเลือกโดยรวมค่าหลักและการทด แล้วเทียบกับเป้าหมาย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "คำนวณผลบวกแต่ละตัวเลือกโดยรวมค่าหลักและการทด แล้วเทียบกับเป้าหมาย",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.match_three_digit_sum_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.balance-three-digit-sums",
+   "kind": "procedure",
+   "title": "รักษาผลบวกสองข้างให้เท่ากัน",
+   "statement": "รวมค่าของด้านที่ทราบ แล้วลบพจน์ที่ทราบของอีกข้างเพื่อหาพจน์ที่ขาด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "รวมค่าของด้านที่ทราบ แล้วลบพจน์ที่ทราบของอีกข้างเพื่อหาพจน์ที่ขาด",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.balance_three_digit_sums_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.subtract-three-digits",
+   "kind": "procedure",
+   "title": "ลบจำนวนสามหลักและกระจายหลักเมื่อจำเป็น",
+   "statement": "ลบตามหลักจากหน่วยไปหาร้อย กระจายหนึ่งหน่วยจากหลักที่สูงกว่าเมื่อค่าหลักนั้นไม่พอ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "ลบตามหลักจากหน่วยไปหาร้อย กระจายหนึ่งหน่วยจากหลักที่สูงกว่าเมื่อค่าหลักนั้นไม่พอ",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.sub_columns"
+   ]
+  },
+  {
+   "id": "math.primary2.match-three-digit-difference",
+   "kind": "procedure",
+   "title": "เลือกนิพจน์สามหลักที่มีผลลบตามเป้าหมาย",
+   "statement": "หาผลต่างของแต่ละคู่แล้วเปรียบเทียบกับจำนวนเป้าหมาย โดยระวังหลักสิบและหลักร้อย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "หาผลต่างของแต่ละคู่แล้วเปรียบเทียบกับจำนวนเป้าหมาย โดยระวังหลักสิบและหลักร้อย",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.match_three_digit_difference_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.balance-three-digit-differences",
+   "kind": "procedure",
+   "title": "รักษาผลลบสองข้างให้เท่ากัน",
+   "statement": "หาผลต่างด้านที่ทราบแล้วลบผลต่างนี้จากตัวตั้งอีกด้านเพื่อหาตัวลบที่ขาด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "หาผลต่างด้านที่ทราบแล้วลบผลต่างนี้จากตัวตั้งอีกด้านเพื่อหาตัวลบที่ขาด",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.balance_three_digit_differences_p2"
+   ]
   }
  ]
 }
