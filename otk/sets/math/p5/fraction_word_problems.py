@@ -180,7 +180,7 @@ class FractionWordMulDivP5(QuestionType):
 
 
 from otk.core.registry import QuestionType, question_type  # noqa: E402
-from otk.kit.math_problems import MathDraw, WordProblem  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem  # noqa: E402
 from otk.sets._support.math_p5 import LEVEL  # noqa: E402
 
 
@@ -369,3 +369,51 @@ class ReserveFractionDailyBudgetP5(WordProblem):
                         distractors=_story.keep(total // days, total * k // d // days,
                                                 remaining, total // days - k,
                                                 answer + 1, answer=answer, lo=0))
+
+
+@question_type("math.fraction_story_sentence_p5", display_name={"th": "เลือกนิพจน์เศษส่วนจากสถานการณ์"}, level={"th": "ป.5"}, topic="โจทย์ปัญหาเศษส่วน")
+class FractionStorySentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4725-5-2567-2-2.pdf, ข้อ 3–6",))
+
+    def compose(self,rng: Random):
+        mode=rng.randrange(4)
+        while True:
+            d=rng.randint(3,10)
+            a=Fraction(rng.randint(1,d-1),d)
+            if mode==0:
+                b=Fraction(rng.randint(10,99)*d)
+                prompt=f"มีเงิน {b} บาท เก็บไว้ {a} ของเงินทั้งหมด เงินที่เก็บหาได้ด้วยนิพจน์ใด"
+                operator="×"
+            elif mode==1:
+                b=Fraction(rng.randint(11,59),10)
+                prompt=f"ซื้อกุ้ง {a} กิโลกรัม และปู {b} กิโลกรัม น้ำหนักรวมคำนวณด้วยนิพจน์ใด"
+                operator="+"
+            elif mode==2:
+                a+=rng.randint(2,7)
+                b=Fraction(rng.randint(2,9))
+                prompt=f"มีน้ำส้ม {a} ลิตร แบ่งให้ {b} คนเท่ากัน ปริมาณต่อคนหาได้ด้วยนิพจน์ใด"
+                operator="÷"
+            else:
+                b=Fraction(rng.randint(11,29),10)
+                a+=b+rng.randint(10,30)
+                prompt=f"พี่หนัก {a} กิโลกรัม น้องหนักน้อยกว่าพี่ {b} กิโลกรัม น้ำหนักน้องหาได้ด้วยนิพจน์ใด"
+                operator="−"
+            values={"+":a+b,"−":a-b,"×":a*b,"÷":a/b}
+            if len(set(values.values()))==4:
+                break
+        def label(op):
+            return f"({a}) {op} ({b})"
+        return prompt,label(operator),[label(op) for op in values if op!=operator]
+
+
+@question_type("math.fraction_discount_sentence_p5", display_name={"th": "เลือกวิธีหาส่วนลดจากเศษส่วนราคาขาย"}, level={"th": "ป.5"}, topic="โจทย์ปัญหาเศษส่วน")
+class FractionDiscountSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4725-5-2567-2-2.pdf, ข้อ 7",))
+
+    def compose(self,rng: Random):
+        d=rng.randint(3,12)
+        n=rng.choice([n for n in range(1,d) if 2*n!=d])
+        price=rng.randint(10,99)*d
+        return (f"สินค้าขายในราคา {n}/{d} ของราคาเต็ม ราคาเต็ม {price} บาท ส่วนลดกี่บาทหาได้ด้วยนิพจน์ใด",
+                f"{price} × (1 − {n}/{d})",
+                [f"{price} × ({n}/{d})",f"{price} ÷ (1 − {n}/{d})",f"{price} ÷ ({n}/{d})"])

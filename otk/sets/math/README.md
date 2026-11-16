@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,609 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,620 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -77,10 +77,10 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`data_presentation`](p5/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.5/1, ค 3.1 ป.5/2 | 11 |
-| [`decimals`](p5/decimals.py) | ทศนิยม | ค 1.1 ป.5/* | 10 |
-| [`fraction_word_problems`](p5/fraction_word_problems.py) | โจทย์ปัญหาเศษส่วน | ค 1.1 ป.5/* | 11 |
-| [`fractions`](p5/fractions.py) | เศษส่วน | ค 1.1 ป.5/* | 10 |
-| [`length_and_weight`](p5/length_and_weight.py) | ความยาวและน้ำหนัก | ค 2.1 ป.5/1, ค 2.1 ป.5/2 | 14 |
+| [`decimals`](p5/decimals.py) | ทศนิยม | ค 1.1 ป.5/* | 13 |
+| [`fraction_word_problems`](p5/fraction_word_problems.py) | โจทย์ปัญหาเศษส่วน | ค 1.1 ป.5/* | 13 |
+| [`fractions`](p5/fractions.py) | เศษส่วน | ค 1.1 ป.5/* | 12 |
+| [`length_and_weight`](p5/length_and_weight.py) | ความยาวและน้ำหนัก | ค 2.1 ป.5/1, ค 2.1 ป.5/2 | 18 |
 | [`parallel_lines`](p5/parallel_lines.py) | เส้นขนาน | ค 2.2 ป.5/1 | 10 |
 | [`percentages`](p5/percentages.py) | ร้อยละ | ค 1.1 ป.5/* | 22 |
 | [`prism`](p5/prism.py) | ปริซึม | ค 2.2 ป.5/4 | 10 |

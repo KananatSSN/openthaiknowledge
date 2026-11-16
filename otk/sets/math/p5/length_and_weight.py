@@ -321,3 +321,63 @@ class PricePerKhitFromGramsP5(WordProblem):
                                 "(1 ขีด เท่ากับ 100 กรัม)"),
                         distractors=_story.keep(grams * per, grams // 1000 * per,
                                                 per + khit, khit, answer=answer, lo=0))
+
+
+@question_type("math.length_equivalence_statement_p5", display_name={"th": "ตรวจข้อความความยาวต่างหน่วย"}, level={"th": "ป.5"}, topic="ความยาวและน้ำหนัก")
+class LengthEquivalenceStatementP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4725-5-2567-2-2.pdf, ข้อ 9",))
+
+    def compose(self,rng: Random):
+        units=(("กิโลเมตร",Decimal(1000)),("เมตร",Decimal(1)),("เซนติเมตร",Decimal('.01')),("มิลลิเมตร",Decimal('.001')))
+        correct=rng.randrange(4)
+        rows=[]
+        for i in range(4):
+            while True:
+                (u,fu),(v,fv)=rng.sample(units,2)
+                value=Decimal(rng.randint(11,999))/10
+                other=value*fu/fv
+                if i!=correct:
+                    other*=rng.choice((Decimal(10),Decimal('.1')))
+                label=f"{_dec(value)} {u} = {_dec(other)} {v}"
+                if label not in rows:
+                    break
+            rows.append(label)
+        return "ข้อความใดแสดงความยาวเท่ากันได้ถูกต้อง",rows[correct],[r for i,r in enumerate(rows) if i!=correct]
+
+
+@question_type("math.odd_length_equivalence_p5", display_name={"th": "เลือกความยาวที่ต่างจากอีกสามหน่วย"}, level={"th": "ป.5"}, topic="ความยาวและน้ำหนัก")
+class OddLengthEquivalenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4725-5-2567-2-2.pdf, ข้อ 10",))
+
+    def compose(self,rng: Random):
+        units=(("กิโลเมตร",Decimal(1000)),("เมตร",Decimal(1)),("เซนติเมตร",Decimal('.01')),("มิลลิเมตร",Decimal('.001')))
+        metres=Decimal(rng.randint(11,9999))/10
+        odd=rng.randrange(4)
+        scale=rng.choice((Decimal(10),Decimal('.1')))
+        labels=[f"{_dec(metres/factor*(scale if i==odd else 1))} {unit}" for i,(unit,factor) in enumerate(units)]
+        return "ข้อใดมีความยาวต่างจากอีกสามข้อ",labels[odd],[v for i,v in enumerate(labels) if i!=odd]
+
+
+@question_type("math.length_rate_sentence_p5", display_name={"th": "เลือกวิธีหาระยะเวลาด้วยระยะทางต่างหน่วย"}, level={"th": "ป.5"}, topic="ความยาวและน้ำหนัก")
+class LengthRateSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4725-5-2567-2-2.pdf, ข้อ 11",))
+
+    def compose(self,rng: Random):
+        distance=Decimal(rng.randint(11,999))/10
+        rate=rng.randint(100,999)
+        def model(factor):
+            return f"({_dec(distance)} × {factor}) ÷ {rate}"
+        return (f"ปั่นจักรยานระยะทาง {_dec(distance)} กิโลเมตร ด้วยอัตราเร็วเฉลี่ย {rate} เมตรต่อนาที "
+                "เวลาที่ใช้เป็นนาทีหาได้ด้วยนิพจน์ใด",model(1000),[model(1),model(10),model(100)])
+
+
+@question_type("math.khit_cost_sentence_p5", display_name={"th": "เลือกวิธีคิดราคาเป็นขีดจากน้ำหนักกิโลกรัม"}, level={"th": "ป.5"}, topic="ความยาวและน้ำหนัก")
+class KhitCostSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4725-5-2567-2-2.pdf, ข้อ 13",))
+
+    def compose(self,rng: Random):
+        kg=Decimal(rng.randint(1,99))/10
+        price=rng.randint(2,25)
+        return (f"ผักชีราคาขีดละ {price} บาท ซื้อ {_dec(kg)} กิโลกรัม ราคารวมหาได้ด้วยนิพจน์ใด",
+                f"({_dec(kg)} × 10) × {price}",
+                [f"({_dec(kg)} × 1) × {price}",f"({_dec(kg)} ÷ 10) × {price}",f"({_dec(kg)} ÷ 100) × {price}"])

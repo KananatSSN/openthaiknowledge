@@ -8,7 +8,7 @@ Sets moved here from: math, math_p5.
 
 from __future__ import annotations
 
-from decimal import Decimal
+from decimal import ROUND_HALF_UP, Decimal
 from fractions import Fraction
 from random import Random
 
@@ -313,3 +313,123 @@ class EstimateDecimalProductP5(WordProblem):
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep((x // 10) * (y // 10), right * 10, a * (y // 10) + 1,
                                                 right + a, answer=right, lo=1))
+
+
+
+def _bank_decimal_choices_p5(answer,values,places):
+    quantum=Decimal(1).scaleb(-places)
+    right=answer.quantize(quantum,rounding=ROUND_HALF_UP)
+    seen={right}
+    wrongs=[]
+    for value in values:
+        value=value.quantize(quantum,rounding=ROUND_HALF_UP)
+        if value>=0 and value not in seen:
+            seen.add(value)
+            wrongs.append(f"{value:.{places}f}")
+    return f"{right:.{places}f}",wrongs
+
+
+@question_type("math.decimal_three_place_addsub_p5", display_name={"th": "บวกลบทศนิยมต่างจำนวนตำแหน่ง"}, level={"th": "ป.5"}, topic="ทศนิยม")
+class DecimalThreePlaceAddSubP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4723-5-2567-2-1.pdf, ข้อ 1–4",))
+
+    def compose(self,rng: Random):
+        a=Decimal(rng.randint(300001,899999))/1000
+        b=Decimal(rng.randint(10001,29999))/100
+        add=rng.choice((False,True))
+        answer=a+b if add else a-b
+        # Align decimal points, not the final written digits.
+        misaligned=a+(b/10 if add else -b/10)
+        right,wrongs=_bank_decimal_choices_p5(answer,[misaligned,a-b if add else a+b,
+                                                      answer+Decimal('0.1'),answer-Decimal('0.1')],3)
+        return f"จงหาค่าของ {a:.3f} {'+' if add else '−'} {b:.2f}",right,wrongs
+
+
+@question_type("math.decimal_bracket_calculation_p5", display_name={"th": "คำนวณทศนิยมสองขั้นตอนตามวงเล็บ"}, level={"th": "ป.5"}, topic="ทศนิยม")
+class DecimalBracketCalculationP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4723-5-2567-2-1.pdf, ข้อ 11–18",))
+
+    def compose(self,rng: Random):
+        a,b,c=(Decimal(rng.randint(1001,9999))/100 for _ in range(3))
+        d=rng.randint(2,59)
+        mode=rng.randrange(8)
+        if mode in (0,1):
+            a=a+b+c
+            shown=f"{a} − ({b} + {c})" if mode==0 else f"({a} − {b}) − {c}"
+            answer=a-b-c
+            slips=[a-b+c,a+b-c,a+b+c,a-b,a-c]
+        elif mode==2:
+            c=Decimal(rng.randint(21,99))/10
+            shown=f"{a} + ({b} × {c})"
+            answer=a+b*c
+            slips=[(a+b)*c,a+b+c,b*c,a*b+c]
+        elif mode==3:
+            a=a+b
+            c=Decimal(rng.randint(21,99))/10
+            shown=f"({a} − {b}) × {c}"
+            answer=(a-b)*c
+            slips=[a-b*c,a-b+c,a*c,b*c]
+        elif mode==4:
+            a=Decimal(rng.randint(101,9999))/1000*d
+            shown=f"({a} ÷ {d}) + {c}"
+            answer=a/d+c
+            slips=[a/(d+c),a/d,a*d+c,a+c]
+        elif mode==5:
+            b=Decimal(rng.randint(11,99))/10
+            answer=Decimal(rng.randint(1,19))/10
+            a=answer*b*d
+            shown=f"{a} ÷ ({b} × {d})"
+            slips=[a/b*d,a/b,a*b*d,a/(b+d)]
+        elif mode==6:
+            answer=Decimal(rng.randint(101,9999))/100
+            total=answer*d
+            a=total*Decimal(rng.randint(2,8))/10
+            b=total-a
+            shown=f"({a} + {b}) ÷ {d}"
+            slips=[a+b/d,a+b,(a+b)*d,a/d]
+        else:
+            b=Decimal(rng.randint(1001,9999))/1000
+            a=b*d+a
+            shown=f"{a} − ({b} × {d})"
+            answer=a-b*d
+            slips=[(a-b)*d,a-b-d,a+b*d,b*d]
+        # The fallback choices are decimal-point shifts, not neighbouring padding.
+        right,wrongs=_bank_decimal_choices_p5(answer,slips+[answer*10,answer/10,answer*100],3)
+        return f"จงหาค่าของ {shown} ตอบเป็นทศนิยม 3 ตำแหน่ง",right,wrongs
+
+
+
+def _bank_round_fraction_p5(value,places):
+    scale=10**places
+    units=(2*value.numerator*scale+value.denominator)//(2*value.denominator)
+    return Decimal(units).scaleb(-places)
+
+
+@question_type("math.decimal_round_expression_p5", display_name={"th": "คำนวณนิพจน์ทศนิยมแล้วปัดเฉพาะผลสุดท้าย"}, level={"th": "ป.5"}, topic="ทศนิยม")
+class DecimalRoundExpressionP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4723-5-2567-2-1.pdf, ข้อ 19–20",))
+
+    def compose(self,rng: Random):
+        places=rng.choice((1,2))
+        if places==2:
+            a=Decimal(rng.randint(1001,9999))/100
+            divisor=rng.randint(2,59)
+            c=Decimal(rng.randint(11,99))/10
+            shown=f"({a} ÷ {divisor}) × {c}"
+            exact=Fraction(a)/divisor*Fraction(c)
+            early=(a/divisor).quantize(Decimal('.01'),rounding=ROUND_HALF_UP)*c
+            values=[early,a/divisor,a*divisor*c,a/divisor+c]
+        else:
+            a=Decimal(rng.randint(101,1999))
+            divisor=rng.choice((8,16,20,25,40))
+            b=Decimal(rng.randint(1001,9999))/100
+            c=Decimal(rng.randint(101,999))/100
+            shown=f"({a} ÷ {divisor}) + ({b} × {c})"
+            exact=Fraction(a)/divisor+Fraction(b)*Fraction(c)
+            early=(a/divisor).quantize(Decimal('.1'),rounding=ROUND_HALF_UP)+(b*c).quantize(Decimal('.1'),rounding=ROUND_HALF_UP)
+            values=[early,a/divisor,b*c,(a/divisor+b)*c,a*divisor+b*c]
+        answer=_bank_round_fraction_p5(exact,places)
+        truncated=Decimal((exact.numerator*10**places)//exact.denominator).scaleb(-places)
+        right,wrongs=_bank_decimal_choices_p5(answer,[truncated]+values+[answer*10,answer/10,answer*100],places)
+        return (f"จงหาค่าของ {shown} แล้วปัดผลสุดท้ายเป็นทศนิยม {places} ตำแหน่ง "
+                "ปัดแบบดูหลักถัดไป ถ้าเป็น 5 ขึ้นไปให้ปัดขึ้น โดยไม่ปัดค่าระหว่างคำนวณ",right,wrongs)

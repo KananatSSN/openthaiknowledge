@@ -319,19 +319,21 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.5", "เศษส่วน"): (
         ("reduce_fraction", "improper_to_mixed", "order_fractions"),
         ("add_fractions", "sub_fractions", "add_mixed_numbers"),
-        ("mul_fractions", "div_fractions", "mixed_fractions", "fraction_remaining_p5"),
+        ("mul_fractions", "div_fractions", "mixed_fractions", "fraction_remaining_p5",
+         "fraction_comparison_statement_p5", "fraction_expression_extreme_p5"),
     ),
     (B, "ป.5", "โจทย์ปัญหาเศษส่วน"): (
         ("fraction_of_amount_p5", "part_of_hour_p5"),
         ("fraction_word_addsub_p5", "whole_from_part_p5", "pieces_from_length_p5",
          "share_among_people_p5", "increase_by_fraction_p5"),
         ("fraction_word_muldiv_p5", "two_shares_compare_p5", "who_further_p5",
-         "reserve_fraction_daily_budget_p5"),
+         "reserve_fraction_daily_budget_p5", "fraction_story_sentence_p5", "fraction_discount_sentence_p5"),
     ),
     (B, "ป.5", "ทศนิยม"): (
         ("compare_decimals", "decimal_times_power_of_ten", "decimal_digit_value_p5"),
         ("fraction_to_decimal_p5", "decimal_multiply_p5", "round_decimal_p5", "decimal_order_p5"),
-        ("decimal_divide_p5", "decimal_word_problem_p5", "estimate_decimal_product_p5"),
+        ("decimal_divide_p5", "decimal_word_problem_p5", "estimate_decimal_product_p5",
+         "decimal_three_place_addsub_p5", "decimal_bracket_calculation_p5", "decimal_round_expression_p5"),
     ),
     (B, "ป.5", "บัญญัติไตรยางศ์"): (
         ("unit_price_p5", "exchange_money_p5"),
@@ -393,7 +395,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("weight_decimal_p5", "add_across_units_p5", "heaviest_of_four_p5",
          "weight_difference_grams_p5", "add_mixed_units_p5"),
         ("measure_decimal_word_p5", "ribbon_left_p5", "equal_pieces_cm_to_mm_p5", "two_cuts_metres_to_cm_p5",
-         "mixed_weight_remaining_kg_p5", "price_per_khit_from_grams_p5"),
+         "mixed_weight_remaining_kg_p5", "price_per_khit_from_grams_p5", "length_equivalence_statement_p5",
+         "odd_length_equivalence_p5", "length_rate_sentence_p5", "khit_cost_sentence_p5"),
     ),
     # ── ป.6 ──────────────────────────────────────────────────────────────
     (B, "ป.6", "จำนวนเฉพาะ"): (

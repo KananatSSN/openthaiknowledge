@@ -17,6 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.registry import REGISTRY, question_type
 from otk.kit import story as _story
 from otk.kit.math_problems import (
+    ChoiceType,
     MathDraw,
     MathType,
     WordProblem,
@@ -253,3 +254,57 @@ class FractionRemainingP5(WordProblem):
                         prompt=(f"เส้นทางเดินป่ายาว {dist} กิโลเมตร ช่วงเช้าเดินได้ 1/{a} ของระยะทาง ช่วงบ่ายเดินได้ "
                                 f"1/{b} ของระยะทางที่เหลือ ยังต้องเดินอีกกี่กิโลเมตร"),
                         distractors=[_fr(dist - walked - Fraction(dist, b)), _fr(walked + second), _fr(dist - walked)])
+
+
+
+def _bank_mixed_label_p5(value):
+    whole,remainder=divmod(value.numerator,value.denominator)
+    if remainder==0:
+        return str(whole)
+    return f"{whole} {remainder}/{value.denominator}" if whole else f"{remainder}/{value.denominator}"
+
+
+@question_type("math.fraction_comparison_statement_p5", display_name={"th": "ตรวจข้อความเปรียบเทียบเศษส่วนกับจำนวนคละ"}, level={"th": "ป.5"}, topic="เศษส่วน")
+class FractionComparisonStatementP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4725-5-2567-2-2.pdf, ข้อ 1",))
+
+    def compose(self,rng: Random):
+        relations=rng.sample(("<",">","=","≠"),2)*2
+        rng.shuffle(relations)
+        correct=rng.randrange(4)
+        rows=[]
+        for i,relation in enumerate(relations):
+            while True:
+                d=rng.randint(3,12)
+                right=Fraction(rng.randint(2,8)*d+rng.randint(1,d-1),d)
+                true=i==correct
+                if (relation=="=" and true) or (relation=="≠" and not true):
+                    delta=0
+                else:
+                    delta=Fraction(rng.randint(1,d-1),d)
+                    if (relation=="<" and true) or (relation==">" and not true):
+                        delta=-delta
+                    elif relation in ("=","≠"):
+                        delta*=rng.choice((-1,1))
+                label=f"{right+delta} {relation} {_bank_mixed_label_p5(right)}"
+                if label not in rows:
+                    break
+            rows.append(label)
+        return "ข้อใดเปรียบเทียบเศษส่วนกับจำนวนคละได้ถูกต้อง",rows[correct],[r for i,r in enumerate(rows) if i!=correct]
+
+
+@question_type("math.fraction_expression_extreme_p5", display_name={"th": "เปรียบเทียบผลลบจำนวนคละ"}, level={"th": "ป.5"}, topic="เศษส่วน")
+class FractionExpressionExtremeP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4725-5-2567-2-2.pdf, ข้อ 2",))
+
+    def compose(self,rng: Random):
+        results={}
+        while len(results)<4:
+            d,e=rng.randint(2,10),rng.randint(2,10)
+            b=rng.randint(1,5)
+            first=Fraction((b+rng.randint(2,5))*d+rng.randint(1,d-1),d)
+            second=Fraction(b*e+rng.randint(1,e-1),e)
+            results[first-second]=f"({_bank_mixed_label_p5(first)}) − ({_bank_mixed_label_p5(second)})"
+        most=rng.choice((False,True))
+        answer=(max if most else min)(results)
+        return f"นิพจน์ใดมีผลลัพธ์{'มากที่สุด' if most else 'น้อยที่สุด'}",results[answer],[v for k,v in results.items() if k!=answer]

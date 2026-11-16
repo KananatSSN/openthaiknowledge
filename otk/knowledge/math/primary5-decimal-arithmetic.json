@@ -1,0 +1,183 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "ทศนิยม",
+ "level": "ป.5",
+ "units": [
+  {
+   "id": "math.primary5.three-place-addsub",
+   "kind": "procedure",
+   "title": "ตั้งจุดทศนิยมตรงกัน เติมศูนย์ให้จำนวนตำแหน่งเท่ากัน แล้วบวกหรือลบตามค่าประจำหลัก",
+   "statement": "ตั้งจุดทศนิยมตรงกัน เติมศูนย์ให้จำนวนตำแหน่งเท่ากัน แล้วบวกหรือลบตามค่าประจำหลัก",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ถาม",
+    "ตั้งจุดทศนิยมตรงกัน เติมศูนย์ให้จำนวนตำแหน่งเท่ากัน แล้วบวกหรือลบตามค่าประจำหลัก",
+    "ตรวจทุกตัวเลือกด้วยค่าที่แน่นอน"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.decimal_three_place_addsub_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.decimal-product",
+   "kind": "procedure",
+   "title": "คูณจำนวนเต็มที่ได้จากการเลื่อนจุดแล้วคืนจำนวนตำแหน่งทศนิยมรวม",
+   "statement": "คูณจำนวนเต็มที่ได้จากการเลื่อนจุดแล้วคืนจำนวนตำแหน่งทศนิยมรวม",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ถาม",
+    "คูณจำนวนเต็มที่ได้จากการเลื่อนจุดแล้วคืนจำนวนตำแหน่งทศนิยมรวม",
+    "ตรวจทุกตัวเลือกด้วยค่าที่แน่นอน"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.decimal_multiply_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.decimal-power-ten",
+   "kind": "procedure",
+   "title": "เลื่อนค่าประจำหลักตามการคูณด้วยหนึ่งพันโดยรักษาค่าของเลขโดด",
+   "statement": "เลื่อนค่าประจำหลักตามการคูณด้วยหนึ่งพันโดยรักษาค่าของเลขโดด",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ถาม",
+    "เลื่อนค่าประจำหลักตามการคูณด้วยหนึ่งพันโดยรักษาค่าของเลขโดด",
+    "ตรวจทุกตัวเลือกด้วยค่าที่แน่นอน"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 7
+    }
+   ],
+   "covered_by": [
+    "math.decimal_times_power_of_ten"
+   ]
+  },
+  {
+   "id": "math.primary5.decimal-division",
+   "kind": "procedure",
+   "title": "หารทศนิยมด้วยจำนวนนับและตรวจด้วยผลหารคูณตัวหาร โดยรักษาศูนย์ในผลหาร",
+   "statement": "หารทศนิยมด้วยจำนวนนับและตรวจด้วยผลหารคูณตัวหาร โดยรักษาศูนย์ในผลหาร",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ถาม",
+    "หารทศนิยมด้วยจำนวนนับและตรวจด้วยผลหารคูณตัวหาร โดยรักษาศูนย์ในผลหาร",
+    "ตรวจทุกตัวเลือกด้วยค่าที่แน่นอน"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.decimal_divide_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.decimal-bracket-calculation",
+   "kind": "procedure",
+   "title": "คำนวณตามวงเล็บและลำดับการดำเนินการสองขั้น โดยคงค่าทศนิยมแน่นอนระหว่างคำนวณ",
+   "statement": "คำนวณตามวงเล็บและลำดับการดำเนินการสองขั้น โดยคงค่าทศนิยมแน่นอนระหว่างคำนวณ",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ถาม",
+    "คำนวณตามวงเล็บและลำดับการดำเนินการสองขั้น โดยคงค่าทศนิยมแน่นอนระหว่างคำนวณ",
+    "ตรวจทุกตัวเลือกด้วยค่าที่แน่นอน"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.decimal_bracket_calculation_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.decimal-round-final-expression",
+   "kind": "procedure",
+   "title": "คำนวณนิพจน์ด้วยค่าแน่นอนแล้วปัดเฉพาะผลสุดท้ายตามจำนวนตำแหน่งที่ระบุ โดยหลักถัดไปห้าขึ้นไปปัดขึ้น",
+   "statement": "คำนวณนิพจน์ด้วยค่าแน่นอนแล้วปัดเฉพาะผลสุดท้ายตามจำนวนตำแหน่งที่ระบุ โดยหลักถัดไปห้าขึ้นไปปัดขึ้น",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ถาม",
+    "คำนวณนิพจน์ด้วยค่าแน่นอนแล้วปัดเฉพาะผลสุดท้ายตามจำนวนตำแหน่งที่ระบุ โดยหลักถัดไปห้าขึ้นไปปัดขึ้น",
+    "ตรวจทุกตัวเลือกด้วยค่าที่แน่นอน"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4723-5-2567-2-1.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.decimal_round_expression_p5"
+   ]
+  }
+ ]
+}
