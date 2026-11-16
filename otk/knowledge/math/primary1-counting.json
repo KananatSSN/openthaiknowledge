@@ -37,11 +37,16 @@
     {
      "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
      "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4012-1-2565-1-2.pdf",
+     "item": 5
     }
    ],
    "covered_by": [
     "math.count_objects_p1",
-    "math.equivalent_number_forms_p1"
+    "math.equivalent_number_forms_p1",
+    "math.count_objects_20_p1"
    ]
   },
   {
@@ -98,6 +103,14 @@
     {
      "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
      "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4012-1-2565-1-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4012-1-2565-1-2.pdf",
+     "item": 8
     }
    ],
    "covered_by": [
@@ -153,6 +166,10 @@
     {
      "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
      "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4012-1-2565-1-2.pdf",
+     "item": 6
     }
    ],
    "covered_by": [

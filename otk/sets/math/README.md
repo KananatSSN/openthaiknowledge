@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,640 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,649 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -26,15 +26,15 @@
 |---|---|---|---:|
 | [`addition_and_subtraction`](p2/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.2/4 | 15 |
 | [`division`](p2/division.py) | การหาร | ค 1.1 ป.2/* | 14 |
-| [`measurement`](p2/measurement.py) | การวัด | ค 2.1 ป.2/* | 16 |
+| [`measurement`](p2/measurement.py) | การวัด | ค 2.1 ป.2/* | 22 |
 | [`mixed_operations`](p2/mixed_operations.py) | บวก ลบ คูณ หารระคน | ค 1.1 ป.2/* | 13 |
 | [`money`](p2/money.py) | เงิน | ค 2.1 ป.2/* | 13 |
 | [`multiplication`](p2/multiplication.py) | การคูณ | ค 1.1 ป.2/5 | 13 |
 | [`numbers_to_1000`](p2/numbers_to_1000.py) | จำนวนนับไม่เกิน 1,000 | ค 1.1 ป.2/1, ค 1.1 ป.2/2, ค 1.1 ป.2/3 | 12 |
-| [`patterns`](p2/patterns.py) | แบบรูป | — | 11 |
+| [`patterns`](p2/patterns.py) | แบบรูป | — | 12 |
 | [`pictograph`](p2/pictograph.py) | แผนภูมิรูปภาพ | ค 3.1 ป.2/1 | 14 |
 | [`shapes`](p2/shapes.py) | รูปเรขาคณิต | ค 2.2 ป.2/* | 10 |
-| [`time`](p2/time.py) | เวลา | ค 2.1 ป.2/* | 17 |
+| [`time`](p2/time.py) | เวลา | ค 2.1 ป.2/* | 19 |
 
 ## p3 — ป.3
 

@@ -383,3 +383,31 @@ class DailyScheduleActivityP2(ChoiceType):
         data = " · ".join(f"{h:02d}.00 น. {activity}" for h, activity in zip(times, activities))
         return (f"ตารางเวลาวันนี้: {data} ตามตาราง เวลา {times[target]:02d}.00 น. มีกิจกรรมใด",
                 activities[target], [x for i, x in enumerate(activities) if i != target])
+
+
+@question_type("math.month_ordinal_p2", display_name={"th": "เชื่อมชื่อเดือนกับลำดับเดือนในปี"}, level=LEVEL, topic="เวลา")
+class MonthOrdinalP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4170-2-2565-1-2.pdf, ข้อ 12–13',))
+
+    def compose(self, rng: Random):
+        i = rng.randrange(12)
+        others = rng.sample([j for j in range(12) if j != i], 3)
+        if rng.choice((False, True)):
+            return f"เดือน{_MONTHS[i]}เป็นเดือนที่เท่าใดของปี", str(i + 1), [str(j + 1) for j in others]
+        return f"เดือนที่ {i + 1} ของปีมีชื่อว่าเดือนใด", _MONTHS[i], [_MONTHS[j] for j in others]
+
+
+@question_type("math.month_pair_days_p2", display_name={"th": "รวมจำนวนวันของสองเดือนตามลำดับเดือน"}, level=LEVEL, topic="เวลา")
+class MonthPairDaysP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4170-2-2565-1-2.pdf, ข้อ 14',))
+
+    def compose(self, rng: Random):
+        year = rng.choice((2023, 2024, 2025, 2028))
+        a, b = sorted(rng.sample(range(1, 13), 2))
+        def days(m):
+            return 29 if m == 2 and year % 4 == 0 else _MONTH_DAYS[m - 1]
+        x, y = days(a), days(b)
+        total = x + y
+        wrongs = [x, y, 60, 61, total - 1, total + 1, abs(x - y)]
+        return (f"ในปี ค.ศ. {year} เดือนลำดับที่ {a} และ {b} รวมมีกี่วัน", str(total),
+                [str(n) for n in dict.fromkeys(wrongs) if n != total])

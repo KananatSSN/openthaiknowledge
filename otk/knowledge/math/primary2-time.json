@@ -106,6 +106,14 @@
     {
      "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
      "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 8
     }
    ],
    "covered_by": [
@@ -135,6 +143,18 @@
     {
      "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
      "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 7
     }
    ],
    "covered_by": [
@@ -163,6 +183,18 @@
     {
      "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
      "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 5
     }
    ],
    "covered_by": [
@@ -187,6 +219,10 @@
     {
      "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
      "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 10
     }
    ],
    "covered_by": [
@@ -207,6 +243,14 @@
     {
      "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
      "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 11
     }
    ],
    "covered_by": [
@@ -235,10 +279,39 @@
     {
      "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
      "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 13
     }
    ],
    "covered_by": [
-    "math.months_p2"
+    "math.months_p2",
+    "math.month_ordinal_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.month-pair-days",
+   "kind": "procedure",
+   "title": "เชื่อมลำดับกับชื่อเดือน หาจำนวนวันของแต่ละเดือนตามปีที่กำหนด แล้วรวมโดยคำนึงถึงกุมภาพันธ์",
+   "statement": "เชื่อมลำดับกับชื่อเดือน หาจำนวนวันของแต่ละเดือนตามปีที่กำหนด แล้วรวมโดยคำนึงถึงกุมภาพันธ์",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "เชื่อมลำดับกับชื่อเดือน หาจำนวนวันของแต่ละเดือนตามปีที่กำหนด แล้วรวมโดยคำนึงถึงกุมภาพันธ์",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.month_pair_days_p2"
    ]
   }
  ]

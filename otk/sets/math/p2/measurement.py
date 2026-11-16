@@ -383,3 +383,98 @@ class DryMeasureMethodP2(ChoiceType):
                 "ส่วนของแห้งหยาบชิ้นใหญ่ตวงให้พูนเหนือขอบ "
                 f"หากตวง{kind}ต้องใช้วิธีใด")
         return prompt,answer,[other,"ตวงเพียงครึ่งภาชนะ","ใส่เท่าใดก็ได้โดยไม่ตรวจขอบ"]
+
+
+@question_type("math.half_metre_p2", display_name={"th": "เขียนเมตรครึ่งเป็นเมตรและเซนติเมตร"}, level=LEVEL, topic="การวัด")
+class HalfMetreP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4167-2-2565-2-2.pdf, ข้อ 2',))
+
+    def compose(self, rng: Random):
+        whole = rng.randint(1, 9)
+        if rng.choice((False, True)):
+            return (f"ริบบิ้นยาว {whole} เมตรครึ่ง เท่ากับกี่เซนติเมตร", str(whole * 100 + 50),
+                    [str(whole * 100 + 5), str(whole * 100 + 500), str(whole * 100)])
+        return (f"เชือกยาว {whole} เมตรครึ่ง เขียนเป็นเมตรและเซนติเมตรได้อย่างไร",
+                f"{whole} เมตร 50 เซนติเมตร",
+                [f"{whole} เมตร 5 เซนติเมตร", f"{whole} เมตร 500 เซนติเมตร", f"{whole} เมตร 0 เซนติเมตร"])
+
+
+@question_type("math.unit_quantity_p2", display_name={"th": "ระบุปริมาณที่หน่วยวัดใช้บอก"}, level=LEVEL, topic="การวัด")
+class UnitQuantityP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4167-2-2565-2-2.pdf, ข้อ 11',))
+
+    def compose(self, rng: Random):
+        unit, right = rng.choice((("ลิตร", "ปริมาตร"), ("มิลลิลิตร", "ปริมาตร"),
+                                 ("เมตร", "ความยาว"), ("เซนติเมตร", "ความยาว"),
+                                 ("กรัม", "น้ำหนัก"), ("กิโลกรัม", "น้ำหนัก"),
+                                 ("นาที", "เวลา"), ("ชั่วโมง", "เวลา")))
+        return (f"{unit}เป็นหน่วยที่ใช้บอกปริมาณชนิดใด", right,
+                [x for x in ("ปริมาตร", "ความยาว", "น้ำหนัก", "เวลา") if x != right])
+
+
+@question_type("math.calibrated_volume_tools_p2", display_name={"th": "แยกเครื่องตวงที่มีความจุกำกับออกจากเครื่องมือชนิดอื่น"}, level=LEVEL, topic="การวัด")
+class CalibratedVolumeToolsP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4167-2-2565-2-2.pdf, ข้อ 13',))
+
+    def compose(self, rng: Random):
+        calibrated = ("กระบอกตวงมีขีดมิลลิลิตร", "ช้อนตวงระบุความจุมิลลิลิตร", "ถ้วยตวงมีขีดมิลลิลิตร", "เหยือกตวงมีขีดลิตร")
+        other = ("แก้วไม่ระบุความจุ", "ขวดไม่ระบุความจุ", "เครื่องชั่งมีขีดกรัม", "ไม้บรรทัดมีขีดเซนติเมตร")
+        good = rng.sample(calibrated, 3)
+        wrongs = []
+        for bad in rng.sample(other, 3):
+            group = rng.sample(calibrated, 2) + [bad]
+            rng.shuffle(group)
+            wrongs.append(" · ".join(group))
+        return ("กลุ่มใดเป็นเครื่องตวงที่มีหน่วยความจุกำกับทุกชิ้น", " · ".join(good), wrongs)
+
+
+@question_type("math.weighing_tool_precision_p2", display_name={"th": "เลือกเครื่องชั่งจากพิกัดและขีดแบ่งที่กำหนด"}, level=LEVEL, topic="การวัด")
+class WeighingToolPrecisionP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4167-2-2565-2-2.pdf, ข้อ 16',))
+
+    def compose(self, rng: Random):
+        mass = rng.randint(3, 15)
+        step = rng.choice((1, 2, 5))
+        labels = rng.sample(("ก", "ข", "ค", "ง"), 4)
+        profiles = ((mass + 5, step), (mass - 1, step),
+                    (mass + 10, step * 10), (mass + 20, step * 5))
+        rows = [(f"เครื่องชั่ง{label}", capacity, division)
+                for label, (capacity, division) in zip(labels, profiles)]
+        rng.shuffle(rows)
+        data = " · ".join(f"{label} ชั่งได้ไม่เกิน {cap} กรัม ขีดแบ่ง {div} กรัม" for label, cap, div in rows)
+        right = next(label for label, cap, div in rows if cap >= mass and div <= step)
+        return (f"ต้องชั่งของประมาณ {mass} กรัม โดยใช้ขีดแบ่งไม่เกิน {step} กรัม "
+                f"ข้อมูลเครื่องชั่ง: {data} ควรเลือกเครื่องใด", right,
+                [label for label, _, _ in rows if label != right])
+
+
+@question_type("math.weight_threshold_p2", display_name={"th": "เลือกน้ำหนักที่เกินหรือต่ำกว่าเกณฑ์ต่างหน่วย"}, level=LEVEL, topic="การวัด")
+class WeightThresholdP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4167-2-2565-2-2.pdf, ข้อ 18',))
+
+    def compose(self, rng: Random):
+        threshold = 100 * rng.randint(2, 9)
+        more = rng.choice((False, True))
+        # Two exactly equal alternatives expose > versus >= without a second answer.
+        equal = [f"{threshold // 100} ขีด", f"{threshold} กรัม"]
+        high, low = threshold + rng.choice((100, 200, 500)), threshold - 100
+        right = f"{high if more else low} กรัม"
+        wrong = f"{low if more else high} กรัม"
+        return (f"กำหนดให้ 1 ขีด เท่ากับ 100 กรัม น้ำหนักใด{'หนักกว่า' if more else 'เบากว่า'} {threshold} กรัม",
+                right, equal + [wrong])
+
+
+@question_type("math.weight_extreme_p2", display_name={"th": "หาน้ำหนักมากที่สุดหรือน้อยที่สุดจากกรัมขีดและกิโลกรัมครึ่ง"}, level=LEVEL, topic="การวัด")
+class WeightExtremeP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4167-2-2565-2-2.pdf, ข้อ 19–20',))
+
+    def compose(self, rng: Random):
+        half_kg = rng.randint(1, 4)
+        values = rng.sample([n for n in range(1, 60) if n != 10 * half_kg + 5], 3)
+        amounts = [100 * n for n in values] + [1000 * half_kg + 500]
+        labels = [f"{values[0] * 100} กรัม", f"{values[1]} ขีด",
+                  f"{values[2] // 10} กิโลกรัม {values[2] % 10 * 100} กรัม", f"{half_kg} กิโลกรัมครึ่ง"]
+        maximum = rng.choice((False, True))
+        pick = (max if maximum else min)(range(4), key=lambda i: amounts[i])
+        return (f"น้ำหนักใด{'หนักที่สุด' if maximum else 'เบาที่สุด'} (1 ขีด เท่ากับ 100 กรัม)",
+                labels[pick], [label for i, label in enumerate(labels) if i != pick])

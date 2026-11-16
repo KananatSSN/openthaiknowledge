@@ -126,6 +126,31 @@
     "math.count_units_nonstandard",
     "math.multiplication_word_problem_p2"
    ]
+  },
+  {
+   "id": "math.primary1.shape-identification",
+   "kind": "procedure",
+   "title": "แยกรูปหลายเหลี่ยมตามด้านตรง และแยกวงกลมออกจากวงรีที่ไม่ใช่วงกลมตามแบบเรียน",
+   "statement": "แยกรูปหลายเหลี่ยมตามด้านตรง และแยกวงกลมออกจากวงรีที่ไม่ใช่วงกลมตามแบบเรียน",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "แยกรูปหลายเหลี่ยมตามด้านตรง และแยกวงกลมออกจากวงรีที่ไม่ใช่วงกลมตามแบบเรียน",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4012-1-2565-1-2.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.shape_2d_picture_p1",
+    "math.classify_2d_shape"
+   ]
   }
  ]
 }

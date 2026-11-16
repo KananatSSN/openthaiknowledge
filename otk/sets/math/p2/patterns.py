@@ -195,3 +195,21 @@ class PatternChangingAttributeP2(ChoiceType):
             items.append(" ".join(fields.values()))
         return ("แบบรูป: " + " → ".join(items) + " ลักษณะใดเปลี่ยนไปในแบบรูปนี้ โดยอีกสองลักษณะคงเดิม",
                 changing, [x for x in (*attributes, "ไม่มีลักษณะใดเปลี่ยน") if x != changing])
+
+
+@question_type("math.repeating_colour_pair_p2", display_name={"th": "เติมสีสองตำแหน่งในแบบรูปซ้ำหน่วยละสี่"}, level=LEVEL, topic="แบบรูป")
+class RepeatingColourPairP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4170-2-2565-1-2.pdf, ข้อ 17",))
+
+    def compose(self, rng: Random):
+        a, b = rng.sample(("แดง", "ฟ้า", "เขียว", "เหลือง"), 2)
+        offset = rng.randrange(4)
+        unit = (a, a, b, b)
+        row = [unit[(i + offset) % 4] for i in range(10)]
+        holes = (1, 6)
+        shown = " · ".join("□" if i in holes else "สี" + colour for i, colour in enumerate(row))
+        right = f"สี{row[holes[0]]} และ สี{row[holes[1]]}"
+        choices = [f"สี{x} และ สี{y}" for x in (a, b) for y in (a, b)]
+        return (f"รูปสี่เหลี่ยมขนาดเท่ากันเปลี่ยนเฉพาะสี แบบรูปซ้ำหน่วยละ 4 ตำแหน่ง: {shown} "
+                "เติมสีใน □ สองช่องตามลำดับได้อย่างไร", right, [c for c in choices if c != right])

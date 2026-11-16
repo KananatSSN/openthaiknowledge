@@ -17,10 +17,15 @@
     {
      "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
      "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4012-1-2565-1-2.pdf",
+     "item": 20
     }
    ],
    "covered_by": [
-    "math.solid_objects_p1"
+    "math.solid_objects_p1",
+    "math.solid_picture_p1"
    ]
   }
  ]

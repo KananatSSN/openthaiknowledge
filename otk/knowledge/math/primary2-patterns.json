@@ -17,6 +17,10 @@
     {
      "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
      "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 18
     }
    ],
    "covered_by": [
@@ -37,10 +41,15 @@
     {
      "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
      "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 17
     }
    ],
    "covered_by": [
-    "math.repeating_pattern_p2"
+    "math.repeating_pattern_p2",
+    "math.repeating_colour_pair_p2"
    ]
   }
  ]
