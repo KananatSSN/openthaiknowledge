@@ -322,3 +322,25 @@ class WeightEstimationErrorP3(ChoiceType):
         return (f"คาดคะเนน้ำหนักลังเป็น {kg} กิโลกรัม {q} ขีด แต่ชั่งจริงได้ {ak} กิโลกรัม {ag} กรัม "
                 "คาดคะเนคลาดเคลื่อนไปเท่าใด",label(gap),
                 [label(estimated+actual),label(gap+100),label(gap-100)])
+
+
+@question_type("math.mixed_length_result_p3", display_name={"th": "บวกหรือลบความยาวแล้วตอบหน่วยผสม"}, level={"th": "ป.3"}, topic="การวัด")
+class MixedLengthResultP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4354-3-2565-1-3.pdf, ข้อ 16–20",))
+
+    def compose(self,rng: Random):
+        factor,major,minor=rng.choice(((100,"เมตร","เซนติเมตร"),(1000,"กิโลเมตร","เมตร")))
+        a,b=rng.randint(3,9),rng.randint(1,2)
+        x,y=rng.randint(1,factor-1),rng.randint(1,factor-1)
+        add=rng.choice((False,True))
+        total=a*factor+x+(b*factor+y if add else -(b*factor+y))
+        def label(value):
+            q,r=divmod(value,factor)
+            return f"{q} {major} {r} {minor}"
+        # Wrong conversion factor, failed carry/borrow, and opposite operation.
+        candidates=[a*factor+x-(b*factor+y) if add else a*factor+x+b*factor+y,
+                    total+factor,total-factor,total+1]
+        wrongs=list(dict.fromkeys(label(v) for v in candidates if v>=0 and v!=total))
+        ask="รวมกันยาว" if add else "เส้นแรกยาวกว่าเส้นที่สอง"
+        return (f"เชือกเส้นแรกยาว {a} {major} {x} {minor} เส้นที่สองยาว {b} {major} {y} {minor} "
+                f"{ask}กี่{major} กี่{minor}",label(total),wrongs)

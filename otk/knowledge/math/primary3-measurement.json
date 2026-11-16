@@ -113,6 +113,42 @@
    "covered_by": [
     "math.weight_estimation_error_p3"
    ]
+  },
+  {
+   "id": "math.primary3.mixed-length-result",
+   "kind": "procedure",
+   "title": "แปลงเป็นหน่วยย่อยก่อนบวกหรือลบแล้วหารกลับเป็นหน่วยผสมโดยทดหรือยืมถูกต้อง",
+   "statement": "แปลงเป็นหน่วยย่อยก่อนบวกหรือลบแล้วหารกลับเป็นหน่วยผสมโดยทดหรือยืมถูกต้อง",
+   "steps": [
+    "อ่านข้อมูลและหน่วยที่กำหนด",
+    "แปลงเป็นหน่วยย่อยก่อนบวกหรือลบแล้วหารกลับเป็นหน่วยผสมโดยทดหรือยืมถูกต้อง",
+    "ตรวจทุกตัวเลือกและหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.mixed_length_result_p3"
+   ]
   }
  ]
 }

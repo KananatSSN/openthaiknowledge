@@ -135,7 +135,8 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("convert_length_p2", "scale_picture_p2", "cm_to_m_cm_p2"),
         ("convert_weight_p2", "capacity_litre_p2", "length_word_problem_p2", "kg_g_to_g_p2",
          "longest_mixed_units_p2"),
-        ("weight_word_problem_p2", "length_compare_mixed_p2", "mixed_length_statement_p2", "capacity_litre_ml_comparison_p2"),
+        ("weight_word_problem_p2", "length_compare_mixed_p2", "mixed_length_statement_p2", "capacity_litre_ml_comparison_p2",
+         "round_trip_metres_p2", "volume_comparison_statement_p2", "container_equivalence_p2", "dry_measure_method_p2"),
     ),
     (B, "ป.2", "รูปเรขาคณิต"): (
         ("shape_sides_picture_p2", "shape_properties_p2", "curved_straight_p2", "line_kinds_p2",
@@ -159,7 +160,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("pictograph_key_picture_p2", "pictograph", "pictograph_add_symbols_p2"),
         ("pictograph_compare_p2", "pictograph_total_p2", "pictograph_range_p2", "pictograph_order_p2"),
         ("pictograph_symbols_p2", "pictograph_true_statement_p2", "pictograph_two_rows_p2",
-         "pictograph_selected_total_p2", "pictograph_matching_rows_p2"),
+         "pictograph_selected_total_p2", "pictograph_matching_rows_p2", "pictograph_pair_target_p2", "pictograph_extreme_amount_p2"),
     ),
     # ── ป.3 ──────────────────────────────────────────────────────────────
     (B, "ป.3", "ค่าประจำหลัก"): (
@@ -199,12 +200,12 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.3", "การบวกและการลบ"): (
         ("add_sub_large_p3", "add_three_four_digit_p3"),
         ("missing_addsub_large_p3", "check_addsub_p3", "missing_digit_add_p3", "largest_result_p3"),
-        ("addsub_word_large_p3", "how_many_more_p3", "money_left_two_buys_p3", "compare_two_sums_p3"),
+        ("addsub_word_large_p3", "how_many_more_p3", "money_left_two_buys_p3", "compare_two_sums_p3", "comparison_amount_large_p3", "three_revenues_large_p3"),
     ),
     (B, "ป.3", "การวัด"): (
         ("measuring_tool_p3", "estimate_measure_p3", "convert_length_p3", "km_m_to_m_p3"),
         ("convert_weight_p3", "metric_ton_p3", "length_word_problem_p3", "cm_mm_to_mm_p3"),
-        ("weight_word_problem_p3", "route_distance_p3", "weight_comparison_statement_p3", "weight_estimation_error_p3"),
+        ("weight_word_problem_p3", "route_distance_p3", "weight_comparison_statement_p3", "weight_estimation_error_p3", "mixed_length_result_p3"),
     ),
     (B, "ป.3", "ปริมาตรและความจุ"): (
         ("jug_picture_p3", "convert_volume_p3", "capacity_unit_p3", "l_ml_to_ml_p3"),

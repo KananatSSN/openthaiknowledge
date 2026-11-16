@@ -161,3 +161,41 @@ class CompareTwoSumsP3(WordProblem):
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(abs(a - c), a + b + c + d, right + 1000, abs(b - d) + 1,
                                                 answer=right, lo=1))
+
+
+@question_type("math.comparison_amount_large_p3", display_name={"th": "หาจำนวนไม่เกินแสนจากข้อความมากหรือน้อยกว่า"}, level={"th": "ป.3"}, topic="การบวกและการลบ")
+class ComparisonAmountLargeP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4354-3-2565-1-3.pdf, ข้อ 5",))
+
+    def compose(self,rng: Random):
+        small,gap=rng.randint(10000,45000),rng.randint(1000,35000)
+        large=small+gap
+        form=rng.randrange(4)
+        if form==0:
+            stem=f"นาเก็บเงินได้ {small} บาท ธีเก็บได้มากกว่านา {gap} บาท ธีเก็บเงินได้กี่บาท"
+            answer=large
+        elif form==1:
+            stem=f"ธีเก็บเงินได้ {large} บาท นาเก็บได้น้อยกว่าธี {gap} บาท นาเก็บเงินได้กี่บาท"
+            answer=small
+        elif form==2:
+            stem=f"นาเก็บเงินได้น้อยกว่าธี {gap} บาท ถ้านาเก็บได้ {small} บาท ธีเก็บเงินได้กี่บาท"
+            answer=large
+        else:
+            stem=f"ธีเก็บเงินได้มากกว่านา {gap} บาท ถ้าธีเก็บได้ {large} บาท นาเก็บเงินได้กี่บาท"
+            answer=small
+        # Opposite operation; ten-thousand-place carry errors.
+        opposite=abs(small-gap) if answer==large else large+gap
+        wrongs=list(dict.fromkeys(str(v) for v in (opposite,answer+10000,answer-10000,answer+1000) if v!=answer))
+        return stem,str(answer),wrongs
+
+
+@question_type("math.three_revenues_large_p3", display_name={"th": "รวมรายรับสามครั้งเมื่อมีจำนวนห้าหลัก"}, level={"th": "ป.3"}, topic="การบวกและการลบ")
+class ThreeRevenuesLargeP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4354-3-2565-1-3.pdf, ข้อ 14",))
+
+    def compose(self,rng: Random):
+        a,b,c=rng.randint(1000,9999),rng.randint(10000,39999),rng.randint(1000,39999)
+        total=a+b+c
+        wrongs=list(dict.fromkeys(str(v) for v in (a+b,a+c,b+c,total+10000) if v!=total))
+        return (f"ร้านขายของวันแรกได้เงิน {a} บาท วันที่สอง {b} บาท วันที่สาม {c} บาท "
+                "รายรับรวมสามวันเป็นกี่บาท",str(total),wrongs)

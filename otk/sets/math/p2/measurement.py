@@ -315,3 +315,71 @@ class CapacityLitreMlComparisonP2(ChoiceType):
         return (f"ขวดสีแดงจุ {litres} ลิตร ขวดสีฟ้าจุ {ml} มิลลิลิตร ข้อใดถูกต้อง "
                 "(1 ลิตร เท่ากับ 1000 มิลลิลิตร)", labels[index],
                 [label for i, label in enumerate(labels) if i != index])
+
+
+@question_type("math.round_trip_metres_p2", display_name={"th": "หาระยะทางไปกลับจากระยะทางขาเดียว"}, level={"th": "ป.2"}, topic="การวัด")
+class RoundTripMetresP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4152-2-2564-2-2.pdf, ข้อ 9",))
+
+    def compose(self,rng: Random):
+        distance=rng.randint(251,999)
+        return (f"บ้านถึงโรงเรียนมีระยะทาง {distance} เมตร เดินไปโรงเรียนแล้วกลับบ้านตามทางเดิม "
+                "เดินรวมทั้งหมดกี่เมตร",str(2*distance),
+                [str(distance),str(3*distance),str(2*distance+100)])
+
+
+@question_type("math.volume_comparison_statement_p2", display_name={"th": "ตรวจข้อความเปรียบเทียบปริมาตร"}, level={"th": "ป.2"}, topic="การวัด")
+class VolumeComparisonStatementP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4152-2-2564-2-2.pdf, ข้อ 11",))
+
+    def compose(self,rng: Random):
+        relations=rng.sample(("มากกว่า","น้อยกว่า","เท่ากับ"),2)*2
+        rng.shuffle(relations)
+        bad=rng.randrange(4)
+        rows=[]
+        used=set()
+        for i,relation in enumerate(relations):
+            while True:
+                a,b=rng.randint(2,15),rng.randint(2,15)
+                truth=(a>b if relation=="มากกว่า" else a<b if relation=="น้อยกว่า" else a==b)
+                unit=rng.choice(("ลิตร","ถ้วยตวง","ช้อนตวง"))
+                label=f"{a} {unit} {relation} {b} {unit}"
+                if truth==(i!=bad) and label not in used:
+                    break
+            used.add(label)
+            rows.append(label)
+        return ("ข้อใดเปรียบเทียบปริมาตรไม่ถูกต้อง ถ้วยตวงและช้อนตวงแต่ละชนิดมีขนาดเท่ากันทุกครั้ง",
+                rows[bad],[label for i,label in enumerate(rows) if i!=bad])
+
+
+@question_type("math.container_equivalence_p2", display_name={"th": "เปรียบเทียบความจุจากภาชนะที่ตวงได้เท่ากัน"}, level={"th": "ป.2"}, topic="การวัด")
+class ContainerEquivalenceP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4152-2-2564-2-2.pdf, ข้อ 12",))
+
+    def compose(self,rng: Random):
+        bottles,jug=rng.randint(2,5),rng.randint(2,5)
+        count=rng.choice((bottles-1,bottles,bottles+1))
+        right="น้อยกว่า" if count<bottles else "เท่ากับ" if count==bottles else "มากกว่า"
+        def model(n,relation):
+            return f"ขวด {n} ใบ จุ{relation}เหยือก 1 ใบ"
+        wrongs=[model(count,r) for r in ("น้อยกว่า","เท่ากับ","มากกว่า") if r!=right]
+        # A wrong comparison from inverting bottles per jug.
+        wrongs.append(f"ขวด {count} ใบ จุเท่ากับเหยือก {bottles*count} ใบ")
+        return (f"ขวดทุกใบจุเท่ากัน ขวด {bottles} ใบจุรวมเท่ากับเหยือก 1 ใบ เหยือกจุ {jug*bottles} ลิตร "
+                f"ข้อความใดถูกต้องเมื่อเปรียบเทียบขวด {count} ใบกับเหยือก",model(count,right),wrongs)
+
+
+@question_type("math.dry_measure_method_p2", display_name={"th": "เลือกวิธีตวงให้ตรงลักษณะของแห้ง"}, level={"th": "ป.2"}, topic="การวัด")
+class DryMeasureMethodP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4152-2-2564-2-2.pdf, ข้อ 13,15",))
+
+    def compose(self,rng: Random):
+        coarse=rng.choice((False,True))
+        kind="ถ่านชิ้นใหญ่" if coarse else "แป้งละเอียด"
+        answer="ตวงให้พูนเหนือขอบ" if coarse else "ตวงเสมอขอบแล้วปาดเรียบ"
+        other="ตวงเสมอขอบแล้วปาดเรียบ" if coarse else "ตวงให้พูนเหนือขอบ"
+        # Explicit classroom convention avoids treating it as a universal measurement standard.
+        prompt=("กิจกรรมนี้กำหนดให้ของแห้งละเอียดตวงเสมอขอบแล้วปาดเรียบ "
+                "ส่วนของแห้งหยาบชิ้นใหญ่ตวงให้พูนเหนือขอบ "
+                f"หากตวง{kind}ต้องใช้วิธีใด")
+        return prompt,answer,[other,"ตวงเพียงครึ่งภาชนะ","ใส่เท่าใดก็ได้โดยไม่ตรวจขอบ"]

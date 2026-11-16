@@ -1,0 +1,164 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การบวกและการลบ",
+ "level": "ป.3",
+ "units": [
+  {
+   "id": "math.primary3.add-large-stories",
+   "kind": "procedure",
+   "title": "รวมจำนวนตามหน่วยเดียวกันโดยแยกกระแสรายรับออกจากยอดสะสมต่างเวลา",
+   "statement": "รวมจำนวนตามหน่วยเดียวกันโดยแยกกระแสรายรับออกจากยอดสะสมต่างเวลา",
+   "steps": [
+    "อ่านข้อมูลและหน่วยที่กำหนด",
+    "รวมจำนวนตามหน่วยเดียวกันโดยแยกกระแสรายรับออกจากยอดสะสมต่างเวลา",
+    "ตรวจทุกตัวเลือกและหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.addsub_word_large_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.large-comparison-amount",
+   "kind": "procedure",
+   "title": "ใช้จำนวนที่ทราบกับส่วนต่างเพื่อย้อนหาจำนวนที่มากกว่าหรือน้อยกว่าไม่เกินหนึ่งแสน",
+   "statement": "ใช้จำนวนที่ทราบกับส่วนต่างเพื่อย้อนหาจำนวนที่มากกว่าหรือน้อยกว่าไม่เกินหนึ่งแสน",
+   "steps": [
+    "อ่านข้อมูลและหน่วยที่กำหนด",
+    "ใช้จำนวนที่ทราบกับส่วนต่างเพื่อย้อนหาจำนวนที่มากกว่าหรือน้อยกว่าไม่เกินหนึ่งแสน",
+    "ตรวจทุกตัวเลือกและหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 5
+    }
+   ],
+   "covered_by": [
+    "math.comparison_amount_large_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.subtract-large-stories",
+   "kind": "procedure",
+   "title": "ลบส่วนที่ใช้หรือส่วนที่ทราบออกจากจำนวนทั้งหมดเพื่อหาคงเหลือ",
+   "statement": "ลบส่วนที่ใช้หรือส่วนที่ทราบออกจากจำนวนทั้งหมดเพื่อหาคงเหลือ",
+   "steps": [
+    "อ่านข้อมูลและหน่วยที่กำหนด",
+    "ลบส่วนที่ใช้หรือส่วนที่ทราบออกจากจำนวนทั้งหมดเพื่อหาคงเหลือ",
+    "ตรวจทุกตัวเลือกและหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.addsub_word_large_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.large-sequential-expenses",
+   "kind": "procedure",
+   "title": "หักค่าใช้จ่ายสองรายการจากเงินเริ่มต้นและตรวจย้อนด้วยผลรวม",
+   "statement": "หักค่าใช้จ่ายสองรายการจากเงินเริ่มต้นและตรวจย้อนด้วยผลรวม",
+   "steps": [
+    "อ่านข้อมูลและหน่วยที่กำหนด",
+    "หักค่าใช้จ่ายสองรายการจากเงินเริ่มต้นและตรวจย้อนด้วยผลรวม",
+    "ตรวจทุกตัวเลือกและหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.money_left_two_buys_p3",
+    "math.add_sub_large_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.large-sequential-stock",
+   "kind": "procedure",
+   "title": "เขียนยอดตั้งต้นบวกของเข้าและลบของออกโดยคงหน่วยและลำดับเหตุการณ์",
+   "statement": "เขียนยอดตั้งต้นบวกของเข้าและลบของออกโดยคงหน่วยและลำดับเหตุการณ์",
+   "steps": [
+    "อ่านข้อมูลและหน่วยที่กำหนด",
+    "เขียนยอดตั้งต้นบวกของเข้าและลบของออกโดยคงหน่วยและลำดับเหตุการณ์",
+    "ตรวจทุกตัวเลือกและหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.addsub_word_large_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.three-large-revenues",
+   "kind": "procedure",
+   "title": "รวมรายรับที่ไม่ทับซ้อนกันสามครั้งเมื่อมีจำนวนห้าหลัก",
+   "statement": "รวมรายรับที่ไม่ทับซ้อนกันสามครั้งเมื่อมีจำนวนห้าหลัก",
+   "steps": [
+    "อ่านข้อมูลและหน่วยที่กำหนด",
+    "รวมรายรับที่ไม่ทับซ้อนกันสามครั้งเมื่อมีจำนวนห้าหลัก",
+    "ตรวจทุกตัวเลือกและหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4354-3-2565-1-3.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.three_revenues_large_p3"
+   ]
+  }
+ ]
+}
