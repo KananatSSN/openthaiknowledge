@@ -189,3 +189,36 @@ class BlockRotationP1(ChoiceType):
         return (f"บล็อก {n} อันมีชื่อแตกต่างกันทั้งหมด เรียงเป็นแถว แต่ละครั้งย้าย {step} อันแรกไปต่อท้าย "
                 "โดยคงลำดับในกลุ่มเดิม ต้องย้ายอย่างน้อยกี่ครั้งจึงกลับเป็นลำดับเริ่มต้น (ไม่นับครั้งที่ยังไม่ย้าย)",
                 str(turns), wrongs)
+
+
+@question_type("math.unit_step_sequence_choice_p1", display_name={"th": "เลือกลำดับที่เพิ่มหรือลดทีละหนึ่ง"}, level={"th": "ป.1"}, topic="แบบรูป")
+class UnitStepSequenceChoiceP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/4009-1-2565-2-2.pdf, ข้อ 1–4",))
+
+    def compose(self,rng: Random):
+        start=rng.randint(10,85)
+        step=rng.choice((-1,1))
+        correct=[start+i*step for i in range(4)]
+        reverse=[start-i*step for i in range(4)]
+        skip=[start+2*i*step for i in range(4)]
+        swapped=[correct[0],correct[2],correct[1],correct[3]]
+        label=lambda row:", ".join(map(str,row))
+        return (f"ลำดับใด{'เพิ่มขึ้น' if step==1 else 'ลดลง'}ทีละ 1 ทุกครั้ง",label(correct),
+                [label(reverse),label(skip),label(swapped)])
+
+
+@question_type("math.single_attribute_pattern_p1", display_name={"th": "เลือกแบบรูปที่เปลี่ยนเฉพาะลักษณะที่กำหนด"}, level={"th": "ป.1"}, topic="แบบรูป")
+class SingleAttributePatternP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/4009-1-2565-2-2.pdf, ข้อ 5–7",))
+
+    def compose(self,rng: Random):
+        domains=(("วงกลม","สามเหลี่ยม","สี่เหลี่ยม"),("แดง","ฟ้า","เขียว"),("เล็ก","กลาง","ใหญ่"))
+        pairs=[rng.sample(values,2) for values in domains]
+        target=rng.randrange(3)
+        other=[i for i in range(3) if i!=target]
+        def label(changing):
+            return " → ".join("/".join(pairs[i][j%2 if i in changing else 0] for i in range(3)) for j in range(3))
+        names=("รูปร่าง","สี","ขนาด")
+        return ("แต่ละรูปบอกลักษณะตามลำดับ รูปร่าง/สี/ขนาด "
+                f"แบบรูปใดเปลี่ยนเฉพาะ{names[target]} โดยอีกสองลักษณะคงเดิม",label({target}),
+                [label({other[0]}),label({other[1]}),label(set(other))])

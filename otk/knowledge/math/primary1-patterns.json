@@ -44,6 +44,66 @@
     "math.sequence_patterns_m6",
     "math.add_three_numbers_p1"
    ]
+  },
+  {
+   "id": "math.primary1.unit-step-choice",
+   "kind": "procedure",
+   "title": "ตรวจผลต่างของทุกคู่ติดกันในแต่ละลำดับเพื่อเลือกแถวที่เพิ่มหรือลดทีละหนึ่งตลอดแถว",
+   "statement": "ตรวจผลต่างของทุกคู่ติดกันในแต่ละลำดับเพื่อเลือกแถวที่เพิ่มหรือลดทีละหนึ่งตลอดแถว",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "ตรวจผลต่างของทุกคู่ติดกันในแต่ละลำดับเพื่อเลือกแถวที่เพิ่มหรือลดทีละหนึ่งตลอดแถว",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.unit_step_sequence_choice_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.single-attribute-choice",
+   "kind": "procedure",
+   "title": "แยกการเปลี่ยนรูปร่าง สี และขนาด แล้วเลือกแบบรูปที่เปลี่ยนเฉพาะลักษณะที่ระบุโดยลักษณะอื่นคงเดิม",
+   "statement": "แยกการเปลี่ยนรูปร่าง สี และขนาด แล้วเลือกแบบรูปที่เปลี่ยนเฉพาะลักษณะที่ระบุโดยลักษณะอื่นคงเดิม",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "แยกการเปลี่ยนรูปร่าง สี และขนาด แล้วเลือกแบบรูปที่เปลี่ยนเฉพาะลักษณะที่ระบุโดยลักษณะอื่นคงเดิม",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 7
+    }
+   ],
+   "covered_by": [
+    "math.single_attribute_pattern_p1"
+   ]
   }
  ]
 }

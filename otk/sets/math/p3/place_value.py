@@ -200,3 +200,85 @@ class ZerosInNumberP3(WordProblem):
         # One more or fewer; the other digits counted.
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(right + 1, right - 1, 5 - right, right + 2, answer=right, lo=0, hi=5))
+
+
+@question_type("math.digit_place_value_pair_p3", display_name={"th": "บอกหลักและค่าเลขโดดรวมกรณีศูนย์"}, level={"th": "ป.3"}, topic="ค่าประจำหลัก")
+class DigitPlaceValuePairP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 5–6",))
+
+    def compose(self,rng: Random):
+        digits=rng.sample(range(10),5)
+        if digits[0]==0:
+            digits[0],digits[1]=digits[1],digits[0]
+        number=int("".join(map(str,digits)))
+        position=rng.randrange(5)
+        digit=digits[position]
+        names=("หมื่น","พัน","ร้อย","สิบ","หน่วย")
+        def label(i):
+            return f"อยู่ในหลัก{names[i]} มีค่า {digit*10**(4-i)}"
+        return (f"ในจำนวน {number} เลขโดด {digit} อยู่ในหลักใดและมีค่าเท่าใด",label(position),
+                [label(i) for i in rng.sample([i for i in range(5) if i!=position],3)])
+
+
+@question_type("math.canonical_expansion_p3", display_name={"th": "เลือกรูปกระจายตามค่าประจำหลักไม่เกินแสน"}, level={"th": "ป.3"}, topic="ค่าประจำหลัก")
+class CanonicalExpansionP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 7–8",))
+
+    def build(self,rng: Random,**params):
+        stem,right,wrongs=self.compose(rng)
+        return _fixed_maths([text(stem)],right,wrongs,self.topic)
+
+    def compose(self,rng: Random):
+        digits=[rng.randint(1,9) for _ in range(5)]
+        if rng.choice((False,True)):
+            digits[rng.randint(1,3)]=0
+        number=int("".join(map(str,digits)))
+        terms=[d*10**(4-i) for i,d in enumerate(digits) if d]
+        # Two equal-value regroupings are not one digit-value term per place.
+        grouped_last=[terms[0]-1000,1000]+terms[1:-2]+[sum(terms[-2:])]
+        grouped_first=[terms[0]+terms[1]]+terms[2:-2]+[terms[-2]-1,1,terms[-1]]
+        wrong_value=terms[:-1]+[terms[-1]+10]
+        label=lambda row:" + ".join(map(str,row))
+        return (f"รูปกระจายตามค่าประจำหลักของ {number} คือข้อใด "
+                "แต่ละพจน์ต้องเป็นค่าของเลขโดดเพียงหลักเดียว และละหลักที่เป็นศูนย์",label(terms),
+                [label(grouped_last),label(grouped_first),label(wrong_value)])
+
+
+@question_type("math.expanded_comparison_statement_p3", display_name={"th": "ตรวจข้อความเปรียบเทียบกับผลบวกค่าประจำหลัก"}, level={"th": "ป.3"}, topic="ค่าประจำหลัก")
+class ExpandedComparisonStatementP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 3–4",))
+
+    def compose(self,rng: Random):
+        signs=["<",">","=","≠"]
+        rng.shuffle(signs)
+        correct=rng.randrange(4)
+        rows=[]
+        for i,sign in enumerate(signs):
+            number=rng.randint(12000,88000)
+            terms=[int(d)*10**(4-j) for j,d in enumerate(str(number)) if d!="0"]
+            true=i==correct
+            if (sign=="=" and true) or (sign=="≠" and not true):
+                delta=0
+            else:
+                delta=rng.choice((10,100,1000))
+                if (sign=="<" and true) or (sign==">" and not true):
+                    delta=-delta
+                elif sign in ("=","≠"):
+                    delta*=rng.choice((-1,1))
+            rows.append(f"{number+delta} {sign} "+" + ".join(map(str,terms)))
+        return "ข้อความใดใช้เครื่องหมายเปรียบเทียบได้ถูกต้อง",rows[correct],[r for i,r in enumerate(rows) if i!=correct]
+
+
+@question_type("math.order_large_sequence_p3", display_name={"th": "เลือกลำดับจำนวนไม่เกินหนึ่งแสนที่เรียงครบถูกต้อง"}, level={"th": "ป.3"}, topic="ค่าประจำหลัก")
+class OrderLargeSequenceP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 9–10",))
+
+    def compose(self,rng: Random):
+        values=rng.sample(range(1000,100000),4)
+        descending=rng.choice((False,True))
+        ordered=sorted(values,reverse=descending)
+        wrongs=[ordered[::-1],[ordered[1],ordered[0],ordered[2],ordered[3]],
+                [ordered[0],ordered[1],ordered[3],ordered[2]]]
+        label=lambda row:", ".join(map(str,row))
+        return (f"เรียงจำนวน {label(values)} จาก{'มากไปน้อย' if descending else 'น้อยไปมาก'}ได้ตามข้อใด",
+                label(ordered),[label(row) for row in wrongs])

@@ -62,13 +62,22 @@
     {
      "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
      "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 19
     }
    ],
    "covered_by": [
     "math.true_comparison_p1",
     "math.compare_groups_p1",
     "math.equivalent_number_forms_p1",
-    "math.compare_sums_p1"
+    "math.compare_sums_p1",
+    "math.false_sum_comparison_p1"
    ]
   },
   {
@@ -133,6 +142,26 @@
     {
      "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
      "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 12
     }
    ],
    "covered_by": [
@@ -158,6 +187,10 @@
     {
      "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
      "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 20
     }
    ],
    "covered_by": [

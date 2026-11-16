@@ -199,3 +199,26 @@ class ThreeRevenuesLargeP3(ChoiceType):
         wrongs=list(dict.fromkeys(str(v) for v in (a+b,a+c,b+c,total+10000) if v!=total))
         return (f"ร้านขายของวันแรกได้เงิน {a} บาท วันที่สอง {b} บาท วันที่สาม {c} บาท "
                 "รายรับรวมสามวันเป็นกี่บาท",str(total),wrongs)
+
+
+@question_type("math.bracket_missing_number_p3", display_name={"th": "หาจำนวนที่ขาดในประโยคบวกลบมีวงเล็บ"}, level={"th": "ป.3"}, topic="การบวกและการลบ")
+class BracketMissingNumberP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 12",))
+
+    def compose(self,rng: Random):
+        a,b=rng.randint(10000,50000),rng.randint(2000,9000)
+        x=rng.randint(101,b-1)
+        mode=rng.randrange(3)
+        if mode==0:
+            shown=f"{a} + ({b} − □) = {a+b-x}"
+            answer=x
+        elif mode==1:
+            shown=f"({a} + □) − {b} = {a+x-b}"
+            answer=x
+        else:
+            shown=f"(□ − {b}) + {x} = {a-b+x}"
+            answer=a
+        # Wrong transfer signs and an unremoved outside term.
+        values=(answer+b,abs(answer-b),answer+a,abs(answer-a),answer+a+b)
+        wrongs=list(dict.fromkeys(str(v) for v in values if v!=answer))
+        return f"จงหาจำนวนที่แทน □ ในประโยค {shown}",str(answer),wrongs

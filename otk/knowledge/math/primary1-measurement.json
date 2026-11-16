@@ -143,10 +143,19 @@
     {
      "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
      "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4355-3-2565-1-2.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4355-3-2565-1-2.pdf",
+     "item": 16
     }
    ],
    "covered_by": [
-    "math.measuring_tool_p1"
+    "math.measuring_tool_p1",
+    "math.measuring_tool_p3"
    ]
   },
   {

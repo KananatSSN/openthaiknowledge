@@ -344,3 +344,39 @@ class MixedLengthResultP3(ChoiceType):
         ask="รวมกันยาว" if add else "เส้นแรกยาวกว่าเส้นที่สอง"
         return (f"เชือกเส้นแรกยาว {a} {major} {x} {minor} เส้นที่สองยาว {b} {major} {y} {minor} "
                 f"{ask}กี่{major} กี่{minor}",label(total),wrongs)
+
+
+@question_type("math.longer_than_reference_p3", display_name={"th": "เลือกความยาวมิลลิเมตรที่เกินความยาวเซนติเมตร"}, level={"th": "ป.3"}, topic="การวัด")
+class LongerThanReferenceP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 19",))
+
+    def compose(self,rng: Random):
+        cm=rng.randint(5,90)
+        baseline=cm*10
+        shorter=rng.sample(range(1,baseline),2)
+        values=[baseline+rng.randint(1,99),baseline,*shorter]
+        objects=("กรรไกร","ยางลบ","ดินสอ","ริบบิ้น")
+        rng.shuffle(values)
+        right=next(i for i,v in enumerate(values) if v>baseline)
+        labels=[f"{obj}ยาว {v} มิลลิเมตร" for obj,v in zip(objects,values)]
+        return (f"หลอดยาว {cm} เซนติเมตร สิ่งใดยาวกว่าหลอด",labels[right],
+                [label for i,label in enumerate(labels) if i!=right])
+
+
+@question_type("math.length_estimation_error_p3", display_name={"th": "หาความคลาดเคลื่อนความยาวเป็นหน่วยผสม"}, level={"th": "ป.3"}, topic="การวัด")
+class LengthEstimationErrorP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 20",))
+
+    def compose(self,rng: Random):
+        estimate=rng.randint(5,20)
+        delta=rng.choice([n for n in range(-195,196) if n])
+        actual=estimate*100+delta
+        m,cm=divmod(actual,100)
+        error=abs(estimate*100-actual)
+        def label(value):
+            q,r=divmod(value,100)
+            return f"{q} เมตร {r} เซนติเมตร"
+        values=(abs(estimate-m),estimate*100+actual,error+100,error*100)
+        wrongs=list(dict.fromkeys(label(v) for v in values if v!=error))
+        return (f"คาดคะเนเชือกยาว {estimate} เมตร วัดจริงได้ {m} เมตร {cm} เซนติเมตร "
+                "คาดคะเนคลาดเคลื่อนไปเท่าใด",label(error),wrongs)
