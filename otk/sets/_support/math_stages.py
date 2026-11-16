@@ -403,7 +403,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.6", "ห.ร.ม. และ ค.ร.น."): (
         ("gcd", "lcm", "common_multiple_p6"),
         ("gcd_word_problem_p6", "lcm_word", "common_factors_count_p6", "buses_together_p6"),
-        ("gcd_lcm_relation_p6", "gcd_lcm_three_p6", "tiles_to_square_p6"),
+        ("gcd_lcm_relation_p6", "gcd_lcm_three_p6", "tiles_to_square_p6", "gcd_lcm_product_model_p6"),
     ),
     (B, "ป.6", "ลำดับการดำเนินการ"): (
         ("order_of_ops_integers", "ooo_true_statement_p6"),
@@ -420,19 +420,19 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.6", "ร้อยละ"): (
         ("ratio_to_percent", "percent_to_ratio", "vat_p6"),
         ("profit_loss_p6", "simple_interest", "whole_from_percent_p6", "discount_percent_p6"),
-        ("percent_change_p6", "cost_from_profit_p6", "compare_offers_p6"),
+        ("percent_change_p6", "cost_from_profit_p6", "compare_offers_p6", "calendar_percent_sentence_p6"),
     ),
     (B, "ป.6", "อัตราส่วนและมาตราส่วน"): (
         ("write_ratio_p6", "equivalent_ratio_p6", "ratio_lowest_terms_p6"),
         ("map_scale", "ratio_word_problem_p6", "scale_to_km_p6", "scale_to_map_p6",
          "ratio_other_part_p6"),
-        ("ratio_share_p6", "share_three_ways_p6"),
+        ("ratio_share_p6", "share_three_ways_p6", "non_equivalent_ratio_p6", "principal_interest_ratio_p6"),
     ),
     (B, "ป.6", "แบบรูป"): (
         ("pattern_nth_term_p6", "pattern_next_term_p6", "repeating_colour_p6"),
         ("pattern_rule_expression_p6", "pattern_missing_middle_p6", "pattern_multiply_p6",
          "square_numbers_p6", "growing_difference_p6"),
-        ("matchstick_pattern_p6", "pattern_which_term_p6"),
+        ("matchstick_pattern_p6", "pattern_which_term_p6", "quadratic_product_pattern_p6"),
     ),
     (B, "ป.6", "ชนิดของรูปสามเหลี่ยม"): (
         ("triangle_type_picture_p6", "classify_by_sides_p6", "triangle_facts_p6",
@@ -464,13 +464,14 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("solid_counts_picture_p6", "solid_from_description_p6", "objects_as_solids_p6",
          "curved_surface_p6"),
         ("solid_faces_edges_vertices", "net_to_solid_p6", "pyramid_counts_p6", "cross_section_p6"),
-        ("euler_formula", "euler_missing_count_p6"),
+        ("euler_formula", "euler_missing_count_p6", "axial_cylinder_section_p6"),
     ),
     (B, "ป.6", "ปริมาตรและพื้นที่ผิว"): (
         ("prism_volume", "cube_surface_area", "cube_edge_from_volume_p6"),
         ("composite_box_volume_p6", "box_surface_area_p6", "open_box_surface_p6",
          "cube_edge_from_surface_p6", "height_from_base_area_p6"),
-        ("water_level_p6", "box_doubled_p6"),
+        ("water_level_p6", "box_doubled_p6", "box_volume_sentence_p6", "cube_litres_sentence_p6",
+         "box_dimension_sentence_p6", "mixed_box_cost_sentence_p6"),
     ),
     (B, "ป.6", "แผนภูมิรูปวงกลม"): (
         ("pie_chart_picture_p6", "pie_chart", "pie_largest_part_p6", "pie_missing_percent_p6"),

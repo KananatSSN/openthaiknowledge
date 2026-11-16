@@ -252,3 +252,17 @@ class RepeatingColourP6(ChoiceType):
         stem = f"ลูกปัดเรียงสีเป็นแบบรูปซ้ำ {shown}, ... ลูกปัดลูกที่ {n} เป็นสีใด"
         wrongs = [c for c in cycle if c != right] + [c for c in self._COLOURS if c not in cycle]
         return stem, right, wrongs[:3]
+
+
+@question_type("math.quadratic_product_pattern_p6", display_name={"th": "หาพจน์ถัดไปจากตัวประกอบที่เพิ่มเท่ากัน"}, level={"th": "ป.6"}, topic="แบบรูป")
+class QuadraticProductPatternP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 7",))
+
+    def compose(self,rng: Random):
+        step,start=rng.randint(1,6),rng.randint(1,5)
+        terms=[(step*n)*(step*(n+1)) for n in range(start,start+4)]
+        a,b=step*(start+4),step*(start+5)
+        shown=", ".join(map(str,terms))
+        return (f"แต่ละพจน์เป็นผลคูณของจำนวนเต็มบวกสองจำนวนที่ห่างกัน {step} "
+                f"และทั้งสองตัวประกอบเพิ่มครั้งละ {step}: {shown} ผลคูณถัดไปคือข้อใด",
+                f"{a} × {b}",[f"{a} × {a}",f"{a-step} × {b}",f"{a-step} × {b-step}"])

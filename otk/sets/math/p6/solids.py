@@ -14,7 +14,7 @@ from otk.core.content import text
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
-from otk.kit.math_problems import MathDraw, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_diagrams import SOLIDS, _img, _math_q, _nums
 from otk.sets._support.math_gaps_shape_data import _choices
 
@@ -249,3 +249,19 @@ class CrossSectionP6(ConceptBankType):
         Concept("ตัดทรงกลมด้วยระนาบใดก็ตาม หน้าตัดเป็นรูปใด", "รูปวงกลม",
                 ("รูปวงรี", "รูปสามเหลี่ยม", "รูปหกเหลี่ยม")),
     ]
+
+
+@question_type("math.axial_cylinder_section_p6", display_name={"th": "จำแนกและหาพื้นที่หน้าตัดผ่านแกนทรงกระบอก"}, level={"th": "ป.6"}, topic="รูปเรขาคณิต 3 มิติ")
+class AxialCylinderSectionP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 11",))
+
+    def compose(self,rng: Random):
+        radius=rng.randint(3,20)
+        height=rng.randint(2*radius+5,2*radius+30)
+        rectangle,triangle=2*radius*height,radius*height
+        def label(shape,area):
+            return f"{shape} พื้นที่ {area} ตารางเซนติเมตร"
+        return (f"ทรงกระบอกตรงรัศมี {radius} เซนติเมตร สูง {height} เซนติเมตร "
+                "ตัดด้วยระนาบที่ผ่านแกนความสูง หน้าตัดเป็นรูปใดและมีพื้นที่เท่าใด",
+                label("สี่เหลี่ยมผืนผ้า",rectangle),
+                [label("สามเหลี่ยมมุมฉาก",triangle),label("สี่เหลี่ยมผืนผ้า",triangle),label("สามเหลี่ยมมุมฉาก",rectangle)])

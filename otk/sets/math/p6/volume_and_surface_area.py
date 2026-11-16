@@ -13,7 +13,7 @@ from random import Random
 from otk.core.provenance import Provenance
 from otk.core.registry import question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_p6 import LEVEL
 
 PROVENANCE = Provenance("original")
@@ -236,3 +236,64 @@ class CubeEdgeFromSurfaceP6(WordProblem):
         # One face's area; divided by six; by four.
         return MathDraw("", str(a), prompt=prompt,
                         distractors=_story.keep(a * a, s // 6 // 2, s // 4, a + 1, answer=a, lo=1))
+
+
+@question_type("math.box_volume_sentence_p6", display_name={"th": "เลือกวิธีคำนวณปริมาตรทรงสี่เหลี่ยมมุมฉาก"}, level={"th": "ป.6"}, topic="ปริมาตรและพื้นที่ผิว")
+class BoxVolumeSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 16",))
+
+    def compose(self,rng: Random):
+        a,b,c=rng.sample(range(3,25),3)
+        target=a*b*c
+        candidates=[(f"({a} × {b}) + {c}",a*b+c),(f"({a} + {b}) × {c}",(a+b)*c),
+                    (f"({a} + {b}) + {c}",a+b+c),(f"({a} × {b}) × ({c} + 1)",a*b*(c+1))]
+        seen={target}
+        wrongs=[]
+        for label,value in candidates:
+            if value not in seen:
+                seen.add(value)
+                wrongs.append(label)
+        return (f"กล่องกว้าง {a} เมตร ยาว {b} เมตร สูง {c} เมตร ปริมาตรกี่ลูกบาศก์เมตร เลือกวิธีคำนวณ",
+                f"({a} × {b}) × {c}",wrongs)
+
+
+@question_type("math.cube_litres_sentence_p6", display_name={"th": "เลือกวิธีหาความจุลูกบาศก์เป็นลิตร"}, level={"th": "ป.6"}, topic="ปริมาตรและพื้นที่ผิว")
+class CubeLitresSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 17",))
+
+    def compose(self,rng: Random):
+        side=rng.randint(2,15)
+        cube=f"({side} × {side} × {side})"
+        return (f"ถังทรงลูกบาศก์มีสันยาว {side} เมตร ความจุเป็นลิตรหาได้ด้วยวิธีใด",
+                cube+" × 1000",[cube+" × 100",cube+" ÷ 1000",cube+" ÷ 100"])
+
+
+@question_type("math.box_dimension_sentence_p6", display_name={"th": "เลือกวิธีย้อนหามิติกล่องพร้อมแปลงหน่วย"}, level={"th": "ป.6"}, topic="ปริมาตรและพื้นที่ผิว")
+class BoxDimensionSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 18–19",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            length,width,height=(rng.randint(3,20) for _ in range(3))
+            volume=length*width*height
+            return (f"กล่องมีปริมาตร {volume} ลูกบาศก์เมตร ยาว {length} เมตร กว้าง {width} เมตร "
+                    "สูงกี่เมตร เลือกวิธีคำนวณ",f"{volume} ÷ ({length} × {width})",
+                    [f"{volume} ÷ ({length} ÷ {width})",f"{volume} × ({length} × {width})",f"({volume} ÷ {length}) + {width}"])
+        length,depth,width=rng.randint(2,9),rng.randrange(20,155,5),rng.randint(10,80)
+        volume=length*100*depth*width
+        return (f"ภาชนะมีปริมาตร {volume} ลูกบาศก์เซนติเมตร ยาว {length} เมตร ลึก {depth} เซนติเมตร "
+                "กว้างกี่เซนติเมตร เลือกวิธีคำนวณ",f"{volume} ÷ (({length} × 100) × {depth})",
+                [f"{volume} ÷ ({length} × {depth})",f"{volume} ÷ (({length} × 100) ÷ {depth})",f"{volume} × (({length} × 100) × {depth})"])
+
+
+@question_type("math.mixed_box_cost_sentence_p6", display_name={"th": "เลือกวิธีคิดราคาตามปริมาตรเมื่อหน่วยมิติต่างกัน"}, level={"th": "ป.6"}, topic="ปริมาตรและพื้นที่ผิว")
+class MixedBoxCostSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 20",))
+
+    def compose(self,rng: Random):
+        width,length,thick,price=10*rng.randint(5,20),rng.randint(2,8),10*rng.randint(1,9),100*rng.randint(1,9)
+        def model(divisor):
+            return f"(({width} ÷ {divisor}) × {length} × ({thick} ÷ {divisor})) × {price}"
+        return (f"วัสดุทรงสี่เหลี่ยมมุมฉากกว้าง {width} เซนติเมตร ยาว {length} เมตร หนา {thick} เซนติเมตร "
+                f"ราคาลูกบาศก์เมตรละ {price} บาท ราคารวมหาได้ด้วยวิธีใด",model(100),
+                [f"({width} × {length} × {thick}) × {price}",model(10),model(1000)])
