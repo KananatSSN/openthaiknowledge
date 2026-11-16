@@ -266,7 +266,9 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("mixed_ops_p4",),
         ("two_step_sentence_p4", "story_for_sentence_p4", "round_trips_p4", "full_trays_p4"),
         ("two_step_word_problem_p4", "ticket_income_p4", "buy_two_kinds_p4", "cost_per_person_p4",
-         "yearly_saving_p4", "reserve_half_remaining_p4", "organizer_shared_cost_p4"),
+         "yearly_saving_p4", "reserve_half_remaining_p4", "organizer_shared_cost_p4",
+         "add_sub_sentence_p4", "remaining_share_sentence_p4", "quotient_then_add_sentence_p4",
+         "pack_unit_price_sentence_p4", "related_story_for_sentence_p4"),
     ),
     (B, "ป.4", "เศษส่วน"): (
         ("fraction_bars_p4", "fraction_kinds_p4", "improper_mixed_p4", "equivalent_missing_p4"),
@@ -284,7 +286,9 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("calendar_word_problem_p4", "days_to_weeks_p4", "longest_duration_p4", "race_times_p4"),
         ("travel_time_p4", "stopwatch_difference_p4", "days_between_dates_p4",
          "age_year_month_difference_p4", "monthly_reading_duration_p4",
-         "average_task_duration_p4", "repeated_seconds_duration_p4"),
+         "average_task_duration_p4", "repeated_seconds_duration_p4",
+         "clock_hands_from_minutes_p4", "inclusive_date_weeks_p4", "approximate_months_days_p4",
+         "schedule_duration_p4", "departure_cutoff_p4", "fractional_year_weeks_p4"),
     ),
     (B, "ป.4", "เส้นตรงและมุม"): (
         ("classify_line", "line_ray_picture_p4", "classify_angle", "angle_kind_picture_p4", "name_angle_p4"),
