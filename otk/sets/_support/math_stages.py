@@ -751,7 +751,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("simultaneous_2var", "system_substitution", "system_sum_difference_m3", "system_which_pair_m3"),
         ("system_setup_m3", "system_x_plus_y_m3", "system_coins_m3", "system_ages_m3"),
         ("system_word_problem", "system_two_prices_m3", "system_solution_count_m3",
-         "system_basket_target_m3", "two_rate_allocation_m3"),
+         "system_basket_target_m3", "two_rate_allocation_m3", "system_parameter_difference_m3", "mixture_mass_ratio_m3", "joint_worker_time_m3", "reversed_digit_system_m3"),
     ),
     (B, "ม.3", "ความคล้าย"): (
         ("similar_triangle_picture_m3", "similar_triangle", "similar_corresponding_angle_m3"),
@@ -778,7 +778,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("solid_word_problem_m3", "cylinder_surface_m3", "cone_curved_from_height_m3",
          "pyramid_surface_from_edge_m3", "cone_volume_from_slant_m3",
          "hemisphere_from_sphere_area_m3", "hemisphere_radius_from_volume_m3",
-         "square_pyramid_volume_from_slant_m3", "equilateral_pyramid_base_from_volume_m3"),
+         "square_pyramid_volume_from_slant_m3", "equilateral_pyramid_base_from_volume_m3", "pyramid_roof_tile_count_m3", "sphere_area_from_volume_m3", "hemisphere_on_cone_area_m3", "sphere_volume_from_circumference_m3", "pyramid_cast_mass_m3", "cone_cup_count_m3", "pyramid_surface_from_height_m3"),
     ),
     (B, "ม.3", "สถิติ (แผนภาพกล่อง)"): (
         ("box_plot_picture_m2", "box_plot_range_m3", "box_plot_parts_m3"),

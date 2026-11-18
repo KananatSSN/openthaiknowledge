@@ -371,3 +371,75 @@ class TwoRateAllocationM3(WordProblem):
                                 f"และ B ให้ {q}% ของเงินที่ลงแต่ละแห่ง ได้ผลตอบแทนรวม {income} บาท ลงทุนใน A กี่บาท"),
                         distractors=_story.keep(y, total // 2, income, total,
                                                 answer + 100, answer=answer, lo=0))
+
+
+@question_type("math.system_parameter_difference_m3", display_name={"th": "หาผลต่างสัมประสิทธิ์เมื่อทราบคู่อันดับคำตอบ"}, level=LEVEL, topic="ระบบสมการ")
+class SystemParameterDifferenceM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/secondary-3/5198-3-2565-2.pdf, ข้อ 10',))
+
+    def compose(self, rng: Random):
+        x, y, a, b = rng.sample((-6, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 6), 4)
+        u, v = rng.randint(1, 5), rng.randint(1, 5)
+        c, d = u * x + a * y, b * x + v * y
+        found_a, found_b = Fraction(c - u * x, y), Fraction(d - v * y, x)
+        answer = found_a - found_b
+        pool = (found_a + found_b, found_b - found_a, found_a, found_b, answer + 1, answer - 1)
+        return (f"คู่อันดับ ({x}, {y}) เป็นคำตอบของระบบ ({u})x + ay = {c} และ bx + ({v})y = {d} "
+                "จงหา a − b", str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.mixture_mass_ratio_m3", display_name={"th": "หาอัตราส่วนมวลวัตถุดิบสองราคาจากราคาเฉลี่ย"}, level=LEVEL, topic="ระบบสมการ")
+class MixtureMassRatioM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/secondary-3/5198-3-2565-2.pdf, ข้อ 13',))
+
+    def compose(self, rng: Random):
+        low = rng.randint(10, 30)
+        high = low + rng.randint(4, 18)
+        target = rng.choice([n for n in range(low + 1, high) if 2 * n != low + high])
+        ratio = Fraction(high - target, target - low)
+        a, b = ratio.numerator, ratio.denominator
+        pairs = [(b, a), (low, high), (a + 1, b), (a, b + 1), (a + 1, b + 1)]
+        seen, wrongs = {ratio}, []
+        for p, q in pairs:
+            if Fraction(p, q) not in seen:
+                seen.add(Fraction(p, q))
+                wrongs.append(f"{p} : {q}")
+        return (f"ผสมแป้งราคา {low} บาทต่อกิโลกรัม กับแป้งราคา {high} บาทต่อกิโลกรัม "
+                f"ให้ราคาเฉลี่ย {target} บาทต่อกิโลกรัม ไม่เสียมวลหรือค่าใช้จ่ายอื่น อัตราส่วนมวลชนิดถูกต่อชนิดแพงเป็นเท่าใด",
+                f"{a} : {b}", wrongs)
+
+
+@question_type("math.joint_worker_time_m3", display_name={"th": "หาเวลาทำงานคนเดียวจากเวลาร่วมงานสองแบบ"}, level=LEVEL, topic="ระบบสมการ")
+class JointWorkerTimeM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/secondary-3/5198-3-2565-2.pdf, ข้อ 14',))
+
+    def compose(self, rng: Random):
+        first = rng.randint(8, 24)
+        second = rng.randint(first // 2 + 1, first - 1)
+        adult_rate = Fraction(1, second) - Fraction(1, first)
+        child_rate = Fraction(1, first) - adult_rate
+        adult = rng.choice((False, True))
+        answer = 1 / (adult_rate if adult else child_rate)
+        other = 1 / (child_rate if adult else adult_rate)
+        pool = (other, Fraction(first * second, first + second), Fraction(first * second, 2 * first - second), Fraction(first), Fraction(second), answer + 1)
+        return (f"ผู้ใหญ่ 1 คนกับเด็ก 1 คนทำงานเสร็จใน {first} วัน ผู้ใหญ่ 2 คนกับเด็ก 1 คนทำงานเดียวกันเสร็จใน {second} วัน "
+                f"ผู้ใหญ่แต่ละคนมีอัตรางานเท่ากัน ทุกคนทำงานอัตราคงที่และบวกกันได้ {'ผู้ใหญ่' if adult else 'เด็ก'}คนเดียวทำเสร็จในกี่วัน ตอบค่าแน่นอนไม่ปัด",
+                str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.reversed_digit_system_m3", display_name={"th": "หาจำนวนสองหลักจากผลรวมเลขโดดและการสลับหลัก"}, level=LEVEL, topic="ระบบสมการ")
+class ReversedDigitSystemM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/secondary-3/5198-3-2565-2.pdf, ข้อ 15',))
+
+    def compose(self, rng: Random):
+        tens, ones = rng.sample(range(1, 10), 2)
+        number, reverse = 10 * tens + ones, 10 * ones + tens
+        delta = reverse - number
+        total = tens + ones
+        # Solve the two linear digit constraints rather than storing a chosen answer.
+        found_tens = (9 * total - delta) // 18
+        answer = 10 * found_tens + total - found_tens
+        pool = (reverse, total, 11 * tens, 11 * ones, answer + 1, answer - 1)
+        return (f"จำนวนสองหลักมีเลขโดดทั้งสองไม่เป็นศูนย์ ผลรวมเลขโดดเท่ากับ {total} "
+                f"เมื่อนำ {abs(delta)} ไป{'บวก' if delta > 0 else 'ลบ'}กับจำนวนนี้ จะได้จำนวนที่สลับหลักกัน จำนวนเดิมเท่ากับเท่าใด",
+                str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])

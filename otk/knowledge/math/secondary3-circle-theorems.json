@@ -21,6 +21,22 @@
     {
      "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
      "item": 17
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 20
     }
    ],
    "covered_by": [
@@ -97,6 +113,14 @@
     {
      "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
      "item": 22
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 23
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 24
     }
    ],
    "covered_by": [
@@ -142,6 +166,58 @@
    ],
    "covered_by": [
     "math.inscribed_angle_semicircle"
+   ]
+  },
+  {
+   "id": "math.secondary3.radius-chord-equilateral",
+   "kind": "procedure",
+   "title": "เมื่อคอร์ดยาวเท่ารัศมี สามด้านของสามเหลี่ยมที่เชื่อมศูนย์กลางกับปลายคอร์ดเท่ากัน จึงใช้มุมสามเหลี่ยมด้านเท่า",
+   "statement": "เมื่อคอร์ดยาวเท่ารัศมี สามด้านของสามเหลี่ยมที่เชื่อมศูนย์กลางกับปลายคอร์ดเท่ากัน จึงใช้มุมสามเหลี่ยมด้านเท่า",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไขที่จำเป็น",
+    "เมื่อคอร์ดยาวเท่ารัศมี สามด้านของสามเหลี่ยมที่เชื่อมศูนย์กลางกับปลายคอร์ดเท่ากัน จึงใช้มุมสามเหลี่ยมด้านเท่า",
+    "ตรวจหน่วย สมมติฐาน และทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.triangle_facts_p6",
+    "math.circle_parts"
+   ]
+  },
+  {
+   "id": "math.secondary3.circle-triangle-angle-chain",
+   "kind": "procedure",
+   "title": "เชื่อมมุมในส่วนโค้งกับสามเหลี่ยมหน้าจั่วจากรัศมี เส้นผ่านศูนย์กลาง และผลรวมมุม โดยอ่านจุดยอดมุมที่ถามให้ถูก",
+   "statement": "เชื่อมมุมในส่วนโค้งกับสามเหลี่ยมหน้าจั่วจากรัศมี เส้นผ่านศูนย์กลาง และผลรวมมุม โดยอ่านจุดยอดมุมที่ถามให้ถูก",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไขที่จำเป็น",
+    "เชื่อมมุมในส่วนโค้งกับสามเหลี่ยมหน้าจั่วจากรัศมี เส้นผ่านศูนย์กลาง และผลรวมมุม โดยอ่านจุดยอดมุมที่ถามให้ถูก",
+    "ตรวจหน่วย สมมติฐาน และทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 21
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 22
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 25
+    }
+   ],
+   "covered_by": [
+    "math.circle_angle_picture_m3",
+    "math.angles_same_arc_m3",
+    "math.isosceles_base_angle_p6",
+    "math.triangle_missing_angle"
    ]
   }
  ]

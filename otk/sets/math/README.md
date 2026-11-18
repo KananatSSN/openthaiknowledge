@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,669 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,680 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -155,8 +155,8 @@
 | [`parabola`](m3/parabola.py) | กราฟของฟังก์ชันกำลังสอง | ค 1.2 ม.3/2 | 10 |
 | [`quadratic`](m3/quadratic.py) | สมการกำลังสอง | ค 1.3 ม.3/2 | 16 |
 | [`similarity`](m3/similarity.py) | ความคล้าย | ค 2.2 ม.3/1 | 10 |
-| [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 16 |
-| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 13 |
+| [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 23 |
+| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 17 |
 | [`trigonometric_ratios`](m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค 2.2 ม.3/2 | 10 |
 
 ## m4 — ม.4
