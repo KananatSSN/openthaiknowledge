@@ -422,7 +422,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("fraction_to_decimal", "decimal_missing_factor_p6"),
         ("decimal_to_fraction", "divide_decimal_by_decimal_p6", "round_quotient_p6",
          "decimal_rectangle_area_p6"),
-        ("decimal_ops", "decimal_word_problem_p6", "decimal_three_step_word_p6", "price_per_kilo_p6"),
+        ("decimal_ops", "decimal_word_problem_p6", "decimal_three_step_word_p6", "price_per_kilo_p6", "decimal_operation_model_p6", "decimal_division_story_p6", "ribbon_sale_model_p6", "decimal_bag_count_p6"),
     ),
     (B, "ป.6", "ร้อยละ"): (
         ("ratio_to_percent", "percent_to_ratio", "vat_p6"),
@@ -439,7 +439,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("pattern_nth_term_p6", "pattern_next_term_p6", "repeating_colour_p6"),
         ("pattern_rule_expression_p6", "pattern_missing_middle_p6", "pattern_multiply_p6",
          "square_numbers_p6", "growing_difference_p6"),
-        ("matchstick_pattern_p6", "pattern_which_term_p6", "quadratic_product_pattern_p6"),
+        ("matchstick_pattern_p6", "pattern_which_term_p6", "quadratic_product_pattern_p6", "square_grid_perimeter_p6"),
     ),
     (B, "ป.6", "ชนิดของรูปสามเหลี่ยม"): (
         ("triangle_type_picture_p6", "classify_by_sides_p6", "triangle_facts_p6",
@@ -465,7 +465,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("order_mixed_numbers_p6", "mixed_to_improper_p6", "reciprocal_p6"),
         ("mixed_number_ops_p6", "mixed_times_whole_p6", "mixed_divide_whole_p6", "largest_fraction_p6",
          "fraction_missing_factor_p6"),
-        ("fraction_multistep_word_p6", "part_of_part_p6"),
+        ("fraction_multistep_word_p6", "part_of_part_p6", "mixed_remaining_model_p6", "two_fraction_purchases_model_p6", "fraction_order_statement_p6"),
     ),
     (B, "ป.6", "รูปเรขาคณิต 3 มิติ"): (
         ("solid_counts_picture_p6", "solid_from_description_p6", "objects_as_solids_p6",
@@ -478,7 +478,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("composite_box_volume_p6", "box_surface_area_p6", "open_box_surface_p6",
          "cube_edge_from_surface_p6", "height_from_base_area_p6"),
         ("water_level_p6", "box_doubled_p6", "box_volume_sentence_p6", "cube_litres_sentence_p6",
-         "box_dimension_sentence_p6", "mixed_box_cost_sentence_p6"),
+         "box_dimension_sentence_p6", "mixed_box_cost_sentence_p6", "multiple_cube_volume_p6", "cuboid_capacity_extreme_p6"),
     ),
     (B, "ป.6", "แผนภูมิรูปวงกลม"): (
         ("pie_chart_picture_p6", "pie_chart", "pie_largest_part_p6", "pie_missing_percent_p6"),

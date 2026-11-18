@@ -266,3 +266,17 @@ class QuadraticProductPatternP6(ChoiceType):
         return (f"แต่ละพจน์เป็นผลคูณของจำนวนเต็มบวกสองจำนวนที่ห่างกัน {step} "
                 f"และทั้งสองตัวประกอบเพิ่มครั้งละ {step}: {shown} ผลคูณถัดไปคือข้อใด",
                 f"{a} × {b}",[f"{a} × {a}",f"{a-step} × {b}",f"{a-step} × {b-step}"])
+
+
+@question_type("math.square_grid_perimeter_p6", display_name={"th": "หาความยาวรอบรูปจากแบบรูปตารางจัตุรัสที่โตตามลำดับ"}, level=LEVEL, topic="แบบรูป")
+class SquareGridPerimeterP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4901-6-2565-1-2.pdf, ข้อ 6',))
+
+    def compose(self, rng: Random):
+        nth, unit = rng.randint(6, 25), rng.randint(1, 4)
+        answer = 4 * nth * unit
+        pool = (nth * nth * unit, 4 * nth * nth * unit, 2 * nth * unit, 4 * (nth + 1) * unit, 4 * (nth - 1) * unit)
+        return (f"ใช้กระเบื้องจัตุรัสด้านละ {unit} หน่วย ปูเต็มเป็นสี่เหลี่ยมจัตุรัส "
+                f"รูปที่ 1 มี 1 แถว แถวละ 1 แผ่น รูปที่ 2 มี 2 แถว แถวละ 2 แผ่น "
+                f"รูปที่ n มี n แถว แถวละ n แผ่น รูปที่ {nth} มีความยาวรอบขอบนอกกี่หน่วย",
+                str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])

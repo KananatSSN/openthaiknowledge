@@ -297,3 +297,36 @@ class MixedBoxCostSentenceP6(ChoiceType):
         return (f"วัสดุทรงสี่เหลี่ยมมุมฉากกว้าง {width} เซนติเมตร ยาว {length} เมตร หนา {thick} เซนติเมตร "
                 f"ราคาลูกบาศก์เมตรละ {price} บาท ราคารวมหาได้ด้วยวิธีใด",model(100),
                 [f"({width} × {length} × {thick}) × {price}",model(10),model(1000)])
+
+
+@question_type("math.multiple_cube_volume_p6", display_name={"th": "รวมปริมาตรลูกบาศก์หลายกล่องที่มีขนาดเท่ากัน"}, level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class MultipleCubeVolumeP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4901-6-2565-1-2.pdf, ข้อ 16',))
+
+    def compose(self, rng: Random):
+        side, count = rng.randint(2, 12), rng.randint(2, 9)
+        answer = count * side ** 3
+        pool = (count * side ** 2, side ** 3, 3 * count * side, 2 * answer, answer + side)
+        return (f"กล่องทรงลูกบาศก์มีสันยาว {side} เซนติเมตร จำนวน {count} กล่อง ปริมาตรรวมกี่ลูกบาศก์เซนติเมตร",
+                str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.cuboid_capacity_extreme_p6", display_name={"th": "เปรียบเทียบความจุภาชนะจากมิติทั้งสามที่กำหนด"}, level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class CuboidCapacityExtremeP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4901-6-2565-1-2.pdf, ข้อ 17',))
+
+    def compose(self, rng: Random):
+        maximum = rng.choice((False, True))
+        while True:
+            side = rng.randint(2, 9)
+            rows = [(side, side, 2 * side)] + [(rng.randint(2, 12), rng.randint(3, 15), rng.randint(1, 19)) for _ in range(3)]
+            rng.shuffle(rows)
+            values = [w * length * h2 for w, length, h2 in rows]
+            lengths = [max(2 * w, 2 * length, h2) for w, length, h2 in rows]
+            pick = (max if maximum else min)(range(4), key=lambda i: values[i])
+            if len(set(values)) == 4 and values[pick] != values[(max if maximum else min)(range(4), key=lambda i: lengths[i])]:
+                break
+        names = ("ถังก", "ถังข", "ถังค", "ถังง")
+        data = " · ".join(f"{name}: กว้าง {w} ยาว {length} สูง {h2 // 2}.{5 * (h2 % 2)} เมตร" for name, (w, length, h2) in zip(names, rows))
+        return (f"ทุกภาชนะเป็นทรงสี่เหลี่ยมมุมฉากและมิติภายใน หน่วยเป็นเมตร {data} ถังใดมีความจุ{'มากที่สุด' if maximum else 'น้อยที่สุด'}",
+                names[pick], [name for i, name in enumerate(names) if i != pick])

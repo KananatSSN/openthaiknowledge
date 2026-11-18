@@ -61,6 +61,10 @@
     {
      "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
      "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 19
     }
    ],
    "covered_by": [
@@ -81,9 +85,74 @@
     {
      "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
      "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 20
     }
    ],
    "covered_by": [
+    "math.mixed_box_cost_sentence_p6"
+   ]
+  },
+  {
+   "id": "math.primary6.multiple-cube-volume",
+   "kind": "procedure",
+   "title": "คูณสันสามครั้งหาปริมาตรลูกบาศก์หนึ่งกล่อง แล้วคูณจำนวนกล่องขนาดเท่ากัน",
+   "statement": "คูณสันสามครั้งหาปริมาตรลูกบาศก์หนึ่งกล่อง แล้วคูณจำนวนกล่องขนาดเท่ากัน",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "คูณสันสามครั้งหาปริมาตรลูกบาศก์หนึ่งกล่อง แล้วคูณจำนวนกล่องขนาดเท่ากัน",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 16
+    }
+   ],
+   "covered_by": [
+    "math.multiple_cube_volume_p6"
+   ]
+  },
+  {
+   "id": "math.primary6.cuboid-capacity-extreme",
+   "kind": "procedure",
+   "title": "คูณมิติภายในทั้งสามของแต่ละภาชนะในหน่วยเดียวกัน รวมทศนิยมครึ่งหน่วย แล้วเปรียบเทียบความจุครบทุกใบ",
+   "statement": "คูณมิติภายในทั้งสามของแต่ละภาชนะในหน่วยเดียวกัน รวมทศนิยมครึ่งหน่วย แล้วเปรียบเทียบความจุครบทุกใบ",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "คูณมิติภายในทั้งสามของแต่ละภาชนะในหน่วยเดียวกัน รวมทศนิยมครึ่งหน่วย แล้วเปรียบเทียบความจุครบทุกใบ",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.cuboid_capacity_extreme_p6"
+   ]
+  },
+  {
+   "id": "math.primary6.mixed-volume-model",
+   "kind": "procedure",
+   "title": "แปลงเซนติเมตรเป็นเมตรทุกมิติก่อนคูณหาปริมาตรลูกบาศก์เมตร ไม่แปลงเฉพาะบางด้าน",
+   "statement": "แปลงเซนติเมตรเป็นเมตรทุกมิติก่อนคูณหาปริมาตรลูกบาศก์เมตร ไม่แปลงเฉพาะบางด้าน",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "แปลงเซนติเมตรเป็นเมตรทุกมิติก่อนคูณหาปริมาตรลูกบาศก์เมตร ไม่แปลงเฉพาะบางด้าน",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.box_volume_sentence_p6",
     "math.mixed_box_cost_sentence_p6"
    ]
   }
