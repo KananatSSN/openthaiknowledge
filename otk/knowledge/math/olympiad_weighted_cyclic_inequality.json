@@ -14,7 +14,7 @@
         "Use AM–GM and the root-mean-square inequality, then check equality"
       ],
       "sources": [
-        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 6}
+        {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 6}
       ],
       "covered_by": ["math.weighted_cyclic_inequality_olympiad"]
     }

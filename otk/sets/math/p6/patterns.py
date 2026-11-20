@@ -252,3 +252,31 @@ class RepeatingColourP6(ChoiceType):
         stem = f"ลูกปัดเรียงสีเป็นแบบรูปซ้ำ {shown}, ... ลูกปัดลูกที่ {n} เป็นสีใด"
         wrongs = [c for c in cycle if c != right] + [c for c in self._COLOURS if c not in cycle]
         return stem, right, wrongs[:3]
+
+
+@question_type("math.quadratic_product_pattern_p6", display_name={"th": "หาพจน์ถัดไปจากตัวประกอบที่เพิ่มเท่ากัน"}, level={"th": "ป.6"}, topic="แบบรูป")
+class QuadraticProductPatternP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 7",))
+
+    def compose(self,rng: Random):
+        step,start=rng.randint(1,6),rng.randint(1,5)
+        terms=[(step*n)*(step*(n+1)) for n in range(start,start+4)]
+        a,b=step*(start+4),step*(start+5)
+        shown=", ".join(map(str,terms))
+        return (f"แต่ละพจน์เป็นผลคูณของจำนวนเต็มบวกสองจำนวนที่ห่างกัน {step} "
+                f"และทั้งสองตัวประกอบเพิ่มครั้งละ {step}: {shown} ผลคูณถัดไปคือข้อใด",
+                f"{a} × {b}",[f"{a} × {a}",f"{a-step} × {b}",f"{a-step} × {b-step}"])
+
+
+@question_type("math.square_grid_perimeter_p6", display_name={"th": "หาความยาวรอบรูปจากแบบรูปตารางจัตุรัสที่โตตามลำดับ"}, level=LEVEL, topic="แบบรูป")
+class SquareGridPerimeterP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4901-6-2565-1-2.pdf, ข้อ 6',))
+
+    def compose(self, rng: Random):
+        nth, unit = rng.randint(6, 25), rng.randint(1, 4)
+        answer = 4 * nth * unit
+        pool = (nth * nth * unit, 4 * nth * nth * unit, 2 * nth * unit, 4 * (nth + 1) * unit, 4 * (nth - 1) * unit)
+        return (f"ใช้กระเบื้องจัตุรัสด้านละ {unit} หน่วย ปูเต็มเป็นสี่เหลี่ยมจัตุรัส "
+                f"รูปที่ 1 มี 1 แถว แถวละ 1 แผ่น รูปที่ 2 มี 2 แถว แถวละ 2 แผ่น "
+                f"รูปที่ n มี n แถว แถวละ n แผ่น รูปที่ {nth} มีความยาวรอบขอบนอกกี่หน่วย",
+                str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])

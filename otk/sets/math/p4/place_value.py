@@ -12,6 +12,7 @@ from random import Random
 
 from otk.core.content import text
 from otk.core.provenance import Provenance
+from otk.kit.math_problems import ChoiceType
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.sets._support.math_apply_stage import _PlaceValueWord
@@ -214,3 +215,28 @@ class DigitCountP4(WordProblem):
         prompt = f"จำนวน{_story.thai_words(n)} เขียนเป็นตัวเลขแล้วมีกี่หลัก"
         return MathDraw("", str(length), prompt=prompt,
                         distractors=_story.keep(length + 1, length - 1, length + 2, length - 2, answer=length, lo=1))
+
+
+@question_type("math.canonical_expansion_millions_p4", display_name={"th": "เลือกรูปกระจายตามหลักถึงหลักสิบล้าน"}, level={"th": "ป.4"}, topic="ค่าประจำหลัก")
+class CanonicalExpansionMillionsP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4537-4-2565-1-2.pdf, ข้อ 3","openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 3",))
+
+    def build(self,rng: Random,**params):
+        stem,right,wrongs=self.compose(rng)
+        return _maths([text(stem)],right,wrongs,self.topic)
+
+    def compose(self,rng: Random):
+        size=rng.choice((7,8))
+        digits=[rng.randint(1,9) for _ in range(size)]
+        digits[rng.randint(1,size-2)]=0
+        n=int("".join(map(str,digits)))
+        terms=[d*10**(size-1-i) for i,d in enumerate(digits) if d]
+        # Wrong place values; one equal-value noncanonical regrouping.
+        first=terms[:]
+        first[1]//=10
+        second=terms[:]
+        second[2]*=10
+        regrouped=[terms[0]-100000,100000]+terms[1:-2]+[sum(terms[-2:])]
+        label=lambda xs:" + ".join(map(str,xs))
+        return (f"รูปกระจายตามค่าประจำหลักของ {n} คือข้อใด แต่ละพจน์เป็นค่าของเลขโดดหลักเดียวและละพจน์ศูนย์",
+                label(terms),[label(first),label(second),label(regrouped)])

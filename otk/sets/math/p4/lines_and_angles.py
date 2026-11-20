@@ -248,3 +248,35 @@ class AnglesAroundPointP4(WordProblem):
         return MathDraw("", str(ans), prompt=prompt,
                         distractors=_story.keep(180 - a - b if a + b < 180 else a + b - 180,
                                                 a + b, ans + 10, answer=ans, lo=1))
+
+
+@question_type("math.line_notation_p4", display_name={"th": "เลือกสัญลักษณ์เส้นตรงรังสีและส่วนของเส้นตรง"}, level={"th": "ป.4"}, topic="เส้นตรงและมุม")
+class LineNotationP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4537-4-2565-1-2.pdf, ข้อ 11","openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 11",))
+
+    def build(self,rng: Random,**params):
+        stem,right,wrongs=self.compose(rng)
+        return _math_q([text(stem)],right,wrongs,self.topic)
+
+    def compose(self,rng: Random):
+        a,b=rng.sample("ABCDEFGHJKLMNPQRSTUV",2)
+        kind=rng.choice(("ray","line","segment"))
+        labels={"ray":rf"\overrightarrow{{{a}{b}}}","reverse":rf"\overrightarrow{{{b}{a}}}",
+                "line":rf"\overleftrightarrow{{{a}{b}}}","segment":rf"\overline{{{a}{b}}}"}
+        description={"ray":f"รังสีเริ่มที่ {a} ผ่าน {b} และต่อไปไม่สิ้นสุด",
+                     "line":f"เส้นตรงผ่าน {a} และ {b} ต่อไปไม่สิ้นสุดทั้งสองข้าง",
+                     "segment":f"ส่วนของเส้นตรงมีจุดปลาย {a} และ {b}"}[kind]
+        return f"{description} เขียนแทนด้วยสัญลักษณ์ใด",labels[kind],[v for k,v in labels.items() if k!=kind]
+
+
+@question_type("math.plane_surface_model_p4", display_name={"th": "ระบุผิวหน้าที่เป็นแบบจำลองส่วนของระนาบ"}, level={"th": "ป.4"}, topic="เส้นตรงและมุม")
+class PlaneSurfaceModelP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 12","openthaiknowledge-bank/mathematics/level/primary-4/4537-4-2565-1-2.pdf, ข้อ 12",))
+
+    def compose(self,rng: Random):
+        flat=("หน้าบนของโต๊ะที่เรียบ","หน้ากระจกแบนเรียบ","ผิวกระดาษแผ่นเรียบ","ผิวหน้าของกระเบื้องแบน")
+        curved=("ผิวลูกแก้วทรงกลม","ผิวลูกฟุตบอลทรงกลม","ผิวลูกปิงปองทรงกลม","ผิวลูกบอลยางทรงกลม")
+        ask_flat=rng.choice((False,True))
+        good,bad=(flat,curved) if ask_flat else (curved,flat)
+        return (f"ตามแบบจำลองเรขาคณิต ผิวใด{'เป็น' if ask_flat else 'ไม่เป็น'}แบบจำลองส่วนของระนาบ",
+                rng.choice(good),rng.sample(bad,3))

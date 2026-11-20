@@ -191,3 +191,36 @@ class ShapeSidesCompareP1(WordProblem):
         # Added instead; the larger count; one off.
         return MathDraw("", str(right), prompt=f"{x}มีด้านมากกว่า{y}กี่ด้าน",
                         distractors=_story.keep(a + b, a, b, right + 1, answer=right, lo=1))
+
+
+@question_type("math.seven_segment_removal_p1", display_name={"th": "ตรวจจำนวนก้านที่หยิบออกจากเลขแปด"}, level={"th": "ป.1"}, topic="เรขาคณิต 2 มิติ")
+class SevenSegmentRemovalP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 18",))
+
+    def compose(self, rng: Random):
+        segments = (6,2,5,5,4,5,6,3,7,6)
+        removed = rng.randint(1, 5)
+        groups = {k: [str(d) for d, count in enumerate(segments) if 7-count == k] for k in range(1,6)}
+        data = ", ".join(f"เลข {d} ใช้ {count} ก้าน" for d,count in enumerate(segments))
+        return (f"ตัวเลขแบบเจ็ดส่วนใช้ไม้ขีดตามตาราง: {data} เริ่มจากเลข 8 "
+                f"หยิบออก {removed} ก้าน โดยไม่ย้ายก้านที่เหลือ กลุ่มใดเป็นตัวเลขที่ทำได้ทั้งหมด",
+                ", ".join(groups[removed]), [", ".join(groups[k]) for k in groups if k != removed])
+
+
+@question_type("math.grid_path_check_p1", display_name={"th": "ตรวจเส้นทางเดินตามลูกศรบนตาราง"}, level={"th": "ป.1"}, topic="เรขาคณิต 2 มิติ")
+class GridPathCheckP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 19",))
+
+    def compose(self, rng: Random):
+        right, up = rng.randint(2,5), rng.randint(2,5)
+        base = ["→"]*right+["↑"]*up
+        paths = set()
+        while len(paths) < 3:
+            path = base[:]
+            rng.shuffle(path)
+            paths.add(" ".join(path))
+        wrong = ["→"]*(right+1)+["↑"]*(up-1)
+        rng.shuffle(wrong)
+        return (f"เริ่มที่ A มุมซ้ายล่างของตารางกว้าง {right} ช่อง สูง {up} ช่อง B อยู่มุมขวาบน "
+                "→ หมายถึงเดินขวาหนึ่งช่อง ↑ หมายถึงเดินขึ้นหนึ่งช่อง ข้อใดเดินแล้วไม่ถึง B",
+                " ".join(wrong), sorted(paths))

@@ -14,7 +14,7 @@
     "เทียบกำลังสองด้านยาวสุดกับผลบวกกำลังสองอีกสองด้านเพื่อได้ a<3d",
     "นับจำนวนเต็ม a ตั้งแต่ d+1 ถึง min(3d−1,N−2d) แล้วลดรูปเศษส่วน"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 10}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 10}],
    "covered_by": ["math.obtuse_progression_probability_olympiad"]
   }
  ]

@@ -13,7 +13,7 @@
         "Use the minimum to establish finiteness and inspect the maximum",
         "Rule out an intermediate member through an LCM quotient above the maximum"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 9}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 9}],
       "covered_by": ["math.lcm_difference_set_olympiad"]
     }
   ]

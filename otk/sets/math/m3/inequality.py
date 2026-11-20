@@ -18,7 +18,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem, frac_tex, poly_tex
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem, frac_tex, poly_tex
 from otk.sets._support.math_bank_real import M3, _tex_q
 from otk.sets._support.math_m3 import LEGACY
 from otk.sets._support.math_p2 import _maths
@@ -191,7 +191,7 @@ class InequalityOrderPropertiesM3(QuestionType):
         ask = "ข้อใดเป็นจริงเสมอ" if ask_true else "ข้อใดไม่จำเป็นต้องเป็นจริง"
         stem = [text("กำหนดให้ a, b และ c เป็นจำนวนจริง โดยที่"), *premise, text(ask)]
         return _tex_q(stem, right, pool_wrong[:3], self.topic)
-InequalityOrderPropertiesM3.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
+InequalityOrderPropertiesM3.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/3-real-numbers',))
 
 
 @question_type("math.inequality_word_problem_m3",
@@ -316,3 +316,63 @@ InequalityCountIntegersM3.PROVENANCE = Provenance("original")
 InequalityLargestIntegerM3.PROVENANCE = Provenance("original")
 InequalityFractionM3.PROVENANCE = Provenance("original")
 InequalityBothSidesM3.PROVENANCE = Provenance("original")
+
+
+@question_type("math.inequality_representation_m3", display_name={"th": "แปลเส้นจำนวนและข้อความเป็นอสมการ"}, level={"th": "ม.3"}, topic="อสมการเชิงเส้น")
+class InequalityRepresentationM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 1–2",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            bound=rng.randint(-15,15)
+            closed=rng.choice((False,True))
+            right=rng.choice((False,True))
+            point="ทึบ" if closed else "โปร่ง"
+            direction="ขวา" if right else "ซ้าย"
+            relation=("≥" if closed else ">") if right else ("≤" if closed else "<")
+            return (f"เส้นจำนวนมีจุด{point}ที่ {bound} และรังสีแสดงคำตอบไปทาง{direction} "
+                    "เซตคำตอบตรงกับอสมการใด",f"x {relation} {bound}",
+                    [f"x {r} {bound}" for r in ("<","≤",">","≥") if r!=relation])
+        divisor,extra,cap=rng.randint(2,9),rng.randint(2,15),rng.randint(20,99)
+        relation,word,opposite=rng.choice((("≤","ไม่เกิน","ไม่น้อยกว่า"),("≥","ไม่น้อยกว่า","ไม่เกิน")))
+        def phrase(grouped,comparison):
+            part=f"ผลบวกของ x กับ {extra}" if grouped else "x"
+            tail="" if grouped else f" แล้วบวก {extra}"
+            return f"นำ{part}หารด้วย {divisor}{tail} ผลลัพธ์{comparison} {cap}"
+        return (f"อสมการ (x + {extra}) ÷ {divisor} {relation} {cap} ตรงกับข้อความใด",
+                phrase(True,word),[phrase(False,word),phrase(True,opposite),phrase(False,opposite)])
+
+
+@question_type("math.age_constraint_m3", display_name={"th": "หาขอบเขตอายุจำนวนเต็มจากอสมการ"}, level={"th": "ม.3"}, topic="อสมการเชิงเส้น")
+class AgeConstraintM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 12,15",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            multiplier,years,limit=rng.randint(3,5),rng.randint(6,12),rng.randint(6,15)
+            cap=(multiplier+1)*limit+2*years+rng.randint(0,multiplier)
+            return (f"ปัจจุบันแม่มีอายุเป็น {multiplier} เท่าของลูก อีก {years} ปี "
+                    f"อายุรวมของทั้งสองไม่เกิน {cap} ปี ถ้าอายุปัจจุบันเป็นจำนวนเต็มปี ลูกมีอายุได้มากที่สุดกี่ปี",
+                    str((cap-2*years)//(multiplier+1)),[str(limit+1),str(limit-1),str(cap//(multiplier+1))])
+        gap1,gap2,base=rng.randint(2,6),rng.randint(3,9),rng.randint(5,15)
+        cap=3*base+2*gap2+gap1
+        answer=base+gap2+gap1+1
+        return (f"พี่มีอายุมากกว่าคนกลางอยู่ {gap1} ปี และคนกลางมีอายุมากกว่าน้องอยู่ {gap2} ปี "
+                f"อายุทั้งสามรวมกันมากกว่า {cap} ปี ทุกคนมีอายุเป็นจำนวนเต็มปี คนที่อายุมากที่สุดต้องมีอายุอย่างน้อยกี่ปี",
+                str(answer),[str(answer-1),str(answer-gap1),str(answer-gap1-gap2)])
+
+
+@question_type("math.rectangle_area_bound_m3", display_name={"th": "หาขอบเขตพื้นที่จากอสมการเส้นรอบรูป"}, level={"th": "ม.3"}, topic="อสมการเชิงเส้น")
+class RectangleAreaBoundM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 14",))
+
+    def compose(self,rng: Random):
+        multiplier,extra,bound=rng.randint(2,5),rng.randint(2,9),rng.randint(4,15)
+        perimeter=2*((multiplier+1)*bound+extra)
+        area=bound*(multiplier*bound+extra)
+        wrongs=[bound*bound,bound*(bound+extra),(bound-1)*(multiplier*(bound-1)+extra)]
+        if len(set(wrongs))<3:
+            wrongs[2]=(bound+1)*(multiplier*(bound+1)+extra)
+        return (f"สี่เหลี่ยมผืนผ้ายาวเป็น {multiplier} เท่าของความกว้างบวก {extra} เซนติเมตร "
+                f"รอบรูปมากกว่า {perimeter} เซนติเมตร มิติเป็นจำนวนจริงบวก พื้นที่มีค่ามากกว่า A เสมอ โดย A มากที่สุดเท่าที่เป็นไปได้ A เท่ากับกี่ตารางเซนติเมตร",
+                str(area),[str(v) for v in wrongs])

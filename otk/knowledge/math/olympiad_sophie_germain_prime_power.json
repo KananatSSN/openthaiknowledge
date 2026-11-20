@@ -13,7 +13,7 @@
         "Reduce the quotient condition to a small p-power",
         "Apply Sophie Germain's identity and inspect the smaller factor"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 5}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 5}],
       "covered_by": ["math.sophie_germain_prime_power_olympiad"]
     }
   ]

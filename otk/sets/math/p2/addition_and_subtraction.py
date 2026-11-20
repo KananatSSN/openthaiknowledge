@@ -259,3 +259,84 @@ class HowManyMoreP2(WordProblem):
                   f"ชั้น {x} เก็บได้มากกว่าชั้น {y} กี่ขวด")
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(a + b, _no_borrow(a, b), right + 10, right - 1, answer=right, lo=1))
+
+
+@question_type("math.comparison_amount_p2", display_name={"th": "หาจำนวนจากความสัมพันธ์มากกว่าหรือน้อยกว่า"},
+               level=LEVEL, topic="การบวกและการลบ")
+class ComparisonAmountP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4157-2-2564-1-3.pdf, ตอนที่ 1 ข้อ 5, 6, 9",
+        "openthaiknowledge-bank/mathematics/level/primary-2/4178-2-2567-2-3.pdf, ข้อ 3, 7, 13, 17"))
+
+    def expr(self, rng: Random):
+        small, gap = rng.randint(101, 449), rng.randint(11, 299)
+        large = small + gap
+        form = rng.randrange(4)
+        if form == 0:
+            prompt, right = f"มะลิมีเงิน {small} บาท ต้นมีเงินมากกว่ามะลิ {gap} บาท ต้นมีเงินกี่บาท", large
+        elif form == 1:
+            prompt, right = f"ต้นมีเงิน {large} บาท มะลิมีเงินน้อยกว่าต้น {gap} บาท มะลิมีเงินกี่บาท", small
+        elif form == 2:
+            prompt, right = f"มะลิมีเงินน้อยกว่าต้น {gap} บาท ถ้ามะลิมีเงิน {small} บาท ต้นมีเงินกี่บาท", large
+        else:
+            prompt, right = f"ต้นมีเงินมากกว่ามะลิ {gap} บาท ถ้าต้นมีเงิน {large} บาท มะลิมีเงินกี่บาท", small
+        given = small if form in (0, 2) else large
+        other = abs(given - gap) if right == large else given + gap
+        return MathDraw("", str(right), prompt=prompt,
+                        # Follow the comparison word without identifying the unknown;
+                        # copy the known amount; answer with the difference.
+                        distractors=_story.keep(other, given, gap, right + 10, answer=right, lo=0))
+
+
+@question_type("math.match_three_digit_sum_p2", display_name={"th": "เลือกผลบวกจำนวนสามหลักที่ตรงกับเป้าหมาย"}, level={"th": "ป.2"}, topic="การบวกและการลบ")
+class MatchThreeDigitSumP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4180-2-2567-2-1.pdf, ข้อ 5, 9",))
+
+    def compose(self, rng: Random):
+        target=rng.randint(400,800)
+        labels=[]
+        # Omitting a hundred, adding a ten, or adding a unit changes the target.
+        for value in (target,target-100,target+10,target+1):
+            a=rng.randint(100,value-100)
+            labels.append(f"{a} + {value-a}")
+        return f"ข้อใดมีผลบวกเท่ากับ {target}",labels[0],labels[1:]
+
+
+@question_type("math.balance_three_digit_sums_p2", display_name={"th": "หาจำนวนให้ผลบวกสองข้างเท่ากัน"}, level={"th": "ป.2"}, topic="การบวกและการลบ")
+class BalanceThreeDigitSumsP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4180-2-2567-2-1.pdf, ข้อ 10",))
+
+    def compose(self, rng: Random):
+        x,c=rng.randint(150,450),rng.randint(100,450)
+        total=x+c
+        a=rng.randint(100,total-100)
+        b=total-a
+        answer=a+b-c
+        return (f"{a} + {b} = □ + {c} ควรเติมจำนวนใดในช่องว่าง",str(answer),
+                [str(answer+100),str(answer+10),str(answer-10)])
+
+
+@question_type("math.match_three_digit_difference_p2", display_name={"th": "เลือกผลลบจำนวนสามหลักที่ตรงกับเป้าหมาย"}, level={"th": "ป.2"}, topic="การบวกและการลบ")
+class MatchThreeDigitDifferenceP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4180-2-2567-2-1.pdf, ข้อ 15",))
+
+    def compose(self, rng: Random):
+        target=rng.randint(20,250)
+        labels=[]
+        for value in (target,target+100,target-10,target+1):
+            b=rng.randint(100,999-value)
+            labels.append(f"{b+value} − {b}")
+        return f"ข้อใดมีผลลบเท่ากับ {target}",labels[0],labels[1:]
+
+
+@question_type("math.balance_three_digit_differences_p2", display_name={"th": "หาจำนวนให้ผลลบสองข้างเท่ากัน"}, level={"th": "ป.2"}, topic="การบวกและการลบ")
+class BalanceThreeDigitDifferencesP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4180-2-2567-2-1.pdf, ข้อ 20",))
+
+    def compose(self, rng: Random):
+        x,gap=rng.randint(150,550),rng.randint(50,400)
+        b=rng.randint(100,999-gap)
+        a,c=b+gap,x+gap
+        answer=c-(a-b)
+        return (f"{a} − {b} = {c} − □ ควรเติมจำนวนใดในช่องว่าง",str(answer),
+                [str(answer+100),str(answer+10),str(answer-10)])

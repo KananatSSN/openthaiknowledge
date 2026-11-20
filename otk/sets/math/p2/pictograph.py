@@ -187,3 +187,88 @@ class PictographTwoRowsP2(WordProblem):
         prompt = f"{pg.text}\n{pg.label(x)}และ{pg.label(y)}รวมกัน มากกว่า{pg.label(z)}กี่{pg.chart.unit}"
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(right // key, a + b, a - c, right + key, answer=right, lo=1))
+
+
+_BANK_DAYS_P2 = ("วันจันทร์", "วันอังคาร", "วันพุธ", "วันพฤหัสบดี", "วันศุกร์")
+
+
+def _bank_week_chart_p2(counts, scale):
+    rows = ["แผนภูมิรูปภาพแสดงจำนวนขนมที่ขายได้"]
+    rows += [f"{day}: " + " ".join(["●"] * n) for day, n in zip(_BANK_DAYS_P2, counts)]
+    return "\n".join(rows + [f"กำหนดให้ ● แทนขนม {scale} ชิ้น"])
+
+
+@question_type("math.pictograph_selected_total_p2", display_name={"th": "รวมเฉพาะรายการที่ถามจากแผนภูมิรูปภาพ"},
+               level=LEVEL, topic="แผนภูมิรูปภาพ")
+class PictographSelectedTotalP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4175-2-2567-2-3.pdf, ตอนที่ 2 ข้อ 1",))
+
+    def expr(self, rng: Random):
+        scale = rng.choice((2, 5, 10))
+        counts = [rng.randint(1, 9) for _ in _BANK_DAYS_P2]
+        chosen = sorted(rng.sample(range(5), 3))
+        symbols = sum(counts[i] for i in chosen)
+        answer = symbols * scale
+        named_days = " และ ".join(_BANK_DAYS_P2[i] for i in chosen)
+        prompt = f"{_bank_week_chart_p2(counts, scale)}\nเฉพาะ{named_days} ขายขนมรวมกี่ชิ้น"
+        return MathDraw("", str(answer), prompt=prompt,
+                        # Include unasked rows; count icons only; omit a requested row.
+                        distractors=_story.keep(sum(counts) * scale, symbols,
+                                                sum(counts[i] for i in chosen[:2]) * scale,
+                                                answer + scale, answer=answer, lo=1))
+
+
+@question_type("math.pictograph_matching_rows_p2", display_name={"th": "หาทุกรายการที่มีจำนวนตรงกับค่าที่กำหนด"},
+               level=LEVEL, topic="แผนภูมิรูปภาพ")
+class PictographMatchingRowsP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4163-2-2565-2-3.pdf, ตอนที่ 2 ข้อ 1.2",))
+
+    def compose(self, rng: Random):
+        scale, target = rng.choice((2, 5, 10)), rng.randint(2, 8)
+        matches = sorted(rng.sample(range(5), 2))
+        others = [i for i in range(5) if i not in matches]
+        counts = [target if i in matches else rng.choice([n for n in range(1, 10) if n != target])
+                  for i in range(5)]
+        label = lambda pair: " และ ".join(_BANK_DAYS_P2[i] for i in sorted(pair))
+        wrongs = [label((matches[0], others[0])), label((matches[1], others[1])),
+                  label((others[0], others[2]))]
+        return (f"{_bank_week_chart_p2(counts, scale)}\nวันใดบ้างขายขนมได้ {target * scale} ชิ้น",
+                label(matches), wrongs)
+
+
+@question_type("math.pictograph_pair_target_p2", display_name={"th": "หาคู่รายการที่รวมได้ตามเป้าหมาย"}, level={"th": "ป.2"}, topic="แผนภูมิรูปภาพ")
+class PictographPairTargetP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4152-2-2564-2-2.pdf, ข้อ 19",))
+
+    def compose(self,rng: Random):
+        counts=rng.sample(range(1,10),5)
+        pairs=[(i,j) for i in range(5) for j in range(i+1,5)]
+        # Only one pair in the entire chart may attain the requested target.
+        unique=[pair for pair in pairs if sum(counts[i] for i in pair) not in
+                [sum(counts[i] for i in other) for other in pairs if other!=pair]]
+        pair=rng.choice(unique)
+        scale=rng.choice((2,5,10))
+        target=sum(counts[i] for i in pair)*scale
+        def label(p):
+            return " และ ".join(_BANK_DAYS_P2[i] for i in p)
+        return (f"{_bank_week_chart_p2(counts,scale)}\nวันคู่ใดขายขนมรวม {target} ชิ้น",label(pair),
+                [label(p) for p in rng.sample([p for p in pairs if p!=pair],3)])
+
+
+@question_type("math.pictograph_extreme_amount_p2", display_name={"th": "ระบุรายการมากหรือน้อยที่สุดพร้อมจำนวน"}, level={"th": "ป.2"}, topic="แผนภูมิรูปภาพ")
+class PictographExtremeAmountP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-2/4152-2-2564-2-2.pdf, ข้อ 20",))
+
+    def compose(self,rng: Random):
+        counts=rng.sample(range(1,10),5)
+        scale=rng.choice((2,5,10))
+        most=rng.choice((False,True))
+        index=counts.index((max if most else min)(counts))
+        amount=counts[index]*scale
+        other=rng.choice([i for i in range(5) if i!=index])
+        def label(i,v):
+            return f"{_BANK_DAYS_P2[i]} จำนวน {v} ชิ้น"
+        return (f"{_bank_week_chart_p2(counts,scale)}\nวันใดขายขนม{'มากที่สุด' if most else 'น้อยที่สุด'}และขายกี่ชิ้น",
+                label(index,amount),[label(index,counts[index]),label(other,amount),label(other,counts[other]*scale)])

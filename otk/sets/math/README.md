@@ -2,91 +2,91 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,446 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,680 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`add_sub_mixed`](p1/add_sub_mixed.py) | การบวกลบระคน | ค 1.1 ป.1/4, ค 1.1 ป.1/5 | 10 |
-| [`addition`](p1/addition.py) | การบวก | ค 1.1 ป.1/4 | 10 |
-| [`comparing_numbers`](p1/comparing_numbers.py) | การเปรียบเทียบ | ค 1.1 ป.1/2, ค 1.1 ป.1/3 | 10 |
-| [`counting`](p1/counting.py) | การนับ | ค 1.1 ป.1/1 | 11 |
-| [`measurement`](p1/measurement.py) | การวัด | ค 2.1 ป.1/* | 10 |
-| [`patterns`](p1/patterns.py) | แบบรูป | ค 1.2 ป.1/1 | 10 |
+| [`addition`](p1/addition.py) | การบวก | ค 1.1 ป.1/4 | 12 |
+| [`comparing_numbers`](p1/comparing_numbers.py) | การเปรียบเทียบ | ค 1.1 ป.1/2, ค 1.1 ป.1/3 | 14 |
+| [`counting`](p1/counting.py) | การนับ | ค 1.1 ป.1/1 | 17 |
+| [`measurement`](p1/measurement.py) | การวัด | ค 2.1 ป.1/* | 16 |
+| [`patterns`](p1/patterns.py) | แบบรูป | ค 1.2 ป.1/1 | 13 |
 | [`pictograph`](p1/pictograph.py) | แผนภูมิรูปภาพ | ค 3.1 ป.1/1 | 10 |
-| [`plane_shapes`](p1/plane_shapes.py) | เรขาคณิต 2 มิติ | ค 2.2 ป.1/* | 10 |
+| [`plane_shapes`](p1/plane_shapes.py) | เรขาคณิต 2 มิติ | ค 2.2 ป.1/* | 12 |
 | [`solids`](p1/solids.py) | เรขาคณิต 3 มิติ | ค 2.2 ป.1/* | 10 |
-| [`subtraction`](p1/subtraction.py) | การลบ | ค 1.1 ป.1/4 | 10 |
-| [`word_problems`](p1/word_problems.py) | โจทย์ปัญหา | ค 1.1 ป.1/5 | 10 |
+| [`subtraction`](p1/subtraction.py) | การลบ | ค 1.1 ป.1/4 | 12 |
+| [`word_problems`](p1/word_problems.py) | โจทย์ปัญหา | ค 1.1 ป.1/5 | 32 |
 
 ## p2 — ป.2
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`addition_and_subtraction`](p2/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.2/4 | 10 |
-| [`division`](p2/division.py) | การหาร | ค 1.1 ป.2/* | 10 |
-| [`measurement`](p2/measurement.py) | การวัด | ค 2.1 ป.2/* | 10 |
-| [`mixed_operations`](p2/mixed_operations.py) | บวก ลบ คูณ หารระคน | ค 1.1 ป.2/* | 10 |
-| [`money`](p2/money.py) | เงิน | ค 2.1 ป.2/* | 10 |
-| [`multiplication`](p2/multiplication.py) | การคูณ | ค 1.1 ป.2/5 | 10 |
-| [`numbers_to_1000`](p2/numbers_to_1000.py) | จำนวนนับไม่เกิน 1,000 | ค 1.1 ป.2/1, ค 1.1 ป.2/2, ค 1.1 ป.2/3 | 10 |
-| [`patterns`](p2/patterns.py) | แบบรูป | — | 10 |
-| [`pictograph`](p2/pictograph.py) | แผนภูมิรูปภาพ | ค 3.1 ป.2/1 | 10 |
+| [`addition_and_subtraction`](p2/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.2/4 | 15 |
+| [`division`](p2/division.py) | การหาร | ค 1.1 ป.2/* | 14 |
+| [`measurement`](p2/measurement.py) | การวัด | ค 2.1 ป.2/* | 22 |
+| [`mixed_operations`](p2/mixed_operations.py) | บวก ลบ คูณ หารระคน | ค 1.1 ป.2/* | 13 |
+| [`money`](p2/money.py) | เงิน | ค 2.1 ป.2/* | 13 |
+| [`multiplication`](p2/multiplication.py) | การคูณ | ค 1.1 ป.2/5 | 13 |
+| [`numbers_to_1000`](p2/numbers_to_1000.py) | จำนวนนับไม่เกิน 1,000 | ค 1.1 ป.2/1, ค 1.1 ป.2/2, ค 1.1 ป.2/3 | 12 |
+| [`patterns`](p2/patterns.py) | แบบรูป | — | 12 |
+| [`pictograph`](p2/pictograph.py) | แผนภูมิรูปภาพ | ค 3.1 ป.2/1 | 14 |
 | [`shapes`](p2/shapes.py) | รูปเรขาคณิต | ค 2.2 ป.2/* | 10 |
-| [`time`](p2/time.py) | เวลา | ค 2.1 ป.2/* | 10 |
+| [`time`](p2/time.py) | เวลา | ค 2.1 ป.2/* | 19 |
 
 ## p3 — ป.3
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`addition_and_subtraction`](p3/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.3/5 | 10 |
+| [`addition_and_subtraction`](p3/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.3/5 | 13 |
 | [`division`](p3/division.py) | การหาร | ค 1.1 ป.3/7 | 10 |
 | [`fractions`](p3/fractions.py) | เศษส่วน | ค 1.1 ป.3/* | 10 |
-| [`measurement`](p3/measurement.py) | การวัด | ค 2.1 ป.3/* | 10 |
-| [`money`](p3/money.py) | เงิน | ค 2.1 ป.3/* | 10 |
-| [`multi_step_word_problems`](p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.3/* | 10 |
+| [`measurement`](p3/measurement.py) | การวัด | ค 2.1 ป.3/* | 15 |
+| [`money`](p3/money.py) | เงิน | ค 2.1 ป.3/* | 14 |
+| [`multi_step_word_problems`](p3/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.3/* | 14 |
 | [`multiplication`](p3/multiplication.py) | การคูณ | ค 1.1 ป.3/6 | 10 |
 | [`one_way_tables`](p3/one_way_tables.py) | ตารางทางเดียว | ค 3.1 ป.3/* | 10 |
 | [`patterns`](p3/patterns.py) | แบบรูป | ค 1.2 ป.3/1 | 10 |
-| [`place_value`](p3/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.3/1, ค 1.1 ป.3/2 | 10 |
+| [`place_value`](p3/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.3/1, ค 1.1 ป.3/2 | 14 |
 | [`symmetry`](p3/symmetry.py) | รูปสมมาตร | ค 2.2 ป.3/* | 10 |
-| [`time`](p3/time.py) | เวลา | ค 2.1 ป.3/* | 10 |
-| [`volume_and_capacity`](p3/volume_and_capacity.py) | ปริมาตรและความจุ | ค 2.1 ป.3/* | 10 |
+| [`time`](p3/time.py) | เวลา | ค 2.1 ป.3/* | 11 |
+| [`volume_and_capacity`](p3/volume_and_capacity.py) | ปริมาตรและความจุ | ค 2.1 ป.3/* | 13 |
 
 ## p4 — ป.4
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`addition_and_subtraction`](p4/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.4/8 | 10 |
-| [`bar_chart`](p4/bar_chart.py) | แผนภูมิแท่ง | ค 3.1 ป.4/1 | 10 |
-| [`data_presentation`](p4/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.4/1 | 10 |
+| [`addition_and_subtraction`](p4/addition_and_subtraction.py) | การบวกและการลบ | ค 1.1 ป.4/8 | 11 |
+| [`bar_chart`](p4/bar_chart.py) | แผนภูมิแท่ง | ค 3.1 ป.4/1 | 11 |
+| [`data_presentation`](p4/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.4/1 | 11 |
 | [`decimals`](p4/decimals.py) | ทศนิยม | ค 1.1 ป.4/* | 10 |
 | [`division`](p4/division.py) | การหาร | ค 1.1 ป.4/9 | 10 |
-| [`estimation`](p4/estimation.py) | การประมาณค่า | ค 1.1 ป.4/7 | 10 |
+| [`estimation`](p4/estimation.py) | การประมาณค่า | ค 1.1 ป.4/7 | 11 |
 | [`fractions`](p4/fractions.py) | เศษส่วน | ค 1.1 ป.4/* | 10 |
-| [`lines_and_angles`](p4/lines_and_angles.py) | เส้นตรงและมุม | ค 2.2 ป.4/*, ค 2.1 ป.4/2 | 10 |
-| [`multi_step_word_problems`](p4/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.4/* | 10 |
-| [`multiply`](p4/multiply.py) | การคูณยาว | ค 1.1 ป.4/9 | 10 |
-| [`place_value`](p4/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.4/* | 10 |
-| [`rectangles`](p4/rectangles.py) | สี่เหลี่ยมมุมฉาก | ค 2.2 ป.4/* | 10 |
-| [`time`](p4/time.py) | เวลา | ค 2.1 ป.4/* | 10 |
+| [`lines_and_angles`](p4/lines_and_angles.py) | เส้นตรงและมุม | ค 2.2 ป.4/*, ค 2.1 ป.4/2 | 12 |
+| [`multi_step_word_problems`](p4/multi_step_word_problems.py) | โจทย์ปัญหาระคน | ค 1.1 ป.4/* | 18 |
+| [`multiply`](p4/multiply.py) | การคูณยาว | ค 1.1 ป.4/9 | 11 |
+| [`place_value`](p4/place_value.py) | ค่าประจำหลัก | ค 1.1 ป.4/* | 11 |
+| [`rectangles`](p4/rectangles.py) | สี่เหลี่ยมมุมฉาก | ค 2.2 ป.4/* | 12 |
+| [`time`](p4/time.py) | เวลา | ค 2.1 ป.4/* | 20 |
 
 ## p5 — ป.5
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`data_presentation`](p5/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.5/1, ค 3.1 ป.5/2 | 10 |
-| [`decimals`](p5/decimals.py) | ทศนิยม | ค 1.1 ป.5/* | 10 |
-| [`fraction_word_problems`](p5/fraction_word_problems.py) | โจทย์ปัญหาเศษส่วน | ค 1.1 ป.5/* | 10 |
-| [`fractions`](p5/fractions.py) | เศษส่วน | ค 1.1 ป.5/* | 10 |
-| [`length_and_weight`](p5/length_and_weight.py) | ความยาวและน้ำหนัก | ค 2.1 ป.5/1, ค 2.1 ป.5/2 | 10 |
+| [`data_presentation`](p5/data_presentation.py) | การนำเสนอข้อมูล | ค 3.1 ป.5/1, ค 3.1 ป.5/2 | 11 |
+| [`decimals`](p5/decimals.py) | ทศนิยม | ค 1.1 ป.5/* | 13 |
+| [`fraction_word_problems`](p5/fraction_word_problems.py) | โจทย์ปัญหาเศษส่วน | ค 1.1 ป.5/* | 13 |
+| [`fractions`](p5/fractions.py) | เศษส่วน | ค 1.1 ป.5/* | 12 |
+| [`length_and_weight`](p5/length_and_weight.py) | ความยาวและน้ำหนัก | ค 2.1 ป.5/1, ค 2.1 ป.5/2 | 18 |
 | [`parallel_lines`](p5/parallel_lines.py) | เส้นขนาน | ค 2.2 ป.5/1 | 10 |
-| [`percentages`](p5/percentages.py) | ร้อยละ | ค 1.1 ป.5/* | 10 |
+| [`percentages`](p5/percentages.py) | ร้อยละ | ค 1.1 ป.5/* | 22 |
 | [`prism`](p5/prism.py) | ปริซึม | ค 2.2 ป.5/4 | 10 |
-| [`quadrilateral_area`](p5/quadrilateral_area.py) | พื้นที่รูปสี่เหลี่ยม | ค 2.1 ป.5/* | 10 |
+| [`quadrilateral_area`](p5/quadrilateral_area.py) | พื้นที่รูปสี่เหลี่ยม | ค 2.1 ป.5/* | 14 |
 | [`types_of_quadrilaterals`](p5/types_of_quadrilaterals.py) | ชนิดของรูปสี่เหลี่ยม | ค 2.2 ป.5/* | 10 |
-| [`unitary_method`](p5/unitary_method.py) | บัญญัติไตรยางศ์ | ค 1.1 ป.5/* | 10 |
+| [`unitary_method`](p5/unitary_method.py) | บัญญัติไตรยางศ์ | ค 1.1 ป.5/* | 13 |
 | [`volume`](p5/volume.py) | ปริมาตร | ค 2.1 ป.5/* | 10 |
 
 ## p6 — ป.6
@@ -94,19 +94,19 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`circles`](p6/circles.py) | วงกลม | ค 2.1 ป.6/3 | 10 |
-| [`decimals`](p6/decimals.py) | ทศนิยม | ค 1.1 ป.6/* | 10 |
-| [`fractions_and_mixed_numbers`](p6/fractions_and_mixed_numbers.py) | เศษส่วนและจำนวนคละ | ค 1.1 ป.6/1, ค 1.1 ป.6/7, ค 1.1 ป.6/8 | 10 |
-| [`gcd_and_lcm`](p6/gcd_and_lcm.py) | ห.ร.ม. และ ค.ร.น. | ค 1.1 ป.6/* | 10 |
+| [`decimals`](p6/decimals.py) | ทศนิยม | ค 1.1 ป.6/* | 14 |
+| [`fractions_and_mixed_numbers`](p6/fractions_and_mixed_numbers.py) | เศษส่วนและจำนวนคละ | ค 1.1 ป.6/1, ค 1.1 ป.6/7, ค 1.1 ป.6/8 | 13 |
+| [`gcd_and_lcm`](p6/gcd_and_lcm.py) | ห.ร.ม. และ ค.ร.น. | ค 1.1 ป.6/* | 11 |
 | [`order_of_ops`](p6/order_of_ops.py) | ลำดับการดำเนินการ | ค 1.1 ป.6/* | 10 |
-| [`patterns`](p6/patterns.py) | แบบรูป | ค 1.2 ป.6/1 | 10 |
-| [`percentages`](p6/percentages.py) | ร้อยละ | ค 1.1 ป.6/* | 10 |
+| [`patterns`](p6/patterns.py) | แบบรูป | ค 1.2 ป.6/1 | 12 |
+| [`percentages`](p6/percentages.py) | ร้อยละ | ค 1.1 ป.6/* | 11 |
 | [`pie_chart`](p6/pie_chart.py) | แผนภูมิรูปวงกลม | ค 3.1 ป.6/1 | 10 |
 | [`prime_numbers`](p6/prime_numbers.py) | จำนวนเฉพาะ | ค 1.1 ป.6/* | 10 |
-| [`ratio_and_scale`](p6/ratio_and_scale.py) | อัตราส่วนและมาตราส่วน | ค 1.1 ป.6/* | 10 |
-| [`solids`](p6/solids.py) | รูปเรขาคณิต 3 มิติ | ค 2.2 ป.6/* | 10 |
+| [`ratio_and_scale`](p6/ratio_and_scale.py) | อัตราส่วนและมาตราส่วน | ค 1.1 ป.6/* | 12 |
+| [`solids`](p6/solids.py) | รูปเรขาคณิต 3 มิติ | ค 2.2 ป.6/* | 11 |
 | [`triangle_area`](p6/triangle_area.py) | พื้นที่รูปสามเหลี่ยม | ค 2.1 ป.6/* | 10 |
 | [`types_of_triangles`](p6/types_of_triangles.py) | ชนิดของรูปสามเหลี่ยม | ค 2.2 ป.6/* | 10 |
-| [`volume_and_surface_area`](p6/volume_and_surface_area.py) | ปริมาตรและพื้นที่ผิว | ค 2.1 ป.6/* | 10 |
+| [`volume_and_surface_area`](p6/volume_and_surface_area.py) | ปริมาตรและพื้นที่ผิว | ค 2.1 ป.6/* | 16 |
 
 ## m1 — ม.1
 
@@ -148,15 +148,15 @@
 | [`basic_probability`](m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | ค 3.2 ม.3/1 | 10 |
 | [`binomial_expansion`](m3/binomial_expansion.py) | กระจายทวินาม | ค 1.2 ม.3/* | 10 |
 | [`box_plots`](m3/box_plots.py) | สถิติ (แผนภาพกล่อง) | ค 3.1 ม.3/1 | 10 |
-| [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 10 |
+| [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 11 |
 | [`completing_the_square`](m3/completing_the_square.py) | กำลังสองสมบูรณ์ | ค 1.2 ม.3/* | 10 |
-| [`factorising`](m3/factorising.py) | แยกตัวประกอบ | ค 1.2 ม.3/* | 10 |
-| [`inequality`](m3/inequality.py) | อสมการเชิงเส้น | ค 1.3 ม.3/1 | 10 |
+| [`factorising`](m3/factorising.py) | แยกตัวประกอบ | ค 1.2 ม.3/* | 12 |
+| [`inequality`](m3/inequality.py) | อสมการเชิงเส้น | ค 1.3 ม.3/1 | 13 |
 | [`parabola`](m3/parabola.py) | กราฟของฟังก์ชันกำลังสอง | ค 1.2 ม.3/2 | 10 |
-| [`quadratic`](m3/quadratic.py) | สมการกำลังสอง | ค 1.3 ม.3/2 | 10 |
+| [`quadratic`](m3/quadratic.py) | สมการกำลังสอง | ค 1.3 ม.3/2 | 16 |
 | [`similarity`](m3/similarity.py) | ความคล้าย | ค 2.2 ม.3/1 | 10 |
-| [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 10 |
-| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 10 |
+| [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 23 |
+| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 17 |
 | [`trigonometric_ratios`](m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค 2.2 ม.3/2 | 10 |
 
 ## m4 — ม.4

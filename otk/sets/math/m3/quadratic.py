@@ -18,7 +18,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem, frac_tex, poly_tex
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem, frac_tex, poly_tex
 from otk.sets._support.math_algebra import _nonzero
 from otk.sets._support.math_bank_real import M3, _agree, _count_q, _tex_q
 from otk.sets._support.math_m3 import LEVEL
@@ -137,7 +137,7 @@ class QuadraticDiscriminantM3(QuestionType):
         # The boundary itself; the positive twin; −p/2 truncated.
         wrongs = [right + 1, -right, -(p // 2)]
         return _num_maths(stem, str(right), [str(w) for w in wrongs if w != right], self.topic)
-QuadraticDiscriminantM3.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
+QuadraticDiscriminantM3.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/3-real-numbers',))
 
 
 @question_type("math.quadratic_word_problem_m3",
@@ -315,3 +315,113 @@ QuadraticSumOfRootsM3.PROVENANCE = Provenance("original")
 RectangleWidthFromAreaM3.PROVENANCE = Provenance("original")
 ConsecutiveProductM3.PROVENANCE = Provenance("original")
 WhichRootM3.PROVENANCE = Provenance("original")
+
+
+@question_type("math.quadratic_standard_form_m3", display_name={"th": "จำแนกและจัดรูปสมการกำลังสอง"}, level={"th": "ม.3"}, topic="สมการกำลังสอง")
+class QuadraticStandardFormM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 21–22,24",))
+
+    def compose(self,rng: Random):
+        a,b,c,d,e=(rng.randint(2,9) for _ in range(5))
+        if rng.choice((False,True)):
+            # Subtract the right side exactly, without rescaling the polynomial.
+            return (f"สมการ {a}×x² + {b}×x − {c} = {d}×x − {e} "
+                    "ย้ายทุกพจน์จากขวามาซ้ายโดยไม่คูณหรือหารทั้งสมการ แล้วเขียน a×x² + b×x + c = 0 "
+                    "สัมประสิทธิ์ (a, b, c) คือข้อใด",str((a,b-d,e-c)),
+                    [str((a,b+d,e-c)),str((a,b-d,-e-c)),str((a,b+d,-e-c))])
+        right=f"{a}×x² + {b}×x = {c}×x + {d}"
+        return ("สมการใดเป็นสมการกำลังสองตัวแปรเดียวเมื่อย้ายทุกพจน์มาอยู่ข้างเดียวและรวมพจน์คล้าย",
+                right,[f"{a}×x² + {b}×x = {a}×x² + {d}",
+                       f"{a}×x³ + {b}×x = {c}×x + {d}",f"{a}×x + {b} = {c}×x + {d}"])
+
+
+@question_type("math.quadratic_dimension_m3", display_name={"th": "หามิติรูปเรขาคณิตจากความสัมพันธ์กำลังสอง"}, level={"th": "ม.3"}, topic="สมการกำลังสอง")
+class QuadraticDimensionM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 35–36",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            height=2*rng.randint(2,12)
+            gap=rng.randint(1,8)
+            base=height+gap
+            area=base*height//2
+            return (f"สามเหลี่ยมมีพื้นที่ {area} ตารางเซนติเมตร สูงสั้นกว่าฐาน {gap} เซนติเมตร "
+                    "ฐานยาวกี่เซนติเมตร",str(base),[str(height),str(base+gap),str(2*base)])
+        width,multiplier,extra=rng.randint(3,14),rng.randint(2,5),rng.randint(2,9)
+        length=multiplier*width+extra
+        return (f"สี่เหลี่ยมผืนผ้ามีด้านยาวเป็น {multiplier} เท่าของด้านกว้างบวก {extra} เซนติเมตร "
+                f"พื้นที่ {width*length} ตารางเซนติเมตร ด้านยาวยาวกี่เซนติเมตร",str(length),
+                [str(width),str(length-extra),str(length+extra)])
+
+
+@question_type("math.quadratic_past_age_m3", display_name={"th": "หาปัจจุบันอายุจากกำลังสองของอายุในอดีต"}, level={"th": "ม.3"}, topic="สมการกำลังสอง")
+class QuadraticPastAgeM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 37",))
+
+    def compose(self,rng: Random):
+        past_age,ago=rng.randint(4,12),rng.randint(2,6)
+        age=past_age+ago
+        future=past_age**2-age
+        return (f"อีก {future} ปี อายุของนิดจะเท่ากับกำลังสองของอายุเมื่อ {ago} ปีก่อน "
+                f"เมื่อ {ago} ปีก่อนนิดเกิดแล้วและมีอายุเป็นบวก ปัจจุบันนิดอายุกี่ปี",str(age),
+                list(dict.fromkeys(str(v) for v in (past_age,age+ago,past_age**2,past_age**2+ago))))
+
+
+@question_type("math.quadratic_number_relation_m3", display_name={"th": "หาจำนวนจากผลบวกกำลังสองหรือผลคูณสัมพันธ์ผลบวก"}, level={"th": "ม.3"}, topic="สมการกำลังสอง")
+class QuadraticNumberRelationM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 34,38",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            small,gap=rng.randint(3,15),rng.randint(2,7)
+            large=small+gap
+            total=small**2+large**2
+            return (f"จำนวนจริงบวกสองจำนวนต่างกัน {gap} ผลบวกกำลังสองเป็น {total} จำนวนที่มากกว่าคือเท่าใด",
+                    str(large),[str(small),str(large+gap),str(2*large)])
+        small=2*rng.randint(3,15)
+        large=small+2
+        product,total=small*large,small+large
+        common=math.gcd(product,total)
+        a,b=product//common,total//common
+        def pair(n):
+            return f"{n} และ {n+2}"
+        return (f"จำนวนเต็มคู่บวกสองจำนวนเรียงติดกัน {a} เท่าของผลบวกเท่ากับ {b} เท่าของผลคูณ "
+                "จำนวนทั้งสองคือข้อใด",pair(small),[pair(small-2),pair(small+2),pair(small+4)])
+
+
+@question_type("math.quadratic_root_relation_m3", display_name={"th": "หาผลคูณรากหรือผลบวกรากเมื่อทราบหนึ่งราก"}, level={"th": "ม.3"}, topic="สมการกำลังสอง")
+class QuadraticRootRelationM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 28,39",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            shift,p,q=rng.randint(2,9),rng.randint(2,9),rng.randint(2,9)
+            # x² +(2s-p)x +(s²-q)=0. Keep a nonzero product and sum.
+            while shift*shift==q or 2*shift==p or p*p-4*shift*p+4*q <= 0:
+                shift,p,q=rng.randint(2,9),rng.randint(2,9),rng.randint(2,9)
+            product=shift*shift-q
+            candidates=[-product,shift*shift+q,p-2*shift,q-shift*shift,p,q,shift*shift]
+            wrongs=list(dict.fromkeys(str(v) for v in candidates if v!=product))
+            return (f"สมการ (x + {shift})² = {p}×x + {q} มีรากจริงสองราก "
+                    "ผลคูณของรากทั้งสองเท่ากับเท่าใด",str(product),wrongs)
+        lead,known,other=rng.randint(2,6),-rng.randint(2,9),rng.randint(1,9)
+        while known+other==0 or known*other==known+other:
+            other=rng.randint(1,9)
+        constant=lead*known*other
+        return (f"สมการ {lead}×x² + a×x + ({constant}) = 0 มีรากหนึ่งคือ {known} "
+                "ผลบวกของรากทั้งสองเท่ากับเท่าใด",str(known+other),
+                list(dict.fromkeys(str(v) for v in (-known-other,known*other,known,-other,-known) if v!=known+other)))
+
+
+@question_type("math.perpendicular_travel_m3", display_name={"th": "หาระยะทางเดินทางตั้งฉากจากระยะห่างและผลต่าง"}, level={"th": "ม.3"}, topic="สมการกำลังสอง")
+class PerpendicularTravelM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 40",))
+
+    def compose(self,rng: Random):
+        short,long,hyp=rng.choice(((3,4,5),(5,12,13),(8,15,17),(7,24,25),(20,21,29)))
+        scale=rng.randint(2,8)
+        short,long,hyp=short*scale,long*scale,hyp*scale
+        difference=long-short
+        return ("เอเดินทางจากบ้านไปทางใต้ บีออกจากบ้านเดียวกันไปทางตะวันออก "
+                f"เมื่อหยุดเอเดินทางไกลกว่าบี {difference} กิโลเมตร และทั้งสองห่างกัน {hyp} กิโลเมตร "
+                "เออยู่ห่างบ้านกี่กิโลเมตร",str(long),[str(short),str(hyp),str(hyp+difference)])

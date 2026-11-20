@@ -241,3 +241,24 @@ class TwoWayMissingCellP4(WordProblem):
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(total + cells[r, other], cells[r, other], total, right + 10,
                                                 answer=right, lo=1))
+
+
+@question_type("math.selected_columns_row_max_p4", display_name={"th": "เปรียบเทียบผลรวมเฉพาะสองประเภทในแต่ละแถว"}, level={"th": "ป.4"}, topic="การนำเสนอข้อมูล")
+class SelectedColumnsRowMaxP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 20",))
+
+    def compose(self,rng: Random):
+        while True:
+            totals=rng.sample(range(4,24),6)
+            lows=[rng.randint(1,n-1) for n in totals]
+            highs=[n-low for n,low in zip(totals,lows)]
+            normals=[rng.randint(15,60) for _ in range(6)]
+            target=totals.index(max(totals))
+            whole=[a+b for a,b in zip(normals,totals)]
+            if whole[target]<max(whole):
+                break
+        names=tuple(f"ป.{i+1}" for i in range(6))
+        table="จำนวนคนตามเกณฑ์ส่วนสูง\nชั้น | ตามเกณฑ์ | ต่ำกว่าเกณฑ์ | สูงกว่าเกณฑ์\n"
+        table+="\n".join(f"{name} | {normal} | {low} | {high}" for name,normal,low,high in zip(names,normals,lows,highs))
+        return (f"{table}\nชั้นใดมีคนที่ไม่เป็นไปตามเกณฑ์ (ต่ำกว่าหรือสูงกว่าเกณฑ์) รวมมากที่สุด",names[target],
+                [name for i,name in enumerate(names) if i!=target])

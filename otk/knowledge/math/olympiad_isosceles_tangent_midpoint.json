@@ -13,7 +13,7 @@
         "Compare the two contact-point heights and show a crossing pair meets the base at its midpoint",
         "Use the right triangle ABH to compute the half-base length"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 1}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 1}],
       "covered_by": ["math.isosceles_tangent_midpoint_olympiad"]
     }
   ]

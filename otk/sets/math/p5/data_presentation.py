@@ -304,3 +304,31 @@ class LineGraphTrueP5(ChoiceType):
         wrongs = [f"จาก{x}ถึง{y} {other} {d} {unit}", f"จาก{x}ถึง{y} {way} {a + b} {unit}",
                   f"จาก{x}ถึง{y} {way} {d + 2} {unit}"]
         return f"{tt}\nข้อความใดถูกต้อง", right, wrongs
+
+
+@question_type("math.double_bar_summary_p5", display_name={"th": "รวมข้อมูลและเปรียบเทียบสองชุดในแผนภูมิแท่ง"}, level={"th": "ป.5"}, topic="การนำเสนอข้อมูล")
+class DoubleBarSummaryP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 17–18",))
+
+    def compose(self, rng: Random):
+        sports = ("เทนนิส","ปิงปอง","ว่ายน้ำ","ฟุตบอล")
+        boys,girls = [],[]
+        while len(set(a+b for a,b in zip(boys,girls))) != 4:
+            boys = [rng.randint(10,80) for _ in sports]
+            girls = [rng.randint(10,80) for _ in sports]
+        rows = " ; ".join(f"{name} | {a} | {b}" for name,a,b in zip(sports,boys,girls))
+        stem = "ตารางข้อมูลจากแผนภูมิแท่งเปรียบเทียบ (กีฬา | ชาย | หญิง หน่วยคน): "+rows
+        if rng.choice((False,True)):
+            totals = [a+b for a,b in zip(boys,girls)]
+            right = sports[totals.index(max(totals))]
+            return stem+" กีฬาใดมีผู้สมัครรวมมากที่สุด",right,[x for x in sports if x != right]
+        female = rng.choice((False,True))
+        selected,other = (girls,boys) if female else (boys,girls)
+        answer = sum(selected)
+        # Sum only the extreme categories as a further partial-total mistake.
+        # This is distinct from one category and all four even if every count
+        # in the selected series is equal and both series totals coincide.
+        pool = [sum(other),sum(boys)+sum(girls),max(selected),min(selected),
+                max(selected)+min(selected)]
+        return (stem+f" ผู้สมัคร{'หญิง' if female else 'ชาย'}ทั้งหมดมีกี่คน",str(answer),
+                [str(x) for x in dict.fromkeys(pool) if x != answer])

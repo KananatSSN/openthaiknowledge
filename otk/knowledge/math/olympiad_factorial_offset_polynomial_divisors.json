@@ -13,7 +13,7 @@
         "Conclude that P is constant from bounded values",
         "Count positive and negative divisors of gcd(N!,c)"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 10}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 10}],
       "covered_by": ["math.factorial_offset_polynomial_divisors_olympiad"]
     }
   ]

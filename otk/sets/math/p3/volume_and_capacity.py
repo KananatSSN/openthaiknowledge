@@ -221,3 +221,45 @@ class CapacityUnitP3(ConceptBankType):
         Concept("นมหนึ่งกล่องเล็กควรบอกเป็นหน่วยใด", "มิลลิลิตร", ("ลิตร", "กิโลกรัม", "เมตร")),
         Concept("น้ำในสระว่ายน้ำควรบอกเป็นหน่วยใด", "ลิตร", ("มิลลิลิตร", "ช้อนโต๊ะ", "กรัม")),
     ]
+
+
+@question_type("math.capacity_comparison_statement_p3", display_name={"th": "เลือกข้อความเปรียบเทียบความจุทศนิยม"}, level={"th": "ป.3"}, topic="ปริมาตรและความจุ")
+class CapacityComparisonStatementP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4352-3-2565-1-2.pdf, ข้อ 19",))
+
+    def compose(self, rng: Random):
+        a,b=rng.sample(range(10,100),2)
+        large,small=("ถังน้ำ","กระป๋อง") if a>b else ("กระป๋อง","ถังน้ำ")
+        gap=abs(a-b)
+        def litres(value):
+            return f"{value//10}.{value%10}"
+        right=f"{large}จุได้มากกว่า{small} {litres(gap)} ลิตร"
+        return (f"ถังน้ำจุได้ {litres(a)} ลิตร กระป๋องจุได้ {litres(b)} ลิตร ข้อใดสรุปได้ถูกต้อง",right,
+                [f"{small}จุได้มากกว่า{large} {litres(gap)} ลิตร",
+                 f"{large}จุได้มากกว่า{small} {litres(gap+1)} ลิตร",
+                 f"{small}จุได้มากกว่า{large} {litres(gap+1)} ลิตร"])
+
+
+@question_type("math.capacity_estimation_error_p3", display_name={"th": "หาความคลาดเคลื่อนความจุเป็นมิลลิลิตร"}, level={"th": "ป.3"}, topic="ปริมาตรและความจุ")
+class CapacityEstimationErrorP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4352-3-2565-1-2.pdf, ข้อ 20",))
+
+    def compose(self, rng: Random):
+        estimate,actual=rng.sample(range(10,61),2)
+        gap=abs(estimate-actual)*100
+        return (f"คาดคะเนความจุกระติก {estimate//10}.{estimate%10} ลิตร ตวงจริงได้ {actual//10}.{actual%10} ลิตร "
+                "คาดคะเนคลาดเคลื่อนไปกี่มิลลิลิตร",str(gap),
+                [str((estimate+actual)*100),str(gap+100),str(gap-100)])
+
+
+@question_type("math.share_decimal_litres_p3", display_name={"th": "แบ่งลิตรที่เขียนเป็นทศนิยมแล้วตอบมิลลิลิตร"}, level={"th": "ป.3"}, topic="ปริมาตรและความจุ")
+class ShareDecimalLitresP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4352-3-2565-1-2.pdf, ข้อ 17",))
+
+    def compose(self, rng: Random):
+        cups,each=rng.randint(3,9),50*rng.randint(1,10)
+        total=cups*each
+        litres=f"{total//1000}.{total%1000//10:02d}"
+        return (f"น้ำส้ม {litres} ลิตร แบ่งใส่แก้ว {cups} ใบเท่า ๆ กัน หมดพอดี "
+                "แต่ละแก้วมีน้ำส้มกี่มิลลิลิตร",str(total//cups),
+                [str(total),str(each*10),str(each//10)])

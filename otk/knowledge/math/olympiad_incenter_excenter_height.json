@@ -14,7 +14,7 @@
         "Add the two heights and locate the midpoint of IJ"
       ],
       "sources": [
-        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 2}
+        {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 2}
       ],
       "covered_by": ["math.incenter_excenter_height_olympiad"]
     }

@@ -1,0 +1,259 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "พื้นที่รูปสี่เหลี่ยม",
+ "level": "ป.5",
+ "units": [
+  {
+   "id": "math.primary5.side-from-perimeter",
+   "kind": "procedure",
+   "title": "หาด้านของรูปสี่เหลี่ยมที่ด้านเท่ากัน",
+   "statement": "หารความยาวรอบรูปด้วย 4 เพื่อหาความยาวด้านของสี่เหลี่ยมขนมเปียกปูน",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หารความยาวรอบรูปด้วย 4 เพื่อหาความยาวด้านของสี่เหลี่ยมขนมเปียกปูน",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.parallelogram_perimeter_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.four-equal-sides",
+   "kind": "procedure",
+   "title": "ความยาวรอบรูปที่มีด้านเท่ากันสี่ด้าน",
+   "statement": "บวกความยาวด้านที่เท่ากันสี่ด้าน หรือคูณความยาวด้านด้วย 4 โดยคงค่าทศนิยมอย่างถูกต้อง",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "บวกความยาวด้านที่เท่ากันสี่ด้าน หรือคูณความยาวด้านด้วย 4 โดยคงค่าทศนิยมอย่างถูกต้อง",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.quadrilateral_repetition_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.adjacent-side-perimeter",
+   "kind": "procedure",
+   "title": "ความยาวรอบรูปจากด้านประชิด",
+   "statement": "บวกด้านประชิดสองด้านแล้วคูณ 2 เพื่อรวมด้านตรงข้ามที่เท่ากัน",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "บวกด้านประชิดสองด้านแล้วคูณ 2 เพื่อรวมด้านตรงข้ามที่เท่ากัน",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.parallelogram_perimeter_p5",
+    "math.quadrilateral_repetition_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.base-height-area",
+   "kind": "procedure",
+   "title": "พื้นที่จากฐานและความสูงตั้งฉาก",
+   "statement": "คูณความยาวฐานด้วยความสูงตั้งฉาก แม้เท้าของเส้นสูงอยู่บนส่วนต่อของฐาน และไม่ใช้ด้านเอียงแทนความสูง",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "คูณความยาวฐานด้วยความสูงตั้งฉาก แม้เท้าของเส้นสูงอยู่บนส่วนต่อของฐาน และไม่ใช้ด้านเอียงแทนความสูง",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 21
+    }
+   ],
+   "covered_by": [
+    "math.parallelogram_area",
+    "math.quadrilateral_area_figure_p5",
+    "math.quadrilateral_repetition_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.repeated-boundary",
+   "kind": "procedure",
+   "title": "ระยะทางหลายรอบหรือรั้วหลายชั้น",
+   "statement": "หาความยาวรอบรูปก่อน แล้วคูณจำนวนรอบหรือจำนวนชั้นของรั้ว โดยไม่ปัดทศนิยมระหว่างทาง",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หาความยาวรอบรูปก่อน แล้วคูณจำนวนรอบหรือจำนวนชั้นของรั้ว โดยไม่ปัดทศนิยมระหว่างทาง",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 22
+    }
+   ],
+   "covered_by": [
+    "math.quadrilateral_repetition_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.repeated-area",
+   "kind": "procedure",
+   "title": "พื้นที่รวมของหลายแผ่นที่เท่ากัน",
+   "statement": "หาพื้นที่หนึ่งแผ่นจากฐานและความสูง แล้วคูณจำนวนแผ่น",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หาพื้นที่หนึ่งแผ่นจากฐานและความสูง แล้วคูณจำนวนแผ่น",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.quadrilateral_repetition_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.unknown-dimension",
+   "kind": "procedure",
+   "title": "หาฐานเมื่อทราบพื้นที่และความสูง",
+   "statement": "จากพื้นที่ = ฐาน × สูง หารพื้นที่ด้วยความสูงเพื่อหาฐาน แล้วตรวจด้วยการคูณกลับ",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "จากพื้นที่ = ฐาน × สูง หารพื้นที่ด้วยความสูงเพื่อหาฐาน แล้วตรวจด้วยการคูณกลับ",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.parallelogram_height_p5",
+    "math.decimal_divide_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.related-dimensions",
+   "kind": "procedure",
+   "title": "หาความยาวที่บอกเป็นส่วนหรือเท่า",
+   "statement": "คำนวณด้านหรือความสูงที่ยังไม่ทราบจากอัตราที่กำหนดก่อน แล้วใช้สูตรพื้นที่หรือความยาวรอบรูปตามที่ถาม",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "คำนวณด้านหรือความสูงที่ยังไม่ทราบจากอัตราที่กำหนดก่อน แล้วใช้สูตรพื้นที่หรือความยาวรอบรูปตามที่ถาม",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.related_quad_dimensions_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.land-area-rai",
+   "kind": "procedure",
+   "title": "แปลงพื้นที่จากตารางวาเป็นไร่",
+   "statement": "คูณฐานกับความสูงที่มีหน่วยวาเพื่อหาตารางวา แล้วหารด้วย 400 ตามคำอธิบายหน่วยที่โจทย์ให้",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "คูณฐานกับความสูงที่มีหน่วยวาเพื่อหาตารางวา แล้วหารด้วย 400 ตามคำอธิบายหน่วยที่โจทย์ให้",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.parallelogram_land_area_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.square-area-from-perimeter",
+   "kind": "procedure",
+   "title": "หาพื้นที่สี่เหลี่ยมจัตุรัสจากรอบรูป",
+   "statement": "หารความยาวรอบรูปด้วย 4 เพื่อหาด้าน แล้วคูณด้านด้วยตัวเองเพื่อหาพื้นที่",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หารความยาวรอบรูปด้วย 4 เพื่อหาด้าน แล้วคูณด้านด้วยตัวเองเพื่อหาพื้นที่",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4703-5-2564-1-3.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.square_area_from_perimeter_p5"
+   ]
+  }
+ ]
+}

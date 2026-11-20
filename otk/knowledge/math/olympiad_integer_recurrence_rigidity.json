@@ -13,7 +13,7 @@
         "Write the nonnegative quotient b_n and derive its multiplicative descent",
         "Use unbounded products to force b_1=0 and check the resulting sequence"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 2}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 2}],
       "covered_by": ["math.integer_recurrence_rigidity_olympiad"]
     }
   ]

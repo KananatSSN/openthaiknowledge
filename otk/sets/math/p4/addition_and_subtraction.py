@@ -164,3 +164,29 @@ class CompareTwoSumsP4(WordProblem):
                   f"บริษัทแรกมีรายได้รวมมากกว่ากี่บาท")
         return MathDraw("", _g(right), prompt=prompt,
                         distractors=_gk(abs(a - c), a + b + c + d, right + 100_000, abs(b - d) + 1, answer=right, lo=1))
+
+
+@question_type("math.large_addsub_sentence_p4", display_name={"th": "เลือกวิธีบวกลบจากเรื่องจำนวนมาก"}, level={"th": "ป.4"}, topic="การบวกและการลบ")
+class LargeAddSubSentenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4537-4-2565-1-2.pdf, ข้อ 6–8","openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 6–7",))
+
+    def compose(self,rng: Random):
+        a,b=rng.randint(200000,899999),rng.randint(10001,99999)
+        mode=rng.randrange(4)
+        if mode==0:
+            x,y=a+b,a
+            stem=f"เงินเดือน {a} บาท รวมโบนัสแล้วได้รับ {a+b} บาท โบนัสหาได้ด้วยนิพจน์ใด"
+            op="−"
+        elif mode==1:
+            x,y=a,b
+            stem=f"มีเงินฝาก {a} บาท ถอนออก {b} บาท เงินคงเหลือหาได้ด้วยนิพจน์ใด"
+            op="−"
+        elif mode==2:
+            x,y=a,b
+            stem=f"ขายสินค้าครั้งแรกได้เงิน {a} บาท ครั้งที่สอง {b} บาท รายรับรวมหาได้ด้วยนิพจน์ใด"
+            op="+"
+        else:
+            x,y=a,b
+            stem=f"สวนมีต้นส้ม {a} ต้น มีฝรั่งมากกว่าส้ม {b} ต้น จำนวนต้นฝรั่งหาได้ด้วยนิพจน์ใด"
+            op="+"
+        return stem,f"{x} {op} {y}",[f"{x} {other} {y}" for other in ("+","−","×","÷") if other!=op]

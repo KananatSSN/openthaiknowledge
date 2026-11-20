@@ -1,0 +1,109 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "รูปเรขาคณิต",
+ "level": "ป.2",
+ "units": [
+  {
+   "id": "math.primary2.polygon-picture",
+   "kind": "procedure",
+   "title": "จำแนกรูปหลายเหลี่ยมจากจำนวนด้าน",
+   "statement": "นับด้านตรงและมุมทั้งหมด แม้รูปจะเอียงหรือมีมุมเว้า แล้วจำแนกตามจำนวนด้าน",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "นับด้านตรงและมุมทั้งหมด แม้รูปจะเอียงหรือมีมุมเว้า แล้วจำแนกตามจำนวนด้าน",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4179-2-2567-2-2.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4179-2-2567-2-2.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4179-2-2567-2-2.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 16
+    }
+   ],
+   "covered_by": [
+    "math.shape_sides_picture_p2",
+    "math.shape_properties_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.shape-in-object",
+   "kind": "procedure",
+   "title": "ระบุรูปเรขาคณิตที่เป็นส่วนประกอบของสิ่งของ",
+   "statement": "พิจารณาเส้นขอบของส่วนที่ถามในสิ่งของจริง แล้วเทียบกับลักษณะของรูปสองมิติ",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "พิจารณาเส้นขอบของส่วนที่ถามในสิ่งของจริง แล้วเทียบกับลักษณะของรูปสองมิติ",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4179-2-2567-2-2.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.shape_objects_p1"
+   ]
+  },
+  {
+   "id": "math.primary2.solid-identification",
+   "kind": "procedure",
+   "title": "จำแนกรูปทรงสามมิติจากลักษณะ",
+   "statement": "พิจารณาฐาน ผิวโค้ง หน้าเรียบ และยอดของรูปทรง เพื่อแยกทรงกระบอก กรวย ทรงกลม และทรงเหลี่ยม แม้จะวางเอียง",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "พิจารณาฐาน ผิวโค้ง หน้าเรียบ และยอดของรูปทรง เพื่อแยกทรงกระบอก กรวย ทรงกลม และทรงเหลี่ยม แม้จะวางเอียง",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4179-2-2567-2-2.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4179-2-2567-2-2.pdf",
+     "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4158-2-2564-1-2.pdf",
+     "item": 20
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 19
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4170-2-2565-1-2.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.solid_shapes_p2",
+    "math.solid_picture_p1"
+   ]
+  }
+ ]
+}

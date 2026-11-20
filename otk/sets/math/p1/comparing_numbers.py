@@ -8,6 +8,7 @@ Sets moved here from: math, math_p1, math_pictures.
 
 from __future__ import annotations
 
+from itertools import permutations
 from random import Random
 
 from otk.core.content import math as content_math
@@ -217,3 +218,79 @@ class CountBetweenP1(WordProblem):
                         prompt=f"จำนวนที่มากกว่า {a} แต่น้อยกว่า {b} มีทั้งหมดกี่จำนวน",
                         # Counting one end or both ends.
                         distractors=_story.keep(b - a, b - a + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.compare_sums_p1", display_name={"th": "เปรียบเทียบผลบวกสองข้าง"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class CompareSumsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4021-1-2567-2-2.pdf, ข้อ 4",))
+
+    def compose(self, rng: Random):
+        a, b, c = (rng.randint(1, 30) for _ in range(3))
+        left, right = a + b, a + c
+        labels = ["ผลบวกทางซ้ายน้อยกว่าทางขวา", "ผลบวกทางซ้ายเท่ากับทางขวา", "ผลบวกทางซ้ายมากกว่าทางขวา"]
+        answer = labels[0 if left < right else 1 if left == right else 2]
+        return (f"เปรียบเทียบ {a} + {b} ทางซ้าย กับ {a} + {c} ทางขวา ข้อใดถูกต้อง",
+                answer,
+                # Reverse the relation; assume equality; ignore both added parts.
+                [label for label in labels if label != answer] + [f"ทั้งสองข้างมีผลบวกเท่ากับ {a}"])
+
+
+@question_type("math.false_sum_comparison_p1", display_name={"th": "หาข้อความเปรียบเทียบผลบวกที่ไม่ถูกต้อง"},
+               level=LEVEL, topic="การเปรียบเทียบ")
+class FalseSumComparisonP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4006-1-2565-2-2.pdf, ข้อ 17–18",))
+
+    def compose(self, rng: Random):
+        false_index = rng.randrange(4)
+        statements = []
+        for i in range(4):
+            a, b = rng.randint(1, 45), rng.randint(1, 45)
+            total = a + b
+            if i == 0:
+                sign, other = "=", total + (i == false_index)
+            elif i == 1:
+                sign, other = ("<" if i == false_index else ">"), total - 1
+            elif i == 2:
+                sign, other = (">" if i == false_index else "<"), total + 1
+            else:
+                sign, other = "≠", total if i == false_index else total + 1
+            statements.append(f"{a} + {b} {sign} {other}")
+        # The one false statement confuses equality, direction, or inequality;
+        # every distractor is a separately computed true statement.
+        return ("ข้อใดใช้เครื่องหมายเปรียบเทียบไม่ถูกต้อง", statements[false_index],
+                [statement for i, statement in enumerate(statements) if i != false_index])
+
+
+@question_type("math.race_constraints_p1", display_name={"th": "เลือกอันดับที่สอดคล้องกับเงื่อนไขการแข่งขัน"}, level={"th": "ป.1"}, topic="การเปรียบเทียบ")
+class RaceConstraintsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 17",))
+
+    def compose(self, rng: Random):
+        a,b,c,d = rng.sample(list("ABCD"),4)
+        orders = list(permutations((a,b,c,d)))
+        def fits(order):
+            return order[0] != a and order.index(b) < order.index(c) and order.index(a) < order.index(d)
+        valid = [o for o in orders if fits(o)]
+        invalid = [o for o in orders if not fits(o)]
+        return (f"A B C D แข่งขัน ไม่มีอันดับร่วม {a} ไม่ได้อันดับแรก {b} เข้าเส้นชัยก่อน {c} "
+                f"และ {d} เข้าเส้นชัยหลัง {a} ข้อใดเรียงอันดับหนึ่งถึงสี่ได้สอดคล้องกับทุกเงื่อนไข",
+                " → ".join(rng.choice(valid)), [" → ".join(o) for o in rng.sample(invalid,3)])
+
+
+@question_type("math.equal_pieces_size_rank_p1", display_name={"th": "จัดอันดับขนาดชิ้นจากจำนวนชิ้นที่แบ่งแผ่นเท่ากัน"}, level=LEVEL, topic="การเปรียบเทียบ")
+class EqualPiecesSizeRankP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 10',))
+
+    def compose(self, rng: Random):
+        counts = rng.sample((4, 9, 16, 25, 36, 49), 4)
+        names = ("เอ", "บี", "ซี", "ดี")
+        rank, large = rng.choice((2, 3)), rng.choice((False, True))
+        order = sorted(range(4), key=lambda i: counts[i], reverse=not large)
+        pick = order[rank - 1]
+        data = " · ".join(f"{name}แบ่ง {n} ชิ้น" for name, n in zip(names, counts))
+        return (f"ทั้งสี่คนมีแผ่นกระดาษขนาดเท่ากัน แต่ละคนแบ่งแผ่นของตนหมดเป็นจัตุรัสที่มีขนาดเท่ากันทุกชิ้นของตน "
+                f"{data} ชิ้นของใครมีขนาด{'ใหญ่' if large else 'เล็ก'}เป็นอันดับที่ {rank}", names[pick],
+                [name for i, name in enumerate(names) if i != pick])

@@ -276,3 +276,66 @@ class MixedToImproperP6(MathType):
                   f"\\frac{{{top}}}{{{d + whole}}}"]
         return MathDraw(f"{whole}\\frac{{{rem}}}{{{d}}}", right, prompt="เขียนจำนวนคละนี้เป็นเศษเกิน",
                         distractors=[w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.mixed_remaining_model_p6", display_name={"th": "เลือกนิพจน์ส่วนที่เหลือหรือส่วนที่ยังขาดเมื่อมีจำนวนคละสองส่วน"}, level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class MixedRemainingModelP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 9,11',))
+
+    def compose(self, rng: Random):
+        a, b = _mixed6(rng), _mixed6(rng)
+        total = a + b + _mixed6(rng) + 5
+        need = rng.choice((False, True))
+        prompt = (f"ต้องการผ้า {_plain6(total)} เมตร มีแล้ว {_plain6(a)} เมตร และ {_plain6(b)} เมตร ต้องซื้อเพิ่มกี่เมตร"
+                  if need else f"มีผ้า {_plain6(total)} เมตร ตัดไป {_plain6(a)} เมตร และ {_plain6(b)} เมตร เหลือกี่เมตร")
+        answer = total - a - b
+        candidates = [(f"{total} + ({a} + {b})", total + a + b), (f"{total} − ({a} − {b})", total - a + b),
+                      (f"{a} + {b}", a + b), (f"{total} − {a}", total - a), (f"{total} − {b}", total - b)]
+        seen, wrongs = {answer}, []
+        for label, value in candidates:
+            if value not in seen:
+                seen.add(value)
+                wrongs.append(label)
+        return prompt + " เลือกนิพจน์คำนวณ", f"{total} − ({a} + {b})", wrongs
+
+
+@question_type("math.two_fraction_purchases_model_p6", display_name={"th": "เลือกนิพจน์ราคารวมสินค้าสองชนิดที่น้ำหนักเป็นจำนวนคละ"}, level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class TwoFractionPurchasesModelP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 12',))
+
+    def compose(self, rng: Random):
+        a, b = _mixed6(rng), _mixed6(rng)
+        p, q = rng.sample(range(12, 61), 2)
+        answer = a * p + b * q
+        candidates = [(f"({a} × {p}) − ({b} × {q})", a * p - b * q),
+                      (f"({a} + {b}) × {p}", (a + b) * p), (f"({a} + {b}) × {q}", (a + b) * q),
+                      (f"{a} × {p}", a * p), (f"{b} × {q}", b * q)]
+        seen, wrongs = {answer}, []
+        for label, value in candidates:
+            if value not in seen:
+                seen.add(value)
+                wrongs.append(label)
+        return (f"ซื้อข้าวสาร {_plain6(a)} กิโลกรัม ราคากิโลกรัมละ {p} บาท และแป้ง {_plain6(b)} กิโลกรัม "
+                f"ราคากิโลกรัมละ {q} บาท ราคารวมคำนวณด้วยนิพจน์ใด", f"({a} × {p}) + ({b} × {q})", wrongs)
+
+
+@question_type("math.fraction_order_statement_p6", display_name={"th": "ตรวจแถวจำนวนคละที่เรียงครบทุกคู่ตามทิศทาง"}, level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class FractionOrderStatementP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 7',))
+
+    def compose(self, rng: Random):
+        fractions = (Fraction(1, 2), Fraction(2, 3), Fraction(3, 4), Fraction(4, 5), Fraction(1, 3), Fraction(1, 4), Fraction(1, 5), Fraction(5, 6))
+        asc = rng.choice((False, True))
+        correct = rng.randrange(4)
+        labels = []
+        wholes = rng.sample(range(5), 4)
+        for i in range(4):
+            whole = wholes[i]
+            values = sorted([whole + f for f in rng.sample(fractions, 3)], reverse=not asc)
+            if i != correct:
+                swap = rng.randrange(2)
+                values[swap], values[swap + 1] = values[swap + 1], values[swap]
+            labels.append(" , ".join(_plain6(v) for v in values))
+        # Different rows intentionally contain different values; each row is checked on its own.
+        return (f"แถวใดเรียงจำนวน{'จากน้อยไปมาก' if asc else 'จากมากไปน้อย'}ถูกต้องตลอดแถว", labels[correct],
+                [label for i, label in enumerate(labels) if i != correct])

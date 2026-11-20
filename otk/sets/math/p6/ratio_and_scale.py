@@ -301,3 +301,28 @@ class ShareThreeWaysP6(WordProblem):
         # One part's worth; split three ways evenly; the part times the total over ten.
         return MathDraw("", _g6(right), prompt=prompt,
                         distractors=_gk6(unit, total // 3, total - right, right + unit, answer=right, lo=1))
+
+
+@question_type("math.non_equivalent_ratio_p6", display_name={"th": "เลือกอัตราส่วนที่ไม่เท่ากับอัตราส่วนกำหนด"}, level={"th": "ป.6"}, topic="อัตราส่วนและมาตราส่วน")
+class NonEquivalentRatioP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4904-6-2567-2-2.pdf, ข้อ 7",))
+
+    def compose(self,rng: Random):
+        a,b=rng.sample(range(1,10),2)
+        k=rng.randint(3,9)
+        right=f"{a*k+1} : {b*k}"
+        return (f"อัตราส่วนข้อใดไม่เท่ากับ {a} : {b}",right,
+                [f"{a*j} : {b*j}" for j in (k-1,k,k+1)])
+
+
+@question_type("math.principal_interest_ratio_p6", display_name={"th": "หาอัตราส่วนเงินต้นต่อดอกเบี้ยหนึ่งปี"}, level={"th": "ป.6"}, topic="อัตราส่วนและมาตราส่วน")
+class PrincipalInterestRatioP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4904-6-2567-2-2.pdf, ข้อ 11",))
+
+    def compose(self,rng: Random):
+        percent=rng.randint(1,25)
+        divisor=math.gcd(100,percent)
+        a,b=100//divisor,percent//divisor
+        return (f"แบบจำลองดอกเบี้ยอย่างง่ายให้อัตรา {percent}% ของเงินต้นในหนึ่งปี "
+                "อัตราส่วนเงินต้นต่อดอกเบี้ยหนึ่งปีในรูปอย่างต่ำตรงกับข้อใด",f"{a} : {b}",
+                [f"{b} : {a}",f"{a+b} : {b}",f"{a} : {a+b}"])

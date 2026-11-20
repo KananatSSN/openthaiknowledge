@@ -13,7 +13,7 @@
         "Use boundary-ring capacity to force alternating inner side cells",
         "Construct valid boards with base patterns and a repeating frame"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 5}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 5}],
       "covered_by": ["math.three_edge_grid_erasure_olympiad"]
     }
   ]

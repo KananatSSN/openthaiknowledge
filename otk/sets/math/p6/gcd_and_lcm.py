@@ -311,3 +311,34 @@ class BusesTogetherP6(ChoiceType):
         stem = (f"รถสายแรกออกทุก {a} นาที รถสายที่สองออกทุก {b} นาที ถ้าออกพร้อมกันเวลา {start}.00 น. "
                 "จะออกพร้อมกันอีกครั้งเวลาใด")
         return stem, right, [w for w in dict.fromkeys(wrongs) if w != right][:3]
+
+
+@question_type("math.gcd_lcm_product_model_p6", display_name={"th": "เลือกผลคูณตัวประกอบเฉพาะจากโจทย์ห.ร.ม.หรือค.ร.น."}, level={"th": "ป.6"}, topic="ห.ร.ม. และ ค.ร.น.")
+class GcdLcmProductModelP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 1–4",))
+
+    def compose(self,rng: Random):
+        primes=(2,3,5,7)
+        factors=sorted(rng.choices(primes,k=3))
+        while len(set(factors))==1:
+            factors=sorted(rng.choices(primes,k=3))
+        target=math.prod(factors)
+        wrongs={}
+        for i in range(3):
+            for prime in primes:
+                changed=factors[:]
+                changed[i]=prime
+                changed.sort()
+                value=math.prod(changed)
+                if value!=target:
+                    wrongs[value]=" × ".join(map(str,changed))
+        if rng.choice((False,True)):
+            multipliers=rng.sample(primes,3)
+            a,b,c=(target*m for m in multipliers)
+            prompt=(f"เชือกยาว {a}, {b} และ {c} เมตร แบ่งทุกเส้นให้ยาวเท่ากัน "
+                    "ยาวที่สุดโดยไม่เหลือเศษ เลือกผลคูณตัวประกอบเฉพาะที่ใช้หาคำตอบ")
+        else:
+            a,b,c=(target//p for p in factors)
+            prompt=(f"นักวิ่งใช้เวลาต่อรอบ {a}, {b} และ {c} นาที เริ่มที่จุดเดียวกันพร้อมกัน "
+                    "อีกกี่นาทีจึงถึงจุดเริ่มต้นพร้อมกันอีกครั้งเป็นครั้งแรก เลือกผลคูณตัวประกอบเฉพาะที่ใช้หาคำตอบ")
+        return prompt," × ".join(map(str,factors)),rng.sample(list(wrongs.values()),3)

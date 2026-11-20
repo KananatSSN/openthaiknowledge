@@ -1,0 +1,107 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การลบ",
+ "level": "ป.1",
+ "units": [
+  {
+   "id": "math.primary1.two-digit-subtraction",
+   "kind": "procedure",
+   "title": "ลบจำนวนสองหลักโดยกระจายหลักสิบ",
+   "statement": "ลบตามค่าประจำหลัก ถ้าหลักหน่วยของตัวตั้งน้อยกว่าให้กระจายหนึ่งสิบเป็นสิบหน่วยก่อนลบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบตามค่าประจำหลัก ถ้าหลักหน่วยของตัวตั้งน้อยกว่าให้กระจายหนึ่งสิบเป็นสิบหน่วยก่อนลบ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 13
+    }
+   ],
+   "covered_by": [
+    "math.two_digit_subtraction_with_borrow"
+   ]
+  },
+  {
+   "id": "math.primary1.missing-subtrahend",
+   "kind": "procedure",
+   "title": "หาตัวลบที่ไม่ทราบ",
+   "statement": "ลบผลต่างออกจากตัวตั้งเพื่อหาตัวลบที่ทำให้ประโยคเป็นจริง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบผลต่างออกจากตัวตั้งเพื่อหาตัวลบที่ทำให้ประโยคเป็นจริง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.missing_subtrahend"
+   ]
+  },
+  {
+   "id": "math.primary1.missing-minuend",
+   "kind": "procedure",
+   "title": "หาตัวตั้งที่ไม่ทราบ",
+   "statement": "บวกตัวลบกับผลต่างเพื่อหาตัวตั้ง แม้เขียนผลต่างไว้ด้านซ้ายของเครื่องหมายเท่ากับ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "บวกตัวลบกับผลต่างเพื่อหาตัวตั้ง แม้เขียนผลต่างไว้ด้านซ้ายของเครื่องหมายเท่ากับ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.missing_minuend_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.match-difference-expression",
+   "kind": "procedure",
+   "title": "เลือกประโยคลบที่มีผลต่างเท่ากัน",
+   "statement": "หาผลต่างอ้างอิง แล้วลบจำนวนในแต่ละตัวเลือกเพื่อเลือกประโยคที่มีค่าเท่ากัน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาผลต่างอ้างอิง แล้วลบจำนวนในแต่ละตัวเลือกเพื่อเลือกประโยคที่มีค่าเท่ากัน",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.match_difference_expression_p1"
+   ]
+  }
+ ]
+}

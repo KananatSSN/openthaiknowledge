@@ -255,3 +255,19 @@ class CalendarDateWeekdayP3(ChoiceType):
         spare = _WEEKDAYS[(w1 + d2 - d1 + 2) % 7]
         return (f"วันที่ {d1} ของเดือนหนึ่งตรงกับ{_WEEKDAYS[w1]} วันที่ {d2} ของเดือนเดียวกันตรงกับวันอะไร",
                 right, [w for w in dict.fromkeys([*wrongs, spare]) if w != right])
+
+
+@question_type("math.activity_time_lookup_p3", display_name={"th": "อ่านเวลากิจกรรมที่ระบุจากบันทึกประจำวัน"}, level={"th": "ป.3"}, topic="เวลา")
+class ActivityTimeLookupP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4352-3-2565-1-2.pdf, ข้อ 6–8",))
+
+    def compose(self, rng: Random):
+        activities=("ตื่นนอน","ช่วยงานบ้าน","ดูโทรทัศน์","ทำการบ้าน","เข้านอน")
+        times=[rng.randrange(a*60,b*60,5) for a,b in ((5,8),(9,11),(13,15),(16,18),(20,22))]
+        target=rng.randrange(len(activities))
+        def time(value):
+            return f"{value//60:02d}.{value%60:02d} น."
+        data=" ; ".join(f"{activity} | {time(value)}" for activity,value in zip(activities,times))
+        return ("บันทึกกิจกรรมวันหยุด (กิจกรรม | เวลาเริ่ม): "+data+
+                f" เริ่มกิจกรรม{activities[target]}เวลาใด",time(times[target]),
+                [time(value) for i,value in enumerate(times) if i!=target])

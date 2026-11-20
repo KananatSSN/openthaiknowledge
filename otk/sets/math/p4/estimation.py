@@ -11,6 +11,7 @@ from __future__ import annotations
 from random import Random
 
 from otk.core.provenance import Provenance
+from otk.kit.math_problems import ChoiceType
 from otk.core.registry import question_type
 from otk.kit import story as _story
 from otk.kit.math_problems import MathDraw, WordProblem
@@ -241,3 +242,20 @@ class EstimateBillP4(WordProblem):
         return MathDraw("", _g(right), prompt=prompt,
                         distractors=_gk(sum(p // 100 * 100 for p in prices), sum(prices), right + 100, right - 100,
                                         answer=right, lo=1))
+
+
+@question_type("math.rounding_statement_p4", display_name={"th": "ตรวจข้อความปัดจำนวนเต็มตามหลักที่กำหนด"}, level={"th": "ป.4"}, topic="การประมาณค่า")
+class RoundingStatementP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4537-4-2565-1-2.pdf, ข้อ 5",))
+
+    def compose(self,rng: Random):
+        places=((1000,"พัน"),(10000,"หมื่น"),(100000,"แสน"),(1000000,"ล้าน"))
+        correct=rng.randrange(4)
+        rows=[]
+        for i in range(4):
+            step,name=rng.choice(places)
+            n=rng.randint(1100001,8999999)
+            rounded=(n+step//2)//step*step
+            value=rounded if i==correct else rounded+rng.choice((-step,step))
+            rows.append(f"ปัด {n} ใกล้เคียงจำนวนเต็ม{name} ได้ {value}")
+        return "ข้อความใดปัดจำนวนได้ถูกต้อง โดยหลักถัดไปตั้งแต่ 5 ขึ้นไปให้ปัดขึ้น",rows[correct],[v for i,v in enumerate(rows) if i!=correct]

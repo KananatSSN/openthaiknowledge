@@ -16,7 +16,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem
 from otk.sets._support.math_gaps_primary import _choices
 from otk.sets._support.math_p2 import _maths, evaluate
 from otk.sets._support.math_p4 import LEVEL, grouped
@@ -275,3 +275,125 @@ class RoundTripsP4(WordProblem):
         # One way only; one day only; the numbers added.
         return MathDraw("", _g(right), prompt=prompt,
                         distractors=_gk(km * days, 2 * km, km + days, 2 * km * (days - 1), answer=right, lo=1))
+
+
+@question_type("math.reserve_half_remaining_p4", display_name={"th": "ขายไปก่อนแล้วสำรองครึ่งหนึ่งของที่เหลือ"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class ReserveHalfRemainingP4(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 17",))
+
+    def expr(self, rng: Random):
+        export, sold = rng.randint(2000, 1200000), rng.randint(1000, 400000)
+        total = 2 * export + sold
+        answer = (total - sold) // 2
+        return MathDraw("", str(answer),
+                        prompt=(f"โรงสีมีข้าว {total} กิโลกรัม ขายไป {sold} กิโลกรัม "
+                                "เก็บสำรองครึ่งหนึ่งของข้าวที่เหลือ จะมีข้าวสำหรับส่งออกอีกกี่กิโลกรัม"),
+                        distractors=_story.keep(total - sold, total // 2, total // 2 - sold,
+                                                answer + 1, answer=answer, lo=0))
+
+
+@question_type("math.organizer_shared_cost_p4", display_name={"th": "เฉลี่ยค่าใช้จ่ายโดยนับผู้จัดรวมกับเพื่อน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class OrganizerSharedCostP4(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 19 (เฉลยแก้จากการคำนวณ)",))
+
+    def expr(self, rng: Random):
+        friends, each = rng.randint(4, 29), rng.randint(100, 4000)
+        total = (friends + 1) * each
+        room = rng.randint(50, total - 50)
+        food = total - room
+        return MathDraw("", str(total // (friends + 1)),
+                        prompt=(f"กานดาและเพื่อนอีก {friends} คนไปงานเลี้ยง จ่ายค่าเช่าห้อง {room} บาท "
+                                f"และค่าอาหาร {food} บาท ทุกคนรวมกานดาแบ่งจ่ายเท่า ๆ กัน ต้องจ่ายคนละกี่บาท"),
+                        distractors=_story.keep(total // friends, total // (friends + 2),
+                                                total, each + 1, answer=each, lo=0))
+
+
+@question_type("math.add_sub_sentence_p4", display_name={"th": "เลือกประโยคสัญลักษณ์รวมการลดและการเปรียบเทียบ"}, level={"th": "ป.4"}, topic="โจทย์ปัญหาระคน")
+class AddSubSentenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 11–12",))
+
+    def compose(self, rng: Random):
+        b,c = rng.sample(range(5,81),2)
+        a = rng.randint(200,900)
+        if rng.choice((False,True)):
+            return (f"มีนม {a} กล่อง แจกเพื่อน {b} กล่อง ใช้ทำขนม {c} กล่อง เหลือกี่กล่อง เลือกประโยคสัญลักษณ์",
+                    f"{a} − ({b} + {c})",[f"{a} − ({b} − {c})",f"{a} + ({b} + {c})",f"({a} − {b}) × {c}"])
+        return (f"ต้นมีเงิน {a} บาท ฝนมีมากกว่าต้น {b} บาท ฟ้ามีน้อยกว่าฝน {c} บาท ฟ้ามีเงินกี่บาท เลือกประโยคสัญลักษณ์",
+                f"({a} + {b}) − {c}",[f"({a} − {b}) − {c}",f"({a} + {b}) + {c}",f"({a} − {b}) + {c}"])
+
+
+@question_type("math.remaining_share_sentence_p4", display_name={"th": "เลือกวิธีหักของเสียก่อนแบ่งเท่ากัน"}, level={"th": "ป.4"}, topic="โจทย์ปัญหาระคน")
+class RemainingShareSentenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 13",))
+
+    def compose(self, rng: Random):
+        groups,each,broken = rng.randint(3,30),rng.randint(3,50),rng.randint(5,80)
+        total = groups*each+broken
+        return (f"มีปากกา {total} ด้าม เสีย {broken} ด้าม ที่เหลือแบ่งให้นักเรียน {groups} คนเท่า ๆ กัน "
+                "คนละกี่ด้าม เลือกประโยคสัญลักษณ์",f"({total} − {broken}) ÷ {groups}",
+                [f"({total} + {broken}) ÷ {groups}",f"{total} − ({broken} ÷ {groups})",f"({total} + {broken}) × {groups}"])
+
+
+@question_type("math.quotient_then_add_sentence_p4", display_name={"th": "เลือกวิธีหาจำนวนจากราคาแล้วรวมอีกกลุ่ม"}, level={"th": "ป.4"}, topic="โจทย์ปัญหาระคน")
+class QuotientThenAddSentenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 15",))
+
+    def compose(self, rng: Random):
+        price,weight = rng.randint(100,500),rng.randint(5,15)
+        extra = rng.randint(2,weight-1)
+        paid = price*weight
+        return (f"ซื้อกุ้งกิโลกรัมละ {price} บาท จ่ายเงิน {paid} บาท และซื้อปูอีก {extra} กิโลกรัม "
+                "ซื้ออาหารทะเลรวมกี่กิโลกรัม เลือกประโยคสัญลักษณ์",f"({paid} ÷ {price}) + {extra}",
+                [f"({paid} ÷ {price}) − {extra}",f"({paid} × {price}) + {extra}",f"({paid} ÷ {price}) × {extra}"])
+
+
+@question_type("math.pack_unit_price_sentence_p4", display_name={"th": "เลือกวิธีหาราคาต่อลังจากจำนวนชิ้นทั้งหมด"}, level={"th": "ป.4"}, topic="โจทย์ปัญหาระคน")
+class PackUnitPriceSentenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 18",))
+
+    def compose(self, rng: Random):
+        packs,per,price = rng.randint(3,20),rng.randint(10,40),rng.randint(100,900)
+        units,revenue = packs*per,packs*price
+        return (f"มีน้ำดื่ม {units} ขวด บรรจุลังละ {per} ขวด ขายหมดได้เงิน {revenue} บาท "
+                "ทุกลังราคาเท่ากัน ลังละกี่บาท เลือกประโยคสัญลักษณ์",f"{revenue} ÷ ({units} ÷ {per})",
+                [f"{revenue} ÷ ({units} × {per})",f"{revenue} × ({units} ÷ {per})",f"{revenue} × ({units} × {per})"])
+
+
+@question_type("math.related_story_for_sentence_p4", display_name={"th": "เลือกเรื่องจากประโยคสัญลักษณ์ที่มีจำนวนสัมพันธ์กัน"}, level={"th": "ป.4"}, topic="โจทย์ปัญหาระคน")
+class RelatedStoryForSentenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 19–20",))
+
+    def compose(self, rng: Random):
+        if rng.choice((False,True)):
+            a = rng.randint(100,900)
+            b,c = rng.sample(range(5,81),2)
+            options=[]
+            for dearer,more_money in ((True,True),(False,True),(True,False),(False,False)):
+                options.append(f"สมุดราคา {a} บาท ปากการาคา{'แพง' if dearer else 'ถูก'}กว่าสมุด {b} บาท "
+                               f"มีเงิน{'มาก' if more_money else 'น้อย'}กว่าราคารวมของทั้งสอง {c} บาท มีเงินกี่บาท")
+            return f"เรื่องใดใช้ {a} + ({a} + {b}) + {c} หาคำตอบได้",options[0],options[1:]
+        groups,each,gift = rng.randint(3,9),rng.randint(100,900),rng.randint(5,80)
+        total = groups*each+gift
+        prefix = f"มีเงิน {total} บาท "
+        tail = " สุดท้ายแต่ละคนมีเงินกี่บาท"
+        options = [prefix+f"ให้เพื่อนไป {gift} บาท แล้วแบ่งเงินที่เหลือให้ {groups} คนเท่า ๆ กัน"+tail,
+                   prefix+f"ได้เพิ่ม {gift} บาท แล้วแบ่งเงินทั้งหมดให้ {groups} คนเท่า ๆ กัน"+tail,
+                   prefix+f"แบ่งให้ {groups} คนเท่า ๆ กัน แล้วแต่ละคนจ่าย {gift} บาท"+tail,
+                   prefix+f"แบ่งให้ {groups} คนเท่า ๆ กัน แล้วแต่ละคนได้เพิ่ม {gift} บาท"+tail]
+        return f"เรื่องใดใช้ ({total} − {gift}) ÷ {groups} หาคำตอบได้",options[0],options[1:]
+
+
+@question_type("math.discount_fee_sentence_p4", display_name={"th": "เลือกวิธีหักส่วนลดแล้วรวมค่าธรรมเนียม"}, level={"th": "ป.4"}, topic="โจทย์ปัญหาระคน")
+class DiscountFeeSentenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 8",))
+
+    def compose(self,rng: Random):
+        price=rng.randint(1000000,5000000)
+        discount,fee=rng.sample(range(1000,50001,1000),2)
+        return (f"รถราคา {price} บาท ได้ส่วนลด {discount} บาท และจ่ายค่าประกันเพิ่ม {fee} บาท "
+                "เงินที่จ่ายทั้งหมดหาได้ด้วยนิพจน์ใด",f"({price} − {discount}) + {fee}",
+                [f"({price} + {discount}) − {fee}",f"({price} + {discount}) + {fee}",f"({price} − {discount}) − {fee}"])

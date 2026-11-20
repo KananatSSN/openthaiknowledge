@@ -262,3 +262,15 @@ class CompareOffersP6(ChoiceType):
         right = first if a < b else second
         wrongs = [second if a < b else first, f"ร้านแรก จ่าย {price - r:,} บาท", "สองร้านราคาเท่ากัน"]
         return stem, right, wrongs
+
+
+@question_type("math.calendar_percent_sentence_p6", display_name={"th": "เลือกวิธีหาร้อยละของวันที่ทำงานในเดือน"}, level={"th": "ป.6"}, topic="ร้อยละ")
+class CalendarPercentSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4904-6-2567-2-2.pdf, ข้อ 14",))
+
+    def compose(self,rng: Random):
+        month,days=rng.choice((("มกราคม",31),("เมษายน",30),("สิงหาคม",31),("พฤศจิกายน",30)))
+        worked=rng.choice([n for n in range(1,days) if n*2 != days])
+        return (f"เดือน{month}มี {days} วัน ทำงาน {worked} วัน วันที่ทำงานคิดเป็นร้อยละเท่าใด "
+                "เลือกวิธีคำนวณ",f"({worked} ÷ {days}) × 100",
+                [f"({days} ÷ {worked}) × 100",f"({worked} ÷ 100) × {days}",f"(({days} − {worked}) ÷ {days}) × 100"])

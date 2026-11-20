@@ -13,7 +13,7 @@
     "เลือกดัชนีติดเครื่องหมายบวกให้ผลบวกที่มีเครื่องหมายใกล้ศูนย์ที่สุด โดยตรวจข้อจำกัดจำนวนเครื่องหมายและความเป็นคู่คี่"
    ],
    "sources": [
-    {"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 2}
+    {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 2}
    ],
    "covered_by": ["math.signed_pair_minimum_olympiad"]
   }

@@ -13,7 +13,7 @@
         "Write the arrival times as i(N+1−i)",
         "Maximize the concave quadratic over integer i"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 2}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 2}],
       "covered_by": ["math.elf_delivery_minimax_olympiad"]
     }
   ]

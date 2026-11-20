@@ -215,4 +215,16 @@ def test_sheet_publication_manifest_is_frozen():
     # 47 more so every ม.2 unit has at least fifteen.
     # 48 more ม.1 sets so every ม.1 unit has at least ten.
     # 55 more ม.1 sets so every ม.1 unit has at least fifteen.
-    assert len(REGISTRY) == 4946
+    # Nine Primary 2 sets from the first text-layer school-paper batch.
+    # Seven Primary 1 applications from the next text-layer batch.
+    # Four more Primary 1 gaps from the next four bank papers.
+    # Nine Primary 2 division, mixed-operation and chart applications.
+    # Ten Primary 5 applications from geometry and percentage papers.
+    # Three Primary 1 measurement applications from a comprehension paper.
+    # Four Primary 1 arithmetic equivalence applications from a skills paper.
+    # Two Primary 2 place-value and ordering applications from a bank paper.
+    # Two Primary 1 closest-weight and negative-comparison applications.
+    # Four Primary 3 money and multi-step applications from a bank paper.
+    # Eleven Primary 4/5 time, budget and measurement applications.
+    # Twelve Primary 2 / Secondary 3 measurement, systems and solid applications.
+    assert len(REGISTRY) == 5180

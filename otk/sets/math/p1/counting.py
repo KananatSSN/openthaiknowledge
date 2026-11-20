@@ -17,7 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem
 from otk.sets._support.math_diagrams import _math_q, _text_q
 from otk.sets._support.math_p1 import LEVEL, _texts
 from otk.sets._support.math_pictures import (
@@ -265,3 +265,118 @@ class TensAndOnesP1(WordProblem):
                         prompt="เขียนในรูปกระจายได้อย่างไร",
                         distractors=[rf"{tens} + {ones}", rf"{ones * 10} + {tens}",
                                      rf"{tens * 10} + {ones * 10}"])
+
+
+@question_type("math.equivalent_number_forms_p1", display_name={"th": "จับคู่ตัวเลขและคำอ่านที่แทนจำนวนเดียวกัน"},
+               level=LEVEL, topic="การนับ")
+class EquivalentNumberFormsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4021-1-2567-2-2.pdf, ข้อ 6",))
+
+    def compose(self, rng: Random):
+        n = rng.randint(0, 99)
+        other = (n + 1) % 100
+        right = f"{n}, {_story.thai_numeral(n)}, {_story.thai_words(n)}"
+        # Exactly one of the three representations refers to the next number.
+        wrongs = [f"{n}, {_story.thai_numeral(other)}, {_story.thai_words(n)}",
+                  f"{n}, {_story.thai_numeral(n)}, {_story.thai_words(other)}",
+                  f"{other}, {_story.thai_numeral(n)}, {_story.thai_words(n)}"]
+        return "ข้อใดมีตัวเลขฮินดูอารบิก ตัวเลขไทย และคำอ่านแทนจำนวนเดียวกันทั้งหมด", right, wrongs
+
+
+@question_type("math.expanded_form_judgement_p1", display_name={"th": "ตรวจรูปกระจายตามหลักสิบและหลักหน่วย"},
+               level=LEVEL, topic="การนับ")
+class ExpandedFormJudgementP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3994-1-2564-2-2.pdf, ข้อ 15",))
+
+    def compose(self, rng: Random):
+        numbers = rng.sample(range(10, 100), 4)
+        terms = [(n, n // 10 * 10, n % 10) for n in numbers]
+        n, tens, ones = terms[0]
+        terms[0] = (n, tens - 1, ones + 1)
+        labels = [f"{n} = {a} + {b}" for n, a, b in terms]
+        bad = [i for i, (n, a, b) in enumerate(terms) if (a, b) != (n // 10 * 10, n % 10)]
+        right = labels[bad[0]]
+        return ("ทุกข้อมีผลบวกถูกต้อง ข้อใดไม่ใช่รูปกระจายตามหลักสิบและหลักหน่วย "
+                "(เขียนค่าหลักสิบก่อนค่าหลักหน่วย)", right, [x for x in labels if x != right])
+
+
+@question_type("math.place_value_statement_p1", display_name={"th": "ตรวจข้อความบอกหลักและค่าเลขโดด"},
+               level=LEVEL, topic="การนับ")
+class PlaceValueStatementP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3994-1-2564-2-2.pdf, ข้อ 16",))
+
+    def compose(self, rng: Random):
+        tens, ones = rng.sample(range(1, 10), 2)
+        n = tens * 10 + ones
+        claims = [(tens, "สิบ", tens * 10), (ones, "หน่วย", ones),
+                  (tens, "หน่วย", tens), (ones, "สิบ", ones * 10),
+                  (tens, "สิบ", tens), (ones, "หน่วย", ones * 10)]
+        labels = [f"เลข {digit} ในจำนวน {n} อยู่หลัก{place} มีค่า {value}"
+                  for digit, place, value in claims]
+        right = labels[rng.randrange(2)]
+        return "ข้อใดบอกหลักและค่าของเลขโดดได้ถูกต้อง", right, rng.sample(labels[2:], 3)
+
+
+@question_type("math.digit_clues_p1", display_name={"th": "หาจำนวนจากเงื่อนไขเลขโดด"}, level={"th": "ป.1"}, topic="การนับ")
+class DigitCluesP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf, ข้อ 20, 26",))
+
+    def compose(self, rng: Random):
+        if rng.choice((False,True)):
+            ones = rng.randint(0,5)
+            dh, dt = rng.randint(1,9-ones), rng.randint(1,9-ones)
+            total = 3*ones+dh+dt
+            numbers = [n for n in range(100,1000) if n//100-n%10 == dh
+                       and n//10%10-n%10 == dt and sum(map(int,str(n))) == total]
+            answer = numbers[0]
+            prompt = (f"จำนวนสามหลัก หลักร้อยมากกว่าหลักหน่วย {dh} หลักสิบมากกว่าหลักหน่วย {dt} "
+                      f"ผลรวมเลขโดดเท่ากับ {total} จำนวนนี้คือจำนวนใด")
+            # Swapped places, a changed unit, or a missed hundred.
+            pool = [100*(ones+dt)+10*(ones+dh)+ones, answer+1, answer-1, answer+100, answer-100]
+        else:
+            total = rng.randint(2,17)
+            largest = rng.choice((False,True))
+            numbers = [n for n in range(10,100) if n//10+n%10 == total]
+            answer = (max if largest else min)(numbers)
+            prompt = (f"จำนวนสองหลักที่ผลรวมเลขโดดเท่ากับ {total} "
+                      f"จำนวนที่{'มาก' if largest else 'น้อย'}ที่สุดคือจำนวนใด")
+            pool = [n for n in numbers if n != answer]+[answer+1,answer-1]
+        return prompt, str(answer), [str(x) for x in dict.fromkeys(pool) if x != answer and x > 0]
+
+
+@question_type("math.latin_missing_sum_p1", display_name={"th": "หาผลรวมช่องว่างของตารางหนึ่งถึงสี่"}, level=LEVEL, topic="การนับ")
+class LatinMissingSumP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 14',))
+
+    def compose(self, rng: Random):
+        rows, cols, symbols = rng.sample(range(4), 4), rng.sample(range(4), 4), rng.sample(range(1, 5), 4)
+        grid = [[symbols[(r + c) % 4] for c in cols] for r in rows]
+        holes = set(rng.sample(range(16), rng.randint(4, 8)))
+        shown = " / ".join(" ".join("□" if 4 * r + c in holes else str(grid[r][c]) for c in range(4)) for r in range(4))
+        answer = sum(grid[n // 4][n % 4] for n in holes)
+        given = sum(map(sum, grid)) - answer
+        pool = (given, 40, len(holes), answer - 1, answer + 1)
+        return (f"เติมเลข 1 ถึง 4 ให้ทุกแถวและทุกคอลัมน์มีครบโดยไม่ซ้ำ ตาราง 4 แถว (คั่นแถวด้วย /): {shown} "
+                "ผลรวมของเลขที่ต้องเติมในช่องว่างทุกช่องเท่ากับเท่าใด", str(answer),
+                [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.digit_inequality_count_p1", display_name={"th": "นับเลขโดดที่แทนช่องว่างแล้วทำให้อสมการจริง"}, level=LEVEL, topic="การนับ")
+class DigitInequalityCountP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf, ข้อ 27',))
+
+    def compose(self, rng: Random):
+        boundary = rng.randint(2, 9)
+        a = rng.randint(boundary + 2, 20)
+        b = a - boundary
+        sign = rng.choice((">", "≥", "<", "≤"))
+        def holds(d):
+            value = a - d
+            return {">": value > b, "≥": value >= b, "<": value < b, "≤": value <= b}[sign]
+        answer = sum(holds(d) for d in range(10))
+        pool = (answer + 1, abs(answer - 1), 10 - answer, boundary, boundary + 1, 10, 9)
+        return (f"กำหนดให้ □ เป็นเลขโดดตั้งแต่ 0 ถึง 9 มีเลขโดดกี่ตัวที่ทำให้ {a} − □ {sign} {b} เป็นจริง", str(answer),
+                [str(n) for n in dict.fromkeys(pool) if n != answer])

@@ -13,7 +13,7 @@
         "Place at least ceil(d/2) roots in the six sectors of the unit disk",
         "Count same-sector pairs with a balanced occupancy argument"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 10}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 10}],
       "covered_by": ["math.reciprocal_roots_sectors_olympiad"]
     }
   ]

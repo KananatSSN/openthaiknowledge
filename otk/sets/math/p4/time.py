@@ -243,3 +243,179 @@ class LeapYearP4(ConceptBankType):
         Concept("ปีปกติมีกี่สัปดาห์กับอีกกี่วัน", "52 สัปดาห์ กับอีก 1 วัน",
                 ("52 สัปดาห์พอดี", "50 สัปดาห์ กับอีก 15 วัน", "53 สัปดาห์พอดี")),
     ]
+
+
+@question_type("math.age_year_month_difference_p4", display_name={"th": "หาผลต่างอายุเป็นปีและเดือน"},
+               level=LEVEL, topic="เวลา")
+class AgeYearMonthDifferenceP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 2, 10",))
+
+    def compose(self, rng: Random):
+        ay, am = rng.randint(20, 60), rng.randint(0, 11)
+        by, bm = rng.randint(1, ay - 2), rng.randint(0, 11)
+        a, b = 12 * ay + am, 12 * by + bm
+        def say(months):
+            y, m = divmod(months, 12)
+            return f"{y} ปี {m} เดือน"
+        if rng.randrange(2):
+            stem = f"พี่อายุ {say(a)} น้องอายุ {say(b)} พี่อายุมากกว่าน้องเท่าไร"
+        else:
+            stem = f"พี่อายุ {say(a)} น้องอายุน้อยกว่าพี่ {say(b)} น้องอายุเท่าไร"
+        answer = a - b
+        # Borrow ten instead of twelve months; a year off; add ages.
+        return stem, say(answer), [say(answer - 2), say(answer + 12), say(a + b)]
+
+
+@question_type("math.monthly_reading_duration_p4", display_name={"th": "รวมเวลาอ่านหนังสือทุกวันตลอดเดือน"},
+               level=LEVEL, topic="เวลา")
+class MonthlyReadingDurationP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 3",))
+
+    def compose(self, rng: Random):
+        month, days = rng.choice(_MONTHS)
+        per = rng.randint(15, 75)
+        total = days * per
+        def say(minutes):
+            h, m = divmod(minutes, 60)
+            return f"{h} ชั่วโมง {m} นาที"
+        return (f"ในเดือน{month}ของปีปกติ อ่านหนังสือทุกวัน วันละ {per} นาที "
+                "ใช้เวลาอ่านทั้งเดือนเท่าไร", say(total),
+                [say(per), say(total - per), say(total + 60)])
+
+
+@question_type("math.average_task_duration_p4", display_name={"th": "เฉลี่ยเวลาทำงานทีละชิ้น"},
+               level=LEVEL, topic="เวลา")
+class AverageTaskDurationP4(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 4",))
+
+    def expr(self, rng: Random):
+        count, each = rng.randint(2, 9), rng.randint(15, 120)
+        total = count * each
+        h, m = divmod(total, 60)
+        return MathDraw("", str(total // count),
+                        prompt=(f"ชาร์จไฟฉาย {count} กระบอก โดยชาร์จทีละกระบอก ใช้เวลารวม "
+                                f"{h} ชั่วโมง {m} นาที เฉลี่ยกระบอกละกี่นาที"),
+                        distractors=_story.keep(total, (100 * h + m) // count,
+                                                total - count, each + 1, answer=each, lo=0))
+
+
+@question_type("math.repeated_seconds_duration_p4", display_name={"th": "รวมเวลาจากจำนวนงานและวินาทีต่องาน"},
+               level=LEVEL, topic="เวลา")
+class RepeatedSecondsDurationP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4539-4-2567-2-3.pdf, ข้อ 7",))
+
+    def compose(self, rng: Random):
+        count, seconds = rng.randint(20, 50), rng.randint(40, 100)
+        total = count * seconds
+        def say(s):
+            m, s = divmod(s, 60)
+            return f"{m} นาที {s} วินาที"
+        wrong = [seconds, count + seconds, (total // 100) * 60 + total % 100, total + 60]
+        return (f"ทำแบบฝึกหัด {count} ข้อ ใช้เวลาเฉลี่ยข้อละ {seconds} วินาที "
+                "ใช้เวลารวมเท่าไร", say(total), list(dict.fromkeys(say(s) for s in wrong)))
+
+
+@question_type("math.clock_hands_from_minutes_p4", display_name={"th": "ระบุตำแหน่งเข็มจากเวลาที่มีนาที"}, level={"th": "ป.4"}, topic="เวลา")
+class ClockHandsFromMinutesP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 2",))
+
+    def compose(self, rng: Random):
+        hour,minute = rng.randrange(24),rng.randrange(5,60,5)
+        h = hour%12 or 12
+        mark = minute//5
+        def label(short,long):
+            return f"เข็มสั้นอยู่ระหว่างเลข {short} กับ {short%12+1} เข็มยาวชี้เลข {long}"
+        return (f"เวลา {hour:02d}.{minute:02d} น. เข็มสั้นและเข็มยาวอยู่ตำแหน่งใด",
+                label(h,mark),[label(h%12+1,mark),label(h,mark%11+1),label((h-2)%12+1,mark)])
+
+
+@question_type("math.inclusive_date_weeks_p4", display_name={"th": "นับสัปดาห์โดยรวมวันเริ่มต้นและวันสุดท้าย"}, level={"th": "ป.4"}, topic="เวลา")
+class InclusiveDateWeeksP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 3",))
+
+    def compose(self, rng: Random):
+        start,weeks = rng.randint(1,7),rng.randint(1,3)
+        end = start+weeks*7-1
+        month,_ = rng.choice(_MONTHS)
+        return (f"ฝึกว่ายน้ำทุกวันตั้งแต่วันที่ {start} ถึงวันที่ {end} เดือน{month} "
+                "นับรวมทั้งวันเริ่มต้นและวันสุดท้าย ฝึกทั้งหมดกี่สัปดาห์",
+                str(weeks),[str(n) for n in dict.fromkeys((weeks-1,weeks+1,weeks*7,weeks*7-1)) if n != weeks])
+
+
+@question_type("math.approximate_months_days_p4", display_name={"th": "เปลี่ยนวันเป็นเดือนและวันตามเกณฑ์ที่กำหนด"}, level={"th": "ป.4"}, topic="เวลา")
+class ApproximateMonthsDaysP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 6",))
+
+    def compose(self, rng: Random):
+        months,days = rng.randint(1,8),rng.randint(1,29)
+        total = months*30+days
+        def label(m,d):
+            return f"{m} เดือน {d} วัน"
+        return (f"ระยะเวลา {total} วัน คิดเป็นกี่เดือนกับอีกกี่วัน กำหนดให้หนึ่งเดือนเท่ากับ 30 วัน",
+                label(*divmod(total,30)),[label(*divmod(total,31)),label(months+1,days),label(months,days+1)])
+
+
+@question_type("math.schedule_duration_p4", display_name={"th": "หาระยะเวลากิจกรรมจากตารางเวลา"}, level={"th": "ป.4"}, topic="เวลา")
+class ScheduleDurationP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 7–8",))
+
+    def compose(self, rng: Random):
+        activities = ("คิดเลขเร็ว","ลูกคิด","ภาษาไทย","วาดภาพ")
+        start = rng.randrange(450,545,5)
+        rows=[]
+        for activity in activities:
+            end = start+rng.randrange(20,180,5)
+            rows.append((activity,start,end))
+            start=end
+        activity,begin,end = rng.choice(rows)
+        minutes = end-begin
+        as_minutes = rng.choice((False,True))
+        def time(t):
+            return f"{t//60:02d}.{t%60:02d}"
+        def label(t):
+            return str(t) if as_minutes else f"{t//60} ชั่วโมง {t%60} นาที"
+        data = " ; ".join(f"{name} | {time(a)} | {time(b)}" for name,a,b in rows)
+        question = "กี่นาที" if as_minutes else "กี่ชั่วโมงกี่นาที"
+        return ("ตารางอบรมในวันเดียวกัน (กิจกรรม | เริ่ม | จบ): "+data+
+                f" กิจกรรม{activity}ใช้เวลา{question}",label(minutes),
+                [label(minutes+60),label(minutes+5),label(minutes-5)])
+
+
+@question_type("math.departure_cutoff_p4", display_name={"th": "เลือกเที่ยวรถที่ออกก่อนเวลาที่กำหนด"}, level={"th": "ป.4"}, topic="เวลา")
+class DepartureCutoffP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 9",))
+
+    def compose(self, rng: Random):
+        cutoff = rng.randrange(360,780,5)
+        times = [cutoff-rng.randrange(5,125,5),cutoff,*[cutoff+d for d in rng.sample(range(5,125,5),2)]]
+        rng.shuffle(times)
+        names = ("สาย ก","สาย ข","สาย ค","สาย ง")
+        def time(t):
+            return f"{t//60:02d}.{t%60:02d}"
+        rows=[]
+        for name,departure in zip(names,times):
+            arrival = departure+rng.randrange(360,845,5)
+            day = "วันถัดไป" if arrival>=1440 else "วันเดียวกัน"
+            rows.append(f"{name} | {time(departure)} | {time(arrival%1440)} {day}")
+        right = names[next(i for i,t in enumerate(times) if t<cutoff)]
+        return ("ตารางรถ (สาย | เวลาออกวันนี้ | เวลาถึง): "+" ; ".join(rows)+
+                f" ต้องการรถที่ออกก่อน {time(cutoff)} น. ต้องเลือกสายใด (ออกตรงเวลานี้ไม่นับว่าก่อน)",
+                right,[name for name in names if name != right])
+
+
+@question_type("math.fractional_year_weeks_p4", display_name={"th": "เปลี่ยนปีและเศษส่วนของปีเป็นสัปดาห์ตามเกณฑ์"},
+               level=LEVEL, topic="เวลา")
+class FractionalYearWeeksP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-4/4540-4-2567-2-2.pdf, ข้อ 4",))
+
+    def compose(self, rng: Random):
+        years,quarters = rng.randint(1,8),rng.randint(1,3)
+        description = f"{years} ปีครึ่ง" if quarters==2 else f"{years} ปี กับอีก {quarters}/4 ปี"
+        answer = years*52+quarters*13
+        return (f"ตามเกณฑ์หนึ่งปีคิดเป็น 52 สัปดาห์ ระยะเวลา {description} คิดเป็นกี่สัปดาห์ตามเกณฑ์นี้",
+                str(answer),[str(years*52),str(years*52+quarters),str(years*12+quarters*3)])

@@ -207,3 +207,85 @@ class LargestQuotientP2(ChoiceType):
         most = rng.random() < 0.5
         right = (max if most else min)(exprs, key=exprs.get)
         return f"ข้อใดมีผลหาร{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]
+
+
+@question_type("math.equal_packs_p2", display_name={"th": "หาจำนวนแพ็คจากจำนวนสิ่งของทั้งหมด"},
+               level=LEVEL, topic="การหาร")
+class EqualPacksP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4178-2-2567-2-3.pdf, ข้อ 6",))
+
+    def expr(self, rng: Random):
+        each, packs = rng.randint(101, 199), rng.randint(2, 5)
+        total = each * packs
+        right = total // each
+        return MathDraw("", str(right),
+                        prompt=f"ถุงกระดาษ 1 แพ็ค มี {each} ใบ ต้องการใช้ {total} ใบ ต้องซื้อกี่แพ็คจึงจะได้จำนวนพอดี",
+                        # Subtract just one pack; give objects per pack; give total objects.
+                        distractors=[str(total - each), str(each), str(total)],
+                        hint=rf"{total} \div {each} = {right}")
+
+
+@question_type("math.unit_price_p2", display_name={"th": "หาราคาต่อชิ้นจากยอดเงินรวม"},
+               level=LEVEL, topic="การหาร")
+class UnitPriceP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4163-2-2565-2-3.pdf, ตอนที่ 1 ข้อ 2, 7, 8",
+        "openthaiknowledge-bank/mathematics/level/primary-2/4175-2-2567-2-3.pdf, ตอนที่ 1 ข้อ 6"))
+
+    def expr(self, rng: Random):
+        price = rng.randint(3, 99)
+        half_dozen = rng.choice((True, False))
+        count = 6 if half_dozen else rng.randint(2, 9)
+        total = count * price
+        answer = total // count
+        quantity = "ครึ่งโหล" if half_dozen else f" {count} ใบ"
+        return MathDraw("", str(answer),
+                        prompt=f"ซื้อแก้วน้ำ{quantity} จ่ายเงินรวม {total} บาท แก้วน้ำราคาใบละกี่บาท",
+                        # Wrong group size; subtract rather than divide; give the whole payment.
+                        distractors=_story.keep(total // 12, total * count, total - count, total,
+                                                answer=answer, lo=1),
+                        hint=rf"{total} \div {count} = {answer}")
+
+
+@question_type("math.quotient_remainder_story_p2", display_name={"th": "ตอบทั้งผลหารและเศษจากเรื่องราว"},
+               level=LEVEL, topic="การหาร")
+class QuotientRemainderStoryP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4163-2-2565-2-3.pdf, ตอนที่ 1 ข้อ 9–15",
+        "openthaiknowledge-bank/mathematics/level/primary-2/4175-2-2567-2-3.pdf, ตอนที่ 1 ข้อ 9–11, 13–14"))
+
+    def compose(self, rng: Random):
+        people, each = rng.randint(2, 9), rng.randint(2, 12)
+        left = rng.randint(1, people - 1)
+        total = people * each + left
+        quotient, remainder = divmod(total, people)
+        label = lambda q, r: f"คนละ {q} ชิ้น เหลือ {r} ชิ้น"
+        right = label(quotient, remainder)
+        wrongs = [label(quotient + 1, remainder), label(quotient, remainder + people),
+                  label(remainder, quotient), label(quotient - 1, remainder + people)]
+        return (f"มีขนม {total} ชิ้น แบ่งให้เพื่อน {people} คน คนละเท่า ๆ กัน "
+                "ให้แต่ละคนมากที่สุดโดยไม่แบ่งชิ้นขนม จะได้คนละกี่ชิ้นและเหลือกี่ชิ้น",
+                right, list(dict.fromkeys(wrongs)))
+
+
+@question_type("math.least_remainder_p2", display_name={"th": "เลือกวิธีแบ่งที่เหลือเศษน้อยที่สุด"},
+               level=LEVEL, topic="การหาร")
+class LeastRemainderP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4175-2-2567-2-3.pdf, ตอนที่ 1 ข้อ 12",))
+
+    def compose(self, rng: Random):
+        while True:
+            total = rng.randint(20, 99)
+            by_remainder = {}
+            for divisor in range(2, 10):
+                by_remainder.setdefault(total % divisor, []).append(divisor)
+            if len(by_remainder) >= 4:
+                break
+        remainders = rng.sample(sorted(by_remainder), 4)
+        people = [rng.choice(by_remainder[r]) for r in remainders]
+        best = people[remainders.index(min(remainders))]
+        return (f"มีลูกอม {total} เม็ด แบ่งให้เพื่อนคนละเท่า ๆ กันและมากที่สุด "
+                "เลือกแบ่งให้กี่คนจึงเหลือเศษน้อยที่สุด",
+                f"{best} คน", [f"{n} คน" for n in people if n != best])

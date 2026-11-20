@@ -235,3 +235,29 @@ class BarTwoRowsP4(WordProblem):
         prompt = f"{pg.text}\n{pg.label(x)}และ{pg.label(y)}รวมกัน มากกว่า{pg.label(z)}กี่{pg.chart.unit}"
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(right // scale, a + b, a - c, right + scale, answer=right, lo=1))
+
+
+@question_type("math.three_series_chart_summary_p4", display_name={"th": "ตรวจสรุปข้อมูลแผนภูมิแท่งสามชุด"}, level={"th": "ป.4"}, topic="แผนภูมิแท่ง")
+class ThreeSeriesChartSummaryP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 19",))
+
+    def compose(self,rng: Random):
+        months=("มกราคม","กุมภาพันธ์","มีนาคม")
+        first=rng.sample(range(5,41),3)
+        second=rng.sample(range(5,41),3)
+        third=rng.sample(range(5,41),3)
+        second[1]=first[1]
+        bad=rng.randrange(4)
+        most=first.index(max(first))
+        least=third.index(min(third))
+        shown_most=most if bad!=0 else rng.choice([i for i in range(3) if i!=most])
+        shown_least=least if bad!=1 else rng.choice([i for i in range(3) if i!=least])
+        relation="มากกว่า" if first[0]>first[2] else "น้อยกว่า"
+        if bad==3:
+            relation="น้อยกว่า" if relation=="มากกว่า" else "มากกว่า"
+        rows=[f"สมุดขายมากที่สุดในเดือน{months[shown_most]}",f"ยางลบขายน้อยที่สุดในเดือน{months[shown_least]}",
+              f"เดือนกุมภาพันธ์ขายสมุดและดินสอได้จำนวน{'ไม่เท่ากัน' if bad==2 else 'เท่ากัน'}",
+              f"เดือนมกราคมขายสมุดได้{relation}เดือนมีนาคม"]
+        table="ตารางข้อมูลจากแผนภูมิแท่ง (หน่วย ชิ้น)\nเดือน | สมุด | ดินสอ | ยางลบ\n"
+        table+="\n".join(f"{month} | {a} | {b} | {c}" for month,a,b,c in zip(months,first,second,third))
+        return f"{table}\nข้อใดสรุปไม่ถูกต้อง",rows[bad],[v for i,v in enumerate(rows) if i!=bad]

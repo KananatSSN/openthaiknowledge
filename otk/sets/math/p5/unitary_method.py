@@ -8,6 +8,8 @@ Sets moved here from: math_p5.
 
 from __future__ import annotations
 
+from decimal import Decimal
+from fractions import Fraction
 from random import Random
 
 from otk.core.mistakes import named
@@ -15,7 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.registry import question_type
 from otk.kit import story as _story
 from otk.kit.math_problems import MathDraw, WordProblem
-from otk.sets._support.math_p5 import LEVEL
+from otk.sets._support.math_p5 import LEVEL, dstr
 
 PROVENANCE = Provenance("original")
 
@@ -245,3 +247,67 @@ class PrintingTimeP5(WordProblem):
         return MathDraw("", str(m2), prompt=prompt,
                         distractors=_story.keep(per, per * m2 // m1 if per * m2 % m1 == 0 else m2 + m1,
                                                 m2 + 1, m2 - 1, answer=m2, lo=1))
+
+
+@question_type("math.fractional_unit_price_p5", display_name={"th": "บัญญัติไตรยางศ์โดยไม่ปัดราคาต่อชิ้นก่อน"},
+               level=LEVEL, topic=_RULE3_TOPIC)
+class FractionalUnitPriceP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4721-5-2567-2-3.pdf, ข้อ 17",))
+
+    def expr(self, rng: Random):
+        quantity = 24 * rng.randint(1, 8)
+        cost = 2 * rng.choice([n for n in range(10, 201) if n % 3])
+        wanted = quantity // 8 * rng.choice((1, 3, 5, 7))
+        value = Fraction(cost * wanted, quantity)
+        answer = int(value * 100)
+        assert value * 100 == answer
+        rounded_unit_cents = (2 * cost * 100 + quantity) // (2 * quantity)
+        show = lambda cents: dstr(Decimal(int(cents)) / 100)
+        wrongs = [rounded_unit_cents * wanted, cost * wanted * 100,
+                  (cost + wanted - quantity) * 100, cost * 100]
+        return MathDraw("", show(answer),
+                        prompt=f"ปากกา {quantity} แท่ง ราคา {cost} บาท ซื้อ {wanted} แท่งตามอัตราเดิมต้องจ่ายกี่บาท",
+                        # Round the nonterminating unit price early; omit division; scale additively.
+                        distractors=[show(v) for v in _story.keep(*wrongs, answer=answer, lo=1)])
+
+
+@question_type("math.proportional_reward_difference_p5", display_name={"th": "เปรียบเทียบจำนวนรางวัลหลังปรับตามแต้ม"},
+               level=LEVEL, topic=_RULE3_TOPIC)
+class ProportionalRewardDifferenceP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4721-5-2567-2-3.pdf, ข้อ 20",))
+
+    def expr(self, rng: Random):
+        points = 20 * rng.randint(5, 30)
+        prizes = 4 * rng.randint(2, 10)
+        other_points = points // 4 * rng.choice((1, 2, 3))
+        other_prizes = prizes * other_points // points
+        answer = prizes - other_prizes
+        return MathDraw("", str(answer),
+                        prompt=(f"ใช้ {points} แต้ม แลกรางวัลได้ {prizes} ชิ้น "
+                                f"อีกคนมี {other_points} แต้ม แลกตามอัตราเดิม จะได้รางวัลน้อยกว่ากี่ชิ้น"),
+                        distractors=_story.keep(named("steps.missed_a_step", other_prizes),
+                                                points - other_points, prizes + other_prizes,
+                                                answer + 1, answer=answer, lo=1))
+
+
+@question_type("math.proportion_sentence_p5", display_name={"th": "เลือกวิธีตั้งบัญญัติไตรยางศ์"}, level={"th": "ป.5"}, topic="บัญญัติไตรยางศ์")
+class ProportionSentenceP5(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-5/4722-5-2567-2-2.pdf, ข้อ 1–4",))
+
+    def compose(self, rng: Random):
+        n,m = rng.sample(range(3,25),2)
+        rate = rng.randint(5,90)
+        total,target = n*rate,m*rate
+        if rng.choice((False,True)):
+            prompt = (f"สมุด {n} เล่ม ราคา {total} บาท สมุดทุกเล่มราคาเท่ากัน "
+                      f"ซื้อ {m} เล่ม ต้องจ่ายกี่บาท เลือกวิธีคำนวณ")
+            right = f"({total} ÷ {n}) × {m}"
+            wrongs = [f"({n} ÷ {total}) × {m}",f"({total} ÷ {m}) × {n}",f"({total} ÷ {n}) + {m}"]
+        else:
+            prompt = (f"ช่าง {n} คน ทำขนมได้ {total} ชิ้นในหนึ่งวัน ทุกคนทำได้เท่ากัน "
+                      f"ต้องการ {target} ชิ้นในหนึ่งวัน ต้องใช้ช่างกี่คน เลือกวิธีคำนวณ")
+            right = f"({n} ÷ {total}) × {target}"
+            wrongs = [f"({total} ÷ {n}) × {target}",f"({n} ÷ {target}) × {total}",f"({n} ÷ {total}) + {target}"]
+        return prompt,right,wrongs

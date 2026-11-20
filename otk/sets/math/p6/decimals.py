@@ -17,7 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem
 from otk.sets._support.math_diagrams import _math_q
 from otk.sets._support.math_gaps_indicators import _cents, _dec
 
@@ -280,3 +280,70 @@ class DecimalRectangleAreaP6(WordProblem):
         return MathDraw("", _d6(right, 2), prompt=prompt,
                         distractors=_dk6(right * 10, right + w,
                                          20 * (w + length), 10 * (w + length), answer=right, places=2, lo=1))
+
+
+@question_type("math.decimal_operation_model_p6", display_name={"th": "เลือกเครื่องหมายจากความหมายของโจทย์ทศนิยม"}, level=LEVEL, topic="ทศนิยม")
+class DecimalOperationModelP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 16,18–20',))
+
+    def compose(self, rng: Random):
+        a, b = _d6(rng.randint(2000, 9999), 2), _d6(rng.randint(125, 975), 2)
+        mode = rng.randrange(4)
+        prompts = (f"ปีแรกได้ดอกเบี้ย {a} บาท ปีที่สองได้ {b} บาท รวมสองปีได้กี่บาท",
+                   f"ริบบิ้นสีแดงยาว {a} เมตร สีฟ้ายาว {b} เมตร สีแดงยาวกว่ากี่เมตร",
+                   f"ซื้อผลไม้ {a} กิโลกรัม ราคากิโลกรัมละ {b} บาท จ่ายทั้งหมดกี่บาท",
+                   f"ซื้อผลไม้ {b} กิโลกรัม จ่ายทั้งหมด {a} บาท ราคาต่อกิโลกรัมกี่บาท")
+        ops = ("+", "−", "×", "÷")
+        return prompts[mode] + " เลือกนิพจน์คำนวณ", f"{a} {ops[mode]} {b}", [f"{a} {op} {b}" for i, op in enumerate(ops) if i != mode]
+
+
+@question_type("math.decimal_division_story_p6", display_name={"th": "เลือกเรื่องราวที่ตรงกับนิพจน์หารเงินทศนิยม"}, level=LEVEL, topic="ทศนิยม")
+class DecimalDivisionStoryP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 17',))
+
+    def compose(self, rng: Random):
+        amount, count = _d6(rng.randint(2001, 99999), 2), rng.randint(2, 9)
+        equal_share = rng.choice((False, True))
+        right = (f"เงิน {amount} บาท แบ่งให้ {count} คนเท่ากัน ได้คนละกี่บาท" if equal_share else
+                 f"ซื้อของ {count} ชิ้น รวม {amount} บาท ของราคาชิ้นละกี่บาท")
+        wrongs = [f"มีเงิน {amount} บาท ได้เพิ่ม {count} บาท รวมมีเงินกี่บาท",
+                  f"มีเงิน {amount} บาท ใช้ไป {count} บาท เหลือเงินกี่บาท",
+                  f"สินค้าราคาชิ้นละ {amount} บาท ซื้อ {count} ชิ้น ต้องจ่ายทั้งหมดกี่บาท"]
+        return f"โจทย์ปัญหาข้อใดตรงกับนิพจน์ {amount} ÷ {count}", right, wrongs
+
+
+@question_type("math.ribbon_sale_model_p6", display_name={"th": "เลือกนิพจน์รายได้ตามหน่วยราคาต่อเส้นหรือต่อเมตร"}, level=LEVEL, topic="ทศนิยม")
+class RibbonSaleModelP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 15',))
+
+    def compose(self, rng: Random):
+        count = rng.randint(3, 9)
+        each = rng.choice([n for n in range(25, 96) if n % 10])
+        length = _d6(each * count, 1)
+        price = _d6(rng.choice([p for p in range(105, 1996) if p % 100 and p != each * count * 10]), 2)
+        per_piece = rng.choice((False, True))
+        # Equal-length symbolic choices avoid making a count expression shorter than a length expression.
+        return (f"ริบบิ้นยาว L={length} เมตร ตัดเป็น N={count} เส้นเท่ากันและขายหมด "
+                f"แต่ละเส้นยาว E={_d6(each, 1)} เมตร ราคา P={price} บาทต่อ{'เส้น' if per_piece else 'เมตร'} "
+                "รายได้รวมคำนวณด้วยนิพจน์ใด", "N × P" if per_piece else "L × P",
+                [c for c in ("N × P", "L × P", "E × P", "N × L") if c != ("N × P" if per_piece else "L × P")])
+
+
+@question_type("math.decimal_bag_count_p6", display_name={"th": "หาจำนวนถุงจากน้ำหนักทศนิยมโดยระบุถุงเต็มหรืออนุญาตถุงสุดท้ายไม่เต็ม"}, level=LEVEL, topic="ทศนิยม")
+class DecimalBagCountP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 16',))
+
+    def compose(self, rng: Random):
+        bag = rng.choice((20, 25, 40, 50, 75, 80))
+        full = rng.randint(6, 20)
+        rem = rng.choice(range(3, bag, 3)) if bag == 75 else rng.randint(1, bag - 1)
+        total = full * bag + rem
+        all_items = rng.choice((False, True))
+        answer = full + all_items
+        other = full if all_items else full + 1
+        formal = format((Decimal(total) / Decimal(bag)).normalize(), 'f')
+        prompt = ("ต้องบรรจุทั้งหมด ถุงสุดท้ายใส่ไม่เต็มได้ ต้องใช้ถุงอย่างน้อยกี่ใบ" if all_items else
+                  "นับเฉพาะถุงที่บรรจุเต็มถุง จะได้ถุงเต็มกี่ใบ")
+        pool = [str(other), formal, str(full + 2), str(full - 1), _d6(rem, 2)]
+        return (f"มีน้ำตาล {_d6(total, 2)} กิโลกรัม ถุงแต่ละใบจุได้มากที่สุด {_d6(bag, 2)} กิโลกรัม " + prompt,
+                str(answer), [label for label in dict.fromkeys(pool) if label != str(answer)])

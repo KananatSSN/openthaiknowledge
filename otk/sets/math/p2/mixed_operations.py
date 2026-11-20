@@ -263,3 +263,83 @@ class FillBagsLeftP2(WordProblem):
         return MathDraw("", str(extra), prompt=prompt,
                         distractors=_story.keep(total - bags - per, total - per, bags * per, extra + per,
                                                 answer=extra, lo=0))
+
+
+@question_type("math.remaining_two_step_p2", display_name={"th": "โจทย์สองขั้นตอน: คิดจากจำนวนที่เหลือ"},
+               level=LEVEL, topic=_MIXED_TOPIC)
+class RemainingTwoStepP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4163-2-2565-2-3.pdf, ตอนที่ 1 ข้อ 16",
+        "openthaiknowledge-bank/mathematics/level/primary-2/4175-2-2567-2-3.pdf, ตอนที่ 1 ข้อ 16, 18"))
+
+    def expr(self, rng: Random):
+        removed = rng.randint(1, 20)
+        if rng.choice((True, False)):
+            people, each = rng.randint(2, 9), rng.randint(2, 12)
+            total = removed + people * each
+            answer = (total - removed) // people
+            prompt = (f"มีส้ม {total} ผล ใช้ไป {removed} ผล ที่เหลือแบ่งให้เพื่อน {people} คน "
+                      "คนละเท่า ๆ กัน เพื่อนจะได้ส้มคนละกี่ผล")
+            wrongs = [total // people, total - removed, (total - removed) * people,
+                      total - removed - people]
+            hint = rf"({total} - {removed}) \div {people} = {answer}"
+        else:
+            remaining, price = rng.randint(2, 18), rng.randint(5, 40)
+            total = removed + remaining
+            answer = (total - removed) * price
+            prompt = (f"มีมะพร้าว {total} ผล แจกไป {removed} ผล ที่เหลือขายผลละ {price} บาท "
+                      "ขายส่วนที่เหลือทั้งหมดได้เงินกี่บาท")
+            wrongs = [total * price, total - removed, total * price - removed,
+                      total - removed + price]
+            hint = rf"({total} - {removed}) \times {price} = {answer}"
+        return MathDraw("", str(answer), prompt=prompt,
+                        distractors=_story.keep(*wrongs, answer + 1, answer=answer, lo=0), hint=hint)
+
+
+@question_type("math.grouped_sales_p2", display_name={"th": "คิดรายรับและส่วนแบ่งจากการขายเป็นกลุ่ม"},
+               level=LEVEL, topic=_MIXED_TOPIC)
+class GroupedSalesP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4163-2-2565-2-3.pdf, ตอนที่ 1 ข้อ 19",
+        "openthaiknowledge-bank/mathematics/level/primary-2/4175-2-2567-2-3.pdf, ตอนที่ 1 ข้อ 19"))
+
+    def expr(self, rng: Random):
+        if rng.choice((True, False)):
+            boxes, per_box, price = rng.randint(2, 9), rng.randint(2, 9), rng.randint(10, 99)
+            total = boxes * per_box
+            answer = total // per_box * price
+            prompt = (f"มีขนม {total} ชิ้น จัดใส่กล่อง กล่องละ {per_box} ชิ้น "
+                      f"ขายกล่องละ {price} บาท ขายหมดทุกกล่องได้เงินทั้งหมดกี่บาท")
+            wrongs = [total * price, boxes, boxes + price, total + price]
+            hint = rf"{total} \div {per_box} \times {price} = {answer}"
+        else:
+            items, people, per_share = rng.randint(2, 9), rng.randint(2, 6), rng.randint(5, 15)
+            price = people * per_share
+            answer = items * price // people
+            prompt = (f"ขายส้มโอ {items} ผล ราคาผลละ {price} บาท นำเงินทั้งหมดแบ่งให้เพื่อน "
+                      f"{people} คน คนละเท่า ๆ กัน เพื่อนจะได้เงินคนละกี่บาท")
+            wrongs = [items * price, price, (items + price) // people, items * price - people]
+            hint = rf"{items} \times {price} \div {people} = {answer}"
+        return MathDraw("", str(answer), prompt=prompt,
+                        distractors=_story.keep(*wrongs, answer + 1, answer=answer, lo=1), hint=hint)
+
+
+@question_type("math.two_purchase_total_p2", display_name={"th": "รวมราคาของสองอย่างที่ซื้อหลายชิ้น"},
+               level=LEVEL, topic=_MIXED_TOPIC)
+class TwoPurchaseTotalP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4175-2-2567-2-3.pdf, ตอนที่ 1 ข้อ 20",))
+
+    def expr(self, rng: Random):
+        books, book_price = rng.randint(2, 9), rng.randint(3, 49)
+        pencils, pencil_price = rng.randint(2, 9), rng.randint(3, 49)
+        first, second = books * book_price, pencils * pencil_price
+        answer = first + second
+        return MathDraw("", str(answer),
+                        prompt=(f"ซื้อสมุด {books} เล่ม เล่มละ {book_price} บาท "
+                                f"และดินสอ {pencils} แท่ง แท่งละ {pencil_price} บาท ต้องจ่ายเงินรวมกี่บาท"),
+                        # Omit one unit price; compare rather than combine; add all four inputs.
+                        distractors=_story.keep(first + pencils, second + books, abs(first - second),
+                                                books + book_price + pencils + pencil_price,
+                                                answer + 1, answer=answer, lo=0),
+                        hint=rf"{books} \times {book_price} + {pencils} \times {pencil_price} = {answer}")

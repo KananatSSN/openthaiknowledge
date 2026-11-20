@@ -107,7 +107,7 @@ answers, verbatim. IPST holds the copyright. Move to the private companion.
 
 ## 8. Source PDF pointers and `misc/` — drop
 
-`rathcenter/`, `สอวน_math/`, `Faii/` and `outputs/*.pdf` are Git LFS pointer
+`mathematics/level/upper-secondary/rathcenter/`, `mathematics/level/upper-secondary/posn-math/`, `physics/level/unspecified-level/Faii/` and `outputs/*.pdf` are Git LFS pointer
 files whose content is in TutorRank's private store; in a public repository
 they could never be fetched. `misc/schedule_2026_09.png` is not content. Drop
 them, and `.lfsconfig` with them.
