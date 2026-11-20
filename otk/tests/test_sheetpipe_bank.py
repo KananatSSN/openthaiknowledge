@@ -62,6 +62,71 @@ def test_rescan_keeps_owned_fields(tmp_path):
     assert (tally["changed"], tally["unchanged"]) == (1, 3)
 
 
+def test_compatibility_alias_does_not_create_another_sheet(tmp_path):
+    canonical = tmp_path / "math" / "level" / "exam.pdf"
+    canonical.parent.mkdir(parents=True)
+    canonical.write_bytes(b"pdf-a")
+    alias = tmp_path / "old-exam.pdf"
+    alias.symlink_to(canonical.relative_to(tmp_path))
+    bank, _ = bk.scan(tmp_path, probe=fake_probe)
+    assert list(bank) == ["math/level/exam.pdf"]
+    assert alias.read_bytes() == canonical.read_bytes()
+
+
+def test_select_resolves_legacy_file_and_directory_globs(tmp_path, monkeypatch):
+    canonical = tmp_path / "mathematics" / "level" / "chapter"
+    canonical.mkdir(parents=True)
+    (canonical / "exam.pdf").write_bytes(b"pdf-a")
+    (tmp_path / "old-chapter").symlink_to(canonical, target_is_directory=True)
+    (tmp_path / "old-exam.pdf").symlink_to(canonical / "exam.pdf")
+    monkeypatch.setenv("SHEET_BANK", str(tmp_path))
+    key = "mathematics/level/chapter/exam.pdf"
+    bank = {key: bk.BankEntry(path=key, kind="exam")}
+    for pattern in ("old-exam.pdf", "old-chapter/*.pdf", "old-*"):
+        assert [e.path for e in bk.select(bank, pattern)] == [key]
+
+
+def test_fetch_legacy_alias_requests_canonical_lfs_path(tmp_path, monkeypatch):
+    from types import SimpleNamespace
+    import subprocess
+
+    from otk.tools.sheetpipe.__main__ import cmd_bank_fetch
+
+    (tmp_path / ".git").mkdir()
+    canonical = tmp_path / "mathematics" / "exam.pdf"
+    canonical.parent.mkdir()
+    canonical.write_bytes(b"pdf-a")
+    (tmp_path / "old.pdf").symlink_to(canonical)
+    key = "mathematics/exam.pdf"
+    monkeypatch.setattr(bk, "DEFAULT_ROOT", tmp_path)
+    monkeypatch.setenv("SHEET_BANK", str(tmp_path))
+    monkeypatch.setattr(bk, "load_bank", lambda: {key: bk.BankEntry(key, "exam")})
+    calls = []
+
+    def run(cmd, **kwargs):
+        calls.append((cmd, kwargs))
+        return SimpleNamespace(returncode=0)
+
+    monkeypatch.setattr(subprocess, "run", run)
+    assert cmd_bank_fetch(SimpleNamespace(pattern="old.pdf")) == 0
+    assert calls == [(["git", "lfs", "pull", "--include", key, "--exclude", ""],
+                      {"cwd": tmp_path})]
+
+
+@needs_bank
+def test_private_bank_uses_canonical_paths_without_legacy_links():
+    root = bk.DEFAULT_ROOT
+    assert not any(p.is_symlink() for p in root.rglob("*"))
+    bank = bk.load_bank()
+    for entry in bank.values():
+        assert (root / entry.path).is_file(), entry.path
+        if entry.kind == "exam" and not entry.path.startswith("outputs/"):
+            assert entry.path.split("/")[1] in {"level", "exam-venue"}, entry.path
+    assert "roonpii/MANIFEST.json" not in bank
+    manifest = bank["_notes/roonpii/MANIFEST.json"]
+    assert manifest.stage == "ignored"
+
+
 def test_reprobe_refreshes_without_staling(tmp_path):
     root = make_bank(tmp_path)
     bank, _ = bk.scan(root, probe=fake_probe)

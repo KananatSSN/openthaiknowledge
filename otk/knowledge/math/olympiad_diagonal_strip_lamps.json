@@ -14,7 +14,7 @@
         "Replace any remaining off-diagonal lamp by the still-unlit endpoint, then count all diagonal points"
       ],
       "sources": [
-        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 7}
+        {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 7}
       ],
       "covered_by": ["math.diagonal_strip_lamps_olympiad"]
     }

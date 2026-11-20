@@ -1,0 +1,45 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ตาชั่งแม่เหล็กไฟฟ้า",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.watt_balance.procedure",
+      "kind": "procedure",
+      "title": "สนามแม่เหล็กแนวรัศมีจากอีเอ็มเอฟของขดลวด",
+      "statement": "ตาชั่งแม่เหล็กไฟฟ้า: ขดลวดในสนามแนวรัศมีให้แรง IN2πrB_r และอีเอ็มเอฟ 2πrNB_r u ขณะเคลื่อนที่ หารกันได้ m = VI/(ug) โดยไม่ต้องรู้สนามหรือรัศมี",
+      "steps": [
+        "หา B_r จากอีเอ็มเอฟและอัตราเร็วของขดลวด",
+        "ใช้สมดุลแรงหรือ VI = mgu หามวล"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2561_q08",
+        "phys.tpho2561_q09",
+        "phys.tpho2561_q10"
+      ],
+      "note": "Amplitudes, period, r and N vary."
+    }
+  ]
+}

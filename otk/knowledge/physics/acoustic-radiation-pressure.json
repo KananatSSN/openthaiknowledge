@@ -1,0 +1,64 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การยกตัวด้วยเสียง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.acoustic_radiation_pressure.procedure",
+      "kind": "procedure",
+      "title": "แอมพลิจูดคลื่นความดันจากคลื่นความเร็ว",
+      "statement": "คลื่นเสียง: P_m = ρ₀cv_m, ρ_m = ρ₀v_m/c, c = √(γPₐ/ρ₀) พลังงานจลน์เฉลี่ย ρ₀v_m²/4 โมเมนตัมเฉลี่ย ρ₀v_m²/(2c) พจน์อันดับสองเพิ่มความดันเฉลี่ย P_m²/(4ρ₀c²) จึงเกิดแรงยก P₀²a/(ρ₀c²) เมื่อคลื่นสะท้อน",
+      "steps": [
+        "หาความสัมพันธ์ของแอมพลิจูดจากกฎของนิวตันและการอนุรักษ์มวล",
+        "เฉลี่ยพจน์อันดับสองตามเวลาหาความดันส่วนเกินและแรง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 20
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 21
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 22
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 23
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 24
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 25
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 26
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 27
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 28
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2561_q14",
+        "phys.tpho2561_q15",
+        "phys.tpho2561_q16",
+        "phys.tpho2561_q17",
+        "phys.tpho2561_q18",
+        "phys.tpho2561_q19"
+      ],
+      "note": "rho0, c and v_m vary."
+    }
+  ]
+}

@@ -117,3 +117,136 @@ class VertexContextM3(WordProblem):
                         prompt=(f"สายน้ำพุพุ่งเป็นเส้นโค้ง y = -x² + {b}x{const} เมื่อ x เป็นระยะทางแนวราบ (เมตร) "
                                 f"และ y เป็นความสูง (เมตร) สายน้ำพุ่งสูงสุดกี่เมตร"),
                         distractors=_story.keep(h, c if c > 0 else k + h, k + h * h, answer=k, lo=1))
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More completing the square (2026-11): the vertex from the completed form, a least value, solving by
+# square roots, the two numbers of a completed square, a greatest value, and which expression is a perfect
+# square ──
+
+
+def _nz3c(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _sq3(h: int) -> str:
+    """(x - h)^2 with the sign folded in."""
+    return f"(x {'-' if h > 0 else '+'} {abs(h)})^2"
+
+
+@question_type("math.vertex_from_completed_m3", display_name={"th": "จุดยอดจากรูปกำลังสองสมบูรณ์"},
+               level=LEVEL, topic="กำลังสองสมบูรณ์")
+class VertexFromCompletedM3(MathType):
+    def expr(self, rng: Random):
+        h, k = _nz3c(rng, 1, 9), _nz3c(rng, 1, 9)
+        right = f"({h}, {k})"
+        # The sign of h kept from the bracket; the numbers swapped; the sign of k flipped.
+        wrongs = [f"({-h}, {k})", f"({k}, {h})", f"({h}, {-k})"]
+        return MathDraw(f"y = {_sq3(h)} {'+' if k > 0 else '-'} {abs(k)}", right, prompt="พาราโบลานี้มีจุดยอดที่จุดใด",
+                        distractors=_tk3(*wrongs, answer=right))
+
+
+@question_type("math.least_value_m3", display_name={"th": "ค่าต่ำสุดของนิพจน์กำลังสอง"},
+               level=LEVEL, topic="กำลังสองสมบูรณ์")
+class LeastValueM3(MathType):
+    def expr(self, rng: Random):
+        h = _nz3c(rng, 1, 9)
+        right = rng.randint(-20, 20)
+        c = h * h + right
+        # The constant itself; h squared; the sign of the square flipped.
+        return MathDraw(poly_tex((1, "x^{2}"), (-2 * h, "x"), (c, "")), str(right),
+                        prompt="ค่าต่ำสุดของนิพจน์นี้เท่ากับเท่าใด",
+                        distractors=_tk3(str(c), str(h * h), str(c + h * h), str(-right) if right else "1",
+                                         answer=str(right)))
+
+
+@question_type("math.solve_by_square_root_m3", display_name={"th": "แก้สมการด้วยการถอดรากที่สอง"},
+               level=LEVEL, topic="กำลังสองสมบูรณ์")
+class SolveBySquareRootM3(MathType):
+    def expr(self, rng: Random):
+        a = _nz3c(rng, 1, 9)
+        k = rng.randint(1, 10)
+        right = _roots3(-a + k, -a - k)
+        # Only the positive root; the sign of a kept; k squared.
+        wrongs = [rf"x = {-a + k}", _roots3(a + k, a - k), _roots3(-a + k * k, -a - k * k)]
+        return MathDraw(f"(x {'+' if a > 0 else '-'} {abs(a)})^{{2}} = {k * k}", right, prompt="จงแก้สมการ",
+                        distractors=_tk3(*wrongs, answer=right))
+
+
+@question_type("math.completed_square_numbers_m3", display_name={"th": "เขียนเป็น (x + p)² + q แล้วหา q"},
+               level=LEVEL, topic="กำลังสองสมบูรณ์")
+class CompletedSquareNumbersM3(MathType):
+    def expr(self, rng: Random):
+        p = _nz3c(rng, 1, 9)
+        c = rng.randint(-30, 40)
+        q = c - p * p
+        expr = poly_tex((1, "x^{2}"), (2 * p, "x"), (c, ""))
+        # The square added instead of taken away; b itself squared; the constant.
+        return MathDraw(f"{expr} = (x + p)^{{2}} + q", str(q), prompt="จงหาค่าของ q",
+                        distractors=_tk3(str(c + p * p), str(c - 4 * p * p), str(c), str(q + 1), answer=str(q)))
+
+
+@question_type("math.greatest_value_m3", display_name={"th": "ค่าสูงสุดของนิพจน์กำลังสอง"},
+               level=LEVEL, topic="กำลังสองสมบูรณ์")
+class GreatestValueM3(MathType):
+    def expr(self, rng: Random):
+        h = _nz3c(rng, 1, 8)
+        right = rng.randint(-10, 30)
+        c = right - h * h
+        # The constant; the square taken away; h itself.
+        return MathDraw(poly_tex((-1, "x^{2}"), (2 * h, "x"), (c, "")), str(right),
+                        prompt="ค่าสูงสุดของนิพจน์นี้เท่ากับเท่าใด",
+                        distractors=_tk3(str(c), str(c - h * h), str(h), str(right + 1), answer=str(right)))
+
+
+@question_type("math.which_perfect_square_m3", display_name={"th": "นิพจน์ใดเป็นกำลังสองสมบูรณ์"},
+               level=LEVEL, topic="กำลังสองสมบูรณ์")
+class WhichPerfectSquareM3(QuestionType):
+    """Fixed choices: an expression from another draw could also be a perfect square."""
+
+    def build(self, rng: Random, **params):
+        a = _nz3c(rng, 1, 9)
+        right = poly_tex((1, "x^{2}"), (2 * a, "x"), (a * a, ""))
+        # The middle term not doubled; the constant doubled; the constant's sign flipped.
+        wrongs = [poly_tex((1, "x^{2}"), (a, "x"), (a * a, "")), poly_tex((1, "x^{2}"), (2 * a, "x"), (2 * a * a, "")),
+                  poly_tex((1, "x^{2}"), (2 * a, "x"), (-a * a, ""))]
+        return _fixed_maths([_text_block("นิพจน์ใดเป็นกำลังสองสมบูรณ์")], right, _tk3(*wrongs, answer=right), self.topic)

@@ -1,0 +1,249 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "สมการกำลังสอง",
+ "level": "ม.3",
+ "units": [
+  {
+   "id": "math.secondary3.quadratic-standard-form",
+   "kind": "procedure",
+   "title": "ย้ายข้างและรวมพจน์เพื่อจำแนกดีกรีสองและอ่านสัมประสิทธิ์โดยระบุการปรับสเกลชัดเจน",
+   "statement": "ย้ายข้างและรวมพจน์เพื่อจำแนกดีกรีสองและอ่านสัมประสิทธิ์โดยระบุการปรับสเกลชัดเจน",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "ย้ายข้างและรวมพจน์เพื่อจำแนกดีกรีสองและอ่านสัมประสิทธิ์โดยระบุการปรับสเกลชัดเจน",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 21
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 22
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 24
+    }
+   ],
+   "covered_by": [
+    "math.quadratic_standard_form_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.verify-root-pair",
+   "kind": "procedure",
+   "title": "แทนตัวเลือกทุกค่าในพหุนามเพื่อระบุคู่รากของสมการ",
+   "statement": "แทนตัวเลือกทุกค่าในพหุนามเพื่อระบุคู่รากของสมการ",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "แทนตัวเลือกทุกค่าในพหุนามเพื่อระบุคู่รากของสมการ",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 23
+    }
+   ],
+   "covered_by": [
+    "math.which_root_m3",
+    "math.quadratic_equation"
+   ]
+  },
+  {
+   "id": "math.secondary3.solve-factor-quadratic",
+   "kind": "procedure",
+   "title": "แยกตัวประกอบและใช้ผลคูณศูนย์เพื่อหารากทั้งหมดรวมกรณีรากซ้ำ",
+   "statement": "แยกตัวประกอบและใช้ผลคูณศูนย์เพื่อหารากทั้งหมดรวมกรณีรากซ้ำ",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "แยกตัวประกอบและใช้ผลคูณศูนย์เพื่อหารากทั้งหมดรวมกรณีรากซ้ำ",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 25
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 26
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 27
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 29
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 30
+    }
+   ],
+   "covered_by": [
+    "math.quadratic_equation",
+    "math.quadratic_formula_roots"
+   ]
+  },
+  {
+   "id": "math.secondary3.root-relations",
+   "kind": "procedure",
+   "title": "จัดสมการให้อยู่ในรูปกำลังสองแล้วใช้ผลคูณรากหรือแทนหนึ่งรากเพื่อหาผลบวกราก",
+   "statement": "จัดสมการให้อยู่ในรูปกำลังสองแล้วใช้ผลคูณรากหรือแทนหนึ่งรากเพื่อหาผลบวกราก",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "จัดสมการให้อยู่ในรูปกำลังสองแล้วใช้ผลคูณรากหรือแทนหนึ่งรากเพื่อหาผลบวกราก",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 28
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 39
+    }
+   ],
+   "covered_by": [
+    "math.quadratic_root_relation_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.irrational-quadratic-roots",
+   "kind": "procedure",
+   "title": "ใช้สูตรกำลังสองและคงรากที่สองอย่างแน่นอนเพื่อหารากจริงที่ไม่เป็นตรรกยะ",
+   "statement": "ใช้สูตรกำลังสองและคงรากที่สองอย่างแน่นอนเพื่อหารากจริงที่ไม่เป็นตรรกยะ",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "ใช้สูตรกำลังสองและคงรากที่สองอย่างแน่นอนเพื่อหารากจริงที่ไม่เป็นตรรกยะ",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 31
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 32
+    }
+   ],
+   "covered_by": [
+    "math.quadratic_equation"
+   ]
+  },
+  {
+   "id": "math.secondary3.consecutive-positive-product",
+   "kind": "procedure",
+   "title": "ตั้งสมการผลคูณของจำนวนเต็มบวกเรียงติดกันและตัดรากที่ผิดโดเมน",
+   "statement": "ตั้งสมการผลคูณของจำนวนเต็มบวกเรียงติดกันและตัดรากที่ผิดโดเมน",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "ตั้งสมการผลคูณของจำนวนเต็มบวกเรียงติดกันและตัดรากที่ผิดโดเมน",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 33
+    }
+   ],
+   "covered_by": [
+    "math.consecutive_product_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.quadratic-number-relations",
+   "kind": "procedure",
+   "title": "ใช้ผลต่างที่กำหนดแทนจำนวนหนึ่งในอีกจำนวนแล้วสร้างสมการจากผลบวกกำลังสองหรือผลคูณสัมพันธ์ผลบวก",
+   "statement": "ใช้ผลต่างที่กำหนดแทนจำนวนหนึ่งในอีกจำนวนแล้วสร้างสมการจากผลบวกกำลังสองหรือผลคูณสัมพันธ์ผลบวก",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "ใช้ผลต่างที่กำหนดแทนจำนวนหนึ่งในอีกจำนวนแล้วสร้างสมการจากผลบวกกำลังสองหรือผลคูณสัมพันธ์ผลบวก",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 34
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 38
+    }
+   ],
+   "covered_by": [
+    "math.quadratic_number_relation_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.quadratic-geometric-dimension",
+   "kind": "procedure",
+   "title": "เขียนพื้นที่ด้วยมิติสัมพันธ์ แก้สมการกำลังสอง แล้วเลือกมิติที่เป็นบวก",
+   "statement": "เขียนพื้นที่ด้วยมิติสัมพันธ์ แก้สมการกำลังสอง แล้วเลือกมิติที่เป็นบวก",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "เขียนพื้นที่ด้วยมิติสัมพันธ์ แก้สมการกำลังสอง แล้วเลือกมิติที่เป็นบวก",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 35
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 36
+    }
+   ],
+   "covered_by": [
+    "math.quadratic_dimension_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.squared-past-age",
+   "kind": "procedure",
+   "title": "แทนอายุปัจจุบันในอายุอนาคตและกำลังสองอายุอดีต แล้วตัดคำตอบที่ทำให้อายุอดีตติดลบ",
+   "statement": "แทนอายุปัจจุบันในอายุอนาคตและกำลังสองอายุอดีต แล้วตัดคำตอบที่ทำให้อายุอดีตติดลบ",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "แทนอายุปัจจุบันในอายุอนาคตและกำลังสองอายุอดีต แล้วตัดคำตอบที่ทำให้อายุอดีตติดลบ",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 37
+    }
+   ],
+   "covered_by": [
+    "math.quadratic_past_age_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.perpendicular-travel-difference",
+   "kind": "procedure",
+   "title": "ใช้ผลต่างระยะทางกับพีทาโกรัสสร้างสมการกำลังสองและเลือกความยาวบวก",
+   "statement": "ใช้ผลต่างระยะทางกับพีทาโกรัสสร้างสมการกำลังสองและเลือกความยาวบวก",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "ใช้ผลต่างระยะทางกับพีทาโกรัสสร้างสมการกำลังสองและเลือกความยาวบวก",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 40
+    }
+   ],
+   "covered_by": [
+    "math.perpendicular_travel_m3"
+   ]
+  }
+ ]
+}

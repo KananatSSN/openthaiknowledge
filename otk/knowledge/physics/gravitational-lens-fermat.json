@@ -1,0 +1,53 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เลนส์แรงโน้มถ่วง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.gravitational_lens_fermat.procedure",
+      "kind": "procedure",
+      "title": "ระยะที่แสงเลี้ยวผ่านมวลตามหลักการของแฟร์มาต์",
+      "statement": "เลนส์แรงโน้มถ่วงจากหลักการของแฟร์มาต์: ดัชนีหักเหเสมือน n = 1 + 2GM/(rc²) ทำให้เวลาเดินทาง ℓ₁/c + (2GM/c³) ln(4d₁d₂/y²) น้อยที่สุดที่ y² = (4GM/c²)d₁d₂/(d₁ + d₂) ภาพปรากฏที่มุม β = y/d₂ และวงแหวนของไอน์สไตน์ให้มวลของเลนส์",
+      "steps": [
+        "หาเลขชี้กำลังจากมิติแล้วเขียนเวลาเดินทางตามเส้นทางหักมุม",
+        "หาอนุพันธ์ของเวลาเป็นศูนย์แล้วใช้มุมของวงแหวนหามวล"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Question.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Question.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Question.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Question.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Question.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Question.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Question.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2563_q13",
+        "phys.tpho2563_q14",
+        "phys.tpho2563_q15"
+      ],
+      "note": "The lens mass and distances vary."
+    }
+  ]
+}

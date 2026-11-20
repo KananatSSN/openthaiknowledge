@@ -181,3 +181,128 @@ class RectangleWordProblemP4(WordProblem):
                                 f"ราคาตารางเมตรละ {price} บาท เป็นเงินกี่บาท"),
                         distractors=_story.keep(4 * s * price, 2 * s * price, s * s + price,
                                                 answer=s * s * price))
+
+
+# ── More rectangles (2026-11): the largest area, the longest perimeter, two rectangles with the same
+# perimeter, the area when sides are doubled, and an L-shaped floor ──
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+@question_type("math.largest_area_p4", display_name={"th": "รูปสี่เหลี่ยมมุมฉากรูปใดมีพื้นที่มากที่สุด"},
+               level=LEVEL, topic="สี่เหลี่ยมมุมฉาก")
+class LargestAreaP4(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            dims = [(rng.randint(3, 20), rng.randint(3, 20)) for _ in range(4)]
+            areas = [w * h for w, h in dims]
+            if len(set(areas)) == 4 and len(set(dims)) == 4:
+                break
+        most = rng.random() < 0.5
+        pick = (max if most else min)(range(4), key=lambda i: areas[i])
+        texts = [f"กว้าง {w} เซนติเมตร ยาว {h} เซนติเมตร" for w, h in dims]
+        return (f"รูปสี่เหลี่ยมมุมฉากรูปใดมีพื้นที่{'มากที่สุด' if most else 'น้อยที่สุด'}", texts[pick],
+                [t for i, t in enumerate(texts) if i != pick])
+
+
+@question_type("math.largest_perimeter_p4", display_name={"th": "รูปสี่เหลี่ยมมุมฉากรูปใดยาวรอบรูปมากที่สุด"},
+               level=LEVEL, topic="สี่เหลี่ยมมุมฉาก")
+class LargestPerimeterP4(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            dims = [(rng.randint(3, 20), rng.randint(3, 20)) for _ in range(4)]
+            perims = [2 * (w + h) for w, h in dims]
+            if len(set(perims)) == 4:
+                break
+        most = rng.random() < 0.5
+        pick = (max if most else min)(range(4), key=lambda i: perims[i])
+        texts = [f"กว้าง {w} เซนติเมตร ยาว {h} เซนติเมตร" for w, h in dims]
+        return (f"รูปสี่เหลี่ยมมุมฉากรูปใดยาวรอบรูป{'มากที่สุด' if most else 'น้อยที่สุด'}", texts[pick],
+                [t for i, t in enumerate(texts) if i != pick])
+
+
+@question_type("math.same_perimeter_area_p4", display_name={"th": "ความยาวรอบรูปเท่ากันแต่พื้นที่ต่างกัน"},
+               level=LEVEL, topic="สี่เหลี่ยมมุมฉาก")
+class SamePerimeterAreaP4(WordProblem):
+    def expr(self, rng: Random):
+        half = rng.randint(10, 30)
+        w1, w2 = sorted(rng.sample(range(2, half // 2 + 1), 2))
+        a1, a2 = w1 * (half - w1), w2 * (half - w2)
+        right = a2 - a1
+        prompt = (f"รูปสี่เหลี่ยมผืนผ้าสองรูปยาวรอบรูปเท่ากัน คือ {2 * half} เซนติเมตร รูปแรกกว้าง {w1} เซนติเมตร "
+                  f"รูปที่สองกว้าง {w2} เซนติเมตร รูปที่สองมีพื้นที่มากกว่ารูปแรกกี่ตารางเซนติเมตร")
+        # The widths' difference; the perimeter used as a side; one area alone.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(w2 - w1, 2 * half * (w2 - w1), a2, a1, answer=right, lo=1))
+
+
+@question_type("math.area_when_doubled_p4", display_name={"th": "พื้นที่เมื่อขยายด้านเป็นสองเท่า"},
+               level=LEVEL, topic="สี่เหลี่ยมมุมฉาก")
+class AreaWhenDoubledP4(WordProblem):
+    def expr(self, rng: Random):
+        w, h = rng.randint(3, 15), rng.randint(3, 15)
+        both = rng.random() < 0.5
+        right = 4 * w * h if both else 2 * w * h
+        which = "ทั้งด้านกว้างและด้านยาว" if both else "เฉพาะด้านยาว"
+        prompt = (f"รูปสี่เหลี่ยมผืนผ้ากว้าง {w} เซนติเมตร ยาว {h} เซนติเมตร ถ้าขยาย{which}เป็นสองเท่า "
+                  f"รูปใหม่มีพื้นที่กี่ตารางเซนติเมตร")
+        # The other case; the old area; the perimeter doubled.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(2 * w * h if both else 4 * w * h, w * h, 4 * (w + h),
+                                                right + w, answer=right, lo=1))
+
+
+@question_type("math.l_shape_area_p4", display_name={"th": "พื้นที่รูปตัวแอล"},
+               level=LEVEL, topic="สี่เหลี่ยมมุมฉาก")
+class LShapeAreaP4(WordProblem):
+    def expr(self, rng: Random):
+        big_w, big_l = rng.randint(8, 20), rng.randint(10, 25)
+        cut_w, cut_l = rng.randint(2, big_w - 3), rng.randint(2, big_l - 3)
+        right = big_w * big_l - cut_w * cut_l
+        prompt = (f"พื้นรูปสี่เหลี่ยมมุมฉากกว้าง {big_w} เมตร ยาว {big_l} เมตร ถูกตัดมุมหนึ่งออกเป็นรูปสี่เหลี่ยมมุมฉาก"
+                  f"กว้าง {cut_w} เมตร ยาว {cut_l} เมตร พื้นที่ที่เหลือเป็นรูปตัวแอล มีพื้นที่กี่ตารางเมตร")
+        # The cut-off part forgotten; the parts added; the cut-off part alone.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(big_w * big_l, big_w * big_l + cut_w * cut_l, cut_w * cut_l,
+                                                right + cut_w, answer=right, lo=1))
+
+
+@question_type("math.rectangle_property_statement_p4", display_name={"th": "ตรวจสมบัติสี่เหลี่ยมผืนผ้าที่ไม่ใช่จัตุรัส"}, level={"th": "ป.4"}, topic="สี่เหลี่ยมมุมฉาก")
+class RectanglePropertyStatementP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 17","openthaiknowledge-bank/mathematics/level/primary-4/4537-4-2565-1-2.pdf, ข้อ 17",))
+
+    def compose(self,rng: Random):
+        width,length=sorted(rng.sample(range(3,25),2))
+        true=("มีด้านตรงข้ามขนานกันสองคู่","มุมภายในทุกมุมเป็นมุมฉาก","เส้นทแยงมุมมีความยาวเท่ากัน",
+              "เส้นทแยงมุมแบ่งครึ่งซึ่งกันและกัน","ด้านตรงข้ามมีความยาวเท่ากัน")
+        false=("มีด้านตรงข้ามขนานกันเพียงหนึ่งคู่","มุมภายในทุกมุมเป็นมุมแหลม",
+               "เส้นทแยงมุมตัดกันเป็นมุมฉาก","ด้านประชิดทุกคู่มีความยาวเท่ากัน")
+        return (f"สี่เหลี่ยมผืนผ้ากว้าง {width} เซนติเมตร ยาว {length} เซนติเมตร ข้อใดไม่ถูกต้อง",
+                rng.choice(false),rng.sample(true,3))
+
+
+@question_type("math.square_summary_statement_p4", display_name={"th": "ตรวจข้อความสรุปมุมพื้นที่และเส้นรอบรูปจัตุรัส"}, level={"th": "ป.4"}, topic="สี่เหลี่ยมมุมฉาก")
+class SquareSummaryStatementP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 18",))
+
+    def compose(self,rng: Random):
+        side=rng.choice([n for n in range(3,21) if n!=4])
+        values=[360,side*side,4*side,4]
+        slips=[90,4*side,side*side,2]
+        bad=rng.randrange(4)
+        values[bad]=slips[bad]
+        rows=[f"มุมภายในทั้งสี่รวมกัน {values[0]} องศา",f"พื้นที่เท่ากับ {values[1]} ตารางเซนติเมตร",
+              f"เส้นรอบรูปยาว {values[2]} เซนติเมตร",f"มีด้านยาวเท่ากันทั้งหมด {values[3]} ด้าน"]
+        return f"สี่เหลี่ยมจัตุรัสมีด้านยาวด้านละ {side} เซนติเมตร ข้อใดสรุปไม่ถูกต้อง",rows[bad],[v for i,v in enumerate(rows) if i!=bad]

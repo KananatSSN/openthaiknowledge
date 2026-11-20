@@ -421,17 +421,22 @@ def cmd_bank_fetch(args) -> int:
     the GitHub LFS download quota; this pulls just the files a stage needs.
     """
     import subprocess
+    import fnmatch
 
     if not (bk.DEFAULT_ROOT / ".git").exists():
         print(f"no bank repository at {bk.DEFAULT_ROOT}; see README → The source bank")
         return 1
-    cmd = ["git", "lfs", "pull", "--include", args.pattern, "--exclude", ""]
+    bank = bk.load_bank()
+    selected = bk.select(bank, args.pattern)
+    include = args.pattern
+    if selected and not any(fnmatch.fnmatchcase(e.path, args.pattern) for e in selected):
+        include = ",".join(e.path for e in selected)
+    cmd = ["git", "lfs", "pull", "--include", include, "--exclude", ""]
     print("running:", " ".join(f'"{c}"' if " " in c or not c else c for c in cmd))
     done = subprocess.run(cmd, cwd=bk.DEFAULT_ROOT)
     if done.returncode:
         return done.returncode
-    bank = bk.load_bank()
-    have = sum(bk.present(bk.DEFAULT_ROOT / e.path) for e in bk.select(bank, args.pattern))
+    have = sum(bk.present(bk.DEFAULT_ROOT / e.path) for e in selected)
     print(f"{have} matching bank file(s) now present")
     return 0
 
@@ -566,7 +571,7 @@ def main(argv: list[str] | None = None) -> int:
                                         "or 'self' for a book with its key at the back")
     p.set_defaults(fn=cmd_bank_set)
     p = bank.add_parser("fetch", help="download bank PDFs from Git LFS on demand")
-    p.add_argument("pattern", help='glob under openthaiknowledge-bank/, e.g. "rathcenter/13 *"')
+    p.add_argument("pattern", help='glob under openthaiknowledge-bank/, e.g. "mathematics/level/upper-secondary/rathcenter/13-*"')
     p.set_defaults(fn=cmd_bank_fetch)
     p = bank.add_parser("prune")
     p.add_argument("--root", default="")

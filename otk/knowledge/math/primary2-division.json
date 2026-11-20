@@ -1,0 +1,241 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การหาร",
+ "level": "ป.2",
+ "units": [
+  {
+   "id": "math.primary2.pack-count",
+   "kind": "procedure",
+   "title": "หาจำนวนแพ็คที่ได้จำนวนพอดี",
+   "statement": "หารจำนวนสิ่งของทั้งหมดด้วยจำนวนต่อแพ็ค แล้วตรวจด้วยการคูณกลับ",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "หารจำนวนสิ่งของทั้งหมดด้วยจำนวนต่อแพ็ค แล้วตรวจด้วยการคูณกลับ",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 7
+    }
+   ],
+   "covered_by": [
+    "math.equal_packs_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.equal-share",
+   "kind": "procedure",
+   "title": "แบ่งเท่า ๆ กันเพื่อหาจำนวนต่อกลุ่ม",
+   "statement": "หารจำนวนทั้งหมดด้วยจำนวนกลุ่มเพื่อหาจำนวนต่อกลุ่ม แล้วตรวจด้วยการคูณกลับ",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "หารจำนวนทั้งหมดด้วยจำนวนกลุ่มเพื่อหาจำนวนต่อกลุ่ม แล้วตรวจด้วยการคูณกลับ",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 5
+    }
+   ],
+   "covered_by": [
+    "math.division_word_problem_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.unit-price",
+   "kind": "procedure",
+   "title": "หาราคาต่อชิ้นจากยอดรวม",
+   "statement": "ระบุจำนวนชิ้นที่ซื้อ รวมถึงแปลงครึ่งโหลเป็น 6 ชิ้น แล้วหารยอดเงินรวมด้วยจำนวนชิ้น",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "ระบุจำนวนชิ้นที่ซื้อ รวมถึงแปลงครึ่งโหลเป็น 6 ชิ้น แล้วหารยอดเงินรวมด้วยจำนวนชิ้น",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.unit_price_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.quotient-remainder-story",
+   "kind": "procedure",
+   "title": "ตอบผลหารและเศษพร้อมกัน",
+   "statement": "แบ่งให้ได้กลุ่มเต็มหรือส่วนแบ่งเต็มมากที่สุด แล้วตอบทั้งผลหารและเศษ โดยเศษต้องน้อยกว่าตัวหาร",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "แบ่งให้ได้กลุ่มเต็มหรือส่วนแบ่งเต็มมากที่สุด แล้วตอบทั้งผลหารและเศษ โดยเศษต้องน้อยกว่าตัวหาร",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4163-2-2565-2-3.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.quotient_remainder_story_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.least-remainder",
+   "kind": "procedure",
+   "title": "เปรียบเทียบเศษที่เหลือจากวิธีแบ่ง",
+   "statement": "คำนวณเศษจากการแบ่งแต่ละวิธี แล้วเลือกวิธีที่มีเศษน้อยที่สุด ไม่ใช้ผลหารตัดสินแทนเศษ",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "คำนวณเศษจากการแบ่งแต่ละวิธี แล้วเลือกวิธีที่มีเศษน้อยที่สุด ไม่ใช้ผลหารตัดสินแทนเศษ",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.least_remainder_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.fewest-groups",
+   "kind": "procedure",
+   "title": "เลือกขนาดกลุ่มที่ทำให้จำนวนกลุ่มน้อย",
+   "statement": "หารจำนวนทั้งหมดด้วยขนาดกลุ่มแต่ละแบบ แล้วเปรียบเทียบจำนวนกลุ่มที่ได้",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "หารจำนวนทั้งหมดด้วยขนาดกลุ่มแต่ละแบบ แล้วเปรียบเทียบจำนวนกลุ่มที่ได้",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.largest_quotient_p2",
+    "math.division_word_problem_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.compare-group-results",
+   "kind": "procedure",
+   "title": "เปรียบเทียบผลของการแบ่งหลายสถานการณ์",
+   "statement": "พิจารณาจำนวนที่แบ่งและตัวหารในแต่ละเรื่อง แล้วเปรียบเทียบผลที่ได้ตามชนิดของหน่วยและคำถาม",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "พิจารณาจำนวนที่แบ่งและตัวหารในแต่ละเรื่อง แล้วเปรียบเทียบผลที่ได้ตามชนิดของหน่วยและคำถาม",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4175-2-2567-2-3.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.largest_quotient_p2",
+    "math.division_remainder_p2"
+   ]
+  }
+ ]
+}

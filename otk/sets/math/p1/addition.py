@@ -15,7 +15,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType
 from otk.sets._support.math_apply_stage import _P1_THINGS, _nums
 from otk.sets._support.math_diagrams import _math_q
 from otk.sets._support.math_m4 import maths
@@ -113,3 +113,78 @@ class AddWordP1(QuestionType):
         # Taking away, off by one ten, and off by one.
         return maths([text(stem)], str(total), _nums(total, a - b, total + 10, total - 10, total + 1, lo=1),
                      self.topic)
+
+
+# ── More addition (2026-11): three numbers, whole tens, and swapping the order ──
+
+
+@question_type("math.add_three_numbers_p1", display_name={"th": "บวกจำนวนสามจำนวน"},
+               level=LEVEL, topic="การบวก")
+class AddThreeNumbersP1(MathType):
+    def expr(self, rng: Random):
+        a, b, c = (rng.randint(1, 9) for _ in range(3))
+        right = a + b + c
+        # Only the first two added; the last two; one off.
+        return MathDraw(f"{a} + {b} + {c}", str(right), prompt="จงหาผลบวก",
+                        distractors=_story.keep(a + b, b + c, right + 1, right - 1, answer=right))
+
+
+@question_type("math.add_tens_p1", display_name={"th": "บวกจำนวนเต็มสิบ"},
+               level=LEVEL, topic="การบวก")
+class AddTensP1(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 8)
+        b = rng.randint(1, 9 - a)
+        right = 10 * (a + b)
+        # The tens digits added alone; ten more or less; the numbers written side by side.
+        return MathDraw(f"{10 * a} + {10 * b}", str(right), prompt="จงหาผลบวก",
+                        distractors=_story.keep(a + b, right + 10, right - 10, 10 * a + b,
+                                                answer=right, lo=1, hi=100))
+
+
+@question_type("math.add_commutative_p1", display_name={"th": "การสลับที่การบวก"},
+               level=LEVEL, topic="การบวก")
+class AddCommutativeP1(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.sample(range(2, 20), 2)
+        # The number already on that side; the total; one off.
+        return MathDraw(rf"{a} + {b} = {b} + \square", str(a), prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(b, a + b, a + 1, a - 1, answer=a, lo=0))
+
+
+@question_type("math.equal_sums_missing_p1", display_name={"th": "หาจำนวนที่ทำให้ผลบวกสองข้างเท่ากัน"},
+               level=LEVEL, topic="การบวก")
+class EqualSumsMissingP1(MathType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4019-1-2567-2-1.pdf, ข้อ 8–9",))
+
+    def expr(self, rng: Random):
+        total = rng.randint(30, 100)
+        a = rng.randint(1, total - 1)
+        b = total - a
+        c = rng.choice([n for n in range(1, total) if n not in (a, b)])
+        missing = total - c
+        full = f"{a} + {b}"
+        blank = rf"{c} + \square" if rng.randrange(2) else rf"\square + {c}"
+        equation = f"{full} = {blank}" if rng.randrange(2) else f"{blank} = {full}"
+        return MathDraw(equation, str(missing), prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        # Copy a visible addend; ignore the known term; add it.
+                        distractors=_story.keep(a, b, total, total + c, missing + 1,
+                                                answer=missing, lo=0))
+
+
+@question_type("math.match_sum_expression_p1", display_name={"th": "เลือกประโยคบวกที่มีผลบวกเท่ากัน"},
+               level=LEVEL, topic="การบวก")
+class MatchSumExpressionP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4019-1-2567-2-1.pdf, ข้อ 7, 10",))
+
+    def compose(self, rng: Random):
+        total = rng.randint(20, 89)
+        a = rng.randint(1, total - 1)
+        reference = str(total) if rng.randrange(2) else f"{a} + {total - a}"
+        split = rng.choice([n for n in range(1, total - 10) if n not in (a, total - a)])
+        right = f"{split} + {total - split}"
+        # A missed/extra ten or an extra unit changes the total.
+        wrong = [f"{split} + {total - split + offset}" for offset in (-10, 10, 1)]
+        return f"ข้อใดมีผลบวกเท่ากับ {reference}", right, wrong

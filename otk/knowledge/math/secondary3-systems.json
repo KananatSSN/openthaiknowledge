@@ -1,0 +1,358 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "ระบบสมการ",
+ "level": "ม.3",
+ "units": [
+  {
+   "id": "math.secondary3.graph-system-solution",
+   "kind": "procedure",
+   "title": "อ่านคำตอบระบบสมการจากกราฟ",
+   "statement": "คำตอบร่วมคือจุดตัดของเส้นตรง อ่านพิกัดหรือใช้สมการตรวจจุดตัดและจำนวนคำตอบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คำตอบร่วมคือจุดตัดของเส้นตรง อ่านพิกัดหรือใช้สมการตรวจจุดตัดและจำนวนคำตอบ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.simultaneous_2var",
+    "math.system_solution_count_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.exact-linear-system",
+   "kind": "procedure",
+   "title": "แก้ระบบสมการโดยคงค่าแน่นอน",
+   "statement": "จัดรูปและกำจัดตัวแปร โดยเคลียร์ตัวส่วนและทศนิยมก่อนคำนวณเมื่อจำเป็น แล้วตรวจแทนกลับทั้งสองสมการ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "จัดรูปและกำจัดตัวแปร โดยเคลียร์ตัวส่วนและทศนิยมก่อนคำนวณเมื่อจำเป็น แล้วตรวจแทนกลับทั้งสองสมการ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.simultaneous_2var",
+    "math.system_substitution",
+    "math.system_which_pair_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.system-solution-count",
+   "kind": "procedure",
+   "title": "จำแนกจำนวนคำตอบจากความสัมพันธ์สมการ",
+   "statement": "ตรวจว่าสองเส้นตัดกัน ขนานกัน หรือเป็นเส้นเดียวกัน โดยเทียบอันดับเมทริกซ์หรืออัตราส่วนสัมประสิทธิ์และค่าคงตัว",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ตรวจว่าสองเส้นตัดกัน ขนานกัน หรือเป็นเส้นเดียวกัน โดยเทียบอันดับเมทริกซ์หรืออัตราส่วนสัมประสิทธิ์และค่าคงตัว",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.system_solution_count_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.system-sum",
+   "kind": "procedure",
+   "title": "หาผลรวมของพิกัดคำตอบ",
+   "statement": "แก้ระบบสมการหรือรวมสมการให้ได้ผลรวมที่ต้องการ แล้วแทนกลับตรวจคำตอบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "แก้ระบบสมการหรือรวมสมการให้ได้ผลรวมที่ต้องการ แล้วแทนกลับตรวจคำตอบ",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.system_x_plus_y_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.number-story-system",
+   "kind": "procedure",
+   "title": "ตั้งระบบสมการจากความสัมพันธ์จำนวนสองจำนวน",
+   "statement": "กำหนดตัวแปรแทนจำนวนน้อยและจำนวนมาก แปลผลบวกและพหุคูณตามเรื่อง แล้วคำนวณนิพจน์ที่ถาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "กำหนดตัวแปรแทนจำนวนน้อยและจำนวนมาก แปลผลบวกและพหุคูณตามเรื่อง แล้วคำนวณนิพจน์ที่ถาม",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 13
+    }
+   ],
+   "covered_by": [
+    "math.system_setup_m3",
+    "math.system_word_problem",
+    "math.system_sum_difference_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.basket-target",
+   "kind": "procedure",
+   "title": "ใช้ระบบสมการคิดราคาตะกร้าใหม่",
+   "statement": "หาราคาต่อหน่วยจากการซื้อสองแบบที่เป็นอิสระกัน แล้วคูณจำนวนสินค้าของตะกร้าใหม่",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาราคาต่อหน่วยจากการซื้อสองแบบที่เป็นอิสระกัน แล้วคูณจำนวนสินค้าของตะกร้าใหม่",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.system_basket_target_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.two-rate-allocation",
+   "kind": "procedure",
+   "title": "แบ่งเงินตามผลตอบแทนสองอัตรา",
+   "statement": "ใช้สมการเงินรวมและสมการผลตอบแทนรวมจากสองอัตราเพื่อหาเงินลงทุนแต่ละส่วน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ใช้สมการเงินรวมและสมการผลตอบแทนรวมจากสองอัตราเพื่อหาเงินลงทุนแต่ละส่วน",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.two_rate_allocation_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.rectangle-perimeter-gap-area",
+   "kind": "procedure",
+   "title": "หาพื้นที่สี่เหลี่ยมจากเส้นรอบรูปและผลต่างด้าน",
+   "statement": "ใช้ผลบวกและผลต่างของความยาวด้านหาด้านทั้งสอง แล้วคูณเพื่อหาพื้นที่",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ใช้ผลบวกและผลต่างของความยาวด้านหาด้านทั้งสอง แล้วคูณเพื่อหาพื้นที่",
+    "ตรวจคำตอบและเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5202-3-2567-2.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.rectangle_equation_m1",
+    "math.rectangle_area_perimeter"
+   ]
+  },
+  {
+   "id": "math.secondary3.system-parameter-difference",
+   "kind": "procedure",
+   "title": "แทนคู่อันดับที่ทราบลงในสมการทั้งสองเพื่อหาสัมประสิทธิ์ไม่ทราบค่า แล้วคำนวณผลต่างที่ถาม",
+   "statement": "แทนคู่อันดับที่ทราบลงในสมการทั้งสองเพื่อหาสัมประสิทธิ์ไม่ทราบค่า แล้วคำนวณผลต่างที่ถาม",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไขที่จำเป็น",
+    "แทนคู่อันดับที่ทราบลงในสมการทั้งสองเพื่อหาสัมประสิทธิ์ไม่ทราบค่า แล้วคำนวณผลต่างที่ถาม",
+    "ตรวจหน่วย สมมติฐาน และทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.system_parameter_difference_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.past-ratio-age-sum",
+   "kind": "procedure",
+   "title": "กำหนดอายุปัจจุบัน ใช้อายุย้อนหลังทั้งสองคนในอัตราส่วน แล้วใช้ผลรวมอายุแก้ระบบ",
+   "statement": "กำหนดอายุปัจจุบัน ใช้อายุย้อนหลังทั้งสองคนในอัตราส่วน แล้วใช้ผลรวมอายุแก้ระบบ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไขที่จำเป็น",
+    "กำหนดอายุปัจจุบัน ใช้อายุย้อนหลังทั้งสองคนในอัตราส่วน แล้วใช้ผลรวมอายุแก้ระบบ",
+    "ตรวจหน่วย สมมติฐาน และทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.system_ages_m3",
+    "math.system_setup_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.two-item-prices",
+   "kind": "procedure",
+   "title": "ตั้งสมการราคาจากการซื้อสองชุดแล้วแก้หาราคาต่อชิ้นของแต่ละชนิด",
+   "statement": "ตั้งสมการราคาจากการซื้อสองชุดแล้วแก้หาราคาต่อชิ้นของแต่ละชนิด",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไขที่จำเป็น",
+    "ตั้งสมการราคาจากการซื้อสองชุดแล้วแก้หาราคาต่อชิ้นของแต่ละชนิด",
+    "ตรวจหน่วย สมมติฐาน และทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.system_two_prices_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.mixture-mass-ratio",
+   "kind": "procedure",
+   "title": "รักษามวลและมูลค่ารวมของส่วนผสม เพื่อหาอัตราส่วนมวลชนิดราคาต่ำต่อชนิดราคาสูงที่ให้ราคาเฉลี่ยตามกำหนด",
+   "statement": "รักษามวลและมูลค่ารวมของส่วนผสม เพื่อหาอัตราส่วนมวลชนิดราคาต่ำต่อชนิดราคาสูงที่ให้ราคาเฉลี่ยตามกำหนด",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไขที่จำเป็น",
+    "รักษามวลและมูลค่ารวมของส่วนผสม เพื่อหาอัตราส่วนมวลชนิดราคาต่ำต่อชนิดราคาสูงที่ให้ราคาเฉลี่ยตามกำหนด",
+    "ตรวจหน่วย สมมติฐาน และทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 13
+    }
+   ],
+   "covered_by": [
+    "math.mixture_mass_ratio_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.joint-worker-time",
+   "kind": "procedure",
+   "title": "ใช้ส่วนของงานต่อวันตั้งระบบจากทีมสองแบบ แก้อัตรางานรายคนแล้วกลับเศษส่วนเป็นเวลา โดยไม่ปัดเป็นวันเต็มเอง",
+   "statement": "ใช้ส่วนของงานต่อวันตั้งระบบจากทีมสองแบบ แก้อัตรางานรายคนแล้วกลับเศษส่วนเป็นเวลา โดยไม่ปัดเป็นวันเต็มเอง",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไขที่จำเป็น",
+    "ใช้ส่วนของงานต่อวันตั้งระบบจากทีมสองแบบ แก้อัตรางานรายคนแล้วกลับเศษส่วนเป็นเวลา โดยไม่ปัดเป็นวันเต็มเอง",
+    "ตรวจหน่วย สมมติฐาน และทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.joint_worker_time_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.reversed-digit-system",
+   "kind": "procedure",
+   "title": "เขียนจำนวนเดิมและจำนวนสลับหลักจากเลขหลักสิบหน่วย ใช้ผลรวมเลขโดดและผลต่างของจำนวนแก้ระบบ",
+   "statement": "เขียนจำนวนเดิมและจำนวนสลับหลักจากเลขหลักสิบหน่วย ใช้ผลรวมเลขโดดและผลต่างของจำนวนแก้ระบบ",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไขที่จำเป็น",
+    "เขียนจำนวนเดิมและจำนวนสลับหลักจากเลขหลักสิบหน่วย ใช้ผลรวมเลขโดดและผลต่างของจำนวนแก้ระบบ",
+    "ตรวจหน่วย สมมติฐาน และทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5198-3-2565-2.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.reversed_digit_system_m3"
+   ]
+  }
+ ]
+}

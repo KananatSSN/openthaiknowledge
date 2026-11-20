@@ -147,3 +147,40 @@ class MultiplicationWordProblemP3(WordProblem):
         slip = a * (b % 10) + a * (b // 10) if b >= 10 else a * (b + 1)
         return MathDraw("", str(ans), prompt=_product_story(rng, a, b),
                         distractors=_story.keep(slip, a + b, ans + a, ans - 10, answer=ans))
+
+
+# ── More multiplying (2026-11): by 10, 100, 1,000 and by whole tens, and the largest product ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+
+@question_type("math.multiply_by_tens_p3", display_name={"th": "คูณด้วย 10, 100, 1,000 และจำนวนเต็มสิบ"},
+               level=LEVEL, topic="การคูณ")
+class MultiplyByTensP3(MathType):
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        if kind == 0:
+            a, k = rng.randint(2, 99), rng.choice((10, 100, 1000))
+        else:
+            a, k = rng.randint(2, 99), rng.randint(2, 9) * 10
+        right = a * k
+        # One zero too many or too few; the tens digit only.
+        return MathDraw(rf"{a} \times {k}", str(right), prompt="จงหาผลคูณ",
+                        distractors=_story.keep(right * 10, right // 10, a * (k // 10), a + k, answer=right, lo=1))
+
+
+@question_type("math.largest_product_p3", display_name={"th": "ผลคูณใดมากที่สุดหรือน้อยที่สุด (สองหลักคูณหนึ่งหลัก)"},
+               level=LEVEL, topic="การคูณ")
+class LargestProductP3(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            exprs = {}
+            for _ in range(4):
+                a, b = rng.randint(12, 99), rng.randint(2, 9)
+                exprs[f"{a} × {b}"] = a * b
+            if len(exprs) == 4 and len(set(exprs.values())) == 4:
+                break
+        most = rng.random() < 0.5
+        right = (max if most else min)(exprs, key=exprs.get)
+        return f"ข้อใดมีผลคูณ{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]

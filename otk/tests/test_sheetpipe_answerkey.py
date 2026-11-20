@@ -123,13 +123,13 @@ def test_running_header_is_stripped_but_a_heading_under_it_is_kept():
     assert ak.clean_pages(pages) == [["ฟังก์ชันตรีโกณมิติ", "เนื้อหา"], ["1. ข้อ"], ["อื่น ๆ"]]
 
 
-RATH = Path("rathcenter/8 ตรีโกณมิติ")
+RATH = Path("mathematics/level/upper-secondary/rathcenter/8-trigonometry")
 
 
 @needs_bank
 def test_a_section_source_resolves_to_every_item_of_that_section():
     from otk.tools.sheetpipe import knowledge as kn
-    sheet = "rathcenter/8 ตรีโกณมิติ/(rath) 6 แปลงผลคูณกับผลบวกลบ.pdf"
+    sheet = "mathematics/level/upper-secondary/rathcenter/8-trigonometry/(rath) 6 แปลงผลคูณกับผลบวกลบ.pdf"
     hits = kn.resolve({"sheet": sheet, "section": "สูตรแปลงผลคูณกับผลบวกลบ"})
     assert len(hits) == 26 and {p for p, _ in hits} == {sheet}
     assert kn.resolve({"sheet": sheet, "section": "ไม่มีหัวข้อนี้"}) == []

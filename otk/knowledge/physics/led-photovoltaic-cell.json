@@ -1,0 +1,40 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมบัติโฟโตวอลเทอิกของหลอด LED",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.led_photovoltaic_cell.procedure",
+      "kind": "procedure",
+      "title": "ฟิลแฟกเตอร์ของ LED ที่ใช้เป็นเซลล์โฟโตวอลเทอิก",
+      "statement": "LED เป็นเซลล์โฟโตวอลเทอิก: ฟิลแฟกเตอร์ FF = P_max/(V_OCI_SC) ความชันใกล้ V_OC ให้ −1/R_S และความชันช่วงความต่างศักย์น้อยให้ −1/(R_SH + R_S)",
+      "steps": [
+        "วัดกราฟ I-V ของเซลล์และจุดกำลังสูงสุด",
+        "คำนวณฟิลแฟกเตอร์และความต้านทานอนุกรมหรือขนานจากความชัน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 8
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2562_q23",
+        "phys.tpho2562_q24"
+      ],
+      "note": "Synthetic readings; the folder has no lab solution."
+    }
+  ]
+}

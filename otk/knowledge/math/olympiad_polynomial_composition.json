@@ -14,7 +14,7 @@
     "คูณผลที่ได้จากรากชั้นนอกทุกค่า ซึ่งให้ราก x คนละชุดกัน"
    ],
    "sources": [
-    {"sheet": "สอวน_math/posn1-69-math.pdf", "item": 5}
+    {"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 5}
    ],
    "covered_by": ["math.composed_polynomial_real_roots_olympiad"]
   }

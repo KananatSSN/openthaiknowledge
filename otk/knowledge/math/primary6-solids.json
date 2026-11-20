@@ -1,0 +1,168 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "รูปเรขาคณิต 3 มิติ",
+ "level": "ป.6",
+ "units": [
+  {
+   "id": "math.primary6.pyramid-name",
+   "kind": "procedure",
+   "title": "ใช้รูปฐานและหน้าข้างระบุชนิดพีระมิด",
+   "statement": "ใช้รูปฐานและหน้าข้างระบุชนิดพีระมิด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "ใช้รูปฐานและหน้าข้างระบุชนิดพีระมิด",
+    "ตรวจหน่วยและแทนคำตอบกลับในความสัมพันธ์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.solid_from_description_p6"
+   ]
+  },
+  {
+   "id": "math.primary6.object-solid",
+   "kind": "procedure",
+   "title": "เชื่อมรูปทรงวัตถุในชีวิตประจำวันกับทรงกระบอก",
+   "statement": "เชื่อมรูปทรงวัตถุในชีวิตประจำวันกับทรงกระบอก",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "เชื่อมรูปทรงวัตถุในชีวิตประจำวันกับทรงกระบอก",
+    "ตรวจหน่วยและแทนคำตอบกลับในความสัมพันธ์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.objects_as_solids_p6"
+   ]
+  },
+  {
+   "id": "math.primary6.pyramid-lateral",
+   "kind": "procedure",
+   "title": "จำแนกหน้าข้างพีระมิดเป็นรูปสามเหลี่ยม",
+   "statement": "จำแนกหน้าข้างพีระมิดเป็นรูปสามเหลี่ยม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "จำแนกหน้าข้างพีระมิดเป็นรูปสามเหลี่ยม",
+    "ตรวจหน่วยและแทนคำตอบกลับในความสัมพันธ์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.pyramid_counts_p6"
+   ]
+  },
+  {
+   "id": "math.primary6.axial-section",
+   "kind": "procedure",
+   "title": "ระนาบผ่านแกนทรงกระบอกตรงให้หน้าตัดสี่เหลี่ยมผืนผ้ากว้างเท่าเส้นผ่านศูนย์กลาง",
+   "statement": "ระนาบผ่านแกนทรงกระบอกตรงให้หน้าตัดสี่เหลี่ยมผืนผ้ากว้างเท่าเส้นผ่านศูนย์กลาง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "ระนาบผ่านแกนทรงกระบอกตรงให้หน้าตัดสี่เหลี่ยมผืนผ้ากว้างเท่าเส้นผ่านศูนย์กลาง",
+    "ตรวจหน่วยและแทนคำตอบกลับในความสัมพันธ์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.axial_cylinder_section_p6"
+   ]
+  },
+  {
+   "id": "math.primary6.net-solid",
+   "kind": "procedure",
+   "title": "ใช้ชนิดและจำนวนหน้าของรูปคลี่เพื่อระบุรูปทรงโดยตรวจการประกอบ",
+   "statement": "ใช้ชนิดและจำนวนหน้าของรูปคลี่เพื่อระบุรูปทรงโดยตรวจการประกอบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "ใช้ชนิดและจำนวนหน้าของรูปคลี่เพื่อระบุรูปทรงโดยตรวจการประกอบ",
+    "ตรวจหน่วยและแทนคำตอบกลับในความสัมพันธ์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4907-6-2567-2-2.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.net_to_solid_p6"
+   ]
+  },
+  {
+   "id": "math.primary6.solid-apex-feature",
+   "kind": "procedure",
+   "title": "แยกยอดแหลมตามความหมายแบบเรียนออกจากจุดยอดของทรงหลายหน้า แล้วจำแนกปริซึม กรวย และพีระมิด",
+   "statement": "แยกยอดแหลมตามความหมายแบบเรียนออกจากจุดยอดของทรงหลายหน้า แล้วจำแนกปริซึม กรวย และพีระมิด",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "แยกยอดแหลมตามความหมายแบบเรียนออกจากจุดยอดของทรงหลายหน้า แล้วจำแนกปริซึม กรวย และพีระมิด",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-6/4901-6-2565-1-2.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.solid_from_description_p6",
+    "math.pyramid_counts_p6"
+   ]
+  }
+ ]
+}

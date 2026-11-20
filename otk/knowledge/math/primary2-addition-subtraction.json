@@ -1,0 +1,377 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การบวกและการลบ",
+ "level": "ป.2",
+ "units": [
+  {
+   "id": "math.primary2.combine",
+   "kind": "procedure",
+   "title": "รวมจำนวนหรือเพิ่มจำนวน",
+   "statement": "รวมจำนวนที่โจทย์ถามด้วยการบวก ไม่รวมข้อมูลที่ไม่เกี่ยวข้อง",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "รวมจำนวนที่โจทย์ถามด้วยการบวก ไม่รวมข้อมูลที่ไม่เกี่ยวข้อง",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.add_word_three_digit_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.comparison-amount",
+   "kind": "procedure",
+   "title": "หาจำนวนที่มากกว่าหรือน้อยกว่าอีกจำนวน",
+   "statement": "ระบุว่ารู้จำนวนมากหรือจำนวนน้อย แล้วใช้ จำนวนมาก = จำนวนน้อย + ส่วนต่าง หาจำนวนที่ไม่ทราบ",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "ระบุว่ารู้จำนวนมากหรือจำนวนน้อย แล้วใช้ จำนวนมาก = จำนวนน้อย + ส่วนต่าง หาจำนวนที่ไม่ทราบ",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.comparison_amount_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.remaining",
+   "kind": "procedure",
+   "title": "หาส่วนที่เหลือหรือส่วนที่ขาด",
+   "statement": "เขียนจำนวนทั้งหมด ส่วนที่ทราบ และส่วนที่ไม่ทราบ แล้วลบส่วนที่ทราบจากทั้งหมด พร้อมบอกข้อมูล คำถาม วิธีทำ ประโยคสัญลักษณ์ และคำตอบ",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "เขียนจำนวนทั้งหมด ส่วนที่ทราบ และส่วนที่ไม่ทราบ แล้วลบส่วนที่ทราบจากทั้งหมด พร้อมบอกข้อมูล คำถาม วิธีทำ ประโยคสัญลักษณ์ และคำตอบ",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 21
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 15
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.sub_word_three_digit_p2",
+    "math.missing_addsub_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.difference",
+   "kind": "procedure",
+   "title": "เปรียบเทียบส่วนต่าง",
+   "statement": "หาจำนวนที่มากกว่าและน้อยกว่า แล้วลบจำนวนมากด้วยจำนวนน้อยเพื่อหาส่วนต่าง",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "หาจำนวนที่มากกว่าและน้อยกว่า แล้วลบจำนวนมากด้วยจำนวนน้อยเพื่อหาส่วนต่าง",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.how_many_more_p2",
+    "math.length_word_problem_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.known-offset",
+   "kind": "procedure",
+   "title": "ใช้ผลต่างที่กำหนดแปลงจำนวน",
+   "statement": "เมื่อโจทย์กำหนดว่าจำนวนปลายทางมากกว่าเดิมอยู่เท่าใด ให้บวกผลต่างนั้นกับจำนวนเริ่มต้น",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "เมื่อโจทย์กำหนดว่าจำนวนปลายทางมากกว่าเดิมอยู่เท่าใด ให้บวกผลต่างนั้นกับจำนวนเริ่มต้น",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 5
+    }
+   ],
+   "covered_by": [
+    "math.add_columns"
+   ]
+  },
+  {
+   "id": "math.primary2.add-three-digits",
+   "kind": "procedure",
+   "title": "บวกจำนวนสามหลักตามค่าประจำหลัก",
+   "statement": "บวกหน่วย สิบ ร้อยตามหลักและทดเมื่อครบสิบ โดยคงค่าหลักที่มีศูนย์",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "บวกหน่วย สิบ ร้อยตามหลักและทดเมื่อครบสิบ โดยคงค่าหลักที่มีศูนย์",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.add_columns"
+   ]
+  },
+  {
+   "id": "math.primary2.missing-add-sub",
+   "kind": "procedure",
+   "title": "หาจำนวนที่ขาดในประโยคบวกลบ",
+   "statement": "ใช้การดำเนินการย้อนกลับตามตำแหน่งตัวไม่ทราบค่า แล้วแทนกลับตรวจทั้งประโยค",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "ใช้การดำเนินการย้อนกลับตามตำแหน่งตัวไม่ทราบค่า แล้วแทนกลับตรวจทั้งประโยค",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.missing_addsub_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.match-three-digit-sum",
+   "kind": "procedure",
+   "title": "เลือกนิพจน์สามหลักที่มีผลบวกตามเป้าหมาย",
+   "statement": "คำนวณผลบวกแต่ละตัวเลือกโดยรวมค่าหลักและการทด แล้วเทียบกับเป้าหมาย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "คำนวณผลบวกแต่ละตัวเลือกโดยรวมค่าหลักและการทด แล้วเทียบกับเป้าหมาย",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.match_three_digit_sum_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.balance-three-digit-sums",
+   "kind": "procedure",
+   "title": "รักษาผลบวกสองข้างให้เท่ากัน",
+   "statement": "รวมค่าของด้านที่ทราบ แล้วลบพจน์ที่ทราบของอีกข้างเพื่อหาพจน์ที่ขาด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "รวมค่าของด้านที่ทราบ แล้วลบพจน์ที่ทราบของอีกข้างเพื่อหาพจน์ที่ขาด",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.balance_three_digit_sums_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.subtract-three-digits",
+   "kind": "procedure",
+   "title": "ลบจำนวนสามหลักและกระจายหลักเมื่อจำเป็น",
+   "statement": "ลบตามหลักจากหน่วยไปหาร้อย กระจายหนึ่งหน่วยจากหลักที่สูงกว่าเมื่อค่าหลักนั้นไม่พอ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "ลบตามหลักจากหน่วยไปหาร้อย กระจายหนึ่งหน่วยจากหลักที่สูงกว่าเมื่อค่าหลักนั้นไม่พอ",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 16
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 18
+    }
+   ],
+   "covered_by": [
+    "math.sub_columns"
+   ]
+  },
+  {
+   "id": "math.primary2.match-three-digit-difference",
+   "kind": "procedure",
+   "title": "เลือกนิพจน์สามหลักที่มีผลลบตามเป้าหมาย",
+   "statement": "หาผลต่างของแต่ละคู่แล้วเปรียบเทียบกับจำนวนเป้าหมาย โดยระวังหลักสิบและหลักร้อย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "หาผลต่างของแต่ละคู่แล้วเปรียบเทียบกับจำนวนเป้าหมาย โดยระวังหลักสิบและหลักร้อย",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.match_three_digit_difference_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.balance-three-digit-differences",
+   "kind": "procedure",
+   "title": "รักษาผลลบสองข้างให้เท่ากัน",
+   "statement": "หาผลต่างด้านที่ทราบแล้วลบผลต่างนี้จากตัวตั้งอีกด้านเพื่อหาตัวลบที่ขาด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "หาผลต่างด้านที่ทราบแล้วลบผลต่างนี้จากตัวตั้งอีกด้านเพื่อหาตัวลบที่ขาด",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4180-2-2567-2-1.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.balance_three_digit_differences_p2"
+   ]
+  }
+ ]
+}

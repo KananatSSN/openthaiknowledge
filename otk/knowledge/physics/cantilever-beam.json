@@ -1,0 +1,63 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "คานยื่น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.cantilever_beam.procedure",
+      "kind": "procedure",
+      "title": "มอดุลัสของยังจากการโก่งของคานยื่นเปล่า",
+      "statement": "คานยื่น: การโก่งเชิงเส้น Δy = L³(3μLg + 8mg)/(2Ebh³) ให้ E จากคานเปล่าหรือความชันของกราฟ Δy กับ m ความชันเฉลี่ยที่เปลี่ยนเกิน 10% บอกช่วงไม่เชิงเส้น และคาบการสั่น T² = 16π²L³(aμL + m)/(Ebh³) ให้ E และมวลสมมูล aμL",
+      "steps": [
+        "วัดการโก่งหรือคาบการสั่นที่มวลปลายคานต่าง ๆ",
+        "เขียนกราฟเส้นตรงหา E จากความชันและมวลสมมูลจากจุดตัดแกน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2564_q25",
+        "phys.tpho2564_q26",
+        "phys.tpho2564_q27",
+        "phys.tpho2564_q28",
+        "phys.tpho2564_q29"
+      ],
+      "note": "Synthetic length and sag."
+    }
+  ]
+}

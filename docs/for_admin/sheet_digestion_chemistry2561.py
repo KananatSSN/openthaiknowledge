@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = "สอวน_chemistry/posn1-61-chemistry.pdf"
+SOURCE = "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf"
 UNITS = {
     1: (
         "isoelectronic-ion-count-groups",

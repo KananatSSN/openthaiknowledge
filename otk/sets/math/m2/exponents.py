@@ -15,7 +15,8 @@ from otk.core.content import text
 from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
-from otk.kit.math_problems import MathDraw, MathType
+from otk.kit import story as _story
+from otk.kit.math_problems import MathDraw, MathType, WordProblem
 from otk.sets._support.math_algebra import _pow
 from otk.sets._support.math_diagrams import _math_q
 
@@ -219,3 +220,57 @@ class RadicalToExponent(MathType):
             prompt="จงเขียนในรูปเลขชี้กำลัง",
             distractors=[rf"x^{{\frac{{{root}}}{{{power}}}}}",
                          f"x^{{{power * root}}}", f"x^{{{power}}}"])
+
+
+# ── More exponents (2026-11): equations with the unknown in the exponent, and comparing powers by
+# rewriting them with a common exponent ──
+
+_EXP_TOP = {2: 10, 3: 6, 5: 4, 10: 6}
+_SAME_BASE = ((4, 2, 2), (8, 2, 3), (9, 3, 2), (27, 3, 3), (25, 5, 2), (16, 2, 4))
+
+
+@question_type("math.exponent_equation_m2", display_name={"th": "สมการที่ตัวไม่ทราบค่าอยู่ที่เลขชี้กำลัง"},
+               level={"th": "ม.2"}, topic="เลขยกกำลัง")
+class ExponentEquationM2(WordProblem):
+    """Write both sides as powers of one base, then the exponents are equal."""
+
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        if kind == 0:
+            base = rng.choice((2, 3, 5, 10))
+            x = rng.randint(2, _EXP_TOP[base])
+            return MathDraw(rf"{base}^{{x}} = {base ** x}", str(x), prompt="จงหาค่า x",
+                            distractors=_story.keep(x + 1, x - 1, base * x, x + 2, answer=x, lo=1))
+        if kind == 1:
+            base = rng.choice((2, 3, 5))
+            c = rng.randint(1, 2)
+            e = rng.randint(c + 2, _EXP_TOP[base])
+            x = e - c
+            # The exponent read off without taking c away; c added instead.
+            return MathDraw(rf"{base}^{{x + {c}}} = {base ** e}", str(x), prompt="จงหาค่า x",
+                            distractors=_story.keep(e, e + c, x + 1, x - 1, answer=x, lo=1))
+        big, small, p = rng.choice(_SAME_BASE)
+        x = rng.randint(2, 5)
+        # The right-hand exponent taken as x; divided the wrong way; one off.
+        return MathDraw(rf"{big}^{{x}} = {small}^{{{p * x}}}", str(x), prompt="จงหาค่า x",
+                        distractors=_story.keep(p * x, p * p * x, x + 1, x - 1, answer=x, lo=1))
+
+
+# (base, power): the value of base^power is what a common exponent compares.
+_POWER_UNITS = ((2, 2), (2, 3), (3, 2), (5, 1), (6, 1), (7, 1), (10, 1), (2, 4), (3, 3), (11, 1))
+
+
+@question_type("math.exponent_compare_m2", display_name={"th": "เปรียบเทียบเลขยกกำลังโดยทำเลขชี้กำลังให้เท่ากัน"},
+               level={"th": "ม.2"}, topic="เลขยกกำลัง")
+class ExponentCompareM2(WordProblem):
+    """2^{30} = 8^{10} and 3^{20} = 9^{10}: with one exponent, the larger base is the larger number."""
+
+    def expr(self, rng: Random):
+        g = rng.choice((5, 10, 20, 25))
+        picks = rng.sample(_POWER_UNITS, 4)
+        largest = rng.random() < 0.5
+        key = max(picks, key=lambda p: p[0] ** p[1]) if largest else min(picks, key=lambda p: p[0] ** p[1])
+        tex = [rf"{b}^{{{m * g}}}" for b, m in picks]
+        right = tex[picks.index(key)]
+        return MathDraw("", right, prompt=f"จำนวนในข้อใด{'มากที่สุด' if largest else 'น้อยที่สุด'}",
+                        distractors=[t for t in tex if t != right])

@@ -170,7 +170,7 @@ def bank_files(root: Path) -> list[Path]:
     out = []
     for p in sorted(root.rglob("*")):
         rel = p.relative_to(root)
-        if (p.is_file() and p.name not in _SKIP_NAMES
+        if (p.is_file() and not p.is_symlink() and p.name not in _SKIP_NAMES
                 and not any(part.startswith((".", "_")) for part in rel.parts)
                 and not is_lfs_pointer(p)):
             out.append(p)
@@ -310,10 +310,26 @@ def link_digested(bank: dict[str, BankEntry], stage_of=sheet_stage) -> list[str]
 
 
 def select(bank: dict[str, BankEntry], pattern: str) -> list[BankEntry]:
-    """Records whose path equals ``pattern`` or matches it as a glob."""
+    """Match canonical paths, falling back to on-disk compatibility aliases."""
     if pattern in bank:
         return [bank[pattern]]
-    return [e for k, e in sorted(bank.items()) if fnmatch.fnmatchcase(k, pattern)]
+    matches = [e for k, e in sorted(bank.items()) if fnmatch.fnmatchcase(k, pattern)]
+    if matches:
+        return matches
+    root = default_root().resolve()
+    keys: set[str] = set()
+    if Path(pattern).is_absolute() or ".." in Path(pattern).parts:
+        return []
+    for path in root.glob(pattern):
+        try:
+            key = path.resolve().relative_to(root).as_posix()
+        except ValueError:
+            continue
+        if key in bank:
+            keys.add(key)
+        elif path.is_dir():
+            keys.update(k for k in bank if k.startswith(key + "/"))
+    return [bank[k] for k in sorted(keys)]
 
 
 def set_fields(entries: list[BankEntry], *, sheet_id: str | None = None,

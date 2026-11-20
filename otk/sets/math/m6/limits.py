@@ -129,3 +129,123 @@ class PiecewiseLimitM6(QuestionType):
         wrongs += ["ไม่มีลิมิต เพราะ f ไม่นิยามที่จุดนี้", f"ลิมิตมีค่าเท่ากับ {L + R}"]
         return _texts([text(f"ข้อใดถูกต้องเกี่ยวกับลิมิตของ f(x) เมื่อ x เข้าใกล้ {c}"), content_math(f)],
                       right_ans, _distinct(right_ans, *wrongs)[:3], self.topic)
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More limits (2026-11): a polynomial, a cancelled factor, a ratio at infinity, a lower degree on top, one-
+# sided |x|/x, and a root over x ──
+
+
+@question_type("math.limit_polynomial_m6", display_name={"th": "ลิมิตของพหุนาม"}, level=LEVEL, topic="ลิมิต")
+class LimitPolynomialM6(MathType):
+    def expr(self, rng: Random):
+        a, b, c, k = _nz6(rng, 1, 4), rng.randint(-9, 9), rng.randint(-9, 9), rng.randint(-4, 4)
+        right = a * k * k + b * k + c
+        return MathDraw(rf"\lim_{{x \to {k}}} ({poly_tex((a, 'x^{2}'), (b, 'x'), (c, ''))})", str(right), prompt="จงหาค่า",
+                        distractors=_nk6(-a * k * k + b * k + c, a * k + b * k + c, c, right + 1, answer=right))
+
+
+@question_type("math.limit_cancel_factor_m6", display_name={"th": "ลิมิตโดยการตัดตัวประกอบร่วม"}, level=LEVEL, topic="ลิมิต")
+class LimitCancelFactorM6(MathType):
+    def expr(self, rng: Random):
+        r, s = _nz6(rng, 1, 7), _nz6(rng, 1, 7)
+        while r == s:
+            s = _nz6(rng, 1, 7)
+        right = r - s
+        num = poly_tex((1, "x^{2}"), (-(r + s), "x"), (r * s, ""))
+        den = poly_tex((1, "x"), (-r, ""))
+        # The other root put in; zero over zero read as zero; r + s.
+        return MathDraw(rf"\lim_{{x \to {r}}} \frac{{{num}}}{{{den}}}", str(right), prompt="จงหาค่า",
+                        distractors=_tk6(str(s - r), "0", str(r + s), str(right + 1), answer=str(right)))
+
+
+@question_type("math.limit_ratio_infinity_m6", display_name={"th": "ลิมิตที่อนันต์ของฟังก์ชันตรรกยะดีกรีเท่ากัน"}, level=LEVEL,
+               topic="ลิมิต")
+class LimitRatioInfinityM6(MathType):
+    def expr(self, rng: Random):
+        a, b = _nz6(rng, 1, 9), rng.randint(1, 9)
+        c, d = rng.randint(-9, 9), rng.randint(-9, 9)
+        right = Fraction(a, b)
+        num = poly_tex((a, "x^{2}"), (c, "x"), (5, ""))
+        den = poly_tex((b, "x^{2}"), (d, ""), )
+        return MathDraw(rf"\lim_{{x \to \infty}} \frac{{{num}}}{{{den}}}", frac_tex(right), prompt="จงหาค่า",
+                        distractors=_tk6("0", frac_tex(Fraction(b, a)), frac_tex(Fraction(5, d)) if d else "1", r"\infty", answer=frac_tex(right)))
+
+
+@question_type("math.limit_lower_degree_top_m6", display_name={"th": "ลิมิตที่อนันต์เมื่อดีกรีตัวเศษน้อยกว่า"}, level=LEVEL, topic="ลิมิต")
+class LimitLowerDegreeTopM6(MathType):
+    def expr(self, rng: Random):
+        a, b, c = _nz6(rng, 1, 9), rng.randint(1, 9), rng.randint(-9, 9)
+        num = poly_tex((a, "x"), (c, ""))
+        den = poly_tex((b, "x^{2}"), (1, ""))
+        return MathDraw(rf"\lim_{{x \to \infty}} \frac{{{num}}}{{{den}}}", "0", prompt="จงหาค่า",
+                        distractors=_tk6(frac_tex(Fraction(a, b)), r"\infty", str(c), "1", answer="0"))
+
+
+@question_type("math.one_sided_abs_m6", display_name={"th": "ลิมิตด้านเดียวของ |x|/x"}, level=LEVEL, topic="ลิมิต")
+class OneSidedAbsM6(MathType):
+    def expr(self, rng: Random):
+        side = rng.choice(("+", "-"))
+        k = rng.randint(1, 9)
+        right = str(k) if side == "+" else str(-k)
+        return MathDraw(rf"\lim_{{x \to 0^{{{side}}}}} \frac{{{k}|x|}}{{x}}", right, prompt="จงหาค่า",
+                        distractors=_tk6(str(-int(right)), "0", r"\infty", str(k + 1), answer=right))
+
+
+@question_type("math.limit_root_over_x_m6", display_name={"th": "ลิมิตที่ต้องคูณด้วยสังยุค"}, level=LEVEL, topic="ลิมิต")
+class LimitRootOverXM6(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 9)
+        right = Fraction(1, 2 * a)
+        return MathDraw(rf"\lim_{{x \to 0}} \frac{{\sqrt{{x + {a * a}}} - {a}}}{{x}}", frac_tex(right), prompt="จงหาค่า",
+                        distractors=_fk6(Fraction(1, a), Fraction(2, a), 2 * a, Fraction(1, a * a), answer=right))

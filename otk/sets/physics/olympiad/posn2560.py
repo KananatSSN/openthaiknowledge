@@ -93,7 +93,7 @@ def _written_provenance(number):
         "adapted",
         sources=(
             f"ข้อสอบคัดเลือกค่าย 1 สอวน. ฟิสิกส์ ปี 2560 ตอนที่ 2 ข้อ {number} "
-            "(สอวน_physics/posn1-60-physics.pdf)",
+            "(physics/level/upper-secondary/posn-physics/posn1-60-physics.pdf)",
         ),
     )
 

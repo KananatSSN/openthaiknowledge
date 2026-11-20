@@ -222,3 +222,78 @@ class FractionWordProblemP4(QuestionType):
                   as_mixed(value + step), as_mixed(value + 1),
                   as_mixed(value - step) if value > step else as_mixed(value + 2)]
         return _maths(stem, answer, _not_equal(value, wrongs, answer), self.topic)
+
+
+# ── More fractions (2026-11): a fraction of an amount, the missing numerator, what is left of an amount,
+# and what makes a whole ──
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+@question_type("math.fraction_of_amount_p4", display_name={"th": "เศษส่วนของจำนวน"},
+               level=LEVEL, topic="เศษส่วน")
+class FractionOfAmountP4(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((3, 4, 5, 6, 8, 10))
+        n = rng.randint(2, d - 1)
+        unit = rng.randint(3, 30)
+        total = d * unit
+        right = n * unit
+        prompt = f"{n}/{d} ของ {total} เท่ากับเท่าใด"
+        # One part only; the remaining parts; the whole multiplied by the numerator.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(unit, total - right, total * n, right + unit, answer=right, lo=1))
+
+
+@question_type("math.equivalent_missing_p4", display_name={"th": "หาตัวเศษที่หายไปของเศษส่วนที่เท่ากัน"},
+               level=LEVEL, topic="เศษส่วน")
+class EquivalentMissingP4(MathType):
+    def expr(self, rng: Random):
+        d = rng.randint(2, 9)
+        n = rng.randint(1, d - 1)
+        k = rng.randint(2, 6)
+        right = n * k
+        # The factor added instead of multiplied; the new denominator; the old numerator.
+        return MathDraw(rf"\frac{{{n}}}{{{d}}} = \frac{{\square}}{{{d * k}}}", str(right),
+                        prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(n + (d * k - d), d * k, n, right + 1, answer=right, lo=1))
+
+
+@question_type("math.amount_left_fraction_p4", display_name={"th": "ใช้ไปเป็นเศษส่วนแล้วเหลือเท่าใด"},
+               level=LEVEL, topic="เศษส่วน")
+class AmountLeftFractionP4(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.choice((3, 4, 5, 6, 8, 10))
+        n = rng.randint(1, d - 1)
+        unit = rng.randint(10, 100) * 2
+        total = d * unit
+        right = total - n * unit
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}มีเงิน {total} บาท ใช้ไป {n}/{d} ของเงินทั้งหมด {p}เหลือเงินกี่บาท"
+        # The part spent; one part; the fraction's numbers taken off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(n * unit, unit, total - n, total - d, answer=right, lo=1))
+
+
+@question_type("math.make_one_whole_p4", display_name={"th": "เศษส่วนใดบวกแล้วได้ 1"},
+               level=LEVEL, topic="เศษส่วน")
+class MakeOneWholeP4(ChoiceType):
+    def compose(self, rng: Random):
+        d = rng.randint(3, 12)
+        n = rng.randint(1, d - 1)
+        right = f"{d - n}/{d}"
+        # The same fraction again; the numbers turned over; one part off.
+        wrongs = [f"{n}/{d}", f"{d}/{d - n}", f"{d - n + 1}/{d}", f"{d - n - 1}/{d}" if d - n > 1 else f"{d - n}/{d + 1}"]
+        return f"{n}/{d} + □ = 1 จำนวนใดเติมใน □ ได้", right, [w for w in dict.fromkeys(wrongs) if w != right][:3]

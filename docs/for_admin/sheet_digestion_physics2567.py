@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = "สอวน_physics/posn1-67-physics.pdf"
+SOURCE = "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf"
 UNITS = {
     1: ('chord-descent-time', '', '', ''),
     2: ('incline-projectile-range', 'ยิง 30° เหนือแนวระดับลงพื้นเอียงลาดลง 30° ระยะตามพื้นเอียงเป็น 2u²/g และความเร็วที่จุดกระทบทำมุม 30° กับพื้นเอียง', 'หาเวลาที่ตำแหน่งตกบนแนวพื้นเอียง', 'หาระยะและทิศความเร็วที่เวลานั้น'),

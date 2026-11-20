@@ -152,3 +152,141 @@ class OrderOfOpsWordP6(WordProblem):
                         # the target itself; averaging the two scores with the target; the two-score mean
                         distractors=_story.keep(target, 2 * target - (s1 + s2) // 2, (s1 + s2) // 2,
                                                 need + 3, answer=need, lo=0))
+
+
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More order of operations (2026-11): with decimals, division before addition, nested brackets, the true
+# statement, a missing number, and change from a payment ──
+
+
+@question_type("math.ooo_decimal_p6", display_name={"th": "ลำดับการดำเนินการกับทศนิยม"},
+               level=LEVEL, topic="ลำดับการดำเนินการ")
+class OooDecimalP6(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(11, 99)
+        b = rng.randint(11, 49)
+        k = rng.randint(2, 5)
+        plus = rng.random() < 0.5
+        if not plus:
+            a = b * k + rng.randint(1, 60)
+        right = a + b * k if plus else a - b * k
+        left = (a + b) * k if plus else (a - b) * k
+        op = "+" if plus else "-"
+        # Worked left to right; the multiplier missed; a point slipped.
+        return MathDraw(f"{_d6(a, 1)} {op} {_d6(b, 1)} \\times {k}", _d6(right, 1), prompt="จงหาค่าของนิพจน์",
+                        distractors=_dk6(left, a + b if plus else a - b, right * 10, right + 10,
+                                         answer=right, places=1, lo=1))
+
+
+@question_type("math.ooo_division_first_p6", display_name={"th": "หารก่อนบวกลบ"},
+               level=LEVEL, topic="ลำดับการดำเนินการ")
+class OooDivisionFirstP6(MathType):
+    def expr(self, rng: Random):
+        c = rng.randint(2, 9)
+        q = rng.randint(2, 12)
+        b = c * q
+        a = rng.randint(5, 60)
+        d = rng.randint(2, 5)
+        right = a + q * d
+        # Left to right; the multiplication first and then the division; the division only.
+        ltr = (a + b) // c * d if (a + b) % c == 0 else (a + b) * d // c
+        return MathDraw(f"{a} + {b} \\div {c} \\times {d}", str(right), prompt="จงหาค่าของนิพจน์",
+                        distractors=_story.keep(ltr, a + b // (c * d) if b % (c * d) == 0 else a + q + d, a + q,
+                                                right + d, answer=right, lo=1))
+
+
+@question_type("math.ooo_nested_p6", display_name={"th": "วงเล็บซ้อนกัน"},
+               level=LEVEL, topic="ลำดับการดำเนินการ")
+class OooNestedP6(MathType):
+    def expr(self, rng: Random):
+        c, d = rng.randint(1, 9), rng.randint(1, 9)
+        b = c + d + rng.randint(1, 15)
+        a = rng.randint(2, 9)
+        right = a * (b - (c + d))
+        # The inner bracket ignored (b - c + d); the outer one ignored (a × b - c - d); added instead of multiplied.
+        return MathDraw(f"{a} \\times [{b} - ({c} + {d})]", str(right), prompt="จงหาค่าของนิพจน์",
+                        distractors=_story.keep(a * (b - c + d), a * b - c - d, a + b - c - d, right + a,
+                                                answer=right, lo=1))
+
+
+@question_type("math.ooo_true_statement_p6", display_name={"th": "ประโยคใดถูกต้องตามลำดับการดำเนินการ"},
+               level=LEVEL, topic="ลำดับการดำเนินการ")
+class OooTrueStatementP6(ChoiceType):
+    def compose(self, rng: Random):
+        a, b, c = rng.randint(2, 20), rng.randint(2, 9), rng.randint(2, 9)
+        right_v = a + b * c
+        ltr = (a + b) * c
+        right = f"{a} + {b} × {c} = {right_v}"
+        wrongs = [f"{a} + {b} × {c} = {ltr}", f"{a} × {b} + {c} = {a * (b + c)}", f"({a} + {b}) × {c} = {a + b * c + 1}"]
+        return "ข้อใดถูกต้อง", right, wrongs
+
+
+@question_type("math.ooo_missing_number_p6", display_name={"th": "หาจำนวนที่หายไปในนิพจน์"},
+               level=LEVEL, topic="ลำดับการดำเนินการ")
+class OooMissingNumberP6(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 9)
+        right = rng.randint(2, 15)
+        c = rng.randint(1, 30)
+        total = k * right + c
+        # Undone in the wrong order; the constant left in; one off.
+        wrong_order = total // k - c if total // k > c else c + right
+        return MathDraw(f"{k} \\times \\square + {c} = {total}", str(right),
+                        prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(wrong_order, total - c, (total + c) // k, right + 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.change_after_shopping_p6", display_name={"th": "เงินทอนหลังซื้อของสองชนิด"},
+               level=LEVEL, topic="ลำดับการดำเนินการ")
+class ChangeAfterShoppingP6(WordProblem):
+    def expr(self, rng: Random):
+        n1, p1 = rng.randint(2, 6), rng.randint(8, 45)
+        n2, p2 = rng.randint(2, 6), rng.randint(5, 30)
+        cost = n1 * p1 + n2 * p2
+        paid = next(v for v in (100, 200, 500, 1000) if v > cost)
+        right = paid - cost
+        x, y = rng.sample(("สมุด", "ปากกา", "ดินสอ", "ไม้บรรทัด", "ยางลบ"), 2)
+        prompt = (f"ซื้อ{x} {n1} ชิ้น ชิ้นละ {p1} บาท และ{y} {n2} ชิ้น ชิ้นละ {p2} บาท "
+                  f"จ่ายเงิน {paid:,} บาท ได้เงินทอนกี่บาท")
+        # One price per kind; the cost; the counts added before multiplying.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(paid - p1 - p2, cost, paid - (n1 + n2) * p1, right + 10,
+                                                answer=right, lo=1))

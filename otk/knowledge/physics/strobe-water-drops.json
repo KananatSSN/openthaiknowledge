@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "หยดน้ำใต้ไฟกระพริบ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.strobe_water_drops.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วปรากฏของหยดน้ำใต้ไฟกระพริบ",
+      "statement": "หยดน้ำใต้ไฟกระพริบ: เมื่อคาบไฟ T₀ + Δt ต่างจากคาบการหยด T₀ หยดถัดไปมาแทนที่ช้าหรือเร็วไป จึงเห็นการเคลื่อนที่ปรากฏด้วย u′ = √(2gh)Δt/(T₀ + Δt) และ a′ = g(Δt/(T₀ + Δt))² ส่วนคาบที่แกว่ง τ sin ωt ทำให้หยดที่ความเร็วสุดท้ายแกว่งขึ้นลงด้วยแอมพลิจูด d₀τ/(T₀²ω)",
+      "steps": [
+        "เขียนการกระจัดปรากฏของหยดถัดไปในแต่ละจังหวะไฟสว่าง",
+        "เทียบกับการเคลื่อนที่ความเร่งคงตัวหรืออินทิเกรตความเร็วปรากฏหาแอมพลิจูด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2563_q01",
+        "phys.tpho2563_q02",
+        "phys.tpho2563_q03"
+      ],
+      "note": "The height, drop interval and flash lag vary."
+    }
+  ]
+}

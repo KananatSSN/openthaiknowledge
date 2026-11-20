@@ -13,7 +13,7 @@
     "ตั้งระยะระหว่างศูนย์กลางสองรูปติดกันเท่ากับ 2r",
     "แก้ความยาวด้านแล้วใช้สูตรพื้นที่สามเหลี่ยมด้านเท่า"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 23}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 23}],
    "covered_by": ["math.three_tangent_semicircles_triangle_area_olympiad"]
   }
  ]

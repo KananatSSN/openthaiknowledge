@@ -13,7 +13,7 @@
     "เทียบอัตราส่วน AE/AF กับ AP/AR และเทียบมุม EAP กับ FAR",
     "สรุปความคล้ายของ AEP กับ AFR แล้วใช้มุมในวงกลมรองรับคอร์ด BX และ CY"
    ],
-   "sources": [{"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 1}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 1}],
    "covered_by": ["math.mirrored_rotation_similarity_olympiad"]
   }
  ]

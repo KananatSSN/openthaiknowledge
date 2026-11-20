@@ -1,0 +1,216 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "อสมการเชิงเส้น",
+ "level": "ม.3",
+ "units": [
+  {
+   "id": "math.secondary3.numberline-ray",
+   "kind": "procedure",
+   "title": "อ่านจุดทึบหรือโปร่งและทิศรังสีบนเส้นจำนวนเป็นขอบเขตอสมการ",
+   "statement": "อ่านจุดทึบหรือโปร่งและทิศรังสีบนเส้นจำนวนเป็นขอบเขตอสมการ",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "อ่านจุดทึบหรือโปร่งและทิศรังสีบนเส้นจำนวนเป็นขอบเขตอสมการ",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 1
+    }
+   ],
+   "covered_by": [
+    "math.inequality_representation_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.verbal-inequality-grouping",
+   "kind": "procedure",
+   "title": "แปลวงเล็บ การหาร และคำไม่เกินหรือไม่น้อยกว่าเป็นข้อความโดยรักษาลำดับดำเนินการ",
+   "statement": "แปลวงเล็บ การหาร และคำไม่เกินหรือไม่น้อยกว่าเป็นข้อความโดยรักษาลำดับดำเนินการ",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "แปลวงเล็บ การหาร และคำไม่เกินหรือไม่น้อยกว่าเป็นข้อความโดยรักษาลำดับดำเนินการ",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.inequality_representation_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.expand-solve-inequality",
+   "kind": "procedure",
+   "title": "กระจายวงเล็บ รวมตัวแปรทั้งสองข้าง แล้วกลับเครื่องหมายเมื่อหารด้วยจำนวนลบ",
+   "statement": "กระจายวงเล็บ รวมตัวแปรทั้งสองข้าง แล้วกลับเครื่องหมายเมื่อหารด้วยจำนวนลบ",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "กระจายวงเล็บ รวมตัวแปรทั้งสองข้าง แล้วกลับเครื่องหมายเมื่อหารด้วยจำนวนลบ",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.inequality",
+    "math.inequality_negative_coefficient",
+    "math.inequality_both_sides_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.fraction-both-sides-inequality",
+   "kind": "procedure",
+   "title": "คูณตัวส่วนบวกร่วมแล้วรวบรวมพจน์เพื่อหาเซตคำตอบอสมการ",
+   "statement": "คูณตัวส่วนบวกร่วมแล้วรวบรวมพจน์เพื่อหาเซตคำตอบอสมการ",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "คูณตัวส่วนบวกร่วมแล้วรวบรวมพจน์เพื่อหาเซตคำตอบอสมการ",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.inequality_fraction_m3",
+    "math.inequality_both_sides_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.compound-negative-inequality",
+   "kind": "procedure",
+   "title": "แยกอสมการประกอบ แก้แต่ละด้านโดยกลับเครื่องหมายเมื่อหารด้วยลบ แล้วหาส่วนร่วม",
+   "statement": "แยกอสมการประกอบ แก้แต่ละด้านโดยกลับเครื่องหมายเมื่อหารด้วยลบ แล้วหาส่วนร่วม",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "แยกอสมการประกอบ แก้แต่ละด้านโดยกลับเครื่องหมายเมื่อหารด้วยลบ แล้วหาส่วนร่วม",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.inequality_compound",
+    "math.inequality_negative_coefficient"
+   ]
+  },
+  {
+   "id": "math.secondary3.strict-integer-stock",
+   "kind": "procedure",
+   "title": "ตั้งอสมการจากสิ่งของคงเหลือแล้วใช้เงื่อนไขจำนวนเต็มและขอบเขตเข้ม",
+   "statement": "ตั้งอสมการจากสิ่งของคงเหลือแล้วใช้เงื่อนไขจำนวนเต็มและขอบเขตเข้ม",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "ตั้งอสมการจากสิ่งของคงเหลือแล้วใช้เงื่อนไขจำนวนเต็มและขอบเขตเข้ม",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.inequality_largest_integer_m3",
+    "math.inequality_word_problem_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.age-linear-constraints",
+   "kind": "procedure",
+   "title": "เขียนอายุสัมพันธ์และอายุรวมตามเวลาแล้วหาเขตคำตอบที่แน่นที่สุด ก่อนใช้โดเมนอายุที่กำหนด",
+   "statement": "เขียนอายุสัมพันธ์และอายุรวมตามเวลาแล้วหาเขตคำตอบที่แน่นที่สุด ก่อนใช้โดเมนอายุที่กำหนด",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "เขียนอายุสัมพันธ์และอายุรวมตามเวลาแล้วหาเขตคำตอบที่แน่นที่สุด ก่อนใช้โดเมนอายุที่กำหนด",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.age_constraint_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.positive-integer-shortfall",
+   "kind": "procedure",
+   "title": "เขียนเงื่อนไขส่วนขาดบวกและน้อยกว่าจำนวนที่กำหนด แล้วหาจำนวนเต็มบวกที่เป็นไปได้",
+   "statement": "เขียนเงื่อนไขส่วนขาดบวกและน้อยกว่าจำนวนที่กำหนด แล้วหาจำนวนเต็มบวกที่เป็นไปได้",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "เขียนเงื่อนไขส่วนขาดบวกและน้อยกว่าจำนวนที่กำหนด แล้วหาจำนวนเต็มบวกที่เป็นไปได้",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 13
+    }
+   ],
+   "covered_by": [
+    "math.inequality_count_integers_m3"
+   ]
+  },
+  {
+   "id": "math.secondary3.rectangle-area-lower-bound",
+   "kind": "procedure",
+   "title": "แปลงขอบเขตเส้นรอบรูปเป็นขอบเขตความกว้าง แล้วใช้พื้นที่เพิ่มตามความกว้างบวก",
+   "statement": "แปลงขอบเขตเส้นรอบรูปเป็นขอบเขตความกว้าง แล้วใช้พื้นที่เพิ่มตามความกว้างบวก",
+   "steps": [
+    "ระบุเงื่อนไขและโดเมนของจำนวน",
+    "แปลงขอบเขตเส้นรอบรูปเป็นขอบเขตความกว้าง แล้วใช้พื้นที่เพิ่มตามความกว้างบวก",
+    "แทนคำตอบกลับและตรวจทุกตัวเลือก"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/secondary-3/5196-3-2564-1.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.rectangle_area_bound_m3"
+   ]
+  }
+ ]
+}

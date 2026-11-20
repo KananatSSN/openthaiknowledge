@@ -108,3 +108,127 @@ class PrismCountsP5(WordProblem):
         # Working back from the edges to the base, then on to the faces.
         return MathDraw("", str(faces), prompt=f"ปริซึมชนิดหนึ่งมีสันทั้งหมด {edges} สัน ปริซึมนี้มีหน้าทั้งหมดกี่หน้า",
                         distractors=_story.keep(n, edges // 2, edges + 2, answer=faces, lo=1))
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p5 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _dec(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_dec(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More prisms (2026-11): prism or not, objects shaped as prisms, the rectangles in a net, the edges of a
+# box, a cube from a wire, faces and corners together, and the base from the faces ──
+
+_BASES = ((3, "สามเหลี่ยม"), (4, "สี่เหลี่ยม"), (5, "ห้าเหลี่ยม"), (6, "หกเหลี่ยม"), (8, "แปดเหลี่ยม"))
+
+
+@question_type("math.prism_or_not_p5", display_name={"th": "รูปเรขาคณิตสามมิติใดเป็นปริซึม"},
+               level=LEVEL, topic="ปริซึม")
+class PrismOrNotP5(ConceptBankType):
+    ITEMS = [
+        Concept("รูปเรขาคณิตสามมิติใดเป็นปริซึม", "ทรงสี่เหลี่ยมมุมฉาก", ("ทรงกระบอก", "กรวย", "ทรงกลม")),
+        Concept("รูปเรขาคณิตสามมิติใดไม่ใช่ปริซึม", "พีระมิดฐานสี่เหลี่ยม",
+                ("ลูกบาศก์", "ปริซึมสามเหลี่ยม", "ทรงสี่เหลี่ยมมุมฉาก")),
+        Concept("ทรงกระบอกเป็นปริซึมหรือไม่ เพราะเหตุใด", "ไม่เป็น เพราะฐานเป็นวงกลม ไม่ใช่รูปหลายเหลี่ยม",
+                ("เป็น เพราะมีฐานสองฐาน", "เป็น เพราะฐานทั้งสองเท่ากัน", "ไม่เป็น เพราะไม่มีหน้าข้าง")),
+        Concept("ลูกบาศก์เป็นปริซึมชนิดใด", "ปริซึมสี่เหลี่ยม", ("ปริซึมสามเหลี่ยม", "ปริซึมหกเหลี่ยม", "ไม่ใช่ปริซึม")),
+    ]
+
+
+@question_type("math.prism_objects_p5", display_name={"th": "สิ่งของที่มีรูปร่างเป็นปริซึม"},
+               level=LEVEL, topic="ปริซึม")
+class PrismObjectsP5(ConceptBankType):
+    ITEMS = [
+        Concept("เต็นท์ทรงหน้าจั่วมีรูปร่างคล้ายรูปใด", "ปริซึมสามเหลี่ยม",
+                ("ปริซึมสี่เหลี่ยม", "พีระมิดฐานสามเหลี่ยม", "กรวย")),
+        Concept("ดินสอที่มีหน้าตัดเป็นรูปหกเหลี่ยมมีรูปร่างคล้ายรูปใด", "ปริซึมหกเหลี่ยม",
+                ("ทรงกระบอก", "ปริซึมห้าเหลี่ยม", "พีระมิดฐานหกเหลี่ยม")),
+        Concept("กล่องนมมีรูปร่างคล้ายรูปใด", "ปริซึมสี่เหลี่ยม", ("ปริซึมสามเหลี่ยม", "ทรงกระบอก", "พีระมิด")),
+        Concept("แท่งช็อกโกแลตที่มีหน้าตัดเป็นรูปสามเหลี่ยมมีรูปร่างคล้ายรูปใด", "ปริซึมสามเหลี่ยม",
+                ("พีระมิดฐานสามเหลี่ยม", "กรวย", "ปริซึมสี่เหลี่ยม")),
+    ]
+
+
+@question_type("math.prism_net_rectangles_p5", display_name={"th": "รูปคลี่ของปริซึมมีรูปสี่เหลี่ยมผืนผ้ากี่รูป"},
+               level=LEVEL, topic="ปริซึม")
+class PrismNetRectanglesP5(WordProblem):
+    def expr(self, rng: Random):
+        n, name = rng.choice(_BASES)
+        right = n
+        prompt = f"รูปคลี่ของปริซึม{name}มีรูปสี่เหลี่ยมที่เป็นหน้าข้างกี่รูป (ไม่นับฐาน)"
+        # All the faces; the corners of the prism; two bases counted in.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(n + 2, 2 * n, n - 1, 2, answer=right, lo=1))
+
+
+@question_type("math.box_edges_total_p5", display_name={"th": "ความยาวรอบสันทั้งหมดของทรงสี่เหลี่ยมมุมฉาก"},
+               level=LEVEL, topic="ปริซึม")
+class BoxEdgesTotalP5(WordProblem):
+    def expr(self, rng: Random):
+        w, length, h = rng.randint(3, 20), rng.randint(3, 25), rng.randint(3, 20)
+        right = 4 * (w + length + h)
+        prompt = (f"กล่องทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {length} ซม. สูง {h} ซม. "
+                  "ถ้านำลวดมาดัดตามสันทุกสัน ต้องใช้ลวดยาวกี่เซนติเมตร")
+        # Each length once or twice; the volume.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(w + length + h, 2 * (w + length + h), 6 * (w + length + h),
+                                                w * length * h, answer=right, lo=1))
+
+
+@question_type("math.cube_from_wire_p5", display_name={"th": "ดัดลวดเป็นโครงลูกบาศก์"},
+               level=LEVEL, topic="ปริซึม")
+class CubeFromWireP5(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 25)
+        wire = 12 * a
+        prompt = f"ลวดยาว {wire} เซนติเมตร ดัดเป็นโครงลูกบาศก์ได้พอดี ลูกบาศก์มีสันยาวสันละกี่เซนติเมตร"
+        # Divided by the faces, the corners, or four sides of a square.
+        return MathDraw("", str(a), prompt=prompt,
+                        distractors=_story.keep(wire // 6, wire // 8, wire // 4, a + 1, answer=a, lo=1))
+
+
+@question_type("math.prism_faces_plus_corners_p5", display_name={"th": "จำนวนหน้ารวมกับจำนวนจุดยอดของปริซึม"},
+               level=LEVEL, topic="ปริซึม")
+class PrismFacesPlusCornersP5(WordProblem):
+    def expr(self, rng: Random):
+        n, name = rng.choice(_BASES)
+        faces, corners, edges = n + 2, 2 * n, 3 * n
+        right = faces + corners
+        prompt = f"ปริซึม{name}มีจำนวนหน้ารวมกับจำนวนจุดยอดเท่ากับเท่าใด"
+        # Edges instead of corners; faces and edges; corners counted once per base.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(faces + edges, corners + edges, faces + n, right + 2,
+                                                answer=right, lo=1))
+
+
+@question_type("math.prism_base_from_faces_p5", display_name={"th": "บอกชนิดของปริซึมจากจำนวนหน้า"},
+               level=LEVEL, topic="ปริซึม")
+class PrismBaseFromFacesP5(ChoiceType):
+    def compose(self, rng: Random):
+        n, name = rng.choice(_BASES)
+        right = f"ปริซึม{name}"
+        others = [f"ปริซึม{m}" for k, m in _BASES if k != n]
+        return f"ปริซึมชนิดหนึ่งมีหน้าทั้งหมด {n + 2} หน้า ปริซึมนี้คือปริซึมชนิดใด", right, rng.sample(others, 3)

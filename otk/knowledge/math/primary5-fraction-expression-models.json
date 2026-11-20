@@ -1,0 +1,63 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "เศษส่วน",
+ "level": "ป.5",
+ "units": [
+  {
+   "id": "math.primary5.fraction-mixed-statement",
+   "kind": "procedure",
+   "title": "เปลี่ยนจำนวนคละเป็นเศษเกินหรือใช้ผลคูณไขว้เพื่อตรวจข้อความเปรียบเทียบทุกข้อ",
+   "statement": "เปลี่ยนจำนวนคละเป็นเศษเกินหรือใช้ผลคูณไขว้เพื่อตรวจข้อความเปรียบเทียบทุกข้อ",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ถาม",
+    "เปลี่ยนจำนวนคละเป็นเศษเกินหรือใช้ผลคูณไขว้เพื่อตรวจข้อความเปรียบเทียบทุกข้อ",
+    "ตรวจทุกตัวเลือกด้วยค่าที่แน่นอน"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4725-5-2567-2-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4898-6-2565-1-2.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4898-6-2565-1-2.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4898-6-2565-1-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-6/4898-6-2565-1-2.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.fraction_comparison_statement_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.fraction-expression-extreme",
+   "kind": "procedure",
+   "title": "คำนวณผลลบจำนวนคละแต่ละนิพจน์เป็นเศษส่วนแน่นอนก่อนเปรียบเทียบมากหรือน้อยที่สุด",
+   "statement": "คำนวณผลลบจำนวนคละแต่ละนิพจน์เป็นเศษส่วนแน่นอนก่อนเปรียบเทียบมากหรือน้อยที่สุด",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ถาม",
+    "คำนวณผลลบจำนวนคละแต่ละนิพจน์เป็นเศษส่วนแน่นอนก่อนเปรียบเทียบมากหรือน้อยที่สุด",
+    "ตรวจทุกตัวเลือกด้วยค่าที่แน่นอน"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4725-5-2567-2-2.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.fraction_expression_extreme_p5"
+   ]
+  }
+ ]
+}

@@ -13,7 +13,7 @@
         "Choose the upper-left block freely and fill the final row and column",
         "Check the last corner condition is consistent when the dimensions have the same parity"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 6}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 6}],
       "covered_by": ["math.odd_row_column_grids_olympiad"]
     }
   ]

@@ -229,3 +229,108 @@ class SineRuleAmbiguousCaseM5(QuestionType):
             f"กำหนดรูปสามเหลี่ยม ABC โดย ∠A = {angle}°, ด้าน a (ตรงข้ามมุม A) ยาว {a} หน่วย "
             f"และด้าน b (ตรงข้ามมุม B) ยาว {b} หน่วย ข้อมูลนี้สร้างรูปสามเหลี่ยมได้กี่รูป"
         )], right, wrongs, self.topic)
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import MathDraw, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m5 import M5 as LEVEL  # noqa: E402
+
+
+def _nz5(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk5(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk5(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk5(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt5(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk5(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk5(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _g5(n: int) -> str:
+    """A whole number in TeX with grouped thousands."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk5(*values: int, answer: int, lo: int = 1) -> list[str]:
+    return _tk5(*(_g5(int(v)) for v in values if v >= lo), answer=_g5(answer))
+
+
+def _deg5(*angles: int) -> str:
+    return "x = " + ", ".join(f"{a}^{{\\circ}}" for a in angles)
+
+# ── More law of sines (2026-11): a side from the circumradius, an area with a 30° or 150° angle, side ratios
+# of special triangles, and a side from two angles ──
+
+
+@question_type("math.side_from_circumradius_m5", display_name={"th": "หาความยาวด้านจากรัศมีวงกลมล้อมรอบ"}, level=LEVEL,
+               topic="กฎของไซน์")
+class SideFromCircumradiusM5(WordProblem):
+    def expr(self, rng: Random):
+        r = rng.randint(2, 20)
+        angle = rng.choice((30, 90, 150))
+        right = 2 * r if angle == 90 else r
+        prompt = f"รูปสามเหลี่ยม ABC แนบในวงกลมรัศมี {r} เซนติเมตร ถ้ามุม A มีขนาด {angle} องศา ด้าน a (ตรงข้ามมุม A) ยาวกี่เซนติเมตร"
+        # The radius doubled or halved; the sine forgotten.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk5(r if angle == 90 else 2 * r, 4 * r, r // 2 if r > 3 else r + 3, right + 1, answer=right, lo=1))
+
+
+@question_type("math.area_with_thirty_degrees_m5", display_name={"th": "พื้นที่รูปสามเหลี่ยมเมื่อมุมระหว่างด้านเป็น 30° หรือ 150°"},
+               level=LEVEL, topic="กฎของไซน์")
+class AreaWithThirtyDegreesM5(WordProblem):
+    def expr(self, rng: Random):
+        a, b = rng.randint(1, 10) * 4, rng.randint(2, 20)
+        angle = rng.choice((30, 150, 90))
+        right = a * b // 4 if angle != 90 else a * b // 2
+        prompt = f"รูปสามเหลี่ยมมีด้านสองด้านยาว {a} และ {b} เซนติเมตร มุมระหว่างสองด้านนี้ {angle} องศา มีพื้นที่กี่ตารางเซนติเมตร"
+        # The sine left out; the product; the right-angle formula for every angle.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk5(a * b // 2 if angle != 90 else a * b // 4, a * b, a + b, right + a, answer=right, lo=1))
+
+
+@question_type("math.special_triangle_side_ratio_m5", display_name={"th": "อัตราส่วนความยาวด้านของรูปสามเหลี่ยมมุมพิเศษ"},
+               level=LEVEL, topic="กฎของไซน์")
+class SpecialTriangleSideRatioM5(ConceptBankType):
+    ITEMS = [
+        Concept("รูปสามเหลี่ยมที่มีมุม 30°, 60°, 90° มีอัตราส่วนด้านตรงข้ามมุมเหล่านั้นเป็นเท่าใด", "1 : √3 : 2",
+                ("1 : 2 : 3", "1 : 2 : √3", "√3 : 1 : 2")),
+        Concept("รูปสามเหลี่ยมที่มีมุม 45°, 45°, 90° มีอัตราส่วนด้านตรงข้ามมุมเหล่านั้นเป็นเท่าใด", "1 : 1 : √2",
+                ("1 : 1 : 2", "1 : 2 : √2", "√2 : √2 : 1")),
+        Concept("รูปสามเหลี่ยมที่มีมุม 30°, 30°, 120° มีอัตราส่วนด้านตรงข้ามมุมเหล่านั้นเป็นเท่าใด", "1 : 1 : √3",
+                ("1 : 1 : 4", "1 : 1 : 2", "1 : 1 : 3")),
+        Concept("รูปสามเหลี่ยมที่มีมุมทั้งสามเท่ากัน มีอัตราส่วนความยาวด้านเป็นเท่าใด", "1 : 1 : 1",
+                ("1 : 2 : 3", "1 : √3 : 2", "1 : 1 : √2")),
+    ]
+
+
+@question_type("math.side_from_two_angles_m5", display_name={"th": "หาความยาวด้านจากมุมสองมุมและด้านหนึ่ง"}, level=LEVEL,
+               topic="กฎของไซน์")
+class SideFromTwoAnglesM5(WordProblem):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 20)
+        case = rng.randrange(3)
+        if case == 0:
+            angles, right, wrongs = (30, 45), rf"{k}\sqrt{{2}}", (rf"\frac{{{k}\sqrt{{2}}}}{{2}}", str(2 * k), rf"{k}\sqrt{{3}}")
+        elif case == 1:
+            angles, right, wrongs = (30, 60), rf"{k}\sqrt{{3}}", (rf"\frac{{{k}\sqrt{{3}}}}{{3}}", str(2 * k), rf"{k}\sqrt{{2}}")
+        else:
+            angles, right, wrongs = (45, 90), rf"{k}\sqrt{{2}}", (rf"\frac{{{k}\sqrt{{2}}}}{{2}}", str(2 * k), str(k))
+        prompt = (f"รูปสามเหลี่ยม ABC มีมุม A = {angles[0]}° มุม B = {angles[1]}° และด้าน a (ตรงข้ามมุม A) ยาว {k} หน่วย "
+                  "ด้าน b (ตรงข้ามมุม B) ยาวกี่หน่วย")
+        return MathDraw("", right, prompt=prompt, distractors=_tk5(*wrongs, answer=right))

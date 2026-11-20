@@ -129,3 +129,135 @@ class BarChartCompareP4(QuestionType):
         wrongs = _story.keep(v // scale, a + b if v == a - b else a - b, v + scale,
                              v - scale, a, answer=v, lo=1)
         return _maths([text(bc.text), text(ask)], str(v), wrongs, self.topic)
+
+
+# ── More bar charts (2026-11): most minus least, the total, the order, bars above a number, a true
+# statement, and two bars against a third ──
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _p4_bars(rng: Random):
+    scale = rng.choice((5, 10, 20, 50))
+    return scale, _story.bar_chart(rng, scale=scale, lo=2, hi=12)
+
+
+@question_type("math.bar_range_p4", display_name={"th": "แผนภูมิแท่ง: มากที่สุดมากกว่าน้อยที่สุดเท่าใด"},
+               level=LEVEL, topic="แผนภูมิแท่ง")
+class BarRangeP4(WordProblem):
+    def expr(self, rng: Random):
+        scale, pg = _p4_bars(rng)
+        a, b = max(pg.data.values()), min(pg.data.values())
+        right = a - b
+        return MathDraw("", str(right),
+                        prompt=f"{pg.text}\nรายการที่มากที่สุดมากกว่ารายการที่น้อยที่สุดกี่{pg.chart.unit}",
+                        distractors=_story.keep(right // scale, a + b, right + scale, right - scale, answer=right, lo=1))
+
+
+@question_type("math.bar_total_p4", display_name={"th": "แผนภูมิแท่ง: รวมทุกรายการ"},
+               level=LEVEL, topic="แผนภูมิแท่ง")
+class BarTotalP4(WordProblem):
+    def expr(self, rng: Random):
+        scale, pg = _p4_bars(rng)
+        right = sum(pg.data.values())
+        smallest = min(pg.data.values())
+        return MathDraw("", str(right), prompt=f"{pg.text}\nรวมทุกรายการมีกี่{pg.chart.unit}",
+                        distractors=_story.keep(right // scale, right - smallest, right + scale, right - scale,
+                                                answer=right, lo=1))
+
+
+@question_type("math.bar_order_p4", display_name={"th": "แผนภูมิแท่ง: เรียงลำดับ"},
+               level=LEVEL, topic="แผนภูมิแท่ง")
+class BarOrderP4(ChoiceType):
+    def compose(self, rng: Random):
+        _, pg = _p4_bars(rng)
+        up = rng.random() < 0.5
+        ordered = sorted(pg.data, key=pg.data.get, reverse=not up)
+        place = rng.choice((1, 2))
+        right = ordered[place]
+        stem = (f"{pg.text}\nเมื่อเรียงจาก{'น้อยไปมาก' if up else 'มากไปน้อย'} "
+                f"รายการใดอยู่ลำดับที่{'สอง' if place == 1 else 'สาม'}")
+        return stem, right, [r for r in ordered if r != right]
+
+
+@question_type("math.bar_count_above_p4", display_name={"th": "แผนภูมิแท่ง: นับรายการที่มากกว่าจำนวนที่กำหนด"},
+               level=LEVEL, topic="แผนภูมิแท่ง")
+class BarCountAboveP4(WordProblem):
+    def expr(self, rng: Random):
+        _, pg = _p4_bars(rng)
+        values = sorted(pg.data.values())
+        k = rng.randint(values[0], values[-1] - 1)
+        right = sum(v > k for v in values)
+        return MathDraw("", str(right), prompt=f"{pg.text}\nมีกี่รายการที่มากกว่า {k} {pg.chart.unit}",
+                        distractors=_story.keep(sum(v >= k for v in values), len(values) - right, len(values),
+                                                right - 1, right + 1, answer=right, lo=0, hi=len(values)))
+
+
+@question_type("math.bar_true_statement_p4", display_name={"th": "แผนภูมิแท่ง: ข้อความใดถูกต้อง"},
+               level=LEVEL, topic="แผนภูมิแท่ง")
+class BarTrueStatementP4(ChoiceType):
+    def compose(self, rng: Random):
+        scale, pg = _p4_bars(rng)
+        x, y = rng.sample(list(pg.data), 2)
+        if pg.data[x] < pg.data[y]:
+            x, y = y, x
+        a, b, unit = pg.data[x], pg.data[y], pg.chart.unit
+        lx, ly = pg.label(x), pg.label(y)
+        right = f"{lx}มากกว่า{ly} {a - b} {unit}"
+        # The cells counted as the amount; the wrong way round; added.
+        wrongs = [f"{lx}มากกว่า{ly} {(a - b) // scale} {unit}", f"{ly}มากกว่า{lx} {a - b} {unit}",
+                  f"{lx}มากกว่า{ly} {a + b} {unit}"]
+        return f"{pg.text}\nข้อความใดถูกต้อง", right, wrongs
+
+
+@question_type("math.bar_two_rows_p4", display_name={"th": "แผนภูมิแท่ง: สองรายการรวมกันเทียบกับอีกรายการ"},
+               level=LEVEL, topic="แผนภูมิแท่ง")
+class BarTwoRowsP4(WordProblem):
+    def expr(self, rng: Random):
+        scale, pg = _p4_bars(rng)
+        ordered = sorted(pg.data, key=pg.data.get)
+        z = ordered[0]
+        x, y = rng.sample(ordered[1:], 2)
+        a, b, c = pg.data[x], pg.data[y], pg.data[z]
+        right = a + b - c
+        prompt = f"{pg.text}\n{pg.label(x)}และ{pg.label(y)}รวมกัน มากกว่า{pg.label(z)}กี่{pg.chart.unit}"
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(right // scale, a + b, a - c, right + scale, answer=right, lo=1))
+
+
+@question_type("math.three_series_chart_summary_p4", display_name={"th": "ตรวจสรุปข้อมูลแผนภูมิแท่งสามชุด"}, level={"th": "ป.4"}, topic="แผนภูมิแท่ง")
+class ThreeSeriesChartSummaryP4(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-4/4543-4-2567-2-2.pdf, ข้อ 19",))
+
+    def compose(self,rng: Random):
+        months=("มกราคม","กุมภาพันธ์","มีนาคม")
+        first=rng.sample(range(5,41),3)
+        second=rng.sample(range(5,41),3)
+        third=rng.sample(range(5,41),3)
+        second[1]=first[1]
+        bad=rng.randrange(4)
+        most=first.index(max(first))
+        least=third.index(min(third))
+        shown_most=most if bad!=0 else rng.choice([i for i in range(3) if i!=most])
+        shown_least=least if bad!=1 else rng.choice([i for i in range(3) if i!=least])
+        relation="มากกว่า" if first[0]>first[2] else "น้อยกว่า"
+        if bad==3:
+            relation="น้อยกว่า" if relation=="มากกว่า" else "มากกว่า"
+        rows=[f"สมุดขายมากที่สุดในเดือน{months[shown_most]}",f"ยางลบขายน้อยที่สุดในเดือน{months[shown_least]}",
+              f"เดือนกุมภาพันธ์ขายสมุดและดินสอได้จำนวน{'ไม่เท่ากัน' if bad==2 else 'เท่ากัน'}",
+              f"เดือนมกราคมขายสมุดได้{relation}เดือนมีนาคม"]
+        table="ตารางข้อมูลจากแผนภูมิแท่ง (หน่วย ชิ้น)\nเดือน | สมุด | ดินสอ | ยางลบ\n"
+        table+="\n".join(f"{month} | {a} | {b} | {c}" for month,a,b,c in zip(months,first,second,third))
+        return f"{table}\nข้อใดสรุปไม่ถูกต้อง",rows[bad],[v for i,v in enumerate(rows) if i!=bad]

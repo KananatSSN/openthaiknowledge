@@ -2,7 +2,7 @@
 
 # ฟิสิกส์ (`physics`)
 
-1,047 sets in 200 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,184 sets in 206 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -268,3 +268,9 @@
 | [`tpho2557`](olympiad/tpho2557.py) | Seeded variants of the reviewed TPhO 13 (2557) national physics olympiad. | — | 17 |
 | [`tpho2558`](olympiad/tpho2558.py) | Seeded variants of the reviewed TPhO 14 (2558) national physics olympiad. | — | 17 |
 | [`tpho2559`](olympiad/tpho2559.py) | Seeded variants of the reviewed TPhO 15 (2559) national physics olympiad. | — | 23 |
+| [`tpho2560`](olympiad/tpho2560.py) | Seeded variants of the reviewed TPhO 16 (2560) national physics olympiad. | — | 20 |
+| [`tpho2561`](olympiad/tpho2561.py) | Seeded variants of the reviewed TPhO 17 (2561) national physics olympiad. | — | 22 |
+| [`tpho2562`](olympiad/tpho2562.py) | Seeded variants of the reviewed TPhO 18 (2562) national physics olympiad. | — | 24 |
+| [`tpho2563`](olympiad/tpho2563.py) | Seeded variants of the reviewed TPhO 19 (2563) national physics olympiad. | — | 20 |
+| [`tpho2564`](olympiad/tpho2564.py) | Seeded variants of the reviewed TPhO 20 (2564) national physics olympiad. | — | 29 |
+| [`tpho2565`](olympiad/tpho2565.py) | Seeded variants of the reviewed TPhO 21 (2565) national physics olympiad. | — | 22 |

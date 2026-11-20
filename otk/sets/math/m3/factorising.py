@@ -13,6 +13,7 @@ from random import Random
 from otk.core.provenance import Provenance
 from otk.core.registry import question_type
 from otk.kit.math_problems import (
+    ChoiceType,
     MathDraw,
     MathType,
     WordProblem,
@@ -130,3 +131,161 @@ class FactorCubicGroupingM3(WordProblem):
                   f"{binomial_tex(-a)}{binomial_tex(-b)}{binomial_tex(b)}",
                   f"{binomial_tex(a)}{binomial_tex(b)}^{{2}}"]
         return MathDraw(expanded, right, prompt="จงแยกตัวประกอบให้สมบูรณ์", distractors=wrongs)
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.content import math as _math_block  # noqa: E402
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More factorising (2026-11): a difference of squares, a perfect square, a leading coefficient of two, two
+# variables, and which binomial is a factor ──
+
+
+def _lin3(a: int, b: int, sym: str = "x") -> str:
+    return f"({poly_tex((a, sym), (b, ''))})"
+
+
+@question_type("math.factor_difference_of_squares_m3", display_name={"th": "แยกตัวประกอบผลต่างกำลังสอง"},
+               level=LEVEL, topic="แยกตัวประกอบ")
+class FactorDifferenceOfSquaresM3(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.randint(1, 9), rng.randint(1, 12)
+        right = f"{_lin3(a, b)}{_lin3(a, -b)}"
+        # Both signs the same; not square-rooted; the first term not rooted.
+        wrongs = [f"{_lin3(a, b)}{_lin3(a, b)}", f"{_lin3(a, -b)}^{{2}}", f"{_lin3(a * a, b)}{_lin3(1, -b)}"]
+        return MathDraw(poly_tex((a * a, "x^{2}"), (-b * b, "")), right, prompt="จงแยกตัวประกอบ",
+                        distractors=_tk3(*wrongs, answer=right))
+
+
+@question_type("math.factor_perfect_square_m3", display_name={"th": "แยกตัวประกอบกำลังสองสมบูรณ์"},
+               level=LEVEL, topic="แยกตัวประกอบ")
+class FactorPerfectSquareM3(MathType):
+    def expr(self, rng: Random):
+        a = rng.choice((1, -1)) * rng.randint(1, 12)
+        right = f"{binomial_tex(a)}^{{2}}"
+        # The sign of a flipped; a difference of squares; the middle coefficient as the root.
+        wrongs = [f"{binomial_tex(-a)}^{{2}}", f"{binomial_tex(a)}{binomial_tex(-a)}", f"{binomial_tex(2 * a)}^{{2}}"]
+        return MathDraw(poly_tex((1, "x^{2}"), (2 * a, "x"), (a * a, "")), right, prompt="จงแยกตัวประกอบ",
+                        distractors=_tk3(*wrongs, answer=right))
+
+
+@question_type("math.factor_leading_two_m3", display_name={"th": "แยกตัวประกอบเมื่อสัมประสิทธิ์ของ x² เป็น 2"},
+               level=LEVEL, topic="แยกตัวประกอบ")
+class FactorLeadingTwoM3(MathType):
+    def expr(self, rng: Random):
+        while True:
+            p = rng.choice((1, -1)) * rng.choice((1, 3, 5, 7, 9))
+            q = rng.choice((1, -1)) * rng.randint(1, 9)
+            if p + 2 * q != 0 and p != 2 * q:
+                break
+        right = f"{_lin3(2, p)}{_lin3(1, q)}"
+        # The constants swapped; both signs flipped; the 2 on the other bracket.
+        wrongs = [f"{_lin3(2, q)}{_lin3(1, p)}", f"{_lin3(2, -p)}{_lin3(1, -q)}", f"{_lin3(1, p)}{_lin3(2, -q)}"]
+        return MathDraw(poly_tex((2, "x^{2}"), (p + 2 * q, "x"), (p * q, "")), right, prompt="จงแยกตัวประกอบ",
+                        distractors=_tk3(*wrongs, answer=right))
+
+
+@question_type("math.factor_two_variables_m3", display_name={"th": "แยกตัวประกอบพหุนามสองตัวแปร"},
+               level=LEVEL, topic="แยกตัวประกอบ")
+class FactorTwoVariablesM3(MathType):
+    def expr(self, rng: Random):
+        while True:
+            a, b = rng.choice((1, -1)) * rng.randint(1, 7), rng.choice((1, -1)) * rng.randint(1, 7)
+            if a + b != 0 and a != b:
+                break
+        right = f"({poly_tex((1, 'x'), (a, 'y'))})({poly_tex((1, 'x'), (b, 'y'))})"
+        # Both signs flipped; the y left off one bracket; one sign flipped.
+        wrongs = [f"({poly_tex((1, 'x'), (-a, 'y'))})({poly_tex((1, 'x'), (-b, 'y'))})",
+                  f"({poly_tex((1, 'x'), (a, 'y'))})({poly_tex((1, 'x'), (b, ''))})",
+                  f"({poly_tex((1, 'x'), (a, 'y'))})({poly_tex((1, 'x'), (-b, 'y'))})"]
+        return MathDraw(poly_tex((1, "x^{2}"), (a + b, "xy"), (a * b, "y^{2}")), right, prompt="จงแยกตัวประกอบ",
+                        distractors=_tk3(*wrongs, answer=right))
+
+
+@question_type("math.which_factor_m3", display_name={"th": "ข้อใดเป็นตัวประกอบของพหุนาม"},
+               level=LEVEL, topic="แยกตัวประกอบ")
+class WhichFactorM3(QuestionType):
+    """Fixed choices: a binomial from another draw could also be a factor."""
+
+    def build(self, rng: Random, **params):
+        while True:
+            a, b = rng.choice((1, -1)) * rng.randint(1, 9), rng.choice((1, -1)) * rng.randint(1, 9)
+            if a != b and a != -b:
+                break
+        poly = poly_tex((1, "x^{2}"), (a + b, "x"), (a * b, ""))
+        right = binomial_tex(a)
+        # This factor's sign flipped; the other's sign flipped; the product or sum as the constant.
+        third = next(r for r in (a * b, a + b, -(a + b), a - b, 2 * a + 1) if r and abs(r) not in (abs(a), abs(b)))
+        wrongs = [binomial_tex(-a), binomial_tex(-b), binomial_tex(third)]
+        return _fixed_maths([_text_block("ข้อใดเป็นตัวประกอบของ"), _math_block(poly)], right,
+                            _tk3(*wrongs, answer=right), self.topic)
+
+
+
+@question_type("math.factor_cube_identity_m3", display_name={"th": "แยกผลบวกหรือผลต่างกำลังสามรวมพจน์เลื่อน"}, level={"th": "ม.3"}, topic="แยกตัวประกอบ")
+class FactorCubeIdentityM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 16–17,19–20",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            a,b=rng.randint(2,5),rng.randint(2,8)
+            u,v=f"{a}×x",f"{b}×y"
+        else:
+            shift,b=rng.randint(2,7),rng.randint(2,8)
+            u,v=f"x + {shift}",str(b)
+        sign=rng.choice(("+","−"))
+        opposite="−" if sign=="+" else "+"
+        def model(outer,middle,last):
+            return f"(({u}) {outer} ({v})) × (({u})² {middle} ({u})×({v}) {last} ({v})²)"
+        return (f"แยกตัวประกอบ ({u})³ {sign} ({v})³",model(sign,opposite,"+"),
+                [model(sign,sign,"+"),model(opposite,sign,"+"),model(sign,opposite,"−")])
+
+
+@question_type("math.factor_fourth_power_m3", display_name={"th": "แยกผลต่างกำลังสี่หลังดึงตัวร่วม"}, level={"th": "ม.3"}, topic="แยกตัวประกอบ")
+class FactorFourthPowerM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 18",))
+
+    def compose(self,rng: Random):
+        common,b=rng.randint(2,9),rng.randint(2,9)
+        def model(qsign,l1,l2):
+            return f"{common} × (x² {qsign} {b*b}) × (x {l1} {b}) × (x {l2} {b})"
+        return (f"แยกตัวประกอบ {common}×x⁴ − {common*b**4}",model("+","+","−"),
+                [model("−","+","−"),model("+","+","+"),model("+","−","−")])

@@ -14,7 +14,7 @@
         "Apply additivity and the square identity to classify the two nonzero maps"
       ],
       "sources": [
-        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 3}
+        {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 3}
       ],
       "covered_by": ["math.functional_equation_value_set_olympiad"]
     }

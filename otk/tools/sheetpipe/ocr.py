@@ -3,7 +3,7 @@
 A scanned PDF has no text layer, so :func:`extract.page_texts` returns empty
 pages. For those pages this module renders the page and hands it to Tesseract
 with Thai + English. Two scans in the bank need this:
-``Faii/ข้อสอบแรง.pdf`` and ``สอวน_math/posn1-64-math.pdf``.
+``physics/level/unspecified-level/Faii/ข้อสอบแรง.pdf`` and ``mathematics/level/upper-secondary/posn-math/posn1-64-math.pdf``.
 
 **What it is good for.** Thai prose, numbers and choice letters come out
 usable. ``--psm 6`` (one uniform block of text) keeps each line whole and
@@ -12,7 +12,7 @@ keeps two-column choices on one line. Expect small slips, such as ``ข้าย
 
 **What it is not good for.** Mathematics. Exponents, fractions and radicals
 come out garbled. Transcribe those pages from the render, as
-``openthaiknowledge-bank/สอวน_math/HANDOFF.md`` describes.
+``openthaiknowledge-bank/mathematics/level/upper-secondary/posn-math/HANDOFF.md`` describes.
 
 Setup (Windows)::
 

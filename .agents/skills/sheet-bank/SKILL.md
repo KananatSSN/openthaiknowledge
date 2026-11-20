@@ -58,7 +58,7 @@ limits are respected. Prompt each with just the bank path, plus anything you
 know about the file (e.g. "pages 1–2 are the exercises; item 3's table is
 missing"):
 
-> Transcribe `rathcenter/12 หลักการนับ/(สสวท) 5 จัดหมู่🍒.pdf`.
+> Transcribe `mathematics/level/upper-secondary/rathcenter/12-counting/(สสวท) 5 จัดหมู่🍒.pdf`.
 
 When the reports come back:
 

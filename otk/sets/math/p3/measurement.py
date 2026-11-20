@@ -15,7 +15,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_gaps_primary import _c, _choices, _cs
 from otk.sets._support.math_p3 import LEVEL
 
@@ -239,3 +239,144 @@ class WeightWordProblemP3(WordProblem):
                                 f"ผลแรกหนักกว่าผลที่สองกี่กรัม"),
                         distractors=_story.keep(a + b, abs(ka * 100 + ga - b), a - b + 1000,
                                                 answer=a - b, lo=1))
+
+
+# ── More measuring (2026-11): kilometres and metres as metres, centimetres and millimetres as millimetres,
+# and a two-leg route ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+
+@question_type("math.km_m_to_m_p3", display_name={"th": "เปลี่ยนกิโลเมตรและเมตรเป็นเมตร"},
+               level=LEVEL, topic="การวัด")
+class KmMToMP3(WordProblem):
+    def expr(self, rng: Random):
+        km, m = rng.randint(1, 9), rng.randint(5, 995)
+        right = 1000 * km + m
+        # A kilometre taken as 100 metres; the metres left out; the numbers added.
+        return MathDraw("", str(right), prompt=f"{km} กิโลเมตร {m} เมตร เท่ากับกี่เมตร",
+                        distractors=_story.keep(100 * km + m, 1000 * km, km + m, 10 * km + m, answer=right, lo=1))
+
+
+@question_type("math.cm_mm_to_mm_p3", display_name={"th": "เปลี่ยนเซนติเมตรและมิลลิเมตรเป็นมิลลิเมตร"},
+               level=LEVEL, topic="การวัด")
+class CmMmToMmP3(WordProblem):
+    def expr(self, rng: Random):
+        cm, mm = rng.randint(2, 40), rng.randint(1, 9)
+        right = 10 * cm + mm
+        # A centimetre taken as 100 millimetres; the millimetres left out; the numbers added.
+        return MathDraw("", str(right), prompt=f"{cm} เซนติเมตร {mm} มิลลิเมตร เท่ากับกี่มิลลิเมตร",
+                        distractors=_story.keep(100 * cm + mm, 10 * cm, cm + mm, right + 10, answer=right, lo=1))
+
+
+@question_type("math.route_distance_p3", display_name={"th": "ระยะทางสองช่วง"},
+               level=LEVEL, topic="การวัด")
+class RouteDistanceP3(WordProblem):
+    def expr(self, rng: Random):
+        a, b = rng.randint(350, 1800), rng.randint(350, 1800)
+        x, y, z = rng.sample(("บ้าน", "โรงเรียน", "ตลาด", "วัด", "สวนสาธารณะ"), 3)
+        if rng.random() < 0.5:
+            right = a + b
+            prompt = f"จาก{x}ถึง{y}ไกล {a} เมตร จาก{y}ถึง{z}ไกล {b} เมตร เดินจาก{x}ผ่าน{y}ไปถึง{z}ไกลกี่เมตร"
+            wrong = abs(a - b)
+        else:
+            if a == b:
+                b = a - 50
+            right = abs(a - b)
+            prompt = (f"จาก{x}ถึง{y}ไกล {a} เมตร จาก{x}ถึง{z}ไกล {b} เมตร "
+                      f"{'ไป' + y + 'ไกลกว่าไป' + z if a > b else 'ไป' + z + 'ไกลกว่าไป' + y}กี่เมตร")
+            wrong = a + b
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(wrong, right + 100, right - 10, max(a, b), answer=right, lo=1))
+
+
+@question_type("math.weight_comparison_statement_p3", display_name={"th": "เปรียบเทียบน้ำหนักกิโลกรัมขีดกับกรัมเป็นข้อความ"}, level={"th": "ป.3"}, topic="การวัด")
+class WeightComparisonStatementP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4352-3-2565-1-2.pdf, ข้อ 12",))
+
+    def compose(self, rng: Random):
+        a,b=rng.sample(range(5,101),2)
+        first,second=a*100,b*100
+        kg,khit=divmod(a,10)
+        large,small=("เป็ด","ปลา") if first>second else ("ปลา","เป็ด")
+        gap=abs(first-second)
+        right=f"{large}หนักกว่า{small} {gap} กรัม"
+        return (f"เป็ดหนัก {kg} กิโลกรัม {khit} ขีด ปลาหนัก {second} กรัม ข้อใดสรุปได้ถูกต้อง",right,
+                [f"{small}หนักกว่า{large} {gap} กรัม",f"{large}หนักกว่า{small} {gap+100} กรัม",
+                 f"{small}หนักกว่า{large} {gap+100} กรัม"])
+
+
+@question_type("math.weight_estimation_error_p3", display_name={"th": "หาความคลาดเคลื่อนของน้ำหนักที่คาดคะเน"}, level={"th": "ป.3"}, topic="การวัด")
+class WeightEstimationErrorP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4352-3-2565-1-2.pdf, ข้อ 14–15",))
+
+    def compose(self, rng: Random):
+        estimated,actual=(100*n for n in rng.sample(range(5,901),2))
+        kg,q=divmod(estimated//100,10)
+        ak,ag=divmod(actual,1000)
+        gap=abs(estimated-actual)
+        grams=rng.choice((False,True))
+        def label(value):
+            return f"{value} กรัม" if grams else f"{value//1000} กิโลกรัม {value%1000} กรัม"
+        return (f"คาดคะเนน้ำหนักลังเป็น {kg} กิโลกรัม {q} ขีด แต่ชั่งจริงได้ {ak} กิโลกรัม {ag} กรัม "
+                "คาดคะเนคลาดเคลื่อนไปเท่าใด",label(gap),
+                [label(estimated+actual),label(gap+100),label(gap-100)])
+
+
+@question_type("math.mixed_length_result_p3", display_name={"th": "บวกหรือลบความยาวแล้วตอบหน่วยผสม"}, level={"th": "ป.3"}, topic="การวัด")
+class MixedLengthResultP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4354-3-2565-1-3.pdf, ข้อ 16–20",))
+
+    def compose(self,rng: Random):
+        factor,major,minor=rng.choice(((100,"เมตร","เซนติเมตร"),(1000,"กิโลเมตร","เมตร")))
+        a,b=rng.randint(3,9),rng.randint(1,2)
+        x,y=rng.randint(1,factor-1),rng.randint(1,factor-1)
+        add=rng.choice((False,True))
+        total=a*factor+x+(b*factor+y if add else -(b*factor+y))
+        def label(value):
+            q,r=divmod(value,factor)
+            return f"{q} {major} {r} {minor}"
+        # Wrong conversion factor, failed carry/borrow, and opposite operation.
+        candidates=[a*factor+x-(b*factor+y) if add else a*factor+x+b*factor+y,
+                    total+factor,total-factor,total+1]
+        wrongs=list(dict.fromkeys(label(v) for v in candidates if v>=0 and v!=total))
+        ask="รวมกันยาว" if add else "เส้นแรกยาวกว่าเส้นที่สอง"
+        return (f"เชือกเส้นแรกยาว {a} {major} {x} {minor} เส้นที่สองยาว {b} {major} {y} {minor} "
+                f"{ask}กี่{major} กี่{minor}",label(total),wrongs)
+
+
+@question_type("math.longer_than_reference_p3", display_name={"th": "เลือกความยาวมิลลิเมตรที่เกินความยาวเซนติเมตร"}, level={"th": "ป.3"}, topic="การวัด")
+class LongerThanReferenceP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 19",))
+
+    def compose(self,rng: Random):
+        cm=rng.randint(5,90)
+        baseline=cm*10
+        shorter=rng.sample(range(1,baseline),2)
+        values=[baseline+rng.randint(1,99),baseline,*shorter]
+        objects=("กรรไกร","ยางลบ","ดินสอ","ริบบิ้น")
+        rng.shuffle(values)
+        right=next(i for i,v in enumerate(values) if v>baseline)
+        labels=[f"{obj}ยาว {v} มิลลิเมตร" for obj,v in zip(objects,values)]
+        return (f"หลอดยาว {cm} เซนติเมตร สิ่งใดยาวกว่าหลอด",labels[right],
+                [label for i,label in enumerate(labels) if i!=right])
+
+
+@question_type("math.length_estimation_error_p3", display_name={"th": "หาความคลาดเคลื่อนความยาวเป็นหน่วยผสม"}, level={"th": "ป.3"}, topic="การวัด")
+class LengthEstimationErrorP3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-3/4355-3-2565-1-2.pdf, ข้อ 20",))
+
+    def compose(self,rng: Random):
+        estimate=rng.randint(5,20)
+        delta=rng.choice([n for n in range(-195,196) if n])
+        actual=estimate*100+delta
+        m,cm=divmod(actual,100)
+        error=abs(estimate*100-actual)
+        def label(value):
+            q,r=divmod(value,100)
+            return f"{q} เมตร {r} เซนติเมตร"
+        values=(abs(estimate-m),estimate*100+actual,error+100,error*100)
+        wrongs=list(dict.fromkeys(label(v) for v in values if v!=error))
+        return (f"คาดคะเนเชือกยาว {estimate} เมตร วัดจริงได้ {m} เมตร {cm} เซนติเมตร "
+                "คาดคะเนคลาดเคลื่อนไปเท่าใด",label(error),wrongs)

@@ -1,0 +1,103 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "แบบรูป",
+ "level": "ป.3",
+ "units": [
+  {
+   "id": "math.primary3.constant-step-next",
+   "kind": "procedure",
+   "title": "หาจำนวนถัดไปเมื่อเพิ่มหรือลดเท่ากัน",
+   "statement": "หาผลต่างระหว่างพจน์ติดกัน แล้วบวกผลต่างนั้นกับพจน์สุดท้าย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาผลต่างระหว่างพจน์ติดกัน แล้วบวกผลต่างนั้นกับพจน์สุดท้าย",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.pattern_next_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.constant-step-index",
+   "kind": "procedure",
+   "title": "หาพจน์ในลำดับที่กำหนด",
+   "statement": "คูณจำนวนก้าวจากพจน์แรกด้วยผลต่างคงที่ แล้วรวมกับพจน์แรกโดยคงเครื่องหมายของผลต่าง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คูณจำนวนก้าวจากพจน์แรกด้วยผลต่างคงที่ แล้วรวมกับพจน์แรกโดยคงเครื่องหมายของผลต่าง",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.pattern_far_term_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.constant-step-two-missing",
+   "kind": "procedure",
+   "title": "เติมพจน์ที่ขาดสองตำแหน่ง",
+   "statement": "ตรวจผลต่างคงที่แล้วนับก้าวให้ถูกทุกตำแหน่งที่ขาด",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ตรวจผลต่างคงที่แล้วนับก้าวให้ถูกทุกตำแหน่งที่ขาด",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 16
+    }
+   ],
+   "covered_by": [
+    "math.pattern_two_missing_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.constant-step-first",
+   "kind": "procedure",
+   "title": "ย้อนหาพจน์แรกของแบบรูป",
+   "statement": "ลบผลต่างคงที่ออกจากพจน์ที่สองเพื่อย้อนหนึ่งก้าวกลับไปยังพจน์แรก",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบผลต่างคงที่ออกจากพจน์ที่สองเพื่อย้อนหนึ่งก้าวกลับไปยังพจน์แรก",
+    "ตรวจคำตอบกับข้อมูลทั้งหมด"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4358-3-2567-2-2.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.number_pattern_p3"
+   ]
+  }
+ ]
+}

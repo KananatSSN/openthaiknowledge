@@ -158,3 +158,178 @@ class IntegerWordProblemM1(WordProblem):
                                 f"อุณหภูมิของสองช่องต่างกันกี่องศาเซลเซียส"),
                         distractors=_story.keep(abs(a + b), a + b, higher, answer=abs(a - b),
                                                 lo=-99))
+
+
+# ── More integers (2026-11): ordering, absolute value, the order of operations with negatives, and the
+# properties of addition and multiplication ──
+
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.sets._support.math_p2 import _maths  # noqa: E402
+
+
+@question_type("math.integer_order_m1", display_name={"th": "เปรียบเทียบและเรียงลำดับจำนวนเต็ม"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerOrderM1(QuestionType):
+    """On the number line the further left, the smaller: −12 < −3. The four choices are the four numbers."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        values = rng.sample([v for v in range(-20, 21) if v], 4)
+        if not any(v < 0 for v in values):
+            values[0] = -values[0]
+        smallest = rng.random() < 0.5
+        right = min(values) if smallest else max(values)
+        return _maths([text(f"จำนวนในข้อใด{'น้อยที่สุด' if smallest else 'มากที่สุด'}")], str(right),
+                      [str(v) for v in values if v != right], self.topic)
+
+
+@question_type("math.absolute_value_m1", display_name={"th": "ค่าสัมบูรณ์"},
+               level=LEVEL, topic=_INT_TOPIC)
+class AbsoluteValueM1(WordProblem):
+    """|a| is a's distance from 0: never negative."""
+
+    def expr(self, rng: Random):
+        a, b = rng.randint(2, 20), rng.randint(2, 20)
+        kind = rng.randrange(4)
+        if kind == 0:
+            tex, right = rf"|-{a}| + |{b}|", a + b
+            wrongs = (b - a, -a + b, -(a + b))
+        elif kind == 1:
+            tex, right = rf"|{b} - {a + b + 3}|", a + 3
+            wrongs = (-(a + 3), b + a + b + 3, a)
+        elif kind == 2:
+            tex, right = rf"-|-{a}|", -a
+            wrongs = (a, 0, -a - 1)
+        else:
+            tex, right = rf"|-{a}| \times |-{b}|", a * b
+            wrongs = (-a * b, a + b, -(a + b))
+        return MathDraw(tex, str(right), prompt="จงหาค่าของ",
+                        distractors=[str(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.integer_order_of_operations_m1", display_name={"th": "ลำดับการดำเนินการของจำนวนเต็ม"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerOrderOfOperationsM1(WordProblem):
+    """Brackets and powers first, then × and ÷, then + and −; and −3² is −(3²)."""
+
+    def expr(self, rng: Random):
+        a, b, c = rng.randint(2, 9), rng.randint(2, 9), rng.randint(2, 9)
+        kind = rng.randrange(4)
+        if kind == 0:
+            tex, right, wrongs = rf"-{a} + {b} \times (-{c})", -a - b * c, ((-a + b) * -c, -a + b * c, a - b * c)
+        elif kind == 1:
+            tex, right, wrongs = rf"-{a}^{{2}}", -a * a, (a * a, -2 * a, 2 * a)
+        elif kind == 2:
+            tex, right, wrongs = rf"(-{a})^{{2}} - {b}", a * a - b, (-a * a - b, a * a + b, -2 * a - b)
+        else:
+            tex, right, wrongs = (rf"{a * b} \div (-{b}) - {c}", -a - c, (a - c, -a + c, a * b // (b + c) if b + c else 0))
+        return MathDraw(tex, str(right), prompt="จงหาค่าของ",
+                        distractors=[str(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+_PROPS = ("สมบัติการสลับที่การบวก", "สมบัติการเปลี่ยนหมู่การคูณ", "สมบัติการแจกแจง",
+          "สมบัติการมีตัวผกผันการบวก", "สมบัติการมีเอกลักษณ์การคูณ", "สมบัติการมีเอกลักษณ์การบวก")
+
+
+def _prop(stem: str, right: int, *wrong: int) -> Concept:
+    return Concept(f"{stem} ใช้สมบัติใด", _PROPS[right], tuple(_PROPS[w] for w in wrong))
+
+
+@question_type("math.integer_properties_m1", display_name={"th": "สมบัติของการบวกและการคูณจำนวนเต็ม"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerPropertiesM1(ConceptBankType):
+    ITEMS = [
+        _prop("(−3) + 5 = 5 + (−3)", 0, 1, 2, 5),
+        _prop("[2 × (−3)] × 4 = 2 × [(−3) × 4]", 1, 0, 2, 4),
+        _prop("(−4) × (2 + 5) = (−4) × 2 + (−4) × 5", 2, 1, 0, 3),
+        _prop("(−7) + 7 = 0", 3, 5, 0, 4),
+        _prop("(−9) × 1 = −9", 4, 5, 3, 1),
+        _prop("0 + (−6) = −6", 5, 4, 3, 0),
+    ]
+
+
+# ── To fifteen (2026-11): a run of consecutive integers, a missing number, a product of four, the largest of
+# four expressions, and moves along the number line ──
+
+
+@question_type("math.integer_run_sum_m1", display_name={"th": "ผลบวกของจำนวนเต็มที่เรียงติดกัน"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerRunSumM1(WordProblem):
+    """−a + … + b: the pairs −k and k cancel, leaving the numbers past a."""
+
+    def expr(self, rng: Random):
+        a, b = rng.randint(2, 9), rng.randint(2, 12)
+        while a == b:
+            b = rng.randint(2, 12)
+        right = sum(range(-a, b + 1))
+        tex = rf"(-{a}) + (-{a - 1}) + \cdots + {b - 1} + {b}"
+        # The negatives treated as positives; the endpoints only; the count of terms.
+        return MathDraw(tex, str(right), prompt="จงหาผลบวก",
+                        distractors=_story.keep(sum(range(0, a + 1)) + sum(range(0, b + 1)), b - a, a + b + 1,
+                                                -right if right else 1, answer=right, lo=-200))
+
+
+@question_type("math.integer_missing_number_m1", display_name={"th": "หาจำนวนที่หายไปในประโยคสัญลักษณ์"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerMissingNumberM1(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.choice([v for v in range(-12, 13) if v])
+        b = rng.choice([v for v in range(-12, 13) if v])
+        kind = rng.randrange(4)
+        show = lambda v: f"({v})" if v < 0 else str(v)
+        if kind == 0:
+            tex, right, wrongs = rf"{show(a)} + \square = {a + b}", b, (-b, a + b - a * 2, a + (a + b))
+        elif kind == 1:
+            tex, right, wrongs = rf"\square - {show(a)} = {b}", a + b, (b - a, a - b, -(a + b))
+        elif kind == 2:
+            tex, right, wrongs = rf"\square \times {show(a)} = {a * b}", b, (-b, a * b + a, a * b - a)
+        else:
+            tex, right, wrongs = rf"{show(a * b)} \div \square = {a}", b, (-b, a * b * a, a)
+        return MathDraw(tex, str(right), prompt="จงหาจำนวนที่แทน □",
+                        distractors=[str(w) for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.integer_product_four_m1", display_name={"th": "ผลคูณของจำนวนเต็มหลายจำนวน"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerProductFourM1(WordProblem):
+    """An even count of negatives makes the product positive; an odd count makes it negative."""
+
+    def expr(self, rng: Random):
+        values = [rng.choice((-5, -4, -3, -2, -1, 1, 2, 3, 4, 5)) for _ in range(4)]
+        right = values[0] * values[1] * values[2] * values[3]
+        tex = r" \times ".join(f"({v})" if v < 0 else str(v) for v in values)
+        # The sign wrong; the numbers added; one factor left out.
+        return MathDraw(tex, str(right), prompt="จงหาผลคูณ",
+                        distractors=_story.keep(-right, sum(values), right // values[3] if values[3] else 0,
+                                                abs(right) + 1, answer=right, lo=-1000))
+
+
+@question_type("math.integer_largest_expression_m1", display_name={"th": "นิพจน์ใดมีค่ามากที่สุด"},
+               level=LEVEL, topic=_INT_TOPIC)
+class IntegerLargestExpressionM1(QuestionType):
+    def build(self, rng: Random) -> GeneratedQuestion:
+        while True:
+            a, b = rng.randint(2, 9), rng.randint(2, 9)
+            exprs = [(rf"(-{a}) \times (-{b})", a * b), (rf"(-{a}) + (-{b})", -a - b),
+                     (rf"(-{a}) - (-{b})", -a + b), (rf"(-{a}) \times {b}", -a * b)]
+            if len({v for _, v in exprs}) == 4:
+                break
+        rng.shuffle(exprs)
+        largest = rng.random() < 0.5
+        pick = max(exprs, key=lambda e: e[1]) if largest else min(exprs, key=lambda e: e[1])
+        return _maths([text(f"นิพจน์ในข้อใดมีค่า{'มากที่สุด' if largest else 'น้อยที่สุด'}")], pick[0],
+                      [t for t, _ in exprs if t != pick[0]], self.topic)
+
+
+@question_type("math.number_line_moves_m1", display_name={"th": "เลื่อนบนเส้นจำนวน"},
+               level=LEVEL, topic=_INT_TOPIC)
+class NumberLineMovesM1(WordProblem):
+    def expr(self, rng: Random):
+        start = rng.randint(-10, 10)
+        right_steps, left_steps = rng.randint(2, 15), rng.randint(2, 15)
+        end = start + right_steps - left_steps
+        prompt = (f"เริ่มที่ {start} บนเส้นจำนวน เลื่อนไปทางขวา {right_steps} หน่วย แล้วเลื่อนไปทางซ้าย "
+                  f"{left_steps} หน่วย จะอยู่ที่จำนวนใด").replace("-", "−")
+        # The directions swapped; the second move only; both added.
+        return MathDraw("", str(end), prompt=prompt,
+                        distractors=_story.keep(start - right_steps + left_steps, start - left_steps,
+                                                start + right_steps + left_steps, end + 1, answer=end, lo=-60))

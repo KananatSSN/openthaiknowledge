@@ -17,7 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem
 from otk.sets._support.math_diagrams import _math_q
 from otk.sets._support.math_p2 import LEVEL, NumberReadingType, _maths
 from otk.sets._support.math_pictures import _near
@@ -191,3 +191,109 @@ class OrderNumbersP2(QuestionType):
                        content_math(fmt(nums))],
                       fmt(right), [w for w in dict.fromkeys(wrongs) if w != fmt(right)],
                       self.topic)
+
+
+# ── More numbers to 1,000 (2026-11): an even number, a number from its hundreds, tens and ones, and one,
+# ten or a hundred more or less ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+
+from otk.core.content import text as _text_block  # noqa: E402
+from otk.core.registry import QuestionType as _QT  # noqa: E402
+from otk.sets._support.math_p2 import _maths as _fixed_maths  # noqa: E402
+
+
+@question_type("math.even_number_p2", display_name={"th": "จำนวนคู่และจำนวนคี่"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class EvenNumberP2(_QT):
+    """Fixed choices: a number from another draw could be even (or odd) too."""
+
+    def build(self, rng: Random):
+        even = rng.random() < 0.5
+        base = rng.randint(10, 499)
+        right = 2 * base + (0 if even else 1)
+        # Three of the other kind near it.
+        wrongs = _story.keep(right + 1, right - 1, right + 3, right - 3, answer=right, lo=1, hi=1000)
+        return _fixed_maths([_text_block(f"จำนวนใดเป็นจำนวน{'คู่' if even else 'คี่'}")], str(right), wrongs, self.topic)
+
+
+@question_type("math.hundreds_tens_ones_p2", display_name={"th": "จำนวนจากหลักร้อย หลักสิบ และหลักหน่วย"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class HundredsTensOnesP2(WordProblem):
+    def expr(self, rng: Random):
+        h = rng.randint(1, 9)
+        t = rng.randint(0, 9)
+        o = rng.randint(0, 9)
+        right = 100 * h + 10 * t + o
+        prompt = f"{h} ร้อย {t} สิบ {o} หน่วย คือจำนวนใด"
+        # The tens and ones swapped; the hundreds and tens swapped; the digits added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(100 * h + 10 * o + t, 100 * t + 10 * h + o, h + t + o,
+                                                100 * h + t + 10 * o + 1, answer=right, lo=1))
+
+
+@question_type("math.more_less_100_p2", display_name={"th": "มากกว่าหรือน้อยกว่าอยู่ 1, 10 หรือ 100"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class MoreLess100P2(WordProblem):
+    def expr(self, rng: Random):
+        step = rng.choice((1, 10, 100))
+        more = rng.random() < 0.5
+        n = rng.randint(120, 880)
+        right = n + step if more else n - step
+        others = [s for s in (1, 10, 100) if s != step]
+        prompt = f"จำนวนที่{'มากกว่า' if more else 'น้อยกว่า'} {n} อยู่ {step} คือจำนวนใด"
+        # The other direction; the other two steps the asked way.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(n - step if more else n + step,
+                                                *[n + s if more else n - s for s in others],
+                                                answer=right, lo=0, hi=1000))
+
+
+@question_type("math.digit_value_difference_p2", display_name={"th": "ผลต่างของค่าของเลขโดดต่างหลัก"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class DigitValueDifferenceP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4179-2-2567-2-2.pdf, ข้อ 7–8",))
+
+    def expr(self, rng: Random):
+        places = (("ร้อย", 100), ("สิบ", 10), ("หน่วย", 1))
+        if rng.randrange(2):
+            digit, tens = rng.randint(1, 9), rng.randint(0, 9)
+            n = digit * 100 + tens * 10 + digit
+            (p, scale_p), (q, scale_q) = places[0], places[2]
+        else:
+            n = rng.randint(100, 999)
+            (p, scale_p), (q, scale_q) = rng.sample(places, 2)
+        d_p, d_q = (n // scale_p) % 10, (n // scale_q) % 10
+        value_p, value_q = d_p * scale_p, d_q * scale_q
+        answer = abs(value_p - value_q)
+        return MathDraw("", str(answer),
+                        prompt=f"ในจำนวน {n} ค่าของเลขโดดในหลัก{p}กับหลัก{q}ต่างกันเท่าใด",
+                        # Ignore the places; add the values; copy a digit; miss
+                        # one unit or one ten in the subtraction.
+                        distractors=_story.keep(abs(d_p - d_q), value_p + value_q, d_p,
+                                                n, answer + 1, answer + 10,
+                                                answer=answer, lo=0))
+
+
+@question_type("math.number_between_bounds_p2", display_name={"th": "เลือกจำนวนสามหลักที่อยู่ระหว่างขอบเขต"},
+               level=LEVEL, topic="จำนวนนับไม่เกิน 1,000")
+class NumberBetweenBoundsP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4179-2-2567-2-2.pdf, ข้อ 14",))
+
+    def compose(self, rng: Random):
+        lower = rng.randint(101, 960)
+        upper = lower + rng.randint(2, 30)
+        answer = rng.randint(lower + 1, upper - 1)
+        ascending = bool(rng.randrange(2))
+        first, last = (lower, upper) if ascending else (upper, lower)
+        # Endpoints confuse strict order with equality; outside neighbors
+        # reverse one of the two comparisons.
+        # Keep the explicit candidate pool: numeric-neighbor distractors can
+        # themselves be valid interior numbers in this question family.
+        return (f"จำนวนใดเติมใน □ แล้วเรียงจาก{'น้อยไปมาก' if ascending else 'มากไปน้อย'}โดยไม่ซ้ำกัน: "
+                f"{first}, □, {last}", str(answer),
+                [str(lower), str(upper), str(lower - 1), str(upper + 1)])

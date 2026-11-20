@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การโฟกัสลำอนุภาคด้วย Quadrupole",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.quadrupole_focusing.procedure",
+      "kind": "procedure",
+      "title": "เกรเดียนต์สนามแม่เหล็กของ Quadrupole",
+      "statement": "Magnetic Quadrupole จากลวดสี่เส้นให้สนาม B = ayî + bxĵ โดย a = b = 2μ₀I/(πR²) เป็นเลนส์นูนในระนาบหนึ่งและเลนส์เว้าในอีกระนาบ ความยาวโฟกัส mv/(bqd) และคู่ Quadrupole ที่กลับทิศกระแสโฟกัสได้ทั้งสองระนาบ",
+      "steps": [
+        "รวมสนามจากลวดทั้งสี่ใกล้แกนกลาง",
+        "ใช้การดลหาความยาวโฟกัส แล้วรวมเลนส์บางสองตัว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 22
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 23
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 24
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2560_q16",
+        "phys.tpho2560_q17",
+        "phys.tpho2560_q18"
+      ],
+      "note": "I and R vary."
+    }
+  ]
+}

@@ -13,7 +13,7 @@
     "หาพิกัดสัมพัทธ์ของจุดศูนย์กลางจากจุดกึ่งกลางคอร์ดทั้งสอง",
     "ใช้กำลังของจุด P และระยะจาก P ถึงจุดศูนย์กลางเพื่อหารัศมีกำลังสอง"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 17}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 17}],
    "covered_by": ["math.perpendicular_chord_circle_area_olympiad"]
   }
  ]

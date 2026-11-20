@@ -13,7 +13,7 @@
         "Let m tend to both infinities to obtain v>1 and |u|≤−cot(θ)(v−1)",
         "Use the same identity to prove the wedge sufficient and optimize angle PQR"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 5}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 5}],
       "covered_by": ["math.obtuse_angle_dominance_olympiad"]
     }
   ]

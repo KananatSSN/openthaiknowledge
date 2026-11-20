@@ -223,3 +223,74 @@ class SimilarSideFromAreasM3(QuestionType):
                             f"ถ้าด้านหนึ่งของรูปเล็กยาว {small_side} เซนติเมตร "
                             "ด้านที่สมนัยกันของรูปใหญ่ยาวกี่เซนติเมตร")],
                       str(large_side), wrongs, self.topic)
+
+from math import gcd  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More similarity (2026-11): the scale factor as a ratio, and a corresponding angle ──
+
+
+@question_type("math.similar_scale_ratio_m3", display_name={"th": "อัตราส่วนของด้านที่สมนัยกันของรูปที่คล้ายกัน"},
+               level=LEVEL, topic="ความคล้าย")
+class SimilarScaleRatioM3(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            a, b = rng.sample(range(1, 10), 2)
+            if gcd(a, b) == 1:
+                break
+        k = rng.randint(2, 6)
+        small, big = a * k, b * k
+        stem = (f"รูปสามเหลี่ยมสองรูปคล้ายกัน ด้านหนึ่งของรูปแรกยาว {small} ซม. ด้านที่สมนัยกันของรูปที่สองยาว {big} ซม. "
+                "อัตราส่วนความยาวด้านของรูปแรกต่อรูปที่สองเป็นเท่าใด")
+        right = f"{a} : {b}"
+        wrongs = [f"{b} : {a}", f"{a * a} : {b * b}", f"{small} : {big + small}"]
+        return stem, right, _tk3(*wrongs, answer=right)
+
+
+@question_type("math.similar_corresponding_angle_m3", display_name={"th": "มุมที่สมนัยกันของรูปสามเหลี่ยมที่คล้ายกัน"},
+               level=LEVEL, topic="ความคล้าย")
+class SimilarCorrespondingAngleM3(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(30, 80)
+        b = rng.randint(30, 150 - a - 1)
+        c = 180 - a - b
+        prompt = (f"รูปสามเหลี่ยม ABC คล้ายกับรูปสามเหลี่ยม DEF โดยมี A สมนัยกับ D, B สมนัยกับ E และ C สมนัยกับ F "
+                  f"ถ้ามุม A มีขนาด {a} องศา และมุม B มีขนาด {b} องศา มุม F มีขนาดกี่องศา")
+        # Angle D or E read for F; the two given added.
+        return MathDraw("", str(c), prompt=prompt,
+                        distractors=_story.keep(a, b, a + b, 90 - c if c < 90 else c - 10, answer=c, lo=1))

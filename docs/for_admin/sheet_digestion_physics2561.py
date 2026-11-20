@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = "สอวน_physics/posn1-61-physics.pdf"
+SOURCE = "physics/level/upper-secondary/posn-physics/posn1-61-physics.pdf"
 # Each row names the procedure, its claim, and the steps actually practised.
 UNITS = {
     1: (

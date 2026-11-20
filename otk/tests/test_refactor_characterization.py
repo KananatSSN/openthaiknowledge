@@ -71,6 +71,12 @@ def test_sheet_publication_manifest_is_frozen():
         "posn2560_chemistry": (70, 70, 70, 0),
         "posn2561_chemistry": (75, 75, 75, 0),
         "posn2562_chemistry": (66, 66, 66, 0),
+        "tpho2565_physics": (22, 22, 22, 0),
+        "tpho2564_physics": (29, 29, 29, 0),
+        "tpho2563_physics": (20, 20, 20, 0),
+        "tpho2562_physics": (24, 24, 24, 0),
+        "tpho2561_physics": (22, 22, 22, 0),
+        "tpho2560_physics": (20, 20, 20, 0),
         "tpho2559_physics": (23, 23, 23, 0),
         "tpho2558_physics": (17, 17, 17, 0),
         "tpho2557_physics": (17, 17, 17, 0),
@@ -232,8 +238,27 @@ def test_sheet_publication_manifest_is_frozen():
     # Local math variety and original olympiad practice add another 118 sets.
     # The national สอวน. maths papers 2547–2557 and 2562 add 204 more, one per
     # question; the 2563–2567 papers reuse sets that were already registered.
-    # The สอวน. physics camp-selection papers 2560–2562 add 86, one per question,
-    # the 2564 and 2565 papers 30 more each, 2566 28, 2567 16, 2568 25 and
-    # 2569 30. The first national physics olympiad (TPhO 2545) adds 17.
-    # POSN chemistry 2560 has seventy reviewed sets; 2561 has seventy-five.
-    assert len(REGISTRY) == 4672
+    # The สอวน. physics camp-selection papers 2560–2562 add 86, one per question.
+    # Five more ม.2 parallel-line sets: a bend, a triangle, angles in x, the converse and the reasons.
+    # 36 more ม.2 sets so every unit has at least ten: factorising, congruence, reasoning, volume, Pythagoras,
+    # real numbers, statistics, transformations and one more parallel-line set.
+    # 47 more so every ม.2 unit has at least fifteen.
+    # 48 more ม.1 sets so every ม.1 unit has at least ten.
+    # 55 more ม.1 sets so every ม.1 unit has at least fifteen.
+    # Nine Primary 2 sets from the first text-layer school-paper batch.
+    # Seven Primary 1 applications from the next text-layer batch.
+    # Four more Primary 1 gaps from the next four bank papers.
+    # Nine Primary 2 division, mixed-operation and chart applications.
+    # Ten Primary 5 applications from geometry and percentage papers.
+    # Three Primary 1 measurement applications from a comprehension paper.
+    # Four Primary 1 arithmetic equivalence applications from a skills paper.
+    # Two Primary 2 place-value and ordering applications from a bank paper.
+    # Two Primary 1 closest-weight and negative-comparison applications.
+    # Four Primary 3 money and multi-step applications from a bank paper.
+    # Eleven Primary 4/5 time, budget and measurement applications.
+    # Twelve Primary 2 / Secondary 3 measurement, systems and solid applications.
+    # The สอวน. physics camp-selection papers 2564 and 2565 add 30 more each, 2566 28,
+    # 2567 16, 2568 25 and 2569 30. The national physics olympiad papers
+    # (TPhO 2545–2565) add the rest of the physics branch's 559.
+    # POSN chemistry 2560, 2561 and 2562 add 70, 75 and 66 reviewed sets.
+    assert len(REGISTRY) == 5950

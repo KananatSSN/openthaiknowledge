@@ -13,7 +13,7 @@
     "ตรวจระยะห่างของอันดับในลำดับสมบูรณ์",
     "เก็บคู่ผู้ได้อันดับหนึ่งและสามในเซตเพื่อนับคู่ที่แตกต่างกัน"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 26}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 26}],
    "covered_by": ["math.constrained_race_rank_pairs_olympiad"]
   }
  ]

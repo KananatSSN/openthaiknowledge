@@ -154,3 +154,256 @@ class PrismCylinderVolumeWordM2(WordProblem):
                                 f"ถ้าเติมน้ำจนเต็มต้องใช้น้ำกี่ลูกบาศก์เมตร"),
                         distractors=_story.keep(w * span, 2 * (w * span + span * depth + w * depth),
                                                 w + span + depth, answer=vol))
+
+
+# ── More surface area and volume (สสวท. ม.2 เล่ม 1 บทที่ 3): a prism from its base area, a cylinder's
+# height or radius from its volume, capacity in litres, a pipe, a box with a hole, and scaling ──
+
+_SEVENS = (7, 14, 21)
+
+
+@question_type("math.prism_volume_base_m2", display_name={"th": "ปริมาตรของปริซึมจากพื้นที่ฐาน"},
+               level=LEVEL, topic=_SV_TOPIC)
+class PrismVolumeBaseM2(WordProblem):
+    """V = base area × height, forwards and back."""
+
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        if kind == 0:
+            base, h = rng.randint(12, 90), rng.randint(3, 20)
+            vol = base * h
+            return MathDraw("", str(vol), prompt=(f"ปริซึมรูปหนึ่งมีพื้นที่ฐาน {base} ตารางเซนติเมตร สูง {h} เซนติเมตร "
+                                                 f"มีปริมาตรกี่ลูกบาศก์เซนติเมตร"),
+                            # Halved as for a pyramid; added; doubled.
+                            distractors=_story.keep(vol // 2 if vol % 2 == 0 else 0, base + h, 2 * vol,
+                                                    base * (h + 1), answer=vol, lo=1))
+        if kind == 1:
+            base, h = rng.randint(12, 90), rng.randint(3, 20)
+            vol = base * h
+            return MathDraw("", str(h), prompt=(f"ปริซึมรูปหนึ่งมีปริมาตร {grouped(vol)} ลูกบาศก์เซนติเมตร "
+                                               f"และมีพื้นที่ฐาน {base} ตารางเซนติเมตร ปริซึมสูงกี่เซนติเมตร"),
+                            distractors=_story.keep(vol - base, 2 * h, h + 3, h - 2, answer=h, lo=1))
+        s, h = rng.randint(3, 12), rng.randint(4, 20)
+        vol = s * s * h
+        return MathDraw("", str(vol), prompt=(f"ปริซึมฐานเป็นรูปสี่เหลี่ยมจัตุรัสยาวด้านละ {s} เซนติเมตร "
+                                             f"สูง {h} เซนติเมตร มีปริมาตรกี่ลูกบาศก์เซนติเมตร"),
+                        # The side not squared; the base perimeter used; the four side faces.
+                        distractors=_story.keep(s * h, 4 * s * h, 2 * s * h, s * s + h, answer=vol, lo=1))
+
+
+@question_type("math.cylinder_dimension_m2", display_name={"th": "หาความสูงหรือรัศมีของทรงกระบอกจากปริมาตร"},
+               level=LEVEL, topic=_SV_TOPIC)
+class CylinderDimensionM2(WordProblem):
+    """V = πr²h worked backwards (π ≈ 22/7)."""
+
+    def expr(self, rng: Random):
+        r, h = rng.choice(_SEVENS), rng.randint(2, 20)
+        vol = 22 * r * r * h // 7
+        if rng.random() < 0.5:
+            # r not squared (gives rh); the diameter used for r; the volume over r².
+            return MathDraw("", str(h), prompt=(f"ทรงกระบอกรัศมี {r} เซนติเมตร มีปริมาตร {grouped(vol)} "
+                                               f"ลูกบาศก์เซนติเมตร ทรงกระบอกสูงกี่เซนติเมตร (π ≈ 22/7)"),
+                            distractors=_story.keep(r * h, h // 4 if h % 4 == 0 else 0, vol // (r * r), 2 * h,
+                                                    h + 2, answer=h, lo=1))
+        return MathDraw("", str(r), prompt=(f"ทรงกระบอกสูง {h} เซนติเมตร มีปริมาตร {grouped(vol)} "
+                                           f"ลูกบาศก์เซนติเมตร รัศมียาวกี่เซนติเมตร (π ≈ 22/7)"),
+                        # The diameter; r² not square-rooted; the other radii.
+                        distractors=_story.keep(2 * r, r * r, *[s for s in _SEVENS if s != r], answer=r, lo=1))
+
+
+@question_type("math.volume_litres_m2", display_name={"th": "ความจุเป็นลิตร"},
+               level=LEVEL, topic=_SV_TOPIC)
+class VolumeLitresM2(WordProblem):
+    """1 litre is 1,000 cubic centimetres."""
+
+    def expr(self, rng: Random):
+        w, d, h = (10 * rng.randint(1, 6) for _ in range(3))
+        litres = w * d * h // 1000
+        if rng.random() < 0.5:
+            # Divided by 100; by 10; not converted at all is too big to offer, so the cm² of the base.
+            return MathDraw("", str(litres), prompt=(f"ตู้ปลาทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {d} ซม. สูง {h} ซม. "
+                                                    f"จุน้ำได้กี่ลิตร (1 ลิตร = 1,000 ลูกบาศก์เซนติเมตร)"),
+                            distractors=_story.keep(10 * litres, 100 * litres, w * d // 100, litres + w // 10,
+                                                    answer=litres, lo=1))
+        return MathDraw("", str(h), prompt=(f"ถังทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {d} ซม. เทน้ำลงไป {litres} ลิตร "
+                                           f"น้ำสูงกี่เซนติเมตร (1 ลิตร = 1,000 ลูกบาศก์เซนติเมตร)"),
+                        # Litres used as cm³; ten times; litres over the width.
+                        distractors=_story.keep(10 * h, h // 10 if h % 10 == 0 else 0, 100 * litres // w,
+                                                h + 10, answer=h, lo=1))
+
+
+_PIPES = ((14, 7), (21, 14), (21, 7), (28, 21), (28, 14), (35, 28))
+
+
+@question_type("math.hollow_cylinder_m2", display_name={"th": "ปริมาตรของท่อทรงกระบอกกลวง"},
+               level=LEVEL, topic=_SV_TOPIC)
+class HollowCylinderM2(WordProblem):
+    """A pipe: the outer cylinder less the inner, π(R² − r²)h."""
+
+    def expr(self, rng: Random):
+        big, small = rng.choice(_PIPES)
+        h = rng.randint(5, 30)
+        vol = 22 * (big * big - small * small) * h // 7
+        prompt = (f"ท่อคอนกรีตทรงกระบอกกลวงยาว {h} ซม. รัศมีภายนอก {big} ซม. รัศมีภายใน {small} ซม. "
+                  f"เนื้อคอนกรีตมีปริมาตรกี่ลูกบาศก์เซนติเมตร (π ≈ 22/7)")
+        # The radii subtracted before squaring; the outer cylinder only; the hole only.
+        return MathDraw("", str(vol), prompt=prompt,
+                        distractors=_story.keep(22 * (big - small) ** 2 * h // 7, 22 * big * big * h // 7,
+                                                22 * small * small * h // 7, answer=vol, lo=1))
+
+
+@question_type("math.box_with_hole_m2", display_name={"th": "ปริมาตรของทรงสี่เหลี่ยมมุมฉากที่เจาะรูทรงกระบอก"},
+               level=LEVEL, topic=_SV_TOPIC)
+class BoxWithHoleM2(WordProblem):
+    """A box with a cylindrical hole through its height: the box less the cylinder."""
+
+    def expr(self, rng: Random):
+        r = rng.choice((7, 7, 14))
+        lo = 16 if r == 7 else 30
+        w, d, h = rng.randint(lo, lo + 14), rng.randint(lo, lo + 14), rng.randint(5, 20)
+        hole = 22 * r * r * h // 7
+        vol = w * d * h - hole
+        prompt = (f"แท่งไม้ทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {d} ซม. สูง {h} ซม. ถูกเจาะรูทรงกระบอก"
+                  f"รัศมี {r} ซม. ทะลุจากด้านบนถึงด้านล่าง เนื้อไม้ที่เหลือมีปริมาตรกี่ลูกบาศก์เซนติเมตร (π ≈ 22/7)")
+        # The box without the hole; the hole itself; the hole added on.
+        return MathDraw("", str(vol), prompt=prompt,
+                        distractors=_story.keep(w * d * h, hole, w * d * h + hole,
+                                                w * d * h - 22 * r * h // 7, answer=vol, lo=1))
+
+
+@question_type("math.scale_volume_m2", display_name={"th": "ปริมาตรและพื้นที่ผิวเมื่อขยายขนาด"},
+               level=LEVEL, topic=_SV_TOPIC)
+class ScaleVolumeM2(WordProblem):
+    """Every length × k multiplies area by k² and volume by k³; one length × k multiplies volume by k."""
+
+    def expr(self, rng: Random):
+        k = rng.choice((2, 3))
+        kind = rng.randrange(4)
+        if kind == 0:
+            prompt = f"ถ้าขยายกล่องทรงสี่เหลี่ยมมุมฉากให้ด้านทุกด้านยาวเป็น {k} เท่าของเดิม ปริมาตรจะเป็นกี่เท่าของเดิม"
+            right = k ** 3
+        elif kind == 1:
+            prompt = f"ถ้าขยายกล่องทรงสี่เหลี่ยมมุมฉากให้ด้านทุกด้านยาวเป็น {k} เท่าของเดิม พื้นที่ผิวจะเป็นกี่เท่าของเดิม"
+            right = k ** 2
+        elif kind == 2:
+            prompt = f"ถ้าทรงกระบอกมีรัศมีเป็น {k} เท่าของเดิม แต่ความสูงเท่าเดิม ปริมาตรจะเป็นกี่เท่าของเดิม"
+            right = k ** 2
+        else:
+            prompt = f"ถ้าทรงกระบอกมีความสูงเป็น {k} เท่าของเดิม แต่รัศมีเท่าเดิม ปริมาตรจะเป็นกี่เท่าของเดิม"
+            right = k
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(k, k ** 2, k ** 3, 2 * k, 3 * k, answer=right, lo=1))
+
+
+# ── To fifteen (2026-11): a cube from its area or volume, the side faces of a prism, cups to fill a tank,
+# painting a room, and melting one solid into another ──
+
+
+@question_type("math.cube_area_volume_m2", display_name={"th": "ลูกบาศก์: จากพื้นที่ผิวหาปริมาตร และกลับกัน"},
+               level=LEVEL, topic=_SV_TOPIC)
+class CubeAreaVolumeM2(WordProblem):
+    """The edge first: from 6e² or from e³, then the other measure."""
+
+    def expr(self, rng: Random):
+        e = rng.randint(2, 15)
+        if rng.random() < 0.5:
+            return MathDraw("", str(e ** 3), prompt=(f"ลูกบาศก์มีพื้นที่ผิวทั้งหมด {grouped(6 * e * e)} ตารางเซนติเมตร "
+                                                    f"มีปริมาตรกี่ลูกบาศก์เซนติเมตร"),
+                            # The edge itself; the area of one face; the area divided by six cubed wrongly.
+                            distractors=_story.keep(e * e, e, 6 * e ** 3, 4 * e * e, answer=e ** 3, lo=1))
+        return MathDraw("", str(6 * e * e), prompt=(f"ลูกบาศก์มีปริมาตร {grouped(e ** 3)} ลูกบาศก์เซนติเมตร "
+                                                   f"มีพื้นที่ผิวทั้งหมดกี่ตารางเซนติเมตร"),
+                        # One face; four faces; the edge times six.
+                        distractors=_story.keep(e * e, 4 * e * e, 6 * e, 12 * e, answer=6 * e * e, lo=1))
+
+
+@question_type("math.prism_lateral_area_m2", display_name={"th": "พื้นที่ผิวข้างของปริซึม"},
+               level=LEVEL, topic=_SV_TOPIC)
+class PrismLateralAreaM2(WordProblem):
+    """The side faces unroll into one rectangle: the base perimeter times the height."""
+
+    def expr(self, rng: Random):
+        h = rng.randint(3, 20)
+        kind = rng.randrange(3)
+        if kind == 0:
+            w, d = rng.randint(2, 12), rng.randint(2, 12)
+            base, per, area = f"รูปสี่เหลี่ยมผืนผ้ากว้าง {w} ซม. ยาว {d} ซม.", 2 * (w + d), w * d
+        elif kind == 1:
+            a, b, c = triple(rng, 2)
+            base, per, area = f"รูปสามเหลี่ยมมุมฉากที่มีด้านยาว {a}, {b} และ {c} ซม.", a + b + c, a * b // 2
+        else:
+            n, side = rng.choice((5, 6, 8)), rng.randint(2, 10)
+            base, per, area = f"รูป {n} เหลี่ยมด้านเท่ายาวด้านละ {side} ซม.", n * side, 0
+        lateral = per * h
+        # Both bases added on; the perimeter plus the height; half of it.
+        return MathDraw("", str(lateral), prompt=f"ปริซึมฐานเป็น{base} สูง {h} ซม. มีพื้นที่ผิวข้างกี่ตารางเซนติเมตร",
+                        distractors=_story.keep(lateral + 2 * area if area else lateral + per, per + h,
+                                                lateral // 2 if lateral % 2 == 0 else 0, 2 * lateral, answer=lateral, lo=1))
+
+
+@question_type("math.cups_to_fill_m2", display_name={"th": "ตักน้ำด้วยแก้วทรงกระบอกกี่แก้วจึงเต็มถัง"},
+               level=LEVEL, topic=_SV_TOPIC)
+class CupsToFillM2(WordProblem):
+    """The tank's volume divided by one cup's (π ≈ 22/7)."""
+
+    def expr(self, rng: Random):
+        m, h = rng.randint(1, 4), rng.randint(4, 12)
+        w, d = 22, 35 * m
+        cups = m * h  # 22 × 35m × 2h = 1,540mh, and one cup holds 22/7 × 7² × 10 = 1,540
+        prompt = (f"ตู้ทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {d} ซม. สูง {2 * h} ซม. ใช้แก้วทรงกระบอกรัศมี 7 ซม. "
+                  f"สูง 10 ซม. ตักน้ำเทลงจนเต็ม ต้องตักกี่แก้ว (π ≈ 22/7)")
+        # The cup's height left out; the cup taken as a box 14 × 14 × 10; half as many.
+        return MathDraw("", str(cups), prompt=prompt,
+                        distractors=_story.keep(w * d * 2 * h // 154, w * d * 2 * h // 1960, 2 * cups, cups + 2,
+                                                answer=cups, lo=1))
+
+
+@question_type("math.paint_room_m2", display_name={"th": "พื้นที่ผนังห้องและค่าทาสี"},
+               level=LEVEL, topic=_SV_TOPIC)
+class PaintRoomM2(WordProblem):
+    """Four walls of a room: the lateral area 2(L + W)H, then its cost."""
+
+    def expr(self, rng: Random):
+        length, width, height = rng.randint(3, 8), rng.randint(3, 8), rng.randint(2, 4)
+        walls = 2 * (length + width) * height
+        if rng.random() < 0.5:
+            # The ceiling added; two walls only; the volume.
+            return MathDraw("", str(walls), prompt=(f"ห้องทรงสี่เหลี่ยมมุมฉากกว้าง {width} ม. ยาว {length} ม. สูง {height} ม. "
+                                                   f"ต้องการทาสีผนังทั้งสี่ด้าน ผนังมีพื้นที่รวมกี่ตารางเมตร"),
+                            distractors=_story.keep(walls + length * width, (length + width) * height,
+                                                    length * width * height, answer=walls, lo=1))
+        rate = rng.choice((20, 25, 30, 40, 50))
+        cost = walls * rate
+        return MathDraw("", grouped(cost), prompt=(f"ห้องทรงสี่เหลี่ยมมุมฉากกว้าง {width} ม. ยาว {length} ม. สูง {height} ม. "
+                                                  f"ค่าทาสีตารางเมตรละ {rate} บาท ทาผนังทั้งสี่ด้านเสียค่าทาสีกี่บาท"),
+                        # The floor and ceiling painted too; two walls only; the volume used.
+                        distractors=[grouped(int(v)) for v in _story.keep(
+                            (walls + 2 * length * width) * rate, (length + width) * height * rate,
+                            length * width * height * rate, answer=cost, lo=1)])
+
+
+@question_type("math.melt_recast_m2", display_name={"th": "หลอมทรงหนึ่งเป็นอีกทรงหนึ่ง"},
+               level=LEVEL, topic=_SV_TOPIC)
+class MeltRecastM2(WordProblem):
+    """Melting keeps the volume."""
+
+    def expr(self, rng: Random):
+        if rng.random() < 0.5:
+            e = rng.choice((1, 2, 3))
+            p, q, r = rng.randint(2, 6), rng.randint(2, 6), rng.randint(2, 6)
+            count = p * q * r
+            prompt = (f"หลอมแท่งโลหะทรงสี่เหลี่ยมมุมฉากกว้าง {e * p} ซม. ยาว {e * q} ซม. สูง {e * r} ซม. "
+                      f"เป็นลูกบาศก์เล็กยาวด้านละ {e} ซม. ได้กี่ลูก")
+            # The edge not cubed; the bar's volume itself; the edges added.
+            return MathDraw("", str(count), prompt=prompt,
+                            distractors=_story.keep(count * e * e, count * e ** 3 if e > 1 else count * 2,
+                                                    count * e if e > 1 else count + 1, e * (p + q + r),
+                                                    answer=count, lo=1))
+        k = rng.choice((2, 4, 7))
+        h = k * rng.randint(2, 10)
+        height = h // k
+        prompt = (f"หลอมแท่งโลหะทรงกระบอกรัศมี 7 ซม. สูง {h} ซม. แล้วหล่อเป็นแท่งทรงสี่เหลี่ยมมุมฉาก"
+                  f"ที่มีฐานกว้าง 22 ซม. ยาว {7 * k} ซม. แท่งใหม่สูงกี่เซนติเมตร (π ≈ 22/7)")
+        # The cylinder's height kept; the diameter used for the radius (four times); twice.
+        return MathDraw("", str(height), prompt=prompt,
+                        distractors=_story.keep(h, 4 * height, 2 * height, height + 1, answer=height, lo=1))
