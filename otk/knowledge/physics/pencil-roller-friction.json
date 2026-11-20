@@ -1,0 +1,36 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สัมประสิทธิ์ความเสียดทานสถิตและจลน์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pencil_roller_friction.procedure",
+      "kind": "procedure",
+      "title": "สัมประสิทธิ์ความเสียดทานสถิตจากกราฟ",
+      "statement": "ความเสียดทานสถิตวัดจากความชันของกราฟแรงที่ทำให้เริ่มเลื่อนกับแรงกด F_s = μ_sN ไม้บรรทัดบนดินสอสองแท่งเริ่มเลื่อนเมื่อ μ_kN_B = μ_sN_A ซึ่ง N_B/N_A = x_A/x_B จึงได้ μ_s/μ_k เป็นความชันของกราฟ x_A กับ x_B",
+      "steps": [
+        "วัดแรงที่ทำให้เริ่มเลื่อนที่แรงกดต่าง ๆ แล้วหาความชัน",
+        "ใช้สมดุลโมเมนต์หาอัตราส่วนแรงกดจากระยะถึงศูนย์กลางมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_exp.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_exp.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2554_q19",
+        "phys.tpho2554_q20"
+      ],
+      "note": "Synthetic readings."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎแก๊สอุดมคติกับแรงดัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.double_piston_gas.procedure",
+      "kind": "procedure",
+      "title": "ความดันแก๊สระหว่างลูกสูบคู่ในภาวะสมดุล",
+      "statement": "ลูกสูบคู่พื้นที่ A และ a ที่เชื่อมกัน สมดุลเมื่อ (P₀ − Pₐ)(A − a) = Mg เมื่อร้อนขึ้นช้า ๆ ความดันคงที่ ลูกสูบเลื่อน RΔT/(Pₐ(A − a) + Mg) เมื่อเป็นฉนวน การกดลงเล็กน้อยให้แรงคืนตัว P₀γ(A − a)²y/V₀ และสั่นแบบฮาร์มอนิก",
+      "steps": [
+        "เขียนสมดุลแรงบนลูกสูบทั้งคู่",
+        "ใช้กระบวนการความดันคงที่หรือแอเดียแบติกหาการเลื่อนหรือแรงคืนตัว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2553_q05",
+        "phys.tpho2553_q06",
+        "phys.tpho2553_q07",
+        "phys.tpho2553_q08"
+      ],
+      "note": "Numbers vary."
+    }
+  ]
+}

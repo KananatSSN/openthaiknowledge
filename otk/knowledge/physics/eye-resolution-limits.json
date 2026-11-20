@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ขีดจำกัดการแยกภาพของตา",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.eye_resolution_limits.procedure",
+      "kind": "procedure",
+      "title": "ขีดจำกัดการแยกภาพจากการเลี้ยวเบนของรูม่านตา",
+      "statement": "ตามนุษย์แยกจุดได้จำกัดด้วยการเลี้ยวเบน 1.22λ/D ที่รูม่านตาหรือด้วยระยะห่างของเซลรับแสงหารด้วยความลึกของลูกตา ระยะห่างพิกเซลที่ตาแยกไม่ออกที่ระยะ x คือ xθ ของขีดจำกัดที่ใหญ่กว่า",
+      "steps": [
+        "คำนวณมุมจากการเลี้ยวเบนและจากเซลรับแสง",
+        "คูณมุมที่เป็นตัวจำกัดด้วยระยะมองหาขนาดพิกเซล"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2560_q05",
+        "phys.tpho2560_q06",
+        "phys.tpho2560_q07"
+      ],
+      "note": "lambda and pupil vary."
+    }
+  ]
+}

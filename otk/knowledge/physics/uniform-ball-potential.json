@@ -1,0 +1,42 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การอินทิเกรตสนามและสมมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.uniform_ball_potential.procedure",
+      "kind": "procedure",
+      "title": "ศักย์ไฟฟ้าภายในชั้นทรงกลมบางที่มีประจุ",
+      "statement": "ภายในทรงกลมประจุสม่ำเสมอ ชั้นบางให้ศักย์ ρξδξ/ε₀ คงที่ ชั้นนอกรวมกันได้ ρ(R²−r²)/(2ε₀) ประจุภายในให้ ρr²/(3ε₀) ศักย์รวม (ρ/2ε₀)(R² − r²/3)",
+      "steps": [
+        "แบ่งทรงกลมเป็นชั้นบางภายนอกและก้อนภายในรัศมี r",
+        "อินทิเกรตศักย์ของชั้นนอกแล้วบวกศักย์ของก้อนภายใน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2546_q10",
+        "phys.tpho2546_q11",
+        "phys.tpho2546_q12",
+        "phys.tpho2546_q13"
+      ],
+      "note": "Answers in units of rho/eps0."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนกับการสูญเสียพลังงาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.energy_fraction_collision.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วหลังชนเมื่อพลังงานจลน์ลดลง",
+      "statement": "มวลเท่ากันชนกันโดยรู้สัดส่วนพลังงานจลน์ที่เหลือ ใช้โมเมนตัมกับพลังงานแก้สมการกำลังสอง",
+      "steps": [
+        "เขียน vA+vB=u และ vA²+vB²=fu²",
+        "เลือกรากที่ A ไม่แซง B"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q03",
+        "phys.posn2569_q01"
+      ],
+      "note": "Generalized energy fraction f = (1+s²)/2."
+    }
+  ]
+}

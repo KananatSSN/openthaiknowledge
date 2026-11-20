@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การสะท้อนกลับหมดผ่านหลายชั้น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.slab_critical_angle.procedure",
+      "kind": "procedure",
+      "title": "มุมวิกฤตผ่านแผ่นตัวกลางหน้าขนาน",
+      "statement": "แสงผ่านแผ่นหน้าขนานหลายชั้นมี μ sinθ คงที่ มุมวิกฤตที่ผิวสุญญากาศจึงขึ้นกับตัวกลางแรกเท่านั้น",
+      "steps": [
+        "ใช้กฎสเนลล์ทีละผิว",
+        "ตั้งมุมในสุญญากาศเป็น 90°"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q25"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

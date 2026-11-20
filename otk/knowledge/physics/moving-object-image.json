@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมการเลนส์และภาพจริงบนฉาก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.moving_object_image.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วของภาพเมื่อวัตถุเคลื่อนที่ตั้งฉากกับแกน",
+      "statement": "วัตถุที่เคลื่อนที่ตั้งฉากกับแกนเลนส์ ภาพเคลื่อนที่ด้วยความเร็วคูณกำลังขยายตามขวาง −v/u ในทิศกลับกันเมื่อเป็นภาพจริง",
+      "steps": [
+        "หาระยะภาพจากสมการเลนส์",
+        "คูณความเร็วด้วยกำลังขยาย"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2552_q02"
+      ],
+      "note": "Numbers vary; velocity upward positive."
+    }
+  ]
+}

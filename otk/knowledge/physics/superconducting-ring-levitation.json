@@ -1,0 +1,51 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ตัวนำยวดยิ่งลอยในสนามแม่เหล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.superconducting_ring_levitation.procedure",
+      "kind": "procedure",
+      "title": "กระแสในวงแหวนตัวนำยวดยิ่งที่ตกลงมา",
+      "statement": "วงแหวนตัวนำยวดยิ่งรักษาฟลักซ์รวม πR²B_z + LI ให้คงที่ เมื่อตกลงในสนาม B_z = B₀(1 + αz), B_r = B₀βr กระแส πR²αB₀z/L ทำให้เกิดแรงยก kz กับ k = 2B₀²αβπ²R⁴/L วงแหวนสมดุลที่ z₀ = mg/k สั่นแบบฮาร์มอนิกด้วย ω = √(k/m) แอมพลิจูด z₀ และกระแสสูงสุดที่ 2z₀",
+      "steps": [
+        "ใช้ฟลักซ์คงที่หากระแสที่ตำแหน่ง z",
+        "หาแรงจากสนามแนวรัศมีแล้วเขียนสมการการเคลื่อนที่แบบฮาร์มอนิก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2554_q01",
+        "phys.tpho2554_q02",
+        "phys.tpho2554_q03",
+        "phys.tpho2554_q04",
+        "phys.tpho2554_q05"
+      ],
+      "note": "B0, alpha and the depth vary."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สัมประสิทธิ์การคืนตัวและโมเมนตัม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.restitution_stopping_ratio.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนมวลที่ทำให้ลูกชนหยุด",
+      "statement": "ชนตรงกับเป้านิ่งด้วยสัมประสิทธิ์การคืนตัว e ลูกที่วิ่งชนจะหยุดเมื่อ m/M=e",
+      "steps": [
+        "ตั้งโมเมนตัม mu=MV โดยให้ v=0",
+        "ใช้ V=eu จากนิยามสัมประสิทธิ์การคืนตัว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q04"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

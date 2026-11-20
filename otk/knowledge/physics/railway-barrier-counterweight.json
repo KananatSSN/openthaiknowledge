@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "คานกั้นรถไฟ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.railway_barrier_counterweight.procedure",
+      "kind": "procedure",
+      "title": "ระยะตุ้มถ่วงที่ทำให้คานหมุนเร็วที่สุด",
+      "statement": "คานกั้นรถไฟที่มีตุ้มถ่วง: ความเร่งเชิงมุม (τ + mgℓ − MgL/2)/(ML²/3 + mℓ²) มากที่สุดเมื่อ mℓ² + 2(τ/g − ML/2)ℓ − ML²/3 = 0 และถ้า τ ≈ MgL/2 ได้ ℓ ≈ L√(M/(3m))",
+      "steps": [
+        "เขียนทอร์กลัพธ์และโมเมนต์ความเฉื่อยรอบจุดหมุน",
+        "หาอนุพันธ์ของความเร่งเชิงมุมเทียบกับ ℓ ให้เป็นศูนย์"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2558_q04",
+        "phys.tpho2558_q05"
+      ],
+      "note": "tau, M, L and m vary."
+    }
+  ]
+}

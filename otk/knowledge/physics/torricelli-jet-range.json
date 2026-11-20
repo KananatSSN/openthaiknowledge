@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แบร์นูลลีและการเคลื่อนที่แบบโพรเจกไทล์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.torricelli_jet_range.procedure",
+      "kind": "procedure",
+      "title": "ระยะตกของน้ำที่พุ่งจากรูข้างถัง",
+      "statement": "น้ำพุ่งจากรูที่สูง y ใต้ผิวน้ำ h−y ตกไกล x = 2√(y(h−y))",
+      "steps": [
+        "ใช้ทอร์ริเชลลี v=√(2g(h−y))",
+        "ใช้เวลาตกจากความสูง y"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q12"
+      ],
+      "note": "Generator asks x itself."
+    }
+  ]
+}

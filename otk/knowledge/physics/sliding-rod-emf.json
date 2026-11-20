@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเคลื่อนไฟฟ้าเหนี่ยวนำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.sliding_rod_emf.procedure",
+      "kind": "procedure",
+      "title": "แรงเคลื่อนเหนี่ยวนำของแท่งที่เลื่อนบนราง",
+      "statement": "แท่งตัวนำเลื่อนบนรางห่าง L ด้วยความเร็ว v ในสนาม B ให้ emf = vLB ไม่ขึ้นกับมุมเอียงของแท่ง",
+      "steps": [
+        "หาอัตราการเปลี่ยนพื้นที่ของวงจร",
+        "คูณด้วยสนามแม่เหล็ก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q02"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

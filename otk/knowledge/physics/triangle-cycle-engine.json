@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เครื่องจักรความร้อนวัฏจักรสามเหลี่ยม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.triangle_cycle_engine.procedure",
+      "kind": "procedure",
+      "title": "ความดันต่ำสุดของเครื่องจักรความร้อน",
+      "statement": "วัฏจักรสามเหลี่ยม A → B (ความดันคงที่) → C → A (ปริมาตรคงที่) ของแก๊สอะตอมเดี่ยว: งานเท่าพื้นที่สามเหลี่ยม ความร้อนเข้าในช่วง AB (5/2 pΔV) และ CA (3/2 VΔp) ประสิทธิภาพเข้าใกล้ (1 − T_C/T_A)/5 เมื่อ B ไกลออกไป",
+      "steps": [
+        "หาความดันที่ C จากกระบวนการปริมาตรคงที่",
+        "คำนวณงานและความร้อนเข้าแต่ละช่วงแล้วหาประสิทธิภาพ"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2560_q02",
+        "phys.tpho2560_q03",
+        "phys.tpho2560_q04"
+      ],
+      "note": "p_A and temperatures vary."
+    }
+  ]
+}

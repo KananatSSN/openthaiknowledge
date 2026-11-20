@@ -16,10 +16,15 @@
         {
           "sheet": "physics/level/upper-secondary/posn-physics/posn1-62-physics.pdf",
           "item": 21
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 16
         }
       ],
       "covered_by": [
-        "phys.posn2562_q21"
+        "phys.posn2562_q21",
+        "phys.posn2567_q16"
       ],
       "note": "Variable source labels replaced by explicit geometry/data."
     }

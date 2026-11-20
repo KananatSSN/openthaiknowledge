@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การยืดและปริมาตร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.stretched_cord_volume.procedure",
+      "kind": "procedure",
+      "title": "การเปลี่ยนปริมาตรของเส้นยางที่ถูกยืด",
+      "statement": "V=πr²l ให้ δV/V = δl/l − 2δr/r เมื่อทิ้งพจน์อันดับสอง",
+      "steps": [
+        "หาผลต่างอันดับหนึ่งของ πr²l",
+        "แทนความสัมพันธ์ของ δr กับ δl"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q15"
+      ],
+      "note": "Generalized ratio k = (δr/r)/(δl/l)."
+    }
+  ]
+}

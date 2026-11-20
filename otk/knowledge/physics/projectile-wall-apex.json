@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "จุดสูงสุดของโพรเจกไทล์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.projectile_wall_apex.procedure",
+      "kind": "procedure",
+      "title": "มุมยิงและอัตราเร็วต้นเมื่อชนกำแพงตั้งฉาก",
+      "statement": "โพรเจกไทล์ชนกำแพงดิ่งตั้งฉากเมื่อถึงจุดสูงสุด จึง tanθ=2H/L และ u²=g(L²+4H²)/(2H)",
+      "steps": [
+        "ความเร็วแนวดิ่งเป็นศูนย์ที่กำแพง",
+        "ใช้ความสูงสูงสุดและระยะครึ่งพิสัยหาองค์ประกอบความเร็ว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 30
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q30"
+      ],
+      "note": "Both requested values are generated as one ordered pair (tanθ, u²)."
+    }
+  ]
+}

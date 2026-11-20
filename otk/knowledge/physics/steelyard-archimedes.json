@@ -1,0 +1,36 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลโมเมนต์ของคาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.steelyard_archimedes.procedure",
+      "kind": "procedure",
+      "title": "มวลที่อ่านจากตาชั่งจีน",
+      "statement": "ตาชั่งจีนอ่านมวลจากสมดุลโมเมนต์ m = M(x − x₀)/d และใช้ชั่งน้ำหนักที่หายไปในน้ำและของเหลวเพื่อหาความถ่วงจำเพาะ (W − W_l)/(W − W_w)",
+      "steps": [
+        "เทียบขีดศูนย์แล้วอ่านตำแหน่งตุ้มเลื่อน",
+        "ใช้หลักอาร์คิมีดีสเทียบน้ำหนักที่หายไป"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 17
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2549_q13",
+        "phys.tpho2549_q14"
+      ],
+      "note": "Synthetic steelyard geometry."
+    }
+  ]
+}

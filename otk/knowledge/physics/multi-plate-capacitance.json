@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ตัวเก็บประจุแผ่นขนานหลายแผ่น",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.multi_plate_capacitance.procedure",
+      "kind": "procedure",
+      "title": "ความจุของตัวเก็บประจุหลายแผ่น",
+      "statement": "แผ่นขนานหลายแผ่นมีความจุเท่ากับจำนวนช่องที่สองข้างต่างศักย์คูณ ε₀A/d",
+      "steps": [
+        "ระบุศักย์ของแต่ละแผ่นจากการต่อสาย",
+        "นับช่องที่มีผลต่างศักย์"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q07"
+      ],
+      "note": "Generalized to any +/− pattern of plates."
+    }
+  ]
+}

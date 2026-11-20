@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สนามแม่เหล็กบนแกนวงลวด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.loop_axial_field_ratio.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนสนามแม่เหล็กบนแกนวงลวด",
+      "statement": "สนามบนแกนวงลวดแปรตาม 1/(R²+z²)³ᐟ² อัตราส่วนสองจุดจึงเป็น ((R²+a²)/(R²+b²))³ᐟ²",
+      "steps": [
+        "เขียนสนามแต่ละจุดจากสูตรบนแกน",
+        "หารกันให้ μ₀iR²/2 หักล้าง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 19
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q19",
+        "phys.posn2569_q10"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

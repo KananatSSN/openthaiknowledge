@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การประมาณอันดับแรกของโพรเจกไทล์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.projectile_aim_correction.procedure",
+      "kind": "procedure",
+      "title": "มุมเล็งชดเชยการตกของโพรเจกไทล์",
+      "statement": "ยิงเป้าระดับเดียวกันที่อัตราเร็วสูง ต้องเล็งสูงขึ้นประมาณ gD/(2v₀²) เรเดียน",
+      "steps": [
+        "หาเวลาเดินทาง D/v₀ และระยะตก gt²/2",
+        "หารระยะตกด้วยระยะทางเพื่อหามุมเล็ก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 27
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q27"
+      ],
+      "note": "First-order answer for a target near launch height."
+    }
+  ]
+}

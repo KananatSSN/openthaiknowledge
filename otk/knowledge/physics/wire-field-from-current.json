@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎของโอห์มรูปความหนาแน่นกระแส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wire_field_from_current.procedure",
+      "kind": "procedure",
+      "title": "สนามไฟฟ้าในลวดที่มีกระแส",
+      "statement": "สนามไฟฟ้าในลวดหาได้จาก J=σE โดย J=I/a",
+      "steps": [
+        "หาความหนาแน่นกระแส",
+        "หารด้วยสภาพนำไฟฟ้า"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q24"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

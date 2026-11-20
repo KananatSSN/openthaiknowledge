@@ -16,10 +16,15 @@
         {
           "sheet": "physics/level/upper-secondary/posn-physics/posn1-60-physics.pdf",
           "item": 11
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 4
         }
       ],
       "covered_by": [
-        "phys.posn2560_q11"
+        "phys.posn2560_q11",
+        "phys.posn2569_q04"
       ],
       "note": ""
     }

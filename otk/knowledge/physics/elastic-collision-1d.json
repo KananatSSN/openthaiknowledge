@@ -1,0 +1,28 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนแบบยืดหยุ่นหนึ่งมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.elastic_collision_1d.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วของมวลที่ถูกชนหลังการชนยืดหยุ่น",
+      "statement": "การชนยืดหยุ่นหนึ่งมิติอนุรักษ์โมเมนตัมและพลังงานจลน์ ให้ v_B = (2M_Au_A + (M_B − M_A)u_B)/(M_A + M_B) และ v_A = (2M_Bu_B + (M_A − M_B)u_A)/(M_A + M_B)",
+      "steps": [
+        "เขียนการอนุรักษ์โมเมนตัมและพลังงานจลน์",
+        "ใช้ u_A − u_B = v_B − v_A แล้วแก้หาความเร็วหลังชน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2548_q01",
+        "phys.tpho2548_q02"
+      ],
+      "note": "Numbers for the masses and initial speeds."
+    }
+  ]
+}

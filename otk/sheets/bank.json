@@ -75994,8 +75994,12 @@
    "sha256": "fa12956e945f984d",
    "size": 1386807,
    "pages": 11,
-   "layout": "no-text",
-   "scan_pages": 11
+   "layout": "scan",
+   "scan_pages": 11,
+   "items": 30,
+   "sheet_id": "posn2564_physics",
+   "stage": "generated",
+   "note": "Scanned, no text layer: 25 MC and 5 short answers; private hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
@@ -76003,8 +76007,12 @@
    "sha256": "6b4d4742cfa77c5b",
    "size": 771402,
    "pages": 12,
-   "layout": "no-text",
-   "scan_pages": 12
+   "layout": "scan",
+   "scan_pages": 12,
+   "items": 30,
+   "sheet_id": "posn2565_physics",
+   "stage": "generated",
+   "note": "Scanned, no text layer: 25 MC and 5 short answers; private hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
@@ -76012,8 +76020,12 @@
    "sha256": "c9247f34312d4051",
    "size": 482496,
    "pages": 12,
-   "text_chars": 9512,
-   "layout": "numbered"
+   "text_chars": 9525,
+   "layout": "numbered",
+   "items": 28,
+   "sheet_id": "posn2566_physics",
+   "stage": "generated",
+   "note": "28 questions: 20 MC, 7 short answers, 1 worked; maths printed as pictures; private hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
@@ -76021,8 +76033,12 @@
    "sha256": "686d2b6fd47f8c16",
    "size": 1095581,
    "pages": 10,
-   "text_chars": 7584,
-   "layout": "numbered"
+   "text_chars": 7596,
+   "layout": "numbered",
+   "items": 16,
+   "sheet_id": "posn2567_physics",
+   "stage": "generated",
+   "note": "16 questions: 15 short answers, 1 worked; maths printed as pictures; private hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
@@ -76030,8 +76046,12 @@
    "sha256": "11bb3f58f892aa73",
    "size": 1521601,
    "pages": 9,
-   "text_chars": 8349,
-   "layout": "numbered"
+   "text_chars": 8380,
+   "layout": "numbered",
+   "items": 25,
+   "sheet_id": "posn2568_physics",
+   "stage": "generated",
+   "note": "25 short-answer questions; maths printed as pictures; private hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
@@ -76039,8 +76059,12 @@
    "sha256": "95fbbe2d5005424f",
    "size": 2395418,
    "pages": 15,
-   "text_chars": 10898,
-   "layout": "numbered"
+   "text_chars": 10943,
+   "layout": "numbered",
+   "items": 30,
+   "sheet_id": "posn2569_physics",
+   "stage": "generated",
+   "note": "10 eight-choice MC and 20 short answers in two sections (Part 2 restarts at 1; items 11-30 here); private hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_expt.pdf",
@@ -76048,8 +76072,12 @@
    "sha256": "6abd72af94772ee2",
    "size": 196694,
    "pages": 3,
-   "text_chars": 2375,
-   "layout": "unknown"
+   "text_chars": 2421,
+   "layout": "numbered",
+   "items": 3,
+   "sheet_id": "tpho2545_physics",
+   "stage": "generated",
+   "note": "Experimental paper; its 3 theory parts digested with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory.pdf",
@@ -76057,9 +76085,11 @@
    "sha256": "214cfd44b4dce241",
    "size": 282361,
    "pages": 6,
-   "text_chars": 5158,
-   "layout": "unknown",
-   "glyph_damage": 1
+   "text_chars": 5193,
+   "layout": "numbered",
+   "glyph_damage": 1,
+   "stage": "ignored",
+   "note": "Thai version of tpho_1_theory_eng.pdf; digested through the English paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
@@ -76067,8 +76097,12 @@
    "sha256": "489c5bc72c9d64bb",
    "size": 93481,
    "pages": 5,
-   "text_chars": 5677,
-   "layout": "unknown"
+   "text_chars": 5687,
+   "layout": "numbered",
+   "items": 14,
+   "sheet_id": "tpho2545_physics",
+   "stage": "generated",
+   "note": "English theory paper; 14 sub-part items; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_solution.pdf",
@@ -76076,8 +76110,10 @@
    "sha256": "ac8264b3b4ab06fd",
    "size": 461056,
    "pages": 7,
-   "text_chars": 8453,
-   "layout": "unknown"
+   "text_chars": 8512,
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_exp.pdf",
@@ -76086,7 +76122,11 @@
    "size": 389964,
    "pages": 5,
    "text_chars": 4393,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 7,
+   "sheet_id": "tpho2546_physics",
+   "stage": "generated",
+   "note": "Experimental paper (two labs); its theory parts digested as 5 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_exp1.pdf",
@@ -76095,7 +76135,9 @@
    "size": 236949,
    "pages": 2,
    "text_chars": 1960,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: the first two pages of tpho_2_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_exp2.pdf",
@@ -76104,7 +76146,9 @@
    "size": 190208,
    "pages": 3,
    "text_chars": 2433,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 2 alone: the last three pages of tpho_2_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
@@ -76113,7 +76157,11 @@
    "size": 466598,
    "pages": 3,
    "text_chars": 3792,
-   "layout": "unknown"
+   "layout": "numbered",
+   "items": 17,
+   "sheet_id": "tpho2546_physics",
+   "stage": "generated",
+   "note": "Theory paper (three problems); 17 sub-parts, 16 items (2.6 and 3.6 are sketches, claimed by their units); hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory1.pdf",
@@ -76122,7 +76170,9 @@
    "size": 174286,
    "pages": 1,
    "text_chars": 1091,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 1 alone: page 1 of tpho_2_theory.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory1_solution.pdf",
@@ -76131,7 +76181,9 @@
    "size": 169658,
    "pages": 1,
    "text_chars": 1129,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 1: page 1 of tpho_2_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory2.pdf",
@@ -76140,7 +76192,9 @@
    "size": 175789,
    "pages": 1,
    "text_chars": 1226,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 2 alone: page 2 of tpho_2_theory.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory2_solution.pdf",
@@ -76149,7 +76203,9 @@
    "size": 170522,
    "pages": 1,
    "text_chars": 1368,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 2: page 2 of tpho_2_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory3.pdf",
@@ -76158,7 +76214,9 @@
    "size": 174577,
    "pages": 1,
    "text_chars": 1475,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 3 alone: page 3 of tpho_2_theory.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory3_solution.pdf",
@@ -76167,7 +76225,9 @@
    "size": 204216,
    "pages": 2,
    "text_chars": 2435,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 3: pages 3-4 of tpho_2_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory_solution.pdf",
@@ -76176,7 +76236,9 @@
    "size": 465897,
    "pages": 4,
    "text_chars": 4932,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official marking scheme for the theory paper; used to confirm every answer."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_exp.pdf",
@@ -76186,7 +76248,11 @@
    "pages": 4,
    "text_chars": 4431,
    "layout": "numbered",
-   "glyph_damage": 1
+   "glyph_damage": 1,
+   "items": 7,
+   "sheet_id": "tpho2547_physics",
+   "stage": "generated",
+   "note": "Experimental paper (two labs); its theory parts digested as 3 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_exp1.pdf",
@@ -76195,7 +76261,9 @@
    "size": 132939,
    "pages": 2,
    "text_chars": 2616,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-2 of tpho_3_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_exp2.pdf",
@@ -76205,7 +76273,9 @@
    "pages": 2,
    "text_chars": 1815,
    "layout": "numbered",
-   "glyph_damage": 1
+   "glyph_damage": 1,
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 3-4 of tpho_3_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory1_with_solution.pdf",
@@ -76214,7 +76284,9 @@
    "size": 184797,
    "pages": 3,
    "text_chars": 2618,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 1 with its solution: pages 1-3 of tpho_3_theory_with_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory2_with_solution.pdf",
@@ -76223,7 +76295,9 @@
    "size": 263285,
    "pages": 6,
    "text_chars": 7107,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 2 with its solution: pages 4-9 of tpho_3_theory_with_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory3_with_solution.pdf",
@@ -76232,7 +76306,9 @@
    "size": 165534,
    "pages": 2,
    "text_chars": 1919,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 3 with its solution: pages 10-11 of tpho_3_theory_with_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
@@ -76241,7 +76317,11 @@
    "size": 567731,
    "pages": 11,
    "text_chars": 11644,
-   "layout": "unknown"
+   "layout": "numbered",
+   "items": 16,
+   "sheet_id": "tpho2547_physics",
+   "stage": "generated",
+   "note": "Theory paper with its marking scheme bound in; 16 sub-parts, 12 items (1(c), 1(d), 1(f), 3(d) are steps or limits claimed by their units); hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-48-physics/thpo_4_exp.pdf",
@@ -76250,8 +76330,12 @@
    "size": 180232,
    "pages": 6,
    "text_chars": 6777,
-   "layout": "choice-block",
-   "glyph_damage": 422
+   "layout": "numbered",
+   "glyph_damage": 422,
+   "items": 5,
+   "sheet_id": "tpho2548_physics",
+   "stage": "generated",
+   "note": "Both experimental papers (file name misspelt thpo); their theory parts digested as 3 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-48-physics/tpho_4_theory.pdf",
@@ -76261,7 +76345,9 @@
    "pages": 5,
    "text_chars": 5595,
    "layout": "choice-block",
-   "glyph_damage": 323
+   "glyph_damage": 323,
+   "stage": "ignored",
+   "note": "Theory paper alone: pages 1-5 of tpho_4_theory_with_solution.pdf; digested through that file."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-48-physics/tpho_4_theory_solution.pdf",
@@ -76271,7 +76357,9 @@
    "pages": 10,
    "text_chars": 11445,
    "layout": "unknown",
-   "glyph_damage": 341
+   "glyph_damage": 341,
+   "stage": "ignored",
+   "note": "Marking scheme alone: pages 6-15 of tpho_4_theory_with_solution.pdf; used to confirm every answer."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-48-physics/tpho_4_theory_with_solution.pdf",
@@ -76280,8 +76368,12 @@
    "size": 339187,
    "pages": 15,
    "text_chars": 17040,
-   "layout": "choice-block",
-   "glyph_damage": 664
+   "layout": "numbered",
+   "glyph_damage": 664,
+   "items": 14,
+   "sheet_id": "tpho2548_physics",
+   "stage": "generated",
+   "note": "Theory paper (pages 1-5) with its marking scheme (pages 6-15); 14 sub-parts, 16 items; hand transcript. 1.4 uses the scheme's exact formula, not its M/(8m) approximation."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
@@ -76290,7 +76382,11 @@
    "size": 396177,
    "pages": 16,
    "text_chars": 15128,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 18,
+   "sheet_id": "tpho2549_physics",
+   "stage": "generated",
+   "note": "Theory paper, marking scheme and experimental paper in one file; 18 parts, 14 items (lab procedure and measurement parts claimed by their units); hand transcript. Scheme's 3(b) ~0.28 nm does not follow from its formula (0.313 nm)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_exp.pdf",
@@ -76299,8 +76395,12 @@
    "size": 265382,
    "pages": 6,
    "text_chars": 6117,
-   "layout": "choice-block",
-   "glyph_damage": 370
+   "layout": "numbered",
+   "glyph_damage": 370,
+   "items": 8,
+   "sheet_id": "tpho2550_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 4 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_exp1.pdf",
@@ -76310,7 +76410,9 @@
    "pages": 3,
    "text_chars": 3283,
    "layout": "numbered",
-   "glyph_damage": 211
+   "glyph_damage": 211,
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-3 of tpho_6_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_exp2.pdf",
@@ -76320,7 +76422,9 @@
    "pages": 3,
    "text_chars": 2834,
    "layout": "numbered",
-   "glyph_damage": 159
+   "glyph_damage": 159,
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 4-6 of tpho_6_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory.pdf",
@@ -76329,7 +76433,9 @@
    "size": 253758,
    "pages": 6,
    "text_chars": 5793,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Theory paper alone: pages 1-6 of tpho_6_theory_with_solution.pdf; digested through that file."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_solution.pdf",
@@ -76338,7 +76444,9 @@
    "size": 676014,
    "pages": 18,
    "text_chars": 15227,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme alone: pages 7-24 of tpho_6_theory_with_solution.pdf; used to confirm every answer."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
@@ -76347,7 +76455,11 @@
    "size": 789516,
    "pages": 24,
    "text_chars": 21020,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 12,
+   "sheet_id": "tpho2550_physics",
+   "stage": "generated",
+   "note": "Theory paper (pages 1-6) with its marking scheme (pages 7-24); 12 sub-parts, 12 items (1.2 gives two; 1.1.2 claimed by its unit); hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp.pdf",
@@ -76356,7 +76468,11 @@
    "size": 575061,
    "pages": 9,
    "text_chars": 8699,
-   "layout": "choice-block"
+   "layout": "numbered",
+   "items": 7,
+   "sheet_id": "tpho2551_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 2 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp1.pdf",
@@ -76365,7 +76481,9 @@
    "size": 214961,
    "pages": 3,
    "text_chars": 2400,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-3 of tpho_7_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp2.pdf",
@@ -76374,7 +76492,9 @@
    "size": 411505,
    "pages": 6,
    "text_chars": 6299,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 4-9 of tpho_7_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory.pdf",
@@ -76383,7 +76503,11 @@
    "size": 320779,
    "pages": 3,
    "text_chars": 3440,
-   "layout": "unknown"
+   "layout": "numbered",
+   "items": 18,
+   "sheet_id": "tpho2551_physics",
+   "stage": "generated",
+   "note": "Theory paper (three problems); 18 sub-parts, 13 items (steps 1.1.1, 1.2.1, 2.2, 3.3.2, 3.3.3 claimed by their units); hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory1.pdf",
@@ -76392,7 +76516,9 @@
    "size": 124551,
    "pages": 1,
    "text_chars": 1045,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 1 alone: page 1 of tpho_7_theory.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory1_solution.pdf",
@@ -76401,7 +76527,9 @@
    "size": 239124,
    "pages": 5,
    "text_chars": 3832,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 1: pages 1-5 of tpho_7_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory2.pdf",
@@ -76410,7 +76538,9 @@
    "size": 126901,
    "pages": 1,
    "text_chars": 1163,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 2 alone: page 2 of tpho_7_theory.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory2_solution.pdf",
@@ -76419,7 +76549,9 @@
    "size": 355189,
    "pages": 8,
    "text_chars": 7852,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 2: pages 6-13 of tpho_7_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory3.pdf",
@@ -76428,7 +76560,9 @@
    "size": 91696,
    "pages": 1,
    "text_chars": 1232,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 3 alone: page 3 of tpho_7_theory.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory3_solution.pdf",
@@ -76437,7 +76571,9 @@
    "size": 301059,
    "pages": 10,
    "text_chars": 12523,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Marking scheme for problem 3: pages 14-23 of tpho_7_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory_solution.pdf",
@@ -76446,7 +76582,9 @@
    "size": 779822,
    "pages": 23,
    "text_chars": 24207,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Official marking scheme for the theory paper; used to confirm every answer."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_exp.pdf",
@@ -76455,7 +76593,11 @@
    "size": 386015,
    "pages": 5,
    "text_chars": 5899,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 6,
+   "sheet_id": "tpho2552_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 4 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_exp1.pdf",
@@ -76464,7 +76606,9 @@
    "size": 258437,
    "pages": 3,
    "text_chars": 4066,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-3 of tpho_8_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_exp2.pdf",
@@ -76473,7 +76617,9 @@
    "size": 179536,
    "pages": 2,
    "text_chars": 1833,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 4-5 of tpho_8_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory.pdf",
@@ -76482,7 +76628,11 @@
    "size": 378297,
    "pages": 4,
    "text_chars": 4843,
-   "layout": "unknown"
+   "layout": "numbered",
+   "items": 11,
+   "sheet_id": "tpho2552_physics",
+   "stage": "generated",
+   "note": "Theory paper (three problems); 11 sub-parts, 12 items (2.3 gives time and height); hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory1.pdf",
@@ -76491,7 +76641,9 @@
    "size": 129013,
    "pages": 2,
    "text_chars": 2444,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 1 alone: pages 1-2 of tpho_8_theory.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory1_solution.pdf",
@@ -76500,7 +76652,9 @@
    "size": 275391,
    "pages": 2,
    "text_chars": 2608,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 1: pages 1-2 of tpho_8_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory2.pdf",
@@ -76509,7 +76663,9 @@
    "size": 139029,
    "pages": 1,
    "text_chars": 1113,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 2 alone: page 3 of tpho_8_theory.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory2_solution.pdf",
@@ -76518,7 +76674,9 @@
    "size": 146116,
    "pages": 2,
    "text_chars": 3130,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 2: pages 3-4 of tpho_8_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory3.pdf",
@@ -76527,7 +76685,9 @@
    "size": 180782,
    "pages": 1,
    "text_chars": 1286,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Problem 3 alone: page 4 of tpho_8_theory.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory3_solution.pdf",
@@ -76536,7 +76696,9 @@
    "size": 185900,
    "pages": 2,
    "text_chars": 1917,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 3: pages 5-6 of tpho_8_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory_solution.pdf",
@@ -76545,7 +76707,9 @@
    "size": 537789,
    "pages": 6,
    "text_chars": 7655,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (its 2.3 height, 0.82 m, should be 0.90 m)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_exp.pdf",
@@ -76554,7 +76718,11 @@
    "size": 404976,
    "pages": 7,
    "text_chars": 8645,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 5,
+   "sheet_id": "tpho2553_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 3 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_exp1.pdf",
@@ -76563,7 +76731,9 @@
    "size": 252193,
    "pages": 4,
    "text_chars": 5513,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-4 of tpho_9_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_exp2.pdf",
@@ -76572,7 +76742,9 @@
    "size": 207797,
    "pages": 3,
    "text_chars": 3132,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 5-7 of tpho_9_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_theory.pdf",
@@ -76582,7 +76754,9 @@
    "pages": 7,
    "text_chars": 9616,
    "layout": "numbered",
-   "glyph_damage": 496
+   "glyph_damage": 496,
+   "stage": "ignored",
+   "note": "Theory paper alone: pages 1-7 of tpho_9_theory_with_solution.pdf; digested through that file."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_theory_solution.pdf",
@@ -76592,7 +76766,9 @@
    "pages": 12,
    "text_chars": 9440,
    "layout": "unknown",
-   "glyph_damage": 306
+   "glyph_damage": 306,
+   "stage": "ignored",
+   "note": "Solution alone: pages 8-19 of tpho_9_theory_with_solution.pdf; used to confirm every answer."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
@@ -76602,7 +76778,11 @@
    "pages": 19,
    "text_chars": 19056,
    "layout": "numbered",
-   "glyph_damage": 802
+   "glyph_damage": 802,
+   "items": 12,
+   "sheet_id": "tpho2553_physics",
+   "stage": "generated",
+   "note": "Theory paper (pages 1-7) with its solution (pages 8-19); 12 sub-parts, 11 items (3.2.1-3.2.2 are steps of 3.2.3); hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_exp.pdf",
@@ -76611,7 +76791,11 @@
    "size": 638911,
    "pages": 6,
    "text_chars": 6404,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 5,
+   "sheet_id": "tpho2554_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 4 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_exp1.pdf",
@@ -76620,7 +76804,9 @@
    "size": 403403,
    "pages": 3,
    "text_chars": 3088,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-3 of tpho_10_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_exp2.pdf",
@@ -76629,7 +76815,9 @@
    "size": 275555,
    "pages": 3,
    "text_chars": 3316,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 4-6 of tpho_10_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory.pdf",
@@ -76639,7 +76827,9 @@
    "pages": 8,
    "text_chars": 9279,
    "layout": "numbered",
-   "glyph_damage": 118
+   "glyph_damage": 118,
+   "stage": "ignored",
+   "note": "Theory paper alone: pages 1-8 of tpho_10_theory_with_solution.pdf; digested through that file."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_solution.pdf",
@@ -76649,7 +76839,9 @@
    "pages": 9,
    "text_chars": 7174,
    "layout": "unknown",
-   "glyph_damage": 5
+   "glyph_damage": 5,
+   "stage": "ignored",
+   "note": "Solution alone: pages 9-17 of tpho_10_theory_with_solution.pdf; used to confirm every answer (its 3.6 distance, 0.84 m, should be 0.084 m)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
@@ -76659,7 +76851,11 @@
    "pages": 17,
    "text_chars": 16453,
    "layout": "numbered",
-   "glyph_damage": 123
+   "glyph_damage": 123,
+   "items": 19,
+   "sheet_id": "tpho2554_physics",
+   "stage": "generated",
+   "note": "Theory paper (pages 1-8) with its solution (pages 9-17); 19 sub-parts, 16 items (1.1 is a step of 1.2, 3.3 and 3.4 are steps of 3.5); hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_exp.pdf",
@@ -76668,7 +76864,11 @@
    "size": 307455,
    "pages": 4,
    "text_chars": 5682,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 6,
+   "sheet_id": "tpho2555_physics",
+   "stage": "generated",
+   "note": "Both experimental papers; their theory parts digested as 5 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_exp1.pdf",
@@ -76677,7 +76877,9 @@
    "size": 155841,
    "pages": 2,
    "text_chars": 2994,
-   "layout": "numbered"
+   "layout": "numbered",
+   "stage": "ignored",
+   "note": "Lab 1 alone: pages 1-2 of tpho_11_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_exp2.pdf",
@@ -76686,7 +76888,9 @@
    "size": 179381,
    "pages": 2,
    "text_chars": 2688,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Lab 2 alone: pages 3-4 of tpho_11_exp.pdf; digested through the combined paper."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory.pdf",
@@ -76695,7 +76899,11 @@
    "size": 472110,
    "pages": 4,
    "text_chars": 4847,
-   "layout": "unknown"
+   "layout": "numbered",
+   "items": 15,
+   "sheet_id": "tpho2555_physics",
+   "stage": "generated",
+   "note": "Theory paper (4 pages); 15 sub-parts, 13 items (1.2 ก is a sketch, 3 ค is a step of 3 ง); answers from tpho_11_theory_solution.pdf; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory1.pdf",
@@ -76704,7 +76912,9 @@
    "size": 198273,
    "pages": 2,
    "text_chars": 1602,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Theory problem 1 alone: pages 1-2 of tpho_11_theory.pdf; digested through that file."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory1_solution.pdf",
@@ -76713,7 +76923,9 @@
    "size": 170619,
    "pages": 2,
    "text_chars": 1942,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 1 alone: pages 1-2 of tpho_11_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory2.pdf",
@@ -76722,7 +76934,9 @@
    "size": 231462,
    "pages": 1,
    "text_chars": 1721,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Theory problem 2 alone: page 3 of tpho_11_theory.pdf; digested through that file."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory2_solution.pdf",
@@ -76731,7 +76945,9 @@
    "size": 122753,
    "pages": 2,
    "text_chars": 1677,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 2 alone: pages 3-4 of tpho_11_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory3.pdf",
@@ -76740,7 +76956,9 @@
    "size": 227608,
    "pages": 1,
    "text_chars": 1524,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Theory problem 3 alone: page 4 of tpho_11_theory.pdf; digested through that file."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory3_solution.pdf",
@@ -76749,7 +76967,9 @@
    "size": 117492,
    "pages": 1,
    "text_chars": 1420,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Solution to problem 3 alone: page 5 of tpho_11_theory_solution.pdf."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory_solution.pdf",
@@ -76758,7 +76978,9 @@
    "size": 329057,
    "pages": 5,
    "text_chars": 5039,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_exp.pdf",
@@ -76767,8 +76989,12 @@
    "size": 214671,
    "pages": 5,
    "text_chars": 8484,
-   "layout": "unknown",
-   "glyph_damage": 38
+   "layout": "numbered",
+   "glyph_damage": 38,
+   "items": 6,
+   "sheet_id": "tpho2556_physics",
+   "stage": "generated",
+   "note": "Experimental paper (coupled oscillation of a disc magnet); its theory parts digested as 4 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_exp_solution.pdf",
@@ -76777,7 +77003,9 @@
    "size": 284209,
    "pages": 4,
    "text_chars": 3001,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (its part 5 B_v = 0.13 T should be 0.133 G)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
@@ -76786,8 +77014,12 @@
    "size": 245559,
    "pages": 5,
    "text_chars": 7351,
-   "layout": "choice-block",
-   "glyph_damage": 51
+   "layout": "numbered",
+   "glyph_damage": 51,
+   "items": 26,
+   "sheet_id": "tpho2556_physics",
+   "stage": "generated",
+   "note": "Theory paper (5 pages); 26 sub-parts, 17 items; no theory solution in the folder, so every answer was derived and checked independently; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_exp.pdf",
@@ -76796,8 +77028,12 @@
    "size": 570457,
    "pages": 7,
    "text_chars": 10455,
-   "layout": "unknown",
-   "glyph_damage": 2
+   "layout": "numbered",
+   "glyph_damage": 2,
+   "items": 4,
+   "sheet_id": "tpho2557_physics",
+   "stage": "generated",
+   "note": "Experimental paper (eddy currents and a magnetic brake); its theory parts digested as 5 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_exp_solution.pdf",
@@ -76806,7 +77042,9 @@
    "size": 426518,
    "pages": 8,
    "text_chars": 8478,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (all agree)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
@@ -76815,8 +77053,12 @@
    "size": 742377,
    "pages": 6,
    "text_chars": 6655,
-   "layout": "choice-block",
-   "glyph_damage": 5
+   "layout": "numbered",
+   "glyph_damage": 5,
+   "items": 22,
+   "sheet_id": "tpho2557_physics",
+   "stage": "generated",
+   "note": "Theory paper (6 pages); 22 sub-parts, 12 items; answers from tpho_13_theory_solution.pdf; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory_solution.pdf",
@@ -76826,7 +77068,9 @@
    "pages": 10,
    "text_chars": 8114,
    "layout": "unknown",
-   "glyph_damage": 1
+   "glyph_damage": 1,
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory-solution.pdf",
@@ -76835,7 +77079,9 @@
    "size": 1114892,
    "pages": 9,
    "text_chars": 7493,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
@@ -76844,7 +77090,11 @@
    "size": 966954,
    "pages": 7,
    "text_chars": 6666,
-   "layout": "choice-block"
+   "layout": "numbered",
+   "items": 17,
+   "sheet_id": "tpho2558_physics",
+   "stage": "generated",
+   "note": "Theory paper (7 pages); 17 sub-parts, 13 items; answers from TPhO14_theory-solution.pdf; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO2015_Lab_Problem.pdf",
@@ -76853,7 +77103,11 @@
    "size": 688342,
    "pages": 6,
    "text_chars": 8214,
-   "layout": "unknown"
+   "layout": "numbered",
+   "items": 6,
+   "sheet_id": "tpho2558_physics",
+   "stage": "generated",
+   "note": "Experimental paper (viscosity and surface tension of saline); its theory parts digested as 4 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO2015_Lab_Solution.pdf",
@@ -76863,7 +77117,9 @@
    "pages": 6,
    "text_chars": 5327,
    "layout": "unknown",
-   "glyph_damage": 3
+   "glyph_damage": 3,
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (all agree)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Expt_Question.pdf",
@@ -76873,7 +77129,11 @@
    "pages": 7,
    "text_chars": 9487,
    "layout": "numbered",
-   "glyph_damage": 71
+   "glyph_damage": 71,
+   "items": 4,
+   "sheet_id": "tpho2559_physics",
+   "stage": "generated",
+   "note": "Experimental paper (LDR calibration); its theory parts digested as 4 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Expt_Solution.pdf",
@@ -76882,7 +77142,9 @@
    "size": 476907,
    "pages": 4,
    "text_chars": 3846,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (all agree up to rounding of c₁)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory-Solution.pdf",
@@ -76891,7 +77153,9 @@
    "size": 969766,
    "pages": 12,
    "text_chars": 14379,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
@@ -76900,8 +77164,12 @@
    "size": 605805,
    "pages": 12,
    "text_chars": 16532,
-   "layout": "choice-block",
-   "glyph_damage": 130
+   "layout": "numbered",
+   "glyph_damage": 130,
+   "items": 23,
+   "sheet_id": "tpho2559_physics",
+   "stage": "generated",
+   "note": "Theory paper (12 pages); 23 sub-parts, 15 items; answers from TPhO2016_Theory-Solution.pdf; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Expt___Question.pdf",
@@ -76910,7 +77178,11 @@
    "size": 627648,
    "pages": 7,
    "text_chars": 7937,
-   "layout": "choice-block"
+   "layout": "numbered",
+   "items": 2,
+   "sheet_id": "tpho2560_physics",
+   "stage": "generated",
+   "note": "Experimental paper (neodymium magnets); its two parts digested with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Expt___Solution.pdf",
@@ -76920,7 +77192,9 @@
    "pages": 5,
    "text_chars": 6153,
    "layout": "unknown",
-   "glyph_damage": 1
+   "glyph_damage": 1,
+   "stage": "ignored",
+   "note": "Official solution to the experimental paper; used to confirm the lab answers (its k = 0.265 kg/s should be 0.262)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory-Sol.pdf",
@@ -76930,7 +77204,9 @@
    "pages": 18,
    "text_chars": 20444,
    "layout": "unknown",
-   "glyph_damage": 10
+   "glyph_damage": 10,
+   "stage": "ignored",
+   "note": "Official solution to the theory paper; used to confirm every answer (all agree)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
@@ -76939,7 +77215,11 @@
    "size": 1548953,
    "pages": 20,
    "text_chars": 27088,
-   "layout": "choice-block"
+   "layout": "numbered",
+   "items": 25,
+   "sheet_id": "tpho2560_physics",
+   "stage": "generated",
+   "note": "Theory paper (20 pages); 25 sub-parts, 18 items; answers from TPhO2017_Theory-Sol.pdf; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_exp.pdf",
@@ -76949,7 +77229,11 @@
    "pages": 9,
    "text_chars": 10769,
    "layout": "numbered",
-   "glyph_damage": 613
+   "glyph_damage": 613,
+   "items": 4,
+   "sheet_id": "tpho2561_physics",
+   "stage": "generated",
+   "note": "Experimental paper (rice: angles of repose and packing density); no lab solution in the folder; 3 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
@@ -76958,8 +77242,12 @@
    "size": 3619385,
    "pages": 18,
    "text_chars": 21817,
-   "layout": "choice-block",
-   "glyph_damage": 1180
+   "layout": "numbered",
+   "glyph_damage": 1180,
+   "items": 28,
+   "sheet_id": "tpho2561_physics",
+   "stage": "generated",
+   "note": "Theory paper (18 pages); 28 sub-parts, 19 items; checked against the scanned solution and re-derived; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory_solution.pdf",
@@ -76968,7 +77256,9 @@
    "size": 337539,
    "pages": 15,
    "text_chars": 10680,
-   "layout": "unknown"
+   "layout": "unknown",
+   "stage": "ignored",
+   "note": "Official solution to the theory paper (a scan with a poor text layer); used to confirm the answers it shows legibly (all agree)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Experiment (1).pdf",
@@ -76978,7 +77268,11 @@
    "pages": 12,
    "text_chars": 15036,
    "layout": "numbered",
-   "glyph_damage": 98
+   "glyph_damage": 98,
+   "items": 9,
+   "sheet_id": "tpho2562_physics",
+   "stage": "generated",
+   "note": "Experimental paper (LEDs: I-V and ideality, threshold voltage and wavelength, photovoltaic fill factor); no lab solution in the folder; 6 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
@@ -76987,7 +77281,11 @@
    "size": 1627381,
    "pages": 8,
    "text_chars": 13601,
-   "layout": "choice-block"
+   "layout": "numbered",
+   "items": 29,
+   "sheet_id": "tpho2562_physics",
+   "stage": "generated",
+   "note": "Theory paper (8 pages); 29 sub-parts, 18 items; no solution in the folder, answers derived here; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
@@ -76996,8 +77294,12 @@
    "size": 245471,
    "pages": 2,
    "text_chars": 3372,
-   "layout": "unknown",
-   "glyph_damage": 176
+   "layout": "numbered",
+   "glyph_damage": 176,
+   "items": 8,
+   "sheet_id": "tpho2563_physics",
+   "stage": "generated",
+   "note": "Theory problem 1 (2 pages: strobe-lit water drops, optical tweezer); 8 sub-parts, 7 items; answers from 1_TPhO2020_Theory_Solution.pdf; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-63-physics/1_TPhO2020_Theory_Solution.pdf",
@@ -77007,7 +77309,9 @@
    "pages": 8,
    "text_chars": 8145,
    "layout": "unknown",
-   "glyph_damage": 302
+   "glyph_damage": 302,
+   "stage": "ignored",
+   "note": "Official solution to 1_TPhO2020_Theory_Question.pdf; used to confirm the answers (all re-derived)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-63-physics/2_TPhO2020_Theory_Question.pdf",
@@ -77016,8 +77320,12 @@
    "size": 387246,
    "pages": 3,
    "text_chars": 5463,
-   "layout": "unknown",
-   "glyph_damage": 262
+   "layout": "numbered",
+   "glyph_damage": 262,
+   "items": 9,
+   "sheet_id": "tpho2563_physics",
+   "stage": "generated",
+   "note": "Theory problem 2 (3 pages: dry and moist adiabatic lapse rates); 9 sub-parts, 5 items; answers from 2_TPhO2020_Theory_Solution.pdf; 2.8's graph replaced by a straight line in the generated item; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-63-physics/2_TPhO2020_Theory_Solution.pdf",
@@ -77027,7 +77335,9 @@
    "pages": 5,
    "text_chars": 5445,
    "layout": "unknown",
-   "glyph_damage": 136
+   "glyph_damage": 136,
+   "stage": "ignored",
+   "note": "Official solution to 2_TPhO2020_Theory_Question.pdf; used to confirm the answers (all re-derived)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Question.pdf",
@@ -77036,8 +77346,12 @@
    "size": 319146,
    "pages": 3,
    "text_chars": 4649,
-   "layout": "unknown",
-   "glyph_damage": 225
+   "layout": "numbered",
+   "glyph_damage": 225,
+   "items": 7,
+   "sheet_id": "tpho2563_physics",
+   "stage": "generated",
+   "note": "Theory problem 3 (3 pages: gravitational lensing, Einstein ring); 7 sub-parts, 4 items; answers from 3_TPhO2020_Theory_Solution.pdf; hand transcript."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-63-physics/3_TPhO2020_Theory_Solution.pdf",
@@ -77047,7 +77361,9 @@
    "pages": 3,
    "text_chars": 2863,
    "layout": "unknown",
-   "glyph_damage": 89
+   "glyph_damage": 89,
+   "stage": "ignored",
+   "note": "Official solution to 3_TPhO2020_Theory_Question.pdf; used to confirm the answers (all re-derived)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-63-physics/TPhO2020_Experiment_Question.pdf",
@@ -77057,7 +77373,11 @@
    "pages": 7,
    "text_chars": 7137,
    "layout": "numbered",
-   "glyph_damage": 387
+   "glyph_damage": 387,
+   "items": 5,
+   "sheet_id": "tpho2563_physics",
+   "stage": "generated",
+   "note": "Experimental paper (self-amplified friction of interleaved notebooks); 5 parts, 5 items with synthetic data; answers from TPhO2020_Experiment_Solution.pdf (its part 2 slope is a hand-drawn line)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-63-physics/TPhO2020_Experiment_Solution.pdf",
@@ -77067,7 +77387,9 @@
    "pages": 8,
    "text_chars": 4763,
    "layout": "unknown",
-   "glyph_damage": 180
+   "glyph_damage": 180,
+   "stage": "ignored",
+   "note": "Official solution to TPhO2020_Experiment_Question.pdf; used to confirm the answers (all re-derived)."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_experiment.pdf",
@@ -77076,8 +77398,12 @@
    "size": 1155934,
    "pages": 21,
    "text_chars": 16773,
-   "layout": "choice-block",
-   "glyph_damage": 758
+   "layout": "numbered",
+   "glyph_damage": 758,
+   "items": 9,
+   "sheet_id": "tpho2564_physics",
+   "stage": "generated",
+   "note": "Experimental paper with its solution bound in (21 pages: cantilever beam deflection and vibration); 9 parts, 5 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
@@ -77086,8 +77412,12 @@
    "size": 2390364,
    "pages": 35,
    "text_chars": 33749,
-   "layout": "choice-block",
-   "glyph_damage": 1412
+   "layout": "numbered",
+   "glyph_damage": 1412,
+   "items": 31,
+   "sheet_id": "tpho2564_physics",
+   "stage": "generated",
+   "note": "Theory paper with its solution bound in (35 pages); 31 sub-parts, 24 items; answers from the bound solution, re-derived; hand transcript. Scheme notes: 2 g) sign of sigma+ in its first method; 3.1 h) sensitive to the graph-read alpha_O."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-65-physics/TPhO2022_Theory_Experiment_Solution.pdf",
@@ -77096,8 +77426,12 @@
    "size": 2201944,
    "pages": 25,
    "text_chars": 18576,
-   "layout": "choice-block",
-   "glyph_damage": 772
+   "layout": "numbered",
+   "glyph_damage": 772,
+   "items": 7,
+   "sheet_id": "tpho2565_physics",
+   "stage": "generated",
+   "note": "Experimental paper with its solution bound in (25 pages: permanent magnets and a Hall sensor); 7 parts, 5 items with synthetic data."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-65-physics/TPhO2022_Theory_Question_Solution.pdf",
@@ -77106,8 +77440,12 @@
    "size": 1590915,
    "pages": 24,
    "text_chars": 25717,
-   "layout": "choice-block",
-   "glyph_damage": 576
+   "layout": "numbered",
+   "glyph_damage": 576,
+   "items": 26,
+   "sheet_id": "tpho2565_physics",
+   "stage": "generated",
+   "note": "Theory paper with its solution bound in (24 pages: electric dipole and a point charge, magnetic cooling, sonic flow); 26 sub-parts, 17 items; answers from the bound solution, re-derived; hand transcript. Scheme note: 1 g)'s period 10.3/beta should be 10.4/beta."
   },
   {
    "path": "physics/level/upper-secondary/posn-physics/tpho-66-physics/TPhO2023_Experiment_Question.pdf",

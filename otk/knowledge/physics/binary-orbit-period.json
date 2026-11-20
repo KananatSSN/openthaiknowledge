@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎความโน้มถ่วงสากลและวงโคจร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.binary_orbit_period.procedure",
+      "kind": "procedure",
+      "title": "คาบการโคจรของระบบสองวัตถุ",
+      "statement": "ระบบสองวัตถุระยะห่าง D มีคาบ 2π√(D³/(G(M+m))) จึงแปรตาม D^(3/2) และ (M+m)^(−1/2)",
+      "steps": [
+        "ใช้ ω² = G(M+m)/D³",
+        "หาอัตราส่วนคาบเมื่อเปลี่ยน D และมวลรวม"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q22"
+      ],
+      "note": "Generator asks the period ratio under scaling."
+    }
+  ]
+}

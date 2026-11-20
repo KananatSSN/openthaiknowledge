@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การนำความร้อนคงตัวหนึ่งมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.thermal_junction_temperature.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิรอยต่อของแท่งสองท่อน",
+      "statement": "แท่งนำความร้อนต่ออนุกรมมีอัตราไหลเท่ากัน อุณหภูมิรอยต่อแบ่งตามสัดส่วนความต้านทานความร้อน",
+      "steps": [
+        "หาความต้านทานความร้อนแต่ละท่อน",
+        "แบ่งผลต่างอุณหภูมิตามสัดส่วน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q10"
+      ],
+      "note": "Generalized lengths and areas."
+    }
+  ]
+}

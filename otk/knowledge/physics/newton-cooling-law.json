@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การถ่ายโอนความร้อนและการเย็นตัว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.newton_cooling_law.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิตามกฎการเย็นตัวของนิวตัน",
+      "statement": "กฎการเย็นตัวของนิวตันให้ T = Tₐ + (T₀−Tₐ)e^(−t/β) และ ln(T−Tₐ) ลดเป็นเส้นตรงตามเวลาด้วยความชัน −1/β",
+      "steps": [
+        "แก้สมการเชิงอนุพันธ์แยกตัวแปร",
+        "ใช้ล็อกเพื่อหาค่าคงตัว β จากข้อมูล"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_expt.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_expt.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q15",
+        "phys.tpho2545_q16"
+      ],
+      "note": "Experiment 1a."
+    }
+  ]
+}

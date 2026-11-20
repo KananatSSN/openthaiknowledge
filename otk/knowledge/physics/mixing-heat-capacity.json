@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลความร้อนของการผสม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.mixing_heat_capacity.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิสุดท้ายเมื่อผสมของเหลว",
+      "statement": "ผสมของเหลวสองชนิดอุณหภูมิสุดท้ายคือค่าเฉลี่ยถ่วงน้ำหนักด้วยความจุความร้อน mS",
+      "steps": [
+        "ตั้งความร้อนที่เสียเท่ากับความร้อนที่ได้",
+        "แก้หาอุณหภูมิสุดท้ายจากน้ำหนัก mS ของแต่ละฝั่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q07"
+      ],
+      "note": "Source has equal heat capacities; the generator draws unequal ratios."
+    }
+  ]
+}

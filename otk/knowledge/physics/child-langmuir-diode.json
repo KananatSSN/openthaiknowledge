@@ -1,0 +1,55 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "หลอดสุญญากาศไดโอด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.child_langmuir_diode.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วของอิเล็กตรอนตัวเดียวระหว่างขั้วไดโอด",
+      "statement": "ไดโอดสุญญากาศ: อิเล็กตรอนเดี่ยวได้พลังงาน exV_d/d ส่วนที่สภาวะคงตัว I = ρva² กับสมการปัวซองให้ V = kx^(4/3) กระแสจำกัดด้วยประจุสเปซ I = (4ε₀a²/9d²)√(2e/m)V_d^(3/2) ประจุสเปซรวม −(4/3)ε₀a²V_d/d และแอโนดมีประจุ +(4/3)ε₀V_d/d ต่อพื้นที่",
+      "steps": [
+        "รวมสมการกระแส การอนุรักษ์พลังงาน และสมการปัวซอง",
+        "แก้หากระแส ศักย์ ประจุสเปซ และประจุที่ขั้ว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2564_q09",
+        "phys.tpho2564_q10",
+        "phys.tpho2564_q11",
+        "phys.tpho2564_q12",
+        "phys.tpho2564_q13"
+      ],
+      "note": "V_d, gap, depth and launch speed vary."
+    }
+  ]
+}

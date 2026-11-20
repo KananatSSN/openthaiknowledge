@@ -1,0 +1,56 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การถ่ายเทก๊าซผ่านวาล์ว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.gas_transfer_spring_cylinder.procedure",
+      "kind": "procedure",
+      "title": "ความดันสุดท้ายในกระบอกสูบสปริง",
+      "statement": "ก๊าซไหลช้า ๆ จากกระบอกสูบความดันคงที่ mg/a ไปยังกระบอกสูบที่มีสปริงจนความดันเท่ากัน: V_B = mga/k งานจากน้ำหนัก P V_B T_A/T_B งานต่อสปริง ½P V_B และสมดุลพลังงานให้ T_B/T_A = 2γ/(γ + 1)",
+      "steps": [
+        "หาความดันและปริมาตรสุดท้ายจากสมดุลแรงของลูกสูบ",
+        "เขียนงานเข้าและออกแล้วใช้ U = PV/(γ − 1) หาอุณหภูมิ"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2556_q09",
+        "phys.tpho2556_q10",
+        "phys.tpho2556_q11",
+        "phys.tpho2556_q12",
+        "phys.tpho2556_q13",
+        "phys.tpho2556_q14"
+      ],
+      "note": "m and a vary."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "อุณหภูมิและมวลขั้นต่ำของดาว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.protostar_ignition.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิผิวดวงอาทิตย์จากความเข้มแสงที่โลก",
+      "statement": "กลุ่มแก๊สที่ยึดด้วยแรงโน้มถ่วง: ทฤษฎีบทไวเรียล P.E. = −2 K.E. กับพลังงานศักย์ทรงกลม −(3/5)GM²/R ให้อุณหภูมิเฉลี่ย GMm_p/(5Rk_B) และ dE/dT < 0 ความดันใจกลาง ½GMρ/R ต้านด้วยความดันแก๊สและ degeneracy ทำให้มีมวลน้อยที่สุดราว 0.1 มวลดวงอาทิตย์ที่ร้อนถึง 10⁷ K",
+      "steps": [
+        "ใช้กฎสเตฟาน-โบลซ์มันน์และทฤษฎีบทไวเรียลหาอุณหภูมิ",
+        "สมดุลความดันใจกลางกับความดันแก๊สและ degeneracy หาความหนาแน่นและมวลน้อยที่สุด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 19
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 20
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 21
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 22
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 23
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 24
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 25
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 26
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 27
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 28
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-62-physics/TPhO2019_Theory (1).pdf",
+          "item": 29
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2562_q11",
+        "phys.tpho2562_q12",
+        "phys.tpho2562_q13",
+        "phys.tpho2562_q14",
+        "phys.tpho2562_q15",
+        "phys.tpho2562_q16",
+        "phys.tpho2562_q17",
+        "phys.tpho2562_q18"
+      ],
+      "note": "The intensity, distance and solar radius vary."
+    }
+  ]
+}

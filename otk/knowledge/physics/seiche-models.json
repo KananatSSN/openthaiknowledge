@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การกระเพื่อมของน้ำในอ่าง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.seiche_models.procedure",
+      "kind": "procedure",
+      "title": "คาบการกระเพื่อมของน้ำในอ่างตามแบบจำลอง",
+      "statement": "การกระเพื่อมของน้ำในอ่างลึก H ยาว L ตามแบบจำลองศูนย์กลางมวลเลื่อนซ้ายขวามีคาบ 2π√(L²/(12gH)) เทียบกับแบบจำลองลูกตุ้มและกระดานกระดก",
+      "steps": [
+        "เขียนคาบของแต่ละแบบจำลอง",
+        "เปรียบเทียบกับคาบที่วัดได้ด้วยกราฟเส้นตรง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_exp.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2553_q14"
+      ],
+      "note": "Student 3's model; the other students' models are named mistakes."
+    }
+  ]
+}

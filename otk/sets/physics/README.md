@@ -2,7 +2,7 @@
 
 # ฟิสิกส์ (`physics`)
 
-625 sets in 179 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+1,184 sets in 206 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -247,3 +247,30 @@
 | [`posn2560`](olympiad/posn2560.py) | POSN camp 1 physics, 2560: computed variants with audited solvers. | — | 30 |
 | [`posn2561`](olympiad/posn2561.py) | POSN physics camp selection 2561: verified variants of each source item. | — | 30 |
 | [`posn2562`](olympiad/posn2562.py) | Seeded variants of the reviewed POSN physics 2562 camp selection paper. | — | 26 |
+| [`posn2564`](olympiad/posn2564.py) | Seeded variants of the reviewed POSN physics 2564 camp selection paper. | — | 30 |
+| [`posn2565`](olympiad/posn2565.py) | Seeded variants of the reviewed POSN physics 2565 camp selection paper. | — | 30 |
+| [`posn2566`](olympiad/posn2566.py) | Seeded variants of the reviewed POSN physics 2566 camp selection paper. | — | 28 |
+| [`posn2567`](olympiad/posn2567.py) | Seeded variants of the reviewed POSN physics 2567 camp selection paper. | — | 16 |
+| [`posn2568`](olympiad/posn2568.py) | Seeded variants of the reviewed POSN physics 2568 camp selection paper. | — | 25 |
+| [`posn2569`](olympiad/posn2569.py) | Seeded variants of the reviewed POSN physics 2569 camp selection paper. | — | 30 |
+| [`tpho2545`](olympiad/tpho2545.py) | Seeded variants of the reviewed TPhO 1 (2545) national physics olympiad. | — | 17 |
+| [`tpho2546`](olympiad/tpho2546.py) | Seeded variants of the reviewed TPhO 2 (2546) national physics olympiad. | — | 21 |
+| [`tpho2547`](olympiad/tpho2547.py) | Seeded variants of the reviewed TPhO 3 (2547) national physics olympiad. | — | 15 |
+| [`tpho2548`](olympiad/tpho2548.py) | Seeded variants of the reviewed TPhO 4 (2548) national physics olympiad. | — | 19 |
+| [`tpho2549`](olympiad/tpho2549.py) | Seeded variants of the reviewed TPhO 5 (2549) national physics olympiad. | — | 14 |
+| [`tpho2550`](olympiad/tpho2550.py) | Seeded variants of the reviewed TPhO 6 (2550) national physics olympiad. | — | 16 |
+| [`tpho2551`](olympiad/tpho2551.py) | Seeded variants of the reviewed TPhO 7 (2551) national physics olympiad. | — | 15 |
+| [`tpho2552`](olympiad/tpho2552.py) | Seeded variants of the reviewed TPhO 8 (2552) national physics olympiad. | — | 16 |
+| [`tpho2553`](olympiad/tpho2553.py) | Seeded variants of the reviewed TPhO 9 (2553) national physics olympiad. | — | 14 |
+| [`tpho2554`](olympiad/tpho2554.py) | Seeded variants of the reviewed TPhO 10 (2554) national physics olympiad. | — | 20 |
+| [`tpho2555`](olympiad/tpho2555.py) | Seeded variants of the reviewed TPhO 11 (2555) national physics olympiad. | — | 18 |
+| [`tpho2556`](olympiad/tpho2556.py) | Seeded variants of the reviewed TPhO 12 (2556) national physics olympiad. | — | 21 |
+| [`tpho2557`](olympiad/tpho2557.py) | Seeded variants of the reviewed TPhO 13 (2557) national physics olympiad. | — | 17 |
+| [`tpho2558`](olympiad/tpho2558.py) | Seeded variants of the reviewed TPhO 14 (2558) national physics olympiad. | — | 17 |
+| [`tpho2559`](olympiad/tpho2559.py) | Seeded variants of the reviewed TPhO 15 (2559) national physics olympiad. | — | 23 |
+| [`tpho2560`](olympiad/tpho2560.py) | Seeded variants of the reviewed TPhO 16 (2560) national physics olympiad. | — | 20 |
+| [`tpho2561`](olympiad/tpho2561.py) | Seeded variants of the reviewed TPhO 17 (2561) national physics olympiad. | — | 22 |
+| [`tpho2562`](olympiad/tpho2562.py) | Seeded variants of the reviewed TPhO 18 (2562) national physics olympiad. | — | 24 |
+| [`tpho2563`](olympiad/tpho2563.py) | Seeded variants of the reviewed TPhO 19 (2563) national physics olympiad. | — | 20 |
+| [`tpho2564`](olympiad/tpho2564.py) | Seeded variants of the reviewed TPhO 20 (2564) national physics olympiad. | — | 29 |
+| [`tpho2565`](olympiad/tpho2565.py) | Seeded variants of the reviewed TPhO 21 (2565) national physics olympiad. | — | 22 |

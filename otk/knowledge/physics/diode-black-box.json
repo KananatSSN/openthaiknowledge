@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กล่องดำไดโอด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.diode_black_box.procedure",
+      "kind": "procedure",
+      "title": "ความต่างศักย์ขีดเริ่มของไดโอดหนึ่งตัวจากกล่องดำ",
+      "statement": "กล่องดำที่มีไดโอดชนิดเดียวกันต่อเป็นสองเส้นขนานทิศตรงข้ามกับตัวต้านทาน R: ความต่างศักย์ขีดเริ่มแต่ละทิศเท่ากับจำนวนไดโอดในเส้นที่นำไฟฟ้าคูณขีดเริ่มของไดโอดหนึ่งตัว และช่วงที่นำไฟฟ้าเต็มที่ความชันของกราฟ V กับ I คือ R",
+      "steps": [
+        "อ่านความต่างศักย์ขีดเริ่มของทั้งสองทิศจากกราฟ I-V",
+        "หากระแสจากตัวต้านทานอ้างอิงแล้วหาความชันของช่วงเส้นตรง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_exp.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2554_q17",
+        "phys.tpho2554_q18"
+      ],
+      "note": "Synthetic thresholds."
+    }
+  ]
+}

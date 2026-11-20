@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความตึงผิว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.soap_bubble_pressure.procedure",
+      "kind": "procedure",
+      "title": "ผลต่างความดันในฟองสบู่",
+      "statement": "ฟองสบู่มีสองผิว ความดันภายในสูงกว่าภายนอก 4γ/R",
+      "steps": [
+        "สมดุลแรงบนครึ่งทรงกลม",
+        "นับแรงตึงผิวสองผิว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 13
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q13"
+      ],
+      "note": ""
+    }
+  ]
+}

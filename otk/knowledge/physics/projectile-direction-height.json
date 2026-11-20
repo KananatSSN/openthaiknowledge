@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบโพรเจกไทล์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.projectile_direction_height.procedure",
+      "kind": "procedure",
+      "title": "ความสูงที่ทิศความเร็วโพรเจกไทล์เปลี่ยนไป",
+      "statement": "ความเร็วแนวระดับของโพรเจกไทล์คงที่ ความสูงที่ทิศความเร็วเป็นมุม β หาได้จาก (u_y²−v_y²)/(2g) โดย v_y = u_x tanβ",
+      "steps": [
+        "หาองค์ประกอบความเร็วแนวดิ่งที่จุดนั้น",
+        "ใช้ v²=u²−2gh แนวดิ่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q01"
+      ],
+      "note": "Generalized launch and A directions."
+    }
+  ]
+}

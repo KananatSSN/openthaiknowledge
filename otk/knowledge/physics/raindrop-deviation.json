@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การหักเหและการสะท้อนในหยดน้ำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.raindrop_deviation.procedure",
+      "kind": "procedure",
+      "title": "มุมระหว่างแสงเข้าและแสงออกจากหยดน้ำ",
+      "statement": "แสงหักเหเข้าหยดน้ำ สะท้อนภายในหนึ่งครั้งแล้วออก ทำมุมกับแสงเข้า 4θ−2i",
+      "steps": [
+        "รวมมุมหมุนจากการหักเหสองครั้งและการสะท้อน",
+        "หามุมระหว่างแนวแสงออกกับแนวแสงเข้า"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q12",
+        "phys.tpho2551_q02",
+        "phys.tpho2551_q03"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

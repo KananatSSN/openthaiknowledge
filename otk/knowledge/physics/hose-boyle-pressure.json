@@ -1,0 +1,35 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎของบอยล์กับความดันของของเหลว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.hose_boyle_pressure.procedure",
+      "kind": "procedure",
+      "title": "ความดันบรรยากาศจากกราฟของลำอากาศในสายยาง",
+      "statement": "ลำอากาศในสายยางที่สูง h เหนือระดับน้ำมีความดัน P_atm − ρgh ตามกฎของบอยล์ 1/L เป็นเส้นตรงกับ h และ P_atm = ρg × จุดตัด/|ความชัน|",
+      "steps": [
+        "วัดความยาวลำอากาศที่ความสูงต่าง ๆ",
+        "เขียนกราฟ 1/L กับ h แล้วอ่านความชันและจุดตัด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2551_q14"
+      ],
+      "note": "Synthetic slope and intercept."
+    }
+  ]
+}

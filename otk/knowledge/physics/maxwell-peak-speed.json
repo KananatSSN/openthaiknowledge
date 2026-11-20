@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การกระจายอัตราเร็วของแมกซ์เวลล์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.maxwell_peak_speed.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วที่มีโมเลกุลมากที่สุด",
+      "statement": "ฟังก์ชัน Av²e^(−Bv²/T) เริ่มที่ศูนย์อย่างราบ มียอดที่ v=√(T/B) แล้วลดเข้าหาศูนย์",
+      "steps": [
+        "หาอนุพันธ์แล้วตั้งเป็นศูนย์",
+        "ตัดรากศูนย์ที่ v=0 ออก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q05"
+      ],
+      "note": "Source asks the graph; generator asks the peak speed √(T/B)."
+    }
+  ]
+}

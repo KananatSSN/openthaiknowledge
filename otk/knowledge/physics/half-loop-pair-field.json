@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎบีโอต์ซาวาร์ตสำหรับลวดโค้ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.half_loop_pair_field.procedure",
+      "kind": "procedure",
+      "title": "สนามแม่เหล็กจากครึ่งวงกลมสองรัศมี",
+      "statement": "ครึ่งวงกลมสองรัศมีที่กระแสวนทางเดียวกันให้สนามที่ศูนย์กลาง (μ₀I/4)(1/R₁+1/R₂) ส่วนสายแนวรัศมีไม่ให้สนาม",
+      "steps": [
+        "ครึ่งวงกลมให้สนามครึ่งหนึ่งของวงเต็ม",
+        "รวมสนามจากสองรัศมีตามทิศการวน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q11"
+      ],
+      "note": "Both arcs are half circles with the same circulation; leads are radial."
+    }
+  ]
+}

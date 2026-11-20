@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎความโน้มถ่วงสากลและค่า g",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.surface_gravity_scaling.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งโน้มถ่วงเมื่อเปลี่ยนมวลและรัศมีดาว",
+      "statement": "g ที่ผิวดาวแปรตาม M/R² จึงเปลี่ยนเป็น (ตัวคูณมวล)/(ตัวคูณรัศมี)² เท่า",
+      "steps": [
+        "เขียน g=GM/R²",
+        "แทนตัวคูณมวลและรัศมีแล้วหาอัตราส่วน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q02"
+      ],
+      "note": ""
+    }
+  ]
+}

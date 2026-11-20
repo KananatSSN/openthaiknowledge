@@ -1,0 +1,33 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "โมเมนตัมแนวระดับของลิ่มและมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.sliding_mass_free_cylinder.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วของมวลที่ไถลบนทรงกระบอกที่เลื่อนได้",
+      "statement": "มวล m ไถลบนทรงกระบอกลื่นมวล M ที่เลื่อนบนพื้นลื่นได้ โมเมนตัมแนวระดับอนุรักษ์ m(v cos θ − V) = MV ร่วมกับพลังงานให้ v² = 2gR(M+m)(1−cos θ)/(M + m sin²θ)",
+      "steps": [
+        "เขียนความเร็วของมวลเทียบพื้นจาก v และ V",
+        "ใช้การอนุรักษ์โมเมนตัมแนวระดับและพลังงานแล้วแก้หา v และ V"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2546_q01",
+        "phys.tpho2546_q02",
+        "phys.tpho2546_q03"
+      ],
+      "note": "Symbols replaced by numbers for M, m, R and theta."
+    }
+  ]
+}

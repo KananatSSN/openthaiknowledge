@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สเกลอุณหภูมิ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.custom_temperature_scale.procedure",
+      "kind": "procedure",
+      "title": "การแปลงสเกลอุณหภูมิที่สร้างเอง",
+      "statement": "สเกลอุณหภูมิเชิงเส้นแปลงด้วยสัดส่วนระหว่างจุดน้ำแข็งกับจุดน้ำเดือด",
+      "steps": [
+        "หาช่วงองศาของสเกลใหม่ระหว่างจุดอ้างอิง",
+        "บวกจุดเริ่มต้นกับสัดส่วนของช่วง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q22"
+      ],
+      "note": ""
+    }
+  ]
+}

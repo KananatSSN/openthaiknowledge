@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงในตัวเก็บประจุแผ่นขนาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.capacitor_plate_force.procedure",
+      "kind": "procedure",
+      "title": "แรงดึงดูดระหว่างแผ่นตัวเก็บประจุ",
+      "statement": "แผ่นตัวเก็บประจุดึงดูดกันด้วย F=Q·E/2=Cε²/(2d) ใช้สนามจากแผ่นเดียว",
+      "steps": [
+        "หาประจุ Q=Cε",
+        "คูณด้วยสนามจากแผ่นตรงข้ามซึ่งเป็นครึ่งหนึ่งของสนามรวม"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 27
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q27",
+        "phys.posn2568_q19"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

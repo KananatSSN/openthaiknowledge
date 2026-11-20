@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ศักย์ไฟฟ้าของทรงกลมประจุร่วมจุดประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.ball_with_point_charges.procedure",
+      "kind": "procedure",
+      "title": "ศักย์ไฟฟ้าในทรงกลมประจุที่มีจุดประจุลบ",
+      "statement": "ศักย์และสนามในทรงกลมประจุสม่ำเสมอที่มีจุดประจุ −q′ หาได้จากการซ้อนทับ สนามของทรงกลมภายในคือ ρr/(3ε₀) ประจุ −q′ สองตัวที่ ±r₀ สมดุลเมื่อ r₀³ = 3q′/(16πρ)",
+      "steps": [
+        "ซ้อนทับศักย์ของทรงกลมกับศักย์ของจุดประจุ",
+        "หาสนามจาก E = −dV/dr แล้วตั้งสนามรวมเป็นศูนย์"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2546_q14",
+        "phys.tpho2546_q15",
+        "phys.tpho2546_q16"
+      ],
+      "note": "Adapted: q' given as the charge of a ball of radius s; units of rho/eps0."
+    }
+  ]
+}

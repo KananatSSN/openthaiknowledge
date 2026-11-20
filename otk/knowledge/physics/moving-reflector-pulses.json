@@ -1,0 +1,46 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "คลื่นดลสะท้อนจากวัตถุเคลื่อนที่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.moving_reflector_pulses.procedure",
+      "kind": "procedure",
+      "title": "ช่วงเวลาระหว่างคลื่นดลที่สะท้อนจากวัตถุที่เข้าหา",
+      "statement": "คลื่นดลห่างกัน τ สะท้อนจากวัตถุที่เข้าหาด้วย v < c กลับมาห่างกัน (c − v)τ/(c + v) และห่างกัน (c + v)τ/(c − v) เมื่อวัตถุหนี",
+      "steps": [
+        "หาเวลาที่ลูกคลื่นถัดไปพบวัตถุ",
+        "หาระยะห่างของคลื่นสะท้อนแล้วหารด้วย c"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 15
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2547_q09",
+        "phys.tpho2547_q10",
+        "phys.tpho2547_q11",
+        "phys.tpho2547_q12"
+      ],
+      "note": "Numbers for c, v and tau."
+    }
+  ]
+}

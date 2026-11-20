@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ศูนย์กลางมวลของระบบสองวัตถุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.binary_orbit_radius.procedure",
+      "kind": "procedure",
+      "title": "รัศมีวงโคจรในระบบดาวคู่",
+      "statement": "ดาวคู่โคจรรอบศูนย์กลางมวล ดาว m อยู่ห่าง MR/(M+m)",
+      "steps": [
+        "หาศูนย์กลางมวล",
+        "วัดระยะจากดาวแต่ละดวง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q18"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

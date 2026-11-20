@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่ในสนามไฟฟ้าและแรงโน้มถ่วง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charged_ball_two_regions.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วของลูกบอลมีประจุที่ครึ่งความสูง",
+      "statement": "ลูกบอลมีประจุในสนามไฟฟ้าแนวระดับและแรงโน้มถ่วงแนวดิ่ง เคลื่อนที่อิสระสองแนว v_x = v₀ + (qE/m)t, v_y = −gt",
+      "steps": [
+        "หาเวลาตกจากความสูงในแนวดิ่ง",
+        "รวมองค์ประกอบความเร็วทั้งสองแนว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2552_q04"
+      ],
+      "note": "Numbers vary; three significant figures."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่สัมพัทธ์กับการหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.spoke_gap_passage.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วต่ำสุดที่ลูกธนูผ่านซี่ล้อ",
+      "statement": "ลูกธนูผ่านล้อ n ซี่ได้เมื่อใช้เวลาไม่เกินช่วงหมุนระหว่างซี่ 2π/(nω)",
+      "steps": [
+        "หาเวลาที่ซี่ถัดไปหมุนมาถึง",
+        "ให้เวลาผ่าน l/v ไม่เกินเวลานั้น"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 29
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q29"
+      ],
+      "note": "Thin spokes; the arrow enters just after a spoke passes."
+    }
+  ]
+}

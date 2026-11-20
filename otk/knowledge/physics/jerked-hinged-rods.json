@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การดลท่อนไม้ที่ต่อด้วยจุดหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.jerked_hinged_rods.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วแนว Y ของท่อนไม้ที่ถูกดีด",
+      "statement": "ท่อนไม้สามท่อนต่อด้วยจุดหมุนลื่นถูกดีดที่ท่อนกลาง: โมเมนตัมเชิงมุมของท่อนข้างรอบจุดหมุนไม่เปลี่ยนจากการดลที่จุดหมุน จึงได้ ω = 3u cos θ/(2l) ความเร็วศูนย์กลางมวล v_y = u(1 − ¾cos²θ) และการดล (3/2)mu(1 + sin²θ)",
+      "steps": [
+        "เขียนโมเมนตัมเชิงมุมของท่อนข้างรอบจุดหมุนให้เป็นศูนย์",
+        "รวมโมเมนตัมทั้งระบบหาการดลของแรงดีด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2556_q01",
+        "phys.tpho2556_q02",
+        "phys.tpho2556_q03"
+      ],
+      "note": "theta and u vary."
+    }
+  ]
+}

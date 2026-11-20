@@ -1,0 +1,42 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเสียดทานสถิตและจลน์บนพื้นเอียง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.roller_block_incline.procedure",
+      "kind": "procedure",
+      "title": "แรงดึงน้อยสุดที่ตรึงทรงกระบอกและกล่องบนพื้นเอียง",
+      "statement": "ทรงกระบอกแกนลื่นผูกกับกล่องบนพื้นเอียง: เมื่อสถิต แรงเสียดทานอยู่ที่กล่องเท่านั้น F อยู่ระหว่าง (m₁ + m₂)g sin θ ∓ μ_s m₂ g cos θ เมื่อถูกดึงขึ้นด้วยมวลแขวน ทรงกระบอกที่กลิ้งเพิ่มมวลยังผล I/r² และต้องการ μ_s ≥ a/(2g cos θ)",
+      "steps": [
+        "เขียนกฎของนิวตันของทรงกระบอก กล่อง และมวลแขวน",
+        "ใช้สมการทอร์กของทรงกระบอกหาแรงเสียดทานที่ต้องการ"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2550_q09",
+        "phys.tpho2550_q10",
+        "phys.tpho2550_q11",
+        "phys.tpho2550_q12"
+      ],
+      "note": "Numbers; incline with sin theta = 3/5 or 4/5."
+    }
+  ]
+}

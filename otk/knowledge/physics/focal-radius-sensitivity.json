@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สูตรผู้สร้างเลนส์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.focal_radius_sensitivity.procedure",
+      "kind": "procedure",
+      "title": "การเปลี่ยนโฟกัสเมื่อรัศมีความโค้งเปลี่ยน",
+      "statement": "เลนส์นูนแกมราบมี f=R/(μ−1) จึง Δf/f=ΔR/R",
+      "steps": [
+        "เขียน f เป็นฟังก์ชันของ R",
+        "หาอนุพันธ์หรือผลต่างเล็ก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q15"
+      ],
+      "note": "Generator asks Δf in cm."
+    }
+  ]
+}

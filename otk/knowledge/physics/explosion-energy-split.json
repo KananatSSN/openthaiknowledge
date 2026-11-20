@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การอนุรักษ์โมเมนตัมในการระเบิด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.explosion_energy_split.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วชิ้นส่วนหลังการระเบิดเพิ่มพลังงาน",
+      "statement": "เมื่อวัตถุแยกเป็นสองส่วนเท่ากันตามแนวเดิม โมเมนตัมคงที่และพลังงานที่เพิ่มกำหนดผลต่างความเร็ว",
+      "steps": [
+        "เขียน v₁+v₂ = 2u",
+        "ใช้พลังงานหาผลต่างของความเร็ว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q08"
+      ],
+      "note": "Generalized energy ratio; both halves keep moving forward."
+    }
+  ]
+}

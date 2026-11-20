@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ประจุแกว่งในสนามไฟฟ้า",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charged_pendulum_field.procedure",
+      "kind": "procedure",
+      "title": "มุมสูงสุดของประจุที่แกว่งในสนามไฟฟ้า",
+      "statement": "ลูกตุ้มประจุในสนามไฟฟ้าแนวราบ: ปล่อยจากแนวดิ่งแกว่งได้ถึง θ_m = 2 tan⁻¹(qE/mg) สมดุลที่ tan θ₀ = qE/mg และสั่นรอบ θ₀ ด้วย ω² = √(g² + (qE/m)²)/ℓ",
+      "steps": [
+        "ใช้งานของสนามไฟฟ้าเท่ากับพลังงานศักย์โน้มถ่วงที่เพิ่มขึ้น",
+        "กระจายแรงในแนวสัมผัสรอบมุมสมดุลหาค่าคงที่ของแรงคืนตัว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2558_q01",
+        "phys.tpho2558_q02",
+        "phys.tpho2558_q03"
+      ],
+      "note": "q, E and m vary."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรไดโอดและตัวเก็บประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.voltage_doubler.procedure",
+      "kind": "procedure",
+      "title": "ค่าในตารางของวงจรทวีแรงดัน",
+      "statement": "วงจรทวีแรงดันจากตัวเก็บประจุสองตัวและไดโอดสองตัว: ไดโอดล่างตรึงศักย์จุด b ไม่ให้ต่ำกว่าศูนย์ ไดโอดบนแบ่งประจุระหว่างตัวเก็บประจุทั้งสองเมื่อศักย์ b สูงกว่า d จนในที่สุด V_d = 2V₀",
+      "steps": [
+        "พิจารณาสถานะไดโอดจากศักย์ที่ปลายทั้งสอง",
+        "ใช้การอนุรักษ์ประจุที่จุดต่อและกฎของเคอร์ชอฟฟ์หาประจุใหม่"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-53-physics/tpho_9_theory_with_solution.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2553_q09"
+      ],
+      "note": "Generator varies the position (2-6) and the quantity read."
+    }
+  ]
+}

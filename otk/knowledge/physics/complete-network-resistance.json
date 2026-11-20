@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรตัวต้านทานที่ไม่ใช่อนุกรมขนาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.complete_network_resistance.procedure",
+      "kind": "procedure",
+      "title": "ความต้านทานรวมของวงจรสี่จุดต่อครบ",
+      "statement": "วงจรที่เชื่อมสี่จุดครบทุกคู่แก้ด้วยกฎโหนดหาศักย์ของจุดกลางสองจุด",
+      "steps": [
+        "ตั้งศักย์ปลายสองข้างแล้วเขียนกฎโหนดสองสมการ",
+        "หากระแสรวมแล้วหาความต้านทาน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q19"
+      ],
+      "note": "Generalized to six arbitrary resistors."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงแม่เหล็กต่อกระแส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.liquid_magnetic_pump.procedure",
+      "kind": "procedure",
+      "title": "ทิศแรงแม่เหล็กต่อของเหลวนำไฟฟ้าในท่อ",
+      "statement": "กระแส I ผ่านของเหลวในสนาม B ทำให้เกิดแรง IaB ดันของเหลว ระดับต่างกัน h = IB/(Dgb) และความร้อน I²a/(σbL)",
+      "steps": [
+        "หาทิศแรงจากกฎมือขวา",
+        "สมดุลแรงกับผลต่างความดันของคอลัมน์ของเหลว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q12",
+        "phys.tpho2545_q13",
+        "phys.tpho2545_q14"
+      ],
+      "note": "Generator varies current and field directions."
+    }
+  ]
+}

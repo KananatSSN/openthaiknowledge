@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ระบบเลนส์และกระจก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.lens_mirror_retroreflection.procedure",
+      "kind": "procedure",
+      "title": "รัศมีความโค้งกระจกเว้าที่ภาพตรงวัตถุ",
+      "statement": "แสงย้อนกลับทางเดิมเมื่อกระทบกระจกเว้าตั้งฉาก จุดศูนย์กลางความโค้งจึงอยู่ที่ภาพของวัตถุจากเลนส์",
+      "steps": [
+        "หาภาพเสมือนของวัตถุจากเลนส์เว้า",
+        "ให้ศูนย์กลางความโค้งกระจกอยู่ตรงภาพนั้น"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q10"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

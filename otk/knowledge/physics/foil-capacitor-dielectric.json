@@ -1,0 +1,40 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความจุของตัวเก็บประจุแผ่นขนาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.foil_capacitor_dielectric.procedure",
+      "kind": "procedure",
+      "title": "ค่า κε₀/d จากกระแสผ่านตัวเก็บประจุ",
+      "statement": "ตัวเก็บประจุแผ่นขนานบนไฟฟ้ากระแสสลับมี I = VωC เมื่อ X_C ≫ R และ C = (κε₀/d)A จึงหา κε₀/d จากความชันของ C กับพื้นที่ และหา κ เมื่อรู้ความหนา",
+      "steps": [
+        "วัดกระแสและแรงดันที่พื้นที่ต่าง ๆ แล้วคำนวณ C",
+        "หาความชันของ C กับ A แล้วคูณด้วย d/ε₀"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-48-physics/thpo_4_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-48-physics/thpo_4_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-48-physics/thpo_4_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-48-physics/thpo_4_exp.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2548_q17",
+        "phys.tpho2548_q18"
+      ],
+      "note": "One synthetic reading of V, I and A."
+    }
+  ]
+}

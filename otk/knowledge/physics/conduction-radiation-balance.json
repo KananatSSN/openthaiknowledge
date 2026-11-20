@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การนำความร้อนกับการแผ่รังสี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.conduction_radiation_balance.procedure",
+      "kind": "procedure",
+      "title": "อุณหภูมิผิวแผ่นที่นำและแผ่รังสีความร้อน",
+      "statement": "ในสภาวะคงตัว ความร้อนที่นำผ่านแผ่น K(T₁−T₂)/l เท่ากับการแผ่รังสีจากผิวดำ σT₂⁴",
+      "steps": [
+        "ตั้งสมการสมดุลพลังงาน",
+        "แก้สมการกำลังสี่เชิงตัวเลข"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q15"
+      ],
+      "note": "Generator asks T2 to the nearest kelvin."
+    }
+  ]
+}

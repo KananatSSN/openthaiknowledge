@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานนิวเคลียร์และฟิวชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.fusion_neutrino_rate.procedure",
+      "kind": "procedure",
+      "title": "จำนวนนิวตริโนจากดวงอาทิตย์ต่อวินาที",
+      "statement": "จำนวนปฏิกิริยาต่อวินาทีเท่ากับกำลังหารพลังงานต่อปฏิกิริยา แล้วคูณจำนวนนิวตริโนต่อปฏิกิริยา",
+      "steps": [
+        "หารกำลังด้วยพลังงานต่อปฏิกิริยา",
+        "คูณจำนวนอนุภาคต่อปฏิกิริยา"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 20
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q20"
+      ],
+      "note": ""
+    }
+  ]
+}

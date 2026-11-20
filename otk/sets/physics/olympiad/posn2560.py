@@ -9,7 +9,7 @@ from fractions import Fraction
 from otk.core.registry import question_type
 from otk.core.mistakes import named
 from otk.core.provenance import Provenance
-from otk.kit.answer_choices import show
+from otk.kit.answer_choices import exact
 from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem, frac_tex
 from otk.sheets.posn2560_physics import q01, q02, q05, q08
 from otk.sheets.posn2560_physics import q03, q04, q06, q07, q09, q10
@@ -123,7 +123,7 @@ class FallingBulb(PhysicsSheet):
                 "",
                 _tex(answer),
                 prompt=(
-                    f"ลิฟต์เร่งขึ้นคงตัว {a} m/s² หลอดไฟสูงจากพื้นลิฟต์ {show(h)} m หลุดจากเพดาน "
+                    f"ลิฟต์เร่งขึ้นคงตัว {a} m/s² หลอดไฟสูงจากพื้นลิฟต์ {exact(h)} m หลุดจากเพดาน "
                     "ขณะหลุดหลอดไฟมีความเร็วเท่าลิฟต์ ลิฟต์ยังเร่งเท่าเดิม หลอดไฟตกถึงพื้นลิฟต์ในกี่วินาที "
                     "(g = 10 m/s²)"
                 ),
@@ -219,8 +219,8 @@ class BowEnergy(PhysicsSheet):
                 "",
                 _tex(v),
                 prompt=(
-                    f"ธนูเป็นไปตามกฎของฮุก แรงดึงเพิ่มจากศูนย์จนเป็น {show(force)} N "
-                    f"เมื่อดึงไป {show(x)} m ลูกธนูมวล {show(mass * 1000)} g "
+                    f"ธนูเป็นไปตามกฎของฮุก แรงดึงเพิ่มจากศูนย์จนเป็น {exact(force)} N "
+                    f"เมื่อดึงไป {exact(x)} m ลูกธนูมวล {exact(mass * 1000)} g "
                     "รับพลังงานยืดหยุ่นทั้งหมด จะพุ่งด้วยอัตราเร็วเท่าใดในหน่วย m/s"
                 ),
                 hint=r"\frac12Fx=\frac12mv^2",
@@ -528,7 +528,7 @@ class OilWaterTemperature(PhysicsSheet):
                 "",
                 _tex(answer),
                 prompt=(
-                    f"ภาชนะฉนวนบรรจุน้ำมัน {show(oil_mass * 1000)} g ผสมน้ำ 250 g ที่ {show(hot)} °C "
+                    f"ภาชนะฉนวนบรรจุน้ำมัน {exact(oil_mass * 1000)} g ผสมน้ำ 250 g ที่ {exact(hot)} °C "
                     f"อุณหภูมิสมดุลในหน่วย °C เป็น {factor} เท่าของอุณหภูมิน้ำมันเดิม "
                     "อุณหภูมิน้ำมันเดิมกี่ °C (c น้ำมัน = 1400, c น้ำ = 4200 J/(kg K) "
                     "ไม่คิดความจุความร้อนภาชนะและการเปลี่ยนสถานะ)"
@@ -565,7 +565,7 @@ class GasMoleculeCount(PhysicsSheet):
                 "",
                 fmt(count),
                 prompt=(
-                    f"แก๊สอุดมคติปริมาตร {show(volume * 1000)} L ความดัน {show(pressure)} atm อุณหภูมิ {temp} °C "
+                    f"แก๊สอุดมคติปริมาตร {exact(volume * 1000)} L ความดัน {exact(pressure)} atm อุณหภูมิ {temp} °C "
                     "มีจำนวนโมเลกุลเท่าใด ตอบในรูป A×10²³ โดยปัด A สองตำแหน่งทศนิยม "
                     "(1 atm = 101300 Pa, R = 8.31 J/(mol K), Nₐ = 6.02×10²³ mol⁻¹, T = t + 273)"
                 ),
@@ -661,7 +661,7 @@ class SlideTangentialAcceleration(PhysicsSheet):
                 rf"\sin\theta={_tex(sine)}",
                 pair(v, a),
                 prompt=(
-                    f"เด็กเริ่มไถลจากหยุดนิ่งบนรางลื่น เมื่อระดับลดลง {show(drop)} m "
+                    f"เด็กเริ่มไถลจากหยุดนิ่งบนรางลื่น เมื่อระดับลดลง {exact(drop)} m "
                     "รางทำมุม θ กับแนวระดับ จงหาคู่อันดับ (อัตราเร็ว m/s, ขนาดความเร่งตามแนวสัมผัส m/s²) "
                     "ณ จุดนั้น (g = 10 m/s² ไม่คิดแรงต้าน)"
                 ),
@@ -693,8 +693,8 @@ class AverageBounceForce(PhysicsSheet):
                 "",
                 _tex(force),
                 prompt=(
-                    f"ปล่อยลูกบอลมวล {mass} kg จากความสูง {show(drop)} m กระทบพื้นแล้วกระดอนสูง {show(rebound)} m "
-                    f"ช่วงสัมผัสพื้นนาน {show(contact)} s แรงปกติเฉลี่ยที่พื้นกระทำต่อลูกบอลมีค่าเท่าใดในหน่วย N "
+                    f"ปล่อยลูกบอลมวล {mass} kg จากความสูง {exact(drop)} m กระทบพื้นแล้วกระดอนสูง {exact(rebound)} m "
+                    f"ช่วงสัมผัสพื้นนาน {exact(contact)} s แรงปกติเฉลี่ยที่พื้นกระทำต่อลูกบอลมีค่าเท่าใดในหน่วย N "
                     "(g = 10 m/s² ไม่คิดแรงต้าน และไม่คิดการเปลี่ยนความสูงระหว่างสัมผัสพื้น)"
                 ),
                 hint=r"(\overline{N}-mg)\Delta t=m(v_{\mathrm{up}}+v_{\mathrm{down}})",

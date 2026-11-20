@@ -1,0 +1,31 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแกว่งของวัตถุแข็งเกร็ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rod_physical_pendulum_g.procedure",
+      "kind": "procedure",
+      "title": "ค่า g จากลูกตุ้มกายภาพทรงกระบอก",
+      "statement": "ท่อนทรงกระบอกยาว 2L แกว่งรอบจุดห่างปลาย x มีคาบ (2π/√g)√((L²/3 + R²/4)/(L − x) + (L − x)) จึงหา g จากคาบที่วัดได้",
+      "steps": [
+        "หาโมเมนต์ความเฉื่อยรอบจุดหมุนด้วยทฤษฎีบทแกนขนาน",
+        "แทนในสูตรคาบลูกตุ้มกายภาพแล้วแก้หา g"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_exp.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_exp.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2552_q16"
+      ],
+      "note": "Synthetic rod, pivot and period."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลโมเมนต์ของวัตถุแข็งเกร็ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.hanging_plate_tilt.procedure",
+      "kind": "procedure",
+      "title": "มุมเอียงของแผ่นที่ห้อยมวลที่มุม",
+      "statement": "แผ่นแขวนจากจุดกึ่งกลางขอบบนเมื่อห้อยมวลที่มุมล่าง จะเอียงจน tanθ=mL/(b(M+2m))",
+      "steps": [
+        "เขียนแขนโมเมนต์แนวระดับของศูนย์มวลแผ่นและของมวลห้อย",
+        "ตั้งผลรวมทอร์กรอบจุดแขวนเป็นศูนย์"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 28
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q28",
+        "phys.posn2569_q24"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

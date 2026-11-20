@@ -1,0 +1,40 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรตัวต้านทานและตัวเก็บประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rc_capacitor_rms_line.procedure",
+      "kind": "procedure",
+      "title": "ความต่างศักย์ยังผลคร่อมตัวเก็บประจุในวงจร RC",
+      "statement": "ในวงจร RC อนุกรม ความต่างศักย์ยังผลคร่อมตัวเก็บประจุคือ ℰ₀/(√2·√(1+ω²R²C²)) ดังนั้น 1/V_C² เป็นเส้นตรงกับ R² และ C = √(ความชัน/จุดตัด)/ω",
+      "steps": [
+        "เขียนอิมพีแดนซ์และแบ่งแรงดันให้ตัวเก็บประจุ",
+        "จัดรูปเป็นเส้นตรงของ 1/V_C² กับ R² แล้วอ่านความชันและจุดตัด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_exp.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2546_q17",
+        "phys.tpho2546_q18"
+      ],
+      "note": "Numbers for E0, w, R and C."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบโพรเจกไทล์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.symmetric_pole_projectile.procedure",
+      "kind": "procedure",
+      "title": "ระยะตกของโพรเจกไทล์ที่เฉียดยอดเสาสองต้น",
+      "statement": "จุดที่สูงเท่ากันบนวิถีโพรเจกไทล์อยู่สมมาตรรอบจุดสูงสุด ระยะตกจึงห่างเสาแรก L₁ + L₂",
+      "steps": [
+        "ใช้ความสมมาตรของพาราโบลา",
+        "หาตำแหน่งตกจากระยะยิงทั้งหมด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q19"
+      ],
+      "note": "Part 2 item 9."
+    }
+  ]
+}

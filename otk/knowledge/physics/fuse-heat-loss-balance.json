@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การถ่ายโอนความร้อนและการเย็นตัว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.fuse_heat_loss_balance.procedure",
+      "kind": "procedure",
+      "title": "อัตราการเปลี่ยนอุณหภูมิของฟิวส์ที่เสียความร้อน",
+      "statement": "ลวดที่เสียความร้อน α·2πrℓ(T − Tₐ) มี dT/dt = i²ρ/(π²r⁴cD) − 2α(T − Tₐ)/(crD) อุณหภูมิเข้าสู่ Tₐ + i²ρ/(2απ²r³) และละลายเมื่อค่านี้เกินจุดหลอมเหลว",
+      "steps": [
+        "เขียนสมดุลพลังงาน กำลังเข้า − กำลังสูญเสีย = mc dT/dt",
+        "ตั้ง dT/dt = 0 หาอุณหภูมิสุดท้ายแล้วเทียบกับจุดหลอมเหลว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2546_q07",
+        "phys.tpho2546_q08",
+        "phys.tpho2546_q09"
+      ],
+      "note": "Adapted: a value for the loss constant alpha and for T - Ta."
+    }
+  ]
+}

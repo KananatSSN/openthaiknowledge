@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ตัวต้านทานขนานและค่าสูงสุด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.split_wire_parallel_maximum.procedure",
+      "kind": "procedure",
+      "title": "ความต้านทานขนานสูงสุดจากการตัดลวด",
+      "statement": "ตัดลวด R เป็นสองส่วนแล้วต่อขนาน ความต้านทานสูงสุด R/4 เมื่อตัดครึ่ง",
+      "steps": [
+        "เขียน R∥ = R₁(R−R₁)/R",
+        "หาค่าสูงสุดของพาราโบลา"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q07"
+      ],
+      "note": ""
+    }
+  ]
+}

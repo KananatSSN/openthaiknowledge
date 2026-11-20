@@ -68,6 +68,33 @@ def test_pdf_output_contract_is_frozen():
 
 def test_sheet_publication_manifest_is_frozen():
     expected = {
+        "tpho2565_physics": (22, 22, 22, 0),
+        "tpho2564_physics": (29, 29, 29, 0),
+        "tpho2563_physics": (20, 20, 20, 0),
+        "tpho2562_physics": (24, 24, 24, 0),
+        "tpho2561_physics": (22, 22, 22, 0),
+        "tpho2560_physics": (20, 20, 20, 0),
+        "tpho2559_physics": (23, 23, 23, 0),
+        "tpho2558_physics": (17, 17, 17, 0),
+        "tpho2557_physics": (17, 17, 17, 0),
+        "tpho2556_physics": (21, 21, 21, 0),
+        "tpho2555_physics": (18, 18, 18, 0),
+        "tpho2554_physics": (20, 20, 20, 0),
+        "tpho2553_physics": (14, 14, 14, 0),
+        "tpho2552_physics": (16, 16, 16, 0),
+        "tpho2551_physics": (15, 15, 15, 0),
+        "tpho2550_physics": (16, 16, 16, 0),
+        "tpho2549_physics": (14, 14, 14, 0),
+        "tpho2548_physics": (19, 19, 19, 0),
+        "tpho2547_physics": (15, 15, 15, 0),
+        "tpho2546_physics": (21, 21, 21, 0),
+        "tpho2545_physics": (17, 17, 17, 0),
+        "posn2569_physics": (30, 30, 30, 0),
+        "posn2568_physics": (25, 25, 25, 0),
+        "posn2567_physics": (16, 16, 16, 0),
+        "posn2566_physics": (28, 28, 28, 0),
+        "posn2565_physics": (30, 30, 30, 0),
+        "posn2564_physics": (30, 30, 30, 0),
         "posn2562_physics": (26, 26, 26, 0),
         "posn2561_physics": (30, 30, 30, 0),
         "posn2560_physics": (30, 30, 30, 0),
@@ -227,4 +254,7 @@ def test_sheet_publication_manifest_is_frozen():
     # Four Primary 3 money and multi-step applications from a bank paper.
     # Eleven Primary 4/5 time, budget and measurement applications.
     # Twelve Primary 2 / Secondary 3 measurement, systems and solid applications.
-    assert len(REGISTRY) == 5180
+    # The สอวน. physics camp-selection papers 2564 and 2565 add 30 more each, 2566 28,
+    # 2567 16, 2568 25 and 2569 30. The national physics olympiad papers
+    # (TPhO 2545–2565) add the rest of the physics branch's 559.
+    assert len(REGISTRY) == 5739

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎของฮุกกับระบบสองมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.symmetric_spring_pair.procedure",
+      "kind": "procedure",
+      "title": "แรงสปริงในระบบสองมวลสั่นสมมาตร",
+      "statement": "สองมวลที่สั่นสมมาตรรอบจุดกึ่งกลางทำให้สปริงยืด 2x และแรงต่อแต่ละมวลเป็น 2kx",
+      "steps": [
+        "หาการยืดของสปริงจากตำแหน่งของทั้งสองมวล",
+        "ใช้กฎของฮุกกับการยืดทั้งหมด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q15"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

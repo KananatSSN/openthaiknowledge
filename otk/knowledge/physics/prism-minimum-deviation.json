@@ -1,0 +1,39 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การหักเหผ่านปริซึม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.prism_minimum_deviation.procedure",
+      "kind": "procedure",
+      "title": "ดัชนีหักเหจากมุมเบี่ยงเบนน้อยสุดของปริซึม",
+      "statement": "ที่มุมเบี่ยงเบนน้อยที่สุด ดัชนีหักเหของปริซึมคือ n = sin((A + D_m)/2)/sin(A/2)",
+      "steps": [
+        "วัดมุมเบี่ยงเบนที่มุมตกกระทบต่าง ๆ หาค่าน้อยสุด",
+        "แทนมุมยอดและมุมเบี่ยงเบนน้อยสุดในสูตร"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 12
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 13
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 14
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2549_q12"
+      ],
+      "note": "Synthetic apex angle and minimum deviation."
+    }
+  ]
+}

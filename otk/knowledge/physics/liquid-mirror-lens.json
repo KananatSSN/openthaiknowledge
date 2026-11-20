@@ -1,0 +1,31 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กระจกเว้าและเลนส์ของเหลว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.liquid_mirror_lens.procedure",
+      "kind": "procedure",
+      "title": "ระยะเลื่อนสลิตเมื่อเติมของเหลวในกระจกเลนส์",
+      "statement": "กระจกเว้าบางที่ประกบกับแผ่นแก้วบาง ภาพสลิตกลับมาที่เดิมเมื่อสลิตอยู่ที่จุดศูนย์กลางความโค้ง R = L ถ้าเติมของเหลวดัชนี n ระหว่างแผ่น ระยะใหม่เป็น R/(2n − 1)",
+      "steps": [
+        "คิดการหักเห การสะท้อน และการหักเหกลับเป็นกระจกสมมูล",
+        "ตั้งระยะวัตถุเท่ากับระยะภาพแล้วแก้หาระยะใหม่"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_theory.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2551_q01"
+      ],
+      "note": "1.1.1 (R = L in air) is its first step, claimed by the same unit. Adapted: R and n vary."
+    }
+  ]
+}

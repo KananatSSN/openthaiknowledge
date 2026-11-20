@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมดุลของแรงบนวัตถุทรงกลม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.sling_cylinder_tension.procedure",
+      "kind": "procedure",
+      "title": "แรงตึงแถบเชือกที่รองรับทรงกระบอก",
+      "statement": "ทรงกระบอกลื่นในแถบเชือกมีแรงตึงเท่ากันสองข้าง มุมจึงเท่ากันและ T=Mg/(2sinθ)",
+      "steps": [
+        "แรงตึงตลอดเชือกบนผิวลื่นเท่ากัน",
+        "สมดุลแนวดิ่ง 2T sinθ=Mg"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q05"
+      ],
+      "note": "Equal strap angles follow from equal tension on a smooth surface."
+    }
+  ]
+}

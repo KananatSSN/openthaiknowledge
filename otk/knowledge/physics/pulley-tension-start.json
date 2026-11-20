@@ -1,0 +1,44 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงตึงเชือกและรอกที่มีมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pulley_tension_start.procedure",
+      "kind": "procedure",
+      "title": "ความตึงเชือกขณะเริ่มดึงมวลผ่านรอก",
+      "statement": "ขณะเริ่มดึง มวลหยุดนิ่งแต่มีความเร่ง v₀²/H จึงมีแรงตึง T = m(g + v₀²/H) และถ้ารอกมีโมเมนต์ความเฉื่อย I_C แรงตึงอีกฝั่งเป็น T + I_C v₀²/(Hr²)",
+      "steps": [
+        "หาความเร่งที่ t = 0 จากเรขาคณิตของเชือก",
+        "ใช้กฎข้อสองกับมวลและสมการทอร์กกับรอก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2547_q03",
+        "phys.tpho2547_q04"
+      ],
+      "note": "Parts (c), (d) and (f) are steps of this one."
+    }
+  ]
+}

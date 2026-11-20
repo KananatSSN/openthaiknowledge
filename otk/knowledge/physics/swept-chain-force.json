@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ระบบมวลแปรเปลี่ยน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.swept_chain_force.procedure",
+      "kind": "procedure",
+      "title": "แรงที่ใช้กวาดโซ่ด้วยความเร็วคงที่",
+      "statement": "กวาดโซ่มวลต่อความยาว λ ด้วยความเร็ว v ต้องใช้แรง λv² เพื่อเร่งข้อโซ่จากหยุดนิ่ง",
+      "steps": [
+        "อัตรามวลที่ถูกเร่ง λv",
+        "คูณด้วยการเปลี่ยนความเร็ว v"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q21"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

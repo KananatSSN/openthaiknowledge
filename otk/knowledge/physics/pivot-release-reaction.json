@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การหมุนรอบจุดหมุนคงที่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pivot_release_reaction.procedure",
+      "kind": "procedure",
+      "title": "แรงที่จุดค้ำทันทีหลังเอาอีกจุดค้ำออก",
+      "statement": "ทันทีหลังเอาจุดค้ำหนึ่งออก แท่งหมุนรอบอีกจุด แรงที่จุดนั้นคือ M(g−a_cm) โดย a_cm=αd",
+      "steps": [
+        "หาโมเมนต์ความเฉื่อยรอบจุดค้ำด้วยทฤษฎีแกนขนาน",
+        "หา αจากทอร์กของน้ำหนักแล้วหา a_cm"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q02"
+      ],
+      "note": "Generalized: support A at pL from the left end."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การอนุรักษ์พลังงานและโมเมนตัมของประจุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.repelling_charges_speed.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วสัมพัทธ์ของประจุที่ผลักกัน",
+      "statement": "ประจุเท่ากันมวลเท่ากันผลักกันจากหยุดนิ่งมีอัตราเร็วสัมพัทธ์สุดท้าย 2√(kq²/(mD))",
+      "steps": [
+        "โมเมนตัมรวมศูนย์ทำให้สองก้อนเร็วเท่ากัน",
+        "เปลี่ยนพลังงานศักย์ kq²/D เป็นพลังงานจลน์ของทั้งสองก้อน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 28
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q28"
+      ],
+      "note": "The source leaves each body's mass unnamed; m is the mass of each."
+    }
+  ]
+}

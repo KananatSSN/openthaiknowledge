@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานการเลื่อนที่ร่วมการหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rolling_ball_loop.procedure",
+      "kind": "procedure",
+      "title": "ความสูงน้อยสุดที่ทรงกลมกลิ้งผ่านรางวงกลม",
+      "statement": "ทรงกลมตันเล็กที่กลิ้งผ่านรางวงกลมรัศมี R ต้องเริ่มสูงอย่างน้อย 2.7R และที่ระดับศูนย์กลางรางแรงปฏิกิริยาเป็น (10/7)mg(h − R)/R",
+      "steps": [
+        "ใช้เงื่อนไขแรงสู่ศูนย์กลางที่จุดสูงสุดหรือที่ข้างราง",
+        "ใช้การอนุรักษ์พลังงานรวมพลังงานจลน์การหมุน (7/10)mv²"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2549_q03",
+        "phys.tpho2549_q04"
+      ],
+      "note": "Number for R."
+    }
+  ]
+}

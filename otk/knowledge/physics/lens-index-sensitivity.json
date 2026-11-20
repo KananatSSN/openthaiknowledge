@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สูตรผู้สร้างเลนส์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.lens_index_sensitivity.procedure",
+      "kind": "procedure",
+      "title": "การเปลี่ยนโฟกัสเมื่อดรรชนีหักเหเปลี่ยน",
+      "statement": "จาก 1/f ∝ (μ−1) การเปลี่ยนเล็กน้อยให้ δf/f = −δμ/(μ−1)",
+      "steps": [
+        "เขียน f แปรผกผันกับ μ−1",
+        "หาผลต่างเล็กแบบสัมพัทธ์"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q14"
+      ],
+      "note": ""
+    }
+  ]
+}

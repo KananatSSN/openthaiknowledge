@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เสียงสะท้อนจากผู้สังเกตที่เคลื่อนที่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.parallel_echo_distance.procedure",
+      "kind": "procedure",
+      "title": "ระยะหน้าผาจากเสียงสะท้อนของเรือที่แล่นขนาน",
+      "statement": "เรือแล่นขนานหน้าผา เสียงเดินทางตามสามเหลี่ยมหน้าจั่ว (vT/2)² = L² + (uT/2)²",
+      "steps": [
+        "เขียนระยะทางเสียงและระยะทางเรือในเวลา T",
+        "ใช้พีทาโกรัสในครึ่งสามเหลี่ยม"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 27
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q27"
+      ],
+      "note": "Part 2 item 17."
+    }
+  ]
+}

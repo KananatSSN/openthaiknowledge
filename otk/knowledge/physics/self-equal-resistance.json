@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "วงจรตัวต้านทานและสมการกำลังสอง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.self_equal_resistance.procedure",
+      "kind": "procedure",
+      "title": "ตัวต้านทานที่ทำให้ความต้านทานรวมเท่าตัวเอง",
+      "statement": "R₁ อนุกรมกับ R₂∥R เท่ากับ R เมื่อ R² − R₁R − R₁R₂ = 0",
+      "steps": [
+        "รวมความต้านทานแล้วตั้งเท่ากับ R",
+        "เลือกรากบวกของสมการกำลังสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q08"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

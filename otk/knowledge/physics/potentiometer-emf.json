@@ -1,0 +1,39 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "โพเทนชิออมิเตอร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.potentiometer_emf.procedure",
+      "kind": "procedure",
+      "title": "แรงเคลื่อนไฟฟ้าจากโพเทนชิออมิเตอร์",
+      "statement": "โพเทนชิออมิเตอร์เปรียบเทียบแรงเคลื่อนไฟฟ้าที่ไม่ทราบค่ากับเซลล์มาตรฐานด้วยกระแสเดียวกัน E_x = (R_x/R_s)E_s",
+      "steps": [
+        "ปรับให้แกลแวนอมิเตอร์ไม่มีกระแสด้วยเซลล์มาตรฐาน",
+        "เปลี่ยนเป็นเซลล์ที่ไม่ทราบค่าแล้วอ่านความต้านทานที่สมดุล"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-51-physics/tpho_7_exp.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2551_q15"
+      ],
+      "note": "Synthetic balance resistances."
+    }
+  ]
+}

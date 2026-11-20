@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ตัวเก็บประจุต่ออนุกรมและอนุกรมอนันต์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.series_capacitor_sum.procedure",
+      "kind": "procedure",
+      "title": "ประจุในตัวเก็บประจุอนุกรมอนันต์",
+      "statement": "ตัวเก็บประจุอนุกรมมีประจุเท่ากัน หาความจุรวมจากผลบวก 1/C_i",
+      "steps": [
+        "รวมส่วนกลับความจุเป็นอนุกรม",
+        "คูณความจุรวมด้วยแรงเคลื่อน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q17"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

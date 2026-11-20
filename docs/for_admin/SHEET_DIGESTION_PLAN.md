@@ -85,8 +85,88 @@ Maintainer cadence (2026-11-16): for sets-only sheet digestion, implement roughl
   answers, one worked problem) are transcribed, independently solved, and
   linked to 26 generators and knowledge units. The equal-source circuit reuses
   the existing signed three-branch circuit unit; 25 units are new.
-- Next source: `physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf` (the manifest has no 2563
-  camp-selection paper). Three of 33 papers are digested; 30 remain pending.
+- `physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf`: a scan with no text layer and no answer
+  key. All 30 questions (25 MC, 5 short answers) are hand-transcribed, solved
+  and independently checked, and linked to 30 generators in
+  `otk/sets/physics/olympiad/posn2564.py`. 27 knowledge units are new; items
+  8, 11 and 26 reuse the ring-field, steady-RC and signed-circuit units.
+- `physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf`: also a scan with no answer key; all 30
+  questions (25 MC, 5 short answers) are transcribed, solved, independently
+  checked and linked to 30 generators in `otk/sets/physics/olympiad/posn2565.py`.
+  26 knowledge units are new; items 8, 9, 23 and 30 reuse existing units.
+- `physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf`: 28 questions (20 MC, 7 short answers,
+  one worked problem), maths printed as pictures, no answer key; all are
+  transcribed, solved, independently checked and linked to 28 generators in
+  `otk/sets/physics/olympiad/posn2566.py`. 26 knowledge units are new; items 12
+  and 24 reuse the ring-field and steam-volume units.
+- `physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf`: 16 questions (15 short answers, one
+  worked problem), maths printed as pictures, no answer key; all are
+  transcribed, solved, independently checked and linked to 16 generators in
+  `otk/sets/physics/olympiad/posn2567.py`. 12 knowledge units are new; items 1,
+  8, 10 and 16 reuse existing units. This completes the camp-1 selection
+  papers 2560–2567 in the manifest (there is no 2563 paper).
+- `physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf`: 25 short-answer questions, maths
+  printed as pictures, no answer key; all are transcribed, solved,
+  independently checked and linked to 25 generators in
+  `otk/sets/physics/olympiad/posn2568.py`. 18 knowledge units are new (items 20
+  and 21 share one); items 2, 4, 13, 16, 18 and 19 reuse existing units.
+- `physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf`: 10 eight-choice MC and 20 short answers;
+  Part 2 restarts at 1 and is numbered 11–30 (provenance keeps "ตอนที่ 2 ข้อ k").
+  All 30 are transcribed, solved, independently checked and linked to 30
+  generators in `otk/sets/physics/olympiad/posn2569.py`. 17 knowledge units are
+  new; 13 items reuse existing units.
+- All nine camp-1 selection papers in the manifest (2560–2562, 2564–2569) are
+  digested.
+- National olympiad (TPhO) papers: each folder holds a theory paper (often in
+  Thai and English), an official solution, and an experimental paper. One
+  sheet per year: every answerable sub-part of the theory paper is an item,
+  and the experimental paper's theory parts are items with synthetic data.
+  Duplicate-language versions and solutions are indexed as `ignored` with a
+  note; the solution confirms each independently derived answer.
+- `physics/level/upper-secondary/posn-physics/tpho-45-physics/` (TPhO 1, 2545): 14 theory sub-parts and 3
+  experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2545.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-46-physics/` (TPhO 2, 2546): 16 theory sub-parts and 5
+  experiment parts → 21 generators in `otk/sets/physics/olympiad/tpho2546.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-47-physics/` (TPhO 3, 2547): 12 theory sub-parts and 3
+  experiment parts → 15 generators in `otk/sets/physics/olympiad/tpho2547.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-48-physics/` (TPhO 4, 2548): 16 theory items and 3
+  experiment parts → 19 generators in `otk/sets/physics/olympiad/tpho2548.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-49-physics/` (TPhO 5, 2549): 11 theory sub-parts and 3
+  experiment parts → 14 generators in `otk/sets/physics/olympiad/tpho2549.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-50-physics/` (TPhO 6, 2550): 12 theory items and 4
+  experiment parts → 16 generators in `otk/sets/physics/olympiad/tpho2550.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-51-physics/` (TPhO 7, 2551): 13 theory items and 2
+  experiment parts → 15 generators in `otk/sets/physics/olympiad/tpho2551.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-52-physics/` (TPhO 8, 2552): 12 theory items and 4
+  experiment parts → 16 generators in `otk/sets/physics/olympiad/tpho2552.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-53-physics/` (TPhO 9, 2553): 11 theory items and 3
+  experiment parts → 14 generators in `otk/sets/physics/olympiad/tpho2553.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-54-physics/` (TPhO 10, 2554): 16 theory items and 4
+  experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2554.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-55-physics/` (TPhO 11, 2555): 13 theory items and 5
+  experiment parts → 18 generators in `otk/sets/physics/olympiad/tpho2555.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-56-physics/` (TPhO 12, 2556): 17 theory items and 4
+  experiment parts → 21 generators in `otk/sets/physics/olympiad/tpho2556.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-57-physics/` (TPhO 13, 2557): 12 theory items and 5
+  experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2557.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-58-physics/` (TPhO 14, 2558): 13 theory items and 4
+  experiment parts → 17 generators in `otk/sets/physics/olympiad/tpho2558.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-59-physics/` (TPhO 15, 2559): 19 theory items and 4
+  experiment parts → 23 generators in `otk/sets/physics/olympiad/tpho2559.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-60-physics/` (TPhO 16, 2560): 18 theory items and 2
+  experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2560.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-61-physics/` (TPhO 17, 2561): 19 theory items and 3
+  experiment parts → 22 generators in `otk/sets/physics/olympiad/tpho2561.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-62-physics/` (TPhO 18, 2562): 18 theory items and 6
+  experiment parts → 24 generators in `otk/sets/physics/olympiad/tpho2562.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-63-physics/` (TPhO 19, 2563): 15 theory items and 5
+  experiment parts → 20 generators in `otk/sets/physics/olympiad/tpho2563.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-64-physics/` (TPhO 20, 2564): 24 theory items and 5
+  experiment parts → 29 generators in `otk/sets/physics/olympiad/tpho2564.py`.
+- `physics/level/upper-secondary/posn-physics/tpho-65-physics/` (TPhO 21, 2565): 17 theory items and 5
+  experiment parts → 22 generators in `otk/sets/physics/olympiad/tpho2565.py`.
+- Next source: `physics/level/upper-secondary/posn-physics/tpho-66-physics/`. Thirty of 33 papers are
+  digested; 3 remain pending.
 
 ### Phase 1 — bank index & status board ✅ (session 1)
 - [x] `sheetpipe/bank.py`: scan, classify, PDF probe (pages, text chars, layout guess, glyph-damage count), duplicate detection
@@ -1288,6 +1368,738 @@ TOTAL         338   316     17     4   66      255      6     11
   2 skipped in 20m08s**. Ruff is clean; full source text and the verified
   transcript remain in the private bank.
 
+### 2026-10-19 — POSN physics 2564 camp selection
+
+- The 11-page PDF is a scan (no text layer): page 1 is the cover, pages 2–10
+  the questions, page 11 the answer form. There is no answer key. A private
+  hand transcript from page renders converts to 30/30 answered digest items;
+  item 26's battery polarities were read from a 300 dpi crop.
+- Every answer was derived, checked symbolically in SymPy, and then given a
+  solver with an independently written check (time-stepping, Simpson
+  quadrature, Biot–Savart and Coulomb element sums, ray tracing in
+  coordinates, bisection on the original equations). `sheetpipe verify`:
+  30/30 green, 90 variant runs, none without an independent check.
+- Source readings made explicit in generated wording: item 6 treats the ball
+  as a point with full buoyancy to the surface; item 21's θ is the incidence
+  angle at the second face; item 27's x is the perpendicular distance between
+  the leaving ray and the incident line, and needs μ sinθ < 1; item 28 names
+  each body's mass m, which the source leaves unnamed. Items 1, 5 and 16 ask
+  a computed quantity that follows from the printed condition (relative
+  acceleration, greatest extension, least energy); item 4 asks e for given
+  masses; item 30 generates the ordered pair (tanθ, u²).
+- Fraction display: `otk.kit.answer_choices.show` rounds to two decimals, and
+  four earlier sets printed a wrong number in their stems: `posn2562_q04`
+  (a/A = 1/3 as 0.33), `posn2562_q20` (μ = 5/12 as 0.42), `posn2560_q07`
+  (40/3 N as 13.33 N) and `posn2562_q08` (α = 3×10⁻⁵ as 0). The new
+  `answer_choices.exact` never rounds (short decimal, k×10⁻ⁿ, or a/b); the
+  2560, 2562 and 2564 physics files use it. Only those four sets' golden
+  draws changed (maintainer-approved); `test_exact_stem_numbers.py` guards them.
+- Targeted run: 18,332 passed, 4 skipped (golden draws, curriculum, stages,
+  layout, characterization, sheetpipe, choice counts, answer length, the
+  sheet's own tests); `test_per_set` for the 30 keys: 60 passed; Ruff clean.
+- The full suite ran once, after all 30 items were digested: **33,240 passed,
+  13 skipped in 12m23s**.
+
+### 2026-10-19 — POSN physics 2565 camp selection
+
+- 12-page scan (no text layer, no answer key): cover, questions on pages
+  2–11, answer form on page 12. A private hand transcript converts to 30/30
+  answered digest items. Item 2's battery polarities and item 11's arcs were
+  read from 250 dpi crops: all four emfs face the same way, and both arcs are
+  half circles with the same circulation joined by radial leads.
+- Every answer was derived and given a solver with an independently written
+  check (KCL bisection, Gauss-law integration, catenary, paraxial ray trace
+  through lens and mirror, Biot–Savart sums, velocity-Verlet orbit, time-stepped
+  slides and pendulum). Four first-draft checks disagreed with their solvers;
+  each was a fault in the check, not the answer, and was rewritten.
+  `sheetpipe verify`: 30/30 green, 90 variant runs.
+- Readings made explicit: item 9's centre offset equals the radius; item 19
+  ignores added mass; item 27 is the first-order aim correction for a target at
+  launch height; item 29 assumes thin spokes and entry just after a spoke.
+  Generalized items: 1 (m^a v^b in the exponent), 2 (any emfs), 3 (+pQ, −sQ),
+  13 (any of the five heating-curve processes), 22 (mixtures of monatomic and
+  diatomic gas).
+- `test_per_set` flagged three shortest-choice cues (items 12, 23, 28: an
+  integer or plain decimal among fractions and powers of ten). The generators
+  now draw values that put the answer in the same form as its distractors.
+- Targeted run: 18,666 passed, 4 skipped; `test_per_set` for the 30 keys: 60
+  passed; the sheet's own tests: 64 passed; Ruff clean.
+- The full suite ran once, after all 30 items were digested: **33,681 passed,
+  13 skipped in 10m09s**.
+
+### 2026-10-19 — POSN physics 2566 camp selection
+
+- 12-page PDF with a text layer but every formula and figure as a picture;
+  the text runs out of order, so the transcript comes from page renders. The
+  cover declares 28 questions: 1–20 four-choice, 21–27 short answer, 28 worked.
+  No answer key; conversion yields 28/28 answered digest items.
+- Each answer has a solver with an independently written check (rigid-body
+  slicing, time-domain splat impulse, golden-section peak search, isothermal
+  column integration, Gauss–Seidel network relaxation, RC circuit simulation,
+  paraxial ray trace through a swapped meniscus, torque bisection). `sheetpipe
+  verify`: 28/28 green, 84 variant runs.
+- Readings made explicit: item 4 uses the splat model (stopping time 2r/v);
+  item 10's still strand runs from A to the fold; item 13's starred capacitor
+  is in parallel with the lower resistor, so its charge rises then decays;
+  item 17's lens B is a diverging meniscus with its R₂ surface first; item 19's
+  six resistors join four nodes pairwise. The four graph items become numeric
+  (5: peak speed; 9: ψ at given x, t; 12: field-peak distance) or a concept
+  choice whose solver is checked by simulation (13).
+- Generalized items: 2 (support position), 8 (unequal branches), 11 (brine),
+  16 (incidence angle), 19 (six arbitrary resistors), 25 (final angle).
+- Targeted run: 18,975 passed, 4 skipped; `test_per_set` for the 28 keys: 58
+  passed; the sheet's own tests: 60 passed; Ruff clean.
+- The full suite ran once, after all 28 items were digested: **34,082 passed,
+  13 skipped in 10m01s**.
+
+### 2026-10-19 — POSN physics 2567 camp selection
+
+- 10-page PDF, formulas and figures as pictures; the cover declares 16
+  questions (1–15 short answer, 16 worked) and gives Coulomb's and the
+  Biot–Savart law and ln 10 ≈ 2.303. No answer key; conversion yields 16/16
+  answered digest items.
+- Readings from 300–600 dpi crops: item 7's plates 1 and 4 share the negative
+  terminal and 2 and 3 the positive one, so only the outer two gaps hold
+  charge (C = 2ε₀A/d); in item 9 the inner loop runs counter-clockwise and the
+  outer loop clockwise, B = (μ₀I/2)(1/R₁ − 1/R₂) out of the page.
+- Each answer has a solver with an independently written check (time-stepped
+  slides and flights, Cramer's rule, a double Biot–Savart sum for the loop
+  force, Gauss-law plate charges, RC simulation, direction-vector rotation for
+  the raindrop, Gauss–Seidel ladder). `sheetpipe verify`: 16/16 green, 48
+  variant runs. Item 11's check confirms the ln N + 0.577 estimate against the
+  exact harmonic sum to 0.5%.
+- Generalized items: 1 (free-fall depth), 3 (energy fraction), 5 (current
+  sense, signed force), 7 (any plate pattern), 9 (loop senses), 11 (N = 10^k),
+  15 (T₁ and K/l), 16 (ladder values and node).
+- Targeted run: 19,131 passed, 4 skipped; `test_per_set` for the 16 keys: 46
+  passed; the sheet's own tests: 35 passed; Ruff clean.
+- The full suite ran once, after all 16 items were digested: **34,314 passed,
+  13 skipped in 10m54s**.
+
+### 2026-10-19 — POSN physics 2568 camp selection
+
+- 9-page PDF, formulas and figures as pictures; 25 short-answer questions,
+  Coulomb's and the Biot–Savart law given, no answer key. Conversion yields
+  25/25 answered digest items.
+- Readings: item 1's angles are measured from the vertical; item 14's object
+  runs from 2.0f (A) to 1.5f (B); item 24 neglects the outlet's kinetic head
+  (Poiseuille flow driven by ρgh); item 25's two straight wires are
+  semi-infinite and end on the line through O, and all three parts of the
+  path add at O.
+- Each answer has a solver with an independently written check (time-stepped
+  flights, slides and spring collision, ring element sums for E and moving
+  charges for B, 1-D finite-volume heat relaxation, paraxial trace through
+  the afocal pair, a direct sum of 1/i² to 200,000 terms, virtual work for
+  the plate force, vector-summed three-body forces, the Poiseuille velocity
+  profile integrated over the section, a Biot–Savart sum along the hairpin).
+  `sheetpipe verify`: 25/25 green, 75 variant runs.
+- Generalized items: 1 (launch and A directions), 2 (line-of-centres angle),
+  10 (bar lengths and areas), 13 (focal ratio), 14 (object ends), 15 (δr/δl
+  ratio), 16 (emf from R, C, q, i), 20 (exact π² form), 21 (six planets),
+  22 (period scaling).
+- Targeted run: 19,431 passed, 4 skipped; `test_per_set` for the 25 keys: 55
+  passed; the sheet's own tests: 55 passed; Ruff clean.
+- The full suite ran once, after all 25 items were digested: **34,674 passed,
+  13 skipped in 11m53s**.
+
+### 2026-10-19 — POSN physics 2569 camp selection
+
+- 15-page PDF, formulas and figures as pictures. Part 1 has 10 questions with
+  eight choices each; Part 2 has 20 short answers and restarts at 1. The
+  transcript uses section headings, so conversion numbers them 1–30 (30/30
+  answered); `sheet.json` sources keep the printed "ตอนที่ 2 ข้อ k".
+- Readings: MC2 is the small-amplitude period with the peg at l/2; MC6 assumes
+  three unrelated values (17 combinations); Part 2 item 5's hole touches the
+  rim and passes through O; item 12's form asks a percentage, 100·C₁/(C₁+C₂);
+  item 18 assumes m runs onto the floor without loss; item 20's second lens
+  images the first lens's virtual focus.
+- Each answer has a solver with an independently written check (bisection on
+  conservation laws, time-stepped pendulum with peg and terminal fall, ring
+  element sums, a recursive series–parallel enumeration for MC6, grid
+  integration of the holed disc, catenary, torque bisection, a simulated
+  projectile for the receding condition, paraxial ray traces). `sheetpipe
+  verify`: 30/30 green, 90 variant runs. MC6's generator draws actual values,
+  so coinciding combinations (e.g. 1, 2, 3 → 16) are counted exactly.
+- Targeted run: 19,776 passed, 4 skipped; `test_per_set` for the 30 keys: 30
+  passed; the sheet's own tests: 65 passed; Ruff clean.
+- The full suite ran once, after all 30 items were digested: **35,104 passed,
+  13 skipped in 14m08s**.
+
+### 2026-10-19 — TPhO 1 (2545) national physics olympiad
+
+- Folder of four PDFs, all with text layers: theory in Thai and English, the
+  official theory solution, and the experimental paper. The English theory
+  paper is the digested source (cleaner text; generated wording is Thai);
+  the Thai theory paper and the solution are indexed `ignored` with notes.
+- 17 items: theory I.1–I.5 (I.2 in two parts), II.a–e (hoop rolling on a rod),
+  III.a–c (magnetic pump), and the experiment's theory parts (Newton's cooling
+  law solved and fitted; the Airy dark-ring wavelength) with synthetic data.
+  Every answer was re-derived and agrees with the official solution, whose
+  III.c data line misprints B = 0.1 T while its arithmetic uses 1.0 T (13.8 W).
+- Independent checks include a two-mass spring simulation, a shoelace flux
+  for the tilted rod, time-stepped magnetic drag and rolling in the bowl,
+  rolling-contact geometry and a mass-element KE sum for the hoop, and root
+  finding for the cooling constant. `sheetpipe verify`: 17/17 green, 51 runs.
+- Targeted run: 19,941 passed, 4 skipped; `test_per_set` for the 17 keys: 17
+  passed; the sheet's own tests: 38 passed; Ruff clean.
+- The full suite ran once, after all 17 items were digested: **35,351 passed,
+  13 skipped in 11m20s**.
+
+### 2026-10-20 — TPhO 2 (2546) national physics olympiad
+
+- Folder of eleven PDFs: the combined theory paper (three problems) and its
+  combined marking scheme, the same split per problem, and the combined
+  experimental paper with its two labs split out. The two combined papers are
+  the digested sources; the nine copies and marking schemes are `ignored` with
+  notes.
+- 21 items: 1.1 (v and V), 1.2 (first-order correction), 1.3 (detach angle,
+  a choice item), 2.1–2.5 (fuse heating, loss and melting), 3.1–3.5, 3.7, 3.8
+  (uniformly charged ball with point charges), and the labs' theory parts:
+  rms V_C and C from the 1/V_C² against R² line; I from a bifilar period, the
+  cavity shape and the cylinder radius. The sketches 2.6 and 3.6, the
+  measurement 1.3 and the error discussion 2.3 have no generator but are
+  claimed by their units. Every answer agrees with the marking scheme (2.2:
+  0.694 °C/s, 0.70 in the scheme).
+- Hanging 2.2(ข) turns the cube about an axis perpendicular to the cylinder,
+  which reproduces the paper's I₂ = ρa⁵/6 − πρa³b²/12 − πρab⁴/4.
+- Independent checks include RK4 of the Lagrangian for the sliding mass, a
+  Newton solve of momentum and energy, the cylinder's maximum speed as the
+  detach point, Coulomb quadrature over shells, field integration from
+  infinity, complex impedance, and the exact bifilar geometry.
+  `sheetpipe verify`: 21/21 green, 63 runs.
+- Items 6, 7, 8 and 19 answer to three significant figures (their exact
+  forms were fractions over π² with seven-digit terms); stems stay exact.
+  Draws whose choices coincide are redrawn.
+- Targeted run: `test_per_set` for the 21 keys passed; registry-wide and
+  sheetpipe tests passed after recording `str(ANSWER)` in `sheet.json`; the
+  sheet's own tests: 46 passed; Ruff clean.
+- Full suite: **35,654 passed, 13 skipped in 12m22s**.
+
+### 2026-10-20 — TPhO 3 (2547) national physics olympiad
+
+- Folder of seven PDFs: the theory paper with its marking scheme bound in
+  (11 pages), the same split per problem, and the combined experimental paper
+  with its two labs split out. The combined theory paper and the combined
+  experiment are the digested sources; the five copies are `ignored` with
+  notes.
+- 15 items: 1(a), 1(b), 1(e), 1(g) (mass pulled by a string over a pulley,
+  with and without the pulley's inertia), 2.1 (rod on two springs), 2.2(a),
+  2.2(b) (cue ball sliding to rolling), 2.3 (square loop on rails: the two
+  sides are parallel cells with internal resistance r), 3(a), 3(b), 3(c),
+  3(e) (echoes from a moving reflector; 3(e) is a choice item), and the labs'
+  theory parts: I about the centre of mass of a physical pendulum, V_R/V_L of
+  an RL circuit, L from the (V_L/V_R)² against 1/R² line. Parts 1(c), 1(d),
+  1(f) and 3(d) are steps or limits of other items, claimed by their units.
+  Every answer agrees with the bound marking scheme.
+- Independent checks include finite differences of the string geometry,
+  free-body torque on the pulley, a time-stepped rod with exact spring
+  torque, a stepped slide-to-roll, a nodal-analysis loop circuit, event
+  simulation of pulse reflections, and phasors. `sheetpipe verify`: 15/15
+  green, 45 runs.
+- Targeted run: 20,318 passed, 4 skipped; `test_per_set` for the 15 keys: 15
+  passed; the sheet's own tests: 34 passed; Ruff clean.
+- Full suite: **35,873 passed, 13 skipped in 11m01s**. (A first run started
+  in the same batch as the bank commit ran from the bank directory and
+  collected nothing; the full suite must run alone.)
+
+### 2026-10-20 — TPhO 4 (2548) national physics olympiad
+
+- Folder of four PDFs: the theory paper, its marking scheme, the two bound
+  together (15 pages), and both experimental papers in one file (misspelt
+  `thpo_4_exp.pdf`). The bound theory file and the experiments are the
+  digested sources; the separate theory and scheme files are `ignored`.
+- 19 items: 1.1 (two velocities), 1.2, 1.3 (best intermediate mass and the
+  largest fraction it passes on), 1.4 (collisions to halve the energy), 2.1
+  (assembly work, adapted to rectangles with whole-number sides and
+  diagonal), 2.2–2.5 (proton square: centre potential, positron energy on
+  the axis, launch speed over the numerical barrier, small-oscillation ω),
+  3.1–3.5 (air between discs: speed, gauge pressure, lift, jet force,
+  largest mass), and the labs' theory: κε₀/d from a foil capacitor's
+  current, κ of the transparency, λ from a laser reflected off a steel
+  ruler.
+- Marking-scheme error: 1.4's n ≈ M/(8m) linearises (1 − 2m/M)^(2n) where
+  4nm/M = 1/2 is not small. The scheme's own exact line,
+  n = −ln 2/(2 ln((M − m)/(M + m))) ≈ (M/m) ln 2/4, is used (about 39% more
+  collisions); M/(8m) is the named mistake `collision_count_linearised`.
+- Independent checks include centre-of-mass reversal and the
+  momentum–energy quadratic, golden-section search for the best mass,
+  collision-by-collision counting, a potential grid search, a 45° curvature
+  for ω, the radial Euler equation and ring sums for the discs, and
+  arctangent angles for the laser. `sheetpipe verify`: 19/19 green, 57 runs.
+- Item 18 failed the length-cue rule (a plain κ beside slips in scientific
+  notation); one slip became the inverted ratio 1/κ.
+- Targeted run: 20,539 passed, 4 skipped; `test_per_set` for the 19 keys
+  passed after that change; the sheet's own tests: 41 passed; Ruff clean.
+- Full suite: **36,147 passed, 13 skipped in 11m09s**.
+
+### 2026-10-20 — TPhO 5 (2549) national physics olympiad
+
+- One 16-page PDF holds the theory paper (pages 1–5), its marking scheme
+  (6–12) and the experimental paper (13–16); transcribed as 18 parts.
+- 14 items: 1.1 (focus of a convex–concave pair), 1.2 (least friction to
+  roll, adapted to a cylinder, sphere or hoop), 1.3 (least height for a
+  loop; normal force level with its centre), 2(a)–(c) (diving-bell caisson:
+  river depth, extra air, least tank mass), 3(a)–(d) (Thomson atom: ω for
+  one electron, radius from a spectral line, two-electron spacing and
+  frequency), and the labs: prism index at minimum deviation, a steelyard
+  reading, specific gravity by Archimedes. Lab procedure and measurement
+  parts are claimed by their units.
+- Marking-scheme discrepancy: 3(b) prints R ~ 0.28 nm for 656 nm; its formula
+  with the paper's constants gives 0.313 nm (checked by bisection on the
+  emitted wavelength); a test pins it.
+- Independent checks include ray-transfer matrices, a slip bisection, energy
+  with explicit rotation, Boyle's-law bisection on the fill, a time-stepped
+  Thomson oscillator, a numerical two-electron stiffness, and a prism ray
+  trace for minimum deviation. `sheetpipe verify`: 14/14 green, 42 runs.
+- Targeted run: 20,689 passed, 4 skipped; `test_per_set` for the 14 keys
+  passed; the sheet's own tests: 32 passed; Ruff clean.
+- Full suite: **36,352 passed, 13 skipped in 11m44s**.
+
+### 2026-10-20 — TPhO 6 (2550) national physics olympiad
+
+- Folder of six PDFs: the theory paper, its marking scheme, the two bound
+  together (24 pages), and the experimental papers both combined and split.
+  The bound theory file and the combined experiments are the digested
+  sources; the four copies are `ignored` with notes.
+- 16 items: 1.1.1 (bar lengths from equal sound travel times, adapted ratios;
+  1.1.2's zero phase difference is claimed by the unit), 1.2 (plano-convex
+  radius and the internal-reflection image), 1.3 (adiabatic piston drop,
+  adapted compression ratio), 2.1–2.3.2 (sliding and spinning rod emf, the
+  spoked wheel's current and terminal speed), 3.1–3.4 (roller and block on
+  an incline: least and greatest holding force, acceleration with a hanging
+  mass, μ_s for rolling), and the labs: thermistor B, spring constant and
+  effective mass from the T²–M line, beam mass on a spring. Every answer
+  agrees with the marking scheme.
+- Independent checks include exact Snell ray traces through the lens and
+  its inner reflection, an adiabatic work integral, the swept-flux route,
+  a time-stepped wheel (sized to its time constant after a first run
+  stopped short), friction-limit bisections, an energy route for the
+  rolling system, and bisections on B, k and M. `sheetpipe verify`: 16/16
+  green, 48 runs.
+- Targeted run: 20,873 passed, 4 skipped; `test_per_set` for the 16 keys
+  passed; the sheet's own tests: 35 passed; Ruff clean.
+- Full suite: **36,584 passed, 13 skipped in 12m02s**.
+
+### 2026-10-20 — TPhO 7 (2551) national physics olympiad
+
+- Folder of eleven PDFs: the theory paper, its 23-page marking scheme, both
+  split per problem, and the experimental papers combined and split. The
+  theory paper and the combined experiments are the digested sources; the
+  nine others are `ignored` with notes.
+- 15 items: 1.1.2 (slit shift when liquid fills the mirror-lens, L' =
+  R/(2n − 1)), 1.2.2–1.2.3 (drop deviation and the minimum-deviation
+  incidence), 2.1 and 2.3–2.5 (a charge through a uniformly charged ball:
+  exit speed, work inside, centre speed, centre-to-surface time), 3.1–3.3
+  (wedge, block and pulley: held wedge, cut string, intact string with the
+  wedge free; masses adapted), and the labs: P_atm from the 1/L–h line
+  (asked in kPa so the answer is not the only number in scientific
+  notation), and a potentiometer emf. Steps 1.1.1, 1.2.1, 2.2, 3.3.2 and
+  3.3.3 are claimed by their units; the drop items join the existing
+  `raindrop-deviation` unit. Every answer agrees with the marking scheme.
+- Independent checks include a vector ray trace through the drop, RK4 runs
+  through the charged ball, an energy route for the held wedge, and a
+  Lagrangian for the free wedge against the paper's four force equations.
+  `sheetpipe verify`: 15/15 green, 45 runs.
+- Targeted run: 21,043 passed, 4 skipped; `test_per_set` for the 15 keys
+  passed; the sheet's own tests: 33 passed; Ruff clean.
+- Full suite: **36,804 passed, 13 skipped in 11m08s**.
+
+### 2026-10-20 — TPhO 8 (2552) national physics olympiad
+
+- Folder of eleven PDFs laid out like TPhO 7: the theory paper and the
+  combined experiments are the digested sources; the separate solution and
+  the per-problem and per-lab copies are `ignored` with notes.
+- 16 items: 1.1–1.4 (leaking gas tank, moving object's image, electron
+  leaving a triangular field parallel to x, charged ball through two
+  regions), 2.1–2.3 (stacked elastic balls: height multiple for a general
+  m/M, the light ball's speed, time and height of the second collision),
+  3.1–3.4 (plate force, spring constant, oscillation ω, the d ≥ D/3 limit),
+  and the labs: the square coil's axial field, the Hall sensor's
+  sensitivity, a disc magnet's surface field, g from a rod pendulum.
+- Marking-scheme error: 2.3 prints the second collision at 0.82 m; its own
+  equations (4)–(5) at t = 0.224 s give 0.90 m (an event simulation
+  agrees, and a test pins it). The time, 0.48 s, is right. The generator
+  keeps to the case the scheme solves (the light ball reaches the ceiling;
+  the heavy ball is still in flight).
+- Independent checks include a wall-force sum, a chief-ray image, a
+  bisection on the exit point, an event simulation of the stacked balls, an
+  energy route for the plate force, a bisection on the stable stretch, a
+  Biot–Savart sum for the square coil, and a compound-pendulum bisection.
+  `sheetpipe verify`: 16/16 green, 48 runs.
+- Targeted run: 21,228 passed, 4 skipped; `test_per_set` for the 16 keys
+  passed; the sheet's own tests: 36 passed; Ruff clean.
+- Full suite: **37,038 passed, 13 skipped in 11m38s**.
+
+### 2026-10-20 — TPhO 9 (2553) national physics olympiad
+
+- Folder of six PDFs laid out like TPhO 6: the bound theory-with-solution
+  file (19 pages) and the combined experiments are the digested sources;
+  the four copies are `ignored` with notes.
+- 14 items: 1.1–1.4 (a light block shuttling between a heavy block and a
+  wall: v1, the second and third meeting points, the closest approach
+  ℓ₀√(m/M)), 2.1–2.4 (twin pistons on helium: pressure, rise on warming,
+  restoring force, period), 3.1 (voltage-doubler table rows, a choice
+  item), 3.2.3 (double-star separation and the first vanishing slit
+  spacing; 3.2.1–3.2.2 are its steps), and the labs: Brewster angle, a
+  syrup's index from its Brewster angle, the seiche period of student 3's
+  model (the other students' models are the named mistakes). Every answer
+  agrees with the bound solution.
+- Independent checks include an exact collision-by-collision simulation
+  (which also confirms ℓ₀√(m/M) within 0.2% at M/m = 100), force
+  bisections, an exact adiabatic linearisation and a time-stepped piston,
+  a time-stepped diode circuit, Fresnel's r_p for the Brewster angle, and
+  an energy route for the seiche. `sheetpipe verify`: 14/14 green, 42 runs.
+- Targeted run: 21,383 passed, 4 skipped; `test_per_set` for the 14 keys
+  passed; the sheet's own tests: 31 passed; Ruff clean.
+- Full suite: **37,243 passed, 13 skipped in 11m14s**.
+
+### 2026-10-20 — TPhO 10 (2554) national physics olympiad
+
+- Same six-PDF layout as TPhO 9: the bound theory-with-solution file
+  (17 pages) and the combined experiments are the digested sources; the
+  four copies are `ignored` with notes.
+- 20 items: 1.2–1.6 (a superconducting ring falling onto a magnet: current
+  at depth z, the stiffness k, equilibrium z₀, ω, peak current at 2z₀;
+  1.1 is a step of 1.2), 2.1–2.6 (two masses on one string turning about
+  the vertical: centre of mass, upper tension, the constants A–D as a
+  choice item, the small-angle β, and with the middle mass sliding: β and
+  L₂/L₁), 3.1–3.7 (a falling water jet: Bernoulli radius, the γ/R pressure,
+  the first-order ΔR with 3.3–3.4 as its steps, the break-up distance, the
+  drop radius 3R/2), and the labs with synthetic data: one diode's
+  threshold from the two directions' thresholds, R from a least-squares
+  slope, μ_s from a slope, μ_k from the x_A–x_B slope.
+- Scheme slips: 3.6 prints 0.84 m, but t = 0.12 s gives 0.084 m (pinned in
+  the test). 3.5's ΔR = 1.34×10⁻⁵ m is its simplified form; the generators
+  use the full first-order form (1.32×10⁻⁵ m), and the test pins both.
+- Independent checks include an RK4 fall of the ring (ω from turning
+  points, peak current from the deepest point), Newton's-law bisections
+  for the string angles (the A–D constants recovered by Cramer's rule from
+  three solved configurations), a Newton step on the 3.3 relation for ΔR,
+  and pressure integrals and time-stepped falls for the jet.
+  `sheetpipe verify`: 20/20 green, 60 runs.
+- Targeted run: 21,624 passed, 4 skipped; `test_per_set` for the 20 keys
+  passed; the sheet's own tests: 45 passed; Ruff clean.
+- Full suite: **37,535 passed, 13 skipped in 11m06s**.
+
+### 2026-10-20 — TPhO 11 (2555) national physics olympiad
+
+- Eleven PDFs: the theory paper (4 pages) and its separate solution
+  (5 pages), per-problem copies of both, and the labs combined and split.
+  The digested sources are `tpho_11_theory.pdf` (answers confirmed against
+  `tpho_11_theory_solution.pdf`) and `tpho_11_exp.pdf`; the other nine are
+  `ignored` with notes.
+- 18 items: 1.1 ก–ค (pinhole image size, with diffraction, best hole
+  √(2.44λL)), 1.2 ข (W-tube level H = 2h; 1.2 ก is a sketch), 2 ก–จ (dust
+  sticking to a spring oscillator: u₀, loss ½Δmv², loss per cycle
+  ΔmE₀/(2m), Δω = ω₀ΔE/E₀, E ∝ ω), 3 ก–จ (charged conducting plate with a
+  hole: σ/ε₀, E_r/E = r/d, v_r = erE/(mu) with 3 ค as its step, focus
+  3mu²/(2eE)), and the labs with synthetic data: a nut's mass by
+  comparison with a battery, a plastic tube's spring constant, k from
+  Hooke's law, β₁ from T² against M, and β₂ from the top and bottom turn
+  lengths. Every answer agrees with the solution.
+- Independent checks include traced extreme rays, a golden-section search
+  for the best hole, a pressure bisection, an exact sticking collision
+  scaled to first order, dust added in 200,000 small portions (E ∝ ω), a
+  finite-disc field, div E = 0 in the hole, time-stepped protons, and
+  reverse or Cramer's-rule fits. `sheetpipe verify`: 18/18 green, 54 runs.
+- Targeted run: 21,823 passed, 4 skipped; `test_per_set` for the 18 keys
+  passed; the sheet's own tests: 40 passed; Ruff clean.
+- Full suite: **37,797 passed, 13 skipped in 12m32s**.
+
+### 2026-10-20 — TPhO 12 (2556) national physics olympiad
+
+- Three PDFs: the theory paper, the experimental paper and the
+  experiment's solution (`ignored`, used to confirm the lab answers).
+  There is **no theory solution**: every theory answer was derived here and
+  checked by an independent route; the transcript says so.
+- 21 items: 1.1 ก–ค (three hinged rods jerked at the middle: CD's v_y,
+  ω = 3u cos θ/(2l), impulse (3/2)mu(1 + sin²θ)), 1.2 ก–จ (meteor: stagnation
+  force, deceleration, the constant a in v = u·e^(a·e^(bz)), the brightest
+  height, read as the largest power ρv³, and the pressure there), 2 ก–ช
+  (gas through a valve into a spring cylinder: P_B, V_B, W_A, W_B, ΔU,
+  T_B/T_A = 2γ/(γ + 1)), 3 (rainbow: the bright incidence, primary 42.5°,
+  secondary 50.1°; sketches and the dark band are claimed by the units), and
+  the lab with synthetic data: μ from the torsion period, the matching
+  string length, B_v from τ_max and the inclination.
+- Solution slip: the lab's part 5 prints B_v = 0.13 T; its numbers give
+  0.133 G = 1.3×10⁻⁵ T (pinned in the test).
+- Independent checks include a five-unknown impulse system for the rods,
+  Bernoulli integrated along the stagnation line, a Simpson descent of the
+  meteor with the brightest point from the ODE's own rate, a parcel-by-parcel
+  enthalpy simulation of the valve, golden-section searches on the ray
+  deviation, a time-stepped torsion pendulum, and bisections of equation (2).
+  `sheetpipe verify`: 21/21 green, 63 runs.
+- Process note: a script that set `ANSWER` opened each solver for writing
+  before reading it and emptied all 21 files; they were rebuilt from the
+  session's own heredocs, the later edits re-applied, and verify re-run.
+  Read a file fully before reopening it for writing.
+- Targeted run: 22,071 passed, 4 skipped; `test_per_set` for the 21 keys
+  passed; the sheet's own tests: 48 passed; Ruff clean.
+- Full suite: **38,106 passed, 13 skipped in 11m24s**.
+
+### 2026-10-20 — TPhO 13 (2557) national physics olympiad
+
+- Four PDFs: theory and experiment papers with a solution each (the
+  solutions `ignored`, used to confirm every answer; all agree).
+- 17 items: 1.1 (wedge fringes: spacing λ/(2n tan θ), expansion
+  coefficient from the fringes that pass), 1.2 (passing source: the shift
+  heard at closest approach f₀v²/(v² − u²) − f₀, the distance when f₀ is
+  heard), 2 (one-wheeled table: stopping distance, the no-tipping limit
+  w/(2h), μ from the reversed/forward distance ratio), 3.1 (water hammer:
+  ρvu, v = √(B/ρ), the lift vu/g + u²/g), 3.2 (moving dielectric:
+  polarisation field and emf vBd(1 − 1/εᵣ)), and the eddy-current lab with
+  synthetic data: B of the wheels from V² against a, b and μ from terminal
+  speeds, σ = b/Λ and k = Λ/(dD²B²).
+- Scheme note: the lab solution's sin θ column corresponds to a 0.75 m
+  incline, not the stated 0.70 m; its own v/cos θ and tan θ columns give
+  the printed slope 0.366, b = 0.466 kg/s and μ = 0.18 (pinned in a test).
+  The generators use the stated 0.70 m with self-consistent data.
+- Independent checks include bisected fringe positions and fringe counts,
+  retarded-time Doppler from arrival times, a 3 × 3 force-and-torque system
+  for the table, a time-stepped falling parcel, a self-consistent
+  polarisation bisection, a numerically integrated Faraday-disc emf, and a
+  strip-summed disc for Λ. `sheetpipe verify`: 17/17 green, 51 runs.
+- Targeted run: 22,254 passed, 4 skipped; `test_per_set` for the 17 keys
+  passed; the sheet's own tests: 38 passed; Ruff clean.
+- Full suite: **38,354 passed, 13 skipped in 11m52s**.
+
+### 2026-10-20 — TPhO 14 (2558) national physics olympiad
+
+- Four PDFs: theory and lab papers with a solution each (the solutions
+  `ignored`, used to confirm every answer).
+- 17 items: 1.1 (charged pendulum in a horizontal field: θ_m = 2 tan⁻¹(qE/mg),
+  θ₀, the small-oscillation frequency), 1.2 (railway barrier: the
+  counterweight distance for the fastest lift, exact and with τ ≈ MgL/2),
+  2.1 (sealed vessel with a water film: P_G, the film thickness, t_B/t_A),
+  2.2 (pop gun: the adiabatic gap L, the muzzle speed, the best barrel D),
+  3 (eddy heating of a copper disc: peak emf, mean power zπa⁴B₀²ω²/(16ρ)),
+  and the saline lab with synthetic data: needle bore from the jet, viscosity
+  from Poiseuille, the series viscosity η_c, surface tension from drops.
+- Scheme slip: the lab's per-drop volume, 1.20 ml/50 = 0.0240 ml, is used as
+  0.0235 ml (γ = 83.6 instead of 85.4 mN/m; both pinned in the test).
+- Independent checks include an RK4 swing to the turning point, golden-section
+  maximisation of the barrier's angular acceleration, mole counting, an Euler
+  adiabatic compression, Simpson-integrated pellet work, ring-by-ring and
+  period-averaged eddy power, and bisected radius, viscosity and tension.
+  `sheetpipe verify`: 17/17 green, 51 runs.
+- A q10 draw could leave negative work (the pellet stops in the barrel); the
+  generator now redraws those.
+- Targeted run: 22,448 passed, 4 skipped; `test_per_set` for the 17 keys
+  passed; the sheet's own tests: 38 passed; Ruff clean.
+- Full suite: **38,603 passed, 13 skipped in 11m44s**.
+
+### 2026-10-20 — TPhO 15 (2559) national physics olympiad
+
+- Four PDFs: theory and lab papers with a solution each (the solutions
+  `ignored`, used to confirm every answer).
+- 23 items: 1.1 (streamlines; the Venturi sprayer's minimum speed
+  √(8ρ_wgh/(15ρ_a))), 1.2 (wire stretch with temperature: ΔL₁, ΔL₂, the
+  compensating area A = (W/Y₀)(ε/(αY₀) − 1), using the solution's
+  consistent second form), 1.3 (vacuum lamp: σA(T⁴ − T₀⁴), I ∝ V^0.6
+  generalised to R ∝ T^p), 2 (air conditioner: P′_N₂, V = 77.33 m³, the
+  atmosphere's work, 777.6 g condensed, 1929 kJ latent, 2506 kJ total, 77%),
+  3 (pump drill: α, b = L(θ₀ − θₙ), ω, the balanced push, mean power,
+  k = μr/2), and the LDR lab with synthetic data: γ from log R against
+  log x, the lamp's luminous flux, grating wavelengths, the corrected
+  response ratio.
+- Scheme notes: the lab solution's γ = −0.63 (slope 1.2531) comes from a
+  graph whose points differ from its table; the table's 14 readings fit
+  slope 1.302 (γ = −0.65), pinned in the test. Its 263 lux uses c₁ rounded
+  to 4.3×10⁴ while its 294 lm uses 4.27×10⁴ (rounding, not an error).
+- Independent checks include a bisected Venturi suction, stepwise warming
+  of the wire, an exact small-ΔT bisection for the area, two hot steady
+  states for n, mole counting for the air conditioner, RK4 winding of the
+  rope angle, the unwinding torque integrated for ω, and summed blade and
+  sphere elements. `sheetpipe verify`: 23/23 green, 69 runs.
+- Targeted run: 22,722 passed, 4 skipped; `test_per_set` for the 23 keys
+  passed; the sheet's own tests: 51 passed; Ruff clean.
+- Full suite: **38,938 passed, 13 skipped in 12m06s**.
+
+### 2026-10-20 — TPhO 16 (2560) national physics olympiad
+
+- Four PDFs: theory (20 pages, the last two background reading) and lab
+  papers with a solution each (the solutions `ignored`, used to confirm
+  every answer). The text layer was readable, so most of the transcript was
+  taken from it and checked against page images.
+- 20 items: 1.1 (a planet hitting a resting rock: √(u² + 2gR) − u),
+  1.2 (triangle cycle: p_C = 7.5 atm, e = 4.8%, the limit 5%), 1.3 (eye
+  resolution: 336 µrad diffraction, 42 µrad cones, 101 µm pixels),
+  2 (Mach-Zehnder sugar sensor: 377 ppm per fringe, the bright-port
+  intensity, 12 ppm from a 0.6 V reading, the 6 ppm misreading after a
+  brightness change), 3 (accelerator: proton speed, the dipole current
+  1.14×10⁴ A, beam spreading a₀ and β = 5.94×10⁻⁷ m⁻¹, the quadrupole
+  gradient 2μ₀I/(πR²), f = mv/(bqd), the doublet f(f − L)/L), and the
+  magnet lab with synthetic data: n from log M against log r, k from the
+  fall time against 1/m.
+- Scheme slip: the lab's k = 27.05 g·s × 9.78/1.01 m = 0.262 kg/s, printed
+  as 0.265 (pinned in the test).
+- Independent checks include a finite-mass collision bisection, a
+  numerically integrated triangle cycle, the Airy zero from a J₁ series,
+  a time-averaged field sum, a finite-length Biot-Savart dipole, shell-summed
+  beam forces, four-wire field sums, a thin-lens limit by shrinking the lens,
+  and ray-transfer matrices for the doublet. `sheetpipe verify`: 20/20 green,
+  60 runs.
+- Targeted run: 22,941 passed, 4 skipped; `test_per_set` for the 20 keys
+  passed; the sheet's own tests: 44 passed; Ruff clean.
+- Full suite: **39,228 passed, 13 skipped in 28m19s** (slower than usual
+  on this run).
+
+### 2026-10-20 — TPhO 17 (2561) national physics olympiad
+
+- Three PDFs: theory paper, its solution (a scan whose text layer is
+  unreadable; `ignored`, used to confirm the answers it shows legibly) and
+  the lab paper (no lab solution). The theory paper's text layer has a
+  garbled maths font, so equations were read from page images.
+- 22 items: 1.1 (a mass bouncing on a spinning beam: L = 2v² sin θ₀/g,
+  MLω = 6mv, m/M = θ₀ tan θ₀/3 for the smallest turn 2θ₀), 1.2 (vacuum
+  flask: net flow ε₁ε₂σ(T₁⁴ − T₂⁴)/(ε₁ + ε₂ − ε₁ε₂), 6.24 days to melt),
+  1.3 (falling rod on a smooth floor: a_B and a_C, strings slack above
+  54.7°; 1.3 d is left unanswered), 2 (watt balance: B_r = 0.081 T,
+  m = 1.0 kg, m = VI/(ug), the Josephson voltage, the Hall resistance
+  h/(νe²), the relative error 1.8×10⁻⁸), 3 (acoustic levitation: P_m, c,
+  kinetic and momentum densities, the second-order mean pressure, the push
+  of 2.9×10⁻³ N/m² at 120 dB), and the rice lab with synthetic data: the
+  heap angle, α₁ from the rolling cylinder, the packing density.
+- Scheme note: the lab's linearisation sin θ_c = 0.508 η sin α₁ + const
+  does not match its own x_cm(η) (tangent 16/(3π²) = 0.540; a fit over its
+  range gives 0.522). The generated item follows the paper's equation (2);
+  a test pins the exact tangent.
+- Independent checks include a stepped projectile, an elastic-impact
+  bisection for the spin, an explicit bounce-by-bounce radiation sum, a
+  3 × 3 force-torque system for the rod, a segment-summed coil force,
+  dimensional exponents by substitution, worst-case error propagation,
+  period averages of the sound fields, and the intensity route for the push.
+  `sheetpipe verify`: 22/22 green, 66 runs.
+- Targeted run: 23,193 passed, 4 skipped; `test_per_set` for the 22 keys
+  passed; the sheet's own tests: 48 passed; Ruff clean.
+- Full suite: **39,546 passed, 13 skipped in 14m12s**.
+
+### 2026-10-21 — TPhO 18 (2562) national physics olympiad
+
+- Two PDFs, the theory paper and the LED lab paper, both with clean text
+  layers; the folder has no solutions, so every answer is derived here and
+  checked by an independent route.
+- 24 items: 1 (hydraulic jump: momentum flux ρLh₁v₁², the net hydrostatic
+  force, h₂ = (h₁/2)[√(1 + 8v₁²/(gh₁)) − 1], the energy loss with k = 1/4,
+  the circular jump R = 4Q²/(π²d²gH²)), 2 (power transmission: P_LR_w/V_L²
+  = 0.207, solenoid L = μ₀n²πr²ℓ, M = √(L₁L₂), the primary current, the line
+  loss 2.07×10⁻⁷ with a 1000:1 transformer), 3 (protostars: the Sun's
+  surface 5.80×10³ K, the binary K.E. = Gm²/(4r), A = 3/5, the virial
+  temperature 4.61×10⁶ K, dE/dT = −2.48×10³⁴ J/K, α = 1/2, N/V =
+  4.36×10³² m⁻³, M_min = 2.0×10²⁹ kg ≈ 0.1 M☉), and the LED lab with
+  synthetic data: the ideality factor, I₀, R_s, the infrared wavelength from
+  V_t against 1/λ, the fill factor, R_SH. 2.6 and 3.8 (qualitative) have no
+  generator; lab 3.2 C is left unanswered.
+- Readings: 1.5's form k ρg(h₂ − h₁)(h₂² + h₁²)/(h₁h₂) needs the energy
+  per volume ½ρv² + ½ρgh (k = 1/4); the head h + v²/2g gives the textbook
+  (h₂ − h₁)³/(4h₁h₂) instead (a test pins both). 3.10's "smallest N/V" is
+  read as the density where the lightest igniting cloud peaks, P_deg =
+  P_ideal, which also minimises the mass in 3.11 (a test checks both agree).
+- Independent checks include a strip-summed hydrostatic thrust, a momentum
+  bisection for h₂, complex phasors for the transformer, an ideal-transformer
+  line current, a shell-summed self-energy, an integrated hydrostatic centre
+  pressure, golden-section searches for the ignition density and mass,
+  centred least squares for the lab lines, and bisections for R_s and R_SH.
+  `sheetpipe verify`: 24/24 green, 72 runs.
+- Generators reject a draw whose choices mix plain and scientific numbers;
+  stems state small readings as mantissa×10ⁿ in plain text.
+- Bank index: only the folder's two files were added (a scan also listed
+  unrelated new files elsewhere in the bank, left unindexed).
+- Targeted run: 23,469 passed, 4 skipped; `test_per_set` for the 24 keys
+  passed; the sheet's own tests: 54 passed; Ruff clean.
+- Full suite: **39,894 passed, 13 skipped in 14m06s**.
+
+### 2026-10-21 — TPhO 19 (2563) national physics olympiad
+
+- Eight PDFs: three theory problems and the lab, each with its own solution
+  (the four solutions `ignored`, used to confirm every answer). Clean text
+  layers; the lab's part 3 formula was checked on the page image
+  (T = 2μNW₁√(π/(4k))√d exp(k/d) + T₀).
+- 20 items: 1.1 (strobe-lit drops: u′ = √(2gh)Δt/(T₀ + Δt),
+  a′ = g(Δt/(T₀ + Δt))², A = d₀τ/(T₀²ω)), 1.2 (optical tweezer: δ, photon
+  count, F_x, ω² = 4P(n − 1)/(mcRn)), 2 (lapse rates: T₁ = 5.95 °C,
+  α = 9.78 K/km, z₁ = 1.44 km and z₂ = 2.90 km, T₂ = −1.7 °C, −5.2 °C/km),
+  3 (lensing by Fermat's principle: y², β, the Einstein ring mass
+  3.55×10⁴¹ kg), and the interleaved-notebook lab with synthetic data
+  (μ from single pulls, the T–N slope and intercept, k and μ from the
+  self-amplified pulls). 1.1 a), 1.2 c), 3.1 and the derivations share items.
+- Readings: 2.8 reads β(T₂) off the paper's graph; the generated item uses a
+  straight line through the solution's β(T₁) = 6.0×10⁻³ with the slope its
+  answer implies (0.349×10⁻³ per °C), which reproduces −1.7 °C. The lab's
+  part 2 slope in the solution is hand-drawn (0.863 N/sheet, μ = 0.57);
+  least squares over the same N ≤ 8 points gives 0.935 (μ = 0.62) and
+  T₀ = −0.385 N. The solution converts with 273 K (T₁ = 5.95 °C; 5.94 °C
+  with 273.15).
+- Independent checks include a two-flash fit for the strobe, the
+  quarter-cycle flash sum, exact ray tracing through the sphere, a numerical
+  restoring stiffness, integrated adiabatic climbs, a moist-ascent bisection
+  and stepping, a golden-section Fermat minimum over the exact path, and
+  centred least squares. `sheetpipe verify`: 20/20 green, 60 runs.
+- Targeted run: 23,686 passed, 4 skipped; `test_per_set` for the 20 keys
+  passed; the sheet's own tests: 45 passed; Ruff clean.
+- Full suite: **40,185 passed, 13 skipped in 14m21s**.
+
+### 2026-10-21 — TPhO 20 (2564) national physics olympiad
+
+- Two PDFs, each with its solution bound in (theory 35 pages, lab 21);
+  clean text layers.
+- 29 items: 1 (rolling thin tube: a = ½g sin θ cos φ, μ ≥ ½tan θ√(1 +
+  3sin²φ); loose half cylinder: a = ((m′ + m)/(2m′ + m))g sin θ and the
+  tilt β; welded: θ_min = sin⁻¹(k′ sin θ₀) with θ₀ = tan(θ₀/2) = 2.33 rad,
+  the kinetic energy, ω at the top and the normal force), 2 (vacuum diode:
+  single-electron speed, the Child–Langmuir current, V ∝ x^{4/3}, the space
+  charge and the anode charge), 3.1 (breathing: p_D, the work 2.7 J, 30.9
+  kcal/day, ΔU = 22.1 J, Q = 24.8 J, the heat-to-work ratio), 3.2 (bilens:
+  |v|, the image separation, L_max, fringe spacing λf/a, the most fringes),
+  and the cantilever lab with synthetic data (E from the bare sag and from
+  the Δy–m slope, the slope change e_N, E and the equivalent mass from
+  vibration).
+- Scheme notes: 2 g)'s first method gives σ₊ = −(4/3)ε₀V_d/d; its second
+  method and neutrality give +, which the item uses (a test pins it). In
+  3.1 the α values are graph readings; h)'s w_O = −1.94 J needs α_O ≈ 3.335
+  L, and the tabulated 3.35 L gives −1.91 J and a ratio of 31 against 32.6
+  (a test pins the sensitivity). The lab's part 1 slope is a drawn line
+  (62 GPa; least squares 60.5); its part 3 line is the least-squares fit.
+- Independent checks include a Cramer force–torque solve, energy for the
+  loose half cylinder, a golden-section worst turn, inertia about the
+  contact point, a finite-difference normal force, a stepped electron, a
+  Poisson first-integral quadrature for the diode, sliced lung work, ray
+  tracing and beam-overlap searches for the bilens, and centred least
+  squares. `sheetpipe verify`: 29/29 green, 87 runs.
+- Targeted run: 24,029 passed, 4 skipped; `test_per_set` for the 29 keys
+  passed; the sheet's own tests: 63 passed; Ruff clean.
+- Full suite: **40,602 passed, 13 skipped in 12m59s**.
+
+### 2026-10-21 — TPhO 21 (2565) national physics olympiad
+
+- Two PDFs, each with its solution bound in (theory 24 pages, lab 25);
+  clean text layers apart from a few lost fraction slashes.
+- 22 items: 1 (a charge in a dipole's field: the axial field, |E| at
+  (r, θ), the circling charge's L_z with θ_c = 125.3°, the top speed and the
+  swing period), 2 (magnetic cooling: M/(Nμ) = tanh x, S/(Nk_B), χ = Nμ²/k_BT,
+  the neighbours' field B_L, T_f = (B_L/B_H)T_i, the heat Q/N), 3 (sonic
+  flow: incompressible P₁, T₁ and P₁ from the Mach number, Q(β), the
+  critical pressure and the choked flow), and the permanent-magnet lab with
+  synthetic data (n and M from log B against log x, B₀ of an iron loop with
+  an air gap, M from half-magnet flux, flux summed over rings).
+- Scheme notes: 1 g)'s period is written 10.3/β, but its own approximation
+  gives 10.44/β (exact 10.49/β); the item uses the paper's approximation and
+  a test pins both. 2 i) and k) round 1.85 mT to 2 mT and 2.5×10⁻²⁴ J to
+  3×10⁻²⁴ J. The lab's part 1 line is drawn (n = −2.86, M = 1.2×10⁶ A/m);
+  least squares gives −2.90 and 1.08×10⁶ A/m. Its part 2 slope is the
+  least-squares one.
+- Generators: q09's r² slip now stays in the plain-number range (in nm), as
+  the format guard otherwise redrew forever; the spin items use cold states
+  so that tanh x and its linearisation stay apart.
+- Independent checks include two-charge Coulomb sums, a bisected orbit
+  angle, a velocity-Verlet swing, the exact period integral, Boltzmann
+  weights, multinomial entropy via lgamma, an entropy-matching bisection,
+  integrated B dM heat, an enthalpy bisection, a golden-section flow peak,
+  the sonic state, and centred least squares. `sheetpipe verify`: 22/22
+  green, 66 runs.
+- Targeted run: 24,263 passed, 4 skipped; `test_per_set` for the 22 keys
+  passed; the sheet's own tests: 49 passed; Ruff clean.
+- Full suite: **40,921 passed, 13 skipped in 14m22s**.
 
 ### 2026-11-15 — Entire bank organization and duplicate audit
 

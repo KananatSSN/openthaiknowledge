@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแกว่งของวัตถุแข็งเกร็ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.spring_rod_oscillation.procedure",
+      "kind": "procedure",
+      "title": "ความถี่การสั่นของแท่งที่มีสปริงสองข้าง",
+      "statement": "แท่งหมุนรอบจุดกึ่งกลางที่มีสปริง k สองข้างที่ปลาย สั่นด้วยความถี่ (1/2π)√(6k/m)",
+      "steps": [
+        "เขียนทอร์กคืนตัวจากสปริงทั้งสองที่แขน L/2",
+        "เทียบกับสมการการเคลื่อนที่แบบฮาร์มอนิกอย่างง่าย"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_theory_with_solution.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2547_q05"
+      ],
+      "note": "Numbers for m and k."
+    }
+  ]
+}

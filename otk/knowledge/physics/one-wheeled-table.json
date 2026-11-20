@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "โต๊ะมีล้อด้านเดียว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.one_wheeled_table.procedure",
+      "kind": "procedure",
+      "title": "ระยะไถลของโต๊ะมีล้อด้านเดียว",
+      "statement": "โต๊ะที่มีล้อเพียงขาเดียวไถลบนพื้น: สมดุลทอร์กรอบศูนย์กลางมวลกระจายแรงกดให้ขาที่ลากต่างกันตามทิศ ความหน่วง wgμ/(2(w ∓ μh)) จึงต่างกันเมื่อกลับทิศ และโต๊ะไม่ล้มเมื่อ μ < w/(2h)",
+      "steps": [
+        "เขียนสมดุลแรงแนวดิ่งและทอร์กรอบศูนย์กลางมวล",
+        "หาความหน่วงและระยะหยุด หรือเงื่อนไขแรงกดที่ล้อเป็นศูนย์"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2557_q05",
+        "phys.tpho2557_q06",
+        "phys.tpho2557_q07"
+      ],
+      "note": "u, w, h and mu vary."
+    }
+  ]
+}

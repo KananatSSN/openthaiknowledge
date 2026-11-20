@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การสั่นของมวลติดสปริง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.spring_and_beam_oscillation.procedure",
+      "kind": "procedure",
+      "title": "ค่าคงตัวสปริงจากกราฟ T² กับมวล",
+      "statement": "คาบของมวลบนสปริง T = 2π√((M + m_s)/k) ทำให้ T² เป็นเส้นตรงกับ M: k = 4π²/ความชัน และ m_s = จุดตัด/ความชัน คานที่ปลายหนึ่งหมุนได้อีกปลายแขวนสปริงมีคาบ 2π√(M/3k)",
+      "steps": [
+        "เขียนกราฟ T² กับ M",
+        "อ่านความชันและจุดตัด หรือใช้คาบของคานหามวล"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_exp.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_exp.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_exp.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_exp.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2550_q14",
+        "phys.tpho2550_q15",
+        "phys.tpho2550_q16"
+      ],
+      "note": "Synthetic slope."
+    }
+  ]
+}

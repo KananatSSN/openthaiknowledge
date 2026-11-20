@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การดลจากการไหลของของไหล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.hose_reaction_force.procedure",
+      "kind": "procedure",
+      "title": "แรงปฏิกิริยาของท่อฉีดน้ำ",
+      "statement": "ลำน้ำที่พุ่งออกจากท่อด้วยความเร็ว v ทำให้ท่อรับแรงปฏิกิริยา ρAv²",
+      "steps": [
+        "หาอัตราการไหลของมวล ρAv",
+        "คูณด้วยความเร็ว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q16"
+      ],
+      "note": "Part 2 item 6."
+    }
+  ]
+}

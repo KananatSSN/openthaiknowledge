@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "หลอดไฟไส้สุญญากาศ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.radiating_filament_lamp.procedure",
+      "kind": "procedure",
+      "title": "กำลังไฟฟ้าที่ไส้หลอดได้รับ",
+      "statement": "ไส้หลอดสุญญากาศรับกำลัง σA(T⁴ − T₀⁴) เมื่อร้อนคงที่ และเมื่อ T ≫ T₀ กับ R ∝ T^p ได้ I ∝ Vⁿ โดย n = (4 − p)/(4 + p) = 0.6 สำหรับ p = 1",
+      "steps": [
+        "เขียนสมดุลกำลังไฟฟ้ากับการแผ่รังสีสุทธิ",
+        "กำจัด T และ R ด้วย R = V/I หาเลขชี้กำลัง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2559_q05",
+        "phys.tpho2559_q06"
+      ],
+      "note": "A, T and T0 vary."
+    }
+  ]
+}

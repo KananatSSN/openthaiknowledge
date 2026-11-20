@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎของบอยล์และการเปลี่ยนแปลงเล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.isothermal_pressure_slope.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วน ΔP/ΔV ของแก๊สอุณหภูมิคงที่",
+      "statement": "แก๊สอุดมคติที่อุณหภูมิคงที่มี ΔP/ΔV≈−P/V สำหรับการเปลี่ยนแปลงเล็ก",
+      "steps": [
+        "ใช้ PV คงที่",
+        "หาอนุพันธ์หรือคิดผลต่างเล็กแล้วตัดพจน์อันดับสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-64-physics.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.posn2564_q14"
+      ],
+      "note": ""
+    }
+  ]
+}

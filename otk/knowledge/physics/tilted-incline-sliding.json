@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเสียดทานสถิตและจลน์บนพื้นเอียง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.tilted_incline_sliding.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งบนพื้นเอียงที่มุมเริ่มไถล",
+      "statement": "ยกพื้นเอียงจนเริ่มไถล tanθ=μs แล้วความเร่งเป็น g(μs−μk)/√(1+μs²)",
+      "steps": [
+        "หามุมเริ่มไถลจากแรงเสียดทานสถิต",
+        "ใช้แรงเสียดทานจลน์ที่มุมนั้น"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q16"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "รุ้งกินน้ำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rainbow_deviation_angles.procedure",
+      "kind": "procedure",
+      "title": "มุมตกกระทบที่ให้รุ้งสว่างที่สุด",
+      "statement": "แสงที่สะท้อนภายในหยดน้ำ N ครั้งเบี่ยง α = 2π − (N + 1)(π − 2φ) − 2θ แสงเข้มที่สุดที่ dα/dθ = 0 คือ cos²θ = (n² − 1)/((N + 1)² − 1) ได้รุ้งปฐมภูมิ 42.5° และรุ้งทุติยภูมิ 50.1° สำหรับ n = 1.33 ระหว่างนั้นเป็นแถบมืดของ Alexander",
+      "steps": [
+        "เขียนมุมเบี่ยงเบนจากการหักเหและการสะท้อนแต่ละครั้ง",
+        "หาจุดที่มุมเบี่ยงเบนคงที่ต่อการเปลี่ยนมุมตกกระทบ"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 17
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 18
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 19
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 20
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 21
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 22
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 23
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 24
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 25
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
+          "item": 26
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2556_q15",
+        "phys.tpho2556_q16",
+        "phys.tpho2556_q17"
+      ],
+      "note": "n and N vary."
+    }
+  ]
+}

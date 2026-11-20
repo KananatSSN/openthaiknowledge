@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "มาตรฐานทางไฟฟ้าเชิงควอนตัม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.quantum_electrical_standards.procedure",
+      "kind": "procedure",
+      "title": "ความต่างศักย์โจเซฟสันจากความถี่",
+      "statement": "มาตรฐานทางไฟฟ้าเชิงควอนตัม: แรงดันโจเซฟสัน V = Afh/e จากการวิเคราะห์มิติ ความต้านทานฮอลล์ h/(νe²) จึงได้ m ∝ f₁f₂h/(ug) โดย e ตัดกัน และความคลาดเคลื่อนสัมพัทธ์ของมวลเป็นผลรวมของ h, u, g และความถี่",
+      "steps": [
+        "ใช้การวิเคราะห์มิติหาเลขชี้กำลัง",
+        "แทนแรงดันและกระแสด้วยความถี่และค่าคงที่มูลฐานแล้วรวมความคลาดเคลื่อน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 16
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 17
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 18
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-61-physics/tpho_17_theory.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2561_q11",
+        "phys.tpho2561_q12",
+        "phys.tpho2561_q13"
+      ],
+      "note": "A and f vary."
+    }
+  ]
+}

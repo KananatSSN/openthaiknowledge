@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบวงกลมกับน้ำหนักปรากฏ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.equatorial_apparent_gravity.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งโน้มถ่วงที่เส้นศูนย์สูตรของดาวที่หมุน",
+      "statement": "ที่เส้นศูนย์สูตร น้ำหนักปรากฏลดลงด้วยแรงสู่ศูนย์กลาง g = g₀ − 4π²R/T²",
+      "steps": [
+        "หาความเร็วเชิงมุมจากคาบดาราคติ",
+        "ลบ ω²R ออกจาก g ที่ขั้ว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 20
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q20",
+        "phys.posn2568_q21"
+      ],
+      "note": ""
+    }
+  ]
+}

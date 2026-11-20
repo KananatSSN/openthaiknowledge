@@ -1,0 +1,42 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แบบจำลองอะตอมของทอมสัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.thomson_atom_oscillator.procedure",
+      "kind": "procedure",
+      "title": "ความถี่เชิงมุมของอิเล็กตรอนในอะตอมทอมสัน",
+      "statement": "ในอะตอมแบบทอมสัน อิเล็กตรอนในทรงกลมประจุสม่ำเสมอสั่นแบบฮาร์มอนิกด้วย ω² = Qe/(4πε₀mR³) อิเล็กตรอนสองตัวสมดุลที่ x = (e/4Q)^(1/3)R และสั่นสวนกันด้วย ω² = 3Qe/(4πε₀mR³)",
+      "steps": [
+        "ใช้กฎของเกาส์หาสนามภายในทรงกลม",
+        "ตั้งสมการการเคลื่อนที่หรือสมดุลรวมแรงผลักระหว่างอิเล็กตรอน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-49-physics/tpho_5_theory_with_solution_and_exp.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2549_q08",
+        "phys.tpho2549_q09",
+        "phys.tpho2549_q10",
+        "phys.tpho2549_q11"
+      ],
+      "note": "Hydrogen (Q = e) of radius R in nm."
+    }
+  ]
+}

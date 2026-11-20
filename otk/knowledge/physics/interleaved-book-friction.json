@@ -1,0 +1,47 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเสียดทานของสมุดที่สอดสลับกัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.interleaved_book_friction.procedure",
+      "kind": "procedure",
+      "title": "สัมประสิทธิ์ความเสียดทานระหว่างกระดาษอย่างง่าย",
+      "statement": "แรงเสียดทานของสมุดที่สอดสลับกัน: แผ่นกลางมีผิวสัมผัสสองด้าน μ = T/(2W₀) แรงดึงเพิ่มเชิงเส้น T = 2μW₀N + T₀ เมื่อซ้อนน้อย และเสริมกันเอง T ∝ √d exp(k/d) โดย k = 2μδN² เมื่อซ้อนมาก",
+      "steps": [
+        "วัดแรงดึงที่จำนวนแผ่นหรือระยะซ้อนต่าง ๆ",
+        "เขียนกราฟเส้นตรง T กับ N หรือ ln(T/√d) กับ 1/d หาความชันและ μ"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/TPhO2020_Experiment_Question.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/TPhO2020_Experiment_Question.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/TPhO2020_Experiment_Question.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/TPhO2020_Experiment_Question.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-63-physics/TPhO2020_Experiment_Question.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2563_q16",
+        "phys.tpho2563_q17",
+        "phys.tpho2563_q18",
+        "phys.tpho2563_q19",
+        "phys.tpho2563_q20"
+      ],
+      "note": "Synthetic pulls and load."
+    }
+  ]
+}

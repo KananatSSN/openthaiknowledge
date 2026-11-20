@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การชนยืดหยุ่นหนึ่งมิติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wall_rebound_collision.procedure",
+      "kind": "procedure",
+      "title": "ความเร็วของมวลเล็กหลังชนกับมวลใหญ่ที่สะท้อนกำแพง",
+      "statement": "มวลใหญ่ที่สะท้อนกำแพงแล้วชนมวลเล็กแบบยืดหยุ่น ส่งมวลเล็กออกไปด้วยความเร็วเกือบ 3u",
+      "steps": [
+        "หาความเร็วมวลใหญ่หลังสะท้อน",
+        "ใช้สูตรชนยืดหยุ่นหนึ่งมิติ"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q25"
+      ],
+      "note": "Part 2 item 15. Generator uses a finite mass ratio exactly."
+    }
+  ]
+}

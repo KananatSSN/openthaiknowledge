@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "กฎข้อสองของนิวตันกับแรงเสียดทาน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.ring_rope_friction.procedure",
+      "kind": "procedure",
+      "title": "แรงเสียดทานบนวงแหวนที่ไถลลงตามเชือก",
+      "statement": "วงแหวนไถลลงตามเชือกดิ่งด้วยความเร่ง a รับแรงเสียดทาน m(g−a)",
+      "steps": [
+        "เขียนแรงลัพธ์ mg−f",
+        "ตั้งเท่ากับ ma"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q01"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

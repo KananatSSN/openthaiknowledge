@@ -1,0 +1,35 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแกว่งของวัตถุแข็งเกร็ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.physical_pendulum_inertia.procedure",
+      "kind": "procedure",
+      "title": "โมเมนต์ความเฉื่อยรอบจุดศูนย์กลางมวลจากลูกตุ้มฟิสิกัล",
+      "statement": "ลูกตุ้มฟิสิกัลมีคาบ T = 2π√(I/(mgd)) จึงหาโมเมนต์ความเฉื่อยรอบจุดหมุนได้ แล้วใช้ทฤษฎีบทแกนขนานหาโมเมนต์ความเฉื่อยรอบจุดศูนย์กลางมวล",
+      "steps": [
+        "หาจุดศูนย์กลางมวลแล้ววัดคาบรอบจุดหมุน",
+        "คำนวณ I_O แล้วลบ md²"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_exp.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_exp.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-47-physics/tpho_3_exp.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2547_q13"
+      ],
+      "note": "Synthetic pivot distance and period."
+    }
+  ]
+}

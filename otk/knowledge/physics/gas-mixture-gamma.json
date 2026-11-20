@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ความจุความร้อนของแก๊สอุดมคติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.gas_mixture_gamma.procedure",
+      "kind": "procedure",
+      "title": "อัตราส่วนความจุความร้อน γ ของแก๊สผสม",
+      "statement": "γ ของแก๊สอุดมคติผสมคำนวณจาก Cp/Cv ของทั้งระบบ ไม่ใช่ค่าเฉลี่ยของ γ",
+      "steps": [
+        "รวม Cv จากองศาเสรีของแต่ละชนิด",
+        "ใช้ Cp=Cv+nR"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q22"
+      ],
+      "note": "Generalized to mixtures of monatomic and rigid diatomic gas."
+    }
+  ]
+}

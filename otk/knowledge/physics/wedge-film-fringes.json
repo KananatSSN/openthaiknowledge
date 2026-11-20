@@ -1,0 +1,40 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแทรกสอดในลิ่มใส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.wedge_film_fringes.procedure",
+      "kind": "procedure",
+      "title": "ระยะห่างริ้วการแทรกสอดในลิ่มใส",
+      "statement": "แสงสะท้อนจากผิวบนและผิวล่างของลิ่มใสแทรกสอดเสริมกันเมื่อ 2ny = (N + ½)λ ริ้วห่างกัน λ/(2n tan θ) เมื่อลิ่มขยายตัว ริ้วเลื่อนไปทางด้านบาง จำนวนริ้วที่เลื่อนให้สัมประสิทธิ์การขยายตัว α = λΔN/(2nL₀ΔT tan θ)",
+      "steps": [
+        "เขียนผลต่างทางเดินแสงพร้อมการกลับเฟสที่ผิวหนึ่ง",
+        "แปลงความหนาเป็นตำแหน่งตามลิ่มแล้วนับริ้วที่เลื่อน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2557_q01",
+        "phys.tpho2557_q02"
+      ],
+      "note": "lambda, n and theta vary."
+    }
+  ]
+}

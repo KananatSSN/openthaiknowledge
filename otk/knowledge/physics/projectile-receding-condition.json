@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่แบบโพรเจกไทล์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.projectile_receding_condition.procedure",
+      "kind": "procedure",
+      "title": "มุมยิงที่ระยะจากจุดยิงเพิ่มขึ้นตลอด",
+      "statement": "ระยะจากจุดยิงถึงโพรเจกไทล์เพิ่มตลอดเมื่อ cos²θ ≤ 8/9 (θ จากแนวดิ่ง) คือ sinθ ≥ 1/3",
+      "steps": [
+        "ให้พจน์คงที่ในวงเล็บไม่เป็นลบ",
+        "แปลงเป็นเงื่อนไขของ sinθ"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 29
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q29"
+      ],
+      "note": "Part 2 item 19. Generator asks one of three equivalent forms of the threshold."
+    }
+  ]
+}

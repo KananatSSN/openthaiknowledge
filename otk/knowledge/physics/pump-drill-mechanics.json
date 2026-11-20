@@ -1,0 +1,56 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สว่านปั๊ม (บิดหร่า)",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pump_drill_mechanics.procedure",
+      "kind": "procedure",
+      "title": "ความเร่งเชิงมุมของสว่านปั๊มขณะกดคาน",
+      "statement": "สว่านปั๊ม: แรงกด F₁ บนคานเบาให้ทอร์ก F₁r/tan θ ต้านด้วยทอร์กเสียดทาน k(Mg + F₁) งานต่อรอบ F₁L(θ₀ − θₙ) และถ้าล้อตุ้นต้องปั่นเกลียวกลับได้ n รอบพอดี F₁ = 4nπkMg/(L(θ₀ − θₙ) − 2nπk) สำหรับใบมีดยาว 2r ได้ k = μr/2",
+      "steps": [
+        "หาแรงตึงเชือกจากสมดุลของคานแล้วหาทอร์กบนแกน",
+        "ใช้งาน-พลังงานในช่วงคลายเกลียวและปั่นเกลียวหาอัตราเร็วเชิงมุมและแรงกด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 17
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 18
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 19
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 20
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 21
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 22
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2559_q14",
+        "phys.tpho2559_q15",
+        "phys.tpho2559_q16",
+        "phys.tpho2559_q17",
+        "phys.tpho2559_q18",
+        "phys.tpho2559_q19"
+      ],
+      "note": "F1, theta, r, M, k and I vary."
+    }
+  ]
+}

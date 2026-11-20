@@ -1,0 +1,47 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การสั่นของมวลติดสปริงที่ฝุ่นเกาะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.dust_loaded_oscillator.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วสูงสุดของมวลติดสปริง",
+      "statement": "ฝุ่นลอยนิ่ง Δm เกาะมวลติดสปริงที่อัตราเร็ว v ทำให้เสียพลังงานประมาณ ½Δmv² เฉลี่ยต่อรอบ ΔE = −ΔmE₀/(2m) ขณะที่ Δω/ω₀ = −Δm/(2m) จึงได้ ΔE/E₀ = Δω/ω₀ และพลังงานแปรผันตรงกับความถี่เชิงมุม E = E₀ω/ω₀",
+      "steps": [
+        "ใช้การอนุรักษ์โมเมนตัมหาพลังงานที่เสียเมื่อฝุ่นเกาะ",
+        "เฉลี่ยต่อรอบด้วย ⟨v²⟩ = u₀²/2 แล้วเทียบกับการเปลี่ยนความถี่"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-55-physics/tpho_11_theory.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2555_q05",
+        "phys.tpho2555_q06",
+        "phys.tpho2555_q07",
+        "phys.tpho2555_q08",
+        "phys.tpho2555_q09"
+      ],
+      "note": "Mass and energy vary."
+    }
+  ]
+}

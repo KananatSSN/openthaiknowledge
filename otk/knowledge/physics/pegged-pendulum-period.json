@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การแกว่งของลูกตุ้มอย่างง่าย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pegged_pendulum_period.procedure",
+      "kind": "procedure",
+      "title": "คาบลูกตุ้มที่มีหมุดขวาง",
+      "statement": "ลูกตุ้มที่มีหมุดขวางแกว่งครึ่งรอบด้วยความยาวเต็มและครึ่งรอบด้วยความยาวที่เหลือ คาบรวมเป็นผลบวกครึ่งคาบทั้งสอง",
+      "steps": [
+        "หาครึ่งคาบของแต่ละความยาว",
+        "รวมเป็นคาบเต็มแล้วเทียบกับคาบเดิม"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q02"
+      ],
+      "note": "Generalized peg depth; small amplitude."
+    }
+  ]
+}

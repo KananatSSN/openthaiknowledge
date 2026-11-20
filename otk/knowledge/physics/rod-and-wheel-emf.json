@@ -1,0 +1,42 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงเคลื่อนไฟฟ้าเหนี่ยวนำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rod_and_wheel_emf.procedure",
+      "kind": "procedure",
+      "title": "ความต่างศักย์ระหว่างปลายแท่งที่เคลื่อนที่ในสนามแม่เหล็ก",
+      "statement": "แท่งตัวนำที่เคลื่อนที่ให้ vBℓ แท่งที่หมุนรอบปลายให้ ½Bωℓ² ซี่ล้อหลายซี่ต่อขนานกันให้ ½ωBr₀² และวงล้อที่ถูกมวลถ่วงเข้าสู่ ω_f = 4MgR/(B²r₀³)",
+      "steps": [
+        "อินทิเกรต vB ตามความยาวแท่ง",
+        "สมดุลกำลังหรือทอร์กของมวลถ่วงกับแรงแม่เหล็ก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 6
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-50-physics/tpho_6_theory_with_solution.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2550_q05",
+        "phys.tpho2550_q06",
+        "phys.tpho2550_q07",
+        "phys.tpho2550_q08"
+      ],
+      "note": "Numbers for v, B and l."
+    }
+  ]
+}

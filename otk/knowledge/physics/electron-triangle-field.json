@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การเคลื่อนที่ของประจุในสนามแม่เหล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.electron_triangle_field.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วอิเล็กตรอนที่ออกจากสนามรูปสามเหลี่ยมขนานแกน x",
+      "statement": "อิเล็กตรอนที่เข้าสนามแม่เหล็กตั้งฉากเคลื่อนที่เป็นวงกลม r = mv/(eB) การออกจากด้านเอียงของสามเหลี่ยมด้านเท่าในทิศขนานแกน x ต้องเป็นเสี้ยววงกลมรัศมี √3a/(2(1 + √3))",
+      "steps": [
+        "หารัศมีจากเรขาคณิตของจุดออก",
+        "ใช้ evB = mv²/r หาอัตราเร็ว"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-52-physics/tpho_8_theory.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2552_q03"
+      ],
+      "note": "Numbers for B and a; three significant figures."
+    }
+  ]
+}

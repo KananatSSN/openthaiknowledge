@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การยืดของลวดเมื่ออุณหภูมิเปลี่ยน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.thermal_wire_stretch.procedure",
+      "kind": "procedure",
+      "title": "ระยะยืดของลวดที่ห้อยน้ำหนัก",
+      "statement": "ลวดห้อยน้ำหนักยืด WL/(AY) เมื่ออุณหภูมิเพิ่มทั้งความยาวขยาย αLΔT และมอดุลัสเปลี่ยน εΔT ถ้าเลือกพื้นที่หน้าตัด A = (W/Y₀)(ε/(αY₀) − 1) (ต้องมี ε > 0) วัตถุจะอยู่ที่เดิม",
+      "steps": [
+        "เขียนระยะยืดรวมจากความร้อนและแรงดึงที่อุณหภูมิใหม่",
+        "กระจายอันดับหนึ่งแล้วจับให้เท่ากับระยะยืดเดิม"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 3
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2559_q02",
+        "phys.tpho2559_q03",
+        "phys.tpho2559_q04"
+      ],
+      "note": "W, L0, A and Y0 vary."
+    }
+  ]
+}

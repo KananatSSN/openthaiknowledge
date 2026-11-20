@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ของไหลในกรอบหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rotating_fluid_surface.procedure",
+      "kind": "procedure",
+      "title": "ผิวน้ำในภาชนะที่หมุน",
+      "statement": "ผิวน้ำที่หมุนด้วย ω เป็นพาราโบลา y=ω²x²/(2g)+h",
+      "steps": [
+        "ความชันผิวเท่ากับ ω²x/g",
+        "อินทิเกรตจากแกนหมุน"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-66-physics.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.posn2566_q14"
+      ],
+      "note": "Generator asks the rise above the centre at radius x."
+    }
+  ]
+}

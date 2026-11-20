@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "แรงในกรอบอ้างอิงที่มีความเร่ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.detach_from_free_cylinder.procedure",
+      "kind": "procedure",
+      "title": "มุมที่มวลหลุดจากผิวทรงกระบอกที่เลื่อนได้",
+      "statement": "ในกรอบของทรงกระบอกที่เร่ง มวลหลุดจากผิวเมื่อแรงปฏิกิริยาเป็นศูนย์ ทรงกระบอกที่เลื่อนได้ทำให้มวลหลุดที่มุมเล็กกว่า cos⁻¹(2/3) ของทรงกระบอกที่ถูกยึด",
+      "steps": [
+        "เขียนกฎข้อสองตามแนวรัศมีพร้อมแรงเทียม m dV/dt",
+        "ตั้ง N = 0 แล้วเทียบกับกรณีทรงกระบอกถูกยึด"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-46-physics/tpho_2_theory.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2546_q04"
+      ],
+      "note": "Generator varies M/m and includes the fixed-cylinder case."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "สมการเลนส์และกำลังขยายตามแนวแกน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.longitudinal_image_length.procedure",
+      "kind": "procedure",
+      "title": "ความยาวภาพของวัตถุที่วางตามแกน",
+      "statement": "ภาพของวัตถุที่วางตามแกนหาได้โดยหาภาพของปลายทั้งสองด้วยสมการเลนส์",
+      "steps": [
+        "หาระยะภาพของแต่ละปลาย",
+        "หารผลต่างระยะภาพด้วยความยาววัตถุ"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "phys.posn2568_q14"
+      ],
+      "note": "Generalized object ends."
+    }
+  ]
+}

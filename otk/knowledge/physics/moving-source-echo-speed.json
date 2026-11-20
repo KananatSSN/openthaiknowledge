@@ -1,0 +1,37 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เสียงสะท้อนจากผู้สังเกตที่เคลื่อนที่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.moving_source_echo_speed.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วเรือจากเวลาเสียงสะท้อน",
+      "statement": "เสียงสะท้อนกลับถึงผู้ฟังที่เคลื่อนเข้าหาผนังใช้ (c+u)t=2L",
+      "steps": [
+        "เขียนสมการเวลาเสียงสะท้อนสองครั้ง",
+        "กำจัดระยะเริ่มต้นแล้วแก้หา u"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf",
+          "item": 28
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "phys.posn2565_q28",
+        "phys.posn2567_q10",
+        "phys.posn2568_q18"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

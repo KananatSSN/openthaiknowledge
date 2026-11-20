@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานการเลื่อนที่ร่วมการหมุน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.rolling_ball_bowl.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วเชิงมุมสูงสุดของทรงกลมกลิ้งในชาม",
+      "statement": "ทรงกลมกลิ้งไม่ไถลในชามรัศมี R มีพลังงานจลน์ (7/10)M(R−r)²θ̇² อัตราเร็วเชิงมุมสูงสุดที่ก้นชาม",
+      "steps": [
+        "เขียนพลังงานจลน์การเลื่อนและการหมุนด้วยเงื่อนไขการกลิ้ง",
+        "ใช้การอนุรักษ์พลังงานจากมุมเริ่มต้นถึงก้นชาม"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q05"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

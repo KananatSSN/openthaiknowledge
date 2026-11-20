@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "การรวมสนามไฟฟ้าแบบเวกเตอร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.charge_pair_axis_field.procedure",
+      "kind": "procedure",
+      "title": "สนามไฟฟ้าสูงสุดบนแกนของประจุคู่",
+      "statement": "ประจุเท่ากันสองตัวที่ (0,±a) ให้สนามบนแกน x เป็น 2kqx/(x²+a²)³ᐟ² ซึ่งสูงสุด 4kq/(3√3a²)",
+      "steps": [
+        "รวมองค์ประกอบแนว x ของสองประจุ",
+        "หาค่าสูงสุดของ ξ/(1+ξ²)³ᐟ²"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-67-physics.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.posn2567_q06"
+      ],
+      "note": "Generator asks E_max on the axis."
+    }
+  ]
+}

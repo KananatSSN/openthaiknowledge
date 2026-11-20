@@ -1,0 +1,27 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ระบบเลนส์หลายตัว",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.diverging_converging_pair.procedure",
+      "kind": "procedure",
+      "title": "ระยะระหว่างเลนส์เว้าและเลนส์นูนให้แสงรวมที่จุดกำหนด",
+      "statement": "ภาพเสมือนจากเลนส์ตัวแรกเป็นวัตถุของเลนส์ตัวที่สอง หาระยะวัตถุจากสมการเลนส์แล้วลบระยะโฟกัสของเลนส์แรก",
+      "steps": [
+        "หาระยะวัตถุของเลนส์ตัวที่สองจากตำแหน่งภาพ",
+        "ลบระยะภาพเสมือนของเลนส์แรก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf",
+          "item": 30
+        }
+      ],
+      "covered_by": [
+        "phys.posn2569_q30"
+      ],
+      "note": "Part 2 item 20. Generalized focal lengths and focus distance."
+    }
+  ]
+}

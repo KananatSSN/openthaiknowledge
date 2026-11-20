@@ -1,0 +1,47 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "พลังงานศักย์ของวัตถุแข็งเกร็ง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.hoop_on_rod_oscillation.procedure",
+      "kind": "procedure",
+      "title": "พลังงานศักย์ของห่วงที่กลิ้งบนแกน",
+      "statement": "ห่วงรัศมี R กลิ้งไม่ไถลรอบแกนรัศมี r แกว่งเหมือนลูกตุ้มที่มีพลังงานจลน์ M(R−r)²θ̇² และความถี่ (1/2π)√(g/(2(R−r)))",
+      "steps": [
+        "หาตำแหน่งศูนย์กลางห่วงและอัตราหมุนจากเงื่อนไขการกลิ้ง",
+        "เขียนพลังงานแล้วหาความถี่การสั่นมุมเล็ก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 7
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 8
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-45-physics/tpho_1_theory_eng.pdf",
+          "item": 11
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2545_q07",
+        "phys.tpho2545_q08",
+        "phys.tpho2545_q09",
+        "phys.tpho2545_q10",
+        "phys.tpho2545_q11"
+      ],
+      "note": "Variable source labels replaced by explicit geometry/data."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ปรากฏการณ์ดอปเพลอร์ของแหล่งกำเนิดที่ผ่านหน้า",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.passing_source_doppler.procedure",
+      "kind": "procedure",
+      "title": "ความถี่ที่ได้ยินเมื่อแหล่งกำเนิดอยู่ใกล้ที่สุด",
+      "statement": "แหล่งกำเนิดเสียงที่วิ่งผ่านผู้สังเกต: เสียงที่ได้ยินขณะแหล่งกำเนิดอยู่ใกล้ที่สุดถูกปล่อยมาจากตำแหน่งที่ cos θ = u/v ได้ f = f₀v²/(v² − u²) และได้ยิน f₀ เมื่อแหล่งกำเนิดเลยไปแล้ว uL/v ห่าง L√(u² + v²)/v",
+      "steps": [
+        "หาตำแหน่งที่ปล่อยเสียงจากเวลาที่เสียงเดินทาง",
+        "ใช้องค์ประกอบความเร็วตามแนวเส้นสายตาในสูตรดอปเพลอร์"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 5
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2557_q03",
+        "phys.tpho2557_q04"
+      ],
+      "note": "f0, u and v vary; the shift is asked."
+    }
+  ]
+}

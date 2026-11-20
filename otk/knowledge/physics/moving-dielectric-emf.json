@@ -1,0 +1,44 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ไดอิเล็กทริกเคลื่อนที่ในสนามแม่เหล็ก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.moving_dielectric_emf.procedure",
+      "kind": "procedure",
+      "title": "สนามไฟฟ้าจากการแยกขั้วในไดอิเล็กทริก",
+      "statement": "ไดอิเล็กทริกที่เคลื่อนที่ด้วย v ในสนามแม่เหล็ก B รู้สึกสนามยังผล vB สนามภายในเหลือ vB/εᵣ ประจุโพลาไรเซชันให้สนาม vB(1 − 1/εᵣ) ในทิศตรงข้าม และอีเอ็มเอฟคร่อมแผ่นขนาน vBd(1 − 1/εᵣ)",
+      "steps": [
+        "หาสนามยังผลจากแรงลอเรนซ์ต่อประจุ",
+        "แยกสนามโพลาไรเซชันออกจากสนามรวมในไดอิเล็กทริก"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 18
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 19
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 20
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 21
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-57-physics/tpho_13_theory.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2557_q11",
+        "phys.tpho2557_q12"
+      ],
+      "note": "v, B and epsilon_r vary."
+    }
+  ]
+}

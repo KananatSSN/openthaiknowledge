@@ -1,0 +1,31 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "เส้นกระแสและสมการแบร์นูลลี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.venturi_bernoulli_spray.procedure",
+      "kind": "procedure",
+      "title": "อัตราเร็วลมต่ำสุดที่ทำให้น้ำพ่นจากท่อเวนทูรี",
+      "statement": "ตามเส้นกระแสเดียวกัน P + ρgy + ½ρv² คงที่ ในท่อคอดที่ต่อหลอดดูดน้ำ อากาศที่คอดเร็วขึ้นจนความดันต่ำกว่าบรรยากาศ ρ_wgh จึงดูดน้ำขึ้นได้ ด้านในของท่อโค้งเส้นกระแสชิดกันเพราะความดันด้านนอกต้องให้แรงสู่ศูนย์กลาง",
+      "steps": [
+        "ใช้ความต่อเนื่องหาอัตราเร็วที่แต่ละช่วงของท่อ",
+        "ใช้สมการแบร์นูลลีเทียบความดันที่คอดกับความดันที่ยกน้ำได้"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 1
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-59-physics/TPhO2016_Theory.pdf",
+          "item": 2
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2559_q01"
+      ],
+      "note": "h and rho_a vary."
+    }
+  ]
+}

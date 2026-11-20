@@ -1,0 +1,41 @@
+{
+  "subject": "ฟิสิกส์",
+  "topic": "ฉับโผง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "phys.pop_gun_adiabatic.procedure",
+      "kind": "procedure",
+      "title": "ระยะอัดอากาศในฉับโผงก่อนลูกปอเคลื่อน",
+      "statement": "ฉับโผง: อากาศในกระบอกถูกอัดแบบแอเดียแบติกจนแรงดันชนะแรงเสียดทานสถิต L = L₀(PₐA/(F + PₐA))^(1/γ) แล้วขยายตัวดันลูกปอ งานที่ได้ให้อัตราเร็ว และกระบอกยาวที่สุดที่ยังเร่งได้คือ D = L[((F + PₐA)/(f + PₐA))^(1/γ) − 1]",
+      "steps": [
+        "ใช้ PV^γ คงที่หาความยาวอากาศเมื่อลูกเริ่มเคลื่อน",
+        "อินทิเกรตแรงลัพธ์ตามระยะหาอัตราเร็วและระยะที่แรงลัพธ์เป็นศูนย์"
+      ],
+      "sources": [
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 9
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 10
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 11
+        },
+        {
+          "sheet": "physics/level/upper-secondary/posn-physics/tpho-58-physics/TPhO14_theory.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "phys.tpho2558_q09",
+        "phys.tpho2558_q10",
+        "phys.tpho2558_q11"
+      ],
+      "note": "L0, F and A vary."
+    }
+  ]
+}
