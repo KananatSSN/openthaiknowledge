@@ -168,3 +168,246 @@ class TimeElapsed(WordProblem):
             # Reading the clock difference as a decimal is the classic error.
             distractors=[str((end_h - start_h) * 100 + (end_m - start_m)),
                          str(span + 60), str(abs(span - 60) or 5)])
+
+
+# ── More time (2026-11): the time after some minutes, the time before, the months, and weeks as days ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+_MONTHS = ("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+           "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม")
+_MONTH_DAYS = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+
+
+def _clock_p2(total: int) -> str:
+    h, m = divmod(total % (24 * 60), 60)
+    return f"{h}.{m:02d} น."
+
+
+@question_type("math.time_after_p2", display_name={"th": "เวลาหลังจากผ่านไปกี่นาที"},
+               level=LEVEL, topic="เวลา")
+class TimeAfterP2(ChoiceType):
+    def compose(self, rng: Random):
+        start = rng.randint(7, 16) * 60 + rng.choice((0, 5, 10, 15, 20, 30, 40, 45))
+        add = rng.choice((15, 20, 25, 30, 35, 40, 45, 50))
+        right = _clock_p2(start + add)
+        # The hour not carried (or an hour added when none is due); minutes taken away; ten minutes off
+        # either way (the spare covers a 30-minute draw, where the first two coincide).
+        h, m = divmod(start, 60)
+        no_carry = f"{h}.{(m + add) % 60:02d} น." if m + add >= 60 else _clock_p2(start + add + 60)
+        wrongs = [no_carry, _clock_p2(start - add), _clock_p2(start + add + 10), _clock_p2(start + add - 10)]
+        task = rng.choice(("ทำการบ้าน", "อ่านหนังสือ", "เล่นฟุตบอล", "ช่วยแม่ทำกับข้าว"))
+        return (f"ต้นกล้าเริ่ม{task}เวลา {_clock_p2(start)} ใช้เวลา {add} นาที ทำเสร็จเวลาใด",
+                right, [w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.time_before_p2", display_name={"th": "เวลาก่อนหน้ากี่นาที"},
+               level=LEVEL, topic="เวลา")
+class TimeBeforeP2(ChoiceType):
+    def compose(self, rng: Random):
+        end = rng.randint(8, 17) * 60 + rng.choice((0, 10, 15, 20, 30, 45))
+        back = rng.choice((10, 15, 20, 25, 30, 40, 45))
+        right = _clock_p2(end - back)
+        wrongs = [_clock_p2(end + back), _clock_p2(end - back - 60), _clock_p2(end - back + 10)]
+        event = rng.choice(("รถโรงเรียนออก", "ภาพยนตร์เริ่ม", "ร้านค้าเปิด", "การแข่งขันเริ่ม"))
+        return (f"{event}เวลา {_clock_p2(end)} ต้องไปถึงก่อน {back} นาที ต้องไปถึงเวลาใด",
+                right, [w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.months_p2", display_name={"th": "เดือนในหนึ่งปี"},
+               level=LEVEL, topic="เวลา")
+class MonthsP2(ChoiceType):
+    def compose(self, rng: Random):
+        i = rng.randrange(12)
+        kind = rng.randrange(3)
+        if kind == 0:
+            right = _MONTHS[(i + 1) % 12]
+            stem = f"เดือนที่อยู่ถัดจากเดือน{_MONTHS[i]}คือเดือนใด"
+            wrongs = [_MONTHS[(i - 1) % 12], _MONTHS[(i + 2) % 12], _MONTHS[i]]
+        elif kind == 1:
+            right = _MONTHS[(i - 1) % 12]
+            stem = f"เดือนที่อยู่ก่อนเดือน{_MONTHS[i]}คือเดือนใด"
+            wrongs = [_MONTHS[(i + 1) % 12], _MONTHS[(i - 2) % 12], _MONTHS[i]]
+        else:
+            days = _MONTH_DAYS[i]
+            right = _MONTHS[i]
+            others = [m for m, d in zip(_MONTHS, _MONTH_DAYS) if d != days]
+            stem = ("เดือนใดมี 28 หรือ 29 วัน" if days == 28 else f"เดือนใดมี {days} วัน")
+            wrongs = rng.sample(others, 3)
+        return stem, right, wrongs
+
+
+@question_type("math.weeks_days_p2", display_name={"th": "สัปดาห์และวัน"},
+               level=LEVEL, topic="เวลา")
+class WeeksDaysP2(WordProblem):
+    def expr(self, rng: Random):
+        w = rng.randint(1, 8)
+        d = rng.randint(0, 6)
+        right = 7 * w + d
+        prompt = f"{w} สัปดาห์{f' {d} วัน' if d else ''} เท่ากับกี่วัน"
+        # A week taken as 5 school days; as 10 days; the numbers added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(5 * w + d, 10 * w + d, w + d, right + 7, answer=right, lo=1))
+
+
+@question_type("math.sum_durations_p2", display_name={"th": "รวมระยะเวลาเป็นชั่วโมงและนาที"},
+               level=LEVEL, topic="เวลา")
+class SumDurationsP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4157-2-2564-1-3.pdf, ตอนที่ 1 ข้อ 19",))
+
+    def compose(self, rng: Random):
+        first, second = rng.randint(25, 59), rng.randint(25, 59)
+        total = first + second
+        h, m = divmod(total, 60)
+        right = f"{h} ชั่วโมง {m} นาที"
+        return (f"อ่านหนังสือ {first} นาที แล้วทำการบ้าน {second} นาที "
+                "ใช้เวลารวมกี่ชั่วโมง กี่นาที",
+                right,
+                # Carry at 100 instead of 60; subtract instead; lose the remainder;
+                # carry an extra hour; add an extra ten minutes.
+                list(dict.fromkeys([f"{total // 100} ชั่วโมง {total % 100} นาที",
+                                    f"0 ชั่วโมง {abs(first - second)} นาที",
+                                    f"{h} ชั่วโมง 0 นาที", f"{h + 1} ชั่วโมง {m} นาที",
+                                    f"{(total + 10) // 60} ชั่วโมง {(total + 10) % 60} นาที"])))
+
+
+@question_type("math.days_to_weeks_p2", display_name={"th": "เปลี่ยนจำนวนวันเป็นสัปดาห์"},
+               level=LEVEL, topic="เวลา")
+class DaysToWeeksP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4163-2-2565-2-3.pdf, ตอนที่ 1 ข้อ 1",))
+
+    def expr(self, rng: Random):
+        days = 7 * rng.randint(1, 12)
+        weeks = days // 7
+        return MathDraw("", str(weeks), prompt=f"{days} วัน คิดเป็นกี่สัปดาห์",
+                        # Five days per week; multiply instead of divide; use the conversion factor.
+                        distractors=_story.keep(days // 5, days * 7, 7, days, weeks + 1, answer=weeks, lo=1),
+                        hint=rf"{days} \div 7 = {weeks}")
+
+
+@question_type("math.colloquial_clock_p2", display_name={"th": "อ่านเวลาเป็นภาษาพูดตามช่วงวัน"},
+               level=LEVEL, topic="เวลา")
+class ColloquialClockP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 2, 6, 8",))
+
+    @staticmethod
+    def spoken(h, m):
+        if h <= 5:
+            prefix = f"ตี{h}"
+        elif h <= 11:
+            prefix = f"{h} โมง"
+        elif h <= 17:
+            prefix = f"บ่าย {h - 12} โมง"
+        else:
+            prefix = f"{h - 18} ทุ่ม"
+        return prefix + (f" {m} นาที" if m else "ตรง")
+
+    def compose(self, rng: Random):
+        hours = (*range(1, 6), *range(7, 12), *range(19, 24))
+        h, m = rng.choice(hours), rng.choice(range(0, 60, 5))
+        right = self.spoken(h, m)
+        # Confuse the time period, the hour, or the minute-hand mark.
+        opposite = h + 12 if h < 12 else h - 12
+        wrongs = [self.spoken(opposite, m), self.spoken(h, (m + 5) % 60),
+                  self.spoken(h, m // 5 if m else 30)]
+        return f"เวลา {h:02d}.{m:02d} น. อ่านเป็นภาษาพูดได้อย่างไร", right, wrongs
+
+
+@question_type("math.clock_hands_from_hour_p2", display_name={"th": "ตำแหน่งเข็มนาฬิกาเมื่อบอกชั่วโมงตรง"},
+               level=LEVEL, topic="เวลา")
+class ClockHandsFromHourP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 3–5",))
+
+    def compose(self, rng: Random):
+        h = rng.randrange(24)
+        mark = h % 12 or 12
+        def label(a, b):
+            return f"เข็มสั้นชี้เลข {a} เข็มยาวชี้เลข {b}"
+        right = label(mark, 12)
+        wrongs = [label(mark % 12 + 1, 12), label(mark, 3), label(mark, 6)]
+        return f"เวลา {h:02d}.00 น. เข็มสั้นและเข็มยาวชี้เลขใด", right, wrongs
+
+
+@question_type("math.clock_period_to_24h_p2", display_name={"th": "ใช้ช่วงวันแปลงหน้าปัดเป็นเวลา 24 ชั่วโมง"},
+               level=LEVEL, topic="เวลา")
+class ClockPeriodTo24hP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 1, 7",))
+
+    def compose(self, rng: Random):
+        h, m, after = rng.randint(1, 11), rng.choice(range(0, 60, 5)), rng.choice((False, True))
+        hour = h + 12 * after
+        when = "หลังเที่ยงวันและก่อนเที่ยงคืน" if after else "หลังเที่ยงคืนและก่อนเที่ยงวัน"
+        hand = f"อยู่ระหว่างเลข {h} กับ {h + 1}" if m else f"ชี้เลข {h}"
+        right = f"{hour:02d}.{m:02d} น."
+        wrongs = [f"{(hour + 12) % 24:02d}.{m:02d} น.", f"{(hour + 1) % 24:02d}.{m:02d} น.",
+                  f"{hour:02d}.{m // 5 if m else 30:02d} น."]
+        return (f"นาฬิกาเข็มสั้น{hand} เข็มยาวชี้เลข {m // 5 or 12} "
+                f"ขณะนี้อยู่ในช่วง{when} เขียนเวลาแบบ 24 ชั่วโมงได้อย่างไร", right, wrongs)
+
+
+@question_type("math.calendar_event_month_p2", display_name={"th": "อ่านเดือนของกิจกรรมจากปฏิทินนัดหมาย"},
+               level=LEVEL, topic="เวลา")
+class CalendarEventMonthP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 9, 11",))
+    MONTHS = ("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+              "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม")
+
+    def compose(self, rng: Random):
+        events = [("สงกรานต์", 13, 4), ("สิ้นปี", 31, 12),
+                  ("กีฬาสี", rng.randint(1, 28), rng.randint(1, 12)),
+                  ("ทัศนศึกษา", rng.randint(1, 28), rng.randint(1, 12))]
+        target, _, month = rng.choice(events)
+        data = " · ".join(f"{name} {day}/{m}" for name, day, m in events)
+        right = self.MONTHS[month - 1]
+        return (f"ปฏิทินกิจกรรม (วัน/เดือน): {data} กิจกรรม{target}อยู่ในเดือนใด",
+                right, rng.sample([x for x in self.MONTHS if x != right], 3))
+
+
+@question_type("math.daily_schedule_activity_p2", display_name={"th": "อ่านกิจกรรมจากตารางเวลาประจำวัน"},
+               level=LEVEL, topic="เวลา")
+class DailyScheduleActivityP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4158-2-2564-1-2.pdf, ข้อ 10",))
+
+    def compose(self, rng: Random):
+        activities = ("รับประทานอาหารเช้า", "เคารพธงชาติ", "รับประทานอาหารกลางวัน", "เข้านอน")
+        times = (rng.choice((6, 7)), 8, 12, rng.choice((20, 21)))
+        target = rng.randrange(4)
+        data = " · ".join(f"{h:02d}.00 น. {activity}" for h, activity in zip(times, activities))
+        return (f"ตารางเวลาวันนี้: {data} ตามตาราง เวลา {times[target]:02d}.00 น. มีกิจกรรมใด",
+                activities[target], [x for i, x in enumerate(activities) if i != target])
+
+
+@question_type("math.month_ordinal_p2", display_name={"th": "เชื่อมชื่อเดือนกับลำดับเดือนในปี"}, level=LEVEL, topic="เวลา")
+class MonthOrdinalP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4170-2-2565-1-2.pdf, ข้อ 12–13',))
+
+    def compose(self, rng: Random):
+        i = rng.randrange(12)
+        others = rng.sample([j for j in range(12) if j != i], 3)
+        if rng.choice((False, True)):
+            return f"เดือน{_MONTHS[i]}เป็นเดือนที่เท่าใดของปี", str(i + 1), [str(j + 1) for j in others]
+        return f"เดือนที่ {i + 1} ของปีมีชื่อว่าเดือนใด", _MONTHS[i], [_MONTHS[j] for j in others]
+
+
+@question_type("math.month_pair_days_p2", display_name={"th": "รวมจำนวนวันของสองเดือนตามลำดับเดือน"}, level=LEVEL, topic="เวลา")
+class MonthPairDaysP2(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-2/4170-2-2565-1-2.pdf, ข้อ 14',))
+
+    def compose(self, rng: Random):
+        year = rng.choice((2023, 2024, 2025, 2028))
+        a, b = sorted(rng.sample(range(1, 13), 2))
+        def days(m):
+            return 29 if m == 2 and year % 4 == 0 else _MONTH_DAYS[m - 1]
+        x, y = days(a), days(b)
+        total = x + y
+        wrongs = [x, y, 60, 61, total - 1, total + 1, abs(x - y)]
+        return (f"ในปี ค.ศ. {year} เดือนลำดับที่ {a} และ {b} รวมมีกี่วัน", str(total),
+                [str(n) for n in dict.fromkeys(wrongs) if n != total])

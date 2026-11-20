@@ -13,7 +13,7 @@
     "ใช้สามเหลี่ยมหน้าจั่ว ABC และ CDE เพื่อหามุม ACE",
     "ใช้ความสัมพันธ์มุมในวงกลมกับมุมที่จุดศูนย์กลางเพื่อได้มุมเล็ก AOE"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 24}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 24}],
    "covered_by": ["math.equal_links_circle_central_angle_olympiad"]
   }
  ]

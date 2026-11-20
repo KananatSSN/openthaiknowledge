@@ -106,3 +106,130 @@ class ZScoreWordM6(WordProblem):
                                 f"ส่วนเบี่ยงเบนมาตรฐานของคะแนนเท่ากับเท่าใด"),
                         distractors=_story.keep(abs(x - mean), int(abs(x - mean) * abs(z)) or sd + 1, sd * 2,
                                                 answer=sd, lo=1))
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More standard scores (2026-11): the standard deviation from z, the mean from z, the gap between two z,
+# what a shift does, what z-scores average to, and the share above a z ──
+
+
+@question_type("math.sd_from_z_m6", display_name={"th": "หาส่วนเบี่ยงเบนมาตรฐานจากค่ามาตรฐาน"}, level=LEVEL, topic="ค่ามาตรฐาน")
+class SdFromZM6(WordProblem):
+    def expr(self, rng: Random):
+        mu, sd = rng.randint(30, 80), rng.randint(2, 15)
+        z = rng.choice((1, 2, 3, -1, -2))
+        x = mu + z * sd
+        prompt = f"ข้อมูลชุดหนึ่งมีค่าเฉลี่ย {mu} ค่า {x} มีค่ามาตรฐานเท่ากับ {z} ส่วนเบี่ยงเบนมาตรฐานเท่ากับเท่าใด"
+        # Not divided by z; the sign kept; the value over z.
+        return MathDraw("", str(sd), prompt=prompt, distractors=_nk6(abs(x - mu), -sd, abs(x // z), sd + 1, answer=sd, lo=1))
+
+
+@question_type("math.mean_from_z_m6", display_name={"th": "หาค่าเฉลี่ยจากค่ามาตรฐาน"}, level=LEVEL, topic="ค่ามาตรฐาน")
+class MeanFromZM6(WordProblem):
+    def expr(self, rng: Random):
+        mu, sd = rng.randint(30, 80), rng.randint(2, 15)
+        z = rng.choice((1, 2, -1, -2, 3))
+        x = mu + z * sd
+        prompt = f"ข้อมูลชุดหนึ่งมีส่วนเบี่ยงเบนมาตรฐาน {sd} ค่า {x} มีค่ามาตรฐานเท่ากับ {z} ค่าเฉลี่ยเท่ากับเท่าใด"
+        # The shift the wrong way; the value itself; the shift by z only.
+        return MathDraw("", str(mu), prompt=prompt, distractors=_nk6(x + z * sd, x, x - z, mu + 1, answer=mu, lo=1))
+
+
+@question_type("math.z_gap_m6", display_name={"th": "ผลต่างของค่ามาตรฐาน"}, level=LEVEL, topic="ค่ามาตรฐาน")
+class ZGapM6(WordProblem):
+    def expr(self, rng: Random):
+        mu, sd = rng.randint(40, 70), rng.choice((2, 4, 5, 8, 10))
+        a, b = sorted(rng.sample(range(-4, 5), 2))
+        x1, x2 = mu + a * sd, mu + b * sd
+        right = b - a
+        prompt = (f"คะแนนสอบมีค่าเฉลี่ย {mu} และส่วนเบี่ยงเบนมาตรฐาน {sd} ก้องได้ {x2} คะแนน และหมอกได้ {x1} คะแนน "
+                  "ค่ามาตรฐานของก้องมากกว่าของหมอกเท่าใด")
+        # The scores' gap; not divided by the deviation; the sum.
+        return MathDraw("", str(right), prompt=prompt, distractors=_nk6(x2 - x1, abs(a + b) if a + b else right + 2, right + 1, b, answer=right))
+
+
+@question_type("math.z_after_shift_m6", display_name={"th": "ค่ามาตรฐานเมื่อบวกหรือคูณข้อมูล"}, level=LEVEL, topic="ค่ามาตรฐาน")
+class ZAfterShiftM6(ConceptBankType):
+    ITEMS = [
+        Concept("ถ้าบวกคะแนนของทุกคนเพิ่ม 5 คะแนน ค่ามาตรฐานของแต่ละคนจะเป็นอย่างไร", "เท่าเดิม",
+                ("เพิ่มขึ้น 5", "เพิ่มขึ้น 5 เท่า", "ลดลง 5")),
+        Concept("ถ้าคูณคะแนนของทุกคนด้วย 2 ค่ามาตรฐานของแต่ละคนจะเป็นอย่างไร", "เท่าเดิม",
+                ("เพิ่มเป็น 2 เท่า", "เพิ่มขึ้น 2", "ลดลงครึ่งหนึ่ง")),
+        Concept("ถ้าบวกคะแนนของทุกคนเพิ่ม 5 คะแนน ส่วนเบี่ยงเบนมาตรฐานจะเป็นอย่างไร", "เท่าเดิม",
+                ("เพิ่มขึ้น 5", "เพิ่มขึ้น 25", "ลดลง 5")),
+        Concept("ถ้าบวกคะแนนของทุกคนเพิ่ม 5 คะแนน ค่าเฉลี่ยจะเป็นอย่างไร", "เพิ่มขึ้น 5", ("เท่าเดิม", "เพิ่มขึ้น 5 เท่า", "ลดลง 5")),
+    ]
+
+
+@question_type("math.z_properties_m6", display_name={"th": "สมบัติของค่ามาตรฐาน"}, level=LEVEL, topic="ค่ามาตรฐาน")
+class ZPropertiesM6(ConceptBankType):
+    ITEMS = [
+        Concept("ค่าเฉลี่ยของค่ามาตรฐานของข้อมูลทุกตัวในชุดเดียวกันเท่ากับเท่าใด", "0", ("1", "ค่าเฉลี่ยของข้อมูล", "ไม่แน่นอน")),
+        Concept("ส่วนเบี่ยงเบนมาตรฐานของค่ามาตรฐานของข้อมูลทั้งชุดเท่ากับเท่าใด", "1", ("0", "ส่วนเบี่ยงเบนมาตรฐานของข้อมูล", "ไม่แน่นอน")),
+        Concept("ข้อมูลที่มีค่ามาตรฐานเป็นลบ หมายความว่าอย่างไร", "มีค่าน้อยกว่าค่าเฉลี่ย", ("มีค่าเป็นลบ", "มีค่ามากกว่าค่าเฉลี่ย", "เป็นค่าผิดปกติเสมอ")),
+        Concept("ข้อมูลที่มีค่ามาตรฐานเท่ากับ 0 หมายความว่าอย่างไร", "มีค่าเท่ากับค่าเฉลี่ย", ("มีค่าเท่ากับ 0", "มีค่าน้อยที่สุด", "ไม่มีการกระจาย")),
+    ]
+
+
+@question_type("math.share_above_z_m6", display_name={"th": "สัดส่วนข้อมูลที่อยู่เหนือค่ามาตรฐาน (กฎ 68–95–99.7)"}, level=LEVEL,
+               topic="ค่ามาตรฐาน")
+class ShareAboveZM6(ConceptBankType):
+    ITEMS = [
+        Concept("ข้อมูลแจกแจงปกติ ข้อมูลที่มีค่ามาตรฐานมากกว่า 1 มีประมาณร้อยละเท่าใด", "ร้อยละ 16", ("ร้อยละ 34", "ร้อยละ 68", "ร้อยละ 2.5")),
+        Concept("ข้อมูลแจกแจงปกติ ข้อมูลที่มีค่ามาตรฐานมากกว่า 2 มีประมาณร้อยละเท่าใด", "ร้อยละ 2.5", ("ร้อยละ 5", "ร้อยละ 16", "ร้อยละ 95")),
+        Concept("ข้อมูลแจกแจงปกติ ข้อมูลที่มีค่ามาตรฐานน้อยกว่า 1 มีประมาณร้อยละเท่าใด", "ร้อยละ 84", ("ร้อยละ 68", "ร้อยละ 16", "ร้อยละ 50")),
+        Concept("ข้อมูลแจกแจงปกติ ข้อมูลที่มีค่ามาตรฐานมากกว่า 0 มีประมาณร้อยละเท่าใด", "ร้อยละ 50", ("ร้อยละ 68", "ร้อยละ 34", "ร้อยละ 100")),
+    ]

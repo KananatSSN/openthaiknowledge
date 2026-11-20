@@ -13,7 +13,7 @@
         "Compare the sums of squares and cubes by power means",
         "Rescale variables and identify the equality case"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 8}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 8}],
       "covered_by": ["math.cyclic_sixth_power_inequality_olympiad"]
     }
   ]

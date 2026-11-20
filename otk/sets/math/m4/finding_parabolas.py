@@ -82,3 +82,135 @@ class ParabolaThreePointsM4(QuestionType):
         # a = (y(1) + y(−1))/2 − c: forgetting the halving, or the minus c.
         return _num_maths([stem, text("จงหาค่า a")], str(a),
                           [str(2 * a), str(a + c), str(b)], self.topic)
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.kit.math_problems import binomial_tex, frac_tex  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More finding parabolas (2026-11): a from the vertex and a point, the y-intercept from the vertex, the
+# vertex from the roots, b from three points, the axis from two equal heights, the greatest value from the
+# roots, and the equation from the vertex ──
+
+
+def _vform4(a: int, h: int, k: int) -> str:
+    lead = "" if a == 1 else "-" if a == -1 else str(a)
+    inner = f"(x {'-' if h > 0 else '+'} {abs(h)})^{{2}}" if h else "x^{2}"
+    tail = f" {'+' if k > 0 else '-'} {abs(k)}" if k else ""
+    return f"y = {lead}{inner}{tail}"
+
+
+@question_type("math.parabola_a_from_point_m4", display_name={"th": "หาค่า a จากจุดยอดและจุดที่ผ่าน"}, level=LEVEL,
+               topic="หาสมการพาราโบลา")
+class ParabolaAFromPointM4(MathType):
+    def expr(self, rng: Random):
+        h, k = rng.randint(-5, 5), rng.randint(-9, 9)
+        a = _nz4(rng, 1, 4)
+        d = _nz4(rng, 1, 3)
+        x, y = h + d, k + a * d * d
+        # The sign lost; k ignored; d not squared.
+        return MathDraw(rf"V({h}, {k}), \; P({x}, {y})", str(a), prompt="พาราโบลา y = a(x − h)² + k มีจุดยอด V และผ่านจุด P ค่าของ a เท่ากับเท่าใด",
+                        distractors=_tk4(str(-a), frac_tex(Fraction(y, d * d)), frac_tex(Fraction(y - k, d)), str(a + 1), answer=str(a)))
+
+
+@question_type("math.parabola_y_intercept_vertex_m4", display_name={"th": "จุดตัดแกน y จากจุดยอด"}, level=LEVEL,
+               topic="หาสมการพาราโบลา")
+class ParabolaYInterceptVertexM4(MathType):
+    def expr(self, rng: Random):
+        h, k = _nz4(rng, 1, 8), rng.randint(-9, 9)
+        right = h * h + k
+        # The vertex height; h not squared; the square taken away.
+        return MathDraw(_vform4(1, h, k), str(right), prompt="พาราโบลานี้ตัดแกน y ที่ y เท่ากับเท่าใด",
+                        distractors=_nk4(k, h + k, k - h * h, right + 1, answer=right))
+
+
+@question_type("math.vertex_from_roots_m4", display_name={"th": "จุดยอดจากจุดตัดแกน x"}, level=LEVEL, topic="หาสมการพาราโบลา")
+class VertexFromRootsM4(MathType):
+    def expr(self, rng: Random):
+        while True:
+            p, q = sorted(rng.sample(range(-9, 10), 2))
+            if (p + q) % 2 == 0:
+                break
+        h = (p + q) // 2
+        k = -((q - p) // 2) ** 2
+        right = _pt4(h, k)
+        wrongs = [_pt4(-h, k), _pt4(h, -k), _pt4(h, p * q - 1 if p * q - 1 != k else k - 1), _pt4(h + 1, k)]
+        return MathDraw(rf"y = {binomial_tex(-p)}{binomial_tex(-q)}", right, prompt="พาราโบลานี้มีจุดยอดที่จุดใด",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.b_from_three_points_m4", display_name={"th": "หาค่า b จากจุดสามจุด"}, level=LEVEL, topic="หาสมการพาราโบลา")
+class BFromThreePointsM4(MathType):
+    def expr(self, rng: Random):
+        a, b, c = _nz4(rng, 1, 4), _nz4(rng, 1, 8), rng.randint(-9, 9)
+        y1, y0, y2 = a - b + c, c, a + b + c
+        # The heights' sum; the difference not halved; c.
+        return MathDraw(rf"(-1, {y1}), \; (0, {y0}), \; (1, {y2})", str(b),
+                        prompt="พาราโบลา y = ax² + bx + c ผ่านจุดทั้งสามนี้ ค่าของ b เท่ากับเท่าใด",
+                        distractors=_nk4(y2 - y1, -b, y2 + y1 - 2 * y0, b + 1, answer=b))
+
+
+@question_type("math.axis_from_equal_heights_m4", display_name={"th": "แกนสมมาตรจากสองจุดที่สูงเท่ากัน"}, level=LEVEL,
+               topic="หาสมการพาราโบลา")
+class AxisFromEqualHeightsM4(MathType):
+    def expr(self, rng: Random):
+        while True:
+            p, q = sorted(rng.sample(range(-9, 10), 2))
+            if (p + q) % 2 == 0:
+                break
+        y = rng.randint(-9, 9)
+        right = f"x = {(p + q) // 2}"
+        wrongs = [f"x = {q - p}", f"x = {(q - p) // 2}", f"y = {y}", f"x = {p + q}"]
+        return MathDraw(rf"({p}, {y}), \; ({q}, {y})", right, prompt="พาราโบลาผ่านจุดทั้งสองนี้ แกนสมมาตรคือเส้นใด",
+                        distractors=_tk4(*wrongs, answer=right))
+
+
+@question_type("math.max_from_roots_m4", display_name={"th": "ค่าสูงสุดของพาราโบลาคว่ำจากจุดตัดแกน x"}, level=LEVEL,
+               topic="หาสมการพาราโบลา")
+class MaxFromRootsM4(MathType):
+    def expr(self, rng: Random):
+        while True:
+            p, q = sorted(rng.sample(range(-9, 10), 2))
+            if (p + q) % 2 == 0:
+                break
+        right = ((q - p) // 2) ** 2
+        # The product; the gap not halved; the axis.
+        return MathDraw(rf"y = -{binomial_tex(-p)}{binomial_tex(-q)}", str(right), prompt="ค่าสูงสุดของฟังก์ชันนี้เท่ากับเท่าใด",
+                        distractors=_nk4(-p * q, (q - p) ** 2, (p + q) // 2, right + 1, answer=right))
+
+
+@question_type("math.equation_from_vertex_m4", display_name={"th": "สมการพาราโบลาจากจุดยอด"}, level=LEVEL, topic="หาสมการพาราโบลา")
+class EquationFromVertexM4(MathType):
+    def expr(self, rng: Random):
+        h, k = _nz4(rng, 1, 6), rng.randint(-9, 9)
+        right = f"y = {poly_tex((1, 'x^{2}'), (-2 * h, 'x'), (h * h + k, ''))}"
+        wrongs = [f"y = {poly_tex((1, 'x^{2}'), (2 * h, 'x'), (h * h + k, ''))}", f"y = {poly_tex((1, 'x^{2}'), (-2 * h, 'x'), (k, ''))}",
+                  f"y = {poly_tex((1, 'x^{2}'), (-h, 'x'), (h * h + k, ''))}"]
+        return MathDraw(rf"V({h}, {k})", right, prompt="พาราโบลา y = x² + bx + c มีจุดยอด V สมการพาราโบลาคือข้อใด",
+                        distractors=_tk4(*wrongs, answer=right))

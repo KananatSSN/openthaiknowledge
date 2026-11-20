@@ -15,7 +15,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType
 from otk.sets._support.math_apply_stage import _P1_THINGS, _nums
 from otk.sets._support.math_diagrams import _math_q
 from otk.sets._support.math_m4 import maths
@@ -123,3 +123,82 @@ class SubtractWordP1(QuestionType):
         left = a - b
         return maths([text(stem)], str(left), _nums(left, a + b, left + 10, left - 10, left + 1, lo=1),
                      self.topic)
+
+
+# ── More subtraction (2026-11): whole tens, subtraction that undoes an addition, hopping back on a
+# number line ──
+
+from otk.kit.math_problems import WordProblem  # noqa: E402
+
+
+@question_type("math.subtract_tens_p1", display_name={"th": "ลบจำนวนเต็มสิบ"},
+               level=LEVEL, topic="การลบ")
+class SubtractTensP1(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 9)
+        b = rng.randint(1, a - 1)
+        right = 10 * (a - b)
+        # The tens digits alone; added instead; ten off.
+        return MathDraw(f"{10 * a} - {10 * b}", str(right), prompt="จงหาผลลบ",
+                        distractors=_story.keep(a - b, 10 * (a + b), right + 10, right - 10,
+                                                answer=right, lo=1, hi=100))
+
+
+@question_type("math.add_sub_inverse_p1", display_name={"th": "ความสัมพันธ์ของการบวกและการลบ"},
+               level=LEVEL, topic="การลบ")
+class AddSubInverseP1(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.sample(range(2, 30), 2)
+        s = a + b
+        # The number taken away; the total; the total plus.
+        return MathDraw(rf"{s} - {b} = \square", str(a),
+                        prompt=f"ถ้า {a} + {b} = {s} จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_story.keep(b, s, s + b, a + 1, answer=a, lo=0))
+
+
+@question_type("math.number_line_back_p1", display_name={"th": "นับถอยหลังบนเส้นจำนวน"},
+               level=LEVEL, topic="การลบ")
+class NumberLineBackP1(WordProblem):
+    def expr(self, rng: Random):
+        start = rng.randint(8, 30)
+        hop = rng.randint(2, 9)
+        right = start - hop
+        prompt = f"บนเส้นจำนวน เริ่มที่ {start} แล้วนับถอยหลังไป {hop} ช่อง จะอยู่ที่จำนวนใด"
+        # Counted forward instead; one hop short or long.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(start + hop, right + 1, right - 1, hop, answer=right, lo=0))
+
+
+@question_type("math.missing_minuend_p1", display_name={"th": "หาตัวตั้งของการลบ"},
+               level=LEVEL, topic="การลบ")
+class MissingMinuendP1(MathType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4019-1-2567-2-1.pdf, ข้อ 16–17",))
+
+    def expr(self, rng: Random):
+        taken = rng.randint(1, 60)
+        remaining = rng.randint(1, 100 - taken)
+        whole = remaining + taken
+        equation = (rf"\square - {taken} = {remaining}" if rng.randrange(2)
+                    else rf"{remaining} = \square - {taken}")
+        return MathDraw(equation, str(whole), prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        # Subtract the known quantities; copy either given value.
+                        distractors=_story.keep(abs(remaining - taken), remaining, taken,
+                                                whole - 1, whole + 1, answer=whole, lo=0))
+
+
+@question_type("math.match_difference_expression_p1", display_name={"th": "เลือกประโยคลบที่มีผลลบเท่ากัน"},
+               level=LEVEL, topic="การลบ")
+class MatchDifferenceExpressionP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4019-1-2567-2-1.pdf, ข้อ 18–19",))
+
+    def compose(self, rng: Random):
+        result = rng.randint(10, 60)
+        other = rng.randint(1, 30)
+        removed = rng.choice([n for n in range(11, 31) if n != other])
+        reference = str(result) if rng.randrange(2) else f"{result + other} − {other}"
+        right = f"{result + removed} − {removed}"
+        # A missed/extra ten or an extra unit in the subtraction.
+        wrong = [f"{result + removed + offset} − {removed}" for offset in (-10, 10, 1)]
+        return f"ข้อใดมีผลลบเท่ากับ {reference}", right, wrong

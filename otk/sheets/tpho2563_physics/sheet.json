@@ -1,7 +1,7 @@
 {
  "sheet_id": "tpho2563_physics",
  "title": "การแข่งขันฟิสิกส์โอลิมปิกระดับชาติ ครั้งที่ 19 (TPhO 2563)",
- "source_pdf": "openthaiknowledge-bank/สอวน_physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
+ "source_pdf": "openthaiknowledge-bank/physics/level/upper-secondary/posn-physics/tpho-63-physics/1_TPhO2020_Theory_Question.pdf",
  "subject": "ฟิสิกส์",
  "level": "โอลิมปิก (สอวน.)",
  "note": "20 items: 15 from the three theory problems (each in its own PDF with its own solution; explanations and symbolic-only parts share or lack items) and 5 parts of the interleaved-notebook friction lab with synthetic data. Answers agree with the solutions and are re-derived. 2.8 replaces the paper's beta(T) graph by a straight line; the lab's part 2 slope in the solution is hand-drawn (0.863 N/sheet against 0.935 by least squares).",

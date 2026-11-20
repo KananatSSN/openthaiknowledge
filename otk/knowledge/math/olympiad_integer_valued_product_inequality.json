@@ -13,7 +13,7 @@
         "Bound all values using y=0 and y=1",
         "Use a nonzero point with value 1 to force the constant solution"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 7}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 7}],
       "covered_by": ["math.integer_valued_product_inequality_olympiad"]
     }
   ]

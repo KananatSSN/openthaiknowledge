@@ -146,3 +146,128 @@ class MultiplicationWordProblemP2(WordProblem):
         return MathDraw("", str(ans), prompt=_groups_story(rng, groups, each),
                         distractors=_story.keep(groups + each, ans + each, ans - each,
                                                 ans + 10, answer=ans, lo=1))
+
+
+# ── More multiplying (2026-11): the times tables, by ten and a hundred, the largest product, rows and
+# columns, and multiplying by 0 and 1 ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p2 import LEVEL  # noqa: E402
+
+
+@question_type("math.times_table_p2", display_name={"th": "สูตรคูณแม่ 2 ถึงแม่ 9"},
+               level=LEVEL, topic="การคูณ")
+class TimesTableP2(MathType):
+    def expr(self, rng: Random):
+        a, b = rng.randint(2, 9), rng.randint(2, 9)
+        right = a * b
+        # The next row of the table; the row before; added instead.
+        return MathDraw(rf"{a} \times {b}", str(right), prompt="จงหาผลคูณ",
+                        distractors=_story.keep(a * (b + 1), a * (b - 1), a + b, (a + 1) * b, answer=right, lo=1))
+
+
+@question_type("math.multiply_by_ten_p2", display_name={"th": "คูณด้วย 10 และ 100"},
+               level=LEVEL, topic="การคูณ")
+class MultiplyByTenP2(MathType):
+    def expr(self, rng: Random):
+        if rng.random() < 0.5:
+            a, k = rng.randint(2, 99), 10
+        else:
+            a, k = rng.randint(2, 9), 100
+        right = a * k
+        # One zero too many or too few; the ten added.
+        return MathDraw(rf"{a} \times {k}", str(right), prompt="จงหาผลคูณ",
+                        distractors=_story.keep(right * 10, a * k // 10, a + k, right + k, answer=right, lo=1))
+
+
+@question_type("math.largest_product_p2", display_name={"th": "ผลคูณใดมากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="การคูณ")
+class LargestProductP2(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            exprs = {}
+            for _ in range(4):
+                a, b = rng.randint(2, 9), rng.randint(2, 9)
+                exprs[f"{a} × {b}"] = a * b
+            if len(exprs) == 4 and len(set(exprs.values())) == 4:
+                break
+        most = rng.random() < 0.5
+        right = (max if most else min)(exprs, key=exprs.get)
+        return f"ข้อใดมีผลคูณ{'มากที่สุด' if most else 'น้อยที่สุด'}", right, [e for e in exprs if e != right]
+
+
+@question_type("math.array_rows_p2", display_name={"th": "โจทย์ปัญหาการคูณ: จัดเป็นแถว"},
+               level=LEVEL, topic="การคูณ")
+class ArrayRowsP2(WordProblem):
+    def expr(self, rng: Random):
+        rows, cols = rng.randint(2, 9), rng.randint(3, 9)
+        what, unit, verb = rng.choice((("ต้นมะม่วง", "ต้น", "ปลูก"), ("เก้าอี้", "ตัว", "จัด"),
+                                       ("นักเรียน", "คน", "ให้ยืนเข้าแถว"), ("กระถางดอกไม้", "กระถาง", "วาง")))
+        right = rows * cols
+        prompt = f"{verb}{what} {rows} แถว แถวละ {cols} {unit} มี{what}ทั้งหมดกี่{unit}"
+        # Added instead; one row more or fewer.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(rows + cols, (rows + 1) * cols, (rows - 1) * cols, right + 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.multiply_zero_one_p2", display_name={"th": "การคูณด้วย 0 และ 1"},
+               level=LEVEL, topic="การคูณ")
+class MultiplyZeroOneP2(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 99)
+        k = rng.choice((0, 1))
+        tex = rf"{a} \times {k}" if rng.random() < 0.5 else rf"{k} \times {a}"
+        right = a * k
+        # The other rule; the number plus one; one.
+        return MathDraw(tex, str(right), prompt="จงหาผลคูณ",
+                        distractors=_story.keep(a if k == 0 else 0, a + 1, 1, 10 * a, answer=right, lo=0))
+
+
+@question_type("math.half_dozen_packs_p2", display_name={"th": "จำนวนสิ่งของเมื่อบรรจุครึ่งโหล"},
+               level=LEVEL, topic="การคูณ")
+class HalfDozenPacksP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4157-2-2564-1-3.pdf, ตอนที่ 1 ข้อ 14",))
+
+    def expr(self, rng: Random):
+        packs = rng.randint(2, 9)
+        right = packs * (12 // 2)
+        return MathDraw("", str(right),
+                        prompt=f"ซื้อดินสอ {packs} กล่อง กล่องละครึ่งโหล มีดินสอทั้งหมดกี่แท่ง",
+                        # A full dozen; half of the group count; add instead of multiply.
+                        distractors=[str(packs * 12), str(packs * 3), str(packs + 6)],
+                        hint=rf"12 \div 2 = 6,\quad {packs} \times 6 = {right}")
+
+
+@question_type("math.daily_total_weeks_p2", display_name={"th": "จำนวนสะสมรายวันในหนึ่งสัปดาห์"},
+               level=LEVEL, topic="การคูณ")
+class DailyTotalWeeksP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4157-2-2564-1-3.pdf, ตอนที่ 1 ข้อ 16",))
+
+    def expr(self, rng: Random):
+        daily = rng.randint(2, 12)
+        right = 7 * daily
+        return MathDraw("", str(right),
+                        prompt=f"ออมเงินวันละ {daily} บาททุกวัน เป็นเวลา 1 สัปดาห์ ออมเงินได้ทั้งหมดกี่บาท",
+                        # Count only weekdays; omit a day; add seven to the daily amount.
+                        distractors=[str(5 * daily), str(6 * daily), str(daily + 7)],
+                        hint=rf"{daily} \times 7 = {right}")
+
+
+@question_type("math.pack_price_irrelevant_p2", display_name={"th": "เลือกราคาต่อแพ็คโดยไม่ใช้ข้อมูลที่ไม่เกี่ยวข้อง"},
+               level=LEVEL, topic="การคูณ")
+class PackPriceIrrelevantP2(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-2/4178-2-2567-2-3.pdf, ข้อ 4",))
+
+    def expr(self, rng: Random):
+        colours, price, packs = rng.choice((12, 18, 24, 36)), rng.randint(101, 199), rng.randint(2, 4)
+        right = price * packs
+        return MathDraw("", str(right),
+                        prompt=(f"สีไม้ 1 แพ็ค มี {colours} สี ราคาแพ็คละ {price} บาท "
+                                f"ซื้อ {packs} แพ็ค ต้องจ่ายเงินทั้งหมดกี่บาท"),
+                        # Add colour count; count colours rather than cost; add packs to price.
+                        distractors=[str(right + colours), str(colours * packs), str(price + packs)],
+                        hint=rf"{price} \times {packs} = {right}")

@@ -13,7 +13,7 @@
         "Use the radical axis through A to equate the two side ratios",
         "Intersect the cevians with a median to find P's height"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 8}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 8}],
       "covered_by": ["math.diameter_circles_median_olympiad"]
     }
   ]

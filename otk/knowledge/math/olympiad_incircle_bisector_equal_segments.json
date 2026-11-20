@@ -13,7 +13,7 @@
         "Apply the angle-bisector theorem in triangles ADK and BEL",
         "Compare AL, AF, and AK on AB"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 6}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 6}],
       "covered_by": ["math.incircle_bisector_equal_segments_olympiad"]
     }
   ]

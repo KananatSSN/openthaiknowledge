@@ -137,3 +137,119 @@ class IntegralDistanceM5(WordProblem):
                                 f"วัตถุเคลื่อนที่ได้ระยะทางกี่เมตร ถ้าความเร็ว v(t) เมตรต่อวินาที เป็นดังนี้"),
                         # The speed at T, the half forgotten, and a guess from v.
                         distractors=_story.keep(*wrongs, answer=dist, lo=1))
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More definite integrals (2026-11): a power from zero, a straight line, linearity, splitting the interval,
+# an odd part over a symmetric interval, and the upper limit from the value ──
+
+
+@question_type("math.integral_of_power_m6", display_name={"th": "อินทิกรัลจำกัดเขตของ xⁿ"}, level=LEVEL, topic="อินทิกรัลจำกัดเขต")
+class IntegralOfPowerM6(MathType):
+    def expr(self, rng: Random):
+        n, a = rng.randint(1, 4), rng.randint(1, 4)
+        right = Fraction(a ** (n + 1), n + 1)
+        return MathDraw(rf"\int_{{0}}^{{{a}}} x^{{{n}}} \, dx", frac_tex(right), prompt="จงหาค่า",
+                        distractors=_fk6(a ** (n + 1), Fraction(a ** n, n), n * a ** (n - 1), Fraction(a ** (n + 1), n), answer=right))
+
+
+@question_type("math.integral_of_line_m6", display_name={"th": "อินทิกรัลจำกัดเขตของฟังก์ชันเชิงเส้น"}, level=LEVEL,
+               topic="อินทิกรัลจำกัดเขต")
+class IntegralOfLineM6(MathType):
+    def expr(self, rng: Random):
+        m, c = _nz6(rng, 1, 6), rng.randint(-9, 9)
+        a, b = sorted(rng.sample(range(-3, 6), 2))
+        right = Fraction(m, 2) * (b * b - a * a) + c * (b - a)
+        return MathDraw(rf"\int_{{{a}}}^{{{b}}} ({poly_tex((m, 'x'), (c, ''))}) \, dx", frac_tex(right), prompt="จงหาค่า",
+                        distractors=_fk6(m * (b * b - a * a) + c * (b - a), Fraction(m, 2) * (b * b - a * a), m * (b - a),
+                                         right + (b - a), answer=right))
+
+
+@question_type("math.integral_linearity_m6", display_name={"th": "สมบัติเชิงเส้นของอินทิกรัล"}, level=LEVEL, topic="อินทิกรัลจำกัดเขต")
+class IntegralLinearityM6(MathType):
+    def expr(self, rng: Random):
+        a, b = sorted(rng.sample(range(0, 8), 2))
+        k, p, q = rng.randint(-9, 9), rng.randint(2, 5), rng.randint(1, 6)
+        right = p * k + q * (b - a)
+        return MathDraw(rf"\int_{{{a}}}^{{{b}}} f(x) \, dx = {k}", str(right), prompt=f"จงหาค่าของ ∫ จาก {a} ถึง {b} ของ ({p}f(x) + {q}) dx",
+                        distractors=_nk6(p * k + q, p * (k + q), k + q * (b - a), p * k, answer=right))
+
+
+@question_type("math.integral_split_m6", display_name={"th": "แบ่งช่วงของอินทิกรัล"}, level=LEVEL, topic="อินทิกรัลจำกัดเขต")
+class IntegralSplitM6(MathType):
+    def expr(self, rng: Random):
+        a, b, c = sorted(rng.sample(range(-5, 10), 3))
+        p, q = rng.randint(-15, 15), rng.randint(-15, 15)
+        right = q - p
+        return MathDraw(rf"\int_{{{a}}}^{{{b}}} f(x) \, dx = {p}, \quad \int_{{{a}}}^{{{c}}} f(x) \, dx = {q}", str(right),
+                        prompt=f"จงหาค่าของ ∫ จาก {b} ถึง {c} ของ f(x) dx", distractors=_nk6(p + q, p - q, q, right + 1, answer=right))
+
+
+@question_type("math.symmetric_odd_integral_m6", display_name={"th": "อินทิกรัลบนช่วงสมมาตรที่มีส่วนเป็นฟังก์ชันคี่"}, level=LEVEL,
+               topic="อินทิกรัลจำกัดเขต")
+class SymmetricOddIntegralM6(MathType):
+    def expr(self, rng: Random):
+        a, b, c = rng.randint(1, 5), _nz6(rng, 1, 6), rng.randint(1, 9)
+        right = 2 * a * c
+        return MathDraw(rf"\int_{{-{a}}}^{{{a}}} ({poly_tex((b, 'x^{3}'), (c, ''))}) \, dx", str(right), prompt="จงหาค่า",
+                        distractors=_nk6(0, a * c, 2 * a * c + b * a ** 4 // 2, 4 * a * c, answer=right))
+
+
+@question_type("math.upper_limit_from_value_m6", display_name={"th": "หาขอบบนของอินทิกรัลจากค่าที่กำหนด"}, level=LEVEL,
+               topic="อินทิกรัลจำกัดเขต")
+class UpperLimitFromValueM6(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 12)
+        return MathDraw(rf"\int_{{0}}^{{k}} 2x \, dx = {k * k}, \quad k > 0", str(k), prompt="จงหาค่า k",
+                        distractors=_nk6(k * k, 2 * k, k * k // 2, k + 1, answer=k, lo=1))

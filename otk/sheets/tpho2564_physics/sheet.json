@@ -1,7 +1,7 @@
 {
  "sheet_id": "tpho2564_physics",
  "title": "การแข่งขันฟิสิกส์โอลิมปิกระดับชาติ ครั้งที่ 20 (TPhO 2564)",
- "source_pdf": "openthaiknowledge-bank/สอวน_physics/tpho-64-physics/tpho2021_theory.pdf",
+ "source_pdf": "openthaiknowledge-bank/physics/level/upper-secondary/posn-physics/tpho-64-physics/tpho2021_theory.pdf",
  "subject": "ฟิสิกส์",
  "level": "โอลิมปิก (สอวน.)",
  "note": "29 items: 24 from the three theory problems (derivations, sketches and graph readings share or lack items) and 5 parts of the cantilever-beam lab with synthetic data. Both PDFs bind their solutions; answers agree and are re-derived. Scheme notes: 2 g)'s first method has the wrong sign of sigma+; 3.1 h)'s ratio is sensitive to the graph-read alpha_O (31.4 at 3.35 L against the solution's 32.6).",

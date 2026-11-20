@@ -260,7 +260,7 @@ class PolynomialUnknownCoefficientsM4(QuestionType):
             # The cofactor's sign flipped; a − b; b alone.
             wrongs = [(-m - s) + (t + s * m), a - b, b]
         return _num_maths(stem, str(right), [str(w) for w in wrongs if w != right], self.topic)
-PolynomialUnknownCoefficientsM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
+PolynomialUnknownCoefficientsM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/3-real-numbers',))
 
 
 @question_type("math.remainder_arithmetic_m4",
@@ -298,7 +298,7 @@ class RemainderArithmeticM4(QuestionType):
         # a not squared; the sum not reduced (when it differs); c dropped.
         wrongs = [(ra * rb + rc) % m, ra * ra * rb + rc, (ra * ra * rb) % m, (right + 1) % m]
         return _count_q(stem, right, wrongs, self.topic)
-RemainderArithmeticM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
+RemainderArithmeticM4.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/3-real-numbers',))
 
 
 @question_type("math.polynomial_long_division_m4",
@@ -392,3 +392,71 @@ class PolynomialInequalityM4(QuestionType):
         return maths([text("จงหาเซตคำตอบของอสมการ"), content_math(f"{factors} {op} 0")], right,
                      [w for w in wrongs if w != right], self.topic)
 PolynomialInequalityM4.PROVENANCE = Provenance("original")
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More polynomial division (2026-11): a coefficient from a remainder, and a coefficient from a factor ──
+
+
+@question_type("math.coefficient_from_remainder_m4", display_name={"th": "หาสัมประสิทธิ์จากเศษเหลือ"}, level=LEVEL,
+               topic="การหารพหุนาม")
+class CoefficientFromRemainderM4(MathType):
+    def expr(self, rng: Random):
+        a = _nz4(rng, 1, 4)
+        k = _nz4(rng, 1, 9)
+        c = rng.randint(-10, 10)
+        r = a ** 3 + k * a + c
+        poly = poly_tex((1, "x^{3}"), (1, "kx"), (c, ""))
+        # The sign of a flipped; the remainder taken as zero; r read as k.
+        wrong_sign = Fraction(r - (-a) ** 3 - c, -a)
+        zero = Fraction(-(a ** 3) - c, a)
+        return MathDraw(rf"P(x) = {poly}", str(k),
+                        prompt=f"เมื่อหาร P(x) ด้วย {binomial_tex(-a)} ได้เศษ {r} ค่าของ k เท่ากับเท่าใด",
+                        distractors=_tk4(frac_tex(wrong_sign), frac_tex(zero), str(r), str(k + 1), answer=str(k)))
+
+
+@question_type("math.coefficient_from_factor_m4", display_name={"th": "หาสัมประสิทธิ์จากตัวประกอบ"}, level=LEVEL,
+               topic="การหารพหุนาม")
+class CoefficientFromFactorM4(MathType):
+    def expr(self, rng: Random):
+        a, b = _nz4(rng, 1, 9), _nz4(rng, 1, 9)
+        while a == b:
+            b = _nz4(rng, 1, 9)
+        k = -(a + b)
+        c = a * b
+        # The sum of the roots; the constant itself; the roots' difference.
+        return MathDraw(rf"x^{{2}} + kx {'+' if c > 0 else '-'} {abs(c)}", str(k),
+                        prompt=f"ถ้า {binomial_tex(-a)} เป็นตัวประกอบ ค่าของ k เท่ากับเท่าใด",
+                        distractors=_nk4(a + b, c, a - b, k - 1, answer=k))
+
+
+CoefficientFromRemainderM4.PROVENANCE = Provenance("original")
+CoefficientFromFactorM4.PROVENANCE = Provenance("original")

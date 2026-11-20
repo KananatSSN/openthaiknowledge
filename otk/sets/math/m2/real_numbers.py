@@ -14,6 +14,7 @@ from random import Random
 from otk.core.provenance import Provenance
 from otk.core.registry import question_type
 from otk.kit import story as _story
+from otk.kit.concept_bank import Concept, ConceptBankType
 from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem, frac_tex
 from otk.sets._support.math_algebra import _surd
 from otk.sets._support.math_apply_add import _root
@@ -238,3 +239,148 @@ class SqrtMeasureContextM2(WordProblem):
                                 f"อยู่ระหว่างจำนวนเต็มใด"),
                         # one below, one above, and a quarter of the area (the perimeter slip)
                         distractors=[between(lo - 1), between(lo + 1), between(area // 4)])
+
+
+def _nearest_tenths(n: int) -> int:
+    """√n to the nearest tenth, as a count of tenths, without floats: the t with (t ± ½)/10 around √n."""
+    t = 0
+    while (t + 1) * (t + 1) <= 100 * n:
+        t += 1
+    return t + 1 if 400 * n >= (2 * t + 1) ** 2 else t
+
+
+@question_type("math.sqrt_estimate_m2", display_name={"th": "ประมาณค่ารากที่สอง"},
+               level=LEVEL, topic=_REAL_TOPIC)
+class SqrtEstimateM2(WordProblem):
+    """√n for n not a square: the nearest whole number, or the nearest tenth."""
+
+    def expr(self, rng: Random):
+        if rng.random() < 0.5:
+            n = rng.choice([v for v in range(5, 400) if round(v ** 0.5) ** 2 != v])
+            k = 0
+            while (k + 1) * (k + 1) <= n:
+                k += 1
+            near = k + 1 if n > k * k + k else k
+            # The other neighbour; half of n; a tenth of n.
+            return MathDraw(rf"\sqrt{{{n}}}", str(near), prompt="มีค่าใกล้เคียงกับจำนวนเต็มใดมากที่สุด",
+                            distractors=_story.keep(2 * k + 1 - near, n // 2, n // 10, near + 2, answer=near, lo=1))
+        n = rng.choice([v for v in range(2, 100) if round(v ** 0.5) ** 2 != v])
+        t = _nearest_tenths(n)
+
+        def tenths(v: int) -> str:
+            return f"{v // 10}.{v % 10}"
+
+        return MathDraw(rf"\sqrt{{{n}}}", tenths(t), prompt="มีค่าประมาณเป็นทศนิยมหนึ่งตำแหน่งเท่าใด",
+                        distractors=[tenths(v) for v in (t - 2, t + 2, t + 1, t - 1) if v > 0][:3])
+
+
+# ── More real numbers (2026-11): comparing surds, the square root of a square, the kinds of real number,
+# cube roots between integers, and both square roots ──
+
+_SQUAREFREE = (2, 3, 5, 6, 7, 10)
+
+
+def _surd_tex(a: int, b: int) -> str:
+    return rf"\sqrt{{{b}}}" if a == 1 else rf"{a}\sqrt{{{b}}}"
+
+
+@question_type("math.compare_surds_m2", display_name={"th": "เปรียบเทียบจำนวนในรูปรากที่สอง"},
+               level=LEVEL, topic=_REAL_TOPIC)
+class CompareSurdsM2(WordProblem):
+    """a√b = √(a²b): compare the numbers under one root."""
+
+    def expr(self, rng: Random):
+        while True:
+            picks = [(rng.randint(1, 5), rng.choice(_SQUAREFREE)) for _ in range(4)]
+            values = [a * a * b for a, b in picks]
+            if len(set(values)) == 4:
+                break
+        largest = rng.random() < 0.5
+        i = values.index(max(values) if largest else min(values))
+        tex = [_surd_tex(a, b) for a, b in picks]
+        return MathDraw("", tex[i], prompt=f"จำนวนในข้อใด{'มากที่สุด' if largest else 'น้อยที่สุด'}",
+                        distractors=[t for n, t in enumerate(tex) if n != i])
+
+
+@question_type("math.sqrt_of_square_m2", display_name={"th": "รากที่สองของกำลังสอง"},
+               level=LEVEL, topic=_REAL_TOPIC)
+class SqrtOfSquareM2(WordProblem):
+    """√(a²) is never negative; (√a)² = a; −√(a²) = −a."""
+
+    def expr(self, rng: Random):
+        a = rng.randint(2, 15)
+        kind = rng.randrange(4)
+        if kind == 0:
+            tex, right = rf"\sqrt{{(-{a})^{{2}}}}", a
+        elif kind == 1:
+            tex, right = rf"\left(\sqrt{{{a}}}\right)^{{2}}", a
+        elif kind == 2:
+            tex, right = rf"-\sqrt{{{a * a}}}", -a
+        else:
+            tex, right = rf"\sqrt{{{a}^{{2}}}} + \sqrt{{(-{a})^{{2}}}}", 2 * a
+        # The sign kept or lost wrongly, the square not undone, and zero (the two read as cancelling).
+        return MathDraw(tex, str(right), prompt="จงหาค่าของ",
+                        distractors=[str(w) for w in dict.fromkeys((-right, a * a, 0 if kind == 3 else -a * a, right + 1))
+                                     if w != right])
+
+
+@question_type("math.real_number_facts_m2", display_name={"th": "สมบัติของจำนวนตรรกยะและจำนวนอตรรกยะ"},
+               level=LEVEL, topic=_REAL_TOPIC)
+class RealNumberFactsM2(ConceptBankType):
+    """Which kind a number is, and which general claims about the kinds hold."""
+
+    ITEMS = [
+        Concept("ข้อใดถูกต้อง", "ผลบวกของจำนวนตรรกยะกับจำนวนอตรรกยะเป็นจำนวนอตรรกยะ",
+                ("ผลคูณของจำนวนอตรรกยะสองจำนวนเป็นจำนวนอตรรกยะเสมอ", "ทศนิยมซ้ำทุกจำนวนเป็นจำนวนอตรรกยะเสมอ",
+                 "รากที่สองของจำนวนนับทุกจำนวนเป็นจำนวนอตรรกยะ")),
+        Concept("√2 × √8 เป็นจำนวนชนิดใด", "จำนวนตรรกยะ เพราะเท่ากับ 4",
+                ("จำนวนอตรรกยะ เพราะมีรากที่สอง", "จำนวนอตรรกยะ เพราะ √2 เป็นอตรรกยะ", "ไม่เป็นจำนวนจริง")),
+        Concept("π เป็นจำนวนชนิดใด", "จำนวนอตรรกยะ",
+                ("จำนวนตรรกยะ เพราะเท่ากับ 22/7", "จำนวนเต็ม", "ทศนิยมซ้ำ")),
+        Concept("ทศนิยมไม่รู้จบแบบไม่ซ้ำเป็นจำนวนชนิดใด", "จำนวนอตรรกยะ",
+                ("จำนวนตรรกยะ", "จำนวนเต็ม", "ไม่เป็นจำนวนจริง")),
+        Concept("จำนวนจริงประกอบด้วยจำนวนใดบ้าง", "จำนวนตรรกยะและจำนวนอตรรกยะ",
+                ("จำนวนเต็มและเศษส่วน", "จำนวนนับและศูนย์", "จำนวนเต็มบวกและจำนวนเต็มลบ")),
+        Concept("จำนวนในข้อใดเป็นจำนวนอตรรกยะ", "√12", ("√16", "0.25", "√(9/4)")),
+    ]
+
+
+@question_type("math.cube_root_between_m2", display_name={"th": "รากที่สามอยู่ระหว่างจำนวนเต็มใด"},
+               level=LEVEL, topic=_REAL_TOPIC)
+class CubeRootBetweenM2(WordProblem):
+    def expr(self, rng: Random):
+        n = rng.choice([v for v in range(2, 1000) if round(v ** (1 / 3)) ** 3 != v])
+        k = 1
+        while (k + 1) ** 3 <= n:
+            k += 1
+
+        def between(lo: int) -> str:
+            return rf"{lo} < \sqrt[3]{{{n}}} < {lo + 1}"
+
+        # The square root's neighbours instead; one step either side.
+        sq = 1
+        while (sq + 1) ** 2 <= n:
+            sq += 1
+        wrongs = [between(w) for w in dict.fromkeys((sq, k + 1, k - 1, k + 2)) if w != k and w >= 0]
+        return MathDraw(rf"\sqrt[3]{{{n}}}", between(k), prompt="อยู่ระหว่างจำนวนเต็มคู่ใด", distractors=wrongs[:3])
+
+
+@question_type("math.square_roots_both_m2", display_name={"th": "รากที่สองทั้งบวกและลบ"},
+               level=LEVEL, topic=_REAL_TOPIC)
+class SquareRootsBothM2(ChoiceType):
+    """Every positive number has two square roots, one positive and one negative."""
+
+    def compose(self, rng: Random):
+        kind = rng.randrange(3)
+        k = rng.randint(2, 15)
+        if kind == 0:
+            n, r = str(k * k), str(k)
+        elif kind == 1:
+            k = rng.randint(1, 9)
+            n, r = f"0.{k * k:02d}" if k * k < 100 else str(k * k / 100), f"0.{k}"
+        else:
+            p, q = rng.choice(((1, 2), (2, 3), (3, 4), (1, 3), (2, 5), (3, 5), (4, 5), (5, 6)))
+            n, r = f"{p * p}/{q * q}", f"{p}/{q}"
+        right = f"{r} และ −{r}"
+        # One root only (either sign), and the number itself with its negative.
+        return f"รากที่สองของ {n} คือข้อใด", right, [r, f"−{r}", f"{n} และ −{n}"]

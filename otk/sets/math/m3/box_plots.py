@@ -132,3 +132,154 @@ class BoxPlotCompareM2(QuestionType):
         return _num_maths([head, text("พิสัยระหว่างควอร์ไทล์ที่มากกว่าของสองห้องมีค่าเท่าใด")], str(ans),
                           [str(max(a[4] - a[0], b[4] - b[0])), str(min(a[3] - a[1], b[3] - b[1])),
                            str(max(a[2], b[2]))], self.topic)
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More box plots (2026-11): the range, a whisker, the middle half, what each part holds, two medians
+# compared, and the five-number summary of a list ──
+
+
+def _five3(rng: Random) -> list[int]:
+    while True:
+        values = sorted(rng.sample(range(10, 100), 5))
+        if values[2] - values[1] > 1 and values[3] - values[2] > 1:
+            return values
+
+
+def _summary_text3(v: list[int]) -> str:
+    return (f"ค่าต่ำสุด {v[0]} ควอร์ไทล์ที่ 1 เท่ากับ {v[1]} มัธยฐาน {v[2]} "
+            f"ควอร์ไทล์ที่ 3 เท่ากับ {v[3]} และค่าสูงสุด {v[4]}")
+
+
+@question_type("math.box_plot_range_m3", display_name={"th": "พิสัยจากแผนภาพกล่อง"},
+               level=LEVEL, topic="สถิติ (แผนภาพกล่อง)")
+class BoxPlotRangeM3(WordProblem):
+    def expr(self, rng: Random):
+        v = _five3(rng)
+        right = v[4] - v[0]
+        prompt = f"แผนภาพกล่องของข้อมูลชุดหนึ่งมี{_summary_text3(v)} พิสัยของข้อมูลเท่ากับเท่าใด"
+        # The interquartile range; the maximum alone; the median less the minimum.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(v[3] - v[1], v[4], v[2] - v[0], right + 1, answer=right, lo=1))
+
+
+@question_type("math.box_plot_whisker_m3", display_name={"th": "ความยาวของหนวดในแผนภาพกล่อง"},
+               level=LEVEL, topic="สถิติ (แผนภาพกล่อง)")
+class BoxPlotWhiskerM3(WordProblem):
+    def expr(self, rng: Random):
+        v = _five3(rng)
+        upper = rng.random() < 0.5
+        right = v[4] - v[3] if upper else v[1] - v[0]
+        side = "ขวา (จาก Q3 ถึงค่าสูงสุด)" if upper else "ซ้าย (จากค่าต่ำสุดถึง Q1)"
+        prompt = f"แผนภาพกล่องของข้อมูลชุดหนึ่งมี{_summary_text3(v)} หนวดด้าน{side}ยาวกี่หน่วย"
+        # The other whisker; the box; the whole range.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(v[1] - v[0] if upper else v[4] - v[3], v[3] - v[1], v[4] - v[0],
+                                                right + 2, answer=right, lo=1))
+
+
+@question_type("math.box_plot_middle_half_m3", display_name={"th": "ข้อมูลครึ่งกลางอยู่ในช่วงใด"},
+               level=LEVEL, topic="สถิติ (แผนภาพกล่อง)")
+class BoxPlotMiddleHalfM3(ChoiceType):
+    def compose(self, rng: Random):
+        v = _five3(rng)
+        stem = f"แผนภาพกล่องของข้อมูลชุดหนึ่งมี{_summary_text3(v)} ข้อมูลประมาณครึ่งหนึ่งที่อยู่ตรงกลางมีค่าอยู่ในช่วงใด"
+        return stem, f"{v[1]} ถึง {v[3]}", [f"{v[0]} ถึง {v[4]}", f"{v[0]} ถึง {v[2]}", f"{v[2]} ถึง {v[4]}"]
+
+
+@question_type("math.box_plot_parts_m3", display_name={"th": "แต่ละส่วนของแผนภาพกล่องมีข้อมูลประมาณร้อยละเท่าใด"},
+               level=LEVEL, topic="สถิติ (แผนภาพกล่อง)")
+class BoxPlotPartsM3(ConceptBankType):
+    ITEMS = [
+        Concept("ข้อมูลที่มีค่าน้อยกว่าควอร์ไทล์ที่ 1 มีประมาณร้อยละเท่าใดของข้อมูลทั้งหมด", "ร้อยละ 25",
+                ("ร้อยละ 50", "ร้อยละ 75", "ร้อยละ 10")),
+        Concept("ข้อมูลที่อยู่ระหว่างควอร์ไทล์ที่ 1 กับควอร์ไทล์ที่ 3 มีประมาณร้อยละเท่าใด", "ร้อยละ 50",
+                ("ร้อยละ 25", "ร้อยละ 75", "ร้อยละ 100")),
+        Concept("ข้อมูลที่มีค่ามากกว่าควอร์ไทล์ที่ 1 มีประมาณร้อยละเท่าใดของข้อมูลทั้งหมด", "ร้อยละ 75",
+                ("ร้อยละ 25", "ร้อยละ 50", "ร้อยละ 100")),
+        Concept("ข้อมูลที่มีค่าไม่เกินมัธยฐานมีประมาณร้อยละเท่าใดของข้อมูลทั้งหมด", "ร้อยละ 50",
+                ("ร้อยละ 25", "ร้อยละ 75", "ร้อยละ 100")),
+        Concept("ข้อมูลที่อยู่ระหว่างค่าต่ำสุดกับค่าสูงสุดมีประมาณร้อยละเท่าใด", "ร้อยละ 100",
+                ("ร้อยละ 50", "ร้อยละ 75", "ร้อยละ 25")),
+    ]
+
+
+@question_type("math.box_plot_two_medians_m3", display_name={"th": "เปรียบเทียบมัธยฐานของข้อมูลสองชุด"},
+               level=LEVEL, topic="สถิติ (แผนภาพกล่อง)")
+class BoxPlotTwoMediansM3(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            a, b = _five3(rng), _five3(rng)
+            if a[2] != b[2]:
+                break
+        if a[2] < b[2]:
+            a, b = b, a
+        right = a[2] - b[2]
+        prompt = (f"คะแนนสอบห้องแรกมี{_summary_text3(a)} ห้องที่สองมี{_summary_text3(b)} "
+                  "มัธยฐานของห้องแรกมากกว่าของห้องที่สองเท่าใด")
+        # The maxima compared; the first quartiles; the third quartiles.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(abs(a[4] - b[4]), abs(a[1] - b[1]), abs(a[3] - b[3]), right + 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.five_number_summary_m3", display_name={"th": "ค่าสรุปห้าค่าของข้อมูล"},
+               level=LEVEL, topic="สถิติ (แผนภาพกล่อง)")
+class FiveNumberSummaryM3(ChoiceType):
+    def compose(self, rng: Random):
+        n = rng.choice((7, 11))
+        data = sorted(rng.sample(range(10, 100), n))
+        q1, med, q3 = data[(n + 1) // 4 - 1], data[(n + 1) // 2 - 1], data[3 * (n + 1) // 4 - 1]
+        shown = data[:]
+        rng.shuffle(shown)
+
+        def five(xs) -> str:
+            return ", ".join(map(str, xs))
+
+        right = five((data[0], q1, med, q3, data[-1]))
+        wrongs = [five((shown[0], q1, med, q3, shown[-1])) if (shown[0], shown[-1]) != (data[0], data[-1])
+                  else five((data[0], data[1], med, data[-2], data[-1])),
+                  five((data[0], data[(n + 1) // 4], med, data[3 * (n + 1) // 4 - 2], data[-1])),
+                  five((data[0], q1, shown[n // 2], q3, data[-1])) if shown[n // 2] != med
+                  else five((data[1], q1, med, q3, data[-2]))]
+        stem = (f"ข้อมูลชุดหนึ่งคือ {', '.join(map(str, shown))} ค่าสรุปห้าค่า "
+                "(ค่าต่ำสุด, Q1, มัธยฐาน, Q3, ค่าสูงสุด) คือข้อใด")
+        return stem, right, _tk3(*wrongs, five((data[0], q1, med, q3, data[-1] + 1)), answer=right)[:3]

@@ -227,3 +227,130 @@ class QuadrilateralAngle(WordProblem):
             "", str(d), prompt=prompt,
             distractors=[str(180 - (a + b + c) % 180), str(a + b + c),
                          str(360 - a - b)])
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p5 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _dec(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_dec(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More types of quadrilaterals (2026-11): shapes from their diagonals, angles of a parallelogram and a
+# trapezoid, a missing side from the perimeter, and a diagonal's length ──
+
+
+@question_type("math.quadrilateral_diagonals_p5", display_name={"th": "บอกชนิดของรูปสี่เหลี่ยมจากเส้นทแยงมุม"},
+               level=LEVEL, topic="ชนิดของรูปสี่เหลี่ยม")
+class QuadrilateralDiagonalsP5(ConceptBankType):
+    _ALL = ("รูปสี่เหลี่ยมจัตุรัส", "รูปสี่เหลี่ยมผืนผ้า", "รูปสี่เหลี่ยมขนมเปียกปูน", "รูปว่าว",
+            "รูปสี่เหลี่ยมด้านขนาน")
+    ITEMS = [
+        Concept("รูปสี่เหลี่ยมใดมีเส้นทแยงมุมยาวเท่ากัน ตั้งฉากกัน และแบ่งครึ่งซึ่งกันและกัน",
+                "รูปสี่เหลี่ยมจัตุรัส", ("รูปสี่เหลี่ยมผืนผ้า", "รูปว่าว", "รูปสี่เหลี่ยมด้านขนาน")),
+        Concept("รูปสี่เหลี่ยมใดมีเส้นทแยงมุมยาวเท่ากันและแบ่งครึ่งซึ่งกันและกัน แต่ไม่ตั้งฉากกัน",
+                "รูปสี่เหลี่ยมผืนผ้า", ("รูปสี่เหลี่ยมขนมเปียกปูน", "รูปว่าว", "รูปสี่เหลี่ยมจัตุรัส")),
+        Concept("รูปสี่เหลี่ยมใดมีเส้นทแยงมุมตั้งฉากและแบ่งครึ่งซึ่งกันและกัน แต่ยาวไม่เท่ากัน",
+                "รูปสี่เหลี่ยมขนมเปียกปูน", ("รูปสี่เหลี่ยมผืนผ้า", "รูปสี่เหลี่ยมจัตุรัส", "รูปสี่เหลี่ยมด้านขนาน")),
+        Concept("รูปสี่เหลี่ยมใดมีเส้นทแยงมุมตั้งฉากกัน และมีเพียงเส้นเดียวที่แบ่งครึ่งอีกเส้น",
+                "รูปว่าว", ("รูปสี่เหลี่ยมขนมเปียกปูน", "รูปสี่เหลี่ยมผืนผ้า", "รูปสี่เหลี่ยมด้านขนาน")),
+        Concept("รูปสี่เหลี่ยมใดมีเส้นทแยงมุมแบ่งครึ่งซึ่งกันและกัน แต่ไม่ตั้งฉากกันและยาวไม่เท่ากัน",
+                "รูปสี่เหลี่ยมด้านขนาน", ("รูปสี่เหลี่ยมผืนผ้า", "รูปว่าว", "รูปสี่เหลี่ยมจัตุรัส")),
+    ]
+
+
+@question_type("math.parallelogram_angle_p5", display_name={"th": "มุมของรูปสี่เหลี่ยมด้านขนาน"},
+               level=LEVEL, topic="ชนิดของรูปสี่เหลี่ยม")
+class ParallelogramAngleP5(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(40, 140)
+        while a == 90:
+            a = rng.randint(40, 140)
+        opposite = rng.random() < 0.5
+        right = a if opposite else 180 - a
+        ask = "∠C" if opposite else "∠B"
+        prompt = f"รูปสี่เหลี่ยมด้านขนาน ABCD มี ∠A = {a}° จงหาขนาดของ {ask} (องศา)"
+        # The other angle; taken as adding to 360 or 90.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(180 - a if opposite else a, 360 - a, abs(90 - a), right + 10,
+                                                answer=right, lo=1))
+
+
+@question_type("math.trapezoid_angle_p5", display_name={"th": "มุมของรูปสี่เหลี่ยมคางหมู"},
+               level=LEVEL, topic="ชนิดของรูปสี่เหลี่ยม")
+class TrapezoidAngleP5(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(40, 140)
+        while a == 90:
+            a = rng.randint(40, 140)
+        right = 180 - a
+        prompt = f"รูปสี่เหลี่ยมคางหมู ABCD มี AB ขนานกับ DC และ ∠A = {a}° จงหาขนาดของ ∠D (องศา)"
+        # Taken as equal; adding to 360 or 90.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a, 360 - a, abs(90 - a), right + 10, answer=right, lo=1))
+
+
+@question_type("math.quadrilateral_missing_side_p5", display_name={"th": "หาความยาวด้านจากความยาวรอบรูป"},
+               level=LEVEL, topic="ชนิดของรูปสี่เหลี่ยม")
+class QuadrilateralMissingSideP5(WordProblem):
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        if kind == 0:
+            side = rng.randint(3, 30)
+            perimeter = 4 * side
+            right = side
+            prompt = f"รูปสี่เหลี่ยมขนมเปียกปูนยาวรอบรูป {perimeter} เซนติเมตร ด้านแต่ละด้านยาวกี่เซนติเมตร"
+            wrongs = (perimeter // 2, perimeter - side, side + 2, perimeter // 8 if perimeter % 8 == 0 else side + 4)
+        else:
+            a = rng.randint(3, 20)
+            b = rng.randint(a + 1, 35)
+            perimeter = 2 * (a + b)
+            name = "รูปว่าว มีด้านสั้นคู่หนึ่ง" if kind == 1 else "รูปสี่เหลี่ยมด้านขนาน มีด้านหนึ่ง"
+            right = b
+            prompt = f"{name}ยาว {a} เซนติเมตร ยาวรอบรูป {perimeter} เซนติเมตร อีกด้านยาวกี่เซนติเมตร"
+            wrongs = (perimeter - a, perimeter - 2 * a, a + b, (perimeter - a) // 3)
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(*wrongs, right + 1, answer=right, lo=1))
+
+
+@question_type("math.diagonal_length_p5", display_name={"th": "ความยาวของเส้นทแยงมุม"},
+               level=LEVEL, topic="ชนิดของรูปสี่เหลี่ยม")
+class DiagonalLengthP5(WordProblem):
+    def expr(self, rng: Random):
+        d = rng.randint(3, 20) * 2
+        half = rng.random() < 0.5
+        shape = rng.choice(("รูปสี่เหลี่ยมผืนผ้า", "รูปสี่เหลี่ยมจัตุรัส"))
+        if half:
+            right = d // 2
+            prompt = (f"{shape} ABCD มีเส้นทแยงมุม AC และ BD ตัดกันที่จุด O ถ้า AC ยาว {d} เซนติเมตร "
+                      "BO ยาวกี่เซนติเมตร")
+            wrongs = (d, 2 * d, d // 4 if d % 4 == 0 else d + 2)
+        else:
+            right = d
+            prompt = f"{shape} ABCD มีเส้นทแยงมุม AC ยาว {d} เซนติเมตร เส้นทแยงมุม BD ยาวกี่เซนติเมตร"
+            wrongs = (d // 2, 2 * d, d + 2)
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(*wrongs, right + 1, answer=right, lo=1))

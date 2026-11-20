@@ -1,0 +1,267 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การเปรียบเทียบ",
+ "level": "ป.1",
+ "units": [
+  {
+   "id": "math.primary1.rank-by-score",
+   "kind": "procedure",
+   "title": "จัดอันดับตามจำนวน",
+   "statement": "เรียงค่าจากมากไปน้อยก่อน แล้วหาชื่อหรือตัวเลขที่อยู่ในลำดับที่ถาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เรียงค่าจากมากไปน้อยก่อน แล้วหาชื่อหรือตัวเลขที่อยู่ในลำดับที่ถาม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 2
+    }
+   ],
+   "covered_by": [
+    "math.sorted_position_p1",
+    "math.compare_who_most_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.numeric-comparison",
+   "kind": "procedure",
+   "title": "ตรวจการเปรียบเทียบจำนวนหลายรูปแบบ",
+   "statement": "แปลงภาพ ตัวเลขไทย หรือคำอ่านเป็นจำนวน แล้วตรวจความสัมพันธ์ มากกว่า น้อยกว่า เท่ากับ หรือไม่เท่ากับ ตามคำถาม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "แปลงภาพ ตัวเลขไทย หรือคำอ่านเป็นจำนวน แล้วตรวจความสัมพันธ์ มากกว่า น้อยกว่า เท่ากับ หรือไม่เท่ากับ ตามคำถาม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 18
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 19
+    }
+   ],
+   "covered_by": [
+    "math.true_comparison_p1",
+    "math.compare_groups_p1",
+    "math.equivalent_number_forms_p1",
+    "math.compare_sums_p1",
+    "math.false_sum_comparison_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.compare-sums",
+   "kind": "procedure",
+   "title": "เปรียบเทียบผลบวกสองข้าง",
+   "statement": "หาค่าของผลบวกแต่ละข้างก่อน แล้วจึงเปรียบเทียบผลลัพธ์ ไม่เปรียบเทียบเฉพาะจำนวนตัวแรก",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาค่าของผลบวกแต่ละข้างก่อน แล้วจึงเปรียบเทียบผลลัพธ์ ไม่เปรียบเทียบเฉพาะจำนวนตัวแรก",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4012-1-2565-1-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4012-1-2565-1-2.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.compare_sums_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.ordering",
+   "kind": "procedure",
+   "title": "ตรวจลำดับและหาจำนวนระหว่างกลาง",
+   "statement": "เรียงจำนวนตามทิศทางที่โจทย์กำหนด และตรวจว่าจำนวนทุกตำแหน่งอยู่ในลำดับนั้น",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เรียงจำนวนตามทิศทางที่โจทย์กำหนด และตรวจว่าจำนวนทุกตำแหน่งอยู่ในลำดับนั้น",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4021-1-2567-2-2.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4018-1-2567-2-2.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.order_numbers",
+    "math.number_between_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.false-sum-comparison",
+   "kind": "procedure",
+   "title": "เลือกข้อความเปรียบเทียบที่ไม่ถูกต้อง",
+   "statement": "คำนวณค่าของแต่ละข้างก่อนตรวจเครื่องหมายทุกตัวเลือก แล้วเลือกข้อความเท็จตามคำสั่งไม่ถูกต้อง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คำนวณค่าของแต่ละข้างก่อนตรวจเครื่องหมายทุกตัวเลือก แล้วเลือกข้อความเท็จตามคำสั่งไม่ถูกต้อง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4006-1-2565-2-2.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/3994-1-2564-2-2.pdf",
+     "item": 17
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4009-1-2565-2-2.pdf",
+     "item": 20
+    }
+   ],
+   "covered_by": [
+    "math.false_sum_comparison_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.race-constraints",
+   "kind": "procedure",
+   "title": "เลือกอันดับที่สอดคล้องกับทุกเงื่อนไข",
+   "statement": "ตรวจอันดับแรกและความสัมพันธ์ก่อนหลังของทุกคู่กับตัวเลือก ไม่สรุปว่ามีอันดับที่เป็นไปได้เพียงแบบเดียว",
+   "steps": [
+    "ระบุข้อมูลและเงื่อนไข",
+    "ตรวจอันดับแรกและความสัมพันธ์ก่อนหลังของทุกคู่กับตัวเลือก ไม่สรุปว่ามีอันดับที่เป็นไปได้เพียงแบบเดียว",
+    "ตรวจคำตอบกับเงื่อนไขทุกข้อ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/10257-LPMC-Math-G1-No26-2568.pdf",
+     "item": 17
+    }
+   ],
+   "covered_by": [
+    "math.race_constraints_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.equal-pieces-size-rank",
+   "kind": "procedure",
+   "title": "เมื่อกระดาษต้นฉบับเท่ากัน จำนวนชิ้นยิ่งมากขนาดแต่ละชิ้นยิ่งเล็ก จัดอันดับขนาดโดยกลับอันดับจำนวนชิ้น",
+   "statement": "เมื่อกระดาษต้นฉบับเท่ากัน จำนวนชิ้นยิ่งมากขนาดแต่ละชิ้นยิ่งเล็ก จัดอันดับขนาดโดยกลับอันดับจำนวนชิ้น",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "เมื่อกระดาษต้นฉบับเท่ากัน จำนวนชิ้นยิ่งมากขนาดแต่ละชิ้นยิ่งเล็ก จัดอันดับขนาดโดยกลับอันดับจำนวนชิ้น",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.equal_pieces_size_rank_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.mixed-age-height-order",
+   "kind": "procedure",
+   "title": "เปลี่ยนความสัมพันธ์สูงต่ำเป็นอายุตามเงื่อนไขเฉพาะโจทย์ แล้วเชื่อมกับพี่น้องเพื่อหาคนเกิดก่อน",
+   "statement": "เปลี่ยนความสัมพันธ์สูงต่ำเป็นอายุตามเงื่อนไขเฉพาะโจทย์ แล้วเชื่อมกับพี่น้องเพื่อหาคนเกิดก่อน",
+   "steps": [
+    "อ่านข้อมูลและเงื่อนไขที่กำหนด",
+    "เปลี่ยนความสัมพันธ์สูงต่ำเป็นอายุตามเงื่อนไขเฉพาะโจทย์ แล้วเชื่อมกับพี่น้องเพื่อหาคนเกิดก่อน",
+    "ตรวจทุกตัวเลือกและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/11167-LPMC-Math-G1-No25-2567.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": []
+  }
+ ]
+}

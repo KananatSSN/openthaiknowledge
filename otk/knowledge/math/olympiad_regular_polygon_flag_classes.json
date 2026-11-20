@@ -14,7 +14,7 @@
         "Use oddness to exclude one or two summands; for prime powers evaluate the cyclotomic factor at 1"
       ],
       "sources": [
-        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 10}
+        {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 10}
       ],
       "covered_by": ["math.regular_polygon_flag_classes_olympiad"]
     }

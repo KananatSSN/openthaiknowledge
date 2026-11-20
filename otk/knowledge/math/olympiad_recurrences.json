@@ -13,7 +13,7 @@
     "ใช้ความเป็นลำดับเวียนเกิดและข้อเท็จจริงว่า 0<aᵢ<aₚ สำหรับ i<p เพื่อหาคาบแรกที่กลับมาเป็นศูนย์"
    ],
    "sources": [
-    {"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 7}
+    {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 7}
    ],
    "covered_by": ["math.recurrence_divisibility_olympiad"]
   },
@@ -27,7 +27,7 @@
     "ใช้ความจำเป็นที่ตัวส่วนต้องเป็นกำลัง 2^k สำหรับทุก k เพื่อสรุปว่าทุกพจน์เป็นจำนวนเต็ม แล้วตรวจการลดลงกับจุดตรึงของลำดับ"
    ],
    "sources": [
-    {"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 8}
+    {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 8}
    ],
    "covered_by": ["math.rational_recurrence_starts_olympiad"]
   }

@@ -1,7 +1,7 @@
 {
  "sheet_id": "tpho2554_physics",
  "title": "การแข่งขันฟิสิกส์โอลิมปิกระดับชาติ ครั้งที่ 10 (TPhO 2554)",
- "source_pdf": "openthaiknowledge-bank/สอวน_physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
+ "source_pdf": "openthaiknowledge-bank/physics/level/upper-secondary/posn-physics/tpho-54-physics/tpho_10_theory_with_solution.pdf",
  "subject": "ฟิสิกส์",
  "level": "โอลิมปิก (สอวน.)",
  "note": "20 items: 16 from the three theory problems (1.1 is a step of 1.2; 3.3 and 3.4 are steps of 3.5) and 4 theory parts of the two experiments with synthetic data. The separate theory, solution and lab files are recorded as ignored. Every answer was re-derived; the bound solution's 3.6 distance, 0.84 m, should be 0.084 m.",

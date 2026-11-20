@@ -77,6 +77,8 @@ FAMILIES: tuple[tuple[tuple, str], ...] = (
     (mhi.NORMALS, "math_diagrams:make_normal"),
     (geo.LINE_FIGURES, "math_diagrams:make_line_ray"),
     (geo.PARALLEL_FIND + geo.PARALLEL_NAME + geo.PARALLEL_TWO, "math_diagrams:make_parallel"),
+    (geo.PARALLEL_BENDS, "math_diagrams:make_parallel_bend"),
+    (geo.PARALLEL_TRIANGLES, "math_diagrams:make_parallel_triangle"),
     (geo.TRI_ANGLES + geo.TRI_SIDES, "math_diagrams:make_marked_triangle"),
     (geo.PIE_CHARTS, "math_diagrams:make_pie"),
     (geo.TRANSFORMS, "math_diagrams:make_transform"),

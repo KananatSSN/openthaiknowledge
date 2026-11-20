@@ -13,7 +13,7 @@
         "Bound abc and a+b+c using AM–GM",
         "Apply Jensen to x^(x−1) and check equality"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-64-math.pdf", "item": 3}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-64-math.pdf", "item": 3}],
       "covered_by": ["math.reciprocal_sum_power_minimum_olympiad"]
     }
   ]

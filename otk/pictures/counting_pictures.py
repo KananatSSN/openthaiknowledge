@@ -6,7 +6,13 @@ Run::
 
 Each object is a few flat matplotlib patches in a unit cell centred on (0, 0),
 so a scene is only a list of (object, x, y). Nothing Thai is drawn: the stem
-names the objects. Like the other diagrams the PNGs are quantised, because
+names the objects.
+
+``GENERATOR_OBJECT_SPRITES`` may name a folder of painted PNG sprites (apple.png,
+balloon_red.png, stick.png, bundle.png ...) to draw instead of the flat shapes.
+Pictures with sprites are drawn at 1.5 times the resolution. Without it, nothing
+changes. Use a separate ``GENERATOR_DIAGRAM_DIR`` for each, since both write the
+same asset ids. Like the other diagrams the PNGs are quantised, because
 several hundred of them ship in the repository.
 """
 
@@ -14,12 +20,14 @@ from __future__ import annotations
 
 import io
 import math
+import os
 from pathlib import Path
 
 import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.patches import Circle, Ellipse, FancyBboxPatch, Polygon, Rectangle, Wedge
 from PIL import Image
 
@@ -34,13 +42,45 @@ LINE = 1.2
 _CELL = 1.0          # one object occupies a 1 x 1 cell; it is drawn within radius 0.42
 
 
+# Pictures with painted sprites: sharper than the flat ones, at about 12 KB each.
+_PAINTED_DPI = 150
+_PAINTED_COLOURS = 128
+
+
 def _save(fig, asset_id: str) -> Path:
+    painted = getattr(fig, "_otk_sprites", False)
     buf = io.BytesIO()
-    fig.savefig(buf, dpi=100, facecolor="white", format="png")
+    fig.savefig(buf, dpi=_PAINTED_DPI if painted else 100, facecolor="white", format="png")
     plt.close(fig)
     buf.seek(0)
-    img = Image.open(buf).convert("RGB").quantize(colors=64, method=Image.Quantize.MEDIANCUT)
+    img = Image.open(buf).convert("RGB").quantize(colors=_PAINTED_COLOURS if painted else 64, method=Image.Quantize.MEDIANCUT)
     return save_image(img, asset_id)
+
+
+# ── optional painted sprites ─────────────────────────────────────────────────
+
+_SPRITES = os.environ.get("GENERATOR_OBJECT_SPRITES")
+_sprite_cache: dict[str, np.ndarray] = {}
+
+
+def _sprite(name: str) -> np.ndarray:
+    if name not in _sprite_cache:
+        img = Image.open(Path(_SPRITES) / f"{name}.png").convert("RGBA")
+        img = img.resize((img.width // 2, img.height // 2), Image.Resampling.LANCZOS)
+        _sprite_cache[name] = np.asarray(img)
+    return _sprite_cache[name]
+
+
+def _paste(ax, name: str, x: float, y: float, w: float, h: float) -> None:
+    """Draw sprite ``name`` on a w x h canvas centred on (x, y): above plates and boxes, below crosses."""
+    ax.imshow(_sprite(name), extent=(x - w / 2, x + w / 2, y - h / 2, y + h / 2),
+              zorder=1.5, interpolation="antialiased")
+    ax.figure._otk_sprites = True
+
+
+# A sprite's object fills 80% of its canvas, so a 1.05 canvas draws it about as
+# big as the flat shapes (radius 0.42).
+_SPRITE_SIZE = 1.05
 
 
 def _canvas(cols: float, rows: float, scale: float = 0.62):
@@ -56,6 +96,8 @@ def _canvas(cols: float, rows: float, scale: float = 0.62):
 # ── the objects ──────────────────────────────────────────────────────────────
 
 def _apple(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "apple", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     ax.add_patch(Circle((x - 0.13, y - 0.04), 0.28, fc="#e53935", ec=INK, lw=LINE))
     ax.add_patch(Circle((x + 0.13, y - 0.04), 0.28, fc="#e53935", ec=INK, lw=LINE))
     ax.add_patch(Ellipse((x, y - 0.06), 0.46, 0.5, fc="#e53935", ec="none"))
@@ -65,6 +107,8 @@ def _apple(ax, x, y):
 
 
 def _orange(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "orange", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     ax.add_patch(Circle((x, y - 0.03), 0.36, fc="#fb8c00", ec=INK, lw=LINE))
     for dx, dy in ((-0.12, 0.05), (0.1, -0.12), (0.14, 0.1), (-0.05, -0.18)):
         ax.add_patch(Circle((x + dx, y + dy), 0.018, fc="#ef6c00", ec="none"))
@@ -72,6 +116,8 @@ def _orange(ax, x, y):
 
 
 def _banana(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "banana", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     outer = [(x + 0.42 * math.cos(t), y + 0.2 + 0.55 * math.sin(t))
              for t in [math.radians(a) for a in range(200, 341, 10)]]
     inner = [(x + 0.32 * math.cos(t), y + 0.3 + 0.42 * math.sin(t))
@@ -82,6 +128,8 @@ def _banana(ax, x, y):
 
 
 def _fish(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "fish", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     ax.add_patch(Polygon([(x + 0.18, y), (x + 0.42, y + 0.2), (x + 0.42, y - 0.2)],
                          fc="#29b6f6", ec=INK, lw=LINE))
     ax.add_patch(Ellipse((x - 0.06, y), 0.58, 0.36, fc="#29b6f6", ec=INK, lw=LINE))
@@ -90,6 +138,8 @@ def _fish(ax, x, y):
 
 
 def _flower(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "flower", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     for k in range(5):
         a = math.radians(90 + 72 * k)
         ax.add_patch(Circle((x + 0.2 * math.cos(a), y + 0.2 * math.sin(a)), 0.16,
@@ -98,6 +148,9 @@ def _flower(ax, x, y):
 
 
 def _balloon(ax, x, y, fc="#7e57c2", shine="#d1c4e9"):
+    if _SPRITES:
+        name = "balloon_red" if fc == "#e53935" else "balloon_blue"
+        return _paste(ax, name, x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     ax.plot([x, x - 0.03, x + 0.03, x], [y - 0.18, y - 0.3, y - 0.38, y - 0.46],
             color=INK, lw=0.9)
     ax.add_patch(Polygon([(x - 0.05, y - 0.2), (x + 0.05, y - 0.2), (x, y - 0.14)],
@@ -107,6 +160,8 @@ def _balloon(ax, x, y, fc="#7e57c2", shine="#d1c4e9"):
 
 
 def _star(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "star", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     pts = []
     for k in range(10):
         r = 0.42 if k % 2 == 0 else 0.18
@@ -116,6 +171,8 @@ def _star(ax, x, y):
 
 
 def _ball(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "ball", x, y, _SPRITE_SIZE, _SPRITE_SIZE)
     # A beach ball: six coloured panels.
     for k, colour in enumerate(("#e53935", "white", "#1e88e5", "white", "#fdd835", "white")):
         ax.add_patch(Wedge((x, y), 0.36, 90 + 60 * k, 150 + 60 * k, fc=colour, ec=INK, lw=0.8))
@@ -150,10 +207,15 @@ def _box(ax, x0, y0, w, h, label: str = ""):
 
 
 def _stick(ax, x, y, h=0.9, colour="#f2c14e"):
+    if _SPRITES:
+        # The loose stick is drawn narrower than its canvas so it matches the sticks of a bundle.
+        return _paste(ax, "stick", x, y, h / 0.8 / 4 * 0.6, h / 0.8)
     ax.add_patch(Rectangle((x - 0.035, y - h / 2), 0.07, h, fc=colour, ec=INK, lw=0.6))
 
 
 def _bundle(ax, x, y):
+    if _SPRITES:
+        return _paste(ax, "bundle", x, y, 1.0, 1.0)
     for k in range(10):
         _stick(ax, x - 0.27 + 0.06 * k, y)
     ax.add_patch(Rectangle((x - 0.33, y - 0.06), 0.66, 0.12, fc="#c62828", ec=INK, lw=0.8))
@@ -162,11 +224,17 @@ def _bundle(ax, x, y):
 # ── scenes ───────────────────────────────────────────────────────────────────
 
 def make_scene(s: mp.Scene) -> Path:
-    cols = max(x for _, x, _ in s.items) + 1
-    rows = max(y for _, _, y in s.items) + 1
-    fig, ax = _canvas(max(cols, 3), rows)
+    # A scatter over a 5 x 3 grid leaves whole rows and columns empty (two fish in
+    # one corner of a wide card). Close those gaps so the things stay scattered but
+    # sit together, centred on a card no wider than they need.
+    col_at = {c: i for i, c in enumerate(sorted({x for _, x, _ in s.items}))}
+    row_at = {r: i for i, r in enumerate(sorted({y for _, _, y in s.items}))}
+    cols, rows = len(col_at), len(row_at)
+    width = max(cols, 3)
+    fig, ax = _canvas(width, rows)
+    shift = (width - cols) / 2
     for kind, x, y in s.items:
-        DRAW[kind](ax, x, -y)
+        DRAW[kind](ax, col_at[x] + shift, -row_at[y])
     return _save(fig, s.asset_id)
 
 
@@ -182,23 +250,35 @@ def make_crossed(s: mp.Crossed) -> Path:
     return _save(fig, s.asset_id)
 
 
+def _group_cols(n: int) -> int:
+    """Columns for a small group drawn as a block: 1, 2 up to four, then 3 (nine is 3 x 3)."""
+    return 1 if n == 1 else 2 if n <= 4 else 3
+
+
 def make_joined(s: mp.Joined) -> Path:
-    width = s.a + 1 + s.b
-    fig, ax = _canvas(width, 1)
+    # Each group is a compact block, not one long row: 9 + 1 in a row was eleven
+    # cells wide, so on a phone each apple came out a third of its size.
+    ca, cb = _group_cols(s.a), _group_cols(s.b)
+    ra, rb = -(-s.a // ca), -(-s.b // cb)
+    rows = max(ra, rb)
+    fig, ax = _canvas(ca + 1 + cb, rows)
     for i in range(s.a):
-        DRAW[s.kind](ax, i, 0)
-    _plus(ax, s.a, 0)
+        DRAW[s.kind](ax, i % ca, -(i // ca) - (rows - ra) / 2)
+    _plus(ax, ca, -(rows - 1) / 2)
     for i in range(s.b):
-        DRAW[s.kind](ax, s.a + 1 + i, 0)
+        DRAW[s.kind](ax, ca + 1 + i % cb, -(i // cb) - (rows - rb) / 2)
     return _save(fig, s.asset_id)
 
 
 def make_hidden(s: mp.Hidden) -> Path:
     shown = s.total - s.inside
-    fig, ax = _canvas(shown + 2.6, 1.3)
-    _box(ax, -0.3, -0.58, 1.8, 1.1, "?")
+    cols, rows = min(shown, 5), -(-shown // 5)          # the things left out, in rows of five
+    height = max(rows, 1.3)
+    fig, ax = _canvas(cols + 2.6, height)
+    mid = 0.5 - height / 2                              # the card shows y from 0.5 - height to 0.5
+    _box(ax, -0.3, mid - 0.55, 1.8, 1.1, "?")
     for i in range(shown):
-        DRAW[s.kind](ax, 2.4 + i, -0.05)
+        DRAW[s.kind](ax, 2.4 + i % 5, mid + (rows - 1) / 2 - i // 5)
     return _save(fig, s.asset_id)
 
 
@@ -213,13 +293,21 @@ def make_two_rows(s: mp.TwoRows) -> Path:
 
 
 def make_bundles(s: mp.Bundles) -> Path:
-    width = s.tens * 0.85 + (s.ones * 0.2 + 0.5 if s.ones else 0)
-    fig, ax = _canvas(max(width, 2.2), 1.2, scale=0.75)
+    # Bundles in rows of five, the loose straws beside them. One long row of nine
+    # bundles was too wide for a phone, which shrank the straws past counting.
+    per_row = 5
+    cols, rows = min(s.tens, per_row), -(-s.tens // per_row)
+    x0 = 0.1 + 0.85 * cols + 0.15
+    # The card shows x from -0.5 to width - 0.5: make it reach past the last loose
+    # straw (or the last bundle), with the same margin as on the left. A narrower
+    # card used to cut loose straws off, so the picture showed fewer than the answer.
+    right = x0 + 0.2 * (s.ones - 1) + 0.035 if s.ones else 0.1 + 0.85 * (cols - 1) + 0.33
+    width = right + 0.5 + 0.27
+    fig, ax = _canvas(max(width, 2.2), 1.2 + 1.1 * (rows - 1), scale=0.75)
     for k in range(s.tens):
-        _bundle(ax, 0.1 + 0.85 * k, -0.1)
-    x0 = 0.1 + 0.85 * s.tens + 0.15
+        _bundle(ax, 0.1 + 0.85 * (k % per_row), -0.1 - 1.1 * (k // per_row))
     for k in range(s.ones):
-        _stick(ax, x0 + 0.2 * k, -0.1)
+        _stick(ax, x0 + 0.2 * k, -0.1 - 1.1 * (rows - 1) / 2)
     return _save(fig, s.asset_id)
 
 
@@ -292,7 +380,9 @@ def make_money(s: mp2.Money) -> Path:
     notes = [v for v, n in s.pieces for _ in range(n) if v in mp2.NOTES]
     coins = [v for v, n in s.pieces for _ in range(n) if v in mp2.COINS]
     rows = (1 if notes else 0) + (len(coins) + 5) // 6
-    width = max(len(notes) * 1.8, min(len(coins), 6) * 0.85, 3)
+    # A row of k coins runs from about -0.36 to 0.85 (k - 1) + 0.36; the card shows -0.5 to width - 0.5.
+    coins_w = (min(len(coins), 6) - 1) * 0.85 + 1.0 if coins else 0
+    width = max(len(notes) * 1.8, coins_w, 3)
     fig, ax = _canvas(width, rows, scale=0.7)
     ax.set_xlim(-0.5, width - 0.5)
     for i, v in enumerate(notes):

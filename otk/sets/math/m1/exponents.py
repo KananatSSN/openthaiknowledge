@@ -242,3 +242,119 @@ class ScientificMultiply(MathType):
             distractors=[rf"{prod} \times 10^{{{p + q}}}",
                          rf"{mantissa} \times 10^{{{p * q}}}",
                          rf"{a + b} \times 10^{{{p + q}}}"])
+
+
+# ── To fifteen (2026-11): dividing powers, evaluating, powers of ten, comparing small powers, and writing a
+# repeated product as a power ──
+
+from otk.core.content import math as content_math  # noqa: E402
+from otk.kit import story as _story  # noqa: E402
+from otk.sets._support.math_m1 import LEVEL  # noqa: E402
+from otk.sets._support.math_p2 import _maths  # noqa: E402
+
+_EXP_TOPIC = "เลขยกกำลัง"
+
+
+@question_type("math.quotient_rule_m1", display_name={"th": "หารเลขยกกำลังที่มีฐานเดียวกัน"},
+               level=LEVEL, topic=_EXP_TOPIC)
+class QuotientRuleM1(QuestionType):
+    """a^m ÷ a^n = a^(m − n) for m > n."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        base = rng.choice(("2", "3", "5", "a", "x", "(-2)"))
+        n = rng.randint(2, 6)
+        m = n + rng.randint(1, 6)
+        right = rf"{base}^{{{m - n}}}"
+        # The exponents divided; multiplied; added.
+        cands = [rf"{base}^{{{m // n}}}" if m % n == 0 else rf"{base}^{{{m + n}}}", rf"{base}^{{{m * n}}}",
+                 rf"{base}^{{{m + n}}}", rf"1^{{{m - n}}}"]
+        wrongs = [w for w in dict.fromkeys(cands) if w != right][:3]
+        return _maths([text("จงเขียนผลหารในรูปเลขยกกำลัง"), content_math(rf"{base}^{{{m}}} \div {base}^{{{n}}}")],
+                      right, wrongs, self.topic)
+
+
+@question_type("math.evaluate_powers_m1", display_name={"th": "หาค่าของนิพจน์ที่มีเลขยกกำลัง"},
+               level=LEVEL, topic=_EXP_TOPIC)
+class EvaluatePowersM1(WordProblem):
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        if kind == 0:
+            a, b = rng.choice((2, 3)), rng.choice((2, 3, 4))
+            p, q = rng.randint(2, 4), 2
+            tex, right = rf"{a}^{{{p}}} \times {b}^{{{q}}}", a ** p * b ** q
+            wrongs = (a * p * b * q, (a * b) ** (p + q) if (a * b) ** (p + q) < 10000 else a ** p + b ** q, a ** p + b ** q)
+        elif kind == 1:
+            a, b = rng.randint(2, 4), rng.randint(2, 5)
+            tex, right = rf"(-{a})^{{3}} + {b}^{{2}}", -a ** 3 + b * b
+            wrongs = (a ** 3 + b * b, -3 * a + 2 * b, -a ** 3 - b * b)
+        else:
+            a = rng.randint(2, 6)
+            tex, right = rf"-{a}^{{2}} + (-{a})^{{2}}", 0
+            wrongs = (2 * a * a, -2 * a * a, a * a)
+        return MathDraw(tex, str(right), prompt="จงหาค่าของ",
+                        distractors=_story.keep(*wrongs, right + 1, answer=right, lo=-10000))
+
+
+@question_type("math.powers_of_ten_m1", display_name={"th": "เลขยกกำลังที่มีฐานเป็นสิบ"},
+               level=LEVEL, topic=_EXP_TOPIC)
+class PowersOfTenM1(QuestionType):
+    """Two questions in one set, so each builds its own fixed choices (no answer borrowed from the other)."""
+
+    _NAMES = ((3, "หนึ่งพัน"), (4, "หนึ่งหมื่น"), (5, "หนึ่งแสน"), (6, "หนึ่งล้าน"), (7, "สิบล้าน"), (9, "หนึ่งพันล้าน"))
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        n, word = rng.choice(self._NAMES)
+        if rng.random() < 0.5:
+            # The count of digits instead of zeros; one less; two more.
+            return _maths([text(f"{word} เขียนในรูป 10ⁿ ได้ n เท่ากับเท่าใด")], str(n),
+                          [str(n + 1), str(n - 1), str(n + 2)], self.topic)
+        k = rng.randint(2, 9)
+        show = lambda v: f"{v:,}".replace(",", "{,}")
+        # One zero too few; one too many; k × n × 10.
+        return _maths([text("มีค่าเท่าใด"), content_math(rf"{k} \times 10^{{{n}}}")], show(k * 10 ** n),
+                      [show(k * 10 ** (n - 1)), show(k * 10 ** (n + 1)), show(k * n * 10)], self.topic)
+
+
+@question_type("math.compare_powers_m1", display_name={"th": "เปรียบเทียบเลขยกกำลัง"},
+               level=LEVEL, topic=_EXP_TOPIC)
+class ComparePowersM1(QuestionType):
+    """2⁵ and 5² are not the same size: work each out before comparing."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        pool = [(b, e) for b in range(2, 7) for e in range(2, 6) if b ** e <= 2000]
+        while True:
+            picks = rng.sample(pool, 4)
+            values = [b ** e for b, e in picks]
+            if len(set(values)) == 4:
+                break
+        largest = rng.random() < 0.5
+        i = values.index(max(values) if largest else min(values))
+        tex = [rf"{b}^{{{e}}}" for b, e in picks]
+        return _maths([text(f"จำนวนในข้อใดมีค่า{'มากที่สุด' if largest else 'น้อยที่สุด'}")], tex[i],
+                      [t for k, t in enumerate(tex) if k != i], self.topic)
+
+
+@question_type("math.write_as_power_m1", display_name={"th": "เขียนการคูณซ้ำในรูปเลขยกกำลัง"},
+               level=LEVEL, topic=_EXP_TOPIC)
+class WriteAsPowerM1(QuestionType):
+    """(−3)(−3)(−3)(−3) is (−3)⁴; −3⁴ is the negative of 3⁴."""
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        a, n = rng.randint(2, 9), rng.randint(3, 6)
+        if a == n:                    # aⁿ with a = n: the swapped power would print as the answer
+            a += 1
+        if rng.random() < 0.5:
+            # An even power, so −aⁿ (the negative of aⁿ) really is a different number.
+            n += n % 2
+            if (a == 2 and n == 4) or a == n:   # 2⁴ = 4², or a = n again after rounding n up
+                a += 1
+            product = r" \times ".join([f"(-{a})"] * n)
+            right = rf"(-{a})^{{{n}}}"
+            wrongs = [rf"-{a}^{{{n}}}", rf"(-{n})^{{{a}}}", rf"-{a} \times {n}"]
+        else:
+            if a == 2 and n == 4:
+                a = 3
+            product = r" \times ".join([str(a)] * n)
+            right = rf"{a}^{{{n}}}"
+            wrongs = [rf"{n}^{{{a}}}", rf"{a} \times {n}", rf"{a * n}"]
+        return _maths([text("เขียนในรูปเลขยกกำลังได้อย่างไร"), content_math(product)], right, wrongs, self.topic)

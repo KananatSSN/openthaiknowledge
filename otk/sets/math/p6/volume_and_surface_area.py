@@ -13,7 +13,7 @@ from random import Random
 from otk.core.provenance import Provenance
 from otk.core.registry import question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, WordProblem
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem
 from otk.sets._support.math_p6 import LEVEL
 
 PROVENANCE = Provenance("original")
@@ -114,3 +114,219 @@ class WaterLevelP6(WordProblem):
                                 f"น้ำจะสูงกี่เซนติเมตร (1 ลิตร = 1,000 ลูกบาศก์เซนติเมตร)"),
                         distractors=_story.keep(litres * 100 // (w * length) or h + 1, vol // w,
                                                 h * 10, h + 1, answer=h, lo=1))
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More volume and surface area (2026-11): a box's surface, a cube's edge from its volume, a box with no
+# lid, every edge doubled, a height from the base area, and a cube's edge from its surface ──
+
+
+@question_type("math.box_surface_area_p6", display_name={"th": "พื้นที่ผิวของทรงสี่เหลี่ยมมุมฉาก"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class BoxSurfaceAreaP6(WordProblem):
+    def expr(self, rng: Random):
+        w, length, h = rng.randint(2, 15), rng.randint(3, 20), rng.randint(2, 15)
+        right = 2 * (w * length + w * h + length * h)
+        prompt = f"กล่องทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {length} ซม. สูง {h} ซม. มีพื้นที่ผิวทั้งหมดกี่ตารางเซนติเมตร"
+        # Each face once; the volume; the edges.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(w * length + w * h + length * h, w * length * h, 4 * (w + length + h),
+                                         right + 2 * w, answer=right, lo=1))
+
+
+@question_type("math.cube_edge_from_volume_p6", display_name={"th": "หาความยาวสันของลูกบาศก์จากปริมาตร"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class CubeEdgeFromVolumeP6(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 15)
+        v = a ** 3
+        prompt = f"ลูกบาศก์มีปริมาตร {v:,} ลูกบาศก์เซนติเมตร สันยาวสันละกี่เซนติเมตร"
+        # Divided by three; by six; one off.
+        return MathDraw("", str(a), prompt=prompt,
+                        distractors=_story.keep(v // 3, v // 6, a + 1, a * a, answer=a, lo=1))
+
+
+@question_type("math.open_box_surface_p6", display_name={"th": "พื้นที่ผิวของกล่องที่ไม่มีฝา"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class OpenBoxSurfaceP6(WordProblem):
+    def expr(self, rng: Random):
+        w, length, h = rng.randint(2, 15), rng.randint(3, 20), rng.randint(2, 15)
+        right = w * length + 2 * (w * h + length * h)
+        closed = right + w * length
+        prompt = (f"กล่องทรงสี่เหลี่ยมมุมฉากไม่มีฝา กว้าง {w} ซม. ยาว {length} ซม. สูง {h} ซม. "
+                  "ใช้กระดาษทำกล่องกี่ตารางเซนติเมตร")
+        # With the lid; without the bottom too; each side once.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(closed, right - w * length, w * length + w * h + length * h, right + h,
+                                         answer=right, lo=1))
+
+
+@question_type("math.box_doubled_p6", display_name={"th": "ขยายทุกด้านเป็นสองเท่า ปริมาตรเป็นเท่าใด"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class BoxDoubledP6(WordProblem):
+    def expr(self, rng: Random):
+        w, length, h = rng.randint(2, 10), rng.randint(2, 12), rng.randint(2, 10)
+        v = w * length * h
+        right = 8 * v
+        prompt = (f"กล่องทรงสี่เหลี่ยมมุมฉากกว้าง {w} ซม. ยาว {length} ซม. สูง {h} ซม. ถ้าขยายทั้งกว้าง ยาว "
+                  "และสูงเป็นสองเท่า กล่องใหม่มีปริมาตรกี่ลูกบาศก์เซนติเมตร")
+        # Doubled once; four times; three times.
+        return MathDraw("", _g6(right), prompt=prompt,
+                        distractors=_gk6(2 * v, 4 * v, 6 * v, v, answer=right, lo=1))
+
+
+@question_type("math.height_from_base_area_p6", display_name={"th": "หาความสูงจากปริมาตรและพื้นที่ฐาน"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class HeightFromBaseAreaP6(WordProblem):
+    def expr(self, rng: Random):
+        base = rng.randint(4, 60) * 5
+        right = rng.randint(2, 30)
+        v = base * right
+        prompt = f"ภาชนะทรงสี่เหลี่ยมมุมฉากมีพื้นที่ฐาน {base} ตารางเซนติเมตร และปริมาตร {v:,} ลูกบาศก์เซนติเมตร สูงกี่เซนติเมตร"
+        # The volume less the base; multiplied; a tenth.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(v - base, right * 10, v // 10, right + 1, answer=right, lo=1))
+
+
+@question_type("math.cube_edge_from_surface_p6", display_name={"th": "หาความยาวสันของลูกบาศก์จากพื้นที่ผิว"},
+               level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class CubeEdgeFromSurfaceP6(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 20)
+        s = 6 * a * a
+        prompt = f"ลูกบาศก์มีพื้นที่ผิวทั้งหมด {s:,} ตารางเซนติเมตร สันยาวสันละกี่เซนติเมตร"
+        # One face's area; divided by six; by four.
+        return MathDraw("", str(a), prompt=prompt,
+                        distractors=_story.keep(a * a, s // 6 // 2, s // 4, a + 1, answer=a, lo=1))
+
+
+@question_type("math.box_volume_sentence_p6", display_name={"th": "เลือกวิธีคำนวณปริมาตรทรงสี่เหลี่ยมมุมฉาก"}, level={"th": "ป.6"}, topic="ปริมาตรและพื้นที่ผิว")
+class BoxVolumeSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 16",))
+
+    def compose(self,rng: Random):
+        a,b,c=rng.sample(range(3,25),3)
+        target=a*b*c
+        candidates=[(f"({a} × {b}) + {c}",a*b+c),(f"({a} + {b}) × {c}",(a+b)*c),
+                    (f"({a} + {b}) + {c}",a+b+c),(f"({a} × {b}) × ({c} + 1)",a*b*(c+1))]
+        seen={target}
+        wrongs=[]
+        for label,value in candidates:
+            if value not in seen:
+                seen.add(value)
+                wrongs.append(label)
+        return (f"กล่องกว้าง {a} เมตร ยาว {b} เมตร สูง {c} เมตร ปริมาตรกี่ลูกบาศก์เมตร เลือกวิธีคำนวณ",
+                f"({a} × {b}) × {c}",wrongs)
+
+
+@question_type("math.cube_litres_sentence_p6", display_name={"th": "เลือกวิธีหาความจุลูกบาศก์เป็นลิตร"}, level={"th": "ป.6"}, topic="ปริมาตรและพื้นที่ผิว")
+class CubeLitresSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 17",))
+
+    def compose(self,rng: Random):
+        side=rng.randint(2,15)
+        cube=f"({side} × {side} × {side})"
+        return (f"ถังทรงลูกบาศก์มีสันยาว {side} เมตร ความจุเป็นลิตรหาได้ด้วยวิธีใด",
+                cube+" × 1000",[cube+" × 100",cube+" ÷ 1000",cube+" ÷ 100"])
+
+
+@question_type("math.box_dimension_sentence_p6", display_name={"th": "เลือกวิธีย้อนหามิติกล่องพร้อมแปลงหน่วย"}, level={"th": "ป.6"}, topic="ปริมาตรและพื้นที่ผิว")
+class BoxDimensionSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 18–19",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            length,width,height=(rng.randint(3,20) for _ in range(3))
+            volume=length*width*height
+            return (f"กล่องมีปริมาตร {volume} ลูกบาศก์เมตร ยาว {length} เมตร กว้าง {width} เมตร "
+                    "สูงกี่เมตร เลือกวิธีคำนวณ",f"{volume} ÷ ({length} × {width})",
+                    [f"{volume} ÷ ({length} ÷ {width})",f"{volume} × ({length} × {width})",f"({volume} ÷ {length}) + {width}"])
+        length,depth,width=rng.randint(2,9),rng.randrange(20,155,5),rng.randint(10,80)
+        volume=length*100*depth*width
+        return (f"ภาชนะมีปริมาตร {volume} ลูกบาศก์เซนติเมตร ยาว {length} เมตร ลึก {depth} เซนติเมตร "
+                "กว้างกี่เซนติเมตร เลือกวิธีคำนวณ",f"{volume} ÷ (({length} × 100) × {depth})",
+                [f"{volume} ÷ ({length} × {depth})",f"{volume} ÷ (({length} × 100) ÷ {depth})",f"{volume} × (({length} × 100) × {depth})"])
+
+
+@question_type("math.mixed_box_cost_sentence_p6", display_name={"th": "เลือกวิธีคิดราคาตามปริมาตรเมื่อหน่วยมิติต่างกัน"}, level={"th": "ป.6"}, topic="ปริมาตรและพื้นที่ผิว")
+class MixedBoxCostSentenceP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/primary-6/4907-6-2567-2-2.pdf, ข้อ 20",))
+
+    def compose(self,rng: Random):
+        width,length,thick,price=10*rng.randint(5,20),rng.randint(2,8),10*rng.randint(1,9),100*rng.randint(1,9)
+        def model(divisor):
+            return f"(({width} ÷ {divisor}) × {length} × ({thick} ÷ {divisor})) × {price}"
+        return (f"วัสดุทรงสี่เหลี่ยมมุมฉากกว้าง {width} เซนติเมตร ยาว {length} เมตร หนา {thick} เซนติเมตร "
+                f"ราคาลูกบาศก์เมตรละ {price} บาท ราคารวมหาได้ด้วยวิธีใด",model(100),
+                [f"({width} × {length} × {thick}) × {price}",model(10),model(1000)])
+
+
+@question_type("math.multiple_cube_volume_p6", display_name={"th": "รวมปริมาตรลูกบาศก์หลายกล่องที่มีขนาดเท่ากัน"}, level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class MultipleCubeVolumeP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4901-6-2565-1-2.pdf, ข้อ 16',))
+
+    def compose(self, rng: Random):
+        side, count = rng.randint(2, 12), rng.randint(2, 9)
+        answer = count * side ** 3
+        pool = (count * side ** 2, side ** 3, 3 * count * side, 2 * answer, answer + side)
+        return (f"กล่องทรงลูกบาศก์มีสันยาว {side} เซนติเมตร จำนวน {count} กล่อง ปริมาตรรวมกี่ลูกบาศก์เซนติเมตร",
+                str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.cuboid_capacity_extreme_p6", display_name={"th": "เปรียบเทียบความจุภาชนะจากมิติทั้งสามที่กำหนด"}, level=LEVEL, topic="ปริมาตรและพื้นที่ผิว")
+class CuboidCapacityExtremeP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4901-6-2565-1-2.pdf, ข้อ 17',))
+
+    def compose(self, rng: Random):
+        maximum = rng.choice((False, True))
+        while True:
+            side = rng.randint(2, 9)
+            rows = [(side, side, 2 * side)] + [(rng.randint(2, 12), rng.randint(3, 15), rng.randint(1, 19)) for _ in range(3)]
+            rng.shuffle(rows)
+            values = [w * length * h2 for w, length, h2 in rows]
+            lengths = [max(2 * w, 2 * length, h2) for w, length, h2 in rows]
+            pick = (max if maximum else min)(range(4), key=lambda i: values[i])
+            if len(set(values)) == 4 and values[pick] != values[(max if maximum else min)(range(4), key=lambda i: lengths[i])]:
+                break
+        names = ("ถังก", "ถังข", "ถังค", "ถังง")
+        data = " · ".join(f"{name}: กว้าง {w} ยาว {length} สูง {h2 // 2}.{5 * (h2 % 2)} เมตร" for name, (w, length, h2) in zip(names, rows))
+        return (f"ทุกภาชนะเป็นทรงสี่เหลี่ยมมุมฉากและมิติภายใน หน่วยเป็นเมตร {data} ถังใดมีความจุ{'มากที่สุด' if maximum else 'น้อยที่สุด'}",
+                names[pick], [name for i, name in enumerate(names) if i != pick])

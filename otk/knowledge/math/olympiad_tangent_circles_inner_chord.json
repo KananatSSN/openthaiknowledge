@@ -13,7 +13,7 @@
         "Find the second circle intersections E and F and observe they have equal height",
         "Intersect the horizontal line with AC and BC and subtract their coordinates"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 8}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 8}],
       "covered_by": ["math.tangent_circles_inner_chord_olympiad"]
     }
   ]

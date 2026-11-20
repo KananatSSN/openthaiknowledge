@@ -356,7 +356,7 @@ def make_figure(f) -> Path:
         _label(ax, ax_ + (0.32 if at else -0.32), Hh / 2, f"{h} {u}")
     elif f.kind == "lshape":
         w, h, cw, ch = f.dims
-        k = 2.3 / max(w, h)
+        k = 2.1 / max(w, h)                      # room above for the top side's length
         W, H, CW, CH = w * k, h * k, cw * k, ch * k
         pts = [(0, 0), (W, 0), (W, H - CH), (W - CW, H - CH), (W - CW, H), (0, H)]
         _poly(ax, pts)
@@ -371,7 +371,8 @@ def make_figure(f) -> Path:
         _poly(ax, [(0, 0), (B, 0), (0, A)])
         _right_mark(ax, (0, 0), (1, 0), (0, 1), s=0.14)
         show = {k: ("x" if k == f.unknown else str(v)) for k, v in (("a", a), ("b", b), ("c", c))}
-        _label(ax, -0.3, A / 2, f"{show['a']} {u}" if show["a"] != "x" else "x", rotation=90)
+        _label(ax, -0.3, A / 2, f"{show['a']} {u}" if show["a"] != "x" else "x",
+               rotation=90 if show["a"] != "x" else 0)    # a lone x reads better upright
         _label(ax, B / 2, -0.2, f"{show['b']} {u}" if show["b"] != "x" else "x")
         _label(ax, B / 2 + 0.3, A / 2 + 0.2, f"{show['c']} {u}" if show["c"] != "x" else "x",
                rotation=-math.degrees(math.atan2(A, B)))
@@ -647,6 +648,57 @@ def make_parallel(p) -> Path:
     return _save(fig, p.asset_id)
 
 
+def _parallel_pair(ax):
+    """The two parallel lines at y = ±0.9 with their arrow marks."""
+    for y in (0.9, -0.9):
+        _line(ax, (-2.5, y), (2.5, y))
+        ax.text(-2.25, y, ">", fontsize=12, color=INK, ha="center", va="center")
+
+
+def make_parallel_bend(s) -> Path:
+    """A bend P between the lines: the angle a at A (upper line), b at B (lower), and the bend APB."""
+    fig, ax = _blank(3.6, 2.6, (-2.6, 2.6), (-1.85, 1.85))
+    _parallel_pair(ax)
+    P = (1.1, 0.0)
+    A = (P[0] - 0.9 / math.tan(math.radians(s.a)), 0.9)
+    B = (P[0] - 0.9 / math.tan(math.radians(s.b)), -0.9)
+    _line(ax, A, P)
+    _line(ax, B, P)
+    _dot(ax, P)
+    at_a, at_p = ("x", str(s.a + s.b)) if s.ask == "a" else (str(s.a), "x")
+    _angle_mark(ax, A, 360 - s.a, 360, at_a, r=0.3, lr=0.62)
+    _angle_mark(ax, B, 0, s.b, str(s.b), r=0.3, lr=0.62)
+    _angle_mark(ax, P, 180 - s.a, 180 + s.b, at_p, r=0.26, lr=0.56)
+    _letter(ax, A[0] - 0.1, 1.12, "A")
+    _letter(ax, B[0] - 0.1, -1.12, "B")
+    _letter(ax, P[0] + 0.2, 0.0, "P")
+    return _save(fig, s.asset_id)
+
+
+def make_parallel_triangle(t) -> Path:
+    """Triangle ABC between the lines: A on the upper line, B and C on the lower."""
+    fig, ax = _blank(3.6, 2.6, (-2.6, 2.6), (-1.85, 1.85))
+    _parallel_pair(ax)
+    # centred across the drawing, so a wide base stays clear of the edges and the arrow marks
+    left, right = 1.8 / math.tan(math.radians(t.p)), 1.8 / math.tan(math.radians(t.q))
+    A = ((left - right) / 2, 0.9)
+    B = (A[0] - left, -0.9)
+    C = (A[0] + right, -0.9)
+    _poly(ax, [A, B, C])
+    apex = 180 - t.p - t.q
+    _angle_mark(ax, A, 180, 180 + t.p, str(t.p), r=0.3, lr=0.62)
+    if t.ask == "apex":
+        _angle_mark(ax, A, 360 - t.q, 360, str(t.q), r=0.3, lr=0.62)
+        _angle_mark(ax, A, 180 + t.p, 360 - t.q, "x", r=0.24, lr=0.5)
+    else:
+        _angle_mark(ax, A, 180 + t.p, 360 - t.q, str(apex), r=0.24, lr=0.52)
+        _angle_mark(ax, C, 180 - t.q, 180, "x", r=0.26, lr=0.56)
+    _letter(ax, A[0], 1.13, "A")
+    _letter(ax, B[0] - 0.12, -1.13, "B")
+    _letter(ax, C[0] + 0.12, -1.13, "C")
+    return _save(fig, t.asset_id)
+
+
 def _tri_from_angles(a, b):
     c = 180 - a - b
     ac = math.sin(math.radians(b)) / math.sin(math.radians(c))
@@ -682,7 +734,8 @@ def _tag(ax, x, y, lab):
 
 
 def make_marked_triangle(t) -> Path:
-    fig, ax = _blank(3.2, 2.6, (-0.5, 3.2), (-0.5, 2.9))
+    # The top vertex can sit at 2.6 with its letter 0.25 above: show up to 3.15.
+    fig, ax = _blank(3.2, 2.6, (-0.5, 3.2), (-0.5, 3.15))
     pts = _fit_pts(_tri_from_sides(*t.sides) if t.sides else _tri_from_angles(*t.angles[:2]))
     _poly(ax, pts)
     g = _centroid(pts)

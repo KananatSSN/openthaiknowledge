@@ -1,7 +1,7 @@
 {
  "sheet_id": "tpho2560_physics",
  "title": "การแข่งขันฟิสิกส์โอลิมปิกระดับชาติ ครั้งที่ 16 (TPhO 2560)",
- "source_pdf": "openthaiknowledge-bank/สอวน_physics/tpho-60-physics/TPhO2017_Theory.pdf",
+ "source_pdf": "openthaiknowledge-bank/physics/level/upper-secondary/posn-physics/tpho-60-physics/TPhO2017_Theory.pdf",
  "subject": "ฟิสิกส์",
  "level": "โอลิมปิก (สอวน.)",
  "note": "20 items: 18 from the three theory problems (qualitative parts, sketches and steps share items) and 2 parts of the magnet lab with synthetic data. Every answer agrees with TPhO2017_Theory-Sol.pdf and TPhO2017_Expt___Solution.pdf (recorded as ignored), except the lab's k = 0.265 kg/s, which should be 0.262 kg/s.",

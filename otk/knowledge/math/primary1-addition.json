@@ -1,0 +1,111 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การบวก",
+ "level": "ป.1",
+ "units": [
+  {
+   "id": "math.primary1.two-digit-addition",
+   "kind": "procedure",
+   "title": "บวกจำนวนสองหลัก",
+   "statement": "บวกหลักหน่วยและหลักสิบ ทดหนึ่งสิบเมื่อผลบวกหลักหน่วยถึงสิบ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "บวกหลักหน่วยและหลักสิบ ทดหนึ่งสิบเมื่อผลบวกหลักหน่วยถึงสิบ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 3
+    }
+   ],
+   "covered_by": [
+    "math.two_digit_plus"
+   ]
+  },
+  {
+   "id": "math.primary1.missing-addend",
+   "kind": "procedure",
+   "title": "หาตัวบวกที่ไม่ทราบ",
+   "statement": "หาตัวบวกที่ขาดโดยลบตัวบวกที่ทราบออกจากผลบวก แม้เขียนผลบวกไว้ด้านซ้ายของเครื่องหมายเท่ากับ",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาตัวบวกที่ขาดโดยลบตัวบวกที่ทราบออกจากผลบวก แม้เขียนผลบวกไว้ด้านซ้ายของเครื่องหมายเท่ากับ",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.missing_addend"
+   ]
+  },
+  {
+   "id": "math.primary1.match-sum-expression",
+   "kind": "procedure",
+   "title": "เลือกประโยคบวกที่มีผลบวกเท่ากัน",
+   "statement": "หาผลบวกอ้างอิง แล้วหาผลบวกของตัวเลือกแต่ละข้อเพื่อเลือกประโยคที่มีค่าเท่ากัน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาผลบวกอ้างอิง แล้วหาผลบวกของตัวเลือกแต่ละข้อเพื่อเลือกประโยคที่มีค่าเท่ากัน",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.match_sum_expression_p1"
+   ]
+  },
+  {
+   "id": "math.primary1.equal-sums-missing",
+   "kind": "procedure",
+   "title": "หาตัวบวกที่ทำให้ผลบวกสองข้างเท่ากัน",
+   "statement": "หาผลบวกของด้านที่มีข้อมูลครบก่อน แล้วลบตัวบวกที่ทราบอีกด้านออกเพื่อหาตัวที่ขาด ตรวจแทนกลับให้สองข้างเท่ากัน",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาผลบวกของด้านที่มีข้อมูลครบก่อน แล้วลบตัวบวกที่ทราบอีกด้านออกเพื่อหาตัวที่ขาด ตรวจแทนกลับให้สองข้างเท่ากัน",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-1/4019-1-2567-2-1.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.equal_sums_missing_p1"
+   ]
+  }
+ ]
+}

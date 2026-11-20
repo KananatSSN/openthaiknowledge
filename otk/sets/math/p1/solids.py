@@ -130,3 +130,98 @@ class SolidPictureP1(QuestionType):
         return _text_q([text("รูปนี้คือรูปเรขาคณิตสามมิติชนิดใด"),
                         _img(s.asset_id, "รูปเรขาคณิตสามมิติหนึ่งรูป")],
                        s.thai, [self._NEAR[s.name]] + others, self.topic)
+
+
+# ── More solids (2026-11): rolling and stacking, the shapes of the faces, tracing a base, counting solids,
+# the odd one out, and which object has a given shape ──
+
+from otk.kit import story as _story  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem  # noqa: E402
+from otk.sets._support.math_p1 import LEVEL  # noqa: E402
+
+_SOLID_OBJECTS = {
+    "ทรงกลม": ("ลูกฟุตบอล", "ส้ม", "ลูกแก้ว", "ลูกปิงปอง"),
+    "ทรงกระบอก": ("กระป๋องนม", "แก้วน้ำ", "ท่อน้ำ", "ถ่านไฟฉาย"),
+    "ทรงสี่เหลี่ยมมุมฉาก": ("กล่องนม", "หนังสือ", "ตู้เย็น", "กล่องดินสอ"),
+    "กรวย": ("กรวยจราจร", "หมวกวันเกิด", "โคนไอศกรีม"),
+}
+
+
+@question_type("math.solid_roll_stack_p1", display_name={"th": "รูปทรงใดกลิ้งได้ รูปทรงใดวางซ้อนได้"},
+               level=LEVEL, topic="เรขาคณิต 3 มิติ")
+class SolidRollStackP1(ConceptBankType):
+    ITEMS = [
+        Concept("รูปทรงใดกลิ้งได้ทุกทิศทาง", "ทรงกลม", ("ทรงสี่เหลี่ยมมุมฉาก", "กรวย", "ทรงกระบอก")),
+        Concept("รูปทรงใดวางซ้อนกันได้มั่นคงที่สุด", "ทรงสี่เหลี่ยมมุมฉาก", ("ทรงกลม", "กรวย", "ทรงกระบอกที่วางนอน")),
+        Concept("รูปทรงใดกลิ้งไม่ได้เลย", "ทรงสี่เหลี่ยมมุมฉาก", ("ทรงกลม", "ทรงกระบอก", "กรวย")),
+        Concept("รูปทรงใดทั้งกลิ้งได้เมื่อวางนอน และวางตั้งซ้อนกันได้", "ทรงกระบอก", ("ทรงกลม", "กรวย", "ทรงสี่เหลี่ยมมุมฉาก")),
+        Concept("รูปทรงใดกลิ้งได้เป็นวงรอบปลายแหลมของมัน", "กรวย", ("ทรงกลม", "ทรงกระบอก", "ทรงสี่เหลี่ยมมุมฉาก")),
+    ]
+
+
+@question_type("math.solid_face_shape_p1", display_name={"th": "หน้าของรูปทรงเป็นรูปใด"},
+               level=LEVEL, topic="เรขาคณิต 3 มิติ")
+class SolidFaceShapeP1(ConceptBankType):
+    ITEMS = [
+        Concept("หน้าของทรงสี่เหลี่ยมมุมฉากเป็นรูปใด", "รูปสี่เหลี่ยม", ("รูปวงกลม", "รูปสามเหลี่ยม", "รูปวงรี")),
+        Concept("ฐานของทรงกระบอกเป็นรูปใด", "รูปวงกลม", ("รูปสี่เหลี่ยม", "รูปสามเหลี่ยม", "รูปห้าเหลี่ยม")),
+        Concept("ฐานของกรวยเป็นรูปใด", "รูปวงกลม", ("รูปสามเหลี่ยม", "รูปสี่เหลี่ยม", "รูปห้าเหลี่ยม")),
+        Concept("ทรงกลมมีหน้าที่เป็นรูปแบนราบกี่หน้า", "ไม่มีเลย", ("1 หน้า", "2 หน้า", "6 หน้า")),
+        Concept("ทรงกระบอกมีหน้าที่เป็นรูปวงกลมกี่หน้า", "2 หน้า", ("1 หน้า", "ไม่มีเลย", "6 หน้า")),
+        Concept("ลูกเต๋ามีหน้าทั้งหมดกี่หน้า", "6 หน้า", ("4 หน้า", "5 หน้า", "8 หน้า")),
+    ]
+
+
+@question_type("math.solid_trace_p1", display_name={"th": "วาดรอยรอบฐานของรูปทรงได้รูปใด"},
+               level=LEVEL, topic="เรขาคณิต 3 มิติ")
+class SolidTraceP1(ConceptBankType):
+    ITEMS = [
+        Concept("วางกระป๋องนมตั้งบนกระดาษแล้ววาดรอบฐาน จะได้รูปใด", "รูปวงกลม",
+                ("รูปวงรี", "รูปดาว", "รูปสามเหลี่ยม")),
+        Concept("วางกล่องนมบนกระดาษแล้ววาดรอบด้านที่วางลง จะได้รูปใด", "รูปสี่เหลี่ยม",
+                ("รูปวงกลม", "รูปสามเหลี่ยม", "รูปวงรี")),
+        Concept("วางกรวยจราจรตั้งบนกระดาษแล้ววาดรอบฐาน จะได้รูปใด", "รูปวงกลม",
+                ("รูปดาว", "รูปหัวใจ", "รูปสามเหลี่ยม")),
+        Concept("วางลูกเต๋าบนกระดาษแล้ววาดรอบด้านที่วางลง จะได้รูปใด", "รูปสี่เหลี่ยมจัตุรัส",
+                ("รูปวงกลม", "รูปสามเหลี่ยม", "รูปห้าเหลี่ยม")),
+        Concept("วางแก้วน้ำทรงกระบอกตั้งบนกระดาษแล้ววาดรอบฐาน จะได้รูปใด", "รูปวงกลม",
+                ("รูปวงรี", "รูปหัวใจ", "รูปสี่เหลี่ยม")),
+    ]
+
+
+@question_type("math.solid_sum_p1", display_name={"th": "นับและรวมสิ่งของตามรูปทรง"},
+               level=LEVEL, topic="เรขาคณิต 3 มิติ")
+class SolidSumP1(WordProblem):
+    def expr(self, rng: Random):
+        s1, s2 = rng.sample(tuple(_SOLID_OBJECTS), 2)
+        o1, o2 = rng.choice(_SOLID_OBJECTS[s1]), rng.choice(_SOLID_OBJECTS[s2])
+        a, b = rng.randint(2, 9), rng.randint(2, 9)
+        c = rng.randint(1, 9)
+        o3 = rng.choice([o for o in _SOLID_OBJECTS[s1] if o != o1])
+        right = a + c
+        prompt = (f"ในห้องมี{o1} {a} ชิ้น {o2} {b} ชิ้น และ{o3} {c} ชิ้น "
+                  f"มีสิ่งของที่เป็น{s1}ทั้งหมดกี่ชิ้น")
+        # Everything counted; the wrong pair counted; only the first kind.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b + c, a + b, b + c, a, answer=right, lo=1))
+
+
+@question_type("math.solid_odd_one_p1", display_name={"th": "สิ่งของใดมีรูปทรงต่างจากพวก"},
+               level=LEVEL, topic="เรขาคณิต 3 มิติ")
+class SolidOddOneP1(ChoiceType):
+    def compose(self, rng: Random):
+        same, odd = rng.sample(tuple(_SOLID_OBJECTS), 2)
+        group = rng.sample(_SOLID_OBJECTS[same], 3)
+        right = rng.choice(_SOLID_OBJECTS[odd])
+        return "สิ่งของใดมีรูปทรงต่างจากสิ่งของอื่น", right, group
+
+
+@question_type("math.solid_which_object_p1", display_name={"th": "สิ่งของใดมีรูปทรงตามที่กำหนด"},
+               level=LEVEL, topic="เรขาคณิต 3 มิติ")
+class SolidWhichObjectP1(ChoiceType):
+    def compose(self, rng: Random):
+        shapes = list(_SOLID_OBJECTS)
+        shape = rng.choice(shapes)
+        right = rng.choice(_SOLID_OBJECTS[shape])
+        wrongs = [rng.choice(_SOLID_OBJECTS[s]) for s in shapes if s != shape]
+        return f"สิ่งของใดมีรูปทรงเป็น{shape}", right, wrongs

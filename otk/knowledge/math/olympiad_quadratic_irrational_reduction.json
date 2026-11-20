@@ -13,7 +13,7 @@
     "ลดเศษและส่วนของนิพจน์โมดูลัสเอกลักษณ์นั้น",
     "หารและเปรียบเทียบค่าที่เหลือกับจำนวนเต็มใกล้เคียงอย่างแม่นยำ"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 7}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 7}],
    "covered_by": ["math.quadratic_irrational_reduction_olympiad"]
   }
  ]

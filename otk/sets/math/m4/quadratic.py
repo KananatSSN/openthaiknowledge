@@ -182,3 +182,90 @@ class QuadraticIntegerOptimumM4(WordProblem):
                             str(height - 4 * a),
                             str(height + a),
                         ])
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m4 import M4 as LEVEL  # noqa: E402
+
+
+def _nz4(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk4(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk4(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk4(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt4(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk4(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk4(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+# ── More quadratic functions (2026-11): the largest field from a fence, the largest pen against a wall, the
+# largest product of two numbers with a given sum, and where the least value occurs ──
+
+
+@question_type("math.max_area_fence_m4", display_name={"th": "พื้นที่มากที่สุดเมื่อล้อมรั้วรอบ"}, level=LEVEL,
+               topic="เรนจ์ของฟังก์ชันกำลังสอง")
+class MaxAreaFenceM4(WordProblem):
+    def expr(self, rng: Random):
+        side = rng.randint(3, 30)
+        fence = 4 * side
+        right = side * side
+        prompt = f"มีรั้วยาว {fence} เมตร ล้อมที่ดินเป็นรูปสี่เหลี่ยมผืนผ้า จะได้พื้นที่มากที่สุดกี่ตารางเมตร"
+        # Half the fence as the side; the fence squared over 8; one metre short.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk4((fence // 2) ** 2 // 4 * 2, fence * fence // 8, (side - 1) * (side + 1), fence, answer=right, lo=1))
+
+
+@question_type("math.max_area_wall_m4", display_name={"th": "พื้นที่มากที่สุดเมื่อล้อมรั้วชิดกำแพง"}, level=LEVEL,
+               topic="เรนจ์ของฟังก์ชันกำลังสอง")
+class MaxAreaWallM4(WordProblem):
+    def expr(self, rng: Random):
+        w = rng.randint(3, 25)
+        fence = 4 * w
+        right = w * 2 * w
+        prompt = (f"มีรั้วยาว {fence} เมตร ล้อมที่ดินรูปสี่เหลี่ยมผืนผ้าสามด้าน โดยใช้กำแพงเป็นด้านที่สี่ "
+                  "จะได้พื้นที่มากที่สุดกี่ตารางเมตร")
+        # Fenced on all four sides; a square of the fence's third.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk4(w * w, (fence // 3) ** 2, fence * fence // 16 * 3, right + w, answer=right, lo=1))
+
+
+@question_type("math.max_product_fixed_sum_m4", display_name={"th": "ผลคูณมากที่สุดของสองจำนวนที่มีผลบวกคงตัว"},
+               level=LEVEL, topic="เรนจ์ของฟังก์ชันกำลังสอง")
+class MaxProductFixedSumM4(WordProblem):
+    def expr(self, rng: Random):
+        h = rng.randint(3, 30)
+        s = 2 * h
+        right = h * h
+        prompt = f"จำนวนจริงสองจำนวนรวมกันได้ {s} ผลคูณของสองจำนวนนี้มากที่สุดเท่าใด"
+        # The sum squared; half the sum; one apart.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk4(s * s, h, (h - 1) * (h + 1), 2 * h * h, answer=right, lo=1))
+
+
+@question_type("math.argmin_quadratic_m4", display_name={"th": "ค่า x ที่ทำให้ฟังก์ชันกำลังสองมีค่าต่ำสุด"}, level=LEVEL,
+               topic="เรนจ์ของฟังก์ชันกำลังสอง")
+class ArgminQuadraticM4(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 4)
+        h = _nz4(rng, 1, 9)
+        c = rng.randint(-20, 20)
+        b = -2 * a * h
+        # The sign of h lost; b itself halved; the least value instead.
+        return MathDraw(rf"f(x) = {poly_tex((a, 'x^{2}'), (b, 'x'), (c, ''))}", str(h), prompt="f มีค่าต่ำสุดเมื่อ x มีค่าเท่าใด",
+                        distractors=_nk4(-h, b // 2 if b // 2 != h else h + 1, c - a * h * h, 2 * h, answer=h))

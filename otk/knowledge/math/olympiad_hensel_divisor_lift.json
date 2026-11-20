@@ -14,7 +14,7 @@
         "Use the powers of 7 as explicitly distinct divisors"
       ],
       "sources": [
-        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 9}
+        {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 9}
       ],
       "covered_by": ["math.hensel_divisor_lift_olympiad"]
     }

@@ -13,7 +13,7 @@
     "เมื่อ gcd(n,9)=1 เลือก jn ที่ให้เศษผลบวกเลขโดดตามต้องการ แล้วต่อท้ายด้วยพหุคูณ n(10^k−1) ที่เพิ่มผลบวกเลขโดดทีละ 9k โดยไม่มีการทดเลขโดด"
    ],
    "sources": [
-    {"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 10}
+    {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 10}
    ],
    "covered_by": ["math.digit_sum_cofinite_olympiad"]
   }

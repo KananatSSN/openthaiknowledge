@@ -133,3 +133,216 @@ class RhombusKiteAreaP5(WordProblem):
                                 f"เส้นทแยงมุมเส้นหนึ่งยาว {d1} ซม. เส้นทแยงมุมอีกเส้นยาวกี่เซนติเมตร"),
                         distractors=_story.keep(ans // d1 if ans % d1 == 0 else d2 + 2, ans - d1,
                                                 2 * ans, answer=d2, lo=1))
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p5 import LEVEL  # noqa: E402
+
+
+def _g(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _dec(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_dec(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More quadrilateral areas (2026-11): a parallelogram's height, a trapezoid's missing side, a rhombus from
+# its diagonals, the largest of four shapes, and the cost of tiling ──
+
+
+@question_type("math.parallelogram_height_p5", display_name={"th": "หาความสูงของรูปสี่เหลี่ยมด้านขนาน"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class ParallelogramHeightP5(WordProblem):
+    def expr(self, rng: Random):
+        base, h = rng.randint(4, 30), rng.randint(3, 25)
+        area = base * h
+        prompt = f"รูปสี่เหลี่ยมด้านขนานมีพื้นที่ {area} ตารางเซนติเมตร ฐานยาว {base} เซนติเมตร สูงกี่เซนติเมตร"
+        # Halved as for a triangle; the area less the base; doubled.
+        return MathDraw("", str(h), prompt=prompt,
+                        distractors=_story.keep(2 * h, area - base, h // 2 if h > 2 else h + 2, h + 1,
+                                                answer=h, lo=1))
+
+
+@question_type("math.trapezoid_missing_side_p5", display_name={"th": "หาความยาวด้านคู่ขนานของรูปสี่เหลี่ยมคางหมู"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class TrapezoidMissingSideP5(WordProblem):
+    def expr(self, rng: Random):
+        h = rng.randint(2, 15) * 2
+        a, b = rng.sample(range(3, 30), 2)
+        area = (a + b) * h // 2
+        prompt = (f"รูปสี่เหลี่ยมคางหมูมีพื้นที่ {area} ตารางเซนติเมตร สูง {h} เซนติเมตร "
+                  f"ด้านคู่ขนานด้านหนึ่งยาว {a} เซนติเมตร อีกด้านยาวกี่เซนติเมตร")
+        # The two sides together; without halving; the known side.
+        return MathDraw("", str(b), prompt=prompt,
+                        distractors=_story.keep(a + b, area // h - a, a, b + 2, answer=b, lo=1))
+
+
+@question_type("math.rhombus_from_diagonals_p5", display_name={"th": "พื้นที่รูปสี่เหลี่ยมขนมเปียกปูนจากเส้นทแยงมุม"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class RhombusFromDiagonalsP5(WordProblem):
+    def expr(self, rng: Random):
+        d1 = rng.randint(2, 15) * 2
+        d2 = rng.randint(3, 30)
+        right = d1 * d2 // 2
+        shape = rng.choice(("ขนมเปียกปูน", "รูปว่าว"))
+        name = f"รูปสี่เหลี่ยม{shape}" if shape == "ขนมเปียกปูน" else shape
+        prompt = f"{name}มีเส้นทแยงมุมยาว {d1} และ {d2} เซนติเมตร มีพื้นที่กี่ตารางเซนติเมตร"
+        # Not halved; added; the perimeter-like sum doubled.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(d1 * d2, d1 + d2, 2 * (d1 + d2), right + d1, answer=right, lo=1))
+
+
+@question_type("math.largest_quadrilateral_area_p5", display_name={"th": "รูปสี่เหลี่ยมใดมีพื้นที่มากที่สุด"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class LargestQuadrilateralAreaP5(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            pb, ph = rng.randint(4, 15), rng.randint(3, 12)
+            ta, tb, th = rng.randint(3, 12), rng.randint(3, 12), rng.randint(1, 6) * 2
+            rd1, rd2 = rng.randint(2, 8) * 2, rng.randint(4, 16)
+            sq = rng.randint(3, 12)
+            areas = [pb * ph, (ta + tb) * th // 2, rd1 * rd2 // 2, sq * sq]
+            if len(set(areas)) == 4:
+                break
+        texts = [f"สี่เหลี่ยมด้านขนาน ฐาน {pb} ซม. สูง {ph} ซม.",
+                 f"สี่เหลี่ยมคางหมู ด้านคู่ขนาน {ta} และ {tb} ซม. สูง {th} ซม.",
+                 f"สี่เหลี่ยมขนมเปียกปูน เส้นทแยงมุม {rd1} และ {rd2} ซม.",
+                 f"สี่เหลี่ยมจัตุรัส ด้านยาว {sq} ซม."]
+        most = rng.random() < 0.5
+        pick = areas.index(max(areas) if most else min(areas))
+        return (f"รูปใดมีพื้นที่{'มากที่สุด' if most else 'น้อยที่สุด'}", texts[pick],
+                [t for i, t in enumerate(texts) if i != pick])
+
+
+@question_type("math.tiling_cost_p5", display_name={"th": "ค่าปูพื้นรูปสี่เหลี่ยม"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class TilingCostP5(WordProblem):
+    def expr(self, rng: Random):
+        price = rng.choice((150, 200, 250, 300, 350, 400))
+        if rng.random() < 0.5:
+            base, h = rng.randint(4, 15), rng.randint(3, 10)
+            area = base * h
+            what = f"รูปสี่เหลี่ยมด้านขนาน ฐานยาว {base} เมตร สูง {h} เมตร"
+            wrong_area = base * h // 2 if base * h % 2 == 0 else base + h
+        else:
+            a, b, h = rng.randint(3, 12), rng.randint(3, 12), rng.randint(1, 6) * 2
+            area = (a + b) * h // 2
+            what = f"รูปสี่เหลี่ยมคางหมู ด้านคู่ขนานยาว {a} และ {b} เมตร สูง {h} เมตร"
+            wrong_area = (a + b) * h
+        right = area * price
+        prompt = f"ลานจอดรถเป็น{what} ค่าปูพื้นตารางเมตรละ {price} บาท ต้องจ่ายค่าปูพื้นกี่บาท"
+        # The area worked out wrongly; the area alone; one square metre too many.
+        return MathDraw("", _g(right), prompt=prompt,
+                        distractors=_gk(wrong_area * price, area, right + price, right - price,
+                                        answer=right, lo=1))
+
+
+@question_type("math.quadrilateral_repetition_p5", display_name={"th": "พื้นที่รวมและความยาวรอบรูปซ้ำ"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class QuadrilateralRepetitionP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4703-5-2564-1-3.pdf, ข้อ 2, 6, 12–14, 18 และตอนที่ 2 ข้อ 2",))
+
+    def expr(self, rng: Random):
+        kind = rng.randrange(3)
+        if kind == 0:
+            side, laps = rng.randint(20, 500), rng.randint(1, 15)
+            answer = 4 * side * laps
+            prompt = (f"สนามรูปสี่เหลี่ยมขนมเปียกปูนยาวด้านละ {_dec(side, 1)} เมตร "
+                      f"เดินรอบสนาม {laps} รอบ ได้ระยะทางกี่เมตร")
+            wrongs = [4 * side, side * laps, 2 * side * laps, 4 * side * (laps + 1)]
+            places = 1
+        elif kind == 1:
+            a, b, layers = rng.randint(20, 600), rng.randint(20, 600), rng.randint(1, 5)
+            answer = 2 * (a + b) * layers
+            prompt = (f"ที่ดินรูปสี่เหลี่ยมด้านขนานมีด้านประชิดยาว {_dec(a, 1)} และ {_dec(b, 1)} เมตร "
+                      f"ล้อมลวดรอบที่ดิน {layers} ชั้น ต้องใช้ลวดยาวกี่เมตร")
+            wrongs = [2 * (a + b), (a + b) * layers, (2 * a + b) * layers, answer + 2 * (a + b)]
+            places = 1
+        else:
+            base, height, tiles = rng.randint(20, 500), rng.randint(20, 300), rng.randint(1, 12)
+            answer = base * height * tiles
+            prompt = (f"กระเบื้องรูปสี่เหลี่ยมด้านขนานมีฐาน {_dec(base, 1)} เซนติเมตร "
+                      f"สูง {_dec(height, 1)} เซนติเมตร จำนวน {tiles} แผ่น มีพื้นที่รวมกี่ตารางเซนติเมตร")
+            wrongs = [base * height, (base + height) * 10 * tiles, 20 * (base + height) * tiles, answer + 100]
+            places = 2
+        return MathDraw("", _dec(answer, places), prompt=prompt,
+                        # Omit repetitions; use only part of the boundary; confuse area with a sum.
+                        distractors=_dk(*wrongs, answer=answer, places=places, lo=1))
+
+
+@question_type("math.related_quad_dimensions_p5", display_name={"th": "รูปสี่เหลี่ยมที่ให้ด้านหรือความสูงเป็นเท่าของอีกด้าน"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class RelatedQuadDimensionsP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4703-5-2564-1-3.pdf, ข้อ 16, 17",))
+
+    def expr(self, rng: Random):
+        if rng.choice((True, False)):
+            numerator, denominator = rng.choice(((1, 2), (2, 3), (3, 4)))
+            base = denominator * rng.randint(3, 20)
+            height = base * numerator // denominator
+            answer = base * height
+            prompt = (f"รูปสี่เหลี่ยมขนมเปียกปูนมีฐาน {base} เซนติเมตร "
+                      f"สูงเป็น {numerator}/{denominator} ของฐาน มีพื้นที่กี่ตารางเซนติเมตร")
+            wrongs = [base * base, height, 2 * (base + height), base + height]
+        else:
+            width, multiple = rng.randint(3, 30), rng.randint(2, 5)
+            length = width * multiple
+            answer = 2 * (width + length)
+            prompt = (f"รูปสี่เหลี่ยมด้านขนานมีด้านสั้น {width} เซนติเมตร "
+                      f"ด้านยาวเป็น {multiple} เท่าของด้านสั้น มีความยาวรอบรูปกี่เซนติเมตร")
+            wrongs = [length, length * width, length + width, 2 * width + length]
+        return MathDraw("", str(answer), prompt=prompt,
+                        distractors=_story.keep(*wrongs, answer + 1, answer=answer, lo=1))
+
+
+@question_type("math.parallelogram_land_area_p5", display_name={"th": "พื้นที่สี่เหลี่ยมด้านขนานจากตารางวาเป็นไร่"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class ParallelogramLandAreaP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4703-5-2564-1-3.pdf, ข้อ 19",))
+
+    def expr(self, rng: Random):
+        base, height = 20 * rng.randint(1, 10), 20 * rng.randint(1, 10)
+        square_wa = base * height
+        answer = square_wa // 400
+        return MathDraw("", str(answer),
+                        prompt=(f"ที่ดินรูปสี่เหลี่ยมด้านขนานมีฐาน {base} วา สูง {height} วา "
+                                "มีพื้นที่กี่ไร่ กำหนดให้ 1 ไร่ เท่ากับ 400 ตารางวา"),
+                        distractors=_story.keep(square_wa, square_wa // 100, 2 * (base + height),
+                                                answer + 1, answer=answer, lo=1))
+
+
+@question_type("math.square_area_from_perimeter_p5", display_name={"th": "พื้นที่สี่เหลี่ยมจัตุรัสจากความยาวรอบรูป"},
+               level=LEVEL, topic="พื้นที่รูปสี่เหลี่ยม")
+class SquareAreaFromPerimeterP5(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-5/4703-5-2564-1-3.pdf, ข้อ 20",))
+
+    def expr(self, rng: Random):
+        side = rng.randint(30, 500)
+        perimeter = 4 * side
+        answer = side * side
+        return MathDraw("", _dec(answer, 2),
+                        prompt=f"รูปสี่เหลี่ยมจัตุรัสยาวรอบรูป {_dec(perimeter, 1)} เซนติเมตร มีพื้นที่กี่ตารางเซนติเมตร",
+                        # Answer with the side or perimeter; halve the perimeter; square the perimeter.
+                        distractors=_dk(side * 10, perimeter * 10, 4 * side * side, perimeter * perimeter,
+                                        answer=answer, places=2, lo=1))

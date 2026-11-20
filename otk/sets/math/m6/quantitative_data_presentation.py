@@ -115,3 +115,144 @@ class CumulativeFrequencyM6(QuestionType):
             ask = f"ข้อมูลที่มีค่าน้อยกว่า {upper} คิดเป็นร้อยละเท่าใดของข้อมูลทั้งหมด (ความถี่สะสมสัมพัทธ์)"
             wrongs = [Fraction(100 * freq[j], total), Fraction(100 * prev, total), Fraction(cum)]
         return _num_maths([text(table), text(ask)], _num(right), [_num(w) for w in wrongs], self.topic)
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathDraw, WordProblem  # noqa: E402
+from otk.kit.math_problems import frac_tex  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More frequency tables (2026-11): the class width, the total, a cumulative frequency, a relative frequency
+# as a percent, the modal class, how many classes, and a point of the frequency polygon ──
+
+
+@question_type("math.class_width_m6", display_name={"th": "ความกว้างของอันตรภาคชั้น"}, level=LEVEL, topic=_GROUPED_TOPIC)
+class ClassWidthM6(WordProblem):
+    def expr(self, rng: Random):
+        bins, _, table = _grouped(rng)
+        a, b = bins[0]
+        right = b - a + 1
+        # The written gap; the upper limit; twice.
+        return MathDraw("", str(right), prompt=f"{table}{NL}ความกว้างของอันตรภาคชั้นเท่ากับเท่าใด",
+                        distractors=_nk6(b - a, b, 2 * right, right + 1, answer=right, lo=1))
+
+
+@question_type("math.total_frequency_m6", display_name={"th": "จำนวนข้อมูลทั้งหมดจากตารางแจกแจงความถี่"}, level=LEVEL,
+               topic=_GROUPED_TOPIC)
+class TotalFrequencyM6(WordProblem):
+    def expr(self, rng: Random):
+        bins, freq, table = _grouped(rng)
+        right = sum(freq)
+        return MathDraw("", str(right), prompt=f"{table}{NL}ข้อมูลชุดนี้มีทั้งหมดกี่ค่า",
+                        distractors=_nk6(len(freq), max(freq) * len(freq), right - freq[0], right + freq[-1], answer=right, lo=1))
+
+
+@question_type("math.cumulative_of_class_m6", display_name={"th": "ความถี่สะสมของอันตรภาคชั้น"}, level=LEVEL, topic=_GROUPED_TOPIC)
+class CumulativeOfClassM6(WordProblem):
+    def expr(self, rng: Random):
+        bins, freq, table = _grouped(rng)
+        i = rng.randint(1, 3)
+        a, b = bins[i]
+        right = sum(freq[:i + 1])
+        # The class's own frequency; one class short; one class too many.
+        return MathDraw("", str(right), prompt=f"{table}{NL}ความถี่สะสมของอันตรภาคชั้น {a} – {b} เท่ากับเท่าใด",
+                        distractors=_nk6(freq[i], sum(freq[:i]), sum(freq[:i + 2]), sum(freq[i:]), answer=right, lo=1))
+
+
+@question_type("math.relative_percent_m6", display_name={"th": "ความถี่สัมพัทธ์เป็นร้อยละ"}, level=LEVEL, topic=_GROUPED_TOPIC)
+class RelativePercentM6(WordProblem):
+    def expr(self, rng: Random):
+        bins, freq, table = _grouped(rng, totals=(20, 25, 50))
+        i = rng.randrange(5)
+        a, b = bins[i]
+        total = sum(freq)
+        right = freq[i] * 100 // total
+        # The frequency itself; out of a hundred items; the cumulative share.
+        return MathDraw("", str(right), prompt=f"{table}{NL}อันตรภาคชั้น {a} – {b} มีความถี่สัมพัทธ์คิดเป็นร้อยละเท่าใด",
+                        distractors=_nk6(freq[i], right // 2 if right > 1 else right + 3, sum(freq[:i + 1]) * 100 // total,
+                                         right + 5, answer=right, lo=1))
+
+
+@question_type("math.modal_class_m6", display_name={"th": "อันตรภาคชั้นที่มีความถี่สูงสุด"}, level=LEVEL, topic=_GROUPED_TOPIC)
+class ModalClassM6(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            bins, freq, table = _grouped(rng)
+            if freq.count(max(freq)) == 1:
+                break
+        names = [f"{a} – {b}" for a, b in bins]
+        pick = freq.index(max(freq))
+        return f"{table}{NL}อันตรภาคชั้นใดมีความถี่สูงสุด", names[pick], [x for i, x in enumerate(names) if i != pick]
+
+
+@question_type("math.number_of_classes_m6", display_name={"th": "จำนวนอันตรภาคชั้น"}, level=LEVEL, topic=_GROUPED_TOPIC)
+class NumberOfClassesM6(WordProblem):
+    def expr(self, rng: Random):
+        width = rng.choice((5, 10, 20))
+        low = rng.randint(10, 50)
+        k = rng.randint(4, 10)
+        high = low + width * (k - 1) + rng.randint(1, width - 1)
+        right = -(-(high - low + 1) // width)
+        prompt = f"ข้อมูลมีค่าต่ำสุด {low} และค่าสูงสุด {high} ถ้าแบ่งเป็นอันตรภาคชั้นที่กว้างชั้นละ {width} จะได้อย่างน้อยกี่ชั้น"
+        # The range rounded down; the range itself; one too many.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_nk6((high - low) // width, high - low, right + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.polygon_point_m6", display_name={"th": "จุดบนรูปหลายเหลี่ยมของความถี่"}, level=LEVEL, topic=_GROUPED_TOPIC)
+class PolygonPointM6(ChoiceType):
+    def compose(self, rng: Random):
+        bins, freq, table = _grouped(rng)
+        i = rng.randrange(5)
+        a, b = bins[i]
+        mid = Fraction(a + b, 2)
+        right = f"({_num6(mid)}, {freq[i]})"
+        wrongs = [f"({a}, {freq[i]})", f"({b}, {freq[i]})", f"({_num6(mid)}, {sum(freq[:i + 1])})" if i else f"({_num6(mid)}, {freq[i] + 1})"]
+        return f"{table}{NL}จุดใดอยู่บนรูปหลายเหลี่ยมของความถี่สำหรับอันตรภาคชั้น {a} – {b}", right, wrongs

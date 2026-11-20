@@ -1,7 +1,7 @@
 {
  "sheet_id": "tpho2556_physics",
  "title": "การแข่งขันฟิสิกส์โอลิมปิกระดับชาติ ครั้งที่ 12 (TPhO 2556)",
- "source_pdf": "openthaiknowledge-bank/สอวน_physics/tpho-56-physics/tpho_12_theory.pdf",
+ "source_pdf": "openthaiknowledge-bank/physics/level/upper-secondary/posn-physics/tpho-56-physics/tpho_12_theory.pdf",
  "subject": "ฟิสิกส์",
  "level": "โอลิมปิก (สอวน.)",
  "note": "21 items: 17 from the three theory problems and 4 theory parts of the experiment with synthetic data. The folder has no theory solution, so every theory answer was derived here and checked by an independent route; the lab answers agree with tpho_12_exp_solution.pdf except its part 5 unit (0.13 T should be 0.133 G).",

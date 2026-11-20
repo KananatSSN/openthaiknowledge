@@ -176,3 +176,88 @@ class AreaCrossingCurvesBoundedM6(QuestionType):
                        content_math(rf"y={a * a}"),
                        text(f"ตั้งแต่ x = {-2 * a} ถึง x = {2 * a}")],
                       str(area), wrongs, self.topic)
+
+
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType  # noqa: E402
+from otk.sets._support.math_m6 import M6 as LEVEL  # noqa: E402
+
+
+def _nz6(rng: Random, lo: int, hi: int) -> int:
+    return rng.choice((1, -1)) * rng.randint(lo, hi)
+
+
+def _tk6(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _fk6(*values, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer left out."""
+    return _tk6(*(frac_tex(Fraction(v)) for v in values), answer=frac_tex(answer))
+
+
+def _pt6(x, y) -> str:
+    return f"({frac_tex(Fraction(x))}, {frac_tex(Fraction(y))})"
+
+
+def _nk6(*values: int, answer: int, lo: int | None = None) -> list[str]:
+    """Distinct whole-number distractors, the answer (and values below lo) left out."""
+    return _tk6(*(str(v) for v in values if lo is None or v >= lo), answer=str(answer))
+
+
+def _num6(v) -> str:
+    """A terminating decimal without trailing zeros: Fraction(25, 2) -> 12.5."""
+    v = Fraction(v)
+    sign = "-" if v < 0 else ""
+    v = abs(v)
+    whole, rem = divmod(v.numerator, v.denominator)
+    if not rem:
+        return f"{sign}{whole}"
+    digits = ""
+    for _ in range(6):
+        rem *= 10
+        d, rem = divmod(rem, v.denominator)
+        digits += str(d)
+        if not rem:
+            break
+    return f"{sign}{whole}.{digits.rstrip('0')}"
+
+
+def _dk6(*values, answer) -> list[str]:
+    """Distinct decimal distractors, the answer left out."""
+    return _tk6(*(_num6(v) for v in values), answer=_num6(answer))
+
+# ── More areas between curves (2026-11): a parabola and a line through the origin, two facing parabolas, and
+# a cubic with a line in the first quadrant ──
+
+
+@question_type("math.parabola_and_line_m6", display_name={"th": "พื้นที่ระหว่าง y = x² กับ y = kx"}, level=LEVEL, topic="พื้นที่ระหว่างเส้นโค้ง")
+class ParabolaAndLineM6(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(1, 8)
+        right = Fraction(k ** 3, 6)
+        return MathDraw(rf"y = x^{{2}}, \quad y = {k if k > 1 else ''}x", frac_tex(right), prompt="จงหาพื้นที่ของบริเวณที่ปิดล้อมด้วยเส้นโค้งทั้งสอง",
+                        distractors=_fk6(Fraction(k ** 3, 3), Fraction(k ** 3, 2), Fraction(k ** 2, 6), Fraction(k ** 3, 12), answer=right))
+
+
+@question_type("math.facing_parabolas_m6", display_name={"th": "พื้นที่ระหว่างพาราโบลาสองเส้นที่หันเข้าหากัน"}, level=LEVEL,
+               topic="พื้นที่ระหว่างเส้นโค้ง")
+class FacingParabolasM6(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 4)
+        right = Fraction(8 * a ** 3, 3)
+        return MathDraw(rf"y = x^{{2}}, \quad y = {2 * a * a} - x^{{2}}", frac_tex(right), prompt="จงหาพื้นที่ของบริเวณที่ปิดล้อมด้วยเส้นโค้งทั้งสอง",
+                        distractors=_fk6(Fraction(4 * a ** 3, 3), Fraction(16 * a ** 3, 3), 4 * a ** 3, Fraction(2 * a ** 3, 3), answer=right))
+
+
+@question_type("math.cubic_and_line_m6", display_name={"th": "พื้นที่ระหว่าง y = x³ กับ y = a²x ในจตุภาคที่ 1"}, level=LEVEL,
+               topic="พื้นที่ระหว่างเส้นโค้ง")
+class CubicAndLineM6(MathType):
+    def expr(self, rng: Random):
+        a = rng.randint(1, 5)
+        right = Fraction(a ** 4, 4)
+        return MathDraw(rf"y = x^{{3}}, \quad y = {a * a if a > 1 else ''}x, \quad x \ge 0", frac_tex(right),
+                        prompt="จงหาพื้นที่ของบริเวณที่ปิดล้อมด้วยเส้นโค้งทั้งสองในจตุภาคที่ 1",
+                        distractors=_fk6(Fraction(a ** 4, 2), Fraction(3 * a ** 4, 4), Fraction(a ** 4, 12), a ** 3, answer=right))

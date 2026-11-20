@@ -118,3 +118,224 @@ class FractionMultistepWordP6(QuestionType):
         return GeneratedQuestion(stem=stem, correct=[content_math(as_mixed(value))],
                                  distractors=fixed(*[[content_math(w)] for w in wrongs]),
                                  topic=self.topic)
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More fractions and mixed numbers (2026-11): a mixed number times or divided by a whole number, a part of
+# a part, the largest of four, a reciprocal, a missing factor, and a mixed number as an improper fraction ──
+
+
+def _plain6(value: Fraction) -> str:
+    """A fraction for Thai prompt text, outside TeX: 2 1/3, 3/4, or 5."""
+    whole, rem = divmod(value.numerator, value.denominator)
+    if not rem:
+        return str(whole)
+    return f"{whole} {rem}/{value.denominator}" if whole else f"{rem}/{value.denominator}"
+
+
+def _mixed6(rng: Random) -> Fraction:
+    d = rng.randint(2, 9)
+    return rng.randint(1, 5) + Fraction(rng.randint(1, d - 1), d)
+
+
+@question_type("math.mixed_times_whole_p6", display_name={"th": "จำนวนคละคูณจำนวนนับ"},
+               level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class MixedTimesWholeP6(MathType):
+    def expr(self, rng: Random):
+        m = _mixed6(rng)
+        k = rng.randint(2, 9)
+        right = m * k
+        whole = m.numerator // m.denominator
+        part = m - whole
+        # Only the whole part multiplied; only the fraction; the whole number added.
+        return MathDraw(f"{as_mixed(m)} \\times {k}", as_mixed(right), prompt="จงหาผลคูณ",
+                        distractors=_fk6(whole * k + part, part * k + whole, m + k, right + 1, answer=right))
+
+
+@question_type("math.mixed_divide_whole_p6", display_name={"th": "จำนวนคละหารด้วยจำนวนนับ"},
+               level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class MixedDivideWholeP6(MathType):
+    def expr(self, rng: Random):
+        m = _mixed6(rng)
+        k = rng.randint(2, 6)
+        right = m / k
+        # Multiplied instead; the divisor upside down on the wrong side; the whole part alone divided.
+        whole = m.numerator // m.denominator
+        return MathDraw(f"{as_mixed(m)} \\div {k}", as_mixed(right), prompt="จงหาผลหาร",
+                        distractors=_fk6(m * k, k / m, Fraction(whole, k) + (m - whole), right + Fraction(1, k),
+                                         answer=right))
+
+
+@question_type("math.part_of_part_p6", display_name={"th": "เศษส่วนของเศษส่วน"},
+               level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class PartOfPartP6(WordProblem):
+    def expr(self, rng: Random):
+        d1, d2 = rng.randint(2, 6), rng.randint(2, 6)
+        f1, f2 = Fraction(rng.randint(1, d1 - 1), d1), Fraction(rng.randint(1, d2 - 1), d2)
+        right = f1 * f2
+        prompt = (f"สวนแห่งหนึ่งปลูกผัก {_plain6(f1)} ของพื้นที่ทั้งหมด และ {_plain6(f2)} ของพื้นที่ปลูกผักเป็นผักบุ้ง "
+                  "ผักบุ้งคิดเป็นเศษส่วนเท่าใดของพื้นที่ทั้งหมด")
+        # Added instead; the part left of the vegetables; the first fraction alone.
+        return MathDraw("", as_mixed(right), prompt=prompt,
+                        distractors=_fk6(f1 + f2, f1 * (1 - f2), f1, abs(f1 - f2), answer=right))
+
+
+@question_type("math.largest_fraction_p6", display_name={"th": "เศษส่วนที่มากที่สุดหรือน้อยที่สุด"},
+               level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class LargestFractionP6(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            fs = []
+            for _ in range(4):
+                d = rng.randint(3, 12)
+                fs.append(Fraction(rng.randint(1, d - 1), d))
+            if len(set(fs)) == 4:
+                break
+        most = rng.random() < 0.5
+        right = max(fs) if most else min(fs)
+        return (f"เศษส่วนใด{'มากที่สุด' if most else 'น้อยที่สุด'}", as_mixed(right),
+                [as_mixed(f) for f in fs if f != right])
+
+
+@question_type("math.reciprocal_p6", display_name={"th": "ส่วนกลับของเศษส่วนและจำนวนคละ"},
+               level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class ReciprocalP6(MathType):
+    def expr(self, rng: Random):
+        m = _mixed6(rng) if rng.random() < 0.5 else Fraction(rng.randint(2, 11), rng.randint(2, 12))
+        while m.denominator == 1 or m.numerator == 1:
+            m = _mixed6(rng)
+        right = f"\\frac{{{m.denominator}}}{{{m.numerator}}}"
+        whole, rem = divmod(m.numerator, m.denominator)
+        # The fraction part flipped with the whole kept; the number itself; its whole part over one.
+        wrongs = [f"{whole}\\frac{{{m.denominator}}}{{{rem}}}" if whole else f"\\frac{{{m.numerator}}}{{{m.denominator + 1}}}",
+                  as_mixed(m), f"\\frac{{{m.numerator}}}{{{m.denominator}}}" if whole else f"\\frac{{1}}{{{m.numerator}}}"]
+        return MathDraw(as_mixed(m), right, prompt="ส่วนกลับของจำนวนนี้คือข้อใด",
+                        distractors=[w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.fraction_missing_factor_p6", display_name={"th": "หาตัวคูณที่หายไป (เศษส่วน)"},
+               level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class FractionMissingFactorP6(MathType):
+    def expr(self, rng: Random):
+        d = rng.randint(2, 9)
+        f = Fraction(rng.randint(1, d - 1), d)
+        right = Fraction(rng.randint(2, 9), rng.choice((1, 1, 2, 3)))
+        product = f * right
+        # The product multiplied instead of divided; the factor upside down; the product itself.
+        return MathDraw(f"{as_mixed(f)} \\times \\square = {as_mixed(product)}", as_mixed(right),
+                        prompt="จำนวนใดเติมใน □ แล้วทำให้ประโยคเป็นจริง",
+                        distractors=_fk6(product * f, 1 / right, product, right + 1, answer=right))
+
+
+@question_type("math.mixed_to_improper_p6", display_name={"th": "เขียนจำนวนคละเป็นเศษเกิน"},
+               level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class MixedToImproperP6(MathType):
+    def expr(self, rng: Random):
+        d = rng.randint(2, 9)
+        whole, rem = rng.randint(1, 9), rng.randint(1, d - 1)
+        top = whole * d + rem
+        right = f"\\frac{{{top}}}{{{d}}}"
+        # The whole times the top; the whole and top added; the whole times the bottom alone.
+        wrongs = [f"\\frac{{{whole * rem + d}}}{{{d}}}", f"\\frac{{{whole + rem}}}{{{d}}}", f"\\frac{{{whole * d}}}{{{d}}}",
+                  f"\\frac{{{top}}}{{{d + whole}}}"]
+        return MathDraw(f"{whole}\\frac{{{rem}}}{{{d}}}", right, prompt="เขียนจำนวนคละนี้เป็นเศษเกิน",
+                        distractors=[w for w in dict.fromkeys(wrongs) if w != right])
+
+
+@question_type("math.mixed_remaining_model_p6", display_name={"th": "เลือกนิพจน์ส่วนที่เหลือหรือส่วนที่ยังขาดเมื่อมีจำนวนคละสองส่วน"}, level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class MixedRemainingModelP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 9,11',))
+
+    def compose(self, rng: Random):
+        a, b = _mixed6(rng), _mixed6(rng)
+        total = a + b + _mixed6(rng) + 5
+        need = rng.choice((False, True))
+        prompt = (f"ต้องการผ้า {_plain6(total)} เมตร มีแล้ว {_plain6(a)} เมตร และ {_plain6(b)} เมตร ต้องซื้อเพิ่มกี่เมตร"
+                  if need else f"มีผ้า {_plain6(total)} เมตร ตัดไป {_plain6(a)} เมตร และ {_plain6(b)} เมตร เหลือกี่เมตร")
+        answer = total - a - b
+        candidates = [(f"{total} + ({a} + {b})", total + a + b), (f"{total} − ({a} − {b})", total - a + b),
+                      (f"{a} + {b}", a + b), (f"{total} − {a}", total - a), (f"{total} − {b}", total - b)]
+        seen, wrongs = {answer}, []
+        for label, value in candidates:
+            if value not in seen:
+                seen.add(value)
+                wrongs.append(label)
+        return prompt + " เลือกนิพจน์คำนวณ", f"{total} − ({a} + {b})", wrongs
+
+
+@question_type("math.two_fraction_purchases_model_p6", display_name={"th": "เลือกนิพจน์ราคารวมสินค้าสองชนิดที่น้ำหนักเป็นจำนวนคละ"}, level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class TwoFractionPurchasesModelP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 12',))
+
+    def compose(self, rng: Random):
+        a, b = _mixed6(rng), _mixed6(rng)
+        p, q = rng.sample(range(12, 61), 2)
+        answer = a * p + b * q
+        candidates = [(f"({a} × {p}) − ({b} × {q})", a * p - b * q),
+                      (f"({a} + {b}) × {p}", (a + b) * p), (f"({a} + {b}) × {q}", (a + b) * q),
+                      (f"{a} × {p}", a * p), (f"{b} × {q}", b * q)]
+        seen, wrongs = {answer}, []
+        for label, value in candidates:
+            if value not in seen:
+                seen.add(value)
+                wrongs.append(label)
+        return (f"ซื้อข้าวสาร {_plain6(a)} กิโลกรัม ราคากิโลกรัมละ {p} บาท และแป้ง {_plain6(b)} กิโลกรัม "
+                f"ราคากิโลกรัมละ {q} บาท ราคารวมคำนวณด้วยนิพจน์ใด", f"({a} × {p}) + ({b} × {q})", wrongs)
+
+
+@question_type("math.fraction_order_statement_p6", display_name={"th": "ตรวจแถวจำนวนคละที่เรียงครบทุกคู่ตามทิศทาง"}, level=LEVEL, topic="เศษส่วนและจำนวนคละ")
+class FractionOrderStatementP6(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/primary-6/4898-6-2565-1-2.pdf, ข้อ 7',))
+
+    def compose(self, rng: Random):
+        fractions = (Fraction(1, 2), Fraction(2, 3), Fraction(3, 4), Fraction(4, 5), Fraction(1, 3), Fraction(1, 4), Fraction(1, 5), Fraction(5, 6))
+        asc = rng.choice((False, True))
+        correct = rng.randrange(4)
+        labels = []
+        wholes = rng.sample(range(5), 4)
+        for i in range(4):
+            whole = wholes[i]
+            values = sorted([whole + f for f in rng.sample(fractions, 3)], reverse=not asc)
+            if i != correct:
+                swap = rng.randrange(2)
+                values[swap], values[swap + 1] = values[swap + 1], values[swap]
+            labels.append(" , ".join(_plain6(v) for v in values))
+        # Different rows intentionally contain different values; each row is checked on its own.
+        return (f"แถวใดเรียงจำนวน{'จากน้อยไปมาก' if asc else 'จากมากไปน้อย'}ถูกต้องตลอดแถว", labels[correct],
+                [label for i, label in enumerate(labels) if i != correct])

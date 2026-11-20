@@ -199,3 +199,202 @@ class WeightKgKhitP1(WordProblem):
                         prompt=(f"ชั่ง{x}ใส่ตะกร้าได้ {a} {unit} ตะกร้าเปล่าหนัก {b} {unit} "
                                 f"{x}หนักกี่{unit}"),
                         distractors=_story.keep(a + b, a, a - b + 1, answer=a - b))
+
+
+# ── More measuring (2026-11): how much longer, two lengths joined, kilograms compared, and choosing the
+# unit ──
+
+from otk.kit.concept_bank import Concept, ConceptBankType  # noqa: E402
+
+_LONG_THINGS = (("ดินสอ", "แท่ง"), ("ไม้บรรทัด", "อัน"), ("ยางลบ", "ก้อน"), ("ริบบิ้น", "เส้น"),
+                ("เชือก", "เส้น"), ("หลอดดูดน้ำ", "หลอด"))
+_HEAVY_THINGS = ("แตงโม", "ฟักทอง", "ถุงข้าวสาร", "ถุงส้ม", "กล่องหนังสือ", "สุนัข")
+
+
+@question_type("math.length_difference_p1", display_name={"th": "ยาวกว่ากันกี่เซนติเมตร"},
+               level=LEVEL, topic="การวัด")
+class LengthDifferenceP1(WordProblem):
+    def expr(self, rng: Random):
+        (x, _), (y, _) = rng.sample(_LONG_THINGS, 2)
+        a = rng.randint(8, 30)
+        b = rng.randint(2, a - 2)
+        right = a - b
+        prompt = f"{x}ยาว {a} เซนติเมตร {y}ยาว {b} เซนติเมตร {x}ยาวกว่า{y}กี่เซนติเมตร"
+        # Added instead; one of the lengths; one off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a + b, a, b, right + 1, answer=right, lo=1))
+
+
+@question_type("math.join_lengths_p1", display_name={"th": "ต่อความยาวสองชิ้น"},
+               level=LEVEL, topic="การวัด")
+class JoinLengthsP1(WordProblem):
+    def expr(self, rng: Random):
+        unit = rng.choice(("เซนติเมตร", "เมตร"))
+        a, b = rng.randint(3, 40), rng.randint(3, 40)
+        right = a + b
+        thing = rng.choice(("ริบบิ้น", "เชือก", "สายไฟ"))
+        prompt = f"นำ{thing}ยาว {a} {unit} มาต่อกับ{thing}ยาว {b} {unit} จะได้{thing}ยาวกี่{unit}"
+        # Subtracted; tens added without the ones carried; one off.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(abs(a - b), _no_carry_sum(a, b), right + 1, right - 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.weight_compare_kg_p1", display_name={"th": "เปรียบเทียบน้ำหนักเป็นกิโลกรัม"},
+               level=LEVEL, topic="การวัด")
+class WeightCompareKgP1(WordProblem):
+    def expr(self, rng: Random):
+        x, y = rng.sample(_HEAVY_THINGS, 2)
+        a = rng.randint(5, 20)
+        b = rng.randint(1, a - 1)
+        heavier = rng.random() < 0.5
+        if heavier:
+            right = a - b
+            prompt = f"{x}หนัก {a} กิโลกรัม {y}หนัก {b} กิโลกรัม {x}หนักกว่า{y}กี่กิโลกรัม"
+            wrong = a + b
+        else:
+            right = a + b
+            prompt = f"{x}หนัก {a} กิโลกรัม {y}หนัก {b} กิโลกรัม รวมกันหนักกี่กิโลกรัม"
+            wrong = a - b
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(wrong, a, right + 1, right - 1, answer=right, lo=1))
+
+
+@question_type("math.choose_unit_p1", display_name={"th": "เลือกหน่วยวัดให้เหมาะสม"},
+               level=LEVEL, topic="การวัด")
+class ChooseUnitP1(ConceptBankType):
+    ITEMS = [
+        Concept("วัดความยาวของดินสอควรใช้หน่วยใด", "เซนติเมตร", ("เมตร", "กิโลกรัม", "ขีด")),
+        Concept("วัดความยาวของห้องเรียนควรใช้หน่วยใด", "เมตร", ("เซนติเมตร", "กิโลกรัม", "ขีด")),
+        Concept("ชั่งน้ำหนักของถุงข้าวสารควรใช้หน่วยใด", "กิโลกรัม", ("เมตร", "เซนติเมตร", "ลิตร")),
+        Concept("ชั่งน้ำหนักของขนมหนึ่งถุงเล็ก ๆ ควรใช้หน่วยใด", "ขีด", ("เมตร", "เซนติเมตร", "กิโลกรัม")),
+        Concept("วัดความสูงของต้นไม้ใหญ่ควรใช้หน่วยใด", "เมตร", ("เซนติเมตร", "ขีด", "กิโลกรัม")),
+        Concept("วัดความยาวของยางลบควรใช้หน่วยใด", "เซนติเมตร", ("เมตร", "กิโลกรัม", "ขีด")),
+        Concept("ชั่งน้ำหนักของตัวเราควรใช้หน่วยใด", "กิโลกรัม", ("ขีด", "เมตร", "เซนติเมตร")),
+        Concept("วัดความยาวของสนามฟุตบอลควรใช้หน่วยใด", "เมตร", ("เซนติเมตร", "ขีด", "กิโลกรัม")),
+    ]
+
+
+@question_type("math.length_comparison_statement_p1", display_name={"th": "เลือกข้อความเปรียบเทียบความยาวที่ถูกต้อง"},
+               level=LEVEL, topic="การวัด")
+class LengthComparisonStatementP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4017-1-2567-2-3.pdf, ตอนที่ 1 ข้อ 19",))
+
+    def compose(self, rng: Random):
+        a, b = rng.sample(range(5, 50), 2)
+        longer, shorter = ("ริบบิ้นสีแดง", "ริบบิ้นสีฟ้า") if a > b else ("ริบบิ้นสีฟ้า", "ริบบิ้นสีแดง")
+        gap = abs(a - b)
+        return (f"ริบบิ้นสีแดงยาว {a} เซนติเมตร ริบบิ้นสีฟ้ายาว {b} เซนติเมตร ข้อใดถูกต้อง",
+                f"{longer}ยาวกว่า{shorter} {gap} เซนติเมตร",
+                # Reverse the subjects; sum instead of difference; mis-subtract one.
+                [f"{shorter}ยาวกว่า{longer} {gap} เซนติเมตร",
+                 f"{longer}ยาวกว่า{shorter} {a + b} เซนติเมตร",
+                 f"{longer}ยาวกว่า{shorter} {gap + 1} เซนติเมตร"])
+
+
+@question_type("math.measuring_tool_p1", display_name={"th": "เลือกเครื่องมือวัดความยาวให้เหมาะกับงาน"},
+               level=LEVEL, topic="การวัด")
+class MeasuringToolP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4018-1-2567-2-2.pdf, ข้อ 5–6",))
+
+    def compose(self, rng: Random):
+        tools = ("ไม้บรรทัดแข็งยาว 30 เซนติเมตร", "ไม้เมตรแข็งยาว 100 เซนติเมตร",
+                 "สายวัดผ้าอ่อนยาว 150 เซนติเมตร", "เครื่องชั่งน้ำหนัก")
+        kind = rng.randrange(3)
+        if kind == 2:
+            obj = rng.choice(("รอบเอว", "รอบศีรษะ", "รอบแขน"))
+            length = rng.randint(25, 80)
+            stem = (f"ต้องการวัด{obj}ประมาณ {length} เซนติเมตร โดยให้เครื่องมือโค้งแนบตามรอบได้ "
+                    "ควรใช้เครื่องมือใด")
+        else:
+            length = rng.randint(8, 28) if kind == 0 else rng.randint(40, 95)
+            obj = rng.choice(("แถบกระดาษ", "แผ่นไม้", "ริบบิ้นที่วางเหยียดตรง"))
+            stem = (f"ต้องการวัดความยาว{obj}ประมาณ {length} เซนติเมตร "
+                    "โดยใช้เครื่องมือแข็งที่สั้นที่สุดที่ทาบครั้งเดียวได้ ควรใช้เครื่องมือใด")
+        # Wrong tools fail the needed length, flexibility, or measured quantity.
+        return stem, tools[kind], [tool for i, tool in enumerate(tools) if i != kind]
+
+
+@question_type("math.weight_difference_pairs_p1", display_name={"th": "เปรียบเทียบผลต่างน้ำหนักต่างหน่วย"},
+               level=LEVEL, topic="การวัด")
+class WeightDifferencePairsP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4018-1-2567-2-2.pdf, ข้อ 11",))
+
+    def compose(self, rng: Random):
+        # All four pairs have a distinct gap in ขีด. Bound the search space
+        # directly rather than retrying a draw until one maximum exists.
+        gaps = rng.sample(range(1, 10), 4)
+        pairs = []
+        for gap in gaps:
+            kg = rng.randint(1, 4)
+            khit = 10 * kg + rng.choice((-gap, gap))
+            pairs.append((kg, khit))
+        labels = [f"{kg} กิโลกรัม กับ {khit} ขีด" for kg, khit in pairs]
+        right = max(range(4), key=lambda i: abs(10 * pairs[i][0] - pairs[i][1]))
+        # The other actual pairs are distractors: compare the displayed
+        # numerals without normalizing units, or rank weights instead of gaps.
+        return ("กำหนดให้ 1 กิโลกรัม เท่ากับ 10 ขีด คู่ใดมีน้ำหนักต่างกันมากที่สุด",
+                labels[right], [label for i, label in enumerate(labels) if i != right])
+
+
+@question_type("math.scale_kg_khit_p1", display_name={"th": "อ่านขีดแบ่งบนเครื่องชั่ง"},
+               level=LEVEL, topic="การวัด")
+class ScaleKgKhitP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4018-1-2567-2-2.pdf, ข้อ 7, 12",))
+
+    def compose(self, rng: Random):
+        kg, ticks = rng.randint(1, 5), rng.randint(1, 9)
+        readings = [(kg, ticks), (kg, 10 - ticks), (kg + 1, ticks), (kg, ticks - 1), (kg, ticks + 1)]
+        def label(k, t):
+            k, t = k + t // 10, t % 10
+            return f"{k} กิโลกรัม {t} ขีด"
+        answer = label(kg, ticks)
+        # Counting backwards, reading the next kilogram, or being off by one
+        # tick. Remove the complement collision at the midpoint (5 ขีด).
+        wrong = list(dict.fromkeys(label(k, t) for k, t in readings if label(k, t) != answer))
+        return (f"เครื่องชั่งแบ่งช่วงระหว่างเลขกิโลกรัมติดกันเป็น 10 ช่วงเท่ากัน ช่วงละ 1 ขีด "
+                f"เข็มอยู่เลยขีด {kg} กิโลกรัม ไปทาง {kg + 1} กิโลกรัม {ticks} ช่วงเล็ก "
+                "อ่านน้ำหนักได้เท่าไร", answer, wrong)
+
+
+@question_type("math.closest_weight_pair_p1", display_name={"th": "เลือกคู่น้ำหนักที่ใกล้เคียงกันที่สุด"},
+               level=LEVEL, topic="การวัด")
+class ClosestWeightPairP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/4006-1-2565-2-2.pdf, ข้อ 11",))
+
+    def compose(self, rng: Random):
+        gaps = rng.sample(range(1, 10), 4)
+        pairs = []
+        for gap in gaps:
+            kg = rng.randint(1, 4)
+            khit = kg * 10 + rng.choice((-gap, gap))
+            pairs.append((kg, khit))
+        right = min(range(4), key=lambda i: abs(10 * pairs[i][0] - pairs[i][1]))
+        labels = [f"{kg} กิโลกรัม กับ {khit} ขีด" for kg, khit in pairs]
+        # Other real pairs represent ranking the raw numerals or choosing the
+        # largest gap instead of the smallest after normalizing units.
+        return ("กำหนดให้ 1 กิโลกรัม เท่ากับ 10 ขีด คู่ใดมีน้ำหนักใกล้เคียงกันมากที่สุด",
+                labels[right], [label for i, label in enumerate(labels) if i != right])
+
+
+@question_type("math.length_order_names_p1", display_name={"th": "เรียงชื่อสิ่งของตามความยาว"},
+               level=LEVEL, topic="การวัด")
+class LengthOrderNamesP1(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-1/3994-1-2564-2-2.pdf, ข้อ 3–4",))
+
+    def compose(self, rng: Random):
+        names = ("สีแดง", "สีฟ้า", "สีเขียว", "สีเหลือง")
+        lengths = dict(zip(names, rng.sample(range(5, 81), 4)))
+        reverse = rng.choice((False, True))
+        ordered = sorted(names, key=lengths.get, reverse=reverse)
+        wrongs = [ordered[::-1], [ordered[1], ordered[0], *ordered[2:]],
+                  [ordered[0], ordered[2], ordered[1], ordered[3]]]
+        data = " · ".join(f"{name}ยาว {lengths[name]} เซนติเมตร" for name in names)
+        return (f"ริบบิ้น {data} เรียงชื่อริบบิ้นจาก{'ยาวไปสั้น' if reverse else 'สั้นไปยาว'}ได้อย่างไร",
+                " → ".join(ordered), [" → ".join(w) for w in wrongs])

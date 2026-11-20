@@ -163,3 +163,106 @@ class CompositeAreaFigureP6(QuestionType):
             # The notch's two edges left out.
             wrongs = _nums_math_diagrams(2 * (w + h) - cw - ch, 2 * (w + h) + cw + ch, w + h, answer=ans, lo=1)
         return _math_q([text(ask), _img(f.asset_id, figure_alt(f))], str(ans), wrongs, self.topic)
+
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import ChoiceType, WordProblem  # noqa: E402
+from otk.sets._support.math_p4 import as_mixed  # noqa: E402
+from otk.sets._support.math_p6 import LEVEL  # noqa: E402
+
+
+def _g6(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572{,}318."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk6(*values: int, answer: int, lo: int = 0, hi: int | None = None) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g6(int(v)) for v in _story.keep(*values, answer=answer, lo=lo, hi=hi)]
+
+
+def _d6(value: int, places: int) -> str:
+    """An integer count of 10**-places as a decimal, trailing zeros dropped: (2350, 3) -> 2.35."""
+    sign = "-" if value < 0 else ""
+    whole, frac = divmod(abs(value), 10 ** places)
+    digits = str(frac).rjust(places, "0").rstrip("0") if places else ""
+    return f"{sign}{whole}.{digits}" if digits else f"{sign}{whole}"
+
+
+def _dk6(*values: int, answer: int, places: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for decimals held as integer counts of 10**-places."""
+    return [_d6(int(v), places) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+def _fk6(*values: Fraction, answer: Fraction) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer and non-positive values left out."""
+    out: list[str] = []
+    for v in values:
+        if v > 0 and v != answer and as_mixed(v) not in out:
+            out.append(as_mixed(v))
+    return out
+
+
+# ── More triangle areas (2026-11): a right triangle from its two short sides, the largest of four, a
+# rectangle with a triangle cut out, and two triangles on one base ──
+
+
+@question_type("math.right_triangle_area_p6", display_name={"th": "พื้นที่รูปสามเหลี่ยมมุมฉาก"},
+               level=LEVEL, topic="พื้นที่รูปสามเหลี่ยม")
+class RightTriangleAreaP6(WordProblem):
+    def expr(self, rng: Random):
+        a = rng.randint(2, 15) * 2
+        b = rng.randint(3, 30)
+        right = a * b // 2
+        prompt = (f"รูปสามเหลี่ยมมุมฉากมีด้านประกอบมุมฉากยาว {a} และ {b} เซนติเมตร "
+                  "มีพื้นที่กี่ตารางเซนติเมตร")
+        # Not halved; the sides added; the sides added and doubled.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(a * b, a + b, 2 * (a + b), right + a, answer=right, lo=1))
+
+
+@question_type("math.largest_triangle_area_p6", display_name={"th": "รูปสามเหลี่ยมใดมีพื้นที่มากที่สุด"},
+               level=LEVEL, topic="พื้นที่รูปสามเหลี่ยม")
+class LargestTriangleAreaP6(ChoiceType):
+    def compose(self, rng: Random):
+        while True:
+            dims = [(rng.randint(2, 10) * 2, rng.randint(3, 20)) for _ in range(4)]
+            areas = [b * h // 2 for b, h in dims]
+            if len(set(areas)) == 4:
+                break
+        texts = [f"ฐาน {b} ซม. สูง {h} ซม." for b, h in dims]
+        most = rng.random() < 0.5
+        pick = areas.index(max(areas) if most else min(areas))
+        return (f"รูปสามเหลี่ยมใดมีพื้นที่{'มากที่สุด' if most else 'น้อยที่สุด'}", texts[pick],
+                [t for i, t in enumerate(texts) if i != pick])
+
+
+@question_type("math.rectangle_minus_triangle_p6", display_name={"th": "พื้นที่ที่เหลือเมื่อตัดรูปสามเหลี่ยมออก"},
+               level=LEVEL, topic="พื้นที่รูปสามเหลี่ยม")
+class RectangleMinusTriangleP6(WordProblem):
+    def expr(self, rng: Random):
+        w = rng.randint(6, 30)
+        h = rng.randint(2, 15) * 2
+        base = rng.randint(2, w - 2)
+        tri = base * h // 2
+        right = w * h - tri
+        prompt = (f"แผ่นกระดาษรูปสี่เหลี่ยมผืนผ้ากว้าง {h} ซม. ยาว {w} ซม. ตัดรูปสามเหลี่ยมที่มีฐาน {base} ซม. "
+                  f"และสูง {h} ซม. ออก เหลือพื้นที่กี่ตารางเซนติเมตร")
+        # The triangle not halved; the triangle alone; the whole sheet.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(w * h - base * h, tri, w * h, w * h + tri, answer=right, lo=1))
+
+
+@question_type("math.two_triangles_one_base_p6", display_name={"th": "รูปสามเหลี่ยมสองรูปที่มีฐานร่วมกัน"},
+               level=LEVEL, topic="พื้นที่รูปสามเหลี่ยม")
+class TwoTrianglesOneBaseP6(WordProblem):
+    def expr(self, rng: Random):
+        base = rng.randint(2, 15) * 2
+        h1, h2 = sorted(rng.sample(range(3, 30), 2))
+        right = base * (h2 - h1) // 2
+        prompt = (f"รูปสามเหลี่ยมสองรูปมีฐานเดียวกันยาว {base} เซนติเมตร รูปแรกสูง {h1} เซนติเมตร "
+                  f"รูปที่สองสูง {h2} เซนติเมตร รูปที่สองมีพื้นที่มากกว่ารูปแรกกี่ตารางเซนติเมตร")
+        # Not halved; the heights' difference; both areas added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(base * (h2 - h1), h2 - h1, base * (h1 + h2) // 2, right + base,
+                                                answer=right, lo=1))

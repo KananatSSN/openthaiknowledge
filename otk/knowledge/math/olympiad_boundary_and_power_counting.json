@@ -12,7 +12,7 @@
     "เลือกจุดสามจุดจากทั้งหมด km จุดโดยยังไม่ตรวจความเป็นสามเหลี่ยม",
     "ใช้ความนูนของรูปเพื่อเห็นว่าเส้นตรงตัดขอบได้มากสุดสองจุด เว้นแต่เส้นนั้นเป็นด้านหนึ่ง แล้วลบสามจุดบนด้านเดียวกันสำหรับทุกด้าน"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 8}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 8}],
    "covered_by": ["math.convex_boundary_triangles_olympiad"]
   },
   {
@@ -24,7 +24,7 @@
     "แทนการเลือกด้วยจำนวนครั้ง c_i ของแต่ละกำลัง โดยผลรวม c_i=t และใช้หลักดาวกับขีดนับมัลติเซต",
     "พิสูจน์ว่าผลบวกไม่ชนกันจากเลขโดดฐาน b เมื่อ t<b และตรวจกรณีทดเลขเพียงแบบเดียวเมื่อ t=b"
    ],
-   "sources": [{"sheet": "สอวน_math/posn1-69-math.pdf", "item": 9}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 9}],
    "covered_by": ["math.distinct_power_sums_olympiad"]
   }
  ]

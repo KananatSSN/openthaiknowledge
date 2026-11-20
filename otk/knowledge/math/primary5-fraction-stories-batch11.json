@@ -1,0 +1,138 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "โจทย์ปัญหาเศษส่วน",
+ "level": "ป.5",
+ "units": [
+  {
+   "id": "math.primary5.fraction-batch-count",
+   "kind": "procedure",
+   "title": "หาจำนวนครั้งจากเศษส่วนของทั้งหมด",
+   "statement": "หารปริมาณทั้งหมดด้วยส่วนที่ใช้ต่อครั้ง หรือหาส่วนกลับของเศษส่วนเมื่อใช้เท่ากันทุกครั้ง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หารปริมาณทั้งหมดด้วยส่วนที่ใช้ต่อครั้ง หรือหาส่วนกลับของเศษส่วนเมื่อใช้เท่ากันทุกครั้ง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.fraction_word_muldiv_p5",
+    "math.pieces_from_length_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.fraction-remaining-stories",
+   "kind": "procedure",
+   "title": "หาปริมาณที่เหลือเมื่อใช้เป็นเศษส่วน",
+   "statement": "หาสัดส่วนที่เหลือแล้วคูณปริมาณเดิม โดยแยกเศษส่วนของทั้งหมดกับปริมาณที่ใช้จริง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "หาสัดส่วนที่เหลือแล้วคูณปริมาณเดิม โดยแยกเศษส่วนของทั้งหมดกับปริมาณที่ใช้จริง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.fraction_remaining_p5",
+    "math.fraction_of_amount_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.fraction-story-addsub",
+   "kind": "procedure",
+   "title": "บวกและลบปริมาณเศษส่วนหลายจำนวน",
+   "statement": "เปลี่ยนจำนวนคละเป็นเศษเกิน ทำส่วนให้เท่ากัน แล้วบวกลบปริมาณตามเรื่อง",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนจำนวนคละเป็นเศษเกิน ทำส่วนให้เท่ากัน แล้วบวกลบปริมาณตามเรื่อง",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 3
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.fraction_word_addsub_p5",
+    "math.mixed_fractions"
+   ]
+  },
+  {
+   "id": "math.primary5.fraction-story-product",
+   "kind": "procedure",
+   "title": "คูณอัตราต่อหน่วยกับปริมาณเศษส่วน",
+   "statement": "เปลี่ยนจำนวนคละเป็นเศษเกินแล้วคูณอัตรากับจำนวนหน่วย",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "เปลี่ยนจำนวนคละเป็นเศษเกินแล้วคูณอัตรากับจำนวนหน่วย",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.fraction_word_muldiv_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.reserve-fraction-daily-budget",
+   "kind": "procedure",
+   "title": "เก็บเงินเป็นเศษส่วนแล้วแบ่งใช้หลายวัน",
+   "statement": "ลบส่วนที่เก็บจากจำนวนทั้งหมดก่อน แล้วหารเงินที่เหลือด้วยจำนวนวันที่ใช้",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ลบส่วนที่เก็บจากจำนวนทั้งหมดก่อน แล้วหารเงินที่เหลือด้วยจำนวนวันที่ใช้",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4724-5-2567-2-3.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.reserve_fraction_daily_budget_p5"
+   ]
+  }
+ ]
+}

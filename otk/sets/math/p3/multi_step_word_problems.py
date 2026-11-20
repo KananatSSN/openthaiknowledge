@@ -140,3 +140,206 @@ class TwoStepWordProblemP3(WordProblem):
         return MathDraw("", str(v), prompt=story,
                         distractors=_story.keep(*_whole_values(wrongs), v + 10, v - 1,
                                                 answer=v, lo=0))
+
+
+# ── More two-step word problems (2026-11): two kinds bought, buy then share, save then spend, empty seats,
+# loads delivered, two rooms compared, and pages still to read ──
+from otk.core.registry import question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_p3 import LEVEL  # noqa: E402
+
+
+@question_type("math.buy_two_kinds_p3", display_name={"th": "ซื้อของสองชนิดหลายชิ้น"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class BuyTwoKindsP3(WordProblem):
+    def expr(self, rng: Random):
+        m, a, n, b = rng.randint(2, 9), rng.randint(5, 60), rng.randint(2, 9), rng.randint(5, 60)
+        right = m * a + n * b
+        x, y = rng.sample(("สมุด", "ปากกา", "ยางลบ", "ไม้บรรทัด", "ดินสอสี"), 2)
+        prompt = f"ซื้อ{x} {m} ชิ้น ชิ้นละ {a} บาท และ{y} {n} ชิ้น ชิ้นละ {b} บาท ต้องจ่ายเงินทั้งหมดกี่บาท"
+        # Every number added; only one kind; the counts and prices crossed.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(m + a + n + b, m * a, (m + n) * (a + b), m * b + n * a,
+                                                answer=right, lo=1))
+
+
+@question_type("math.buy_then_share_p3", display_name={"th": "ซื้อมาแล้วแบ่งให้เท่า ๆ กัน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class BuyThenShareP3(WordProblem):
+    def expr(self, rng: Random):
+        people = rng.randint(2, 9)
+        each = rng.randint(3, 20)
+        per_box = rng.choice((6, 8, 10, 12, 24))
+        while (people * each) % per_box:
+            each += 1
+        boxes = people * each // per_box
+        prompt = (f"ครูซื้อลูกอม {boxes} ถุง ถุงละ {per_box} เม็ด แบ่งให้นักเรียน {people} คนเท่า ๆ กัน "
+                  f"ได้คนละกี่เม็ด")
+        # The total not shared; shared by bags; one more each.
+        return MathDraw("", str(each), prompt=prompt,
+                        distractors=_story.keep(boxes * per_box, per_box // people if per_box > people else people,
+                                                each + 1, boxes, answer=each, lo=1))
+
+
+@question_type("math.save_then_spend_p3", display_name={"th": "ออมเงินแล้วใช้ไป"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class SaveThenSpendP3(WordProblem):
+    def expr(self, rng: Random):
+        per, days = rng.choice((10, 15, 20, 25)), rng.randint(10, 30)
+        spend = rng.randint(1, per * days // 10) * 10
+        right = per * days - spend
+        p = rng.choice(_story.NAMES)
+        prompt = f"{p}ออมเงินวันละ {per} บาท เป็นเวลา {days} วัน แล้วซื้อหนังสือราคา {spend} บาท {p}เหลือเงินกี่บาท"
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(per * days, per * days + spend, per + days - spend, right + per,
+                                                answer=right, lo=0))
+
+
+@question_type("math.empty_seats_p3", display_name={"th": "เก้าอี้ว่างกี่ตัว"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class EmptySeatsP3(WordProblem):
+    def expr(self, rng: Random):
+        rows, per = rng.randint(5, 20), rng.randint(8, 25)
+        seats = rows * per
+        people = rng.randint(seats // 2, seats - 1)
+        right = seats - people
+        prompt = (f"หอประชุมจัดเก้าอี้ {rows} แถว แถวละ {per} ตัว มีนักเรียนมานั่ง {people} คน "
+                  f"คนละหนึ่งตัว เหลือเก้าอี้ว่างกี่ตัว")
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(seats, rows + per - people, right + per, right - 1, answer=right, lo=0))
+
+
+@question_type("math.loads_delivered_p3", display_name={"th": "ขนของหลายเที่ยวแล้วยังเหลือ"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class LoadsDeliveredP3(WordProblem):
+    def expr(self, rng: Random):
+        per, trips, left = rng.randint(20, 90), rng.randint(3, 9), rng.randint(5, 60)
+        right = per * trips + left
+        prompt = (f"รถบรรทุกขนกล่องได้เที่ยวละ {per} กล่อง ขนไปแล้ว {trips} เที่ยว ยังเหลือกล่องอีก {left} กล่อง "
+                  f"เดิมมีกล่องทั้งหมดกี่กล่อง")
+        # The left-over subtracted; one trip too few; the numbers added.
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(per * trips - left, per * (trips - 1) + left, per + trips + left,
+                                                per * trips, answer=right, lo=1))
+
+
+@question_type("math.two_rooms_compare_p3", display_name={"th": "เปรียบเทียบจำนวนที่จัดเป็นแถวสองห้อง"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class TwoRoomsCompareP3(WordProblem):
+    def expr(self, rng: Random):
+        while True:
+            a, b, c, d = rng.randint(3, 9), rng.randint(4, 12), rng.randint(3, 9), rng.randint(4, 12)
+            if a * b != c * d:
+                break
+        if a * b < c * d:
+            a, b, c, d = c, d, a, b
+        right = a * b - c * d
+        prompt = (f"ห้องแรกจัดโต๊ะ {a} แถว แถวละ {b} ตัว ห้องที่สองจัดโต๊ะ {c} แถว แถวละ {d} ตัว "
+                  f"ห้องแรกมีโต๊ะมากกว่าห้องที่สองกี่ตัว")
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(abs(a - c) + abs(b - d), a * b + c * d, abs(b - d), right + 1,
+                                                answer=right, lo=1))
+
+
+@question_type("math.pages_left_p3", display_name={"th": "อ่านหนังสือแล้วเหลืออีกกี่หน้า"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class PagesLeftP3(WordProblem):
+    def expr(self, rng: Random):
+        per, days = rng.randint(8, 25), rng.randint(3, 10)
+        read = per * days
+        total = read + rng.randint(10, 200)
+        right = total - read
+        p = rng.choice(_story.NAMES)
+        prompt = f"หนังสือเล่มหนึ่งมี {total} หน้า {p}อ่านวันละ {per} หน้า เป็นเวลา {days} วัน เหลืออีกกี่หน้า"
+        return MathDraw("", str(right), prompt=prompt,
+                        distractors=_story.keep(read, total - per, right - per, total - per - days, answer=right, lo=1))
+
+
+@question_type("math.half_then_daily_budget_p3", display_name={"th": "แบ่งเงินครึ่งหนึ่งแล้วเฉลี่ยใช้รายวัน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class HalfThenDailyBudgetP3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4357-3-2567-2-3.pdf, ข้อ 10",))
+
+    def expr(self, rng: Random):
+        days, per_day = rng.randint(3, 14), rng.randint(15, 450)
+        total = 2 * days * per_day
+        answer = (total // 2) // days
+        return MathDraw("", str(answer),
+                        prompt=(f"มีเงิน {total} บาท แบ่งให้น้องครึ่งหนึ่ง "
+                                f"นำเงินที่เหลือไปใช้ {days} วัน วันละเท่า ๆ กัน ใช้เงินได้วันละกี่บาท"),
+                        # Forget to halve; stop after halving; subtract days.
+                        distractors=_story.keep(total // days, total // 2, total // 2 - days,
+                                                total - days, answer=answer, lo=0))
+
+
+@question_type("math.resale_profit_unit_price_p3", display_name={"th": "ตั้งราคาขายต่อชิ้นให้ได้กำไรรวมที่กำหนด"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class ResaleProfitUnitPriceP3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4357-3-2567-2-3.pdf, ข้อ 18",))
+
+    def expr(self, rng: Random):
+        count, price = rng.randint(2, 9), rng.randint(100, 999)
+        # The two inputs need not separately divide by count; add them
+        # before dividing, as in the source (2167 + 500) / 3.
+        profit = rng.randint(10, (price * count) // 2)
+        cost = count * price - profit
+        revenue = cost + profit
+        answer = revenue // count
+        return MathDraw("", str(answer),
+                        prompt=(f"ซื้อของเล่น {count} ชิ้น เป็นเงินรวม {cost} บาท "
+                                f"ต้องการขายของเล่นทั้งหมดให้ได้กำไรรวม {profit} บาท "
+                                "โดยขายชิ้นละเท่า ๆ กัน ต้องตั้งราคาขายชิ้นละกี่บาท"),
+                        # Divide cost only; subtract the profit; stop at revenue;
+                        # add the whole profit to each item's cost.
+                        distractors=_story.keep(cost // count, (cost - profit) // count,
+                                                revenue, cost // count + profit,
+                                                cost // count + profit // count,
+                                                answer=answer, lo=0))
+
+
+@question_type("math.unit_price_from_balance_p3", display_name={"th": "หาราคาต่อชิ้นจากเงินก่อนซื้อและเงินเหลือ"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class UnitPriceFromBalanceP3(WordProblem):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4357-3-2567-2-3.pdf, ข้อ 20",))
+
+    def expr(self, rng: Random):
+        count, each, left = rng.randint(2, 9), rng.randint(20, 490), rng.randint(100, 3000)
+        start = count * each + left
+        spent = start - left
+        answer = spent // count
+        return MathDraw("", str(answer),
+                        prompt=(f"มีเงิน {start} บาท ซื้อสมุด {count} เล่ม ราคาเล่มละเท่า ๆ กัน "
+                                f"เหลือเงิน {left} บาท สมุดราคาเล่มละกี่บาท"),
+                        # Total spending; divide original cash or balance alone;
+                        # treat the number of items as another cash amount.
+                        distractors=_story.keep(spent, start // count, left // count,
+                                                spent - count, each + 1, answer=answer, lo=0))
+
+
+@question_type("math.purchase_sentence_models_p3", display_name={"th": "สร้างประโยคสัญลักษณ์ซื้อสองชนิดและแบ่งผ่อน"},
+               level=LEVEL, topic="โจทย์ปัญหาระคน")
+class PurchaseSentenceModelsP3(QuestionType):
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/level/primary-3/4358-3-2567-2-2.pdf, ข้อ 18–19",))
+
+    def build(self, rng: Random) -> GeneratedQuestion:
+        if rng.choice((False, True)):
+            a, c = rng.sample(range(2, 10), 2)
+            b, d = rng.sample(range(5, 100), 2)
+            prompt = (f"ซื้อสมุด {a} เล่ม เล่มละ {b} บาท และปากกา {c} ด้าม ด้ามละ {d} บาท "
+                      "ต้องจ่ายทั้งหมดกี่บาท เลือกประโยคสัญลักษณ์")
+            correct = rf"({a}\times {b})+({c}\times {d})"
+            wrongs = [rf"({a}+{c})\times({b}+{d})", rf"({a}\times {d})+({c}\times {b})",
+                      rf"({a}+{b})+({c}+{d})"]
+        else:
+            months, each, paid = rng.randint(3, 24), rng.randint(10, 500), rng.randint(100, 5000)
+            total = paid + months * each
+            prompt = (f"โทรศัพท์ราคา {total} บาท จ่ายล่วงหน้า {paid} บาท ส่วนที่เหลือแบ่งจ่าย "
+                      f"{months} เดือนเท่า ๆ กัน เดือนละกี่บาท เลือกประโยคสัญลักษณ์")
+            correct = rf"({total}-{paid})\div {months}"
+            wrongs = [rf"{total}-({paid}\div {months})", rf"({total}-{paid})-{months}",
+                      rf"({total}-{paid})\times {months}"]
+        return _maths([text(prompt)], correct + r"=\square", [w + r"=\square" for w in wrongs], self.topic)

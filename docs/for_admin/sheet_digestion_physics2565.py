@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = "สอวน_physics/posn1-65-physics.pdf"
+SOURCE = "physics/level/upper-secondary/posn-physics/posn1-65-physics.pdf"
 UNITS = {
     1: ("exponent-constant-units", "เลขชี้กำลังต้องไม่มีหน่วย ค่าคงตัวที่หารปริมาณในเลขชี้กำลังจึงมีหน่วยเดียวกับปริมาณนั้น", "หาหน่วย SI ของปริมาณในเลขชี้กำลัง", "ให้ค่าคงตัวมีหน่วยเดียวกันเพื่อให้ผลหารไม่มีหน่วย"),
     2: ("parallel-source-branches", "แหล่งจ่ายต่อขนานผ่านตัวต้านทานเท่ากันมีแรงดันระหว่างสายเป็นค่าเฉลี่ยของแรงเคลื่อน", "ใช้กฎโหนดหาแรงดันระหว่างสาย", "หากระแสแต่ละแขนงจากผลต่างแรงเคลื่อนกับแรงดันสายหารความต้านทาน"),

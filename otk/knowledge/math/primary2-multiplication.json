@@ -1,0 +1,99 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การคูณ",
+ "level": "ป.2",
+ "units": [
+  {
+   "id": "math.primary2.equal-groups",
+   "kind": "procedure",
+   "title": "หาจำนวนรวมของกลุ่มเท่า ๆ กัน",
+   "statement": "คูณจำนวนกลุ่มด้วยจำนวนสิ่งของในแต่ละกลุ่ม",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "คูณจำนวนกลุ่มด้วยจำนวนสิ่งของในแต่ละกลุ่ม",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 13
+    },
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.multiplication_word_problem_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.half-dozen",
+   "kind": "procedure",
+   "title": "แปลครึ่งโหลเป็นจำนวนชิ้น",
+   "statement": "ครึ่งโหลมี 6 ชิ้น จึงคูณจำนวนกล่องด้วย 6",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "ครึ่งโหลมี 6 ชิ้น จึงคูณจำนวนกล่องด้วย 6",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.half_dozen_packs_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.daily-week",
+   "kind": "procedure",
+   "title": "สะสมรายวันครบสัปดาห์",
+   "statement": "หนึ่งสัปดาห์มี 7 วัน คูณจำนวนต่อวันด้วย 7 เมื่อทำทุกวัน",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "หนึ่งสัปดาห์มี 7 วัน คูณจำนวนต่อวันด้วย 7 เมื่อทำทุกวัน",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4157-2-2564-1-3.pdf",
+     "item": 16
+    }
+   ],
+   "covered_by": [
+    "math.daily_total_weeks_p2"
+   ]
+  },
+  {
+   "id": "math.primary2.pack-price",
+   "kind": "procedure",
+   "title": "คิดราคาแพ็คโดยตัดข้อมูลที่ไม่เกี่ยวข้อง",
+   "statement": "คูณราคาต่อแพ็คด้วยจำนวนแพ็ค ไม่ใช้จำนวนสีซึ่งไม่ใช่ราคา",
+   "steps": [
+    "ระบุสิ่งที่ทราบและสิ่งที่ต้องการหา",
+    "คูณราคาต่อแพ็คด้วยจำนวนแพ็ค ไม่ใช้จำนวนสีซึ่งไม่ใช่ราคา",
+    "ตรวจคำตอบกับข้อมูลและหน่วยในโจทย์"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-2/4178-2-2567-2-3.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.pack_price_irrelevant_p2"
+   ]
+  }
+ ]
+}

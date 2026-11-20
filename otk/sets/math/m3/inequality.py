@@ -18,7 +18,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem, frac_tex, poly_tex
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem, frac_tex, poly_tex
 from otk.sets._support.math_bank_real import M3, _tex_q
 from otk.sets._support.math_m3 import LEGACY
 from otk.sets._support.math_p2 import _maths
@@ -191,7 +191,7 @@ class InequalityOrderPropertiesM3(QuestionType):
         ask = "ข้อใดเป็นจริงเสมอ" if ask_true else "ข้อใดไม่จำเป็นต้องเป็นจริง"
         stem = [text("กำหนดให้ a, b และ c เป็นจำนวนจริง โดยที่"), *premise, text(ask)]
         return _tex_q(stem, right, pool_wrong[:3], self.topic)
-InequalityOrderPropertiesM3.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/rathcenter/3 จำนวนจริง',))
+InequalityOrderPropertiesM3.PROVENANCE = Provenance("adapted", sources=('openthaiknowledge-bank/mathematics/level/upper-secondary/rathcenter/3-real-numbers',))
 
 
 @question_type("math.inequality_word_problem_m3",
@@ -204,3 +204,175 @@ class InequalityWordProblemM3(WordProblem):
         return MathDraw("", str(ans), prompt=story,
                         distractors=_story.keep(ans + 1, ans - 1, ans + 2, ans * 2, answer=ans, lo=1))
 InequalityWordProblemM3.PROVENANCE = Provenance("original")
+
+from fractions import Fraction  # noqa: E402
+
+from otk.core.registry import QuestionType, question_type  # noqa: E402
+from otk.kit.math_problems import MathType, WordProblem  # noqa: E402
+from otk.sets._support.math_m3 import LEVEL  # noqa: E402
+
+
+def _fk3(*values: Fraction, answer: Fraction, lo: Fraction | None = None) -> list[str]:
+    """Distinct fraction distractors as TeX, the answer (and values below lo) left out."""
+    out: list[str] = []
+    for v in values:
+        v = Fraction(v)
+        if v == answer or (lo is not None and v < lo) or frac_tex(v) in out:
+            continue
+        out.append(frac_tex(v))
+    return out
+
+
+def _tk3(*values: str, answer: str) -> list[str]:
+    """Distinct TeX distractors, the answer left out."""
+    return [v for v in dict.fromkeys(values) if v != answer]
+
+
+def _roots3(a: int, b: int) -> str:
+    lo, hi = sorted((a, b))
+    return rf"x = {lo}, \; {hi}"
+
+
+def _g3(n: int) -> str:
+    """A whole number in TeX with grouped thousands: 4{,}572."""
+    return f"{n:,}".replace(",", "{,}")
+
+
+def _gk3(*values: int, answer: int, lo: int = 0) -> list[str]:
+    """``story.keep`` for grouped numbers."""
+    return [_g3(int(v)) for v in _story.keep(*values, answer=answer, lo=lo)]
+
+
+# ── More inequalities (2026-11): how many integers fit, the largest integer, a fraction of x, and x on both
+# sides ──
+
+
+@question_type("math.inequality_count_integers_m3", display_name={"th": "นับจำนวนเต็มที่เป็นคำตอบของอสมการ"},
+               level=LEVEL, topic="อสมการเชิงเส้น")
+class InequalityCountIntegersM3(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 5)
+        b = rng.randint(-9, 9)
+        lo_x, hi_x = sorted(rng.sample(range(-8, 12), 2))
+        lo, hi = k * lo_x + b, k * hi_x + b
+        right = hi_x - lo_x
+        # Both ends counted; neither end; the values of kx + b counted.
+        return MathDraw(rf"{lo} < {poly_tex((k, 'x'), (b, ''))} \le {hi}", str(right),
+                        prompt="มีจำนวนเต็ม x กี่จำนวนที่สอดคล้องกับอสมการนี้",
+                        distractors=_tk3(str(right + 1), str(right - 1), str(hi - lo), str(hi - lo + 1), answer=str(right)))
+
+
+@question_type("math.inequality_largest_integer_m3", display_name={"th": "จำนวนเต็มที่มากที่สุดที่เป็นคำตอบ"},
+               level=LEVEL, topic="อสมการเชิงเส้น")
+class InequalityLargestIntegerM3(MathType):
+    def expr(self, rng: Random):
+        k = rng.randint(2, 9)
+        bound = rng.randint(-6, 15)
+        b = rng.randint(-20, 20)
+        rhs = k * bound + b
+        right = bound - 1
+        # The bound itself; the bound before dividing; one less again.
+        return MathDraw(rf"{poly_tex((k, 'x'), (b, ''))} < {rhs}", str(right),
+                        prompt="จำนวนเต็มที่มากที่สุดที่สอดคล้องกับอสมการนี้คือจำนวนใด",
+                        distractors=_tk3(str(bound), str(rhs - b), str(right - 1), str(bound + 1), answer=str(right)))
+
+
+@question_type("math.inequality_fraction_m3", display_name={"th": "อสมการที่มีเศษส่วนของ x"},
+               level=LEVEL, topic="อสมการเชิงเส้น")
+class InequalityFractionM3(MathType):
+    def expr(self, rng: Random):
+        d = rng.randint(2, 6)
+        b = rng.randint(1, 12)
+        c = rng.randint(-10, 15)
+        while c == b:
+            c = rng.randint(-10, 15)
+        bound = d * (c - b)
+        sign, other = rng.choice(((">", "<"), ("<", ">")))
+        right = f"x {sign} {bound}"
+        # Not multiplied by d; the constant added; the sign turned.
+        wrongs = [f"x {sign} {c - b}", f"x {sign} {d * (c + b)}", f"x {other} {bound}"]
+        return MathDraw(rf"\frac{{x}}{{{d}}} + {b} {sign} {c}", right, prompt="จงหาคำตอบของอสมการ",
+                        distractors=_tk3(*wrongs, answer=right))
+
+
+@question_type("math.inequality_both_sides_m3", display_name={"th": "อสมการที่มีตัวแปรทั้งสองข้าง"},
+               level=LEVEL, topic="อสมการเชิงเส้น")
+class InequalityBothSidesM3(MathType):
+    def expr(self, rng: Random):
+        p = rng.randint(4, 9)
+        q = rng.randint(1, p - 1)
+        x0 = rng.randint(-8, 12)
+        b = rng.randint(-15, 15)
+        d = (p - q) * x0 + b
+        right = rf"x \ge {x0}"
+        # The x terms added; the constants not moved across; the sign turned.
+        wrongs = [rf"x \ge {(d - b) // (p + q)}" if (d - b) % (p + q) == 0 else rf"x \ge {x0 + 1}",
+                  rf"x \ge {(d + b) // (p - q)}" if (d + b) % (p - q) == 0 else rf"x \ge {x0 - 1}", rf"x \le {x0}"]
+        return MathDraw(rf"{poly_tex((p, 'x'), (b, ''))} \ge {poly_tex((q, 'x'), (d, ''))}", right,
+                        prompt="จงหาคำตอบของอสมการ", distractors=_tk3(*wrongs, answer=right))
+
+
+InequalityCountIntegersM3.PROVENANCE = Provenance("original")
+InequalityLargestIntegerM3.PROVENANCE = Provenance("original")
+InequalityFractionM3.PROVENANCE = Provenance("original")
+InequalityBothSidesM3.PROVENANCE = Provenance("original")
+
+
+@question_type("math.inequality_representation_m3", display_name={"th": "แปลเส้นจำนวนและข้อความเป็นอสมการ"}, level={"th": "ม.3"}, topic="อสมการเชิงเส้น")
+class InequalityRepresentationM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 1–2",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            bound=rng.randint(-15,15)
+            closed=rng.choice((False,True))
+            right=rng.choice((False,True))
+            point="ทึบ" if closed else "โปร่ง"
+            direction="ขวา" if right else "ซ้าย"
+            relation=("≥" if closed else ">") if right else ("≤" if closed else "<")
+            return (f"เส้นจำนวนมีจุด{point}ที่ {bound} และรังสีแสดงคำตอบไปทาง{direction} "
+                    "เซตคำตอบตรงกับอสมการใด",f"x {relation} {bound}",
+                    [f"x {r} {bound}" for r in ("<","≤",">","≥") if r!=relation])
+        divisor,extra,cap=rng.randint(2,9),rng.randint(2,15),rng.randint(20,99)
+        relation,word,opposite=rng.choice((("≤","ไม่เกิน","ไม่น้อยกว่า"),("≥","ไม่น้อยกว่า","ไม่เกิน")))
+        def phrase(grouped,comparison):
+            part=f"ผลบวกของ x กับ {extra}" if grouped else "x"
+            tail="" if grouped else f" แล้วบวก {extra}"
+            return f"นำ{part}หารด้วย {divisor}{tail} ผลลัพธ์{comparison} {cap}"
+        return (f"อสมการ (x + {extra}) ÷ {divisor} {relation} {cap} ตรงกับข้อความใด",
+                phrase(True,word),[phrase(False,word),phrase(True,opposite),phrase(False,opposite)])
+
+
+@question_type("math.age_constraint_m3", display_name={"th": "หาขอบเขตอายุจำนวนเต็มจากอสมการ"}, level={"th": "ม.3"}, topic="อสมการเชิงเส้น")
+class AgeConstraintM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 12,15",))
+
+    def compose(self,rng: Random):
+        if rng.choice((False,True)):
+            multiplier,years,limit=rng.randint(3,5),rng.randint(6,12),rng.randint(6,15)
+            cap=(multiplier+1)*limit+2*years+rng.randint(0,multiplier)
+            return (f"ปัจจุบันแม่มีอายุเป็น {multiplier} เท่าของลูก อีก {years} ปี "
+                    f"อายุรวมของทั้งสองไม่เกิน {cap} ปี ถ้าอายุปัจจุบันเป็นจำนวนเต็มปี ลูกมีอายุได้มากที่สุดกี่ปี",
+                    str((cap-2*years)//(multiplier+1)),[str(limit+1),str(limit-1),str(cap//(multiplier+1))])
+        gap1,gap2,base=rng.randint(2,6),rng.randint(3,9),rng.randint(5,15)
+        cap=3*base+2*gap2+gap1
+        answer=base+gap2+gap1+1
+        return (f"พี่มีอายุมากกว่าคนกลางอยู่ {gap1} ปี และคนกลางมีอายุมากกว่าน้องอยู่ {gap2} ปี "
+                f"อายุทั้งสามรวมกันมากกว่า {cap} ปี ทุกคนมีอายุเป็นจำนวนเต็มปี คนที่อายุมากที่สุดต้องมีอายุอย่างน้อยกี่ปี",
+                str(answer),[str(answer-1),str(answer-gap1),str(answer-gap1-gap2)])
+
+
+@question_type("math.rectangle_area_bound_m3", display_name={"th": "หาขอบเขตพื้นที่จากอสมการเส้นรอบรูป"}, level={"th": "ม.3"}, topic="อสมการเชิงเส้น")
+class RectangleAreaBoundM3(ChoiceType):
+    PROVENANCE = Provenance("adapted", sources=("openthaiknowledge-bank/mathematics/level/secondary-3/5196-3-2564-1.pdf, ข้อ 14",))
+
+    def compose(self,rng: Random):
+        multiplier,extra,bound=rng.randint(2,5),rng.randint(2,9),rng.randint(4,15)
+        perimeter=2*((multiplier+1)*bound+extra)
+        area=bound*(multiplier*bound+extra)
+        wrongs=[bound*bound,bound*(bound+extra),(bound-1)*(multiplier*(bound-1)+extra)]
+        if len(set(wrongs))<3:
+            wrongs[2]=(bound+1)*(multiplier*(bound+1)+extra)
+        return (f"สี่เหลี่ยมผืนผ้ายาวเป็น {multiplier} เท่าของความกว้างบวก {extra} เซนติเมตร "
+                f"รอบรูปมากกว่า {perimeter} เซนติเมตร มิติเป็นจำนวนจริงบวก พื้นที่มีค่ามากกว่า A เสมอ โดย A มากที่สุดเท่าที่เป็นไปได้ A เท่ากับกี่ตารางเซนติเมตร",
+                str(area),[str(v) for v in wrongs])

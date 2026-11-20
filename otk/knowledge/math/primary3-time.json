@@ -1,0 +1,35 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "เวลา",
+ "level": "ป.3",
+ "units": [
+  {
+   "id": "math.primary3.activity-time-lookup",
+   "kind": "procedure",
+   "title": "อ่านเวลาเริ่มกิจกรรมจากบันทึก",
+   "statement": "หารายการกิจกรรมที่ถามในบันทึก แล้วอ่านเวลาแถวเดียวกันโดยคงชั่วโมงและนาที",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่ถาม",
+    "หารายการกิจกรรมที่ถามในบันทึก แล้วอ่านเวลาแถวเดียวกันโดยคงชั่วโมงและนาที",
+    "ตรวจความสัมพันธ์และหน่วยของคำตอบ"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4352-3-2565-1-2.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4352-3-2565-1-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4352-3-2565-1-2.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.activity_time_lookup_p3"
+   ]
+  }
+ ]
+}

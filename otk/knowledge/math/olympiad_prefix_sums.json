@@ -14,7 +14,7 @@
     "เลือกปลายเซกเตอร์หลังจุดที่ผลรวมสะสมถึงเป้าหมายและก่อนจุดถัดไป ทำให้มุมเล็กกว่า 90 องศา"
    ],
    "sources": [
-    {"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 3}
+    {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 3}
    ],
    "covered_by": ["math.prefix_pigeonhole_olympiad"]
   }

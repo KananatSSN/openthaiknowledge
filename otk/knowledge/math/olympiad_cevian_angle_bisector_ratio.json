@@ -13,7 +13,7 @@
     "ใช้เมเนเลาส์กับเส้น DNE ในสามเหลี่ยม ABC และกับเส้น BEF ในสามเหลี่ยม ACD",
     "ได้ CF/FD=AC/AD แล้วใช้บทกลับของทฤษฎีบทเส้นแบ่งครึ่งมุมภายนอก"
    ],
-   "sources": [{"sheet": "สอวน_math/posn-national-65-math.pdf", "item": 9}],
+   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-65-math.pdf", "item": 9}],
    "covered_by": ["math.cevian_angle_bisector_ratio_olympiad"]
   }
  ]

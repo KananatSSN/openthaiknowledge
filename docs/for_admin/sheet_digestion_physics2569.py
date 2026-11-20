@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = "สอวน_physics/posn1-69-physics.pdf"
+SOURCE = "physics/level/upper-secondary/posn-physics/posn1-69-physics.pdf"
 UNITS = {
     1: ('energy-fraction-collision', '', '', ''),
     2: ('pegged-pendulum-period', 'ลูกตุ้มที่มีหมุดขวางแกว่งครึ่งรอบด้วยความยาวเต็มและครึ่งรอบด้วยความยาวที่เหลือ คาบรวมเป็นผลบวกครึ่งคาบทั้งสอง', 'หาครึ่งคาบของแต่ละความยาว', 'รวมเป็นคาบเต็มแล้วเทียบกับคาบเดิม'),

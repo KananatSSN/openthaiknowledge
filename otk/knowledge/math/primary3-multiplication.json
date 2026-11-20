@@ -1,0 +1,64 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "การคูณ",
+ "level": "ป.3",
+ "units": [
+  {
+   "id": "math.primary3.multiplicative-comparison",
+   "kind": "procedure",
+   "title": "หาจำนวนที่เป็นหลายเท่าของอีกจำนวน",
+   "statement": "ใช้จำนวนเท่าคูณจำนวนที่ทราบ ไม่ใช้การบวกจำนวนเท่ากับจำนวนเดิม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "ใช้จำนวนเท่าคูณจำนวนที่ทราบ ไม่ใช้การบวกจำนวนเท่ากับจำนวนเดิม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4357-3-2567-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4357-3-2567-2-3.pdf",
+     "item": 3
+    }
+   ],
+   "covered_by": [
+    "math.multiplication_word_problem_p3"
+   ]
+  },
+  {
+   "id": "math.primary3.equal-group-total",
+   "kind": "procedure",
+   "title": "รวมจำนวนกลุ่มที่เท่ากัน",
+   "statement": "คูณจำนวนกลุ่มหรือจำนวนวันด้วยจำนวนต่อกลุ่มหรือต่อวันเพื่อหาจำนวนรวม",
+   "steps": [
+    "ระบุข้อมูลและสิ่งที่โจทย์ถาม",
+    "คูณจำนวนกลุ่มหรือจำนวนวันด้วยจำนวนต่อกลุ่มหรือต่อวันเพื่อหาจำนวนรวม",
+    "ตรวจคำตอบและหน่วยกับเรื่องราว"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-3/4357-3-2567-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4357-3-2567-2-3.pdf",
+     "item": 4
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4357-3-2567-2-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-3/4357-3-2567-2-3.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.multiplication_word_problem_p3",
+    "math.buy_several_p3"
+   ]
+  }
+ ]
+}

@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = "สอวน_physics/posn1-68-physics.pdf"
+SOURCE = "physics/level/upper-secondary/posn-physics/posn1-68-physics.pdf"
 UNITS = {
     1: ('projectile-direction-height', 'ความเร็วแนวระดับของโพรเจกไทล์คงที่ ความสูงที่ทิศความเร็วเป็นมุม β หาได้จาก (u_y²−v_y²)/(2g) โดย v_y = u_x tanβ', 'หาองค์ประกอบความเร็วแนวดิ่งที่จุดนั้น', 'ใช้ v²=u²−2gh แนวดิ่ง'),
     2: ('offset-disc-collision-direction', '', '', ''),

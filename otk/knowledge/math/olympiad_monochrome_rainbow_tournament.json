@@ -14,7 +14,7 @@
         "Count neighbors of one vertex across q colors and construct equality by slopes"
       ],
       "sources": [
-        {"sheet": "สอวน_math/posn-national-66-math.pdf", "item": 4}
+        {"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-66-math.pdf", "item": 4}
       ],
       "covered_by": ["math.monochrome_rainbow_tournament_olympiad"]
     }

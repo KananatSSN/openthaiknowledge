@@ -13,7 +13,7 @@
         "Bound visits on each diagonal by k",
         "Use boundary and nested L-shaped routes to attain the bound"
       ],
-      "sources": [{"sheet": "สอวน_math/posn-national-63-math.pdf", "item": 9}],
+      "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn-national-63-math.pdf", "item": 9}],
       "covered_by": ["math.monotone_grid_fleet_olympiad"]
     }
   ]

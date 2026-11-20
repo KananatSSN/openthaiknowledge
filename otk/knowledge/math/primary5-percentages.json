@@ -1,0 +1,364 @@
+{
+ "subject": "คณิตศาสตร์",
+ "topic": "ร้อยละ",
+ "level": "ป.5",
+ "units": [
+  {
+   "id": "math.primary5.percent-of-amount",
+   "kind": "procedure",
+   "title": "หาจำนวนที่เป็นร้อยละของทั้งหมด",
+   "statement": "คูณจำนวนทั้งหมดด้วยอัตราร้อยละแล้วหารด้วย 100 โดยใช้ค่าทศนิยมของอัตราอย่างถูกต้อง",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "คูณจำนวนทั้งหมดด้วยอัตราร้อยละแล้วหารด้วย 100 โดยใช้ค่าทศนิยมของอัตราอย่างถูกต้อง",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 1
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 10
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 12
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 7
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 10
+    }
+   ],
+   "covered_by": [
+    "math.percent_of_quantity_p5",
+    "math.decimal_multiply_p5",
+    "math.percent_part_sentence_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.percent-complement",
+   "kind": "procedure",
+   "title": "หาจำนวนส่วนที่เหลือ",
+   "statement": "ใช้ร้อยละ 100 ลบอัตราของส่วนที่ทราบ แล้วคูณสัดส่วนที่เหลือด้วยจำนวนทั้งหมด",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "ใช้ร้อยละ 100 ลบอัตราของส่วนที่ทราบ แล้วคูณสัดส่วนที่เหลือด้วยจำนวนทั้งหมด",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 2
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 8
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 9
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 22
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 14
+    }
+   ],
+   "covered_by": [
+    "math.percent_left_over_p5",
+    "math.percent_of_quantity_p5",
+    "math.percent_remainder_sentence_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.inclusive-threshold",
+   "kind": "procedure",
+   "title": "ใช้เกณฑ์ร้อยละแบบไม่ต่ำกว่า",
+   "statement": "คำนวณคะแนนเกณฑ์ แล้วรวมผู้ได้คะแนนเท่ากับเกณฑ์ด้วยเมื่อคำถามใช้คำว่าไม่ต่ำกว่า",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "คำนวณคะแนนเกณฑ์ แล้วรวมผู้ได้คะแนนเท่ากับเกณฑ์ด้วยเมื่อคำถามใช้คำว่าไม่ต่ำกว่า",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 3
+    }
+   ],
+   "covered_by": [
+    "math.percent_pass_table_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.year-end-bonus",
+   "kind": "procedure",
+   "title": "รวมเงินออมก่อนคำนวณเงินเพิ่มปลายปี",
+   "statement": "รวมเงินออมรายเดือนทั้ง 12 เดือนก่อน แล้วคิดเงินเพิ่มตามร้อยละของยอดรวม ตามแบบจำลองการจ่ายปลายปีที่ระบุชัด",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "รวมเงินออมรายเดือนทั้ง 12 เดือนก่อน แล้วคิดเงินเพิ่มตามร้อยละของยอดรวม ตามแบบจำลองการจ่ายปลายปีที่ระบุชัด",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 4
+    }
+   ],
+   "covered_by": [
+    "math.monthly_savings_bonus_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.percent-share-difference",
+   "kind": "procedure",
+   "title": "หาส่วนต่างของส่วนแบ่งตามร้อยละ",
+   "statement": "หาจำนวนของทั้งสองส่วนจากฐานเดียวกันแล้วลบกัน หรือคูณทั้งหมดด้วยผลต่างของอัตราร้อยละ",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หาจำนวนของทั้งสองส่วนจากฐานเดียวกันแล้วลบกัน หรือคูณทั้งหมดด้วยผลต่างของอัตราร้อยละ",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 6
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 21
+    }
+   ],
+   "covered_by": [
+    "math.percent_share_difference_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.percent-remainder-share",
+   "kind": "procedure",
+   "title": "แบ่งส่วนที่เหลือหลังกันไว้เป็นร้อยละ",
+   "statement": "หาจำนวนที่เหลือหลังกันส่วนหนึ่งตามร้อยละก่อน แล้วแบ่งให้ผู้รับเท่า ๆ กัน",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หาจำนวนที่เหลือหลังกันส่วนหนึ่งตามร้อยละก่อน แล้วแบ่งให้ผู้รับเท่า ๆ กัน",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 7
+    }
+   ],
+   "covered_by": [
+    "math.percent_remainder_share_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.discount-loss",
+   "kind": "procedure",
+   "title": "ราคาหลังลดหรือขายขาดทุน",
+   "statement": "หาจำนวนเงินที่ลดหรือขาดทุนจากร้อยละของฐานเดิม แล้วลบจากราคาเดิม",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หาจำนวนเงินที่ลดหรือขาดทุนจากร้อยละของฐานเดิม แล้วลบจากราคาเดิม",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 11
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 13
+    }
+   ],
+   "covered_by": [
+    "math.discount"
+   ]
+  },
+  {
+   "id": "math.primary5.principal-plus-percent",
+   "kind": "procedure",
+   "title": "จำนวนเดิมรวมเงินเพิ่ม",
+   "statement": "หาจำนวนเงินเพิ่มตามร้อยละของฐานเดิม แล้วบวกกับฐานเดิม",
+   "steps": [
+    "ระบุข้อมูล หน่วย และสิ่งที่ต้องการหา",
+    "หาจำนวนเงินเพิ่มตามร้อยละของฐานเดิม แล้วบวกกับฐานเดิม",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4721-5-2567-2-3.pdf",
+     "item": 14
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 12
+    }
+   ],
+   "covered_by": [
+    "math.percent_increase_price_p5",
+    "math.profit_sale_sentence_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.fraction-decimal-to-percent",
+   "kind": "procedure",
+   "title": "เปลี่ยนเศษส่วนและทศนิยมเป็นร้อยละ",
+   "statement": "คูณสัดส่วนด้วยหนึ่งร้อยเพื่อเขียนเป็นเปอร์เซ็นต์ โดยคงค่าเท่าเดิม",
+   "steps": [
+    "ระบุข้อมูลและฐานที่ใช้คำนวณ",
+    "คูณสัดส่วนด้วยหนึ่งร้อยเพื่อเขียนเป็นเปอร์เซ็นต์ โดยคงค่าเท่าเดิม",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 5
+    },
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 6
+    }
+   ],
+   "covered_by": [
+    "math.fraction_decimal_to_percent_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.percent-expression-comparison",
+   "kind": "procedure",
+   "title": "เปรียบเทียบผลคูณร้อยละที่มีฐานต่างกัน",
+   "statement": "คำนวณอัตราร้อยละคูณจำนวนฐานของแต่ละตัวเลือกก่อนเปรียบเทียบ ไม่เรียงตามอัตราหรือฐานอย่างเดียว",
+   "steps": [
+    "ระบุข้อมูลและฐานที่ใช้คำนวณ",
+    "คำนวณอัตราร้อยละคูณจำนวนฐานของแต่ละตัวเลือกก่อนเปรียบเทียบ ไม่เรียงตามอัตราหรือฐานอย่างเดียว",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 8
+    }
+   ],
+   "covered_by": [
+    "math.percent_expression_comparison_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.find-percent-from-part",
+   "kind": "procedure",
+   "title": "หาร้อยละจากส่วนที่ทราบและทั้งหมด",
+   "statement": "หารส่วนที่ทราบด้วยจำนวนทั้งหมดแล้วคูณหนึ่งร้อย",
+   "steps": [
+    "ระบุข้อมูลและฐานที่ใช้คำนวณ",
+    "หารส่วนที่ทราบด้วยจำนวนทั้งหมดแล้วคูณหนึ่งร้อย",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 9
+    }
+   ],
+   "covered_by": [
+    "math.find_percent_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.remainder-as-percent",
+   "kind": "procedure",
+   "title": "คำนวณร้อยละของส่วนที่เหลือ",
+   "statement": "ลบส่วนที่ทราบออกจากทั้งหมดก่อนหารด้วยฐานทั้งหมดแล้วคูณหนึ่งร้อย",
+   "steps": [
+    "ระบุข้อมูลและฐานที่ใช้คำนวณ",
+    "ลบส่วนที่ทราบออกจากทั้งหมดก่อนหารด้วยฐานทั้งหมดแล้วคูณหนึ่งร้อย",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 11
+    }
+   ],
+   "covered_by": [
+    "math.percent_remainder_sentence_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.profit-rate-model",
+   "kind": "procedure",
+   "title": "เลือกฐานในการคิดร้อยละกำไร",
+   "statement": "ลบทุนออกจากราคาขายเพื่อหากำไร แล้วหารด้วยทุนและคูณหนึ่งร้อย โดยไม่เปลี่ยนฐานเป็นราคาขาย",
+   "steps": [
+    "ระบุข้อมูลและฐานที่ใช้คำนวณ",
+    "ลบทุนออกจากราคาขายเพื่อหากำไร แล้วหารด้วยทุนและคูณหนึ่งร้อย โดยไม่เปลี่ยนฐานเป็นราคาขาย",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 13
+    }
+   ],
+   "covered_by": [
+    "math.profit_rate_sentence_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.original-from-discount",
+   "kind": "procedure",
+   "title": "ย้อนหาราคาเดิมจากเงินส่วนลด",
+   "statement": "เงินส่วนลดเท่ากับอัตราร้อยละของราคาเดิม จึงหารเงินส่วนลดด้วยอัตราสัดส่วนเพื่อย้อนหาฐาน",
+   "steps": [
+    "ระบุข้อมูลและฐานที่ใช้คำนวณ",
+    "เงินส่วนลดเท่ากับอัตราร้อยละของราคาเดิม จึงหารเงินส่วนลดด้วยอัตราสัดส่วนเพื่อย้อนหาฐาน",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 15
+    }
+   ],
+   "covered_by": [
+    "math.original_from_discount_sentence_p5"
+   ]
+  },
+  {
+   "id": "math.primary5.cost-from-loss",
+   "kind": "procedure",
+   "title": "ย้อนหาราคาทุนจากราคาขายขาดทุน",
+   "statement": "ราคาขายเป็นส่วนที่เหลือของทุนหลังขาดทุน หารราคาขายด้วยหนึ่งลบอัตราขาดทุน โดยคงเศษส่วนแน่นอนเมื่อไม่กำหนดการปัด",
+   "steps": [
+    "ระบุข้อมูลและฐานที่ใช้คำนวณ",
+    "ราคาขายเป็นส่วนที่เหลือของทุนหลังขาดทุน หารราคาขายด้วยหนึ่งลบอัตราขาดทุน โดยคงเศษส่วนแน่นอนเมื่อไม่กำหนดการปัด",
+    "ตรวจคำตอบด้วยความสัมพันธ์เดิมและหน่วย"
+   ],
+   "sources": [
+    {
+     "sheet": "mathematics/level/primary-5/4722-5-2567-2-2.pdf",
+     "item": 16
+    }
+   ],
+   "covered_by": [
+    "math.cost_from_loss_sentence_p5"
+   ]
+  }
+ ]
+}
