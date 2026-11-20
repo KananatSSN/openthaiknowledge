@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แรงยึดเหนี่ยวและชนิดผลึก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.solid_crystal_bonding_types.procedure",
+      "kind": "procedure",
+      "title": "แรงยึดเหนี่ยวในผลึกของแข็ง",
+      "statement": "แรงยึดเหนี่ยวในผลึกขึ้นกับชนิดอนุภาค: CO₂ ไม่มีขั้วจึงมีแรงลอนดอน, LiF เป็นไอออนิก, Kr มีแรงลอนดอน และ Au เป็นโลหะ",
+      "steps": [
+        "จำแนกอนุภาคในผลึกแต่ละชนิด",
+        "ตรวจว่าคำอธิบายแรงยึดเหนี่ยวตรงกับขั้วโมเลกุลและชนิดผลึกหรือไม่"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 52
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q52"
+      ],
+      "note": "CO₂ is nonpolar, so solid CO₂ has dispersion attractions rather than permanent dipole–dipole attraction. LiF is ionic, Kr dispersive and Au metallic."
+    }
+  ]
+}

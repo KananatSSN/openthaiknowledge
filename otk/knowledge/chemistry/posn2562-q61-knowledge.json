@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การจัดอิเล็กตรอนของไอออนแทรนซิชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q61.procedure",
+      "kind": "procedure",
+      "title": "การจัดอิเล็กตรอนของ Tc3+",
+      "statement": "เลขอะตอม 98−55=43 คือ Tc; อะตอมกลาง [Kr]4d⁵5s² เมื่อเป็น Tc³⁺ จึงเป็น [Kr]4d⁴",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 61
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q61"
+      ],
+      "note": "NIST confirms neutral Tc [Kr]4d5 5s2; remove 5s2 then one 4d: [Kr]4d4. https://physics.nist.gov/PhysRefData/Handbook/Tables/technetiumtable5.htm"
+    }
+  ]
+}

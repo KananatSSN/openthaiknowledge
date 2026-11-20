@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ขั้วโมเลกุลและรูปร่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.both_molecules_polar_vsepr.procedure",
+      "kind": "procedure",
+      "title": "คู่โมเลกุลที่มีขั้วทั้งสองชนิด",
+      "statement": "รูปทรง T ของ ClH₃ ตามแบบจำลอง AX₃E₂ และทรงสี่หน้าบิดเบี้ยวของ TeF₄ มีขั้วสุทธิ ขณะที่ KrF₄ AsI₅ และ SO₃ สมมาตรจนไดโพลหักล้างกัน",
+      "steps": [
+        "สร้างโครงสร้างลูอิสและระบุรูปร่าง VSEPR ของแต่ละคู่",
+        "หาผลรวมเวกเตอร์ไดโพลโดยแยกกรณีสูตร ClH₃ ที่ใช้เป็นแบบจำลอง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 32
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q32"
+      ],
+      "note": "SOURCE MODEL ASSUMPTION: ClH3 is printed exactly; as a formal AX3E2 Lewis species it is T-shaped and polar, but the adaptation does not claim an isolable molecule. TeF4 is AX4E seesaw and polar. The competing partners KrF4, AsI5 and SO3 are symmetric/nonpolar."
+    }
+  ]
+}

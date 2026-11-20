@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สูตรเอมพิริคัลจากการเผาไหม้",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.cho_combustion_empirical_formula.procedure",
+      "kind": "procedure",
+      "title": "สูตรเอมพิริคัลจากผลเผาไหม้",
+      "statement": "ผลเผาไหม้สารที่มี C H O ให้โมล C จาก CO₂ และโมล H จาก H₂O; มวล O ในสารตั้งต้นหาโดยหักมวล C และ H",
+      "steps": [
+        "แปลงมวล CO₂ และ H₂O เป็นจำนวนโมลอะตอม C และ H",
+        "ใช้มวลตัวอย่างหาจำนวนโมล O แล้วหารอัตราส่วนทั้งสามด้วยค่าร่วม"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 68
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q68"
+      ],
+      "note": "Products give 1.20 mol C and 2.40 mol H; the sample has 6.4 g oxygen or 0.40 mol. Ratio C:H:O=3:6:1."
+    }
+  ]
+}

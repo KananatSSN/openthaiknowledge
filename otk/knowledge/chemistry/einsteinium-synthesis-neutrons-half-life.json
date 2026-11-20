@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ดุลปฏิกิริยานิวเคลียร์และครึ่งชีวิต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.einsteinium_synthesis_neutrons_half_life.procedure",
+      "kind": "procedure",
+      "title": "สมการสร้างไอน์สไตเนียมและมวลหลังสลาย",
+      "statement": "อนุรักษ์เลขมวลและเลขอะตอมในปฏิกิริยา ²³⁸U+¹⁴N→²⁴⁸Es+4n; มวลที่เหลือเท่ากับมวลเริ่มต้นคูณ (1/2) ยกกำลังจำนวนครึ่งชีวิต",
+      "steps": [
+        "ลบเลขมวลผลิตภัณฑ์จากเลขมวลสารตั้งต้นเพื่อหานิวตรอน",
+        "หารเวลาเก็บด้วย 25 นาทีแล้วคำนวณมวลที่เหลือ"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 65
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q65"
+      ],
+      "note": "Mass and charge balance give four neutrons. Six half-lives leave 10/64=0.15625 mg, reported as 0.156 mg."
+    }
+  ]
+}

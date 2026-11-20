@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎรวมแก๊สและอุณหภูมิสัมบูรณ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.rising_bubble_combined_gas_law.procedure",
+      "kind": "procedure",
+      "title": "ปริมาตรฟองแก๊สที่ผิวน้ำ",
+      "statement": "ฟองแก๊สจำนวนโมลคงที่ทำตาม P₁V₁/T₁=P₂V₂/T₂; ต้องแปลงอุณหภูมิเซลเซียสเป็นเคลวิน",
+      "steps": [
+        "แปลง T ทั้งสองตำแหน่งด้วย T(K)=t(°C)+273",
+        "จัดรูปหา V₂=V₁(P₁/P₂)(T₂/T₁)"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 60
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q60"
+      ],
+      "note": "Combined gas law with T=283 and 300 K gives 12.6 cm3. The adaptation states fixed moles and ideal behavior."
+    }
+  ]
+}

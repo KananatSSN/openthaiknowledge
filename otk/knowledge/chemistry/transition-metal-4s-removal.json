@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "ออร์บิทัลและการจัดอิเล็กตรอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.transition_metal_4s_removal.procedure",
+      "kind": "procedure",
+      "title": "การดึง 4s ก่อน 3d ในโลหะแทรนซิชัน",
+      "statement": "Ti V Fe Co มีอิเล็กตรอน 4s² ในอะตอมเป็นกลาง และเสีย 4s ก่อนเมื่อเกิดแคตไอออน 2+",
+      "steps": [
+        "เขียน [Ar]3dⁿ4s² จากเลขอะตอม",
+        "ดึงสองอิเล็กตรอนจาก 4s และคงจำนวน 3d"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q05"
+      ]
+    }
+  ]
+}

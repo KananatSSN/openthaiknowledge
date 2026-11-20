@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎการแพร่ของเกรแฮม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.graham_effusion_molar_mass_from_moles_time.procedure",
+      "kind": "procedure",
+      "title": "มวลโมลาร์จากอัตราการแพร่ผ่านรูเล็ก",
+      "statement": "อัตราการแพร่ผ่านรูเล็กคือจำนวนโมลต่อเวลา; อัตราส่วนสองแก๊สเท่ากับรากที่สองของอัตราส่วนมวลโมลาร์แบบกลับด้าน",
+      "steps": [
+        "คำนวณอัตราการแพร่ของแก๊สตัวอย่างและอาร์กอนเป็น mol/s",
+        "ใช้กฎเกรแฮมยกกำลังสองเพื่อหามวลโมลาร์ตัวอย่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 75
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q75"
+      ],
+      "note": "Rates are 2.35×10^-6 and 2.10×10^-6 mol/s; Graham’s law with Ar=40 gives sample M=31.9 g/mol, approximately 32."
+    }
+  ]
+}

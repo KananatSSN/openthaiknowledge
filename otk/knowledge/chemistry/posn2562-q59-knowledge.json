@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติคอลลิเกทีฟและโมลาลิตี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q59.procedure",
+      "kind": "procedure",
+      "title": "จุดเยือกแข็งเท่ากันของสองสารละลาย",
+      "statement": "เมื่อ Kf เท่ากันและทั้งคู่ไม่แตกตัว จุดเยือกแข็งเท่ากันแปลว่าโมลาลิตีเท่ากัน",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 59
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q59"
+      ],
+      "note": "2 mol ethylene glycol in 1.5 kg water matches 4 mol glucose in 3 kg water, or 720 g."
+    }
+  ]
+}

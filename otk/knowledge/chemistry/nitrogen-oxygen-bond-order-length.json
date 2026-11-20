@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "อันดับพันธะและความยาวพันธะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.nitrogen_oxygen_bond_order_length.procedure",
+      "kind": "procedure",
+      "title": "ไอออนที่มีพันธะไนโตรเจนออกซิเจนสั้นที่สุด",
+      "statement": "ความยาวพันธะ N–O มักสั้นลงเมื่ออันดับพันธะสูงขึ้น; NO⁺ มีอันดับพันธะ 3 ขณะที่ NO₂⁺ มี 2 และ NO₂⁻ กับ NO₃⁻ มีอันดับพันธะเฉลี่ยต่ำกว่า",
+      "steps": [
+        "หาจำนวนอิเล็กตรอนและโครงสร้างลูอิสหรือออร์บิทัลโมเลกุลของแต่ละชนิด",
+        "เทียบอันดับพันธะกับข้อมูลความยาวพันธะที่วัดได้"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q21"
+      ],
+      "note": "NO+ bond order 3 and observed N-O length about 1.06 A, shorter than NO2+ near 1.116 A, neutral NO near 1.15 A and nitrite/nitrate near 1.24-1.26 A. Variants include neutral NO as an additional species. Sources: https://journals.iucr.org/m/issues/2021/02/00/lt5036/lt5036.pdf ; https://onlinelibrary.wiley.com/doi/abs/10.1107/S1600536807000207 ."
+    }
+  ]
+}

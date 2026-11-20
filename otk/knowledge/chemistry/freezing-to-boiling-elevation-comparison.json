@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติคอลลิเกทีฟของสารละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.freezing_to_boiling_elevation_comparison.procedure",
+      "kind": "procedure",
+      "title": "เปรียบเทียบการเพิ่มจุดเดือดของสารละลาย",
+      "statement": "สารไม่แตกตัวมี ΔTf=Kf m และ ΔTb=Kb m; ใช้การลดจุดเยือกแข็งหาโมแลลก่อนเปรียบเทียบการเพิ่มจุดเดือด",
+      "steps": [
+        "หาโมแลลของ A จากจุดเยือกแข็งเบนซีนบริสุทธิ์ลบจุดเยือกแข็งสารละลาย",
+        "คำนวณ ΔTb ของ A และ C แยกกันแล้วหาผลต่าง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 60
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q60"
+      ],
+      "note": "A has molality (5.50-5.01)/4.90=0.100 and boiling elevation 0.250 C; C's is 0.100*0.512=0.0512 C. Difference 0.1988 rounds to 0.199 C. The adaptation asks for this value directly."
+    }
+  ]
+}

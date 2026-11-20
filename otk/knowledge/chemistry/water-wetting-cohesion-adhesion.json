@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แรงเชื่อมแน่น แรงยึดเกาะ และการเปียก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.water_wetting_cohesion_adhesion.procedure",
+      "kind": "procedure",
+      "title": "แรงยึดเกาะของน้ำกับพื้นผิว",
+      "statement": "พื้นผิวไม่ชอบน้ำอย่างใบบัวทำให้น้ำเป็นหยดกลม ในขณะที่กระดาษดูดน้ำและกระจกสะอาดเปียกน้ำ",
+      "steps": [
+        "สังเกตว่าหยดน้ำแผ่ซึมหรือเป็นหยดกลมบนพื้นผิว",
+        "เทียบการยึดเกาะของน้ำกับพื้นผิวกับการยึดกันเองของน้ำ"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 56
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q56"
+      ],
+      "note": "Water beads on the lotus leaf, while tissue absorbs water and clean untreated glass wets. The glass surface is explicitly untreated in the adaptation."
+    }
+  ]
+}

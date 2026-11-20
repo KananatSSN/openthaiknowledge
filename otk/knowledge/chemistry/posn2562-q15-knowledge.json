@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารเชิงซ้อนและพันธะโคออร์ดิเนต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q15.procedure",
+      "kind": "procedure",
+      "title": "พันธะในสารเชิงซ้อนโคบอลต์",
+      "statement": "[Co(NH₃)₅Br]SO₄ มีไอออนเชิงซ้อนประจุ +2 และ Co(+3); Co กับลิแกนด์เกิดพันธะโคออร์ดิเนต",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q15"
+      ],
+      "note": "The cation has charge +2; Co is +3, and ligands coordinate covalently."
+    }
+  ]
+}

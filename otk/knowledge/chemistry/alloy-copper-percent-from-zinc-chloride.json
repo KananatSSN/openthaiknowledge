@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "องค์ประกอบโลหะผสมและปริมาณสัมพันธ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.alloy_copper_percent_from_zinc_chloride.procedure",
+      "kind": "procedure",
+      "title": "ร้อยละทองแดงในโลหะผสม Zn–Cu",
+      "statement": "ในโลหะผสม Zn–Cu เมื่อเติม HCl มากเกินพอ Zn ให้ ZnCl₂ ตามอัตราส่วน 1:1 และ Cu เหลือ; ร้อยละ Cu หาได้จากมวลโลหะผสมลบมวล Zn",
+      "steps": [
+        "ใช้มวล ZnCl₂ หาจำนวนโมลและมวล Zn โดยไม่รวมมวลคลอรีน",
+        "หามวล Cu ที่เหลือและหารด้วยมวลโลหะผสมตั้งต้น"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 42
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q42"
+      ],
+      "note": "Uses Zn=65.0 and Cl=35.5; 2.72 g ZnCl2 is 0.020 mol, so zinc mass is 1.30 g and copper mass is 3.70 g."
+    }
+  ]
+}

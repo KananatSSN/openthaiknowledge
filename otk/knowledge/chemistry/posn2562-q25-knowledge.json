@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เรโซแนนซ์และกฎออกเตต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q25.procedure",
+      "kind": "procedure",
+      "title": "เรโซแนนซ์ของไซยาเนต",
+      "statement": "C ใน NCO⁻ คาบ 2 จึงมีได้ไม่เกิน 8 อิเล็กตรอนรอบตัว; N≡C=O มีพันธะรวมอันดับ 5 จึงใช้ไม่ได้",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q25"
+      ],
+      "note": "The 3/2 pattern puts ten electrons around carbon; other patterns obey octet."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พันธะไอออนิกและโคเวเลนต์ในสารประกอบ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.ionic_and_covalent_polyatomic_salt.procedure",
+      "kind": "procedure",
+      "title": "สารประกอบที่มีพันธะไอออนิกและโคเวเลนต์",
+      "statement": "เกลือที่มีไอออนหลายอะตอม เช่น CaCO₃ มีแรงยึดเหนี่ยวไอออนิกระหว่าง Ca²⁺ กับ CO₃²⁻ และมีพันธะโคเวเลนต์ C–O ภายในคาร์บอเนต",
+      "steps": [
+        "จำแนกสารโมเลกุลออกจากเกลือไอออนิกในสภาพบริสุทธิ์",
+        "ตรวจว่ามีไอออนหลายอะตอมที่มีพันธะโคเวเลนต์ภายในหรือไม่"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 26
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q26"
+      ],
+      "note": "The adaptation explicitly considers pure compounds: Ca2+ and CO3(2-) form an ionic crystal, while the carbonate ion has covalent C–O bonds. This avoids treating aqueous acid ionization as an ionic bond in pure H2SO4."
+    }
+  ]
+}

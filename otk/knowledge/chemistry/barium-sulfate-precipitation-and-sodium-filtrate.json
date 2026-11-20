@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาณสัมพันธ์ของการตกตะกอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.barium_sulfate_precipitation_and_sodium_filtrate.procedure",
+      "kind": "procedure",
+      "title": "ปริมาณตะกอน BaSO₄ และไอออน Na⁺",
+      "statement": "Na₂SO₄ กับ BaCl₂ ทำปฏิกิริยา 1:1 ให้ BaSO₄ และ Na⁺ สองโมลต่อซัลเฟตหนึ่งโมล; ถ้าเติม BaCl₂ พอดี ปริมาตรคำนวณจากจำนวนโมลซัลเฟตได้",
+      "steps": [
+        "แปลงร้อยละมวลต่อปริมาตรของ Na₂SO₄ เป็นจำนวนโมลและหา BaCl₂ ที่พอดี",
+        "คำนวณมวล BaSO₄ และร้อยละมวลต่อปริมาตรของ Na⁺ ในปริมาตรรวม"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 50
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q50"
+      ],
+      "note": "SOURCE AMBIGUITY: the printed text says all sulfate precipitates, allowing excess BaCl2 and therefore X>=40 cm3; a need not be true. Adaptation explicitly requires stoichiometric BaCl2 and additive liquid volumes."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การสลายกัมมันตรังสี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q65.procedure",
+      "kind": "procedure",
+      "title": "ครึ่งชีวิตและมวลคงเหลือ",
+      "statement": "จำนวนครึ่งชีวิตจาก 128/2=64=2⁶ จึง 12/6=2 เดือน; 18 เดือนคือ 9 ครึ่งชีวิต",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 65
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q65"
+      ],
+      "note": "128→2 mg is six halvings in 12 months, so 2-month half-life and 0.25 mg after 18 months."
+    }
+  ]
+}

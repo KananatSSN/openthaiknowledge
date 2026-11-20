@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปฏิกิริยาโลหะหมู่ 1 และกฎการละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.rubidium_water_halogen_sulfate_reactions.procedure",
+      "kind": "procedure",
+      "title": "สมการปฏิกิริยาของรูบิเดียม",
+      "statement": "Rb เป็นโลหะหมู่ 1 เลขอะตอม 37; 2Rb+2H₂O→2RbOH+H₂, I₂ ไม่แทนที่ Br⁻ และ Ba²⁺ กับ SO₄²⁻ ให้ BaSO₄ ตกตะกอน",
+      "steps": [
+        "ระบุ M ว่าเป็น Rb และตรวจประจุ +1 เพื่อเขียนสูตรเกลือ",
+        "ดุลปฏิกิริยาน้ำ ตรวจลำดับการแทนที่แฮโลเจนและการตกตะกอนของซัลเฟต"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 20
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q20"
+      ],
+      "note": "The printed choice ก omits coefficients on M and H2O, so none of the printed equations is correct as written. Adaptation repairs it to 2M+2H2O→2MOH+H2 for Rb, and identifies the other options as wrong valence, halogen displacement and sulfate precipitation. https://chem.libretexts.org/Courses/Westminster_College/CHE_180_-_Inorganic_Chemistry/13%3A_Chapter_13_-_s-Block_Elements/13.2%3A_Reactivity_of_Group_1_Metals/Reactions_of_Group_1_Elements_with_Water"
+    }
+  ]
+}

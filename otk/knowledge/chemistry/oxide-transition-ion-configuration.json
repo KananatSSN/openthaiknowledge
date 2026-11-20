@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การจัดเรียงอิเล็กตรอนของไอออน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.oxide_transition_ion_configuration.procedure",
+      "kind": "procedure",
+      "title": "อิเล็กตรอน 3d ของไอออนในออกไซด์",
+      "statement": "เมื่อเกิดแคตไอออนของ Mn Fe Co Ni ต้องนำอิเล็กตรอน 4s ออกก่อน 3d; ในออกไซด์ที่กำหนดให้ O=−2 หาเลขออกซิเดชันของโลหะจากความเป็นกลาง",
+      "steps": [
+        "ใช้ผลรวมเลขออกซิเดชันเป็นศูนย์หาเลขออกซิเดชันของโลหะ",
+        "นำอิเล็กตรอน 4s ออกก่อน แล้วนำจาก 3d ตามจำนวนที่ยังขาด"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q06"
+      ],
+      "note": "Return the 3d exponent; remove 4s electrons first. Variants restricted to Mn, Fe, Co and Ni with integral +2..+4 oxidation states and O=-2; no spin-state assumption."
+    }
+  ]
+}

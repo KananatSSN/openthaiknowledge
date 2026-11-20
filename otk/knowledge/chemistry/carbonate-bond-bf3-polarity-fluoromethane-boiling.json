@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "อันดับพันธะ สภาพขั้ว และจุดเดือด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.carbonate_bond_bf3_polarity_fluoromethane_boiling.procedure",
+      "kind": "procedure",
+      "title": "ตรวจข้อความเรื่องพันธะคาร์บอเนต BF₃ และจุดเดือด",
+      "statement": "C–O ใน CO₃²⁻ มีอันดับพันธะเฉลี่ย 4/3 จึงยาวกว่า C=O ใน CO₂; BF₃ และ F₂ ไม่มีขั้ว; CF₄ เดือดต่ำกว่า CHF₃",
+      "steps": [
+        "นับอันดับพันธะจากโครงสร้างเรโซแนนซ์คาร์บอเนตและตรวจรูปทรง BF₃",
+        "เทียบข้อมูลจุดเดือด CF₄ กับ CHF₃ แล้วเลือกข้อความที่ถูกทั้งหมด"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 32
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q32"
+      ],
+      "note": "Source choice ข has statements 1 and 3. Carbonate C–O bonds average order 4/3 and ~129 pm, longer than CO2 ~116 pm; BF3 and F2 are both nonpolar; CF4 boils at −127.9°C versus CHF3 −82.0°C. https://chem.libretexts.org/Bookshelves/General_Chemistry/ChemPRIME_%28Moore_et_al.%29/07%3A_Further_Aspects_of_Covalent_Bonding/7.14%3A_Resonance https://pubchem.ncbi.nlm.nih.gov/compound/6393 https://pubchem.ncbi.nlm.nih.gov/compound/TRIFLUOROMETHANE"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความดันไอและแรงระหว่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.vapor_pressure_four_substances_interactions.procedure",
+      "kind": "procedure",
+      "title": "เรียงความดันไอของสารบริสุทธิ์สี่ชนิด",
+      "statement": "ที่อุณหภูมิเดียวกันและอยู่ในบริเวณของเหลว เอทานอลมีแรงยึดเหนี่ยวมากจึงมีความดันไอต่ำกว่าอีเทอร์; SiH₄ มีแรงลอนดอนมากกว่า CH₄",
+      "steps": [
+        "ระบุพันธะไฮโดรเจนของเอทานอล ความมีขั้วของอีเทอร์ และแรงลอนดอนของไฮไดรด์",
+        "เรียงความดันไอจากต่ำไปสูงด้วยแนวโน้มแรงยึดเหนี่ยวหรือจุดเดือด"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 73
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q73"
+      ],
+      "note": "At a common temperature where all can be liquids, ethanol < diethyl ether < silane < methane in vapor pressure. The adaptation states the shared-liquid condition explicitly."
+    }
+  ]
+}

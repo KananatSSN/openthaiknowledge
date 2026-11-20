@@ -251,6 +251,12 @@ Five things that came up building all thirty:
 
 ## Stage 4 — verify, and what "green" means
 
+When a paper is built in waves, run one targeted test batch after each wave:
+the new solvers and generators, per-set checks for the new keys, provenance,
+safety, golden draws, and affected registry/curriculum/layout checks. Run the
+full `otk/tests` suite once every question in the paper is digested, as the
+final checklist item requires.
+
 ```bash
 python -m otk.tools.sheetpipe verify <sheet_id>
 python -m pytest otk/tests/test_sheetpipe.py otk/tests/test_core.py

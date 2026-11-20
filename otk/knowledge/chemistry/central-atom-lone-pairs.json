@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "คู่โดดเดี่ยวและโครงสร้างลูอิส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.central_atom_lone_pairs.procedure",
+      "kind": "procedure",
+      "title": "คู่โดดเดี่ยวบนอะตอมกลางมากที่สุด",
+      "statement": "XeF₂ มีคู่โดดเดี่ยวบน Xe สามคู่จากรูปแบบ AX₂E₃ มากกว่า NH₃ NO₂⁻ และ SO₃²⁻ ซึ่งมีหนึ่งคู่บนอะตอมกลาง",
+      "steps": [
+        "วาดโครงสร้างลูอิสของแต่ละชนิดและระบุอะตอมกลาง",
+        "นับเฉพาะคู่โดดเดี่ยวบนอะตอมกลาง ไม่ใช่อะตอมปลาย"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q24"
+      ],
+      "note": "Counts electron pairs on the central atom only. Variants compare I3-, XeF4, ClF3 and SF4 with source species; each pool has a unique maximum."
+    }
+  ]
+}

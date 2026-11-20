@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แนวโน้มขนาดไอออน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.ionic_radius_occupied_shells.procedure",
+      "kind": "procedure",
+      "title": "ขนาดไอออนจากจำนวนชั้นอิเล็กตรอน",
+      "statement": "เมื่อไอออนมีจำนวนชั้นอิเล็กตรอนที่ครองอยู่ต่างกัน ไอออนที่มีชั้นนอกสุดต่ำกว่ามีขนาดเล็กกว่าในคู่ที่เลือก",
+      "steps": [
+        "หาจำนวนอิเล็กตรอนของไอออนจากเลขอะตอมและประจุ",
+        "เปรียบเทียบชั้นนอกสุดที่ครองอยู่ของไอออนทั้งคู่"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 5
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q05"
+      ],
+      "note": "Adaptation specifies Mg2+ and P3- explicitly: 10 electrons in n=2 versus 18 electrons in n=3. Variants only compare ions with different outer occupied shells."
+    }
+  ]
+}

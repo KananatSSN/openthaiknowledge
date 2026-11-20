@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ครึ่งชีวิตและการสลายกัมมันตรังสี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.radioactive_decay_time_and_remaining_mass.procedure",
+      "kind": "procedure",
+      "title": "เวลาและมวลที่เหลือจากครึ่งชีวิต",
+      "statement": "หลังผ่านไป n ครึ่งชีวิต มวลสารกัมมันตรังสีจะเหลือ m₀/2ⁿ; แปลงร้อยละที่สลายเป็นเศษส่วนที่เหลือก่อนหาเวลา",
+      "steps": [
+        "หาส่วนที่เหลือจากหนึ่งลบร้อยละที่สลาย",
+        "นับจำนวนการหารสองเพื่อหาเวลาและคูณเศษส่วนที่เหลือกับมวลเริ่มต้น"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 63
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q63"
+      ],
+      "note": "The remaining fraction is 0.25, which is two halvings; elapsed time is 2*8.1=16.2 days and mass is 50/4=12.5 g."
+    }
+  ]
+}

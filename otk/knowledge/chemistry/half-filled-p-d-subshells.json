@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "ออร์บิทัลและการจัดอิเล็กตรอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.half_filled_p_d_subshells.procedure",
+      "kind": "procedure",
+      "title": "ออร์บิทัล p และ d ครึ่งเต็ม",
+      "statement": "p มีความจุ 6 และ d มีความจุ 10; การบรรจุครึ่งหนึ่งคือ p³ และ d⁵ โดย s¹ ไม่ใช่ p หรือ d",
+      "steps": [
+        "ระบุออร์บิทัลที่มีพลังงานสูงสุดของแต่ละธาตุ",
+        "เทียบจำนวนอิเล็กตรอนกับครึ่งหนึ่งของความจุ"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q06"
+      ]
+    }
+  ]
+}

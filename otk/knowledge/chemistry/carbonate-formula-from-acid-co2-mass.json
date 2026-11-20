@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การหาสูตรสารจากปริมาณสัมพันธ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.carbonate_formula_from_acid_co2_mass.procedure",
+      "kind": "procedure",
+      "title": "ระบุคาร์บอเนตจากกรดและ CO₂",
+      "statement": "คาร์บอเนตหนึ่งโมลทำปฏิกิริยากับ HCl สองโมลและให้ CO₂ หนึ่งโมล; มวลตัวอย่างหารด้วยโมล CO₂ ให้มวลโมลาร์ของคาร์บอเนต",
+      "steps": [
+        "เทียบโมล HCl กับโมล CO₂ เพื่อยืนยันอัตราส่วน 2:1",
+        "หามวลโมลาร์จากมวลตัวอย่างและเทียบสูตรคาร์บอเนตตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 45
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q45"
+      ],
+      "note": "The HCl and CO2 data independently agree on carbonate amount. BaCO3 molar mass is 197 g/mol using Ba=137, C=12, O=16."
+    }
+  ]
+}

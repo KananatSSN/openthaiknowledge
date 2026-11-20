@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พฤติกรรมแก๊สจริงและแก๊สอุดมคติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.real_gas_ideality_high_temperature_low_pressure.procedure",
+      "kind": "procedure",
+      "title": "ภาวะที่แก๊สฮีเลียมใกล้อุดมคติ",
+      "statement": "แก๊สจริงเข้าใกล้แบบจำลองแก๊สอุดมคติมากขึ้นเมื่อความดันต่ำและอุณหภูมิสูง เพราะระยะห่างระหว่างอนุภาคมากและพลังงานจลน์มีอิทธิพลเหนือแรงดึงดูด",
+      "steps": [
+        "เปรียบเทียบอุณหภูมิของทุกภาวะและเลือกค่าสูงสุด",
+        "เปรียบเทียบความดันในหน่วยเดียวกันและเลือกค่าต่ำสุด"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 37
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q37"
+      ],
+      "note": "All choices use helium; high temperature and low pressure minimize real-gas deviations in this comparison."
+    }
+  ]
+}

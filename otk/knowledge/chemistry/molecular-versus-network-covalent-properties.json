@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แรงยึดเหนี่ยวและโครงผลึกร่างตาข่าย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.molecular_versus_network_covalent_properties.procedure",
+      "kind": "procedure",
+      "title": "เปรียบเทียบสมบัติของ CS₂ และ SiO₂",
+      "statement": "CS₂ เป็นโมเลกุลเส้นตรงไม่มีขั้ว ส่วน SiO₂ เป็นผลึกโคเวเลนต์ร่างตาข่ายที่มีจุดหลอมเหลวสูงและไม่ละลายน้ำ",
+      "steps": [
+        "ระบุธาตุจากเลขอะตอมแล้วสร้างสูตร CS₂ และ SiO₂",
+        "เปรียบเทียบแรงระหว่างโมเลกุลกับพันธะในผลึกร่างตาข่าย รวมทั้งการละลาย"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q22"
+      ],
+      "note": "A is linear nonpolar CS2; B is covalent-network SiO2, insoluble in water with high melting and boiling temperatures. https://chem.libretexts.org/Courses/University_of_California_Davis/Chem_124A%3A_Fundamentals_of_Inorganic_Chemistry/07%3A_Solids/7.01%3A_Crystal_Lattices/7.1.02%3A_Lattice_Basics/7.1.2.01%3A_Covalent_Network_Solids"
+    }
+  ]
+}

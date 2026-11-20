@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาณสารสัมพันธ์และร้อยละผลได้",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.magnesium_nitride_ammonia_yield.procedure",
+      "kind": "procedure",
+      "title": "มวลแมกนีเซียมสำหรับผลิตแอมโมเนียตามผลได้",
+      "statement": "แมกนีเซียม 3 mol ให้ Mg₃N₂ 1 mol ซึ่งไฮโดรไลซ์ให้ NH₃ 2 mol; คำนวณย้อนหลังและหารด้วยเศษส่วนผลได้ของไนไตรด์",
+      "steps": [
+        "เปลี่ยนปริมาตร NH₃ ที่ 0°C และ 1 atm เป็นโมลด้วย 22.4 L/mol",
+        "ใช้อัตราส่วน Mg:NH₃ = 3:2 และปรับด้วยร้อยละผลได้ก่อนแปลงเป็นกรัม"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 36
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q36"
+      ],
+      "note": "Source choice ข is 18 g Mg: 4.48 L/22.4=0.2 mol NH3, requiring 0.1 mol actual Mg3N2, 0.25 mol theoretical Mg3N2 at 40% yield, and 0.75 mol Mg. Adaptation explicitly specifies 0°C, 1 atm and 22.4 L/mol, and omits the source color description. https://chem.libretexts.org/Courses/CSU_San_Bernardino/CHEM_2200%3A_General_Chemistry_II_%28Mink%29/18%3A_Representative_Metals_Metalloids_and_Nonmetals/18.06%3A_Occurrence_Preparation_and_Compounds_of_Hydrogen"
+    }
+  ]
+}

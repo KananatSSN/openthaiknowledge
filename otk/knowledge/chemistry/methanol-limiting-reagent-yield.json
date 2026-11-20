@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารกำหนดปริมาณและมวลผลิตภัณฑ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.methanol_limiting_reagent_yield.procedure",
+      "kind": "procedure",
+      "title": "สารกำหนดปริมาณของการผลิตเมทานอล",
+      "statement": "CO+2H₂→CH₃OH; เปรียบเทียบจำนวนโมล CO กับครึ่งหนึ่งของจำนวนโมล H₂ เพื่อหาสารกำหนดปริมาณแล้วคูณมวลโมลาร์เมทานอล",
+      "steps": [
+        "แปลงมวล CO และ H₂ เป็นจำนวนโมล",
+        "เปรียบเทียบผลผลิตเมทานอลจากสารตั้งต้นแต่ละตัวและเลือกค่าน้อยกว่า"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 46
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q46"
+      ],
+      "note": "CO is limiting: 12.5 mol CO needs 25 mol H2, less than the available 32.5 mol H2; yield is 12.5 mol times 32 g/mol."
+    }
+  ]
+}

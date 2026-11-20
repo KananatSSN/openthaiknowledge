@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "จุดหลอมเหลว จุดเดือด และสถานะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.phase_from_melting_boiling_thresholds.procedure",
+      "kind": "procedure",
+      "title": "สถานะจากจุดหลอมเหลวและจุดเดือด",
+      "statement": "ที่ความดันคงที่ สารเป็นของแข็งเมื่อ T ต่ำกว่าจุดหลอมเหลว เป็นของเหลวระหว่างจุดหลอมเหลวกับจุดเดือด และเป็นแก๊สเมื่อ T สูงกว่าจุดเดือด",
+      "steps": [
+        "อ่านค่า T และจุดหลอมเหลวกับจุดเดือดของสารแต่ละตัว",
+        "ตรวจเงื่อนไขสถานะทั้งสามตัวในแต่ละแถว"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 55
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q55"
+      ],
+      "note": "The first row satisfies bp(A)<25, mp(B)<25<bp(B), and 25<mp(C). The adaptation states fixed pressure and omits sublimation."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "โมลและจำนวนอนุภาค",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q41.procedure",
+      "kind": "procedure",
+      "title": "จำนวนอะตอมกับมวลโมลาร์",
+      "statement": "จำนวนอะตอมแปรตามมวลตัวอย่างหารมวลอะตอม; เมื่อทั้งมวลตัวอย่างและมวลอะตอมเพิ่มสองเท่า จำนวนอะตอมคงเดิม",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 41
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q41"
+      ],
+      "note": "A 40 g/mol at x g and D 80 g/mol at 2x g contain equal atoms."
+    }
+  ]
+}

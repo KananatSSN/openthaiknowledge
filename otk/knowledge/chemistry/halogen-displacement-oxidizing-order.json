@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "ปฏิกิริยาแทนที่ของแฮโลเจน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.halogen_displacement_oxidizing_order.procedure",
+      "kind": "procedure",
+      "title": "การแทนที่ตามความแรงออกซิไดซ์ของแฮโลเจน",
+      "statement": "ความแรงออกซิไดซ์ Cl₂ > Br₂ > I₂; I₂ ไม่แทนที่ Br⁻ และ Br₂ ไม่แทนที่ Cl⁻",
+      "steps": [
+        "จัดลำดับแฮโลเจนตามความว่องไว",
+        "ตรวจว่าฮาโลเจนอิสระแรงกว่าแฮไลด์ในเกลือหรือไม่"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 12
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q12"
+      ]
+    }
+  ]
+}

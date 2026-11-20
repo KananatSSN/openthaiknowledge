@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎเกย์ลูสแซก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q38.procedure",
+      "kind": "procedure",
+      "title": "ความดันแก๊สในภาชนะปิด",
+      "statement": "แก๊สในภาชนะปิดแข็งมี P₁/T₁=P₂/T₂ โดยใช้เคลวิน; 2 atm ที่ 300 K เป็น 4 atm ที่ 600 K",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 38
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q38"
+      ],
+      "note": "P2/P1=T2/T1 in kelvin."
+    }
+  ]
+}

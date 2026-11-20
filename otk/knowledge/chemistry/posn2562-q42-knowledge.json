@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารกำหนดปริมาณและมวลโมลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q42.procedure",
+      "kind": "procedure",
+      "title": "มวลอะตอมจากสารกำหนดปริมาณ",
+      "statement": "ใน AD₂E₃ ต้องมีอัตราส่วน A:D:E=1:2:3; E 0.036 mol จำกัดผลิตภัณฑ์ 0.012 mol ซึ่งให้มวลอะตอม D เท่ากับ 50",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 42
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q42"
+      ],
+      "note": "E limits product to 0.012 mol, giving D=50."
+    }
+  ]
+}

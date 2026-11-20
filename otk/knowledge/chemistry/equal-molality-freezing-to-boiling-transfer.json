@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การลดจุดเยือกแข็งและเพิ่มจุดเดือด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.equal_molality_freezing_to_boiling_transfer.procedure",
+      "kind": "procedure",
+      "title": "จุดเดือดจากโมแลลิตีที่ได้จากจุดเยือกแข็ง",
+      "statement": "ตัวละลายมวลเท่ากันและตัวทำละลายมวลเท่ากันให้โมแลลิตีเท่ากัน; ใช้ ΔTf(A)/Kf(A) หา m แล้วบวก Kb(B)·m ที่จุดเดือด B",
+      "steps": [
+        "หาการลดจุดเยือกแข็งของ A จากผลต่างระหว่างตัวทำละลายบริสุทธิ์กับสารละลาย",
+        "นำโมแลลิตีเดียวกันไปหาการเพิ่มจุดเดือดใน B"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 50
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q50"
+      ],
+      "note": "Source choice ง is 65.0°C: A freezes 2.5°C lower, so both solutions are 0.5 molal; B boils 2.0°C above 63.0°C. Variants vary both solvent constants and temperatures."
+    }
+  ]
+}

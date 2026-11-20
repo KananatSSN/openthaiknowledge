@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พลังงานพันธะและเอนทัลปีปฏิกิริยา",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.water_ammonia_bond_energy_comparison.procedure",
+      "kind": "procedure",
+      "title": "ชนิดปฏิกิริยาและผลต่างพลังงานพันธะ",
+      "statement": "ประมาณเอนทัลปีปฏิกิริยาจากผลรวมพลังงานพันธะที่แตก ลบผลรวมพลังงานพันธะที่เกิด แล้วปรับต่อหนึ่งโมลผลิตภัณฑ์",
+      "steps": [
+        "ดุลสมการเกิด H₂O และ NH₃ ให้ได้ผลิตภัณฑ์ชนิดละหนึ่งโมล",
+        "ใช้เครื่องหมายบอกชนิดปฏิกิริยา และหาขนาดผลต่างเอนทัลปีทั้งสอง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 66
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q66"
+      ],
+      "note": "For each mole H2O, break H-H plus half O=O and form two O-H: -235 kJ. For each mole NH3, break half N≡N and 1.5 H-H, form three N-H: -45 kJ."
+    }
+  ]
+}

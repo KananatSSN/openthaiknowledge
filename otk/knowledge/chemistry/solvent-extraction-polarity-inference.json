@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความมีขั้วและการสกัดด้วยตัวทำละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.solvent_extraction_polarity_inference.procedure",
+      "kind": "procedure",
+      "title": "อนุมานสภาพขั้วจากการสกัดสมุนไพร",
+      "statement": "ตัวทำละลายที่ใช้สกัดเรียงจากขั้วน้อยไปมากช่วยบอกแนวโน้มความมีขั้วของสาร แต่ไม่ยืนยันโครงสร้างหรือจัดสารเป็นมีขั้ว/ไม่มีขั้วแบบเด็ดขาด",
+      "steps": [
+        "อ่านสารเด่นในส่วนสกัดเฮกเซน คลอโรฟอร์ม และเอทานอลตามลำดับ",
+        "อนุมาน C มีแนวโน้มขั้วมากกว่า B แล้วแยกข้อสรุปที่เป็นไปได้ออกจากข้อสรุปที่ยืนยันเกินข้อมูล"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 25
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q25"
+      ],
+      "note": "The chloroform-dominant B is intermediate, ethanol-dominant C trends more polar, and D may have dipole forces and hydrogen bonding if its structure permits. The original table does not reveal exact functional groups, so the adaptation explicitly frames these as trends and possibilities. https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Supplemental_Modules_%28Organic_Chemistry%29/Fundamentals/Intermolecular_Forces/Polar_Protic_and_Aprotic_Solvents"
+    }
+  ]
+}

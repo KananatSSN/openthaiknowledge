@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎรวมแก๊สและสภาวะ STP",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.combined_gas_law_stp_volume.procedure",
+      "kind": "procedure",
+      "title": "ปริมาตรแก๊สที่ STP",
+      "statement": "สำหรับแก๊สอุดมคติปริมาณคงที่ P₁V₁/T₁=P₂V₂/T₂; STP ในโจทย์คือ 1 atm และ 0 °C",
+      "steps": [
+        "แปลง 273 °C และอุณหภูมิเริ่มต้นอื่นเป็นเคลวิน",
+        "แก้ V₂=V₁(P₁/P₂)(T₂/T₁) แล้วปัดทศนิยมสองตำแหน่ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 38
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q38"
+      ],
+      "note": "273 C is about 546 K; the halved pressure and halved absolute temperature cancel. The adaptation explicitly defines STP as 1 atm and 0 C."
+    }
+  ]
+}

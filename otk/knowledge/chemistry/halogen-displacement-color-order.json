@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปฏิกิริยาแทนที่ของแฮโลเจน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.halogen_displacement_color_order.procedure",
+      "kind": "procedure",
+      "title": "สีของแฮโลเจนและลำดับอิเล็กโทรเนกาติวิตี",
+      "statement": "Br₂ ใน CCl₄ สีส้มสามารถออกซิไดซ์ I⁻ ให้ I₂ ซึ่งให้ชั้นอินทรีย์สีม่วง; Cl Br I มีอิเล็กโทรเนกาติวิตีลดลงตามลำดับ",
+      "steps": [
+        "ใช้สีชั้น CCl₄ และปฏิกิริยาแทนที่ระบุ Br กับ I",
+        "ระบุ Cl ที่เหลือแล้วเรียงอิเล็กโทรเนกาติวิตีจากมากไปน้อย"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q15"
+      ],
+      "note": "The printed stem omits an explicit distinctness condition for X,Y,Z; the adaptation states they are three distinct members of Cl, Br, I. The iodine color after shaking Br2 with KI identifies I-, and the remaining label is Cl."
+    }
+  ]
+}

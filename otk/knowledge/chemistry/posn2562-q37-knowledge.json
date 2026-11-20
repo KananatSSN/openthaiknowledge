@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎชาร์ลและพลังงานจลน์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q37.procedure",
+      "kind": "procedure",
+      "title": "แก๊สกับอุณหภูมิสัมบูรณ์",
+      "statement": "ที่ความดันคงที่ ปริมาตรและพลังงานจลน์เฉลี่ยแปรตามเคลวิน ส่วนความหนาแน่นแปรผกผัน; 298→323 K เพิ่มราว 1.1 เท่า",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 37
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q37"
+      ],
+      "note": "298 to 323 K is about 1.084, rounded to 1.1."
+    }
+  ]
+}

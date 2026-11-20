@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การเพิ่มขึ้นของจุดเดือดและมวลโมล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.benzene_boiling_elevation_molar_mass.procedure",
+      "kind": "procedure",
+      "title": "มวลโมลของตัวละลายจากการเพิ่มจุดเดือดของเบนซีน",
+      "statement": "สารไม่ระเหยและไม่แตกตัวทำให้จุดเดือดเพิ่มตาม ΔTb=Kb·m; โมแลลิตีใช้กิโลกรัมของเบนซีนเป็นตัวหาร",
+      "steps": [
+        "หารการเพิ่มจุดเดือดด้วย Kb เพื่อหาโมแลลิตีของ X",
+        "คูณโมแลลิตีด้วยกิโลกรัมเบนซีนเพื่อหาโมล X แล้วหารมวล X ด้วยโมล"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 49
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q49"
+      ],
+      "note": "Source choice ค is 158 g/mol: molality 1.40/2.53 and solvent mass 0.0320 kg give 0.0177 mol X; 2.80 g divided by this is 158.125 g/mol. The adaptation states X is nonvolatile and does not dissociate, an assumption implicit in the source answer."
+    }
+  ]
+}

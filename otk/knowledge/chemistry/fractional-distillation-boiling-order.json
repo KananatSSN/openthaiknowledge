@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "จุดเดือด แรงยึดเหนี่ยว และการกลั่นลำดับส่วน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.fractional_distillation_boiling_order.procedure",
+      "kind": "procedure",
+      "title": "เรียงลำดับการกลั่นของบิวเทน อีเทอร์ และเอทานอล",
+      "statement": "การกลั่นลำดับส่วนให้สารที่มีจุดเดือดต่ำออกก่อน: บิวเทนประมาณ −0.5°C ไดเอทิลอีเทอร์ 34.6°C และเอทานอล 78.4°C",
+      "steps": [
+        "เปรียบเทียบแรงลอนดอน ขั้วโมเลกุล และพันธะไฮโดรเจนของสารทั้งสาม",
+        "เรียงจุดเดือดจากน้อยไปมากเป็นลำดับการกลั่นออก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 26
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q26"
+      ],
+      "note": "Source choice ค: butane (~−0.5°C), diethyl ether (34.6°C), then ethanol (78.4°C). Adaptation starts with a cooled liquid mixture at 1 atm so butane can be collected. https://pubchem.ncbi.nlm.nih.gov/compound/diethyl_ether"
+    }
+  ]
+}

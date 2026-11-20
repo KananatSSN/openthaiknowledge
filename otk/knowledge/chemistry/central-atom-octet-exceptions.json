@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎออกเตตและโครงสร้างลิวอิส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.central_atom_octet_exceptions.procedure",
+      "kind": "procedure",
+      "title": "ตรวจออกเตตของอะตอมกลางในโมเลกุลและไอออน",
+      "statement": "NO₂ มีอิเล็กตรอนคี่และ N ไม่ครบออกเตต; XeF₄ มี 12 อิเล็กตรอนรอบ Xe; B ใน BF₄⁻ และ C ใน CO₃²⁻ มีแปดอิเล็กตรอน",
+      "steps": [
+        "นับอิเล็กตรอนเวเลนซ์รวมและวาดโครงสร้างลิวอิสของแต่ละอนุภาค",
+        "นับอิเล็กตรอนรอบอะตอมกลางแล้วเลือกคู่ที่มีแปดตัวทั้งคู่"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 27
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q27"
+      ],
+      "note": "Source choice ง is BF4− and CO3²−. NO2 is an odd-electron radical with seven electrons about N; XeF4 has an expanded octet with 12 about Xe."
+    }
+  ]
+}

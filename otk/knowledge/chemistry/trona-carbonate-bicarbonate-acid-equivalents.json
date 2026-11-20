@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมมูลกรดของคาร์บอเนตและไบคาร์บอเนต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.trona_carbonate_bicarbonate_acid_equivalents.procedure",
+      "kind": "procedure",
+      "title": "ปริมาตรกรดไฮโดรคลอริกสำหรับแร่โทรนา",
+      "statement": "โทรนาหนึ่งสูตรมีคาร์บอเนตหนึ่งตัวและไบคาร์บอเนตหนึ่งตัว จึงใช้ H⁺ สามโมลต่อโมลสูตรเมื่อเปลี่ยนเป็น CO₂",
+      "steps": [
+        "แปลงมวลแร่เป็นโมลโดยหารด้วยมวลสูตร 226 g/mol",
+        "คูณโมลแร่ด้วยสามและหารด้วยความเข้มข้น HCl เพื่อหาปริมาตร"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 42
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q42"
+      ],
+      "note": "Source choice ค is 48.0 mL: 0.452/226=0.002 mol trona, each formula unit requires three H+ equivalents, and 0.006 mol/0.125 M is 0.048 L. Adaptation varies trona mass and acid concentration."
+    }
+  ]
+}

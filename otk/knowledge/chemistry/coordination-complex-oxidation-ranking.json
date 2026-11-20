@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารประกอบเชิงซ้อนและเลขออกซิเดชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.coordination_complex_oxidation_ranking.procedure",
+      "kind": "procedure",
+      "title": "เลขออกซิเดชันสูงสุดในสารเชิงซ้อน",
+      "statement": "เมื่อต้องหาเลขออกซิเดชันสูงที่สุดในสารเชิงซ้อน ต้องคัดสารที่มีไอออนเชิงซ้อนก่อน; [Fe(CN)₆]⁴⁻ มี Fe(II) ส่วน [Cr(NH₃)₆]³⁺ มี Cr(III)",
+      "steps": [
+        "แยกสารเชิงซ้อนออกจากออกไซด์และเกลือธรรมดา",
+        "ใช้ประจุของลิแกนด์และประจุไอออนเชิงซ้อนแก้เลขออกซิเดชันของโลหะ"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q14"
+      ],
+      "note": "Source choice ง: [Cr(NH3)6]Cl3 has Cr(+3), exceeding Fe(+2) in K4[Fe(CN)6]. MnO2 has Mn(+4) but is not a coordination complex."
+    }
+  ]
+}

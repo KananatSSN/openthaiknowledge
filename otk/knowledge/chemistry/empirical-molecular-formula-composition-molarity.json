@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สูตรเอมพิริคัลและมวลโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.empirical_molecular_formula_composition_molarity.procedure",
+      "kind": "procedure",
+      "title": "สูตรเอมพิริคัลและสูตรโมเลกุลจากองค์ประกอบ",
+      "statement": "สูตรเอมพิริคัลมาจากอัตราส่วนโมลของ C,H,Br ในร้อยละมวล; มวลโมลาร์จากมวลตัวอย่างหารด้วยโมลในสารละลายให้ตัวคูณของสูตรโมเลกุล",
+      "steps": [
+        "แปลงร้อยละของแต่ละธาตุเป็นโมลแล้วหารด้วยค่าน้อยสุด",
+        "หามวลโมลาร์จากความเข้มข้นและปริมาตร แล้วเทียบมวลสูตรเอมพิริคัล"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 70
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q70"
+      ],
+      "note": "The percentages give C:H:Br=3:2:1. The solution contains 0.0200 mol, so M=236 g/mol, twice the 118 g/mol empirical mass."
+    }
+  ]
+}

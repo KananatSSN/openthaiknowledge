@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "องค์ประกอบร้อยละและจำนวนอนุภาคของไฮเดรต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hydrate_water_percent_hydrogen_atoms.procedure",
+      "kind": "procedure",
+      "title": "จำนวนอะตอม H ในเกลือไฮเดรต",
+      "statement": "ใน Na₂SO₄·xH₂O มวลน้ำในตัวอย่างเท่ากับร้อยละน้ำคูณมวลตัวอย่าง; น้ำหนึ่งโมเลกุลมีอะตอม H สองอะตอม",
+      "steps": [
+        "คำนวณมวลและจำนวนโมลน้ำจากร้อยละโดยมวล",
+        "คูณสองและค่าคงที่อาโวกาโดรเพื่อหาจำนวนอะตอม H"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 47
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q47"
+      ],
+      "note": "The water is 23.5 g. Two H atoms per water molecule gives 2(23.5/18)(6.02×10^23)=1.57×10^24; x inferred from the stated percentage is 7."
+    }
+  ]
+}

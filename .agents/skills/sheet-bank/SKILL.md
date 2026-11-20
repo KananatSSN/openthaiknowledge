@@ -128,6 +128,11 @@ the sets already in the unit's file):
 
 ## 5. Test and commit
 
+For an exam paper digested in waves, run one targeted test batch for each
+wave, covering its new solvers and sets plus the affected registry checks.
+Run the full suite once the whole paper is digested. The commands below apply
+to completed bank chapters and sheets.
+
 Never edit knowledge JSON or wire modules while the suite runs. The full
 suite takes ~35 min; run it in the background with a 2-hour limit:
 

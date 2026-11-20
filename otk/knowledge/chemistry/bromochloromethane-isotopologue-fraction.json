@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ไอโซโทปและความน่าจะเป็นของมวลโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.bromochloromethane_isotopologue_fraction.procedure",
+      "kind": "procedure",
+      "title": "ร้อยละโมเลกุล CH₂BrCl ที่มีมวล 128",
+      "statement": "มวลโมเลกุล CH₂BrCl เท่ากับ 128 เมื่อใช้ ⁷⁹Br และ ³⁵Cl; ร้อยละไอโซโทโปล็อกเท่ากับผลคูณของความน่าจะเป็นสองไอโซโทป",
+      "steps": [
+        "แจกแจงมวลจาก C,H และไอโซโทป Cl,Br ที่เป็นไปได้",
+        "เลือกคู่ที่รวมเป็น 128 แล้วคูณสัดส่วนไอโซโทปก่อนแปลงเป็นร้อยละ"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 63
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q63"
+      ],
+      "note": "Only ¹²CH₂⁷⁹Br³⁵Cl has nominal mass 128. Its fraction is (3/4)(1/2)=3/8=37.5%. The adaptation states ¹²C and ¹H only."
+    }
+  ]
+}

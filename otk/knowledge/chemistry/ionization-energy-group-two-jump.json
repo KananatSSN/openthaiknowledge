@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "พลังงานไอออไนเซชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.ionization_energy_group_two_jump.procedure",
+      "kind": "procedure",
+      "title": "จุดกระโดดของ IE กับสูตรออกไซด์",
+      "statement": "ถ้า IE₃ สูงกว่า IE₂ อย่างมาก ธาตุมีเวเลนซ์อิเล็กตรอนสองตัว และออกไซด์ปกติมีสูตร MO",
+      "steps": [
+        "หาจุดกระโดดมากสุดใน IE ต่อเนื่อง",
+        "ดุลประจุ M²⁺ กับ O²⁻ เพื่อหาสูตร"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q08"
+      ]
+    }
+  ]
+}

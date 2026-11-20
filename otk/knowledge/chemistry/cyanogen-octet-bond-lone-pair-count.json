@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สูตรลิวอิสและกฎออกเตต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.cyanogen_octet_bond_lone_pair_count.procedure",
+      "kind": "procedure",
+      "title": "พันธะและคู่โดดเดี่ยวของไซยาโนเจน",
+      "statement": "C₂N₂ ที่เป็นกลางและครบออกเตตมีโครง N≡C–C≡N จึงมีพันธะเดี่ยว 1 พันธะสาม 2 และอิเล็กตรอนคู่โดดเดี่ยวบน N อย่างละ 1",
+      "steps": [
+        "วางโครง N–C–C–N และเติมพันธะให้ C แต่ละตัวมีพันธะรวม 4 ส่วน N มีพันธะรวม 3",
+        "นับจำนวนพันธะแต่ละอันดับและคู่โดดเดี่ยวทั้งโมเลกุล"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q21"
+      ],
+      "note": "Source choice ข gives one single bond, zero doubles, two triples and two lone pairs in N≡C–C≡N. Table figure visually reviewed and restated as text. https://pubchem.ncbi.nlm.nih.gov/compound/cyanogen"
+    }
+  ]
+}

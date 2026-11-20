@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารละลายสต็อกจากเกลือไฮเดรต",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.magnesium_chloride_hydrate_stock_dilution.procedure",
+      "kind": "procedure",
+      "title": "เจือจางสารละลายจาก MgCl₂·6H₂O",
+      "statement": "MgCl₂·6H₂O หนึ่งโมลให้ MgCl₂ หนึ่งโมลในสารละลายสต็อก; ความเข้มข้นสต็อกคำนวณจากมวลไฮเดรตต่อปริมาตรแล้วใช้ C₁V₁=C₂V₂",
+      "steps": [
+        "ใช้มวลโมลาร์ไฮเดรต 203 g/mol ไม่ใช่ MgCl₂ ไร้น้ำ",
+        "หาโมลที่ต้องการในสารละลายปลายทางแล้วแปลงเป็นปริมาตรสต็อก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 54
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q54"
+      ],
+      "note": "MgCl2·6H2O molar mass is 203 g/mol; 4.06 g contains 0.0200 mol MgCl2, and target requires 0.00500 mol."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สภาพขั้วและการละลายน้ำของสารโคเวเลนต์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.covalent_compound_water_solubility_screen.procedure",
+      "kind": "procedure",
+      "title": "กลุ่มสารโคเวเลนต์ที่ละลายน้ำได้ดี",
+      "statement": "เอทานอล HF และกรดแอซีติกละลายน้ำได้ดี ขณะที่เบนซีน CCl₄ และ CS₂ ละลายได้น้อย และ NH₄Cl เป็นสารไอออนิก",
+      "steps": [
+        "ตรวจชนิดพันธะและสมบัติการละลายน้ำของสารทุกตัวในแต่ละกลุ่ม",
+        "ตัดกลุ่มที่มีสารไม่ละลายน้ำหรือไม่ใช่สารโคเวเลนต์ แล้วเลือกกลุ่มที่เหลือ"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q24"
+      ],
+      "note": "Ethanol, hydrogen fluoride and acetic acid dissolve well in water; every other group contains an insoluble substance, and ammonium chloride is ionic. https://pubchem.ncbi.nlm.nih.gov/compound/E260"
+    }
+  ]
+}

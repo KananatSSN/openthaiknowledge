@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การสลายแอลฟาและหมู่ธาตุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q18.procedure",
+      "kind": "procedure",
+      "title": "การสลายแอลฟาของโบห์เรียม",
+      "statement": "แอลฟาลด A สี่และ Z สอง; Bh อยู่หมู่ 7 และออกไซด์ BhO₂ มีเลขออกซิเดชัน +4 ที่เป็นไปได้",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q18"
+      ],
+      "note": "BhO2 is treated as a possible +4 oxide by group analogy, not a claimed isolated substance."
+    }
+  ]
+}

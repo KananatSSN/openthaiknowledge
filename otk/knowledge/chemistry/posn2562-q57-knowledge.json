@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การเจือจางจากร้อยละมวล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q57.procedure",
+      "kind": "procedure",
+      "title": "เจือจางสารละลายโซเดียมไฮดรอกไซด์",
+      "statement": "มวล NaOH จากมวลสารละลายตั้งต้น; โมลาริตีสุดท้ายใช้ปริมาตรรวมหลังเติมน้ำ",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 57
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q57"
+      ],
+      "note": "50 mL stock weighs 75 g; contains 30 g NaOH = 0.75 mol in 0.50 L."
+    }
+  ]
+}

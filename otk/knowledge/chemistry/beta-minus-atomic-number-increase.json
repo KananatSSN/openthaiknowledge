@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การสลายตัวแบบบีตาลบ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.beta_minus_atomic_number_increase.procedure",
+      "kind": "procedure",
+      "title": "รังสีที่ทำให้เลขอะตอมเพิ่มหนึ่ง",
+      "statement": "การแผ่ β⁻ เปลี่ยนนิวตรอนเป็นโปรตอน ทำให้เลขอะตอมเพิ่ม 1 แต่เลขมวลคงเดิม; β⁺ ทำให้เลขอะตอมลด 1",
+      "steps": [
+        "เขียนการเปลี่ยนจำนวนโปรตอนและนิวตรอนของการแผ่แต่ละชนิด",
+        "เลือกชนิดที่ให้เลขอะตอมของธาตุใหม่เพิ่มหนึ่งหน่วยและเลขมวลคงเดิม"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 15
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q15"
+      ],
+      "note": "Source choice ข is beta-minus emission. Because beta can refer to beta-minus or beta-plus, the adaptation labels the choices explicitly β− and β+. https://gnssn.iaea.org/main/bptc/BPTC%20Module%20Documents/Module01%20Nuclear%20physics%20and%20reactor%20theory.pdf"
+    }
+  ]
+}

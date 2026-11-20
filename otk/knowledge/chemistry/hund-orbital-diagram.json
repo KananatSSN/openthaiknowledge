@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การบรรจุอิเล็กตรอนในออร์บิทัล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hund_orbital_diagram.procedure",
+      "kind": "procedure",
+      "title": "แผนภาพออร์บิทัลกับกฎของฮุนด์",
+      "statement": "ออร์บิทัล p ที่มีพลังงานเท่ากันต้องบรรจุอิเล็กตรอนเดี่ยวก่อนจับคู่ตามกฎของฮุนด์; สถานะกระตุ้นไม่ใช่การผิดหลักเพาลีเสมอไป",
+      "steps": [
+        "อ่านจำนวนอิเล็กตรอนในกล่อง 2s และ 2p จากแผนภาพ",
+        "เทียบจำนวนออร์บิทัล p ที่ครองเดี่ยวกับค่าสูงสุดสำหรับจำนวนอิเล็กตรอนนั้น"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q10"
+      ],
+      "note": "Source correct statement identifies B as the Hund-rule violation; C is excited but respects Pauli. Generator asks directly for a Hund violation."
+    }
+  ]
+}

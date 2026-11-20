@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "อนุรักษ์เลขมวลและเลขอะตอม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q17.procedure",
+      "kind": "procedure",
+      "title": "อนุภาคในสมการนิวเคลียร์",
+      "statement": "Rh จับนิวตรอนแล้วคายแกมมาเพิ่ม A หนึ่ง; Rh เปลี่ยนเป็น Pd ที่ A เดิมด้วยการคาย β⁻",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q17"
+      ],
+      "note": "The reaction table was read from the page; conservation fixes all three particles."
+    }
+  ]
+}

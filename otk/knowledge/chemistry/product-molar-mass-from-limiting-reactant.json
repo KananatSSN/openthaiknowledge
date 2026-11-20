@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารกำหนดปริมาณและมวลโมลาร์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.product_molar_mass_from_limiting_reactant.procedure",
+      "kind": "procedure",
+      "title": "มวลโมลาร์ผลิตภัณฑ์จากสารกำหนดปริมาณ",
+      "statement": "สำหรับ A+5B→4C+2D จำนวนรอบปฏิกิริยาเป็นค่าน้อยกว่าระหว่างโมล A กับหนึ่งในห้าของโมล B; โมล C เท่ากับสี่เท่าของจำนวนรอบ",
+      "steps": [
+        "แปลงมวล A และ B เป็นโมลแล้วเปรียบเทียบอัตราส่วน 1:5",
+        "หาจำนวนโมล C จากสารกำหนดปริมาณและหารมวล C ด้วยโมล C"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 52
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q52"
+      ],
+      "note": "A has 0.40 mol and limits the reaction; 1.60 mol C is produced, giving 70.4/1.60=44 g/mol."
+    }
+  ]
+}

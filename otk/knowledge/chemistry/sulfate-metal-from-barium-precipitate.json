@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "มวลโมลและปฏิกิริยาตกตะกอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.sulfate_metal_from_barium_precipitate.procedure",
+      "kind": "procedure",
+      "title": "ระบุโลหะจากมวลตะกอนแบเรียมซัลเฟต",
+      "statement": "ASO₄ และ BaSO₄ มีอัตราส่วนโมล 1:1; จากมวลตะกอนหาโมลซัลเฟตและมวลโมล ASO₄ แล้วลบมวล SO₄ เพื่อระบุ A",
+      "steps": [
+        "คำนวณโมล BaSO₄ จากมวลตะกอนและมวลโมล 233 g/mol",
+        "เทียบโมล ASO₄ เท่ากัน หามวลโมลของโลหะ และตรวจย้อนกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 34
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q34"
+      ],
+      "note": "Source choice ค is Zn: 4.66/233=0.020 mol BaSO4, hence ASO4 has molar mass 161 and A mass 65. The adaptation varies ASO4 mass so each candidate metal can be identified. https://periodic-table.rsc.org/element/30/"
+    }
+  ]
+}

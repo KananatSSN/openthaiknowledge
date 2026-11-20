@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาณสัมพันธ์ของปฏิกิริยาต่อเนื่อง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.blast_furnace_two_step_stoichiometry.procedure",
+      "kind": "procedure",
+      "title": "ปริมาณสัมพันธ์ของเตาถลุงเหล็ก",
+      "statement": "จาก 2C+O₂→2CO และ Fe₂O₃+3CO→2Fe+3CO₂ การผลิต Fe 20 mol ต้องใช้ C 30 mol หรือ 0.36 kg และเกิด CO₂ 30 mol หรือ 672 L ที่ STP",
+      "steps": [
+        "แปลงมวล Fe เป็นจำนวนโมลแล้วหาปริมาณ Fe₂O₃ และ CO₂ จากขั้นรีดักชัน",
+        "ย้อนจำนวน CO ไปหาปริมาณ C และ O₂ จากขั้นสร้างแก๊สรีดิวซ์"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 43
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q43"
+      ],
+      "note": "SOURCE ERROR: two printed options are correct. The adaptation asks for the pair of true statements; source values use Fe=56, C=12 and 22.4 L/mol at STP."
+    }
+  ]
+}

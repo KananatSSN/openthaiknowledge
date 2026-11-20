@@ -1,0 +1,652 @@
+"""Cross-check the 2561 chemistry pools and generated wording."""
+
+import re
+from decimal import Decimal, ROUND_HALF_UP
+from fractions import Fraction
+from random import Random
+
+import pytest
+
+from otk.core import generate
+from otk.sheets.posn2561_chemistry import (
+    q01, q02, q03, q04, q05, q06, q07, q08, q09, q10, q11, q12,
+    q13, q14, q15, q16, q17, q18, q19, q20, q21, q22, q23, q24,
+    q25, q26, q27, q28, q29, q30, q31, q32, q33,
+    q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45,
+    q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57,
+    q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69,
+    q70, q71, q72, q73, q74, q75,
+)
+
+
+def test_first_wave_solves_source_and_variants_independently():
+    for module in (q01, q02, q03, q04, q05, q06, q07, q08, q09,
+                   q10, q11, q12, q13, q14, q15, q16, q17, q18,
+                   q19, q20, q21, q22, q23, q24, q25, q26, q27,
+                   q28, q29, q30, q31, q32, q33, q34, q35, q36, q37, q38, q39, q40, q41, q42, q43, q44, q45, q46, q47, q48, q49, q50, q51, q52, q53, q54, q55, q56, q57, q58, q59, q60, q61, q62, q63, q64, q65, q66, q67, q68, q69, q70, q71, q72, q73, q74, q75):
+        assert module.solve(**module.PARAMS) == module.ANSWER
+        for params in (module.PARAMS, *module.VARIANTS):
+            assert module.solve(**params) == module.check(**params)
+
+
+@pytest.mark.parametrize("number", range(1, 76))
+def test_generated_answers_follow_the_stem(number):
+    for seed in range(60):
+        question = generate(f"chem.posn2561_q{number:02d}", rng=Random(seed))
+        stem = " ".join(block.text for block in question.stem if block.kind == "text")
+        answer = question.choices[question.answer].content[0].text
+        if number == 1:
+            a, d, e, g = map(int, re.search(
+                r"มีเลขอะตอม (\d+), (\d+), (\d+) และ (\d+)", stem,
+            ).groups())
+            groups = {
+                "A⁺, A⁻, D⁺": ((a, 1), (a, -1), (d, 1)),
+                "E⁻, E⁺, G": ((e, -1), (e, 1), (g, 0)),
+                "E⁻, A⁻, D⁺": ((e, -1), (a, -1), (d, 1)),
+                "E⁻, G, A⁺": ((e, -1), (g, 0), (a, 1)),
+            }
+            assert set(choice.content[0].text for choice in question.choices) == set(groups)
+            assert len({z - charge for z, charge in groups[answer]}) == 1
+            assert sum(len({z - charge for z, charge in group}) == 1
+                       for group in groups.values()) == 1
+        elif number == 2:
+            charge, electrons, neutrons = map(int, re.search(
+                r"ไอออน X ประจุ \+(\d+) มี (\d+) อิเล็กตรอน .*?มี (\d+) นิวตรอน", stem,
+            ).groups())
+            atomic = electrons + charge
+            assert answer == f"{atomic} และ {atomic + neutrons}"
+        elif number == 3:
+            a, b, c, d = map(int, re.search(
+                r"A=(\d+) nm, B=(\d+) nm, C=(\d+) nm และ D=(\d+) nm", stem,
+            ).groups())
+            assert a > b > c > d
+            assert answer == "พลังงานของ C มากกว่า B"
+        elif number == 4:
+            x_min, x_max, offset = map(int, re.search(
+                r"เลขอะตอมตั้งแต่ (\d+) ถึง (\d+).*?มากกว่า X (\d+) ตัว", stem,
+            ).groups())
+            assert q04.check(x_min=x_min, x_max=x_max, offset=offset) == 1
+            assert answer == "ธาตุ Z มีอิเล็กตรอนในชั้นที่สองมากกว่า 6 เสมอ"
+        elif number == 5:
+            from otk.sets.chemistry.olympiad.posn2561 import _ELECTRON_CONFIGS
+            reverse = {configuration: z for z, configuration in _ELECTRON_CONFIGS.items()}
+            options = tuple(reverse[choice.content[0].text] for choice in question.choices)
+            assert reverse[answer] == q05.check(options=options)
+        elif number == 6:
+            data = {label: float(value) for label, value in re.findall(
+                r"([LMQRT]): ([\d.]+)", stem,
+            )}
+            assert len(data) == 5
+            false = [f"IE₂({left}) < IE₂({right})"
+                     for left, right in zip("LMQR", "MQRT")
+                     if not data[left] < data[right]]
+            assert false == [answer]
+        elif number == 7:
+            radii = {species: int(value) for species, value in re.findall(
+                r"(Na⁺|Br⁻|Na|Cl|Ca|Br)=(\d+)", stem,
+            )}
+            assert len(radii) == 6
+            valid = [choice.content[0].text for choice in question.choices
+                     if all(radii[left] > radii[right]
+                            for left, right in zip(choice.content[0].text.split(" > "),
+                                                   choice.content[0].text.split(" > ")[1:]))]
+            assert valid == [answer]
+        elif number == 8:
+            labels = dict(re.findall(r"(P|Ca|As)=(P|Ca|As)", stem))
+            assert len(labels) == 3
+            reverse = {label: element for element, label in labels.items()}
+            valid = []
+            for choice in question.choices:
+                name, order = choice.content[0].text.split(": ")
+                property_name = {"IE₁": "ie", "EN": "en", "รัศมี": "radius",
+                                 "จุดหลอมเหลว": "melting"}[name]
+                values = [q08.PROPERTIES[property_name][reverse[label]]
+                          for label in order.split(" > ")]
+                if not values[0] > values[1] > values[2]:
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+        elif number == 9:
+            products = {"BeO": None, "N₂O₅": "acid", "SiO₂": None,
+                        "CaO": "base", "Cl₂O₇": "acid", "Al₂O₃": None,
+                        "SO₃": "acid", "Na₂O": "base"}
+            valid = []
+            for choice in question.choices:
+                x, y = re.match(r"X=(.*), Y=(.*)", choice.content[0].text).groups()
+                if products[x] == "acid" and products[y] == "base":
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+        elif number == 10:
+            assert "ชั้นสีม่วง" in stem and "น้ำร้อน" in stem
+            assert answer == "สารประกอบ Y เป็น MgI₂ และละลายน้ำได้ดี"
+            assert set(choice.content[0].text for choice in question.choices) == set(q10.CLAIMS)
+        elif number == 11:
+            label = re.search(r"ธาตุ ([DQXT]) อยู่คาบ 3", stem).group(1)
+            assert answer == f"ธาตุ {label} มีเลขออกซิเดชันเป็นบวกในออกไซด์"
+            assert set(choice.content[0].text for choice in question.choices) == set(
+                q11.claims(label)
+            )
+        elif number == 12:
+            color = {"K₂SO₄": False, "MnCl₂": True, "NaCl": False,
+                     "Co(NO₃)₂": True, "K₂Cr₂O₇": True, "FeCl₃": True,
+                     "[Ni(NH₃)₆]Cl₂": True, "RbCl": False}
+            valid = []
+            for choice in question.choices:
+                left, right = choice.content[0].text.split(" และ ")
+                if color[left] and color[right]:
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+        elif number == 13:
+            assert "A ให้ตะกอนขาวเฉพาะกับ Na₂CO₃" in stem
+            expected_cations = ("Mg", "K", "Ba")
+            possible = []
+            for choice in question.choices:
+                formulas = re.findall(r"[ABC]=([^,]+)", choice.content[0].text)
+                if len(formulas) == 3 and tuple(q13.CATIONS[f] for f in formulas) == expected_cations:
+                    possible.append(choice.content[0].text)
+            assert possible == [answer]
+        elif number == 14:
+            oxidation = {"K₄[Fe(CN)₆]": 2, "[Cr(NH₃)₆]Cl₃": 3}
+            eligible = [choice.content[0].text for choice in question.choices
+                        if choice.content[0].text in oxidation]
+            assert answer == max(eligible, key=lambda compound: oxidation[compound])
+        elif number == 15:
+            z, a, daughter = map(int, re.search(
+                r"เลขอะตอม (\d+) และเลขมวล (\d+).*?เลขอะตอม (\d+)", stem,
+            ).groups())
+            assert daughter == z + 1 and a > z
+            assert answer == "β⁻"
+        elif number == 16:
+            initial, half_life = map(int, re.search(
+                r"เริ่มต้นมวล (\d+) หน่วย และมีครึ่งชีวิต (\d+)", stem,
+            ).groups())
+            valid = []
+            for choice in question.choices:
+                masses = [int(value) for value in re.findall(r"m\(\d+\)=(\d+)",
+                                                       choice.content[0].text)]
+                if masses == [initial, initial // 2, initial // 4]:
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+            assert f"m({half_life})=" in answer
+        elif number == 17:
+            assert answer == "³₂He + ²₁H → ⁴₂He + ¹₁H"
+            assert set(choice.content[0].text for choice in question.choices) == set(
+                q17.REACTIONS
+            )
+        elif number == 18:
+            assignments = dict((label, int(z)) for label, z in re.findall(
+                r"([ADLM])=(\d+)", stem,
+            ))
+            assert assignments == {"A": 7, "D": 16, "L": 20, "M": 37}
+            valid = []
+            for choice in question.choices:
+                left, right = re.findall(r"[ADLM]", choice.content[0].text)
+                if {assignments[left], assignments[right]} == {20, 37}:
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+        elif number == 19:
+            assert "เลขอะตอม 19–36" in stem and "Cl₂ 3 mol" in stem
+            assert answer == "X อยู่ในหมู่ 15 (VA)"
+            assert set(choice.content[0].text for choice in question.choices) == set(q19.CLAIMS)
+        elif number == 20:
+            assert "เลขอะตอม 37" in stem
+            assert answer == "2M(s) + 2H₂O(l) → 2MOH(aq) + H₂(g)"
+            assert set(choice.content[0].text for choice in question.choices) == set(q20.CLAIMS)
+        elif number == 21:
+            valid = []
+            for choice in question.choices:
+                counts = tuple(map(int, re.findall(r"\d+", choice.content[0].text)))
+                if counts == (1, 0, 2, 2):
+                    valid.append(choice.content[0].text)
+            assert valid == [answer]
+        elif number == 22:
+            assert "เลขอะตอม 6 และ 16" in stem
+            assert "เลขอะตอม 14 และ 8" in stem
+            assert answer == q22.CLAIMS[2]
+            assert set(choice.content[0].text for choice in question.choices) == set(q22.CLAIMS)
+        elif number == 23:
+            assert all(statement in stem for statement in q23.STATEMENTS)
+            assert answer == "1 และ 3 เท่านั้น"
+            assert set(choice.content[0].text for choice in question.choices) == set(q23.CLAIMS)
+        elif number == 24:
+            assert answer == " / ".join(q24.GROUPS[1])
+            assert set(choice.content[0].text for choice in question.choices) == {
+                " / ".join(group) for group in q24.GROUPS
+            }
+        elif number == 25:
+            assert all(statement in stem for statement in q25.STATEMENTS)
+            assert all(f"{name} {fraction}%" in stem
+                       for _, composition in q25.EXTRACTS
+                       for name, fraction in composition)
+            assert answer == q25.CLAIMS[2]
+            assert set(choice.content[0].text for choice in question.choices) == set(q25.CLAIMS)
+        elif number == 26:
+            assert "ความดัน 1 atm" in stem and "ทำให้เย็น" in stem
+            assert answer == "บิวเทน → ไดเอทิลอีเทอร์ → เอทานอล"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                " → ".join(order) for order in q26.ORDERS
+            }
+        elif number == 27:
+            assert all(species in stem for species in q27.CENTRAL_ELECTRONS)
+            assert answer == "BF₄⁻ และ CO₃²⁻"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                " และ ".join(pair) for pair in q27.PAIRS
+            }
+        elif number == 28:
+            assert "NH₄⁺" in stem and "NH₃ รับ H⁺" in stem
+            assert answer == q28.CLAIMS[3]
+            assert set(choice.content[0].text for choice in question.choices) == set(q28.CLAIMS)
+        elif number == 29:
+            assert "สถานะแก๊ส" in stem
+            assert answer == "SO₂"
+            assert set(choice.content[0].text for choice in question.choices) == set(q29.MOLECULES)
+        elif number == 30:
+            assert "สถานะแก๊ส" in stem
+            assert answer == "PCl₅"
+            assert set(choice.content[0].text for choice in question.choices) == set(q30.MOLECULES)
+        elif number == 31:
+            assert answer == "PH₃ และ H₂S"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                " และ ".join(pair) for pair in q31.PAIRS
+            }
+        elif number == 32:
+            assert all(statement in stem for statement in q32.STATEMENTS)
+            assert answer == q32.CLAIMS[1]
+            assert set(choice.content[0].text for choice in question.choices) == set(q32.CLAIMS)
+        elif number == 33:
+            reduction = int(re.search(r"Cl₂ ลดลง (\d+)%", stem).group(1))
+            chlorine, hydrogen, hcl = map(int, re.search(
+                r"Cl₂ (\d+)%, H₂ (\d+)%, HCl (\d+)%", stem,
+            ).groups())
+            assert chlorine + hydrogen + hcl == 100
+            initial_hydrogen = hydrogen + hcl // 2
+            initial_chlorine = chlorine + hcl // 2
+            assert hcl % 2 == 0 and 100 * (hcl // 2) == reduction * initial_chlorine
+            assert answer == str(initial_hydrogen)
+            assert set(choice.content[0].text for choice in question.choices) == {
+                str(value) for value in (hydrogen, initial_chlorine,
+                                         hydrogen + hcl, initial_hydrogen)
+            }
+        elif number == 34:
+            salt, precip = map(Fraction, re.search(
+                r"ASO₄ ([\d.]+) g.*?BaSO₄ ([\d.]+) g", stem,
+            ).groups())
+            candidate = [name for name, mass in q34.METALS
+                         if salt * 233 / (mass + 96) == precip]
+            assert candidate == [answer]
+            assert set(choice.content[0].text for choice in question.choices) == {
+                name for name, _ in q34.METALS
+            }
+        elif number == 35:
+            volume, air_percent = map(int, re.search(
+                r"ปริมาตรรวม (\d+) m³.*?อากาศมี O₂ (\d+)%", stem,
+            ).groups())
+            assert all(name in stem for name in q35.GAS_NAMES)
+            oxygen = Fraction(volume * 18, 100)
+            assert answer == str(int(oxygen * 100 / air_percent))
+            assert set(choice.content[0].text for choice in question.choices) == {
+                str(value) for value in (int(oxygen), int(oxygen * 4),
+                                         int(oxygen * 200 / air_percent),
+                                         int(oxygen * 100 / air_percent))
+            }
+        elif number == 36:
+            yield_percent, liters = re.search(
+                r"ได้ผลได้ (\d+)%.*?NH₃ ([\d.]+) L", stem,
+            ).groups()
+            grams = Fraction(liters) / Fraction("22.4") * Fraction(3, 2)
+            grams *= Fraction(2400, int(yield_percent))
+            assert answer == f"{float(grams):g}"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                f"{float(value):g}" for value in (
+                    grams, grams * int(yield_percent) / 100,
+                    grams * Fraction(2, 3), grams * 2,
+                )
+            }
+        elif number == 37:
+            c, cv, ag, av = re.search(
+                r"Na₂CO₃ ([\d.]+) mol/L ปริมาตร (\d+) mL.*?AgNO₃ ([\d.]+) mol/L ปริมาตร (\d+) mL", stem,
+            ).groups()
+            cv, av = int(cv), int(av)
+            carbonate = Fraction(c) * cv
+            silver = Fraction(ag) * av
+            remaining = carbonate - silver / 2
+            assert remaining > 0 and "ปริมาตรรวม" in stem
+            assert answer == f"{float(remaining / (cv + av)):.4f}"
+            assert set(choice.content[0].text for choice in question.choices) == {
+                f"{float(value):.4f}" for value in (
+                    remaining / (cv + av), carbonate / (cv + av),
+                    remaining / cv, Fraction(c),
+                )
+            }
+        elif number == 38:
+            total, gas, residue = re.search(
+                r"มวล (\d+) mg.*?H₂ ([\d.]+) cm³.*?Cu (\d+) mg", stem,
+            ).groups()
+            total, residue = int(total), int(residue)
+            hydrogen = Fraction(gas) / Fraction("22.4")
+            zinc = (total - residue - 18 * hydrogen) / 47
+            aluminium = total - residue - 65 * zinc
+            percent = (Decimal(100 * aluminium.numerator) /
+                       Decimal(aluminium.denominator * total)).quantize(
+                Decimal("0.1"), rounding=ROUND_HALF_UP,
+            )
+            assert answer == f"{percent:.1f}" and "22.4 L/mol" in stem
+        elif number == 39:
+            matched = re.search(
+                r"สารละลายผสม (\d+) mL มี Fe\(NH₄\)₂\(SO₄\)₂ ([\d.]+) mol/L, Fe₂\(SO₄\)₃ ([\d.]+) mol/L.*?KMnO₄ ([\d.]+) mol/L (\d+) mL",
+                stem,
+            )
+            assert matched
+            v, initial_ii, initial_iii, oxidant, pv = matched.groups()
+            v, pv = int(v), int(pv)
+            oxidized = 5 * Fraction(oxidant) * pv
+            assert Fraction(initial_ii) * v > oxidized
+            ferric = 2 * Fraction(initial_iii) * v + oxidized
+            assert answer == f"{float(ferric / (v + pv)):.4f}"
+            assert "ปริมาตรรวม" in stem
+        elif number == 40:
+            target, yield_percent = re.search(
+                r"B₂H₆ ([\d.]+) mol ที่ผลได้ (\d+)%", stem,
+            ).groups()
+            needed = Fraction(target) * Fraction(3, 2) * 100 / int(yield_percent)
+            assert answer == f"{float(needed):.3f}"
+            assert "NaBH₄" in stem and "BF₃" in stem
+        elif number == 41:
+            volume, temperature, pressure = re.search(
+                r"N₂ ([\d.]+) L ที่ (\d+)°C และ (\d+) mmHg", stem,
+            ).groups()
+            nitrogen = Fraction(volume) * Fraction(int(pressure), 760)
+            nitrogen /= Fraction("0.082") * (int(temperature) + 273)
+            grams = nitrogen * Fraction(5, 8) * 65
+            rounded = (Decimal(grams.numerator) / Decimal(grams.denominator)).quantize(
+                Decimal("0.1"), rounding=ROUND_HALF_UP,
+            )
+            assert answer == f"{rounded:.1f}"
+            assert "2NaN₃ → 2Na + 3N₂" in stem and "10Na + 2KNO₃" in stem
+        elif number == 42:
+            mass, concentration = re.search(
+                r"มวล ([\d.]+) g .*?HCl ([\d.]+) mol/L", stem,
+            ).groups()
+            formula_moles = Fraction(mass) / 226
+            acid_moles = 3 * formula_moles
+            volume_ml = 1000 * acid_moles / Fraction(concentration)
+            assert answer == f"{float(volume_ml):.1f}"
+            assert "Na₂CO₃·NaHCO₃·2H₂O" in stem
+        elif number == 43:
+            mass, gas = re.search(
+                r"KO₂ ([\d.]+) g กับ CO₂ (\d+) cm³", stem,
+            ).groups()
+            ko2_mmol = Fraction(mass) * 1000 / 71
+            co2_mmol = Fraction(gas) / Fraction("22.4")
+            oxygen_cm3 = min(Fraction(3, 4) * ko2_mmol,
+                             Fraction(3, 2) * co2_mmol) * Fraction("22.4")
+            assert answer == str(int(oxygen_cm3))
+            assert "22.4 L/mol" in stem
+        elif number == 44:
+            molarity, mass_percent, density = re.search(
+                r"เข้มข้น ([\d.]+) mol/L มี A ([\d.]+)%.*?ความหนาแน่น ([\d.]+) g/mL", stem,
+            ).groups()
+            implied = Fraction(density) * 1000 * Fraction(mass_percent) / 100
+            implied /= Fraction(molarity)
+            closest = min(q44.ACIDS, key=lambda pair: abs(pair[1] - implied))[0]
+            assert answer == closest
+            assert set(choice.content[0].text for choice in question.choices) == {
+                name for name, _ in q44.ACIDS
+            }
+        elif number == 45:
+            sulfate_m, sulfate_ml, phosphate_m, phosphate_ml = re.search(
+                r"Na₂SO₄ ([\d.]+) mol/L (\d+) mL กับ Na₃PO₄ ([\d.]+) mol/L (\d+) mL", stem,
+            ).groups()
+            sulfate_ml, phosphate_ml = int(sulfate_ml), int(phosphate_ml)
+            sodium_mmol = (2 * Fraction(sulfate_m) * sulfate_ml
+                           + 3 * Fraction(phosphate_m) * phosphate_ml)
+            concentration = sodium_mmol / (sulfate_ml + phosphate_ml)
+            assert answer == f"{float(concentration):.4f}"
+            assert "ปริมาตรรวม" in stem
+        elif number == 46:
+            percent, chlorine = re.search(
+                r"HCl ([\d.]+)% โดยมวล.*?Cl₂ ([\d.]+) g", stem,
+            ).groups()
+            pure_hcl = Fraction(chlorine) / 71 * 4 * Fraction("36.5")
+            solution = pure_hcl * 100 / Fraction(percent)
+            assert answer == f"{float(solution):.2f}"
+            assert "สารละลาย HCl กี่กรัม" in stem
+        elif number == 47:
+            volume, percent, density, bicarbonate = re.search(
+                r"น้ำส้มสายชู (\d+) mL มี CH₃COOH ([\d.]+)%.*?ความหนาแน่น ([\d.]+) g/mL.*?NaHCO₃ ([\d.]+) g", stem,
+            ).groups()
+            volume = int(volume)
+            acid_mol = Fraction(volume) * Fraction(density) * Fraction(percent) / 6000
+            residual = acid_mol - Fraction(bicarbonate) / 84
+            concentration = residual * 1000 / volume
+            rounded = (Decimal(concentration.numerator) /
+                       Decimal(concentration.denominator)).quantize(
+                Decimal("0.001"), rounding=ROUND_HALF_UP,
+            )
+            assert answer == f"{rounded:.3f}"
+            assert "ปริมาตรสารละลายไม่เปลี่ยน" in stem
+        elif number == 48:
+            target, final_ml, ppm, barium_density, barium_ml, sodium_percent, sodium_density = re.search(
+                r"\[OH⁻\]=([\d.]+) mol/L ปริมาตรสุดท้าย (\d+) mL.*?Ba\(OH\)₂ (\d+) ppm.*?ความหนาแน่น ([\d.]+) g/mL ปริมาตร (\d+) mL.*?NaOH ([\d.]+)%.*?ความหนาแน่น ([\d.]+) g/mL",
+                stem,
+            ).groups()
+            ba_g = Fraction(barium_density) * int(barium_ml) * int(ppm) / 1_000_000
+            initial_oh_mmol = ba_g / 171 * 2 * 1000
+            need_mmol = Fraction(target) * int(final_ml) - initial_oh_mmol
+            stock_mmol_per_ml = (Fraction(sodium_density) * Fraction(sodium_percent)
+                                 / 100 / 40 * 1000)
+            sodium_ml = need_mmol / stock_mmol_per_ml
+            assert answer == f"{float(sodium_ml):.2f}"
+            assert "ppm โดยมวล" in stem
+        elif number == 49:
+            solute, benzene, rise, kb = re.search(
+                r"สาร X ([\d.]+) g ในเบนซีน ([\d.]+) g.*?สูงขึ้น ([\d.]+)°C.*?= ([\d.]+) °C/m",
+                stem,
+            ).groups()
+            implied_mass = Fraction(solute) * Fraction(kb) * 1000
+            implied_mass /= Fraction(rise) * Fraction(benzene)
+            nearest = int(implied_mass + Fraction(1, 2))
+            assert answer == f"{nearest:.1f}"
+            assert "ไม่แตกตัว" in stem
+        elif number == 50:
+            pure_a, solution_a, kf, pure_b, kb = re.search(
+                r"A บริสุทธิ์แข็งตัวที่ ([\d.]+)°C.*?สารละลาย A แข็งตัวที่ ([\d.]+)°C.*?Kf\(A\)=([\d.]+) °C/m.*?B บริสุทธิ์เดือดที่ ([\d.]+)°C.*?Kb\(B\)=([\d.]+) °C/m",
+                stem,
+            ).groups()
+            molality = (Fraction(pure_a) - Fraction(solution_a)) / Fraction(kf)
+            boiling = Fraction(pure_b) + Fraction(kb) * molality
+            assert answer == f"{float(boiling):.1f}"
+            assert "มวล M เท่ากัน" in stem and "มวลตัวทำละลายเท่ากัน" in stem
+        elif number == 51:
+            molar_mass, water_ml, gap = re.search(
+                r"สาร X มวลโมล (\d+) g/mol ลงในน้ำ (\d+) mL.*?ต่างกัน ([\d.]+)°C",
+                stem,
+            ).groups()
+            molality = (Fraction(gap) - 100) / (Fraction("1.86") + Fraction("0.51"))
+            grams = molality * Fraction(int(water_ml), 1000) * int(molar_mass)
+            assert answer == f"{float(grams):.1f}"
+            assert "ไม่แตกตัว" in stem and "1.00 g/mL" in stem
+        elif number == 52:
+            choices = [choice.content[0].text for choice in question.choices]
+            assert "แรงระหว่างขั้วถาวร" in answer
+            assert any(f"ผลึก {species}" in answer for species in q52.NONPOLAR)
+            assert sum("แรงระหว่างขั้วถาวร" in choice for choice in choices) == 1
+        elif number == 53:
+            choices = [choice.content[0].text for choice in question.choices]
+            assert any(answer.startswith(species) for species in q53.NETWORK)
+            assert "แรงระหว่างขั้วถาวร" in answer
+            assert sum("แรงระหว่างขั้วถาวร" in choice for choice in choices) == 1
+        elif number == 54:
+            a, b, c = map(int, re.search(
+                r"อุณหภูมิเดียวกัน (\d+), (\d+), (\d+) mmHg", stem,
+            ).groups())
+            assert a > b > c
+            assert answer == "ข้อ 1 กับข้อ 3 ถูกต้อง"
+        elif number == 55:
+            for choice in question.choices:
+                values = re.findall(r"([ABC]): หลอม (-?[\d.]+)°C เดือด (-?[\d.]+)°C",
+                                    choice.content[0].text)
+                assert len(values) == 3
+                matches = all(
+                    (float(mp) < float(bp) < 25 if label == "A" else
+                     float(mp) < 25 < float(bp) if label == "B" else
+                     25 < float(mp) < float(bp))
+                    for label, mp, bp in values
+                )
+                assert matches == (choice.content[0].text == answer)
+        elif number == 56:
+            names = re.search(r"1\. (.*?) 2\. (.*?) 3\. (.*?) พื้นผิว", stem).groups()
+            lotus = names.index("ใบบัว") + 1
+            assert answer == f"ข้อ {lotus} เท่านั้น"
+            assert "ไม่เคลือบสารกันน้ำ" in stem
+        elif number == 57:
+            assert "พลังงานจลน์เฉลี่ยต่ออนุภาคเท่ากัน" in answer
+            cooling = next(choice.content[0].text for choice in question.choices
+                           if "ปริมาตรคงที่เย็นจาก" in choice.content[0].text)
+            start, end = map(int, re.search(r"เย็นจาก (\d+)°C เป็น (\d+)°C", cooling).groups())
+            assert (end + 273.15) / (start + 273.15) < 1
+        elif number == 58:
+            pressure, temperature, density = re.search(
+                r"ที่ ([\d.]+) atm และ (\d+)°C ไอชนิดหนึ่งหนาแน่น ([\d.]+) g/L",
+                stem,
+            ).groups()
+            implied = Fraction(density) * Fraction("0.082") * (int(temperature) + 273)
+            implied /= Fraction(pressure)
+            candidate = min(q58.MOLAR_MASS,
+                            key=lambda gas: abs(q58.MOLAR_MASS[gas] - implied))
+            display = {"PF3": "PF₃", "PF5": "PF₅", "P2F4": "P₂F₄"}
+            assert answer == f"{display[candidate]}; PF₃"
+        elif number == 59:
+            initial, final = map(int, re.search(
+                r"ลดจาก (\d+) เป็น (\d+) mmHg", stem,
+            ).groups())
+            assert answer == f"{final / initial:.2f}:1"
+            assert len({choice.content[0].text for choice in question.choices}) == 4
+        elif number == 60:
+            initial, bottom_p, bottom_c, surface_p, surface_c = re.search(
+                r"ปริมาตร ([\d.]+) cm³.*?ความดัน ([\d.]+) atm อุณหภูมิ "
+                r"(\d+)°C.*?ที่ ([\d.]+) atm และ (\d+)°C", stem,
+            ).groups()
+            volume = (Fraction(initial) * Fraction(bottom_p) *
+                      (int(surface_c) + 273) / Fraction(surface_p) /
+                      (int(bottom_c) + 273))
+            assert answer == f"{float(volume):.1f}"
+        elif number == 61:
+            element, atomic = re.search(r"ธาตุ (\w+) มีเลขอะตอม (\d+)", stem).groups()
+            assert int(atomic) == q61.ELEMENTS[element][0]
+            assert answer == q61.check(element)
+            assert answer.startswith("[Kr]" if element == "Zr" else "[Ar]")
+        elif number == 62:
+            d_count = re.search(r"D=4s²3d([⁰¹²³⁴⁵⁶⁷⁸⁹])", stem).group(1)
+            assert d_count in "⁵⁶⁷⁸"
+            assert answer == "G; EG₂"
+            assert "n=3" in stem
+        elif number == 63:
+            cl_light, cl_heavy, br_light, br_heavy = map(int, re.search(
+                r"³⁵Cl:³⁷Cl = (\d+):(\d+) และ ⁷⁹Br:⁸¹Br = (\d+):(\d+)",
+                stem,
+            ).groups())
+            percent = (Fraction(cl_light, cl_light + cl_heavy) *
+                       Fraction(br_light, br_light + br_heavy) * 100)
+            assert answer == f"{float(percent):.1f}%"
+        elif number == 64:
+            assert answer == "CrO₃; [Ar]3d⁵4s²; Fe"
+            assert any(clue in stem for clue in q64.CLUES.values())
+        elif number == 65:
+            u_mass, n_mass, initial, minutes = re.search(
+                r"U-(\d+).*?N-(\d+).*?เริ่ม ([\d.]+) mg ผ่านไป (\d+) นาที", stem,
+            ).groups()
+            neutrons = int(u_mass) + int(n_mass) - 248
+            remaining = Fraction(initial) / 2 ** (int(minutes) // 25)
+            assert answer == f"{neutrons}n; {float(remaining):.3f} mg"
+        elif number == 66:
+            formation, sublimation, dissociation, affinity, lattice = map(int, re.search(
+                r"ΔHf=([+-]\d+) kJ/mol; M\(s\)→M\(g\)=([+-]\d+); "
+                r"X₂\(g\)→2X\(g\)=([+-]\d+); X\(g\)\+e⁻→X⁻\(g\)="
+                r"([+-]\d+); M⁺\(g\)\+X⁻\(g\)→MX\(s\)=([+-]\d+)", stem,
+            ).groups())
+            implied = (Fraction(formation) - sublimation - Fraction(dissociation, 2)
+                       - affinity - lattice)
+            assert answer == f"{implied} kJ/mol"
+        elif number == 67:
+            x, y = re.search(r"หมู่ 16 \((\w+)\) และฮาโลเจน \((\w+)\)", stem).groups()
+            assert answer.startswith(f"C{x}{y}2; {y}–C(={x})–{y};")
+            assert f"{x} มีคู่โดดเดี่ยว 2 คู่ {y} ตัวละ 3 คู่" in answer
+            assert answer.endswith("ขั้ว–ขั้ว")
+        elif number == 68:
+            flour, additive, alumina, pieces = re.search(
+                r"แป้ง (\d+) g.*?([\d.]+)% โดยมวล ซึ่งมี Al₂O₃ "
+                r"([\d.]+)% โดยมวล.*?(\d+) ชิ้น", stem,
+            ).groups()
+            al_mg = (Fraction(int(flour)) * Fraction(additive) / 100
+                     * Fraction(alumina) / 100 * Fraction(54, 102)
+                     * 1000 / int(pieces))
+            assert answer == f"{float(al_mg):.2f} mg"
+        elif number == 69:
+            sample, ag_m, ag_ml, scn_m, scn_ml = re.search(
+                r"ปุ๋ย ([\d.]+) g.*?AgNO₃ ([\d.]+) mol/L ปริมาตร "
+                r"([\d.]+) mL.*?KSCN ([\d.]+) mol/L ปริมาตร ([\d.]+) mL", stem,
+            ).groups()
+            leftover = Fraction(scn_m) * Fraction(scn_ml) / 1000
+            initial = Fraction(ag_m) * Fraction(ag_ml) / 1000
+            percent = (initial - leftover) / 6 * 142 / Fraction(sample) * 100
+            assert answer == f"{q69._sci(leftover)}; {float(percent):.2f}%"
+        elif number == 70:
+            sample, volume, molarity = re.search(
+                r"สาร ([\d.]+) g ทำสารละลาย (\d+) mL ความเข้มข้น "
+                r"([\d.]+) mol/L", stem,
+            ).groups()
+            molecular_mass = Fraction(sample) * 1000 / (Fraction(molarity)
+                                                         * int(volume))
+            multiplier = round(float(molecular_mass / 118))
+            assert answer == (f"C3H2Br; C{3 * multiplier}H{2 * multiplier}"
+                              f"Br{multiplier}")
+        elif number == 71:
+            n, pure, kb, initial, final = re.search(
+                r"สารไม่ระเหยและไม่แตกตัว ([\d.]+) mol.*?บริสุทธิ์ "
+                r"([\d.]+)°C และ K_b=([\d.]+)°C/m.*?ที่ ([\d.]+)°C.*?"
+                r"เดือดที่ ([\d.]+)°C", stem,
+            ).groups()
+            first_g = 1000 * Fraction(kb) * Fraction(n) / (Fraction(initial)
+                                                            - Fraction(pure))
+            second_g = 1000 * Fraction(kb) * Fraction(n) / (Fraction(final)
+                                                             - Fraction(pure))
+            assert answer == f"{float(first_g - second_g):.1f} g"
+        elif number == 72:
+            my, mw, mass, x, added, density = re.search(
+                r"Y ไม่แตกตัว \(M=(\d+)\).*?น้ำ \(M=(\d+)\).*?สารละลาย "
+                r"(\d+) g โดย X_Y=([\d.]+) เติมน้ำ (\d+) g.*?"
+                r"([\d.]+) g/mL", stem,
+            ).groups()
+            fraction = Fraction(x)
+            solute_mol = Fraction(int(mass)) * fraction / (
+                fraction * int(my) + (1 - fraction) * int(mw))
+            solute_mass = solute_mol * int(my)
+            volume_l = Fraction(int(mass) + int(added)) / Fraction(density) / 1000
+            assert answer == (f"{solute_mass} g; "
+                              f"{float(solute_mol / volume_l):.2f} mol/L")
+        elif number == 73:
+            assert all(name in stem for name in
+                       ("CH₄", "C₂H₅OH", "C₂H₅OC₂H₅", "SiH₄"))
+            assert answer == "C₂H₅OH < C₂H₅OC₂H₅ < SiH₄ < CH₄"
+        elif number == 74:
+            initial_c, initial_atm, final_c, threshold = re.search(
+                r"ที่ (\d+)°C ความดัน ([\d.]+) atm; เมื่อร้อนเป็น "
+                r"(\d+)°C.*?เกิน (\d+) mmHg", stem,
+            ).groups()
+            pressure = Fraction(initial_atm) * Fraction(int(final_c) + 273,
+                                                         int(initial_c) + 273)
+            opens = pressure > Fraction(int(threshold), 760)
+            rounded = (Decimal(pressure.numerator) /
+                       Decimal(pressure.denominator)).quantize(
+                           Decimal("0.1"), rounding=ROUND_HALF_UP)
+            assert answer == (f"{rounded:.1f} atm; "
+                              f"{'เปิด' if opens else 'ไม่เปิด'}")
+        else:
+            sample, sample_s, argon, argon_s, argon_mass = re.search(
+                r"แก๊สตัวอย่าง ([\d.]+) mol.*?ใน ([\d.]+) s; Ar "
+                r"([\d.]+) mol.*?ใน ([\d.]+) s.*?M\(Ar\)=(\d+) g/mol", stem,
+            ).groups()
+            mass = (int(argon_mass) * (Fraction(argon) / Fraction(argon_s)
+                                      / (Fraction(sample) / Fraction(sample_s))) ** 2)
+            assert answer == f"{float(mass):.1f} g/mol"
+        assert len(question.choices) == 4

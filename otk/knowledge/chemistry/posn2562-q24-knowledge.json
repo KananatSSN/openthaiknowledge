@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การเรียกชื่อสารและรูปร่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q24.procedure",
+      "kind": "procedure",
+      "title": "ชื่อสารและรูปร่าง VSEPR",
+      "statement": "Cl₂O และ OF₂ มี O แบบ AX₂E₂ จึงงอ; SiF₄ เป็นซิลิคอนเตตระฟลูออไรด์แบบ AX₄ ทรงสี่หน้า",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 24
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q24"
+      ],
+      "note": "OF2 is bent; SiF4 is silicon tetrafluoride and tetrahedral."
+    }
+  ]
+}

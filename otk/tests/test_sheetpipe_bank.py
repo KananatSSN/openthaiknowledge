@@ -7,6 +7,8 @@ machine, with or without the gitignored PDFs — must never erase it.
 
 from __future__ import annotations
 
+import re
+
 import pytest
 
 from otk.tests._bank import needs_bank
@@ -270,7 +272,15 @@ def test_committed_digests_match_the_bank():
         assert js.is_file() and md.is_file(), f"{e.path}: digest missing"
         d = load_digest(e.path)
         assert d["sha256"] == e.sha256, f"{e.path}: digest is of another version"
-        assert len(d["items"]) == e.items > 0, e.path
+        partial = re.match(r"PARTIAL (\d+)/(\d+):", e.note)
+        if partial:
+            reviewed, total = map(int, partial.groups())
+            assert e.stage == "converted", e.path
+            assert 0 < reviewed < total == e.items, e.path
+            assert len(d["items"]) == reviewed, e.path
+            assert d["note"].startswith(f"PARTIAL {reviewed}/{total}:"), e.path
+        else:
+            assert len(d["items"]) == e.items > 0, e.path
         assert all(it["stem"].strip() for it in d["items"]), e.path
 
 

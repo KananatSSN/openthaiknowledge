@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติตามคาบและหมู่",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.periodic_property_order_p_ca_as.procedure",
+      "kind": "procedure",
+      "title": "ตรวจลำดับสมบัติของ P Ca และ As",
+      "statement": "P และ As อยู่หมู่ 15 โดย P มี IE₁ และ EN สูงกว่า As; Ca มีรัศมีมากกว่าและจุดหลอมเหลวของ Ca สูงกว่า As สีเทา",
+      "steps": [
+        "แปลงสัญลักษณ์สมมติกลับเป็น P, Ca และ As",
+        "ตรวจแต่ละสมบัติแยกกัน โดยระบุรูปของ As และเงื่อนไขจุดหลอมเหลว"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q08"
+      ],
+      "note": "Source choice ก is false: IE1(P) > IE1(As) > IE1(Ca), whereas the choice places Ca above As. The adaptation clarifies grey As melting under pressure (817 C); at normal pressure it sublimes. https://periodic-table.rsc.org/element/33/arsenic"
+    }
+  ]
+}

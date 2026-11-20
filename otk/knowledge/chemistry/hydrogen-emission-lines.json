@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สเปกตรัมของอะตอม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hydrogen_emission_lines.procedure",
+      "kind": "procedure",
+      "title": "จำนวนเส้นสเปกตรัมไฮโดรเจน",
+      "statement": "เมื่อกระตุ้นอะตอมไฮโดรเจนจำนวนมากถึงระดับ n เส้นสเปกตรัมจากทุกการเปลี่ยนลงระหว่างระดับ 1 ถึง n มีได้ n(n−1)/2 เส้นในช่วงระดับที่ใช้",
+      "steps": [
+        "ระบุระดับสูงสุดจากแผนภาพ ไม่ใช้ค่าความยาวคลื่นปัดเศษตัดสินการสั่นพ้อง",
+        "นับทุกคู่ระดับที่เปลี่ยนลงได้ รวมการคายพลังงานหลายขั้นในกลุ่มอะตอม"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 3
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q03"
+      ],
+      "note": "Source diagram labels the n=4 to n=1 transition as 97 nm. Adaptation gives n explicitly and asks about an ensemble, including cascades; no static figure is needed."
+    }
+  ]
+}

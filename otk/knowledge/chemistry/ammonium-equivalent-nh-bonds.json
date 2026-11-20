@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พันธะโคเวเลนต์และโครงสร้างแอมโมเนียม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.ammonium_equivalent_nh_bonds.procedure",
+      "kind": "procedure",
+      "title": "ตรวจข้อความผิดเกี่ยวกับแอมโมเนียมไอออน",
+      "statement": "NH₄⁺ มีพันธะ N–H สมมูลกันสี่พันธะในรูปทรงสี่หน้า แม้พันธะหนึ่งจะอธิบายการเกิดด้วยการบริจาคคู่โดดเดี่ยวจาก NH₃ ให้ H⁺",
+      "steps": [
+        "สร้างโครงสร้างลิวอิส NH₄⁺ แล้วนับคู่พันธะและคู่โดดเดี่ยวบน N",
+        "ใช้สมมาตรของทรงสี่หน้าเปรียบเทียบพันธะ N–H ทั้งสี่หลังเกิดไอออน"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 28
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q28"
+      ],
+      "note": "Source choice ง is false: all four N-H bonds are equivalent in tetrahedral NH4+, even though one may be described as a coordinate bond during formation. https://chem.libretexts.org/Bookshelves/Environmental_Chemistry/Green_Chemistry_and_the_Ten_Commandments_of_Sustainability_%28Manahan%29/04%3A_Compounds-_Safer_Materials_for_a_Safer_World/4.07%3A_Predicting_Formulas_of_Covalently_Bound_Compounds"
+    }
+  ]
+}

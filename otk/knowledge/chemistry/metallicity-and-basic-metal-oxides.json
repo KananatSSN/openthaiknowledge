@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แนวโน้มตารางธาตุและออกไซด์ของโลหะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.metallicity_and_basic_metal_oxides.procedure",
+      "kind": "procedure",
+      "title": "แนวโน้มความเป็นโลหะและออกไซด์เบส",
+      "statement": "ความเป็นโลหะเพิ่มเมื่อเคลื่อนลงหมู่และไปทางซ้ายในคาบ; โลหะหมู่ IA และ IIA สร้างออกไซด์เบส M₂O และ MO ตามลำดับ",
+      "steps": [
+        "ระบุธาตุจากหมู่และคาบแล้วเรียงตามแนวโน้มความเป็นโลหะ",
+        "ใช้ประจุ +1 หรือ +2 ของโลหะกับ O²⁻ เพื่อเขียนสูตรออกไซด์เบส"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 64
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q64"
+      ],
+      "note": "The adaptation asks for real symbols and basic oxides, clarifying the source's broader 'basic compounds' wording. Na2O and MgO are the two metal oxides from the supplied elements; NaF and MgF2 are not counted as basic oxides."
+    }
+  ]
+}

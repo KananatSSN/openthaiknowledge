@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาณสัมพันธ์และสมการแก๊สอุดมคติ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.lithium_hydroxide_co2_gas_volume.procedure",
+      "kind": "procedure",
+      "title": "ปริมาตร CO₂ สำหรับปฏิกิริยากับ LiOH",
+      "statement": "2LiOH ทำปฏิกิริยากับ CO₂ 1 โมล; หลังหาจำนวนโมล CO₂ ใช้ PV=nRT เพื่อหาปริมาตรที่อุณหภูมิและความดันที่กำหนด",
+      "steps": [
+        "หาจำนวนโมล LiOH และหารสองเพื่อได้โมล CO₂",
+        "คำนวณ V=nRT/P โดยใช้อุณหภูมิหน่วยเคลวิน"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 44
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q44"
+      ],
+      "note": "Uses 2LiOH + CO2 -> Li2CO3 + H2O, M(LiOH)=24 g/mol and R=0.082 L atm mol^-1 K^-1."
+    }
+  ]
+}

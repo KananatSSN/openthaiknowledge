@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "ออร์บิทัลและการจัดอิเล็กตรอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hydrogen_multielectron_orbital_energy.procedure",
+      "kind": "procedure",
+      "title": "พลังงานออร์บิทัลของ H และอะตอมหลายอิเล็กตรอน",
+      "statement": "H มีออร์บิทัล n เดียวกันเสมอพลังงาน; ในอะตอมหลายอิเล็กตรอน 3s ต่ำกว่า 3p และ 3d ต่ำกว่า 4p",
+      "steps": [
+        "แยกอะตอมอิเล็กตรอนเดียวจากอะตอมหลายอิเล็กตรอน",
+        "เทียบลำดับพลังงานตามการกำบังและกฎ n+l"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 4
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q04"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สูตรโมเลกุลจากปริมาตรแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q45.procedure",
+      "kind": "procedure",
+      "title": "สูตรผลิตภัณฑ์จากปริมาตรแก๊ส",
+      "statement": "เมื่อ T และ P คงที่ อัตราส่วนปริมาตรแก๊สเท่ากับอัตราส่วนโมล; 3X₂+Y₃→3X₂Y ดุล X และ Y ทั้งคู่",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 45
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q45"
+      ],
+      "note": "At same T,P, volume ratios equal stoichiometric mole ratios."
+    }
+  ]
+}

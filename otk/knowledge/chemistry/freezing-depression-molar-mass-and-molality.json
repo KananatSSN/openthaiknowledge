@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การลดจุดเยือกแข็งและโมแลล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.freezing_depression_molar_mass_and_molality.procedure",
+      "kind": "procedure",
+      "title": "มวลโมลาร์จากการลดจุดเยือกแข็ง",
+      "statement": "สำหรับตัวละลายไม่แตกตัว ΔTf=Kf m; โมแลลคูณมวลตัวทำละลายเป็นกิโลกรัมให้โมลตัวละลายและนำไปหามวลโมลาร์",
+      "steps": [
+        "หาการลดจุดเยือกแข็งจากจุดเยือกแข็งตัวทำละลายบริสุทธิ์และสารละลาย",
+        "หารด้วย Kf เพื่อหาโมแลล แล้วใช้มวลน้ำหาโมลตัวละลายก่อนหามวลโมลาร์"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 70
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q70"
+      ],
+      "note": "ΔTf=2.79 C gives molality 2.79/1.86=1.50; 0.100 kg water holds 0.150 mol solute, so 17.7/0.150=118 g/mol."
+    }
+  ]
+}

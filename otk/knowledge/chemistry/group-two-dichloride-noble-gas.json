@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สารประกอบไอออนิกและแก๊สมีตระกูล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.group_two_dichloride_noble_gas.procedure",
+      "kind": "procedure",
+      "title": "ไอออนของโลหะหมู่ 2 กับแก๊สมีตระกูล",
+      "statement": "โลหะหมู่ 2 ในสารประกอบคลอไรด์ไอออนิก ACl₂ ให้ A²⁺ ที่มีจำนวนอิเล็กตรอนตรงกับแก๊สมีตระกูลก่อนหน้า",
+      "steps": [
+        "หาประจุไอออนจากสูตร ACl₂ และ Cl⁻",
+        "ลบอิเล็กตรอนสองตัวจากเลขอะตอมแล้วเทียบกับแก๊สมีตระกูล"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 8
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q08"
+      ],
+      "note": "Source leaves A unspecified; adaptation states Ca (Z=20) explicitly, so Ca2+ is isoelectronic with Ar. Variants use Mg, Sr, Ba."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาณสัมพันธ์ของปฏิกิริยาต่อเนื่อง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.incomplete_two_step_stoichiometric_yield.procedure",
+      "kind": "procedure",
+      "title": "ผลผลิตจากปฏิกิริยาต่อเนื่องที่ไม่สมบูรณ์",
+      "statement": "ปฏิกิริยาต่อเนื่องต้องคูณเศษส่วนที่ทำปฏิกิริยาในแต่ละขั้น แล้วใช้สัมประสิทธิ์สมการแปลงเป็นโมลผลิตภัณฑ์และมวล",
+      "steps": [
+        "หาโมล A ที่ใช้และโมล C ที่เกิดจากสมการขั้นแรก",
+        "คูณเศษส่วน C ที่สลายแล้วใช้สัดส่วน 2C→4D+E เพื่อหามวล D และ E"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 67
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q67"
+      ],
+      "note": "0.15 mol A reacts to make 0.10 mol C; 0.075 mol C decomposes, making 0.15 mol D and 0.0375 mol E."
+    }
+  ]
+}

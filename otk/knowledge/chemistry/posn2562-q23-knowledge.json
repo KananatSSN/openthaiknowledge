@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎออกเตตและโครงสร้างลิวอิส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q23.procedure",
+      "kind": "procedure",
+      "title": "การยกเว้นกฎออกเตต",
+      "statement": "BF₃ มี 6 อิเล็กตรอนรอบ B; SF₆ มี 12 รอบ S; XeF₂ มี 10 รอบ Xe จึงไม่ตรงออกเตต",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 23
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q23"
+      ],
+      "note": "BF3 has six electrons around B; SF6 and XeF2 exceed eight."
+    }
+  ]
+}

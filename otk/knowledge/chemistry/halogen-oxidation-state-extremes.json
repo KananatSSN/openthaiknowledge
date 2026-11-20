@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เลขออกซิเดชันของแฮโลเจน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.halogen_oxidation_state_extremes.procedure",
+      "kind": "procedure",
+      "title": "ออกซิเดชันสูงสุดและต่ำสุดของแฮโลเจน",
+      "statement": "เลขออกซิเดชันของแฮโลเจนในสารประกอบเป็นค่าที่ทำให้ผลรวมเลขออกซิเดชันเท่ากับประจุรวม โดย F ใน OF₂ มีค่า −1",
+      "steps": [
+        "ดุลค่า H=+1, โลหะหมู่หนึ่ง=+1, O=−2 และ F=−1 ตามสูตรที่กำหนด",
+        "เปรียบเทียบค่าเลขออกซิเดชันของแฮโลเจนทุกสูตรเพื่อเลือกสูงสุดและต่ำสุด"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 62
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q62"
+      ],
+      "note": "Charge balance gives Br +5, Cl +3 in KClO2, I +7, Cl +1 in Cl2O, and F -1 in OF2."
+    }
+  ]
+}

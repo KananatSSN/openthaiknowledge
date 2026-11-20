@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "โมลาริตีสารละลายผสม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q54.procedure",
+      "kind": "procedure",
+      "title": "โมลาริตีเบนซีนในตัวทำละลายโทลูอีน",
+      "statement": "โมลาริตีของเบนซีนใช้โมลเบนซีนหารปริมาตรสารละลายรวม; ต้องระบุสารที่นับเป็นตัวถูกละลาย",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 54
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q54"
+      ],
+      "note": "The source omits which component is solute; adaptation explicitly requests benzene molarity and assumes additive volumes."
+    }
+  ]
+}

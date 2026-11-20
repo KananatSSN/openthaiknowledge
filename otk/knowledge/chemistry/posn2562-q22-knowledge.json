@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รูปร่างโมเลกุลตาม VSEPR",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q22.procedure",
+      "kind": "procedure",
+      "title": "รูปร่างไอออนตาม VSEPR",
+      "statement": "CO₃²⁻ เป็น AX₃ แบนราบ; SO₃²⁻ และ ClO₃⁻ เป็นพีระมิด; NO₂⁻ งอและมุมมากกว่า NH₂⁻",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 22
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q22"
+      ],
+      "note": "Carbonate is planar; nitrite bent with wider angle than amide."
+    }
+  ]
+}

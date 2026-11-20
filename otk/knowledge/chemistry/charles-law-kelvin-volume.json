@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "กฎแก๊สอุดมคติและอุณหภูมิสัมบูรณ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.charles_law_kelvin_volume.procedure",
+      "kind": "procedure",
+      "title": "กฎของชาร์ลส์จากองศาเซลเซียส",
+      "statement": "ที่ความดันและจำนวนโมลคงที่ ปริมาตรแก๊สแปรผันตรงกับอุณหภูมิสัมบูรณ์ V₂=V₁(T₂/T₁)",
+      "steps": [
+        "แปลงอุณหภูมิทั้งสองจากองศาเซลเซียสเป็นเคลวิน",
+        "คูณปริมาตรเริ่มต้นด้วยอัตราส่วนอุณหภูมิเคลวินแล้วปัดตามโจทย์"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 36
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q36"
+      ],
+      "note": "Convert both temperatures to kelvin before applying V2/V1=T2/T1; round to one decimal place."
+    }
+  ]
+}

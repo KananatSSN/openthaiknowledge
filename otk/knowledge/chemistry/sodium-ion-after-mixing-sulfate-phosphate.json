@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความเข้มข้นไอออนหลังผสมสารละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.sodium_ion_after_mixing_sulfate_phosphate.procedure",
+      "kind": "procedure",
+      "title": "ความเข้มข้นโซเดียมไอออนหลังผสมเกลือ",
+      "statement": "Na₂SO₄ ให้ Na⁺ สองโมล และ Na₃PO₄ ให้ Na⁺ สามโมลต่อโมลเกลือ; ความเข้มข้นหลังผสมคือโมล Na⁺ รวมต่อปริมาตรรวม",
+      "steps": [
+        "คำนวณโมล Na⁺ แยกจากเกลือซัลเฟตและฟอสเฟตตามสัมประสิทธิ์ในสูตร",
+        "บวกโมล Na⁺ แล้วหารด้วยผลบวกปริมาตรสารละลาย"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 45
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q45"
+      ],
+      "note": "Source choice ง is 0.70 M Na+: 2(0.10)(20)+3(0.30)(50)=49 mmol Na+ in 70 mL. Adaptation explicitly assumes additive volumes and varies both salt solutions."
+    }
+  ]
+}

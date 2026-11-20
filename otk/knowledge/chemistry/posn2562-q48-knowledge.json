@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "องค์ประกอบธาตุจากการเผาไหม้",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q48.procedure",
+      "kind": "procedure",
+      "title": "องค์ประกอบกรดจากการเผาไหม้",
+      "statement": "มวล C จาก CO₂ คือ 12/44 ของ CO₂ และ H จาก H₂O คือ 2/18 ของ H₂O; ออกซิเจนที่เหลือราว 53.3% และ C ราว 1.6 mg",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 48
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q48"
+      ],
+      "note": "C is about 1.6 mg; O about 53.3%; C/H mass ratio about six, not eight."
+    }
+  ]
+}

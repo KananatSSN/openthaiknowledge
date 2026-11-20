@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เรโซแนนซ์และชนิดพันธะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q21.procedure",
+      "kind": "procedure",
+      "title": "เรโซแนนซ์และพันธะสาม",
+      "statement": "NO₃⁻ มีเรโซแนนซ์; NH₄Br มีพันธะไอออนิกระหว่างไอออน; พันธะสามใช้ 6 อิเล็กตรอนร่วมกัน",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 21
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q21"
+      ],
+      "note": "NH4Br has ionic interaction between ions."
+    }
+  ]
+}

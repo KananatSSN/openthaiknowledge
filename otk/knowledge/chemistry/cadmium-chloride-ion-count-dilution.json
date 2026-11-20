@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สัดส่วนไอออนและการเจือจาง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.cadmium_chloride_ion_count_dilution.procedure",
+      "kind": "procedure",
+      "title": "ปริมาตรสต็อก CdCl₂ และน้ำที่เติม",
+      "statement": "CdCl₂ หนึ่งโมลให้ Cl⁻ สองโมล; ใช้จำนวนโมลไอออนหาปริมาตรสต็อก แล้วใช้การอนุรักษ์โมลหาปริมาตรสุดท้ายและน้ำที่เติม",
+      "steps": [
+        "หารโมล Cl⁻ ด้วยสองเพื่อได้โมล CdCl₂",
+        "หาปริมาตรสุดท้ายจากความเข้มข้นเป้าหมาย แล้วลบปริมาตรสต็อก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 58
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q58"
+      ],
+      "note": "Each CdCl2 gives two Cl-; 36 mmol chloride is 18 mmol CdCl2 in 6 cm3 stock. Final volume is 18 cm3, so add 12 cm3 water."
+    }
+  ]
+}

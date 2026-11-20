@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แรงระหว่างโมเลกุลและผลึก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q31.procedure",
+      "kind": "procedure",
+      "title": "สถานะและแรงยึดเหนี่ยว",
+      "statement": "ในผลึก CO₂ มีการสัมผัสระหว่างโมเลกุลมากกว่าแก๊สเจือจาง; การระเหยน้ำไม่ตัด O–H และการหลุดของชั้นแกรไฟต์ไม่ตัดพันธะ C–C ในชั้น",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 31
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q31"
+      ],
+      "note": "Solid dry ice has many contacts; evaporation does not break O-H; graphite flakes separate between layers."
+    }
+  ]
+}

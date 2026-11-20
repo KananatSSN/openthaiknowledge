@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติคอลลิเกทีฟสองชนิดของสารละลาย",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.solute_mass_from_boiling_freezing_gap.procedure",
+      "kind": "procedure",
+      "title": "มวลตัวละลายจากช่วงห่างจุดเดือดและจุดเยือกแข็ง",
+      "statement": "ช่วงห่างจุดเดือดกับจุดเยือกแข็งของน้ำที่มีตัวละลายไม่แตกตัวเท่ากับ 100+(Kb+Kf)m; จาก m หาโมลและมวลตัวละลาย",
+      "steps": [
+        "ลบช่วงห่าง 100°C ของน้ำบริสุทธิ์แล้วหารด้วย Kb+Kf เพื่อหาโมแลลิตี",
+        "แปลงปริมาตรน้ำเป็นกิโลกรัมและคูณมวลโมลของ X"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 51
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q51"
+      ],
+      "note": "Source choice ข is 72.0 g: 109.48−100=(1.86+0.51)m gives 4 mol/kg; 100 mL water weighs 0.100 kg, so 0.400 mol X weighs 72 g. Adaptation states X is nonvolatile and does not dissociate, consistent with the source answer."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เวเลนซ์อิเล็กตรอนและหมู่ธาตุ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hydrogen_halogen_valence_electrons.procedure",
+      "kind": "procedure",
+      "title": "เวเลนซ์อิเล็กตรอนของไฮโดรเจนและแฮโลเจน",
+      "statement": "อะตอมไฮโดรเจนเป็นกลางมีอิเล็กตรอนชั้นนอกสุดหนึ่งตัว ส่วนแฮโลเจนเป็นกลางมีเจ็ดตัว",
+      "steps": [
+        "เขียนการจัดเรียงอิเล็กตรอนของ H และแฮโลเจน",
+        "นับอิเล็กตรอนในชั้นนอกสุดแยกจากจำนวนที่ต้องการเพื่อครบดูเอตหรือออกเตต"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 17
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q17"
+      ],
+      "note": "The source distractor about multiple oxidation states has fluorine as an exception. The adaptation asks directly for neutral-atom valence counts, and variants compare H with F, Cl, Br or I."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การจัดอิเล็กตรอนและแนวโน้มคาบ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q63.procedure",
+      "kind": "procedure",
+      "title": "หมู่ธาตุและพลังงานไอออไนเซชัน",
+      "statement": "การจัดอิเล็กตรอนระบุ A=O, D=Al, E=Sc ในสถานะกระตุ้น, G=Na; D อยู่หมู่ 13 และ A มี IE₁ มากสุด",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 63
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q63"
+      ],
+      "note": "A=O, D=Al, E=excited Sc, G=Na; answers D and A."
+    }
+  ]
+}

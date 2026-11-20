@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ผลึกร่างตาข่ายและสมบัติของสาร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.covalent_network_melting_explanation.procedure",
+      "kind": "procedure",
+      "title": "โครงผลึกร่างตาข่ายกับจุดหลอมเหลว",
+      "statement": "SiO₂ และโครงผลึกร่างตาข่ายอื่นมีพันธะโคเวเลนต์ต่อเนื่อง ไม่ใช่โมเลกุลแยกที่ยึดด้วยแรงระหว่างขั้ว",
+      "steps": [
+        "จำแนกสารเป็นโลหะ โมเลกุล ไอออนิก หรือโครงผลึกร่างตาข่าย",
+        "เทียบชนิดพันธะกับสมบัติและหาข้อความที่ให้เหตุผลผิด"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 53
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q53"
+      ],
+      "note": "SiO₂ is a covalent network rather than discrete polar molecules; its high melting point does not come from molecular dipole forces."
+    }
+  ]
+}

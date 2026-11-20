@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แนวโน้มรัศมีอะตอมและสูตรไอออนิก",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.outer_configuration_atomic_size_and_formula.procedure",
+      "kind": "procedure",
+      "title": "ขนาดอะตอมและสูตรอย่างง่ายจากการจัดอิเล็กตรอน",
+      "statement": "เมื่อ n=3, A=Na, D=Fe, E=Ca และ G=Cl; G เล็กสุด และไอออน E²⁺ กับ G⁻ ให้สูตร EG₂",
+      "steps": [
+        "แปลงรูปการจัดอิเล็กตรอนชั้นนอกเป็นคาบและหมู่",
+        "เทียบขนาดอะตอมและดุลประจุไอออนเพื่อเขียนสูตรอย่างง่าย"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 62
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q62"
+      ],
+      "note": "For n=3 the species are Na, Fe, Ca and Cl: G is smallest; E²⁺ and G⁻ give EG₂. The adaptation fixes n=3 to avoid ambiguous cross-period radii."
+    }
+  ]
+}

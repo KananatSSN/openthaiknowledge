@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พลังงานพันธะและเอนทัลปี",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q66.procedure",
+      "kind": "procedure",
+      "title": "พลังงานพันธะ C=O จากเอนทัลปี",
+      "statement": "ใน CH₃OH+CO→CH₃COOH พันธะ C–H, C–O, O–H หักล้างกัน เหลือ ΔH=D(C≡O)−D(C–C)−D(C=O)",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 66
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q66"
+      ],
+      "note": "Shared C-H, C-O and O-H cancel; -78=1070-348-D(C=O), giving 800 kJ/mol."
+    }
+  ]
+}

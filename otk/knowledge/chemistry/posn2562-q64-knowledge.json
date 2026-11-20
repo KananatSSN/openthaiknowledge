@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปฏิกิริยาการตกตะกอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q64.procedure",
+      "kind": "procedure",
+      "title": "สมการไอออนิกสุทธิของตะกอน",
+      "statement": "สมการไอออนิกสุทธิของตะกอนคือ Ca²⁺+CO₃²⁻→CaCO₃, Ba²⁺+SO₄²⁻→BaSO₄ และ Sr²⁺+HPO₄²⁻→SrHPO₄",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 64
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q64"
+      ],
+      "note": "Precipitates are CaCO3, BaSO4 and SrHPO4; SrHPO4 Ksp 4.2e-7 per Frere 1962. https://acsess.onlinelibrary.wiley.com/doi/pdf/10.2136/sssaj1962.03615995002600010013x"
+    }
+  ]
+}

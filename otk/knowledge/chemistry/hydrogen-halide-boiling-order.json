@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "แรงยึดเหนี่ยวระหว่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.hydrogen_halide_boiling_order.procedure",
+      "kind": "procedure",
+      "title": "ลำดับจุดเดือดของไฮโดรเจนเฮไลด์",
+      "statement": "จุดเดือดปกติของไฮโดรเจนเฮไลด์เรียง HCl < HBr < HI < HF; สามตัวแรกสูงขึ้นตามแรงลอนดอน ส่วน HF มีพันธะไฮโดรเจนเด่น",
+      "steps": [
+        "เปรียบเทียบแรงกระจายตัวของ HCl HBr และ HI",
+        "วาง HF หลัง HI เพราะพันธะไฮโดรเจนเพิ่มจุดเดือด"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 18
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q18"
+      ],
+      "note": "Normal boiling points approximately -85.1, -66.8, -35.4, +19.5 deg C respectively. HCl/HBr/HI rise with dispersion; HF is highest through hydrogen bonding. Reference: https://webbook.nist.gov/chemistry/ ; variants use three-member subsets."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รูปร่างโมเลกุลตาม VSEPR",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q28.procedure",
+      "kind": "procedure",
+      "title": "มุมพันธะและรูปร่าง BrF3",
+      "statement": "SO₃ และ COCl₂ เป็นแบนราบสามเหลี่ยม; BrF₃ เป็น AX₃E₂ รูป T และมี 10 อิเล็กตรอนรอบ Br",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 28
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q28"
+      ],
+      "note": "BrF3 has three bonds and two lone pairs around bromine."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ค่าคงที่คอลลิเกทีฟของน้ำ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q60.procedure",
+      "kind": "procedure",
+      "title": "จุดเดือดกับจุดเยือกแข็ง",
+      "statement": "โมลาลิตีเดียวกันกำหนดการเพิ่มจุดเดือดและการลดจุดเยือกแข็งด้วย Kb และ Kf",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 60
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q60"
+      ],
+      "note": "A 1.7 C boiling rise gives about 6.2 C freezing depression using Kb=0.512 and Kf=1.86."
+    }
+  ]
+}

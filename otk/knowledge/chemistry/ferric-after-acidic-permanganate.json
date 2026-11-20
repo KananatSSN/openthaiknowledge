@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รีดอกซ์และความเข้มข้นไอออนหลังผสม",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.ferric_after_acidic_permanganate.procedure",
+      "kind": "procedure",
+      "title": "ความเข้มข้นเหล็กสามหลังปฏิกิริยาเปอร์แมงกาเนต",
+      "statement": "Fe₂(SO₄)₃ เริ่มต้นให้ Fe³⁺ สองโมลต่อโมล; MnO₄⁻ ในกรดออกซิไดซ์ Fe²⁺ ห้าโมลต่อโมล แล้วหาร Fe³⁺ รวมด้วยปริมาตรหลังผสม",
+      "steps": [
+        "นับ Fe³⁺ เริ่มต้นจากเกลือเฟอร์ริกและโมล Fe²⁺ จากเกลือของมอร์",
+        "ใช้สมการรีดอกซ์หาปริมาณ Fe³⁺ ที่เกิดและหารด้วยปริมาตรรวม"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 39
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q39"
+      ],
+      "note": "Source choice ค is 0.0515 M Fe3+: initial Fe3+ is 0.090 mmol; permanganate oxidizes 3.00 mmol Fe2+; 3.090 mmol in 60.0 mL is 0.0515 M. Adaptation assumes additive volumes, retains acid excess and varies reagent concentrations."
+    }
+  ]
+}

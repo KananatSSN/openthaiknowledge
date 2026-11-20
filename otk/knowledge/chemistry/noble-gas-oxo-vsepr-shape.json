@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "รูปร่างโมเลกุลตาม VSEPR",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.noble_gas_oxo_vsepr_shape.procedure",
+      "kind": "procedure",
+      "title": "รูปร่างของออกไซด์แก๊สมีตระกูล",
+      "statement": "ในแบบลูอิส KrO₂H₂ ที่มี Kr=O สองพันธะและ Kr–H สองพันธะ อะตอมกลางมีสี่โดเมนพันธะกับคู่โดดเดี่ยวหนึ่งคู่ จึงมีรูปร่างทรงสี่หน้าบิดเบี้ยว",
+      "steps": [
+        "นับพันธะคู่เป็นหนึ่งโดเมนต่อออกซิเจนปลายหนึ่งอะตอม",
+        "คำนวณคู่โดดเดี่ยวบน Kr แล้วใช้รูปแบบ AX₄E"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 28
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q28"
+      ],
+      "note": "The Lewis/VSEPR model is stated in the generator; no claim is made that free KrO2H2 is isolable. The source formula and four shape choices were visually checked."
+    }
+  ]
+}

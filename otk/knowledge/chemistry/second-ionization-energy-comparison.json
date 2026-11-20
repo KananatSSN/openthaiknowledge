@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พลังงานไอออไนเซชันลำดับที่สอง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.second_ionization_energy_comparison.procedure",
+      "kind": "procedure",
+      "title": "ข้อเปรียบเทียบ IE₂ ที่ผิด",
+      "statement": "IE₂ เป็นพลังงานดึงอิเล็กตรอนออกจากไอออน +1; K⁺ และ Rb⁺ มีชั้นปิดทำให้ IE₂ สูง และค่าคู่ Se–Br ต้องตรวจข้อมูลจริง",
+      "steps": [
+        "แปลงเลขอะตอมเป็นธาตุและระบุไอออน +1 ที่ถูกดึงอิเล็กตรอน",
+        "เทียบค่า IE₂ ของธาตุแต่ละคู่ตามลำดับที่โจทย์ให้"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 6
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q06"
+      ],
+      "note": "Source choice ก is false: IE2(K)=31.625 eV exceeds IE2(Ca)=11.871719 eV. NIST ASD also confirms Se 21.196 < Br 21.591 < Rb 27.28954 eV. Adaptation supplies the IE2 data to make the close comparison explicit. https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=on&biblio=on&e_out=0&el_name_out=on&format=0&ion_charge_out=on&ion_conf_out=on&level_out=on&order=0&seq_out=on&shells_out=on&sp_name_out=on&spectra=H-Og+II&submit=Retrieve+Data&unc_out=on&units=1"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พันธะโคออร์ดิเนตและเรโซแนนซ์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.ozone_coordinate_lewis_resonance.procedure",
+      "kind": "procedure",
+      "title": "ภาพลูอิสแบบโคออร์ดิเนตของโอโซน",
+      "statement": "ภาพลูอิสตามแบบตำราเขียนโอโซนเป็น O=O→O ได้เพื่อบอกการให้คู่อิเล็กตรอน แต่โมเลกุลจริงมีพันธะ O–O สมมูลกันเพราะเรโซแนนซ์",
+      "steps": [
+        "นับอิเล็กตรอนเวเลนซ์และวาดภาพลูอิสของ O₃",
+        "เทียบภาพเรโซแนนซ์ทั้งสองและแยกสัญลักษณ์ลูกศรจากพันธะจริง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 27
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q27"
+      ],
+      "note": "The source convention allows O=O→O as a donor–acceptor Lewis depiction. This is bookkeeping, not a localized distinct bond: actual ozone has two equivalent O–O bonds through resonance. The generated prompt states that the arrow is a model. Reference: https://www.open.edu/openlearn/mod/oucontent/view.php?id=87848&section=_unit5.2 ."
+    }
+  ]
+}

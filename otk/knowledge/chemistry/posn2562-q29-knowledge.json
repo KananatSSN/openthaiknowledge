@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "พันธะไฮโดรเจนและแรงระหว่างโมเลกุล",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q29.procedure",
+      "kind": "procedure",
+      "title": "แรงยึดเหนี่ยวระหว่างโมเลกุล",
+      "statement": "CH₃OH, HNO₂ และ CH₃COOH มีพันธะ O–H และเกิดพันธะไฮโดรเจนระหว่างโมเลกุลได้",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 29
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q29"
+      ],
+      "note": "All members of the final group can hydrogen-bond."
+    }
+  ]
+}

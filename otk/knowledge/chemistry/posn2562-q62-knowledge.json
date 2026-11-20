@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "เลขออกซิเดชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave4_q62.procedure",
+      "kind": "procedure",
+      "title": "เลขออกซิเดชันของไนโตรเจน",
+      "statement": "ผลรวมเลขออกซิเดชันเท่าประจุ: NO₃⁻ ให้ N +5, NH₄⁺ ให้ −3, N₂H₄ ให้ −2, N₂O เฉลี่ย +1",
+      "steps": [
+        "แปลงข้อมูลที่กำหนดเป็นโมล ประจุ หรือพลังงานตามชนิดโจทย์",
+        "คำนวณหรือดุลสมการแล้วเทียบกับตัวเลือก"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 62
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q62"
+      ],
+      "note": "For N2O the +1 value is average across the two inequivalent nitrogen atoms."
+    }
+  ]
+}

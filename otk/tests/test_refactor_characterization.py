@@ -68,6 +68,9 @@ def test_pdf_output_contract_is_frozen():
 
 def test_sheet_publication_manifest_is_frozen():
     expected = {
+        "posn2560_chemistry": (70, 70, 70, 0),
+        "posn2561_chemistry": (75, 75, 75, 0),
+        "posn2562_chemistry": (66, 66, 66, 0),
         "tpho2565_physics": (22, 22, 22, 0),
         "tpho2564_physics": (29, 29, 29, 0),
         "tpho2563_physics": (20, 20, 20, 0),
@@ -257,4 +260,5 @@ def test_sheet_publication_manifest_is_frozen():
     # The สอวน. physics camp-selection papers 2564 and 2565 add 30 more each, 2566 28,
     # 2567 16, 2568 25 and 2569 30. The national physics olympiad papers
     # (TPhO 2545–2565) add the rest of the physics branch's 559.
-    assert len(REGISTRY) == 5739
+    # POSN chemistry 2560, 2561 and 2562 add 70, 75 and 66 reviewed sets.
+    assert len(REGISTRY) == 5950

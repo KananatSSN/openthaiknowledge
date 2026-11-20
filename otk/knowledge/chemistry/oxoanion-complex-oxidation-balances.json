@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การหาเลขออกซิเดชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.oxoanion_complex_oxidation_balances.procedure",
+      "kind": "procedure",
+      "title": "เลขออกซิเดชันในออกซีแอนไอออนและไซยาโนคอมเพล็กซ์",
+      "statement": "ผลรวมเลขออกซิเดชันในออกซีแอนไอออน กรดออกซี และไซยาโนคอมเพล็กซ์ เท่ากับประจุรวมของชนิดนั้น",
+      "steps": [
+        "ระบุอะตอมที่ถูกขีดเส้นใต้และประจุของกลุ่มซัลเฟตหรือไซยาโนคอมเพล็กซ์",
+        "ใช้ O=−2 H=+1 NH₃=0 CN=−1 สมดุลประจุทีละสูตร"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q09"
+      ],
+      "note": "Balance sulfate/other oxyanion, neutral oxyacid, and negative cyanide complex separately. NH3 is neutral, CN is -1."
+    }
+  ]
+}

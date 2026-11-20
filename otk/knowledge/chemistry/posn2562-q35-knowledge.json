@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความดันไอและจุดเดือด",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q35.procedure",
+      "kind": "procedure",
+      "title": "ความดันไอกับจุดเดือด",
+      "statement": "เมื่อความดันไอ Z < Y < X ที่ 25 °C และเส้นความดันไอไม่ตัดกัน จะได้จุดเดือด Z > Y > X; ของแข็งที่ 25 °C มีจุดเยือกแข็งสูงกว่าของเหลวที่ 25 °C",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 35
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q35"
+      ],
+      "note": "The adaptation explicitly assumes noncrossing vapor-pressure curves before 1 atm to justify boiling order."
+    }
+  ]
+}

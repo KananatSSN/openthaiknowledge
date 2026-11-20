@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปฏิกิริยานิวเคลียร์ฟิวชัน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q16.procedure",
+      "kind": "procedure",
+      "title": "ระบุปฏิกิริยาฟิวชัน",
+      "statement": "ฟิวชันรวมนิวเคลียสเบา เช่น ²H + ²H → ³He + n; ต้องดุล A และ Z",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 16
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q16"
+      ],
+      "note": "Deuterium fusion conserves mass and atomic number."
+    }
+  ]
+}

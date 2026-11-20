@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "สัมพรรคภาพอิเล็กตรอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.period_three_electron_affinity.procedure",
+      "kind": "procedure",
+      "title": "สัมพรรคภาพอิเล็กตรอนของ Mg Al Si P",
+      "statement": "ในกลุ่ม Mg Al Si P อะตอม Si รับอิเล็กตรอนได้ดีที่สุด; P มี p³ ครึ่งเต็มซึ่งทำให้การรับเพิ่มไม่เด่นที่สุด",
+      "steps": [
+        "แปลงการจัดอิเล็กตรอนเป็นธาตุ",
+        "เทียบสัมพรรคภาพอิเล็กตรอนและผลของ p³ ครึ่งเต็ม"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 7
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q07"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การเรียกชื่อสารประกอบอนินทรีย์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.inorganic_compound_name_audit.procedure",
+      "kind": "procedure",
+      "title": "ตรวจชื่อสารจากสูตรเคมี",
+      "statement": "สูตร CrO₃ Na₂S₂O₃ Hg₂Cl₂ และ Ba(NO₂)₂ ตรงกับชื่อโครเมียมไตรออกไซด์ โซเดียมไทโอซัลเฟต เมอร์คิวรี(I)คลอไรด์ และแบเรียมไนไตรต์ตามลำดับ",
+      "steps": [
+        "แยกไอออนไนไตรต์จากไนเตรตและไทโอซัลเฟตจากซัลไฟต์",
+        "ตรวจ Hg₂²⁺ และจับคู่ชื่อทุกแถวก่อนนับข้อผิดพลาด"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 29
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q29"
+      ],
+      "note": "SOURCE ERROR: all four printed names match their formulas, so the request to select an incorrect pair has no valid choice. The adaptation asks how many pairs are wrong (0 in the source); variants deliberately change 1–3 names. Cross-checked against PubChem CIDs 14915, 24477, 24956, 166820."
+    }
+  ]
+}

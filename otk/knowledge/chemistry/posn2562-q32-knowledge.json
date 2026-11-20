@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ตารางธาตุและสมบัติสาร",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q32.procedure",
+      "kind": "procedure",
+      "title": "ตำแหน่งธาตุกับสูตรและขั้ว",
+      "statement": "A คือ Mg, D คือ P, E คือ O, G คือ Cl; Mg₃P₂ ไม่ใช่ AD₃ และ PCl₅ สมมาตรไม่มีขั้ว แต่ P และ O เกิดแอนไอออน",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 32
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q32"
+      ],
+      "note": "A=Mg, D=P, E=O, G=Cl; Mg3P2 and PCl5 settles I and III."
+    }
+  ]
+}

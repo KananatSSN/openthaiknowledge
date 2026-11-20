@@ -2,7 +2,7 @@
 
 # เคมี (`chemistry`)
 
-507 sets in 169 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+718 sets in 172 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -232,3 +232,11 @@
 | [`polymerization`](m6/polymerization.py) | ประเภทของปฏิกิริยาการเกิดพอลิเมอร์ | เคมีเพิ่มเติม 1 ม.6/11 | 3 |
 | [`structural_formula`](m6/structural_formula.py) | สูตรโครงสร้างลิวอิส สูตรโครงสร้างแบบย่อ และสูตรโครงสร้างแบบเส้น | เคมีเพิ่มเติม 1 ม.6/2 | 3 |
 | [`structural_isomer`](m6/structural_isomer.py) | ไอโซเมอร์โครงสร้างของสารประกอบอินทรีย์ | เคมีเพิ่มเติม 1 ม.6/5 | 3 |
+
+## olympiad — โอลิมปิก (สอวน.)
+
+| File | Unit | Indicators | Sets |
+|---|---|---|---:|
+| [`posn2560`](olympiad/posn2560.py) | Reviewed waves of POSN camp-selection chemistry 2560. | — | 70 |
+| [`posn2561`](olympiad/posn2561.py) | Reviewed waves of POSN camp-selection chemistry 2561. | — | 75 |
+| [`posn2562`](olympiad/posn2562.py) | Generators for reviewed POSN camp-selection chemistry questions (2562). | — | 66 |

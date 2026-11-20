@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สโตอิชิโอเมทรีสองปฏิกิริยา",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q44.procedure",
+      "kind": "procedure",
+      "title": "ผลิตคลอรีนจาก MnO2",
+      "statement": "MnO₂ หนึ่งโมลให้ Cl₂ หนึ่งโมล; สมการกับ NaOH ร้อนใช้ Cl₂:NaOH=1:2 จึงต้อง MnO₂ 0.75 mol เมื่อ NaOH 1.5 mol",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 44
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q44"
+      ],
+      "note": "One MnO2 gives one Cl2; hot base uses two NaOH per Cl2."
+    }
+  ]
+}

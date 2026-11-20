@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติธาตุหมู่ 15",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q19.procedure",
+      "kind": "procedure",
+      "title": "สมบัติของแอนติโมนี",
+      "statement": "Sb เลขอะตอม 51 เป็นกึ่งโลหะหมู่ 15; มี EN ต่ำกว่า P และเลขออกซิเดชันสูงสุด +5",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 19
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q19"
+      ],
+      "note": "Sb is a metalloid, not a metal."
+    }
+  ]
+}

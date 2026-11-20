@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ความดันไอและการเปลี่ยนสถานะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave3_q34.procedure",
+      "kind": "procedure",
+      "title": "สมดุลไอและการระเหย",
+      "statement": "ของเหลวระเหยได้ต่ำกว่าจุดเดือด; ความดันไอสมดุลเกิดเมื่ออัตราระเหยเท่าควบแน่น; การระเหยดูดพลังงานและที่สูงจุดเดือดลด",
+      "steps": [
+        "ระบุสมบัติหรือปริมาณจากข้อมูลที่กำหนด",
+        "ตรวจตัวเลือกด้วยหลักการหรือการคำนวณที่เกี่ยวข้อง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 34
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q34"
+      ],
+      "note": "I and II true; evaporation absorbs heat and lower air pressure lowers boiling point."
+    }
+  ]
+}

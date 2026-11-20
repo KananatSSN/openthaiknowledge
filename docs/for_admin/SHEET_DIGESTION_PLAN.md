@@ -59,6 +59,72 @@ openthaiknowledge-bank/  ──1 scan────▶ otk/sheets/bank.json  (path
 
 Phases in build order. Check an item only when its tests pass.
 
+### Chemistry POSN 2562 bank — first four waves, 2026-10-21
+
+- Branch/worktree: `codex/posn-chemistry-2562`, `.worktrees/posn-chemistry-2562/`.
+- Source: `chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf`, 17 pages, 60 multiple-choice and 15 written questions. Extraction counted all 75. Its public mirror matched the bank LFS object's SHA-256 exactly when private Git LFS credentials were unavailable.
+- **66/75 reviewed:** all Part I questions 1–60 and Part II questions 61–66 have independent solvers, three variants each, generators, named mistakes, and knowledge claims. The private digest contains concise paraphrases of those sixty-six; public sheet metadata contains only reviewed items. The q12 reaction table was checked against its figure crop and restated in text.
+- Q3's source assumes adjacent electronic gaps shrink as n rises; the generated question states the hydrogen-like model explicitly. Questions 17 and 25 were read from their page figures and recast as textual structures. Q20 narrows the oxoanion claim to exclude O–F and O–O bonds. Q32, Q36 and Q39 figures were read from rendered pages and expressed in the stems; Q35 supplies Z vapor pressure and states the vapor-curve assumption used for its boiling order. Q54 names benzene as the requested solute; Q61 uses the verified Tc configuration; Q62 specifies an average N oxidation state in N₂O; Q64 records all three net ionic equations; Q66 transcribes the bond-energy table. The bank entry remains `PARTIAL 66/75` at the converted stage. Targeted wave checks passed; the full suite is deferred until all 75 questions are digested.
+
+### Chemistry POSN 2561 bank — complete, 2026-10-21
+
+- Branch/worktree: `codex/posn-chemistry-2561`, `.worktrees/posn-chemistry-2561/`.
+- Source: `chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf`, 18 PDF pages. The paper declares 75 questions: 60 multiple-choice and 15 written; extraction found all 75. Every item was reviewed, independently solved, claimed by a knowledge unit, and linked to a generator. **75/75 complete.**
+- MC1's E⁻, G and A⁺ all have 18 electrons; isotope mass numbers are irrelevant. MC2 gives Z=13 and A=27. MC3's C line (434 nm) has more photon energy than B (486 nm). MC3 says “five lines” but lists four, so the adaptation says four.
+- MC4's only always-true claim is that Z has more than six electrons in its second shell; the adaptation says “always” explicitly. MC5 selects fluorine. MC6's false comparison is K < Ca for IE₂; the close Se < Br comparison was checked against NIST ionization data.
+- MC7's mixed atomic/ionic radius comparison depends on a radius convention; its adaptation supplies the specific table used. MC8's false order places Ca above As for IE₁; its adaptation supplies measured property values and specifies grey arsenic melting under pressure. MC9 pairs SO₃ with Na₂O to give an acid and a base in water.
+- MC10 identifies MgI₂ from the violet iodine extract and hot-water metal reaction. MC11 identifies P from its −3 to +5 oxidation-state range; only positive oxidation states in its oxides is true. MC12 selects dichromate and FeCl₃ as the colored pair. The original Cl₂O distractor has concentration-dependent solution color, so the adaptation uses NaCl.
+- MC13's table identifies Mg²⁺, K⁺ and Ba²⁺ from carbonate and sulfate precipitates. MC14 selects Cr(III) over Fe(II) among the actual complexes; MnO₂ is excluded because it is not a coordination complex. MC15 specifies β⁻ to distinguish it from positron emission.
+- MC16's four graphs are restated as mass values at zero, one and two half-lives; only the parent-decay curve has the expected 100%, 50%, 25% progression. MC17 is helium-3 plus deuterium fusion. MC18's basic-oxide pair is Ca and Rb.
+- MC19 identifies Ga from the 2:3 chlorine ratio, water inertness and colorless acid solution. MC20's printed intended water reaction is missing coefficients and therefore has no correct choice as written; the adaptation balances it. MC21's N≡C–C≡N structure has one single bond, two triple bonds and two lone pairs.
+- MC22 contrasts nonpolar CS₂ with network SiO₂; the silica property statement is true. MC23 has statements 1 and 3 true for gaseous SbCl₅, SiH₄ and TeF₆. MC24's fully water-soluble covalent group is ethanol, HF and acetic acid.
+- MC25's extraction table supports C being more polar than B; it does not establish exact functional groups or prove B is nonpolar, so the adaptation phrases conclusions as trends and possibilities. MC26's order is butane, ether, ethanol by increasing boiling point; the adaptation specifies a cooled liquid starting mixture. MC27's octet pair is BF₄⁻ and CO₃²⁻; NO₂ is an odd-electron radical and XeF₄ has an expanded octet.
+- MC28's fourth N–H bond in NH₄⁺ is equivalent to the other three once the ion forms. MC29 picks bent SO₂ against three linear gas-phase molecules. MC30 picks gaseous PCl₅ because its smallest axial-equatorial angle is 90°; NIST measured SOCl₂ at 96.1° and the other two have larger angles.
+- MC31 pairs weakly polar PH₃ with H₂S; every other pair contains a molecule with no permanent dipole. MC32 has statements 1 and 3 true: carbonate C–O bonds are longer than CO₂'s, BF₃ is nonpolar, and CF₄ boils below CHF₃. MC33 gives 60% initial H₂ and now has independently balanced numerical variants.
+- MC34 gives Zn from 0.020 mol BaSO₄ and 161 g/mol ASO₄. MC35 requires 36 m³ O₂, hence 180 m³ air at 20% O₂. MC36 requires 18 g Mg for 4.48 L NH₃ at 40% nitride yield. Each of these has numerical variants checked by a second route.
+- MC37 leaves 3.50 mmol carbonate in 100 mL, or 0.0350 mol/L. MC38 solves the Al/Zn mass and H₂ balances for 24.9% Al. MC39 adds initial Fe³⁺ to oxidized Fe²⁺, yielding 0.0515 mol/L. Each has independently checked numerical variants.
+- MC40 gives 0.450 mol NaBH₄ after balancing the diborane reaction and accounting for 70% yield. MC41 produces 8/5 mol N₂ per mol NaN₃ across two reactions: the source’s 49 g choice is closest to the 49.5 g calculation with its printed R. MC42 needs three H⁺ per formula unit of trona, or 48.0 mL of 0.125 M acid.
+- MC43 balances 4KO₂+2CO₂→2K₂CO₃+3O₂ and finds KO₂ limiting, yielding 168 cm³ O₂. MC44 uses mass per litre and molarity to identify H₃PO₄. MC45 counts 49 mmol Na⁺ in 70 mL, or 0.70 mol/L.
+- MC46 uses four HCl per Cl₂ and the 36.5% mass fraction to obtain 20.0 g of acid solution; its wording now distinguishes solution from pure HCl. MC47 leaves 0.708 M acetic acid after NaHCO₃ consumes 0.050 mol. MC48 counts 0.0008 mol OH⁻ from the Ba(OH)₂ stock before adding 20.0 mL of NaOH stock.
+- MC49 gives about 158 g/mol from benzene boiling-point elevation. MC50 transfers 0.5 m molality from solvent A’s freezing depression to solvent B’s boiling rise, giving 65.0°C. MC51 uses both water constants to obtain 4 m and 72.0 g of X. The adaptations state the nondissociation assumption behind the source answers.
+- The private bank digest contains concise paraphrases of all 75 questions. Figures were read from the source during review; no source artwork or copied question text ships in the public repository. The bank entry is `green`.
+- The requested cadence was targeted tests for each wave and one full suite after all 75 items were digested.
+
+### Chemistry POSN bank — waves 1–23, 2026-10-21
+
+- Branch/worktree: `codex/posn-chemistry-2560`, `.worktrees/posn-chemistry-2560/`.
+- First source: `chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf`, 19 pages,
+  60 multiple-choice questions plus 10 written questions. Written questions
+  restart at 1 and use internal numbers 61–70.
+- All 70 were reviewed against the source, solved independently, claimed by
+  knowledge units, and linked to generators. **70/70 complete.**
+- `otk/sheets/posn2560_chemistry/sheet.json` contains the complete paper;
+  `sheetpipe verify` passed 70/70 solvers and 213 variant runs. Knowledge
+  coverage is 70/70 and the bank entry is `green`.
+- Source MC3's diagram maps 97 nm to n=4; the generator gives n explicitly
+  and specifies an ensemble with all cascades. MC4 returns (Z,A)=(12,22).
+  MC6 gives cobalt(III), [Ar]3d6. Figures are restated in words, with no static
+  source artwork shipped. Full copied text remains in the private bank.
+- Extraction normalized the written heading `9 .` to `9.`; the count check
+  confirms 60+10, rather than silently losing written questions 9 and 10.
+- Maintainer test cadence: one targeted batch after each chemistry wave,
+  including the changed keys, solver checks, provenance, safety, golden draws,
+  curriculum/stage/layout checks and Ruff. The full suite is run after the
+  complete-sheet wave; the first batch's full run is historical.
+- MC1's diagram has the positive ray behind the cathode and electrons behind
+  the anode. MC2's Ts oxidation states are model predictions, not measured
+  properties. MC5's specified Mg²⁺ and P³⁻ differ in occupied shell count.
+  These adaptations state their model assumptions in the generated prompts.
+- MC7 compares free-atom/ion unpaired counts; MC8's adaptation names the
+  group-2 metal explicitly. MC9's page image shows that S, Cl and Au are
+  underlined; the plain-text extraction omits those underlines.
+- MC10's diagram B violates Hund's rule. MC11's printed options have no
+  correct pair of rankings: the corrected generator uses Ga>As>P>O for
+  empirical radius and O>P>As>Ga for first ionization energy. MC12 gives
+  Ca and Cl for ions isoelectronic with Ar. The MC11 source discrepancy is
+  documented in its sheet record and solver; no printed choice was adopted.
+- Next: choose the next chemistry sheet in the bank.
+
 Maintainer cadence (2026-11-16): for sets-only sheet digestion, implement roughly ten new generators before running the combined checks and reporting the batch. Verify source answers while digesting; keep the existing required checks.
 
 ### Physics POSN bank — 2026-10-17
@@ -508,6 +574,196 @@ TOTAL         338   316     17     4   66      255      6     11
   stdout to UTF-8 (the CLI's `main` does) or set `PYTHONIOENCODING=utf-8`.
 
 ## 6. Session log
+
+### 2026-10-21 — POSN chemistry 2560, eleventh octet and liquids batch
+
+- Visually checked MC31–MC32 on p9 and MC33 on p10. Added independent
+  solvers, generators and knowledge claims for all three.
+- IF₄⁺ has ten electrons around I while the other printed species have
+  octets. MC32's printed ClH₃ is handled as a formal AX₃E₂ model rather than
+  a claim about an isolable gas. MC33 states a fixed molecular separation
+  when comparing attractive force, so cooling does not change the pair
+  force law.
+- `verify posn2560_chemistry`: 33/33 green, 102 variant checks, all
+  independent. Knowledge validation: 804 units in 670 files, zero problems;
+  source coverage: 33/70. Only the three new golden keys were added.
+- Targeted wave validation: 229 sheet/set checks and 16,343 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
+
+### 2026-10-21 — POSN chemistry 2560, tenth shape, names and bond batch
+
+- Visually checked MC28–MC30 on p9, including MC29's four-row naming table
+  and MC30's four reactions. Built solvers, generators and knowledge claims.
+- MC28 uses an explicit Lewis/VSEPR model: KrO₂H₂ is AX₄E and seesaw.
+  MC29 has **no incorrect printed choice**: all four formula–name pairs match.
+  The generator asks for the number of mismatches (zero for the source) and
+  variants introduce one to three mismatches. MC30 restores the C=C bond
+  marks absent from the PDF's displayed reaction formulas.
+- `verify posn2560_chemistry`: 30/30 green, 93 variant checks, all
+  independent. Knowledge validation: 801 units in 667 files, zero problems;
+  source coverage: 30/70. Only the three new golden keys were added.
+- Targeted wave validation: 210 sheet/set checks and 16,331 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
+
+### 2026-10-21 — POSN chemistry 2560, ninth polarity and bonding batch
+
+- Visually checked MC25–MC27 on p9. Built solvers, generators, and knowledge
+  claims for all three. PF₅ is nonpolar by dipole cancellation; CaCO₃ has
+  ionic lattice bonding and covalent bonds within carbonate.
+- MC27's textbook answer O₃ uses a donor–acceptor Lewis drawing. The
+  adaptation explicitly treats the arrow as electron-pair bookkeeping and
+  acknowledges the equivalent O–O bonds of the resonance hybrid.
+- `verify posn2560_chemistry`: 27/27 green, 83 variant checks, all
+  independent. Knowledge validation: 798 units in 664 files, zero problems;
+  source coverage: 27/70. Only the three new golden keys were added.
+- Targeted wave validation: 191 sheet/set checks and 16,319 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
+
+### 2026-10-21 — POSN chemistry 2560, eighth VSEPR batch
+
+- Visually checked MC22–MC23 on p8 and MC24 on p9. Built solvers,
+  generators, and knowledge claims for all three.
+- MC22 pairs tetrahedral BF₄⁻ with POCl₃; variants also exercise square
+  planar, seesaw and trigonal-pyramidal shapes. MC23 compares each molecule's
+  smallest bond angle, using NIST geometry data for ClF₃, ClF₅ and OCl₂.
+  MC24 counts only central-atom lone pairs; XeF₂ has three in the source.
+- `verify posn2560_chemistry`: 24/24 green, 74 variant checks, all
+  independent. Knowledge validation: 795 units in 661 files, zero problems;
+  source coverage: 24/70. Only the three new golden keys were added.
+- Targeted wave validation: 172 sheet/set checks and 16,307 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
+
+### 2026-10-21 — POSN chemistry 2560, seventh precipitation and bonding batch
+
+- Visually checked MC19–MC21 and MC20's five-row table on p8. Built
+  solvers, generators and knowledge claims for all three.
+- MC19 uses spectator cancellation to produce the Pb²⁺/SO₄²⁻ net ionic
+  equation. MC20's printed "covalent" category fits B, D and E; its
+  generated prompt specifies the covalent substance whose aqueous solution
+  conducts, identifying D uniquely. MC21 selects NO⁺ by N–O bond order and
+  checks against experimental bond lengths; variants add neutral NO to
+  enable four distinct choices.
+- `verify posn2560_chemistry`: 21/21 green, 65 variant checks, all
+  independent. Knowledge validation: 792 units in 658 files, zero problems;
+  source coverage: 21/70. Only the three new golden keys were added.
+- Targeted wave validation: 153 sheet/set checks and 16,295 affected
+  registry, provenance, safety, golden and layout checks passed. Ruff and
+  whitespace checks passed. Full suite deferred until all 70 questions are
+  complete.
+
+### 2026-10-21 — POSN chemistry 2560, sixth nuclear and bonding batch
+
+- Visually checked the three nuclear equations and the hydrogen comparison
+  on p7, then the hydrogen-halide boiling choices on p8. Built solvers,
+  generators and knowledge claims for MC16–MC18.
+- MC16 balances (A,Z) separately: neutron, deuteron, and Ra-226. MC17's
+  adaptation directly asks valence counts because the printed oxidation-state
+  distractor has a fluorine exception. MC18 uses normal boiling-point data
+  and the HF hydrogen-bonding exception.
+- `verify posn2560_chemistry`: 18/18 green, 56 variant checks, all
+  independent. Knowledge validation: 789 units in 655 files, zero problems;
+  source coverage: 18/70. Only the three new golden keys were added.
+- Targeted wave validation: 134 sheet/set checks and 16,283 affected
+  registry, provenance, safety, golden and layout checks passed. The q18
+  safety rule rejected a direct method reference; its lambda replacement
+  passed the specific rerun. Ruff and whitespace checks passed. Full suite
+  remains deferred until all 70 questions are complete.
+
+### 2026-10-20 — POSN chemistry 2560, fifth oxides and halogens batch
+
+- Visually checked MC13–MC14 on p6 and MC15 on p7. Built independent
+  solvers, generators, and knowledge claims for all three.
+- MC13 identifies P₄O₁₀ and Cl₂O₇ as acidifying oxides. MC14 uses the
+  source's general solubility-rule model for BaSO₄, BaHPO₄, and MgHPO₄;
+  actual precipitation depends on concentration and pH. MC15 adds the
+  distinctness condition omitted by the printed stem, making X=Cl,
+  Y=I, and Z=Br unique.
+- `verify posn2560_chemistry`: 15/15 green, 47 variant checks, all
+  independent. Knowledge validation: 786 units in 652 files, zero problems;
+  source coverage: 15/70. Only the three new golden keys were added.
+- Targeted wave validation: 115 sheet/set checks and 16,270 affected
+  registry, provenance, safety, golden and layout checks passed. The frozen
+  registry count was updated from 4,473 to 4,476 and its one failing check
+  was rerun successfully. Ruff and whitespace checks passed. Full suite
+  deferred until all 70 questions are complete.
+
+### 2026-10-20 — POSN chemistry 2560, fourth atomic-structure batch
+
+- Visually checked MC10's orbital diagrams on p5 and MC11–MC12's tables on
+  p6. Built solvers, generators and knowledge claims for all three.
+- Cross-checked MC11 against PubChem empirical/covalent radii and NIST
+  ionization energies. None of the four printed answer pairs is correct;
+  the generated question asks the corrected rankings.
+- `verify posn2560_chemistry`: 12/12 green, 38 variant checks, all
+  independent. Knowledge validation: 783 units in 649 files, zero problems;
+  source coverage: 12/70. Only the three new golden keys were added.
+- Targeted wave validation: 96 sheet/set checks and 16,259 affected registry,
+  provenance, safety, golden and layout checks passed. Ruff and whitespace
+  checks passed. Full suite remains deferred until all 70 are complete.
+
+### 2026-10-20 — POSN chemistry 2560, third atomic-structure batch
+
+- Visually checked source p5 and built solvers and generators for MC7–MC9.
+  The printed underlines on MC9 identify sulfur, chlorine and gold, so the
+  verified source oxidation-state answer is (+6,+7,+1).
+- Added three knowledge claims and linked the new keys to the supplemental
+  chemistry registry; bank progress is 9/70 and remains `converted`.
+- `verify posn2560_chemistry`: 9/9 green, 29 variant checks, all independent.
+  Knowledge validation: 780 units in 646 files, zero problems; source
+  coverage: 9/70. Only the three new golden keys were added.
+- Targeted wave validation: 75 sheet/set checks and 16,247 affected registry,
+  provenance, safety, golden and layout checks passed. Ruff and whitespace
+  checks passed. The full suite remains deferred until all 70 are complete.
+
+### 2026-10-20 — POSN chemistry 2560, second atomic-structure batch
+
+- Visually rechecked p3's perforated cathode/anode diagram and reviewed MC1,
+  MC2 and MC5; source choices ง, ค and ง are reproduced by the stated
+  physical or chemical models. Built three independent solvers, generators,
+  knowledge claims and named distractors. No source artwork was shipped.
+- `verify posn2560_chemistry`: 6/6 green, 19 variant checks, all independent.
+  Knowledge validation: 777 units in 643 files, zero problems; source
+  coverage: 6/70. Only the three new golden keys were added.
+- Targeted sheet/solver checks: 6,526 passed, 4 skipped. Registry and safety
+  batch: 16,233 passed; its two initial failures were stale frozen sheet
+  counts and the generated set index, both corrected. The affected checks
+  passed on rerun; Ruff and whitespace checks passed. Full suite deferred
+  until the whole 70-question sheet is complete.
+
+### 2026-10-20 — POSN chemistry 2560, first atomic-structure batch
+
+- Created isolated worktree `.worktrees/posn-chemistry-2560` on
+  `codex/posn-chemistry-2560` from `457822b`; existing physics work stayed in
+  the original checkout. The worktree shares the ignored source bank and venv.
+- Fetched the 2560 chemistry paper from LFS and split both parts separately:
+  all 70 questions accounted for, including the printed `9 .` heading.
+  Raw extraction and review notes are private-bank commit `c138e7d`.
+- Visually checked source p4 and built three independently checked solvers
+  and generators (MC3, MC4, MC6), with three knowledge claims and nine named
+  mistakes. No full copied source text or source PDF is published here.
+- `verify posn2560_chemistry`: 3/3 green, 10 variant checks, all independently
+  checked. Knowledge validation: 774 units in 640 files, zero problems;
+  source coverage: 3/70. First generator/solver batch: 39 checks passed.
+  Existing golden fixtures are unchanged; only three new keys were recorded.
+- Required full run: 38,977 passed, 13 skipped, seven failures all caused by
+  omitting the new chemistry cohort from the frozen-baseline subtraction, and
+  two setup errors because the sandbox denied binding a localhost HTTP server.
+  Fixed the subtraction; all nine failed/error checks then passed, with local
+  server access for the two explorer tests. Ruff and whitespace checks pass.
+  The full suite was not repeated after this isolated cohort repair; the
+  affected registry/curriculum checks were rerun separately.
+- Final focused registry/curriculum/layout/solver checks: 64 passed. The final
+  diagnostic label describes the oxide distractor as assuming metal charge +1.
+  Its final generator/golden checks: six passed; no existing golden entry changed.
+- Keep this paper partial; next items are MC1–2 and MC5, then MC7 onward.
 
 ### 2026-09-30 — session 1
 - Surveyed existing pieces; wrote this plan.
@@ -2100,6 +2356,187 @@ TOTAL         338   316     17     4   66      255      6     11
 - Targeted run: 24,263 passed, 4 skipped; `test_per_set` for the 22 keys
   passed; the sheet's own tests: 49 passed; Ruff clean.
 - Full suite: **40,921 passed, 13 skipped in 14m22s**.
+
+### 2026-10-21 — POSN chemistry 2560, MC34–36
+
+- Reviewed the p10 phase-change choices, NaCl lattice drawing, and Charles-law numbers; added independent solvers, three variants, generators and knowledge units for each.
+- MC34's broad ionic/covalent vapor-pressure claim is expressed as a specific NaCl/iodine comparison in the adaptation. MC35's 14/13 visible-ion crop is identified as a finite drawing, not a formula unit. MC36 uses kelvin and reports 96.6 cm³.
+- The paper remains partial at 36/70; the full suite is deferred until all 70 questions are digested, per the requested test cadence.
+- Wave validation: 36/36 sheet solvers and 111 variants green, 807 knowledge units in 673 files with zero validation problems, source coverage 36/70. The focused sheet/set checks passed (248), followed by 37 rechecks after tightening independent verification. Registry, provenance, golden, layout and safety checks passed (16,355); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC37–39
+
+- Reviewed p11 gas questions and added solvers, independent checks, three variants, generators, and knowledge units for each. MC37 chooses helium's highest-temperature/lowest-pressure condition; MC38 defines STP and uses absolute temperature; MC39 tests proportionality using kelvin.
+- MC39 initially exposed a normalization mistake in the independent ideal-gas check and a choice-length cue. Both were corrected before acceptance; the choices now use equal-length statement labels.
+- The paper remains partial at 39/70. The full suite stays deferred until all 70 questions are digested.
+- Wave validation: 39/39 sheet solvers and 120 variants green; 810 knowledge units in 676 files with zero problems; source coverage 39/70. Focused sheet/set checks passed (267). Registry checks passed 16,366 cases and exposed one q37 safety-style issue; after replacing the method reference, the affected 41 checks and sheet verification passed. Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC40–42
+
+- Reviewed p11 gas-density, Graham-law, and Zn–Cu alloy questions. Added independently checked solvers, three variants, generators, and knowledge units for each.
+- MC40 uses the printed STP convention 22.4 L/mol. MC41's equal-amount effusion times scale as sqrt(M). MC42 uses Zn=65.0 and Cl=35.5, giving 1.30 g Zn and 74.0% Cu.
+- Wave validation: 42/42 sheet solvers and 129 variant checks green; 813 knowledge units in 679 files with zero problems; source coverage 42/70; focused sheet/set checks passed (286). The full suite remains deferred until the entire sheet is digested.
+- Targeted registry, provenance, safety, golden and layout checks passed (16,379); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC43–45
+
+- Reviewed the p11–p12 reactions, units and choices; added independently checked solvers, three variants, generators and knowledge units for each item.
+- MC43 has two true printed answers: 0.36 kg C and 672 dm³ CO₂. Its adaptation asks for the pair of correct statements. MC44 gives 205 L CO₂ from 240 g LiOH at 500 K and 1 atm. MC45 identifies BaCO₃ from matching acid, gas and sample-mass data.
+- The paper remains partial at 45/70; the full suite remains deferred until all 70 questions are digested.
+- Wave validation: 45/45 sheet solvers and 138 variants green; 816 knowledge units in 682 files with zero validation problems; source coverage 45/70. Focused sheet/set checks passed (305), new-key provenance/safety/golden checks passed (12), curriculum/stage/layout/manifest checks passed (46), and Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC46–48
+
+- Reviewed p12 methanol, hydrate and sample-mass questions; added independently checked solvers, three variants, generators and knowledge units for each.
+- MC46's CO is limiting and gives 400 g methanol. MC47 counts two H atoms per water molecule to get 1.57×10²⁴ H atoms. MC48 converts all three samples to grams, giving a > b > c.
+- Wave validation so far: 48/48 sheet solvers and 147 variants green; 819 knowledge units in 685 files with zero problems; source coverage 48/70; focused sheet/set checks passed (324). The full suite remains deferred until the entire sheet is digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC49–51
+
+- Reviewed p12–p13 hydrocarbon combustion, BaSO₄ precipitation, and Zn/HCl questions; added independent solvers, three variants, generators and knowledge units for each.
+- MC49 gives C₄H₁₀ and 100 cm³ water vapor. MC50's printed “all sulfate precipitates” permits excess BaCl₂, so X=40 cm³ needs the exact-addition condition stated in the adaptation; BaSO₄ is 2.33 g and Na⁺ is 0.92% w/v under that condition. MC51 balances Zn+2HCl, giving 0.040 mol HCl consumed and 0.560 mol left, so printed claim c is false.
+- Wave validation so far: 51/51 sheet solvers and 156 variants green; 822 knowledge units in 688 files with zero problems; source coverage 51/70; focused sheet/set checks passed (343). Full suite remains deferred until all 70 questions are digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC52–54
+
+- Reviewed p13 product-yield, ammonia-decomposition, and hydrate-dilution questions; added independent solvers, three variants, generators and knowledge units for each.
+- MC52 finds C's molar mass as 44 g/mol from the limiting reactant. MC53 gives a hydrogen mole fraction of 0.72. MC54 gives a 62.5 cm³ aliquot of MgCl₂ stock prepared from its hexahydrate.
+- Wave validation: 54/54 sheet solvers and 165 variant runs green; 825 knowledge units in 691 files with zero problems; source coverage 54/70; focused sheet/set checks passed (362). The full suite remains deferred until the entire sheet is digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC55–57
+
+- Reviewed p13–p14 solution-concentration questions, including MC57's printed mass table; added independent solvers, three variants, generators and knowledge units for each.
+- MC55 converts 3.50 M H₂SO₄ at 1.20 g/cm³ to 4.08 mol/kg of water. MC56 gives 0.500 M NaClO after fourfold dilution. MC57 needs 0.505 g KNO₃ and 0.828 g Pb(NO₃)₂ for the specified mixed solution.
+- Wave validation: 57/57 sheet solvers and 174 variant runs green; 828 knowledge units in 694 files with zero problems; source coverage 57/70; focused sheet/set checks passed (381). The full suite remains deferred until the entire sheet is digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, MC58–60
+
+- Reviewed p14–p15 chloride-dilution, mixed CaCl₂ and colligative-property questions; added independently checked solvers, three variants, generators and knowledge units for each. This completes all 60 multiple-choice items; the ten written questions remain.
+- MC58 needs 6 cm³ CdCl₂ stock plus 12 cm³ added water. MC59's final CaCl₂ mass concentration is 35.5 g/L. MC60's true printed statement is that A's boiling-point elevation exceeds C's by 0.199 °C; the adaptation asks for that value directly.
+- Wave validation: 60/60 sheet solvers and 183 variant runs green; 831 knowledge units in 697 files with zero problems; source coverage 60/70; focused sheet/set checks passed (400). The full suite remains deferred until the ten written questions are digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, written 1–3 (internal 61–63)
+
+- Reviewed p16's three written prompts and answer blanks; added paired-answer solvers, independent checks, three variants, generators and knowledge units for each.
+- Written 1 gives neutral Ni as [Ar]3d8 4s2 and Cu⁺ as [Ar]3d10. Written 2 selects NaIO₄ with I at +7 and OF₂ with F at −1. Written 3 leaves 12.5 g I-131 after 16.2 days (two half-lives).
+- Wave validation: 63/63 sheet solvers and 192 variant runs green; 834 knowledge units in 700 files with zero problems; source coverage 63/70; focused sheet/set checks passed (419). The full suite remains deferred until the seven remaining written questions are digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, written 4–6 (internal 64–66)
+
+- Reviewed p17–p18 periodic-trend, Born–Haber and bond-energy questions; added independently checked solvers, three variants, generators and knowledge units for each.
+- Written 4 gives G<E<D<A and basic oxides A₂E/DE (Na₂O/MgO). Its adaptation asks explicitly for basic oxides. Written 5 gives lattice *formation* enthalpy −2535 kJ/mol; its final source blank says MgF₂ despite abstract M/G in the data, so the adaptation uses MG₂. Written 6 finds both reactions exothermic with a 190 kJ per-mole-product enthalpy difference.
+- Wave validation: 66/66 sheet solvers and 201 variant runs green; 837 knowledge units in 703 files with zero problems; source coverage 66/70; focused sheet/set checks passed (438). The full suite remains deferred until the four remaining written questions are digested.
+- New-key provenance/safety/golden checks passed (12); curriculum/stage/layout/manifest checks passed (46); Ruff and whitespace checks passed.
+
+### 2026-10-21 — POSN chemistry 2560, written 7–10 (internal 67–70)
+
+- Reviewed p18–p19's final four written questions; added independently checked solvers, three variants, generators and knowledge units for each. This completes all 70 items.
+- Written 7 gives 12.0 g D and 4.5 g E; written 8 gives C₃H₆O; written 9 needs 568 g Cl₂ and produces 1043 g KCl; written 10 gives 118 g/mol and 1.50 mol/kg. Written 9 says “four reactions” but prints three, and the adaptation states the three printed equations.
+- Completion validation: 70/70 sheet solvers and 213 variant runs green; 841 knowledge units in 707 files with zero problems; source coverage 70/70. Focused sheet/set checks passed (201), bank checks passed (353), registry checks passed (588), and Ruff and whitespace checks passed. The bank entry is green.
+- Completed-sheet full suite: 39,883 passed, 13 skipped, two PDF explorer tests errored at setup because the workspace sandbox denied a local HTTP-server socket bind. Those exact two tests passed when rerun with loopback access; no test assertion failed.
+
+### 2026-10-21 — POSN chemistry 2561, MC1–3
+
+- Created the next isolated worktree from the completed 2560 branch, fetched the 2561 paper, and extracted all 75 declared items. Visually reviewed p3 and implemented independently checked solvers, three variants, generators, and knowledge claims for the first three questions.
+- The private digest records only short descriptions of these reviewed questions. The source MC3's stated count of five lines conflicts with its four labels; its adaptation explicitly says four.
+- Wave validation: 3/3 sheet solvers and nine variants green; 843 knowledge units in 709 files with zero validation problems; the reviewed three source records are claimed. Focused generator/golden checks passed (46), sheet-pipeline checks passed (18), and registry/provenance/safety/layout checks passed (515). Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC4–6
+
+- Reviewed the remaining p3 questions and added independent solvers, three variants, generators, and knowledge units. MC4's guaranteed second-shell count is clarified as an “always” statement; MC5 identifies fluorine. MC6's IE₂ order was checked against [NIST ASD](https://physics.nist.gov/cgi-bin/ASD/ie.pl?at_num_out=on&biblio=on&e_out=0&el_name_out=on&format=0&ion_charge_out=on&ion_conf_out=on&level_out=on&order=0&seq_out=on&shells_out=on&sp_name_out=on&spectra=H-Og+II&submit=Retrieve+Data&unc_out=on&units=1); K < Ca is false, while Se < Br is true.
+- Wave validation: 6/6 sheet solvers and 18 variants green; 846 knowledge units in 712 files with zero validation problems; all six reviewed source records are claimed. Focused sheet/set checks passed (31), sheet-pipeline checks passed (33), and registry checks passed 526 cases. One q05 safety-style issue was corrected, then its affected safety check, solver-pool test, sheet verification, Ruff, and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC7–9
+
+- Reviewed p4 and MC9's oxide-pair table. Added independent solvers, three variants, generators and knowledge claims for all three questions. MC7 gives the radius values explicitly because mixed atomic/ionic conventions vary. MC8 supplies empirical data and specifies grey As melting under pressure. MC9 pairs SO₃ and Na₂O.
+- Wave validation: 9/9 sheet solvers and 27 variants green; 849 knowledge units in 715 files with zero validation problems; all nine reviewed source records are claimed. Focused sheet/set checks passed (37), sheet-pipeline checks passed (48), registry/provenance/safety/layout checks passed (539), and Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC10–12
+
+- Reviewed p4 and added independent solvers, three variants, generators, and knowledge claims for all three questions. MC10 identifies MgI₂; MC11 identifies phosphorus; MC12 selects K₂Cr₂O₇ with FeCl₃. The source's Cl₂O distractor has concentration-dependent aqueous color, so the adaptation uses NaCl for a unique answer.
+- Wave validation: 12/12 sheet solvers and 36 variants green; 852 knowledge units in 718 files with zero validation problems; all twelve reviewed source records are claimed. Focused sheet/set checks passed (36), sheet-pipeline checks passed (63), registry/provenance/safety/layout checks passed (551), and Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC13–15
+
+- Reviewed p5 and MC13's two tables. Added independently checked solvers, three variants, generators, and knowledge claims. MC13 is restated as precipitation observations; MC14 separates coordination complexes from simple salts and oxides; MC15 explicitly labels β⁻ versus β⁺.
+- Wave validation: 15/15 sheet solvers and 45 variants green; 855 knowledge units in 721 files with zero validation problems; all fifteen reviewed source records are claimed. Focused sheet/set checks passed (42), sheet-pipeline checks passed (78), registry/provenance/safety/layout checks passed (563), and Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC16–18
+
+- Reviewed p5's four decay/growth graphs and p6's nuclear equations and oxide question. The adaptation expresses the four graphs as numerical values, without source artwork. Added independent solvers, three variants, generators and knowledge claims for all three questions.
+- Wave validation: 18/18 sheet solvers and 54 variants green; 858 knowledge units in 724 files with zero validation problems; all eighteen reviewed source records are claimed. Focused sheet/set checks passed (48), sheet-pipeline checks passed (93), registry/provenance/safety/layout checks passed (575), and Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC19–21
+
+- Reviewed p6 and MC21's bond-count table. Added independent solvers, three variants, generators and knowledge claims. MC20's printed intended equation is unbalanced; the adaptation repairs the missing coefficients on M and H₂O so exactly one equation is correct.
+- Wave validation: 21/21 sheet solvers and 63 variants green; 861 knowledge units in 727 files with zero validation problems; all twenty-one reviewed source records are claimed. Focused sheet/set checks passed (74), sheet-pipeline checks passed (108), registry/provenance/safety/layout checks passed (587), and Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC37–39
+
+- Reviewed p9 precipitation, alloy and acidic permanganate questions. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC37 states additive volumes; MC38 defines 0°C/1 atm as 22.4 L/mol; MC39 counts initial ferric ions and the five-to-one redox ratio.
+- Wave validation: 39/39 sheet solvers and 117 variant runs green; 879 knowledge units in 745 files with zero validation problems; source coverage 39/39. Focused sheet/set checks passed (43), registry/provenance/safety/layout checks passed (659), and the partial-digest bank contract now passes. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC40–42
+
+- Reviewed p10 diborane yield, the two-stage azide/nitrate nitrogen production, and trona acid equivalents. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC41’s adaptation asks for one decimal because the printed R gives 49.54 g while the closest source choice is 49 g.
+- Wave validation: 42/42 sheet solvers and 126 variant runs green; 882 knowledge units in 748 files with zero validation problems; source coverage 42/42. Focused sheet/set checks passed (46), registry/provenance/safety/layout checks passed (671), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC43–45
+
+- Reviewed p10 superoxide oxygen production, acid identification from density and concentration, and sodium-ion concentration after mixing sulfate and phosphate. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC43 includes a CO₂-limited variant; MC44's variants identify all four candidate acids.
+- Wave validation: 45/45 sheet solvers and 135 variant runs green; 885 knowledge units in 751 files with zero validation problems; source coverage 45/45. Focused sheet/set checks passed (49). Registry/provenance/safety/layout checks passed (683 total, with one q44 safety-style correction and affected recheck); the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC46–48
+
+- Reviewed p11 chlorine generation from concentrated hydrochloric acid, acetic acid left after bicarbonate reaction, and a target hydroxide concentration made from ppm Ba(OH)₂ plus concentrated NaOH. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC46 explicitly asks for the mass of HCl solution.
+- Wave validation: 48/48 sheet solvers and 144 variant runs green; 888 knowledge units in 754 files with zero validation problems; source coverage 48/48. Focused sheet/set checks passed (52), registry/provenance/safety/layout checks passed (695), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC49–51
+
+- Reviewed p11–12 colligative-property questions. Added independent solvers, three numerical variants, generators, named misconceptions and knowledge claims for each. MC49 and MC51 explicitly assume nonvolatile, nondissociating solutes; MC50 transfers equal molality between two solvents.
+- Wave validation: 51/51 sheet solvers and 153 variant runs green; 891 knowledge units in 757 files with zero validation problems; source coverage 51/51. Focused sheet/set checks passed (55), registry/provenance/safety/layout checks passed (707), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC52–54
+
+- Reviewed p12 solid-bonding and vapor-pressure questions. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC54 adapts the source graph as numerical vapor pressures, preserving A > B > C.
+- Wave validation: 54/54 sheet solvers and 162 variant runs green; 894 knowledge units in 760 files with zero validation problems; source coverage 54/54. Focused generator tests passed (55), catalog checks passed (3), registry/provenance/safety/layout checks passed (719), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC55–57
+
+- Reviewed p13 temperature/phase table, lotus-leaf wetting, and kinetic-gas statements. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC56 specifies untreated clean glass for an unambiguous surface comparison.
+- Wave validation: 57/57 sheet solvers and 171 variant runs green; 897 knowledge units in 763 files with zero validation problems; source coverage 57/57. Focused generator tests passed (58), catalog checks passed (3), registry/provenance/safety/layout checks passed (731), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, MC58–60
+
+- Reviewed p13–14 gas density/diffusion, Boyle-law volume ratio and rising-bubble combined gas law. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. MC59 has two equivalent printed options; the adaptation normalizes all choices to x:1 and removes the duplicate. Part I is now complete; fifteen written items remain.
+- Wave validation: 60/60 sheet solvers and 180 variant runs green; 900 knowledge units in 766 files with zero validation problems; source coverage 60/60. Focused generator tests passed (61), catalog checks passed (3), registry/provenance/safety/layout checks passed (743), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, written 1–3 (items 61–63)
+
+- Reviewed Zr ground-state configuration, periodic size/ionic formula from outer configurations, and the CH₂BrCl isotope fraction. Added independently checked solvers, three variants, generators, named misconceptions and knowledge claims. The Zr generator explicitly requests noble-gas shorthand; the symbolic question fixes n=3.
+- Wave validation: 63/63 sheet solvers and 189 variant runs green; 903 knowledge units in 769 files with zero validation problems; source coverage 63/63. Focused generator tests passed (64), catalog checks passed (3), registry/provenance/safety/layout checks passed (755), and the partial-digest bank check passed. Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, written 4–9 (items 64–69)
+
+- Reviewed six written questions covering Cr/Mn/Fe, Es synthesis and decay, a Born–Haber cycle, COF₂ Lewis structure, aluminium per pancake and phosphate back titration. Added independently checked solvers, three variants, generators, named misconceptions and knowledge claims. The COF₂ adaptation names dipole–dipole attraction as the strongest specific interaction while acknowledging dispersion.
+- Wave validation: 69/69 sheet solvers and 207 variant runs green; 909 knowledge units in 775 files with zero validation problems; source coverage 69/69. Focused generator tests passed (70), new-set choice checks passed (6), registry/provenance/safety/layout checks passed (779), and the partial-digest bank check passed (2). Ruff and whitespace checks passed. The full suite remains deferred until 75/75.
+
+### 2026-10-21 — POSN chemistry 2561, written 10–15 (items 70–75)
+
+- Reviewed the final six written questions: C/H/Br empirical and molecular formulas, solvent evaporation from boiling elevation, mole fraction and molarity after dilution, vapor-pressure order, a heated oxygen cylinder, and Graham-law effusion. Added independent solvers, three variants, generators, named misconceptions and knowledge claims. The vapor-pressure adaptation specifies a common temperature where all four substances can be liquids; its order agrees with [NIST methane](https://webbook.nist.gov/cgi/cbook.cgi?ID=C74828&Type=TBOIL), [ethanol](https://webbook.nist.gov/cgi/cbook.cgi?ID=C64175&Type=TBOIL), [ethyl ether](https://webbook.nist.gov/cgi/cbook.cgi?ID=C60297&Type=TBOIL) and [silane](https://webbook.nist.gov/cgi/cbook.cgi?ID=C7803625&Mask=1E9F) phase data.
+- Final validation: 75/75 solvers and 225 variant runs green, 915 knowledge units in 781 topic files with zero validation problems, and source coverage 75/75. Focused generator tests passed (76), new-set choice checks passed (6), registry/provenance/safety/layout checks passed after the q73 style correction (803 including the corrected case), and golden/layout checks passed (4613). The completed-sheet full suite passed: 40,866 passed, 13 skipped. Two older sheet-answer strings were adjusted to match solver precision; the PDF explorer tests were rerun with loopback socket access after the default sandbox denied binding. Ruff and whitespace checks passed. The bank entry is `green`.
+
+### 2026-10-21 — POSN chemistry 2562, MC1–12
+
+- Began a separate worktree from the completed 2561 branch. The public 2562 PDF matched the bank LFS pointer exactly (SHA-256 `bfbfed6dd6f66f523a4baf10c3c9359f5273e64d2337423b0dbafd17bf647a18`). Extracted 75/75 questions from 17 pages; reviewed the first twelve, including q12's table crop.
+- Added twelve independent solvers, three variants each, twelve generators, named mistakes, knowledge claims and a private partial digest. Source q3's energy-level assumption is explicit in the generated version. Public metadata contains only reviewed paraphrases; unreviewed extracted text and stubs were removed.
+- Targeted validation: 12/12 solver contracts green, 12/12 knowledge claims, 924 knowledge units with zero validation problems, per-set and sheetpipe checks passed, catalog/stage/safety/provenance/golden/layout checks passed after correcting one choice-length cue and the new curriculum filing. Ruff passed. Full suite deferred to sheet completion.
 
 ### 2026-11-15 — Entire bank organization and duplicate audit
 

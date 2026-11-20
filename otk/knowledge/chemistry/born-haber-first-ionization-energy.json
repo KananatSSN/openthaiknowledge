@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "วัฏจักรบอร์น–ฮาเบอร์และกฎของเฮสส์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.born_haber_first_ionization_energy.procedure",
+      "kind": "procedure",
+      "title": "พลังงานไอออไนเซชันจากวัฏจักรบอร์น–ฮาเบอร์",
+      "statement": "ผลรวมขั้นในวัฏจักรบอร์น–ฮาเบอร์เท่ากับเอนทัลปีเกิด MX โดยใช้ครึ่งหนึ่งของพลังงานสลาย X₂ และใส่เครื่องหมายพลังงานรับอิเล็กตรอนกับเกิดผลึกตามที่กำหนด",
+      "steps": [
+        "รวมการระเหิดโลหะและครึ่งหนึ่งของการสลาย X₂",
+        "จัดสมการ ΔHf=ΔHsub+½D+IE+EA+ΔHlattice เพื่อหา IE"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 66
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q66"
+      ],
+      "note": "The Born–Haber balance is -600=150+80+IE-300-1100, so IE=570 kJ/mol. Only half of X₂ dissociates per MX."
+    }
+  ]
+}

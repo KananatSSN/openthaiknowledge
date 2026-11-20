@@ -1,0 +1,26 @@
+{
+  "subject": "เคมี",
+  "topic": "พันธะโคเวเลนต์และไฮโดรลิซิส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.group_thirteen_trichloride_hydrolysis.procedure",
+      "kind": "procedure",
+      "title": "คลอไรด์หมู่ 13 กับน้ำ",
+      "statement": "BCl₃ และคลอไรด์ของ Al Ga เป็นสารโคเวเลนต์ และไฮโดรลิซิสในน้ำให้สารละลายเป็นกรด",
+      "steps": [
+        "ระบุธาตุหมู่ 13 และสูตร XCl₃",
+        "ตรวจพันธะและปฏิกิริยาไฮโดรลิซิส"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 10
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q10"
+      ]
+    }
+  ]
+}

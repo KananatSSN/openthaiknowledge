@@ -1,0 +1,37 @@
+{
+  "subject": "เคมี",
+  "topic": "ไอโซโทปและไอออน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.isotope_ion_nuclear_notation.procedure",
+      "kind": "procedure",
+      "title": "สัญลักษณ์นิวเคลียร์จากข้อมูลไอโซโทป",
+      "statement": "ไอโซโทปมีเลขอะตอม Z เท่ากัน; ประจุ q=Z−e และเลขมวล A=Z+N",
+      "steps": [
+        "หาจำนวนโปรตอนจากจำนวนอิเล็กตรอนและประจุของไอออน",
+        "ปรับจำนวนนิวตรอนตามเงื่อนไขไอโซโทป แล้วบวก Z เพื่อหาเลขมวล"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 4
+        },
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 2
+        },
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q04",
+        "chem.posn2561_q02",
+        "chem.posn2562_q01"
+      ],
+      "note": "Solver returns (atomic number, mass number). Signed charge is accepted; the generator uses cations as in the source."
+    }
+  ]
+}

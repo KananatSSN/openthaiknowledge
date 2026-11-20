@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติของสารไอออนิก โคเวเลนต์ และโลหะ",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.conductivity_substance_classes.procedure",
+      "kind": "procedure",
+      "title": "จำแนกสารจากการนำไฟฟ้า",
+      "statement": "โลหะนำไฟฟ้าทั้งของแข็งและของเหลว; สารไอออนิกนำเมื่อหลอมหรือละลาย; สารโคเวเลนต์บางชนิดแตกตัวเมื่ออยู่ในน้ำแล้วสารละลายนำไฟฟ้า",
+      "steps": [
+        "แยกรูปแบบการนำไฟฟ้าของของแข็ง ของเหลว และสารละลายน้ำ",
+        "จับรูปแบบกับโลหะ ไอออนิก และโคเวเลนต์ที่แตกตัวในน้ำ"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 20
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q20"
+      ],
+      "note": "SOURCE AMBIGUITY: B, D and E are all molecular covalent by conductivity; only D is the printed covalent choice paired with C and A. The adaptation explicitly asks for the covalent substance whose aqueous solution conducts, making D unique. Variants relabel the five source rows."
+    }
+  ]
+}

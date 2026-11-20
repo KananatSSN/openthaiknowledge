@@ -4473,8 +4473,8 @@
   {
    "path": "chemistry/level/upper-secondary/posn-chemistry/MANIFEST.json",
    "kind": "other",
-   "sha256": "09ff4e4f0c2debc5",
-   "size": 34704,
+   "sha256": "97bee951ca0ef44d",
+   "size": 30741,
    "stage": "ignored"
   },
   {
@@ -4484,7 +4484,11 @@
    "size": 709225,
    "pages": 19,
    "text_chars": 26808,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 70,
+   "sheet_id": "posn2560_chemistry",
+   "stage": "green",
+   "note": "COMPLETE 70/70: Part I q1–q60 and written questions 1–10 have independent solvers, generators and knowledge coverage. MC11, MC29 and MC43 have defective printed choices and are repaired in their adaptations. MC20 and MC50 require clarified assumptions. Written 4 clarifies basic oxides; written 5's MgF2 label is repaired; written 9 says four reactions but prints three, and the adaptation states those three. Written 9's heading was normalized for extraction."
   },
   {
    "path": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
@@ -4493,7 +4497,11 @@
    "size": 886122,
    "pages": 18,
    "text_chars": 30015,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 75,
+   "sheet_id": "posn2561_chemistry",
+   "stage": "green",
+   "note": "COMPLETE 75/75: all Part I and written items reviewed with independent solvers, generators and knowledge claims; sheet verification and completed-sheet full suite passed."
   },
   {
    "path": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
@@ -4502,7 +4510,11 @@
    "size": 609271,
    "pages": 17,
    "text_chars": 25420,
-   "layout": "numbered"
+   "layout": "numbered",
+   "items": 75,
+   "sheet_id": "posn2562_chemistry",
+   "stage": "converted",
+   "note": "PARTIAL 66/75: all 60 multiple-choice and first six written items reviewed with independent solvers, generators and knowledge claims; full suite deferred until 75/75."
   },
   {
    "path": "chemistry/level/upper-secondary/posn-chemistry/posn1-65-chemistry.pdf",

@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "สมบัติกรดเบสของออกไซด์",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.oxide_acid_base_water_reactions.procedure",
+      "kind": "procedure",
+      "title": "จับคู่ออกไซด์กรดและเบสในน้ำ",
+      "statement": "SO₃ ทำปฏิกิริยากับน้ำให้ H₂SO₄ และ Na₂O ให้ NaOH; SiO₂ กับ Al₂O₃ ไม่ให้สารละลายตามเงื่อนไข",
+      "steps": [
+        "พิจารณาว่าออกไซด์แต่ละตัวทำปฏิกิริยากับน้ำได้หรือไม่",
+        "จำแนกผลิตภัณฑ์ที่ละลายน้ำว่าเป็นกรดหรือเบส แล้วจับคู่ X กับ Y"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 9
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q09"
+      ],
+      "note": "Source choice ง is SO3 and Na2O: SO3 + H2O -> H2SO4; Na2O + H2O -> 2NaOH. Table figure was reviewed visually; no source artwork is copied."
+    }
+  ]
+}

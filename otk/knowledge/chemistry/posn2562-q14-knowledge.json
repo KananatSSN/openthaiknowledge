@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "การจัดอิเล็กตรอนของทองแดง",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.posn2562_wave2_q14.procedure",
+      "kind": "procedure",
+      "title": "อิเล็กตรอนเดี่ยวของทองแดง",
+      "statement": "Cu อะตอมเป็น [Ar]3d¹⁰4s¹ และ Cu²⁺ เป็น [Ar]3d⁹ จึงมีอิเล็กตรอนเดี่ยวอย่างละหนึ่ง",
+      "steps": [
+        "ระบุอนุภาค พันธะ หรือสมบัติที่เกี่ยวข้องจากสูตร",
+        "ตรวจตัวเลือกด้วยหลักการนี้และตัดตัวเลือกที่ขัดแย้ง"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-62-chemistry.pdf",
+          "item": 14
+        }
+      ],
+      "covered_by": [
+        "chem.posn2562_q14"
+      ],
+      "note": "Cu: [Ar]3d10 4s1; Cu2+: [Ar]3d9."
+    }
+  ]
+}

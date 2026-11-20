@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ปริมาตรโมลาร์และความหนาแน่นแก๊ส",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.gas_mass_from_stp_density.procedure",
+      "kind": "procedure",
+      "title": "มวลแก๊สจากความหนาแน่นที่ STP",
+      "statement": "ที่ STP ปริมาตรโมลาร์ 22.4 L/mol; มวลตัวอย่างแก๊สเท่ากับความหนาแน่นคูณปริมาตรทั้งหมด",
+      "steps": [
+        "หาปริมาตรจากจำนวนโมลโดยใช้ 22.4 L/mol",
+        "คูณปริมาตรกับความหนาแน่นในหน่วย g/L"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-60-chemistry.pdf",
+          "item": 40
+        }
+      ],
+      "covered_by": [
+        "chem.posn2560_q40"
+      ],
+      "note": "Uses the school convention 22.4 L/mol at STP. Five moles occupy 112 L and have mass 140 g."
+    }
+  ]
+}

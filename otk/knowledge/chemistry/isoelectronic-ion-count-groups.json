@@ -1,0 +1,27 @@
+{
+  "subject": "เคมี",
+  "topic": "ไอออนและจำนวนอิเล็กตรอน",
+  "level": "โอลิมปิก (สอวน.)",
+  "units": [
+    {
+      "id": "chem.isoelectronic_ion_count_groups.procedure",
+      "kind": "procedure",
+      "title": "ไอออนที่มีจำนวนอิเล็กตรอนเท่ากัน",
+      "statement": "ไอออนและอะตอมมีจำนวนอิเล็กตรอนเท่ากันเมื่อ Z−q เท่ากัน โดย q เป็นประจุมีเครื่องหมาย; เลขมวลไม่เปลี่ยนจำนวนอิเล็กตรอน",
+      "steps": [
+        "อ่านเลขอะตอมและประจุของอนุภาคแต่ละตัว แยกเลขมวลออก",
+        "คำนวณ Z−q แล้วเลือกกลุ่มที่ทั้งสามค่าเท่ากัน"
+      ],
+      "sources": [
+        {
+          "sheet": "chemistry/level/upper-secondary/posn-chemistry/posn1-61-chemistry.pdf",
+          "item": 1
+        }
+      ],
+      "covered_by": [
+        "chem.posn2561_q01"
+      ],
+      "note": "Source choice ง has E−, G and A+ with 18 electrons each. Adaptation states atomic numbers and uses the same four groups; isotope mass labels are omitted because they do not affect electrons."
+    }
+  ]
+}
