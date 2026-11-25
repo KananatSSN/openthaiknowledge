@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 import re
 from fractions import Fraction
 from random import Random
@@ -202,7 +203,7 @@ def test_consecutive_product_by_search():
         product = int(re.search(r"คูณกันได้ ([\d,]+)", stem).group(1).replace(",", ""))
         runs = [range(a, a + step * count, step) for a in range(1, 400)
                 if all(n % 2 == 0 for n in range(a, a + step * count, step)) or step == 1]
-        found = [r for r in runs if __import__("math").prod(r) == product]
+        found = [r for r in runs if math.prod(r) == product]
         assert len(found) == 1 and sum(found[0]) == int(right), (seed, stem)
 
 
@@ -265,3 +266,99 @@ def test_real_power_roots_by_enumeration():
         xs, ys, zs = roots(v ** 6 - sixth), roots(v ** 3 - cube), roots(v ** 4 - fourth)
         best = min(x + y - z for x in xs for y in ys for z in zs)
         assert best == sp.Rational(right.replace("−", "-")), (seed, stem)
+
+
+def test_sum_quotient_numbers_by_search():
+    for seed in SEEDS:
+        stem, right = _draw("math.sum_quotient_numbers_m1", seed)
+        s, q = map(int, re.search(r"เท่ากับ (\d+) และผลหาร.*?เท่ากับ (\d+)", stem).groups())
+        (a, b), = [(a, s - a) for a in range(1, s) if (s - a) and a == q * (s - a)]
+        expected = a * b if "ผลคูณ" in stem else a - b
+        assert expected == int(right), (seed, stem)
+
+
+def test_telescoping_product_by_multiplying_out():
+    for seed in SEEDS:
+        stem, right = _draw("math.telescoping_product_m1", seed)
+        op = "−" if "(1 − 1/" in stem else "+"
+        nums = [int(n) for n in re.findall(r"\(1 [−+] 1/(\d+)\)", stem)]
+        start, end = nums[0], nums[-1]
+        value = Fraction(1)
+        for k in range(start, end + 1):
+            value *= (k - 1 if op == "−" else k + 1) / Fraction(k)
+        assert value == Fraction(right), (seed, stem)
+
+
+def test_row_pattern_position_by_building_rows():
+    for seed in SEEDS:
+        stem, right = _draw("math.row_pattern_position_p6", seed)
+        shown = [list(map(int, r.split())) for r in re.findall(r"แถว \d: ([\d ]+?)(?:;|$)", stem)]
+        first, step = shown[0][0], shown[1][1] - shown[1][0]
+        row, pos = map(int, re.search(r"แถวที่ (\d+) ตำแหน่งที่ (\d+)", stem).groups())
+        numbers = iter(range(first, first + step * row * row + 1, step))
+        rows = [[next(numbers) for _ in range(2 * r - 1)] for r in range(1, row + 1)]
+        assert rows[:3] == shown and rows[row - 1][pos - 1] == int(right), (seed, stem)
+
+
+def test_reciprocal_power_sum_by_sympy():
+    x = sp.symbols("x")
+    for seed in SEEDS:
+        stem, right = _draw("math.reciprocal_power_sum_m3", seed)
+        a = int(re.search(r"= (\d+) เมื่อ", stem).group(1))
+        n = 2 if "x² + 1/x²" in stem else 3
+        root = max(sp.solve(x + 1 / x - a, x), key=lambda r: float(r))
+        assert sp.simplify(root ** n + root ** -n - int(right)) == 0, (seed, stem)
+
+
+def test_ratio_after_removal_by_search():
+    for seed in SEEDS:
+        stem, right = _draw("math.ratio_after_removal_m1", seed)
+        p, q, n, r, s = map(int, re.search(r"อัตราส่วน (\d+) : (\d+) หยิบออกไปอย่างละ (\d+) เม็ด เหลือ.*?เป็น (\d+) : (\d+)", stem).groups())
+        found = [(g, red) for red in range(1, 500) for g in [Fraction(red * p, q)]
+                 if g.denominator == 1 and red > n and (g - n) * s == (red - n) * r]
+        assert [red for _, red in found] == [int(right)], (seed, stem)
+
+
+def test_periodic_schedule_by_calendar_walk():
+    days = ("จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์", "อาทิตย์")
+    for seed in SEEDS:
+        stem, right = _draw("math.periodic_schedule_p4", seed)
+        start = days.index(re.search(r"เป็นวัน(\S+?) ตลอด", stem).group(1))
+        span = int(re.search(r"ตลอด (\d+) วัน", stem).group(1))
+        each = int(re.search(r"วันละ (\d+) ฉบับ", stem).group(1))
+        busy = {days.index(d) for d in re.findall(r"วัน(\S+?)(?= |$)", stem.split("เฉพาะ")[1].split(" น้อง")[0])}
+        letters, today = 0, start
+        for _ in range(span):
+            letters += each if today in busy else 0
+            today = (today + 1) % 7
+        assert letters == int(right), (seed, stem)
+
+
+def test_percent_after_adding_by_search():
+    for seed in SEEDS:
+        stem, right = _draw("math.percent_after_adding_p6", seed)
+        total, old, new = (int(n.replace(",", "")) for n in re.findall(r"([\d,]+)", stem)[:3])
+        white = total * old // 100
+        (added,) = [k for k in range(0, 20000) if (white + k) * 100 == new * (total + k)]
+        assert added == int(right), (seed, stem)
+
+
+def test_count_multiples_by_enumeration():
+    for seed in SEEDS:
+        stem, right = _draw("math.count_multiples_either_p6", seed)
+        lo, hi, a, b = map(int, re.search(r"ตั้งแต่ (\d+) ถึง (\d+) ที่หารด้วย (\d+) (?:และ|หรือ) (\d+)", stem).groups())
+        test = (lambda n: n % a == 0 and n % b == 0) if "ทั้งคู่" in stem else (lambda n: n % a == 0 or n % b == 0)
+        assert sum(1 for n in range(lo, hi + 1) if test(n)) == int(right), (seed, stem)
+
+
+def test_british_flag_by_coordinates():
+    xs, ys = sp.symbols("x y", positive=True)
+    for seed in SEEDS:
+        stem, right = _draw("math.british_flag_m2", seed)
+        pa, pb, pc = map(int, re.search(r"PA = (\d+), PB = (\d+) และ PC = (\d+)", stem).groups())
+        # A(0, 0), B(w, 0), C(w, h), D(0, h), P(x, y): PD² = x² + (h − y)² for any w, h that fit.
+        w, h = sp.symbols("w h", positive=True)
+        pd2 = (xs ** 2 + ys ** 2 + (w - xs) ** 2 + (h - ys) ** 2) - ((w - xs) ** 2 + ys ** 2)
+        identity = sp.expand(pd2 - (xs ** 2 + (h - ys) ** 2))   # PA² + PC² − PB² equals PD²
+        assert identity == 0
+        assert pa ** 2 + pc ** 2 - pb ** 2 == int(right) ** 2, (seed, stem)

@@ -342,3 +342,33 @@ class GcdLcmProductModelP6(ChoiceType):
             prompt=(f"นักวิ่งใช้เวลาต่อรอบ {a}, {b} และ {c} นาที เริ่มที่จุดเดียวกันพร้อมกัน "
                     "อีกกี่นาทีจึงถึงจุดเริ่มต้นพร้อมกันอีกครั้งเป็นครั้งแรก เลือกผลคูณตัวประกอบเฉพาะที่ใช้หาคำตอบ")
         return prompt," × ".join(map(str,factors)),rng.sample(list(wrongs.values()),3)
+
+
+@question_type("math.count_multiples_either_p6", display_name={"th": "นับจำนวนที่หารด้วย a หรือ b ลงตัวในช่วง"},
+               level={"th": "ป.6"}, topic="ห.ร.ม. และ ค.ร.น.")
+class CountMultiplesEitherP6(ChoiceType):
+    """Multiples of a, plus multiples of b, minus the multiples of ค.ร.น.(a, b) counted twice."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/samsen-wittayalai/31202-Pre-test-.1-2567.pdf, ข้อ 1",
+        "openthaiknowledge-bank/mathematics/exam-venue/stri-siriket/29648-2566-.1.pdf, ตอนที่ 2 ข้อ 2"))
+
+    def compose(self, rng: Random):
+        from math import lcm
+        a, b = rng.sample((2, 3, 4, 5, 6, 8, 9, 10, 12, 15), 2)
+        lo, hi = rng.randint(10, 100), rng.randint(200, 600)
+        count = lambda d: hi // d - (lo - 1) // d
+        both = rng.random() < 0.4
+        answer = count(lcm(a, b)) if both else count(a) + count(b) - count(lcm(a, b))
+        # The overlap not taken away; the product used instead of the ค.ร.น.; the range from 0.
+        pool = (count(a) + count(b), count(a) + count(b) - count(a * b), hi // a + hi // b - hi // lcm(a, b),
+                count(a * b), count(a) + count(b) - count(lcm(a, b)), count(lcm(a, b)))
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        for extra in (answer + 1, answer - 1, answer + 2):
+            if len(wrongs) >= 3:
+                break
+            if extra not in wrongs and extra != answer:
+                wrongs.append(extra)
+        how = "ทั้ง" if both else ""
+        cond = f"หารด้วย {a} และ {b} ลงตัวทั้งคู่" if both else f"หารด้วย {a} หรือ {b} ลงตัว (อย่างน้อยหนึ่งจำนวน)"
+        stem = f"จำนวนนับตั้งแต่ {lo} ถึง {hi} ที่{cond} มี{how}กี่จำนวน"
+        return stem, str(answer), [str(w) for w in wrongs][:4]

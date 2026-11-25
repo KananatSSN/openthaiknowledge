@@ -419,3 +419,36 @@ class FractionalYearWeeksP4(ChoiceType):
         answer = years*52+quarters*13
         return (f"ตามเกณฑ์หนึ่งปีคิดเป็น 52 สัปดาห์ ระยะเวลา {description} คิดเป็นกี่สัปดาห์ตามเกณฑ์นี้",
                 str(answer),[str(years*52),str(years*52+quarters),str(years*12+quarters*3)])
+
+_DAYS = ("จันทร์", "อังคาร", "พุธ", "พฤหัสบดี", "ศุกร์", "เสาร์", "อาทิตย์")
+
+
+@question_type("math.periodic_schedule_p4", display_name={"th": "นับครั้งของกิจกรรมที่ทำตามวันในสัปดาห์"},
+               level={"th": "ป.4"}, topic=_TIME_TOPIC)
+class PeriodicScheduleP4(ChoiceType):
+    """Count each weekday's occurrences in the span (whole weeks plus the leftover days),
+    then multiply by what happens on that day."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/srinakharinwirot-patumwan-demonstration-school/23472-1-2568-21-BKN.pdf, ข้อ 5",
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8519-MWIT35_R1.pdf, ข้อ 7"))
+
+    def compose(self, rng: Random):
+        days = rng.randint(15, 40)
+        start = rng.randrange(7)
+        busy = sorted(rng.sample(range(7), rng.randint(2, 4)))
+        each = rng.randint(2, 5)
+        count = sum(1 for d in range(days) if (start + d) % 7 in busy)
+        answer = count * each
+        weeks = days // 7
+        # Whole weeks only; every day counted; leftover days all counted; one per busy day.
+        pool = (weeks * len(busy) * each, days * each, (weeks * len(busy) + days % 7) * each, count)
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        for extra in (answer + each, answer - each, answer + 2 * each):
+            if len(wrongs) >= 3:
+                break
+            if extra != answer and extra not in wrongs and extra > 0:
+                wrongs.append(extra)
+        busy_days = " ".join("วัน" + _DAYS[d] for d in busy)
+        stem = (f"วันแรกของช่วงนี้เป็นวัน{_DAYS[start]} ตลอด {days} วัน (นับวันแรกด้วย) "
+                f"น้องเขียนจดหมายวันละ {each} ฉบับเฉพาะ{busy_days} น้องเขียนจดหมายทั้งหมดกี่ฉบับ")
+        return stem, str(answer), [str(w) for w in wrongs][:4]

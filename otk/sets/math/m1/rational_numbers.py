@@ -385,3 +385,36 @@ class MixedNumberSumM1(WordProblem):
             wrongs = [a + b, Fraction(int(a) - int(b)), right + Fraction(1, d)]
         return MathDraw("", frac_tex(right), prompt=prompt,
                         distractors=[frac_tex(w) for w in dict.fromkeys(wrongs) if w != right])
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+@question_type("math.telescoping_product_m1", display_name={"th": "ผลคูณที่ตัดกันเป็นทอด ๆ"},
+               level={"th": "ม.1"}, topic=_RAT_TOPIC)
+class TelescopingProductM1(ChoiceType):
+    """(1 − 1/k) = (k − 1)/k and (1 + 1/k) = (k + 1)/k: each numerator cancels the
+    neighbouring denominator, leaving the first and last."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/roi-et-wittayalai/30904-Pre-test-.1-PRE-RW-Pre-Gifted-2568.pdf, ข้อ 20",
+        "openthaiknowledge-bank/mathematics/exam-venue/stri-siriket/29646-2566-.3.pdf, ตอนที่ 2 ข้อ 2"))
+
+    def compose(self, rng: Random):
+        start, end = rng.randint(2, 4), rng.randint(20, 120)
+        sign = rng.choice((-1, 1))
+        answer = Fraction(1)
+        for k in range(start, end + 1):
+            answer *= 1 + Fraction(sign, k)
+        op = "−" if sign < 0 else "+"
+        # One end left over; the end's neighbour; the reciprocal.
+        pool = [Fraction(start - 1, end) if sign < 0 else Fraction(end + 1, start),
+                Fraction(start, end + 1) if sign < 0 else Fraction(end, start),
+                1 / answer, Fraction(1, end)]
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        for extra in (answer * 2, answer / 2, answer + 1):      # when two named mistakes coincide
+            if len(wrongs) >= 3:
+                break
+            if extra not in wrongs and extra != answer:
+                wrongs.append(extra)
+        stem = (f"จงหาค่าของ (1 {op} 1/{start})(1 {op} 1/{start + 1})(1 {op} 1/{start + 2}) … (1 {op} 1/{end}) "
+                "ตอบเป็นเศษส่วนอย่างต่ำ")
+        return stem, str(answer), [str(w) for w in wrongs][:4]

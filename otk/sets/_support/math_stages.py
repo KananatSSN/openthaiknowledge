@@ -294,7 +294,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "age_year_month_difference_p4", "monthly_reading_duration_p4",
          "average_task_duration_p4", "repeated_seconds_duration_p4",
          "clock_hands_from_minutes_p4", "inclusive_date_weeks_p4", "approximate_months_days_p4",
-         "schedule_duration_p4", "departure_cutoff_p4", "fractional_year_weeks_p4"),
+         "schedule_duration_p4", "departure_cutoff_p4", "fractional_year_weeks_p4", "periodic_schedule_p4"),
     ),
     (B, "ป.4", "เส้นตรงและมุม"): (
         ("classify_line", "line_ray_picture_p4", "classify_angle", "angle_kind_picture_p4", "name_angle_p4"),
@@ -410,7 +410,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.6", "ห.ร.ม. และ ค.ร.น."): (
         ("gcd", "lcm", "common_multiple_p6"),
         ("gcd_word_problem_p6", "lcm_word", "common_factors_count_p6", "buses_together_p6"),
-        ("gcd_lcm_relation_p6", "gcd_lcm_three_p6", "tiles_to_square_p6", "gcd_lcm_product_model_p6"),
+        ("gcd_lcm_relation_p6", "gcd_lcm_three_p6", "tiles_to_square_p6", "gcd_lcm_product_model_p6", "count_multiples_either_p6"),
     ),
     (B, "ป.6", "ลำดับการดำเนินการ"): (
         ("order_of_ops_integers", "ooo_true_statement_p6"),
@@ -427,7 +427,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
     (B, "ป.6", "ร้อยละ"): (
         ("ratio_to_percent", "percent_to_ratio", "vat_p6"),
         ("profit_loss_p6", "simple_interest", "whole_from_percent_p6", "discount_percent_p6"),
-        ("percent_change_p6", "cost_from_profit_p6", "compare_offers_p6", "calendar_percent_sentence_p6"),
+        ("percent_change_p6", "cost_from_profit_p6", "compare_offers_p6", "calendar_percent_sentence_p6", "percent_after_adding_p6"),
     ),
     (B, "ป.6", "อัตราส่วนและมาตราส่วน"): (
         ("write_ratio_p6", "equivalent_ratio_p6", "ratio_lowest_terms_p6"),
@@ -439,7 +439,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("pattern_nth_term_p6", "pattern_next_term_p6", "repeating_colour_p6"),
         ("pattern_rule_expression_p6", "pattern_missing_middle_p6", "pattern_multiply_p6",
          "square_numbers_p6", "growing_difference_p6"),
-        ("matchstick_pattern_p6", "pattern_which_term_p6", "quadratic_product_pattern_p6", "square_grid_perimeter_p6", "number_group_relation_p6"),
+        ("matchstick_pattern_p6", "pattern_which_term_p6", "quadratic_product_pattern_p6", "square_grid_perimeter_p6", "number_group_relation_p6", "row_pattern_position_p6"),
     ),
     (B, "ป.6", "ชนิดของรูปสามเหลี่ยม"): (
         ("triangle_type_picture_p6", "classify_by_sides_p6", "triangle_facts_p6",
@@ -519,7 +519,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "nearest_integer_m1"),
         ("signed_fraction_ops", "signed_number_context_m1",
          "rational_mixed_ops_m1", "fraction_of_amount_m1",
-         "portions_m1", "mixed_number_sum_m1"),
+         "portions_m1", "mixed_number_sum_m1", "telescoping_product_m1"),
     ),
     (B, "ม.1", "ทศนิยมและเศษส่วน"): (
         ("terminating_or_repeating_m1",
@@ -552,7 +552,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("linear_equation_setup_m1", "linear_word_problem_m1",
          "linear_fee_comparison_m1", "linear_remaining_fraction_m1", "linear_transfer_m1",
          "consecutive_numbers_m1", "age_problem_m1", "rectangle_equation_m1",
-         "literal_equation_area", "formula_context_m2", "catch_up_time_m1"),
+         "literal_equation_area", "formula_context_m2", "catch_up_time_m1", "sum_quotient_numbers_m1"),
     ),
     (B, "ม.1", "อัตราส่วนและสัดส่วน"): (
         ("simplify_ratio", "solve_proportion",
@@ -563,7 +563,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("percent_word_problem_m1", "inverse_work_proportion_m1", "map_area_scale_m1",
          "ratio_after_adding_m1",
          "better_buy_m1",
-         "map_distance_m1"),
+         "map_distance_m1", "ratio_after_removal_m1"),
     ),
     (B, "ม.1", "กราฟความสัมพันธ์เชิงเส้น"): (
         ("linear_graph_read_m1", "linear_graph_point",
@@ -653,7 +653,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "pythagoras_rhombus_m2", "pythagoras_triangle_perimeter_m2"),
         ("pythagoras_grid_distance_m2", "pythagoras_word_problem_m2", "pythagoras_ladder_m2",
          "pythagoras_box_diagonal_m2",
-         "pythagoras_trapezoid_m2", "pythagoras_two_step_m2"),
+         "pythagoras_trapezoid_m2", "pythagoras_two_step_m2", "british_flag_m2"),
     ),
     (B, "ม.2", "การแปลงทางเรขาคณิต"): (
         ("reflect_point", "translate_point", "transformation_property_m2",
@@ -719,7 +719,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("expand_binomials", "difference_of_squares_ax_m3", "mental_product_m3"),
         ("expand_formula", "square_of_ax_plus_b_m3", "binomial_x_coefficient_m3",
          "expand_two_variables_m3", "mental_square_m3"),
-        ("expand_three_terms", "product_minus_square_m3"),
+        ("expand_three_terms", "product_minus_square_m3", "reciprocal_power_sum_m3"),
     ),
     (B, "ม.3", "แยกตัวประกอบ"): (
         ("factor_special", "factor_perfect_square_m3"),

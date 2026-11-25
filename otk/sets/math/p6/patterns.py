@@ -326,3 +326,27 @@ class NumberGroupRelationP6(ChoiceType):
             stem = (f"จำนวนในแต่ละชุดมีความสัมพันธ์แบบเดียวกัน (จากสามจำนวนแรกได้จำนวนหลังลูกศร) {shown} ; "
                     f"ชุดที่ 4: {a}, {b}, {c} → ? จำนวนที่หายไปคือข้อใด")
             return stem, str(answer), [str(w) for w in wrongs]
+
+
+@question_type("math.row_pattern_position_p6", display_name={"th": "จำนวนในแถวและตำแหน่งที่กำหนดของแบบรูปสามเหลี่ยม"},
+               level=LEVEL, topic=_PATTERN_TOPIC)
+class RowPatternPositionP6(ChoiceType):
+    """Row r holds 2r − 1 numbers, so rows 1..r−1 hold (r − 1)²; the p-th number of row r
+    is term (r − 1)² + p of the underlying sequence."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/11349-MWIT.pdf, ข้อ 13",
+        "openthaiknowledge-bank/mathematics/exam-venue/stri-siriket/29647-2566-.2.pdf, ตอนที่ 1 ข้อ 35"))
+
+    def compose(self, rng: Random):
+        first, step = rng.choice(((1, 1), (2, 2), (1, 2)))
+        row, pos = rng.randint(8, 25), rng.randint(2, 9)
+        term = lambda n: first + (n - 1) * step
+        answer = term((row - 1) ** 2 + pos)
+        rows = "; ".join(f"แถว {r}: " + " ".join(str(term((r - 1) ** 2 + i)) for i in range(1, 2 * r))
+                         for r in range(1, 4))
+        # Rows taken to hold r numbers; the row before; the position counted from 0; the row's last number.
+        pool = [term(row * (row - 1) // 2 + pos), term((row - 2) ** 2 + pos), term((row - 1) ** 2 + pos - 1),
+                term(row ** 2)]
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        stem = f"กำหนดแบบรูป {rows}; … จำนวนที่อยู่ในแถวที่ {row} ตำแหน่งที่ {pos} (นับจากซ้าย) คือจำนวนใด"
+        return stem, str(answer), [str(w) for w in wrongs][:4]
