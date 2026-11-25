@@ -384,3 +384,28 @@ class SquareRootsBothM2(ChoiceType):
         right = f"{r} และ −{r}"
         # One root only (either sign), and the number itself with its negative.
         return f"รากที่สองของ {n} คือข้อใด", right, [r, f"−{r}", f"{n} และ −{n}"]
+
+
+@question_type("math.real_power_roots_m2", display_name={"th": "ค่าจริงจากเลขยกกำลังคู่และคี่"},
+               level={"th": "ม.2"}, topic=_REAL_TOPIC)
+class RealPowerRootsM2(ChoiceType):
+    """An even power gives two real values ±a, an odd power one value with the sign of
+    the right side; to make x + y − z smallest take x, z at their least favourable signs."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/11349-MWIT.pdf, ข้อ 14",
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8519-MWIT35_R1.pdf, ข้อ 2"))
+
+    def compose(self, rng: Random):
+        a, b, c = rng.randint(2, 4), Fraction(1, rng.randint(2, 4)), Fraction(1, rng.choice((2, 4)))
+        ysign = rng.choice((1, -1))
+        x_pow, z_pow = 6, 4
+        # (x²)³ = a⁶ gives x = ±a; y³ = ±b³ gives one y; z⁴ = c⁴ gives z = ±c.
+        y = ysign * b
+        answer = -a + y - c
+        # Only the positive roots; y's sign lost; −z taken as −c with z = −c; the largest value instead.
+        pool = (a + y - c, -a - y - c, -a + y + c, a + y + c)
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        fmt = lambda q: str(q).replace("-", "−")
+        stem = (f"กำหนดให้ (x²)³ = {a ** x_pow}, y³ = {fmt(y ** 3)} และ z⁴ = {fmt(c ** z_pow)} "
+                "เมื่อ x, y, z เป็นจำนวนจริง ค่าที่น้อยที่สุดของ x + y − z เท่ากับเท่าใด")
+        return stem, fmt(answer), [fmt(w) for w in wrongs]

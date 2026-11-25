@@ -416,7 +416,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("order_of_ops_integers", "ooo_true_statement_p6"),
         ("order_of_ops_powers", "ooo_division_first_p6", "ooo_nested_p6", "ooo_decimal_p6",
          "ooo_missing_number_p6"),
-        ("order_of_ops", "order_of_ops_word_p6", "change_after_shopping_p6", "work_backwards_p6"),
+        ("order_of_ops", "order_of_ops_word_p6", "change_after_shopping_p6", "work_backwards_p6", "defined_operation_p6"),
     ),
     (B, "ป.6", "ทศนิยม"): (
         ("fraction_to_decimal", "decimal_missing_factor_p6"),
@@ -459,7 +459,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("circle_area_circumference", "circumference_from_diameter_p6", "semicircle_area_p6",
          "wheel_turns_p6"),
         ("circle_radius_from_circumference", "circle_word_problem_p6", "semicircle_perimeter_p6",
-         "ring_area_p6"),
+         "ring_area_p6", "circle_petal_area_p6"),
     ),
     (B, "ป.6", "เศษส่วนและจำนวนคละ"): (
         ("order_mixed_numbers_p6", "mixed_to_improper_p6", "reciprocal_p6"),
@@ -495,7 +495,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "integer_order_of_operations_m1",
          "integer_missing_number_m1", "integer_product_four_m1"),
         ("integer_four_ops", "integer_word_problem_m1",
-         "integer_run_sum_m1"),
+         "integer_run_sum_m1", "consecutive_product_m1", "number_base_m1"),
     ),
     (B, "ม.1", "เลขยกกำลัง"): (
         ("power_of_2", "power_of_negative", "zero_exponent",
@@ -530,7 +530,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "decimal_multiply_m1", "decimal_divide_m1", "fraction_percent_m1"),
         ("repeating_decimal_to_fraction_m1",
          "decimal_money_m1",
-         "decimal_measure_m1"),
+         "decimal_measure_m1", "digit_position_m1"),
     ),
     (B, "ม.1", "นิพจน์พีชคณิต"): (
         ("evaluate_expression",
@@ -552,7 +552,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("linear_equation_setup_m1", "linear_word_problem_m1",
          "linear_fee_comparison_m1", "linear_remaining_fraction_m1", "linear_transfer_m1",
          "consecutive_numbers_m1", "age_problem_m1", "rectangle_equation_m1",
-         "literal_equation_area", "formula_context_m2"),
+         "literal_equation_area", "formula_context_m2", "catch_up_time_m1"),
     ),
     (B, "ม.1", "อัตราส่วนและสัดส่วน"): (
         ("simplify_ratio", "solve_proportion",
@@ -618,7 +618,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "square_root_context_m2", "sqrt_estimate_m2",
          "cube_root_between_m2"),
         ("simplify_sqrt", "sqrt_product", "sqrt_measure_context_m2",
-         "compare_surds_m2"),
+         "compare_surds_m2", "real_power_roots_m2"),
     ),
     (B, "ม.2", "เลขยกกำลัง"): (
         ("power_of_product", "power_of_quotient", "negative_exponent",
@@ -770,7 +770,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("central_inscribed_angle", "inscribed_angle_semicircle", "inscribed_from_central_m3",
          "angles_same_arc_m3"),
         ("cyclic_quadrilateral", "circle_angle_picture_m3", "two_tangents_m3"),
-        ("tangent_picture_m3", "tangent_length_m3", "chord_from_distance_m3", "tangent_chord_angle_m3"),
+        ("tangent_picture_m3", "tangent_length_m3", "chord_from_distance_m3", "tangent_chord_angle_m3", "square_circle_radius_m3"),
     ),
     (B, "ม.3", "พื้นที่ผิวและปริมาตร"): (
         ("pyramid_volume_m3", "cone_volume", "square_pyramid_volume_m3"),

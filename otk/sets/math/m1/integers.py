@@ -333,3 +333,76 @@ class NumberLineMovesM1(WordProblem):
         return MathDraw("", str(end), prompt=prompt,
                         distractors=_story.keep(start - right_steps + left_steps, start - left_steps,
                                                 start + right_steps + left_steps, end + 1, answer=end, lo=-60))
+
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+@question_type("math.consecutive_product_m1", display_name={"th": "หาจำนวนเรียงกันจากผลคูณ"},
+               level={"th": "ม.1"}, topic=_INT_TOPIC)
+class ConsecutiveProductM1(ChoiceType):
+    """The k-th root of the product sits next to the middle number; check the run around it."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/11349-MWIT.pdf, ข้อ 2",
+        "openthaiknowledge-bank/mathematics/exam-venue/kvis/8515-KVIS-2566-Luckdee.pdf, PART II ข้อ 5"))
+
+    def compose(self, rng: Random):
+        step = rng.choice((1, 2))
+        count = rng.choice((2, 3))
+        first = rng.randint(12, 60) * (2 if step == 2 else 1)
+        run = [first + step * i for i in range(count)]
+        product = 1
+        for n in run:
+            product *= n
+        answer = sum(run)
+        kind = "จำนวนคู่" if step == 2 else "จำนวนเต็มบวก"
+        # The run shifted one step either way; the middle (or larger) number alone; the count times the first.
+        pool = (answer + step * count, answer - step * count, run[-1], count * first + step)
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer and w > 0]
+        stem = f"{kind} {count} จำนวนที่เรียงติดกันคูณกันได้ {product:,} ผลบวกของจำนวนเหล่านั้นเท่ากับเท่าใด"
+        return stem, str(answer), [str(w) for w in wrongs]
+
+
+_HEX = "0123456789ABCDEF"
+
+
+@question_type("math.number_base_m1", display_name={"th": "แปลงฐานสิบกับฐานสิบหกและฐานสอง (RGB/HEX)"},
+               level={"th": "ม.1"}, topic=_INT_TOPIC)
+class NumberBaseM1(ChoiceType):
+    """A colour channel 0–255 is two base-16 digits: 16·high + low. Binary counts the 1s
+    of the base-2 digits."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8353-2567-MWIT-MATH-R1_67-by-Lucky-KVIS10.pdf, ข้อ 25-26",
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8519-MWIT35_R1.pdf, ข้อ 18"))
+
+    def compose(self, rng: Random):
+        rgb = [rng.randint(16, 255) for _ in range(3)]
+        hexes = "".join(f"{_HEX[v // 16]}{_HEX[v % 16]}" for v in rgb)
+        kind = rng.randrange(3)
+        if kind == 0:
+            answer = sum(_HEX.index(h) for h in hexes)
+            # Letters A–F counted as 1; the decimal digits of the RGB values summed; base 10 split of each channel.
+            pool = (sum(_HEX.index(h) if h.isdigit() else 1 for h in hexes),
+                    sum(int(c) for v in rgb for c in str(v)),
+                    sum(v // 10 + v % 10 for v in rgb))
+            stem = (f"สีที่มีค่า RGB เป็น ({rgb[0]}, {rgb[1]}, {rgb[2]}) เขียนเป็นค่า HEX ได้ #abcdef "
+                    "(แต่ละคู่คือฐานสิบหกของค่าหนึ่งช่อง และ A–F แทน 10–15) จงหา a + b + c + d + e + f")
+        elif kind == 1:
+            answer = rgb[0] - rgb[1] + rgb[2]
+            # Hex digit pairs read as base 10 where possible; the digits swapped in each pair; a + b + c.
+            swap = [16 * (v % 16) + v // 16 for v in rgb]
+            pool = (swap[0] - swap[1] + swap[2], rgb[0] + rgb[1] + rgb[2], rgb[0] - rgb[1] - rgb[2])
+            stem = f"สีที่มีค่า HEX เป็น #{hexes} เขียนเป็นค่า RGB ได้ (a, b, c) จงหาค่า a − b + c"
+        else:
+            value = rgb[0]
+            answer = bin(value).count("1")
+            # The 0s counted; the number of binary digits; the 1s of the next number.
+            pool = (bin(value).count("0") - 1, len(bin(value)) - 2, bin(value + 1).count("1"), answer + 1)
+            stem = f"เมื่อเขียน {value} ในเลขฐานสอง จะมีเลขโดด 1 กี่ตัว"
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        for extra in (answer + 1, answer - 1, answer + 2):   # off by one when a pool value repeats
+            if len(wrongs) >= 3:
+                break
+            if extra not in wrongs and extra != answer:
+                wrongs.append(extra)
+        return stem, str(answer), [str(w) for w in wrongs]

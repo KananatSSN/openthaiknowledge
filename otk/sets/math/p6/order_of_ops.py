@@ -344,3 +344,31 @@ class WorkBackwardsP6(ChoiceType):
             steps = " จากนั้น".join(_STEPS[i][0].format(n=n) for i, n in plan)
             stem = f"ปารตีมีเงินอยู่จำนวนหนึ่ง {steps} ทำให้เหลือเงิน {end} บาท เดิมปารตีมีเงินกี่บาท"
             return stem, f"{start} บาท", [f"{w} บาท" for w in wrongs]
+
+_OPERATIONS = (
+    ("a × b − (a + b)", lambda a, b: a * b - (a + b)),
+    ("2a + b", lambda a, b: 2 * a + b),
+    ("a × b + a", lambda a, b: a * b + a),
+    ("(a + b) × 2 − b", lambda a, b: (a + b) * 2 - b),
+)
+
+
+@question_type("math.defined_operation_p6", display_name={"th": "หาค่าจากตัวดำเนินการที่นิยามใหม่"},
+               level={"th": "ป.6"}, topic="ลำดับการดำเนินการ")
+class DefinedOperationP6(ChoiceType):
+    """Work out the bracket first with the new rule, then use its result as the new a."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/naresuan-university-demonstration-school/29931-NUD-PREP-TEST-2019.pdf, ข้อ 12",
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8353-2567-MWIT-MATH-R1_67-by-Lucky-KVIS10.pdf, ข้อ 1"))
+
+    def compose(self, rng: Random):
+        name, op = rng.choice(_OPERATIONS)
+        x, y, z = rng.randint(2, 9), rng.randint(2, 9), rng.randint(2, 6)
+        answer = op(op(x, y), z)
+        # The brackets moved; the rule applied once with an ordinary operation after it; a and b swapped.
+        pool = (op(x, op(y, z)), op(x, y) * z, op(z, op(y, x)), op(op(y, x), z))
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        if len(wrongs) < 3:
+            wrongs += [answer + z, answer - z]
+        stem = f"กำหนดให้ a ⊕ b = {name} จงหาค่าของ ({x} ⊕ {y}) ⊕ {z}"
+        return stem, str(answer), [str(w) for w in dict.fromkeys(w for w in wrongs if w != answer)]
