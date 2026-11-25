@@ -280,3 +280,49 @@ class SquareGridPerimeterP6(ChoiceType):
                 f"รูปที่ 1 มี 1 แถว แถวละ 1 แผ่น รูปที่ 2 มี 2 แถว แถวละ 2 แผ่น "
                 f"รูปที่ n มี n แถว แถวละ n แผ่น รูปที่ {nth} มีความยาวรอบขอบนอกกี่หน่วย",
                 str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+# Rules for a group (a, b, c) -> d. The set's draws only use rules that the
+# three example groups single out among all of these.
+GROUP_RULES = {
+    "a×b − c": lambda a, b, c: a * b - c,
+    "a×b + c": lambda a, b, c: a * b + c,
+    "(a + b)×c": lambda a, b, c: (a + b) * c,
+    "a×c + b": lambda a, b, c: a * c + b,
+    "a + b + c": lambda a, b, c: a + b + c,
+    "a×b×c": lambda a, b, c: a * b * c,
+}
+
+
+@question_type("math.number_group_relation_p6", display_name={"th": "หาความสัมพันธ์ของจำนวนในแต่ละชุด"},
+               level=LEVEL, topic=_PATTERN_TOPIC)
+class NumberGroupRelationP6(ChoiceType):
+    """Every group follows one rule from its first three numbers to the fourth; find
+    the rule from the full groups and apply it to the one with a gap."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/samsen-wittayalai/31202-Pre-test-.1-2567.pdf, ข้อ 28",
+        "openthaiknowledge-bank/mathematics/exam-venue/samsen-wittayalai/31123-Pre-test-.1-2568.pdf, ข้อ 32",
+        "openthaiknowledge-bank/mathematics/exam-venue/roi-et-wittayalai/30904-Pre-test-.1-PRE-RW-Pre-Gifted-2568.pdf, ข้อ 17"))
+
+    def compose(self, rng: Random):
+        names = [n for n in GROUP_RULES if n != "a + b + c"]
+        while True:
+            rule = rng.choice(names)
+            groups = [tuple(rng.randint(2, 9) for _ in range(3)) for _ in range(4)]
+            fit = [n for n, f in GROUP_RULES.items()
+                   if all(f(*g) == GROUP_RULES[rule](*g) for g in groups[:3])]
+            answer = GROUP_RULES[rule](*groups[3])
+            if fit != [rule] or min(GROUP_RULES[rule](*g) for g in groups) <= 0:
+                continue
+            # Another rule applied to the last group (a rule that fails on the examples).
+            wrongs = [w for w in dict.fromkeys(f(*groups[3]) for n, f in GROUP_RULES.items() if n != rule)
+                      if w != answer and w > 0]
+            if len(wrongs) < 3:
+                continue
+            shown = " ; ".join(f"ชุดที่ {i + 1}: {a}, {b}, {c} → {GROUP_RULES[rule](a, b, c)}"
+                               for i, (a, b, c) in enumerate(groups[:3]))
+            a, b, c = groups[3]
+            stem = (f"จำนวนในแต่ละชุดมีความสัมพันธ์แบบเดียวกัน (จากสามจำนวนแรกได้จำนวนหลังลูกศร) {shown} ; "
+                    f"ชุดที่ 4: {a}, {b}, {c} → ? จำนวนที่หายไปคือข้อใด")
+            return stem, str(answer), [str(w) for w in wrongs]

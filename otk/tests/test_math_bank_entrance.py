@@ -99,3 +99,59 @@ def test_conjugate_root_cubic_by_solving_for_coefficients():
         total = sum(solution[0][v] for v in (a, b, c))
         assert all(solution[0][v].is_integer for v in (a, b, c))
         assert total == int(right.replace("−", "-")), (seed, stem)
+
+
+def test_continued_fraction_by_brute_force():
+    for seed in SEEDS:
+        stem, right = _draw("math.continued_fraction_p6", seed)
+        d = int(re.search(r"z < (\d+)", stem).group(1))
+        whole, num, den = map(int, re.search(r"= (\d+) (\d+)/(\d+) ค่าของ", stem).groups())
+        target = whole + Fraction(num, den)
+        found = {(x, y, z) for x in range(1, 20) for y in range(1, 20) for z in range(1, d)
+                 if x + 1 / (y + Fraction(z, d)) == target}
+        assert len(found) == 1, (seed, stem)
+        assert sum(found.pop()) == int(right), (seed, stem)
+
+
+def test_work_backwards_by_forward_simulation():
+    steps = {
+        "ได้รับเงินเพิ่มอีก (\\d+) บาท": lambda m, n: m + n,
+        "ใช้เงินไป (\\d+) บาท": lambda m, n: m - n,
+        "ได้รับเงินเพิ่มจนมีเป็น 2 เท่าของที่มีอยู่": lambda m, n: 2 * m,
+        "ใช้เงินไปครึ่งหนึ่งของที่มีอยู่": lambda m, n: m / 2,
+        "ใช้เงินไป 1/3 ของที่มีอยู่": lambda m, n: m - m / 3,
+    }
+    for seed in SEEDS:
+        stem, right = _draw("math.work_backwards_p6", seed)
+        body = stem.split("จำนวนหนึ่ง ", 1)[1].split(" ทำให้เหลือเงิน")[0]
+        end = Fraction(re.search(r"เหลือเงิน (\d+) บาท", stem).group(1))
+        plan = []
+        for part in body.split(" จากนั้น"):
+            (pattern, step), = [(p, f) for p, f in steps.items() if re.fullmatch(p, part)]
+            m = re.fullmatch(pattern, part)
+            plan.append((step, int(m.group(1)) if m.groups() else 0))
+        start = Fraction(int(right.split()[0]))
+        amount = start
+        for step, n in plan:
+            amount = step(amount, n)
+        assert amount == end, (seed, stem)
+
+
+def test_number_group_rule_is_the_only_one_that_fits():
+    from itertools import permutations
+    ops = {"+": lambda p, q: p + q, "−": lambda p, q: p - q, "×": lambda p, q: p * q}
+    for seed in SEEDS:
+        stem, right = _draw("math.number_group_relation_p6", seed)
+        shown = [tuple(map(int, g)) for g in re.findall(r"ชุดที่ \d: (\d+), (\d+), (\d+) → (-?\d+)", stem)]
+        last = tuple(map(int, re.search(r"ชุดที่ 4: (\d+), (\d+), (\d+) → \?", stem).groups()))
+        assert len(shown) == 3
+        # Every rule (p o1 q) o2 r over every order of the three numbers that fits the examples
+        # must give the stated answer for the fourth group.
+        answers = set()
+        for order in permutations(range(3)):
+            for o1, f1 in ops.items():
+                for o2, f2 in ops.items():
+                    rule = lambda g: f2(f1(g[order[0]], g[order[1]]), g[order[2]])
+                    if all(rule(g[:3]) == g[3] for g in shown):
+                        answers.add(rule(last))
+        assert answers == {int(right)}, (seed, stem, answers)
