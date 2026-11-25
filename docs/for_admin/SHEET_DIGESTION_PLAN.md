@@ -575,6 +575,36 @@ TOTAL         338   316     17     4   66      255      6     11
 
 ## 6. Session log
 
+### 2026-11-25 — Maths entrance papers (exam-venue), wave 2b
+
+- **Scope.** The MWIT and KVIS ม.4 entrance papers with a readable but
+  handwritten or garbled text layer, read from the page renders:
+  - MWIT round 1 for 2567, 2568 (รุ่น 35) and 2569;
+  - the near-verbatim MWIT 2563 paper;
+  - KVIS 2566 and 2569;
+  - a KVIS/MWIT exponents compilation.
+
+  That is 144 questions, 112 answered. Most are recollections: items that
+  are forgotten, inconsistent or illegible have no answer and a comment
+  saying why. Review removed one answer, MWIT 2567/23, whose stated
+  condition cannot hold. 10512 is a page-for-page copy of 8355 and is marked
+  ignored.
+- **Claims.** `docs/for_admin/sheet_digestion_entrance_wave2b.py`. A skill
+  already claimed in waves 1 and 2a gets these tags on the same unit
+  (`extend`), so recurring skills show up across papers. Two loose set
+  matches were dropped.
+- **New sets.** Eight stage-3 sets cover the skills that recur across two
+  or three entrance papers:
+  - `digit_position_m1`, `catch_up_time_m1`, `consecutive_product_m1` and
+    `number_base_m1`;
+  - `defined_operation_p6`, `square_circle_radius_m3`,
+    `circle_petal_area_p6` and `real_power_roots_m2`.
+
+  `test_math_bank_entrance.py` checks each answer independently. All 568
+  entrance questions are claimed.
+- **Next.** The five garbled Satri Siriket papers (primary), the 71-page
+  MWIT 2566 file and the two Patumwan answer files, then the scans.
+
 ### 2026-11-25 — Maths entrance papers (exam-venue), wave 2a
 
 - **Scope.** The readable primary-level entrance papers: Samsen Pre-Test 2568
