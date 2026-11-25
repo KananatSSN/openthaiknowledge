@@ -575,6 +575,30 @@ TOTAL         338   316     17     4   66      255      6     11
 
 ## 6. Session log
 
+### 2026-11-25 — Maths entrance papers (exam-venue), wave 2a
+
+- **Scope.** The readable primary-level entrance papers: Samsen Pre-Test 2568
+  and the two 2567 papers (2 and 3 ธ.ค. 66), Roi-et Pre-Gifted 2568 and NUD
+  Prep Test 2019. 172 questions, 167 answered. None of the papers prints a
+  key. Five items are left unanswered because their printed choices cannot
+  hold the correct value, and each has a note.
+- **Set aside (marked ignored for maths, with notes):**
+  - The three PCSHS "Science Mathematics Test" papers (2566–2568) are science
+    only. The two scanned 2568 PCSHS files may hold the maths paper.
+  - Triam Udom Phatthanakan 106401 is a programme brochure.
+  - 8520 is a second export of MWIT35 round 1.
+- **Claims.** `docs/for_admin/sheet_digestion_entrance_wave2.py`, with units
+  in `entrance-primary-*.json`. The two Samsen 2567 papers share one template,
+  and their items 12 and 13 swap places, so one unit claims the item in both.
+  Three sampled set matches were dropped because they did not practise their
+  skill.
+- **New sets.** The skills that recur across papers got stage-3 ป.6 sets:
+  `math.continued_fraction_p6`, `math.work_backwards_p6` and
+  `math.number_group_relation_p6`. `test_math_bank_entrance.py` checks their
+  answers independently. 23 one-off skills remain without a set.
+- **Next.** The 16 readable but garbled or handwritten papers (Satri Siriket,
+  KVIS, the MWIT recollections, Patumwan), then the scans.
+
 ### 2026-11-25 — Maths entrance papers (exam-venue), wave 1
 
 - **Scope.** The maths school-entrance papers under
