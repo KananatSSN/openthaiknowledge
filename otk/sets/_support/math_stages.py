@@ -416,7 +416,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("order_of_ops_integers", "ooo_true_statement_p6"),
         ("order_of_ops_powers", "ooo_division_first_p6", "ooo_nested_p6", "ooo_decimal_p6",
          "ooo_missing_number_p6"),
-        ("order_of_ops", "order_of_ops_word_p6", "change_after_shopping_p6"),
+        ("order_of_ops", "order_of_ops_word_p6", "change_after_shopping_p6", "work_backwards_p6"),
     ),
     (B, "ป.6", "ทศนิยม"): (
         ("fraction_to_decimal", "decimal_missing_factor_p6"),
@@ -439,7 +439,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("pattern_nth_term_p6", "pattern_next_term_p6", "repeating_colour_p6"),
         ("pattern_rule_expression_p6", "pattern_missing_middle_p6", "pattern_multiply_p6",
          "square_numbers_p6", "growing_difference_p6"),
-        ("matchstick_pattern_p6", "pattern_which_term_p6", "quadratic_product_pattern_p6", "square_grid_perimeter_p6"),
+        ("matchstick_pattern_p6", "pattern_which_term_p6", "quadratic_product_pattern_p6", "square_grid_perimeter_p6", "number_group_relation_p6"),
     ),
     (B, "ป.6", "ชนิดของรูปสามเหลี่ยม"): (
         ("triangle_type_picture_p6", "classify_by_sides_p6", "triangle_facts_p6",
@@ -465,7 +465,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("order_mixed_numbers_p6", "mixed_to_improper_p6", "reciprocal_p6"),
         ("mixed_number_ops_p6", "mixed_times_whole_p6", "mixed_divide_whole_p6", "largest_fraction_p6",
          "fraction_missing_factor_p6"),
-        ("fraction_multistep_word_p6", "part_of_part_p6", "mixed_remaining_model_p6", "two_fraction_purchases_model_p6", "fraction_order_statement_p6"),
+        ("fraction_multistep_word_p6", "part_of_part_p6", "mixed_remaining_model_p6", "two_fraction_purchases_model_p6", "fraction_order_statement_p6", "continued_fraction_p6"),
     ),
     (B, "ป.6", "รูปเรขาคณิต 3 มิติ"): (
         ("solid_counts_picture_p6", "solid_from_description_p6", "objects_as_solids_p6",

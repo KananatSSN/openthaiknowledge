@@ -339,3 +339,35 @@ class FractionOrderStatementP6(ChoiceType):
         # Different rows intentionally contain different values; each row is checked on its own.
         return (f"แถวใดเรียงจำนวน{'จากน้อยไปมาก' if asc else 'จากมากไปน้อย'}ถูกต้องตลอดแถว", labels[correct],
                 [label for i, label in enumerate(labels) if i != correct])
+
+from math import gcd  # noqa: E402
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+@question_type("math.continued_fraction_p6", display_name={"th": "หาจำนวนนับจากเศษส่วนต่อเนื่อง"},
+               level={"th": "ป.6"}, topic="เศษส่วนและจำนวนคละ")
+class ContinuedFractionP6(ChoiceType):
+    """x + 1/(y + z/d) written as a mixed number x n/m with n/m = d/(yd + z): the
+    whole part is x, flipping n/m gives y and the leftover z/d."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/roi-et-wittayalai/30904-Pre-test-.1-PRE-RW-Pre-Gifted-2568.pdf, ข้อ 35",
+        "openthaiknowledge-bank/mathematics/exam-venue/samsen-wittayalai/31123-Pre-test-.1-2568.pdf, ข้อ 31"))
+
+    def compose(self, rng: Random):
+        while True:
+            x, y, d = rng.randint(1, 5), rng.randint(2, 6), rng.choice((3, 4, 5, 7))
+            z = rng.randint(1, d - 1)
+            if gcd(z, d) != 1:
+                continue
+            num, den = d, y * d + z
+            answer = x + y + z
+            # The denominator read as y; z forgotten; d taken for z; the whole part left out;
+            # the mixed number's numerator taken for y; the fraction flipped without the whole part kept.
+            pool = (x + den + z, x + y, x + y + d, y + z, x + num + z, x + y + z + d)
+            wrongs = [w for w in dict.fromkeys(pool) if w != answer and w > 0]
+            if len(wrongs) < 4:
+                continue
+            stem = (f"กำหนดให้ x, y และ z เป็นจำนวนนับ โดยที่ z < {d} และ "
+                    f"x + 1/(y + z/{d}) = {x} {num}/{den} ค่าของ x + y + z เท่ากับเท่าใด")
+            return stem, str(answer), [str(w) for w in wrongs]

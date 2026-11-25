@@ -138,7 +138,9 @@
      "tag": "ร้อยเอ็ดวิทยาลัย Pre-Gifted 2568/9"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.work_backwards_p6"
+   ]
   },
   {
    "id": "math.entrance.legs-count-equation",

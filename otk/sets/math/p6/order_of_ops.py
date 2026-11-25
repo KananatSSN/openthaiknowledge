@@ -290,3 +290,57 @@ class ChangeAfterShoppingP6(WordProblem):
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(paid - p1 - p2, cost, paid - (n1 + n2) * p1, right + 10,
                                                 answer=right, lo=1))
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+# (text, forward step, inverse step); every step keeps whole baht when the amount allows it.
+_STEPS = (
+    ("ได้รับเงินเพิ่มอีก {n} บาท", lambda m, n: m + n, lambda m, n: m - n),
+    ("ใช้เงินไป {n} บาท", lambda m, n: m - n, lambda m, n: m + n),
+    ("ได้รับเงินเพิ่มจนมีเป็น 2 เท่าของที่มีอยู่", lambda m, n: 2 * m, lambda m, n: m / 2),
+    ("ใช้เงินไปครึ่งหนึ่งของที่มีอยู่", lambda m, n: m / 2, lambda m, n: 2 * m),
+    ("ใช้เงินไป 1/3 ของที่มีอยู่", lambda m, n: m * Fraction(2, 3), lambda m, n: m * Fraction(3, 2)),
+)
+
+
+@question_type("math.work_backwards_p6", display_name={"th": "ย้อนการดำเนินการหาจำนวนเงินเริ่มต้น"},
+               level={"th": "ป.6"}, topic="ลำดับการดำเนินการ")
+class WorkBackwardsP6(ChoiceType):
+    """Undo each step from the end, in reverse order: adding becomes subtracting,
+    doubling becomes halving, spending a third becomes multiplying by 3/2."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/samsen-wittayalai/31123-Pre-test-.1-2568.pdf, ข้อ 30",
+        "openthaiknowledge-bank/mathematics/exam-venue/roi-et-wittayalai/30904-Pre-test-.1-PRE-RW-Pre-Gifted-2568.pdf, ข้อ 9"))
+
+    def compose(self, rng: Random):
+        while True:
+            start = Fraction(rng.randint(4, 60) * 10)
+            plan = [(rng.randrange(len(_STEPS)), rng.randint(2, 9) * 10) for _ in range(rng.randint(3, 4))]
+            amount, ok = start, True
+            for i, n in plan:
+                amount = _STEPS[i][1](amount, n)
+                ok &= amount > 0 and amount.denominator == 1
+            if not ok or len({i for i, _ in plan}) < 2:
+                continue
+            end = amount
+            undone = end
+            for i, n in reversed(plan):
+                undone = _STEPS[i][2](undone, n)
+            assert undone == start
+            # Steps redone forwards from the end; undone in the original order; the last step left out.
+            forwards = end
+            for i, n in plan:
+                forwards = _STEPS[i][1](forwards, n)
+            wrong_order = end
+            for i, n in plan:
+                wrong_order = _STEPS[i][2](wrong_order, n)
+            skipped = end
+            for i, n in reversed(plan[:-1]):
+                skipped = _STEPS[i][2](skipped, n)
+            pool = (forwards, wrong_order, skipped, start + 10)
+            wrongs = [w for w in dict.fromkeys(pool) if w != start and w > 0 and w.denominator == 1]
+            if len(wrongs) < 3:
+                continue
+            steps = " จากนั้น".join(_STEPS[i][0].format(n=n) for i, n in plan)
+            stem = f"ปารตีมีเงินอยู่จำนวนหนึ่ง {steps} ทำให้เหลือเงิน {end} บาท เดิมปารตีมีเงินกี่บาท"
+            return stem, f"{start} บาท", [f"{w} บาท" for w in wrongs]

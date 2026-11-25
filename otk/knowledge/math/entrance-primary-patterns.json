@@ -70,7 +70,9 @@
      "tag": "ร้อยเอ็ดวิทยาลัย Pre-Gifted 2568/17"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.number_group_relation_p6"
+   ]
   },
   {
    "id": "math.entrance.tiling-recurrence-count",

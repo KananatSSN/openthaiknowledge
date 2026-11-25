@@ -184,7 +184,9 @@
      "tag": "ร้อยเอ็ดวิทยาลัย Pre-Gifted 2568/35"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.continued_fraction_p6"
+   ]
   },
   {
    "id": "math.entrance.fraction-inequality-statements",

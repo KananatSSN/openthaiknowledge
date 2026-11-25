@@ -116,7 +116,8 @@ def samsen_2567():
       k('linear_word_problem_m1'))
     u(FRAC, 'fraction-of-remainder', 'เศษส่วนของส่วนที่เหลือ คูณเศษส่วนต่อกันเพื่อหาส่วนของทั้งหมด แล้วย้อนหาจำนวนเดิม', t(27),
       k('fraction_multistep_word_p6', 'part_of_part_p6'))
-    u(PAT, 'grid-pattern-relation', 'หาความสัมพันธ์ที่เหมือนกันในทุกชุดตัวเลขแล้วใช้หาค่าที่หายไป', t(28))
+    u(PAT, 'grid-pattern-relation', 'หาความสัมพันธ์ที่เหมือนกันในทุกชุดตัวเลขแล้วใช้หาค่าที่หายไป', t(28),
+      k('number_group_relation_p6'))
     u(AREA, 'trapezoid-area-difference', 'แบ่งรูปสี่เหลี่ยมคางหมูมุมฉากเป็นสามเหลี่ยมสองรูปแล้วเทียบพื้นที่', t(29), k('trapezoid_area'))
     u(PCT, 'successive-percent-increase', 'ขายต่อหลายทอดคูณด้วย (1 + กำไร) ของแต่ละทอดต่อกัน', t(30),
       k('percent_change_p6'))
@@ -168,8 +169,10 @@ def samsen_2568():
     u(GCD, 'pairwise-products', 'ผลคูณทุกคู่ของสี่จำนวน: คู่ตรงข้ามมีผลคูณเท่ากันเป็นผลคูณทั้งสี่ ใช้หาค่าที่หายไป', t(27))
     u(EQ, 'scoring-equation', 'ตั้งสมการจำนวนข้อที่ตอบถูก ตอบผิด และไม่ตอบ ตามเกณฑ์คะแนน', t(28), k('linear_word_problem_m1'))
     u(EQ, 'consecutive-sum-correction', 'ผลบวกจำนวนเรียงกันคำนวณด้วยสูตรเลขคณิต เทียบผลที่ผิดเพื่อหาจำนวนที่ถูกนับผิด', t(29))
-    u(EQ, 'work-backwards-money', 'ย้อนการดำเนินการจากผลสุดท้ายทีละขั้น (บวกกลับเป็นลบ คูณกลับเป็นหาร)', t(30))
-    u(FRAC, 'continued-fraction', 'จัดเศษส่วนต่อเนื่องจากชั้นในสุดออกมา แล้วเทียบส่วนจำนวนเต็มและเศษ', t(31))
+    u(EQ, 'work-backwards-money', 'ย้อนการดำเนินการจากผลสุดท้ายทีละขั้น (บวกกลับเป็นลบ คูณกลับเป็นหาร)', t(30),
+      k('work_backwards_p6'))
+    u(FRAC, 'continued-fraction', 'จัดเศษส่วนต่อเนื่องจากชั้นในสุดออกมา แล้วเทียบส่วนจำนวนเต็มและเศษ', t(31),
+      k('continued_fraction_p6'))
     claim('grid-pattern-relation', t(32))
     claim('composite-squares-area', t(33))
     claim('pie-angle-share', t(34))
