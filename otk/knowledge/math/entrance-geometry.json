@@ -97,7 +97,9 @@
      "tag": "เข้า ม.4 เตรียมอุดมฯ 2564/15"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.tangential_trapezoid_m5"
+   ]
   },
   {
    "id": "math.entrance.isosceles-area-trig",

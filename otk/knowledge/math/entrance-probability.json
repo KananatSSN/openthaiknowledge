@@ -21,7 +21,9 @@
      "tag": "เข้า ม.4 เตรียมอุดมฯ 2564/14"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.probability_transfer_m5"
+   ]
   },
   {
    "id": "math.entrance.two-event-union",

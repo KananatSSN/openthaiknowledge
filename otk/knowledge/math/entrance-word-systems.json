@@ -50,7 +50,9 @@
      "tag": "เข้า ม.4 เตรียมอุดมฯ 2564/21"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.train_passing_m3"
+   ]
   },
   {
    "id": "math.entrance.symmetric-sum-product",

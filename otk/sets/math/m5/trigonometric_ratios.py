@@ -391,3 +391,38 @@ TanFromSidesM5.PROVENANCE = Provenance("original")
 ShadowLengthM5.PROVENANCE = Provenance("original")
 AngleOfDepressionM5.PROVENANCE = Provenance("original")
 TanFromSinM5.PROVENANCE = Provenance("original")
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+# Right triangles (adjacent, opposite, hypotenuse) giving an exact cosine and sine.
+_TRAPEZOID_TRIPLES = ((3, 4, 5), (4, 3, 5), (5, 12, 13), (12, 5, 13), (8, 15, 17), (15, 8, 17),
+                      (7, 24, 25), (24, 7, 25), (20, 21, 29), (21, 20, 29))
+
+
+@question_type("math.tangential_trapezoid_m5",
+               display_name={"th": "สี่เหลี่ยมคางหมูหน้าจั่วที่ผลบวกด้านคู่ขนานเท่ากับผลบวกด้านไม่ขนาน"},
+               level={"th": "ม.5"}, topic=RATIOS)
+class TangentialTrapezoidM5(ChoiceType):
+    """Isosceles trapezoid ABCD, AB ∥ DC with AB the longer base, legs l and
+    AB + DC = 2l (it has an incircle). With cos ∠DAB = a/c the legs project a
+    run l·a/c onto AB, so DC = l(1 − a/c), AB = l(1 + a/c) and the area is
+    (AB + DC)/2 · l sin A = l² sin A."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8550-MATHFORTU64_problem.pdf, ข้อ 15",
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8548-MATHFORTU65_problem.pdf, ข้อ 19"))
+
+    def compose(self, rng: Random):
+        a, b, c = rng.choice(_TRAPEZOID_TRIPLES)
+        m = rng.randint(1, 3)
+        leg = c * m
+        short, long_, height, run = m * (c - a), m * (c + a), m * b, m * a
+        area = leg * height
+        asked = rng.choice(("CD", "AB", "AD"))
+        answer = {"CD": short, "AB": long_, "AD": leg}[asked]
+        # The other base; the leg; the height; the leg's run; the bases with sine and cosine swapped.
+        pool = (long_ if asked == "CD" else short, leg, height, run, m * (c - b), m * (c + b))
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer and w > 0]
+        stem = (f"กำหนดให้ ABCD เป็นรูปสี่เหลี่ยมคางหมูที่มีด้าน AB ขนานกับด้าน DC โดยที่ AB ยาวกว่า DC "
+                f"มี AD = BC และ AB + DC = AD + BC ถ้ารูปสี่เหลี่ยม ABCD มีพื้นที่ {area} ตารางหน่วย "
+                f"และ cos(∠DAB) = {Fraction(a, c)} แล้วด้าน {asked} ยาวกี่หน่วย")
+        return stem, str(answer), [str(w) for w in wrongs]

@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,680 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,684 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -156,7 +156,7 @@
 | [`quadratic`](m3/quadratic.py) | สมการกำลังสอง | ค 1.3 ม.3/2 | 16 |
 | [`similarity`](m3/similarity.py) | ความคล้าย | ค 2.2 ม.3/1 | 10 |
 | [`surface_area_and_volume`](m3/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.3/* | 23 |
-| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 17 |
+| [`systems_of_equations`](m3/systems_of_equations.py) | ระบบสมการ | ค 1.3 ม.3/3 | 18 |
 | [`trigonometric_ratios`](m3/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค 2.2 ม.3/2 | 10 |
 
 ## m4 — ม.4
@@ -178,7 +178,7 @@
 | [`functions`](m4/functions.py) | ฟังก์ชัน | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 10 |
 | [`logarithms`](m4/logarithms.py) | ลอการิทึม | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/3, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/4 | 10 |
 | [`logic`](m4/logic.py) | ตรรกศาสตร์ | ค 1.1 ม.4/1, ค เพิ่มเติม จำนวนและพีชคณิต 1 ม.4/2 | 12 |
-| [`polynomial_division`](m4/polynomial_division.py) | การหารพหุนาม | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
+| [`polynomial_division`](m4/polynomial_division.py) | การหารพหุนาม | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 11 |
 | [`probability_of_events`](m4/probability_of_events.py) | ความน่าจะเป็นของเหตุการณ์ | ค 3.2 ม.4/2 | 10 |
 | [`quadratic`](m4/quadratic.py) | เรนจ์ของฟังก์ชันกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.4/2 | 10 |
 | [`quadratic_inequalities`](m4/quadratic_inequalities.py) | อสมการกำลังสอง | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.4/1 | 10 |
@@ -204,12 +204,12 @@
 | [`law_of_sines`](m5/law_of_sines.py) | กฎของไซน์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/2 | 10 |
 | [`matrices`](m5/matrices.py) | เมทริกซ์ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/3, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/5, ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/4 | 13 |
 | [`permutations`](m5/permutations.py) | การเรียงสับเปลี่ยน | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/1 | 10 |
-| [`probability`](m5/probability.py) | ความน่าจะเป็น | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/2 | 13 |
+| [`probability`](m5/probability.py) | ความน่าจะเป็น | ค เพิ่มเติม สถิติและความน่าจะเป็น 1 ม.5/2 | 14 |
 | [`radicals_and_exponents`](m5/radicals_and_exponents.py) | จำนวนจริงในรูปกรณฑ์และเลขยกกำลัง | ค 1.1 ม.5/1 | 10 |
 | [`sequences_and_series`](m5/sequences_and_series.py) | ลำดับและอนุกรม | ค 1.2 ม.5/* | 10 |
 | [`trig_equation`](m5/trig_equation.py) | สมการตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 3 ม.5/1 | 10 |
 | [`trigonometric_functions`](m5/trigonometric_functions.py) | ฟังก์ชันตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 11 |
-| [`trigonometric_ratios`](m5/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 10 |
+| [`trigonometric_ratios`](m5/trigonometric_ratios.py) | อัตราส่วนตรีโกณมิติ | ค เพิ่มเติม จำนวนและพีชคณิต 2 ม.5/1 | 11 |
 | [`vectors`](m5/vectors.py) | เวกเตอร์ | ค เพิ่มเติม การวัดและเรขาคณิต 2 ม.5/1, ค เพิ่มเติม การวัดและเรขาคณิต 2 ม.5/2 | 10 |
 
 ## m6 — ม.6

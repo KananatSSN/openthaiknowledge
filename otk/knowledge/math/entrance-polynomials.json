@@ -21,7 +21,9 @@
      "tag": "เข้า ม.4 เตรียมอุดมฯ 2564/23"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.conjugate_root_cubic_m4"
+   ]
   },
   {
    "id": "math.entrance.cubic-vieta-squared-roots",

@@ -17,7 +17,7 @@ from otk.core.provenance import Provenance
 from otk.core.question import GeneratedQuestion
 from otk.core.registry import QuestionType, question_type
 from otk.kit import story as _story
-from otk.kit.math_problems import MathDraw, MathType, WordProblem, frac_tex
+from otk.kit.math_problems import ChoiceType, MathDraw, MathType, WordProblem, frac_tex
 from otk.sets._support.math_m4 import maths as _maths_math_m5
 from otk.sets._support.math_p2 import _maths
 
@@ -567,3 +567,39 @@ class ProbabilityCountingM5(QuestionType):
         wrongs += [frac_tex(p / 2), frac_tex(min(1, p * 2))]
         return _maths_math_m5([text(stem)], frac_tex(p), [w for w in wrongs if w != frac_tex(p)], self.topic)
 ProbabilityCountingM5.PROVENANCE = Provenance("original")
+
+
+@question_type("math.probability_transfer_m5",
+               display_name={"th": "ย้ายลูกบอลจากกล่องหนึ่งไปอีกกล่องแล้วสุ่มหยิบ"},
+               level={"th": "ม.5"}, topic=TOPIC)
+class ProbabilityTransferM5(ChoiceType):
+    """Move one ball from box 1 to box 2, then draw one ball from box 2. Split on
+    the colour that moved: P = Σ P(moved colour) · P(drawn colour | box 2 after)."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8550-MATHFORTU64_problem.pdf, ข้อ 14",
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8548-MATHFORTU65_problem.pdf, ข้อ 29"))
+
+    def compose(self, rng: Random):
+        while True:
+            r1, k1, r2, k2 = (rng.randint(1, 5) for _ in range(4))
+            want_red = rng.random() < 0.5
+            n1, n2 = r1 + k1, r2 + k2
+            red = Fraction(r1, n1) * Fraction(r2 + 1, n2 + 1) + Fraction(k1, n1) * Fraction(r2, n2 + 1)
+            answer = red if want_red else 1 - red
+            same = r2 if want_red else k2
+            moved = r1 if want_red else k1
+            # The transfer ignored; only the branch where the wanted colour moved; the two boxes
+            # averaged; box 2's size not increased; the other colour's probability.
+            pool = (Fraction(same, n2),
+                    Fraction(moved, n1) * Fraction(same + 1, n2 + 1),
+                    (Fraction(moved, n1) + Fraction(same, n2)) / 2,
+                    Fraction(moved, n1) * Fraction(same + 1, n2) + Fraction(n1 - moved, n1) * Fraction(same, n2),
+                    1 - answer)
+            wrongs = [w for w in dict.fromkeys(pool) if w != answer and 0 < w < 1]
+            if len(wrongs) < 3:
+                continue
+            colour = "แดง" if want_red else "ดำ"
+            stem = (f"กล่องใบที่หนึ่งมีลูกบอลสีแดง {r1} ลูก สีดำ {k1} ลูก กล่องใบที่สองมีลูกบอลสีแดง {r2} ลูก "
+                    f"สีดำ {k2} ลูก สุ่มหยิบลูกบอล 1 ลูกจากกล่องใบที่หนึ่งไปใส่กล่องใบที่สอง "
+                    f"แล้วสุ่มหยิบลูกบอล 1 ลูกจากกล่องใบที่สอง ความน่าจะเป็นที่จะได้ลูกบอลสี{colour}เท่ากับเท่าใด")
+            return stem, str(answer), [str(w) for w in wrongs]
