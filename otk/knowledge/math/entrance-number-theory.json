@@ -78,7 +78,9 @@
      "tag": "สตรีสิริเกศ ม.2 2566/1.35"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.row_pattern_position_p6"
+   ]
   },
   {
    "id": "math.entrance.recurrence-remainder",
@@ -316,6 +318,12 @@
     },
     {
      "tag": "เข้า ม.4 MWIT 2568 รอบ 1/18.4"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/28"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/29"
     }
    ],
    "covered_by": [
@@ -360,7 +368,9 @@
      "tag": "เข้า ม.1 สาธิตปทุมวัน 2568/21"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.periodic_schedule_p4"
+   ]
   },
   {
    "id": "math.entrance.clock-hands",
@@ -383,7 +393,9 @@
      "tag": "เข้า ม.1 สาธิตปทุมวัน 2569/10"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.clock_angle_p4"
+   ]
   },
   {
    "id": "math.entrance.integer-fraction-pairs",
@@ -398,6 +410,9 @@
    "sources": [
     {
      "tag": "เข้า ม.4 KVIS 2566/III.1"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/14"
     }
    ],
    "covered_by": []
@@ -571,9 +586,14 @@
     },
     {
      "tag": "เข้า ม.1 สาธิตปทุมวัน 2569/6"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/8"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.missing_digit_add_p4"
+   ]
   },
   {
    "id": "math.entrance.distinct-digit-numbers",
@@ -625,6 +645,25 @@
     }
    ],
    "covered_by": []
+  },
+  {
+   "id": "math.entrance.factor-product-extremes",
+   "kind": "procedure",
+   "title": "แยกตัวประกอบเฉพาะของผลคูณแล้วแบ่งเป็นจำนวนที่แตกต่างกัน เพื่",
+   "statement": "แยกตัวประกอบเฉพาะของผลคูณแล้วแบ่งเป็นจำนวนที่แตกต่างกัน เพื่อหาผลบวกหรือค่าที่มากหรือน้อยที่สุด",
+   "steps": [
+    "ระบุสิ่งที่โจทย์กำหนดและสิ่งที่ต้องหา",
+    "แยกตัวประกอบเฉพาะของผลคูณแล้วแบ่งเป็นจำนวนที่แตกต่างกัน เพื่อหาผลบวกหรือค่าที่มากหรือน้อยที่สุด",
+    "ตรวจคำตอบกับเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/4"
+    }
+   ],
+   "covered_by": [
+    "math.prime_factorization"
+   ]
   }
  ]
 }

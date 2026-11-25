@@ -75,7 +75,7 @@ def mwit63():
     u(GEOM, 'ladder-pythagoras', 'ใช้พีทาโกรัสหาระยะในแนวราบของบันไดที่พาดสองด้าน แล้วรวมหรือหาผลต่าง', t(9), ('pythagoras_ladder_m2',))
     u(COUNT, 'assign-names-permutation', 'จัดชื่อให้สมาชิกแต่ละกลุ่มด้วยการเรียงสับเปลี่ยนแยกกลุ่มแล้วคูณ', t(11), ('arrange_in_row_m4',))
     u(STATS, 'mean-to-median', 'ใช้ค่าเฉลี่ยตั้งสมการหาข้อมูลที่ไม่รู้ แล้วเรียงข้อมูลหามัธยฐาน', t(12), ('mean_missing_value_m1', 'median_m1'))
-    u(NUMBER, 'row-pattern-position', 'แถวที่ n มี 2n − 1 จำนวน หาตำแหน่งสะสมของแถวแล้วหาจำนวนที่ตำแหน่งที่ถาม', t(13))
+    u(NUMBER, 'row-pattern-position', 'แถวที่ n มี 2n − 1 จำนวน หาตำแหน่งสะสมของแถวแล้วหาจำนวนที่ตำแหน่งที่ถาม', t(13), ('row_pattern_position_p6',))
     u(ALGEBRA, 'real-roots-of-powers', 'หาค่าจริงทุกค่าจากเลขยกกำลังคู่และคี่ แล้วเลือกผลรวมที่มากหรือน้อยที่สุด', t(14), ('real_power_roots_m2',))
 
 
@@ -84,7 +84,7 @@ def mwit69():
     u(COUNT, 'adjacent-colour-sequences', 'นับลำดับสีด้วยเงื่อนไขของลูกที่ติดกันโดยนับทีละตำแหน่ง', t(1),
       note='ข้อ 1 ถ้อยคำอ่านได้สองแบบ (12420 หรือ 2916) จึงไม่มีคำตอบ')
     extend('gcd-lcm-statements', t(2))
-    u(WORD, 'ratio-after-removal', 'เขียนจำนวนเดิมด้วยอัตราส่วน หักจำนวนที่นำออกแล้วตั้งสมการจากอัตราส่วนใหม่', t(3))
+    u(WORD, 'ratio-after-removal', 'เขียนจำนวนเดิมด้วยอัตราส่วน หักจำนวนที่นำออกแล้วตั้งสมการจากอัตราส่วนใหม่', t(3), ('ratio_after_removal_m1',))
     u(NUMBER, 'recurrence-remainder', 'คำนวณลำดับเวียนเกิดด้วยเศษจากการหารทีละพจน์', t(4))
     extend('box-surface-from-relations', t(5))
     u(NUMBER, 'radical-prime-count', 'ให้ค่ารากเป็นจำนวนเฉพาะ p ย้อนหา x จาก p² แล้วนับค่าที่เป็นจำนวนเต็ม', t(6))
@@ -147,7 +147,7 @@ def mwit68():
     u(WORD, 'sales-relations', 'เขียนยอดขายแต่ละร้านด้วยตัวแปรเดียวจากความสัมพันธ์ แล้วใช้ยอดรวมแก้สมการ', t(4, 5, 10),
       note='ข้อ 4, 5 และ 10 ที่จำมาไม่ครบ จึงไม่มีคำตอบ')
     extend('tank-volume-fraction', t(6))
-    u(NUMBER, 'periodic-schedule-total', 'กิจกรรมซ้ำเป็นรอบ หาจำนวนรอบเต็มและส่วนที่เหลือในช่วงเวลา แล้วรวม', t(7))
+    u(NUMBER, 'periodic-schedule-total', 'กิจกรรมซ้ำเป็นรอบ หาจำนวนรอบเต็มและส่วนที่เหลือในช่วงเวลา แล้วรวม', t(7), ('periodic_schedule_p4',))
     u(GEOM, 'quadrilateral-region-ratio', 'แบ่งรูปสี่เหลี่ยมด้วยจุดกึ่งกลางและเส้นตรง หาอัตราส่วนพื้นที่ของส่วนย่อย', t(8))
     u(GEOM, 'rotation-point-triangle', 'หมุนจุดภายในสามเหลี่ยมมุมฉากหน้าจั่ว 90° รอบจุดยอดมุมฉาก แล้วใช้พีทาโกรัสหามุม', t(9))
     claim('digit-position-sequence', t(11))
@@ -171,14 +171,14 @@ def kvis66():
     u(PROB, 'draw-percent-condition', 'ตั้งอสมการร้อยละของผลที่ได้จากการสุ่มเทียบกับจำนวนผู้เข้าร่วม', t('I.2'))
     u(ALGEBRA, 'quadratic-profit-max', 'เขียนกำไรเป็นฟังก์ชันกำลังสองของจำนวนที่ขาย แล้วหาค่าสูงสุดจากจุดยอด', t('I.3'), ('best_output_m5',))
     u(FINANCE, 'compound-deposits', 'เงินฝากต้นปีทุกปีทบต้น: รวม P(1 + r)ᵏ ของแต่ละงวด', t('I.4'), ('regular_saving_m5', 'compound_interest_m5'))
-    u(GEOM, 'british-flag-theorem', 'จุด P ในสี่เหลี่ยมผืนผ้า ABCD: PA² + PC² = PB² + PD²', t('I.5'))
+    u(GEOM, 'british-flag-theorem', 'จุด P ในสี่เหลี่ยมผืนผ้า ABCD: PA² + PC² = PB² + PD²', t('I.5'), ('british_flag_m2',))
     extend('chord-angle-chase', t('I.6'))
     u(WORD, 'coincident-lines', 'เส้นตรงสองเส้นมีจุดตัดมากกว่าหนึ่งจุดเมื่อเป็นเส้นเดียวกัน สัมประสิทธิ์เป็นสัดส่วนกัน', t('I.7', 'II.4'),
       ('system_solution_count_m3',))
     u(STATS, 'box-plot-quartiles', 'ควอร์ไทล์ พิสัยระหว่างควอร์ไทล์ และค่านอกเกณฑ์จากแผนภาพกล่อง', t('I.8', 'III.4'), ('iqr_from_data_m6',),
       note='I.8 และ III.4 เป็นสไลด์หัวข้อที่ไม่มีโจทย์')
     u(COUNT, 'digit-triple-count', 'นับสามสิ่งอันดับหรือจำนวนจากเลขโดดตามเงื่อนไข ด้วยการแยกกรณีหรือไล่ทุกค่า', t('II.1'))
-    u(NUMBER, 'clock-hands', 'เข็มยาวเดิน 6° ต่อนาที เข็มสั้น 0.5° ต่อนาที ตั้งสมการตำแหน่งเข็ม', t('II.2'))
+    u(NUMBER, 'clock-hands', 'เข็มยาวเดิน 6° ต่อนาที เข็มสั้น 0.5° ต่อนาที ตั้งสมการตำแหน่งเข็ม', t('II.2'), ('clock_angle_p4',))
     u(GEOM, 'equilateral-triangle-area', 'พื้นที่สามเหลี่ยมด้านเท่า (√3/4)a² และมุม 60° ใช้หาพื้นที่รูปประกอบ', t('II.3'))
     claim('consecutive-product-digits', t('II.5'))
     extend('overlapping-circle-petals', t('II.6'))

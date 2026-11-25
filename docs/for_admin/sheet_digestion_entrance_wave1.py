@@ -94,7 +94,7 @@ def tu65():
     u(CIRCLE, 'cyclic-quad-cosine-rule', 'มุมตรงข้ามของสี่เหลี่ยมแนบในวงกลมรวมกันได้ 180° ใช้กฎของโคไซน์กับเส้นทแยงมุมร่วมสองข้าง',
       t(15), ['math.cyclic_quadrilateral', 'math.cosine_rule_side'])
     u(SYSTEMS, 'symmetric-sum-product', 'ให้ s = x + y และ p = xy เปลี่ยนสมการสมมาตรเป็นระบบใน s, p แล้วหา x, y',
-      t(16))
+      t(16), ['math.cube_sum_from_sum_product_m4'])
     u(RATIONAL, 'rational-substitution', 'แทนส่วนที่ซ้ำกันด้วยตัวแปรใหม่เพื่อลดสมการเศษส่วนเป็นสมการกำลังสอง แล้วตรวจคำตอบที่ใช้ไม่ได้',
       t(17), ['math.rational_equation_m4'])
     u(GEOM, 'angle-bisector-quadrilateral', 'ใช้ผลบวกมุมภายในและเส้นแบ่งครึ่งมุมหามุมของรูปสี่เหลี่ยมที่เกิดจากเส้นแบ่งครึ่งมุม',
@@ -132,7 +132,7 @@ def tu65():
     u(SPREAD, 'variance-linear-transform', 'หาค่าเฉลี่ยและความแปรปรวนจากผลบวกกำลังสองที่กำหนด แล้วใช้ Var(ax + b) = a²Var(x)',
       t(35), ['math.stats_transform_m6'])
     u(RADICAL, 'reciprocal-power-identity', 'จัดรูปนิพจน์เป็น x² ± 1/x² แล้วสร้าง x⁶ − 1/x⁶ จากผลต่างกำลังสาม',
-      t(36))
+      t(36), ['math.reciprocal_power_sum_m3'])
     u(FUNC, 'linear-variation-statements', 'y แปรผันตรงกับนิพจน์เชิงเส้น เขียน y = k(mx + 2) หาค่าคงที่จากข้อมูลแล้วตรวจข้อความ',
       t(37), note='ข้อ 37 ในไฟล์ไม่สมบูรณ์ (ข้อความ ก เป็น "?") จึงไม่มีคำตอบ')
 

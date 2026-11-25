@@ -94,7 +94,7 @@ def satri_p34():
       ('decimal_as_fraction_p4', 'fraction_to_decimal'))
     u(P6DEC, 'decimal-money-word', 'บวกลบคูณทศนิยมของจำนวนเงินแล้วเปรียบเทียบ', t('1.20', '1.21', '1.30'),
       ('decimal_addsub_p4', 'decimal_word_problem_p6'))
-    u(P4ANGLE, 'angle-sum-straight-line', 'มุมบนเส้นตรงรวมกันได้ 180° และมุมรอบจุดรวมกันได้ 360° ใช้หาขนาดมุมที่ไม่รู้', t('1.22', '1.24', '1.25'))
+    u(P4ANGLE, 'angle-sum-straight-line', 'มุมบนเส้นตรงรวมกันได้ 180° และมุมรอบจุดรวมกันได้ 360° ใช้หาขนาดมุมที่ไม่รู้', t('1.22', '1.24', '1.25'), ('angles_around_point_p4', 'vertical_angles_algebra_m2',))
     extend('clock-hands', t('1.23'))
     extend('composite-squares-area', t('1.26', '1.27', '1.28'))
     extend('mean-total-parts', t('1.29'))
@@ -261,7 +261,7 @@ def patumwan():
     t = lambda *ns: [PW68 + str(n) for n in ns]
     extend('legs-count-equation', t(1))
     extend('parallel-angle-chase', t(2, 10, 12))
-    u(M1NUM, 'cryptarithm-digits', 'แทนเลขโดดด้วยตัวอักษรในการบวกหรือคูณ แล้วใช้หลักหน่วยและการทดหาเลขโดดแต่ละตัว', t(3) + [PW69 + '6'])
+    u(M1NUM, 'cryptarithm-digits', 'แทนเลขโดดด้วยตัวอักษรในการบวกหรือคูณ แล้วใช้หลักหน่วยและการทดหาเลขโดดแต่ละตัว', t(3) + [PW69 + '6'], ('missing_digit_add_p4',))
     extend('defined-operation', t(4))
     extend('periodic-schedule-total', t(5, 21))
     extend('gcd-lcm-statements', t(6))
@@ -293,7 +293,40 @@ def patumwan():
     u(M1SHAPE, 'map-colouring', 'ระบายสีบริเวณให้บริเวณที่ติดกันต่างสี หาจำนวนสีหรือจำนวนบริเวณตามเงื่อนไข', t(14))
 
 
+def mwit66():
+    r1 = lambda *ns: [MWIT66 + 'รอบ 1/' + str(n) for n in ns]
+    r2 = lambda *ns: [MWIT66 + 'รอบ 2/' + n for n in ns]
+    extend('gcd-lcm-statements', r1(1))
+    extend('sums-of-all-but-one', r1(2))
+    extend('data-conditions-statistics', r1(3))
+    u(M1NUM, 'factor-product-extremes', 'แยกตัวประกอบเฉพาะของผลคูณแล้วแบ่งเป็นจำนวนที่แตกต่างกัน เพื่อหาผลบวกหรือค่าที่มากหรือน้อยที่สุด', r1(4),
+      ('prime_factorization',))
+    extend('defined-operation', r1(5, 9))
+    extend('telescoping-product', r1(6))
+    u(M1SHAPE, 'max-intersections', 'เส้นตรง n เส้นตัดกันได้มากที่สุด n(n − 1)/2 จุด เมื่อไม่มีสองเส้นขนานและไม่มีสามเส้นผ่านจุดเดียว', r1(7))
+    extend('cryptarithm-digits', r1(8))
+    extend('profit-percent-count', r1(10))
+    extend('roots-arithmetic', r1(11))
+    extend('inscribed-trapezoid-area', r1(12))
+    extend('ratio-chain-parts', r1(13))
+    extend('integer-fraction-pairs', r1(14))
+    extend('composite-squares-area', r1(15, 20))
+    extend('triangle-angle-sum', r1(16))
+    extend('transformations-coordinates', r1(17))
+    extend('round-robin-points', r1(18, 19))
+    u(M1SHAPE, 'route-count-bridges', 'นับเส้นทางที่เดินผ่านสะพานโดยแยกกรณีตามลำดับบ้านหรือสะพานที่ใช้ แล้วคูณจำนวนทางในแต่ละช่วง', r1(21))
+    extend('paper-folding', r1(22))
+    extend('chart-two-series', r1(23))
+    extend('equilateral-triangle-area', r1(24))
+    extend('circle-scale-area', r1(25, 26))
+    extend('number-base-codes', r1(28, 29))
+    u(M1SHAPE, 'solid-net-folding', 'พับรูปคลี่เป็นทรงสามมิติ ติดตามว่าหน้าใดอยู่ตรงข้ามหรือติดกัน', r2('1.1.1', '1.1.2', '1.1.3', '1.1.4'),
+      ('net_picture_m1', 'solid_nets_m1'))
+    u(M1ALG, 'arrangement-formula', 'จัดวัตถุเป็นแถวและคอลัมน์ในพื้นที่จำกัด เขียนจำนวนเป็นสูตรของขนาดและระยะห่าง', r2('3.1.1', '3.1.2', '3.1.3'))
+
+
 def main():
+    mwit66()
     satri_p34()
     satri_p56()
     satri_m1()

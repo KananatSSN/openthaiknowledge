@@ -159,6 +159,9 @@
     },
     {
      "tag": "สตรีสิริเกศ ป.5-6 2566/1.12"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/10"
     }
    ],
    "covered_by": [
@@ -234,7 +237,9 @@
      "tag": "เข้า ม.1 สาธิตปทุมวัน 2568/14"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.percent_after_adding_p6"
+   ]
   },
   {
    "id": "math.entrance.best-buy-unit-price",

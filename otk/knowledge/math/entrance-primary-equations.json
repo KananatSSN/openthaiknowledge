@@ -212,7 +212,9 @@
      "tag": "สตรีสิริเกศ ม.1 2566/1.4"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.sum_quotient_numbers_m1"
+   ]
   },
   {
    "id": "math.entrance.algebraic-price",

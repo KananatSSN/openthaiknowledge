@@ -24,7 +24,9 @@
      "tag": "สตรีสิริเกศ ม.1 2566/2.2"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.count_multiples_either_p6"
+   ]
   },
   {
    "id": "math.entrance.gcd-spacing",
@@ -80,6 +82,9 @@
     },
     {
      "tag": "เข้า ม.1 สาธิตปทุมวัน 2568/6"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/1"
     }
    ],
    "covered_by": [

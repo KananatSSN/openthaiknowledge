@@ -27,7 +27,10 @@
      "tag": "สตรีสิริเกศ ม.1 2566/1.15"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.angles_around_point_p4",
+    "math.vertical_angles_algebra_m2"
+   ]
   },
   {
    "id": "math.entrance.triangle-angle-sum",
@@ -42,6 +45,9 @@
    "sources": [
     {
      "tag": "สตรีสิริเกศ ป.3-4 2566/2.7"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/16"
     }
    ],
    "covered_by": [

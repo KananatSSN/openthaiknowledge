@@ -260,9 +260,14 @@
     },
     {
      "tag": "สตรีสิริเกศ ม.3 2566/2.2"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/6"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.telescoping_product_m1"
+   ]
   },
   {
    "id": "math.entrance.telescoping-fraction-sum",
@@ -317,6 +322,12 @@
     },
     {
      "tag": "เข้า ม.1 สาธิตปทุมวัน 2568/4"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/5"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/9"
     }
    ],
    "covered_by": [

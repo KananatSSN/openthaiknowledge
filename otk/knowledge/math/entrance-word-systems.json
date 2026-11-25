@@ -78,7 +78,9 @@
      "tag": "สตรีสิริเกศ ม.2 2566/2.7"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.cube_sum_from_sum_product_m4"
+   ]
   },
   {
    "id": "math.entrance.meeting-speed-system",
@@ -343,7 +345,9 @@
      "tag": "สตรีสิริเกศ ม.3 2566/2.7"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.ratio_after_removal_m1"
+   ]
   },
   {
    "id": "math.entrance.sales-relations",

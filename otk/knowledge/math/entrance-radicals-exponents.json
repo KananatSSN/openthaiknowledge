@@ -41,7 +41,9 @@
      "tag": "สตรีสิริเกศ ม.3 2566/2.3"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.reciprocal_power_sum_m3"
+   ]
   },
   {
    "id": "math.entrance.cube-root-sum-cubic",
