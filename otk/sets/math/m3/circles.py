@@ -271,3 +271,27 @@ class TangentChordAngleM3(WordProblem):
                                 "จุด C อยู่บนส่วนโค้งใหญ่ AB มุม ACB มีขนาดกี่องศา"),
                         distractors=_story.keep(2 * angle, 180 - angle, 90 - angle,
                                                 180 - 2 * angle, angle + 1, answer=angle, lo=1))
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+@question_type("math.square_circle_radius_m3",
+               display_name={"th": "รัศมีวงกลมที่ผ่านมุมสองมุมของสี่เหลี่ยมจัตุรัสและสัมผัสด้านตรงข้าม"},
+               level={"th": "ม.3"}, topic="วงกลม")
+class SquareCircleRadiusM3(ChoiceType):
+    """Square of side s; the circle through A and D touching BC has its centre on the
+    perpendicular bisector of AD at distance s − r from AD: r² = (s/2)² + (s − r)², so r = 5s/8."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8353-2567-MWIT-MATH-R1_67-by-Lucky-KVIS10.pdf, ข้อ 8",
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8519-MWIT35_R1.pdf, ข้อ 20"))
+
+    def compose(self, rng: Random):
+        side = 8 * rng.randint(1, 6)
+        answer = Fraction(5 * side, 8)
+        # Half the side; the centre taken at the square's centre (half the diagonal is irrational, so s/2 again
+        # is avoided); the diameter given; three quarters of the side.
+        pool = (Fraction(side, 2), Fraction(5 * side, 4), Fraction(3 * side, 4), Fraction(side))
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        stem = (f"สี่เหลี่ยมจัตุรัส ABCD ยาวด้านละ {side} เซนติเมตร วงกลมวงหนึ่งผ่านจุด A และ D "
+                "และสัมผัสด้าน BC รัศมีของวงกลมยาวกี่เซนติเมตร")
+        return stem, str(answer), [str(w) for w in wrongs]

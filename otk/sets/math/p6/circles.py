@@ -256,3 +256,30 @@ class RingAreaP6(WordProblem):
         return MathDraw("", _g6(right), prompt=prompt,
                         distractors=_gk6(22 * (big - r) ** 2 // 7, 22 * big * big // 7, 22 * (big * big + r * r) // 7,
                                          right + 22, answer=right, lo=1))
+
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+@question_type("math.circle_petal_area_p6", display_name={"th": "พื้นที่กลีบที่เกิดจากวงกลมซ้อนกัน"},
+               level={"th": "ป.6"}, topic="วงกลม")
+class CirclePetalAreaP6(ChoiceType):
+    """Two circles of radius r whose overlap is bounded by quarter arcs (each centre sees
+    the petal at 90°): petal = 2 × (quarter circle − right triangle) = 2(πr²/4 − r²/2)."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8550-MATHFORTU64_problem.pdf, ข้อ 9",
+        "openthaiknowledge-bank/mathematics/exam-venue/kvis/8515-KVIS-2566-Luckdee.pdf, PART II ข้อ 6"))
+
+    def compose(self, rng: Random):
+        r = 7 * rng.randint(1, 4)
+        petals = rng.choice((1, 2, 4))
+        pi = Fraction(22, 7)
+        quarter, triangle = pi * r * r / 4, Fraction(r * r, 2)
+        answer = petals * 2 * (quarter - triangle)
+        # One segment per petal, not two; the quarter circles counted whole; the triangle added, not taken away.
+        pool = (petals * (quarter - triangle), petals * 2 * quarter, petals * 2 * (quarter + triangle),
+                petals * pi * r * r / 2)
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        stem = (f"วงกลมรัศมี {r} เซนติเมตรวางซ้อนกันจนเกิดกลีบ {petals} กลีบ แต่ละกลีบล้อมด้วยส่วนโค้งหนึ่งในสี่ของวงกลม "
+                "สองวง (จุดศูนย์กลางของแต่ละวงมองกลีบเป็นมุมฉาก) พื้นที่กลีบทั้งหมดเป็นกี่ตารางเซนติเมตร (ใช้ π ≈ 22/7)")
+        return stem, str(answer), [str(w) for w in wrongs]

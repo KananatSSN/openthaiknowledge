@@ -369,3 +369,43 @@ class FractionPercentM1(WordProblem):
                   rf"\frac{{{tenths_of_percent}}}{{1000}}", frac_tex(Fraction(d, n))]
         return MathDraw("", right, prompt=f"ร้อยละ {pct} เขียนเป็นเศษส่วนอย่างต่ำได้เท่าใด",
                         distractors=[w for w in dict.fromkeys(wrongs) if w != right])
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+def _digit_stream(kind: str, length: int) -> str:
+    """The decimal digits after the point: 1234567891011… or 1223334444… (n written n times)."""
+    out, n = [], 1
+    while sum(map(len, out)) < length:
+        out.append(str(n) if kind == "count" else str(n) * n)
+        n += 1
+    return "".join(out)[:length]
+
+
+@question_type("math.digit_position_m1", display_name={"th": "เลขโดดในตำแหน่งที่กำหนดของทศนิยมที่ต่อจำนวนกัน"},
+               level={"th": "ม.1"}, topic=_DF_TOPIC)
+class DigitPositionM1(ChoiceType):
+    """Count digits block by block (1-digit numbers, then 2-digit, …) to the block
+    holding the asked position, then read the digit inside that number."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8355-MWIT36-R1-By-SME16-2569.pdf, ข้อ 13",
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8519-MWIT35_R1.pdf, ข้อ 11",
+        "openthaiknowledge-bank/mathematics/exam-venue/kvis/8515-KVIS-2566-Luckdee.pdf, PART II ข้อ 8"))
+
+    def compose(self, rng: Random):
+        while True:
+            kind = rng.choice(("count", "repeat"))
+            position = rng.randint(150, 2600)
+            digits = _digit_stream(kind, position + 3)
+            answer = digits[position - 1]
+            # Off by one place either way; the next block's first digit; the count of digits read as the number.
+            wrongs = [d for d in dict.fromkeys((digits[position - 2], digits[position], digits[position + 1],
+                                                str(position % 10), str((position + 1) % 10)))
+                      if d != answer]
+            if len(wrongs) < 3:
+                continue
+            shown = "0.123456789101112131415…" if kind == "count" else "0.12233344445555566666…"
+            rule = ("เขียนจำนวนนับเรียงกันต่อไปเรื่อย ๆ" if kind == "count"
+                    else "จำนวนนับ n เขียนซ้ำ n ครั้ง เช่น 10 เขียน 10 ครั้ง 11 เขียน 11 ครั้ง ต่อไปเรื่อย ๆ")
+            stem = (f"กำหนดทศนิยม A = {shown} โดย{rule} เลขโดดในตำแหน่งที่ {position} หลังจุดทศนิยมคือเลขใด")
+            return stem, answer, wrongs

@@ -553,3 +553,37 @@ class FormulaContextM2(QuestionType):
             ans, wrongs = r, [r * t, i * 100 // principal, r + t]
         wrongs = [str(x) for x in dict.fromkeys(wrongs + [ans + 1, ans - 1, ans + 2]) if x != ans]
         return _math_q([text(stem)], str(ans), wrongs, self.topic)
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+@question_type("math.catch_up_time_m1", display_name={"th": "ออกตามทีหลังแล้วตามทันเวลาใด"},
+               level={"th": "ม.1"}, topic=_EQ_TOPIC)
+class CatchUpTimeM1(ChoiceType):
+    """The first traveller's head start is v₁·delay; the second closes it at v₂ − v₁,
+    so the catch-up comes (v₁·delay)/(v₂ − v₁) after the second one leaves."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/samsen-wittayalai/31202-Pre-test-.1-2567.pdf, ข้อ 19",
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8353-2567-MWIT-MATH-R1_67-by-Lucky-KVIS10.pdf, ข้อ 20"))
+
+    def compose(self, rng: Random):
+        while True:
+            slow = rng.choice((12, 15, 18, 20, 24, 30))
+            fast = slow + rng.choice((6, 10, 12, 15, 20, 30))
+            delay = rng.choice((10, 12, 15, 20, 30))              # minutes
+            start = rng.randint(6, 9) * 60 + rng.choice((0, 15, 30))
+            chase = Fraction(slow * delay, fast - slow)          # minutes after the second one leaves
+            if chase.denominator != 1:
+                continue
+            clock = lambda m: f"{int(m) // 60}:{int(m) % 60:02d} น."
+            answer = clock(start + delay + chase)
+            # The head start forgotten; the sum of speeds; the chase time counted from the first start; both times added twice.
+            pool = (clock(start + chase), clock(start + delay + Fraction(slow * delay, fast + slow)),
+                    clock(start + int(chase)), clock(start + delay + 2 * chase))
+            wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+            if len(wrongs) < 3:
+                continue
+            stem = (f"พี่ออกจากบ้านเวลา {clock(start)} ด้วยอัตราเร็ว {slow} กิโลเมตรต่อชั่วโมง "
+                    f"อีก {delay} นาทีต่อมาน้องออกจากบ้านตามไปทางเดียวกันด้วยอัตราเร็ว {fast} กิโลเมตรต่อชั่วโมง "
+                    "น้องจะตามพี่ทันเวลาใด")
+            return stem, answer, wrongs

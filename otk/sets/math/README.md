@@ -2,7 +2,7 @@
 
 # คณิตศาสตร์ (`math`)
 
-2,687 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
+2,695 sets in 499 unit files, one folder per level and one file per curriculum unit. The keys of each file's sets are in [`../INDEX.md`](../INDEX.md).
 
 ## p1 — ป.1
 
@@ -93,11 +93,11 @@
 
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
-| [`circles`](p6/circles.py) | วงกลม | ค 2.1 ป.6/3 | 10 |
+| [`circles`](p6/circles.py) | วงกลม | ค 2.1 ป.6/3 | 11 |
 | [`decimals`](p6/decimals.py) | ทศนิยม | ค 1.1 ป.6/* | 14 |
 | [`fractions_and_mixed_numbers`](p6/fractions_and_mixed_numbers.py) | เศษส่วนและจำนวนคละ | ค 1.1 ป.6/1, ค 1.1 ป.6/7, ค 1.1 ป.6/8 | 14 |
 | [`gcd_and_lcm`](p6/gcd_and_lcm.py) | ห.ร.ม. และ ค.ร.น. | ค 1.1 ป.6/* | 11 |
-| [`order_of_ops`](p6/order_of_ops.py) | ลำดับการดำเนินการ | ค 1.1 ป.6/* | 11 |
+| [`order_of_ops`](p6/order_of_ops.py) | ลำดับการดำเนินการ | ค 1.1 ป.6/* | 12 |
 | [`patterns`](p6/patterns.py) | แบบรูป | ค 1.2 ป.6/1 | 13 |
 | [`percentages`](p6/percentages.py) | ร้อยละ | ค 1.1 ป.6/* | 11 |
 | [`pie_chart`](p6/pie_chart.py) | แผนภูมิรูปวงกลม | ค 3.1 ป.6/1 | 10 |
@@ -113,11 +113,11 @@
 | File | Unit | Indicators | Sets |
 |---|---|---|---:|
 | [`algebraic_expressions`](m1/algebraic_expressions.py) | นิพจน์พีชคณิต | ค 1.1 ม.1/* | 15 |
-| [`decimals_and_fractions`](m1/decimals_and_fractions.py) | ทศนิยมและเศษส่วน | ค 1.1 ม.1/* | 15 |
+| [`decimals_and_fractions`](m1/decimals_and_fractions.py) | ทศนิยมและเศษส่วน | ค 1.1 ม.1/* | 16 |
 | [`exponents`](m1/exponents.py) | เลขยกกำลัง | ค 1.1 ม.1/* | 15 |
 | [`geometric_constructions`](m1/geometric_constructions.py) | การสร้างทางเรขาคณิต | ค 2.2 ม.1/* | 15 |
-| [`integers`](m1/integers.py) | จำนวนเต็ม | ค 1.1 ม.1/* | 15 |
-| [`linear_equations`](m1/linear_equations.py) | สมการเชิงเส้น | ค 1.3 ม.1/* | 17 |
+| [`integers`](m1/integers.py) | จำนวนเต็ม | ค 1.1 ม.1/* | 17 |
+| [`linear_equations`](m1/linear_equations.py) | สมการเชิงเส้น | ค 1.3 ม.1/* | 18 |
 | [`linear_graphs`](m1/linear_graphs.py) | กราฟความสัมพันธ์เชิงเส้น | ค 1.3 ม.1/2, ค 1.3 ม.1/3 | 19 |
 | [`prime_factorisation`](m1/prime_factorisation.py) | แยกตัวประกอบเฉพาะ | — | 5 |
 | [`ratio_and_proportion`](m1/ratio_and_proportion.py) | อัตราส่วนและสัดส่วน | ค 1.1 ม.1/3 | 15 |
@@ -137,7 +137,7 @@
 | [`monomials_and_polynomials`](m2/monomials_and_polynomials.py) | เอกนามและพหุนาม | ค 1.2 ม.2/1 | 15 |
 | [`parallel_lines`](m2/parallel_lines.py) | เส้นขนาน | ค 2.2 ม.2/* | 15 |
 | [`pythagoras`](m2/pythagoras.py) | ทฤษฎีบทพีทาโกรัส | ค 2.2 ม.2/5 | 15 |
-| [`real_numbers`](m2/real_numbers.py) | จำนวนจริง | ค 1.1 ม.2/* | 15 |
+| [`real_numbers`](m2/real_numbers.py) | จำนวนจริง | ค 1.1 ม.2/* | 16 |
 | [`statistics`](m2/statistics.py) | สถิติ | ค 3.1 ม.2/* | 17 |
 | [`surface_area_and_volume`](m2/surface_area_and_volume.py) | พื้นที่ผิวและปริมาตร | ค 2.1 ม.2/* | 15 |
 
@@ -148,7 +148,7 @@
 | [`basic_probability`](m3/basic_probability.py) | ความน่าจะเป็นเบื้องต้น | ค 3.2 ม.3/1 | 10 |
 | [`binomial_expansion`](m3/binomial_expansion.py) | กระจายทวินาม | ค 1.2 ม.3/* | 10 |
 | [`box_plots`](m3/box_plots.py) | สถิติ (แผนภาพกล่อง) | ค 3.1 ม.3/1 | 10 |
-| [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 11 |
+| [`circles`](m3/circles.py) | วงกลม | ค 2.2 ม.3/3 | 12 |
 | [`completing_the_square`](m3/completing_the_square.py) | กำลังสองสมบูรณ์ | ค 1.2 ม.3/* | 10 |
 | [`factorising`](m3/factorising.py) | แยกตัวประกอบ | ค 1.2 ม.3/* | 12 |
 | [`inequality`](m3/inequality.py) | อสมการเชิงเส้น | ค 1.3 ม.3/1 | 13 |

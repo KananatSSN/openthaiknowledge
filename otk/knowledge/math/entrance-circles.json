@@ -79,9 +79,14 @@
    "sources": [
     {
      "tag": "เข้า ม.4 เตรียมอุดมฯ 2564/9"
+    },
+    {
+     "tag": "เข้า ม.4 KVIS 2566/II.6"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.circle_petal_area_p6"
+   ]
   },
   {
    "id": "math.entrance.semicircle-tangent-circle",
@@ -113,6 +118,9 @@
    "sources": [
     {
      "tag": "เข้า ม.4 เตรียมอุดมฯ 2569/3"
+    },
+    {
+     "tag": "เข้า ม.4 KVIS 2566/I.6"
     }
    ],
    "covered_by": [

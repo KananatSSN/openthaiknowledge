@@ -155,3 +155,113 @@ def test_number_group_rule_is_the_only_one_that_fits():
                     if all(rule(g[:3]) == g[3] for g in shown):
                         answers.add(rule(last))
         assert answers == {int(right)}, (seed, stem, answers)
+
+
+def _block_digit(kind, position):
+    """The digit at ``position`` found by skipping whole blocks, not by building the string."""
+    if kind == "count":
+        length, start, size = 1, 1, 9
+        while position > length * size:
+            position -= length * size
+            length, start, size = length + 1, start * 10, size * 10
+        number = start + (position - 1) // length
+        return str(number)[(position - 1) % length]
+    n = 1
+    while position > n * len(str(n)):
+        position -= n * len(str(n))
+        n += 1
+    return str(n)[(position - 1) % len(str(n))]
+
+
+def test_digit_position_by_block_counting():
+    for seed in SEEDS:
+        stem, right = _draw("math.digit_position_m1", seed)
+        kind = "count" if "0.123456789101112" in stem else "repeat"
+        position = int(re.search(r"ตำแหน่งที่ (\d+)", stem).group(1))
+        assert _block_digit(kind, position) == right, (seed, stem)
+
+
+def test_catch_up_time_by_equation():
+    t = sp.symbols("t", positive=True)
+    for seed in SEEDS:
+        stem, right = _draw("math.catch_up_time_m1", seed)
+        h, m = map(int, re.search(r"เวลา (\d+):(\d+) น\. ด้วย", stem).groups())
+        slow, fast = map(int, re.findall(r"(\d+) กิโลเมตรต่อชั่วโมง", stem))
+        delay = int(re.search(r"อีก (\d+) นาที", stem).group(1))
+        # Distances from home in km with t in minutes after the younger one leaves.
+        (meet,) = sp.solve(sp.Eq(sp.Rational(slow, 60) * (t + delay), sp.Rational(fast, 60) * t), t)
+        total = h * 60 + m + delay + meet
+        assert f"{int(total) // 60}:{int(total) % 60:02d} น." == right and total == int(total), (seed, stem)
+
+
+def test_consecutive_product_by_search():
+    for seed in SEEDS:
+        stem, right = _draw("math.consecutive_product_m1", seed)
+        step = 2 if stem.startswith("จำนวนคู่") else 1
+        count = int(re.search(r" (\d) จำนวนที่เรียงติดกัน", stem).group(1))
+        product = int(re.search(r"คูณกันได้ ([\d,]+)", stem).group(1).replace(",", ""))
+        runs = [range(a, a + step * count, step) for a in range(1, 400)
+                if all(n % 2 == 0 for n in range(a, a + step * count, step)) or step == 1]
+        found = [r for r in runs if __import__("math").prod(r) == product]
+        assert len(found) == 1 and sum(found[0]) == int(right), (seed, stem)
+
+
+def test_number_base_by_python_conversion():
+    for seed in SEEDS:
+        stem, right = _draw("math.number_base_m1", seed)
+        if "ค่า RGB เป็น (" in stem:
+            rgb = map(int, re.search(r"\((\d+), (\d+), (\d+)\)", stem).groups())
+            expected = sum(int(d, 16) for v in rgb for d in format(v, "02X"))
+        elif "ค่า HEX เป็น #" in stem:
+            code = re.search(r"#([0-9A-F]{6})", stem).group(1)
+            a, b, c = (int(code[i:i + 2], 16) for i in (0, 2, 4))
+            expected = a - b + c
+        else:
+            expected = format(int(re.search(r"เขียน (\d+) ใน", stem).group(1)), "b").count("1")
+        assert expected == int(right), (seed, stem)
+
+
+def test_defined_operation_by_sympy():
+    a, b = sp.symbols("a b")
+    for seed in SEEDS:
+        stem, right = _draw("math.defined_operation_p6", seed)
+        rule = re.search(r"a ⊕ b = (.+?) จงหาค่าของ", stem).group(1).replace("×", "*").replace("−", "-")
+        x, y, z = map(int, re.search(r"\((\d+) ⊕ (\d+)\) ⊕ (\d+)", stem).groups())
+        from sympy.parsing.sympy_parser import (implicit_multiplication_application, parse_expr,
+                                                standard_transformations)
+        expr = parse_expr(rule, transformations=standard_transformations + (implicit_multiplication_application,))
+        op = lambda p, q: expr.subs({a: p, b: q})
+        assert op(op(x, y), z) == int(right), (seed, stem)
+
+
+def test_square_circle_radius_by_tangency():
+    r = sp.symbols("r", positive=True)
+    for seed in SEEDS:
+        stem, right = _draw("math.square_circle_radius_m3", seed)
+        s = int(re.search(r"ยาวด้านละ (\d+)", stem).group(1))
+        # Centre on the perpendicular bisector of AD, at distance s − r from AD (tangent to BC).
+        (solved,) = sp.solve(sp.Eq(r ** 2, (sp.Rational(s, 2)) ** 2 + (s - r) ** 2), r)
+        assert solved == sp.Rational(right), (seed, stem)
+
+
+def test_circle_petal_area_by_lens_formula():
+    for seed in SEEDS:
+        stem, right = _draw("math.circle_petal_area_p6", seed)
+        r = int(re.search(r"รัศมี (\d+) เซนติเมตร", stem).group(1))
+        petals = int(re.search(r"กลีบ (\d+) กลีบ", stem).group(1))
+        d = r * sp.sqrt(2)               # quarter arcs: the centres are r√2 apart
+        lens = 2 * r ** 2 * sp.acos(d / (2 * r)) - (d / 2) * sp.sqrt(4 * r ** 2 - d ** 2)
+        value = sp.nsimplify(petals * lens).subs(sp.pi, sp.Rational(22, 7))
+        assert sp.simplify(value - sp.Rational(right)) == 0, (seed, stem)
+
+
+def test_real_power_roots_by_enumeration():
+    v = sp.symbols("v")
+    for seed in SEEDS:
+        stem, right = _draw("math.real_power_roots_m2", seed)
+        sixth, cube, fourth = (sp.Rational(s.replace("−", "-")) for s in
+                               re.search(r"\(x²\)³ = (\S+), y³ = (\S+) และ z⁴ = (\S+) ", stem).groups())
+        roots = lambda expr: [s for s in sp.solve(expr, v) if s.is_real]
+        xs, ys, zs = roots(v ** 6 - sixth), roots(v ** 3 - cube), roots(v ** 4 - fourth)
+        best = min(x + y - z for x in xs for y in ys for z in zs)
+        assert best == sp.Rational(right.replace("−", "-")), (seed, stem)
