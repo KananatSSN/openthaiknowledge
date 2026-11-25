@@ -13,8 +13,18 @@
     "ลบสมการกำลังสองของ y กับสมการเดิมเพื่อหาค่า y ที่เป็นไปได้",
     "แทน y กลับเพื่อได้สมการกำลังสองใน t แล้วตรวจรากบวกที่แตกต่างกัน"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 4}],
-   "covered_by": ["math.nested_radical_two_roots_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 4
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/4"
+    }
+   ],
+   "covered_by": [
+    "math.nested_radical_two_roots_olympiad"
+   ]
   }
  ]
 }

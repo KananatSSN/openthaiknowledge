@@ -13,8 +13,18 @@
     "ลบคู่จากสองกล่องแรกที่หยิบได้ป้ายร่วมกันค่าเดียวกัน",
     "สำหรับแต่ละคู่ที่ต่างกัน เลือกจากกล่องที่สามได้จำนวนป้ายทั้งหมดลบสอง"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 12}],
-   "covered_by": ["math.overlapping_boxes_probability_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 12
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/12"
+    }
+   ],
+   "covered_by": [
+    "math.overlapping_boxes_probability_olympiad"
+   ]
   }
  ]
 }

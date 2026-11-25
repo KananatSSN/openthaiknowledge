@@ -13,8 +13,18 @@
     "หาผลบวกกำลังสองต่ำสุดของชุดที่เป็นไปได้",
     "ลบค่านั้นออกจากผลบวกกำลังสองของจำนวนทั้งหมด"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 25}],
-   "covered_by": ["math.minimum_tail_squares_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 25
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/25"
+    }
+   ],
+   "covered_by": [
+    "math.minimum_tail_squares_olympiad"
+   ]
   }
  ]
 }

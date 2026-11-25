@@ -13,8 +13,18 @@
     "รวมทุกพจน์แล้วแทนผลบวก S และ Q",
     "คูณพจน์คงที่ c² ด้วยจำนวนข้อมูล n"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 1}],
-   "covered_by": ["math.shifted_square_sums_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 1
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/1"
+    }
+   ],
+   "covered_by": [
+    "math.shifted_square_sums_olympiad"
+   ]
   }
  ]
 }

@@ -13,8 +13,18 @@
     "กำหนดผลรวมที่ทำให้จำนวนคนหน้าและหลังเป็นจำนวนเต็ม",
     "คำนวณขนาดกลุ่มแต่ละกรณีและเก็บเฉพาะค่าที่อยู่ในช่วงกำหนด"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 14}],
-   "covered_by": ["math.contiguous_group_fraction_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 14
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/14"
+    }
+   ],
+   "covered_by": [
+    "math.contiguous_group_fraction_olympiad"
+   ]
   }
  ]
 }

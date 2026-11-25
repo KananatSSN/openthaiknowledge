@@ -13,8 +13,18 @@
     "คูณพื้นที่หน้าทั้งสาม ซึ่งเท่ากับกำลังสองของปริมาตรกล่อง",
     "ถอดรากที่สองเพื่อหาความจุ"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 15}],
-   "covered_by": ["math.three_orientation_box_volume_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 15
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/15"
+    }
+   ],
+   "covered_by": [
+    "math.three_orientation_box_volume_olympiad"
+   ]
   }
  ]
 }

@@ -13,8 +13,19 @@
     "ลบพหุคูณของตัวหารรอบแรก เพิ่มพหุคูณของรอบที่สอง แล้วลบรอบสุดท้าย",
     "นับพหุคูณในแต่ละช่วงและหักส่วนที่ซ้ำด้วย ค.ร.น."
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 29}],
-   "covered_by": ["math.conditional_switch_passes_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 29
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/29"
+    }
+   ],
+   "covered_by": [
+    "math.conditional_switch_passes_olympiad"
+   ],
+   "note": "สำเนา posn-bangkok: ขั้น 1 และ 3 เปิดสวิตช์ที่ปิดอยู่ ขั้น 2 ปิดสวิตช์ที่เปิดอยู่ (ได้ 1182) ต่างจากการอ่านของสำเนา posn1-69 (845)"
   }
  ]
 }
