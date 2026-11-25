@@ -254,9 +254,14 @@
    "sources": [
     {
      "tag": "สาธิต มน. NUD Prep Test 2019/12"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2567 รอบ 1/1"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.defined_operation_p6"
+   ]
   }
  ]
 }

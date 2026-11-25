@@ -102,7 +102,7 @@ def samsen_2567():
       k('discount', 'cost_from_profit_p6'))
     u(PCT, 'percent-of-mixture-volume', 'คูณปริมาตรทั้งหมดด้วยร้อยละของส่วนผสมแล้วเปลี่ยนหน่วย', t(18),
       k('percent_of_quantity_p5'))
-    u(EQ, 'chase-catch-up-time', 'ไล่ตามกันใช้เวลา = ระยะห่าง ÷ ผลต่างอัตราเร็ว แล้วบวกเวลาเริ่ม', t(19))
+    u(EQ, 'chase-catch-up-time', 'ไล่ตามกันใช้เวลา = ระยะห่าง ÷ ผลต่างอัตราเร็ว แล้วบวกเวลาเริ่ม', t(19), k('catch_up_time_m1'))
     u(TIME, 'decimal-hours', 'รวมเวลาที่เป็นทศนิยมของชั่วโมงแล้วเปลี่ยนเป็นชั่วโมงและนาที', t(20), k('time_units_p4'))
     u(PROB, 'outfit-count-condition', 'นับคู่เสื้อกับกระโปรงด้วยหลักการคูณแล้วตัดคู่ที่ผิดเงื่อนไข', t(21), k('outfits_m4'))
     u(RATE, 'volume-proportion-materials', 'ปริมาณวัสดุแปรผันตรงกับปริมาตร เทียบปริมาตรสองแบบด้วยบัญญัติไตรยางศ์', t(22),
@@ -244,7 +244,7 @@ def nud():
       note='ข้อ 10 ผลบวกที่ถูกต้อง (12) ไม่อยู่ในตัวเลือก')
     u(DEC, 'repeating-decimal-fraction', 'เขียนทศนิยมซ้ำเป็นเศษส่วนด้วยการลบผลคูณของ 10ⁿ', t(11),
       k('repeating_decimal_to_fraction_m1'))
-    u(FRAC, 'defined-operation', 'แทนค่าในตัวดำเนินการที่นิยามใหม่แล้วคำนวณเศษส่วน', t(12))
+    u(FRAC, 'defined-operation', 'แทนค่าในตัวดำเนินการที่นิยามใหม่แล้วคำนวณเศษส่วน', t(12), k('defined_operation_p6'))
     claim('whole-from-percent', t(13))
     claim('markup-then-discount', t(14))
     claim('percent-categories', t(15))
