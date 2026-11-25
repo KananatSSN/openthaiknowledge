@@ -25,7 +25,7 @@
    "covered_by": [
     "math.equiangular_hexagon_diagonals_olympiad"
    ],
-   "note": "ข้อความระบุ EA = 18 แต่รูปเขียน 8 สำเนา posn1-69 ใช้ 8 (ได้ 19200) สำเนา posn-bangkok ตามข้อความ (224000/3)"
+   "note": "ต้นฉบับ posn1-69 ระบุ EA = 8 (ได้ 19200) สำเนา posn-bangkok พิมพ์ 18"
   }
  ]
 }

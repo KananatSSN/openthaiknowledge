@@ -1,38 +1,30 @@
-"""Check conditional switch passes by an independent set-count formula."""
+"""Check conditional switch passes by set algebra on the switch numbers."""
 
 from itertools import permutations
-from math import lcm
 from random import Random
 
 from otk.core import REGISTRY, generate
 from otk.sets.math.olympiad.conditional_switch_passes import switches_on
 
 
-def _formula(total: int, first: int, second: int, third: int) -> int:
-    half = total // 2
-    multiples = lambda divisor, bound: bound // divisor
-    first_half = (
-        half - multiples(first, half) - multiples(third, half)
-        + multiples(lcm(first, third), half)
-        + multiples(lcm(first, second), half)
-        - multiples(lcm(first, second, third), half)
-    )
-    second_half = (
-        multiples(second, total) - multiples(second, half)
-        - multiples(lcm(second, third), total)
-        + multiples(lcm(second, third), half)
-    )
-    return first_half + second_half
+def _set_count(total: int, first: int, second: int, third: int) -> int:
+    """Pass 1 adds every multiple of the first divisor to the on set, pass 2 removes
+    every multiple of the second, pass 3 adds every multiple of the third."""
+    multiples = lambda divisor: set(range(divisor, total + 1, divisor))
+    on = set(range(1, total // 2 + 1))
+    on = ((on | multiples(first)) - multiples(second)) | multiples(third)
+    return len(on)
 
 
-def test_matches_set_count_formula():
+def test_matches_set_algebra():
     for total in range(20, 102, 2):
         for first, second, third in permutations(range(2, 7), 3):
-            assert switches_on(total, first, second, third) == _formula(total, first, second, third)
+            assert switches_on(total, first, second, third) == _set_count(total, first, second, third)
 
 
 def test_checked_source_case():
-    assert switches_on(2026, 2, 3, 4) == _formula(2026, 2, 3, 4) == 845
+    # สอวน. ค่าย 1 2569 ข้อ 29: เปิด (หาร 2) ปิด (หาร 3) เปิด (หาร 4) เฉพาะสวิตช์ในสถานะตรงข้าม
+    assert switches_on(2026, 2, 3, 4) == _set_count(2026, 2, 3, 4) == 1182
 
 
 def test_generated_draws():

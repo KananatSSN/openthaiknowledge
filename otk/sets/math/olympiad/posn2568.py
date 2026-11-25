@@ -479,26 +479,34 @@ class CampSelection(SheetProblem):
             distractors=[_num(male), _num(answer + male), _num(answer * 2)])
 
 
-@question_type("math.posn2568_q10", display_name={"th": "ค่ามากที่สุดของ (x−y)z"},
+@question_type("math.posn2568_q10", display_name={"th": "ค่ามากที่สุดของ (x−y)^z"},
                level=LEVEL, topic="ทฤษฎีจำนวนเชิงพีชคณิต")
 class MaxXYZ(SheetProblem):
     def expr(self, rng: Random, r_lo: int = 2, r_hi: int = 4):
-        for _ in range(60):
+        for _ in range(200):
             r = rng.randint(r_lo, r_hi)
-            x, z = rng.randint(1, 20), rng.randint(1, 20)
+            x, z = rng.randint(1, 14), rng.randint(1, 7)
             if (x + z) % r:
                 continue
             y = (x + z) // r
             total = x * x + y * y + z * z
             best = SOLVE[10](r=r, total=total)
-            if best is not None:
-                return MathDraw(
-                    rf"x + z = {r}y, \qquad x^2 + y^2 + z^2 = {total}",
-                    str(best),
-                    prompt="ให้ x, y และ z เป็นจำนวนเต็มบวกที่สอดคล้องกับเงื่อนไข"
-                           "ต่อไปนี้ จงหาค่ามากที่สุดของ (x − y)z",
-                    distractors=[str(-best if best else 1), str(best + y),
-                                 str(total - best)])
+            if best is None or best in (0, 1) or abs(best) > 10 ** 6:
+                continue
+            bx, by, bz = max(q10.solutions(r=r, total=total), key=lambda t: (t[0] - t[1]) ** t[2])
+            # z read as a factor; base and exponent swapped; x and z swapped; the sign lost.
+            wrongs = [(bx - by) * bz, (bz - by) ** bx, -best]
+            if bx > by:
+                wrongs.insert(1, bz ** (bx - by))
+            wrongs = [w for w in dict.fromkeys(wrongs) if w != best]
+            if len(wrongs) < 3:
+                continue
+            return MathDraw(
+                rf"x + z = {r}y, \qquad x^2 + y^2 + z^2 = {total}",
+                str(best),
+                prompt="ให้ x, y และ z เป็นจำนวนเต็มบวกที่สอดคล้องกับเงื่อนไข"
+                       "ต่อไปนี้ จงหาค่ามากที่สุดของ (x − y)ᶻ",
+                distractors=[str(w) for w in wrongs[:3]])
         raise RuntimeError("no solvable (r, total) found")     # pragma: no cover
 
 

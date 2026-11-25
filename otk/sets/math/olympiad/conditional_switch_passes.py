@@ -22,18 +22,23 @@ def switches_on(
     toggle_middle: bool = False,
     toggle_last: bool = False,
 ) -> int:
-    """Apply off/on/off passes; optional variants represent named mistakes."""
+    """Apply the source's on/off/on passes; optional variants represent named mistakes.
+
+    Switches 1..N/2 start on and the rest off. Pass 1 switches on every off switch
+    divisible by the first divisor, pass 2 switches off every on switch divisible
+    by the second, and pass 3 switches on every off switch divisible by the third.
+    """
     if total < 2 or total % 2 or min(first_divisor, second_divisor, third_divisor) < 2:
         raise ValueError("expected an even switch count and divisors above one")
     on = [False] + [number <= total // 2 for number in range(1, total + 1)]
     for number in range(first_divisor, total + 1, first_divisor):
         if not skip_first:
-            on[number] = False
+            on[number] = True
     for number in range(second_divisor, total + 1, second_divisor):
-        on[number] = not on[number] if toggle_middle else True
+        on[number] = not on[number] if toggle_middle else False
     for number in range(third_divisor, total + 1, third_divisor):
         if not skip_last:
-            on[number] = not on[number] if toggle_last else False
+            on[number] = not on[number] if toggle_last else True
     return sum(on)
 
 
@@ -51,14 +56,14 @@ class ConditionalSwitchPasses(WordProblem):
         return MathDraw(
             rf"N={total},\quad a={first},\quad b={second},\quad c={third}",
             str(answer),
-            prompt=("มีสวิตช์หมายเลข 1 ถึง N โดยครึ่งแรกเปิดและครึ่งหลังปิด เริ่มจากปิดสวิตช์หมายเลขที่หารด้วย a ลงตัว "
-                    "เฉพาะตัวที่เปิดอยู่ จากนั้นเปิดสวิตช์หมายเลขที่หารด้วย b ลงตัวเฉพาะตัวที่ปิดอยู่ "
-                    "และปิดสวิตช์หมายเลขที่หารด้วย c ลงตัวเฉพาะตัวที่เปิดอยู่ สุดท้ายมีสวิตช์เปิดกี่ตัว"),
+            prompt=("มีสวิตช์หมายเลข 1 ถึง N โดยครึ่งแรกเปิดและครึ่งหลังปิด เริ่มจากเปิดสวิตช์หมายเลขที่หารด้วย a ลงตัว "
+                    "เฉพาะตัวที่ปิดอยู่ จากนั้นปิดสวิตช์หมายเลขที่หารด้วย b ลงตัวเฉพาะตัวที่เปิดอยู่ "
+                    "และเปิดสวิตช์หมายเลขที่หารด้วย c ลงตัวเฉพาะตัวที่ปิดอยู่ สุดท้ายมีสวิตช์เปิดกี่ตัว"),
             hint="นับเซตของสวิตช์ที่เปิดหลังแต่ละรอบ โดยแยกครึ่งแรกและครึ่งหลัง",
             distractors=[
                 str(switches_on(total, first, second, third, skip_first=True)),  # omit first pass
                 str(switches_on(total, first, second, third, skip_last=True)),  # omit last pass
-                str(switches_on(total, first, second, third, toggle_middle=True)),  # toggle rather than open
-                str(switches_on(total, first, second, third, toggle_last=True)),  # toggle rather than close
+                str(switches_on(total, first, second, third, toggle_middle=True)),  # toggle rather than close
+                str(switches_on(total, first, second, third, toggle_last=True)),  # toggle rather than open
             ],
         )

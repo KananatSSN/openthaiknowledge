@@ -591,15 +591,17 @@ TOTAL         338   316     17     4   66      255      6     11
   depend on an unreadable figure. 257 questions, 233 answered.
 - **Duplicates.** POSN camp-1 2566–2569 had already been digested from
   `posn-math/posn1-6x-math.pdf`, with a set per question. These copies are
-  claimed by those sets' units. Comparing the two digests found readings
-  that differ:
-  - 2568/10: this copy prints (x − y)ᶻ, but the set `math.posn2568_q10`
-    solves (x − y)z.
-  - 2569/5, 26 and 29: the posn1-69 digest's English paraphrase differs from
-    the printed text.
-  - 2569/20: the text says EA = 18, the figure 8.
-  Each is in its unit's note. Existing draws are unchanged and need the
-  maintainer's decision.
+  claimed by those sets' units. Comparing the two digests against the
+  originals' renders and text:
+  - Three existing sets misread their originals and were corrected, with the
+    maintainer's agreement (their draws change):
+    - `math.posn2568_q10`: (x − y)ᶻ is a power, so the answer is 16807, not 35.
+    - `math.constrained_race_rank_pairs_olympiad` (2569/26): F finishes after
+      D and A but before C.
+    - `math.conditional_switch_passes_olympiad` (2569/29): the passes switch
+      on, off, on; the answer is 1182.
+  - 2569/5 (−5P²) and 2569/20 (EA = 8) were right in the originals; the
+    Bangkok copy has the typos.
 - **Claims.** `docs/for_admin/sheet_digestion_entrance_wave1.py`: all 257
   questions are claimed. The non-POSN papers use 105 units in
   `entrance-*.json`, each pointing only at sets sampled to practise it.
