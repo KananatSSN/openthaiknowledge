@@ -10113,7 +10113,8 @@
    "pages": 4,
    "text_chars": 2556,
    "layout": "numbered",
-   "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
+   "stage": "ignored",
+   "note": "Second export of 8519-MWIT35_R1.pdf (same recollected MWIT 35 round-1 paper, same text); digest 8519 instead."
   },
   {
    "path": "mathematics/exam-venue/naresuan-university-demonstration-school/29931-NUD-PREP-TEST-2019.pdf",
@@ -10124,6 +10125,8 @@
    "text_chars": 6373,
    "layout": "numbered",
    "glyph_damage": 343,
+   "items": 30,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10282,7 +10285,8 @@
    "pages": 33,
    "text_chars": 31798,
    "layout": "numbered",
-   "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
+   "stage": "ignored",
+   "note": "Science-only test (60 items: biology, earth science, physics, chemistry) despite the 'Science Mathematics Test' title; no mathematics items. Belongs with the science sources."
   },
   {
    "path": "mathematics/exam-venue/princess-chulabhorn-science-high-schools/29918-PCSHS-SMT-2567.pdf",
@@ -10292,7 +10296,8 @@
    "pages": 31,
    "text_chars": 28536,
    "layout": "numbered",
-   "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
+   "stage": "ignored",
+   "note": "Science-only test (60 science items) despite the 'Science Mathematics Test' title; no mathematics items. Belongs with the science sources."
   },
   {
    "path": "mathematics/exam-venue/princess-chulabhorn-science-high-schools/29919-PCSHS-SMT-2568.pdf",
@@ -10333,7 +10338,8 @@
    "text_chars": 33567,
    "layout": "numbered",
    "glyph_damage": 308,
-   "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
+   "stage": "ignored",
+   "note": "Science-only test (60 science items, no 'คณิต' anywhere) despite the 'Science Mathematics Test' title; no mathematics items. Belongs with the science sources."
   },
   {
    "path": "mathematics/exam-venue/princess-chulabhorn-science-high-schools/3220-1-2565-1-2022-TutorDD.pdf",
@@ -10405,6 +10411,8 @@
    "layout": "numbered",
    "glyph_damage": 1,
    "scan_pages": 1,
+   "items": 40,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10416,6 +10424,8 @@
    "text_chars": 40981,
    "layout": "numbered",
    "scan_pages": 2,
+   "items": 34,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10427,6 +10437,8 @@
    "text_chars": 38857,
    "layout": "numbered",
    "glyph_damage": 2,
+   "items": 34,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10437,6 +10449,8 @@
    "pages": 25,
    "text_chars": 39274,
    "layout": "numbered",
+   "items": 34,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -11135,7 +11149,8 @@
    "pages": 2,
    "text_chars": 7338,
    "layout": "numbered",
-   "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
+   "stage": "ignored",
+   "note": "Programme brochure for the SMTP ม.4 class, not an exam paper."
   },
   {
    "path": "mathematics/exam-venue/triam-udom-suksa/23496-4-2564-40-1.pdf",
