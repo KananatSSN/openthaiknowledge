@@ -13,8 +13,19 @@
     "หาพื้นที่สามเหลี่ยมจากด้านหรือกำลังสองของด้านทั้งสาม",
     "เทียบพื้นที่กับ √3(ab+bc+ca)/4 แล้วจัดรูปเพื่อหากำลังสองที่ต้องการ"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 20}],
-   "covered_by": ["math.equiangular_hexagon_diagonals_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 20
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/20"
+    }
+   ],
+   "covered_by": [
+    "math.equiangular_hexagon_diagonals_olympiad"
+   ],
+   "note": "ต้นฉบับ posn1-69 ระบุ EA = 8 (ได้ 19200) สำเนา posn-bangkok พิมพ์ 18"
   }
  ]
 }

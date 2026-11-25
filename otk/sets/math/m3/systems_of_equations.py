@@ -443,3 +443,60 @@ class ReversedDigitSystemM3(ChoiceType):
         return (f"จำนวนสองหลักมีเลขโดดทั้งสองไม่เป็นศูนย์ ผลรวมเลขโดดเท่ากับ {total} "
                 f"เมื่อนำ {abs(delta)} ไป{'บวก' if delta > 0 else 'ลบ'}กับจำนวนนี้ จะได้จำนวนที่สลับหลักกัน จำนวนเดิมเท่ากับเท่าใด",
                 str(answer), [str(n) for n in dict.fromkeys(pool) if n != answer])
+
+
+@question_type("math.train_passing_m3", display_name={"th": "รถไฟสองขบวนวิ่งสวนกันหรือวิ่งตามกันจนพ้นกัน"},
+               level={"th": "ม.3"}, topic="ระบบสมการ")
+class TrainPassingM3(ChoiceType):
+    """Two trains pass each other in the time it takes to cover their total length
+    at the relative speed: the sum of the speeds when they meet head-on, the
+    difference when one overtakes the other. Speeds are multiples of 18 km/h, so
+    they are whole metres per second (18 km/h = 5 m/s)."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8550-MATHFORTU64_problem.pdf, ข้อ 21",
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8548-MATHFORTU65_problem.pdf, ข้อ 12"))
+
+    def compose(self, rng: Random):
+        while True:
+            a, b = sorted(rng.sample(range(1, 9), 2))      # 18a and 18b km/h
+            slow, fast = 5 * a, 5 * b                       # m/s
+            if rng.random() < 0.5:
+                # Head-on time given; find the overtaking time.
+                p, q = rng.sample(range(1, 6), 2)           # lengths px and qx
+                head_on = rng.randint(6, 40)
+                total = (slow + fast) * head_on
+                if total % (fast - slow) or total % (p + q):
+                    continue
+                answer = Fraction(total, fast - slow)
+                px, qx = (f"{n}x" if n > 1 else "x" for n in (p, q))
+                stem = (f"รถไฟขบวนที่หนึ่งยาว {px} เมตร วิ่งด้วยความเร็ว {18 * a} กิโลเมตรต่อชั่วโมง "
+                        f"ขบวนที่สองยาว {qx} เมตร วิ่งด้วยความเร็ว {18 * b} กิโลเมตรต่อชั่วโมง "
+                        f"ถ้าวิ่งสวนกันจะพ้นกันในเวลา {head_on} วินาที ถ้าวิ่งตามกันในทิศทางเดียวกัน "
+                        "จะพ้นกันในเวลากี่วินาที")
+                # The speed ratio inverted; km/h left unconverted; only the first train's length;
+                # the head-on time itself.
+                pool = (Fraction(head_on * (fast - slow), slow + fast),
+                        Fraction(total, 18 * (b - a)),
+                        Fraction(total * p, (p + q) * (fast - slow)),
+                        Fraction(head_on))
+                unit = "วินาที"
+            else:
+                # Overtaking time given; find the shorter train's length.
+                k = rng.randint(2, 5)                       # the longer train is k times as long
+                overtake = rng.randint(20, 90)
+                total = (fast - slow) * overtake
+                if total % (k + 1):
+                    continue
+                answer = Fraction(total, k + 1)
+                stem = (f"รถไฟสองขบวนวิ่งด้วยความเร็ว {18 * a} และ {18 * b} กิโลเมตรต่อชั่วโมง "
+                        f"วิ่งตามกันในทิศทางเดียวกันใช้เวลา {overtake} วินาทีจึงวิ่งพ้นกัน "
+                        f"ถ้าขบวนหนึ่งยาวเป็น {k} เท่าของอีกขบวน ขบวนที่สั้นกว่ายาวกี่เมตร")
+                # The total length; the longer train; the sum of speeds; km/h left unconverted.
+                pool = (Fraction(total), Fraction(total * k, k + 1),
+                        Fraction((fast + slow) * overtake, k + 1),
+                        Fraction(18 * (b - a) * overtake, k + 1))
+                unit = "เมตร"
+            wrongs = [w for w in dict.fromkeys(pool) if w != answer and w > 0]
+            if len(wrongs) < 3:
+                continue
+            return stem, f"{answer} {unit}", [f"{w} {unit}" for w in wrongs]

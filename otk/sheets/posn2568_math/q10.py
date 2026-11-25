@@ -1,9 +1,14 @@
-"""ข้อ 10 — ค่ามากที่สุดของ (x−y)z
+"""ข้อ 10 — ค่ามากที่สุดของ (x−y)^z
 
 ให้ x, y, z เป็นจำนวนเต็มบวก โดยที่
     x + z = r·y            (โจทย์: r = 3)
     x² + y² + z² = total   (โจทย์: total = 230)
-ค่ามากที่สุดของ (x−y)z เท่ากับเท่าใด
+ค่ามากที่สุดของ (x−y)^z เท่ากับเท่าใด
+
+The paper prints z as an exponent (checked on the page render); an earlier
+reading took (x−y)z as a product, which gave 35. With x + z = 3y and
+x² + y² + z² = 230 the solutions are (5, 6, 13) and (13, 6, 5), so the largest
+value is 7⁵ = 16807.
 
 Method: squaring the first equation turns the pair (x, z) into a sum and a
 product, both known once y is fixed:
@@ -20,7 +25,7 @@ from __future__ import annotations
 import math
 
 PARAMS = {"r": 3, "total": 230}
-ANSWER = 35
+ANSWER = 16807
 VARIANTS = [
     {"total": 66},
     {"r": 2, "total": 54},
@@ -53,9 +58,9 @@ def solutions(r=3, total=230):
 
 
 def solve(r=3, total=230):
-    """Largest (x−y)·z, or None when the system has no positive solution."""
+    """Largest (x−y)^z, or None when the system has no positive solution."""
     found = solutions(r, total)
-    return max((x - y) * z for x, y, z in found) if found else None
+    return max((x - y) ** z for x, y, z in found) if found else None
 
 
 def check(r=3, total=230):
@@ -66,6 +71,6 @@ def check(r=3, total=230):
         for y in range(1, limit + 1):
             for z in range(1, limit + 1):
                 if x + z == r * y and x * x + y * y + z * z == total:
-                    value = (x - y) * z
+                    value = (x - y) ** z
                     best = value if best is None else max(best, value)
     return best

@@ -575,6 +575,45 @@ TOTAL         338   316     17     4   66      255      6     11
 
 ## 6. Session log
 
+### 2026-11-25 — Maths entrance papers (exam-venue), wave 1
+
+- **Scope.** The maths school-entrance papers under
+  `mathematics/exam-venue/`: 74 papers from 14 venues. 25 have a text layer;
+  49 are scans. Wave 1 is the eight readable papers: POSN Bangkok camp-1
+  selection 2566–2569, the Triam Udom ม.4 recollections 2564, 2565 and 2569,
+  and MWIT ม.4 2569 round 2.
+- **Transcription.** One `sheet-transcriber` per paper, then a spot-check of
+  every paper against its renders and a recomputation of a sample of answers.
+  None of the papers prints a key, so every answer is derived. The review
+  fixed POSN 2566/4 (4624), 2568/12 (a misread word), 2567/3 (5^(y/2)) and
+  2566/15 (the largest member of S, 9640). It also removed eight Triam Udom
+  2569 answers that had been copied from the file's highlighted key or that
+  depend on an unreadable figure. 257 questions, 233 answered.
+- **Duplicates.** POSN camp-1 2566–2569 had already been digested from
+  `posn-math/posn1-6x-math.pdf`, with a set per question. These copies are
+  claimed by those sets' units. Comparing the two digests against the
+  originals' renders and text:
+  - Three existing sets misread their originals and were corrected, with the
+    maintainer's agreement (their draws change):
+    - `math.posn2568_q10`: (x − y)ᶻ is a power, so the answer is 16807, not 35.
+    - `math.constrained_race_rank_pairs_olympiad` (2569/26): F finishes after
+      D and A but before C.
+    - `math.conditional_switch_passes_olympiad` (2569/29): the passes switch
+      on, off, on; the answer is 1182.
+  - 2569/5 (−5P²) and 2569/20 (EA = 8) were right in the originals; the
+    Bangkok copy has the typos.
+- **Claims.** `docs/for_admin/sheet_digestion_entrance_wave1.py`: all 257
+  questions are claimed. The non-POSN papers use 105 units in
+  `entrance-*.json`, each pointing only at sets sampled to practise it.
+  Decision (user): reuse existing sets, and add sets only for skills that
+  recur across papers.
+- **New sets.** The four recurring skills got stage-3 sets:
+  `math.train_passing_m3`, `math.probability_transfer_m5`,
+  `math.tangential_trapezoid_m5` and `math.conjugate_root_cubic_m4`. Their
+  answers are re-derived in `test_math_bank_entrance.py`. 43 one-off skills
+  remain without a set (`sheetpipe plan`).
+- **Next.** The other 17 readable papers, then the 49 scans.
+
 ### 2026-10-21 — POSN chemistry 2560, eleventh octet and liquids batch
 
 - Visually checked MC31–MC32 on p9 and MC33 on p10. Added independent

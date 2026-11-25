@@ -17,9 +17,13 @@ def possible_rank_pairs(
     *,
     b_not_first: bool = True,
     d_before_f: bool = True,
-    a_before_c: bool = True,
+    a_before_f: bool = True,
+    f_before_c: bool = True,
 ) -> frozenset[tuple[str, str]]:
-    """Enumerate feasible (first, third) finishers by pruned backtracking."""
+    """Enumerate feasible (first, third) finishers by pruned backtracking.
+
+    The source's rules: B is not first and finishes before A; A and E are
+    ``separation`` places apart; F finishes after D and A but before C."""
     if competitors not in (6, 7) or not 1 <= separation < competitors:
         raise ValueError("expected six or seven competitors and a valid separation")
     labels = tuple("ABCDEFG"[:competitors])
@@ -36,9 +40,9 @@ def possible_rank_pairs(
                 continue
             if label == "A" and "B" in unused:
                 continue
-            if label == "C" and a_before_c and "A" in unused:
+            if label == "C" and f_before_c and "F" in unused:
                 continue
-            if label == "F" and d_before_f and "D" in unused:
+            if label == "F" and ((d_before_f and "D" in unused) or (a_before_f and "A" in unused)):
                 continue
             extend(order + (label,), unused - {label})
 
@@ -63,13 +67,13 @@ class ConstrainedRaceRankPairs(WordProblem):
             prompt=("ผู้เข้าแข่งขัน A, B, C, D, E, F "
                     + ("และ G " if competitors == 7 else "")
                     + "เข้าเส้นชัยไม่พร้อมกัน โดย B ไม่ได้อันดับหนึ่งและอยู่ก่อน A "
-                    "อันดับของ A กับ E ห่างกัน d ตำแหน่ง D อยู่ก่อน F และ A อยู่ก่อน C "
+                    "อันดับของ A กับ E ห่างกัน d ตำแหน่ง F เข้าเส้นชัยหลัง D และ A แต่ก่อน C "
                     "คู่ผู้ได้อันดับหนึ่งและอันดับสามที่ต่างกันเป็นไปได้กี่คู่"),
             hint="ไล่ลำดับโดยตัดกรณีที่ผิดเงื่อนไขทันที แล้วนับคู่ที่ไม่ซ้ำ",
             distractors=[
                 str(len(possible_rank_pairs(competitors, separation, b_not_first=False))),  # allow B first
-                str(len(possible_rank_pairs(competitors, separation, d_before_f=False))),  # reverse or omit D/F order
-                str(len(possible_rank_pairs(competitors, separation, a_before_c=False))),  # omit A/C order
+                str(len(possible_rank_pairs(competitors, separation, d_before_f=False))),  # omit D before F
+                str(len(possible_rank_pairs(competitors, separation, a_before_f=False))),  # read as D before F, A before C
                 str(competitors * (competitors - 1)),  # ignore all restrictions
             ],
         )

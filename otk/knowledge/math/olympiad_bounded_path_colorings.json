@@ -13,8 +13,18 @@
     "ในแต่ละช่องเลือกเฉพาะสีที่ต่างจากช่องก่อนหน้าและใช้ยังไม่ถึงขีดจำกัด",
     "รวมจำนวนวิธีของสถานะหลังระบายครบทุกช่อง"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 11}],
-   "covered_by": ["math.bounded_path_colorings_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 11
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/11"
+    }
+   ],
+   "covered_by": [
+    "math.bounded_path_colorings_olympiad"
+   ]
   }
  ]
 }

@@ -13,8 +13,18 @@
     "แยกตัวประกอบ a³−b³ และ b−a",
     "ใช้ผลบวกรากและผลคูณรากแทนใน (a+b)²−ab−1"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 2}],
-   "covered_by": ["math.roots_cubic_quotient_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 2
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/2"
+    }
+   ],
+   "covered_by": [
+    "math.roots_cubic_quotient_olympiad"
+   ]
   }
  ]
 }

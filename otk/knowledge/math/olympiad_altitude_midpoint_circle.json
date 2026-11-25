@@ -13,8 +13,18 @@
     "ใช้ BM=BC/2 และกำลังของจุด B เพื่อหา BE=BD·BM/AB",
     "ลบจาก AB เพื่อหา AE"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 19}],
-   "covered_by": ["math.altitude_midpoint_circle_intersection_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 19
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/19"
+    }
+   ],
+   "covered_by": [
+    "math.altitude_midpoint_circle_intersection_olympiad"
+   ]
   }
  ]
 }

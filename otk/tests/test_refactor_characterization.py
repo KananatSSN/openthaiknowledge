@@ -261,4 +261,4 @@ def test_sheet_publication_manifest_is_frozen():
     # 2567 16, 2568 25 and 2569 30. The national physics olympiad papers
     # (TPhO 2545–2565) add the rest of the physics branch's 559.
     # POSN chemistry 2560, 2561 and 2562 add 70, 75 and 66 reviewed sets.
-    assert len(REGISTRY) == 5950
+    assert len(REGISTRY) == 5954

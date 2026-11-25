@@ -13,8 +13,18 @@
     "ตั้งสมการผลรวมองค์ประกอบแนวตั้งเท่ากับศูนย์",
     "ตั้งสมการผลรวมองค์ประกอบแนวนอนเท่ากับศูนย์และรวมความยาวด้านทั้งหมด"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 16}],
-   "covered_by": ["math.notched_hexagon_perimeter_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 16
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/16"
+    }
+   ],
+   "covered_by": [
+    "math.notched_hexagon_perimeter_olympiad"
+   ]
   }
  ]
 }

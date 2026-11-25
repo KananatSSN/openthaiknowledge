@@ -14,9 +14,17 @@
     "ตรวจ gcd(s,m) แล้วจำกัด u ด้วย Gsu²≤ขอบเขตที่กำหนด ก่อนรวมค่า n"
    ],
    "sources": [
-    {"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 3}
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 3
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/3"
+    }
    ],
-   "covered_by": ["math.gcd_lcm_square_olympiad"]
+   "covered_by": [
+    "math.gcd_lcm_square_olympiad"
+   ]
   }
  ]
 }

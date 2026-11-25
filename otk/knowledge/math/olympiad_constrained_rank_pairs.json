@@ -13,8 +13,19 @@
     "ตรวจระยะห่างของอันดับในลำดับสมบูรณ์",
     "เก็บคู่ผู้ได้อันดับหนึ่งและสามในเซตเพื่อนับคู่ที่แตกต่างกัน"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 26}],
-   "covered_by": ["math.constrained_race_rank_pairs_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 26
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/26"
+    }
+   ],
+   "covered_by": [
+    "math.constrained_race_rank_pairs_olympiad"
+   ],
+   "note": "เงื่อนไข 4 คือ F เข้าหลัง D และ A แต่ก่อน C (ทั้งสองสำเนา) ชุดโจทย์แก้จากการอ่านเดิมแล้ว"
   }
  ]
 }

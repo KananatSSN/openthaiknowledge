@@ -13,8 +13,18 @@
     "คำนวณดิสคริมิแนนต์ของสมการหลังสลับสัมประสิทธิ์ทั้งสามคู่",
     "เก็บค่าที่ทุกดิสคริมิแนนต์เป็นกำลังสองสมบูรณ์"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 6}],
-   "covered_by": ["math.swapped_quadratic_coefficients_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 6
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/6"
+    }
+   ],
+   "covered_by": [
+    "math.swapped_quadratic_coefficients_olympiad"
+   ]
   }
  ]
 }

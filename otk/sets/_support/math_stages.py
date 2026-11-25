@@ -751,7 +751,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("simultaneous_2var", "system_substitution", "system_sum_difference_m3", "system_which_pair_m3"),
         ("system_setup_m3", "system_x_plus_y_m3", "system_coins_m3", "system_ages_m3"),
         ("system_word_problem", "system_two_prices_m3", "system_solution_count_m3",
-         "system_basket_target_m3", "two_rate_allocation_m3", "system_parameter_difference_m3", "mixture_mass_ratio_m3", "joint_worker_time_m3", "reversed_digit_system_m3"),
+         "system_basket_target_m3", "two_rate_allocation_m3", "system_parameter_difference_m3", "mixture_mass_ratio_m3", "joint_worker_time_m3", "reversed_digit_system_m3", "train_passing_m3"),
     ),
     (B, "ม.3", "ความคล้าย"): (
         ("similar_triangle_picture_m3", "similar_triangle", "similar_corresponding_angle_m3"),
@@ -924,7 +924,7 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
         ("polynomial_division", "coefficient_from_factor_m4"),
         ("synthetic_division", "polynomial_equation_m4", "polynomial_inequality_m4",
          "polynomial_unknown_coefficients_m4", "polynomial_long_division_m4", "remainder_arithmetic_m4",
-         "coefficient_from_remainder_m4"),
+         "coefficient_from_remainder_m4", "conjugate_root_cubic_m4"),
     ),
     (A, "ม.4", "แยกตัวประกอบ"): (
         ("factor_by_grouping", "common_then_squares_m4"),
@@ -1025,12 +1025,12 @@ MATH_STAGE_PATHS: dict[tuple[str, str, str], Path] = {
          "probability_union_m5", "probability_digit_numbers_m5"),
         ("probability_independent", "probability_counting_m5",
          "probability_without_replacement_m5", "probability_random_arrangement_m5",
-         "probability_grid_route_m5"),
+         "probability_grid_route_m5", "probability_transfer_m5"),
     ),
     (A, "ม.5", "อัตราส่วนตรีโกณมิติ"): (
         ("trig_ratio", "right_triangle_ratio_picture_m5", "tan_from_sides_m5"),
         ("trig_ratio_triangle_m5", "right_triangle_relations_m5", "shadow_length_m5", "tan_from_sin_m5"),
-        ("angle_of_elevation_m5", "two_angle_height_m5", "angle_of_depression_m5"),
+        ("angle_of_elevation_m5", "two_angle_height_m5", "angle_of_depression_m5", "tangential_trapezoid_m5"),
     ),
     (A, "ม.5", "ฟังก์ชันตรีโกณมิติ"): (
         ("unit_circle_quadrant_sign", "reference_angle", "unit_circle_picture_m5"),

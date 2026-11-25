@@ -13,8 +13,18 @@
     "หาปลายอีกด้านของคอร์ดขนานเส้นผ่านศูนย์กลางด้วยความสมมาตรของวงกลม",
     "คำนวณพื้นที่สามเหลี่ยมจากฐานคอร์ดกับความสูง แล้วใช้พื้นที่วงกลม πR²"
    ],
-   "sources": [{"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 22}],
-   "covered_by": ["math.tangent_horizontal_chord_circle_area_olympiad"]
+   "sources": [
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 22
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/22"
+    }
+   ],
+   "covered_by": [
+    "math.tangent_horizontal_chord_circle_area_olympiad"
+   ]
   }
  ]
 }

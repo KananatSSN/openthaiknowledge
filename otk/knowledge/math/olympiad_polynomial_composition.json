@@ -14,9 +14,18 @@
     "คูณผลที่ได้จากรากชั้นนอกทุกค่า ซึ่งให้ราก x คนละชุดกัน"
    ],
    "sources": [
-    {"sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf", "item": 5}
+    {
+     "sheet": "mathematics/level/upper-secondary/posn-math/posn1-69-math.pdf",
+     "item": 5
+    },
+    {
+     "tag": "สอวน. ค่าย 1 2569/5"
+    }
    ],
-   "covered_by": ["math.composed_polynomial_real_roots_olympiad"]
+   "covered_by": [
+    "math.composed_polynomial_real_roots_olympiad"
+   ],
+   "note": "ต้นฉบับ posn1-69 พิมพ์ 2P³ − 5P² − 6P + 9 = 0 สำเนา posn-bangkok ตกเลข 5 (ไม่มีคำตอบจริง)"
   }
  ]
 }

@@ -460,3 +460,52 @@ class CoefficientFromFactorM4(MathType):
 
 CoefficientFromRemainderM4.PROVENANCE = Provenance("original")
 CoefficientFromFactorM4.PROVENANCE = Provenance("original")
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+def _surd_root(p: int, sign: int, q: int) -> str:
+    """p ± √q as printed: "2 − √5", "√3", "−√7"."""
+    surd = f"√{q}"
+    if p == 0:
+        return surd if sign > 0 else "−" + surd
+    return f"{p} {'+' if sign > 0 else '−'} {surd}".replace("-", "−")
+
+
+def _linear_factor(r: int) -> str:
+    return "x" if r == 0 else f"x {'−' if r > 0 else '+'} {abs(r)}"
+
+
+@question_type("math.conjugate_root_cubic_m4",
+               display_name={"th": "หาสัมประสิทธิ์ของพหุนามกำลังสามจากรากอตรรกยะและตัวประกอบ"},
+               level=M4, topic="การหารพหุนาม")
+class ConjugateRootCubicM4(ChoiceType):
+    """P(x) = x³ + ax² + bx + c has integer coefficients, so with the root p ± √q
+    it also has p ∓ √q: x² − 2px + (p² − q) divides P(x). With x − r a factor too,
+    P(x) = (x − r)(x² − 2px + p² − q), and a + b + c = P(1) − 1."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8550-MATHFORTU64_problem.pdf, ข้อ 23",
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8548-MATHFORTU65_problem.pdf, ข้อ 2"))
+
+    def compose(self, rng: Random):
+        while True:
+            p, r = rng.randint(-3, 3), rng.randint(-4, 4)
+            q, sign = rng.choice((2, 3, 5, 6, 7)), rng.choice((1, -1))
+
+            def coeffs(two_p, const):
+                # (x − r)(x² − two_p·x + const)
+                return (-two_p - r, const + two_p * r, -r * const)
+
+            a, b, c = coeffs(2 * p, p * p - q)
+            answer = a + b + c
+            # P(1) instead of a + b + c; the conjugate's sum taken as −2p; p² + q for the product;
+            # the irrational root alone, (x − r)(x − p).
+            pool = (answer + 1, sum(coeffs(-2 * p, p * p - q)), sum(coeffs(2 * p, p * p + q)),
+                    (1 - r) * (1 - p) - 1)
+            wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+            if len(wrongs) < 3:
+                continue
+            stem = (f"กำหนดให้ P(x) = x³ + ax² + bx + c โดยที่ a, b และ c เป็นจำนวนเต็ม "
+                    f"ถ้า {_linear_factor(r)} เป็นตัวประกอบของ P(x) และ P({_surd_root(p, sign, q)}) = 0 "
+                    "แล้วค่าของ a + b + c เท่ากับเท่าใด")
+            return stem, str(answer).replace("-", "−"), [str(w).replace("-", "−") for w in wrongs]
