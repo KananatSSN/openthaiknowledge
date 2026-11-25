@@ -575,6 +575,38 @@ TOTAL         338   316     17     4   66      255      6     11
 
 ## 6. Session log
 
+### 2026-11-25 — Maths entrance papers (exam-venue), wave 2c
+
+- **Scope.** The remaining readable entrance files. 295 questions, 287
+  answered.
+  - Satri Siriket's เยาวชนคนเก่งคณิตศาสตร์ 2566 papers: ป.3-4, ป.5-6, ม.1,
+    ม.2 and ม.3. The files named `.1/.2/.3` are ม.1-ม.3 by their covers, not
+    ป.1-ป.3. Their legacy font encoding means they were read from the renders.
+  - The two Patumwan ม.1 entrance recollections (2568, 2569). Every answer
+    matches the teacher's worked key printed in the file.
+  - The 71-page MWIT 2566 rounds 1-2 compilation, maths items only.
+- **Review fixes.**
+  - Satri ม.1 had its exam tags at the end of the choice lines, so they
+    parsed as choice text. The tags were moved to the stems.
+  - In MWIT 2566 item 24, the area notation `[ABC] + [DEF]` parsed as the
+    exam tag. It was reworded.
+- **Claims.** `docs/for_admin/sheet_digestion_entrance_wave2c.py` uses the
+  same `extend` pattern as wave 2b. All 863 entrance questions are claimed.
+- **Sets.**
+  - Five recurring skills now point at sets that already existed.
+  - Nine new stage-3 sets cover others, checked in `test_math_bank_entrance.py`:
+    `sum_quotient_numbers_m1`, `telescoping_product_m1`,
+    `row_pattern_position_p6`, `reciprocal_power_sum_m3`,
+    `ratio_after_removal_m1`, `periodic_schedule_p4`,
+    `percent_after_adding_p6`, `count_multiples_either_p6` and
+    `british_flag_m2`.
+  - Six recurring skills are left without a set because they depend on 3-D
+    pictures or differ too much between papers for one generator. They are
+    views and surface area of stacked cubes, digit-triple counts,
+    ratio-power relations, number-triple conditions, the isosceles-trapezoid
+    figures and the circle tangent to semicircles.
+- **Next.** The 49 scanned entrance papers.
+
 ### 2026-11-25 — Maths entrance papers (exam-venue), wave 2b
 
 - **Scope.** The MWIT and KVIS ม.4 entrance papers with a readable but

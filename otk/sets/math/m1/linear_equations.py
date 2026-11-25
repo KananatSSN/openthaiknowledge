@@ -587,3 +587,39 @@ class CatchUpTimeM1(ChoiceType):
                     f"อีก {delay} นาทีต่อมาน้องออกจากบ้านตามไปทางเดียวกันด้วยอัตราเร็ว {fast} กิโลเมตรต่อชั่วโมง "
                     "น้องจะตามพี่ทันเวลาใด")
             return stem, answer, wrongs
+
+
+def _top_up(answer, wrongs, extras):
+    """Distinct wrong values, topped up from extras when the named mistakes coincide."""
+    out = [w for w in dict.fromkeys(wrongs) if w != answer]
+    for e in extras:
+        if len(out) >= 3:
+            break
+        if e != answer and e not in out:
+            out.append(e)
+    return out
+
+
+@question_type("math.sum_quotient_numbers_m1", display_name={"th": "หาสองจำนวนจากผลบวกกับผลหาร"},
+               level={"th": "ม.1"}, topic=_EQ_TOPIC)
+class SumQuotientNumbersM1(ChoiceType):
+    """a + b = s and a = q·b give b = s/(q + 1); the question asks for an expression of a and b."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/stri-siriket/29648-2566-.1.pdf, ตอนที่ 1 ข้อ 4",
+        "openthaiknowledge-bank/mathematics/exam-venue/roi-et-wittayalai/30904-Pre-test-.1-PRE-RW-Pre-Gifted-2568.pdf, ข้อ 21"))
+
+    def compose(self, rng: Random):
+        q, b = rng.randint(2, 7), rng.randint(2, 12)
+        a = q * b
+        s = a + b
+        ask = rng.choice(("product", "difference"))
+        answer = a * b if ask == "product" else a - b
+        # s/q taken as the smaller number; the two numbers swapped in the difference; s·q.
+        b_wrong = Fraction(s, q)
+        wrongs = ([a * b_wrong, (s - b_wrong) * b_wrong, s * q] if ask == "product"
+                  else [b - a, a + b, s - Fraction(s, q)])
+        wrongs = _top_up(answer, [w for w in wrongs if w == int(w)], [answer + b, answer - b, answer + q])
+        what = "ผลคูณ" if ask == "product" else "ผลต่าง (จำนวนมากลบจำนวนน้อย)"
+        stem = (f"ผลบวกของจำนวนนับสองจำนวนเท่ากับ {s} และผลหารของจำนวนมากด้วยจำนวนน้อยเท่ากับ {q} "
+                f"{what}ของสองจำนวนนี้เท่ากับเท่าใด")
+        return stem, str(answer), [str(int(w)) for w in wrongs]

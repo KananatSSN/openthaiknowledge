@@ -407,3 +407,40 @@ class EquivalentRatioM1(QuestionType):
         # The same number added; the terms swapped; different multipliers.
         wrongs = [f"{a + k} : {b + k}", f"{k * b} : {k * a}", f"{k * a} : {m * b}"]
         return _texts([text(f"อัตราส่วนในข้อใดเท่ากับ {a} : {b}")], right, wrongs, self.topic)
+
+from math import gcd  # noqa: E402
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+
+
+@question_type("math.ratio_after_removal_m1", display_name={"th": "หาจำนวนเดิมจากอัตราส่วนก่อนและหลังนำออก"},
+               level={"th": "ม.1"}, topic=_RATIO_TOPIC)
+class RatioAfterRemovalM1(ChoiceType):
+    """Write the two amounts as p·k and q·k, take the same number away from each, and solve
+    (p·k − n) : (q·k − n) = r : s for k."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/mahidol-wittayanusorn/8355-MWIT36-R1-By-SME16-2569.pdf, ข้อ 3",
+        "openthaiknowledge-bank/mathematics/exam-venue/stri-siriket/29646-2566-.3.pdf, ตอนที่ 2 ข้อ 7"))
+
+    def compose(self, rng: Random):
+        while True:
+            p, q = rng.choice(((4, 3), (5, 3), (5, 4), (7, 4), (3, 2), (7, 5)))
+            k, n = rng.randint(3, 12), rng.randint(2, 9)
+            a, b = p * k - n, q * k - n
+            if b <= 0:
+                continue
+            g = gcd(a, b)
+            r, s = a // g, b // g
+            if (r, s) == (p, q) or max(r, s) > 30:
+                continue
+            answer = q * k
+            # The other kind; the amount left; the new ratio's term read as the count.
+            wrongs = [w for w in dict.fromkeys((p * k, b, s * n, answer + n)) if w != answer]
+            for extra in (answer + q, answer - q, answer + 2 * q):  # when two named mistakes coincide
+                if len(wrongs) >= 3:
+                    break
+                if extra not in wrongs and extra != answer and extra > 0:
+                    wrongs.append(extra)
+            stem = (f"มีพริกเขียวต่อพริกแดงในอัตราส่วน {p} : {q} หยิบออกไปอย่างละ {n} เม็ด "
+                    f"เหลือพริกเขียวต่อพริกแดงเป็น {r} : {s} เดิมมีพริกแดงกี่เม็ด")
+            return stem, str(answer), [str(w) for w in wrongs][:4]

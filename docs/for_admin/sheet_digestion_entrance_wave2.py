@@ -70,7 +70,7 @@ def samsen_2567():
     def t(n):
         other = {12: 13, 13: 12}.get(n, n)
         return [SAMSEN_A + str(n), SAMSEN_B + str(other)]
-    u(GCD, 'count-multiples-either', 'นับพหุคูณของ a หรือ b ในช่วง ด้วยจำนวนพหุคูณของแต่ละตัวลบพหุคูณของ ค.ร.น.', t(1))
+    u(GCD, 'count-multiples-either', 'นับพหุคูณของ a หรือ b ในช่วง ด้วยจำนวนพหุคูณของแต่ละตัวลบพหุคูณของ ค.ร.น.', t(1), k('count_multiples_either_p6'))
     u(GCD, 'gcd-spacing', 'ระยะห่างเท่ากันมากที่สุดคือ ห.ร.ม. ของความยาว แล้วนับจำนวนจุดตามแนวกว้างและยาว', t(2),
       k('gcd_word_problem_p6'), note='2 ธ.ค. 66 ข้อ 2 ไม่บอกว่าปลูกที่ขอบด้วยหรือไม่ ทรานสคริปต์ปลูกที่ขอบ')
     u(RATIO, 'group-ratio-equation', 'ใช้จำนวนกลุ่มและอัตราส่วนสมาชิกในกลุ่มตั้งสมการหาจำนวนแต่ละชนิด', t(3))
@@ -205,17 +205,17 @@ def roiet():
     claim('grid-pattern-relation', t(17))
     u(EXP, 'powers-evaluate', 'หาฐานจากเลขยกกำลังที่กำหนดแล้วคำนวณนิพจน์ตามลำดับการดำเนินการ', t(19),
       k('order_of_ops_powers'))
-    u(FRAC, 'telescoping-product', 'ผลคูณ (1 − 1/k) ตัดกันเป็นทอด ๆ เหลือพจน์แรกกับพจน์สุดท้าย', t(20))
-    u(EQ, 'small-integer-system', 'ใช้ผลบวกและผลต่างหาตัวแปร แล้วใช้เงื่อนไขการหารหาตัวที่เหลือ', t(21))
+    u(FRAC, 'telescoping-product', 'ผลคูณ (1 − 1/k) ตัดกันเป็นทอด ๆ เหลือพจน์แรกกับพจน์สุดท้าย', t(20), k('telescoping_product_m1'))
+    u(EQ, 'small-integer-system', 'ใช้ผลบวกและผลต่างหาตัวแปร แล้วใช้เงื่อนไขการหารหาตัวที่เหลือ', t(21), k('sum_quotient_numbers_m1'))
     claim('profit-percent-count', t(22))
     claim('compare-fraction-expressions', t(24))
     u(SHAPES, 'quadrilateral-properties', 'ตรวจนิยามและสมบัติของรูปสี่เหลี่ยมแต่ละชนิด', t(26), k('parallelogram_properties'))
     u(RATE, 'work-together-rate', 'อัตรางานรวม = ผลบวกอัตรางานแต่ละคน หาเวลาของคนที่ไม่รู้', t(27), k('work_together_m4'),
       note='ข้อ 27 คำตอบ 26.4 ชั่วโมงอยู่ระหว่างตัวเลือก')
     u(OPS, 'cyclic-digit-sum', 'ผลบวกของจำนวนที่เลื่อนเลขโดดวนกันมีเลขโดดแต่ละตัวในทุกหลัก จึงเท่ากับผลบวกเลขโดดคูณ 111…1', t(29))
-    u(SHAPES, 'triangle-inequality', 'ด้านสามด้านเป็นรูปสามเหลี่ยมได้เมื่อผลบวกสองด้านใด ๆ มากกว่าด้านที่สาม', t(30))
+    u(SHAPES, 'triangle-inequality', 'ด้านสามด้านเป็นรูปสามเหลี่ยมได้เมื่อผลบวกสองด้านใด ๆ มากกว่าด้านที่สาม', t(30), k('triangle_inequality_m2'))
     u(EQ, 'algebraic-price', 'เขียนราคาที่ไม่รู้ด้วยตัวแปรจากยอดเงินรวม', t(31), k('linear_word_problem_m1'))
-    u(PCT, 'percent-after-adding', 'จำนวนส่วนที่ไม่เปลี่ยนคงที่ ใช้ร้อยละใหม่หาจำนวนทั้งหมดแล้วหาจำนวนที่เพิ่ม', t(32))
+    u(PCT, 'percent-after-adding', 'จำนวนส่วนที่ไม่เปลี่ยนคงที่ ใช้ร้อยละใหม่หาจำนวนทั้งหมดแล้วหาจำนวนที่เพิ่ม', t(32), k('percent_after_adding_p6'))
     claim('fraction-order-of-operations', t(33))
     claim('continued-fraction', t(35))
     u(CIRCLE, 'arc-perimeter', 'ความยาวรอบรูปที่มีส่วนโค้งของวงกลมหรือครึ่งวงกลม = ผลบวกส่วนโค้งและส่วนตรง', t(37),

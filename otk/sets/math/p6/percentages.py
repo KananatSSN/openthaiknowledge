@@ -274,3 +274,36 @@ class CalendarPercentSentenceP6(ChoiceType):
         return (f"เดือน{month}มี {days} วัน ทำงาน {worked} วัน วันที่ทำงานคิดเป็นร้อยละเท่าใด "
                 "เลือกวิธีคำนวณ",f"({worked} ÷ {days}) × 100",
                 [f"({days} ÷ {worked}) × 100",f"({worked} ÷ 100) × {days}",f"(({days} − {worked}) ÷ {days}) × 100"])
+
+
+@question_type("math.percent_after_adding_p6", display_name={"th": "เพิ่มของชนิดหนึ่งแล้วร้อยละเปลี่ยน หาจำนวนที่เพิ่ม"},
+               level={"th": "ป.6"}, topic=_PC_TOPIC)
+class PercentAfterAddingP6(ChoiceType):
+    """The other kind does not change: it is (100 − new%) of the new total. Find the new
+    total from it, then subtract the old total."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/roi-et-wittayalai/30904-Pre-test-.1-PRE-RW-Pre-Gifted-2568.pdf, ข้อ 32",
+        "openthaiknowledge-bank/mathematics/exam-venue/srinakharinwirot-patumwan-demonstration-school/23472-1-2568-21-BKN.pdf, ข้อ 14"))
+
+    def compose(self, rng: Random):
+        while True:
+            total = rng.choice((200, 400, 500, 800, 1000))
+            old = rng.choice((10, 20, 25, 28, 30, 40))
+            new = rng.choice((40, 50, 60, 75, 80))
+            if new <= old:
+                continue
+            other = total * (100 - old) // 100
+            new_total = Fraction(other * 100, 100 - new)
+            if new_total.denominator != 1:
+                continue
+            answer = int(new_total) - total
+            # The percentage points applied to the old total; the white count after adding; the new total;
+            # the new share of the old total.
+            pool = (Fraction(total * (new - old), 100), new_total * new / 100, int(new_total),
+                    Fraction(total * new, 100))
+            wrongs = [int(w) for w in dict.fromkeys(pool) if w != answer and w == int(w) and w > 0]
+            if len(wrongs) < 3:
+                continue
+            stem = (f"มีลูกปิงปอง {total:,} ลูก เป็นสีขาวร้อยละ {old} ที่เหลือเป็นสีแดง ถ้าซื้อลูกสีขาวมาเพิ่ม "
+                    f"ทำให้มีลูกสีขาวเป็นร้อยละ {new} ของทั้งหมด ต้องซื้อลูกสีขาวเพิ่มกี่ลูก")
+            return stem, str(answer), [str(w) for w in wrongs][:4]

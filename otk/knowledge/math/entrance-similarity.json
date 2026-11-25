@@ -25,6 +25,32 @@
     "math.similar_triangle_picture_m3",
     "math.similar_ratio_area"
    ]
+  },
+  {
+   "id": "math.entrance.similar-triangles-ratio",
+   "kind": "procedure",
+   "title": "ใช้สามเหลี่ยมคล้ายหาความยาวและอัตราส่วนพื้นที่",
+   "statement": "ใช้สามเหลี่ยมคล้ายหาความยาวและอัตราส่วนพื้นที่",
+   "steps": [
+    "ระบุสิ่งที่โจทย์กำหนดและสิ่งที่ต้องหา",
+    "ใช้สามเหลี่ยมคล้ายหาความยาวและอัตราส่วนพื้นที่",
+    "ตรวจคำตอบกับเงื่อนไขของโจทย์"
+   ],
+   "sources": [
+    {
+     "tag": "สตรีสิริเกศ ม.3 2566/1.11"
+    },
+    {
+     "tag": "สตรีสิริเกศ ม.3 2566/1.12"
+    },
+    {
+     "tag": "สตรีสิริเกศ ม.3 2566/1.23"
+    }
+   ],
+   "covered_by": [
+    "math.similar_triangle_picture_m3",
+    "math.similar_ratio_area"
+   ]
   }
  ]
 }

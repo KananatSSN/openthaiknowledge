@@ -213,3 +213,31 @@ class MentalProductM3(MathType):
                         distractors=[f"{int(v):,}".replace(",", "{,}")
                                      for v in _story.keep(base * base + d * d, base * base - d, base * base,
                                                           base * base - 2 * d * d, answer=right, lo=1)])
+
+
+from otk.kit.math_problems import ChoiceType  # noqa: E402
+from otk.core.provenance import Provenance  # noqa: E402
+from otk.core.registry import question_type  # noqa: E402
+
+
+@question_type("math.reciprocal_power_sum_m3", display_name={"th": "หาค่า x² + 1/x² และ x³ + 1/x³ จาก x + 1/x"},
+               level={"th": "ม.3"}, topic="กระจายทวินาม")
+class ReciprocalPowerSumM3(ChoiceType):
+    """Square x + 1/x = a to get x² + 1/x² = a² − 2; cube it to get x³ + 1/x³ = a³ − 3a."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/triam-udom-suksa/8548-MATHFORTU65_problem.pdf, ข้อ 36",
+        "openthaiknowledge-bank/mathematics/exam-venue/stri-siriket/29646-2566-.3.pdf, ตอนที่ 2 ข้อ 3"))
+
+    def compose(self, rng: Random):
+        a = rng.randint(3, 9)
+        if rng.random() < 0.5:
+            answer = a * a - 2
+            pool = [a * a, a * a + 2, 2 * a, a * a - 1]          # the 2 forgotten, added, doubled
+            ask = "x² + 1/x²"
+        else:
+            answer = a ** 3 - 3 * a
+            pool = [a ** 3, a ** 3 + 3 * a, a ** 3 - 3, a * (a * a - 2)]
+            ask = "x³ + 1/x³"
+        wrongs = [w for w in dict.fromkeys(pool) if w != answer]
+        stem = f"ถ้า x + 1/x = {a} เมื่อ x ≠ 0 แล้วค่าของ {ask} เท่ากับเท่าใด"
+        return stem, str(answer), [str(w) for w in wrongs][:4]

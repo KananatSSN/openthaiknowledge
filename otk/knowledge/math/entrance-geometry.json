@@ -95,6 +95,9 @@
     },
     {
      "tag": "เข้า ม.4 เตรียมอุดมฯ 2564/15"
+    },
+    {
+     "tag": "สตรีสิริเกศ ม.3 2566/2.5"
     }
    ],
    "covered_by": [
@@ -241,6 +244,9 @@
    "sources": [
     {
      "tag": "เข้า ม.4 MWIT 2567 รอบ 1/16"
+    },
+    {
+     "tag": "เข้า ม.1 สาธิตปทุมวัน 2568/11"
     }
    ],
    "covered_by": [],
@@ -328,9 +334,14 @@
    "sources": [
     {
      "tag": "เข้า ม.4 KVIS 2566/I.5"
+    },
+    {
+     "tag": "สตรีสิริเกศ ม.3 2566/1.22"
     }
    ],
-   "covered_by": []
+   "covered_by": [
+    "math.british_flag_m2"
+   ]
   },
   {
    "id": "math.entrance.equilateral-triangle-area",
@@ -345,6 +356,9 @@
    "sources": [
     {
      "tag": "เข้า ม.4 KVIS 2566/II.3"
+    },
+    {
+     "tag": "เข้า ม.4 MWIT 2566 รอบ 1/24"
     }
    ],
    "covered_by": []

@@ -380,3 +380,35 @@ class PythagorasTwoStepM2(WordProblem):
         # The hypotenuses subtracted; BD or BC alone; the two added.
         return MathDraw("", str(right), prompt=prompt,
                         distractors=_story.keep(h2 - h1, m2, m1, m1 + m2, answer=right, lo=1))
+
+
+@question_type("math.british_flag_m2", display_name={"th": "จุดภายในรูปสี่เหลี่ยมมุมฉาก PA² + PC² = PB² + PD²"},
+               level={"th": "ม.2"}, topic=_PY_TOPIC)
+class BritishFlagM2(ChoiceType):
+    """Drop perpendiculars from P to the sides: each squared distance to a corner splits
+    into the same four pieces, so PA² + PC² = PB² + PD² for opposite corners."""
+    PROVENANCE = Provenance("adapted", sources=(
+        "openthaiknowledge-bank/mathematics/exam-venue/kvis/8515-KVIS-2566-Luckdee.pdf, PART I ข้อ 5",
+        "openthaiknowledge-bank/mathematics/exam-venue/stri-siriket/29646-2566-.3.pdf, ตอนที่ 1 ข้อ 22"))
+
+    def compose(self, rng: Random):
+        while True:
+            pa, pb, pc = rng.randint(2, 12), rng.randint(2, 12), rng.randint(2, 12)
+            pd2 = pa * pa + pc * pc - pb * pb
+            if pd2 <= 0:
+                continue
+            root = int(pd2 ** 0.5)
+            if root * root != pd2:
+                continue
+            answer = root
+            # Adjacent corners paired; the sum of the three; PA + PC − PB.
+            pool = [w for w in (int((pa * pa + pb * pb - pc * pc) ** 0.5) if pa * pa + pb * pb > pc * pc else 0,
+                                pa + pc - pb, pa + pb + pc) if w > 0 and w != answer]
+            for extra in (answer + 1, answer + 2, answer - 1):
+                if len(pool) >= 3:
+                    break
+                if extra > 0 and extra not in pool and extra != answer:
+                    pool.append(extra)
+            stem = (f"P เป็นจุดภายในรูปสี่เหลี่ยมมุมฉาก ABCD (เรียงจุดยอดตามลำดับรอบรูป) ถ้า PA = {pa}, PB = {pb} "
+                    f"และ PC = {pc} หน่วย แล้ว PD ยาวกี่หน่วย")
+            return stem, str(answer), [str(w) for w in dict.fromkeys(pool)][:4]
