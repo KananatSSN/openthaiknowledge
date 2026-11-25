@@ -4473,8 +4473,8 @@
   {
    "path": "chemistry/level/upper-secondary/posn-chemistry/MANIFEST.json",
    "kind": "other",
-   "sha256": "97bee951ca0ef44d",
-   "size": 30741,
+   "sha256": "09ff4e4f0c2debc5",
+   "size": 34704,
    "stage": "ignored"
   },
   {
@@ -4513,7 +4513,7 @@
    "layout": "numbered",
    "items": 75,
    "sheet_id": "posn2562_chemistry",
-   "stage": "converted",
+   "stage": "green",
    "note": "PARTIAL 66/75: all 60 multiple-choice and first six written items reviewed with independent solvers, generators and knowledge claims; full suite deferred until 75/75."
   },
   {
@@ -10047,6 +10047,8 @@
    "text_chars": 19697,
    "layout": "numbered",
    "glyph_damage": 135,
+   "items": 9,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10132,6 +10134,8 @@
    "pages": 31,
    "text_chars": 14325,
    "layout": "numbered",
+   "items": 30,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10142,6 +10146,8 @@
    "pages": 31,
    "text_chars": 15934,
    "layout": "numbered",
+   "items": 30,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10152,6 +10158,8 @@
    "pages": 31,
    "text_chars": 12210,
    "layout": "numbered",
+   "items": 30,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10162,6 +10170,8 @@
    "pages": 31,
    "text_chars": 13555,
    "layout": "numbered",
+   "items": 30,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -11156,6 +11166,8 @@
    "text_chars": 14018,
    "layout": "numbered",
    "glyph_damage": 596,
+   "items": 47,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -11177,6 +11189,8 @@
    "text_chars": 11565,
    "layout": "numbered",
    "glyph_damage": 542,
+   "items": 37,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -11188,6 +11202,8 @@
    "text_chars": 11277,
    "layout": "numbered",
    "glyph_damage": 443,
+   "items": 44,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -76010,7 +76026,7 @@
    "scan_pages": 11,
    "items": 30,
    "sheet_id": "posn2564_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Scanned, no text layer: 25 MC and 5 short answers; private hand transcript."
   },
   {
@@ -76023,7 +76039,7 @@
    "scan_pages": 12,
    "items": 30,
    "sheet_id": "posn2565_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Scanned, no text layer: 25 MC and 5 short answers; private hand transcript."
   },
   {
@@ -76036,7 +76052,7 @@
    "layout": "numbered",
    "items": 28,
    "sheet_id": "posn2566_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "28 questions: 20 MC, 7 short answers, 1 worked; maths printed as pictures; private hand transcript."
   },
   {
@@ -76049,7 +76065,7 @@
    "layout": "numbered",
    "items": 16,
    "sheet_id": "posn2567_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "16 questions: 15 short answers, 1 worked; maths printed as pictures; private hand transcript."
   },
   {
@@ -76062,7 +76078,7 @@
    "layout": "numbered",
    "items": 25,
    "sheet_id": "posn2568_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "25 short-answer questions; maths printed as pictures; private hand transcript."
   },
   {
@@ -76075,7 +76091,7 @@
    "layout": "numbered",
    "items": 30,
    "sheet_id": "posn2569_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "10 eight-choice MC and 20 short answers in two sections (Part 2 restarts at 1; items 11-30 here); private hand transcript."
   },
   {
@@ -76113,7 +76129,7 @@
    "layout": "numbered",
    "items": 14,
    "sheet_id": "tpho2545_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "English theory paper; 14 sub-part items; hand transcript."
   },
   {
@@ -76172,7 +76188,7 @@
    "layout": "numbered",
    "items": 17,
    "sheet_id": "tpho2546_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (three problems); 17 sub-parts, 16 items (2.6 and 3.6 are sketches, claimed by their units); hand transcript."
   },
   {
@@ -76332,7 +76348,7 @@
    "layout": "numbered",
    "items": 16,
    "sheet_id": "tpho2547_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper with its marking scheme bound in; 16 sub-parts, 12 items (1(c), 1(d), 1(f), 3(d) are steps or limits claimed by their units); hand transcript."
   },
   {
@@ -76384,7 +76400,7 @@
    "glyph_damage": 664,
    "items": 14,
    "sheet_id": "tpho2548_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (pages 1-5) with its marking scheme (pages 6-15); 14 sub-parts, 16 items; hand transcript. 1.4 uses the scheme's exact formula, not its M/(8m) approximation."
   },
   {
@@ -76397,7 +76413,7 @@
    "layout": "numbered",
    "items": 18,
    "sheet_id": "tpho2549_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper, marking scheme and experimental paper in one file; 18 parts, 14 items (lab procedure and measurement parts claimed by their units); hand transcript. Scheme's 3(b) ~0.28 nm does not follow from its formula (0.313 nm)."
   },
   {
@@ -76470,7 +76486,7 @@
    "layout": "numbered",
    "items": 12,
    "sheet_id": "tpho2550_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (pages 1-6) with its marking scheme (pages 7-24); 12 sub-parts, 12 items (1.2 gives two; 1.1.2 claimed by its unit); hand transcript."
   },
   {
@@ -76518,7 +76534,7 @@
    "layout": "numbered",
    "items": 18,
    "sheet_id": "tpho2551_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (three problems); 18 sub-parts, 13 items (steps 1.1.1, 1.2.1, 2.2, 3.3.2, 3.3.3 claimed by their units); hand transcript."
   },
   {
@@ -76643,7 +76659,7 @@
    "layout": "numbered",
    "items": 11,
    "sheet_id": "tpho2552_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (three problems); 11 sub-parts, 12 items (2.3 gives time and height); hand transcript."
   },
   {
@@ -76793,7 +76809,7 @@
    "glyph_damage": 802,
    "items": 12,
    "sheet_id": "tpho2553_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (pages 1-7) with its solution (pages 8-19); 12 sub-parts, 11 items (3.2.1-3.2.2 are steps of 3.2.3); hand transcript."
   },
   {
@@ -76866,7 +76882,7 @@
    "glyph_damage": 123,
    "items": 19,
    "sheet_id": "tpho2554_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (pages 1-8) with its solution (pages 9-17); 19 sub-parts, 16 items (1.1 is a step of 1.2, 3.3 and 3.4 are steps of 3.5); hand transcript."
   },
   {
@@ -76914,7 +76930,7 @@
    "layout": "numbered",
    "items": 15,
    "sheet_id": "tpho2555_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (4 pages); 15 sub-parts, 13 items (1.2 ก is a sketch, 3 ค is a step of 3 ง); answers from tpho_11_theory_solution.pdf; hand transcript."
   },
   {
@@ -77030,7 +77046,7 @@
    "glyph_damage": 51,
    "items": 26,
    "sheet_id": "tpho2556_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (5 pages); 26 sub-parts, 17 items; no theory solution in the folder, so every answer was derived and checked independently; hand transcript."
   },
   {
@@ -77069,7 +77085,7 @@
    "glyph_damage": 5,
    "items": 22,
    "sheet_id": "tpho2557_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (6 pages); 22 sub-parts, 12 items; answers from tpho_13_theory_solution.pdf; hand transcript."
   },
   {
@@ -77105,7 +77121,7 @@
    "layout": "numbered",
    "items": 17,
    "sheet_id": "tpho2558_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (7 pages); 17 sub-parts, 13 items; answers from TPhO14_theory-solution.pdf; hand transcript."
   },
   {
@@ -77180,7 +77196,7 @@
    "glyph_damage": 130,
    "items": 23,
    "sheet_id": "tpho2559_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (12 pages); 23 sub-parts, 15 items; answers from TPhO2016_Theory-Solution.pdf; hand transcript."
   },
   {
@@ -77230,7 +77246,7 @@
    "layout": "numbered",
    "items": 25,
    "sheet_id": "tpho2560_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (20 pages); 25 sub-parts, 18 items; answers from TPhO2017_Theory-Sol.pdf; hand transcript."
   },
   {
@@ -77258,7 +77274,7 @@
    "glyph_damage": 1180,
    "items": 28,
    "sheet_id": "tpho2561_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (18 pages); 28 sub-parts, 19 items; checked against the scanned solution and re-derived; hand transcript."
   },
   {
@@ -77296,7 +77312,7 @@
    "layout": "numbered",
    "items": 29,
    "sheet_id": "tpho2562_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper (8 pages); 29 sub-parts, 18 items; no solution in the folder, answers derived here; hand transcript."
   },
   {
@@ -77310,7 +77326,7 @@
    "glyph_damage": 176,
    "items": 8,
    "sheet_id": "tpho2563_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory problem 1 (2 pages: strobe-lit water drops, optical tweezer); 8 sub-parts, 7 items; answers from 1_TPhO2020_Theory_Solution.pdf; hand transcript."
   },
   {
@@ -77428,7 +77444,7 @@
    "glyph_damage": 1412,
    "items": 31,
    "sheet_id": "tpho2564_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper with its solution bound in (35 pages); 31 sub-parts, 24 items; answers from the bound solution, re-derived; hand transcript. Scheme notes: 2 g) sign of sigma+ in its first method; 3.1 h) sensitive to the graph-read alpha_O."
   },
   {
@@ -77456,7 +77472,7 @@
    "glyph_damage": 576,
    "items": 26,
    "sheet_id": "tpho2565_physics",
-   "stage": "generated",
+   "stage": "green",
    "note": "Theory paper with its solution bound in (24 pages: electric dipole and a point charge, magnetic cooling, sonic flow); 26 sub-parts, 17 items; answers from the bound solution, re-derived; hand transcript. Scheme note: 1 g)'s period 10.3/beta should be 10.4/beta."
   },
   {
