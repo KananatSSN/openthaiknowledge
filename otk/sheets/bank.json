@@ -9953,6 +9953,8 @@
    "text_chars": 251,
    "layout": "unknown",
    "glyph_damage": 1,
+   "items": 2,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -9975,6 +9977,8 @@
    "layout": "unknown",
    "glyph_damage": 55,
    "scan_pages": 1,
+   "items": 20,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -9985,6 +9989,8 @@
    "pages": 17,
    "text_chars": 4038,
    "layout": "unknown",
+   "items": 25,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10005,7 +10011,8 @@
    "pages": 12,
    "text_chars": 3529,
    "layout": "unknown",
-   "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
+   "stage": "ignored",
+   "note": "Same pages as 8355-MWIT36-R1-By-SME16-2569.pdf (MWIT round 1 recollection, 16 พ.ย. 2568, 27 items); digest 8355 instead."
   },
   {
    "path": "mathematics/exam-venue/mahidol-wittayanusorn/10523-MWIT-67.pdf",
@@ -10036,6 +10043,8 @@
    "text_chars": 2333,
    "layout": "numbered",
    "glyph_damage": 19,
+   "items": 14,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10071,6 +10080,8 @@
    "pages": 17,
    "text_chars": 5317,
    "layout": "unknown",
+   "items": 28,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10092,6 +10103,8 @@
    "pages": 12,
    "text_chars": 3596,
    "layout": "unknown",
+   "items": 27,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
@@ -10103,6 +10116,8 @@
    "text_chars": 3722,
    "layout": "numbered",
    "glyph_damage": 20,
+   "items": 23,
+   "stage": "converted",
    "note": "Downloaded from Roonpii; original listing and URL are in openthaiknowledge-bank/_notes/roonpii/MANIFEST.json."
   },
   {
