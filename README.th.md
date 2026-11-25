@@ -87,7 +87,7 @@
 | `otk/pictures/` | ตัววาดภาพและแผนภาพ ไฟล์ PNG ที่ commit ไว้ และ registry ของแผนภาพ |
 | `otk/sheets/` | ข้อสอบเก่าที่ย่อยแล้ว หนึ่ง package ต่อหนึ่งชุดข้อสอบ และ `bank.json` ซึ่งเป็นดัชนีของคลังต้นฉบับ |
 | `otk/knowledge/` | หน่วยความรู้ที่สกัดจากแหล่งข้อมูล |
-| `otk/tools/` | `sheetpipe` (ขั้นตอนย่อยข้อสอบ), `golden_draws`, `explorer_data`, `sets_index`, `curriculum_graph` |
+| `otk/tools/` | `sheetpipe` (ขั้นตอนย่อยข้อสอบ), `golden_draws`, `export` (JSON สำหรับแอปที่ไม่ได้ใช้ Python), `explorer_data`, `sets_index`, `curriculum_graph` |
 | `otk/tests/` | ชุด test รวมถึง `golden_draws.json` |
 | `scripts/` | สคริปต์ตรวจและส่งออกเนื้อหา และ `task_queue.py` (สร้างงานที่เปิดรับเป็น GitHub issue) |
 | `explorer/` | เว็บไซต์สำรวจชุดโจทย์ทุกชุดและลองทำตัวอย่างโจทย์ |
@@ -136,6 +136,10 @@ question = REGISTRY["math.count_objects_p1"].generate(Random(42))
 ```
 
 `otk config.json` พิมพ์ใบงาน PDF แบบออฟไลน์จากไฟล์ตั้งค่า JSON (`otk --help`)
+
+แอปที่ไม่ได้ใช้ Python (TypeScript, แอปมือถือ) ใช้ `python -m otk.tools.export out/`
+เพื่อเขียนโจทย์ คำตอบ ข้อผิดพลาดที่ตั้งชื่อไว้ และรูปภาพของรุ่นนั้นเป็นไฟล์ JSON และ PNG
+พร้อมชนิดข้อมูล TypeScript ดูรายละเอียดที่ [docs/EXPORT.md](docs/EXPORT.md)
 
 ### สิ่งที่ผู้ใช้ภายนอกวางใจได้
 
