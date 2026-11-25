@@ -100,7 +100,7 @@ what review checks. [AGENTS.md](AGENTS.md) holds the rules your agent follows.
 | `otk/pictures/` | Picture and diagram drawers, the committed PNGs, and the registry of drawable diagrams |
 | `otk/sheets/` | Digested past papers, one package per sheet, plus `bank.json`, the index of the source bank |
 | `otk/knowledge/` | Knowledge units extracted from sources |
-| `otk/tools/` | `sheetpipe` (the digestion pipeline), `golden_draws`, `explorer_data`, `sets_index`, `curriculum_graph` |
+| `otk/tools/` | `sheetpipe` (the digestion pipeline), `golden_draws`, `export` (JSON for apps outside Python), `explorer_data`, `sets_index`, `curriculum_graph` |
 | `otk/tests/` | The suite, including `golden_draws.json` |
 | `scripts/` | Content audits and exports, and `task_queue.py` (open work as GitHub issues) |
 | `explorer/` | The website for exploring every set and trying its example questions |
@@ -153,6 +153,10 @@ question = REGISTRY["math.count_objects_p1"].generate(Random(42))
 ```
 
 `otk config.json` prints an offline PDF worksheet from a JSON config (`otk --help`).
+
+For an app that does not run Python (TypeScript, mobile), `python -m otk.tools.export out/`
+writes a release's questions, answers, named mistakes and pictures as plain JSON and PNG,
+with TypeScript types. See [docs/EXPORT.md](docs/EXPORT.md).
 
 ### What a consumer can rely on
 
